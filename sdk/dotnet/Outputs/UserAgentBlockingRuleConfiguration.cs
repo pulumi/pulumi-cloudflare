@@ -14,19 +14,20 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class UserAgentBlockingRuleConfiguration
     {
         /// <summary>
-        /// The configuration target for this rule. You must set the target to ua for User Agent Blocking rules.
+        /// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+        /// Available values: "ip".
         /// </summary>
-        public readonly string Target;
+        public readonly string? Target;
         /// <summary>
-        /// The exact user agent string to match. This value will be compared to the received User-Agent HTTP header value.
+        /// The IP address to match. This address will be compared to the IP address of incoming requests.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private UserAgentBlockingRuleConfiguration(
-            string target,
+            string? target,
 
-            string value)
+            string? value)
         {
             Target = target;
             Value = value;

@@ -4,13 +4,13 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.RecordDataArgs;
+import com.pulumi.cloudflare.inputs.RecordSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,13 +19,6 @@ import javax.annotation.Nullable;
 public final class RecordState extends com.pulumi.resources.ResourceArgs {
 
     public static final RecordState Empty = new RecordState();
-
-    @Import(name="allowOverwrite")
-    private @Nullable Output<Boolean> allowOverwrite;
-
-    public Optional<Output<Boolean>> allowOverwrite() {
-        return Optional.ofNullable(this.allowOverwrite);
-    }
 
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
@@ -43,14 +36,29 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The content of the record. Must provide only one of `data`, `content`, `value`.
+     * When the record comment was last modified. Omitted if there is no comment.
+     * 
+     */
+    @Import(name="commentModifiedOn")
+    private @Nullable Output<String> commentModifiedOn;
+
+    /**
+     * @return When the record comment was last modified. Omitted if there is no comment.
+     * 
+     */
+    public Optional<Output<String>> commentModifiedOn() {
+        return Optional.ofNullable(this.commentModifiedOn);
+    }
+
+    /**
+     * A valid IPv4 address.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return The content of the record. Must provide only one of `data`, `content`, `value`.
+     * @return A valid IPv4 address.
      * 
      */
     public Optional<Output<String>> content() {
@@ -58,14 +66,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The RFC3339 timestamp of when the record was created.
+     * When the record was created.
      * 
      */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
     /**
-     * @return The RFC3339 timestamp of when the record was created.
+     * @return When the record was created.
      * 
      */
     public Optional<Output<String>> createdOn() {
@@ -73,14 +81,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * Components of a CAA record.
      * 
      */
     @Import(name="data")
     private @Nullable Output<RecordDataArgs> data;
 
     /**
-     * @return Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * @return Components of a CAA record.
      * 
      */
     public Optional<Output<RecordDataArgs>> data() {
@@ -88,44 +96,29 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The FQDN of the record.
+     * Extra Cloudflare-specific information about the record.
      * 
      */
-    @Import(name="hostname")
-    private @Nullable Output<String> hostname;
+    @Import(name="meta")
+    private @Nullable Output<String> meta;
 
     /**
-     * @return The FQDN of the record.
+     * @return Extra Cloudflare-specific information about the record.
      * 
      */
-    public Optional<Output<String>> hostname() {
-        return Optional.ofNullable(this.hostname);
+    public Optional<Output<String>> meta() {
+        return Optional.ofNullable(this.meta);
     }
 
     /**
-     * A key-value map of string metadata Cloudflare associates with the record.
-     * 
-     */
-    @Import(name="metadata")
-    private @Nullable Output<Map<String,String>> metadata;
-
-    /**
-     * @return A key-value map of string metadata Cloudflare associates with the record.
-     * 
-     */
-    public Optional<Output<Map<String,String>>> metadata() {
-        return Optional.ofNullable(this.metadata);
-    }
-
-    /**
-     * The RFC3339 timestamp of when the record was last modified.
+     * When the record was last modified.
      * 
      */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
     /**
-     * @return The RFC3339 timestamp of when the record was last modified.
+     * @return When the record was last modified.
      * 
      */
     public Optional<Output<String>> modifiedOn() {
@@ -133,14 +126,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * DNS record name (or {@literal @} for the zone apex) in Punycode.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * @return DNS record name (or {@literal @} for the zone apex) in Punycode.
      * 
      */
     public Optional<Output<String>> name() {
@@ -148,29 +141,29 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The priority of the record.
+     * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      * 
      */
     @Import(name="priority")
-    private @Nullable Output<Integer> priority;
+    private @Nullable Output<Double> priority;
 
     /**
-     * @return The priority of the record.
+     * @return Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      * 
      */
-    public Optional<Output<Integer>> priority() {
+    public Optional<Output<Double>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
     /**
-     * Shows whether this record can be proxied.
+     * Whether the record can be proxied by Cloudflare or not.
      * 
      */
     @Import(name="proxiable")
     private @Nullable Output<Boolean> proxiable;
 
     /**
-     * @return Shows whether this record can be proxied.
+     * @return Whether the record can be proxied by Cloudflare or not.
      * 
      */
     public Optional<Output<Boolean>> proxiable() {
@@ -178,14 +171,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the record gets Cloudflare&#39;s origin protection.
+     * Whether the record is receiving the performance and security benefits of Cloudflare.
      * 
      */
     @Import(name="proxied")
     private @Nullable Output<Boolean> proxied;
 
     /**
-     * @return Whether the record gets Cloudflare&#39;s origin protection.
+     * @return Whether the record is receiving the performance and security benefits of Cloudflare.
      * 
      */
     public Optional<Output<Boolean>> proxied() {
@@ -193,14 +186,29 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom tags for the DNS record.
+     * Settings for the DNS record.
+     * 
+     */
+    @Import(name="settings")
+    private @Nullable Output<RecordSettingsArgs> settings;
+
+    /**
+     * @return Settings for the DNS record.
+     * 
+     */
+    public Optional<Output<RecordSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
+    }
+
+    /**
+     * Custom tags for the DNS record. This field has no effect on DNS responses.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Custom tags for the DNS record.
+     * @return Custom tags for the DNS record. This field has no effect on DNS responses.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -208,29 +216,46 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The TTL of the record.
+     * When the record tags were last modified. Omitted if there are no tags.
+     * 
+     */
+    @Import(name="tagsModifiedOn")
+    private @Nullable Output<String> tagsModifiedOn;
+
+    /**
+     * @return When the record tags were last modified. Omitted if there are no tags.
+     * 
+     */
+    public Optional<Output<String>> tagsModifiedOn() {
+        return Optional.ofNullable(this.tagsModifiedOn);
+    }
+
+    /**
+     * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      * 
      */
     @Import(name="ttl")
-    private @Nullable Output<Integer> ttl;
+    private @Nullable Output<Double> ttl;
 
     /**
-     * @return The TTL of the record.
+     * @return Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      * 
      */
-    public Optional<Output<Integer>> ttl() {
+    public Optional<Output<Double>> ttl() {
         return Optional.ofNullable(this.ttl);
     }
 
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * @return Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -238,37 +263,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the record. Must provide only one of `data`, `content`, `value`.
-     * 
-     * @deprecated
-     * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-     * 
-     */
-    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-    @Import(name="value")
-    private @Nullable Output<String> value;
-
-    /**
-     * @return The value of the record. Must provide only one of `data`, `content`, `value`.
-     * 
-     * @deprecated
-     * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-     * 
-     */
-    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-    public Optional<Output<String>> value() {
-        return Optional.ofNullable(this.value);
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -278,22 +280,22 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     private RecordState() {}
 
     private RecordState(RecordState $) {
-        this.allowOverwrite = $.allowOverwrite;
         this.comment = $.comment;
+        this.commentModifiedOn = $.commentModifiedOn;
         this.content = $.content;
         this.createdOn = $.createdOn;
         this.data = $.data;
-        this.hostname = $.hostname;
-        this.metadata = $.metadata;
+        this.meta = $.meta;
         this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.priority = $.priority;
         this.proxiable = $.proxiable;
         this.proxied = $.proxied;
+        this.settings = $.settings;
         this.tags = $.tags;
+        this.tagsModifiedOn = $.tagsModifiedOn;
         this.ttl = $.ttl;
         this.type = $.type;
-        this.value = $.value;
         this.zoneId = $.zoneId;
     }
 
@@ -313,15 +315,6 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RecordState defaults) {
             $ = new RecordState(Objects.requireNonNull(defaults));
-        }
-
-        public Builder allowOverwrite(@Nullable Output<Boolean> allowOverwrite) {
-            $.allowOverwrite = allowOverwrite;
-            return this;
-        }
-
-        public Builder allowOverwrite(Boolean allowOverwrite) {
-            return allowOverwrite(Output.of(allowOverwrite));
         }
 
         /**
@@ -346,7 +339,28 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The content of the record. Must provide only one of `data`, `content`, `value`.
+         * @param commentModifiedOn When the record comment was last modified. Omitted if there is no comment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commentModifiedOn(@Nullable Output<String> commentModifiedOn) {
+            $.commentModifiedOn = commentModifiedOn;
+            return this;
+        }
+
+        /**
+         * @param commentModifiedOn When the record comment was last modified. Omitted if there is no comment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commentModifiedOn(String commentModifiedOn) {
+            return commentModifiedOn(Output.of(commentModifiedOn));
+        }
+
+        /**
+         * @param content A valid IPv4 address.
          * 
          * @return builder
          * 
@@ -357,7 +371,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content The content of the record. Must provide only one of `data`, `content`, `value`.
+         * @param content A valid IPv4 address.
          * 
          * @return builder
          * 
@@ -367,7 +381,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn The RFC3339 timestamp of when the record was created.
+         * @param createdOn When the record was created.
          * 
          * @return builder
          * 
@@ -378,7 +392,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn The RFC3339 timestamp of when the record was created.
+         * @param createdOn When the record was created.
          * 
          * @return builder
          * 
@@ -388,7 +402,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+         * @param data Components of a CAA record.
          * 
          * @return builder
          * 
@@ -399,7 +413,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param data Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+         * @param data Components of a CAA record.
          * 
          * @return builder
          * 
@@ -409,49 +423,28 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname The FQDN of the record.
+         * @param meta Extra Cloudflare-specific information about the record.
          * 
          * @return builder
          * 
          */
-        public Builder hostname(@Nullable Output<String> hostname) {
-            $.hostname = hostname;
+        public Builder meta(@Nullable Output<String> meta) {
+            $.meta = meta;
             return this;
         }
 
         /**
-         * @param hostname The FQDN of the record.
+         * @param meta Extra Cloudflare-specific information about the record.
          * 
          * @return builder
          * 
          */
-        public Builder hostname(String hostname) {
-            return hostname(Output.of(hostname));
+        public Builder meta(String meta) {
+            return meta(Output.of(meta));
         }
 
         /**
-         * @param metadata A key-value map of string metadata Cloudflare associates with the record.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
-            $.metadata = metadata;
-            return this;
-        }
-
-        /**
-         * @param metadata A key-value map of string metadata Cloudflare associates with the record.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder metadata(Map<String,String> metadata) {
-            return metadata(Output.of(metadata));
-        }
-
-        /**
-         * @param modifiedOn The RFC3339 timestamp of when the record was last modified.
+         * @param modifiedOn When the record was last modified.
          * 
          * @return builder
          * 
@@ -462,7 +455,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn The RFC3339 timestamp of when the record was last modified.
+         * @param modifiedOn When the record was last modified.
          * 
          * @return builder
          * 
@@ -472,7 +465,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the record. **Modifying this attribute will force creation of a new resource.**
+         * @param name DNS record name (or {@literal @} for the zone apex) in Punycode.
          * 
          * @return builder
          * 
@@ -483,7 +476,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the record. **Modifying this attribute will force creation of a new resource.**
+         * @param name DNS record name (or {@literal @} for the zone apex) in Punycode.
          * 
          * @return builder
          * 
@@ -493,28 +486,28 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the record.
+         * @param priority Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
          * 
          * @return builder
          * 
          */
-        public Builder priority(@Nullable Output<Integer> priority) {
+        public Builder priority(@Nullable Output<Double> priority) {
             $.priority = priority;
             return this;
         }
 
         /**
-         * @param priority The priority of the record.
+         * @param priority Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
          * 
          * @return builder
          * 
          */
-        public Builder priority(Integer priority) {
+        public Builder priority(Double priority) {
             return priority(Output.of(priority));
         }
 
         /**
-         * @param proxiable Shows whether this record can be proxied.
+         * @param proxiable Whether the record can be proxied by Cloudflare or not.
          * 
          * @return builder
          * 
@@ -525,7 +518,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxiable Shows whether this record can be proxied.
+         * @param proxiable Whether the record can be proxied by Cloudflare or not.
          * 
          * @return builder
          * 
@@ -535,7 +528,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxied Whether the record gets Cloudflare&#39;s origin protection.
+         * @param proxied Whether the record is receiving the performance and security benefits of Cloudflare.
          * 
          * @return builder
          * 
@@ -546,7 +539,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxied Whether the record gets Cloudflare&#39;s origin protection.
+         * @param proxied Whether the record is receiving the performance and security benefits of Cloudflare.
          * 
          * @return builder
          * 
@@ -556,7 +549,28 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Custom tags for the DNS record.
+         * @param settings Settings for the DNS record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(@Nullable Output<RecordSettingsArgs> settings) {
+            $.settings = settings;
+            return this;
+        }
+
+        /**
+         * @param settings Settings for the DNS record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(RecordSettingsArgs settings) {
+            return settings(Output.of(settings));
+        }
+
+        /**
+         * @param tags Custom tags for the DNS record. This field has no effect on DNS responses.
          * 
          * @return builder
          * 
@@ -567,7 +581,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Custom tags for the DNS record.
+         * @param tags Custom tags for the DNS record. This field has no effect on DNS responses.
          * 
          * @return builder
          * 
@@ -577,7 +591,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Custom tags for the DNS record.
+         * @param tags Custom tags for the DNS record. This field has no effect on DNS responses.
          * 
          * @return builder
          * 
@@ -587,28 +601,50 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl The TTL of the record.
+         * @param tagsModifiedOn When the record tags were last modified. Omitted if there are no tags.
          * 
          * @return builder
          * 
          */
-        public Builder ttl(@Nullable Output<Integer> ttl) {
+        public Builder tagsModifiedOn(@Nullable Output<String> tagsModifiedOn) {
+            $.tagsModifiedOn = tagsModifiedOn;
+            return this;
+        }
+
+        /**
+         * @param tagsModifiedOn When the record tags were last modified. Omitted if there are no tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tagsModifiedOn(String tagsModifiedOn) {
+            return tagsModifiedOn(Output.of(tagsModifiedOn));
+        }
+
+        /**
+         * @param ttl Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ttl(@Nullable Output<Double> ttl) {
             $.ttl = ttl;
             return this;
         }
 
         /**
-         * @param ttl The TTL of the record.
+         * @param ttl Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
          * 
          * @return builder
          * 
          */
-        public Builder ttl(Integer ttl) {
+        public Builder ttl(Double ttl) {
             return ttl(Output.of(ttl));
         }
 
         /**
-         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+         * @param type Record type.
+         * Available values: &#34;A&#34;.
          * 
          * @return builder
          * 
@@ -619,7 +655,8 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+         * @param type Record type.
+         * Available values: &#34;A&#34;.
          * 
          * @return builder
          * 
@@ -629,36 +666,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the record. Must provide only one of `data`, `content`, `value`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-         * 
-         */
-        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-        public Builder value(@Nullable Output<String> value) {
-            $.value = value;
-            return this;
-        }
-
-        /**
-         * @param value The value of the record. Must provide only one of `data`, `content`, `value`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-         * 
-         */
-        @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-        public Builder value(String value) {
-            return value(Output.of(value));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -669,7 +677,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

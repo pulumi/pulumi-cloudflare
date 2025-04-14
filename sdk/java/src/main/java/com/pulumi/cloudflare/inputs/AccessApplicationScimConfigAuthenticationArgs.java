@@ -62,15 +62,24 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         return Optional.ofNullable(this.clientSecret);
     }
 
+    /**
+     * Password used to authenticate with the remote SCIM service.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return Password used to authenticate with the remote SCIM service.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
     /**
      * The authentication scheme to use when making SCIM requests to this application.
+     * Available values: &#34;httpbasic&#34;.
      * 
      */
     @Import(name="scheme", required=true)
@@ -78,6 +87,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
 
     /**
      * @return The authentication scheme to use when making SCIM requests to this application.
+     * Available values: &#34;httpbasic&#34;.
      * 
      */
     public Output<String> scheme() {
@@ -239,17 +249,30 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param password Password used to authenticate with the remote SCIM service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Password used to authenticate with the remote SCIM service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
         /**
          * @param scheme The authentication scheme to use when making SCIM requests to this application.
+         * Available values: &#34;httpbasic&#34;.
          * 
          * @return builder
          * 
@@ -261,6 +284,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
 
         /**
          * @param scheme The authentication scheme to use when making SCIM requests to this application.
+         * Available values: &#34;httpbasic&#34;.
          * 
          * @return builder
          * 

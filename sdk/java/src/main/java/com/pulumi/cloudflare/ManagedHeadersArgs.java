@@ -11,8 +11,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,44 +18,44 @@ public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs 
     public static final ManagedHeadersArgs Empty = new ManagedHeadersArgs();
 
     /**
-     * The list of managed request headers.
+     * The list of Managed Request Transforms.
      * 
      */
-    @Import(name="managedRequestHeaders")
-    private @Nullable Output<List<ManagedHeadersManagedRequestHeaderArgs>> managedRequestHeaders;
+    @Import(name="managedRequestHeaders", required=true)
+    private Output<List<ManagedHeadersManagedRequestHeaderArgs>> managedRequestHeaders;
 
     /**
-     * @return The list of managed request headers.
+     * @return The list of Managed Request Transforms.
      * 
      */
-    public Optional<Output<List<ManagedHeadersManagedRequestHeaderArgs>>> managedRequestHeaders() {
-        return Optional.ofNullable(this.managedRequestHeaders);
+    public Output<List<ManagedHeadersManagedRequestHeaderArgs>> managedRequestHeaders() {
+        return this.managedRequestHeaders;
     }
 
     /**
-     * The list of managed response headers.
+     * The list of Managed Response Transforms.
      * 
      */
-    @Import(name="managedResponseHeaders")
-    private @Nullable Output<List<ManagedHeadersManagedResponseHeaderArgs>> managedResponseHeaders;
+    @Import(name="managedResponseHeaders", required=true)
+    private Output<List<ManagedHeadersManagedResponseHeaderArgs>> managedResponseHeaders;
 
     /**
-     * @return The list of managed response headers.
+     * @return The list of Managed Response Transforms.
      * 
      */
-    public Optional<Output<List<ManagedHeadersManagedResponseHeaderArgs>>> managedResponseHeaders() {
-        return Optional.ofNullable(this.managedResponseHeaders);
+    public Output<List<ManagedHeadersManagedResponseHeaderArgs>> managedResponseHeaders() {
+        return this.managedResponseHeaders;
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -91,18 +89,18 @@ public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param managedRequestHeaders The list of managed request headers.
+         * @param managedRequestHeaders The list of Managed Request Transforms.
          * 
          * @return builder
          * 
          */
-        public Builder managedRequestHeaders(@Nullable Output<List<ManagedHeadersManagedRequestHeaderArgs>> managedRequestHeaders) {
+        public Builder managedRequestHeaders(Output<List<ManagedHeadersManagedRequestHeaderArgs>> managedRequestHeaders) {
             $.managedRequestHeaders = managedRequestHeaders;
             return this;
         }
 
         /**
-         * @param managedRequestHeaders The list of managed request headers.
+         * @param managedRequestHeaders The list of Managed Request Transforms.
          * 
          * @return builder
          * 
@@ -112,7 +110,7 @@ public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param managedRequestHeaders The list of managed request headers.
+         * @param managedRequestHeaders The list of Managed Request Transforms.
          * 
          * @return builder
          * 
@@ -122,18 +120,18 @@ public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param managedResponseHeaders The list of managed response headers.
+         * @param managedResponseHeaders The list of Managed Response Transforms.
          * 
          * @return builder
          * 
          */
-        public Builder managedResponseHeaders(@Nullable Output<List<ManagedHeadersManagedResponseHeaderArgs>> managedResponseHeaders) {
+        public Builder managedResponseHeaders(Output<List<ManagedHeadersManagedResponseHeaderArgs>> managedResponseHeaders) {
             $.managedResponseHeaders = managedResponseHeaders;
             return this;
         }
 
         /**
-         * @param managedResponseHeaders The list of managed response headers.
+         * @param managedResponseHeaders The list of Managed Response Transforms.
          * 
          * @return builder
          * 
@@ -143,7 +141,7 @@ public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param managedResponseHeaders The list of managed response headers.
+         * @param managedResponseHeaders The list of Managed Response Transforms.
          * 
          * @return builder
          * 
@@ -153,7 +151,7 @@ public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -164,7 +162,7 @@ public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -174,6 +172,12 @@ public final class ManagedHeadersArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ManagedHeadersArgs build() {
+            if ($.managedRequestHeaders == null) {
+                throw new MissingRequiredPropertyException("ManagedHeadersArgs", "managedRequestHeaders");
+            }
+            if ($.managedResponseHeaders == null) {
+                throw new MissingRequiredPropertyException("ManagedHeadersArgs", "managedResponseHeaders");
+            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("ManagedHeadersArgs", "zoneId");
             }

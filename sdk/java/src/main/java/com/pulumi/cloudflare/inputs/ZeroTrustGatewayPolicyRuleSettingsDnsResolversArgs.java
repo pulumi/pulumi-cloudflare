@@ -17,32 +17,16 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs extends co
 
     public static final ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs();
 
-    /**
-     * IPv4 resolvers.
-     * 
-     */
     @Import(name="ipv4s")
     private @Nullable Output<List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args>> ipv4s;
 
-    /**
-     * @return IPv4 resolvers.
-     * 
-     */
     public Optional<Output<List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args>>> ipv4s() {
         return Optional.ofNullable(this.ipv4s);
     }
 
-    /**
-     * IPv6 resolvers.
-     * 
-     */
     @Import(name="ipv6s")
     private @Nullable Output<List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args>> ipv6s;
 
-    /**
-     * @return IPv6 resolvers.
-     * 
-     */
     public Optional<Output<List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args>>> ipv6s() {
         return Optional.ofNullable(this.ipv6s);
     }
@@ -72,64 +56,28 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs extends co
             $ = new ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ipv4s IPv4 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv4s(@Nullable Output<List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args>> ipv4s) {
             $.ipv4s = ipv4s;
             return this;
         }
 
-        /**
-         * @param ipv4s IPv4 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv4s(List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args> ipv4s) {
             return ipv4s(Output.of(ipv4s));
         }
 
-        /**
-         * @param ipv4s IPv4 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv4s(ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args... ipv4s) {
             return ipv4s(List.of(ipv4s));
         }
 
-        /**
-         * @param ipv6s IPv6 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv6s(@Nullable Output<List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args>> ipv6s) {
             $.ipv6s = ipv6s;
             return this;
         }
 
-        /**
-         * @param ipv6s IPv6 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv6s(List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args> ipv6s) {
             return ipv6s(Output.of(ipv6s));
         }
 
-        /**
-         * @param ipv6s IPv6 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv6s(ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6Args... ipv6s) {
             return ipv6s(List.of(ipv6s));
         }

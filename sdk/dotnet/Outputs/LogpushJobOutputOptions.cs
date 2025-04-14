@@ -22,19 +22,20 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? BatchSuffix;
         /// <summary>
-        /// Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+        /// If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
         /// </summary>
-        public readonly bool? Cve20214428;
+        public readonly bool? Cve202144228;
         /// <summary>
-        /// String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+        /// String to join fields. This field be ignored when `record_template` is set.
         /// </summary>
         public readonly string? FieldDelimiter;
         /// <summary>
-        /// List of field names to be included in the Logpush output.
+        /// List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
         /// </summary>
         public readonly ImmutableArray<string> FieldNames;
         /// <summary>
-        /// Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+        /// Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+        /// Available values: "ndjson", "csv".
         /// </summary>
         public readonly string? OutputType;
         /// <summary>
@@ -42,24 +43,24 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? RecordDelimiter;
         /// <summary>
-        /// String to be prepended before each record. Defaults to `{`.
+        /// String to be prepended before each record.
         /// </summary>
         public readonly string? RecordPrefix;
         /// <summary>
-        /// String to be appended after each record. Defaults to `}
-        /// `.
+        /// String to be appended after each record.
         /// </summary>
         public readonly string? RecordSuffix;
         /// <summary>
-        /// String to use as template for each record instead of the default comma-separated list.
+        /// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
         /// </summary>
         public readonly string? RecordTemplate;
         /// <summary>
-        /// Specifies the sampling rate. Defaults to `1`.
+        /// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         /// </summary>
         public readonly double? SampleRate;
         /// <summary>
-        /// Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+        /// String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+        /// Available values: "unixnano", "unix", "rfc3339".
         /// </summary>
         public readonly string? TimestampFormat;
 
@@ -69,7 +70,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? batchSuffix,
 
-            bool? cve20214428,
+            bool? cve202144228,
 
             string? fieldDelimiter,
 
@@ -91,7 +92,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             BatchPrefix = batchPrefix;
             BatchSuffix = batchSuffix;
-            Cve20214428 = cve20214428;
+            Cve202144228 = cve202144228;
             FieldDelimiter = fieldDelimiter;
             FieldNames = fieldNames;
             OutputType = outputType;

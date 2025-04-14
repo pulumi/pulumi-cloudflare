@@ -18,14 +18,16 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
     public static final TotalTlsArgs Empty = new TotalTlsArgs();
 
     /**
-     * The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+     * The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<String> certificateAuthority;
 
     /**
-     * @return The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+     * @return The Certificate Authority that Total TLS certificates will be issued through.
+     * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
      * 
      */
     public Optional<Output<String>> certificateAuthority() {
@@ -33,14 +35,14 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable Total TLS for the zone.
+     * If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable Total TLS for the zone.
+     * @return If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
      * 
      */
     public Output<Boolean> enabled() {
@@ -48,14 +50,14 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -89,7 +91,8 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -100,7 +103,8 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
+         * @param certificateAuthority The Certificate Authority that Total TLS certificates will be issued through.
+         * Available values: &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
          * 
          * @return builder
          * 
@@ -110,7 +114,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable Total TLS for the zone.
+         * @param enabled If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
          * 
          * @return builder
          * 
@@ -121,7 +125,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable Total TLS for the zone.
+         * @param enabled If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
          * 
          * @return builder
          * 
@@ -131,7 +135,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -142,7 +146,7 @@ public final class TotalTlsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

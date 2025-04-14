@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsPayloadLog
     {
         /// <summary>
-        /// Enable or disable DLP Payload Logging for this rule.
+        /// Set to true to enable DLP payload logging for this rule.
         /// </summary>
-        public readonly bool Enabled;
+        public readonly bool? Enabled;
 
         [OutputConstructor]
-        private TeamsRuleRuleSettingsPayloadLog(bool enabled)
+        private TeamsRuleRuleSettingsPayloadLog(bool? enabled)
         {
             Enabled = enabled;
         }

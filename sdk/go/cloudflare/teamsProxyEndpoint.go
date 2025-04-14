@@ -8,14 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
-// Endpoints are used for pointing proxy clients at Cloudflare Secure
-// Gateway.
-//
 // ## Example Usage
 //
 // ```go
@@ -23,19 +19,19 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsProxyEndpoint(ctx, "example", &cloudflare.TeamsProxyEndpointArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("office"),
+//			_, err := cloudflare.NewZeroTrustGatewayProxyEndpoint(ctx, "example_zero_trust_gateway_proxy_endpoint", &cloudflare.ZeroTrustGatewayProxyEndpointArgs{
+//				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Ips: pulumi.StringArray{
-//					pulumi.String("192.0.2.0/24"),
+//					pulumi.String("192.0.2.1/32"),
 //				},
+//				Name: pulumi.String("Devops team"),
 //			})
 //			if err != nil {
 //				return err
@@ -49,19 +45,22 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example <account_id>/<proxy_endpoint_id>
+// $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
 // ```
+//
+// Deprecated: cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint
 type TeamsProxyEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The networks CIDRs that will be allowed to initiate proxy connections.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// A list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayOutput `pulumi:"ips"`
-	// Name of the teams proxy endpoint.
+	// The name of the proxy endpoint.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The FQDN that proxy clients should be pointed at.
+	// The subdomain to be used as the destination in the proxy client.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewTeamsProxyEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -80,6 +79,12 @@ func NewTeamsProxyEndpoint(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TeamsProxyEndpoint
 	err := ctx.RegisterResource("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, args, &resource, opts...)
@@ -103,25 +108,27 @@ func GetTeamsProxyEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsProxyEndpoint resources.
 type teamsProxyEndpointState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The networks CIDRs that will be allowed to initiate proxy connections.
+	CreatedAt *string `pulumi:"createdAt"`
+	// A list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
-	// Name of the teams proxy endpoint.
+	// The name of the proxy endpoint.
 	Name *string `pulumi:"name"`
-	// The FQDN that proxy clients should be pointed at.
+	// The subdomain to be used as the destination in the proxy client.
 	Subdomain *string `pulumi:"subdomain"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type TeamsProxyEndpointState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The networks CIDRs that will be allowed to initiate proxy connections.
+	CreatedAt pulumi.StringPtrInput
+	// A list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
-	// Name of the teams proxy endpoint.
+	// The name of the proxy endpoint.
 	Name pulumi.StringPtrInput
-	// The FQDN that proxy clients should be pointed at.
+	// The subdomain to be used as the destination in the proxy client.
 	Subdomain pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (TeamsProxyEndpointState) ElementType() reflect.Type {
@@ -129,21 +136,19 @@ func (TeamsProxyEndpointState) ElementType() reflect.Type {
 }
 
 type teamsProxyEndpointArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The networks CIDRs that will be allowed to initiate proxy connections.
+	// A list of CIDRs to restrict ingress connections.
 	Ips []string `pulumi:"ips"`
-	// Name of the teams proxy endpoint.
+	// The name of the proxy endpoint.
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a TeamsProxyEndpoint resource.
 type TeamsProxyEndpointArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The networks CIDRs that will be allowed to initiate proxy connections.
+	// A list of CIDRs to restrict ingress connections.
 	Ips pulumi.StringArrayInput
-	// Name of the teams proxy endpoint.
+	// The name of the proxy endpoint.
 	Name pulumi.StringInput
 }
 
@@ -234,24 +239,31 @@ func (o TeamsProxyEndpointOutput) ToTeamsProxyEndpointOutputWithContext(ctx cont
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o TeamsProxyEndpointOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The networks CIDRs that will be allowed to initiate proxy connections.
+func (o TeamsProxyEndpointOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A list of CIDRs to restrict ingress connections.
 func (o TeamsProxyEndpointOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringArrayOutput { return v.Ips }).(pulumi.StringArrayOutput)
 }
 
-// Name of the teams proxy endpoint.
+// The name of the proxy endpoint.
 func (o TeamsProxyEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The FQDN that proxy clients should be pointed at.
+// The subdomain to be used as the destination in the proxy client.
 func (o TeamsProxyEndpointOutput) Subdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+func (o TeamsProxyEndpointOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type TeamsProxyEndpointArrayOutput struct{ *pulumi.OutputState }

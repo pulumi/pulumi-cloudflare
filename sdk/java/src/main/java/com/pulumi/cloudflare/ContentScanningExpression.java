@@ -6,16 +6,16 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.ContentScanningExpressionArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ContentScanningExpressionState;
+import com.pulumi.cloudflare.outputs.ContentScanningExpressionBody;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Content Scanning Expression resource for managing custom scan expression within a specific zone.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -26,10 +26,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ContentScanning;
- * import com.pulumi.cloudflare.ContentScanningArgs;
  * import com.pulumi.cloudflare.ContentScanningExpression;
  * import com.pulumi.cloudflare.ContentScanningExpressionArgs;
+ * import com.pulumi.cloudflare.inputs.ContentScanningExpressionBodyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,20 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Enable Content Scanning before trying to add custom scan expressions
- *         var example = new ContentScanning("example", ContentScanningArgs.builder()
- *             .zoneId("399c6f4950c01a5a141b99ff7fbcbd8b")
- *             .enabled(true)
- *             .build());
- * 
- *         var firstExample = new ContentScanningExpression("firstExample", ContentScanningExpressionArgs.builder()
- *             .zoneId(example.zoneId())
- *             .payload("lookup_json_string(http.request.body.raw, \"file\")")
- *             .build());
- * 
- *         var secondExample = new ContentScanningExpression("secondExample", ContentScanningExpressionArgs.builder()
- *             .zoneId(example.zoneId())
- *             .payload("lookup_json_string(http.request.body.raw, \"document\")")
+ *         var exampleContentScanningExpression = new ContentScanningExpression("exampleContentScanningExpression", ContentScanningExpressionArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .bodies(ContentScanningExpressionBodyArgs.builder()
+ *                 .payload("lookup_json_string(http.request.body.raw, \"file\")")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -65,38 +55,38 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/contentScanningExpression:ContentScanningExpression example &lt;zone_id&gt;/&lt;resource_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/contentScanningExpression:ContentScanningExpression")
 public class ContentScanningExpression extends com.pulumi.resources.CustomResource {
+    @Export(name="bodies", refs={List.class,ContentScanningExpressionBody.class}, tree="[0,1]")
+    private Output<List<ContentScanningExpressionBody>> bodies;
+
+    public Output<List<ContentScanningExpressionBody>> bodies() {
+        return this.bodies;
+    }
     /**
-     * Custom scan expression to tell the content scanner where to find the content objects.
+     * Ruleset expression to use in matching content objects
      * 
      */
     @Export(name="payload", refs={String.class}, tree="[0]")
     private Output<String> payload;
 
     /**
-     * @return Custom scan expression to tell the content scanner where to find the content objects.
+     * @return Ruleset expression to use in matching content objects
      * 
      */
     public Output<String> payload() {
         return this.payload;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

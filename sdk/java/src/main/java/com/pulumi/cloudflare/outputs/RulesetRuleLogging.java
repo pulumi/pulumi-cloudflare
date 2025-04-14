@@ -4,26 +4,25 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleLogging {
     /**
-     * @return Override the default logging behavior when a rule is matched.
+     * @return Whether to generate a log when the rule matches.
      * 
      */
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
 
     private RulesetRuleLogging() {}
     /**
-     * @return Override the default logging behavior when a rule is matched.
+     * @return Whether to generate a log when the rule matches.
      * 
      */
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
     }
 
     public static Builder builder() {
@@ -35,7 +34,7 @@ public final class RulesetRuleLogging {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
         public Builder() {}
         public Builder(RulesetRuleLogging defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,8 +42,10 @@ public final class RulesetRuleLogging {
         }
 
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
-
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleLogging", "enabled");
+            }
             this.enabled = enabled;
             return this;
         }

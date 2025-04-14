@@ -3,10 +3,10 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs;
+import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,40 +17,40 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
     public static final RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs();
 
     /**
-     * List of query string parameters to exclude from the custom key.
+     * A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
      * 
      */
-    @Import(name="excludes")
-    private @Nullable Output<List<String>> excludes;
+    @Import(name="exclude")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs> exclude;
 
     /**
-     * @return List of query string parameters to exclude from the custom key.
+     * @return A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
      * 
      */
-    public Optional<Output<List<String>>> excludes() {
-        return Optional.ofNullable(this.excludes);
+    public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs>> exclude() {
+        return Optional.ofNullable(this.exclude);
     }
 
     /**
-     * List of query string parameters to include in the custom key.
+     * A list of query string parameters used to build the cache key.
      * 
      */
-    @Import(name="includes")
-    private @Nullable Output<List<String>> includes;
+    @Import(name="include")
+    private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs> include;
 
     /**
-     * @return List of query string parameters to include in the custom key.
+     * @return A list of query string parameters used to build the cache key.
      * 
      */
-    public Optional<Output<List<String>>> includes() {
-        return Optional.ofNullable(this.includes);
+    public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs>> include() {
+        return Optional.ofNullable(this.include);
     }
 
     private RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs() {}
 
     private RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs $) {
-        this.excludes = $.excludes;
-        this.includes = $.includes;
+        this.exclude = $.exclude;
+        this.include = $.include;
     }
 
     public static Builder builder() {
@@ -72,65 +72,45 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         /**
-         * @param excludes List of query string parameters to exclude from the custom key.
+         * @param exclude A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
          * 
          * @return builder
          * 
          */
-        public Builder excludes(@Nullable Output<List<String>> excludes) {
-            $.excludes = excludes;
+        public Builder exclude(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs> exclude) {
+            $.exclude = exclude;
             return this;
         }
 
         /**
-         * @param excludes List of query string parameters to exclude from the custom key.
+         * @param exclude A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
          * 
          * @return builder
          * 
          */
-        public Builder excludes(List<String> excludes) {
-            return excludes(Output.of(excludes));
+        public Builder exclude(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs exclude) {
+            return exclude(Output.of(exclude));
         }
 
         /**
-         * @param excludes List of query string parameters to exclude from the custom key.
+         * @param include A list of query string parameters used to build the cache key.
          * 
          * @return builder
          * 
          */
-        public Builder excludes(String... excludes) {
-            return excludes(List.of(excludes));
-        }
-
-        /**
-         * @param includes List of query string parameters to include in the custom key.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder includes(@Nullable Output<List<String>> includes) {
-            $.includes = includes;
+        public Builder include(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs> include) {
+            $.include = include;
             return this;
         }
 
         /**
-         * @param includes List of query string parameters to include in the custom key.
+         * @param include A list of query string parameters used to build the cache key.
          * 
          * @return builder
          * 
          */
-        public Builder includes(List<String> includes) {
-            return includes(Output.of(includes));
-        }
-
-        /**
-         * @param includes List of query string parameters to include in the custom key.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder includes(String... includes) {
-            return includes(List.of(includes));
+        public Builder include(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs include) {
+            return include(Output.of(include));
         }
 
         public RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs build() {

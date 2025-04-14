@@ -7,36 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * A Zero Trust organization defines the user login experience.
- *
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.AccessOrganization("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example.cloudflareaccess.com",
- *     authDomain: "example.cloudflareaccess.com",
- *     isUiReadOnly: false,
- *     userSeatExpirationInactiveTime: "720h",
- *     autoRedirectToIdentity: false,
- *     loginDesigns: [{
- *         backgroundColor: "#ffffff",
- *         textColor: "#000000",
- *         logoPath: "https://example.com/logo.png",
- *         headerText: "My header text",
- *         footerText: "My footer text",
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
- * ```
+ * @deprecated cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
  */
 export class AccessOrganization extends pulumi.CustomResource {
     /**
@@ -49,6 +22,7 @@ export class AccessOrganization extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessOrganizationState, opts?: pulumi.CustomResourceOptions): AccessOrganization {
+        pulumi.log.warn("AccessOrganization is deprecated: cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization")
         return new AccessOrganization(name, <any>state, { ...opts, id: id });
     }
 
@@ -67,9 +41,9 @@ export class AccessOrganization extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      */
@@ -77,44 +51,40 @@ export class AccessOrganization extends pulumi.CustomResource {
     /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
-    public readonly authDomain!: pulumi.Output<string>;
+    public readonly authDomain!: pulumi.Output<string | undefined>;
     /**
-     * When set to true, users skip the identity provider selection step during login.
+     * When set to `true`, users skip the identity provider selection step during login.
      */
-    public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
-    /**
-     * Custom pages for your Zero Trust organization.
-     */
-    public readonly customPages!: pulumi.Output<outputs.AccessOrganizationCustomPage[] | undefined>;
-    /**
-     * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-     */
+    public readonly autoRedirectToIdentity!: pulumi.Output<boolean>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly customPages!: pulumi.Output<outputs.AccessOrganizationCustomPages>;
     public readonly isUiReadOnly!: pulumi.Output<boolean | undefined>;
-    public readonly loginDesigns!: pulumi.Output<outputs.AccessOrganizationLoginDesign[] | undefined>;
+    public readonly loginDesign!: pulumi.Output<outputs.AccessOrganizationLoginDesign>;
     /**
      * The name of your Zero Trust organization.
      */
-    public readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
     public readonly uiReadOnlyToggleReason!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
     public readonly userSeatExpirationInactiveTime!: pulumi.Output<string | undefined>;
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */
     public readonly warpAuthSessionDuration!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessOrganization resource with the given unique name, arguments, and options.
@@ -123,8 +93,11 @@ export class AccessOrganization extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AccessOrganizationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization */
+    constructor(name: string, args?: AccessOrganizationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization */
     constructor(name: string, argsOrState?: AccessOrganizationArgs | AccessOrganizationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessOrganization is deprecated: cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -133,38 +106,38 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["allowAuthenticateViaWarp"] = state ? state.allowAuthenticateViaWarp : undefined;
             resourceInputs["authDomain"] = state ? state.authDomain : undefined;
             resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["customPages"] = state ? state.customPages : undefined;
             resourceInputs["isUiReadOnly"] = state ? state.isUiReadOnly : undefined;
-            resourceInputs["loginDesigns"] = state ? state.loginDesigns : undefined;
+            resourceInputs["loginDesign"] = state ? state.loginDesign : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["uiReadOnlyToggleReason"] = state ? state.uiReadOnlyToggleReason : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = state ? state.userSeatExpirationInactiveTime : undefined;
             resourceInputs["warpAuthSessionDuration"] = state ? state.warpAuthSessionDuration : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessOrganizationArgs | undefined;
-            if ((!args || args.authDomain === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'authDomain'");
-            }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowAuthenticateViaWarp"] = args ? args.allowAuthenticateViaWarp : undefined;
             resourceInputs["authDomain"] = args ? args.authDomain : undefined;
             resourceInputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
             resourceInputs["customPages"] = args ? args.customPages : undefined;
             resourceInputs["isUiReadOnly"] = args ? args.isUiReadOnly : undefined;
-            resourceInputs["loginDesigns"] = args ? args.loginDesigns : undefined;
+            resourceInputs["loginDesign"] = args ? args.loginDesign : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["uiReadOnlyToggleReason"] = args ? args.uiReadOnlyToggleReason : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = args ? args.userSeatExpirationInactiveTime : undefined;
             resourceInputs["warpAuthSessionDuration"] = args ? args.warpAuthSessionDuration : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessOrganization:AccessOrganization" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessOrganization.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -174,7 +147,7 @@ export class AccessOrganization extends pulumi.CustomResource {
  */
 export interface AccessOrganizationState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -186,40 +159,36 @@ export interface AccessOrganizationState {
      */
     authDomain?: pulumi.Input<string>;
     /**
-     * When set to true, users skip the identity provider selection step during login.
+     * When set to `true`, users skip the identity provider selection step during login.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
-    /**
-     * Custom pages for your Zero Trust organization.
-     */
-    customPages?: pulumi.Input<pulumi.Input<inputs.AccessOrganizationCustomPage>[]>;
-    /**
-     * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-     */
+    createdAt?: pulumi.Input<string>;
+    customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
     isUiReadOnly?: pulumi.Input<boolean>;
-    loginDesigns?: pulumi.Input<pulumi.Input<inputs.AccessOrganizationLoginDesign>[]>;
+    loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
     /**
      * The name of your Zero Trust organization.
      */
     name?: pulumi.Input<string>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
     uiReadOnlyToggleReason?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     /**
-     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
     userSeatExpirationInactiveTime?: pulumi.Input<string>;
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */
     warpAuthSessionDuration?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -229,7 +198,7 @@ export interface AccessOrganizationState {
  */
 export interface AccessOrganizationArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -239,26 +208,20 @@ export interface AccessOrganizationArgs {
     /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
-    authDomain: pulumi.Input<string>;
+    authDomain?: pulumi.Input<string>;
     /**
-     * When set to true, users skip the identity provider selection step during login.
+     * When set to `true`, users skip the identity provider selection step during login.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
-    /**
-     * Custom pages for your Zero Trust organization.
-     */
-    customPages?: pulumi.Input<pulumi.Input<inputs.AccessOrganizationCustomPage>[]>;
-    /**
-     * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-     */
+    customPages?: pulumi.Input<inputs.AccessOrganizationCustomPages>;
     isUiReadOnly?: pulumi.Input<boolean>;
-    loginDesigns?: pulumi.Input<pulumi.Input<inputs.AccessOrganizationLoginDesign>[]>;
+    loginDesign?: pulumi.Input<inputs.AccessOrganizationLoginDesign>;
     /**
      * The name of your Zero Trust organization.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      */
     sessionDuration?: pulumi.Input<string>;
     /**
@@ -266,15 +229,15 @@ export interface AccessOrganizationArgs {
      */
     uiReadOnlyToggleReason?: pulumi.Input<string>;
     /**
-     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      */
     userSeatExpirationInactiveTime?: pulumi.Input<string>;
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      */
     warpAuthSessionDuration?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

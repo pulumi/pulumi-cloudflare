@@ -14,50 +14,99 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsBisoAdminControls
     {
         /// <summary>
-        /// Disable clipboard redirection.
+        /// Configure whether copy is enabled or not. When set with "remote*only", copying isolated content from the remote browser to the user's local clipboard is disabled. When absent, copy is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
-        public readonly bool? DisableClipboardRedirection;
+        public readonly string? Copy;
         /// <summary>
-        /// Disable copy-paste.
+        /// Set to false to enable copy-pasting. Only applies when `version == "v1"`.
         /// </summary>
-        public readonly bool? DisableCopyPaste;
+        public readonly bool? Dcp;
         /// <summary>
-        /// Disable download.
+        /// Set to false to enable downloading. Only applies when `version == "v1"`.
         /// </summary>
-        public readonly bool? DisableDownload;
+        public readonly bool? Dd;
         /// <summary>
-        /// Disable keyboard usage.
+        /// Set to false to enable keyboard usage. Only applies when `version == "v1"`.
         /// </summary>
-        public readonly bool? DisableKeyboard;
+        public readonly bool? Dk;
         /// <summary>
-        /// Disable printing.
+        /// Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
         /// </summary>
-        public readonly bool? DisablePrinting;
+        public readonly string? Download;
         /// <summary>
-        /// Disable upload.
+        /// Set to false to enable printing. Only applies when `version == "v1"`.
         /// </summary>
-        public readonly bool? DisableUpload;
+        public readonly bool? Dp;
+        /// <summary>
+        /// Set to false to enable uploading. Only applies when `version == "v1"`.
+        /// </summary>
+        public readonly bool? Du;
+        /// <summary>
+        /// Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        public readonly string? Keyboard;
+        /// <summary>
+        /// Configure whether pasting is enabled or not. When set with "remote*only", pasting content from the user's local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled", "remote*only".
+        /// </summary>
+        public readonly string? Paste;
+        /// <summary>
+        /// Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        public readonly string? Printing;
+        /// <summary>
+        /// Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled".
+        /// </summary>
+        public readonly string? Upload;
+        /// <summary>
+        /// Indicates which version of the browser isolation controls should apply.
+        /// Available values: "v1", "v2".
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private TeamsRuleRuleSettingsBisoAdminControls(
-            bool? disableClipboardRedirection,
+            string? copy,
 
-            bool? disableCopyPaste,
+            bool? dcp,
 
-            bool? disableDownload,
+            bool? dd,
 
-            bool? disableKeyboard,
+            bool? dk,
 
-            bool? disablePrinting,
+            string? download,
 
-            bool? disableUpload)
+            bool? dp,
+
+            bool? du,
+
+            string? keyboard,
+
+            string? paste,
+
+            string? printing,
+
+            string? upload,
+
+            string? version)
         {
-            DisableClipboardRedirection = disableClipboardRedirection;
-            DisableCopyPaste = disableCopyPaste;
-            DisableDownload = disableDownload;
-            DisableKeyboard = disableKeyboard;
-            DisablePrinting = disablePrinting;
-            DisableUpload = disableUpload;
+            Copy = copy;
+            Dcp = dcp;
+            Dd = dd;
+            Dk = dk;
+            Download = download;
+            Dp = dp;
+            Du = du;
+            Keyboard = keyboard;
+            Paste = paste;
+            Printing = printing;
+            Upload = upload;
+            Version = version;
         }
     }
 }

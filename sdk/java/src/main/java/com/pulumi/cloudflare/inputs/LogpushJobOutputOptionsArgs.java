@@ -49,29 +49,29 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+     * If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
-    @Import(name="cve20214428")
-    private @Nullable Output<Boolean> cve20214428;
+    @Import(name="cve202144228")
+    private @Nullable Output<Boolean> cve202144228;
 
     /**
-     * @return Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+     * @return If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      * 
      */
-    public Optional<Output<Boolean>> cve20214428() {
-        return Optional.ofNullable(this.cve20214428);
+    public Optional<Output<Boolean>> cve202144228() {
+        return Optional.ofNullable(this.cve202144228);
     }
 
     /**
-     * String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+     * String to join fields. This field be ignored when `record_template` is set.
      * 
      */
     @Import(name="fieldDelimiter")
     private @Nullable Output<String> fieldDelimiter;
 
     /**
-     * @return String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+     * @return String to join fields. This field be ignored when `record_template` is set.
      * 
      */
     public Optional<Output<String>> fieldDelimiter() {
@@ -79,14 +79,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * List of field names to be included in the Logpush output.
+     * List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
      * 
      */
     @Import(name="fieldNames")
     private @Nullable Output<List<String>> fieldNames;
 
     /**
-     * @return List of field names to be included in the Logpush output.
+     * @return List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
      * 
      */
     public Optional<Output<List<String>>> fieldNames() {
@@ -94,14 +94,16 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+     * Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
      */
     @Import(name="outputType")
     private @Nullable Output<String> outputType;
 
     /**
-     * @return Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+     * @return Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+     * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
      * 
      */
     public Optional<Output<String>> outputType() {
@@ -124,14 +126,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String to be prepended before each record. Defaults to `{`.
+     * String to be prepended before each record.
      * 
      */
     @Import(name="recordPrefix")
     private @Nullable Output<String> recordPrefix;
 
     /**
-     * @return String to be prepended before each record. Defaults to `{`.
+     * @return String to be prepended before each record.
      * 
      */
     public Optional<Output<String>> recordPrefix() {
@@ -139,16 +141,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String to be appended after each record. Defaults to `}
-     * `.
+     * String to be appended after each record.
      * 
      */
     @Import(name="recordSuffix")
     private @Nullable Output<String> recordSuffix;
 
     /**
-     * @return String to be appended after each record. Defaults to `}
-     * `.
+     * @return String to be appended after each record.
      * 
      */
     public Optional<Output<String>> recordSuffix() {
@@ -156,14 +156,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String to use as template for each record instead of the default comma-separated list.
+     * String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      * 
      */
     @Import(name="recordTemplate")
     private @Nullable Output<String> recordTemplate;
 
     /**
-     * @return String to use as template for each record instead of the default comma-separated list.
+     * @return String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      * 
      */
     public Optional<Output<String>> recordTemplate() {
@@ -171,14 +171,14 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Specifies the sampling rate. Defaults to `1`.
+     * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
      * 
      */
     @Import(name="sampleRate")
     private @Nullable Output<Double> sampleRate;
 
     /**
-     * @return Specifies the sampling rate. Defaults to `1`.
+     * @return Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
      * 
      */
     public Optional<Output<Double>> sampleRate() {
@@ -186,14 +186,16 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+     * String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
      * 
      */
     @Import(name="timestampFormat")
     private @Nullable Output<String> timestampFormat;
 
     /**
-     * @return Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+     * @return String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+     * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
      * 
      */
     public Optional<Output<String>> timestampFormat() {
@@ -205,7 +207,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     private LogpushJobOutputOptionsArgs(LogpushJobOutputOptionsArgs $) {
         this.batchPrefix = $.batchPrefix;
         this.batchSuffix = $.batchSuffix;
-        this.cve20214428 = $.cve20214428;
+        this.cve202144228 = $.cve202144228;
         this.fieldDelimiter = $.fieldDelimiter;
         this.fieldNames = $.fieldNames;
         this.outputType = $.outputType;
@@ -278,28 +280,28 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cve20214428 Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+         * @param cve202144228 If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
          * 
          * @return builder
          * 
          */
-        public Builder cve20214428(@Nullable Output<Boolean> cve20214428) {
-            $.cve20214428 = cve20214428;
+        public Builder cve202144228(@Nullable Output<Boolean> cve202144228) {
+            $.cve202144228 = cve202144228;
             return this;
         }
 
         /**
-         * @param cve20214428 Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+         * @param cve202144228 If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
          * 
          * @return builder
          * 
          */
-        public Builder cve20214428(Boolean cve20214428) {
-            return cve20214428(Output.of(cve20214428));
+        public Builder cve202144228(Boolean cve202144228) {
+            return cve202144228(Output.of(cve202144228));
         }
 
         /**
-         * @param fieldDelimiter String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+         * @param fieldDelimiter String to join fields. This field be ignored when `record_template` is set.
          * 
          * @return builder
          * 
@@ -310,7 +312,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fieldDelimiter String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+         * @param fieldDelimiter String to join fields. This field be ignored when `record_template` is set.
          * 
          * @return builder
          * 
@@ -320,7 +322,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fieldNames List of field names to be included in the Logpush output.
+         * @param fieldNames List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
          * 
          * @return builder
          * 
@@ -331,7 +333,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fieldNames List of field names to be included in the Logpush output.
+         * @param fieldNames List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
          * 
          * @return builder
          * 
@@ -341,7 +343,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fieldNames List of field names to be included in the Logpush output.
+         * @param fieldNames List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
          * 
          * @return builder
          * 
@@ -351,7 +353,8 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param outputType Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+         * @param outputType Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+         * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
          * 
          * @return builder
          * 
@@ -362,7 +365,8 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param outputType Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+         * @param outputType Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types.
+         * Available values: &#34;ndjson&#34;, &#34;csv&#34;.
          * 
          * @return builder
          * 
@@ -393,7 +397,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordPrefix String to be prepended before each record. Defaults to `{`.
+         * @param recordPrefix String to be prepended before each record.
          * 
          * @return builder
          * 
@@ -404,7 +408,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordPrefix String to be prepended before each record. Defaults to `{`.
+         * @param recordPrefix String to be prepended before each record.
          * 
          * @return builder
          * 
@@ -414,8 +418,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordSuffix String to be appended after each record. Defaults to `}
-         * `.
+         * @param recordSuffix String to be appended after each record.
          * 
          * @return builder
          * 
@@ -426,8 +429,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordSuffix String to be appended after each record. Defaults to `}
-         * `.
+         * @param recordSuffix String to be appended after each record.
          * 
          * @return builder
          * 
@@ -437,7 +439,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordTemplate String to use as template for each record instead of the default comma-separated list.
+         * @param recordTemplate String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
          * 
          * @return builder
          * 
@@ -448,7 +450,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordTemplate String to use as template for each record instead of the default comma-separated list.
+         * @param recordTemplate String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
          * 
          * @return builder
          * 
@@ -458,7 +460,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sampleRate Specifies the sampling rate. Defaults to `1`.
+         * @param sampleRate Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
          * 
          * @return builder
          * 
@@ -469,7 +471,7 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sampleRate Specifies the sampling rate. Defaults to `1`.
+         * @param sampleRate Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
          * 
          * @return builder
          * 
@@ -479,7 +481,8 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param timestampFormat Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+         * @param timestampFormat String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+         * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
          * 
          * @return builder
          * 
@@ -490,7 +493,8 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param timestampFormat Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+         * @param timestampFormat String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
+         * Available values: &#34;unixnano&#34;, &#34;unix&#34;, &#34;rfc3339&#34;.
          * 
          * @return builder
          * 

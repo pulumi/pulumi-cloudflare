@@ -19,14 +19,14 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     public static final TurnstileWidgetArgs Empty = new TurnstileWidgetArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -34,14 +34,16 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      * 
      */
     @Import(name="botFightMode")
     private @Nullable Output<Boolean> botFightMode;
 
     /**
-     * @return If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * @return If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      * 
      */
     public Optional<Output<Boolean>> botFightMode() {
@@ -49,29 +51,57 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Domains where the widget is deployed
+     * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
+     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
+    @Import(name="clearanceLevel")
+    private @Nullable Output<String> clearanceLevel;
+
+    /**
+     * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
+     * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
+     * 
+     */
+    public Optional<Output<String>> clearanceLevel() {
+        return Optional.ofNullable(this.clearanceLevel);
+    }
+
     @Import(name="domains", required=true)
     private Output<List<String>> domains;
 
-    /**
-     * @return Domains where the widget is deployed
-     * 
-     */
     public Output<List<String>> domains() {
         return this.domains;
     }
 
     /**
-     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * Return the Ephemeral ID in /siteverify (ENT only).
+     * 
+     */
+    @Import(name="ephemeralId")
+    private @Nullable Output<Boolean> ephemeralId;
+
+    /**
+     * @return Return the Ephemeral ID in /siteverify (ENT only).
+     * 
+     */
+    public Optional<Output<Boolean>> ephemeralId() {
+        return Optional.ofNullable(this.ephemeralId);
+    }
+
+    /**
+     * Widget Mode
+     * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
      */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
     /**
-     * @return Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * @return Widget Mode
+     * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
      * 
      */
     public Output<String> mode() {
@@ -79,14 +109,18 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Human readable widget name.
+     * Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Human readable widget name.
+     * @return Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      * 
      */
     public Output<String> name() {
@@ -94,14 +128,14 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Do not show any Cloudflare branding on the widget (Enterprise only).
+     * Do not show any Cloudflare branding on the widget (ENT only).
      * 
      */
     @Import(name="offlabel")
     private @Nullable Output<Boolean> offlabel;
 
     /**
-     * @return Do not show any Cloudflare branding on the widget (Enterprise only).
+     * @return Do not show any Cloudflare branding on the widget (ENT only).
      * 
      */
     public Optional<Output<Boolean>> offlabel() {
@@ -110,6 +144,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Region where this widget can be used.
+     * Available values: &#34;world&#34;.
      * 
      */
     @Import(name="region")
@@ -117,6 +152,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Region where this widget can be used.
+     * Available values: &#34;world&#34;.
      * 
      */
     public Optional<Output<String>> region() {
@@ -128,7 +164,9 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
     private TurnstileWidgetArgs(TurnstileWidgetArgs $) {
         this.accountId = $.accountId;
         this.botFightMode = $.botFightMode;
+        this.clearanceLevel = $.clearanceLevel;
         this.domains = $.domains;
+        this.ephemeralId = $.ephemeralId;
         this.mode = $.mode;
         this.name = $.name;
         this.offlabel = $.offlabel;
@@ -154,7 +192,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -165,7 +203,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -175,7 +213,8 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param botFightMode If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+         * @param botFightMode If bot*fight*mode is set to `true`, Cloudflare issues computationally
+         * expensive challenges in response to malicious bots (ENT only).
          * 
          * @return builder
          * 
@@ -186,7 +225,8 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param botFightMode If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+         * @param botFightMode If bot*fight*mode is set to `true`, Cloudflare issues computationally
+         * expensive challenges in response to malicious bots (ENT only).
          * 
          * @return builder
          * 
@@ -196,38 +236,67 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param domains Domains where the widget is deployed
+         * @param clearanceLevel If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+         * this setting can determine the clearance level to be set
+         * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
          * 
          * @return builder
          * 
          */
+        public Builder clearanceLevel(@Nullable Output<String> clearanceLevel) {
+            $.clearanceLevel = clearanceLevel;
+            return this;
+        }
+
+        /**
+         * @param clearanceLevel If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+         * this setting can determine the clearance level to be set
+         * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clearanceLevel(String clearanceLevel) {
+            return clearanceLevel(Output.of(clearanceLevel));
+        }
+
         public Builder domains(Output<List<String>> domains) {
             $.domains = domains;
             return this;
         }
 
-        /**
-         * @param domains Domains where the widget is deployed
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(List<String> domains) {
             return domains(Output.of(domains));
         }
 
-        /**
-         * @param domains Domains where the widget is deployed
-         * 
-         * @return builder
-         * 
-         */
         public Builder domains(String... domains) {
             return domains(List.of(domains));
         }
 
         /**
-         * @param mode Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+         * @param ephemeralId Return the Ephemeral ID in /siteverify (ENT only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralId(@Nullable Output<Boolean> ephemeralId) {
+            $.ephemeralId = ephemeralId;
+            return this;
+        }
+
+        /**
+         * @param ephemeralId Return the Ephemeral ID in /siteverify (ENT only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralId(Boolean ephemeralId) {
+            return ephemeralId(Output.of(ephemeralId));
+        }
+
+        /**
+         * @param mode Widget Mode
+         * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
          * 
          * @return builder
          * 
@@ -238,7 +307,8 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mode Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+         * @param mode Widget Mode
+         * Available values: &#34;non-interactive&#34;, &#34;invisible&#34;, &#34;managed&#34;.
          * 
          * @return builder
          * 
@@ -248,7 +318,9 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Human readable widget name.
+         * @param name Human readable widget name. Not unique. Cloudflare suggests that you
+         * set this to a meaningful string to make it easier to identify your
+         * widget, and where it is used.
          * 
          * @return builder
          * 
@@ -259,7 +331,9 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Human readable widget name.
+         * @param name Human readable widget name. Not unique. Cloudflare suggests that you
+         * set this to a meaningful string to make it easier to identify your
+         * widget, and where it is used.
          * 
          * @return builder
          * 
@@ -269,7 +343,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param offlabel Do not show any Cloudflare branding on the widget (Enterprise only).
+         * @param offlabel Do not show any Cloudflare branding on the widget (ENT only).
          * 
          * @return builder
          * 
@@ -280,7 +354,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param offlabel Do not show any Cloudflare branding on the widget (Enterprise only).
+         * @param offlabel Do not show any Cloudflare branding on the widget (ENT only).
          * 
          * @return builder
          * 
@@ -291,6 +365,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param region Region where this widget can be used.
+         * Available values: &#34;world&#34;.
          * 
          * @return builder
          * 
@@ -302,6 +377,7 @@ public final class TurnstileWidgetArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param region Region where this widget can be used.
+         * Available values: &#34;world&#34;.
          * 
          * @return builder
          * 

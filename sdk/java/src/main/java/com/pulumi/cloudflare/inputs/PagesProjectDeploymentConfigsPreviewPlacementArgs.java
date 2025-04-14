@@ -16,14 +16,14 @@ public final class PagesProjectDeploymentConfigsPreviewPlacementArgs extends com
     public static final PagesProjectDeploymentConfigsPreviewPlacementArgs Empty = new PagesProjectDeploymentConfigsPreviewPlacementArgs();
 
     /**
-     * Placement Mode for the Pages Function.
+     * Placement mode.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Placement Mode for the Pages Function.
+     * @return Placement mode.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -55,7 +55,7 @@ public final class PagesProjectDeploymentConfigsPreviewPlacementArgs extends com
         }
 
         /**
-         * @param mode Placement Mode for the Pages Function.
+         * @param mode Placement mode.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class PagesProjectDeploymentConfigsPreviewPlacementArgs extends com
         }
 
         /**
-         * @param mode Placement Mode for the Pages Function.
+         * @param mode Placement mode.
          * 
          * @return builder
          * 

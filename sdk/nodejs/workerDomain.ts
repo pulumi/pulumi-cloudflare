@@ -5,27 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Creates a Worker Custom Domain.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WorkerDomain("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     hostname: "subdomain.example.com",
- *     service: "my-service",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleWorkersCustomDomain = new cloudflare.WorkersCustomDomain("example_workers_custom_domain", {
+ *     accountId: "9a7806061c88ada191ed06f989cc3dac",
+ *     environment: "production",
+ *     hostname: "foo.example.com",
+ *     service: "foo",
+ *     zoneId: "593c9c94de529bbbfaac7c53ced0447d",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workerDomain:WorkerDomain example <account_id>/<worker_domain_id>
+ * $ pulumi import cloudflare:index/workerDomain:WorkerDomain example '<account_id>/<domain_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain
  */
 export class WorkerDomain extends pulumi.CustomResource {
     /**
@@ -38,6 +39,7 @@ export class WorkerDomain extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkerDomainState, opts?: pulumi.CustomResourceOptions): WorkerDomain {
+        pulumi.log.warn("WorkerDomain is deprecated: cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain")
         return new WorkerDomain(name, <any>state, { ...opts, id: id });
     }
 
@@ -56,25 +58,29 @@ export class WorkerDomain extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifer of the account.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The name of the Worker environment. Defaults to `production`.
+     * Worker environment associated with the zone and hostname.
      */
-    public readonly environment!: pulumi.Output<string | undefined>;
+    public readonly environment!: pulumi.Output<string>;
     /**
      * Hostname of the Worker Domain.
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
-     * Name of worker script to attach the domain to.
+     * Worker service associated with the zone and hostname.
      */
     public readonly service!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier of the zone.
      */
     public readonly zoneId!: pulumi.Output<string>;
+    /**
+     * Name of the zone.
+     */
+    public /*out*/ readonly zoneName!: pulumi.Output<string>;
 
     /**
      * Create a WorkerDomain resource with the given unique name, arguments, and options.
@@ -83,8 +89,11 @@ export class WorkerDomain extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain */
     constructor(name: string, args: WorkerDomainArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain */
     constructor(name: string, argsOrState?: WorkerDomainArgs | WorkerDomainState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkerDomain is deprecated: cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -94,10 +103,14 @@ export class WorkerDomain extends pulumi.CustomResource {
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["service"] = state ? state.service : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
             const args = argsOrState as WorkerDomainArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.environment === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environment'");
             }
             if ((!args || args.hostname === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
@@ -113,8 +126,11 @@ export class WorkerDomain extends pulumi.CustomResource {
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["zoneName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerDomain:WorkerDomain" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkerDomain.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -124,11 +140,11 @@ export class WorkerDomain extends pulumi.CustomResource {
  */
 export interface WorkerDomainState {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifer of the account.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The name of the Worker environment. Defaults to `production`.
+     * Worker environment associated with the zone and hostname.
      */
     environment?: pulumi.Input<string>;
     /**
@@ -136,13 +152,17 @@ export interface WorkerDomainState {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * Name of worker script to attach the domain to.
+     * Worker service associated with the zone and hostname.
      */
     service?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier of the zone.
      */
     zoneId?: pulumi.Input<string>;
+    /**
+     * Name of the zone.
+     */
+    zoneName?: pulumi.Input<string>;
 }
 
 /**
@@ -150,23 +170,23 @@ export interface WorkerDomainState {
  */
 export interface WorkerDomainArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifer of the account.
      */
     accountId: pulumi.Input<string>;
     /**
-     * The name of the Worker environment. Defaults to `production`.
+     * Worker environment associated with the zone and hostname.
      */
-    environment?: pulumi.Input<string>;
+    environment: pulumi.Input<string>;
     /**
      * Hostname of the Worker Domain.
      */
     hostname: pulumi.Input<string>;
     /**
-     * Name of worker script to attach the domain to.
+     * Worker service associated with the zone and hostname.
      */
     service: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier of the zone.
      */
     zoneId: pulumi.Input<string>;
 }

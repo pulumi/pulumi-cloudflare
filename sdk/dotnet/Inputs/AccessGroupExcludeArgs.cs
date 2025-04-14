@@ -13,240 +13,76 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessGroupExcludeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Matches any valid Access service token.
+        /// An empty object which matches on all service tokens.
         /// </summary>
         [Input("anyValidServiceToken")]
-        public Input<bool>? AnyValidServiceToken { get; set; }
+        public Input<Inputs.AccessGroupExcludeAnyValidServiceTokenArgs>? AnyValidServiceToken { get; set; }
 
-        [Input("authContexts")]
-        private InputList<Inputs.AccessGroupExcludeAuthContextArgs>? _authContexts;
-        public InputList<Inputs.AccessGroupExcludeAuthContextArgs> AuthContexts
-        {
-            get => _authContexts ?? (_authContexts = new InputList<Inputs.AccessGroupExcludeAuthContextArgs>());
-            set => _authContexts = value;
-        }
+        [Input("authContext")]
+        public Input<Inputs.AccessGroupExcludeAuthContextArgs>? AuthContext { get; set; }
 
-        /// <summary>
-        /// The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-        /// </summary>
         [Input("authMethod")]
-        public Input<string>? AuthMethod { get; set; }
+        public Input<Inputs.AccessGroupExcludeAuthMethodArgs>? AuthMethod { get; set; }
 
-        [Input("azures")]
-        private InputList<Inputs.AccessGroupExcludeAzureArgs>? _azures;
+        [Input("azureAd")]
+        public Input<Inputs.AccessGroupExcludeAzureAdArgs>? AzureAd { get; set; }
 
-        /// <summary>
-        /// Matches an Azure group. Requires an Azure identity provider.
-        /// </summary>
-        public InputList<Inputs.AccessGroupExcludeAzureArgs> Azures
-        {
-            get => _azures ?? (_azures = new InputList<Inputs.AccessGroupExcludeAzureArgs>());
-            set => _azures = value;
-        }
-
-        /// <summary>
-        /// Matches any valid client certificate.
-        /// </summary>
         [Input("certificate")]
-        public Input<bool>? Certificate { get; set; }
+        public Input<Inputs.AccessGroupExcludeCertificateArgs>? Certificate { get; set; }
 
-        /// <summary>
-        /// Matches a valid client certificate common name.
-        /// </summary>
         [Input("commonName")]
-        public Input<string>? CommonName { get; set; }
+        public Input<Inputs.AccessGroupExcludeCommonNameArgs>? CommonName { get; set; }
 
-        [Input("commonNames")]
-        private InputList<string>? _commonNames;
+        [Input("devicePosture")]
+        public Input<Inputs.AccessGroupExcludeDevicePostureArgs>? DevicePosture { get; set; }
 
-        /// <summary>
-        /// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-        /// </summary>
-        public InputList<string> CommonNames
-        {
-            get => _commonNames ?? (_commonNames = new InputList<string>());
-            set => _commonNames = value;
-        }
+        [Input("email")]
+        public Input<Inputs.AccessGroupExcludeEmailArgs>? Email { get; set; }
 
-        [Input("devicePostures")]
-        private InputList<string>? _devicePostures;
+        [Input("emailDomain")]
+        public Input<Inputs.AccessGroupExcludeEmailDomainArgs>? EmailDomain { get; set; }
+
+        [Input("emailList")]
+        public Input<Inputs.AccessGroupExcludeEmailListArgs>? EmailList { get; set; }
 
         /// <summary>
-        /// The ID of a device posture integration.
-        /// </summary>
-        public InputList<string> DevicePostures
-        {
-            get => _devicePostures ?? (_devicePostures = new InputList<string>());
-            set => _devicePostures = value;
-        }
-
-        [Input("emailDomains")]
-        private InputList<string>? _emailDomains;
-
-        /// <summary>
-        /// The email domain to match.
-        /// </summary>
-        public InputList<string> EmailDomains
-        {
-            get => _emailDomains ?? (_emailDomains = new InputList<string>());
-            set => _emailDomains = value;
-        }
-
-        [Input("emailLists")]
-        private InputList<string>? _emailLists;
-
-        /// <summary>
-        /// The ID of a previously created email list.
-        /// </summary>
-        public InputList<string> EmailLists
-        {
-            get => _emailLists ?? (_emailLists = new InputList<string>());
-            set => _emailLists = value;
-        }
-
-        [Input("emails")]
-        private InputList<string>? _emails;
-
-        /// <summary>
-        /// The email of the user.
-        /// </summary>
-        public InputList<string> Emails
-        {
-            get => _emails ?? (_emails = new InputList<string>());
-            set => _emails = value;
-        }
-
-        /// <summary>
-        /// Matches everyone.
+        /// An empty object which matches on all users.
         /// </summary>
         [Input("everyone")]
-        public Input<bool>? Everyone { get; set; }
+        public Input<Inputs.AccessGroupExcludeEveryoneArgs>? Everyone { get; set; }
 
-        /// <summary>
-        /// Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-        /// </summary>
         [Input("externalEvaluation")]
         public Input<Inputs.AccessGroupExcludeExternalEvaluationArgs>? ExternalEvaluation { get; set; }
 
-        [Input("geos")]
-        private InputList<string>? _geos;
+        [Input("geo")]
+        public Input<Inputs.AccessGroupExcludeGeoArgs>? Geo { get; set; }
 
-        /// <summary>
-        /// Matches a specific country.
-        /// </summary>
-        public InputList<string> Geos
-        {
-            get => _geos ?? (_geos = new InputList<string>());
-            set => _geos = value;
-        }
+        [Input("githubOrganization")]
+        public Input<Inputs.AccessGroupExcludeGithubOrganizationArgs>? GithubOrganization { get; set; }
 
-        [Input("githubs")]
-        private InputList<Inputs.AccessGroupExcludeGithubArgs>? _githubs;
+        [Input("group")]
+        public Input<Inputs.AccessGroupExcludeGroupArgs>? Group { get; set; }
 
-        /// <summary>
-        /// Matches a Github organization. Requires a Github identity provider.
-        /// </summary>
-        public InputList<Inputs.AccessGroupExcludeGithubArgs> Githubs
-        {
-            get => _githubs ?? (_githubs = new InputList<Inputs.AccessGroupExcludeGithubArgs>());
-            set => _githubs = value;
-        }
+        [Input("gsuite")]
+        public Input<Inputs.AccessGroupExcludeGsuiteArgs>? Gsuite { get; set; }
 
-        [Input("groups")]
-        private InputList<string>? _groups;
+        [Input("ip")]
+        public Input<Inputs.AccessGroupExcludeIpArgs>? Ip { get; set; }
 
-        /// <summary>
-        /// The ID of a previously created Access group.
-        /// </summary>
-        public InputList<string> Groups
-        {
-            get => _groups ?? (_groups = new InputList<string>());
-            set => _groups = value;
-        }
+        [Input("ipList")]
+        public Input<Inputs.AccessGroupExcludeIpListArgs>? IpList { get; set; }
 
-        [Input("gsuites")]
-        private InputList<Inputs.AccessGroupExcludeGsuiteArgs>? _gsuites;
+        [Input("loginMethod")]
+        public Input<Inputs.AccessGroupExcludeLoginMethodArgs>? LoginMethod { get; set; }
 
-        /// <summary>
-        /// Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-        /// </summary>
-        public InputList<Inputs.AccessGroupExcludeGsuiteArgs> Gsuites
-        {
-            get => _gsuites ?? (_gsuites = new InputList<Inputs.AccessGroupExcludeGsuiteArgs>());
-            set => _gsuites = value;
-        }
+        [Input("okta")]
+        public Input<Inputs.AccessGroupExcludeOktaArgs>? Okta { get; set; }
 
-        [Input("ipLists")]
-        private InputList<string>? _ipLists;
+        [Input("saml")]
+        public Input<Inputs.AccessGroupExcludeSamlArgs>? Saml { get; set; }
 
-        /// <summary>
-        /// The ID of a previously created IP list.
-        /// </summary>
-        public InputList<string> IpLists
-        {
-            get => _ipLists ?? (_ipLists = new InputList<string>());
-            set => _ipLists = value;
-        }
-
-        [Input("ips")]
-        private InputList<string>? _ips;
-
-        /// <summary>
-        /// An IPv4 or IPv6 CIDR block.
-        /// </summary>
-        public InputList<string> Ips
-        {
-            get => _ips ?? (_ips = new InputList<string>());
-            set => _ips = value;
-        }
-
-        [Input("loginMethods")]
-        private InputList<string>? _loginMethods;
-
-        /// <summary>
-        /// The ID of a configured identity provider.
-        /// </summary>
-        public InputList<string> LoginMethods
-        {
-            get => _loginMethods ?? (_loginMethods = new InputList<string>());
-            set => _loginMethods = value;
-        }
-
-        [Input("oktas")]
-        private InputList<Inputs.AccessGroupExcludeOktaArgs>? _oktas;
-
-        /// <summary>
-        /// Matches an Okta group. Requires an Okta identity provider.
-        /// </summary>
-        public InputList<Inputs.AccessGroupExcludeOktaArgs> Oktas
-        {
-            get => _oktas ?? (_oktas = new InputList<Inputs.AccessGroupExcludeOktaArgs>());
-            set => _oktas = value;
-        }
-
-        [Input("samls")]
-        private InputList<Inputs.AccessGroupExcludeSamlArgs>? _samls;
-
-        /// <summary>
-        /// Matches a SAML group. Requires a SAML identity provider.
-        /// </summary>
-        public InputList<Inputs.AccessGroupExcludeSamlArgs> Samls
-        {
-            get => _samls ?? (_samls = new InputList<Inputs.AccessGroupExcludeSamlArgs>());
-            set => _samls = value;
-        }
-
-        [Input("serviceTokens")]
-        private InputList<string>? _serviceTokens;
-
-        /// <summary>
-        /// The ID of an Access service token.
-        /// </summary>
-        public InputList<string> ServiceTokens
-        {
-            get => _serviceTokens ?? (_serviceTokens = new InputList<string>());
-            set => _serviceTokens = value;
-        }
+        [Input("serviceToken")]
+        public Input<Inputs.AccessGroupExcludeServiceTokenArgs>? ServiceToken { get; set; }
 
         public AccessGroupExcludeArgs()
         {

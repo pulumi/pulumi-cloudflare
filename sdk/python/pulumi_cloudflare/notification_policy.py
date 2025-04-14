@@ -24,45 +24,42 @@ class NotificationPolicyArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
                  alert_type: pulumi.Input[builtins.str],
-                 enabled: pulumi.Input[builtins.bool],
+                 mechanisms: pulumi.Input['NotificationPolicyMechanismsArgs'],
                  name: pulumi.Input[builtins.str],
+                 alert_interval: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 email_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]] = None,
-                 filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None,
-                 pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]] = None,
-                 webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None):
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None):
         """
         The set of arguments for constructing a NotificationPolicy resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] alert_type: The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
-        :param pulumi.Input[builtins.bool] enabled: The status of the notification policy.
-        :param pulumi.Input[builtins.str] name: The name of the notification policy.
-        :param pulumi.Input[builtins.str] description: Description of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]] email_integrations: The email ID to which the notification should be dispatched.
-        :param pulumi.Input['NotificationPolicyFiltersArgs'] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]] pagerduty_integrations: The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]] webhooks_integrations: The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
+        :param pulumi.Input[builtins.str] account_id: The account id
+        :param pulumi.Input[builtins.str] alert_type: Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+               Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
+        :param pulumi.Input['NotificationPolicyMechanismsArgs'] mechanisms: List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        :param pulumi.Input[builtins.str] name: Name of the policy.
+        :param pulumi.Input[builtins.str] alert_interval: Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        :param pulumi.Input[builtins.str] description: Optional description for the Notification policy.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not the Notification policy is enabled.
+        :param pulumi.Input['NotificationPolicyFiltersArgs'] filters: Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "alert_type", alert_type)
-        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "mechanisms", mechanisms)
         pulumi.set(__self__, "name", name)
+        if alert_interval is not None:
+            pulumi.set(__self__, "alert_interval", alert_interval)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if email_integrations is not None:
-            pulumi.set(__self__, "email_integrations", email_integrations)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
-        if pagerduty_integrations is not None:
-            pulumi.set(__self__, "pagerduty_integrations", pagerduty_integrations)
-        if webhooks_integrations is not None:
-            pulumi.set(__self__, "webhooks_integrations", webhooks_integrations)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        The account identifier to target for the resource.
+        The account id
         """
         return pulumi.get(self, "account_id")
 
@@ -74,7 +71,8 @@ class NotificationPolicyArgs:
     @pulumi.getter(name="alertType")
     def alert_type(self) -> pulumi.Input[builtins.str]:
         """
-        The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
+        Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+        Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
         """
         return pulumi.get(self, "alert_type")
 
@@ -84,21 +82,21 @@ class NotificationPolicyArgs:
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Input[builtins.bool]:
+    def mechanisms(self) -> pulumi.Input['NotificationPolicyMechanismsArgs']:
         """
-        The status of the notification policy.
+        List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "mechanisms")
 
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[builtins.bool]):
-        pulumi.set(self, "enabled", value)
+    @mechanisms.setter
+    def mechanisms(self, value: pulumi.Input['NotificationPolicyMechanismsArgs']):
+        pulumi.set(self, "mechanisms", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        The name of the notification policy.
+        Name of the policy.
         """
         return pulumi.get(self, "name")
 
@@ -107,182 +105,34 @@ class NotificationPolicyArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="alertInterval")
+    def alert_interval(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        """
+        return pulumi.get(self, "alert_interval")
+
+    @alert_interval.setter
+    def alert_interval(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "alert_interval", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the notification policy.
+        Optional description for the Notification policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
     def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="emailIntegrations")
-    def email_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]]:
-        """
-        The email ID to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "email_integrations")
-
-    @email_integrations.setter
-    def email_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]]):
-        pulumi.set(self, "email_integrations", value)
-
-    @property
-    @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['NotificationPolicyFiltersArgs']]:
-        """
-        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
-        """
-        return pulumi.get(self, "filters")
-
-    @filters.setter
-    def filters(self, value: Optional[pulumi.Input['NotificationPolicyFiltersArgs']]):
-        pulumi.set(self, "filters", value)
-
-    @property
-    @pulumi.getter(name="pagerdutyIntegrations")
-    def pagerduty_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]]:
-        """
-        The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "pagerduty_integrations")
-
-    @pagerduty_integrations.setter
-    def pagerduty_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]]):
-        pulumi.set(self, "pagerduty_integrations", value)
-
-    @property
-    @pulumi.getter(name="webhooksIntegrations")
-    def webhooks_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]]:
-        """
-        The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "webhooks_integrations")
-
-    @webhooks_integrations.setter
-    def webhooks_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]]):
-        pulumi.set(self, "webhooks_integrations", value)
-
-
-@pulumi.input_type
-class _NotificationPolicyState:
-    def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 alert_type: Optional[pulumi.Input[builtins.str]] = None,
-                 created: Optional[pulumi.Input[builtins.str]] = None,
-                 description: Optional[pulumi.Input[builtins.str]] = None,
-                 email_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]] = None,
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None,
-                 modified: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None,
-                 pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]] = None,
-                 webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None):
-        """
-        Input properties used for looking up and filtering NotificationPolicy resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] alert_type: The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
-        :param pulumi.Input[builtins.str] created: When the notification policy was created.
-        :param pulumi.Input[builtins.str] description: Description of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]] email_integrations: The email ID to which the notification should be dispatched.
-        :param pulumi.Input[builtins.bool] enabled: The status of the notification policy.
-        :param pulumi.Input['NotificationPolicyFiltersArgs'] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
-        :param pulumi.Input[builtins.str] modified: When the notification policy was last modified.
-        :param pulumi.Input[builtins.str] name: The name of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]] pagerduty_integrations: The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]] webhooks_integrations: The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-        """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if alert_type is not None:
-            pulumi.set(__self__, "alert_type", alert_type)
-        if created is not None:
-            pulumi.set(__self__, "created", created)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if email_integrations is not None:
-            pulumi.set(__self__, "email_integrations", email_integrations)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if filters is not None:
-            pulumi.set(__self__, "filters", filters)
-        if modified is not None:
-            pulumi.set(__self__, "modified", modified)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if pagerduty_integrations is not None:
-            pulumi.set(__self__, "pagerduty_integrations", pagerduty_integrations)
-        if webhooks_integrations is not None:
-            pulumi.set(__self__, "webhooks_integrations", webhooks_integrations)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter(name="alertType")
-    def alert_type(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
-        """
-        return pulumi.get(self, "alert_type")
-
-    @alert_type.setter
-    def alert_type(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "alert_type", value)
-
-    @property
-    @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        When the notification policy was created.
-        """
-        return pulumi.get(self, "created")
-
-    @created.setter
-    def created(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "created", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Description of the notification policy.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="emailIntegrations")
-    def email_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]]:
-        """
-        The email ID to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "email_integrations")
-
-    @email_integrations.setter
-    def email_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]]):
-        pulumi.set(self, "email_integrations", value)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        The status of the notification policy.
+        Whether or not the Notification policy is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -294,7 +144,136 @@ class _NotificationPolicyState:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input['NotificationPolicyFiltersArgs']]:
         """
-        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input['NotificationPolicyFiltersArgs']]):
+        pulumi.set(self, "filters", value)
+
+
+@pulumi.input_type
+class _NotificationPolicyState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 alert_interval: Optional[pulumi.Input[builtins.str]] = None,
+                 alert_type: Optional[pulumi.Input[builtins.str]] = None,
+                 created: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None,
+                 mechanisms: Optional[pulumi.Input['NotificationPolicyMechanismsArgs']] = None,
+                 modified: Optional[pulumi.Input[builtins.str]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        Input properties used for looking up and filtering NotificationPolicy resources.
+        :param pulumi.Input[builtins.str] account_id: The account id
+        :param pulumi.Input[builtins.str] alert_interval: Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        :param pulumi.Input[builtins.str] alert_type: Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+               Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
+        :param pulumi.Input[builtins.str] description: Optional description for the Notification policy.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not the Notification policy is enabled.
+        :param pulumi.Input['NotificationPolicyFiltersArgs'] filters: Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
+        :param pulumi.Input['NotificationPolicyMechanismsArgs'] mechanisms: List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        :param pulumi.Input[builtins.str] name: Name of the policy.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if alert_interval is not None:
+            pulumi.set(__self__, "alert_interval", alert_interval)
+        if alert_type is not None:
+            pulumi.set(__self__, "alert_type", alert_type)
+        if created is not None:
+            pulumi.set(__self__, "created", created)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+        if mechanisms is not None:
+            pulumi.set(__self__, "mechanisms", mechanisms)
+        if modified is not None:
+            pulumi.set(__self__, "modified", modified)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The account id
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="alertInterval")
+    def alert_interval(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        """
+        return pulumi.get(self, "alert_interval")
+
+    @alert_interval.setter
+    def alert_interval(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "alert_interval", value)
+
+    @property
+    @pulumi.getter(name="alertType")
+    def alert_type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+        Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
+        """
+        return pulumi.get(self, "alert_type")
+
+    @alert_type.setter
+    def alert_type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "alert_type", value)
+
+    @property
+    @pulumi.getter
+    def created(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Optional description for the Notification policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether or not the Notification policy is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input['NotificationPolicyFiltersArgs']]:
+        """
+        Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
         """
         return pulumi.get(self, "filters")
 
@@ -304,10 +283,19 @@ class _NotificationPolicyState:
 
     @property
     @pulumi.getter
+    def mechanisms(self) -> Optional[pulumi.Input['NotificationPolicyMechanismsArgs']]:
+        """
+        List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        """
+        return pulumi.get(self, "mechanisms")
+
+    @mechanisms.setter
+    def mechanisms(self, value: Optional[pulumi.Input['NotificationPolicyMechanismsArgs']]):
+        pulumi.set(self, "mechanisms", value)
+
+    @property
+    @pulumi.getter
     def modified(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        When the notification policy was last modified.
-        """
         return pulumi.get(self, "modified")
 
     @modified.setter
@@ -318,37 +306,13 @@ class _NotificationPolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the notification policy.
+        Name of the policy.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="pagerdutyIntegrations")
-    def pagerduty_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]]:
-        """
-        The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "pagerduty_integrations")
-
-    @pagerduty_integrations.setter
-    def pagerduty_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]]):
-        pulumi.set(self, "pagerduty_integrations", value)
-
-    @property
-    @pulumi.getter(name="webhooksIntegrations")
-    def webhooks_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]]:
-        """
-        The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "webhooks_integrations")
-
-    @webhooks_integrations.setter
-    def webhooks_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]]):
-        pulumi.set(self, "webhooks_integrations", value)
 
 
 class NotificationPolicy(pulumi.CustomResource):
@@ -357,37 +321,34 @@ class NotificationPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 alert_interval: Optional[pulumi.Input[builtins.str]] = None,
                  alert_type: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 email_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyEmailIntegrationArgs', 'NotificationPolicyEmailIntegrationArgsDict']]]]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  filters: Optional[pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
+                 mechanisms: Optional[pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyPagerdutyIntegrationArgs', 'NotificationPolicyPagerdutyIntegrationArgsDict']]]]] = None,
-                 webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyWebhooksIntegrationArgs', 'NotificationPolicyWebhooksIntegrationArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages a notification policy for
-        Cloudflare's products. The delivery mechanisms supported are email,
-        webhooks, and PagerDuty.
+        ## Example Usage
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
+        $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example '<account_id>/<policy_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] alert_type: The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
-        :param pulumi.Input[builtins.str] description: Description of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyEmailIntegrationArgs', 'NotificationPolicyEmailIntegrationArgsDict']]]] email_integrations: The email ID to which the notification should be dispatched.
-        :param pulumi.Input[builtins.bool] enabled: The status of the notification policy.
-        :param pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
-        :param pulumi.Input[builtins.str] name: The name of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyPagerdutyIntegrationArgs', 'NotificationPolicyPagerdutyIntegrationArgsDict']]]] pagerduty_integrations: The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyWebhooksIntegrationArgs', 'NotificationPolicyWebhooksIntegrationArgsDict']]]] webhooks_integrations: The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
+        :param pulumi.Input[builtins.str] account_id: The account id
+        :param pulumi.Input[builtins.str] alert_interval: Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        :param pulumi.Input[builtins.str] alert_type: Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+               Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
+        :param pulumi.Input[builtins.str] description: Optional description for the Notification policy.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not the Notification policy is enabled.
+        :param pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']] filters: Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
+        :param pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']] mechanisms: List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        :param pulumi.Input[builtins.str] name: Name of the policy.
         """
         ...
     @overload
@@ -396,14 +357,12 @@ class NotificationPolicy(pulumi.CustomResource):
                  args: NotificationPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages a notification policy for
-        Cloudflare's products. The delivery mechanisms supported are email,
-        webhooks, and PagerDuty.
+        ## Example Usage
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
+        $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example '<account_id>/<policy_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -422,14 +381,13 @@ class NotificationPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 alert_interval: Optional[pulumi.Input[builtins.str]] = None,
                  alert_type: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 email_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyEmailIntegrationArgs', 'NotificationPolicyEmailIntegrationArgsDict']]]]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  filters: Optional[pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
+                 mechanisms: Optional[pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyPagerdutyIntegrationArgs', 'NotificationPolicyPagerdutyIntegrationArgsDict']]]]] = None,
-                 webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyWebhooksIntegrationArgs', 'NotificationPolicyWebhooksIntegrationArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -442,20 +400,19 @@ class NotificationPolicy(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["alert_interval"] = alert_interval
             if alert_type is None and not opts.urn:
                 raise TypeError("Missing required property 'alert_type'")
             __props__.__dict__["alert_type"] = alert_type
             __props__.__dict__["description"] = description
-            __props__.__dict__["email_integrations"] = email_integrations
-            if enabled is None and not opts.urn:
-                raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["filters"] = filters
+            if mechanisms is None and not opts.urn:
+                raise TypeError("Missing required property 'mechanisms'")
+            __props__.__dict__["mechanisms"] = mechanisms
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["pagerduty_integrations"] = pagerduty_integrations
-            __props__.__dict__["webhooks_integrations"] = webhooks_integrations
             __props__.__dict__["created"] = None
             __props__.__dict__["modified"] = None
         super(NotificationPolicy, __self__).__init__(
@@ -469,16 +426,15 @@ class NotificationPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            alert_interval: Optional[pulumi.Input[builtins.str]] = None,
             alert_type: Optional[pulumi.Input[builtins.str]] = None,
             created: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
-            email_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyEmailIntegrationArgs', 'NotificationPolicyEmailIntegrationArgsDict']]]]] = None,
             enabled: Optional[pulumi.Input[builtins.bool]] = None,
             filters: Optional[pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']]] = None,
+            mechanisms: Optional[pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']]] = None,
             modified: Optional[pulumi.Input[builtins.str]] = None,
-            name: Optional[pulumi.Input[builtins.str]] = None,
-            pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyPagerdutyIntegrationArgs', 'NotificationPolicyPagerdutyIntegrationArgsDict']]]]] = None,
-            webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyWebhooksIntegrationArgs', 'NotificationPolicyWebhooksIntegrationArgsDict']]]]] = None) -> 'NotificationPolicy':
+            name: Optional[pulumi.Input[builtins.str]] = None) -> 'NotificationPolicy':
         """
         Get an existing NotificationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -486,120 +442,104 @@ class NotificationPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] alert_type: The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
-        :param pulumi.Input[builtins.str] created: When the notification policy was created.
-        :param pulumi.Input[builtins.str] description: Description of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyEmailIntegrationArgs', 'NotificationPolicyEmailIntegrationArgsDict']]]] email_integrations: The email ID to which the notification should be dispatched.
-        :param pulumi.Input[builtins.bool] enabled: The status of the notification policy.
-        :param pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
-        :param pulumi.Input[builtins.str] modified: When the notification policy was last modified.
-        :param pulumi.Input[builtins.str] name: The name of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyPagerdutyIntegrationArgs', 'NotificationPolicyPagerdutyIntegrationArgsDict']]]] pagerduty_integrations: The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationPolicyWebhooksIntegrationArgs', 'NotificationPolicyWebhooksIntegrationArgsDict']]]] webhooks_integrations: The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
+        :param pulumi.Input[builtins.str] account_id: The account id
+        :param pulumi.Input[builtins.str] alert_interval: Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        :param pulumi.Input[builtins.str] alert_type: Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+               Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
+        :param pulumi.Input[builtins.str] description: Optional description for the Notification policy.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not the Notification policy is enabled.
+        :param pulumi.Input[Union['NotificationPolicyFiltersArgs', 'NotificationPolicyFiltersArgsDict']] filters: Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
+        :param pulumi.Input[Union['NotificationPolicyMechanismsArgs', 'NotificationPolicyMechanismsArgsDict']] mechanisms: List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        :param pulumi.Input[builtins.str] name: Name of the policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _NotificationPolicyState.__new__(_NotificationPolicyState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["alert_interval"] = alert_interval
         __props__.__dict__["alert_type"] = alert_type
         __props__.__dict__["created"] = created
         __props__.__dict__["description"] = description
-        __props__.__dict__["email_integrations"] = email_integrations
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["filters"] = filters
+        __props__.__dict__["mechanisms"] = mechanisms
         __props__.__dict__["modified"] = modified
         __props__.__dict__["name"] = name
-        __props__.__dict__["pagerduty_integrations"] = pagerduty_integrations
-        __props__.__dict__["webhooks_integrations"] = webhooks_integrations
         return NotificationPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource.
+        The account id
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="alertInterval")
+    def alert_interval(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Optional specification of how often to re-alert from the same incident, not support on all alert types.
+        """
+        return pulumi.get(self, "alert_interval")
 
     @property
     @pulumi.getter(name="alertType")
     def alert_type(self) -> pulumi.Output[builtins.str]:
         """
-        The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `image_notification`, `image_resizing_notification`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.
+        Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
+        Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
         """
         return pulumi.get(self, "alert_type")
 
     @property
     @pulumi.getter
     def created(self) -> pulumi.Output[builtins.str]:
-        """
-        When the notification policy was created.
-        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Description of the notification policy.
+        Optional description for the Notification policy.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="emailIntegrations")
-    def email_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.NotificationPolicyEmailIntegration']]]:
-        """
-        The email ID to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "email_integrations")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[builtins.bool]:
         """
-        The status of the notification policy.
+        Whether or not the Notification policy is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
-    def filters(self) -> pulumi.Output[Optional['outputs.NotificationPolicyFilters']]:
+    def filters(self) -> pulumi.Output['outputs.NotificationPolicyFilters']:
         """
-        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details.
         """
         return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
+    def mechanisms(self) -> pulumi.Output['outputs.NotificationPolicyMechanisms']:
+        """
+        List of IDs that will be used when dispatching a notification. IDs for email type will be the email address.
+        """
+        return pulumi.get(self, "mechanisms")
+
+    @property
+    @pulumi.getter
     def modified(self) -> pulumi.Output[builtins.str]:
-        """
-        When the notification policy was last modified.
-        """
         return pulumi.get(self, "modified")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        The name of the notification policy.
+        Name of the policy.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="pagerdutyIntegrations")
-    def pagerduty_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.NotificationPolicyPagerdutyIntegration']]]:
-        """
-        The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "pagerduty_integrations")
-
-    @property
-    @pulumi.getter(name="webhooksIntegrations")
-    def webhooks_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.NotificationPolicyWebhooksIntegration']]]:
-        """
-        The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
-        """
-        return pulumi.get(self, "webhooks_integrations")
 

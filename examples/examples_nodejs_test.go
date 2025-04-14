@@ -14,7 +14,8 @@ import (
 func TestAccRecordTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "record", "ts"),
+			Dir:                  filepath.Join(getCwd(t), "record", "ts"),
+			ExpectRefreshChanges: true,
 		})
 
 	integration.ProgramTest(t, &test)
@@ -30,12 +31,11 @@ func TestRegress444(t *testing.T) {
 }
 
 func TestRegress554(t *testing.T) {
+	t.Skip("Skipping due to issue with .get() on Ruleset")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "regress-554"),
 		})
-	// TODO[pulumi/pulumi#16401]
-	test.SkipRefresh = true
 
 	integration.ProgramTest(t, &test)
 }

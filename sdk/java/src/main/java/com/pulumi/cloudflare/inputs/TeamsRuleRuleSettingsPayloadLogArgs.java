@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TeamsRuleRuleSettingsPayloadLogArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,18 +16,18 @@ public final class TeamsRuleRuleSettingsPayloadLogArgs extends com.pulumi.resour
     public static final TeamsRuleRuleSettingsPayloadLogArgs Empty = new TeamsRuleRuleSettingsPayloadLogArgs();
 
     /**
-     * Enable or disable DLP Payload Logging for this rule.
+     * Set to true to enable DLP payload logging for this rule.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable or disable DLP Payload Logging for this rule.
+     * @return Set to true to enable DLP payload logging for this rule.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     private TeamsRuleRuleSettingsPayloadLogArgs() {}
@@ -54,18 +55,18 @@ public final class TeamsRuleRuleSettingsPayloadLogArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable or disable DLP Payload Logging for this rule.
+         * @param enabled Set to true to enable DLP payload logging for this rule.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
         /**
-         * @param enabled Enable or disable DLP Payload Logging for this rule.
+         * @param enabled Set to true to enable DLP payload logging for this rule.
          * 
          * @return builder
          * 
@@ -75,9 +76,6 @@ public final class TeamsRuleRuleSettingsPayloadLogArgs extends com.pulumi.resour
         }
 
         public TeamsRuleRuleSettingsPayloadLogArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsPayloadLogArgs", "enabled");
-            }
             return $;
         }
     }

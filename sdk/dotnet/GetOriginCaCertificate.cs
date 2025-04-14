@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetOriginCaCertificate
     {
         /// <summary>
-        /// Use this data source to retrieve an existing origin ca certificate.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -24,20 +22,18 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetOriginCaCertificate.Invoke(new()
+        ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
         ///     {
-        ///         Id = "REPLACE_ME",
+        ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetOriginCaCertificateResult> InvokeAsync(GetOriginCaCertificateArgs args, InvokeOptions? options = null)
+        public static Task<GetOriginCaCertificateResult> InvokeAsync(GetOriginCaCertificateArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOriginCaCertificateResult>("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", args ?? new GetOriginCaCertificateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve an existing origin ca certificate.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -48,20 +44,18 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetOriginCaCertificate.Invoke(new()
+        ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
         ///     {
-        ///         Id = "REPLACE_ME",
+        ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetOriginCaCertificateResult> Invoke(GetOriginCaCertificateInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetOriginCaCertificateResult> Invoke(GetOriginCaCertificateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOriginCaCertificateResult>("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", args ?? new GetOriginCaCertificateInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve an existing origin ca certificate.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -72,9 +66,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetOriginCaCertificate.Invoke(new()
+        ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
         ///     {
-        ///         Id = "REPLACE_ME",
+        ///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -88,10 +82,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Origin CA Certificate unique identifier.
+        /// Identifier
         /// </summary>
-        [Input("id", required: true)]
-        public string Id { get; set; } = null!;
+        [Input("certificateId")]
+        public string? CertificateId { get; set; }
+
+        [Input("filter")]
+        public Inputs.GetOriginCaCertificateFilterArgs? Filter { get; set; }
 
         public GetOriginCaCertificateArgs()
         {
@@ -102,10 +99,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Origin CA Certificate unique identifier.
+        /// Identifier
         /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
+        [Input("certificateId")]
+        public Input<string>? CertificateId { get; set; }
+
+        [Input("filter")]
+        public Input<Inputs.GetOriginCaCertificateFilterInputArgs>? Filter { get; set; }
 
         public GetOriginCaCertificateInvokeArgs()
         {
@@ -118,35 +118,52 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificateResult
     {
         /// <summary>
-        /// The Origin CA certificate.
+        /// The Origin CA certificate. Will be newline-encoded.
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// The timestamp when the certificate will expire.
+        /// Identifier
+        /// </summary>
+        public readonly string? CertificateId;
+        /// <summary>
+        /// The Certificate Signing Request (CSR). Must be newline-encoded.
+        /// </summary>
+        public readonly string Csr;
+        /// <summary>
+        /// When the certificate will expire.
         /// </summary>
         public readonly string ExpiresOn;
+        public readonly Outputs.GetOriginCaCertificateFilterResult? Filter;
         /// <summary>
-        /// A list of hostnames or wildcard names bound to the certificate.
+        /// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
-        /// The Origin CA Certificate unique identifier.
+        /// Identifier
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`
+        /// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        /// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         /// </summary>
         public readonly string RequestType;
         /// <summary>
-        /// The timestamp when the certificate was revoked.
+        /// The number of days for which the certificate should be valid.
+        /// Available values: 7, 30, 90, 365, 730, 1095, 5475.
         /// </summary>
-        public readonly string RevokedAt;
+        public readonly double RequestedValidity;
 
         [OutputConstructor]
         private GetOriginCaCertificateResult(
             string certificate,
 
+            string? certificateId,
+
+            string csr,
+
             string expiresOn,
+
+            Outputs.GetOriginCaCertificateFilterResult? filter,
 
             ImmutableArray<string> hostnames,
 
@@ -154,14 +171,17 @@ namespace Pulumi.Cloudflare
 
             string requestType,
 
-            string revokedAt)
+            double requestedValidity)
         {
             Certificate = certificate;
+            CertificateId = certificateId;
+            Csr = csr;
             ExpiresOn = expiresOn;
+            Filter = filter;
             Hostnames = hostnames;
             Id = id;
             RequestType = requestType;
-            RevokedAt = revokedAt;
+            RequestedValidity = requestedValidity;
         }
     }
 }

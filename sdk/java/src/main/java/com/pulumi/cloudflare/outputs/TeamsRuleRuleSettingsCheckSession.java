@@ -4,10 +4,11 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsRuleRuleSettingsCheckSession {
@@ -15,27 +16,27 @@ public final class TeamsRuleRuleSettingsCheckSession {
      * @return Configure how fresh the session needs to be to be considered valid.
      * 
      */
-    private String duration;
+    private @Nullable String duration;
     /**
-     * @return Enable session enforcement for this rule.
+     * @return Set to true to enable session enforcement.
      * 
      */
-    private Boolean enforce;
+    private @Nullable Boolean enforce;
 
     private TeamsRuleRuleSettingsCheckSession() {}
     /**
      * @return Configure how fresh the session needs to be to be considered valid.
      * 
      */
-    public String duration() {
-        return this.duration;
+    public Optional<String> duration() {
+        return Optional.ofNullable(this.duration);
     }
     /**
-     * @return Enable session enforcement for this rule.
+     * @return Set to true to enable session enforcement.
      * 
      */
-    public Boolean enforce() {
-        return this.enforce;
+    public Optional<Boolean> enforce() {
+        return Optional.ofNullable(this.enforce);
     }
 
     public static Builder builder() {
@@ -47,8 +48,8 @@ public final class TeamsRuleRuleSettingsCheckSession {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String duration;
-        private Boolean enforce;
+        private @Nullable String duration;
+        private @Nullable Boolean enforce;
         public Builder() {}
         public Builder(TeamsRuleRuleSettingsCheckSession defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,18 +58,14 @@ public final class TeamsRuleRuleSettingsCheckSession {
         }
 
         @CustomType.Setter
-        public Builder duration(String duration) {
-            if (duration == null) {
-              throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsCheckSession", "duration");
-            }
+        public Builder duration(@Nullable String duration) {
+
             this.duration = duration;
             return this;
         }
         @CustomType.Setter
-        public Builder enforce(Boolean enforce) {
-            if (enforce == null) {
-              throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsCheckSession", "enforce");
-            }
+        public Builder enforce(@Nullable Boolean enforce) {
+
             this.enforce = enforce;
             return this;
         }

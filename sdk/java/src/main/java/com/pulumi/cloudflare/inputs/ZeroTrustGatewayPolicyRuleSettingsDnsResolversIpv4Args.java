@@ -19,14 +19,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
     public static final ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args Empty = new ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args();
 
     /**
-     * The IPv4 or IPv6 address of the upstream resolver.
+     * IPv4 address of upstream resolver.
      * 
      */
     @Import(name="ip", required=true)
     private Output<String> ip;
 
     /**
-     * @return The IPv4 or IPv6 address of the upstream resolver.
+     * @return IPv4 address of upstream resolver.
      * 
      */
     public Output<String> ip() {
@@ -34,14 +34,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
     }
 
     /**
-     * A port number to use for the upstream resolver. Defaults to `53`.
+     * A port number to use for upstream resolver. Defaults to 53 if unspecified.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return A port number to use for the upstream resolver. Defaults to `53`.
+     * @return A port number to use for upstream resolver. Defaults to 53 if unspecified.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -49,14 +49,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
     }
 
     /**
-     * Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+     * Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
      * 
      */
     @Import(name="routeThroughPrivateNetwork")
     private @Nullable Output<Boolean> routeThroughPrivateNetwork;
 
     /**
-     * @return Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+     * @return Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
      * 
      */
     public Optional<Output<Boolean>> routeThroughPrivateNetwork() {
@@ -64,14 +64,14 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
     }
 
     /**
-     * specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
      * 
      */
     @Import(name="vnetId")
     private @Nullable Output<String> vnetId;
 
     /**
-     * @return specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * @return Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
      * 
      */
     public Optional<Output<String>> vnetId() {
@@ -106,7 +106,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
         }
 
         /**
-         * @param ip The IPv4 or IPv6 address of the upstream resolver.
+         * @param ip IPv4 address of upstream resolver.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
         }
 
         /**
-         * @param ip The IPv4 or IPv6 address of the upstream resolver.
+         * @param ip IPv4 address of upstream resolver.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
         }
 
         /**
-         * @param port A port number to use for the upstream resolver. Defaults to `53`.
+         * @param port A port number to use for upstream resolver. Defaults to 53 if unspecified.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
         }
 
         /**
-         * @param port A port number to use for the upstream resolver. Defaults to `53`.
+         * @param port A port number to use for upstream resolver. Defaults to 53 if unspecified.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
         }
 
         /**
-         * @param routeThroughPrivateNetwork Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+         * @param routeThroughPrivateNetwork Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
         }
 
         /**
-         * @param routeThroughPrivateNetwork Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+         * @param routeThroughPrivateNetwork Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
         }
 
         /**
-         * @param vnetId specify a virtual network for this resolver. Uses default virtual network id if omitted.
+         * @param vnetId Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4Args extend
         }
 
         /**
-         * @param vnetId specify a virtual network for this resolver. Uses default virtual network id if omitted.
+         * @param vnetId Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
          * 
          * @return builder
          * 

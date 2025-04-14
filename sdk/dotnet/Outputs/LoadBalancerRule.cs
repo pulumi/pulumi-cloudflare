@@ -14,31 +14,31 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerRule
     {
         /// <summary>
-        /// The statement to evaluate to determine if this rule's effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        /// The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
         /// </summary>
         public readonly string? Condition;
         /// <summary>
-        /// A disabled rule will not be executed.
+        /// Disable this specific rule. It will no longer be evaluated by this load balancer.
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+        /// A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
         /// </summary>
         public readonly Outputs.LoadBalancerRuleFixedResponse? FixedResponse;
         /// <summary>
-        /// Human readable name for this rule.
+        /// Name of this rule. Only used for human readability.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// The load balancer settings to alter if this rule's `condition` is true. Note: `overrides` or `fixed_response` must be set.
+        /// A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional.
         /// </summary>
-        public readonly ImmutableArray<Outputs.LoadBalancerRuleOverride> Overrides;
+        public readonly Outputs.LoadBalancerRuleOverrides? Overrides;
         /// <summary>
-        /// Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+        /// The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
         /// </summary>
         public readonly int? Priority;
         /// <summary>
-        /// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+        /// If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
         /// </summary>
         public readonly bool? Terminates;
 
@@ -50,9 +50,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.LoadBalancerRuleFixedResponse? fixedResponse,
 
-            string name,
+            string? name,
 
-            ImmutableArray<Outputs.LoadBalancerRuleOverride> overrides,
+            Outputs.LoadBalancerRuleOverrides? overrides,
 
             int? priority,
 

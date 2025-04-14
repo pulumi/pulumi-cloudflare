@@ -20,14 +20,14 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     public static final RulesetRuleActionParametersEdgeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlArgs();
 
     /**
-     * Default edge TTL.
+     * The TTL (in seconds) if you choose override_origin mode.
      * 
      */
     @Import(name="default")
     private @Nullable Output<Integer> default_;
 
     /**
-     * @return Default edge TTL.
+     * @return The TTL (in seconds) if you choose override_origin mode.
      * 
      */
     public Optional<Output<Integer>> default_() {
@@ -35,14 +35,16 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     }
 
     /**
-     * Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+     * edge ttl options
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
     /**
-     * @return Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+     * @return edge ttl options
+     * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     public Output<String> mode() {
@@ -50,14 +52,14 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     }
 
     /**
-     * Edge TTL for the status codes.
+     * List of single status codes, or status code ranges to apply the selected mode
      * 
      */
     @Import(name="statusCodeTtls")
     private @Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls;
 
     /**
-     * @return Edge TTL for the status codes.
+     * @return List of single status codes, or status code ranges to apply the selected mode
      * 
      */
     public Optional<Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>>> statusCodeTtls() {
@@ -91,7 +93,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param default_ Default edge TTL.
+         * @param default_ The TTL (in seconds) if you choose override_origin mode.
          * 
          * @return builder
          * 
@@ -102,7 +104,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param default_ Default edge TTL.
+         * @param default_ The TTL (in seconds) if you choose override_origin mode.
          * 
          * @return builder
          * 
@@ -112,7 +114,8 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param mode Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+         * @param mode edge ttl options
+         * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
          * 
          * @return builder
          * 
@@ -123,7 +126,8 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param mode Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+         * @param mode edge ttl options
+         * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
          * 
          * @return builder
          * 
@@ -133,7 +137,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param statusCodeTtls Edge TTL for the status codes.
+         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode
          * 
          * @return builder
          * 
@@ -144,7 +148,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param statusCodeTtls Edge TTL for the status codes.
+         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode
          * 
          * @return builder
          * 
@@ -154,7 +158,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param statusCodeTtls Edge TTL for the status codes.
+         * @param statusCodeTtls List of single status codes, or status code ranges to apply the selected mode
          * 
          * @return builder
          * 

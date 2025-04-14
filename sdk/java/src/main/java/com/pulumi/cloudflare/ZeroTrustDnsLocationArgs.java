@@ -20,30 +20,22 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
 
     public static final ZeroTrustDnsLocationArgs Empty = new ZeroTrustDnsLocationArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * Indicator that this is the default location.
+     * True if the location is the default location.
      * 
      */
     @Import(name="clientDefault")
     private @Nullable Output<Boolean> clientDefault;
 
     /**
-     * @return Indicator that this is the default location.
+     * @return True if the location is the default location.
      * 
      */
     public Optional<Output<Boolean>> clientDefault() {
@@ -51,14 +43,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * IPv4 binding assigned to this location.
+     * The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
      * 
      */
     @Import(name="dnsDestinationIpsId")
     private @Nullable Output<String> dnsDestinationIpsId;
 
     /**
-     * @return IPv4 binding assigned to this location.
+     * @return The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
      * 
      */
     public Optional<Output<String>> dnsDestinationIpsId() {
@@ -66,29 +58,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * IPv6 block binding assigned to this location.
-     * 
-     */
-    @Import(name="dnsDestinationIpv6BlockId")
-    private @Nullable Output<String> dnsDestinationIpv6BlockId;
-
-    /**
-     * @return IPv6 block binding assigned to this location.
-     * 
-     */
-    public Optional<Output<String>> dnsDestinationIpv6BlockId() {
-        return Optional.ofNullable(this.dnsDestinationIpv6BlockId);
-    }
-
-    /**
-     * Indicator that this location needs to resolve EDNS queries.
+     * True if the location needs to resolve EDNS queries.
      * 
      */
     @Import(name="ecsSupport")
     private @Nullable Output<Boolean> ecsSupport;
 
     /**
-     * @return Indicator that this location needs to resolve EDNS queries.
+     * @return True if the location needs to resolve EDNS queries.
      * 
      */
     public Optional<Output<Boolean>> ecsSupport() {
@@ -96,14 +73,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Endpoints assigned to this location.
+     * The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
      * 
      */
     @Import(name="endpoints")
     private @Nullable Output<ZeroTrustDnsLocationEndpointsArgs> endpoints;
 
     /**
-     * @return Endpoints assigned to this location.
+     * @return The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
      * 
      */
     public Optional<Output<ZeroTrustDnsLocationEndpointsArgs>> endpoints() {
@@ -111,14 +88,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the teams location.
+     * The name of the location.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the teams location.
+     * @return The name of the location.
      * 
      */
     public Output<String> name() {
@@ -126,14 +103,14 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The networks CIDRs that comprise the location.
+     * A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<ZeroTrustDnsLocationNetworkArgs>> networks;
 
     /**
-     * @return The networks CIDRs that comprise the location.
+     * @return A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
      * 
      */
     public Optional<Output<List<ZeroTrustDnsLocationNetworkArgs>>> networks() {
@@ -146,7 +123,6 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         this.accountId = $.accountId;
         this.clientDefault = $.clientDefault;
         this.dnsDestinationIpsId = $.dnsDestinationIpsId;
-        this.dnsDestinationIpv6BlockId = $.dnsDestinationIpv6BlockId;
         this.ecsSupport = $.ecsSupport;
         this.endpoints = $.endpoints;
         this.name = $.name;
@@ -171,29 +147,17 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
             $ = new ZeroTrustDnsLocationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param clientDefault Indicator that this is the default location.
+         * @param clientDefault True if the location is the default location.
          * 
          * @return builder
          * 
@@ -204,7 +168,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param clientDefault Indicator that this is the default location.
+         * @param clientDefault True if the location is the default location.
          * 
          * @return builder
          * 
@@ -214,7 +178,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dnsDestinationIpsId IPv4 binding assigned to this location.
+         * @param dnsDestinationIpsId The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
          * 
          * @return builder
          * 
@@ -225,7 +189,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dnsDestinationIpsId IPv4 binding assigned to this location.
+         * @param dnsDestinationIpsId The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
          * 
          * @return builder
          * 
@@ -235,28 +199,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dnsDestinationIpv6BlockId IPv6 block binding assigned to this location.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsDestinationIpv6BlockId(@Nullable Output<String> dnsDestinationIpv6BlockId) {
-            $.dnsDestinationIpv6BlockId = dnsDestinationIpv6BlockId;
-            return this;
-        }
-
-        /**
-         * @param dnsDestinationIpv6BlockId IPv6 block binding assigned to this location.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dnsDestinationIpv6BlockId(String dnsDestinationIpv6BlockId) {
-            return dnsDestinationIpv6BlockId(Output.of(dnsDestinationIpv6BlockId));
-        }
-
-        /**
-         * @param ecsSupport Indicator that this location needs to resolve EDNS queries.
+         * @param ecsSupport True if the location needs to resolve EDNS queries.
          * 
          * @return builder
          * 
@@ -267,7 +210,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ecsSupport Indicator that this location needs to resolve EDNS queries.
+         * @param ecsSupport True if the location needs to resolve EDNS queries.
          * 
          * @return builder
          * 
@@ -277,7 +220,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpoints Endpoints assigned to this location.
+         * @param endpoints The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
          * 
          * @return builder
          * 
@@ -288,7 +231,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param endpoints Endpoints assigned to this location.
+         * @param endpoints The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
          * 
          * @return builder
          * 
@@ -298,7 +241,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the teams location.
+         * @param name The name of the location.
          * 
          * @return builder
          * 
@@ -309,7 +252,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of the teams location.
+         * @param name The name of the location.
          * 
          * @return builder
          * 
@@ -319,7 +262,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks The networks CIDRs that comprise the location.
+         * @param networks A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -330,7 +273,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks The networks CIDRs that comprise the location.
+         * @param networks A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
          * 
          * @return builder
          * 
@@ -340,7 +283,7 @@ public final class ZeroTrustDnsLocationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks The networks CIDRs that comprise the location.
+         * @param networks A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
          * 
          * @return builder
          * 

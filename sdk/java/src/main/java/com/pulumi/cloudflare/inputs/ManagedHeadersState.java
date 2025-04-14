@@ -19,14 +19,14 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
     public static final ManagedHeadersState Empty = new ManagedHeadersState();
 
     /**
-     * The list of managed request headers.
+     * The list of Managed Request Transforms.
      * 
      */
     @Import(name="managedRequestHeaders")
     private @Nullable Output<List<ManagedHeadersManagedRequestHeaderArgs>> managedRequestHeaders;
 
     /**
-     * @return The list of managed request headers.
+     * @return The list of Managed Request Transforms.
      * 
      */
     public Optional<Output<List<ManagedHeadersManagedRequestHeaderArgs>>> managedRequestHeaders() {
@@ -34,14 +34,14 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The list of managed response headers.
+     * The list of Managed Response Transforms.
      * 
      */
     @Import(name="managedResponseHeaders")
     private @Nullable Output<List<ManagedHeadersManagedResponseHeaderArgs>> managedResponseHeaders;
 
     /**
-     * @return The list of managed response headers.
+     * @return The list of Managed Response Transforms.
      * 
      */
     public Optional<Output<List<ManagedHeadersManagedResponseHeaderArgs>>> managedResponseHeaders() {
@@ -49,14 +49,14 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -90,7 +90,7 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param managedRequestHeaders The list of managed request headers.
+         * @param managedRequestHeaders The list of Managed Request Transforms.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param managedRequestHeaders The list of managed request headers.
+         * @param managedRequestHeaders The list of Managed Request Transforms.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param managedRequestHeaders The list of managed request headers.
+         * @param managedRequestHeaders The list of Managed Request Transforms.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param managedResponseHeaders The list of managed response headers.
+         * @param managedResponseHeaders The list of Managed Response Transforms.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param managedResponseHeaders The list of managed response headers.
+         * @param managedResponseHeaders The list of Managed Response Transforms.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param managedResponseHeaders The list of managed response headers.
+         * @param managedResponseHeaders The list of Managed Response Transforms.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ManagedHeadersState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

@@ -11,13 +11,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage User Agent Blocking Rules.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -44,26 +42,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example1 = new UserAgentBlockingRule("example1", UserAgentBlockingRuleArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .mode("js_challenge")
- *             .paused(false)
- *             .description("My description 1")
+ *         var exampleUserAgentBlockingRule = new UserAgentBlockingRule("exampleUserAgentBlockingRule", UserAgentBlockingRuleArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .configuration(UserAgentBlockingRuleConfigurationArgs.builder()
- *                 .target("ua")
- *                 .value("Chrome")
+ *                 .target("ip")
+ *                 .value("198.51.100.4")
  *                 .build())
- *             .build());
- * 
- *         var example2 = new UserAgentBlockingRule("example2", UserAgentBlockingRuleArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .mode("challenge")
- *             .paused(true)
- *             .description("My description 22")
- *             .configuration(UserAgentBlockingRuleConfigurationArgs.builder()
- *                 .target("ua")
- *                 .value("Mozilla")
- *                 .build())
+ *             .mode("block")
  *             .build());
  * 
  *     }
@@ -72,80 +57,62 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example &lt;zone_id&gt;/&lt;user_agent_blocking_rule_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")
 public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
     /**
-     * The configuration object for the current rule.
+     * The rule configuration.
      * 
      */
     @Export(name="configuration", refs={UserAgentBlockingRuleConfiguration.class}, tree="[0]")
     private Output<UserAgentBlockingRuleConfiguration> configuration;
 
     /**
-     * @return The configuration object for the current rule.
+     * @return The rule configuration.
      * 
      */
     public Output<UserAgentBlockingRuleConfiguration> configuration() {
         return this.configuration;
     }
     /**
-     * An informative summary of the rule.
-     * 
-     */
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
-
-    /**
-     * @return An informative summary of the rule.
-     * 
-     */
-    public Output<String> description() {
-        return this.description;
-    }
-    /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+     * The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `js_challenge`, `managed_challenge`.
+     * @return The action to apply to a matched request.
+     * Available values: &#34;block&#34;, &#34;challenge&#34;, &#34;whitelist&#34;, &#34;js*challenge&#34;, &#34;managed*challenge&#34;.
      * 
      */
     public Output<String> mode() {
         return this.mode;
     }
     /**
-     * When true, indicates that the rule is currently paused.
+     * The unique identifier of the User Agent Blocking rule.
      * 
      */
-    @Export(name="paused", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> paused;
+    @Export(name="uaRuleId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> uaRuleId;
 
     /**
-     * @return When true, indicates that the rule is currently paused.
+     * @return The unique identifier of the User Agent Blocking rule.
      * 
      */
-    public Output<Boolean> paused() {
-        return this.paused;
+    public Output<Optional<String>> uaRuleId() {
+        return Codegen.optional(this.uaRuleId);
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

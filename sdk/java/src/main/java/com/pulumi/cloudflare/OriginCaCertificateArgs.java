@@ -5,8 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,69 +18,66 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
     public static final OriginCaCertificateArgs Empty = new OriginCaCertificateArgs();
 
     /**
-     * The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
+     * The Certificate Signing Request (CSR). Must be newline-encoded.
      * 
      */
-    @Import(name="csr", required=true)
-    private Output<String> csr;
+    @Import(name="csr")
+    private @Nullable Output<String> csr;
 
     /**
-     * @return The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
+     * @return The Certificate Signing Request (CSR). Must be newline-encoded.
      * 
      */
-    public Output<String> csr() {
-        return this.csr;
+    public Optional<Output<String>> csr() {
+        return Optional.ofNullable(this.csr);
     }
 
     /**
-     * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
+     * Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      * 
      */
-    @Import(name="hostnames", required=true)
-    private Output<List<String>> hostnames;
+    @Import(name="hostnames")
+    private @Nullable Output<List<String>> hostnames;
 
     /**
-     * @return A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
+     * @return Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      * 
      */
-    public Output<List<String>> hostnames() {
-        return this.hostnames;
-    }
-
-    @Import(name="minDaysForRenewal")
-    private @Nullable Output<Integer> minDaysForRenewal;
-
-    public Optional<Output<Integer>> minDaysForRenewal() {
-        return Optional.ofNullable(this.minDaysForRenewal);
+    public Optional<Output<List<String>>> hostnames() {
+        return Optional.ofNullable(this.hostnames);
     }
 
     /**
-     * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
+     * Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+     * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
-    @Import(name="requestType", required=true)
-    private Output<String> requestType;
+    @Import(name="requestType")
+    private @Nullable Output<String> requestType;
 
     /**
-     * @return The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
+     * @return Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+     * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
      * 
      */
-    public Output<String> requestType() {
-        return this.requestType;
+    public Optional<Output<String>> requestType() {
+        return Optional.ofNullable(this.requestType);
     }
 
     /**
-     * The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
+     * The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      * 
      */
     @Import(name="requestedValidity")
-    private @Nullable Output<Integer> requestedValidity;
+    private @Nullable Output<Double> requestedValidity;
 
     /**
-     * @return The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
+     * @return The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      * 
      */
-    public Optional<Output<Integer>> requestedValidity() {
+    public Optional<Output<Double>> requestedValidity() {
         return Optional.ofNullable(this.requestedValidity);
     }
 
@@ -90,7 +86,6 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
     private OriginCaCertificateArgs(OriginCaCertificateArgs $) {
         this.csr = $.csr;
         this.hostnames = $.hostnames;
-        this.minDaysForRenewal = $.minDaysForRenewal;
         this.requestType = $.requestType;
         this.requestedValidity = $.requestedValidity;
     }
@@ -114,18 +109,18 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param csr The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
+         * @param csr The Certificate Signing Request (CSR). Must be newline-encoded.
          * 
          * @return builder
          * 
          */
-        public Builder csr(Output<String> csr) {
+        public Builder csr(@Nullable Output<String> csr) {
             $.csr = csr;
             return this;
         }
 
         /**
-         * @param csr The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
+         * @param csr The Certificate Signing Request (CSR). Must be newline-encoded.
          * 
          * @return builder
          * 
@@ -135,18 +130,18 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostnames A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param hostnames Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
          * 
          * @return builder
          * 
          */
-        public Builder hostnames(Output<List<String>> hostnames) {
+        public Builder hostnames(@Nullable Output<List<String>> hostnames) {
             $.hostnames = hostnames;
             return this;
         }
 
         /**
-         * @param hostnames A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param hostnames Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
          * 
          * @return builder
          * 
@@ -156,7 +151,7 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hostnames A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
+         * @param hostnames Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
          * 
          * @return builder
          * 
@@ -165,28 +160,21 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
             return hostnames(List.of(hostnames));
         }
 
-        public Builder minDaysForRenewal(@Nullable Output<Integer> minDaysForRenewal) {
-            $.minDaysForRenewal = minDaysForRenewal;
-            return this;
-        }
-
-        public Builder minDaysForRenewal(Integer minDaysForRenewal) {
-            return minDaysForRenewal(Output.of(minDaysForRenewal));
-        }
-
         /**
-         * @param requestType The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
+         * @param requestType Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+         * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder requestType(Output<String> requestType) {
+        public Builder requestType(@Nullable Output<String> requestType) {
             $.requestType = requestType;
             return this;
         }
 
         /**
-         * @param requestType The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
+         * @param requestType Signature type desired on certificate (&#34;origin-rsa&#34; (rsa), &#34;origin-ecc&#34; (ecdsa), or &#34;keyless-certificate&#34; (for Keyless SSL servers).
+         * Available values: &#34;origin-rsa&#34;, &#34;origin-ecc&#34;, &#34;keyless-certificate&#34;.
          * 
          * @return builder
          * 
@@ -196,36 +184,29 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param requestedValidity The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
+         * @param requestedValidity The number of days for which the certificate should be valid.
+         * Available values: 7, 30, 90, 365, 730, 1095, 5475.
          * 
          * @return builder
          * 
          */
-        public Builder requestedValidity(@Nullable Output<Integer> requestedValidity) {
+        public Builder requestedValidity(@Nullable Output<Double> requestedValidity) {
             $.requestedValidity = requestedValidity;
             return this;
         }
 
         /**
-         * @param requestedValidity The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
+         * @param requestedValidity The number of days for which the certificate should be valid.
+         * Available values: 7, 30, 90, 365, 730, 1095, 5475.
          * 
          * @return builder
          * 
          */
-        public Builder requestedValidity(Integer requestedValidity) {
+        public Builder requestedValidity(Double requestedValidity) {
             return requestedValidity(Output.of(requestedValidity));
         }
 
         public OriginCaCertificateArgs build() {
-            if ($.csr == null) {
-                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "csr");
-            }
-            if ($.hostnames == null) {
-                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "hostnames");
-            }
-            if ($.requestType == null) {
-                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "requestType");
-            }
             return $;
         }
     }

@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationFooterLink
     {
         /// <summary>
-        /// The name of the footer link.
+        /// The hypertext in the footer link.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
-        /// The URL of the footer link.
+        /// the hyperlink in the footer link.
         /// </summary>
-        public readonly string? Url;
+        public readonly string Url;
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationFooterLink(
-            string? name,
+            string name,
 
-            string? url)
+            string url)
         {
             Name = name;
             Url = url;

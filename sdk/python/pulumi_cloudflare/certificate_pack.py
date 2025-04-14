@@ -14,8 +14,6 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['CertificatePackArgs', 'CertificatePack']
 
@@ -28,20 +26,20 @@ class CertificatePackArgs:
                  validation_method: pulumi.Input[builtins.str],
                  validity_days: pulumi.Input[builtins.int],
                  zone_id: pulumi.Input[builtins.str],
-                 cloudflare_branding: Optional[pulumi.Input[builtins.bool]] = None,
-                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
-                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
-                 wait_for_active_status: Optional[pulumi.Input[builtins.bool]] = None):
+                 cloudflare_branding: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a CertificatePack resource.
-        :param pulumi.Input[builtins.str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hosts: List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] type: Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] validation_method: Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] validity_days: How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] wait_for_active_status: Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+               Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        :param pulumi.Input[builtins.str] type: Type of certificate pack.
+               Available values: "advanced".
+        :param pulumi.Input[builtins.str] validation_method: Validation Method selected for the order.
+               Available values: "txt", "http", "email".
+        :param pulumi.Input[builtins.int] validity_days: Validity Days selected for the order.
+               Available values: 14, 30, 90, 365.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
         pulumi.set(__self__, "hosts", hosts)
@@ -51,18 +49,13 @@ class CertificatePackArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if cloudflare_branding is not None:
             pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
-        if validation_errors is not None:
-            pulumi.set(__self__, "validation_errors", validation_errors)
-        if validation_records is not None:
-            pulumi.set(__self__, "validation_records", validation_records)
-        if wait_for_active_status is not None:
-            pulumi.set(__self__, "wait_for_active_status", wait_for_active_status)
 
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Input[builtins.str]:
         """
-        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -74,7 +67,7 @@ class CertificatePackArgs:
     @pulumi.getter
     def hosts(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+        Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         """
         return pulumi.get(self, "hosts")
 
@@ -86,7 +79,8 @@ class CertificatePackArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[builtins.str]:
         """
-        Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+        Type of certificate pack.
+        Available values: "advanced".
         """
         return pulumi.get(self, "type")
 
@@ -98,7 +92,8 @@ class CertificatePackArgs:
     @pulumi.getter(name="validationMethod")
     def validation_method(self) -> pulumi.Input[builtins.str]:
         """
-        Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+        Validation Method selected for the order.
+        Available values: "txt", "http", "email".
         """
         return pulumi.get(self, "validation_method")
 
@@ -110,7 +105,8 @@ class CertificatePackArgs:
     @pulumi.getter(name="validityDays")
     def validity_days(self) -> pulumi.Input[builtins.int]:
         """
-        How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+        Validity Days selected for the order.
+        Available values: 14, 30, 90, 365.
         """
         return pulumi.get(self, "validity_days")
 
@@ -122,7 +118,7 @@ class CertificatePackArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -134,43 +130,13 @@ class CertificatePackArgs:
     @pulumi.getter(name="cloudflareBranding")
     def cloudflare_branding(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+        Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         """
         return pulumi.get(self, "cloudflare_branding")
 
     @cloudflare_branding.setter
     def cloudflare_branding(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "cloudflare_branding", value)
-
-    @property
-    @pulumi.getter(name="validationErrors")
-    def validation_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]:
-        return pulumi.get(self, "validation_errors")
-
-    @validation_errors.setter
-    def validation_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]):
-        pulumi.set(self, "validation_errors", value)
-
-    @property
-    @pulumi.getter(name="validationRecords")
-    def validation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]:
-        return pulumi.get(self, "validation_records")
-
-    @validation_records.setter
-    def validation_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]):
-        pulumi.set(self, "validation_records", value)
-
-    @property
-    @pulumi.getter(name="waitForActiveStatus")
-    def wait_for_active_status(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "wait_for_active_status")
-
-    @wait_for_active_status.setter
-    def wait_for_active_status(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "wait_for_active_status", value)
 
 
 @pulumi.input_type
@@ -179,23 +145,26 @@ class _CertificatePackState:
                  certificate_authority: Optional[pulumi.Input[builtins.str]] = None,
                  cloudflare_branding: Optional[pulumi.Input[builtins.bool]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 status: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
                  validation_method: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
                  validity_days: Optional[pulumi.Input[builtins.int]] = None,
-                 wait_for_active_status: Optional[pulumi.Input[builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering CertificatePack resources.
-        :param pulumi.Input[builtins.str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hosts: List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] type: Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] validation_method: Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] validity_days: How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] wait_for_active_status: Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+               Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        :param pulumi.Input[builtins.str] status: Status of certificate pack.
+               Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        :param pulumi.Input[builtins.str] type: Type of certificate pack.
+               Available values: "advanced".
+        :param pulumi.Input[builtins.str] validation_method: Validation Method selected for the order.
+               Available values: "txt", "http", "email".
+        :param pulumi.Input[builtins.int] validity_days: Validity Days selected for the order.
+               Available values: 14, 30, 90, 365.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
@@ -203,18 +172,14 @@ class _CertificatePackState:
             pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if validation_errors is not None:
-            pulumi.set(__self__, "validation_errors", validation_errors)
         if validation_method is not None:
             pulumi.set(__self__, "validation_method", validation_method)
-        if validation_records is not None:
-            pulumi.set(__self__, "validation_records", validation_records)
         if validity_days is not None:
             pulumi.set(__self__, "validity_days", validity_days)
-        if wait_for_active_status is not None:
-            pulumi.set(__self__, "wait_for_active_status", wait_for_active_status)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -222,7 +187,8 @@ class _CertificatePackState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -234,7 +200,7 @@ class _CertificatePackState:
     @pulumi.getter(name="cloudflareBranding")
     def cloudflare_branding(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+        Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         """
         return pulumi.get(self, "cloudflare_branding")
 
@@ -246,7 +212,7 @@ class _CertificatePackState:
     @pulumi.getter
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+        Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         """
         return pulumi.get(self, "hosts")
 
@@ -256,9 +222,23 @@ class _CertificatePackState:
 
     @property
     @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Status of certificate pack.
+        Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+        Type of certificate pack.
+        Available values: "advanced".
         """
         return pulumi.get(self, "type")
 
@@ -267,19 +247,11 @@ class _CertificatePackState:
         pulumi.set(self, "type", value)
 
     @property
-    @pulumi.getter(name="validationErrors")
-    def validation_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]:
-        return pulumi.get(self, "validation_errors")
-
-    @validation_errors.setter
-    def validation_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]):
-        pulumi.set(self, "validation_errors", value)
-
-    @property
     @pulumi.getter(name="validationMethod")
     def validation_method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+        Validation Method selected for the order.
+        Available values: "txt", "http", "email".
         """
         return pulumi.get(self, "validation_method")
 
@@ -288,19 +260,11 @@ class _CertificatePackState:
         pulumi.set(self, "validation_method", value)
 
     @property
-    @pulumi.getter(name="validationRecords")
-    def validation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]:
-        return pulumi.get(self, "validation_records")
-
-    @validation_records.setter
-    def validation_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]):
-        pulumi.set(self, "validation_records", value)
-
-    @property
     @pulumi.getter(name="validityDays")
     def validity_days(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+        Validity Days selected for the order.
+        Available values: 14, 30, 90, 365.
         """
         return pulumi.get(self, "validity_days")
 
@@ -309,22 +273,10 @@ class _CertificatePackState:
         pulumi.set(self, "validity_days", value)
 
     @property
-    @pulumi.getter(name="waitForActiveStatus")
-    def wait_for_active_status(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "wait_for_active_status")
-
-    @wait_for_active_status.setter
-    def wait_for_active_status(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "wait_for_active_status", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -342,20 +294,35 @@ class CertificatePack(pulumi.CustomResource):
                  cloudflare_branding: Optional[pulumi.Input[builtins.bool]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]]] = None,
                  validation_method: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]]] = None,
                  validity_days: Optional[pulumi.Input[builtins.int]] = None,
-                 wait_for_active_status: Optional[pulumi.Input[builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_certificate_pack = cloudflare.CertificatePack("example_certificate_pack",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            certificate_authority="google",
+            hosts=[
+                "example.com",
+                "*.example.com",
+                "www.example.com",
+            ],
+            type="advanced",
+            validation_method="txt",
+            validity_days=14,
+            cloudflare_branding=False)
+        ```
+
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
+        $ pulumi import cloudflare:index/certificatePack:CertificatePack example '<zone_id>/<certificate_pack_id>'
         ```
 
         While supported, importing isn't recommended and it is advised to replace the
@@ -364,14 +331,17 @@ class CertificatePack(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hosts: List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] type: Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] validation_method: Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] validity_days: How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] wait_for_active_status: Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+               Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        :param pulumi.Input[builtins.str] type: Type of certificate pack.
+               Available values: "advanced".
+        :param pulumi.Input[builtins.str] validation_method: Validation Method selected for the order.
+               Available values: "txt", "http", "email".
+        :param pulumi.Input[builtins.int] validity_days: Validity Days selected for the order.
+               Available values: 14, 30, 90, 365.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -382,10 +352,28 @@ class CertificatePack(pulumi.CustomResource):
         """
         ## Example Usage
 
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_certificate_pack = cloudflare.CertificatePack("example_certificate_pack",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            certificate_authority="google",
+            hosts=[
+                "example.com",
+                "*.example.com",
+                "www.example.com",
+            ],
+            type="advanced",
+            validation_method="txt",
+            validity_days=14,
+            cloudflare_branding=False)
+        ```
+
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
+        $ pulumi import cloudflare:index/certificatePack:CertificatePack example '<zone_id>/<certificate_pack_id>'
         ```
 
         While supported, importing isn't recommended and it is advised to replace the
@@ -411,11 +399,8 @@ class CertificatePack(pulumi.CustomResource):
                  cloudflare_branding: Optional[pulumi.Input[builtins.bool]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]]] = None,
                  validation_method: Optional[pulumi.Input[builtins.str]] = None,
-                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]]] = None,
                  validity_days: Optional[pulumi.Input[builtins.int]] = None,
-                 wait_for_active_status: Optional[pulumi.Input[builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -436,18 +421,16 @@ class CertificatePack(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            __props__.__dict__["validation_errors"] = validation_errors
             if validation_method is None and not opts.urn:
                 raise TypeError("Missing required property 'validation_method'")
             __props__.__dict__["validation_method"] = validation_method
-            __props__.__dict__["validation_records"] = validation_records
             if validity_days is None and not opts.urn:
                 raise TypeError("Missing required property 'validity_days'")
             __props__.__dict__["validity_days"] = validity_days
-            __props__.__dict__["wait_for_active_status"] = wait_for_active_status
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["status"] = None
         super(CertificatePack, __self__).__init__(
             'cloudflare:index/certificatePack:CertificatePack',
             resource_name,
@@ -461,12 +444,10 @@ class CertificatePack(pulumi.CustomResource):
             certificate_authority: Optional[pulumi.Input[builtins.str]] = None,
             cloudflare_branding: Optional[pulumi.Input[builtins.bool]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            status: Optional[pulumi.Input[builtins.str]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None,
-            validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationErrorArgs', 'CertificatePackValidationErrorArgsDict']]]]] = None,
             validation_method: Optional[pulumi.Input[builtins.str]] = None,
-            validation_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CertificatePackValidationRecordArgs', 'CertificatePackValidationRecordArgsDict']]]]] = None,
             validity_days: Optional[pulumi.Input[builtins.int]] = None,
-            wait_for_active_status: Optional[pulumi.Input[builtins.bool]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'CertificatePack':
         """
         Get an existing CertificatePack resource's state with the given name, id, and optional extra
@@ -475,14 +456,19 @@ class CertificatePack(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] certificate_authority: Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hosts: List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] type: Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] validation_method: Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] validity_days: How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.bool] wait_for_active_status: Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] certificate_authority: Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+               Available values: "google", "lets*encrypt", "ssl*com".
+        :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] hosts: Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
+        :param pulumi.Input[builtins.str] status: Status of certificate pack.
+               Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        :param pulumi.Input[builtins.str] type: Type of certificate pack.
+               Available values: "advanced".
+        :param pulumi.Input[builtins.str] validation_method: Validation Method selected for the order.
+               Available values: "txt", "http", "email".
+        :param pulumi.Input[builtins.int] validity_days: Validity Days selected for the order.
+               Available values: 14, 30, 90, 365.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -491,12 +477,10 @@ class CertificatePack(pulumi.CustomResource):
         __props__.__dict__["certificate_authority"] = certificate_authority
         __props__.__dict__["cloudflare_branding"] = cloudflare_branding
         __props__.__dict__["hosts"] = hosts
+        __props__.__dict__["status"] = status
         __props__.__dict__["type"] = type
-        __props__.__dict__["validation_errors"] = validation_errors
         __props__.__dict__["validation_method"] = validation_method
-        __props__.__dict__["validation_records"] = validation_records
         __props__.__dict__["validity_days"] = validity_days
-        __props__.__dict__["wait_for_active_status"] = wait_for_active_status
         __props__.__dict__["zone_id"] = zone_id
         return CertificatePack(resource_name, opts=opts, __props__=__props__)
 
@@ -504,7 +488,8 @@ class CertificatePack(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output[builtins.str]:
         """
-        Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+        Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        Available values: "google", "lets*encrypt", "ssl*com".
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -512,7 +497,7 @@ class CertificatePack(pulumi.CustomResource):
     @pulumi.getter(name="cloudflareBranding")
     def cloudflare_branding(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+        Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         """
         return pulumi.get(self, "cloudflare_branding")
 
@@ -520,57 +505,51 @@ class CertificatePack(pulumi.CustomResource):
     @pulumi.getter
     def hosts(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+        Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         """
         return pulumi.get(self, "hosts")
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[builtins.str]:
+    def status(self) -> pulumi.Output[builtins.str]:
         """
-        Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+        Status of certificate pack.
+        Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "status")
 
     @property
-    @pulumi.getter(name="validationErrors")
-    def validation_errors(self) -> pulumi.Output[Sequence['outputs.CertificatePackValidationError']]:
-        return pulumi.get(self, "validation_errors")
+    @pulumi.getter
+    def type(self) -> pulumi.Output[builtins.str]:
+        """
+        Type of certificate pack.
+        Available values: "advanced".
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="validationMethod")
     def validation_method(self) -> pulumi.Output[builtins.str]:
         """
-        Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+        Validation Method selected for the order.
+        Available values: "txt", "http", "email".
         """
         return pulumi.get(self, "validation_method")
-
-    @property
-    @pulumi.getter(name="validationRecords")
-    def validation_records(self) -> pulumi.Output[Sequence['outputs.CertificatePackValidationRecord']]:
-        return pulumi.get(self, "validation_records")
 
     @property
     @pulumi.getter(name="validityDays")
     def validity_days(self) -> pulumi.Output[builtins.int]:
         """
-        How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+        Validity Days selected for the order.
+        Available values: 14, 30, 90, 365.
         """
         return pulumi.get(self, "validity_days")
-
-    @property
-    @pulumi.getter(name="waitForActiveStatus")
-    def wait_for_active_status(self) -> pulumi.Output[Optional[builtins.bool]]:
-        """
-        Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "wait_for_active_status")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

@@ -23,22 +23,16 @@ __all__ = ['RiskBehaviorArgs', 'RiskBehavior']
 class RiskBehaviorArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input['RiskBehaviorBehaviorArgs']]]] = None):
+                 behaviors: pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]):
         """
         The set of arguments for constructing a RiskBehavior resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['RiskBehaviorBehaviorArgs']]] behaviors: Zero Trust risk behaviors configured on this account
         """
         pulumi.set(__self__, "account_id", account_id)
-        if behaviors is not None:
-            pulumi.set(__self__, "behaviors", behaviors)
+        pulumi.set(__self__, "behaviors", behaviors)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -47,14 +41,11 @@ class RiskBehaviorArgs:
 
     @property
     @pulumi.getter
-    def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RiskBehaviorBehaviorArgs']]]]:
-        """
-        Zero Trust risk behaviors configured on this account
-        """
+    def behaviors(self) -> pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]:
         return pulumi.get(self, "behaviors")
 
     @behaviors.setter
-    def behaviors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RiskBehaviorBehaviorArgs']]]]):
+    def behaviors(self, value: pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]):
         pulumi.set(self, "behaviors", value)
 
 
@@ -62,11 +53,9 @@ class RiskBehaviorArgs:
 class _RiskBehaviorState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input['RiskBehaviorBehaviorArgs']]]] = None):
+                 behaviors: Optional[pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]] = None):
         """
         Input properties used for looking up and filtering RiskBehavior resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['RiskBehaviorBehaviorArgs']]] behaviors: Zero Trust risk behaviors configured on this account
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -76,9 +65,6 @@ class _RiskBehaviorState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -87,32 +73,46 @@ class _RiskBehaviorState:
 
     @property
     @pulumi.getter
-    def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RiskBehaviorBehaviorArgs']]]]:
-        """
-        Zero Trust risk behaviors configured on this account
-        """
+    def behaviors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]]:
         return pulumi.get(self, "behaviors")
 
     @behaviors.setter
-    def behaviors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RiskBehaviorBehaviorArgs']]]]):
+    def behaviors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['RiskBehaviorBehaviorsArgs']]]]):
         pulumi.set(self, "behaviors", value)
 
 
+warnings.warn("""cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior""", DeprecationWarning)
+
+
 class RiskBehavior(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]]] = None,
+                 behaviors: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None,
                  __props__=None):
         """
-        The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_risk_behavior = cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior",
+            account_id="account_id",
+            behaviors={
+                "foo": {
+                    "enabled": True,
+                    "risk_level": "low",
+                },
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]] behaviors: Zero Trust risk behaviors configured on this account
         """
         ...
     @overload
@@ -121,7 +121,21 @@ class RiskBehavior(pulumi.CustomResource):
                  args: RiskBehaviorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_risk_behavior = cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior",
+            account_id="account_id",
+            behaviors={
+                "foo": {
+                    "enabled": True,
+                    "risk_level": "low",
+                },
+            })
+        ```
 
         :param str resource_name: The name of the resource.
         :param RiskBehaviorArgs args: The arguments to use to populate this resource's properties.
@@ -139,8 +153,9 @@ class RiskBehavior(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]]] = None,
+                 behaviors: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None,
                  __props__=None):
+        pulumi.log.warn("""RiskBehavior is deprecated: cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -152,7 +167,11 @@ class RiskBehavior(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if behaviors is None and not opts.urn:
+                raise TypeError("Missing required property 'behaviors'")
             __props__.__dict__["behaviors"] = behaviors
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/riskBehavior:RiskBehavior")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(RiskBehavior, __self__).__init__(
             'cloudflare:index/riskBehavior:RiskBehavior',
             resource_name,
@@ -164,7 +183,7 @@ class RiskBehavior(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]]] = None) -> 'RiskBehavior':
+            behaviors: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RiskBehaviorBehaviorsArgs', 'RiskBehaviorBehaviorsArgsDict']]]]] = None) -> 'RiskBehavior':
         """
         Get an existing RiskBehavior resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -172,8 +191,6 @@ class RiskBehavior(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RiskBehaviorBehaviorArgs', 'RiskBehaviorBehaviorArgsDict']]]] behaviors: Zero Trust risk behaviors configured on this account
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -186,16 +203,10 @@ class RiskBehavior(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-    def behaviors(self) -> pulumi.Output[Optional[Sequence['outputs.RiskBehaviorBehavior']]]:
-        """
-        Zero Trust risk behaviors configured on this account
-        """
+    def behaviors(self) -> pulumi.Output[Mapping[str, 'outputs.RiskBehaviorBehaviors']]:
         return pulumi.get(self, "behaviors")
 

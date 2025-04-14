@@ -6,24 +6,19 @@ Subject: [PATCH] expose providers
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 000000000..15d62e4b3
+index 000000000..5f45ebd86
 --- /dev/null
 +++ b/shim/shim.go
-@@ -0,0 +1,17 @@
+@@ -0,0 +1,12 @@
 +package shim
 +
 +import (
 +	"github.com/hashicorp/terraform-plugin-framework/provider"
-+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 +
-+	pf "github.com/cloudflare/terraform-provider-cloudflare/internal/framework/provider"
-+	sdk "github.com/cloudflare/terraform-provider-cloudflare/internal/sdkv2provider"
++	"github.com/cloudflare/terraform-provider-cloudflare/internal"
 +)
 +
-+func SDKProvider() *schema.Provider {
-+	return sdk.New("")()
-+}
 +
 +func PFProvider() provider.Provider {
-+	return pf.New("")()
++	return internal.NewProvider("pulumi")()
 +}

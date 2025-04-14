@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PagesProjectDeploymentConfigsProductionPlacement
     {
         /// <summary>
-        /// Placement Mode for the Pages Function.
+        /// Placement mode.
         /// </summary>
         public readonly string? Mode;
 

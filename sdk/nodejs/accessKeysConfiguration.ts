@@ -5,8 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Access Keys Configuration defines the rotation policy for the keys
- * that access will use to sign data.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessKeyConfiguration = new cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     keyRotationIntervalDays: 30,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example '<account_id>'
+ * ```
+ *
+ * @deprecated cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration
  */
 export class AccessKeysConfiguration extends pulumi.CustomResource {
     /**
@@ -19,6 +36,7 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessKeysConfigurationState, opts?: pulumi.CustomResourceOptions): AccessKeysConfiguration {
+        pulumi.log.warn("AccessKeysConfiguration is deprecated: cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration")
         return new AccessKeysConfiguration(name, <any>state, { ...opts, id: id });
     }
 
@@ -37,13 +55,21 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Number of days to trigger a rotation of the keys.
+     * The number of days until the next key rotation.
+     */
+    public /*out*/ readonly daysUntilNextRotation!: pulumi.Output<number>;
+    /**
+     * The number of days between key rotations.
      */
     public readonly keyRotationIntervalDays!: pulumi.Output<number>;
+    /**
+     * The timestamp of the previous key rotation.
+     */
+    public /*out*/ readonly lastKeyRotationAt!: pulumi.Output<string>;
 
     /**
      * Create a AccessKeysConfiguration resource with the given unique name, arguments, and options.
@@ -52,23 +78,35 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration */
     constructor(name: string, args: AccessKeysConfigurationArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration */
     constructor(name: string, argsOrState?: AccessKeysConfigurationArgs | AccessKeysConfigurationState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessKeysConfiguration is deprecated: cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessKeysConfigurationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["daysUntilNextRotation"] = state ? state.daysUntilNextRotation : undefined;
             resourceInputs["keyRotationIntervalDays"] = state ? state.keyRotationIntervalDays : undefined;
+            resourceInputs["lastKeyRotationAt"] = state ? state.lastKeyRotationAt : undefined;
         } else {
             const args = argsOrState as AccessKeysConfigurationArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.keyRotationIntervalDays === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keyRotationIntervalDays'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["keyRotationIntervalDays"] = args ? args.keyRotationIntervalDays : undefined;
+            resourceInputs["daysUntilNextRotation"] = undefined /*out*/;
+            resourceInputs["lastKeyRotationAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessKeysConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -78,13 +116,21 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
  */
 export interface AccessKeysConfigurationState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Number of days to trigger a rotation of the keys.
+     * The number of days until the next key rotation.
+     */
+    daysUntilNextRotation?: pulumi.Input<number>;
+    /**
+     * The number of days between key rotations.
      */
     keyRotationIntervalDays?: pulumi.Input<number>;
+    /**
+     * The timestamp of the previous key rotation.
+     */
+    lastKeyRotationAt?: pulumi.Input<string>;
 }
 
 /**
@@ -92,11 +138,11 @@ export interface AccessKeysConfigurationState {
  */
 export interface AccessKeysConfigurationArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * Number of days to trigger a rotation of the keys.
+     * The number of days between key rotations.
      */
-    keyRotationIntervalDays?: pulumi.Input<number>;
+    keyRotationIntervalDays: pulumi.Input<number>;
 }

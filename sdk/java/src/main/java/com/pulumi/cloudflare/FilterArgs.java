@@ -6,11 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,29 +15,14 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
     public static final FilterArgs Empty = new FilterArgs();
 
     /**
-     * A note that you can use to describe the purpose of the filter.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return A note that you can use to describe the purpose of the filter.
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * The filter expression to be used.
+     * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
     /**
-     * @return The filter expression to be used.
+     * @return The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
     public Output<String> expression() {
@@ -48,44 +30,14 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether this filter is currently paused.
-     * 
-     */
-    @Import(name="paused")
-    private @Nullable Output<Boolean> paused;
-
-    /**
-     * @return Whether this filter is currently paused.
-     * 
-     */
-    public Optional<Output<Boolean>> paused() {
-        return Optional.ofNullable(this.paused);
-    }
-
-    /**
-     * Short reference tag to quickly select related rules.
-     * 
-     */
-    @Import(name="ref")
-    private @Nullable Output<String> ref;
-
-    /**
-     * @return Short reference tag to quickly select related rules.
-     * 
-     */
-    public Optional<Output<String>> ref() {
-        return Optional.ofNullable(this.ref);
-    }
-
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -95,10 +47,7 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
     private FilterArgs() {}
 
     private FilterArgs(FilterArgs $) {
-        this.description = $.description;
         this.expression = $.expression;
-        this.paused = $.paused;
-        this.ref = $.ref;
         this.zoneId = $.zoneId;
     }
 
@@ -121,28 +70,7 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A note that you can use to describe the purpose of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description A note that you can use to describe the purpose of the filter.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
-         * @param expression The filter expression to be used.
+         * @param expression The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
          * 
          * @return builder
          * 
@@ -153,7 +81,7 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expression The filter expression to be used.
+         * @param expression The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
          * 
          * @return builder
          * 
@@ -163,49 +91,7 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paused Whether this filter is currently paused.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder paused(@Nullable Output<Boolean> paused) {
-            $.paused = paused;
-            return this;
-        }
-
-        /**
-         * @param paused Whether this filter is currently paused.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder paused(Boolean paused) {
-            return paused(Output.of(paused));
-        }
-
-        /**
-         * @param ref Short reference tag to quickly select related rules.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ref(@Nullable Output<String> ref) {
-            $.ref = ref;
-            return this;
-        }
-
-        /**
-         * @param ref Short reference tag to quickly select related rules.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ref(String ref) {
-            return ref(Output.of(ref));
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -216,7 +102,7 @@ public final class FilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

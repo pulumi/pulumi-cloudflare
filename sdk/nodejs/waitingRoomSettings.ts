@@ -5,16 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Configure zone-wide settings for Cloudflare waiting rooms.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WaitingRoomSettings("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleWaitingRoomSettings = new cloudflare.WaitingRoomSettings("example_waiting_room_settings", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     searchEngineCrawlerBypass: true,
  * });
  * ```
@@ -22,7 +20,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example <zone_id>
+ * $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example '<zone_id>'
  * ```
  */
 export class WaitingRoomSettings extends pulumi.CustomResource {
@@ -54,11 +52,13 @@ export class WaitingRoomSettings extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+     * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+     * and will not appear in waiting room analytics.
      */
-    public readonly searchEngineCrawlerBypass!: pulumi.Output<boolean | undefined>;
+    public readonly searchEngineCrawlerBypass!: pulumi.Output<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -95,11 +95,13 @@ export class WaitingRoomSettings extends pulumi.CustomResource {
  */
 export interface WaitingRoomSettingsState {
     /**
-     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+     * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+     * and will not appear in waiting room analytics.
      */
     searchEngineCrawlerBypass?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -109,11 +111,13 @@ export interface WaitingRoomSettingsState {
  */
 export interface WaitingRoomSettingsArgs {
     /**
-     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
+     * Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone.
+     * Verified search engine crawlers will not be tracked or counted by the waiting room system,
+     * and will not appear in waiting room analytics.
      */
     searchEngineCrawlerBypass?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

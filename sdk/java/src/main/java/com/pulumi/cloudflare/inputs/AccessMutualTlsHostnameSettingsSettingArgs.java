@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AccessMutualTlsHostnameSettingsSettingArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,30 +19,30 @@ public final class AccessMutualTlsHostnameSettingsSettingArgs extends com.pulumi
      * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
      * 
      */
-    @Import(name="chinaNetwork")
-    private @Nullable Output<Boolean> chinaNetwork;
+    @Import(name="chinaNetwork", required=true)
+    private Output<Boolean> chinaNetwork;
 
     /**
      * @return Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
      * 
      */
-    public Optional<Output<Boolean>> chinaNetwork() {
-        return Optional.ofNullable(this.chinaNetwork);
+    public Output<Boolean> chinaNetwork() {
+        return this.chinaNetwork;
     }
 
     /**
      * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
      * 
      */
-    @Import(name="clientCertificateForwarding")
-    private @Nullable Output<Boolean> clientCertificateForwarding;
+    @Import(name="clientCertificateForwarding", required=true)
+    private Output<Boolean> clientCertificateForwarding;
 
     /**
      * @return Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
      * 
      */
-    public Optional<Output<Boolean>> clientCertificateForwarding() {
-        return Optional.ofNullable(this.clientCertificateForwarding);
+    public Output<Boolean> clientCertificateForwarding() {
+        return this.clientCertificateForwarding;
     }
 
     /**
@@ -94,7 +92,7 @@ public final class AccessMutualTlsHostnameSettingsSettingArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder chinaNetwork(@Nullable Output<Boolean> chinaNetwork) {
+        public Builder chinaNetwork(Output<Boolean> chinaNetwork) {
             $.chinaNetwork = chinaNetwork;
             return this;
         }
@@ -115,7 +113,7 @@ public final class AccessMutualTlsHostnameSettingsSettingArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder clientCertificateForwarding(@Nullable Output<Boolean> clientCertificateForwarding) {
+        public Builder clientCertificateForwarding(Output<Boolean> clientCertificateForwarding) {
             $.clientCertificateForwarding = clientCertificateForwarding;
             return this;
         }
@@ -152,6 +150,12 @@ public final class AccessMutualTlsHostnameSettingsSettingArgs extends com.pulumi
         }
 
         public AccessMutualTlsHostnameSettingsSettingArgs build() {
+            if ($.chinaNetwork == null) {
+                throw new MissingRequiredPropertyException("AccessMutualTlsHostnameSettingsSettingArgs", "chinaNetwork");
+            }
+            if ($.clientCertificateForwarding == null) {
+                throw new MissingRequiredPropertyException("AccessMutualTlsHostnameSettingsSettingArgs", "clientCertificateForwarding");
+            }
             if ($.hostname == null) {
                 throw new MissingRequiredPropertyException("AccessMutualTlsHostnameSettingsSettingArgs", "hostname");
             }

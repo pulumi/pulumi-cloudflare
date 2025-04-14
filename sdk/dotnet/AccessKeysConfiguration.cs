@@ -10,23 +10,58 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Access Keys Configuration defines the rotation policy for the keys
-    /// that access will use to sign data.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessKeyConfiguration = new Cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         KeyRotationIntervalDays = 30,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration example '&lt;account_id&gt;'
+    /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration")]
     [CloudflareResourceType("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")]
     public partial class AccessKeysConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Number of days to trigger a rotation of the keys.
+        /// The number of days until the next key rotation.
+        /// </summary>
+        [Output("daysUntilNextRotation")]
+        public Output<double> DaysUntilNextRotation { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of days between key rotations.
         /// </summary>
         [Output("keyRotationIntervalDays")]
-        public Output<int> KeyRotationIntervalDays { get; private set; } = null!;
+        public Output<double> KeyRotationIntervalDays { get; private set; } = null!;
+
+        /// <summary>
+        /// The timestamp of the previous key rotation.
+        /// </summary>
+        [Output("lastKeyRotationAt")]
+        public Output<string> LastKeyRotationAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -51,6 +86,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -75,16 +114,16 @@ namespace Pulumi.Cloudflare
     public sealed class AccessKeysConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Number of days to trigger a rotation of the keys.
+        /// The number of days between key rotations.
         /// </summary>
-        [Input("keyRotationIntervalDays")]
-        public Input<int>? KeyRotationIntervalDays { get; set; }
+        [Input("keyRotationIntervalDays", required: true)]
+        public Input<double> KeyRotationIntervalDays { get; set; } = null!;
 
         public AccessKeysConfigurationArgs()
         {
@@ -95,16 +134,28 @@ namespace Pulumi.Cloudflare
     public sealed class AccessKeysConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Number of days to trigger a rotation of the keys.
+        /// The number of days until the next key rotation.
+        /// </summary>
+        [Input("daysUntilNextRotation")]
+        public Input<double>? DaysUntilNextRotation { get; set; }
+
+        /// <summary>
+        /// The number of days between key rotations.
         /// </summary>
         [Input("keyRotationIntervalDays")]
-        public Input<int>? KeyRotationIntervalDays { get; set; }
+        public Input<double>? KeyRotationIntervalDays { get; set; }
+
+        /// <summary>
+        /// The timestamp of the previous key rotation.
+        /// </summary>
+        [Input("lastKeyRotationAt")]
+        public Input<string>? LastKeyRotationAt { get; set; }
 
         public AccessKeysConfigurationState()
         {

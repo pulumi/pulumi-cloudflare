@@ -6,26 +6,19 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.FirewallRuleArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.FirewallRuleState;
+import com.pulumi.cloudflare.outputs.FirewallRuleAction;
+import com.pulumi.cloudflare.outputs.FirewallRuleFilter;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Define Firewall rules using filter expressions for more control over
- * how traffic is matched to the rule. A filter expression permits
- * selecting traffic by multiple criteria allowing greater freedom in
- * rule creation.
- * 
- * Filter expressions needs to be created first before using Firewall
- * Rule.
- * 
  * &gt; `cloudflare.FirewallRule` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised  to move to the
@@ -42,10 +35,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Filter;
- * import com.pulumi.cloudflare.FilterArgs;
  * import com.pulumi.cloudflare.FirewallRule;
  * import com.pulumi.cloudflare.FirewallRuleArgs;
+ * import com.pulumi.cloudflare.inputs.FirewallRuleActionArgs;
+ * import com.pulumi.cloudflare.inputs.FirewallRuleActionResponseArgs;
+ * import com.pulumi.cloudflare.inputs.FirewallRuleFilterArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,17 +53,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var wordpress = new Filter("wordpress", FilterArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .description("Wordpress break-in attempts that are outside of the office")
- *             .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1")
- *             .build());
- * 
- *         var wordpressFirewallRule = new FirewallRule("wordpressFirewallRule", FirewallRuleArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .description("Block wordpress break-in attempts")
- *             .filterId(wordpress.id())
- *             .action("block")
+ *         var exampleFirewallRule = new FirewallRule("exampleFirewallRule", FirewallRuleArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .action(FirewallRuleActionArgs.builder()
+ *                 .mode("simulate")
+ *                 .response(FirewallRuleActionResponseArgs.builder()
+ *                     .body("<error>This request has been rate-limited.</error>")
+ *                     .contentType("text/xml")
+ *                     .build())
+ *                 .timeout(86400.0)
+ *                 .build())
+ *             .filter(FirewallRuleFilterArgs.builder()
+ *                 .description("Restrict access from these browsers on this address range.")
+ *                 .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155")
+ *                 .paused(false)
+ *                 .ref("FIL-100")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -81,105 +80,103 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/firewallRule:FirewallRule example &lt;zone_id&gt;/&lt;firewall_rule_id&gt;
+ * $ pulumi import cloudflare:index/firewallRule:FirewallRule example &#39;&lt;zone_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/firewallRule:FirewallRule")
 public class FirewallRule extends com.pulumi.resources.CustomResource {
     /**
-     * The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
-    @Export(name="action", refs={String.class}, tree="[0]")
-    private Output<String> action;
+    @Export(name="action", refs={FirewallRuleAction.class}, tree="[0]")
+    private Output<FirewallRuleAction> action;
 
     /**
-     * @return The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`, `managed_challenge`, `log`, `bypass`.
+     * @return The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
-    public Output<String> action() {
+    public Output<FirewallRuleAction> action() {
         return this.action;
     }
     /**
-     * A description of the rule to help identify it.
+     * An informative summary of the firewall rule.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
-     * @return A description of the rule to help identify it.
+     * @return An informative summary of the firewall rule.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
-    /**
-     * The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-     * 
-     */
-    @Export(name="filterId", refs={String.class}, tree="[0]")
-    private Output<String> filterId;
+    @Export(name="filter", refs={FirewallRuleFilter.class}, tree="[0]")
+    private Output<FirewallRuleFilter> filter;
 
-    /**
-     * @return The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
-     * 
-     */
-    public Output<String> filterId() {
-        return this.filterId;
+    public Output<FirewallRuleFilter> filter() {
+        return this.filter;
     }
     /**
-     * Whether this filter based firewall rule is currently paused.
+     * When true, indicates that the firewall rule is currently paused.
      * 
      */
     @Export(name="paused", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> paused;
+    private Output<Boolean> paused;
 
     /**
-     * @return Whether this filter based firewall rule is currently paused.
+     * @return When true, indicates that the firewall rule is currently paused.
      * 
      */
-    public Output<Optional<Boolean>> paused() {
-        return Codegen.optional(this.paused);
+    public Output<Boolean> paused() {
+        return this.paused;
     }
     /**
-     * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+     * The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
      * 
      */
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> priority;
+    @Export(name="priority", refs={Double.class}, tree="[0]")
+    private Output<Double> priority;
 
     /**
-     * @return The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+     * @return The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
      * 
      */
-    public Output<Optional<Integer>> priority() {
-        return Codegen.optional(this.priority);
+    public Output<Double> priority() {
+        return this.priority;
     }
-    /**
-     * List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-     * 
-     */
     @Export(name="products", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> products;
+    private Output<List<String>> products;
 
-    /**
-     * @return List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
-     * 
-     */
-    public Output<Optional<List<String>>> products() {
-        return Codegen.optional(this.products);
+    public Output<List<String>> products() {
+        return this.products;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * A short reference tag. Allows you to select related firewall rules.
+     * 
+     */
+    @Export(name="ref", refs={String.class}, tree="[0]")
+    private Output<String> ref;
+
+    /**
+     * @return A short reference tag. Allows you to select related firewall rules.
+     * 
+     */
+    public Output<String> ref() {
+        return this.ref;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

@@ -7,37 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare page rule resource.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Add a page rule to the domain
- * const foobar = new cloudflare.PageRule("foobar", {
- *     zoneId: cloudflareZoneId,
- *     target: `sub.${cloudflareZone}/page`,
- *     priority: 1,
- *     actions: {
- *         ssl: "flexible",
- *         emailObfuscation: "on",
- *         minifies: [{
- *             html: "off",
- *             css: "on",
- *             js: "on",
- *         }],
- *     },
- * });
- * ```
  *
  * ## Import
  *
- * Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
- *
  * ```sh
- * $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+ * $ pulumi import cloudflare:index/pageRule:PageRule example '<zone_id>/<pagerule_id>'
  * ```
  */
 export class PageRule extends pulumi.CustomResource {
@@ -68,24 +43,31 @@ export class PageRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === PageRule.__pulumiType;
     }
 
-    /**
-     * The actions taken by the page rule, options given below.
-     */
     public readonly actions!: pulumi.Output<outputs.PageRuleActions>;
     /**
-     * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+     * The timestamp of when the Page Rule was created.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * Whether the page rule is active or disabled.
+     * The timestamp of when the Page Rule was last modified.
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The URL pattern to target with the page rule.
+     * The priority of the rule, used to define which Page Rule is processed
+     * over another. A higher number indicates a higher priority. For example,
+     * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+     * specific Page Rule to take precedence (rule B: `/images/special/*`),
+     * specify a higher priority for rule B so it overrides rule A.
      */
+    public readonly priority!: pulumi.Output<number>;
+    /**
+     * The status of the Page Rule.
+     * Available values: "active", "disabled".
+     */
+    public readonly status!: pulumi.Output<string>;
     public readonly target!: pulumi.Output<string>;
     /**
-     * The DNS zone ID to which the page rule should be added.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -103,6 +85,8 @@ export class PageRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PageRuleState | undefined;
             resourceInputs["actions"] = state ? state.actions : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
@@ -123,6 +107,8 @@ export class PageRule extends pulumi.CustomResource {
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PageRule.__pulumiType, name, resourceInputs, opts);
@@ -133,24 +119,31 @@ export class PageRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PageRule resources.
  */
 export interface PageRuleState {
-    /**
-     * The actions taken by the page rule, options given below.
-     */
     actions?: pulumi.Input<inputs.PageRuleActions>;
     /**
-     * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+     * The timestamp of when the Page Rule was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * The timestamp of when the Page Rule was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * The priority of the rule, used to define which Page Rule is processed
+     * over another. A higher number indicates a higher priority. For example,
+     * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+     * specific Page Rule to take precedence (rule B: `/images/special/*`),
+     * specify a higher priority for rule B so it overrides rule A.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Whether the page rule is active or disabled.
+     * The status of the Page Rule.
+     * Available values: "active", "disabled".
      */
     status?: pulumi.Input<string>;
-    /**
-     * The URL pattern to target with the page rule.
-     */
     target?: pulumi.Input<string>;
     /**
-     * The DNS zone ID to which the page rule should be added.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -159,24 +152,23 @@ export interface PageRuleState {
  * The set of arguments for constructing a PageRule resource.
  */
 export interface PageRuleArgs {
-    /**
-     * The actions taken by the page rule, options given below.
-     */
     actions: pulumi.Input<inputs.PageRuleActions>;
     /**
-     * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+     * The priority of the rule, used to define which Page Rule is processed
+     * over another. A higher number indicates a higher priority. For example,
+     * if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
+     * specific Page Rule to take precedence (rule B: `/images/special/*`),
+     * specify a higher priority for rule B so it overrides rule A.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Whether the page rule is active or disabled.
+     * The status of the Page Rule.
+     * Available values: "active", "disabled".
      */
     status?: pulumi.Input<string>;
-    /**
-     * The URL pattern to target with the page rule.
-     */
     target: pulumi.Input<string>;
     /**
-     * The DNS zone ID to which the page rule should be added.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

@@ -10,106 +10,108 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Authenticated Origin Pulls resource. A `cloudflare.AuthenticatedOriginPulls`
-    /// resource is required to use Per-Zone or Per-Hostname Authenticated
-    /// Origin Pulls.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Authenticated Origin Pulls
-    ///     var myAop = new Cloudflare.AuthenticatedOriginPulls("my_aop", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     // Per-Zone Authenticated Origin Pulls
-    ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Certificate = "-----INSERT CERTIFICATE-----",
-    ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///         Type = "per-zone",
-    ///     });
-    /// 
-    ///     var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls("my_per_zone_aop", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     // Per-Hostname Authenticated Origin Pulls
-    ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Certificate = "-----INSERT CERTIFICATE-----",
-    ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///         Type = "per-hostname",
-    ///     });
-    /// 
-    ///     var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls("my_per_hostname_aop", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,
-    ///         Hostname = "aop.example.com",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// global
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;
-    /// ```
-    /// 
-    /// per zone
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;/&lt;certificate_id&gt;
-    /// ```
-    /// 
-    /// per hostname
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;/&lt;certificate_id&gt;/&lt;hostname&gt;
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")]
     public partial class AuthenticatedOriginPulls : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        /// Identifier
         /// </summary>
-        [Output("authenticatedOriginPullsCertificate")]
-        public Output<string?> AuthenticatedOriginPullsCertificate { get; private set; } = null!;
+        [Output("certId")]
+        public Output<string> CertId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+        /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+        /// </summary>
+        [Output("certStatus")]
+        public Output<string> CertStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the certificate was updated.
+        /// </summary>
+        [Output("certUpdatedAt")]
+        public Output<string> CertUpdatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the certificate was uploaded.
+        /// </summary>
+        [Output("certUploadedOn")]
+        public Output<string> CertUploadedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The hostname certificate.
+        /// </summary>
+        [Output("certificate")]
+        public Output<string> Certificate { get; private set; } = null!;
+
+        [Output("configs")]
+        public Output<ImmutableArray<Outputs.AuthenticatedOriginPullsConfig>> Configs { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the certificate was created.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        /// The date when the certificate expires.
+        /// </summary>
+        [Output("expiresOn")]
+        public Output<string> ExpiresOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The hostname on the origin for which the client certificate uploaded will be used.
         /// </summary>
         [Output("hostname")]
         public Output<string?> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// The certificate authority that issued the certificate.
+        /// </summary>
+        [Output("issuer")]
+        public Output<string> Issuer { get; private set; } = null!;
+
+        /// <summary>
+        /// The hostname certificate's private key.
+        /// </summary>
+        [Output("privateKey")]
+        public Output<string> PrivateKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The serial number on the uploaded certificate.
+        /// </summary>
+        [Output("serialNumber")]
+        public Output<string> SerialNumber { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of hash used for the certificate.
+        /// </summary>
+        [Output("signature")]
+        public Output<string> Signature { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the certificate was updated.
+        /// </summary>
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -137,6 +139,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -160,26 +166,22 @@ namespace Pulumi.Cloudflare
 
     public sealed class AuthenticatedOriginPullsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-        /// </summary>
-        [Input("authenticatedOriginPullsCertificate")]
-        public Input<string>? AuthenticatedOriginPullsCertificate { get; set; }
+        [Input("configs", required: true)]
+        private InputList<Inputs.AuthenticatedOriginPullsConfigArgs>? _configs;
+        public InputList<Inputs.AuthenticatedOriginPullsConfigArgs> Configs
+        {
+            get => _configs ?? (_configs = new InputList<Inputs.AuthenticatedOriginPullsConfigArgs>());
+            set => _configs = value;
+        }
 
         /// <summary>
-        /// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-        /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
-
-        /// <summary>
-        /// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        /// The hostname on the origin for which the client certificate uploaded will be used.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -193,25 +195,117 @@ namespace Pulumi.Cloudflare
     public sealed class AuthenticatedOriginPullsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        /// Identifier
         /// </summary>
-        [Input("authenticatedOriginPullsCertificate")]
-        public Input<string>? AuthenticatedOriginPullsCertificate { get; set; }
+        [Input("certId")]
+        public Input<string>? CertId { get; set; }
 
         /// <summary>
-        /// Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+        /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+        /// </summary>
+        [Input("certStatus")]
+        public Input<string>? CertStatus { get; set; }
+
+        /// <summary>
+        /// The time when the certificate was updated.
+        /// </summary>
+        [Input("certUpdatedAt")]
+        public Input<string>? CertUpdatedAt { get; set; }
+
+        /// <summary>
+        /// The time when the certificate was uploaded.
+        /// </summary>
+        [Input("certUploadedOn")]
+        public Input<string>? CertUploadedOn { get; set; }
+
+        /// <summary>
+        /// The hostname certificate.
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
+
+        [Input("configs")]
+        private InputList<Inputs.AuthenticatedOriginPullsConfigGetArgs>? _configs;
+        public InputList<Inputs.AuthenticatedOriginPullsConfigGetArgs> Configs
+        {
+            get => _configs ?? (_configs = new InputList<Inputs.AuthenticatedOriginPullsConfigGetArgs>());
+            set => _configs = value;
+        }
+
+        /// <summary>
+        /// The time when the certificate was created.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        /// The date when the certificate expires.
+        /// </summary>
+        [Input("expiresOn")]
+        public Input<string>? ExpiresOn { get; set; }
+
+        /// <summary>
+        /// The hostname on the origin for which the client certificate uploaded will be used.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// The certificate authority that issued the certificate.
+        /// </summary>
+        [Input("issuer")]
+        public Input<string>? Issuer { get; set; }
+
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
+        /// <summary>
+        /// The hostname certificate's private key.
+        /// </summary>
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The serial number on the uploaded certificate.
+        /// </summary>
+        [Input("serialNumber")]
+        public Input<string>? SerialNumber { get; set; }
+
+        /// <summary>
+        /// The type of hash used for the certificate.
+        /// </summary>
+        [Input("signature")]
+        public Input<string>? Signature { get; set; }
+
+        /// <summary>
+        /// Status of the certificate or the association.
+        /// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The time when the certificate was updated.
+        /// </summary>
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

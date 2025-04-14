@@ -29,24 +29,44 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, filter=None, id=None, zones=None):
-        if filter and not isinstance(filter, dict):
-            raise TypeError("Expected argument 'filter' to be a dict")
-        pulumi.set(__self__, "filter", filter)
+    def __init__(__self__, account=None, direction=None, id=None, match=None, max_items=None, name=None, order=None, results=None, status=None):
+        if account and not isinstance(account, dict):
+            raise TypeError("Expected argument 'account' to be a dict")
+        pulumi.set(__self__, "account", account)
+        if direction and not isinstance(direction, str):
+            raise TypeError("Expected argument 'direction' to be a str")
+        pulumi.set(__self__, "direction", direction)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if zones and not isinstance(zones, list):
-            raise TypeError("Expected argument 'zones' to be a list")
-        pulumi.set(__self__, "zones", zones)
+        if match and not isinstance(match, str):
+            raise TypeError("Expected argument 'match' to be a str")
+        pulumi.set(__self__, "match", match)
+        if max_items and not isinstance(max_items, int):
+            raise TypeError("Expected argument 'max_items' to be a int")
+        pulumi.set(__self__, "max_items", max_items)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
+        if order and not isinstance(order, str):
+            raise TypeError("Expected argument 'order' to be a str")
+        pulumi.set(__self__, "order", order)
+        if results and not isinstance(results, list):
+            raise TypeError("Expected argument 'results' to be a list")
+        pulumi.set(__self__, "results", results)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
-    def filter(self) -> 'outputs.GetZonesFilterResult':
-        """
-        One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-        """
-        return pulumi.get(self, "filter")
+    def account(self) -> Optional['outputs.GetZonesAccountResult']:
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter
@@ -58,11 +78,33 @@ class GetZonesResult:
 
     @property
     @pulumi.getter
-    def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
-        """
-        A list of zone objects.
-        """
-        return pulumi.get(self, "zones")
+    def match(self) -> builtins.str:
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "max_items")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "order")
+
+    @property
+    @pulumi.getter
+    def results(self) -> Sequence['outputs.GetZonesResultResult']:
+        return pulumi.get(self, "results")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "status")
 
 
 class AwaitableGetZonesResult(GetZonesResult):
@@ -71,41 +113,105 @@ class AwaitableGetZonesResult(GetZonesResult):
         if False:
             yield self
         return GetZonesResult(
-            filter=self.filter,
+            account=self.account,
+            direction=self.direction,
             id=self.id,
-            zones=self.zones)
+            match=self.match,
+            max_items=self.max_items,
+            name=self.name,
+            order=self.order,
+            results=self.results,
+            status=self.status)
 
 
-def get_zones(filter: Optional[Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict']] = None,
+def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArgsDict']] = None,
+              direction: Optional[builtins.str] = None,
+              match: Optional[builtins.str] = None,
+              max_items: Optional[builtins.int] = None,
+              name: Optional[builtins.str] = None,
+              order: Optional[builtins.str] = None,
+              status: Optional[builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    Use this data source to look up Zone results for use in other resources.
+    ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
-    :param Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+    example_zones = cloudflare.get_zones(account={
+            "id": "id",
+            "name": "name",
+        },
+        direction="asc",
+        name="name",
+        order="name",
+        status="initializing")
+    ```
     """
     __args__ = dict()
-    __args__['filter'] = filter
+    __args__['account'] = account
+    __args__['direction'] = direction
+    __args__['match'] = match
+    __args__['maxItems'] = max_items
+    __args__['name'] = name
+    __args__['order'] = order
+    __args__['status'] = status
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        filter=pulumi.get(__ret__, 'filter'),
+        account=pulumi.get(__ret__, 'account'),
+        direction=pulumi.get(__ret__, 'direction'),
         id=pulumi.get(__ret__, 'id'),
-        zones=pulumi.get(__ret__, 'zones'))
-def get_zones_output(filter: Optional[pulumi.Input[Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict']]] = None,
+        match=pulumi.get(__ret__, 'match'),
+        max_items=pulumi.get(__ret__, 'max_items'),
+        name=pulumi.get(__ret__, 'name'),
+        order=pulumi.get(__ret__, 'order'),
+        results=pulumi.get(__ret__, 'results'),
+        status=pulumi.get(__ret__, 'status'))
+def get_zones_output(account: Optional[pulumi.Input[Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArgsDict']]]] = None,
+                     direction: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                     match: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                     max_items: Optional[pulumi.Input[Optional[builtins.int]]] = None,
+                     name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                     order: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                     status: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
-    Use this data source to look up Zone results for use in other resources.
+    ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
 
-    :param Union['GetZonesFilterArgs', 'GetZonesFilterArgsDict'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
+    example_zones = cloudflare.get_zones(account={
+            "id": "id",
+            "name": "name",
+        },
+        direction="asc",
+        name="name",
+        order="name",
+        status="initializing")
+    ```
     """
     __args__ = dict()
-    __args__['filter'] = filter
+    __args__['account'] = account
+    __args__['direction'] = direction
+    __args__['match'] = match
+    __args__['maxItems'] = max_items
+    __args__['name'] = name
+    __args__['order'] = order
+    __args__['status'] = status
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
-        filter=pulumi.get(__response__, 'filter'),
+        account=pulumi.get(__response__, 'account'),
+        direction=pulumi.get(__response__, 'direction'),
         id=pulumi.get(__response__, 'id'),
-        zones=pulumi.get(__response__, 'zones')))
+        match=pulumi.get(__response__, 'match'),
+        max_items=pulumi.get(__response__, 'max_items'),
+        name=pulumi.get(__response__, 'name'),
+        order=pulumi.get(__response__, 'order'),
+        results=pulumi.get(__response__, 'results'),
+        status=pulumi.get(__response__, 'status')))

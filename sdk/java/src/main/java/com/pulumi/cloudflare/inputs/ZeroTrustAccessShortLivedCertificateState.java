@@ -16,14 +16,14 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
     public static final ZeroTrustAccessShortLivedCertificateState Empty = new ZeroTrustAccessShortLivedCertificateState();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,29 +31,29 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
     }
 
     /**
-     * The Access Application ID to associate with the CA certificate.
+     * UUID
      * 
      */
-    @Import(name="applicationId")
-    private @Nullable Output<String> applicationId;
+    @Import(name="appId")
+    private @Nullable Output<String> appId;
 
     /**
-     * @return The Access Application ID to associate with the CA certificate.
+     * @return UUID
      * 
      */
-    public Optional<Output<String>> applicationId() {
-        return Optional.ofNullable(this.applicationId);
+    public Optional<Output<String>> appId() {
+        return Optional.ofNullable(this.appId);
     }
 
     /**
-     * Application Audience (AUD) Tag of the CA certificate.
+     * The Application Audience (AUD) tag. Identifies the application associated with the CA.
      * 
      */
     @Import(name="aud")
     private @Nullable Output<String> aud;
 
     /**
-     * @return Application Audience (AUD) Tag of the CA certificate.
+     * @return The Application Audience (AUD) tag. Identifies the application associated with the CA.
      * 
      */
     public Optional<Output<String>> aud() {
@@ -61,14 +61,14 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
     }
 
     /**
-     * Cryptographic public key of the generated CA certificate.
+     * The public key to add to your SSH server configuration.
      * 
      */
     @Import(name="publicKey")
     private @Nullable Output<String> publicKey;
 
     /**
-     * @return Cryptographic public key of the generated CA certificate.
+     * @return The public key to add to your SSH server configuration.
      * 
      */
     public Optional<Output<String>> publicKey() {
@@ -76,14 +76,14 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -94,7 +94,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
 
     private ZeroTrustAccessShortLivedCertificateState(ZeroTrustAccessShortLivedCertificateState $) {
         this.accountId = $.accountId;
-        this.applicationId = $.applicationId;
+        this.appId = $.appId;
         this.aud = $.aud;
         this.publicKey = $.publicKey;
         this.zoneId = $.zoneId;
@@ -119,7 +119,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -140,28 +140,28 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param applicationId The Access Application ID to associate with the CA certificate.
+         * @param appId UUID
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(@Nullable Output<String> applicationId) {
-            $.applicationId = applicationId;
+        public Builder appId(@Nullable Output<String> appId) {
+            $.appId = appId;
             return this;
         }
 
         /**
-         * @param applicationId The Access Application ID to associate with the CA certificate.
+         * @param appId UUID
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(String applicationId) {
-            return applicationId(Output.of(applicationId));
+        public Builder appId(String appId) {
+            return appId(Output.of(appId));
         }
 
         /**
-         * @param aud Application Audience (AUD) Tag of the CA certificate.
+         * @param aud The Application Audience (AUD) tag. Identifies the application associated with the CA.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param aud Application Audience (AUD) Tag of the CA certificate.
+         * @param aud The Application Audience (AUD) tag. Identifies the application associated with the CA.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param publicKey Cryptographic public key of the generated CA certificate.
+         * @param publicKey The public key to add to your SSH server configuration.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param publicKey Cryptographic public key of the generated CA certificate.
+         * @param publicKey The public key to add to your SSH server configuration.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

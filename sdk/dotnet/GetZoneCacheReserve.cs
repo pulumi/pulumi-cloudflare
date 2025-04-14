@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetZoneCacheReserve
     {
         /// <summary>
-        /// Provides a Cloudflare data source to look up Cache Reserve
-        /// status for a given zone.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -25,9 +22,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetZoneCacheReserve.Invoke(new()
+        ///     var exampleZoneCacheReserve = Cloudflare.GetZoneCacheReserve.Invoke(new()
         ///     {
-        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -37,9 +34,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneCacheReserveResult>("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args ?? new GetZoneCacheReserveArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a Cloudflare data source to look up Cache Reserve
-        /// status for a given zone.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -50,9 +44,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetZoneCacheReserve.Invoke(new()
+        ///     var exampleZoneCacheReserve = Cloudflare.GetZoneCacheReserve.Invoke(new()
         ///     {
-        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -62,9 +56,6 @@ namespace Pulumi.Cloudflare
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneCacheReserveResult>("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args ?? new GetZoneCacheReserveInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a Cloudflare data source to look up Cache Reserve
-        /// status for a given zone.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -75,9 +66,9 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = Cloudflare.GetZoneCacheReserve.Invoke(new()
+        ///     var exampleZoneCacheReserve = Cloudflare.GetZoneCacheReserve.Invoke(new()
         ///     {
-        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -91,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneCacheReserveArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneCacheReserveInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -121,28 +112,44 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneCacheReserveResult
     {
         /// <summary>
-        /// The status of Cache Reserve support.
+        /// Whether the setting is editable
         /// </summary>
-        public readonly bool Enabled;
+        public readonly bool Editable;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// ID of the zone setting.
+        /// Available values: "cache_reserve".
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Last time this setting was modified.
+        /// </summary>
+        public readonly string ModifiedOn;
+        /// <summary>
+        /// The value of the feature
+        /// Available values: "on", "off".
+        /// </summary>
+        public readonly string Value;
+        /// <summary>
+        /// Identifier
         /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]
         private GetZoneCacheReserveResult(
-            bool enabled,
+            bool editable,
 
             string id,
 
+            string modifiedOn,
+
+            string value,
+
             string zoneId)
         {
-            Enabled = enabled;
+            Editable = editable;
             Id = id;
+            ModifiedOn = modifiedOn;
+            Value = value;
             ZoneId = zoneId;
         }
     }

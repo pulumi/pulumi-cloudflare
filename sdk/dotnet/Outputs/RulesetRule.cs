@@ -14,43 +14,48 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRule
     {
         /// <summary>
-        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        /// The action to perform when the rule matches.
+        /// Available values: "block".
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// List of parameters that configure the behavior of the ruleset rule action.
+        /// The parameters configuring the rule's action.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParameters? ActionParameters;
         /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
+        /// The categories of the rule.
+        /// </summary>
+        public readonly ImmutableArray<string> Categories;
+        /// <summary>
+        /// An informative description of the rule.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Whether the rule is active.
+        /// Whether the rule should be executed.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// List of parameters that configure exposed credential checks.
+        /// Configure checks for exposed credentials.
         /// </summary>
         public readonly Outputs.RulesetRuleExposedCredentialCheck? ExposedCredentialCheck;
         /// <summary>
-        /// Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// The expression defining which traffic will match the rule.
         /// </summary>
-        public readonly string Expression;
+        public readonly string? Expression;
         /// <summary>
-        /// Unique rule identifier.
+        /// The unique ID of the rule.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// List parameters to configure how the rule generates logs. Only valid for skip action.
+        /// An object configuring the rule's logging behavior.
         /// </summary>
         public readonly Outputs.RulesetRuleLogging? Logging;
         /// <summary>
-        /// List of parameters that configure HTTP rate limiting behaviour.
+        /// An object configuring the rule's ratelimit behavior.
         /// </summary>
         public readonly Outputs.RulesetRuleRatelimit? Ratelimit;
         /// <summary>
-        /// Rule reference.
+        /// The reference of the rule (the rule ID by default).
         /// </summary>
         public readonly string? Ref;
 
@@ -60,13 +65,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParameters? actionParameters,
 
+            ImmutableArray<string> categories,
+
             string? description,
 
             bool? enabled,
 
             Outputs.RulesetRuleExposedCredentialCheck? exposedCredentialCheck,
 
-            string expression,
+            string? expression,
 
             string? id,
 
@@ -78,6 +85,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Action = action;
             ActionParameters = actionParameters;
+            Categories = categories;
             Description = description;
             Enabled = enabled;
             ExposedCredentialCheck = exposedCredentialCheck;

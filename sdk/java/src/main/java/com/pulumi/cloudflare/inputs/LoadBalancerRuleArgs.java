@@ -4,14 +4,12 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.LoadBalancerRuleFixedResponseArgs;
-import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverrideArgs;
+import com.pulumi.cloudflare.inputs.LoadBalancerRuleOverridesArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,14 +20,14 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
     public static final LoadBalancerRuleArgs Empty = new LoadBalancerRuleArgs();
 
     /**
-     * The statement to evaluate to determine if this rule&#39;s effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+     * The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
      * 
      */
     @Import(name="condition")
     private @Nullable Output<String> condition;
 
     /**
-     * @return The statement to evaluate to determine if this rule&#39;s effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+     * @return The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
      * 
      */
     public Optional<Output<String>> condition() {
@@ -37,14 +35,14 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A disabled rule will not be executed.
+     * Disable this specific rule. It will no longer be evaluated by this load balancer.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return A disabled rule will not be executed.
+     * @return Disable this specific rule. It will no longer be evaluated by this load balancer.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -52,14 +50,14 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+     * A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
      * 
      */
     @Import(name="fixedResponse")
     private @Nullable Output<LoadBalancerRuleFixedResponseArgs> fixedResponse;
 
     /**
-     * @return Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+     * @return A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
      * 
      */
     public Optional<Output<LoadBalancerRuleFixedResponseArgs>> fixedResponse() {
@@ -67,44 +65,44 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Human readable name for this rule.
+     * Name of this rule. Only used for human readability.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Human readable name for this rule.
+     * @return Name of this rule. Only used for human readability.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
-     * The load balancer settings to alter if this rule&#39;s `condition` is true. Note: `overrides` or `fixed_response` must be set.
+     * A collection of overrides to apply to the load balancer when this rule&#39;s condition is true. All fields are optional.
      * 
      */
     @Import(name="overrides")
-    private @Nullable Output<List<LoadBalancerRuleOverrideArgs>> overrides;
+    private @Nullable Output<LoadBalancerRuleOverridesArgs> overrides;
 
     /**
-     * @return The load balancer settings to alter if this rule&#39;s `condition` is true. Note: `overrides` or `fixed_response` must be set.
+     * @return A collection of overrides to apply to the load balancer when this rule&#39;s condition is true. All fields are optional.
      * 
      */
-    public Optional<Output<List<LoadBalancerRuleOverrideArgs>>> overrides() {
+    public Optional<Output<LoadBalancerRuleOverridesArgs>> overrides() {
         return Optional.ofNullable(this.overrides);
     }
 
     /**
-     * Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+     * The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+     * @return The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -112,14 +110,14 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+     * If this rule&#39;s condition is true, this causes rule evaluation to stop after processing this rule.
      * 
      */
     @Import(name="terminates")
     private @Nullable Output<Boolean> terminates;
 
     /**
-     * @return Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+     * @return If this rule&#39;s condition is true, this causes rule evaluation to stop after processing this rule.
      * 
      */
     public Optional<Output<Boolean>> terminates() {
@@ -157,7 +155,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param condition The statement to evaluate to determine if this rule&#39;s effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+         * @param condition The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
          * 
          * @return builder
          * 
@@ -168,7 +166,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param condition The statement to evaluate to determine if this rule&#39;s effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+         * @param condition The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions.
          * 
          * @return builder
          * 
@@ -178,7 +176,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disabled A disabled rule will not be executed.
+         * @param disabled Disable this specific rule. It will no longer be evaluated by this load balancer.
          * 
          * @return builder
          * 
@@ -189,7 +187,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disabled A disabled rule will not be executed.
+         * @param disabled Disable this specific rule. It will no longer be evaluated by this load balancer.
          * 
          * @return builder
          * 
@@ -199,7 +197,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fixedResponse Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+         * @param fixedResponse A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
          * 
          * @return builder
          * 
@@ -210,7 +208,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fixedResponse Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: `overrides` or `fixed_response` must be set.
+         * @param fixedResponse A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
          * 
          * @return builder
          * 
@@ -220,18 +218,18 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Human readable name for this rule.
+         * @param name Name of this rule. Only used for human readability.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Human readable name for this rule.
+         * @param name Name of this rule. Only used for human readability.
          * 
          * @return builder
          * 
@@ -241,38 +239,28 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param overrides The load balancer settings to alter if this rule&#39;s `condition` is true. Note: `overrides` or `fixed_response` must be set.
+         * @param overrides A collection of overrides to apply to the load balancer when this rule&#39;s condition is true. All fields are optional.
          * 
          * @return builder
          * 
          */
-        public Builder overrides(@Nullable Output<List<LoadBalancerRuleOverrideArgs>> overrides) {
+        public Builder overrides(@Nullable Output<LoadBalancerRuleOverridesArgs> overrides) {
             $.overrides = overrides;
             return this;
         }
 
         /**
-         * @param overrides The load balancer settings to alter if this rule&#39;s `condition` is true. Note: `overrides` or `fixed_response` must be set.
+         * @param overrides A collection of overrides to apply to the load balancer when this rule&#39;s condition is true. All fields are optional.
          * 
          * @return builder
          * 
          */
-        public Builder overrides(List<LoadBalancerRuleOverrideArgs> overrides) {
+        public Builder overrides(LoadBalancerRuleOverridesArgs overrides) {
             return overrides(Output.of(overrides));
         }
 
         /**
-         * @param overrides The load balancer settings to alter if this rule&#39;s `condition` is true. Note: `overrides` or `fixed_response` must be set.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder overrides(LoadBalancerRuleOverrideArgs... overrides) {
-            return overrides(List.of(overrides));
-        }
-
-        /**
-         * @param priority Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+         * @param priority The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
          * 
          * @return builder
          * 
@@ -283,7 +271,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param priority Priority used when determining the order of rule execution. Lower values are executed first. If not provided, the list order will be used.
+         * @param priority The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority.
          * 
          * @return builder
          * 
@@ -293,7 +281,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param terminates Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+         * @param terminates If this rule&#39;s condition is true, this causes rule evaluation to stop after processing this rule.
          * 
          * @return builder
          * 
@@ -304,7 +292,7 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param terminates Terminates indicates that if this rule is true no further rules should be executed. Note: setting a `fixed_response` forces this field to `true`.
+         * @param terminates If this rule&#39;s condition is true, this causes rule evaluation to stop after processing this rule.
          * 
          * @return builder
          * 
@@ -314,9 +302,6 @@ public final class LoadBalancerRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public LoadBalancerRuleArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerRuleArgs", "name");
-            }
             return $;
         }
     }

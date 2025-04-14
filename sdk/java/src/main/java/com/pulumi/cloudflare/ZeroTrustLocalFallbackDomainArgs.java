@@ -10,25 +10,15 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustLocalFallbackDomainArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ZeroTrustLocalFallbackDomainArgs Empty = new ZeroTrustLocalFallbackDomainArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -41,18 +31,18 @@ public final class ZeroTrustLocalFallbackDomainArgs extends com.pulumi.resources
     }
 
     /**
-     * The settings policy for which to configure this fallback domain policy.
+     * Device ID.
      * 
      */
-    @Import(name="policyId")
-    private @Nullable Output<String> policyId;
+    @Import(name="policyId", required=true)
+    private Output<String> policyId;
 
     /**
-     * @return The settings policy for which to configure this fallback domain policy.
+     * @return Device ID.
      * 
      */
-    public Optional<Output<String>> policyId() {
-        return Optional.ofNullable(this.policyId);
+    public Output<String> policyId() {
+        return this.policyId;
     }
 
     private ZeroTrustLocalFallbackDomainArgs() {}
@@ -81,23 +71,11 @@ public final class ZeroTrustLocalFallbackDomainArgs extends com.pulumi.resources
             $ = new ZeroTrustLocalFallbackDomainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -116,18 +94,18 @@ public final class ZeroTrustLocalFallbackDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param policyId The settings policy for which to configure this fallback domain policy.
+         * @param policyId Device ID.
          * 
          * @return builder
          * 
          */
-        public Builder policyId(@Nullable Output<String> policyId) {
+        public Builder policyId(Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
         /**
-         * @param policyId The settings policy for which to configure this fallback domain policy.
+         * @param policyId Device ID.
          * 
          * @return builder
          * 
@@ -142,6 +120,9 @@ public final class ZeroTrustLocalFallbackDomainArgs extends com.pulumi.resources
             }
             if ($.domains == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustLocalFallbackDomainArgs", "domains");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustLocalFallbackDomainArgs", "policyId");
             }
             return $;
         }

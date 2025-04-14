@@ -8,20 +8,16 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ManagedHeadersState;
 import com.pulumi.cloudflare.outputs.ManagedHeadersManagedRequestHeader;
 import com.pulumi.cloudflare.outputs.ManagedHeadersManagedResponseHeader;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
- * allows you to add or remove some predefined headers to one&#39;s
- * requests or origin responses.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -32,10 +28,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ManagedHeaders;
- * import com.pulumi.cloudflare.ManagedHeadersArgs;
- * import com.pulumi.cloudflare.inputs.ManagedHeadersManagedRequestHeaderArgs;
- * import com.pulumi.cloudflare.inputs.ManagedHeadersManagedResponseHeaderArgs;
+ * import com.pulumi.cloudflare.ManagedTransforms;
+ * import com.pulumi.cloudflare.ManagedTransformsArgs;
+ * import com.pulumi.cloudflare.inputs.ManagedTransformsManagedRequestHeaderArgs;
+ * import com.pulumi.cloudflare.inputs.ManagedTransformsManagedResponseHeaderArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,15 +45,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Enable security headers using Managed Meaders
- *         var example = new ManagedHeaders("example", ManagedHeadersArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .managedRequestHeaders(ManagedHeadersManagedRequestHeaderArgs.builder()
- *                 .id("add_true_client_ip_headers")
+ *         var exampleManagedTransforms = new ManagedTransforms("exampleManagedTransforms", ManagedTransformsArgs.builder()
+ *             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+ *             .managedRequestHeaders(ManagedTransformsManagedRequestHeaderArgs.builder()
+ *                 .id("add_bot_protection_headers")
  *                 .enabled(true)
  *                 .build())
- *             .managedResponseHeaders(ManagedHeadersManagedResponseHeaderArgs.builder()
- *                 .id("remove_x-powered-by_header")
+ *             .managedResponseHeaders(ManagedTransformsManagedResponseHeaderArgs.builder()
+ *                 .id("add_security_headers")
  *                 .enabled(true)
  *                 .build())
  *             .build());
@@ -68,46 +63,56 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/managedHeaders:ManagedHeaders example &#39;&lt;zone_id&gt;&#39;
+ * ```
+ * 
+ * @deprecated
+ * cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms
+ * 
  */
+@Deprecated /* cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms */
 @ResourceType(type="cloudflare:index/managedHeaders:ManagedHeaders")
 public class ManagedHeaders extends com.pulumi.resources.CustomResource {
     /**
-     * The list of managed request headers.
+     * The list of Managed Request Transforms.
      * 
      */
     @Export(name="managedRequestHeaders", refs={List.class,ManagedHeadersManagedRequestHeader.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ManagedHeadersManagedRequestHeader>> managedRequestHeaders;
+    private Output<List<ManagedHeadersManagedRequestHeader>> managedRequestHeaders;
 
     /**
-     * @return The list of managed request headers.
+     * @return The list of Managed Request Transforms.
      * 
      */
-    public Output<Optional<List<ManagedHeadersManagedRequestHeader>>> managedRequestHeaders() {
-        return Codegen.optional(this.managedRequestHeaders);
+    public Output<List<ManagedHeadersManagedRequestHeader>> managedRequestHeaders() {
+        return this.managedRequestHeaders;
     }
     /**
-     * The list of managed response headers.
+     * The list of Managed Response Transforms.
      * 
      */
     @Export(name="managedResponseHeaders", refs={List.class,ManagedHeadersManagedResponseHeader.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ManagedHeadersManagedResponseHeader>> managedResponseHeaders;
+    private Output<List<ManagedHeadersManagedResponseHeader>> managedResponseHeaders;
 
     /**
-     * @return The list of managed response headers.
+     * @return The list of Managed Response Transforms.
      * 
      */
-    public Output<Optional<List<ManagedHeadersManagedResponseHeader>>> managedResponseHeaders() {
-        return Codegen.optional(this.managedResponseHeaders);
+    public Output<List<ManagedHeadersManagedResponseHeader>> managedResponseHeaders() {
+        return this.managedResponseHeaders;
     }
     /**
-     * The zone identifier to target for the resource.
+     * The unique ID of the zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return The unique ID of the zone.
      * 
      */
     public Output<String> zoneId() {
@@ -153,6 +158,9 @@ public class ManagedHeaders extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/managedHeaders:ManagedHeaders").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

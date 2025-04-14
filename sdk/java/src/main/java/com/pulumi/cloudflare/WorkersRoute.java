@@ -6,17 +6,19 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkersRouteArgs;
 import com.pulumi.cloudflare.inputs.WorkersRouteState;
+import com.pulumi.cloudflare.outputs.WorkersRouteError;
+import com.pulumi.cloudflare.outputs.WorkersRouteMessage;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -27,7 +29,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersScript;
  * import com.pulumi.cloudflare.WorkersRoute;
  * import com.pulumi.cloudflare.WorkersRouteArgs;
  * import java.util.List;
@@ -43,13 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myScript = new WorkersScript("myScript");
- * 
- *         // Runs the specified worker script for all URLs that match `example.com/*`
- *         var myRoute = new WorkersRoute("myRoute", WorkersRouteArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .pattern("example.com/*")
- *             .scriptName(myScript.name())
+ *         var exampleWorkersRoute = new WorkersRoute("exampleWorkersRoute", WorkersRouteArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .pattern("example.net/*")
+ *             .script("this-is_my_script-01")
  *             .build());
  * 
  *     }
@@ -58,52 +56,78 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/workersRoute:WorkersRoute example &lt;zone_id&gt;/&lt;route_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/workersRoute:WorkersRoute")
 public class WorkersRoute extends com.pulumi.resources.CustomResource {
-    /**
-     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     * 
-     */
+    @Export(name="errors", refs={List.class,WorkersRouteError.class}, tree="[0,1]")
+    private Output<List<WorkersRouteError>> errors;
+
+    public Output<List<WorkersRouteError>> errors() {
+        return this.errors;
+    }
+    @Export(name="messages", refs={List.class,WorkersRouteMessage.class}, tree="[0,1]")
+    private Output<List<WorkersRouteMessage>> messages;
+
+    public Output<List<WorkersRouteMessage>> messages() {
+        return this.messages;
+    }
     @Export(name="pattern", refs={String.class}, tree="[0]")
     private Output<String> pattern;
 
-    /**
-     * @return The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     * 
-     */
     public Output<String> pattern() {
         return this.pattern;
     }
     /**
-     * Worker script name to invoke for requests that match the route pattern.
+     * Identifier
      * 
      */
-    @Export(name="scriptName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> scriptName;
+    @Export(name="routeId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> routeId;
 
     /**
-     * @return Worker script name to invoke for requests that match the route pattern.
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> scriptName() {
-        return Codegen.optional(this.scriptName);
+    public Output<Optional<String>> routeId() {
+        return Codegen.optional(this.routeId);
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
+     * 
+     */
+    @Export(name="script", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> script;
+
+    /**
+     * @return Name of the script, used in URLs and route configuration.
+     * 
+     */
+    public Output<Optional<String>> script() {
+        return Codegen.optional(this.script);
+    }
+    /**
+     * Whether the API call was successful
+     * 
+     */
+    @Export(name="success", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> success;
+
+    /**
+     * @return Whether the API call was successful
+     * 
+     */
+    public Output<Boolean> success() {
+        return this.success;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

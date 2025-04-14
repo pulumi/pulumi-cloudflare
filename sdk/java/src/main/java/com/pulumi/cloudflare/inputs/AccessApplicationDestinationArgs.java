@@ -16,14 +16,14 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     public static final AccessApplicationDestinationArgs Empty = new AccessApplicationDestinationArgs();
 
     /**
-     * The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     * The CIDR range of the destination. Single IPs will be computed as /32.
      * 
      */
     @Import(name="cidr")
     private @Nullable Output<String> cidr;
 
     /**
-     * @return The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The CIDR range of the destination. Single IPs will be computed as /32.
      * 
      */
     public Optional<Output<String>> cidr() {
@@ -31,14 +31,14 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
-     * The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     * The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+     * @return The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -46,14 +46,16 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
-     * The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: &#34;tcp&#34;, &#34;udp&#34;.
      * 
      */
     @Import(name="l4Protocol")
     private @Nullable Output<String> l4Protocol;
 
     /**
-     * @return The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+     * Available values: &#34;tcp&#34;, &#34;udp&#34;.
      * 
      */
     public Optional<Output<String>> l4Protocol() {
@@ -61,14 +63,14 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
-     * The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     * The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -76,14 +78,14 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
-     * The destination type. Available values: `public`, `private`. Defaults to `public`.
+     * Available values: &#34;public&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The destination type. Available values: `public`, `private`. Defaults to `public`.
+     * @return Available values: &#34;public&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -91,14 +93,14 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
-     * The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+     * The URI of the destination. Public destinations&#39; URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
      * 
      */
     @Import(name="uri")
     private @Nullable Output<String> uri;
 
     /**
-     * @return The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+     * @return The URI of the destination. Public destinations&#39; URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
      * 
      */
     public Optional<Output<String>> uri() {
@@ -106,14 +108,14 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
     }
 
     /**
-     * The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * The VNET ID to match the destination. When omitted, all VNETs will match.
      * 
      */
     @Import(name="vnetId")
     private @Nullable Output<String> vnetId;
 
     /**
-     * @return The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+     * @return The VNET ID to match the destination. When omitted, all VNETs will match.
      * 
      */
     public Optional<Output<String>> vnetId() {
@@ -151,7 +153,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cidr The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+         * @param cidr The CIDR range of the destination. Single IPs will be computed as /32.
          * 
          * @return builder
          * 
@@ -162,7 +164,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cidr The private CIDR of the destination. Only valid when type=private. IPs are computed as /32 cidr. Private destinations are an early access feature and gated behind a feature flag.
+         * @param cidr The CIDR range of the destination. Single IPs will be computed as /32.
          * 
          * @return builder
          * 
@@ -172,7 +174,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param hostname The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+         * @param hostname The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
          * 
          * @return builder
          * 
@@ -183,7 +185,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param hostname The private hostname of the destination. Only valid when type=private. Private hostnames currently match only Server Name Indications (SNI). Private destinations are an early access feature and gated behind a feature flag.
+         * @param hostname The hostname of the destination. Matches a valid SNI served by an HTTPS origin.
          * 
          * @return builder
          * 
@@ -193,7 +195,8 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param l4Protocol The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+         * @param l4Protocol The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+         * Available values: &#34;tcp&#34;, &#34;udp&#34;.
          * 
          * @return builder
          * 
@@ -204,7 +207,8 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param l4Protocol The l4 protocol that matches this destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+         * @param l4Protocol The L4 protocol of the destination. When omitted, both UDP and TCP traffic will match.
+         * Available values: &#34;tcp&#34;, &#34;udp&#34;.
          * 
          * @return builder
          * 
@@ -214,7 +218,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param portRange The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+         * @param portRange The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
          * 
          * @return builder
          * 
@@ -225,7 +229,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param portRange The port range of the destination. Only valid when type=private. Single ports are supported. Private destinations are an early access feature and gated behind a feature flag.
+         * @param portRange The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
          * 
          * @return builder
          * 
@@ -235,7 +239,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type The destination type. Available values: `public`, `private`. Defaults to `public`.
+         * @param type Available values: &#34;public&#34;.
          * 
          * @return builder
          * 
@@ -246,7 +250,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type The destination type. Available values: `public`, `private`. Defaults to `public`.
+         * @param type Available values: &#34;public&#34;.
          * 
          * @return builder
          * 
@@ -256,7 +260,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param uri The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+         * @param uri The URI of the destination. Public destinations&#39; URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
          * 
          * @return builder
          * 
@@ -267,7 +271,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param uri The public URI of the destination. Can include a domain and path with wildcards. Only valid when type=public.
+         * @param uri The URI of the destination. Public destinations&#39; URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
          * 
          * @return builder
          * 
@@ -277,7 +281,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param vnetId The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+         * @param vnetId The VNET ID to match the destination. When omitted, all VNETs will match.
          * 
          * @return builder
          * 
@@ -288,7 +292,7 @@ public final class AccessApplicationDestinationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param vnetId The VNet ID of the destination. Only valid when type=private. Private destinations are an early access feature and gated behind a feature flag.
+         * @param vnetId The VNET ID to match the destination. When omitted, all VNETs will match.
          * 
          * @return builder
          * 

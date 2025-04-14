@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,62 +15,64 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersOverridesRule {
     /**
-     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to override the rule with.
      * 
      */
     private @Nullable String action;
     /**
-     * @return Defines if the current rule-level override enables or disables the rule.
+     * @return Whether to enable execution of the rule.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Rule ID to apply the override to.
+     * @return The ID of the rule to override.
      * 
      */
-    private @Nullable String id;
+    private String id;
     /**
-     * @return Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * @return The score threshold to use for the rule.
      * 
      */
     private @Nullable Integer scoreThreshold;
     /**
-     * @return Sensitivity level for a ruleset rule override.
+     * @return The sensitivity level to use for the rule.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     private @Nullable String sensitivityLevel;
 
     private RulesetRuleActionParametersOverridesRule() {}
     /**
-     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return The action to override the rule with.
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return Defines if the current rule-level override enables or disables the rule.
+     * @return Whether to enable execution of the rule.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Rule ID to apply the override to.
+     * @return The ID of the rule to override.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
     /**
-     * @return Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * @return The score threshold to use for the rule.
      * 
      */
     public Optional<Integer> scoreThreshold() {
         return Optional.ofNullable(this.scoreThreshold);
     }
     /**
-     * @return Sensitivity level for a ruleset rule override.
+     * @return The sensitivity level to use for the rule.
+     * Available values: &#34;default&#34;, &#34;medium&#34;, &#34;low&#34;, &#34;eoff&#34;.
      * 
      */
     public Optional<String> sensitivityLevel() {
@@ -87,7 +90,7 @@ public final class RulesetRuleActionParametersOverridesRule {
     public static final class Builder {
         private @Nullable String action;
         private @Nullable Boolean enabled;
-        private @Nullable String id;
+        private String id;
         private @Nullable Integer scoreThreshold;
         private @Nullable String sensitivityLevel;
         public Builder() {}
@@ -113,8 +116,10 @@ public final class RulesetRuleActionParametersOverridesRule {
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersOverridesRule", "id");
+            }
             this.id = id;
             return this;
         }

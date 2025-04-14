@@ -27,38 +27,62 @@ class GetZoneCacheReserveResult:
     """
     A collection of values returned by getZoneCacheReserve.
     """
-    def __init__(__self__, enabled=None, id=None, zone_id=None):
-        if enabled and not isinstance(enabled, bool):
-            raise TypeError("Expected argument 'enabled' to be a bool")
-        pulumi.set(__self__, "enabled", enabled)
+    def __init__(__self__, editable=None, id=None, modified_on=None, value=None, zone_id=None):
+        if editable and not isinstance(editable, bool):
+            raise TypeError("Expected argument 'editable' to be a bool")
+        pulumi.set(__self__, "editable", editable)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if modified_on and not isinstance(modified_on, str):
+            raise TypeError("Expected argument 'modified_on' to be a str")
+        pulumi.set(__self__, "modified_on", modified_on)
+        if value and not isinstance(value, str):
+            raise TypeError("Expected argument 'value' to be a str")
+        pulumi.set(__self__, "value", value)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
-    def enabled(self) -> builtins.bool:
+    def editable(self) -> builtins.bool:
         """
-        The status of Cache Reserve support.
+        Whether the setting is editable
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "editable")
 
     @property
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        ID of the zone setting.
+        Available values: "cache_reserve".
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> builtins.str:
+        """
+        Last time this setting was modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def value(self) -> builtins.str:
+        """
+        The value of the feature
+        Available values: "on", "off".
+        """
+        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -69,28 +93,27 @@ class AwaitableGetZoneCacheReserveResult(GetZoneCacheReserveResult):
         if False:
             yield self
         return GetZoneCacheReserveResult(
-            enabled=self.enabled,
+            editable=self.editable,
             id=self.id,
+            modified_on=self.modified_on,
+            value=self.value,
             zone_id=self.zone_id)
 
 
 def get_zone_cache_reserve(zone_id: Optional[builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneCacheReserveResult:
     """
-    Provides a Cloudflare data source to look up Cache Reserve
-    status for a given zone.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_zone_cache_reserve(zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+    example_zone_cache_reserve = cloudflare.get_zone_cache_reserve(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param builtins.str zone_id: The zone identifier to target for the resource.
+    :param builtins.str zone_id: Identifier
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -98,32 +121,33 @@ def get_zone_cache_reserve(zone_id: Optional[builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZoneCacheReserve:getZoneCacheReserve', __args__, opts=opts, typ=GetZoneCacheReserveResult).value
 
     return AwaitableGetZoneCacheReserveResult(
-        enabled=pulumi.get(__ret__, 'enabled'),
+        editable=pulumi.get(__ret__, 'editable'),
         id=pulumi.get(__ret__, 'id'),
+        modified_on=pulumi.get(__ret__, 'modified_on'),
+        value=pulumi.get(__ret__, 'value'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneCacheReserveResult]:
     """
-    Provides a Cloudflare data source to look up Cache Reserve
-    status for a given zone.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_zone_cache_reserve(zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+    example_zone_cache_reserve = cloudflare.get_zone_cache_reserve(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param builtins.str zone_id: The zone identifier to target for the resource.
+    :param builtins.str zone_id: Identifier
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZoneCacheReserve:getZoneCacheReserve', __args__, opts=opts, typ=GetZoneCacheReserveResult)
     return __ret__.apply(lambda __response__: GetZoneCacheReserveResult(
-        enabled=pulumi.get(__response__, 'enabled'),
+        editable=pulumi.get(__response__, 'editable'),
         id=pulumi.get(__response__, 'id'),
+        modified_on=pulumi.get(__response__, 'modified_on'),
+        value=pulumi.get(__response__, 'value'),
         zone_id=pulumi.get(__response__, 'zone_id')))

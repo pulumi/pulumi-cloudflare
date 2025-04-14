@@ -14,27 +14,35 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ApiTokenPolicy
     {
         /// <summary>
-        /// Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+        /// Allow or deny operations against the resources.
+        /// Available values: "allow", "deny".
         /// </summary>
-        public readonly string? Effect;
+        public readonly string Effect;
         /// <summary>
-        /// List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+        /// Policy identifier.
         /// </summary>
-        public readonly ImmutableArray<string> PermissionGroups;
+        public readonly string? Id;
         /// <summary>
-        /// Describes what operations against which resources are allowed or denied.
+        /// A set of permission groups that are specified to the policy.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ApiTokenPolicyPermissionGroup> PermissionGroups;
+        /// <summary>
+        /// A list of resource names that the policy applies to.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Resources;
 
         [OutputConstructor]
         private ApiTokenPolicy(
-            string? effect,
+            string effect,
 
-            ImmutableArray<string> permissionGroups,
+            string? id,
+
+            ImmutableArray<Outputs.ApiTokenPolicyPermissionGroup> permissionGroups,
 
             ImmutableDictionary<string, string> resources)
         {
             Effect = effect;
+            Id = id;
             PermissionGroups = permissionGroups;
             Resources = resources;
         }

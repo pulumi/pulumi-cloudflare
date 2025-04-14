@@ -5,11 +5,9 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AccessPolicyIncludeOktaArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,37 +18,37 @@ public final class AccessPolicyIncludeOktaArgs extends com.pulumi.resources.Reso
      * The ID of your Okta identity provider.
      * 
      */
-    @Import(name="identityProviderId")
-    private @Nullable Output<String> identityProviderId;
+    @Import(name="identityProviderId", required=true)
+    private Output<String> identityProviderId;
 
     /**
      * @return The ID of your Okta identity provider.
      * 
      */
-    public Optional<Output<String>> identityProviderId() {
-        return Optional.ofNullable(this.identityProviderId);
+    public Output<String> identityProviderId() {
+        return this.identityProviderId;
     }
 
     /**
-     * The name of the Okta Group.
+     * The name of the Okta group.
      * 
      */
-    @Import(name="names")
-    private @Nullable Output<List<String>> names;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
-     * @return The name of the Okta Group.
+     * @return The name of the Okta group.
      * 
      */
-    public Optional<Output<List<String>>> names() {
-        return Optional.ofNullable(this.names);
+    public Output<String> name() {
+        return this.name;
     }
 
     private AccessPolicyIncludeOktaArgs() {}
 
     private AccessPolicyIncludeOktaArgs(AccessPolicyIncludeOktaArgs $) {
         this.identityProviderId = $.identityProviderId;
-        this.names = $.names;
+        this.name = $.name;
     }
 
     public static Builder builder() {
@@ -77,7 +75,7 @@ public final class AccessPolicyIncludeOktaArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
+        public Builder identityProviderId(Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
@@ -93,37 +91,33 @@ public final class AccessPolicyIncludeOktaArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param names The name of the Okta Group.
+         * @param name The name of the Okta group.
          * 
          * @return builder
          * 
          */
-        public Builder names(@Nullable Output<List<String>> names) {
-            $.names = names;
+        public Builder name(Output<String> name) {
+            $.name = name;
             return this;
         }
 
         /**
-         * @param names The name of the Okta Group.
+         * @param name The name of the Okta group.
          * 
          * @return builder
          * 
          */
-        public Builder names(List<String> names) {
-            return names(Output.of(names));
-        }
-
-        /**
-         * @param names The name of the Okta Group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder names(String... names) {
-            return names(List.of(names));
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         public AccessPolicyIncludeOktaArgs build() {
+            if ($.identityProviderId == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyIncludeOktaArgs", "identityProviderId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyIncludeOktaArgs", "name");
+            }
             return $;
         }
     }

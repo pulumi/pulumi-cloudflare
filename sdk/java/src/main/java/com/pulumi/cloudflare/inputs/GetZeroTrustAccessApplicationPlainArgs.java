@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationFilter;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
@@ -15,14 +16,14 @@ public final class GetZeroTrustAccessApplicationPlainArgs extends com.pulumi.res
     public static final GetZeroTrustAccessApplicationPlainArgs Empty = new GetZeroTrustAccessApplicationPlainArgs();
 
     /**
-     * The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<String> accountId() {
@@ -30,44 +31,36 @@ public final class GetZeroTrustAccessApplicationPlainArgs extends com.pulumi.res
     }
 
     /**
-     * The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
+     * Identifier
      * 
      */
-    @Import(name="domain")
-    private @Nullable String domain;
+    @Import(name="appId")
+    private @Nullable String appId;
 
     /**
-     * @return The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
+     * @return Identifier
      * 
      */
-    public Optional<String> domain() {
-        return Optional.ofNullable(this.domain);
+    public Optional<String> appId() {
+        return Optional.ofNullable(this.appId);
+    }
+
+    @Import(name="filter")
+    private @Nullable GetZeroTrustAccessApplicationFilter filter;
+
+    public Optional<GetZeroTrustAccessApplicationFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
-     * Friendly name of the Access Application. Must provide only one of `name`, `domain`.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable String name;
-
-    /**
-     * @return Friendly name of the Access Application. Must provide only one of `name`, `domain`.
-     * 
-     */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
-    }
-
-    /**
-     * The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<String> zoneId() {
@@ -78,8 +71,8 @@ public final class GetZeroTrustAccessApplicationPlainArgs extends com.pulumi.res
 
     private GetZeroTrustAccessApplicationPlainArgs(GetZeroTrustAccessApplicationPlainArgs $) {
         this.accountId = $.accountId;
-        this.domain = $.domain;
-        this.name = $.name;
+        this.appId = $.appId;
+        this.filter = $.filter;
         this.zoneId = $.zoneId;
     }
 
@@ -102,7 +95,7 @@ public final class GetZeroTrustAccessApplicationPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -113,29 +106,23 @@ public final class GetZeroTrustAccessApplicationPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param domain The primary hostname and path that Access will secure. Must provide only one of `name`, `domain`.
+         * @param appId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder domain(@Nullable String domain) {
-            $.domain = domain;
+        public Builder appId(@Nullable String appId) {
+            $.appId = appId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetZeroTrustAccessApplicationFilter filter) {
+            $.filter = filter;
             return this;
         }
 
         /**
-         * @param name Friendly name of the Access Application. Must provide only one of `name`, `domain`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable String name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

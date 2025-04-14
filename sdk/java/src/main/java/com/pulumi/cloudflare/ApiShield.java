@@ -7,18 +7,18 @@ import com.pulumi.cloudflare.ApiShieldArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ApiShieldState;
 import com.pulumi.cloudflare.outputs.ApiShieldAuthIdCharacteristic;
+import com.pulumi.cloudflare.outputs.ApiShieldError;
+import com.pulumi.cloudflare.outputs.ApiShieldMessage;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource to manage API Shield configurations.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -45,10 +45,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApiShield("example", ApiShieldArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleApiShield = new ApiShield("exampleApiShield", ApiShieldArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .authIdCharacteristics(ApiShieldAuthIdCharacteristicArgs.builder()
- *                 .name("my-example-header")
+ *                 .name("authorization")
  *                 .type("header")
  *                 .build())
  *             .build());
@@ -59,32 +59,56 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/apiShield:ApiShield example &#39;&lt;zone_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/apiShield:ApiShield")
 public class ApiShield extends com.pulumi.resources.CustomResource {
-    /**
-     * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-     * 
-     */
     @Export(name="authIdCharacteristics", refs={List.class,ApiShieldAuthIdCharacteristic.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ApiShieldAuthIdCharacteristic>> authIdCharacteristics;
+    private Output<List<ApiShieldAuthIdCharacteristic>> authIdCharacteristics;
 
-    /**
-     * @return Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
-     * 
-     */
-    public Output<Optional<List<ApiShieldAuthIdCharacteristic>>> authIdCharacteristics() {
-        return Codegen.optional(this.authIdCharacteristics);
+    public Output<List<ApiShieldAuthIdCharacteristic>> authIdCharacteristics() {
+        return this.authIdCharacteristics;
+    }
+    @Export(name="errors", refs={List.class,ApiShieldError.class}, tree="[0,1]")
+    private Output<List<ApiShieldError>> errors;
+
+    public Output<List<ApiShieldError>> errors() {
+        return this.errors;
+    }
+    @Export(name="messages", refs={List.class,ApiShieldMessage.class}, tree="[0,1]")
+    private Output<List<ApiShieldMessage>> messages;
+
+    public Output<List<ApiShieldMessage>> messages() {
+        return this.messages;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Whether the API call was successful
+     * 
+     */
+    @Export(name="success", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> success;
+
+    /**
+     * @return Whether the API call was successful
+     * 
+     */
+    public Output<Boolean> success() {
+        return this.success;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

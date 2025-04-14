@@ -14,23 +14,23 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessOrganizationLoginDesign
     {
         /// <summary>
-        /// The background color on the login page.
+        /// The background color on your login page.
         /// </summary>
         public readonly string? BackgroundColor;
         /// <summary>
-        /// The text at the bottom of the login page.
+        /// The text at the bottom of your login page.
         /// </summary>
         public readonly string? FooterText;
         /// <summary>
-        /// The text at the top of the login page.
+        /// The text at the top of your login page.
         /// </summary>
         public readonly string? HeaderText;
         /// <summary>
-        /// The URL of the logo on the login page.
+        /// The URL of the logo on your login page.
         /// </summary>
         public readonly string? LogoPath;
         /// <summary>
-        /// The text color on the login page.
+        /// The text color on your login page.
         /// </summary>
         public readonly string? TextColor;
 

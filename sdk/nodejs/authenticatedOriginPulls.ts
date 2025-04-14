@@ -2,70 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Authenticated Origin Pulls resource. A `cloudflare.AuthenticatedOriginPulls`
- * resource is required to use Per-Zone or Per-Hostname Authenticated
- * Origin Pulls.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Authenticated Origin Pulls
- * const myAop = new cloudflare.AuthenticatedOriginPulls("my_aop", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     enabled: true,
- * });
- * // Per-Zone Authenticated Origin Pulls
- * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     certificate: "-----INSERT CERTIFICATE-----",
- *     privateKey: "-----INSERT PRIVATE KEY-----",
- *     type: "per-zone",
- * });
- * const myPerZoneAop = new cloudflare.AuthenticatedOriginPulls("my_per_zone_aop", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     authenticatedOriginPullsCertificate: myPerZoneAopCert.id,
- *     enabled: true,
- * });
- * // Per-Hostname Authenticated Origin Pulls
- * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     certificate: "-----INSERT CERTIFICATE-----",
- *     privateKey: "-----INSERT PRIVATE KEY-----",
- *     type: "per-hostname",
- * });
- * const myPerHostnameAop = new cloudflare.AuthenticatedOriginPulls("my_per_hostname_aop", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     authenticatedOriginPullsCertificate: myPerHostnameAopCert.id,
- *     hostname: "aop.example.com",
- *     enabled: true,
- * });
- * ```
- *
- * ## Import
- *
- * global
- *
- * ```sh
- * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
- * ```
- *
- * per zone
- *
- * ```sh
- * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
- * ```
- *
- * per hostname
- *
- * ```sh
- * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
- * ```
  */
 export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     /**
@@ -96,19 +38,70 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * Identifier
      */
-    public readonly authenticatedOriginPullsCertificate!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly certId!: pulumi.Output<string>;
     /**
-     * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+     * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public /*out*/ readonly certStatus!: pulumi.Output<string>;
     /**
-     * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * The time when the certificate was updated.
+     */
+    public /*out*/ readonly certUpdatedAt!: pulumi.Output<string>;
+    /**
+     * The time when the certificate was uploaded.
+     */
+    public /*out*/ readonly certUploadedOn!: pulumi.Output<string>;
+    /**
+     * The hostname certificate.
+     */
+    public /*out*/ readonly certificate!: pulumi.Output<string>;
+    public readonly configs!: pulumi.Output<outputs.AuthenticatedOriginPullsConfig[]>;
+    /**
+     * The time when the certificate was created.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
+     */
+    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * The date when the certificate expires.
+     */
+    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
      */
     public readonly hostname!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The certificate authority that issued the certificate.
+     */
+    public /*out*/ readonly issuer!: pulumi.Output<string>;
+    /**
+     * The hostname certificate's private key.
+     */
+    public /*out*/ readonly privateKey!: pulumi.Output<string>;
+    /**
+     * The serial number on the uploaded certificate.
+     */
+    public /*out*/ readonly serialNumber!: pulumi.Output<string>;
+    /**
+     * The type of hash used for the certificate.
+     */
+    public /*out*/ readonly signature!: pulumi.Output<string>;
+    /**
+     * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The time when the certificate was updated.
+     */
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -125,24 +118,52 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthenticatedOriginPullsState | undefined;
-            resourceInputs["authenticatedOriginPullsCertificate"] = state ? state.authenticatedOriginPullsCertificate : undefined;
+            resourceInputs["certId"] = state ? state.certId : undefined;
+            resourceInputs["certStatus"] = state ? state.certStatus : undefined;
+            resourceInputs["certUpdatedAt"] = state ? state.certUpdatedAt : undefined;
+            resourceInputs["certUploadedOn"] = state ? state.certUploadedOn : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["configs"] = state ? state.configs : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
+            resourceInputs["signature"] = state ? state.signature : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AuthenticatedOriginPullsArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
+            if ((!args || args.configs === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'configs'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["authenticatedOriginPullsCertificate"] = args ? args.authenticatedOriginPullsCertificate : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["configs"] = args ? args.configs : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["certId"] = undefined /*out*/;
+            resourceInputs["certStatus"] = undefined /*out*/;
+            resourceInputs["certUpdatedAt"] = undefined /*out*/;
+            resourceInputs["certUploadedOn"] = undefined /*out*/;
+            resourceInputs["certificate"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["expiresOn"] = undefined /*out*/;
+            resourceInputs["issuer"] = undefined /*out*/;
+            resourceInputs["privateKey"] = undefined /*out*/;
+            resourceInputs["serialNumber"] = undefined /*out*/;
+            resourceInputs["signature"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AuthenticatedOriginPulls.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -152,19 +173,70 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
  */
 export interface AuthenticatedOriginPullsState {
     /**
-     * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+     * Identifier
      */
-    authenticatedOriginPullsCertificate?: pulumi.Input<string>;
+    certId?: pulumi.Input<string>;
     /**
-     * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
+     * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+     */
+    certStatus?: pulumi.Input<string>;
+    /**
+     * The time when the certificate was updated.
+     */
+    certUpdatedAt?: pulumi.Input<string>;
+    /**
+     * The time when the certificate was uploaded.
+     */
+    certUploadedOn?: pulumi.Input<string>;
+    /**
+     * The hostname certificate.
+     */
+    certificate?: pulumi.Input<string>;
+    configs?: pulumi.Input<pulumi.Input<inputs.AuthenticatedOriginPullsConfig>[]>;
+    /**
+     * The time when the certificate was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Indicates whether hostname-level authenticated origin pulls is enabled. A null value voids the association.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * The date when the certificate expires.
+     */
+    expiresOn?: pulumi.Input<string>;
+    /**
+     * The hostname on the origin for which the client certificate uploaded will be used.
      */
     hostname?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The certificate authority that issued the certificate.
+     */
+    issuer?: pulumi.Input<string>;
+    /**
+     * The hostname certificate's private key.
+     */
+    privateKey?: pulumi.Input<string>;
+    /**
+     * The serial number on the uploaded certificate.
+     */
+    serialNumber?: pulumi.Input<string>;
+    /**
+     * The type of hash used for the certificate.
+     */
+    signature?: pulumi.Input<string>;
+    /**
+     * Status of the certificate or the association.
+     * Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The time when the certificate was updated.
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -173,20 +245,13 @@ export interface AuthenticatedOriginPullsState {
  * The set of arguments for constructing a AuthenticatedOriginPulls resource.
  */
 export interface AuthenticatedOriginPullsArgs {
+    configs: pulumi.Input<pulumi.Input<inputs.AuthenticatedOriginPullsConfig>[]>;
     /**
-     * The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
-     */
-    authenticatedOriginPullsCertificate?: pulumi.Input<string>;
-    /**
-     * Whether to enable Authenticated Origin Pulls on the given zone or hostname.
-     */
-    enabled: pulumi.Input<boolean>;
-    /**
-     * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+     * The hostname on the origin for which the client certificate uploaded will be used.
      */
     hostname?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

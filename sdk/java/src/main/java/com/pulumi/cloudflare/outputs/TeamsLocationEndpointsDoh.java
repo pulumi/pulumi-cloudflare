@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.TeamsLocationEndpointsDohNetwork;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
@@ -14,21 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsLocationEndpointsDoh {
-    private @Nullable Boolean authenticationEnabled;
-    private Boolean enabled;
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    private @Nullable Boolean enabled;
+    /**
+     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     private @Nullable List<TeamsLocationEndpointsDohNetwork> networks;
+    /**
+     * @return True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * 
+     */
     private @Nullable Boolean requireToken;
 
     private TeamsLocationEndpointsDoh() {}
-    public Optional<Boolean> authenticationEnabled() {
-        return Optional.ofNullable(this.authenticationEnabled);
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
-    public Boolean enabled() {
-        return this.enabled;
-    }
+    /**
+     * @return A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     public List<TeamsLocationEndpointsDohNetwork> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
+    /**
+     * @return True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
+     * 
+     */
     public Optional<Boolean> requireToken() {
         return Optional.ofNullable(this.requireToken);
     }
@@ -42,30 +61,20 @@ public final class TeamsLocationEndpointsDoh {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean authenticationEnabled;
-        private Boolean enabled;
+        private @Nullable Boolean enabled;
         private @Nullable List<TeamsLocationEndpointsDohNetwork> networks;
         private @Nullable Boolean requireToken;
         public Builder() {}
         public Builder(TeamsLocationEndpointsDoh defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.authenticationEnabled = defaults.authenticationEnabled;
     	      this.enabled = defaults.enabled;
     	      this.networks = defaults.networks;
     	      this.requireToken = defaults.requireToken;
         }
 
         @CustomType.Setter
-        public Builder authenticationEnabled(@Nullable Boolean authenticationEnabled) {
+        public Builder enabled(@Nullable Boolean enabled) {
 
-            this.authenticationEnabled = authenticationEnabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            if (enabled == null) {
-              throw new MissingRequiredPropertyException("TeamsLocationEndpointsDoh", "enabled");
-            }
             this.enabled = enabled;
             return this;
         }
@@ -86,7 +95,6 @@ public final class TeamsLocationEndpointsDoh {
         }
         public TeamsLocationEndpointsDoh build() {
             final var _resultValue = new TeamsLocationEndpointsDoh();
-            _resultValue.authenticationEnabled = authenticationEnabled;
             _resultValue.enabled = enabled;
             _resultValue.networks = networks;
             _resultValue.requireToken = requireToken;

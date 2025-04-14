@@ -10,6 +10,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,89 +19,73 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
     public static final WebAnalyticsRuleArgs Empty = new WebAnalyticsRuleArgs();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
 
-    /**
-     * The host to apply the rule to.
-     * 
-     */
-    @Import(name="host", required=true)
-    private Output<String> host;
+    @Import(name="host")
+    private @Nullable Output<String> host;
 
-    /**
-     * @return The host to apply the rule to.
-     * 
-     */
-    public Output<String> host() {
-        return this.host;
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
     }
 
     /**
-     * Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+     * Whether the rule includes or excludes traffic from being measured.
      * 
      */
-    @Import(name="inclusive", required=true)
-    private Output<Boolean> inclusive;
+    @Import(name="inclusive")
+    private @Nullable Output<Boolean> inclusive;
 
     /**
-     * @return Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+     * @return Whether the rule includes or excludes traffic from being measured.
      * 
      */
-    public Output<Boolean> inclusive() {
-        return this.inclusive;
+    public Optional<Output<Boolean>> inclusive() {
+        return Optional.ofNullable(this.inclusive);
     }
 
     /**
      * Whether the rule is paused or not.
      * 
      */
-    @Import(name="isPaused", required=true)
-    private Output<Boolean> isPaused;
+    @Import(name="isPaused")
+    private @Nullable Output<Boolean> isPaused;
 
     /**
      * @return Whether the rule is paused or not.
      * 
      */
-    public Output<Boolean> isPaused() {
-        return this.isPaused;
+    public Optional<Output<Boolean>> isPaused() {
+        return Optional.ofNullable(this.isPaused);
+    }
+
+    @Import(name="paths")
+    private @Nullable Output<List<String>> paths;
+
+    public Optional<Output<List<String>>> paths() {
+        return Optional.ofNullable(this.paths);
     }
 
     /**
-     * A list of paths to apply the rule to.
-     * 
-     */
-    @Import(name="paths", required=true)
-    private Output<List<String>> paths;
-
-    /**
-     * @return A list of paths to apply the rule to.
-     * 
-     */
-    public Output<List<String>> paths() {
-        return this.paths;
-    }
-
-    /**
-     * The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * The Web Analytics ruleset identifier.
      * 
      */
     @Import(name="rulesetId", required=true)
     private Output<String> rulesetId;
 
     /**
-     * @return The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * @return The Web Analytics ruleset identifier.
      * 
      */
     public Output<String> rulesetId() {
@@ -136,7 +122,7 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -147,7 +133,7 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -156,40 +142,28 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param host The host to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder host(Output<String> host) {
+        public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
-        /**
-         * @param host The host to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
 
         /**
-         * @param inclusive Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+         * @param inclusive Whether the rule includes or excludes traffic from being measured.
          * 
          * @return builder
          * 
          */
-        public Builder inclusive(Output<Boolean> inclusive) {
+        public Builder inclusive(@Nullable Output<Boolean> inclusive) {
             $.inclusive = inclusive;
             return this;
         }
 
         /**
-         * @param inclusive Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+         * @param inclusive Whether the rule includes or excludes traffic from being measured.
          * 
          * @return builder
          * 
@@ -204,7 +178,7 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder isPaused(Output<Boolean> isPaused) {
+        public Builder isPaused(@Nullable Output<Boolean> isPaused) {
             $.isPaused = isPaused;
             return this;
         }
@@ -219,39 +193,21 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
             return isPaused(Output.of(isPaused));
         }
 
-        /**
-         * @param paths A list of paths to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder paths(Output<List<String>> paths) {
+        public Builder paths(@Nullable Output<List<String>> paths) {
             $.paths = paths;
             return this;
         }
 
-        /**
-         * @param paths A list of paths to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder paths(List<String> paths) {
             return paths(Output.of(paths));
         }
 
-        /**
-         * @param paths A list of paths to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
 
         /**
-         * @param rulesetId The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+         * @param rulesetId The Web Analytics ruleset identifier.
          * 
          * @return builder
          * 
@@ -262,7 +218,7 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param rulesetId The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+         * @param rulesetId The Web Analytics ruleset identifier.
          * 
          * @return builder
          * 
@@ -274,18 +230,6 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
         public WebAnalyticsRuleArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "accountId");
-            }
-            if ($.host == null) {
-                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "host");
-            }
-            if ($.inclusive == null) {
-                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "inclusive");
-            }
-            if ($.isPaused == null) {
-                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "isPaused");
-            }
-            if ($.paths == null) {
-                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "paths");
             }
             if ($.rulesetId == null) {
                 throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "rulesetId");

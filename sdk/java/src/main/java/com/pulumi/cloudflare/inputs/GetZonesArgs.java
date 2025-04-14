@@ -3,36 +3,79 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.GetZonesFilterArgs;
+import com.pulumi.cloudflare.inputs.GetZonesAccountArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZonesArgs Empty = new GetZonesArgs();
 
-    /**
-     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-     * 
-     */
-    @Import(name="filter", required=true)
-    private Output<GetZonesFilterArgs> filter;
+    @Import(name="account")
+    private @Nullable Output<GetZonesAccountArgs> account;
 
-    /**
-     * @return One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-     * 
-     */
-    public Output<GetZonesFilterArgs> filter() {
-        return this.filter;
+    public Optional<Output<GetZonesAccountArgs>> account() {
+        return Optional.ofNullable(this.account);
+    }
+
+    @Import(name="direction")
+    private @Nullable Output<String> direction;
+
+    public Optional<Output<String>> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    @Import(name="match")
+    private @Nullable Output<String> match;
+
+    public Optional<Output<String>> match() {
+        return Optional.ofNullable(this.match);
+    }
+
+    @Import(name="maxItems")
+    private @Nullable Output<Integer> maxItems;
+
+    public Optional<Output<Integer>> maxItems() {
+        return Optional.ofNullable(this.maxItems);
+    }
+
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="order")
+    private @Nullable Output<String> order;
+
+    public Optional<Output<String>> order() {
+        return Optional.ofNullable(this.order);
+    }
+
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private GetZonesArgs() {}
 
     private GetZonesArgs(GetZonesArgs $) {
-        this.filter = $.filter;
+        this.account = $.account;
+        this.direction = $.direction;
+        this.match = $.match;
+        this.maxItems = $.maxItems;
+        this.name = $.name;
+        this.order = $.order;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -53,31 +96,70 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetZonesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param filter One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filter(Output<GetZonesFilterArgs> filter) {
-            $.filter = filter;
+        public Builder account(@Nullable Output<GetZonesAccountArgs> account) {
+            $.account = account;
             return this;
         }
 
-        /**
-         * @param filter One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filter(GetZonesFilterArgs filter) {
-            return filter(Output.of(filter));
+        public Builder account(GetZonesAccountArgs account) {
+            return account(Output.of(account));
+        }
+
+        public Builder direction(@Nullable Output<String> direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        public Builder direction(String direction) {
+            return direction(Output.of(direction));
+        }
+
+        public Builder match(@Nullable Output<String> match) {
+            $.match = match;
+            return this;
+        }
+
+        public Builder match(String match) {
+            return match(Output.of(match));
+        }
+
+        public Builder maxItems(@Nullable Output<Integer> maxItems) {
+            $.maxItems = maxItems;
+            return this;
+        }
+
+        public Builder maxItems(Integer maxItems) {
+            return maxItems(Output.of(maxItems));
+        }
+
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        public Builder order(@Nullable Output<String> order) {
+            $.order = order;
+            return this;
+        }
+
+        public Builder order(String order) {
+            return order(Output.of(order));
+        }
+
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         public GetZonesArgs build() {
-            if ($.filter == null) {
-                throw new MissingRequiredPropertyException("GetZonesArgs", "filter");
-            }
             return $;
         }
     }

@@ -5,20 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.TurnstileWidget("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example widget",
+ * const exampleTurnstileWidget = new cloudflare.TurnstileWidget("example_turnstile_widget", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     domains: [
+ *         "203.0.113.1",
+ *         "cloudflare.com",
+ *         "blog.example.com",
+ *     ],
+ *     mode: "non-interactive",
+ *     name: "blog.cloudflare.com login form",
  *     botFightMode: false,
- *     domains: ["example.com"],
- *     mode: "invisible",
+ *     clearanceLevel: "no_clearance",
+ *     ephemeralId: false,
+ *     offlabel: false,
  *     region: "world",
  * });
  * ```
@@ -26,7 +31,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
+ * $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '<account_id>/<sitekey>'
  * ```
  */
 export class TurnstileWidget extends pulumi.CustomResource {
@@ -58,37 +63,61 @@ export class TurnstileWidget extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      */
     public readonly botFightMode!: pulumi.Output<boolean>;
     /**
-     * Domains where the widget is deployed
+     * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
+     * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
+    public readonly clearanceLevel!: pulumi.Output<string | undefined>;
+    /**
+     * When the widget was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     public readonly domains!: pulumi.Output<string[]>;
     /**
-     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * Return the Ephemeral ID in /siteverify (ENT only).
+     */
+    public readonly ephemeralId!: pulumi.Output<boolean | undefined>;
+    /**
+     * Widget Mode
+     * Available values: "non-interactive", "invisible", "managed".
      */
     public readonly mode!: pulumi.Output<string>;
     /**
-     * Human readable widget name.
+     * When the widget was modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Do not show any Cloudflare branding on the widget (Enterprise only).
+     * Do not show any Cloudflare branding on the widget (ENT only).
      */
     public readonly offlabel!: pulumi.Output<boolean>;
     /**
      * Region where this widget can be used.
+     * Available values: "world".
      */
     public readonly region!: pulumi.Output<string>;
     /**
      * Secret key for this widget.
      */
     public /*out*/ readonly secret!: pulumi.Output<string>;
+    /**
+     * Widget item identifier tag.
+     */
+    public /*out*/ readonly sitekey!: pulumi.Output<string>;
 
     /**
      * Create a TurnstileWidget resource with the given unique name, arguments, and options.
@@ -105,12 +134,17 @@ export class TurnstileWidget extends pulumi.CustomResource {
             const state = argsOrState as TurnstileWidgetState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["botFightMode"] = state ? state.botFightMode : undefined;
+            resourceInputs["clearanceLevel"] = state ? state.clearanceLevel : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["domains"] = state ? state.domains : undefined;
+            resourceInputs["ephemeralId"] = state ? state.ephemeralId : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["offlabel"] = state ? state.offlabel : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["sitekey"] = state ? state.sitekey : undefined;
         } else {
             const args = argsOrState as TurnstileWidgetArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -127,16 +161,19 @@ export class TurnstileWidget extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["botFightMode"] = args ? args.botFightMode : undefined;
+            resourceInputs["clearanceLevel"] = args ? args.clearanceLevel : undefined;
             resourceInputs["domains"] = args ? args.domains : undefined;
+            resourceInputs["ephemeralId"] = args ? args.ephemeralId : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["offlabel"] = args ? args.offlabel : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
+            resourceInputs["sitekey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["secret"] };
-        opts = pulumi.mergeOptions(opts, secretOpts);
         super(TurnstileWidget.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -146,37 +183,61 @@ export class TurnstileWidget extends pulumi.CustomResource {
  */
 export interface TurnstileWidgetState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      */
     botFightMode?: pulumi.Input<boolean>;
     /**
-     * Domains where the widget is deployed
+     * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
+     * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
+    clearanceLevel?: pulumi.Input<string>;
+    /**
+     * When the widget was created.
+     */
+    createdOn?: pulumi.Input<string>;
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * Return the Ephemeral ID in /siteverify (ENT only).
+     */
+    ephemeralId?: pulumi.Input<boolean>;
+    /**
+     * Widget Mode
+     * Available values: "non-interactive", "invisible", "managed".
      */
     mode?: pulumi.Input<string>;
     /**
-     * Human readable widget name.
+     * When the widget was modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      */
     name?: pulumi.Input<string>;
     /**
-     * Do not show any Cloudflare branding on the widget (Enterprise only).
+     * Do not show any Cloudflare branding on the widget (ENT only).
      */
     offlabel?: pulumi.Input<boolean>;
     /**
      * Region where this widget can be used.
+     * Available values: "world".
      */
     region?: pulumi.Input<string>;
     /**
      * Secret key for this widget.
      */
     secret?: pulumi.Input<string>;
+    /**
+     * Widget item identifier tag.
+     */
+    sitekey?: pulumi.Input<string>;
 }
 
 /**
@@ -184,31 +245,43 @@ export interface TurnstileWidgetState {
  */
 export interface TurnstileWidgetArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+     * If bot*fight*mode is set to `true`, Cloudflare issues computationally
+     * expensive challenges in response to malicious bots (ENT only).
      */
     botFightMode?: pulumi.Input<boolean>;
     /**
-     * Domains where the widget is deployed
+     * If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+     * this setting can determine the clearance level to be set
+     * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
+    clearanceLevel?: pulumi.Input<string>;
     domains: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+     * Return the Ephemeral ID in /siteverify (ENT only).
+     */
+    ephemeralId?: pulumi.Input<boolean>;
+    /**
+     * Widget Mode
+     * Available values: "non-interactive", "invisible", "managed".
      */
     mode: pulumi.Input<string>;
     /**
-     * Human readable widget name.
+     * Human readable widget name. Not unique. Cloudflare suggests that you
+     * set this to a meaningful string to make it easier to identify your
+     * widget, and where it is used.
      */
     name: pulumi.Input<string>;
     /**
-     * Do not show any Cloudflare branding on the widget (Enterprise only).
+     * Do not show any Cloudflare branding on the widget (ENT only).
      */
     offlabel?: pulumi.Input<boolean>;
     /**
      * Region where this widget can be used.
+     * Available values: "world".
      */
     region?: pulumi.Input<string>;
 }

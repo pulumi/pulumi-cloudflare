@@ -31,13 +31,15 @@ class RulesetArgs:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Ruleset resource.
-        :param pulumi.Input[builtins.str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
-        :param pulumi.Input[builtins.str] name: Name of the ruleset.
-        :param pulumi.Input[builtins.str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] description: Brief summary of the ruleset and its intended use.
-        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] kind: The kind of the ruleset.
+               Available values: "managed", "custom", "root", "zone".
+        :param pulumi.Input[builtins.str] name: The human-readable name of the ruleset.
+        :param pulumi.Input[builtins.str] phase: The phase of the ruleset.
+               Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] description: An informative description of the ruleset.
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: The list of rules in the ruleset.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
@@ -55,7 +57,8 @@ class RulesetArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[builtins.str]:
         """
-        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+        The kind of the ruleset.
+        Available values: "managed", "custom", "root", "zone".
         """
         return pulumi.get(self, "kind")
 
@@ -67,7 +70,7 @@ class RulesetArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the ruleset.
+        The human-readable name of the ruleset.
         """
         return pulumi.get(self, "name")
 
@@ -79,7 +82,8 @@ class RulesetArgs:
     @pulumi.getter
     def phase(self) -> pulumi.Input[builtins.str]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        The phase of the ruleset.
+        Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         """
         return pulumi.get(self, "phase")
 
@@ -91,7 +95,7 @@ class RulesetArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -103,7 +107,7 @@ class RulesetArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Brief summary of the ruleset and its intended use.
+        An informative description of the ruleset.
         """
         return pulumi.get(self, "description")
 
@@ -115,7 +119,7 @@ class RulesetArgs:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]]:
         """
-        List of rules to apply to the ruleset.
+        The list of rules in the ruleset.
         """
         return pulumi.get(self, "rules")
 
@@ -127,7 +131,7 @@ class RulesetArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -148,13 +152,15 @@ class _RulesetState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ruleset resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] description: Brief summary of the ruleset and its intended use.
-        :param pulumi.Input[builtins.str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
-        :param pulumi.Input[builtins.str] name: Name of the ruleset.
-        :param pulumi.Input[builtins.str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
-        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] description: An informative description of the ruleset.
+        :param pulumi.Input[builtins.str] kind: The kind of the ruleset.
+               Available values: "managed", "custom", "root", "zone".
+        :param pulumi.Input[builtins.str] name: The human-readable name of the ruleset.
+        :param pulumi.Input[builtins.str] phase: The phase of the ruleset.
+               Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: The list of rules in the ruleset.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -175,7 +181,7 @@ class _RulesetState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -187,7 +193,7 @@ class _RulesetState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Brief summary of the ruleset and its intended use.
+        An informative description of the ruleset.
         """
         return pulumi.get(self, "description")
 
@@ -199,7 +205,8 @@ class _RulesetState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+        The kind of the ruleset.
+        Available values: "managed", "custom", "root", "zone".
         """
         return pulumi.get(self, "kind")
 
@@ -211,7 +218,7 @@ class _RulesetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the ruleset.
+        The human-readable name of the ruleset.
         """
         return pulumi.get(self, "name")
 
@@ -223,7 +230,8 @@ class _RulesetState:
     @pulumi.getter
     def phase(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        The phase of the ruleset.
+        Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         """
         return pulumi.get(self, "phase")
 
@@ -235,7 +243,7 @@ class _RulesetState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]]:
         """
-        List of rules to apply to the ruleset.
+        The list of rules in the ruleset.
         """
         return pulumi.get(self, "rules")
 
@@ -247,7 +255,7 @@ class _RulesetState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -270,35 +278,25 @@ class Ruleset(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        The Cloudflare Ruleset Engine (https://developers.cloudflare.com/ruleset-engine/about/)
-        allows you to create and deploy rules and rulesets.
-
-        Cloudflare uses the Ruleset Engine in different products, allowing
-        you to configure several products using the same basic syntax.
+        ## Example Usage
 
         ## Import
 
-        Import an account scoped Ruleset configuration.
-
         ```sh
-        $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
-        ```
-
-        Import a zone scoped Ruleset configuration.
-
-        ```sh
-        $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+        $ pulumi import cloudflare:index/ruleset:Ruleset example '<{accounts|zones}/{account_id|zone_id}>/<ruleset_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] description: Brief summary of the ruleset and its intended use.
-        :param pulumi.Input[builtins.str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
-        :param pulumi.Input[builtins.str] name: Name of the ruleset.
-        :param pulumi.Input[builtins.str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] description: An informative description of the ruleset.
+        :param pulumi.Input[builtins.str] kind: The kind of the ruleset.
+               Available values: "managed", "custom", "root", "zone".
+        :param pulumi.Input[builtins.str] name: The human-readable name of the ruleset.
+        :param pulumi.Input[builtins.str] phase: The phase of the ruleset.
+               Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]] rules: The list of rules in the ruleset.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -307,24 +305,12 @@ class Ruleset(pulumi.CustomResource):
                  args: RulesetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Cloudflare Ruleset Engine (https://developers.cloudflare.com/ruleset-engine/about/)
-        allows you to create and deploy rules and rulesets.
-
-        Cloudflare uses the Ruleset Engine in different products, allowing
-        you to configure several products using the same basic syntax.
+        ## Example Usage
 
         ## Import
 
-        Import an account scoped Ruleset configuration.
-
         ```sh
-        $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
-        ```
-
-        Import a zone scoped Ruleset configuration.
-
-        ```sh
-        $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+        $ pulumi import cloudflare:index/ruleset:Ruleset example '<{accounts|zones}/{account_id|zone_id}>/<ruleset_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -395,13 +381,15 @@ class Ruleset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] description: Brief summary of the ruleset and its intended use.
-        :param pulumi.Input[builtins.str] kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
-        :param pulumi.Input[builtins.str] name: Name of the ruleset.
-        :param pulumi.Input[builtins.str] phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]] rules: List of rules to apply to the ruleset.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] description: An informative description of the ruleset.
+        :param pulumi.Input[builtins.str] kind: The kind of the ruleset.
+               Available values: "managed", "custom", "root", "zone".
+        :param pulumi.Input[builtins.str] name: The human-readable name of the ruleset.
+        :param pulumi.Input[builtins.str] phase: The phase of the ruleset.
+               Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesetRuleArgs', 'RulesetRuleArgsDict']]]] rules: The list of rules in the ruleset.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -420,7 +408,7 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -428,7 +416,7 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[builtins.str]:
         """
-        Brief summary of the ruleset and its intended use.
+        An informative description of the ruleset.
         """
         return pulumi.get(self, "description")
 
@@ -436,7 +424,8 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[builtins.str]:
         """
-        Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+        The kind of the ruleset.
+        Available values: "managed", "custom", "root", "zone".
         """
         return pulumi.get(self, "kind")
 
@@ -444,7 +433,7 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the ruleset.
+        The human-readable name of the ruleset.
         """
         return pulumi.get(self, "name")
 
@@ -452,15 +441,16 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter
     def phase(self) -> pulumi.Output[builtins.str]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        The phase of the ruleset.
+        Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         """
         return pulumi.get(self, "phase")
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.RulesetRule']]]:
+    def rules(self) -> pulumi.Output[Sequence['outputs.RulesetRule']]:
         """
-        List of rules to apply to the ruleset.
+        The list of rules in the ruleset.
         """
         return pulumi.get(self, "rules")
 
@@ -468,7 +458,7 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

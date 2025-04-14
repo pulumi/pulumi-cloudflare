@@ -6,49 +6,75 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.RiskBehaviorArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.RiskBehaviorState;
-import com.pulumi.cloudflare.outputs.RiskBehaviorBehavior;
+import com.pulumi.cloudflare.outputs.RiskBehaviorBehaviors;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustRiskBehavior;
+ * import com.pulumi.cloudflare.ZeroTrustRiskBehaviorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustRiskBehavior = new ZeroTrustRiskBehavior("exampleZeroTrustRiskBehavior", ZeroTrustRiskBehaviorArgs.builder()
+ *             .accountId("account_id")
+ *             .behaviors(Map.of("foo", ZeroTrustRiskBehaviorBehaviorsArgs.builder()
+ *                 .enabled(true)
+ *                 .riskLevel("low")
+ *                 .build()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * @deprecated
+ * cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior
  * 
  */
+@Deprecated /* cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior */
 @ResourceType(type="cloudflare:index/riskBehavior:RiskBehavior")
 public class RiskBehavior extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * Zero Trust risk behaviors configured on this account
-     * 
-     */
-    @Export(name="behaviors", refs={List.class,RiskBehaviorBehavior.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<RiskBehaviorBehavior>> behaviors;
+    @Export(name="behaviors", refs={Map.class,String.class,RiskBehaviorBehaviors.class}, tree="[0,1,2]")
+    private Output<Map<String,RiskBehaviorBehaviors>> behaviors;
 
-    /**
-     * @return Zero Trust risk behaviors configured on this account
-     * 
-     */
-    public Output<Optional<List<RiskBehaviorBehavior>>> behaviors() {
-        return Codegen.optional(this.behaviors);
+    public Output<Map<String,RiskBehaviorBehaviors>> behaviors() {
+        return this.behaviors;
     }
 
     /**
@@ -90,6 +116,9 @@ public class RiskBehavior extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/riskBehavior:RiskBehavior").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -14,165 +14,176 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustDevicePostureRuleInput
     {
         /// <summary>
-        /// The number of active threats from SentinelOne.
+        /// The Number of active threats.
         /// </summary>
-        public readonly int? ActiveThreats;
+        public readonly double? ActiveThreats;
         /// <summary>
-        /// The UUID of a Cloudflare managed certificate.
+        /// UUID of Cloudflare managed certificate.
         /// </summary>
         public readonly string? CertificateId;
         /// <summary>
-        /// Specific volume(s) to check for encryption.
+        /// List of volume names to be checked for encryption.
         /// </summary>
         public readonly ImmutableArray<string> CheckDisks;
         /// <summary>
-        /// Confirm the certificate was not imported from another device.
+        /// Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
         /// </summary>
         public readonly bool? CheckPrivateKey;
         /// <summary>
-        /// The common name for a certificate.
+        /// Common Name that is protected by the certificate
         /// </summary>
         public readonly string? Cn;
         /// <summary>
-        /// The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+        /// Compliance Status
+        /// Available values: "compliant", "noncompliant", "unknown".
         /// </summary>
         public readonly string? ComplianceStatus;
         /// <summary>
-        /// The workspace one or intune connection id.
+        /// Posture Integration ID.
         /// </summary>
         public readonly string? ConnectionId;
         /// <summary>
-        /// The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// Count Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? CountOperator;
         /// <summary>
-        /// The domain that the client must join.
+        /// Domain
         /// </summary>
         public readonly string? Domain;
         /// <summary>
-        /// The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        /// For more details on eid last seen, refer to the Tanium documentation.
         /// </summary>
         public readonly string? EidLastSeen;
         /// <summary>
-        /// True if the firewall must be enabled.
+        /// Enabled
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Checks if the file should exist.
+        /// Whether or not file exists
         /// </summary>
         public readonly bool? Exists;
         /// <summary>
-        /// List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+        /// List of values indicating purposes for which the certificate public key can be used
         /// </summary>
         public readonly ImmutableArray<string> ExtendedKeyUsages;
         /// <summary>
-        /// The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+        /// List ID.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// True if SentinelOne device is infected.
+        /// Whether device is infected.
         /// </summary>
         public readonly bool? Infected;
         /// <summary>
-        /// True if SentinelOne device is active.
+        /// Whether device is active.
         /// </summary>
         public readonly bool? IsActive;
         /// <summary>
-        /// The number of issues for kolide.
+        /// The Number of Issues.
         /// </summary>
         public readonly string? IssueCount;
         /// <summary>
-        /// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        /// For more details on last seen, please refer to the Crowdstrike documentation.
         /// </summary>
         public readonly string? LastSeen;
+        public readonly Outputs.ZeroTrustDevicePostureRuleInputLocations? Locations;
         /// <summary>
-        /// List of operating system locations to check for a client certificate..
-        /// </summary>
-        public readonly ImmutableArray<Outputs.ZeroTrustDevicePostureRuleInputLocation> Locations;
-        /// <summary>
-        /// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+        /// Network status of device.
+        /// Available values: "connected", "disconnected", "disconnecting", "connecting".
         /// </summary>
         public readonly string? NetworkStatus;
         /// <summary>
-        /// The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+        /// Operating system
+        /// Available values: "windows", "linux", "mac".
+        /// </summary>
+        public readonly string? OperatingSystem;
+        /// <summary>
+        /// Agent operational state.
+        /// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
         /// </summary>
         public readonly string? OperationalState;
         /// <summary>
-        /// The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? Operator;
         /// <summary>
-        /// OS signal score from Crowdstrike. Value must be between 1 and 100.
+        /// Os Version
         /// </summary>
         public readonly string? Os;
         /// <summary>
-        /// The operating system excluding version information.
+        /// Operating System Distribution Name (linux only)
         /// </summary>
         public readonly string? OsDistroName;
         /// <summary>
-        /// The operating system version excluding OS name information or release name.
+        /// Version of OS Distribution (linux only)
         /// </summary>
         public readonly string? OsDistroRevision;
         /// <summary>
-        /// Extra version value following the operating system semantic version.
+        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
         /// </summary>
         public readonly string? OsVersionExtra;
         /// <summary>
-        /// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+        /// overall
         /// </summary>
         public readonly string? Overall;
         /// <summary>
-        /// The path to the file.
+        /// File path.
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// True if all drives must be encrypted.
+        /// Whether to check all disks for encryption.
         /// </summary>
         public readonly bool? RequireAll;
         /// <summary>
-        /// The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        /// For more details on risk level, refer to the Tanium documentation.
+        /// Available values: "low", "medium", "high", "critical".
         /// </summary>
         public readonly string? RiskLevel;
         /// <summary>
-        /// Checks if the application should be running.
+        /// A value between 0-100 assigned to devices set by the 3rd party posture provider.
         /// </summary>
-        public readonly bool? Running;
+        public readonly double? Score;
         /// <summary>
-        /// A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+        /// Score Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
-        public readonly int? Score;
+        public readonly string? ScoreOperator;
         /// <summary>
-        /// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+        /// SensorConfig
         /// </summary>
         public readonly string? SensorConfig;
         /// <summary>
-        /// The sha256 hash of the file.
+        /// SHA-256.
         /// </summary>
         public readonly string? Sha256;
         /// <summary>
-        /// The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        /// For more details on state, please refer to the Crowdstrike documentation.
+        /// Available values: "online", "offline", "unknown".
         /// </summary>
         public readonly string? State;
         /// <summary>
-        /// The thumbprint of the file certificate.
+        /// Signing certificate thumbprint.
         /// </summary>
         public readonly string? Thumbprint;
         /// <summary>
-        /// The total score from Tanium.
+        /// For more details on total score, refer to the Tanium documentation.
         /// </summary>
-        public readonly int? TotalScore;
+        public readonly double? TotalScore;
         /// <summary>
-        /// The operating system semantic version.
+        /// Version of OS
         /// </summary>
         public readonly string? Version;
         /// <summary>
-        /// The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+        /// Version Operator
+        /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? VersionOperator;
 
         [OutputConstructor]
         private ZeroTrustDevicePostureRuleInput(
-            int? activeThreats,
+            double? activeThreats,
 
             string? certificateId,
 
@@ -208,9 +219,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? lastSeen,
 
-            ImmutableArray<Outputs.ZeroTrustDevicePostureRuleInputLocation> locations,
+            Outputs.ZeroTrustDevicePostureRuleInputLocations? locations,
 
             string? networkStatus,
+
+            string? operatingSystem,
 
             string? operationalState,
 
@@ -232,9 +245,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? riskLevel,
 
-            bool? running,
+            double? score,
 
-            int? score,
+            string? scoreOperator,
 
             string? sensorConfig,
 
@@ -244,7 +257,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? thumbprint,
 
-            int? totalScore,
+            double? totalScore,
 
             string? version,
 
@@ -270,6 +283,7 @@ namespace Pulumi.Cloudflare.Outputs
             LastSeen = lastSeen;
             Locations = locations;
             NetworkStatus = networkStatus;
+            OperatingSystem = operatingSystem;
             OperationalState = operationalState;
             Operator = @operator;
             Os = os;
@@ -280,8 +294,8 @@ namespace Pulumi.Cloudflare.Outputs
             Path = path;
             RequireAll = requireAll;
             RiskLevel = riskLevel;
-            Running = running;
             Score = score;
+            ScoreOperator = scoreOperator;
             SensorConfig = sensorConfig;
             Sha256 = sha256;
             State = state;

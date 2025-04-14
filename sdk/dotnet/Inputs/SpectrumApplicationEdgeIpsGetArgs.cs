@@ -13,7 +13,8 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class SpectrumApplicationEdgeIpsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+        /// The IP versions supported for inbound connections on Spectrum anycast IPs.
+        /// Available values: "all", "ipv4", "ipv6".
         /// </summary>
         [Input("connectivity")]
         public Input<string>? Connectivity { get; set; }
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _ips;
 
         /// <summary>
-        /// The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        /// The array of customer owned IPs we broadcast via anycast for this hostname and application.
         /// </summary>
         public InputList<string> Ips
         {
@@ -31,10 +32,11 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+        /// The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+        /// Available values: "dynamic".
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public SpectrumApplicationEdgeIpsGetArgs()
         {

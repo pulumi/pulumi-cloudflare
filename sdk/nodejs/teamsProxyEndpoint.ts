@@ -5,28 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
- * Endpoints are used for pointing proxy clients at Cloudflare Secure
- * Gateway.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.TeamsProxyEndpoint("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "office",
- *     ips: ["192.0.2.0/24"],
+ * const exampleZeroTrustGatewayProxyEndpoint = new cloudflare.ZeroTrustGatewayProxyEndpoint("example_zero_trust_gateway_proxy_endpoint", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     ips: ["192.0.2.1/32"],
+ *     name: "Devops team",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example <account_id>/<proxy_endpoint_id>
+ * $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint
  */
 export class TeamsProxyEndpoint extends pulumi.CustomResource {
     /**
@@ -39,6 +37,7 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TeamsProxyEndpointState, opts?: pulumi.CustomResourceOptions): TeamsProxyEndpoint {
+        pulumi.log.warn("TeamsProxyEndpoint is deprecated: cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint")
         return new TeamsProxyEndpoint(name, <any>state, { ...opts, id: id });
     }
 
@@ -56,22 +55,21 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsProxyEndpoint.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The networks CIDRs that will be allowed to initiate proxy connections.
+     * A list of CIDRs to restrict ingress connections.
      */
     public readonly ips!: pulumi.Output<string[]>;
     /**
-     * Name of the teams proxy endpoint.
+     * The name of the proxy endpoint.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The FQDN that proxy clients should be pointed at.
+     * The subdomain to be used as the destination in the proxy client.
      */
     public /*out*/ readonly subdomain!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a TeamsProxyEndpoint resource with the given unique name, arguments, and options.
@@ -80,16 +78,21 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint */
     constructor(name: string, args: TeamsProxyEndpointArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint */
     constructor(name: string, argsOrState?: TeamsProxyEndpointArgs | TeamsProxyEndpointState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("TeamsProxyEndpoint is deprecated: cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsProxyEndpointState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["ips"] = state ? state.ips : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["subdomain"] = state ? state.subdomain : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as TeamsProxyEndpointArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -104,9 +107,13 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["ips"] = args ? args.ips : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["subdomain"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TeamsProxyEndpoint.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -115,38 +122,34 @@ export class TeamsProxyEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsProxyEndpoint resources.
  */
 export interface TeamsProxyEndpointState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * The networks CIDRs that will be allowed to initiate proxy connections.
+     * A list of CIDRs to restrict ingress connections.
      */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the teams proxy endpoint.
+     * The name of the proxy endpoint.
      */
     name?: pulumi.Input<string>;
     /**
-     * The FQDN that proxy clients should be pointed at.
+     * The subdomain to be used as the destination in the proxy client.
      */
     subdomain?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a TeamsProxyEndpoint resource.
  */
 export interface TeamsProxyEndpointArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
     /**
-     * The networks CIDRs that will be allowed to initiate proxy connections.
+     * A list of CIDRs to restrict ingress connections.
      */
     ips: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the teams proxy endpoint.
+     * The name of the proxy endpoint.
      */
     name: pulumi.Input<string>;
 }

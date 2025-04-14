@@ -3,35 +3,78 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.GetZonesFilter;
+import com.pulumi.cloudflare.inputs.GetZonesAccount;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZonesPlainArgs Empty = new GetZonesPlainArgs();
 
-    /**
-     * One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-     * 
-     */
-    @Import(name="filter", required=true)
-    private GetZonesFilter filter;
+    @Import(name="account")
+    private @Nullable GetZonesAccount account;
 
-    /**
-     * @return One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-     * 
-     */
-    public GetZonesFilter filter() {
-        return this.filter;
+    public Optional<GetZonesAccount> account() {
+        return Optional.ofNullable(this.account);
+    }
+
+    @Import(name="direction")
+    private @Nullable String direction;
+
+    public Optional<String> direction() {
+        return Optional.ofNullable(this.direction);
+    }
+
+    @Import(name="match")
+    private @Nullable String match;
+
+    public Optional<String> match() {
+        return Optional.ofNullable(this.match);
+    }
+
+    @Import(name="maxItems")
+    private @Nullable Integer maxItems;
+
+    public Optional<Integer> maxItems() {
+        return Optional.ofNullable(this.maxItems);
+    }
+
+    @Import(name="name")
+    private @Nullable String name;
+
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="order")
+    private @Nullable String order;
+
+    public Optional<String> order() {
+        return Optional.ofNullable(this.order);
+    }
+
+    @Import(name="status")
+    private @Nullable String status;
+
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private GetZonesPlainArgs() {}
 
     private GetZonesPlainArgs(GetZonesPlainArgs $) {
-        this.filter = $.filter;
+        this.account = $.account;
+        this.direction = $.direction;
+        this.match = $.match;
+        this.maxItems = $.maxItems;
+        this.name = $.name;
+        this.order = $.order;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -52,21 +95,42 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetZonesPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param filter One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder filter(GetZonesFilter filter) {
-            $.filter = filter;
+        public Builder account(@Nullable GetZonesAccount account) {
+            $.account = account;
+            return this;
+        }
+
+        public Builder direction(@Nullable String direction) {
+            $.direction = direction;
+            return this;
+        }
+
+        public Builder match(@Nullable String match) {
+            $.match = match;
+            return this;
+        }
+
+        public Builder maxItems(@Nullable Integer maxItems) {
+            $.maxItems = maxItems;
+            return this;
+        }
+
+        public Builder name(@Nullable String name) {
+            $.name = name;
+            return this;
+        }
+
+        public Builder order(@Nullable String order) {
+            $.order = order;
+            return this;
+        }
+
+        public Builder status(@Nullable String status) {
+            $.status = status;
             return this;
         }
 
         public GetZonesPlainArgs build() {
-            if ($.filter == null) {
-                throw new MissingRequiredPropertyException("GetZonesPlainArgs", "filter");
-            }
             return $;
         }
     }

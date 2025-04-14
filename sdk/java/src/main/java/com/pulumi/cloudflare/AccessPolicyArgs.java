@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.AccessPolicyApprovalGroupArgs;
-import com.pulumi.cloudflare.inputs.AccessPolicyConnectionRulesArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyExcludeArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyIncludeArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyRequireArgs;
@@ -12,7 +11,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,73 +23,61 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessPolicyArgs Empty = new AccessPolicyArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * Identifier
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return Identifier
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * Administrators who can approve a temporary authentication request.
      * 
      */
-    @Import(name="applicationId")
-    private @Nullable Output<String> applicationId;
-
-    /**
-     * @return The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<String>> applicationId() {
-        return Optional.ofNullable(this.applicationId);
-    }
-
     @Import(name="approvalGroups")
     private @Nullable Output<List<AccessPolicyApprovalGroupArgs>> approvalGroups;
 
+    /**
+     * @return Administrators who can approve a temporary authentication request.
+     * 
+     */
     public Optional<Output<List<AccessPolicyApprovalGroupArgs>>> approvalGroups() {
         return Optional.ofNullable(this.approvalGroups);
     }
 
+    /**
+     * Requires the user to request access from an administrator at the start of each session.
+     * 
+     */
     @Import(name="approvalRequired")
     private @Nullable Output<Boolean> approvalRequired;
 
+    /**
+     * @return Requires the user to request access from an administrator at the start of each session.
+     * 
+     */
     public Optional<Output<Boolean>> approvalRequired() {
         return Optional.ofNullable(this.approvalRequired);
     }
 
     /**
-     * The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
-    @Import(name="connectionRules")
-    private @Nullable Output<AccessPolicyConnectionRulesArgs> connectionRules;
-
-    /**
-     * @return The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
-    public Optional<Output<AccessPolicyConnectionRulesArgs>> connectionRules() {
-        return Optional.ofNullable(this.connectionRules);
-    }
-
-    /**
-     * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+     * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     @Import(name="decision", required=true)
     private Output<String> decision;
 
     /**
-     * @return Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+     * @return The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
      * 
      */
     public Output<String> decision() {
@@ -99,14 +85,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
     @Import(name="excludes")
     private @Nullable Output<List<AccessPolicyExcludeArgs>> excludes;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
     public Optional<Output<List<AccessPolicyExcludeArgs>>> excludes() {
@@ -114,14 +100,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
     @Import(name="includes", required=true)
     private Output<List<AccessPolicyIncludeArgs>> includes;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
     public Output<List<AccessPolicyIncludeArgs>> includes() {
@@ -129,14 +115,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Require this application to be served in an isolated browser for users matching this policy.
+     * Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
     @Import(name="isolationRequired")
     private @Nullable Output<Boolean> isolationRequired;
 
     /**
-     * @return Require this application to be served in an isolated browser for users matching this policy.
+     * @return Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
     public Optional<Output<Boolean>> isolationRequired() {
@@ -144,14 +130,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Friendly name of the Access Policy.
+     * The name of the Access policy.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Policy.
+     * @return The name of the Access policy.
      * 
      */
     public Output<String> name() {
@@ -159,29 +145,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique precedence for policies on a single application. Required when using `application_id`.
-     * 
-     */
-    @Import(name="precedence")
-    private @Nullable Output<Integer> precedence;
-
-    /**
-     * @return The unique precedence for policies on a single application. Required when using `application_id`.
-     * 
-     */
-    public Optional<Output<Integer>> precedence() {
-        return Optional.ofNullable(this.precedence);
-    }
-
-    /**
-     * The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+     * A custom message that will appear on the purpose justification screen.
      * 
      */
     @Import(name="purposeJustificationPrompt")
     private @Nullable Output<String> purposeJustificationPrompt;
 
     /**
-     * @return The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+     * @return A custom message that will appear on the purpose justification screen.
      * 
      */
     public Optional<Output<String>> purposeJustificationPrompt() {
@@ -189,14 +160,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to prompt the user for a justification for accessing the resource.
+     * Require users to enter a justification when they log in to the application.
      * 
      */
     @Import(name="purposeJustificationRequired")
     private @Nullable Output<Boolean> purposeJustificationRequired;
 
     /**
-     * @return Whether to prompt the user for a justification for accessing the resource.
+     * @return Require users to enter a justification when they log in to the application.
      * 
      */
     public Optional<Output<Boolean>> purposeJustificationRequired() {
@@ -204,14 +175,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A series of access conditions, see Access Groups.
+     * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
     @Import(name="requires")
     private @Nullable Output<List<AccessPolicyRequireArgs>> requires;
 
     /**
-     * @return A series of access conditions, see Access Groups.
+     * @return Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
     public Optional<Output<List<AccessPolicyRequireArgs>>> requires() {
@@ -219,54 +190,35 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * @return The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
         return Optional.ofNullable(this.sessionDuration);
     }
 
-    /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
-     * 
-     */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
-
-    /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
-     * 
-     */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
-    }
-
     private AccessPolicyArgs() {}
 
     private AccessPolicyArgs(AccessPolicyArgs $) {
         this.accountId = $.accountId;
-        this.applicationId = $.applicationId;
         this.approvalGroups = $.approvalGroups;
         this.approvalRequired = $.approvalRequired;
-        this.connectionRules = $.connectionRules;
         this.decision = $.decision;
         this.excludes = $.excludes;
         this.includes = $.includes;
         this.isolationRequired = $.isolationRequired;
         this.name = $.name;
-        this.precedence = $.precedence;
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
         this.purposeJustificationRequired = $.purposeJustificationRequired;
         this.requires = $.requires;
         this.sessionDuration = $.sessionDuration;
-        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -288,18 +240,18 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -309,71 +261,60 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationId The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+         * @param approvalGroups Administrators who can approve a temporary authentication request.
          * 
          * @return builder
          * 
          */
-        public Builder applicationId(@Nullable Output<String> applicationId) {
-            $.applicationId = applicationId;
-            return this;
-        }
-
-        /**
-         * @param applicationId The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder applicationId(String applicationId) {
-            return applicationId(Output.of(applicationId));
-        }
-
         public Builder approvalGroups(@Nullable Output<List<AccessPolicyApprovalGroupArgs>> approvalGroups) {
             $.approvalGroups = approvalGroups;
             return this;
         }
 
+        /**
+         * @param approvalGroups Administrators who can approve a temporary authentication request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvalGroups(List<AccessPolicyApprovalGroupArgs> approvalGroups) {
             return approvalGroups(Output.of(approvalGroups));
         }
 
+        /**
+         * @param approvalGroups Administrators who can approve a temporary authentication request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvalGroups(AccessPolicyApprovalGroupArgs... approvalGroups) {
             return approvalGroups(List.of(approvalGroups));
         }
 
+        /**
+         * @param approvalRequired Requires the user to request access from an administrator at the start of each session.
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvalRequired(@Nullable Output<Boolean> approvalRequired) {
             $.approvalRequired = approvalRequired;
             return this;
         }
 
+        /**
+         * @param approvalRequired Requires the user to request access from an administrator at the start of each session.
+         * 
+         * @return builder
+         * 
+         */
         public Builder approvalRequired(Boolean approvalRequired) {
             return approvalRequired(Output.of(approvalRequired));
         }
 
         /**
-         * @param connectionRules The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectionRules(@Nullable Output<AccessPolicyConnectionRulesArgs> connectionRules) {
-            $.connectionRules = connectionRules;
-            return this;
-        }
-
-        /**
-         * @param connectionRules The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectionRules(AccessPolicyConnectionRulesArgs connectionRules) {
-            return connectionRules(Output.of(connectionRules));
-        }
-
-        /**
-         * @param decision Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+         * @param decision The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
          * 
          * @return builder
          * 
@@ -384,7 +325,8 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param decision Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+         * @param decision The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;, &#34;non_identity&#34;, &#34;bypass&#34;.
          * 
          * @return builder
          * 
@@ -394,7 +336,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param excludes A series of access conditions, see Access Groups.
+         * @param excludes Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
          * 
          * @return builder
          * 
@@ -405,7 +347,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param excludes A series of access conditions, see Access Groups.
+         * @param excludes Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
          * 
          * @return builder
          * 
@@ -415,7 +357,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param excludes A series of access conditions, see Access Groups.
+         * @param excludes Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
          * 
          * @return builder
          * 
@@ -425,7 +367,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includes A series of access conditions, see Access Groups.
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
          * 
          * @return builder
          * 
@@ -436,7 +378,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includes A series of access conditions, see Access Groups.
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
          * 
          * @return builder
          * 
@@ -446,7 +388,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includes A series of access conditions, see Access Groups.
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
          * 
          * @return builder
          * 
@@ -456,7 +398,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy.
+         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
          * 
          * @return builder
          * 
@@ -467,7 +409,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy.
+         * @param isolationRequired Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
          * 
          * @return builder
          * 
@@ -477,7 +419,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Friendly name of the Access Policy.
+         * @param name The name of the Access policy.
          * 
          * @return builder
          * 
@@ -488,7 +430,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Friendly name of the Access Policy.
+         * @param name The name of the Access policy.
          * 
          * @return builder
          * 
@@ -498,28 +440,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param precedence The unique precedence for policies on a single application. Required when using `application_id`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder precedence(@Nullable Output<Integer> precedence) {
-            $.precedence = precedence;
-            return this;
-        }
-
-        /**
-         * @param precedence The unique precedence for policies on a single application. Required when using `application_id`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder precedence(Integer precedence) {
-            return precedence(Output.of(precedence));
-        }
-
-        /**
-         * @param purposeJustificationPrompt The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+         * @param purposeJustificationPrompt A custom message that will appear on the purpose justification screen.
          * 
          * @return builder
          * 
@@ -530,7 +451,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purposeJustificationPrompt The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+         * @param purposeJustificationPrompt A custom message that will appear on the purpose justification screen.
          * 
          * @return builder
          * 
@@ -540,7 +461,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purposeJustificationRequired Whether to prompt the user for a justification for accessing the resource.
+         * @param purposeJustificationRequired Require users to enter a justification when they log in to the application.
          * 
          * @return builder
          * 
@@ -551,7 +472,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purposeJustificationRequired Whether to prompt the user for a justification for accessing the resource.
+         * @param purposeJustificationRequired Require users to enter a justification when they log in to the application.
          * 
          * @return builder
          * 
@@ -561,7 +482,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requires A series of access conditions, see Access Groups.
+         * @param requires Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
          * 
          * @return builder
          * 
@@ -572,7 +493,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requires A series of access conditions, see Access Groups.
+         * @param requires Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
          * 
          * @return builder
          * 
@@ -582,7 +503,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param requires A series of access conditions, see Access Groups.
+         * @param requires Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
          * 
          * @return builder
          * 
@@ -592,7 +513,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+         * @param sessionDuration The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
          * 
@@ -603,7 +524,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+         * @param sessionDuration The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
          * 
@@ -612,28 +533,10 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
             return sessionDuration(Output.of(sessionDuration));
         }
 
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
-            $.zoneId = zoneId;
-            return this;
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(String zoneId) {
-            return zoneId(Output.of(zoneId));
-        }
-
         public AccessPolicyArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyArgs", "accountId");
+            }
             if ($.decision == null) {
                 throw new MissingRequiredPropertyException("AccessPolicyArgs", "decision");
             }

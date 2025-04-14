@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Creates a Worker Custom Domain.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,12 +20,13 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.WorkerDomain("example", new()
+    ///     var exampleWorkersCustomDomain = new Cloudflare.WorkersCustomDomain("example_workers_custom_domain", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Hostname = "subdomain.example.com",
-    ///         Service = "my-service",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         AccountId = "9a7806061c88ada191ed06f989cc3dac",
+    ///         Environment = "production",
+    ///         Hostname = "foo.example.com",
+    ///         Service = "foo",
+    ///         ZoneId = "593c9c94de529bbbfaac7c53ced0447d",
     ///     });
     /// 
     /// });
@@ -36,23 +35,24 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/workerDomain:WorkerDomain example &lt;account_id&gt;/&lt;worker_domain_id&gt;
+    /// $ pulumi import cloudflare:index/workerDomain:WorkerDomain example '&lt;account_id&gt;/&lt;domain_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain")]
     [CloudflareResourceType("cloudflare:index/workerDomain:WorkerDomain")]
     public partial class WorkerDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifer of the account.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Worker environment. Defaults to `production`.
+        /// Worker environment associated with the zone and hostname.
         /// </summary>
         [Output("environment")]
-        public Output<string?> Environment { get; private set; } = null!;
+        public Output<string> Environment { get; private set; } = null!;
 
         /// <summary>
         /// Hostname of the Worker Domain.
@@ -61,16 +61,22 @@ namespace Pulumi.Cloudflare
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// Name of worker script to attach the domain to.
+        /// Worker service associated with the zone and hostname.
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier of the zone.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the zone.
+        /// </summary>
+        [Output("zoneName")]
+        public Output<string> ZoneName { get; private set; } = null!;
 
 
         /// <summary>
@@ -95,6 +101,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/workerDomain:WorkerDomain" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -119,16 +129,16 @@ namespace Pulumi.Cloudflare
     public sealed class WorkerDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifer of the account.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Worker environment. Defaults to `production`.
+        /// Worker environment associated with the zone and hostname.
         /// </summary>
-        [Input("environment")]
-        public Input<string>? Environment { get; set; }
+        [Input("environment", required: true)]
+        public Input<string> Environment { get; set; } = null!;
 
         /// <summary>
         /// Hostname of the Worker Domain.
@@ -137,13 +147,13 @@ namespace Pulumi.Cloudflare
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
-        /// Name of worker script to attach the domain to.
+        /// Worker service associated with the zone and hostname.
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -157,13 +167,13 @@ namespace Pulumi.Cloudflare
     public sealed class WorkerDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifer of the account.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The name of the Worker environment. Defaults to `production`.
+        /// Worker environment associated with the zone and hostname.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -175,16 +185,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Name of worker script to attach the domain to.
+        /// Worker service associated with the zone and hostname.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
+
+        /// <summary>
+        /// Name of the zone.
+        /// </summary>
+        [Input("zoneName")]
+        public Input<string>? ZoneName { get; set; }
 
         public WorkerDomainState()
         {

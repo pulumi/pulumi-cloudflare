@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     public static class GetIpRanges
     {
         /// <summary>
-        /// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -21,36 +19,21 @@ namespace Pulumi.Cloudflare
         /// using System.Linq;
         /// using Pulumi;
         /// using Cloudflare = Pulumi.Cloudflare;
-        /// using Example = Pulumi.Example;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var cloudflare = Cloudflare.GetIpRanges.Invoke();
-        /// 
-        ///     var example = new Example.Index.FirewallResource("example", new()
+        ///     var exampleIpRanges = Cloudflare.GetIpRanges.Invoke(new()
         ///     {
-        ///         Name = "from-cloudflare",
-        ///         Network = "default",
-        ///         SourceRanges = cloudflare.Apply(getIpRangesResult =&gt; getIpRangesResult.Ipv4CidrBlocks),
-        ///         Allow = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "ports", "443" },
-        ///                 { "protocol", "tcp" },
-        ///             },
-        ///         },
+        ///         Networks = "networks",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetIpRangesResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", InvokeArgs.Empty, options.WithDefaults());
+        public static Task<GetIpRangesResult> InvokeAsync(GetIpRangesArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", args ?? new GetIpRangesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -58,36 +41,21 @@ namespace Pulumi.Cloudflare
         /// using System.Linq;
         /// using Pulumi;
         /// using Cloudflare = Pulumi.Cloudflare;
-        /// using Example = Pulumi.Example;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var cloudflare = Cloudflare.GetIpRanges.Invoke();
-        /// 
-        ///     var example = new Example.Index.FirewallResource("example", new()
+        ///     var exampleIpRanges = Cloudflare.GetIpRanges.Invoke(new()
         ///     {
-        ///         Name = "from-cloudflare",
-        ///         Network = "default",
-        ///         SourceRanges = cloudflare.Apply(getIpRangesResult =&gt; getIpRangesResult.Ipv4CidrBlocks),
-        ///         Allow = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "ports", "443" },
-        ///                 { "protocol", "tcp" },
-        ///             },
-        ///         },
+        ///         Networks = "networks",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetIpRangesResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetIpRangesResult> Invoke(GetIpRangesInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", args ?? new GetIpRangesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -95,32 +63,48 @@ namespace Pulumi.Cloudflare
         /// using System.Linq;
         /// using Pulumi;
         /// using Cloudflare = Pulumi.Cloudflare;
-        /// using Example = Pulumi.Example;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var cloudflare = Cloudflare.GetIpRanges.Invoke();
-        /// 
-        ///     var example = new Example.Index.FirewallResource("example", new()
+        ///     var exampleIpRanges = Cloudflare.GetIpRanges.Invoke(new()
         ///     {
-        ///         Name = "from-cloudflare",
-        ///         Network = "default",
-        ///         SourceRanges = cloudflare.Apply(getIpRangesResult =&gt; getIpRangesResult.Ipv4CidrBlocks),
-        ///         Allow = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "ports", "443" },
-        ///                 { "protocol", "tcp" },
-        ///             },
-        ///         },
+        ///         Networks = "networks",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetIpRangesResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", InvokeArgs.Empty, options.WithDefaults());
+        public static Output<GetIpRangesResult> Invoke(GetIpRangesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", args ?? new GetIpRangesInvokeArgs(), options.WithDefaults());
+    }
+
+
+    public sealed class GetIpRangesArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+        /// </summary>
+        [Input("networks")]
+        public string? Networks { get; set; }
+
+        public GetIpRangesArgs()
+        {
+        }
+        public static new GetIpRangesArgs Empty => new GetIpRangesArgs();
+    }
+
+    public sealed class GetIpRangesInvokeArgs : global::Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+        /// </summary>
+        [Input("networks")]
+        public Input<string>? Networks { get; set; }
+
+        public GetIpRangesInvokeArgs()
+        {
+        }
+        public static new GetIpRangesInvokeArgs Empty => new GetIpRangesInvokeArgs();
     }
 
 
@@ -128,50 +112,50 @@ namespace Pulumi.Cloudflare
     public sealed class GetIpRangesResult
     {
         /// <summary>
-        /// The lexically ordered list of only the IPv4 China CIDR blocks.
+        /// A digest of the IP data. Useful for determining if the data has changed.
         /// </summary>
-        public readonly ImmutableArray<string> ChinaIpv4CidrBlocks;
-        /// <summary>
-        /// The lexically ordered list of only the IPv6 China CIDR blocks.
-        /// </summary>
-        public readonly ImmutableArray<string> ChinaIpv6CidrBlocks;
-        /// <summary>
-        /// The lexically ordered list of all non-China CIDR blocks.
-        /// </summary>
-        public readonly ImmutableArray<string> CidrBlocks;
+        public readonly string Etag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The lexically ordered list of only the IPv4 CIDR blocks.
+        /// List of Cloudflare IPv4 CIDR addresses.
         /// </summary>
-        public readonly ImmutableArray<string> Ipv4CidrBlocks;
+        public readonly ImmutableArray<string> Ipv4Cidrs;
         /// <summary>
-        /// The lexically ordered list of only the IPv6 CIDR blocks.
+        /// List of Cloudflare IPv6 CIDR addresses.
         /// </summary>
-        public readonly ImmutableArray<string> Ipv6CidrBlocks;
+        public readonly ImmutableArray<string> Ipv6Cidrs;
+        /// <summary>
+        /// List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.
+        /// </summary>
+        public readonly ImmutableArray<string> JdcloudCidrs;
+        /// <summary>
+        /// Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+        /// </summary>
+        public readonly string? Networks;
 
         [OutputConstructor]
         private GetIpRangesResult(
-            ImmutableArray<string> chinaIpv4CidrBlocks,
-
-            ImmutableArray<string> chinaIpv6CidrBlocks,
-
-            ImmutableArray<string> cidrBlocks,
+            string etag,
 
             string id,
 
-            ImmutableArray<string> ipv4CidrBlocks,
+            ImmutableArray<string> ipv4Cidrs,
 
-            ImmutableArray<string> ipv6CidrBlocks)
+            ImmutableArray<string> ipv6Cidrs,
+
+            ImmutableArray<string> jdcloudCidrs,
+
+            string? networks)
         {
-            ChinaIpv4CidrBlocks = chinaIpv4CidrBlocks;
-            ChinaIpv6CidrBlocks = chinaIpv6CidrBlocks;
-            CidrBlocks = cidrBlocks;
+            Etag = etag;
             Id = id;
-            Ipv4CidrBlocks = ipv4CidrBlocks;
-            Ipv6CidrBlocks = ipv6CidrBlocks;
+            Ipv4Cidrs = ipv4Cidrs;
+            Ipv6Cidrs = ipv6Cidrs;
+            JdcloudCidrs = jdcloudCidrs;
+            Networks = networks;
         }
     }
 }

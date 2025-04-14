@@ -28,7 +28,7 @@ public final class PagesProjectBuildConfig {
      */
     private @Nullable String destinationDir;
     /**
-     * @return Your project&#39;s root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
+     * @return Directory to run the command.
      * 
      */
     private @Nullable String rootDir;
@@ -66,7 +66,7 @@ public final class PagesProjectBuildConfig {
         return Optional.ofNullable(this.destinationDir);
     }
     /**
-     * @return Your project&#39;s root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
+     * @return Directory to run the command.
      * 
      */
     public Optional<String> rootDir() {

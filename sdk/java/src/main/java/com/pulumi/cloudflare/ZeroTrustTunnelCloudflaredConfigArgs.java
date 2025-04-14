@@ -9,6 +9,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,14 +18,14 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
     public static final ZeroTrustTunnelCloudflaredConfigArgs Empty = new ZeroTrustTunnelCloudflaredConfigArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -31,29 +33,46 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Configuration block for Tunnel Configuration.
+     * The tunnel configuration and ingress rules.
      * 
      */
-    @Import(name="config", required=true)
-    private Output<ZeroTrustTunnelCloudflaredConfigConfigArgs> config;
+    @Import(name="config")
+    private @Nullable Output<ZeroTrustTunnelCloudflaredConfigConfigArgs> config;
 
     /**
-     * @return Configuration block for Tunnel Configuration.
+     * @return The tunnel configuration and ingress rules.
      * 
      */
-    public Output<ZeroTrustTunnelCloudflaredConfigConfigArgs> config() {
-        return this.config;
+    public Optional<Output<ZeroTrustTunnelCloudflaredConfigConfigArgs>> config() {
+        return Optional.ofNullable(this.config);
     }
 
     /**
-     * Identifier of the Tunnel to target for this configuration.
+     * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    @Import(name="source")
+    private @Nullable Output<String> source;
+
+    /**
+     * @return Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+     * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+     * 
+     */
+    public Optional<Output<String>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
+    /**
+     * UUID of the tunnel.
      * 
      */
     @Import(name="tunnelId", required=true)
     private Output<String> tunnelId;
 
     /**
-     * @return Identifier of the Tunnel to target for this configuration.
+     * @return UUID of the tunnel.
      * 
      */
     public Output<String> tunnelId() {
@@ -65,6 +84,7 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
     private ZeroTrustTunnelCloudflaredConfigArgs(ZeroTrustTunnelCloudflaredConfigArgs $) {
         this.accountId = $.accountId;
         this.config = $.config;
+        this.source = $.source;
         this.tunnelId = $.tunnelId;
     }
 
@@ -87,7 +107,7 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -98,7 +118,7 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -108,18 +128,18 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param config Configuration block for Tunnel Configuration.
+         * @param config The tunnel configuration and ingress rules.
          * 
          * @return builder
          * 
          */
-        public Builder config(Output<ZeroTrustTunnelCloudflaredConfigConfigArgs> config) {
+        public Builder config(@Nullable Output<ZeroTrustTunnelCloudflaredConfigConfigArgs> config) {
             $.config = config;
             return this;
         }
 
         /**
-         * @param config Configuration block for Tunnel Configuration.
+         * @param config The tunnel configuration and ingress rules.
          * 
          * @return builder
          * 
@@ -129,7 +149,30 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tunnelId Identifier of the Tunnel to target for this configuration.
+         * @param source Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(@Nullable Output<String> source) {
+            $.source = source;
+            return this;
+        }
+
+        /**
+         * @param source Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel&#39;s configuration on the Zero Trust dashboard.
+         * Available values: &#34;local&#34;, &#34;cloudflare&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder source(String source) {
+            return source(Output.of(source));
+        }
+
+        /**
+         * @param tunnelId UUID of the tunnel.
          * 
          * @return builder
          * 
@@ -140,7 +183,7 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tunnelId Identifier of the Tunnel to target for this configuration.
+         * @param tunnelId UUID of the tunnel.
          * 
          * @return builder
          * 
@@ -152,9 +195,6 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
         public ZeroTrustTunnelCloudflaredConfigArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigArgs", "accountId");
-            }
-            if ($.config == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigArgs", "config");
             }
             if ($.tunnelId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustTunnelCloudflaredConfigArgs", "tunnelId");

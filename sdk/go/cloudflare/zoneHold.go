@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Zone Hold resource that prevents adding
-// the hostname to another account for use.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,16 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneHold(ctx, "example", &cloudflare.ZoneHoldArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Hold:   pulumi.Bool(true),
+//			_, err := cloudflare.NewZoneHold(ctx, "example_zone_hold", &cloudflare.ZoneHoldArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,18 +41,24 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zoneHold:ZoneHold example <zone_id>
+// $ pulumi import cloudflare:index/zoneHold:ZoneHold example '<zone_id>'
 // ```
 type ZoneHold struct {
 	pulumi.CustomResourceState
 
-	// Enablement status of the zone hold.
 	Hold pulumi.BoolOutput `pulumi:"hold"`
-	// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+	// If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+	// then automatically re-enabled by the system at the time specified
+	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+	// no effect on an existing, enabled hold. Providing an empty string will set its value
+	// to the current time.
 	HoldAfter pulumi.StringOutput `pulumi:"holdAfter"`
-	// Whether to extend to block any subdomain of the given zone.
-	IncludeSubdomains pulumi.BoolPtrOutput `pulumi:"includeSubdomains"`
-	// The zone identifier to target for the resource.
+	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+	// 'example.com' and include_subdomains=true will block 'example.com',
+	// 'staging.example.com', 'api.staging.example.com', etc.
+	IncludeSubdomains pulumi.BoolOutput `pulumi:"includeSubdomains"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -67,9 +69,6 @@ func NewZoneHold(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Hold == nil {
-		return nil, errors.New("invalid value for required argument 'Hold'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -96,24 +95,36 @@ func GetZoneHold(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneHold resources.
 type zoneHoldState struct {
-	// Enablement status of the zone hold.
 	Hold *bool `pulumi:"hold"`
-	// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+	// If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+	// then automatically re-enabled by the system at the time specified
+	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+	// no effect on an existing, enabled hold. Providing an empty string will set its value
+	// to the current time.
 	HoldAfter *string `pulumi:"holdAfter"`
-	// Whether to extend to block any subdomain of the given zone.
+	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+	// 'example.com' and include_subdomains=true will block 'example.com',
+	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains *bool `pulumi:"includeSubdomains"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZoneHoldState struct {
-	// Enablement status of the zone hold.
 	Hold pulumi.BoolPtrInput
-	// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+	// If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+	// then automatically re-enabled by the system at the time specified
+	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+	// no effect on an existing, enabled hold. Providing an empty string will set its value
+	// to the current time.
 	HoldAfter pulumi.StringPtrInput
-	// Whether to extend to block any subdomain of the given zone.
+	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+	// 'example.com' and include_subdomains=true will block 'example.com',
+	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains pulumi.BoolPtrInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -122,25 +133,35 @@ func (ZoneHoldState) ElementType() reflect.Type {
 }
 
 type zoneHoldArgs struct {
-	// Enablement status of the zone hold.
-	Hold bool `pulumi:"hold"`
-	// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+	// If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+	// then automatically re-enabled by the system at the time specified
+	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+	// no effect on an existing, enabled hold. Providing an empty string will set its value
+	// to the current time.
 	HoldAfter *string `pulumi:"holdAfter"`
-	// Whether to extend to block any subdomain of the given zone.
+	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+	// 'example.com' and include_subdomains=true will block 'example.com',
+	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains *bool `pulumi:"includeSubdomains"`
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneHold resource.
 type ZoneHoldArgs struct {
-	// Enablement status of the zone hold.
-	Hold pulumi.BoolInput
-	// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+	// If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+	// then automatically re-enabled by the system at the time specified
+	// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+	// no effect on an existing, enabled hold. Providing an empty string will set its value
+	// to the current time.
 	HoldAfter pulumi.StringPtrInput
-	// Whether to extend to block any subdomain of the given zone.
+	// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+	// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+	// 'example.com' and include_subdomains=true will block 'example.com',
+	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains pulumi.BoolPtrInput
-	// The zone identifier to target for the resource.
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -231,22 +252,28 @@ func (o ZoneHoldOutput) ToZoneHoldOutputWithContext(ctx context.Context) ZoneHol
 	return o
 }
 
-// Enablement status of the zone hold.
 func (o ZoneHoldOutput) Hold() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZoneHold) pulumi.BoolOutput { return v.Hold }).(pulumi.BoolOutput)
 }
 
-// The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
+// If `holdAfter` is provided and future-dated, the hold will be temporarily disabled,
+// then automatically re-enabled by the system at the time specified
+// in this RFC3339-formatted timestamp. A past-dated `holdAfter` value will have
+// no effect on an existing, enabled hold. Providing an empty string will set its value
+// to the current time.
 func (o ZoneHoldOutput) HoldAfter() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneHold) pulumi.StringOutput { return v.HoldAfter }).(pulumi.StringOutput)
 }
 
-// Whether to extend to block any subdomain of the given zone.
-func (o ZoneHoldOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneHold) pulumi.BoolPtrOutput { return v.IncludeSubdomains }).(pulumi.BoolPtrOutput)
+// If `true`, the zone hold will extend to block any subdomain of the given zone, as well
+// as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
+// 'example.com' and include_subdomains=true will block 'example.com',
+// 'staging.example.com', 'api.staging.example.com', etc.
+func (o ZoneHoldOutput) IncludeSubdomains() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZoneHold) pulumi.BoolOutput { return v.IncludeSubdomains }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource.
+// Identifier
 func (o ZoneHoldOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneHold) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

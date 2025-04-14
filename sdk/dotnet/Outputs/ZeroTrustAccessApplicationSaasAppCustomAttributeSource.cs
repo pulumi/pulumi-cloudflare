@@ -14,22 +14,22 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustAccessApplicationSaasAppCustomAttributeSource
     {
         /// <summary>
-        /// The name of the attribute as provided by the IDP.
+        /// The name of the IdP attribute.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// A mapping from IdP ID to claim name.
+        /// A mapping from IdP ID to attribute name.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? NameByIdp;
+        public readonly ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp> NameByIdps;
 
         [OutputConstructor]
         private ZeroTrustAccessApplicationSaasAppCustomAttributeSource(
-            string name,
+            string? name,
 
-            ImmutableDictionary<string, string>? nameByIdp)
+            ImmutableArray<Outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp> nameByIdps)
         {
             Name = name;
-            NameByIdp = nameByIdp;
+            NameByIdps = nameByIdps;
         }
     }
 }

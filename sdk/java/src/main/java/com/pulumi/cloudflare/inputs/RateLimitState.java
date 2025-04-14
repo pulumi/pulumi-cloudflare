@@ -4,12 +4,12 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.RateLimitActionArgs;
-import com.pulumi.cloudflare.inputs.RateLimitCorrelateArgs;
+import com.pulumi.cloudflare.inputs.RateLimitBypassArgs;
 import com.pulumi.cloudflare.inputs.RateLimitMatchArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,51 +22,44 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     public static final RateLimitState Empty = new RateLimitState();
 
     /**
-     * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
     @Import(name="action")
     private @Nullable Output<RateLimitActionArgs> action;
 
     /**
-     * @return The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+     * @return The action to perform when the threshold of matched traffic within the configured period is exceeded.
      * 
      */
     public Optional<Output<RateLimitActionArgs>> action() {
         return Optional.ofNullable(this.action);
     }
 
-    @Import(name="bypassUrlPatterns")
-    private @Nullable Output<List<String>> bypassUrlPatterns;
+    /**
+     * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+     * 
+     */
+    @Import(name="bypasses")
+    private @Nullable Output<List<RateLimitBypassArgs>> bypasses;
 
-    public Optional<Output<List<String>>> bypassUrlPatterns() {
-        return Optional.ofNullable(this.bypassUrlPatterns);
+    /**
+     * @return Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+     * 
+     */
+    public Optional<Output<List<RateLimitBypassArgs>>> bypasses() {
+        return Optional.ofNullable(this.bypasses);
     }
 
     /**
-     * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-     * 
-     */
-    @Import(name="correlate")
-    private @Nullable Output<RateLimitCorrelateArgs> correlate;
-
-    /**
-     * @return Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-     * 
-     */
-    public Optional<Output<RateLimitCorrelateArgs>> correlate() {
-        return Optional.ofNullable(this.correlate);
-    }
-
-    /**
-     * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      * 
      */
     public Optional<Output<String>> description() {
@@ -74,14 +67,14 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether this ratelimit is currently disabled. Defaults to `false`.
+     * When true, indicates that the rate limit is currently disabled.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Whether this ratelimit is currently disabled. Defaults to `false`.
+     * @return When true, indicates that the rate limit is currently disabled.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -89,14 +82,14 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+     * Determines which traffic the rate limit counts towards the threshold.
      * 
      */
     @Import(name="match")
     private @Nullable Output<RateLimitMatchArgs> match;
 
     /**
-     * @return Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+     * @return Determines which traffic the rate limit counts towards the threshold.
      * 
      */
     public Optional<Output<RateLimitMatchArgs>> match() {
@@ -104,44 +97,44 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+     * The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      * 
      */
     @Import(name="period")
-    private @Nullable Output<Integer> period;
+    private @Nullable Output<Double> period;
 
     /**
-     * @return The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+     * @return The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      * 
      */
-    public Optional<Output<Integer>> period() {
+    public Optional<Output<Double>> period() {
         return Optional.ofNullable(this.period);
     }
 
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period.
+     * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      * 
      */
     @Import(name="threshold")
-    private @Nullable Output<Integer> threshold;
+    private @Nullable Output<Double> threshold;
 
     /**
-     * @return The threshold that triggers the rate limit mitigations, combine with period.
+     * @return The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      * 
      */
-    public Optional<Output<Integer>> threshold() {
+    public Optional<Output<Double>> threshold() {
         return Optional.ofNullable(this.threshold);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -152,8 +145,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
 
     private RateLimitState(RateLimitState $) {
         this.action = $.action;
-        this.bypassUrlPatterns = $.bypassUrlPatterns;
-        this.correlate = $.correlate;
+        this.bypasses = $.bypasses;
         this.description = $.description;
         this.disabled = $.disabled;
         this.match = $.match;
@@ -181,7 +173,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+         * @param action The action to perform when the threshold of matched traffic within the configured period is exceeded.
          * 
          * @return builder
          * 
@@ -192,7 +184,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+         * @param action The action to perform when the threshold of matched traffic within the configured period is exceeded.
          * 
          * @return builder
          * 
@@ -201,42 +193,39 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
             return action(Output.of(action));
         }
 
-        public Builder bypassUrlPatterns(@Nullable Output<List<String>> bypassUrlPatterns) {
-            $.bypassUrlPatterns = bypassUrlPatterns;
-            return this;
-        }
-
-        public Builder bypassUrlPatterns(List<String> bypassUrlPatterns) {
-            return bypassUrlPatterns(Output.of(bypassUrlPatterns));
-        }
-
-        public Builder bypassUrlPatterns(String... bypassUrlPatterns) {
-            return bypassUrlPatterns(List.of(bypassUrlPatterns));
-        }
-
         /**
-         * @param correlate Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+         * @param bypasses Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
          * 
          * @return builder
          * 
          */
-        public Builder correlate(@Nullable Output<RateLimitCorrelateArgs> correlate) {
-            $.correlate = correlate;
+        public Builder bypasses(@Nullable Output<List<RateLimitBypassArgs>> bypasses) {
+            $.bypasses = bypasses;
             return this;
         }
 
         /**
-         * @param correlate Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+         * @param bypasses Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
          * 
          * @return builder
          * 
          */
-        public Builder correlate(RateLimitCorrelateArgs correlate) {
-            return correlate(Output.of(correlate));
+        public Builder bypasses(List<RateLimitBypassArgs> bypasses) {
+            return bypasses(Output.of(bypasses));
         }
 
         /**
-         * @param description A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+         * @param bypasses Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypasses(RateLimitBypassArgs... bypasses) {
+            return bypasses(List.of(bypasses));
+        }
+
+        /**
+         * @param description An informative summary of the rate limit. This value is sanitized and any tags will be removed.
          * 
          * @return builder
          * 
@@ -247,7 +236,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+         * @param description An informative summary of the rate limit. This value is sanitized and any tags will be removed.
          * 
          * @return builder
          * 
@@ -257,7 +246,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Whether this ratelimit is currently disabled. Defaults to `false`.
+         * @param disabled When true, indicates that the rate limit is currently disabled.
          * 
          * @return builder
          * 
@@ -268,7 +257,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Whether this ratelimit is currently disabled. Defaults to `false`.
+         * @param disabled When true, indicates that the rate limit is currently disabled.
          * 
          * @return builder
          * 
@@ -278,7 +267,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+         * @param match Determines which traffic the rate limit counts towards the threshold.
          * 
          * @return builder
          * 
@@ -289,7 +278,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param match Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+         * @param match Determines which traffic the rate limit counts towards the threshold.
          * 
          * @return builder
          * 
@@ -299,49 +288,49 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+         * @param period The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
          * 
          * @return builder
          * 
          */
-        public Builder period(@Nullable Output<Integer> period) {
+        public Builder period(@Nullable Output<Double> period) {
             $.period = period;
             return this;
         }
 
         /**
-         * @param period The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+         * @param period The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
          * 
          * @return builder
          * 
          */
-        public Builder period(Integer period) {
+        public Builder period(Double period) {
             return period(Output.of(period));
         }
 
         /**
-         * @param threshold The threshold that triggers the rate limit mitigations, combine with period.
+         * @param threshold The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
          * 
          * @return builder
          * 
          */
-        public Builder threshold(@Nullable Output<Integer> threshold) {
+        public Builder threshold(@Nullable Output<Double> threshold) {
             $.threshold = threshold;
             return this;
         }
 
         /**
-         * @param threshold The threshold that triggers the rate limit mitigations, combine with period.
+         * @param threshold The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
          * 
          * @return builder
          * 
          */
-        public Builder threshold(Integer threshold) {
+        public Builder threshold(Double threshold) {
             return threshold(Output.of(threshold));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -352,7 +341,7 @@ public final class RateLimitState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

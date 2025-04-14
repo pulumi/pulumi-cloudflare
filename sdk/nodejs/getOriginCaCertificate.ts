@@ -2,26 +2,28 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to retrieve an existing origin ca certificate.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getOriginCaCertificate({
- *     id: "REPLACE_ME",
+ * const exampleOriginCaCertificate = cloudflare.getOriginCaCertificate({
+ *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
-export function getOriginCaCertificate(args: GetOriginCaCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaCertificateResult> {
+export function getOriginCaCertificate(args?: GetOriginCaCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaCertificateResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", {
-        "id": args.id,
+        "certificateId": args.certificateId,
+        "filter": args.filter,
     }, opts);
 }
 
@@ -30,9 +32,10 @@ export function getOriginCaCertificate(args: GetOriginCaCertificateArgs, opts?: 
  */
 export interface GetOriginCaCertificateArgs {
     /**
-     * The Origin CA Certificate unique identifier.
+     * Identifier
      */
-    id: string;
+    certificateId?: string;
+    filter?: inputs.GetOriginCaCertificateFilter;
 }
 
 /**
@@ -40,48 +43,59 @@ export interface GetOriginCaCertificateArgs {
  */
 export interface GetOriginCaCertificateResult {
     /**
-     * The Origin CA certificate.
+     * The Origin CA certificate. Will be newline-encoded.
      */
     readonly certificate: string;
     /**
-     * The timestamp when the certificate will expire.
+     * Identifier
+     */
+    readonly certificateId?: string;
+    /**
+     * The Certificate Signing Request (CSR). Must be newline-encoded.
+     */
+    readonly csr: string;
+    /**
+     * When the certificate will expire.
      */
     readonly expiresOn: string;
+    readonly filter?: outputs.GetOriginCaCertificateFilter;
     /**
-     * A list of hostnames or wildcard names bound to the certificate.
+     * Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
      */
     readonly hostnames: string[];
     /**
-     * The Origin CA Certificate unique identifier.
+     * Identifier
      */
     readonly id: string;
     /**
-     * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`
+     * Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+     * Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
      */
     readonly requestType: string;
     /**
-     * The timestamp when the certificate was revoked.
+     * The number of days for which the certificate should be valid.
+     * Available values: 7, 30, 90, 365, 730, 1095, 5475.
      */
-    readonly revokedAt: string;
+    readonly requestedValidity: number;
 }
 /**
- * Use this data source to retrieve an existing origin ca certificate.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getOriginCaCertificate({
- *     id: "REPLACE_ME",
+ * const exampleOriginCaCertificate = cloudflare.getOriginCaCertificate({
+ *     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
-export function getOriginCaCertificateOutput(args: GetOriginCaCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOriginCaCertificateResult> {
+export function getOriginCaCertificateOutput(args?: GetOriginCaCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOriginCaCertificateResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", {
-        "id": args.id,
+        "certificateId": args.certificateId,
+        "filter": args.filter,
     }, opts);
 }
 
@@ -90,7 +104,8 @@ export function getOriginCaCertificateOutput(args: GetOriginCaCertificateOutputA
  */
 export interface GetOriginCaCertificateOutputArgs {
     /**
-     * The Origin CA Certificate unique identifier.
+     * Identifier
      */
-    id: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetOriginCaCertificateFilterArgs>;
 }

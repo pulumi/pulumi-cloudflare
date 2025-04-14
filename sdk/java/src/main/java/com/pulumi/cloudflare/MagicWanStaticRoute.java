@@ -6,10 +6,15 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.MagicWanStaticRouteArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.MagicWanStaticRouteState;
+import com.pulumi.cloudflare.outputs.MagicWanStaticRouteModifiedRoute;
+import com.pulumi.cloudflare.outputs.MagicWanStaticRouteRoute;
+import com.pulumi.cloudflare.outputs.MagicWanStaticRouteScope;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,10 +22,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages Cloudflare static routes for Magic
- * Transit or Magic WAN. Static routes are used to route traffic
- * through GRE tunnels.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -46,15 +47,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MagicWanStaticRoute("example", MagicWanStaticRouteArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .description("New route for new prefix 192.0.2.0/24")
- *             .prefix("192.0.2.0/24")
- *             .nexthop("10.0.0.0")
- *             .priority(100)
- *             .weight(10)
- *             .coloNames("den01")
- *             .coloRegions("APAC")
+ *         var exampleMagicWanStaticRoute = new MagicWanStaticRoute("exampleMagicWanStaticRoute", MagicWanStaticRouteArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
  *     }
@@ -63,122 +57,140 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Import
- * 
- * ```sh
- * $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example &lt;account_id&gt;/&lt;static_route_id&gt;
- * ```
- * 
  */
 @ResourceType(type="cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute")
 public class MagicWanStaticRoute extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
-     * List of Cloudflare colocation regions for this static route.
-     * 
-     */
-    @Export(name="coloNames", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> coloNames;
-
-    /**
-     * @return List of Cloudflare colocation regions for this static route.
-     * 
-     */
-    public Output<Optional<List<String>>> coloNames() {
-        return Codegen.optional(this.coloNames);
-    }
-    /**
-     * List of Cloudflare colocation names for this static route.
-     * 
-     */
-    @Export(name="coloRegions", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> coloRegions;
-
-    /**
-     * @return List of Cloudflare colocation names for this static route.
-     * 
-     */
-    public Output<Optional<List<String>>> coloRegions() {
-        return Codegen.optional(this.coloRegions);
-    }
-    /**
-     * Description of the static route.
+     * An optional human provided description of the static route.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the static route.
+     * @return An optional human provided description of the static route.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    @Export(name="modified", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> modified;
+
+    public Output<Boolean> modified() {
+        return this.modified;
+    }
+    @Export(name="modifiedRoute", refs={MagicWanStaticRouteModifiedRoute.class}, tree="[0]")
+    private Output<MagicWanStaticRouteModifiedRoute> modifiedRoute;
+
+    public Output<MagicWanStaticRouteModifiedRoute> modifiedRoute() {
+        return this.modifiedRoute;
+    }
     /**
-     * The nexthop IP address where traffic will be routed to.
+     * The next-hop IP Address for the static route.
      * 
      */
     @Export(name="nexthop", refs={String.class}, tree="[0]")
-    private Output<String> nexthop;
+    private Output</* @Nullable */ String> nexthop;
 
     /**
-     * @return The nexthop IP address where traffic will be routed to.
+     * @return The next-hop IP Address for the static route.
      * 
      */
-    public Output<String> nexthop() {
-        return this.nexthop;
+    public Output<Optional<String>> nexthop() {
+        return Codegen.optional(this.nexthop);
     }
     /**
-     * Your network prefix using CIDR notation.
+     * IP Prefix in Classless Inter-Domain Routing format.
      * 
      */
     @Export(name="prefix", refs={String.class}, tree="[0]")
-    private Output<String> prefix;
+    private Output</* @Nullable */ String> prefix;
 
     /**
-     * @return Your network prefix using CIDR notation.
+     * @return IP Prefix in Classless Inter-Domain Routing format.
      * 
      */
-    public Output<String> prefix() {
-        return this.prefix;
+    public Output<Optional<String>> prefix() {
+        return Codegen.optional(this.prefix);
     }
     /**
-     * The priority for the static route.
+     * Priority of the static route.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
-    private Output<Integer> priority;
+    private Output</* @Nullable */ Integer> priority;
 
     /**
-     * @return The priority for the static route.
+     * @return Priority of the static route.
      * 
      */
-    public Output<Integer> priority() {
-        return this.priority;
+    public Output<Optional<Integer>> priority() {
+        return Codegen.optional(this.priority);
+    }
+    @Export(name="route", refs={MagicWanStaticRouteRoute.class}, tree="[0]")
+    private Output<MagicWanStaticRouteRoute> route;
+
+    public Output<MagicWanStaticRouteRoute> route() {
+        return this.route;
     }
     /**
-     * The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
+     * 
+     */
+    @Export(name="routeId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> routeId;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Output<Optional<String>> routeId() {
+        return Codegen.optional(this.routeId);
+    }
+    @Export(name="routes", refs={List.class,MagicWanStaticRouteRoute.class}, tree="[0,1]")
+    private Output<List<MagicWanStaticRouteRoute>> routes;
+
+    public Output<List<MagicWanStaticRouteRoute>> routes() {
+        return this.routes;
+    }
+    /**
+     * Used only for ECMP routes.
+     * 
+     */
+    @Export(name="scope", refs={MagicWanStaticRouteScope.class}, tree="[0]")
+    private Output<MagicWanStaticRouteScope> scope;
+
+    /**
+     * @return Used only for ECMP routes.
+     * 
+     */
+    public Output<MagicWanStaticRouteScope> scope() {
+        return this.scope;
+    }
+    /**
+     * Optional weight of the ECMP scope - if provided.
      * 
      */
     @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> weight;
 
     /**
-     * @return The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+     * @return Optional weight of the ECMP scope - if provided.
      * 
      */
     public Output<Optional<Integer>> weight() {
@@ -224,6 +236,9 @@ public class MagicWanStaticRoute extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/staticRoute:StaticRoute").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

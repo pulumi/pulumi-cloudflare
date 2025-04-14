@@ -22,25 +22,66 @@ __all__ = ['CustomSslArgs', 'CustomSsl']
 @pulumi.input_type
 class CustomSslArgs:
     def __init__(__self__, *,
+                 certificate: pulumi.Input[builtins.str],
+                 private_key: pulumi.Input[builtins.str],
                  zone_id: pulumi.Input[builtins.str],
-                 custom_ssl_options: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']] = None,
-                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]] = None):
+                 bundle_method: Optional[pulumi.Input[builtins.str]] = None,
+                 geo_restrictions: Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']] = None,
+                 policy: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a CustomSsl resource.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
-        :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
+        :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        :param pulumi.Input[builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        :param pulumi.Input[builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "legacy*custom", "sni_custom".
         """
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "private_key", private_key)
         pulumi.set(__self__, "zone_id", zone_id)
-        if custom_ssl_options is not None:
-            pulumi.set(__self__, "custom_ssl_options", custom_ssl_options)
-        if custom_ssl_priorities is not None:
-            pulumi.set(__self__, "custom_ssl_priorities", custom_ssl_priorities)
+        if bundle_method is not None:
+            pulumi.set(__self__, "bundle_method", bundle_method)
+        if geo_restrictions is not None:
+            pulumi.set(__self__, "geo_restrictions", geo_restrictions)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> pulumi.Input[builtins.str]:
+        """
+        The zone's SSL certificate or certificate and the intermediate(s).
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[builtins.str]:
+        """
+        The zone's private key.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "private_key", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -49,98 +90,176 @@ class CustomSslArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
-    @pulumi.getter(name="customSslOptions")
-    def custom_ssl_options(self) -> Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]:
+    @pulumi.getter(name="bundleMethod")
+    def bundle_method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
-        return pulumi.get(self, "custom_ssl_options")
+        return pulumi.get(self, "bundle_method")
 
-    @custom_ssl_options.setter
-    def custom_ssl_options(self, value: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]):
-        pulumi.set(self, "custom_ssl_options", value)
+    @bundle_method.setter
+    def bundle_method(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "bundle_method", value)
 
     @property
-    @pulumi.getter(name="customSslPriorities")
-    def custom_ssl_priorities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]:
-        return pulumi.get(self, "custom_ssl_priorities")
+    @pulumi.getter(name="geoRestrictions")
+    def geo_restrictions(self) -> Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']]:
+        """
+        Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        """
+        return pulumi.get(self, "geo_restrictions")
 
-    @custom_ssl_priorities.setter
-    def custom_ssl_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]):
-        pulumi.set(self, "custom_ssl_priorities", value)
+    @geo_restrictions.setter
+    def geo_restrictions(self, value: Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']]):
+        pulumi.set(self, "geo_restrictions", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        Available values: "legacy*custom", "sni_custom".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _CustomSslState:
     def __init__(__self__, *,
-                 custom_ssl_options: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']] = None,
-                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]] = None,
+                 bundle_method: Optional[pulumi.Input[builtins.str]] = None,
+                 certificate: Optional[pulumi.Input[builtins.str]] = None,
                  expires_on: Optional[pulumi.Input[builtins.str]] = None,
+                 geo_restrictions: Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  issuer: Optional[pulumi.Input[builtins.str]] = None,
+                 keyless_server: Optional[pulumi.Input['CustomSslKeylessServerArgs']] = None,
                  modified_on: Optional[pulumi.Input[builtins.str]] = None,
-                 priority: Optional[pulumi.Input[builtins.int]] = None,
+                 policy: Optional[pulumi.Input[builtins.str]] = None,
+                 priority: Optional[pulumi.Input[builtins.float]] = None,
+                 private_key: Optional[pulumi.Input[builtins.str]] = None,
                  signature: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  uploaded_on: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomSsl resources.
-        :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
+        :param pulumi.Input[builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[builtins.str] expires_on: When the certificate from the authority expires.
+        :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        :param pulumi.Input[builtins.str] issuer: The certificate authority that issued the certificate.
+        :param pulumi.Input[builtins.str] modified_on: When the certificate was last modified.
+        :param pulumi.Input[builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        :param pulumi.Input[builtins.float] priority: The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        :param pulumi.Input[builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[builtins.str] signature: The type of hash used for the certificate.
+        :param pulumi.Input[builtins.str] status: Status of the zone's custom SSL.
+               Available values: "active", "expired", "deleted", "pending", "initializing".
+        :param pulumi.Input[builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "legacy*custom", "sni_custom".
+        :param pulumi.Input[builtins.str] uploaded_on: When the certificate was uploaded to Cloudflare.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
-        if custom_ssl_options is not None:
-            pulumi.set(__self__, "custom_ssl_options", custom_ssl_options)
-        if custom_ssl_priorities is not None:
-            pulumi.set(__self__, "custom_ssl_priorities", custom_ssl_priorities)
+        if bundle_method is not None:
+            pulumi.set(__self__, "bundle_method", bundle_method)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
         if expires_on is not None:
             pulumi.set(__self__, "expires_on", expires_on)
+        if geo_restrictions is not None:
+            pulumi.set(__self__, "geo_restrictions", geo_restrictions)
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
         if issuer is not None:
             pulumi.set(__self__, "issuer", issuer)
+        if keyless_server is not None:
+            pulumi.set(__self__, "keyless_server", keyless_server)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
         if signature is not None:
             pulumi.set(__self__, "signature", signature)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if uploaded_on is not None:
             pulumi.set(__self__, "uploaded_on", uploaded_on)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter(name="customSslOptions")
-    def custom_ssl_options(self) -> Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]:
+    @pulumi.getter(name="bundleMethod")
+    def bundle_method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
-        return pulumi.get(self, "custom_ssl_options")
+        return pulumi.get(self, "bundle_method")
 
-    @custom_ssl_options.setter
-    def custom_ssl_options(self, value: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]):
-        pulumi.set(self, "custom_ssl_options", value)
+    @bundle_method.setter
+    def bundle_method(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "bundle_method", value)
 
     @property
-    @pulumi.getter(name="customSslPriorities")
-    def custom_ssl_priorities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]:
-        return pulumi.get(self, "custom_ssl_priorities")
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The zone's SSL certificate or certificate and the intermediate(s).
+        """
+        return pulumi.get(self, "certificate")
 
-    @custom_ssl_priorities.setter
-    def custom_ssl_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]):
-        pulumi.set(self, "custom_ssl_priorities", value)
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "certificate", value)
 
     @property
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When the certificate from the authority expires.
+        """
         return pulumi.get(self, "expires_on")
 
     @expires_on.setter
     def expires_on(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "expires_on", value)
+
+    @property
+    @pulumi.getter(name="geoRestrictions")
+    def geo_restrictions(self) -> Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']]:
+        """
+        Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        """
+        return pulumi.get(self, "geo_restrictions")
+
+    @geo_restrictions.setter
+    def geo_restrictions(self, value: Optional[pulumi.Input['CustomSslGeoRestrictionsArgs']]):
+        pulumi.set(self, "geo_restrictions", value)
 
     @property
     @pulumi.getter
@@ -154,6 +273,9 @@ class _CustomSslState:
     @property
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The certificate authority that issued the certificate.
+        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -161,8 +283,20 @@ class _CustomSslState:
         pulumi.set(self, "issuer", value)
 
     @property
+    @pulumi.getter(name="keylessServer")
+    def keyless_server(self) -> Optional[pulumi.Input['CustomSslKeylessServerArgs']]:
+        return pulumi.get(self, "keyless_server")
+
+    @keyless_server.setter
+    def keyless_server(self, value: Optional[pulumi.Input['CustomSslKeylessServerArgs']]):
+        pulumi.set(self, "keyless_server", value)
+
+    @property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When the certificate was last modified.
+        """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
@@ -171,16 +305,46 @@ class _CustomSslState:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[builtins.int]]:
+    def policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "policy", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[builtins.int]]):
+    def priority(self, value: Optional[pulumi.Input[builtins.float]]):
         pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The zone's private key.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "private_key", value)
 
     @property
     @pulumi.getter
     def signature(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type of hash used for the certificate.
+        """
         return pulumi.get(self, "signature")
 
     @signature.setter
@@ -190,6 +354,10 @@ class _CustomSslState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Status of the zone's custom SSL.
+        Available values: "active", "expired", "deleted", "pending", "initializing".
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -197,8 +365,24 @@ class _CustomSslState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        Available values: "legacy*custom", "sni_custom".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @property
     @pulumi.getter(name="uploadedOn")
     def uploaded_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When the certificate was uploaded to Cloudflare.
+        """
         return pulumi.get(self, "uploaded_on")
 
     @uploaded_on.setter
@@ -209,7 +393,7 @@ class _CustomSslState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -223,40 +407,101 @@ class CustomSsl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_ssl_options: Optional[pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']]] = None,
-                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomSslCustomSslPriorityArgs', 'CustomSslCustomSslPriorityArgsDict']]]]] = None,
+                 bundle_method: Optional[pulumi.Input[builtins.str]] = None,
+                 certificate: Optional[pulumi.Input[builtins.str]] = None,
+                 geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
+                 policy: Optional[pulumi.Input[builtins.str]] = None,
+                 private_key: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare custom SSL resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.CustomSsl("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            custom_ssl_options={
-                "certificate": "-----INSERT CERTIFICATE-----",
-                "private_key": "-----INSERT PRIVATE KEY-----",
-                "bundle_method": "ubiquitous",
-                "geo_restrictions": "us",
-                "type": "legacy_custom",
-            })
+        example_custom_ssl = cloudflare.CustomSsl("example_custom_ssl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            certificate=\"\"\"  -----BEGIN CERTIFICATE-----
+          MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+          BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
+          aWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF
+          MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50
+          ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+          CgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1
+          CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB
+          KwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5
+          0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI
+          dZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2
+          izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4
+          9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI
+          GKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV
+          BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF
+          MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2
+          2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP
+          Mlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG
+          SvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq
+          2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw
+          YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=
+          -----END CERTIFICATE-----
+
+        \"\"\",
+            private_key=\"\"\"  -----BEGIN RSA PRIVATE KEY-----
+          MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
+          dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
+          abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid
+          tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py
+          FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE
+          ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb
+          HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/
+          axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb
+          +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g
+          +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv
+          KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7
+          9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo
+          /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu
+          iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9
+          N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe
+          VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB
+          vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U
+          lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR
+          9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7
+          mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX
+          dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe
+          PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS
+          fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W
+          qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T
+          lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
+          -----END RSA PRIVATE KEY-----
+
+        \"\"\",
+            bundle_method="ubiquitous",
+            geo_restrictions={
+                "label": "us",
+            },
+            policy="(country: US) or (region: EU)",
+            type="legacy_custom")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
+        $ pulumi import cloudflare:index/customSsl:CustomSsl example '<zone_id>/<custom_certificate_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
+        :param pulumi.Input[builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        :param pulumi.Input[builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        :param pulumi.Input[builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "legacy*custom", "sni_custom".
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -265,29 +510,79 @@ class CustomSsl(pulumi.CustomResource):
                  args: CustomSslArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare custom SSL resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.CustomSsl("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            custom_ssl_options={
-                "certificate": "-----INSERT CERTIFICATE-----",
-                "private_key": "-----INSERT PRIVATE KEY-----",
-                "bundle_method": "ubiquitous",
-                "geo_restrictions": "us",
-                "type": "legacy_custom",
-            })
+        example_custom_ssl = cloudflare.CustomSsl("example_custom_ssl",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            certificate=\"\"\"  -----BEGIN CERTIFICATE-----
+          MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+          BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
+          aWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF
+          MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50
+          ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+          CgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1
+          CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB
+          KwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5
+          0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI
+          dZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2
+          izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4
+          9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI
+          GKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV
+          BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF
+          MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2
+          2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP
+          Mlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG
+          SvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq
+          2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw
+          YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=
+          -----END CERTIFICATE-----
+
+        \"\"\",
+            private_key=\"\"\"  -----BEGIN RSA PRIVATE KEY-----
+          MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
+          dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
+          abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid
+          tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py
+          FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE
+          ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb
+          HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/
+          axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb
+          +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g
+          +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv
+          KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7
+          9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo
+          /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu
+          iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9
+          N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe
+          VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB
+          vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U
+          lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR
+          9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7
+          mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX
+          dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe
+          PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS
+          fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W
+          qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T
+          lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
+          -----END RSA PRIVATE KEY-----
+
+        \"\"\",
+            bundle_method="ubiquitous",
+            geo_restrictions={
+                "label": "us",
+            },
+            policy="(country: US) or (region: EU)",
+            type="legacy_custom")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
+        $ pulumi import cloudflare:index/customSsl:CustomSsl example '<zone_id>/<custom_certificate_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -305,8 +600,12 @@ class CustomSsl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_ssl_options: Optional[pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']]] = None,
-                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomSslCustomSslPriorityArgs', 'CustomSslCustomSslPriorityArgsDict']]]]] = None,
+                 bundle_method: Optional[pulumi.Input[builtins.str]] = None,
+                 certificate: Optional[pulumi.Input[builtins.str]] = None,
+                 geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
+                 policy: Optional[pulumi.Input[builtins.str]] = None,
+                 private_key: Optional[pulumi.Input[builtins.str]] = None,
+                 type: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -317,19 +616,30 @@ class CustomSsl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomSslArgs.__new__(CustomSslArgs)
 
-            __props__.__dict__["custom_ssl_options"] = custom_ssl_options
-            __props__.__dict__["custom_ssl_priorities"] = custom_ssl_priorities
+            __props__.__dict__["bundle_method"] = bundle_method
+            if certificate is None and not opts.urn:
+                raise TypeError("Missing required property 'certificate'")
+            __props__.__dict__["certificate"] = certificate
+            __props__.__dict__["geo_restrictions"] = geo_restrictions
+            __props__.__dict__["policy"] = policy
+            if private_key is None and not opts.urn:
+                raise TypeError("Missing required property 'private_key'")
+            __props__.__dict__["private_key"] = None if private_key is None else pulumi.Output.secret(private_key)
+            __props__.__dict__["type"] = type
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["expires_on"] = None
             __props__.__dict__["hosts"] = None
             __props__.__dict__["issuer"] = None
+            __props__.__dict__["keyless_server"] = None
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["priority"] = None
             __props__.__dict__["signature"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["uploaded_on"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(CustomSsl, __self__).__init__(
             'cloudflare:index/customSsl:CustomSsl',
             resource_name,
@@ -340,15 +650,20 @@ class CustomSsl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_ssl_options: Optional[pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']]] = None,
-            custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomSslCustomSslPriorityArgs', 'CustomSslCustomSslPriorityArgsDict']]]]] = None,
+            bundle_method: Optional[pulumi.Input[builtins.str]] = None,
+            certificate: Optional[pulumi.Input[builtins.str]] = None,
             expires_on: Optional[pulumi.Input[builtins.str]] = None,
+            geo_restrictions: Optional[pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             issuer: Optional[pulumi.Input[builtins.str]] = None,
+            keyless_server: Optional[pulumi.Input[Union['CustomSslKeylessServerArgs', 'CustomSslKeylessServerArgsDict']]] = None,
             modified_on: Optional[pulumi.Input[builtins.str]] = None,
-            priority: Optional[pulumi.Input[builtins.int]] = None,
+            policy: Optional[pulumi.Input[builtins.str]] = None,
+            priority: Optional[pulumi.Input[builtins.float]] = None,
+            private_key: Optional[pulumi.Input[builtins.str]] = None,
             signature: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
+            type: Optional[pulumi.Input[builtins.str]] = None,
             uploaded_on: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'CustomSsl':
         """
@@ -358,43 +673,78 @@ class CustomSsl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CustomSslCustomSslOptionsArgs', 'CustomSslCustomSslOptionsArgsDict']] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+               Available values: "ubiquitous", "optimal", "force".
+        :param pulumi.Input[builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
+        :param pulumi.Input[builtins.str] expires_on: When the certificate from the authority expires.
+        :param pulumi.Input[Union['CustomSslGeoRestrictionsArgs', 'CustomSslGeoRestrictionsArgsDict']] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        :param pulumi.Input[builtins.str] issuer: The certificate authority that issued the certificate.
+        :param pulumi.Input[builtins.str] modified_on: When the certificate was last modified.
+        :param pulumi.Input[builtins.str] policy: Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        :param pulumi.Input[builtins.float] priority: The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        :param pulumi.Input[builtins.str] private_key: The zone's private key.
+        :param pulumi.Input[builtins.str] signature: The type of hash used for the certificate.
+        :param pulumi.Input[builtins.str] status: Status of the zone's custom SSL.
+               Available values: "active", "expired", "deleted", "pending", "initializing".
+        :param pulumi.Input[builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+               Available values: "legacy*custom", "sni_custom".
+        :param pulumi.Input[builtins.str] uploaded_on: When the certificate was uploaded to Cloudflare.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CustomSslState.__new__(_CustomSslState)
 
-        __props__.__dict__["custom_ssl_options"] = custom_ssl_options
-        __props__.__dict__["custom_ssl_priorities"] = custom_ssl_priorities
+        __props__.__dict__["bundle_method"] = bundle_method
+        __props__.__dict__["certificate"] = certificate
         __props__.__dict__["expires_on"] = expires_on
+        __props__.__dict__["geo_restrictions"] = geo_restrictions
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["issuer"] = issuer
+        __props__.__dict__["keyless_server"] = keyless_server
         __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["policy"] = policy
         __props__.__dict__["priority"] = priority
+        __props__.__dict__["private_key"] = private_key
         __props__.__dict__["signature"] = signature
         __props__.__dict__["status"] = status
+        __props__.__dict__["type"] = type
         __props__.__dict__["uploaded_on"] = uploaded_on
         __props__.__dict__["zone_id"] = zone_id
         return CustomSsl(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="customSslOptions")
-    def custom_ssl_options(self) -> pulumi.Output[Optional['outputs.CustomSslCustomSslOptions']]:
+    @pulumi.getter(name="bundleMethod")
+    def bundle_method(self) -> pulumi.Output[builtins.str]:
         """
-        The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        Available values: "ubiquitous", "optimal", "force".
         """
-        return pulumi.get(self, "custom_ssl_options")
+        return pulumi.get(self, "bundle_method")
 
     @property
-    @pulumi.getter(name="customSslPriorities")
-    def custom_ssl_priorities(self) -> pulumi.Output[Optional[Sequence['outputs.CustomSslCustomSslPriority']]]:
-        return pulumi.get(self, "custom_ssl_priorities")
+    @pulumi.getter
+    def certificate(self) -> pulumi.Output[builtins.str]:
+        """
+        The zone's SSL certificate or certificate and the intermediate(s).
+        """
+        return pulumi.get(self, "certificate")
 
     @property
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> pulumi.Output[builtins.str]:
+        """
+        When the certificate from the authority expires.
+        """
         return pulumi.get(self, "expires_on")
+
+    @property
+    @pulumi.getter(name="geoRestrictions")
+    def geo_restrictions(self) -> pulumi.Output['outputs.CustomSslGeoRestrictions']:
+        """
+        Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        """
+        return pulumi.get(self, "geo_restrictions")
 
     @property
     @pulumi.getter
@@ -404,38 +754,87 @@ class CustomSsl(pulumi.CustomResource):
     @property
     @pulumi.getter
     def issuer(self) -> pulumi.Output[builtins.str]:
+        """
+        The certificate authority that issued the certificate.
+        """
         return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="keylessServer")
+    def keyless_server(self) -> pulumi.Output['outputs.CustomSslKeylessServer']:
+        return pulumi.get(self, "keyless_server")
 
     @property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[builtins.str]:
+        """
+        When the certificate was last modified.
+        """
         return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[builtins.int]:
+    def policy(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        """
+        return pulumi.get(self, "policy")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Output[builtins.float]:
+        """
+        The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Output[builtins.str]:
+        """
+        The zone's private key.
+        """
+        return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter
     def signature(self) -> pulumi.Output[builtins.str]:
+        """
+        The type of hash used for the certificate.
+        """
         return pulumi.get(self, "signature")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
+        """
+        Status of the zone's custom SSL.
+        Available values: "active", "expired", "deleted", "pending", "initializing".
+        """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[builtins.str]:
+        """
+        The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        Available values: "legacy*custom", "sni_custom".
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="uploadedOn")
     def uploaded_on(self) -> pulumi.Output[builtins.str]:
+        """
+        When the certificate was uploaded to Cloudflare.
+        """
         return pulumi.get(self, "uploaded_on")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

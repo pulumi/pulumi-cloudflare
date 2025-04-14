@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,42 +20,48 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myScript = new Cloudflare.WorkersScript("my_script");
-    /// 
-    ///     // Runs the specified worker script for all URLs that match `example.com/*`
-    ///     var myRoute = new Cloudflare.WorkersRoute("my_route", new()
+    ///     var exampleWorkersRoute = new Cloudflare.WorkersRoute("example_workers_route", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Pattern = "example.com/*",
-    ///         ScriptName = myScript.Name,
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Pattern = "example.net/*",
+    ///         Script = "this-is_my_script-01",
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/workersRoute:WorkersRoute example &lt;zone_id&gt;/&lt;route_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersRoute:WorkersRoute")]
     public partial class WorkersRoute : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        /// </summary>
+        [Output("errors")]
+        public Output<ImmutableArray<Outputs.WorkersRouteError>> Errors { get; private set; } = null!;
+
+        [Output("messages")]
+        public Output<ImmutableArray<Outputs.WorkersRouteMessage>> Messages { get; private set; } = null!;
+
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
 
         /// <summary>
-        /// Worker script name to invoke for requests that match the route pattern.
+        /// Identifier
         /// </summary>
-        [Output("scriptName")]
-        public Output<string?> ScriptName { get; private set; } = null!;
+        [Output("routeId")]
+        public Output<string?> RouteId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the script, used in URLs and route configuration.
+        /// </summary>
+        [Output("script")]
+        public Output<string?> Script { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the API call was successful
+        /// </summary>
+        [Output("success")]
+        public Output<bool> Success { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -108,20 +112,23 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkersRouteArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
-        /// Worker script name to invoke for requests that match the route pattern.
+        /// Identifier
         /// </summary>
-        [Input("scriptName")]
-        public Input<string>? ScriptName { get; set; }
+        [Input("routeId")]
+        public Input<string>? RouteId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the script, used in URLs and route configuration.
+        /// </summary>
+        [Input("script")]
+        public Input<string>? Script { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -134,20 +141,45 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkersRouteState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        /// </summary>
+        [Input("errors")]
+        private InputList<Inputs.WorkersRouteErrorGetArgs>? _errors;
+        public InputList<Inputs.WorkersRouteErrorGetArgs> Errors
+        {
+            get => _errors ?? (_errors = new InputList<Inputs.WorkersRouteErrorGetArgs>());
+            set => _errors = value;
+        }
+
+        [Input("messages")]
+        private InputList<Inputs.WorkersRouteMessageGetArgs>? _messages;
+        public InputList<Inputs.WorkersRouteMessageGetArgs> Messages
+        {
+            get => _messages ?? (_messages = new InputList<Inputs.WorkersRouteMessageGetArgs>());
+            set => _messages = value;
+        }
+
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
-        /// Worker script name to invoke for requests that match the route pattern.
+        /// Identifier
         /// </summary>
-        [Input("scriptName")]
-        public Input<string>? ScriptName { get; set; }
+        [Input("routeId")]
+        public Input<string>? RouteId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Name of the script, used in URLs and route configuration.
+        /// </summary>
+        [Input("script")]
+        public Input<string>? Script { get; set; }
+
+        /// <summary>
+        /// Whether the API call was successful
+        /// </summary>
+        [Input("success")]
+        public Input<bool>? Success { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

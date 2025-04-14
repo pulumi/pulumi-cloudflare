@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,14 +16,14 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
     public static final RulesetRuleActionParametersCacheReserveArgs Empty = new RulesetRuleActionParametersCacheReserveArgs();
 
     /**
-     * Determines whether Cloudflare will write the eligible resource to cache reserve.
+     * Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
      * 
      */
     @Import(name="eligible", required=true)
     private Output<Boolean> eligible;
 
     /**
-     * @return Determines whether Cloudflare will write the eligible resource to cache reserve.
+     * @return Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
      * 
      */
     public Output<Boolean> eligible() {
@@ -33,18 +31,18 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
     }
 
     /**
-     * The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and &#34;eligible&#34; is true, Cloudflare will use 0 bytes by default.
+     * The minimum file size eligible for store in cache reserve.
      * 
      */
-    @Import(name="minimumFileSize")
-    private @Nullable Output<Integer> minimumFileSize;
+    @Import(name="minimumFileSize", required=true)
+    private Output<Integer> minimumFileSize;
 
     /**
-     * @return The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and &#34;eligible&#34; is true, Cloudflare will use 0 bytes by default.
+     * @return The minimum file size eligible for store in cache reserve.
      * 
      */
-    public Optional<Output<Integer>> minimumFileSize() {
-        return Optional.ofNullable(this.minimumFileSize);
+    public Output<Integer> minimumFileSize() {
+        return this.minimumFileSize;
     }
 
     private RulesetRuleActionParametersCacheReserveArgs() {}
@@ -73,7 +71,7 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
         }
 
         /**
-         * @param eligible Determines whether Cloudflare will write the eligible resource to cache reserve.
+         * @param eligible Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
          * 
          * @return builder
          * 
@@ -84,7 +82,7 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
         }
 
         /**
-         * @param eligible Determines whether Cloudflare will write the eligible resource to cache reserve.
+         * @param eligible Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
          * 
          * @return builder
          * 
@@ -94,18 +92,18 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
         }
 
         /**
-         * @param minimumFileSize The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and &#34;eligible&#34; is true, Cloudflare will use 0 bytes by default.
+         * @param minimumFileSize The minimum file size eligible for store in cache reserve.
          * 
          * @return builder
          * 
          */
-        public Builder minimumFileSize(@Nullable Output<Integer> minimumFileSize) {
+        public Builder minimumFileSize(Output<Integer> minimumFileSize) {
             $.minimumFileSize = minimumFileSize;
             return this;
         }
 
         /**
-         * @param minimumFileSize The minimum file size, in bytes, eligible for storage in cache reserve. If omitted and &#34;eligible&#34; is true, Cloudflare will use 0 bytes by default.
+         * @param minimumFileSize The minimum file size eligible for store in cache reserve.
          * 
          * @return builder
          * 
@@ -117,6 +115,9 @@ public final class RulesetRuleActionParametersCacheReserveArgs extends com.pulum
         public RulesetRuleActionParametersCacheReserveArgs build() {
             if ($.eligible == null) {
                 throw new MissingRequiredPropertyException("RulesetRuleActionParametersCacheReserveArgs", "eligible");
+            }
+            if ($.minimumFileSize == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersCacheReserveArgs", "minimumFileSize");
             }
             return $;
         }

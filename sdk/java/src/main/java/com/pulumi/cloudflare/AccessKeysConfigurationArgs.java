@@ -6,11 +6,9 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class AccessKeysConfigurationArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,14 +16,14 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
     public static final AccessKeysConfigurationArgs Empty = new AccessKeysConfigurationArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -33,18 +31,18 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Number of days to trigger a rotation of the keys.
+     * The number of days between key rotations.
      * 
      */
-    @Import(name="keyRotationIntervalDays")
-    private @Nullable Output<Integer> keyRotationIntervalDays;
+    @Import(name="keyRotationIntervalDays", required=true)
+    private Output<Double> keyRotationIntervalDays;
 
     /**
-     * @return Number of days to trigger a rotation of the keys.
+     * @return The number of days between key rotations.
      * 
      */
-    public Optional<Output<Integer>> keyRotationIntervalDays() {
-        return Optional.ofNullable(this.keyRotationIntervalDays);
+    public Output<Double> keyRotationIntervalDays() {
+        return this.keyRotationIntervalDays;
     }
 
     private AccessKeysConfigurationArgs() {}
@@ -73,7 +71,7 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -84,7 +82,7 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -94,29 +92,32 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param keyRotationIntervalDays Number of days to trigger a rotation of the keys.
+         * @param keyRotationIntervalDays The number of days between key rotations.
          * 
          * @return builder
          * 
          */
-        public Builder keyRotationIntervalDays(@Nullable Output<Integer> keyRotationIntervalDays) {
+        public Builder keyRotationIntervalDays(Output<Double> keyRotationIntervalDays) {
             $.keyRotationIntervalDays = keyRotationIntervalDays;
             return this;
         }
 
         /**
-         * @param keyRotationIntervalDays Number of days to trigger a rotation of the keys.
+         * @param keyRotationIntervalDays The number of days between key rotations.
          * 
          * @return builder
          * 
          */
-        public Builder keyRotationIntervalDays(Integer keyRotationIntervalDays) {
+        public Builder keyRotationIntervalDays(Double keyRotationIntervalDays) {
             return keyRotationIntervalDays(Output.of(keyRotationIntervalDays));
         }
 
         public AccessKeysConfigurationArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("AccessKeysConfigurationArgs", "accountId");
+            }
+            if ($.keyRotationIntervalDays == null) {
+                throw new MissingRequiredPropertyException("AccessKeysConfigurationArgs", "keyRotationIntervalDays");
             }
             return $;
         }

@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
-    /// to manage Cloudflare Workers for Platforms dispatch namespaces.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -20,29 +17,13 @@ namespace Pulumi.Cloudflare
     /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
-    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.WorkersForPlatformsDispatchNamespace("example", new()
+    ///     var exampleWorkersForPlatformsDispatchNamespace = new Cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example-namespace",
-    ///     });
-    /// 
-    ///     var customerWorker1 = new Cloudflare.WorkersScript("customer_worker_1", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "customer-worker-1",
-    ///         Content = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "script.js",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         DispatchNamespace = example.Name,
-    ///         Tags = new[]
-    ///         {
-    ///             "free",
-    ///         },
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "my-dispatch-namespace",
     ///     });
     /// 
     /// });
@@ -51,23 +32,65 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example &lt;account_id&gt;/&lt;namespace_name&gt;
+    /// $ pulumi import cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace example '&lt;account_id&gt;/&lt;dispatch_namespace&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace")]
     public partial class WorkersForPlatformsDispatchNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Workers for Platforms namespace.
+        /// Identifier
+        /// </summary>
+        [Output("createdBy")]
+        public Output<string> CreatedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// When the script was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Output("modifiedBy")]
+        public Output<string> ModifiedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// When the script was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the dispatch namespace
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// API Resource UUID tag.
+        /// </summary>
+        [Output("namespaceId")]
+        public Output<string> NamespaceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        [Output("namespaceName")]
+        public Output<string> NamespaceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The current number of scripts in this Dispatch Namespace
+        /// </summary>
+        [Output("scriptCount")]
+        public Output<int> ScriptCount { get; private set; } = null!;
 
 
         /// <summary>
@@ -92,6 +115,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -116,16 +143,16 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersForPlatformsDispatchNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Workers for Platforms namespace.
+        /// The name of the dispatch namespace
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public WorkersForPlatformsDispatchNamespaceArgs()
         {
@@ -136,16 +163,58 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersForPlatformsDispatchNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The name of the Workers for Platforms namespace.
+        /// Identifier
+        /// </summary>
+        [Input("createdBy")]
+        public Input<string>? CreatedBy { get; set; }
+
+        /// <summary>
+        /// When the script was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
+        /// Identifier
+        /// </summary>
+        [Input("modifiedBy")]
+        public Input<string>? ModifiedBy { get; set; }
+
+        /// <summary>
+        /// When the script was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// The name of the dispatch namespace
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// API Resource UUID tag.
+        /// </summary>
+        [Input("namespaceId")]
+        public Input<string>? NamespaceId { get; set; }
+
+        /// <summary>
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        [Input("namespaceName")]
+        public Input<string>? NamespaceName { get; set; }
+
+        /// <summary>
+        /// The current number of scripts in this Dispatch Namespace
+        /// </summary>
+        [Input("scriptCount")]
+        public Input<int>? ScriptCount { get; set; }
 
         public WorkersForPlatformsDispatchNamespaceState()
         {

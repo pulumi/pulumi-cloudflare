@@ -8,61 +8,54 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Policy resource. Access Policies are
-// used in conjunction with Access Applications to restrict access to
-// a particular resource.
+// > If 'application_id' is omitted, the policy created can be reused by multiple access applications.
 //
-// > It's required that an `accountId` or `zoneId` is provided and in most cases using either is fine.
-//
-//	However, if you're using a scoped access token, you must provide the argument that matches the token's
-//	scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zoneId` argument.
-//	If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-//	Any AccessApplication resource can reference reusable policies through its `policies` argument.
+//	Any `ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
 //	To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-//	lifecycle option `createBeforeDestroy` to true on the 'cloudflare_access_policy' resource.
+//	lifecycle option `createBeforeDestroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy example account/<account_id>/<application_id>/<policy_id>
+// $ pulumi import cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy example '<account_id>/<policy_id>'
 // ```
 type ZeroTrustAccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	ApplicationId    pulumi.StringPtrOutput                        `pulumi:"applicationId"`
-	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
-	ApprovalRequired pulumi.BoolPtrOutput                          `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrOutput `pulumi:"connectionRules"`
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+	// Identifier
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Number of access applications currently using this policy.
+	AppCount pulumi.IntOutput `pulumi:"appCount"`
+	// Administrators who can approve a temporary authentication request.
+	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
+	// Requires the user to request access from an administrator at the start of each session.
+	ApprovalRequired pulumi.BoolOutput   `pulumi:"approvalRequired"`
+	CreatedAt        pulumi.StringOutput `pulumi:"createdAt"`
+	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringOutput `pulumi:"decision"`
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes ZeroTrustAccessPolicyExcludeArrayOutput `pulumi:"excludes"`
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes ZeroTrustAccessPolicyIncludeArrayOutput `pulumi:"includes"`
-	// Require this application to be served in an isolated browser for users matching this policy.
-	IsolationRequired pulumi.BoolPtrOutput `pulumi:"isolationRequired"`
-	// Friendly name of the Access Policy.
+	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
+	IsolationRequired pulumi.BoolOutput `pulumi:"isolationRequired"`
+	// The name of the Access policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
-	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt pulumi.StringPtrOutput `pulumi:"purposeJustificationPrompt"`
-	// Whether to prompt the user for a justification for accessing the resource.
-	PurposeJustificationRequired pulumi.BoolPtrOutput `pulumi:"purposeJustificationRequired"`
-	// A series of access conditions, see Access Groups.
+	// Require users to enter a justification when they log in to the application.
+	PurposeJustificationRequired pulumi.BoolOutput `pulumi:"purposeJustificationRequired"`
+	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires ZeroTrustAccessPolicyRequireArrayOutput `pulumi:"requires"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
+	Reusable pulumi.BoolOutput                       `pulumi:"reusable"`
+	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
+	UpdatedAt       pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewZeroTrustAccessPolicy registers a new resource with the given unique name, arguments, and options.
@@ -72,6 +65,9 @@ func NewZeroTrustAccessPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Decision == nil {
 		return nil, errors.New("invalid value for required argument 'Decision'")
 	}
@@ -81,6 +77,12 @@ func NewZeroTrustAccessPolicy(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessPolicy:AccessPolicy"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustAccessPolicy
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy", name, args, &resource, opts...)
@@ -104,69 +106,69 @@ func GetZeroTrustAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessPolicy resources.
 type zeroTrustAccessPolicyState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	ApplicationId    *string                              `pulumi:"applicationId"`
-	ApprovalGroups   []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
-	ApprovalRequired *bool                                `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-	ConnectionRules *ZeroTrustAccessPolicyConnectionRules `pulumi:"connectionRules"`
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+	// Number of access applications currently using this policy.
+	AppCount *int `pulumi:"appCount"`
+	// Administrators who can approve a temporary authentication request.
+	ApprovalGroups []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
+	// Requires the user to request access from an administrator at the start of each session.
+	ApprovalRequired *bool   `pulumi:"approvalRequired"`
+	CreatedAt        *string `pulumi:"createdAt"`
+	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision *string `pulumi:"decision"`
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes []ZeroTrustAccessPolicyExclude `pulumi:"excludes"`
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes []ZeroTrustAccessPolicyInclude `pulumi:"includes"`
-	// Require this application to be served in an isolated browser for users matching this policy.
+	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired *bool `pulumi:"isolationRequired"`
-	// Friendly name of the Access Policy.
+	// The name of the Access policy.
 	Name *string `pulumi:"name"`
-	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	Precedence *int `pulumi:"precedence"`
-	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
-	// Whether to prompt the user for a justification for accessing the resource.
+	// Require users to enter a justification when they log in to the application.
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires []ZeroTrustAccessPolicyRequire `pulumi:"requires"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	Reusable *bool                          `pulumi:"reusable"`
+	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId *string `pulumi:"zoneId"`
+	UpdatedAt       *string `pulumi:"updatedAt"`
 }
 
 type ZeroTrustAccessPolicyState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	ApplicationId    pulumi.StringPtrInput
-	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayInput
+	// Number of access applications currently using this policy.
+	AppCount pulumi.IntPtrInput
+	// Administrators who can approve a temporary authentication request.
+	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayInput
+	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrInput
-	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrInput
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+	CreatedAt        pulumi.StringPtrInput
+	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringPtrInput
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes ZeroTrustAccessPolicyExcludeArrayInput
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes ZeroTrustAccessPolicyIncludeArrayInput
-	// Require this application to be served in an isolated browser for users matching this policy.
+	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired pulumi.BoolPtrInput
-	// Friendly name of the Access Policy.
+	// The name of the Access policy.
 	Name pulumi.StringPtrInput
-	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	Precedence pulumi.IntPtrInput
-	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt pulumi.StringPtrInput
-	// Whether to prompt the user for a justification for accessing the resource.
+	// Require users to enter a justification when they log in to the application.
 	PurposeJustificationRequired pulumi.BoolPtrInput
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires ZeroTrustAccessPolicyRequireArrayInput
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	Reusable pulumi.BoolPtrInput
+	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId pulumi.StringPtrInput
+	UpdatedAt       pulumi.StringPtrInput
 }
 
 func (ZeroTrustAccessPolicyState) ElementType() reflect.Type {
@@ -174,70 +176,60 @@ func (ZeroTrustAccessPolicyState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessPolicyArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
-	AccountId *string `pulumi:"accountId"`
-	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	ApplicationId    *string                              `pulumi:"applicationId"`
-	ApprovalGroups   []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
-	ApprovalRequired *bool                                `pulumi:"approvalRequired"`
-	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-	ConnectionRules *ZeroTrustAccessPolicyConnectionRules `pulumi:"connectionRules"`
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+	// Identifier
+	AccountId string `pulumi:"accountId"`
+	// Administrators who can approve a temporary authentication request.
+	ApprovalGroups []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
+	// Requires the user to request access from an administrator at the start of each session.
+	ApprovalRequired *bool `pulumi:"approvalRequired"`
+	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision string `pulumi:"decision"`
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes []ZeroTrustAccessPolicyExclude `pulumi:"excludes"`
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes []ZeroTrustAccessPolicyInclude `pulumi:"includes"`
-	// Require this application to be served in an isolated browser for users matching this policy.
+	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired *bool `pulumi:"isolationRequired"`
-	// Friendly name of the Access Policy.
+	// The name of the Access policy.
 	Name string `pulumi:"name"`
-	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	Precedence *int `pulumi:"precedence"`
-	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
-	// Whether to prompt the user for a justification for accessing the resource.
+	// Require users to enter a justification when they log in to the application.
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires []ZeroTrustAccessPolicyRequire `pulumi:"requires"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZeroTrustAccessPolicy resource.
 type ZeroTrustAccessPolicyArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
-	AccountId pulumi.StringPtrInput
-	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-	ApplicationId    pulumi.StringPtrInput
-	ApprovalGroups   ZeroTrustAccessPolicyApprovalGroupArrayInput
+	// Identifier
+	AccountId pulumi.StringInput
+	// Administrators who can approve a temporary authentication request.
+	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayInput
+	// Requires the user to request access from an administrator at the start of each session.
 	ApprovalRequired pulumi.BoolPtrInput
-	// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-	ConnectionRules ZeroTrustAccessPolicyConnectionRulesPtrInput
-	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringInput
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 	Excludes ZeroTrustAccessPolicyExcludeArrayInput
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes ZeroTrustAccessPolicyIncludeArrayInput
-	// Require this application to be served in an isolated browser for users matching this policy.
+	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
 	IsolationRequired pulumi.BoolPtrInput
-	// Friendly name of the Access Policy.
+	// The name of the Access policy.
 	Name pulumi.StringInput
-	// The unique precedence for policies on a single application. Required when using `applicationId`.
-	Precedence pulumi.IntPtrInput
-	// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt pulumi.StringPtrInput
-	// Whether to prompt the user for a justification for accessing the resource.
+	// Require users to enter a justification when they log in to the application.
 	PurposeJustificationRequired pulumi.BoolPtrInput
-	// A series of access conditions, see Access Groups.
+	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires ZeroTrustAccessPolicyRequireArrayInput
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId pulumi.StringPtrInput
 }
 
 func (ZeroTrustAccessPolicyArgs) ElementType() reflect.Type {
@@ -327,82 +319,82 @@ func (o ZeroTrustAccessPolicyOutput) ToZeroTrustAccessPolicyOutputWithContext(ct
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
-func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Identifier
+func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-func (o ZeroTrustAccessPolicyOutput) ApplicationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.ApplicationId }).(pulumi.StringPtrOutput)
+// Number of access applications currently using this policy.
+func (o ZeroTrustAccessPolicyOutput) AppCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.IntOutput { return v.AppCount }).(pulumi.IntOutput)
 }
 
+// Administrators who can approve a temporary authentication request.
 func (o ZeroTrustAccessPolicyOutput) ApprovalGroups() ZeroTrustAccessPolicyApprovalGroupArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyApprovalGroupArrayOutput { return v.ApprovalGroups }).(ZeroTrustAccessPolicyApprovalGroupArrayOutput)
 }
 
-func (o ZeroTrustAccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
+// Requires the user to request access from an administrator at the start of each session.
+func (o ZeroTrustAccessPolicyOutput) ApprovalRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolOutput { return v.ApprovalRequired }).(pulumi.BoolOutput)
 }
 
-// The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-func (o ZeroTrustAccessPolicyOutput) ConnectionRules() ZeroTrustAccessPolicyConnectionRulesPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyConnectionRulesPtrOutput { return v.ConnectionRules }).(ZeroTrustAccessPolicyConnectionRulesPtrOutput)
+func (o ZeroTrustAccessPolicyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `nonIdentity`, `bypass`.
+// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+// Available values: "allow", "deny", "nonIdentity", "bypass".
 func (o ZeroTrustAccessPolicyOutput) Decision() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.Decision }).(pulumi.StringOutput)
 }
 
-// A series of access conditions, see Access Groups.
+// Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
 func (o ZeroTrustAccessPolicyOutput) Excludes() ZeroTrustAccessPolicyExcludeArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyExcludeArrayOutput { return v.Excludes }).(ZeroTrustAccessPolicyExcludeArrayOutput)
 }
 
-// A series of access conditions, see Access Groups.
+// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 func (o ZeroTrustAccessPolicyOutput) Includes() ZeroTrustAccessPolicyIncludeArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyIncludeArrayOutput { return v.Includes }).(ZeroTrustAccessPolicyIncludeArrayOutput)
 }
 
-// Require this application to be served in an isolated browser for users matching this policy.
-func (o ZeroTrustAccessPolicyOutput) IsolationRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolPtrOutput { return v.IsolationRequired }).(pulumi.BoolPtrOutput)
+// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
+func (o ZeroTrustAccessPolicyOutput) IsolationRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolOutput { return v.IsolationRequired }).(pulumi.BoolOutput)
 }
 
-// Friendly name of the Access Policy.
+// The name of the Access policy.
 func (o ZeroTrustAccessPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The unique precedence for policies on a single application. Required when using `applicationId`.
-func (o ZeroTrustAccessPolicyOutput) Precedence() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.IntPtrOutput { return v.Precedence }).(pulumi.IntPtrOutput)
-}
-
-// The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
+// A custom message that will appear on the purpose justification screen.
 func (o ZeroTrustAccessPolicyOutput) PurposeJustificationPrompt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.PurposeJustificationPrompt }).(pulumi.StringPtrOutput)
 }
 
-// Whether to prompt the user for a justification for accessing the resource.
-func (o ZeroTrustAccessPolicyOutput) PurposeJustificationRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolPtrOutput { return v.PurposeJustificationRequired }).(pulumi.BoolPtrOutput)
+// Require users to enter a justification when they log in to the application.
+func (o ZeroTrustAccessPolicyOutput) PurposeJustificationRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolOutput { return v.PurposeJustificationRequired }).(pulumi.BoolOutput)
 }
 
-// A series of access conditions, see Access Groups.
+// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 func (o ZeroTrustAccessPolicyOutput) Requires() ZeroTrustAccessPolicyRequireArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) ZeroTrustAccessPolicyRequireArrayOutput { return v.Requires }).(ZeroTrustAccessPolicyRequireArrayOutput)
 }
 
-// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-func (o ZeroTrustAccessPolicyOutput) SessionDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
+func (o ZeroTrustAccessPolicyOutput) Reusable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolOutput { return v.Reusable }).(pulumi.BoolOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
-func (o ZeroTrustAccessPolicyOutput) ZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+// The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+func (o ZeroTrustAccessPolicyOutput) SessionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.SessionDuration }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustAccessPolicyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type ZeroTrustAccessPolicyArrayOutput struct{ *pulumi.OutputState }

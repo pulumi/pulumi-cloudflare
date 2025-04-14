@@ -16,14 +16,14 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
     public static final AccessOrganizationLoginDesignArgs Empty = new AccessOrganizationLoginDesignArgs();
 
     /**
-     * The background color on the login page.
+     * The background color on your login page.
      * 
      */
     @Import(name="backgroundColor")
     private @Nullable Output<String> backgroundColor;
 
     /**
-     * @return The background color on the login page.
+     * @return The background color on your login page.
      * 
      */
     public Optional<Output<String>> backgroundColor() {
@@ -31,14 +31,14 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
     }
 
     /**
-     * The text at the bottom of the login page.
+     * The text at the bottom of your login page.
      * 
      */
     @Import(name="footerText")
     private @Nullable Output<String> footerText;
 
     /**
-     * @return The text at the bottom of the login page.
+     * @return The text at the bottom of your login page.
      * 
      */
     public Optional<Output<String>> footerText() {
@@ -46,14 +46,14 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
     }
 
     /**
-     * The text at the top of the login page.
+     * The text at the top of your login page.
      * 
      */
     @Import(name="headerText")
     private @Nullable Output<String> headerText;
 
     /**
-     * @return The text at the top of the login page.
+     * @return The text at the top of your login page.
      * 
      */
     public Optional<Output<String>> headerText() {
@@ -61,14 +61,14 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
     }
 
     /**
-     * The URL of the logo on the login page.
+     * The URL of the logo on your login page.
      * 
      */
     @Import(name="logoPath")
     private @Nullable Output<String> logoPath;
 
     /**
-     * @return The URL of the logo on the login page.
+     * @return The URL of the logo on your login page.
      * 
      */
     public Optional<Output<String>> logoPath() {
@@ -76,14 +76,14 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
     }
 
     /**
-     * The text color on the login page.
+     * The text color on your login page.
      * 
      */
     @Import(name="textColor")
     private @Nullable Output<String> textColor;
 
     /**
-     * @return The text color on the login page.
+     * @return The text color on your login page.
      * 
      */
     public Optional<Output<String>> textColor() {
@@ -119,7 +119,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param backgroundColor The background color on the login page.
+         * @param backgroundColor The background color on your login page.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param backgroundColor The background color on the login page.
+         * @param backgroundColor The background color on your login page.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param footerText The text at the bottom of the login page.
+         * @param footerText The text at the bottom of your login page.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param footerText The text at the bottom of the login page.
+         * @param footerText The text at the bottom of your login page.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param headerText The text at the top of the login page.
+         * @param headerText The text at the top of your login page.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param headerText The text at the top of the login page.
+         * @param headerText The text at the top of your login page.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param logoPath The URL of the logo on the login page.
+         * @param logoPath The URL of the logo on your login page.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param logoPath The URL of the logo on the login page.
+         * @param logoPath The URL of the logo on your login page.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param textColor The text color on the login page.
+         * @param textColor The text color on your login page.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class AccessOrganizationLoginDesignArgs extends com.pulumi.resource
         }
 
         /**
-         * @param textColor The text color on the login page.
+         * @param textColor The text color on your login page.
          * 
          * @return builder
          * 

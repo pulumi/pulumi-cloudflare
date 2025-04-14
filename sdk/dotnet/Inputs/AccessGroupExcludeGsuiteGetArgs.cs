@@ -12,17 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessGroupExcludeGsuiteGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("emails", required: true)]
-        private InputList<string>? _emails;
-
         /// <summary>
         /// The email of the Google Workspace group.
         /// </summary>
-        public InputList<string> Emails
-        {
-            get => _emails ?? (_emails = new InputList<string>());
-            set => _emails = value;
-        }
+        [Input("email", required: true)]
+        public Input<string> Email { get; set; } = null!;
 
         /// <summary>
         /// The ID of your Google Workspace identity provider.

@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ZeroTrustGatewayPolicyRuleSettingsL4override
     {
         /// <summary>
-        /// Override IP to forward traffic to.
+        /// IPv4 or IPv6 address.
         /// </summary>
-        public readonly string Ip;
+        public readonly string? Ip;
         /// <summary>
-        /// Override Port to forward traffic to.
+        /// A port number to use for TCP/UDP overrides.
         /// </summary>
-        public readonly int Port;
+        public readonly int? Port;
 
         [OutputConstructor]
         private ZeroTrustGatewayPolicyRuleSettingsL4override(
-            string ip,
+            string? ip,
 
-            int port)
+            int? port)
         {
             Ip = ip;
             Port = port;

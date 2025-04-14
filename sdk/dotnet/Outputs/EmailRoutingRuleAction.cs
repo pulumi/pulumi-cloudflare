@@ -14,12 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class EmailRoutingRuleAction
     {
         /// <summary>
-        /// Type of action. Available values: `forward`, `worker`, `drop`
+        /// Type of supported action.
+        /// Available values: "drop", "forward", "worker".
         /// </summary>
         public readonly string Type;
-        /// <summary>
-        /// Value to match on. Required for `type` of `literal`.
-        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

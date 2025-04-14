@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PageRuleActionsForwardingUrl
     {
-        /// <summary>
-        /// The status code to use for the redirection.
-        /// </summary>
         public readonly int StatusCode;
-        /// <summary>
-        /// The URL to which the page rule should forward.
-        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

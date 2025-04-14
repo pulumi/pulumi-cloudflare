@@ -25,9 +25,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
         /// </summary>
         public readonly string? ClientSecret;
+        /// <summary>
+        /// Password used to authenticate with the remote SCIM service.
+        /// </summary>
         public readonly string? Password;
         /// <summary>
         /// The authentication scheme to use when making SCIM requests to this application.
+        /// Available values: "httpbasic".
         /// </summary>
         public readonly string Scheme;
         /// <summary>

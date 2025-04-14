@@ -7,83 +7,17 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides individual list items (IPs, Redirects, ASNs, Hostnames) to be used in Edge Rules Engine
- * across all zones within the same account.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // IP List
- * const exampleIpList = new cloudflare.List("example_ip_list", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_list",
- *     description: "example IPs for a list",
- *     kind: "ip",
+ * const exampleListItem = new cloudflare.ListItem("example_list_item", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
+ *     ip: "10.0.0.1",
  * });
- * // IP List Item
- * const exampleIpItem = new cloudflare.ListItem("example_ip_item", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     listId: exampleIpList.id,
- *     comment: "List Item Comment",
- *     ip: "192.0.2.0",
- * });
- * // Redirect List
- * const exampleRedirectList = new cloudflare.List("example_redirect_list", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_list",
- *     description: "example Redirects for a list",
- *     kind: "redirect",
- * });
- * // Redirect List Item
- * const exampleRedirectItem = new cloudflare.ListItem("example_redirect_item", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     listId: exampleIpList.id,
- *     redirect: {
- *         sourceUrl: "https://source.tld/",
- *         targetUrl: "https://target.tld",
- *         statusCode: 302,
- *         subpathMatching: true,
- *     },
- * });
- * // ASN List
- * const exampleAsnList = new cloudflare.List("example_asn_list", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_asn_list",
- *     description: "example ASNs for a list",
- *     kind: "asn",
- * });
- * // ASN List Item
- * const exampleAsnItem = new cloudflare.ListItem("example_asn_item", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     listId: exampleAsnList.id,
- *     comment: "List Item Comment",
- *     asn: 6789,
- * });
- * // Hostname List
- * const exampleHostnameList = new cloudflare.List("example_hostname_list", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_hostname_list",
- *     description: "example Hostnames for a list",
- *     kind: "hostname",
- * });
- * // Hostname List Item
- * const exampleHostnameItem = new cloudflare.ListItem("example_hostname_item", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     listId: exampleHostnameList.id,
- *     comment: "List Item Comment",
- *     hostname: {
- *         urlHostname: "example.com",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/listItem:ListItem example <account_id>/<list_id>/<item_id>
  * ```
  */
 export class ListItem extends pulumi.CustomResource {
@@ -115,31 +49,43 @@ export class ListItem extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * A non-negative 32 bit integer
      */
     public readonly asn!: pulumi.Output<number | undefined>;
     /**
-     * An optional comment for the item.
+     * An informative summary of the list item.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The RFC 3339 timestamp of when the item was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    /**
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
     public readonly hostname!: pulumi.Output<outputs.ListItemHostname | undefined>;
     /**
-     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
     public readonly ip!: pulumi.Output<string | undefined>;
     /**
-     * The list identifier to target for the resource.
+     * The unique ID of the list.
      */
     public readonly listId!: pulumi.Output<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The RFC 3339 timestamp of when the item was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * The unique operation ID of the asynchronous action.
+     */
+    public /*out*/ readonly operationId!: pulumi.Output<string>;
+    /**
+     * The definition of the redirect.
      */
     public readonly redirect!: pulumi.Output<outputs.ListItemRedirect | undefined>;
 
@@ -159,15 +105,15 @@ export class ListItem extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["asn"] = state ? state.asn : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["listId"] = state ? state.listId : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["operationId"] = state ? state.operationId : undefined;
             resourceInputs["redirect"] = state ? state.redirect : undefined;
         } else {
             const args = argsOrState as ListItemArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if ((!args || args.listId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listId'");
             }
@@ -178,6 +124,9 @@ export class ListItem extends pulumi.CustomResource {
             resourceInputs["ip"] = args ? args.ip : undefined;
             resourceInputs["listId"] = args ? args.listId : undefined;
             resourceInputs["redirect"] = args ? args.redirect : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["operationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ListItem.__pulumiType, name, resourceInputs, opts);
@@ -189,31 +138,43 @@ export class ListItem extends pulumi.CustomResource {
  */
 export interface ListItemState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * A non-negative 32 bit integer
      */
     asn?: pulumi.Input<number>;
     /**
-     * An optional comment for the item.
+     * An informative summary of the list item.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The RFC 3339 timestamp of when the item was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
     hostname?: pulumi.Input<inputs.ListItemHostname>;
     /**
-     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
     ip?: pulumi.Input<string>;
     /**
-     * The list identifier to target for the resource.
+     * The unique ID of the list.
      */
     listId?: pulumi.Input<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The RFC 3339 timestamp of when the item was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * The unique operation ID of the asynchronous action.
+     */
+    operationId?: pulumi.Input<string>;
+    /**
+     * The definition of the redirect.
      */
     redirect?: pulumi.Input<inputs.ListItemRedirect>;
 }
@@ -223,31 +184,31 @@ export interface ListItemState {
  */
 export interface ListItemArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
-     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * A non-negative 32 bit integer
      */
     asn?: pulumi.Input<number>;
     /**
-     * An optional comment for the item.
+     * An informative summary of the list item.
      */
     comment?: pulumi.Input<string>;
     /**
-     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
      */
     hostname?: pulumi.Input<inputs.ListItemHostname>;
     /**
-     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
     ip?: pulumi.Input<string>;
     /**
-     * The list identifier to target for the resource.
+     * The unique ID of the list.
      */
     listId: pulumi.Input<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
+     * The definition of the redirect.
      */
     redirect?: pulumi.Input<inputs.ListItemRedirect>;
 }

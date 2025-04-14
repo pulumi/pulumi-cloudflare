@@ -15,7 +15,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetLoadBalancerPoolsResult',
@@ -29,35 +28,30 @@ class GetLoadBalancerPoolsResult:
     """
     A collection of values returned by getLoadBalancerPools.
     """
-    def __init__(__self__, account_id=None, filter=None, id=None, pools=None):
+    def __init__(__self__, account_id=None, id=None, max_items=None, monitor=None, results=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
-        if filter and not isinstance(filter, dict):
-            raise TypeError("Expected argument 'filter' to be a dict")
-        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if pools and not isinstance(pools, list):
-            raise TypeError("Expected argument 'pools' to be a list")
-        pulumi.set(__self__, "pools", pools)
+        if max_items and not isinstance(max_items, int):
+            raise TypeError("Expected argument 'max_items' to be a int")
+        pulumi.set(__self__, "max_items", max_items)
+        if monitor and not isinstance(monitor, str):
+            raise TypeError("Expected argument 'monitor' to be a str")
+        pulumi.set(__self__, "monitor", monitor)
+        if results and not isinstance(results, list):
+            raise TypeError("Expected argument 'results' to be a list")
+        pulumi.set(__self__, "results", results)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        The account identifier to target for the datasource lookups.
+        Identifier
         """
         return pulumi.get(self, "account_id")
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional['outputs.GetLoadBalancerPoolsFilterResult']:
-        """
-        One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-        """
-        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
@@ -68,12 +62,28 @@ class GetLoadBalancerPoolsResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="maxItems")
+    def max_items(self) -> Optional[builtins.int]:
+        """
+        Max items to fetch, default: 1000
+        """
+        return pulumi.get(self, "max_items")
+
+    @property
     @pulumi.getter
-    def pools(self) -> Sequence['outputs.GetLoadBalancerPoolsPoolResult']:
+    def monitor(self) -> Optional[builtins.str]:
         """
-        A list of Load Balancer Pools details.
+        The ID of the Monitor to use for checking the health of origins within this pool.
         """
-        return pulumi.get(self, "pools")
+        return pulumi.get(self, "monitor")
+
+    @property
+    @pulumi.getter
+    def results(self) -> Sequence['outputs.GetLoadBalancerPoolsResultResult']:
+        """
+        The items returned by the data source
+        """
+        return pulumi.get(self, "results")
 
 
 class AwaitableGetLoadBalancerPoolsResult(GetLoadBalancerPoolsResult):
@@ -83,79 +93,74 @@ class AwaitableGetLoadBalancerPoolsResult(GetLoadBalancerPoolsResult):
             yield self
         return GetLoadBalancerPoolsResult(
             account_id=self.account_id,
-            filter=self.filter,
             id=self.id,
-            pools=self.pools)
+            max_items=self.max_items,
+            monitor=self.monitor,
+            results=self.results)
 
 
 def get_load_balancer_pools(account_id: Optional[builtins.str] = None,
-                            filter: Optional[Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict']] = None,
-                            pools: Optional[Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']]] = None,
+                            max_items: Optional[builtins.int] = None,
+                            monitor: Optional[builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerPoolsResult:
     """
-    A datasource to find Load Balancer Pools.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_load_balancer_pools(account_id="f037e56e89293a057740de681ac9abbe",
-        filter={
-            "name": "example-lb-pool",
-        })
+    example_load_balancer_pools = cloudflare.get_load_balancer_pools(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        monitor="monitor")
     ```
 
 
-    :param builtins.str account_id: The account identifier to target for the datasource lookups.
-    :param Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict'] filter: One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-    :param Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']] pools: A list of Load Balancer Pools details.
+    :param builtins.str account_id: Identifier
+    :param builtins.int max_items: Max items to fetch, default: 1000
+    :param builtins.str monitor: The ID of the Monitor to use for checking the health of origins within this pool.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['filter'] = filter
-    __args__['pools'] = pools
+    __args__['maxItems'] = max_items
+    __args__['monitor'] = monitor
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getLoadBalancerPools:getLoadBalancerPools', __args__, opts=opts, typ=GetLoadBalancerPoolsResult).value
 
     return AwaitableGetLoadBalancerPoolsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
-        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
-        pools=pulumi.get(__ret__, 'pools'))
+        max_items=pulumi.get(__ret__, 'max_items'),
+        monitor=pulumi.get(__ret__, 'monitor'),
+        results=pulumi.get(__ret__, 'results'))
 def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
-                                   filter: Optional[pulumi.Input[Optional[Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict']]]] = None,
-                                   pools: Optional[pulumi.Input[Optional[Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']]]]] = None,
+                                   max_items: Optional[pulumi.Input[Optional[builtins.int]]] = None,
+                                   monitor: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerPoolsResult]:
     """
-    A datasource to find Load Balancer Pools.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_load_balancer_pools(account_id="f037e56e89293a057740de681ac9abbe",
-        filter={
-            "name": "example-lb-pool",
-        })
+    example_load_balancer_pools = cloudflare.get_load_balancer_pools(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        monitor="monitor")
     ```
 
 
-    :param builtins.str account_id: The account identifier to target for the datasource lookups.
-    :param Union['GetLoadBalancerPoolsFilterArgs', 'GetLoadBalancerPoolsFilterArgsDict'] filter: One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
-    :param Sequence[Union['GetLoadBalancerPoolsPoolArgs', 'GetLoadBalancerPoolsPoolArgsDict']] pools: A list of Load Balancer Pools details.
+    :param builtins.str account_id: Identifier
+    :param builtins.int max_items: Max items to fetch, default: 1000
+    :param builtins.str monitor: The ID of the Monitor to use for checking the health of origins within this pool.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    __args__['filter'] = filter
-    __args__['pools'] = pools
+    __args__['maxItems'] = max_items
+    __args__['monitor'] = monitor
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getLoadBalancerPools:getLoadBalancerPools', __args__, opts=opts, typ=GetLoadBalancerPoolsResult)
     return __ret__.apply(lambda __response__: GetLoadBalancerPoolsResult(
         account_id=pulumi.get(__response__, 'account_id'),
-        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
-        pools=pulumi.get(__response__, 'pools')))
+        max_items=pulumi.get(__response__, 'max_items'),
+        monitor=pulumi.get(__response__, 'monitor'),
+        results=pulumi.get(__response__, 'results')))

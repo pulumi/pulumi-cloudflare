@@ -7,40 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const eaxmple = new cloudflare.DevicePostureRule("eaxmple", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "Corporate devices posture rule",
- *     type: "os_version",
- *     description: "Device posture rule for corporate devices.",
- *     schedule: "24h",
- *     expiration: "24h",
- *     matches: [{
- *         platform: "linux",
- *     }],
- *     inputs: [{
- *         id: corporateDevices.id,
- *         version: "1.0.0",
- *         operator: "<",
- *         osDistroName: "ubuntu",
- *         osDistroRevision: "1.0.0",
- *         osVersionExtra: "(a)",
- *     }],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example <account_id>/<device_posture_rule_id>
+ * $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example '<account_id>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule
  */
 export class DevicePostureRule extends pulumi.CustomResource {
     /**
@@ -53,6 +28,7 @@ export class DevicePostureRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DevicePostureRuleState, opts?: pulumi.CustomResourceOptions): DevicePostureRule {
+        pulumi.log.warn("DevicePostureRule is deprecated: cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule")
         return new DevicePostureRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -70,33 +46,34 @@ export class DevicePostureRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === DevicePostureRule.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * The description of the device posture rule.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
     public readonly expiration!: pulumi.Output<string | undefined>;
     /**
-     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * The value to be checked against.
      */
-    public readonly inputs!: pulumi.Output<outputs.DevicePostureRuleInput[]>;
+    public readonly input!: pulumi.Output<outputs.DevicePostureRuleInput>;
     /**
      * The conditions that the client must match to run the rule.
      */
-    public readonly matches!: pulumi.Output<outputs.DevicePostureRuleMatch[] | undefined>;
+    public readonly matches!: pulumi.Output<outputs.DevicePostureRuleMatch[]>;
     /**
-     * Name of the device posture rule.
+     * The name of the device posture rule.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
-     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
-     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+     * The type of device posture rule.
+     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -107,8 +84,11 @@ export class DevicePostureRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule */
     constructor(name: string, args: DevicePostureRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule */
     constructor(name: string, argsOrState?: DevicePostureRuleArgs | DevicePostureRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("DevicePostureRule is deprecated: cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -116,7 +96,7 @@ export class DevicePostureRule extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["expiration"] = state ? state.expiration : undefined;
-            resourceInputs["inputs"] = state ? state.inputs : undefined;
+            resourceInputs["input"] = state ? state.input : undefined;
             resourceInputs["matches"] = state ? state.matches : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
@@ -126,19 +106,24 @@ export class DevicePostureRule extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expiration"] = args ? args.expiration : undefined;
-            resourceInputs["inputs"] = args ? args.inputs : undefined;
+            resourceInputs["input"] = args ? args.input : undefined;
             resourceInputs["matches"] = args ? args.matches : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/devicePostureRule:DevicePostureRule" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DevicePostureRule.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -147,33 +132,34 @@ export class DevicePostureRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DevicePostureRule resources.
  */
 export interface DevicePostureRuleState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
+    /**
+     * The description of the device posture rule.
+     */
     description?: pulumi.Input<string>;
     /**
-     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
     expiration?: pulumi.Input<string>;
     /**
-     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * The value to be checked against.
      */
-    inputs?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInput>[]>;
+    input?: pulumi.Input<inputs.DevicePostureRuleInput>;
     /**
      * The conditions that the client must match to run the rule.
      */
     matches?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleMatch>[]>;
     /**
-     * Name of the device posture rule.
+     * The name of the device posture rule.
      */
     name?: pulumi.Input<string>;
     /**
-     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      */
     schedule?: pulumi.Input<string>;
     /**
-     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+     * The type of device posture rule.
+     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
      */
     type?: pulumi.Input<string>;
 }
@@ -182,33 +168,34 @@ export interface DevicePostureRuleState {
  * The set of arguments for constructing a DevicePostureRule resource.
  */
 export interface DevicePostureRuleArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
+    /**
+     * The description of the device posture rule.
+     */
     description?: pulumi.Input<string>;
     /**
-     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */
     expiration?: pulumi.Input<string>;
     /**
-     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * The value to be checked against.
      */
-    inputs?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInput>[]>;
+    input?: pulumi.Input<inputs.DevicePostureRuleInput>;
     /**
      * The conditions that the client must match to run the rule.
      */
     matches?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleMatch>[]>;
     /**
-     * Name of the device posture rule.
+     * The name of the device posture rule.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
-     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      */
     schedule?: pulumi.Input<string>;
     /**
-     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `clientCertificateV2`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`, `customS2s`.
+     * The type of device posture rule.
+     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
      */
     type: pulumi.Input<string>;
 }

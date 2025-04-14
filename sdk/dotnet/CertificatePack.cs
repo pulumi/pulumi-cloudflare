@@ -12,10 +12,37 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleCertificatePack = new Cloudflare.CertificatePack("example_certificate_pack", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         CertificateAuthority = "google",
+    ///         Hosts = new[]
+    ///         {
+    ///             "example.com",
+    ///             "*.example.com",
+    ///             "www.example.com",
+    ///         },
+    ///         Type = "advanced",
+    ///         ValidationMethod = "txt",
+    ///         ValidityDays = 14,
+    ///         CloudflareBranding = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/certificatePack:CertificatePack example &lt;zone_id&gt;/&lt;certificate_pack_id&gt;
+    /// $ pulumi import cloudflare:index/certificatePack:CertificatePack example '&lt;zone_id&gt;/&lt;certificate_pack_id&gt;'
     /// ```
     /// 
     /// While supported, importing isn't recommended and it is advised to replace the
@@ -26,55 +53,54 @@ namespace Pulumi.Cloudflare
     public partial class CertificatePack : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+        /// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Output("certificateAuthority")]
         public Output<string> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+        /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         /// </summary>
         [Output("cloudflareBranding")]
         public Output<bool?> CloudflareBranding { get; private set; } = null!;
 
         /// <summary>
-        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+        /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         /// </summary>
         [Output("hosts")]
         public Output<ImmutableArray<string>> Hosts { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+        /// Status of certificate pack.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// Type of certificate pack.
+        /// Available values: "advanced".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
-        [Output("validationErrors")]
-        public Output<ImmutableArray<Outputs.CertificatePackValidationError>> ValidationErrors { get; private set; } = null!;
-
         /// <summary>
-        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+        /// Validation Method selected for the order.
+        /// Available values: "txt", "http", "email".
         /// </summary>
         [Output("validationMethod")]
         public Output<string> ValidationMethod { get; private set; } = null!;
 
-        [Output("validationRecords")]
-        public Output<ImmutableArray<Outputs.CertificatePackValidationRecord>> ValidationRecords { get; private set; } = null!;
-
         /// <summary>
-        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+        /// Validity Days selected for the order.
+        /// Available values: 14, 30, 90, 365.
         /// </summary>
         [Output("validityDays")]
         public Output<int> ValidityDays { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Output("waitForActiveStatus")]
-        public Output<bool?> WaitForActiveStatus { get; private set; } = null!;
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -126,13 +152,14 @@ namespace Pulumi.Cloudflare
     public sealed class CertificatePackArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+        /// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority", required: true)]
         public Input<string> CertificateAuthority { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+        /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         /// </summary>
         [Input("cloudflareBranding")]
         public Input<bool>? CloudflareBranding { get; set; }
@@ -141,7 +168,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _hosts;
 
         /// <summary>
-        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+        /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         /// </summary>
         public InputList<string> Hosts
         {
@@ -150,47 +177,28 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+        /// Type of certificate pack.
+        /// Available values: "advanced".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        [Input("validationErrors")]
-        private InputList<Inputs.CertificatePackValidationErrorArgs>? _validationErrors;
-        public InputList<Inputs.CertificatePackValidationErrorArgs> ValidationErrors
-        {
-            get => _validationErrors ?? (_validationErrors = new InputList<Inputs.CertificatePackValidationErrorArgs>());
-            set => _validationErrors = value;
-        }
-
         /// <summary>
-        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+        /// Validation Method selected for the order.
+        /// Available values: "txt", "http", "email".
         /// </summary>
         [Input("validationMethod", required: true)]
         public Input<string> ValidationMethod { get; set; } = null!;
 
-        [Input("validationRecords")]
-        private InputList<Inputs.CertificatePackValidationRecordArgs>? _validationRecords;
-        public InputList<Inputs.CertificatePackValidationRecordArgs> ValidationRecords
-        {
-            get => _validationRecords ?? (_validationRecords = new InputList<Inputs.CertificatePackValidationRecordArgs>());
-            set => _validationRecords = value;
-        }
-
         /// <summary>
-        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+        /// Validity Days selected for the order.
+        /// Available values: 14, 30, 90, 365.
         /// </summary>
         [Input("validityDays", required: true)]
         public Input<int> ValidityDays { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("waitForActiveStatus")]
-        public Input<bool>? WaitForActiveStatus { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -204,13 +212,14 @@ namespace Pulumi.Cloudflare
     public sealed class CertificatePackState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which certificate authority to issue the certificate pack. Available values: `digicert`, `lets_encrypt`, `google`, `ssl_com`. **Modifying this attribute will force creation of a new resource.**
+        /// Certificate Authority selected for the order.  For information on any certificate authority specific details or restrictions [see this page for more details.](https://developers.cloudflare.com/ssl/reference/certificate-authorities)
+        /// Available values: "google", "lets*encrypt", "ssl*com".
         /// </summary>
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 
         /// <summary>
-        /// Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
+        /// Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         /// </summary>
         [Input("cloudflareBranding")]
         public Input<bool>? CloudflareBranding { get; set; }
@@ -219,7 +228,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _hosts;
 
         /// <summary>
-        /// List of hostnames to provision the certificate pack for. The zone name must be included as a host. Note: If using Let's Encrypt, you cannot use individual subdomains and only a wildcard for subdomain is available. **Modifying this attribute will force creation of a new resource.**
+        /// Comma separated list of valid host names for the certificate packs. Must contain the zone apex, may not contain more than 50 hosts, and may not be empty.
         /// </summary>
         public InputList<string> Hosts
         {
@@ -228,47 +237,35 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Certificate pack configuration type. Available values: `advanced`. **Modifying this attribute will force creation of a new resource.**
+        /// Status of certificate pack.
+        /// Available values: "initializing", "pending*validation", "deleted", "pending*issuance", "pending*deployment", "pending*deletion", "pending*expiration", "expired", "active", "initializing*timed*out", "validation*timed*out", "issuance*timed*out", "deployment*timed*out", "deletion*timed*out", "pending*cleanup", "staging*deployment", "staging*active", "deactivating", "inactive", "backup*issued", "holding*deployment".
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Type of certificate pack.
+        /// Available values: "advanced".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        [Input("validationErrors")]
-        private InputList<Inputs.CertificatePackValidationErrorGetArgs>? _validationErrors;
-        public InputList<Inputs.CertificatePackValidationErrorGetArgs> ValidationErrors
-        {
-            get => _validationErrors ?? (_validationErrors = new InputList<Inputs.CertificatePackValidationErrorGetArgs>());
-            set => _validationErrors = value;
-        }
-
         /// <summary>
-        /// Which validation method to use in order to prove domain ownership. Available values: `txt`, `http`, `email`. **Modifying this attribute will force creation of a new resource.**
+        /// Validation Method selected for the order.
+        /// Available values: "txt", "http", "email".
         /// </summary>
         [Input("validationMethod")]
         public Input<string>? ValidationMethod { get; set; }
 
-        [Input("validationRecords")]
-        private InputList<Inputs.CertificatePackValidationRecordGetArgs>? _validationRecords;
-        public InputList<Inputs.CertificatePackValidationRecordGetArgs> ValidationRecords
-        {
-            get => _validationRecords ?? (_validationRecords = new InputList<Inputs.CertificatePackValidationRecordGetArgs>());
-            set => _validationRecords = value;
-        }
-
         /// <summary>
-        /// How long the certificate is valid for. Note: If using Let's Encrypt, this value can only be 90 days. Available values: `14`, `30`, `90`, `365`. **Modifying this attribute will force creation of a new resource.**
+        /// Validity Days selected for the order.
+        /// Available values: 14, 30, 90, 365.
         /// </summary>
         [Input("validityDays")]
         public Input<int>? ValidityDays { get; set; }
 
         /// <summary>
-        /// Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("waitForActiveStatus")]
-        public Input<bool>? WaitForActiveStatus { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

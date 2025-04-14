@@ -17,14 +17,14 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
     public static final ZeroTrustAccessCustomPageState Empty = new ZeroTrustAccessCustomPageState();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,29 +32,36 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
     }
 
     /**
-     * Number of apps to display on the custom page.
+     * Number of apps the custom page is assigned to.
      * 
      */
     @Import(name="appCount")
     private @Nullable Output<Integer> appCount;
 
     /**
-     * @return Number of apps to display on the custom page.
+     * @return Number of apps the custom page is assigned to.
      * 
      */
     public Optional<Output<Integer>> appCount() {
         return Optional.ofNullable(this.appCount);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     /**
-     * Custom HTML to display on the custom page.
+     * Custom page HTML.
      * 
      */
     @Import(name="customHtml")
     private @Nullable Output<String> customHtml;
 
     /**
-     * @return Custom HTML to display on the custom page.
+     * @return Custom page HTML.
      * 
      */
     public Optional<Output<String>> customHtml() {
@@ -62,14 +69,14 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
     }
 
     /**
-     * Friendly name of the Access Custom Page configuration.
+     * Custom page name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Friendly name of the Access Custom Page configuration.
+     * @return Custom page name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -77,14 +84,16 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
     }
 
     /**
-     * Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+     * Custom page type.
+     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+     * @return Custom page type.
+     * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -92,18 +101,25 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      * 
      */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="uid")
+    private @Nullable Output<String> uid;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return UUID
      * 
      */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Optional<Output<String>> uid() {
+        return Optional.ofNullable(this.uid);
+    }
+
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
     }
 
     private ZeroTrustAccessCustomPageState() {}
@@ -111,10 +127,12 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
     private ZeroTrustAccessCustomPageState(ZeroTrustAccessCustomPageState $) {
         this.accountId = $.accountId;
         this.appCount = $.appCount;
+        this.createdAt = $.createdAt;
         this.customHtml = $.customHtml;
         this.name = $.name;
         this.type = $.type;
-        this.zoneId = $.zoneId;
+        this.uid = $.uid;
+        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -136,7 +154,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -147,7 +165,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -157,7 +175,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param appCount Number of apps to display on the custom page.
+         * @param appCount Number of apps the custom page is assigned to.
          * 
          * @return builder
          * 
@@ -168,7 +186,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param appCount Number of apps to display on the custom page.
+         * @param appCount Number of apps the custom page is assigned to.
          * 
          * @return builder
          * 
@@ -177,8 +195,17 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
             return appCount(Output.of(appCount));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param customHtml Custom HTML to display on the custom page.
+         * @param customHtml Custom page HTML.
          * 
          * @return builder
          * 
@@ -189,7 +216,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param customHtml Custom HTML to display on the custom page.
+         * @param customHtml Custom page HTML.
          * 
          * @return builder
          * 
@@ -199,7 +226,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Friendly name of the Access Custom Page configuration.
+         * @param name Custom page name.
          * 
          * @return builder
          * 
@@ -210,7 +237,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param name Friendly name of the Access Custom Page configuration.
+         * @param name Custom page name.
          * 
          * @return builder
          * 
@@ -220,7 +247,8 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+         * @param type Custom page type.
+         * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
          * 
          * @return builder
          * 
@@ -231,7 +259,8 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param type Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+         * @param type Custom page type.
+         * Available values: &#34;identity_denied&#34;, &#34;forbidden&#34;.
          * 
          * @return builder
          * 
@@ -241,24 +270,33 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param uid UUID
          * 
          * @return builder
          * 
          */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
-            $.zoneId = zoneId;
+        public Builder uid(@Nullable Output<String> uid) {
+            $.uid = uid;
             return this;
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param uid UUID
          * 
          * @return builder
          * 
          */
-        public Builder zoneId(String zoneId) {
-            return zoneId(Output.of(zoneId));
+        public Builder uid(String uid) {
+            return uid(Output.of(uid));
+        }
+
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public ZeroTrustAccessCustomPageState build() {

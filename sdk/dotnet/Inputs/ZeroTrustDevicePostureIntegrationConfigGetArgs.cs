@@ -12,27 +12,17 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDevicePostureIntegrationConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessClientId")]
-        private Input<string>? _accessClientId;
-
         /// <summary>
-        /// The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        /// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
         /// </summary>
-        public Input<string>? AccessClientId
-        {
-            get => _accessClientId;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _accessClientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("accessClientId")]
+        public Input<string>? AccessClientId { get; set; }
 
         [Input("accessClientSecret")]
         private Input<string>? _accessClientSecret;
 
         /// <summary>
-        /// The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
         /// </summary>
         public Input<string>? AccessClientSecret
         {
@@ -45,44 +35,34 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The third-party API's URL.
+        /// The Workspace One API URL provided in the Workspace One Admin Dashboard.
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
-        /// The third-party authorization API URL.
+        /// The Workspace One Authorization URL depending on your region.
         /// </summary>
         [Input("authUrl")]
         public Input<string>? AuthUrl { get; set; }
 
         /// <summary>
-        /// The client identifier for authenticating API calls.
+        /// The Workspace One client ID provided in the Workspace One Admin Dashboard.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        [Input("clientKey")]
-        private Input<string>? _clientKey;
-
         /// <summary>
-        /// The client key for authenticating API calls.
+        /// The Uptycs client secret.
         /// </summary>
-        public Input<string>? ClientKey
-        {
-            get => _clientKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
 
         [Input("clientSecret")]
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// The client secret for authenticating API calls.
+        /// The Workspace One client secret provided in the Workspace One Admin Dashboard.
         /// </summary>
         public Input<string>? ClientSecret
         {
@@ -95,7 +75,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// The customer identifier for authenticating API calls.
+        /// The Crowdstrike customer ID.
         /// </summary>
         [Input("customerId")]
         public Input<string>? CustomerId { get; set; }

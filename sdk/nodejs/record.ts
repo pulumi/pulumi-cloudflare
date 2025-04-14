@@ -7,44 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare record resource.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Add a record to the domain
- * const example = new cloudflare.Record("example", {
- *     zoneId: cloudflareZoneId,
- *     name: "terraform",
- *     content: "192.0.2.1",
- *     type: "A",
- *     ttl: 3600,
- * });
- * // Add a record requiring a data map
- * const _sipTls = new cloudflare.Record("_sip_tls", {
- *     zoneId: cloudflareZoneId,
- *     name: "_sip._tls",
- *     type: "SRV",
- *     data: {
- *         service: "_sip",
- *         proto: "_tls",
- *         name: "terraform-srv",
- *         priority: 0,
- *         weight: 0,
- *         port: 443,
- *         target: "example.com",
- *     },
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
+ * $ pulumi import cloudflare:index/record:Record example '<zone_id>/<dns_record_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord
  */
 export class Record extends pulumi.CustomResource {
     /**
@@ -57,6 +28,7 @@ export class Record extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RecordState, opts?: pulumi.CustomResourceOptions): Record {
+        pulumi.log.warn("Record is deprecated: cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord")
         return new Record(name, <any>state, { ...opts, id: id });
     }
 
@@ -74,71 +46,73 @@ export class Record extends pulumi.CustomResource {
         return obj['__pulumiType'] === Record.__pulumiType;
     }
 
-    public readonly allowOverwrite!: pulumi.Output<boolean | undefined>;
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
-    public readonly comment!: pulumi.Output<string | undefined>;
+    public readonly comment!: pulumi.Output<string>;
     /**
-     * The content of the record. Must provide only one of `data`, `content`, `value`.
+     * When the record comment was last modified. Omitted if there is no comment.
+     */
+    public /*out*/ readonly commentModifiedOn!: pulumi.Output<string>;
+    /**
+     * A valid IPv4 address.
      */
     public readonly content!: pulumi.Output<string>;
     /**
-     * The RFC3339 timestamp of when the record was created.
+     * When the record was created.
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * Components of a CAA record.
      */
-    public readonly data!: pulumi.Output<outputs.RecordData | undefined>;
+    public readonly data!: pulumi.Output<outputs.RecordData>;
     /**
-     * The FQDN of the record.
+     * Extra Cloudflare-specific information about the record.
      */
-    public /*out*/ readonly hostname!: pulumi.Output<string>;
+    public /*out*/ readonly meta!: pulumi.Output<string>;
     /**
-     * A key-value map of string metadata Cloudflare associates with the record.
-     */
-    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: string}>;
-    /**
-     * The RFC3339 timestamp of when the record was last modified.
+     * When the record was last modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * DNS record name (or @ for the zone apex) in Punycode.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The priority of the record.
+     * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * Shows whether this record can be proxied.
+     * Whether the record can be proxied by Cloudflare or not.
      */
     public /*out*/ readonly proxiable!: pulumi.Output<boolean>;
     /**
-     * Whether the record gets Cloudflare's origin protection.
+     * Whether the record is receiving the performance and security benefits of Cloudflare.
      */
-    public readonly proxied!: pulumi.Output<boolean | undefined>;
+    public readonly proxied!: pulumi.Output<boolean>;
     /**
-     * Custom tags for the DNS record.
+     * Settings for the DNS record.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly settings!: pulumi.Output<outputs.RecordSettings>;
     /**
-     * The TTL of the record.
+     * Custom tags for the DNS record. This field has no effect on DNS responses.
+     */
+    public readonly tags!: pulumi.Output<string[]>;
+    /**
+     * When the record tags were last modified. Omitted if there are no tags.
+     */
+    public /*out*/ readonly tagsModifiedOn!: pulumi.Output<string>;
+    /**
+     * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      */
     public readonly ttl!: pulumi.Output<number>;
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * Record type.
+     * Available values: "A".
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The value of the record. Must provide only one of `data`, `content`, `value`.
-     *
-     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-     */
-    public readonly value!: pulumi.Output<string>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -149,33 +123,39 @@ export class Record extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord */
     constructor(name: string, args: RecordArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord */
     constructor(name: string, argsOrState?: RecordArgs | RecordState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Record is deprecated: cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordState | undefined;
-            resourceInputs["allowOverwrite"] = state ? state.allowOverwrite : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["commentModifiedOn"] = state ? state.commentModifiedOn : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["data"] = state ? state.data : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["meta"] = state ? state.meta : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["proxiable"] = state ? state.proxiable : undefined;
             resourceInputs["proxied"] = state ? state.proxied : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tagsModifiedOn"] = state ? state.tagsModifiedOn : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RecordArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
+            }
+            if ((!args || args.ttl === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'ttl'");
             }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
@@ -183,25 +163,27 @@ export class Record extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["allowOverwrite"] = args ? args.allowOverwrite : undefined;
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["data"] = args ? args.data : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["proxied"] = args ? args.proxied : undefined;
+            resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["commentModifiedOn"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
-            resourceInputs["hostname"] = undefined /*out*/;
-            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["meta"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["proxiable"] = undefined /*out*/;
+            resourceInputs["tagsModifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/record:Record" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Record.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -210,71 +192,73 @@ export class Record extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Record resources.
  */
 export interface RecordState {
-    allowOverwrite?: pulumi.Input<boolean>;
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The content of the record. Must provide only one of `data`, `content`, `value`.
+     * When the record comment was last modified. Omitted if there is no comment.
+     */
+    commentModifiedOn?: pulumi.Input<string>;
+    /**
+     * A valid IPv4 address.
      */
     content?: pulumi.Input<string>;
     /**
-     * The RFC3339 timestamp of when the record was created.
+     * When the record was created.
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * Components of a CAA record.
      */
     data?: pulumi.Input<inputs.RecordData>;
     /**
-     * The FQDN of the record.
+     * Extra Cloudflare-specific information about the record.
      */
-    hostname?: pulumi.Input<string>;
+    meta?: pulumi.Input<string>;
     /**
-     * A key-value map of string metadata Cloudflare associates with the record.
-     */
-    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The RFC3339 timestamp of when the record was last modified.
+     * When the record was last modified.
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * DNS record name (or @ for the zone apex) in Punycode.
      */
     name?: pulumi.Input<string>;
     /**
-     * The priority of the record.
+     * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Shows whether this record can be proxied.
+     * Whether the record can be proxied by Cloudflare or not.
      */
     proxiable?: pulumi.Input<boolean>;
     /**
-     * Whether the record gets Cloudflare's origin protection.
+     * Whether the record is receiving the performance and security benefits of Cloudflare.
      */
     proxied?: pulumi.Input<boolean>;
     /**
-     * Custom tags for the DNS record.
+     * Settings for the DNS record.
+     */
+    settings?: pulumi.Input<inputs.RecordSettings>;
+    /**
+     * Custom tags for the DNS record. This field has no effect on DNS responses.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The TTL of the record.
+     * When the record tags were last modified. Omitted if there are no tags.
+     */
+    tagsModifiedOn?: pulumi.Input<string>;
+    /**
+     * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * Record type.
+     * Available values: "A".
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the record. Must provide only one of `data`, `content`, `value`.
-     *
-     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -283,51 +267,49 @@ export interface RecordState {
  * The set of arguments for constructing a Record resource.
  */
 export interface RecordArgs {
-    allowOverwrite?: pulumi.Input<boolean>;
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The content of the record. Must provide only one of `data`, `content`, `value`.
+     * A valid IPv4 address.
      */
     content?: pulumi.Input<string>;
     /**
-     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * Components of a CAA record.
      */
     data?: pulumi.Input<inputs.RecordData>;
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * DNS record name (or @ for the zone apex) in Punycode.
      */
     name: pulumi.Input<string>;
     /**
-     * The priority of the record.
+     * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      */
     priority?: pulumi.Input<number>;
     /**
-     * Whether the record gets Cloudflare's origin protection.
+     * Whether the record is receiving the performance and security benefits of Cloudflare.
      */
     proxied?: pulumi.Input<boolean>;
     /**
-     * Custom tags for the DNS record.
+     * Settings for the DNS record.
+     */
+    settings?: pulumi.Input<inputs.RecordSettings>;
+    /**
+     * Custom tags for the DNS record. This field has no effect on DNS responses.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The TTL of the record.
+     * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
      */
-    ttl?: pulumi.Input<number>;
+    ttl: pulumi.Input<number>;
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * Record type.
+     * Available values: "A".
      */
     type: pulumi.Input<string>;
     /**
-     * The value of the record. Must provide only one of `data`, `content`, `value`.
-     *
-     * @deprecated `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-     */
-    value?: pulumi.Input<string>;
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

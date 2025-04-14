@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
     public static final RulesetRuleActionParametersFromListArgs Empty = new RulesetRuleActionParametersFromListArgs();
 
     /**
-     * Expression to use for the list lookup.
+     * Expression that evaluates to the list lookup key.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Expression to use for the list lookup.
+     * @return Expression that evaluates to the list lookup key.
      * 
      */
     public Optional<Output<String>> key() {
@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
     }
 
     /**
-     * Name of the list.
+     * The name of the list to match against.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the list.
+     * @return The name of the list to match against.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +71,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param key Expression to use for the list lookup.
+         * @param key Expression that evaluates to the list lookup key.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param key Expression to use for the list lookup.
+         * @param key Expression that evaluates to the list lookup key.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Name of the list.
+         * @param name The name of the list to match against.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Name of the list.
+         * @param name The name of the list to match against.
          * 
          * @return builder
          * 

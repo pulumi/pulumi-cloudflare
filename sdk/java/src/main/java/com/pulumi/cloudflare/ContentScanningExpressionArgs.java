@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.ContentScanningExpressionBodyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -14,30 +16,22 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
 
     public static final ContentScanningExpressionArgs Empty = new ContentScanningExpressionArgs();
 
-    /**
-     * Custom scan expression to tell the content scanner where to find the content objects.
-     * 
-     */
-    @Import(name="payload", required=true)
-    private Output<String> payload;
+    @Import(name="bodies", required=true)
+    private Output<List<ContentScanningExpressionBodyArgs>> bodies;
 
-    /**
-     * @return Custom scan expression to tell the content scanner where to find the content objects.
-     * 
-     */
-    public Output<String> payload() {
-        return this.payload;
+    public Output<List<ContentScanningExpressionBodyArgs>> bodies() {
+        return this.bodies;
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -47,7 +41,7 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
     private ContentScanningExpressionArgs() {}
 
     private ContentScanningExpressionArgs(ContentScanningExpressionArgs $) {
-        this.payload = $.payload;
+        this.bodies = $.bodies;
         this.zoneId = $.zoneId;
     }
 
@@ -69,29 +63,21 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
             $ = new ContentScanningExpressionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param payload Custom scan expression to tell the content scanner where to find the content objects.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder payload(Output<String> payload) {
-            $.payload = payload;
+        public Builder bodies(Output<List<ContentScanningExpressionBodyArgs>> bodies) {
+            $.bodies = bodies;
             return this;
         }
 
-        /**
-         * @param payload Custom scan expression to tell the content scanner where to find the content objects.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder payload(String payload) {
-            return payload(Output.of(payload));
+        public Builder bodies(List<ContentScanningExpressionBodyArgs> bodies) {
+            return bodies(Output.of(bodies));
+        }
+
+        public Builder bodies(ContentScanningExpressionBodyArgs... bodies) {
+            return bodies(List.of(bodies));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -102,7 +88,7 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -112,8 +98,8 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
         }
 
         public ContentScanningExpressionArgs build() {
-            if ($.payload == null) {
-                throw new MissingRequiredPropertyException("ContentScanningExpressionArgs", "payload");
+            if ($.bodies == null) {
+                throw new MissingRequiredPropertyException("ContentScanningExpressionArgs", "bodies");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("ContentScanningExpressionArgs", "zoneId");

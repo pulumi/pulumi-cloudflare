@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsRuleRuleSettingsDnsResolversIpv6 {
     /**
-     * @return The IPv4 or IPv6 address of the upstream resolver.
+     * @return IPv6 address of upstream resolver.
      * 
      */
     private String ip;
     /**
-     * @return A port number to use for the upstream resolver. Defaults to `53`.
+     * @return A port number to use for upstream resolver. Defaults to 53 if unspecified.
      * 
      */
     private @Nullable Integer port;
     /**
-     * @return Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+     * @return Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
      * 
      */
     private @Nullable Boolean routeThroughPrivateNetwork;
     /**
-     * @return specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * @return Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
      * 
      */
     private @Nullable String vnetId;
 
     private TeamsRuleRuleSettingsDnsResolversIpv6() {}
     /**
-     * @return The IPv4 or IPv6 address of the upstream resolver.
+     * @return IPv6 address of upstream resolver.
      * 
      */
     public String ip() {
         return this.ip;
     }
     /**
-     * @return A port number to use for the upstream resolver. Defaults to `53`.
+     * @return A port number to use for upstream resolver. Defaults to 53 if unspecified.
      * 
      */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+     * @return Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
      * 
      */
     public Optional<Boolean> routeThroughPrivateNetwork() {
         return Optional.ofNullable(this.routeThroughPrivateNetwork);
     }
     /**
-     * @return specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     * @return Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
      * 
      */
     public Optional<String> vnetId() {

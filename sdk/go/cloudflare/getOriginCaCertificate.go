@@ -7,12 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve an existing origin ca certificate.
-//
 // ## Example Usage
 //
 // ```go
@@ -20,7 +18,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupOriginCaCertificate(ctx, &cloudflare.LookupOriginCaCertificateArgs{
-//				Id: "REPLACE_ME",
+//				CertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,24 +48,32 @@ func LookupOriginCaCertificate(ctx *pulumi.Context, args *LookupOriginCaCertific
 
 // A collection of arguments for invoking getOriginCaCertificate.
 type LookupOriginCaCertificateArgs struct {
-	// The Origin CA Certificate unique identifier.
-	Id string `pulumi:"id"`
+	// Identifier
+	CertificateId *string                       `pulumi:"certificateId"`
+	Filter        *GetOriginCaCertificateFilter `pulumi:"filter"`
 }
 
 // A collection of values returned by getOriginCaCertificate.
 type LookupOriginCaCertificateResult struct {
-	// The Origin CA certificate.
+	// The Origin CA certificate. Will be newline-encoded.
 	Certificate string `pulumi:"certificate"`
-	// The timestamp when the certificate will expire.
-	ExpiresOn string `pulumi:"expiresOn"`
-	// A list of hostnames or wildcard names bound to the certificate.
+	// Identifier
+	CertificateId *string `pulumi:"certificateId"`
+	// The Certificate Signing Request (CSR). Must be newline-encoded.
+	Csr string `pulumi:"csr"`
+	// When the certificate will expire.
+	ExpiresOn string                        `pulumi:"expiresOn"`
+	Filter    *GetOriginCaCertificateFilter `pulumi:"filter"`
+	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames []string `pulumi:"hostnames"`
-	// The Origin CA Certificate unique identifier.
+	// Identifier
 	Id string `pulumi:"id"`
-	// The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`
+	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 	RequestType string `pulumi:"requestType"`
-	// The timestamp when the certificate was revoked.
-	RevokedAt string `pulumi:"revokedAt"`
+	// The number of days for which the certificate should be valid.
+	// Available values: 7, 30, 90, 365, 730, 1095, 5475.
+	RequestedValidity float64 `pulumi:"requestedValidity"`
 }
 
 func LookupOriginCaCertificateOutput(ctx *pulumi.Context, args LookupOriginCaCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupOriginCaCertificateResultOutput {
@@ -81,8 +87,9 @@ func LookupOriginCaCertificateOutput(ctx *pulumi.Context, args LookupOriginCaCer
 
 // A collection of arguments for invoking getOriginCaCertificate.
 type LookupOriginCaCertificateOutputArgs struct {
-	// The Origin CA Certificate unique identifier.
-	Id pulumi.StringInput `pulumi:"id"`
+	// Identifier
+	CertificateId pulumi.StringPtrInput                `pulumi:"certificateId"`
+	Filter        GetOriginCaCertificateFilterPtrInput `pulumi:"filter"`
 }
 
 func (LookupOriginCaCertificateOutputArgs) ElementType() reflect.Type {
@@ -104,34 +111,50 @@ func (o LookupOriginCaCertificateResultOutput) ToLookupOriginCaCertificateResult
 	return o
 }
 
-// The Origin CA certificate.
+// The Origin CA certificate. Will be newline-encoded.
 func (o LookupOriginCaCertificateResultOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// The timestamp when the certificate will expire.
+// Identifier
+func (o LookupOriginCaCertificateResultOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOriginCaCertificateResult) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Signing Request (CSR). Must be newline-encoded.
+func (o LookupOriginCaCertificateResultOutput) Csr() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.Csr }).(pulumi.StringOutput)
+}
+
+// When the certificate will expire.
 func (o LookupOriginCaCertificateResultOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// A list of hostnames or wildcard names bound to the certificate.
+func (o LookupOriginCaCertificateResultOutput) Filter() GetOriginCaCertificateFilterPtrOutput {
+	return o.ApplyT(func(v LookupOriginCaCertificateResult) *GetOriginCaCertificateFilter { return v.Filter }).(GetOriginCaCertificateFilterPtrOutput)
+}
+
+// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 func (o LookupOriginCaCertificateResultOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-// The Origin CA Certificate unique identifier.
+// Identifier
 func (o LookupOriginCaCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`
+// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
 func (o LookupOriginCaCertificateResultOutput) RequestType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.RequestType }).(pulumi.StringOutput)
 }
 
-// The timestamp when the certificate was revoked.
-func (o LookupOriginCaCertificateResultOutput) RevokedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.RevokedAt }).(pulumi.StringOutput)
+// The number of days for which the certificate should be valid.
+// Available values: 7, 30, 90, 365, 730, 1095, 5475.
+func (o LookupOriginCaCertificateResultOutput) RequestedValidity() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupOriginCaCertificateResult) float64 { return v.RequestedValidity }).(pulumi.Float64Output)
 }
 
 func init() {

@@ -5,7 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +17,14 @@ public final class AccessKeysConfigurationState extends com.pulumi.resources.Res
     public static final AccessKeysConfigurationState Empty = new AccessKeysConfigurationState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,25 +32,57 @@ public final class AccessKeysConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
-     * Number of days to trigger a rotation of the keys.
+     * The number of days until the next key rotation.
+     * 
+     */
+    @Import(name="daysUntilNextRotation")
+    private @Nullable Output<Double> daysUntilNextRotation;
+
+    /**
+     * @return The number of days until the next key rotation.
+     * 
+     */
+    public Optional<Output<Double>> daysUntilNextRotation() {
+        return Optional.ofNullable(this.daysUntilNextRotation);
+    }
+
+    /**
+     * The number of days between key rotations.
      * 
      */
     @Import(name="keyRotationIntervalDays")
-    private @Nullable Output<Integer> keyRotationIntervalDays;
+    private @Nullable Output<Double> keyRotationIntervalDays;
 
     /**
-     * @return Number of days to trigger a rotation of the keys.
+     * @return The number of days between key rotations.
      * 
      */
-    public Optional<Output<Integer>> keyRotationIntervalDays() {
+    public Optional<Output<Double>> keyRotationIntervalDays() {
         return Optional.ofNullable(this.keyRotationIntervalDays);
+    }
+
+    /**
+     * The timestamp of the previous key rotation.
+     * 
+     */
+    @Import(name="lastKeyRotationAt")
+    private @Nullable Output<String> lastKeyRotationAt;
+
+    /**
+     * @return The timestamp of the previous key rotation.
+     * 
+     */
+    public Optional<Output<String>> lastKeyRotationAt() {
+        return Optional.ofNullable(this.lastKeyRotationAt);
     }
 
     private AccessKeysConfigurationState() {}
 
     private AccessKeysConfigurationState(AccessKeysConfigurationState $) {
         this.accountId = $.accountId;
+        this.daysUntilNextRotation = $.daysUntilNextRotation;
         this.keyRotationIntervalDays = $.keyRotationIntervalDays;
+        this.lastKeyRotationAt = $.lastKeyRotationAt;
     }
 
     public static Builder builder() {
@@ -72,7 +104,7 @@ public final class AccessKeysConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -83,7 +115,7 @@ public final class AccessKeysConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -93,24 +125,66 @@ public final class AccessKeysConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param keyRotationIntervalDays Number of days to trigger a rotation of the keys.
+         * @param daysUntilNextRotation The number of days until the next key rotation.
          * 
          * @return builder
          * 
          */
-        public Builder keyRotationIntervalDays(@Nullable Output<Integer> keyRotationIntervalDays) {
+        public Builder daysUntilNextRotation(@Nullable Output<Double> daysUntilNextRotation) {
+            $.daysUntilNextRotation = daysUntilNextRotation;
+            return this;
+        }
+
+        /**
+         * @param daysUntilNextRotation The number of days until the next key rotation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder daysUntilNextRotation(Double daysUntilNextRotation) {
+            return daysUntilNextRotation(Output.of(daysUntilNextRotation));
+        }
+
+        /**
+         * @param keyRotationIntervalDays The number of days between key rotations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRotationIntervalDays(@Nullable Output<Double> keyRotationIntervalDays) {
             $.keyRotationIntervalDays = keyRotationIntervalDays;
             return this;
         }
 
         /**
-         * @param keyRotationIntervalDays Number of days to trigger a rotation of the keys.
+         * @param keyRotationIntervalDays The number of days between key rotations.
          * 
          * @return builder
          * 
          */
-        public Builder keyRotationIntervalDays(Integer keyRotationIntervalDays) {
+        public Builder keyRotationIntervalDays(Double keyRotationIntervalDays) {
             return keyRotationIntervalDays(Output.of(keyRotationIntervalDays));
+        }
+
+        /**
+         * @param lastKeyRotationAt The timestamp of the previous key rotation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastKeyRotationAt(@Nullable Output<String> lastKeyRotationAt) {
+            $.lastKeyRotationAt = lastKeyRotationAt;
+            return this;
+        }
+
+        /**
+         * @param lastKeyRotationAt The timestamp of the previous key rotation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastKeyRotationAt(String lastKeyRotationAt) {
+            return lastKeyRotationAt(Output.of(lastKeyRotationAt));
         }
 
         public AccessKeysConfigurationState build() {

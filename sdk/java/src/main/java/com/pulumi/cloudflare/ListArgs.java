@@ -3,12 +3,10 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.ListItemArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +17,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListArgs Empty = new ListArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -34,14 +32,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional description of the list.
+     * An informative summary of the list.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description of the list.
+     * @return An informative summary of the list.
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,29 +47,16 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The items in the list.
-     * 
-     */
-    @Import(name="items")
-    private @Nullable Output<List<ListItemArgs>> items;
-
-    /**
-     * @return The items in the list.
-     * 
-     */
-    public Optional<Output<List<ListItemArgs>>> items() {
-        return Optional.ofNullable(this.items);
-    }
-
-    /**
-     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
     /**
-     * @return The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     public Output<String> kind() {
@@ -79,14 +64,14 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the list.
+     * An informative name for the list. Use this name in filter and rule expressions.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the list.
+     * @return An informative name for the list. Use this name in filter and rule expressions.
      * 
      */
     public Output<String> name() {
@@ -98,7 +83,6 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
     private ListArgs(ListArgs $) {
         this.accountId = $.accountId;
         this.description = $.description;
-        this.items = $.items;
         this.kind = $.kind;
         this.name = $.name;
     }
@@ -122,7 +106,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -133,7 +117,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -143,7 +127,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of the list.
+         * @param description An informative summary of the list.
          * 
          * @return builder
          * 
@@ -154,7 +138,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of the list.
+         * @param description An informative summary of the list.
          * 
          * @return builder
          * 
@@ -164,38 +148,8 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param items The items in the list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder items(@Nullable Output<List<ListItemArgs>> items) {
-            $.items = items;
-            return this;
-        }
-
-        /**
-         * @param items The items in the list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder items(List<ListItemArgs> items) {
-            return items(Output.of(items));
-        }
-
-        /**
-         * @param items The items in the list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder items(ListItemArgs... items) {
-            return items(List.of(items));
-        }
-
-        /**
-         * @param kind The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+         * @param kind The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+         * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
          * 
          * @return builder
          * 
@@ -206,7 +160,8 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kind The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+         * @param kind The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+         * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
          * 
          * @return builder
          * 
@@ -216,7 +171,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list.
+         * @param name An informative name for the list. Use this name in filter and rule expressions.
          * 
          * @return builder
          * 
@@ -227,7 +182,7 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the list.
+         * @param name An informative name for the list. Use this name in filter and rule expressions.
          * 
          * @return builder
          * 

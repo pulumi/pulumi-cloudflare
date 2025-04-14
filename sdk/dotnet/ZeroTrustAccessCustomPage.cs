@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to customize the pages your end users will see
-    /// when trying to reach applications behind Cloudflare Access.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,55 +20,69 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ZeroTrustAccessCustomPage("example", new()
+    ///     var exampleZeroTrustAccessCustomPage = new Cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Name = "example",
-    ///         Type = "forbidden",
-    ///         CustomHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Forbidden&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         CustomHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Access Denied&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///         Name = "name",
+    ///         Type = "identity_denied",
+    ///         AppCount = 0,
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage example '&lt;account_id&gt;/&lt;custom_page_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage")]
     public partial class ZeroTrustAccessCustomPage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Number of apps to display on the custom page.
+        /// Number of apps the custom page is assigned to.
         /// </summary>
         [Output("appCount")]
         public Output<int?> AppCount { get; private set; } = null!;
 
-        /// <summary>
-        /// Custom HTML to display on the custom page.
-        /// </summary>
-        [Output("customHtml")]
-        public Output<string?> CustomHtml { get; private set; } = null!;
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Friendly name of the Access Custom Page configuration.
+        /// Custom page HTML.
+        /// </summary>
+        [Output("customHtml")]
+        public Output<string> CustomHtml { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom page name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+        /// Custom page type.
+        /// Available values: "identity_denied", "forbidden".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        /// UUID
         /// </summary>
-        [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -96,6 +107,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessCustomPage:AccessCustomPage" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -120,40 +135,35 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessCustomPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Number of apps to display on the custom page.
+        /// Number of apps the custom page is assigned to.
         /// </summary>
         [Input("appCount")]
         public Input<int>? AppCount { get; set; }
 
         /// <summary>
-        /// Custom HTML to display on the custom page.
+        /// Custom page HTML.
         /// </summary>
-        [Input("customHtml")]
-        public Input<string>? CustomHtml { get; set; }
+        [Input("customHtml", required: true)]
+        public Input<string> CustomHtml { get; set; } = null!;
 
         /// <summary>
-        /// Friendly name of the Access Custom Page configuration.
+        /// Custom page name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+        /// Custom page type.
+        /// Available values: "identity_denied", "forbidden".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
-
-        /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
 
         public ZeroTrustAccessCustomPageArgs()
         {
@@ -164,40 +174,47 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessCustomPageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Number of apps to display on the custom page.
+        /// Number of apps the custom page is assigned to.
         /// </summary>
         [Input("appCount")]
         public Input<int>? AppCount { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
-        /// Custom HTML to display on the custom page.
+        /// Custom page HTML.
         /// </summary>
         [Input("customHtml")]
         public Input<string>? CustomHtml { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Custom Page configuration.
+        /// Custom page name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+        /// Custom page type.
+        /// Available values: "identity_denied", "forbidden".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        /// UUID
         /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("uid")]
+        public Input<string>? Uid { get; set; }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public ZeroTrustAccessCustomPageState()
         {

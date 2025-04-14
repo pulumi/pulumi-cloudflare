@@ -20,37 +20,56 @@ __all__ = ['AccessCustomPageArgs', 'AccessCustomPage']
 @pulumi.input_type
 class AccessCustomPageArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[builtins.str],
+                 custom_html: pulumi.Input[builtins.str],
                  name: pulumi.Input[builtins.str],
                  type: pulumi.Input[builtins.str],
-                 account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[builtins.int]] = None,
-                 custom_html: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None):
+                 app_count: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a AccessCustomPage resource.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Custom Page configuration.
-        :param pulumi.Input[builtins.str] type: Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] app_count: Number of apps to display on the custom page.
-        :param pulumi.Input[builtins.str] custom_html: Custom HTML to display on the custom page.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] custom_html: Custom page HTML.
+        :param pulumi.Input[builtins.str] name: Custom page name.
+        :param pulumi.Input[builtins.str] type: Custom page type.
+               Available values: "identity_denied", "forbidden".
+        :param pulumi.Input[builtins.int] app_count: Number of apps the custom page is assigned to.
         """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "custom_html", custom_html)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if app_count is not None:
             pulumi.set(__self__, "app_count", app_count)
-        if custom_html is not None:
-            pulumi.set(__self__, "custom_html", custom_html)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="customHtml")
+    def custom_html(self) -> pulumi.Input[builtins.str]:
+        """
+        Custom page HTML.
+        """
+        return pulumi.get(self, "custom_html")
+
+    @custom_html.setter
+    def custom_html(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "custom_html", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        Friendly name of the Access Custom Page configuration.
+        Custom page name.
         """
         return pulumi.get(self, "name")
 
@@ -62,7 +81,8 @@ class AccessCustomPageArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[builtins.str]:
         """
-        Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+        Custom page type.
+        Available values: "identity_denied", "forbidden".
         """
         return pulumi.get(self, "type")
 
@@ -71,52 +91,16 @@ class AccessCustomPageArgs:
         pulumi.set(self, "type", value)
 
     @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_id", value)
-
-    @property
     @pulumi.getter(name="appCount")
     def app_count(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Number of apps to display on the custom page.
+        Number of apps the custom page is assigned to.
         """
         return pulumi.get(self, "app_count")
 
     @app_count.setter
     def app_count(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "app_count", value)
-
-    @property
-    @pulumi.getter(name="customHtml")
-    def custom_html(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Custom HTML to display on the custom page.
-        """
-        return pulumi.get(self, "custom_html")
-
-    @custom_html.setter
-    def custom_html(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "custom_html", value)
-
-    @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -124,37 +108,44 @@ class _AccessCustomPageState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  app_count: Optional[pulumi.Input[builtins.int]] = None,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
                  custom_html: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None):
+                 uid: Optional[pulumi.Input[builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessCustomPage resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] app_count: Number of apps to display on the custom page.
-        :param pulumi.Input[builtins.str] custom_html: Custom HTML to display on the custom page.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Custom Page configuration.
-        :param pulumi.Input[builtins.str] type: Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.int] app_count: Number of apps the custom page is assigned to.
+        :param pulumi.Input[builtins.str] custom_html: Custom page HTML.
+        :param pulumi.Input[builtins.str] name: Custom page name.
+        :param pulumi.Input[builtins.str] type: Custom page type.
+               Available values: "identity_denied", "forbidden".
+        :param pulumi.Input[builtins.str] uid: UUID
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if app_count is not None:
             pulumi.set(__self__, "app_count", app_count)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if custom_html is not None:
             pulumi.set(__self__, "custom_html", custom_html)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -166,7 +157,7 @@ class _AccessCustomPageState:
     @pulumi.getter(name="appCount")
     def app_count(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Number of apps to display on the custom page.
+        Number of apps the custom page is assigned to.
         """
         return pulumi.get(self, "app_count")
 
@@ -175,10 +166,19 @@ class _AccessCustomPageState:
         pulumi.set(self, "app_count", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
     @pulumi.getter(name="customHtml")
     def custom_html(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Custom HTML to display on the custom page.
+        Custom page HTML.
         """
         return pulumi.get(self, "custom_html")
 
@@ -190,7 +190,7 @@ class _AccessCustomPageState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Friendly name of the Access Custom Page configuration.
+        Custom page name.
         """
         return pulumi.get(self, "name")
 
@@ -202,7 +202,8 @@ class _AccessCustomPageState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+        Custom page type.
+        Available values: "identity_denied", "forbidden".
         """
         return pulumi.get(self, "type")
 
@@ -211,19 +212,33 @@ class _AccessCustomPageState:
         pulumi.set(self, "type", value)
 
     @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        UUID
         """
-        return pulumi.get(self, "zone_id")
+        return pulumi.get(self, "uid")
 
-    @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "zone_id", value)
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+warnings.warn("""cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage""", DeprecationWarning)
 
 
 class AccessCustomPage(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -233,33 +248,36 @@ class AccessCustomPage(pulumi.CustomResource):
                  custom_html: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a resource to customize the pages your end users will see
-        when trying to reach applications behind Cloudflare Access.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.AccessCustomPage("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="example",
-            type="forbidden",
-            custom_html="<html><body><h1>Forbidden</h1></body></html>")
+        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            custom_html="<html><body><h1>Access Denied</h1></body></html>",
+            name="name",
+            type="identity_denied",
+            app_count=0)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/accessCustomPage:AccessCustomPage example '<account_id>/<custom_page_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] app_count: Number of apps to display on the custom page.
-        :param pulumi.Input[builtins.str] custom_html: Custom HTML to display on the custom page.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Custom Page configuration.
-        :param pulumi.Input[builtins.str] type: Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.int] app_count: Number of apps the custom page is assigned to.
+        :param pulumi.Input[builtins.str] custom_html: Custom page HTML.
+        :param pulumi.Input[builtins.str] name: Custom page name.
+        :param pulumi.Input[builtins.str] type: Custom page type.
+               Available values: "identity_denied", "forbidden".
         """
         ...
     @overload
@@ -268,20 +286,24 @@ class AccessCustomPage(pulumi.CustomResource):
                  args: AccessCustomPageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource to customize the pages your end users will see
-        when trying to reach applications behind Cloudflare Access.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.AccessCustomPage("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="example",
-            type="forbidden",
-            custom_html="<html><body><h1>Forbidden</h1></body></html>")
+        example_zero_trust_access_custom_page = cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            custom_html="<html><body><h1>Access Denied</h1></body></html>",
+            name="name",
+            type="identity_denied",
+            app_count=0)
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/accessCustomPage:AccessCustomPage example '<account_id>/<custom_page_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -304,8 +326,8 @@ class AccessCustomPage(pulumi.CustomResource):
                  custom_html: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccessCustomPage is deprecated: cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -314,8 +336,12 @@ class AccessCustomPage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessCustomPageArgs.__new__(AccessCustomPageArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["app_count"] = app_count
+            if custom_html is None and not opts.urn:
+                raise TypeError("Missing required property 'custom_html'")
             __props__.__dict__["custom_html"] = custom_html
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -323,7 +349,11 @@ class AccessCustomPage(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["uid"] = None
+            __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessCustomPage:AccessCustomPage")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessCustomPage, __self__).__init__(
             'cloudflare:index/accessCustomPage:AccessCustomPage',
             resource_name,
@@ -336,10 +366,12 @@ class AccessCustomPage(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
             app_count: Optional[pulumi.Input[builtins.int]] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
             custom_html: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessCustomPage':
+            uid: Optional[pulumi.Input[builtins.str]] = None,
+            updated_at: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessCustomPage':
         """
         Get an existing AccessCustomPage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -347,12 +379,13 @@ class AccessCustomPage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] app_count: Number of apps to display on the custom page.
-        :param pulumi.Input[builtins.str] custom_html: Custom HTML to display on the custom page.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Custom Page configuration.
-        :param pulumi.Input[builtins.str] type: Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.int] app_count: Number of apps the custom page is assigned to.
+        :param pulumi.Input[builtins.str] custom_html: Custom page HTML.
+        :param pulumi.Input[builtins.str] name: Custom page name.
+        :param pulumi.Input[builtins.str] type: Custom page type.
+               Available values: "identity_denied", "forbidden".
+        :param pulumi.Input[builtins.str] uid: UUID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -360,17 +393,19 @@ class AccessCustomPage(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["app_count"] = app_count
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["custom_html"] = custom_html
         __props__.__dict__["name"] = name
         __props__.__dict__["type"] = type
-        __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["uid"] = uid
+        __props__.__dict__["updated_at"] = updated_at
         return AccessCustomPage(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -378,15 +413,20 @@ class AccessCustomPage(pulumi.CustomResource):
     @pulumi.getter(name="appCount")
     def app_count(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        Number of apps to display on the custom page.
+        Number of apps the custom page is assigned to.
         """
         return pulumi.get(self, "app_count")
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
+
+    @property
     @pulumi.getter(name="customHtml")
-    def custom_html(self) -> pulumi.Output[Optional[builtins.str]]:
+    def custom_html(self) -> pulumi.Output[builtins.str]:
         """
-        Custom HTML to display on the custom page.
+        Custom page HTML.
         """
         return pulumi.get(self, "custom_html")
 
@@ -394,7 +434,7 @@ class AccessCustomPage(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Friendly name of the Access Custom Page configuration.
+        Custom page name.
         """
         return pulumi.get(self, "name")
 
@@ -402,15 +442,21 @@ class AccessCustomPage(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[builtins.str]:
         """
-        Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
+        Custom page type.
+        Available values: "identity_denied", "forbidden".
         """
         return pulumi.get(self, "type")
 
     @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        UUID
         """
-        return pulumi.get(self, "zone_id")
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "updated_at")
 

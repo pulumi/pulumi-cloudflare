@@ -6,22 +6,21 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZoneArgs;
 import com.pulumi.cloudflare.inputs.ZoneState;
+import com.pulumi.cloudflare.outputs.ZoneAccount;
+import com.pulumi.cloudflare.outputs.ZoneMeta;
+import com.pulumi.cloudflare.outputs.ZoneOwner;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Zone resource. Zone is the basic resource for
- * working with Cloudflare and is roughly equivalent to a domain name
- * that the user purchases.
- * 
  * &gt; If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
  * 
  * ## Example Usage
@@ -36,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.Zone;
  * import com.pulumi.cloudflare.ZoneArgs;
+ * import com.pulumi.cloudflare.inputs.ZoneAccountArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,9 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Zone("example", ZoneArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .zone("example.com")
+ *         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()
+ *             .account(ZoneAccountArgs.builder()
+ *                 .id("023e105f4ecef8ad9ca31a8372d0c353")
+ *                 .build())
+ *             .name("example.com")
+ *             .type("full")
  *             .build());
  * 
  *     }
@@ -63,157 +66,259 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zone:Zone example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/zone:Zone example &#39;&lt;zone_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zone:Zone")
 public class Zone extends com.pulumi.resources.CustomResource {
-    /**
-     * Account ID to manage the zone resource in.
-     * 
-     */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    @Export(name="account", refs={ZoneAccount.class}, tree="[0]")
+    private Output<ZoneAccount> account;
 
-    /**
-     * @return Account ID to manage the zone resource in.
-     * 
-     */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<ZoneAccount> account() {
+        return this.account;
     }
     /**
-     * Whether to scan for DNS records on creation. Ignored after zone is created.
+     * The last time proof of ownership was detected and the zone was made
+     * active
      * 
      */
-    @Export(name="jumpStart", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> jumpStart;
+    @Export(name="activatedOn", refs={String.class}, tree="[0]")
+    private Output<String> activatedOn;
 
     /**
-     * @return Whether to scan for DNS records on creation. Ignored after zone is created.
+     * @return The last time proof of ownership was detected and the zone was made
+     * active
      * 
      */
-    public Output<Optional<Boolean>> jumpStart() {
-        return Codegen.optional(this.jumpStart);
+    public Output<String> activatedOn() {
+        return this.activatedOn;
     }
-    @Export(name="meta", refs={Map.class,String.class,Boolean.class}, tree="[0,1,2]")
-    private Output<Map<String,Boolean>> meta;
+    /**
+     * When the zone was created
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
 
-    public Output<Map<String,Boolean>> meta() {
+    /**
+     * @return When the zone was created
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * The interval (in seconds) from when development mode expires
+     * (positive integer) or last expired (negative integer) for the
+     * domain. If development mode has never been enabled, this value is 0.
+     * 
+     */
+    @Export(name="developmentMode", refs={Double.class}, tree="[0]")
+    private Output<Double> developmentMode;
+
+    /**
+     * @return The interval (in seconds) from when development mode expires
+     * (positive integer) or last expired (negative integer) for the
+     * domain. If development mode has never been enabled, this value is 0.
+     * 
+     */
+    public Output<Double> developmentMode() {
+        return this.developmentMode;
+    }
+    /**
+     * Metadata about the zone
+     * 
+     */
+    @Export(name="meta", refs={ZoneMeta.class}, tree="[0]")
+    private Output<ZoneMeta> meta;
+
+    /**
+     * @return Metadata about the zone
+     * 
+     */
+    public Output<ZoneMeta> meta() {
         return this.meta;
     }
     /**
-     * Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
+     * When the zone was last modified
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return When the zone was last modified
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * The domain name
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return The domain name
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
+     * The name servers Cloudflare assigns to a zone
      * 
      */
     @Export(name="nameServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nameServers;
 
     /**
-     * @return Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
+     * @return The name servers Cloudflare assigns to a zone
      * 
      */
     public Output<List<String>> nameServers() {
         return this.nameServers;
     }
     /**
-     * Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
+     * DNS host at the time of switching to Cloudflare
+     * 
+     */
+    @Export(name="originalDnshost", refs={String.class}, tree="[0]")
+    private Output<String> originalDnshost;
+
+    /**
+     * @return DNS host at the time of switching to Cloudflare
+     * 
+     */
+    public Output<String> originalDnshost() {
+        return this.originalDnshost;
+    }
+    /**
+     * Original name servers before moving to Cloudflare
+     * 
+     */
+    @Export(name="originalNameServers", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> originalNameServers;
+
+    /**
+     * @return Original name servers before moving to Cloudflare
+     * 
+     */
+    public Output<List<String>> originalNameServers() {
+        return this.originalNameServers;
+    }
+    /**
+     * Registrar for the domain at the time of switching to Cloudflare
+     * 
+     */
+    @Export(name="originalRegistrar", refs={String.class}, tree="[0]")
+    private Output<String> originalRegistrar;
+
+    /**
+     * @return Registrar for the domain at the time of switching to Cloudflare
+     * 
+     */
+    public Output<String> originalRegistrar() {
+        return this.originalRegistrar;
+    }
+    /**
+     * The owner of the zone
+     * 
+     */
+    @Export(name="owner", refs={ZoneOwner.class}, tree="[0]")
+    private Output<ZoneOwner> owner;
+
+    /**
+     * @return The owner of the zone
+     * 
+     */
+    public Output<ZoneOwner> owner() {
+        return this.owner;
+    }
+    /**
+     * Indicates whether the zone is only using Cloudflare DNS services. A
+     * true value means the zone will not receive security or performance
+     * benefits.
      * 
      */
     @Export(name="paused", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> paused;
+    private Output<Boolean> paused;
 
     /**
-     * @return Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
+     * @return Indicates whether the zone is only using Cloudflare DNS services. A
+     * true value means the zone will not receive security or performance
+     * benefits.
      * 
      */
-    public Output<Optional<Boolean>> paused() {
-        return Codegen.optional(this.paused);
+    public Output<Boolean> paused() {
+        return this.paused;
     }
     /**
-     * The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-     * 
-     */
-    @Export(name="plan", refs={String.class}, tree="[0]")
-    private Output<String> plan;
-
-    /**
-     * @return The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
-     * 
-     */
-    public Output<String> plan() {
-        return this.plan;
-    }
-    /**
-     * Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+     * The zone status on Cloudflare.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+     * @return The zone status on Cloudflare.
+     * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+     * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> type;
+    private Output<String> type;
 
     /**
-     * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+     * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
+     * typically a partner-hosted zone or a CNAME setup.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
      * 
      */
-    public Output<Optional<String>> type() {
-        return Codegen.optional(this.type);
+    public Output<String> type() {
+        return this.type;
     }
     /**
-     * List of Vanity Nameservers (if set).
+     * An array of domains used for custom name servers. This is only
+     * available for Business and Enterprise plans.
      * 
      */
     @Export(name="vanityNameServers", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> vanityNameServers;
+    private Output</* @Nullable */ List<String>> vanityNameServers;
 
     /**
-     * @return List of Vanity Nameservers (if set).
+     * @return An array of domains used for custom name servers. This is only
+     * available for Business and Enterprise plans.
      * 
      */
-    public Output<List<String>> vanityNameServers() {
-        return this.vanityNameServers;
+    public Output<Optional<List<String>>> vanityNameServers() {
+        return Codegen.optional(this.vanityNameServers);
     }
     /**
-     * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
+     * Verification key for partial zone setup.
      * 
      */
     @Export(name="verificationKey", refs={String.class}, tree="[0]")
     private Output<String> verificationKey;
 
     /**
-     * @return Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
+     * @return Verification key for partial zone setup.
      * 
      */
     public Output<String> verificationKey() {
         return this.verificationKey;
-    }
-    /**
-     * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Export(name="zone", refs={String.class}, tree="[0]")
-    private Output<String> zone;
-
-    /**
-     * @return The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Output<String> zone() {
-        return this.zone;
     }
 
     /**

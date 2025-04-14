@@ -6,9 +6,10 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,29 +17,31 @@ public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArg
     public static final ZoneCacheReserveArgs Empty = new ZoneCacheReserveArgs();
 
     /**
-     * Whether to enable or disable Cache Reserve support for a given zone.
+     * Value of the Cache Reserve zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
     /**
-     * @return Whether to enable or disable Cache Reserve support for a given zone.
+     * @return Value of the Cache Reserve zone setting.
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -48,7 +51,7 @@ public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArg
     private ZoneCacheReserveArgs() {}
 
     private ZoneCacheReserveArgs(ZoneCacheReserveArgs $) {
-        this.enabled = $.enabled;
+        this.value = $.value;
         this.zoneId = $.zoneId;
     }
 
@@ -71,28 +74,30 @@ public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether to enable or disable Cache Reserve support for a given zone.
+         * @param value Value of the Cache Reserve zone setting.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
-            $.enabled = enabled;
+        public Builder value(@Nullable Output<String> value) {
+            $.value = value;
             return this;
         }
 
         /**
-         * @param enabled Whether to enable or disable Cache Reserve support for a given zone.
+         * @param value Value of the Cache Reserve zone setting.
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder enabled(Boolean enabled) {
-            return enabled(Output.of(enabled));
+        public Builder value(String value) {
+            return value(Output.of(value));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -103,7 +108,7 @@ public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -113,9 +118,6 @@ public final class ZoneCacheReserveArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ZoneCacheReserveArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("ZoneCacheReserveArgs", "enabled");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("ZoneCacheReserveArgs", "zoneId");
             }

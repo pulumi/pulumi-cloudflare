@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class AccessGroupIncludeAuthContext {
     /**
-     * @return The ACID of the Authentication Context.
+     * @return The ACID of an Authentication context.
      * 
      */
     private String acId;
     /**
-     * @return The ID of the Authentication Context.
+     * @return The ID of an Authentication context.
      * 
      */
     private String id;
     /**
-     * @return The ID of the Azure identity provider.
+     * @return The ID of your Azure identity provider.
      * 
      */
     private String identityProviderId;
 
     private AccessGroupIncludeAuthContext() {}
     /**
-     * @return The ACID of the Authentication Context.
+     * @return The ACID of an Authentication context.
      * 
      */
     public String acId() {
         return this.acId;
     }
     /**
-     * @return The ID of the Authentication Context.
+     * @return The ID of an Authentication context.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The ID of the Azure identity provider.
+     * @return The ID of your Azure identity provider.
      * 
      */
     public String identityProviderId() {

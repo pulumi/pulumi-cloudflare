@@ -16,14 +16,14 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
     public static final EmailRoutingAddressState Empty = new EmailRoutingAddressState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -61,14 +61,14 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The date and time the destination address has been modified.
+     * The date and time the destination address was last modified.
      * 
      */
     @Import(name="modified")
     private @Nullable Output<String> modified;
 
     /**
-     * @return The date and time the destination address has been modified.
+     * @return The date and time the destination address was last modified.
      * 
      */
     public Optional<Output<String>> modified() {
@@ -76,14 +76,14 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Destination address identifier.
+     * Destination address tag. (Deprecated, replaced by destination address identifier)
      * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
-     * @return Destination address identifier.
+     * @return Destination address tag. (Deprecated, replaced by destination address identifier)
      * 
      */
     public Optional<Output<String>> tag() {
@@ -135,7 +135,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param modified The date and time the destination address has been modified.
+         * @param modified The date and time the destination address was last modified.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param modified The date and time the destination address has been modified.
+         * @param modified The date and time the destination address was last modified.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tag Destination address identifier.
+         * @param tag Destination address tag. (Deprecated, replaced by destination address identifier)
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tag Destination address identifier.
+         * @param tag Destination address tag. (Deprecated, replaced by destination address identifier)
          * 
          * @return builder
          * 

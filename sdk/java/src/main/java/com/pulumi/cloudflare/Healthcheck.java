@@ -6,7 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.HealthcheckArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.HealthcheckState;
-import com.pulumi.cloudflare.outputs.HealthcheckHeader;
+import com.pulumi.cloudflare.outputs.HealthcheckHttpConfig;
+import com.pulumi.cloudflare.outputs.HealthcheckTcpConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -19,98 +20,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Standalone Health Checks provide a way to monitor origin servers
- * without needing a Cloudflare Load Balancer.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Healthcheck;
- * import com.pulumi.cloudflare.HealthcheckArgs;
- * import com.pulumi.cloudflare.inputs.HealthcheckHeaderArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // HTTPS Healthcheck
- *         var httpHealthCheck = new Healthcheck("httpHealthCheck", HealthcheckArgs.builder()
- *             .zoneId(cloudflareZoneId)
- *             .name("http-health-check")
- *             .description("example http health check")
- *             .address("example.com")
- *             .suspended(false)
- *             .checkRegions(            
- *                 "WEU",
- *                 "EEU")
- *             .type("HTTPS")
- *             .port(443)
- *             .method("GET")
- *             .path("/health")
- *             .expectedBody("alive")
- *             .expectedCodes(            
- *                 "2xx",
- *                 "301")
- *             .followRedirects(true)
- *             .allowInsecure(false)
- *             .headers(HealthcheckHeaderArgs.builder()
- *                 .header("Host")
- *                 .values("example.com")
- *                 .build())
- *             .timeout(10)
- *             .retries(2)
- *             .interval(60)
- *             .consecutiveFails(3)
- *             .consecutiveSuccesses(2)
- *             .build());
- * 
- *         // TCP Healthcheck
- *         var tcpHealthCheck = new Healthcheck("tcpHealthCheck", HealthcheckArgs.builder()
- *             .zoneId(cloudflareZoneId)
- *             .name("tcp-health-check")
- *             .description("example tcp health check")
- *             .address("example.com")
- *             .suspended(false)
- *             .checkRegions(            
- *                 "WEU",
- *                 "EEU")
- *             .type("TCP")
- *             .port(22)
- *             .method("connection_established")
- *             .timeout(10)
- *             .retries(2)
- *             .interval(60)
- *             .consecutiveFails(3)
- *             .consecutiveSuccesses(2)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Use the Zone ID and Healthcheck ID to import.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/healthcheck:Healthcheck example &lt;zone_id&gt;/&lt;healthcheck_id&gt;
+ * $ pulumi import cloudflare:index/healthcheck:Healthcheck example &#39;&lt;zone_id&gt;/&lt;healthcheck_id&gt;&#39;
  * ```
  * 
  */
@@ -131,72 +49,50 @@ public class Healthcheck extends com.pulumi.resources.CustomResource {
         return this.address;
     }
     /**
-     * Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-     * 
-     */
-    @Export(name="allowInsecure", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowInsecure;
-
-    /**
-     * @return Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> allowInsecure() {
-        return Codegen.optional(this.allowInsecure);
-    }
-    /**
-     * A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+     * A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
      * 
      */
     @Export(name="checkRegions", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> checkRegions;
+    private Output</* @Nullable */ List<String>> checkRegions;
 
     /**
-     * @return A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+     * @return A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
      * 
      */
-    public Output<List<String>> checkRegions() {
-        return this.checkRegions;
+    public Output<Optional<List<String>>> checkRegions() {
+        return Codegen.optional(this.checkRegions);
     }
     /**
-     * The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+     * The number of consecutive fails required from a health check before changing the health to unhealthy.
      * 
      */
     @Export(name="consecutiveFails", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> consecutiveFails;
+    private Output<Integer> consecutiveFails;
 
     /**
-     * @return The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+     * @return The number of consecutive fails required from a health check before changing the health to unhealthy.
      * 
      */
-    public Output<Optional<Integer>> consecutiveFails() {
-        return Codegen.optional(this.consecutiveFails);
+    public Output<Integer> consecutiveFails() {
+        return this.consecutiveFails;
     }
     /**
-     * The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+     * The number of consecutive successes required from a health check before changing the health to healthy.
      * 
      */
     @Export(name="consecutiveSuccesses", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> consecutiveSuccesses;
+    private Output<Integer> consecutiveSuccesses;
 
     /**
-     * @return The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+     * @return The number of consecutive successes required from a health check before changing the health to healthy.
      * 
      */
-    public Output<Optional<Integer>> consecutiveSuccesses() {
-        return Codegen.optional(this.consecutiveSuccesses);
+    public Output<Integer> consecutiveSuccesses() {
+        return this.consecutiveSuccesses;
     }
-    /**
-     * Creation time.
-     * 
-     */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
-    /**
-     * @return Creation time.
-     * 
-     */
     public Output<String> createdOn() {
         return this.createdOn;
     }
@@ -215,210 +111,162 @@ public class Healthcheck extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
+     * The current failure reason if status is unhealthy.
      * 
      */
-    @Export(name="expectedBody", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> expectedBody;
+    @Export(name="failureReason", refs={String.class}, tree="[0]")
+    private Output<String> failureReason;
 
     /**
-     * @return A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
+     * @return The current failure reason if status is unhealthy.
      * 
      */
-    public Output<Optional<String>> expectedBody() {
-        return Codegen.optional(this.expectedBody);
+    public Output<String> failureReason() {
+        return this.failureReason;
     }
     /**
-     * The expected HTTP response codes (e.g. &#39;200&#39;) or code ranges (e.g. &#39;2xx&#39; for all codes starting with 2) of the health check.
+     * Parameters specific to an HTTP or HTTPS health check.
      * 
      */
-    @Export(name="expectedCodes", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> expectedCodes;
+    @Export(name="httpConfig", refs={HealthcheckHttpConfig.class}, tree="[0]")
+    private Output<HealthcheckHttpConfig> httpConfig;
 
     /**
-     * @return The expected HTTP response codes (e.g. &#39;200&#39;) or code ranges (e.g. &#39;2xx&#39; for all codes starting with 2) of the health check.
+     * @return Parameters specific to an HTTP or HTTPS health check.
      * 
      */
-    public Output<Optional<List<String>>> expectedCodes() {
-        return Codegen.optional(this.expectedCodes);
+    public Output<HealthcheckHttpConfig> httpConfig() {
+        return this.httpConfig;
     }
     /**
-     * Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-     * 
-     */
-    @Export(name="followRedirects", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> followRedirects;
-
-    /**
-     * @return Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> followRedirects() {
-        return Codegen.optional(this.followRedirects);
-    }
-    /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-     * 
-     */
-    @Export(name="headers", refs={List.class,HealthcheckHeader.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<HealthcheckHeader>> headers;
-
-    /**
-     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-     * 
-     */
-    public Output<Optional<List<HealthcheckHeader>>> headers() {
-        return Codegen.optional(this.headers);
-    }
-    /**
-     * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
+     * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
      * 
      */
     @Export(name="interval", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> interval;
+    private Output<Integer> interval;
 
     /**
-     * @return The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
+     * @return The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
      * 
      */
-    public Output<Optional<Integer>> interval() {
-        return Codegen.optional(this.interval);
+    public Output<Integer> interval() {
+        return this.interval;
     }
-    /**
-     * The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
-     * 
-     */
-    @Export(name="method", refs={String.class}, tree="[0]")
-    private Output<String> method;
-
-    /**
-     * @return The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
-     * 
-     */
-    public Output<String> method() {
-        return this.method;
-    }
-    /**
-     * Last modified time.
-     * 
-     */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
-    /**
-     * @return Last modified time.
-     * 
-     */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * @return A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The endpoint path to health check against. Defaults to `/`.
-     * 
-     */
-    @Export(name="path", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> path;
-
-    /**
-     * @return The endpoint path to health check against. Defaults to `/`.
-     * 
-     */
-    public Output<Optional<String>> path() {
-        return Codegen.optional(this.path);
-    }
-    /**
-     * Port number to connect to for the health check. Defaults to `80`.
-     * 
-     */
-    @Export(name="port", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> port;
-
-    /**
-     * @return Port number to connect to for the health check. Defaults to `80`.
-     * 
-     */
-    public Output<Optional<Integer>> port() {
-        return Codegen.optional(this.port);
-    }
-    /**
-     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      * 
      */
     @Export(name="retries", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> retries;
+    private Output<Integer> retries;
 
     /**
-     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      * 
      */
-    public Output<Optional<Integer>> retries() {
-        return Codegen.optional(this.retries);
+    public Output<Integer> retries() {
+        return this.retries;
     }
     /**
-     * If suspended, no health checks are sent to the origin. Defaults to `false`.
+     * The current status of the origin server according to the health check.
+     * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return The current status of the origin server according to the health check.
+     * Available values: &#34;unknown&#34;, &#34;healthy&#34;, &#34;unhealthy&#34;, &#34;suspended&#34;.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * If suspended, no health checks are sent to the origin.
      * 
      */
     @Export(name="suspended", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> suspended;
+    private Output<Boolean> suspended;
 
     /**
-     * @return If suspended, no health checks are sent to the origin. Defaults to `false`.
+     * @return If suspended, no health checks are sent to the origin.
      * 
      */
-    public Output<Optional<Boolean>> suspended() {
-        return Codegen.optional(this.suspended);
+    public Output<Boolean> suspended() {
+        return this.suspended;
     }
     /**
-     * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+     * Parameters specific to TCP health check.
+     * 
+     */
+    @Export(name="tcpConfig", refs={HealthcheckTcpConfig.class}, tree="[0]")
+    private Output<HealthcheckTcpConfig> tcpConfig;
+
+    /**
+     * @return Parameters specific to TCP health check.
+     * 
+     */
+    public Output<HealthcheckTcpConfig> tcpConfig() {
+        return this.tcpConfig;
+    }
+    /**
+     * The timeout (in seconds) before marking the health check as failed.
      * 
      */
     @Export(name="timeout", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> timeout;
+    private Output<Integer> timeout;
 
     /**
-     * @return The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+     * @return The timeout (in seconds) before marking the health check as failed.
      * 
      */
-    public Output<Optional<Integer>> timeout() {
-        return Codegen.optional(this.timeout);
+    public Output<Integer> timeout() {
+        return this.timeout;
     }
     /**
-     * The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+     * The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39; and &#39;TCP&#39;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+     * @return The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39; and &#39;TCP&#39;.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

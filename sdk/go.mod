@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-cloudflare/sdk/v5
+module github.com/pulumi/pulumi-cloudflare/sdk/v6
 
 go 1.22
 

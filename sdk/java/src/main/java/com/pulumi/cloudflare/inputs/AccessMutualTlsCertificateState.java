@@ -17,14 +17,14 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
     public static final AccessMutualTlsCertificateState Empty = new AccessMutualTlsCertificateState();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +32,14 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
     }
 
     /**
-     * The hostnames that will be prompted for this certificate.
+     * The hostnames of the applications that will use this certificate.
      * 
      */
     @Import(name="associatedHostnames")
     private @Nullable Output<List<String>> associatedHostnames;
 
     /**
-     * @return The hostnames that will be prompted for this certificate.
+     * @return The hostnames of the applications that will use this certificate.
      * 
      */
     public Optional<Output<List<String>>> associatedHostnames() {
@@ -47,23 +47,45 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
     }
 
     /**
-     * The Root CA for your certificates.
+     * The certificate content.
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The Root CA for your certificates.
+     * @return The certificate content.
      * 
      */
     public Optional<Output<String>> certificate() {
         return Optional.ofNullable(this.certificate);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    @Import(name="expiresOn")
+    private @Nullable Output<String> expiresOn;
+
+    public Optional<Output<String>> expiresOn() {
+        return Optional.ofNullable(this.expiresOn);
+    }
+
+    /**
+     * The MD5 fingerprint of the certificate.
+     * 
+     */
     @Import(name="fingerprint")
     private @Nullable Output<String> fingerprint;
 
+    /**
+     * @return The MD5 fingerprint of the certificate.
+     * 
+     */
     public Optional<Output<String>> fingerprint() {
         return Optional.ofNullable(this.fingerprint);
     }
@@ -83,15 +105,22 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -104,8 +133,11 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         this.accountId = $.accountId;
         this.associatedHostnames = $.associatedHostnames;
         this.certificate = $.certificate;
+        this.createdAt = $.createdAt;
+        this.expiresOn = $.expiresOn;
         this.fingerprint = $.fingerprint;
         this.name = $.name;
+        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -128,7 +160,7 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -139,7 +171,7 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -149,7 +181,7 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         }
 
         /**
-         * @param associatedHostnames The hostnames that will be prompted for this certificate.
+         * @param associatedHostnames The hostnames of the applications that will use this certificate.
          * 
          * @return builder
          * 
@@ -160,7 +192,7 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         }
 
         /**
-         * @param associatedHostnames The hostnames that will be prompted for this certificate.
+         * @param associatedHostnames The hostnames of the applications that will use this certificate.
          * 
          * @return builder
          * 
@@ -170,7 +202,7 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         }
 
         /**
-         * @param associatedHostnames The hostnames that will be prompted for this certificate.
+         * @param associatedHostnames The hostnames of the applications that will use this certificate.
          * 
          * @return builder
          * 
@@ -180,7 +212,7 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         }
 
         /**
-         * @param certificate The Root CA for your certificates.
+         * @param certificate The certificate content.
          * 
          * @return builder
          * 
@@ -191,7 +223,7 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         }
 
         /**
-         * @param certificate The Root CA for your certificates.
+         * @param certificate The certificate content.
          * 
          * @return builder
          * 
@@ -200,11 +232,41 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
             return certificate(Output.of(certificate));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        public Builder expiresOn(@Nullable Output<String> expiresOn) {
+            $.expiresOn = expiresOn;
+            return this;
+        }
+
+        public Builder expiresOn(String expiresOn) {
+            return expiresOn(Output.of(expiresOn));
+        }
+
+        /**
+         * @param fingerprint The MD5 fingerprint of the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fingerprint(@Nullable Output<String> fingerprint) {
             $.fingerprint = fingerprint;
             return this;
         }
 
+        /**
+         * @param fingerprint The MD5 fingerprint of the certificate.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fingerprint(String fingerprint) {
             return fingerprint(Output.of(fingerprint));
         }
@@ -230,8 +292,17 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
             return name(Output.of(name));
         }
 
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -242,7 +313,7 @@ public final class AccessMutualTlsCertificateState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

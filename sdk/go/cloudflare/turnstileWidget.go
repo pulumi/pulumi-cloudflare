@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,22 +19,27 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTurnstileWidget(ctx, "example", &cloudflare.TurnstileWidgetArgs{
-//				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:         pulumi.String("example widget"),
-//				BotFightMode: pulumi.Bool(false),
+//			_, err := cloudflare.NewTurnstileWidget(ctx, "example_turnstile_widget", &cloudflare.TurnstileWidgetArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Domains: pulumi.StringArray{
-//					pulumi.String("example.com"),
+//					pulumi.String("203.0.113.1"),
+//					pulumi.String("cloudflare.com"),
+//					pulumi.String("blog.example.com"),
 //				},
-//				Mode:   pulumi.String("invisible"),
-//				Region: pulumi.String("world"),
+//				Mode:           pulumi.String("non-interactive"),
+//				Name:           pulumi.String("blog.cloudflare.com login form"),
+//				BotFightMode:   pulumi.Bool(false),
+//				ClearanceLevel: pulumi.String("no_clearance"),
+//				EphemeralId:    pulumi.Bool(false),
+//				Offlabel:       pulumi.Bool(false),
+//				Region:         pulumi.String("world"),
 //			})
 //			if err != nil {
 //				return err
@@ -50,27 +53,43 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
+// $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example '<account_id>/<sitekey>'
 // ```
 type TurnstileWidget struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode pulumi.BoolOutput `pulumi:"botFightMode"`
-	// Domains where the widget is deployed
-	Domains pulumi.StringArrayOutput `pulumi:"domains"`
-	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
+	ClearanceLevel pulumi.StringPtrOutput `pulumi:"clearanceLevel"`
+	// When the widget was created.
+	CreatedOn pulumi.StringOutput      `pulumi:"createdOn"`
+	Domains   pulumi.StringArrayOutput `pulumi:"domains"`
+	// Return the Ephemeral ID in /siteverify (ENT only).
+	EphemeralId pulumi.BoolPtrOutput `pulumi:"ephemeralId"`
+	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringOutput `pulumi:"mode"`
-	// Human readable widget name.
+	// When the widget was modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// Human readable widget name. Not unique. Cloudflare suggests that you
+	// set this to a meaningful string to make it easier to identify your
+	// widget, and where it is used.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Do not show any Cloudflare branding on the widget (Enterprise only).
+	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolOutput `pulumi:"offlabel"`
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Secret key for this widget.
 	Secret pulumi.StringOutput `pulumi:"secret"`
+	// Widget item identifier tag.
+	Sitekey pulumi.StringOutput `pulumi:"sitekey"`
 }
 
 // NewTurnstileWidget registers a new resource with the given unique name, arguments, and options.
@@ -92,10 +111,6 @@ func NewTurnstileWidget(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"secret",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TurnstileWidget
 	err := ctx.RegisterResource("cloudflare:index/turnstileWidget:TurnstileWidget", name, args, &resource, opts...)
@@ -119,41 +134,73 @@ func GetTurnstileWidget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TurnstileWidget resources.
 type turnstileWidgetState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode *bool `pulumi:"botFightMode"`
-	// Domains where the widget is deployed
-	Domains []string `pulumi:"domains"`
-	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
+	ClearanceLevel *string `pulumi:"clearanceLevel"`
+	// When the widget was created.
+	CreatedOn *string  `pulumi:"createdOn"`
+	Domains   []string `pulumi:"domains"`
+	// Return the Ephemeral ID in /siteverify (ENT only).
+	EphemeralId *bool `pulumi:"ephemeralId"`
+	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode *string `pulumi:"mode"`
-	// Human readable widget name.
+	// When the widget was modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// Human readable widget name. Not unique. Cloudflare suggests that you
+	// set this to a meaningful string to make it easier to identify your
+	// widget, and where it is used.
 	Name *string `pulumi:"name"`
-	// Do not show any Cloudflare branding on the widget (Enterprise only).
+	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `pulumi:"offlabel"`
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region *string `pulumi:"region"`
 	// Secret key for this widget.
 	Secret *string `pulumi:"secret"`
+	// Widget item identifier tag.
+	Sitekey *string `pulumi:"sitekey"`
 }
 
 type TurnstileWidgetState struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode pulumi.BoolPtrInput
-	// Domains where the widget is deployed
-	Domains pulumi.StringArrayInput
-	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
+	ClearanceLevel pulumi.StringPtrInput
+	// When the widget was created.
+	CreatedOn pulumi.StringPtrInput
+	Domains   pulumi.StringArrayInput
+	// Return the Ephemeral ID in /siteverify (ENT only).
+	EphemeralId pulumi.BoolPtrInput
+	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringPtrInput
-	// Human readable widget name.
+	// When the widget was modified.
+	ModifiedOn pulumi.StringPtrInput
+	// Human readable widget name. Not unique. Cloudflare suggests that you
+	// set this to a meaningful string to make it easier to identify your
+	// widget, and where it is used.
 	Name pulumi.StringPtrInput
-	// Do not show any Cloudflare branding on the widget (Enterprise only).
+	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolPtrInput
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region pulumi.StringPtrInput
 	// Secret key for this widget.
 	Secret pulumi.StringPtrInput
+	// Widget item identifier tag.
+	Sitekey pulumi.StringPtrInput
 }
 
 func (TurnstileWidgetState) ElementType() reflect.Type {
@@ -161,37 +208,57 @@ func (TurnstileWidgetState) ElementType() reflect.Type {
 }
 
 type turnstileWidgetArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode *bool `pulumi:"botFightMode"`
-	// Domains where the widget is deployed
-	Domains []string `pulumi:"domains"`
-	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
+	ClearanceLevel *string  `pulumi:"clearanceLevel"`
+	Domains        []string `pulumi:"domains"`
+	// Return the Ephemeral ID in /siteverify (ENT only).
+	EphemeralId *bool `pulumi:"ephemeralId"`
+	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode string `pulumi:"mode"`
-	// Human readable widget name.
+	// Human readable widget name. Not unique. Cloudflare suggests that you
+	// set this to a meaningful string to make it easier to identify your
+	// widget, and where it is used.
 	Name string `pulumi:"name"`
-	// Do not show any Cloudflare branding on the widget (Enterprise only).
+	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `pulumi:"offlabel"`
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a TurnstileWidget resource.
 type TurnstileWidgetArgs struct {
-	// The account identifier to target for the resource.
+	// Identifier
 	AccountId pulumi.StringInput
-	// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+	// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+	// expensive challenges in response to malicious bots (ENT only).
 	BotFightMode pulumi.BoolPtrInput
-	// Domains where the widget is deployed
-	Domains pulumi.StringArrayInput
-	// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+	// this setting can determine the clearance level to be set
+	// Available values: "noClearance", "jschallenge", "managed", "interactive".
+	ClearanceLevel pulumi.StringPtrInput
+	Domains        pulumi.StringArrayInput
+	// Return the Ephemeral ID in /siteverify (ENT only).
+	EphemeralId pulumi.BoolPtrInput
+	// Widget Mode
+	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringInput
-	// Human readable widget name.
+	// Human readable widget name. Not unique. Cloudflare suggests that you
+	// set this to a meaningful string to make it easier to identify your
+	// widget, and where it is used.
 	Name pulumi.StringInput
-	// Do not show any Cloudflare branding on the widget (Enterprise only).
+	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolPtrInput
 	// Region where this widget can be used.
+	// Available values: "world".
 	Region pulumi.StringPtrInput
 }
 
@@ -282,37 +349,63 @@ func (o TurnstileWidgetOutput) ToTurnstileWidgetOutputWithContext(ctx context.Co
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o TurnstileWidgetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// If bot*fight*mode is set to true, Cloudflare issues computationally expensive challenges in response to malicious bots (Enterprise only).
+// If bot*fight*mode is set to `true`, Cloudflare issues computationally
+// expensive challenges in response to malicious bots (ENT only).
 func (o TurnstileWidgetOutput) BotFightMode() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.BotFightMode }).(pulumi.BoolOutput)
 }
 
-// Domains where the widget is deployed
+// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
+// this setting can determine the clearance level to be set
+// Available values: "noClearance", "jschallenge", "managed", "interactive".
+func (o TurnstileWidgetOutput) ClearanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.ClearanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// When the widget was created.
+func (o TurnstileWidgetOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
 func (o TurnstileWidgetOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Widget Mode. Available values: `non-interactive`, `invisible`, `managed`
+// Return the Ephemeral ID in /siteverify (ENT only).
+func (o TurnstileWidgetOutput) EphemeralId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolPtrOutput { return v.EphemeralId }).(pulumi.BoolPtrOutput)
+}
+
+// Widget Mode
+// Available values: "non-interactive", "invisible", "managed".
 func (o TurnstileWidgetOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
-// Human readable widget name.
+// When the widget was modified.
+func (o TurnstileWidgetOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Human readable widget name. Not unique. Cloudflare suggests that you
+// set this to a meaningful string to make it easier to identify your
+// widget, and where it is used.
 func (o TurnstileWidgetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Do not show any Cloudflare branding on the widget (Enterprise only).
+// Do not show any Cloudflare branding on the widget (ENT only).
 func (o TurnstileWidgetOutput) Offlabel() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.Offlabel }).(pulumi.BoolOutput)
 }
 
 // Region where this widget can be used.
+// Available values: "world".
 func (o TurnstileWidgetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -320,6 +413,11 @@ func (o TurnstileWidgetOutput) Region() pulumi.StringOutput {
 // Secret key for this widget.
 func (o TurnstileWidgetOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Widget item identifier tag.
+func (o TurnstileWidgetOutput) Sitekey() pulumi.StringOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Sitekey }).(pulumi.StringOutput)
 }
 
 type TurnstileWidgetArrayOutput struct{ *pulumi.OutputState }

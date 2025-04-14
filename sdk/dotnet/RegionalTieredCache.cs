@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
-    /// This can help improve performance for smart and custom tiered cache topologies.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,9 +20,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.RegionalTieredCache("example", new()
+    ///     var exampleRegionalTieredCache = new Cloudflare.RegionalTieredCache("example_regional_tiered_cache", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Value = "on",
     ///     });
     /// 
@@ -35,20 +32,33 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example &lt;zone_id&gt;
+    /// $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/regionalTieredCache:RegionalTieredCache")]
     public partial class RegionalTieredCache : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether the setting is editable
+        /// </summary>
+        [Output("editable")]
+        public Output<bool> Editable { get; private set; } = null!;
+
+        /// <summary>
+        /// Last time this setting was modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
         /// Value of the Regional Tiered Cache zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -101,12 +111,13 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Value of the Regional Tiered Cache zone setting.
+        /// Available values: "on", "off".
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -120,13 +131,26 @@ namespace Pulumi.Cloudflare
     public sealed class RegionalTieredCacheState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether the setting is editable
+        /// </summary>
+        [Input("editable")]
+        public Input<bool>? Editable { get; set; }
+
+        /// <summary>
+        /// Last time this setting was modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
         /// Value of the Regional Tiered Cache zone setting.
+        /// Available values: "on", "off".
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

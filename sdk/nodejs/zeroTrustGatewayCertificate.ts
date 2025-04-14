@@ -5,8 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams Gateway Certificate resource. A Teams Certificate can
- * be specified for Gateway TLS interception and block pages.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustGatewayCertificate = new cloudflare.ZeroTrustGatewayCertificate("example_zero_trust_gateway_certificate", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     validityPeriodDays: 1826,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate example '<account_id>/<certificate_id>'
+ * ```
  */
 export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     /**
@@ -36,36 +51,43 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZeroTrustGatewayCertificate.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-     */
-    public readonly activate!: pulumi.Output<boolean | undefined>;
-    /**
-     * The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     public /*out*/ readonly bindingStatus!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
+     * The CA certificate
      */
-    public readonly custom!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly certificate!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public /*out*/ readonly expiresOn!: pulumi.Output<string>;
     /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
+     * The SHA256 fingerprint of the certificate.
      */
-    public readonly gatewayManaged!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
-     * Whether the certificate is in use by Gateway for TLS interception and the block page.
+     * Use this certificate for Gateway TLS interception
      */
     public /*out*/ readonly inUse!: pulumi.Output<boolean>;
-    public /*out*/ readonly qsPackId!: pulumi.Output<string>;
+    /**
+     * The organization that issued the certificate.
+     */
+    public /*out*/ readonly issuerOrg!: pulumi.Output<string>;
+    /**
+     * The entire issuer field of the certificate.
+     */
+    public /*out*/ readonly issuerRaw!: pulumi.Output<string>;
+    /**
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: "custom", "gatewayManaged".
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
     /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
      */
     public readonly validityPeriodDays!: pulumi.Output<number | undefined>;
 
@@ -83,14 +105,16 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustGatewayCertificateState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["activate"] = state ? state.activate : undefined;
             resourceInputs["bindingStatus"] = state ? state.bindingStatus : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["custom"] = state ? state.custom : undefined;
             resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
-            resourceInputs["gatewayManaged"] = state ? state.gatewayManaged : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["inUse"] = state ? state.inUse : undefined;
-            resourceInputs["qsPackId"] = state ? state.qsPackId : undefined;
+            resourceInputs["issuerOrg"] = state ? state.issuerOrg : undefined;
+            resourceInputs["issuerRaw"] = state ? state.issuerRaw : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["uploadedOn"] = state ? state.uploadedOn : undefined;
             resourceInputs["validityPeriodDays"] = state ? state.validityPeriodDays : undefined;
         } else {
@@ -99,15 +123,17 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accountId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["activate"] = args ? args.activate : undefined;
-            resourceInputs["custom"] = args ? args.custom : undefined;
-            resourceInputs["gatewayManaged"] = args ? args.gatewayManaged : undefined;
             resourceInputs["validityPeriodDays"] = args ? args.validityPeriodDays : undefined;
             resourceInputs["bindingStatus"] = undefined /*out*/;
+            resourceInputs["certificate"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["expiresOn"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["inUse"] = undefined /*out*/;
-            resourceInputs["qsPackId"] = undefined /*out*/;
+            resourceInputs["issuerOrg"] = undefined /*out*/;
+            resourceInputs["issuerRaw"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["uploadedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -119,36 +145,43 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZeroTrustGatewayCertificate resources.
  */
 export interface ZeroTrustGatewayCertificateState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
     /**
-     * Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-     */
-    activate?: pulumi.Input<boolean>;
-    /**
-     * The deployment status of the certificate on the edge Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+     * The deployment status of the certificate on Cloudflare's edge. Certificates in the 'available' (previously called 'active') state may be used for Gateway TLS interception.
+     * Available values: "pending*deployment", "available", "pending*deletion", "inactive".
      */
     bindingStatus?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<string>;
     /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
+     * The CA certificate
      */
-    custom?: pulumi.Input<boolean>;
+    certificate?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     expiresOn?: pulumi.Input<string>;
     /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
+     * The SHA256 fingerprint of the certificate.
      */
-    gatewayManaged?: pulumi.Input<boolean>;
+    fingerprint?: pulumi.Input<string>;
     /**
-     * Whether the certificate is in use by Gateway for TLS interception and the block page.
+     * Use this certificate for Gateway TLS interception
      */
     inUse?: pulumi.Input<boolean>;
-    qsPackId?: pulumi.Input<string>;
+    /**
+     * The organization that issued the certificate.
+     */
+    issuerOrg?: pulumi.Input<string>;
+    /**
+     * The entire issuer field of the certificate.
+     */
+    issuerRaw?: pulumi.Input<string>;
+    /**
+     * The type of certificate, either BYO-PKI (custom) or Gateway-managed.
+     * Available values: "custom", "gatewayManaged".
+     */
+    type?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
     uploadedOn?: pulumi.Input<string>;
     /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
      */
     validityPeriodDays?: pulumi.Input<number>;
 }
@@ -157,24 +190,9 @@ export interface ZeroTrustGatewayCertificateState {
  * The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
  */
 export interface ZeroTrustGatewayCertificateArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
     /**
-     * Whether or not to activate a certificate. A certificate must be activated to use in Gateway certificate settings. Defaults to `false`.
-     */
-    activate?: pulumi.Input<boolean>;
-    /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-     */
-    custom?: pulumi.Input<boolean>;
-    /**
-     * The type of certificate (custom or Gateway-managed). Must provide only one of `custom`, `gatewayManaged`.
-     */
-    gatewayManaged?: pulumi.Input<boolean>;
-    /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years. Defaults to `1826`. Required when using `gatewayManaged`. Conflicts with `custom`. **Modifying this attribute will force creation of a new resource.**
+     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
      */
     validityPeriodDays?: pulumi.Input<number>;
 }

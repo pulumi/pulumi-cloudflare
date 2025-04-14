@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppCustomClaimSource;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -15,32 +14,33 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationSaasAppCustomClaim {
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the claim.
      * 
      */
     private @Nullable String name;
     /**
-     * @return True if the attribute must be always present.
+     * @return If the claim is required when building an OIDC token.
      * 
      */
     private @Nullable Boolean required;
     /**
      * @return The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     private @Nullable String scope;
-    private AccessApplicationSaasAppCustomClaimSource source;
+    private @Nullable AccessApplicationSaasAppCustomClaimSource source;
 
     private AccessApplicationSaasAppCustomClaim() {}
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the claim.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return True if the attribute must be always present.
+     * @return If the claim is required when building an OIDC token.
      * 
      */
     public Optional<Boolean> required() {
@@ -48,13 +48,14 @@ public final class AccessApplicationSaasAppCustomClaim {
     }
     /**
      * @return The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     public Optional<String> scope() {
         return Optional.ofNullable(this.scope);
     }
-    public AccessApplicationSaasAppCustomClaimSource source() {
-        return this.source;
+    public Optional<AccessApplicationSaasAppCustomClaimSource> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -69,7 +70,7 @@ public final class AccessApplicationSaasAppCustomClaim {
         private @Nullable String name;
         private @Nullable Boolean required;
         private @Nullable String scope;
-        private AccessApplicationSaasAppCustomClaimSource source;
+        private @Nullable AccessApplicationSaasAppCustomClaimSource source;
         public Builder() {}
         public Builder(AccessApplicationSaasAppCustomClaim defaults) {
     	      Objects.requireNonNull(defaults);
@@ -98,10 +99,8 @@ public final class AccessApplicationSaasAppCustomClaim {
             return this;
         }
         @CustomType.Setter
-        public Builder source(AccessApplicationSaasAppCustomClaimSource source) {
-            if (source == null) {
-              throw new MissingRequiredPropertyException("AccessApplicationSaasAppCustomClaim", "source");
-            }
+        public Builder source(@Nullable AccessApplicationSaasAppCustomClaimSource source) {
+
             this.source = source;
             return this;
         }

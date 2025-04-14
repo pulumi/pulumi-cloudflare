@@ -2,27 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides the ability to manage Cloudflare Workers Queue features.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.Queue("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "my-queue",
+ * const exampleQueue = new cloudflare.Queue("example_queue", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     queueName: "example-queue",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
+ * $ pulumi import cloudflare:index/queue:Queue example '<account_id>/<queue_id>'
  * ```
  */
 export class Queue extends pulumi.CustomResource {
@@ -54,13 +54,18 @@ export class Queue extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * A Resource identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * The name of the queue.
-     */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly consumers!: pulumi.Output<outputs.QueueConsumer[]>;
+    public /*out*/ readonly consumersTotalCount!: pulumi.Output<number>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    public /*out*/ readonly producers!: pulumi.Output<outputs.QueueProducer[]>;
+    public /*out*/ readonly producersTotalCount!: pulumi.Output<number>;
+    public /*out*/ readonly queueId!: pulumi.Output<string>;
+    public readonly queueName!: pulumi.Output<string>;
+    public readonly settings!: pulumi.Output<outputs.QueueSettings>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -76,17 +81,33 @@ export class Queue extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["consumers"] = state ? state.consumers : undefined;
+            resourceInputs["consumersTotalCount"] = state ? state.consumersTotalCount : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["producers"] = state ? state.producers : undefined;
+            resourceInputs["producersTotalCount"] = state ? state.producersTotalCount : undefined;
+            resourceInputs["queueId"] = state ? state.queueId : undefined;
+            resourceInputs["queueName"] = state ? state.queueName : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
         } else {
             const args = argsOrState as QueueArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.queueName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'queueName'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["queueName"] = args ? args.queueName : undefined;
+            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["consumers"] = undefined /*out*/;
+            resourceInputs["consumersTotalCount"] = undefined /*out*/;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["producers"] = undefined /*out*/;
+            resourceInputs["producersTotalCount"] = undefined /*out*/;
+            resourceInputs["queueId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Queue.__pulumiType, name, resourceInputs, opts);
@@ -98,13 +119,18 @@ export class Queue extends pulumi.CustomResource {
  */
 export interface QueueState {
     /**
-     * The account identifier to target for the resource.
+     * A Resource identifier.
      */
     accountId?: pulumi.Input<string>;
-    /**
-     * The name of the queue.
-     */
-    name?: pulumi.Input<string>;
+    consumers?: pulumi.Input<pulumi.Input<inputs.QueueConsumer>[]>;
+    consumersTotalCount?: pulumi.Input<number>;
+    createdOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
+    producers?: pulumi.Input<pulumi.Input<inputs.QueueProducer>[]>;
+    producersTotalCount?: pulumi.Input<number>;
+    queueId?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string>;
+    settings?: pulumi.Input<inputs.QueueSettings>;
 }
 
 /**
@@ -112,11 +138,9 @@ export interface QueueState {
  */
 export interface QueueArgs {
     /**
-     * The account identifier to target for the resource.
+     * A Resource identifier.
      */
     accountId: pulumi.Input<string>;
-    /**
-     * The name of the queue.
-     */
-    name: pulumi.Input<string>;
+    queueName: pulumi.Input<string>;
+    settings?: pulumi.Input<inputs.QueueSettings>;
 }

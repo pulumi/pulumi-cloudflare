@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WaitingRoomAdditionalRouteGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The additional host name for which the waiting room to be applied on (no wildcards).
+        /// The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://).
         /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The path within the additional host to enable the waiting room on. Defaults to `/`.
+        /// Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

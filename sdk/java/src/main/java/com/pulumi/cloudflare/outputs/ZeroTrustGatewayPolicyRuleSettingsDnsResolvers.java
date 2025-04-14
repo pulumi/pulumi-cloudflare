@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsDnsResolvers {
-    /**
-     * @return IPv4 resolvers.
-     * 
-     */
     private @Nullable List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4> ipv4s;
-    /**
-     * @return IPv6 resolvers.
-     * 
-     */
     private @Nullable List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6> ipv6s;
 
     private ZeroTrustGatewayPolicyRuleSettingsDnsResolvers() {}
-    /**
-     * @return IPv4 resolvers.
-     * 
-     */
     public List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4> ipv4s() {
         return this.ipv4s == null ? List.of() : this.ipv4s;
     }
-    /**
-     * @return IPv6 resolvers.
-     * 
-     */
     public List<ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6> ipv6s() {
         return this.ipv6s == null ? List.of() : this.ipv6s;
     }

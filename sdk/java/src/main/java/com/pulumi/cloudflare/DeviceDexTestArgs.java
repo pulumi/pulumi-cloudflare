@@ -4,29 +4,25 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.DeviceDexTestDataArgs;
+import com.pulumi.cloudflare.inputs.DeviceDexTestTargetPolicyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeviceDexTestArgs Empty = new DeviceDexTestArgs();
 
-    /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -50,15 +46,15 @@ public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
      * Additional details about the test.
      * 
      */
-    @Import(name="description", required=true)
-    private Output<String> description;
+    @Import(name="description")
+    private @Nullable Output<String> description;
 
     /**
      * @return Additional details about the test.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -92,18 +88,40 @@ public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Device Dex Test. Must be unique.
+     * The name of the DEX test. Must be unique.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Device Dex Test. Must be unique.
+     * @return The name of the DEX test. Must be unique.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+
+    /**
+     * Device settings profiles targeted by this test
+     * 
+     */
+    @Import(name="targetPolicies")
+    private @Nullable Output<List<DeviceDexTestTargetPolicyArgs>> targetPolicies;
+
+    /**
+     * @return Device settings profiles targeted by this test
+     * 
+     */
+    public Optional<Output<List<DeviceDexTestTargetPolicyArgs>>> targetPolicies() {
+        return Optional.ofNullable(this.targetPolicies);
+    }
+
+    @Import(name="targeted")
+    private @Nullable Output<Boolean> targeted;
+
+    public Optional<Output<Boolean>> targeted() {
+        return Optional.ofNullable(this.targeted);
     }
 
     private DeviceDexTestArgs() {}
@@ -115,6 +133,8 @@ public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
         this.enabled = $.enabled;
         this.interval = $.interval;
         this.name = $.name;
+        this.targetPolicies = $.targetPolicies;
+        this.targeted = $.targeted;
     }
 
     public static Builder builder() {
@@ -135,23 +155,11 @@ public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DeviceDexTestArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -183,7 +191,7 @@ public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder description(Output<String> description) {
+        public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
@@ -241,7 +249,7 @@ public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Device Dex Test. Must be unique.
+         * @param name The name of the DEX test. Must be unique.
          * 
          * @return builder
          * 
@@ -252,7 +260,7 @@ public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the Device Dex Test. Must be unique.
+         * @param name The name of the DEX test. Must be unique.
          * 
          * @return builder
          * 
@@ -261,15 +269,52 @@ public final class DeviceDexTestArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param targetPolicies Device settings profiles targeted by this test
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetPolicies(@Nullable Output<List<DeviceDexTestTargetPolicyArgs>> targetPolicies) {
+            $.targetPolicies = targetPolicies;
+            return this;
+        }
+
+        /**
+         * @param targetPolicies Device settings profiles targeted by this test
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetPolicies(List<DeviceDexTestTargetPolicyArgs> targetPolicies) {
+            return targetPolicies(Output.of(targetPolicies));
+        }
+
+        /**
+         * @param targetPolicies Device settings profiles targeted by this test
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetPolicies(DeviceDexTestTargetPolicyArgs... targetPolicies) {
+            return targetPolicies(List.of(targetPolicies));
+        }
+
+        public Builder targeted(@Nullable Output<Boolean> targeted) {
+            $.targeted = targeted;
+            return this;
+        }
+
+        public Builder targeted(Boolean targeted) {
+            return targeted(Output.of(targeted));
+        }
+
         public DeviceDexTestArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("DeviceDexTestArgs", "accountId");
             }
             if ($.data == null) {
                 throw new MissingRequiredPropertyException("DeviceDexTestArgs", "data");
-            }
-            if ($.description == null) {
-                throw new MissingRequiredPropertyException("DeviceDexTestArgs", "description");
             }
             if ($.enabled == null) {
                 throw new MissingRequiredPropertyException("DeviceDexTestArgs", "enabled");

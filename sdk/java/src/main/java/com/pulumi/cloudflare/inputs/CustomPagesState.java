@@ -16,14 +16,14 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
     public static final CustomPagesState Empty = new CustomPagesState();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +31,31 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Managed state of the custom page. Available values: `default`, `customized`.
+     * Identifier
+     * 
+     */
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
+
+    /**
+     * @return Identifier
+     * 
+     */
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
+    }
+
+    /**
+     * The custom page state.
+     * Available values: &#34;default&#34;, &#34;customized&#34;.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Managed state of the custom page. Available values: `default`, `customized`.
+     * @return The custom page state.
+     * Available values: &#34;default&#34;, &#34;customized&#34;.
      * 
      */
     public Optional<Output<String>> state() {
@@ -46,29 +63,14 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-     * 
-     */
-    @Import(name="type")
-    private @Nullable Output<String> type;
-
-    /**
-     * @return The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-     * 
-     */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
-    }
-
-    /**
-     * URL of where the custom page source is located.
+     * The URL associated with the custom page.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of where the custom page source is located.
+     * @return The URL associated with the custom page.
      * 
      */
     public Optional<Output<String>> url() {
@@ -76,14 +78,14 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -94,8 +96,8 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
 
     private CustomPagesState(CustomPagesState $) {
         this.accountId = $.accountId;
+        this.identifier = $.identifier;
         this.state = $.state;
-        this.type = $.type;
         this.url = $.url;
         this.zoneId = $.zoneId;
     }
@@ -119,7 +121,7 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -130,7 +132,7 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -140,7 +142,29 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Managed state of the custom page. Available values: `default`, `customized`.
+         * @param identifier Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifier(@Nullable Output<String> identifier) {
+            $.identifier = identifier;
+            return this;
+        }
+
+        /**
+         * @param identifier Identifier
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifier(String identifier) {
+            return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param state The custom page state.
+         * Available values: &#34;default&#34;, &#34;customized&#34;.
          * 
          * @return builder
          * 
@@ -151,7 +175,8 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Managed state of the custom page. Available values: `default`, `customized`.
+         * @param state The custom page state.
+         * Available values: &#34;default&#34;, &#34;customized&#34;.
          * 
          * @return builder
          * 
@@ -161,28 +186,7 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(@Nullable Output<String> type) {
-            $.type = type;
-            return this;
-        }
-
-        /**
-         * @param type The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder type(String type) {
-            return type(Output.of(type));
-        }
-
-        /**
-         * @param url URL of where the custom page source is located.
+         * @param url The URL associated with the custom page.
          * 
          * @return builder
          * 
@@ -193,7 +197,7 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of where the custom page source is located.
+         * @param url The URL associated with the custom page.
          * 
          * @return builder
          * 
@@ -203,7 +207,7 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -214,7 +218,7 @@ public final class CustomPagesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

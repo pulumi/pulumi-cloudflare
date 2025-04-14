@@ -27,11 +27,11 @@ class TunnelRouteArgs:
                  virtual_network_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelRoute resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] network: The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
-        :param pulumi.Input[builtins.str] tunnel_id: The ID of the tunnel that will service the tunnel route.
-        :param pulumi.Input[builtins.str] comment: Description of the tunnel route.
-        :param pulumi.Input[builtins.str] virtual_network_id: The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[builtins.str] network: The private IPv4 or IPv6 range connected by the route, in CIDR notation.
+        :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
+        :param pulumi.Input[builtins.str] comment: Optional remark describing the route.
+        :param pulumi.Input[builtins.str] virtual_network_id: UUID of the virtual network.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "network", network)
@@ -45,7 +45,7 @@ class TunnelRouteArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
 
@@ -57,7 +57,7 @@ class TunnelRouteArgs:
     @pulumi.getter
     def network(self) -> pulumi.Input[builtins.str]:
         """
-        The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+        The private IPv4 or IPv6 range connected by the route, in CIDR notation.
         """
         return pulumi.get(self, "network")
 
@@ -69,7 +69,7 @@ class TunnelRouteArgs:
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the tunnel that will service the tunnel route.
+        UUID of the tunnel.
         """
         return pulumi.get(self, "tunnel_id")
 
@@ -81,7 +81,7 @@ class TunnelRouteArgs:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the tunnel route.
+        Optional remark describing the route.
         """
         return pulumi.get(self, "comment")
 
@@ -93,7 +93,7 @@ class TunnelRouteArgs:
     @pulumi.getter(name="virtualNetworkId")
     def virtual_network_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        UUID of the virtual network.
         """
         return pulumi.get(self, "virtual_network_id")
 
@@ -107,21 +107,29 @@ class _TunnelRouteState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  comment: Optional[pulumi.Input[builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
+                 deleted_at: Optional[pulumi.Input[builtins.str]] = None,
                  network: Optional[pulumi.Input[builtins.str]] = None,
                  tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
                  virtual_network_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering TunnelRoute resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] comment: Description of the tunnel route.
-        :param pulumi.Input[builtins.str] network: The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
-        :param pulumi.Input[builtins.str] tunnel_id: The ID of the tunnel that will service the tunnel route.
-        :param pulumi.Input[builtins.str] virtual_network_id: The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[builtins.str] comment: Optional remark describing the route.
+        :param pulumi.Input[builtins.str] created_at: Timestamp of when the resource was created.
+        :param pulumi.Input[builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        :param pulumi.Input[builtins.str] network: The private IPv4 or IPv6 range connected by the route, in CIDR notation.
+        :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
+        :param pulumi.Input[builtins.str] virtual_network_id: UUID of the virtual network.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if tunnel_id is not None:
@@ -133,7 +141,7 @@ class _TunnelRouteState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
 
@@ -145,7 +153,7 @@ class _TunnelRouteState:
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the tunnel route.
+        Optional remark describing the route.
         """
         return pulumi.get(self, "comment")
 
@@ -154,10 +162,34 @@ class _TunnelRouteState:
         pulumi.set(self, "comment", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Timestamp of when the resource was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+        The private IPv4 or IPv6 range connected by the route, in CIDR notation.
         """
         return pulumi.get(self, "network")
 
@@ -169,7 +201,7 @@ class _TunnelRouteState:
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the tunnel that will service the tunnel route.
+        UUID of the tunnel.
         """
         return pulumi.get(self, "tunnel_id")
 
@@ -181,7 +213,7 @@ class _TunnelRouteState:
     @pulumi.getter(name="virtualNetworkId")
     def virtual_network_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        UUID of the virtual network.
         """
         return pulumi.get(self, "virtual_network_id")
 
@@ -190,7 +222,12 @@ class _TunnelRouteState:
         pulumi.set(self, "virtual_network_id", value)
 
 
+warnings.warn("""cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute""", DeprecationWarning)
+
+
 class TunnelRoute(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -202,23 +239,33 @@ class TunnelRoute(pulumi.CustomResource):
                  virtual_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages Cloudflare tunnel routes for Zero
-        Trust. Tunnel routes are used to direct IP traffic through
-        Cloudflare Tunnels.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_tunnel_cloudflared_route = cloudflare.ZeroTrustTunnelCloudflaredRoute("example_zero_trust_tunnel_cloudflared_route",
+            account_id="699d98642c564d2e855e9661899b7252",
+            network="172.16.0.0/16",
+            tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+            comment="Example comment for this route.",
+            virtual_network_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
+        $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example '<account_id>/<route_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] comment: Description of the tunnel route.
-        :param pulumi.Input[builtins.str] network: The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
-        :param pulumi.Input[builtins.str] tunnel_id: The ID of the tunnel that will service the tunnel route.
-        :param pulumi.Input[builtins.str] virtual_network_id: The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[builtins.str] comment: Optional remark describing the route.
+        :param pulumi.Input[builtins.str] network: The private IPv4 or IPv6 range connected by the route, in CIDR notation.
+        :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
+        :param pulumi.Input[builtins.str] virtual_network_id: UUID of the virtual network.
         """
         ...
     @overload
@@ -227,14 +274,24 @@ class TunnelRoute(pulumi.CustomResource):
                  args: TunnelRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages Cloudflare tunnel routes for Zero
-        Trust. Tunnel routes are used to direct IP traffic through
-        Cloudflare Tunnels.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_tunnel_cloudflared_route = cloudflare.ZeroTrustTunnelCloudflaredRoute("example_zero_trust_tunnel_cloudflared_route",
+            account_id="699d98642c564d2e855e9661899b7252",
+            network="172.16.0.0/16",
+            tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+            comment="Example comment for this route.",
+            virtual_network_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
+        $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example '<account_id>/<route_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -258,6 +315,7 @@ class TunnelRoute(pulumi.CustomResource):
                  tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
                  virtual_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""TunnelRoute is deprecated: cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -277,6 +335,10 @@ class TunnelRoute(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tunnel_id'")
             __props__.__dict__["tunnel_id"] = tunnel_id
             __props__.__dict__["virtual_network_id"] = virtual_network_id
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["deleted_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/tunnelRoute:TunnelRoute")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(TunnelRoute, __self__).__init__(
             'cloudflare:index/tunnelRoute:TunnelRoute',
             resource_name,
@@ -289,6 +351,8 @@ class TunnelRoute(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
             comment: Optional[pulumi.Input[builtins.str]] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
+            deleted_at: Optional[pulumi.Input[builtins.str]] = None,
             network: Optional[pulumi.Input[builtins.str]] = None,
             tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
             virtual_network_id: Optional[pulumi.Input[builtins.str]] = None) -> 'TunnelRoute':
@@ -299,11 +363,13 @@ class TunnelRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] comment: Description of the tunnel route.
-        :param pulumi.Input[builtins.str] network: The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
-        :param pulumi.Input[builtins.str] tunnel_id: The ID of the tunnel that will service the tunnel route.
-        :param pulumi.Input[builtins.str] virtual_network_id: The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Cloudflare account ID
+        :param pulumi.Input[builtins.str] comment: Optional remark describing the route.
+        :param pulumi.Input[builtins.str] created_at: Timestamp of when the resource was created.
+        :param pulumi.Input[builtins.str] deleted_at: Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        :param pulumi.Input[builtins.str] network: The private IPv4 or IPv6 range connected by the route, in CIDR notation.
+        :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
+        :param pulumi.Input[builtins.str] virtual_network_id: UUID of the virtual network.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -311,6 +377,8 @@ class TunnelRoute(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deleted_at"] = deleted_at
         __props__.__dict__["network"] = network
         __props__.__dict__["tunnel_id"] = tunnel_id
         __props__.__dict__["virtual_network_id"] = virtual_network_id
@@ -320,7 +388,7 @@ class TunnelRoute(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Cloudflare account ID
         """
         return pulumi.get(self, "account_id")
 
@@ -328,15 +396,31 @@ class TunnelRoute(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Description of the tunnel route.
+        Optional remark describing the route.
         """
         return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        """
+        Timestamp of when the resource was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> pulumi.Output[builtins.str]:
+        """
+        Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        """
+        return pulumi.get(self, "deleted_at")
 
     @property
     @pulumi.getter
     def network(self) -> pulumi.Output[builtins.str]:
         """
-        The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+        The private IPv4 or IPv6 range connected by the route, in CIDR notation.
         """
         return pulumi.get(self, "network")
 
@@ -344,7 +428,7 @@ class TunnelRoute(pulumi.CustomResource):
     @pulumi.getter(name="tunnelId")
     def tunnel_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the tunnel that will service the tunnel route.
+        UUID of the tunnel.
         """
         return pulumi.get(self, "tunnel_id")
 
@@ -352,7 +436,7 @@ class TunnelRoute(pulumi.CustomResource):
     @pulumi.getter(name="virtualNetworkId")
     def virtual_network_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        UUID of the virtual network.
         """
         return pulumi.get(self, "virtual_network_id")
 

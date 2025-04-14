@@ -10,45 +10,76 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages Cloudflare tunnel routes for Zero
-    /// Trust. Tunnel routes are used to direct IP traffic through
-    /// Cloudflare Tunnels.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustTunnelCloudflaredRoute = new Cloudflare.ZeroTrustTunnelCloudflaredRoute("example_zero_trust_tunnel_cloudflared_route", new()
+    ///     {
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Network = "172.16.0.0/16",
+    ///         TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+    ///         Comment = "Example comment for this route.",
+    ///         VirtualNetworkId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &lt;account_id&gt;/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
+    /// $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example '&lt;account_id&gt;/&lt;route_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute")]
     [CloudflareResourceType("cloudflare:index/tunnelRoute:TunnelRoute")]
     public partial class TunnelRoute : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the tunnel route.
+        /// Optional remark describing the route.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+        /// Timestamp of when the resource was created.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// </summary>
+        [Output("deletedAt")]
+        public Output<string> DeletedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the tunnel that will service the tunnel route.
+        /// UUID of the tunnel.
         /// </summary>
         [Output("tunnelId")]
         public Output<string> TunnelId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        /// UUID of the virtual network.
         /// </summary>
         [Output("virtualNetworkId")]
         public Output<string?> VirtualNetworkId { get; private set; } = null!;
@@ -76,6 +107,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/tunnelRoute:TunnelRoute" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -100,31 +135,31 @@ namespace Pulumi.Cloudflare
     public sealed class TunnelRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Description of the tunnel route.
+        /// Optional remark describing the route.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+        /// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the tunnel that will service the tunnel route.
+        /// UUID of the tunnel.
         /// </summary>
         [Input("tunnelId", required: true)]
         public Input<string> TunnelId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        /// UUID of the virtual network.
         /// </summary>
         [Input("virtualNetworkId")]
         public Input<string>? VirtualNetworkId { get; set; }
@@ -138,31 +173,43 @@ namespace Pulumi.Cloudflare
     public sealed class TunnelRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Description of the tunnel route.
+        /// Optional remark describing the route.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+        /// Timestamp of when the resource was created.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// </summary>
+        [Input("deletedAt")]
+        public Input<string>? DeletedAt { get; set; }
+
+        /// <summary>
+        /// The private IPv4 or IPv6 range connected by the route, in CIDR notation.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The ID of the tunnel that will service the tunnel route.
+        /// UUID of the tunnel.
         /// </summary>
         [Input("tunnelId")]
         public Input<string>? TunnelId { get; set; }
 
         /// <summary>
-        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+        /// UUID of the virtual network.
         /// </summary>
         [Input("virtualNetworkId")]
         public Input<string>? VirtualNetworkId { get; set; }

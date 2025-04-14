@@ -13,16 +13,17 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessRuleConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+        /// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+        /// Available values: "ip".
         /// </summary>
-        [Input("target", required: true)]
-        public Input<string> Target { get; set; } = null!;
+        [Input("target")]
+        public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
+        /// The IP address to match. This address will be compared to the IP address of incoming requests.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public AccessRuleConfigurationArgs()
         {

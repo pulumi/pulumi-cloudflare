@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages Cloudflare Tiered Cache settings.
-    /// This allows you to adjust topologies for your zone.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,26 +20,45 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.TieredCache("example", new()
+    ///     var exampleTieredCache = new Cloudflare.TieredCache("example_tiered_cache", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         CacheType = "smart",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Value = "on",
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/tieredCache:TieredCache example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/tieredCache:TieredCache")]
     public partial class TieredCache : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+        /// Whether the setting is editable
         /// </summary>
-        [Output("cacheType")]
-        public Output<string> CacheType { get; private set; } = null!;
+        [Output("editable")]
+        public Output<bool> Editable { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Last time this setting was modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable or disable the Smart Tiered Cache
+        /// Available values: "on", "off".
+        /// </summary>
+        [Output("value")]
+        public Output<string> Value { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -94,13 +110,14 @@ namespace Pulumi.Cloudflare
     public sealed class TieredCacheArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+        /// Enable or disable the Smart Tiered Cache
+        /// Available values: "on", "off".
         /// </summary>
-        [Input("cacheType", required: true)]
-        public Input<string> CacheType { get; set; } = null!;
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -114,13 +131,26 @@ namespace Pulumi.Cloudflare
     public sealed class TieredCacheState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+        /// Whether the setting is editable
         /// </summary>
-        [Input("cacheType")]
-        public Input<string>? CacheType { get; set; }
+        [Input("editable")]
+        public Input<bool>? Editable { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Last time this setting was modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// Enable or disable the Smart Tiered Cache
+        /// Available values: "on", "off".
+        /// </summary>
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

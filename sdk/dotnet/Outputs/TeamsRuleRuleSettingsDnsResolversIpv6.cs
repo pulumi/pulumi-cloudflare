@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsDnsResolversIpv6
     {
         /// <summary>
-        /// The IPv4 or IPv6 address of the upstream resolver.
+        /// IPv6 address of upstream resolver.
         /// </summary>
         public readonly string Ip;
         /// <summary>
-        /// A port number to use for the upstream resolver. Defaults to `53`.
+        /// A port number to use for upstream resolver. Defaults to 53 if unspecified.
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        /// Whether to connect to this resolver over a private network. Must be set when vnet_id is set.
         /// </summary>
         public readonly bool? RouteThroughPrivateNetwork;
         /// <summary>
-        /// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        /// Optionally specify a virtual network for this resolver. Uses default virtual network id if omitted.
         /// </summary>
         public readonly string? VnetId;
 

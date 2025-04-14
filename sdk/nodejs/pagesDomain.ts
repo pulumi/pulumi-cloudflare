@@ -2,13 +2,13 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource for managing Cloudflare Pages domains.
- *
  * > A DNS record for the domain is not automatically created. You need to create
- *    a `cloudflare.Record` resource for the domain you want to use.
+ *    a `cloudflareRecord` resource for the domain you want to use.
  *
  * ## Example Usage
  *
@@ -16,17 +16,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const my_domain = new cloudflare.PagesDomain("my-domain", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     projectName: "my-example-project",
- *     domain: "example.com",
+ * const examplePagesDomain = new cloudflare.PagesDomain("example_pages_domain", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     projectName: "this-is-my-project-01",
+ *     name: "example.com",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/pagesDomain:PagesDomain example <account_id>/<project_name>/<domain-name>
+ * $ pulumi import cloudflare:index/pagesDomain:PagesDomain example '<account_id>/<project_name>/<domain_name>'
  * ```
  */
 export class PagesDomain extends pulumi.CustomResource {
@@ -58,21 +58,27 @@ export class PagesDomain extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Custom domain. **Modifying this attribute will force creation of a new resource.**
+     * Available values: "google", "letsEncrypt".
      */
-    public readonly domain!: pulumi.Output<string>;
+    public /*out*/ readonly certificateAuthority!: pulumi.Output<string>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    public /*out*/ readonly domainId!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
-     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
-     * Status of the custom domain.
+     * Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly validationData!: pulumi.Output<outputs.PagesDomainValidationData>;
+    public /*out*/ readonly verificationData!: pulumi.Output<outputs.PagesDomainVerificationData>;
+    public /*out*/ readonly zoneTag!: pulumi.Output<string>;
 
     /**
      * Create a PagesDomain resource with the given unique name, arguments, and options.
@@ -88,24 +94,36 @@ export class PagesDomain extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PagesDomainState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["validationData"] = state ? state.validationData : undefined;
+            resourceInputs["verificationData"] = state ? state.verificationData : undefined;
+            resourceInputs["zoneTag"] = state ? state.zoneTag : undefined;
         } else {
             const args = argsOrState as PagesDomainArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domain'");
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["certificateAuthority"] = undefined /*out*/;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["domainId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["validationData"] = undefined /*out*/;
+            resourceInputs["verificationData"] = undefined /*out*/;
+            resourceInputs["zoneTag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PagesDomain.__pulumiType, name, resourceInputs, opts);
@@ -117,21 +135,27 @@ export class PagesDomain extends pulumi.CustomResource {
  */
 export interface PagesDomainState {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Custom domain. **Modifying this attribute will force creation of a new resource.**
+     * Available values: "google", "letsEncrypt".
      */
-    domain?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
-     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      */
     projectName?: pulumi.Input<string>;
     /**
-     * Status of the custom domain.
+     * Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
      */
     status?: pulumi.Input<string>;
+    validationData?: pulumi.Input<inputs.PagesDomainValidationData>;
+    verificationData?: pulumi.Input<inputs.PagesDomainVerificationData>;
+    zoneTag?: pulumi.Input<string>;
 }
 
 /**
@@ -139,15 +163,12 @@ export interface PagesDomainState {
  */
 export interface PagesDomainArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
-     * Custom domain. **Modifying this attribute will force creation of a new resource.**
-     */
-    domain: pulumi.Input<string>;
-    /**
-     * Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+     * Name of the project.
      */
     projectName: pulumi.Input<string>;
 }

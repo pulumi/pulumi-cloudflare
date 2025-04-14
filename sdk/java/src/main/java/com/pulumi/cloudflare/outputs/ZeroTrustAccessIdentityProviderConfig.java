@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessIdentityProviderConfigHeaderAttribute;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -13,113 +14,335 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessIdentityProviderConfig {
-    private @Nullable String apiToken;
+    /**
+     * @return Your companies TLD
+     * 
+     */
     private @Nullable String appsDomain;
+    /**
+     * @return A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
+     * 
+     */
     private @Nullable List<String> attributes;
+    /**
+     * @return The authorization_endpoint URL of your IdP
+     * 
+     */
     private @Nullable String authUrl;
+    /**
+     * @return Your okta authorization server id
+     * 
+     */
     private @Nullable String authorizationServerId;
+    /**
+     * @return Your centrify account url
+     * 
+     */
     private @Nullable String centrifyAccount;
+    /**
+     * @return Your centrify app id
+     * 
+     */
     private @Nullable String centrifyAppId;
+    /**
+     * @return The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+     * 
+     */
     private @Nullable String certsUrl;
+    /**
+     * @return Custom claims
+     * 
+     */
     private @Nullable List<String> claims;
+    /**
+     * @return Your OAuth Client ID
+     * 
+     */
     private @Nullable String clientId;
+    /**
+     * @return Your OAuth Client Secret
+     * 
+     */
     private @Nullable String clientSecret;
+    /**
+     * @return Should Cloudflare try to load authentication contexts from your account
+     * 
+     */
     private @Nullable Boolean conditionalAccessEnabled;
+    /**
+     * @return Your Azure directory uuid
+     * 
+     */
     private @Nullable String directoryId;
+    /**
+     * @return The attribute name for email in the SAML response.
+     * 
+     */
     private @Nullable String emailAttributeName;
+    /**
+     * @return The claim name for email in the id_token response.
+     * 
+     */
     private @Nullable String emailClaimName;
-    private @Nullable String idpPublicCert;
+    /**
+     * @return Add a list of attribute names that will be returned in the response header from the Access callback.
+     * 
+     */
+    private @Nullable List<ZeroTrustAccessIdentityProviderConfigHeaderAttribute> headerAttributes;
+    /**
+     * @return X509 certificate to verify the signature in the SAML authentication response
+     * 
+     */
+    private @Nullable List<String> idpPublicCerts;
+    /**
+     * @return IdP Entity ID or Issuer URL
+     * 
+     */
     private @Nullable String issuerUrl;
+    /**
+     * @return Your okta account url
+     * 
+     */
     private @Nullable String oktaAccount;
+    /**
+     * @return Your OneLogin account url
+     * 
+     */
     private @Nullable String oneloginAccount;
+    /**
+     * @return Your PingOne environment identifier
+     * 
+     */
     private @Nullable String pingEnvId;
+    /**
+     * @return Enable Proof Key for Code Exchange (PKCE)
+     * 
+     */
     private @Nullable Boolean pkceEnabled;
+    /**
+     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Available values: &#34;login&#34;, &#34;select_account&#34;, &#34;none&#34;.
+     * 
+     */
+    private @Nullable String prompt;
     private @Nullable String redirectUrl;
+    /**
+     * @return OAuth scopes
+     * 
+     */
     private @Nullable List<String> scopes;
+    /**
+     * @return Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
+     * 
+     */
     private @Nullable Boolean signRequest;
+    /**
+     * @return URL to send the SAML authentication requests to
+     * 
+     */
     private @Nullable String ssoTargetUrl;
+    /**
+     * @return Should Cloudflare try to load groups from your account
+     * 
+     */
     private @Nullable Boolean supportGroups;
+    /**
+     * @return The token_endpoint URL of your IdP
+     * 
+     */
     private @Nullable String tokenUrl;
 
     private ZeroTrustAccessIdentityProviderConfig() {}
-    public Optional<String> apiToken() {
-        return Optional.ofNullable(this.apiToken);
-    }
+    /**
+     * @return Your companies TLD
+     * 
+     */
     public Optional<String> appsDomain() {
         return Optional.ofNullable(this.appsDomain);
     }
+    /**
+     * @return A list of SAML attribute names that will be added to your signed JWT token and can be used in SAML policy rules.
+     * 
+     */
     public List<String> attributes() {
         return this.attributes == null ? List.of() : this.attributes;
     }
+    /**
+     * @return The authorization_endpoint URL of your IdP
+     * 
+     */
     public Optional<String> authUrl() {
         return Optional.ofNullable(this.authUrl);
     }
+    /**
+     * @return Your okta authorization server id
+     * 
+     */
     public Optional<String> authorizationServerId() {
         return Optional.ofNullable(this.authorizationServerId);
     }
+    /**
+     * @return Your centrify account url
+     * 
+     */
     public Optional<String> centrifyAccount() {
         return Optional.ofNullable(this.centrifyAccount);
     }
+    /**
+     * @return Your centrify app id
+     * 
+     */
     public Optional<String> centrifyAppId() {
         return Optional.ofNullable(this.centrifyAppId);
     }
+    /**
+     * @return The jwks_uri endpoint of your IdP to allow the IdP keys to sign the tokens
+     * 
+     */
     public Optional<String> certsUrl() {
         return Optional.ofNullable(this.certsUrl);
     }
+    /**
+     * @return Custom claims
+     * 
+     */
     public List<String> claims() {
         return this.claims == null ? List.of() : this.claims;
     }
+    /**
+     * @return Your OAuth Client ID
+     * 
+     */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
+    /**
+     * @return Your OAuth Client Secret
+     * 
+     */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
+    /**
+     * @return Should Cloudflare try to load authentication contexts from your account
+     * 
+     */
     public Optional<Boolean> conditionalAccessEnabled() {
         return Optional.ofNullable(this.conditionalAccessEnabled);
     }
+    /**
+     * @return Your Azure directory uuid
+     * 
+     */
     public Optional<String> directoryId() {
         return Optional.ofNullable(this.directoryId);
     }
+    /**
+     * @return The attribute name for email in the SAML response.
+     * 
+     */
     public Optional<String> emailAttributeName() {
         return Optional.ofNullable(this.emailAttributeName);
     }
+    /**
+     * @return The claim name for email in the id_token response.
+     * 
+     */
     public Optional<String> emailClaimName() {
         return Optional.ofNullable(this.emailClaimName);
     }
-    public Optional<String> idpPublicCert() {
-        return Optional.ofNullable(this.idpPublicCert);
+    /**
+     * @return Add a list of attribute names that will be returned in the response header from the Access callback.
+     * 
+     */
+    public List<ZeroTrustAccessIdentityProviderConfigHeaderAttribute> headerAttributes() {
+        return this.headerAttributes == null ? List.of() : this.headerAttributes;
     }
+    /**
+     * @return X509 certificate to verify the signature in the SAML authentication response
+     * 
+     */
+    public List<String> idpPublicCerts() {
+        return this.idpPublicCerts == null ? List.of() : this.idpPublicCerts;
+    }
+    /**
+     * @return IdP Entity ID or Issuer URL
+     * 
+     */
     public Optional<String> issuerUrl() {
         return Optional.ofNullable(this.issuerUrl);
     }
+    /**
+     * @return Your okta account url
+     * 
+     */
     public Optional<String> oktaAccount() {
         return Optional.ofNullable(this.oktaAccount);
     }
+    /**
+     * @return Your OneLogin account url
+     * 
+     */
     public Optional<String> oneloginAccount() {
         return Optional.ofNullable(this.oneloginAccount);
     }
+    /**
+     * @return Your PingOne environment identifier
+     * 
+     */
     public Optional<String> pingEnvId() {
         return Optional.ofNullable(this.pingEnvId);
     }
+    /**
+     * @return Enable Proof Key for Code Exchange (PKCE)
+     * 
+     */
     public Optional<Boolean> pkceEnabled() {
         return Optional.ofNullable(this.pkceEnabled);
+    }
+    /**
+     * @return Indicates the type of user interaction that is required. prompt=login forces the user to enter their credentials on that request, negating single-sign on. prompt=none is the opposite. It ensures that the user isn&#39;t presented with any interactive prompt. If the request can&#39;t be completed silently by using single-sign on, the Microsoft identity platform returns an interaction*required error. prompt=select*account interrupts single sign-on providing account selection experience listing all the accounts either in session or any remembered account or an option to choose to use a different account altogether.
+     * Available values: &#34;login&#34;, &#34;select_account&#34;, &#34;none&#34;.
+     * 
+     */
+    public Optional<String> prompt() {
+        return Optional.ofNullable(this.prompt);
     }
     public Optional<String> redirectUrl() {
         return Optional.ofNullable(this.redirectUrl);
     }
+    /**
+     * @return OAuth scopes
+     * 
+     */
     public List<String> scopes() {
         return this.scopes == null ? List.of() : this.scopes;
     }
+    /**
+     * @return Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
+     * 
+     */
     public Optional<Boolean> signRequest() {
         return Optional.ofNullable(this.signRequest);
     }
+    /**
+     * @return URL to send the SAML authentication requests to
+     * 
+     */
     public Optional<String> ssoTargetUrl() {
         return Optional.ofNullable(this.ssoTargetUrl);
     }
+    /**
+     * @return Should Cloudflare try to load groups from your account
+     * 
+     */
     public Optional<Boolean> supportGroups() {
         return Optional.ofNullable(this.supportGroups);
     }
+    /**
+     * @return The token_endpoint URL of your IdP
+     * 
+     */
     public Optional<String> tokenUrl() {
         return Optional.ofNullable(this.tokenUrl);
     }
@@ -133,7 +356,6 @@ public final class ZeroTrustAccessIdentityProviderConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String apiToken;
         private @Nullable String appsDomain;
         private @Nullable List<String> attributes;
         private @Nullable String authUrl;
@@ -148,12 +370,14 @@ public final class ZeroTrustAccessIdentityProviderConfig {
         private @Nullable String directoryId;
         private @Nullable String emailAttributeName;
         private @Nullable String emailClaimName;
-        private @Nullable String idpPublicCert;
+        private @Nullable List<ZeroTrustAccessIdentityProviderConfigHeaderAttribute> headerAttributes;
+        private @Nullable List<String> idpPublicCerts;
         private @Nullable String issuerUrl;
         private @Nullable String oktaAccount;
         private @Nullable String oneloginAccount;
         private @Nullable String pingEnvId;
         private @Nullable Boolean pkceEnabled;
+        private @Nullable String prompt;
         private @Nullable String redirectUrl;
         private @Nullable List<String> scopes;
         private @Nullable Boolean signRequest;
@@ -163,7 +387,6 @@ public final class ZeroTrustAccessIdentityProviderConfig {
         public Builder() {}
         public Builder(ZeroTrustAccessIdentityProviderConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.apiToken = defaults.apiToken;
     	      this.appsDomain = defaults.appsDomain;
     	      this.attributes = defaults.attributes;
     	      this.authUrl = defaults.authUrl;
@@ -178,12 +401,14 @@ public final class ZeroTrustAccessIdentityProviderConfig {
     	      this.directoryId = defaults.directoryId;
     	      this.emailAttributeName = defaults.emailAttributeName;
     	      this.emailClaimName = defaults.emailClaimName;
-    	      this.idpPublicCert = defaults.idpPublicCert;
+    	      this.headerAttributes = defaults.headerAttributes;
+    	      this.idpPublicCerts = defaults.idpPublicCerts;
     	      this.issuerUrl = defaults.issuerUrl;
     	      this.oktaAccount = defaults.oktaAccount;
     	      this.oneloginAccount = defaults.oneloginAccount;
     	      this.pingEnvId = defaults.pingEnvId;
     	      this.pkceEnabled = defaults.pkceEnabled;
+    	      this.prompt = defaults.prompt;
     	      this.redirectUrl = defaults.redirectUrl;
     	      this.scopes = defaults.scopes;
     	      this.signRequest = defaults.signRequest;
@@ -192,12 +417,6 @@ public final class ZeroTrustAccessIdentityProviderConfig {
     	      this.tokenUrl = defaults.tokenUrl;
         }
 
-        @CustomType.Setter
-        public Builder apiToken(@Nullable String apiToken) {
-
-            this.apiToken = apiToken;
-            return this;
-        }
         @CustomType.Setter
         public Builder appsDomain(@Nullable String appsDomain) {
 
@@ -289,10 +508,22 @@ public final class ZeroTrustAccessIdentityProviderConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder idpPublicCert(@Nullable String idpPublicCert) {
+        public Builder headerAttributes(@Nullable List<ZeroTrustAccessIdentityProviderConfigHeaderAttribute> headerAttributes) {
 
-            this.idpPublicCert = idpPublicCert;
+            this.headerAttributes = headerAttributes;
             return this;
+        }
+        public Builder headerAttributes(ZeroTrustAccessIdentityProviderConfigHeaderAttribute... headerAttributes) {
+            return headerAttributes(List.of(headerAttributes));
+        }
+        @CustomType.Setter
+        public Builder idpPublicCerts(@Nullable List<String> idpPublicCerts) {
+
+            this.idpPublicCerts = idpPublicCerts;
+            return this;
+        }
+        public Builder idpPublicCerts(String... idpPublicCerts) {
+            return idpPublicCerts(List.of(idpPublicCerts));
         }
         @CustomType.Setter
         public Builder issuerUrl(@Nullable String issuerUrl) {
@@ -322,6 +553,12 @@ public final class ZeroTrustAccessIdentityProviderConfig {
         public Builder pkceEnabled(@Nullable Boolean pkceEnabled) {
 
             this.pkceEnabled = pkceEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder prompt(@Nullable String prompt) {
+
+            this.prompt = prompt;
             return this;
         }
         @CustomType.Setter
@@ -365,7 +602,6 @@ public final class ZeroTrustAccessIdentityProviderConfig {
         }
         public ZeroTrustAccessIdentityProviderConfig build() {
             final var _resultValue = new ZeroTrustAccessIdentityProviderConfig();
-            _resultValue.apiToken = apiToken;
             _resultValue.appsDomain = appsDomain;
             _resultValue.attributes = attributes;
             _resultValue.authUrl = authUrl;
@@ -380,12 +616,14 @@ public final class ZeroTrustAccessIdentityProviderConfig {
             _resultValue.directoryId = directoryId;
             _resultValue.emailAttributeName = emailAttributeName;
             _resultValue.emailClaimName = emailClaimName;
-            _resultValue.idpPublicCert = idpPublicCert;
+            _resultValue.headerAttributes = headerAttributes;
+            _resultValue.idpPublicCerts = idpPublicCerts;
             _resultValue.issuerUrl = issuerUrl;
             _resultValue.oktaAccount = oktaAccount;
             _resultValue.oneloginAccount = oneloginAccount;
             _resultValue.pingEnvId = pingEnvId;
             _resultValue.pkceEnabled = pkceEnabled;
+            _resultValue.prompt = prompt;
             _resultValue.redirectUrl = redirectUrl;
             _resultValue.scopes = scopes;
             _resultValue.signRequest = signRequest;

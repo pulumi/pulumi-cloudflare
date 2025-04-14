@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to manage operation-level settings in API Shield Schema Validation 2.0.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,41 +20,42 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ApiShieldOperation("example", new()
+    ///     var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Method = "GET",
-    ///         Host = "api.example.com",
-    ///         Endpoint = "/path",
-    ///     });
-    /// 
-    ///     var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.ApiShieldOperationSchemaValidationSettings("example", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         OperationId = example.Id,
-    ///         MitigationAction = "block",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         OperationId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///         MitigationAction = "log",
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings example '&lt;zone_id&gt;/&lt;operation_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings")]
     public partial class ApiShieldOperationSchemaValidationSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The mitigation action to apply to this operation.
+        /// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+        /// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+        /// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+        /// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
         /// </summary>
         [Output("mitigationAction")]
         public Output<string?> MitigationAction { get; private set; } = null!;
 
         /// <summary>
-        /// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+        /// UUID
         /// </summary>
         [Output("operationId")]
         public Output<string> OperationId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -108,19 +107,22 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldOperationSchemaValidationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The mitigation action to apply to this operation.
+        /// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+        /// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+        /// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+        /// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }
 
         /// <summary>
-        /// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+        /// UUID
         /// </summary>
         [Input("operationId", required: true)]
         public Input<string> OperationId { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -134,19 +136,22 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldOperationSchemaValidationSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The mitigation action to apply to this operation.
+        /// When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
+        /// for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
+        /// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
+        /// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
         /// </summary>
         [Input("mitigationAction")]
         public Input<string>? MitigationAction { get; set; }
 
         /// <summary>
-        /// Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
+        /// UUID
         /// </summary>
         [Input("operationId")]
         public Input<string>? OperationId { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

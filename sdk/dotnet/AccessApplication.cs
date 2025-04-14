@@ -10,183 +10,173 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Application resource. Access
-    /// Applications are used to restrict access to a whole application using an
-    /// authorisation gateway managed by Cloudflare.
-    /// 
-    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
-    ///    most cases using either is fine. However, if you're using a scoped
-    ///    access token, you must provide the argument that matches the token's
-    ///    scope. For example, an access token that is scoped to the "example.com"
-    ///    zone needs to use the `zone_id` argument.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/accessApplication:AccessApplication example &lt;account_id&gt;/&lt;application_id&gt;
+    /// $ pulumi import cloudflare:index/accessApplication:AccessApplication example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;app_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/accessapplication.AccessApplication has been deprecated in favor of cloudflare.index/zerotrustaccessapplication.ZeroTrustAccessApplication")]
     [CloudflareResourceType("cloudflare:index/accessApplication:AccessApplication")]
     public partial class AccessApplication : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        /// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         /// </summary>
         [Output("allowAuthenticateViaWarp")]
         public Output<bool?> AllowAuthenticateViaWarp { get; private set; } = null!;
 
         /// <summary>
-        /// The identity providers selected for the application.
+        /// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         /// </summary>
         [Output("allowedIdps")]
         public Output<ImmutableArray<string>> AllowedIdps { get; private set; } = null!;
 
         /// <summary>
-        /// The logo URL of the app launcher.
+        /// The image URL of the logo shown in the App Launcher header.
         /// </summary>
         [Output("appLauncherLogoUrl")]
         public Output<string?> AppLauncherLogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Option to show/hide applications in App Launcher. Defaults to `true`.
+        /// Displays the application in the App Launcher.
         /// </summary>
         [Output("appLauncherVisible")]
-        public Output<bool?> AppLauncherVisible { get; private set; } = null!;
+        public Output<bool> AppLauncherVisible { get; private set; } = null!;
 
         /// <summary>
-        /// Application Audience (AUD) Tag of the application.
+        /// Audience tag.
         /// </summary>
         [Output("aud")]
         public Output<string> Aud { get; private set; } = null!;
 
         /// <summary>
-        /// Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         /// </summary>
         [Output("autoRedirectToIdentity")]
-        public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
+        public Output<bool> AutoRedirectToIdentity { get; private set; } = null!;
 
         /// <summary>
-        /// The background color of the app launcher.
+        /// The background color of the App Launcher page.
         /// </summary>
         [Output("bgColor")]
         public Output<string?> BgColor { get; private set; } = null!;
 
-        /// <summary>
-        /// CORS configuration for the Access Application. See below for reference structure.
-        /// </summary>
         [Output("corsHeaders")]
-        public Output<ImmutableArray<Outputs.AccessApplicationCorsHeader>> CorsHeaders { get; private set; } = null!;
+        public Output<Outputs.AccessApplicationCorsHeaders> CorsHeaders { get; private set; } = null!;
+
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Option that returns a custom error message when a user is denied access to the application.
+        /// The custom error message shown to a user when they are denied access to the application.
         /// </summary>
         [Output("customDenyMessage")]
         public Output<string?> CustomDenyMessage { get; private set; } = null!;
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        /// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
         /// </summary>
         [Output("customDenyUrl")]
         public Output<string?> CustomDenyUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        /// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
         /// </summary>
         [Output("customNonIdentityDenyUrl")]
         public Output<string?> CustomNonIdentityDenyUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The custom pages selected for the application.
+        /// The custom pages that will be displayed when applicable for this application
         /// </summary>
         [Output("customPages")]
         public Output<ImmutableArray<string>> CustomPages { get; private set; } = null!;
 
         /// <summary>
-        /// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        /// List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         /// </summary>
         [Output("destinations")]
         public Output<ImmutableArray<Outputs.AccessApplicationDestination>> Destinations { get; private set; } = null!;
 
         /// <summary>
-        /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        /// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         /// </summary>
         [Output("domain")]
-        public Output<string> Domain { get; private set; } = null!;
+        public Output<string?> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the primary domain. Available values: `public`, `private`.
-        /// </summary>
-        [Output("domainType")]
-        public Output<string> DomainType { get; private set; } = null!;
-
-        /// <summary>
-        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        /// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
         /// </summary>
         [Output("enableBindingCookie")]
-        public Output<bool?> EnableBindingCookie { get; private set; } = null!;
+        public Output<bool> EnableBindingCookie { get; private set; } = null!;
 
         /// <summary>
-        /// The footer links of the app launcher.
+        /// The links in the App Launcher footer.
         /// </summary>
         [Output("footerLinks")]
         public Output<ImmutableArray<Outputs.AccessApplicationFooterLink>> FooterLinks { get; private set; } = null!;
 
         /// <summary>
-        /// The background color of the header bar in the app launcher.
+        /// The background color of the App Launcher header.
         /// </summary>
         [Output("headerBgColor")]
         public Output<string?> HeaderBgColor { get; private set; } = null!;
 
         /// <summary>
-        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         /// </summary>
         [Output("httpOnlyCookieAttribute")]
-        public Output<bool?> HttpOnlyCookieAttribute { get; private set; } = null!;
+        public Output<bool> HttpOnlyCookieAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// The landing page design of the app launcher.
+        /// The design of the App Launcher landing page shown to users when they log in.
         /// </summary>
         [Output("landingPageDesign")]
-        public Output<Outputs.AccessApplicationLandingPageDesign?> LandingPageDesign { get; private set; } = null!;
+        public Output<Outputs.AccessApplicationLandingPageDesign> LandingPageDesign { get; private set; } = null!;
 
         /// <summary>
-        /// Image URL for the logo shown in the app launcher dashboard.
+        /// The image URL for the logo shown in the App Launcher dashboard.
         /// </summary>
         [Output("logoUrl")]
         public Output<string?> LogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the application.
         /// </summary>
         [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         /// </summary>
         [Output("optionsPreflightBypass")]
         public Output<bool?> OptionsPreflightBypass { get; private set; } = null!;
 
         /// <summary>
-        /// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        /// </summary>
+        [Output("pathCookieAttribute")]
+        public Output<bool> PathCookieAttribute { get; private set; } = null!;
+
+        /// <summary>
+        /// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         /// </summary>
         [Output("policies")]
-        public Output<ImmutableArray<string>> Policies { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AccessApplicationPolicy>> Policies { get; private set; } = null!;
 
-        /// <summary>
-        /// SaaS configuration for the Access Application.
-        /// </summary>
         [Output("saasApp")]
-        public Output<Outputs.AccessApplicationSaasApp?> SaasApp { get; private set; } = null!;
+        public Output<Outputs.AccessApplicationSaasApp> SaasApp { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        /// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         /// </summary>
         [Output("sameSiteCookieAttribute")]
         public Output<string?> SameSiteCookieAttribute { get; private set; } = null!;
@@ -195,61 +185,61 @@ namespace Pulumi.Cloudflare
         /// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         /// </summary>
         [Output("scimConfig")]
-        public Output<Outputs.AccessApplicationScimConfig?> ScimConfig { get; private set; } = null!;
+        public Output<Outputs.AccessApplicationScimConfig> ScimConfig { get; private set; } = null!;
 
         /// <summary>
-        /// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+        /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         /// </summary>
         [Output("selfHostedDomains")]
         public Output<ImmutableArray<string>> SelfHostedDomains { get; private set; } = null!;
 
         /// <summary>
-        /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+        /// Returns a 401 status code when the request is blocked by a Service Auth policy.
         /// </summary>
         [Output("serviceAuth401Redirect")]
         public Output<bool?> ServiceAuth401Redirect { get; private set; } = null!;
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Output("sessionDuration")]
-        public Output<string?> SessionDuration { get; private set; } = null!;
+        public Output<string> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Option to skip the App Launcher landing page. Defaults to `false`.
+        /// Determines when to skip the App Launcher landing page.
         /// </summary>
         [Output("skipAppLauncherLoginPage")]
-        public Output<bool?> SkipAppLauncherLoginPage { get; private set; } = null!;
+        public Output<bool> SkipAppLauncherLoginPage { get; private set; } = null!;
 
         /// <summary>
-        /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        /// Enables automatic authentication through cloudflared.
         /// </summary>
         [Output("skipInterstitial")]
         public Output<bool?> SkipInterstitial { get; private set; } = null!;
 
         /// <summary>
-        /// The itags associated with the application.
+        /// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        /// </summary>
         [Output("targetCriterias")]
         public Output<ImmutableArray<Outputs.AccessApplicationTargetCriteria>> TargetCriterias { get; private set; } = null!;
 
         /// <summary>
-        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+        /// The application type.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -274,6 +264,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessApplication:AccessApplication" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -298,13 +292,13 @@ namespace Pulumi.Cloudflare
     public sealed class AccessApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        /// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         /// </summary>
         [Input("allowAuthenticateViaWarp")]
         public Input<bool>? AllowAuthenticateViaWarp { get; set; }
@@ -313,7 +307,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _allowedIdps;
 
         /// <summary>
-        /// The identity providers selected for the application.
+        /// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         /// </summary>
         public InputList<string> AllowedIdps
         {
@@ -322,55 +316,46 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The logo URL of the app launcher.
+        /// The image URL of the logo shown in the App Launcher header.
         /// </summary>
         [Input("appLauncherLogoUrl")]
         public Input<string>? AppLauncherLogoUrl { get; set; }
 
         /// <summary>
-        /// Option to show/hide applications in App Launcher. Defaults to `true`.
+        /// Displays the application in the App Launcher.
         /// </summary>
         [Input("appLauncherVisible")]
         public Input<bool>? AppLauncherVisible { get; set; }
 
         /// <summary>
-        /// Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
 
         /// <summary>
-        /// The background color of the app launcher.
+        /// The background color of the App Launcher page.
         /// </summary>
         [Input("bgColor")]
         public Input<string>? BgColor { get; set; }
 
         [Input("corsHeaders")]
-        private InputList<Inputs.AccessApplicationCorsHeaderArgs>? _corsHeaders;
+        public Input<Inputs.AccessApplicationCorsHeadersArgs>? CorsHeaders { get; set; }
 
         /// <summary>
-        /// CORS configuration for the Access Application. See below for reference structure.
-        /// </summary>
-        public InputList<Inputs.AccessApplicationCorsHeaderArgs> CorsHeaders
-        {
-            get => _corsHeaders ?? (_corsHeaders = new InputList<Inputs.AccessApplicationCorsHeaderArgs>());
-            set => _corsHeaders = value;
-        }
-
-        /// <summary>
-        /// Option that returns a custom error message when a user is denied access to the application.
+        /// The custom error message shown to a user when they are denied access to the application.
         /// </summary>
         [Input("customDenyMessage")]
         public Input<string>? CustomDenyMessage { get; set; }
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        /// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
         /// </summary>
         [Input("customDenyUrl")]
         public Input<string>? CustomDenyUrl { get; set; }
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        /// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
         /// </summary>
         [Input("customNonIdentityDenyUrl")]
         public Input<string>? CustomNonIdentityDenyUrl { get; set; }
@@ -379,7 +364,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _customPages;
 
         /// <summary>
-        /// The custom pages selected for the application.
+        /// The custom pages that will be displayed when applicable for this application
         /// </summary>
         public InputList<string> CustomPages
         {
@@ -391,7 +376,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessApplicationDestinationArgs>? _destinations;
 
         /// <summary>
-        /// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        /// List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         /// </summary>
         public InputList<Inputs.AccessApplicationDestinationArgs> Destinations
         {
@@ -400,19 +385,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        /// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The type of the primary domain. Available values: `public`, `private`.
-        /// </summary>
-        [Input("domainType")]
-        public Input<string>? DomainType { get; set; }
-
-        /// <summary>
-        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        /// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
         /// </summary>
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
@@ -421,7 +400,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessApplicationFooterLinkArgs>? _footerLinks;
 
         /// <summary>
-        /// The footer links of the app launcher.
+        /// The links in the App Launcher footer.
         /// </summary>
         public InputList<Inputs.AccessApplicationFooterLinkArgs> FooterLinks
         {
@@ -430,61 +409,64 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The background color of the header bar in the app launcher.
+        /// The background color of the App Launcher header.
         /// </summary>
         [Input("headerBgColor")]
         public Input<string>? HeaderBgColor { get; set; }
 
         /// <summary>
-        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         /// </summary>
         [Input("httpOnlyCookieAttribute")]
         public Input<bool>? HttpOnlyCookieAttribute { get; set; }
 
         /// <summary>
-        /// The landing page design of the app launcher.
+        /// The design of the App Launcher landing page shown to users when they log in.
         /// </summary>
         [Input("landingPageDesign")]
         public Input<Inputs.AccessApplicationLandingPageDesignArgs>? LandingPageDesign { get; set; }
 
         /// <summary>
-        /// Image URL for the logo shown in the app launcher dashboard.
+        /// The image URL for the logo shown in the App Launcher dashboard.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         /// </summary>
         [Input("optionsPreflightBypass")]
         public Input<bool>? OptionsPreflightBypass { get; set; }
 
+        /// <summary>
+        /// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        /// </summary>
+        [Input("pathCookieAttribute")]
+        public Input<bool>? PathCookieAttribute { get; set; }
+
         [Input("policies")]
-        private InputList<string>? _policies;
+        private InputList<Inputs.AccessApplicationPolicyArgs>? _policies;
 
         /// <summary>
-        /// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         /// </summary>
-        public InputList<string> Policies
+        public InputList<Inputs.AccessApplicationPolicyArgs> Policies
         {
-            get => _policies ?? (_policies = new InputList<string>());
+            get => _policies ?? (_policies = new InputList<Inputs.AccessApplicationPolicyArgs>());
             set => _policies = value;
         }
 
-        /// <summary>
-        /// SaaS configuration for the Access Application.
-        /// </summary>
         [Input("saasApp")]
         public Input<Inputs.AccessApplicationSaasAppArgs>? SaasApp { get; set; }
 
         /// <summary>
-        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        /// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         /// </summary>
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
@@ -499,9 +481,8 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _selfHostedDomains;
 
         /// <summary>
-        /// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+        /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         /// </summary>
-        [Obsolete(@"Use `destinations` instead")]
         public InputList<string> SelfHostedDomains
         {
             get => _selfHostedDomains ?? (_selfHostedDomains = new InputList<string>());
@@ -509,25 +490,25 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+        /// Returns a 401 status code when the request is blocked by a Service Auth policy.
         /// </summary>
         [Input("serviceAuth401Redirect")]
         public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Option to skip the App Launcher landing page. Defaults to `false`.
+        /// Determines when to skip the App Launcher landing page.
         /// </summary>
         [Input("skipAppLauncherLoginPage")]
         public Input<bool>? SkipAppLauncherLoginPage { get; set; }
 
         /// <summary>
-        /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        /// Enables automatic authentication through cloudflared.
         /// </summary>
         [Input("skipInterstitial")]
         public Input<bool>? SkipInterstitial { get; set; }
@@ -536,7 +517,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The itags associated with the application.
+        /// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         /// </summary>
         public InputList<string> Tags
         {
@@ -546,10 +527,6 @@ namespace Pulumi.Cloudflare
 
         [Input("targetCriterias")]
         private InputList<Inputs.AccessApplicationTargetCriteriaArgs>? _targetCriterias;
-
-        /// <summary>
-        /// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        /// </summary>
         public InputList<Inputs.AccessApplicationTargetCriteriaArgs> TargetCriterias
         {
             get => _targetCriterias ?? (_targetCriterias = new InputList<Inputs.AccessApplicationTargetCriteriaArgs>());
@@ -557,13 +534,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+        /// The application type.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -577,13 +554,13 @@ namespace Pulumi.Cloudflare
     public sealed class AccessApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        /// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         /// </summary>
         [Input("allowAuthenticateViaWarp")]
         public Input<bool>? AllowAuthenticateViaWarp { get; set; }
@@ -592,7 +569,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _allowedIdps;
 
         /// <summary>
-        /// The identity providers selected for the application.
+        /// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         /// </summary>
         public InputList<string> AllowedIdps
         {
@@ -601,61 +578,55 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The logo URL of the app launcher.
+        /// The image URL of the logo shown in the App Launcher header.
         /// </summary>
         [Input("appLauncherLogoUrl")]
         public Input<string>? AppLauncherLogoUrl { get; set; }
 
         /// <summary>
-        /// Option to show/hide applications in App Launcher. Defaults to `true`.
+        /// Displays the application in the App Launcher.
         /// </summary>
         [Input("appLauncherVisible")]
         public Input<bool>? AppLauncherVisible { get; set; }
 
         /// <summary>
-        /// Application Audience (AUD) Tag of the application.
+        /// Audience tag.
         /// </summary>
         [Input("aud")]
         public Input<string>? Aud { get; set; }
 
         /// <summary>
-        /// Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        /// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
 
         /// <summary>
-        /// The background color of the app launcher.
+        /// The background color of the App Launcher page.
         /// </summary>
         [Input("bgColor")]
         public Input<string>? BgColor { get; set; }
 
         [Input("corsHeaders")]
-        private InputList<Inputs.AccessApplicationCorsHeaderGetArgs>? _corsHeaders;
+        public Input<Inputs.AccessApplicationCorsHeadersGetArgs>? CorsHeaders { get; set; }
+
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// CORS configuration for the Access Application. See below for reference structure.
-        /// </summary>
-        public InputList<Inputs.AccessApplicationCorsHeaderGetArgs> CorsHeaders
-        {
-            get => _corsHeaders ?? (_corsHeaders = new InputList<Inputs.AccessApplicationCorsHeaderGetArgs>());
-            set => _corsHeaders = value;
-        }
-
-        /// <summary>
-        /// Option that returns a custom error message when a user is denied access to the application.
+        /// The custom error message shown to a user when they are denied access to the application.
         /// </summary>
         [Input("customDenyMessage")]
         public Input<string>? CustomDenyMessage { get; set; }
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        /// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
         /// </summary>
         [Input("customDenyUrl")]
         public Input<string>? CustomDenyUrl { get; set; }
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        /// The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
         /// </summary>
         [Input("customNonIdentityDenyUrl")]
         public Input<string>? CustomNonIdentityDenyUrl { get; set; }
@@ -664,7 +635,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _customPages;
 
         /// <summary>
-        /// The custom pages selected for the application.
+        /// The custom pages that will be displayed when applicable for this application
         /// </summary>
         public InputList<string> CustomPages
         {
@@ -676,7 +647,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessApplicationDestinationGetArgs>? _destinations;
 
         /// <summary>
-        /// A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+        /// List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         /// </summary>
         public InputList<Inputs.AccessApplicationDestinationGetArgs> Destinations
         {
@@ -685,19 +656,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+        /// The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The type of the primary domain. Available values: `public`, `private`.
-        /// </summary>
-        [Input("domainType")]
-        public Input<string>? DomainType { get; set; }
-
-        /// <summary>
-        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        /// Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
         /// </summary>
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
@@ -706,7 +671,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessApplicationFooterLinkGetArgs>? _footerLinks;
 
         /// <summary>
-        /// The footer links of the app launcher.
+        /// The links in the App Launcher footer.
         /// </summary>
         public InputList<Inputs.AccessApplicationFooterLinkGetArgs> FooterLinks
         {
@@ -715,61 +680,64 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The background color of the header bar in the app launcher.
+        /// The background color of the App Launcher header.
         /// </summary>
         [Input("headerBgColor")]
         public Input<string>? HeaderBgColor { get; set; }
 
         /// <summary>
-        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
         /// </summary>
         [Input("httpOnlyCookieAttribute")]
         public Input<bool>? HttpOnlyCookieAttribute { get; set; }
 
         /// <summary>
-        /// The landing page design of the app launcher.
+        /// The design of the App Launcher landing page shown to users when they log in.
         /// </summary>
         [Input("landingPageDesign")]
         public Input<Inputs.AccessApplicationLandingPageDesignGetArgs>? LandingPageDesign { get; set; }
 
         /// <summary>
-        /// Image URL for the logo shown in the app launcher dashboard.
+        /// The image URL for the logo shown in the App Launcher dashboard.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         /// </summary>
         [Input("optionsPreflightBypass")]
         public Input<bool>? OptionsPreflightBypass { get; set; }
 
+        /// <summary>
+        /// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
+        /// </summary>
+        [Input("pathCookieAttribute")]
+        public Input<bool>? PathCookieAttribute { get; set; }
+
         [Input("policies")]
-        private InputList<string>? _policies;
+        private InputList<Inputs.AccessApplicationPolicyGetArgs>? _policies;
 
         /// <summary>
-        /// The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         /// </summary>
-        public InputList<string> Policies
+        public InputList<Inputs.AccessApplicationPolicyGetArgs> Policies
         {
-            get => _policies ?? (_policies = new InputList<string>());
+            get => _policies ?? (_policies = new InputList<Inputs.AccessApplicationPolicyGetArgs>());
             set => _policies = value;
         }
 
-        /// <summary>
-        /// SaaS configuration for the Access Application.
-        /// </summary>
         [Input("saasApp")]
         public Input<Inputs.AccessApplicationSaasAppGetArgs>? SaasApp { get; set; }
 
         /// <summary>
-        /// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        /// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         /// </summary>
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
@@ -784,9 +752,8 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _selfHostedDomains;
 
         /// <summary>
-        /// List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+        /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         /// </summary>
-        [Obsolete(@"Use `destinations` instead")]
         public InputList<string> SelfHostedDomains
         {
             get => _selfHostedDomains ?? (_selfHostedDomains = new InputList<string>());
@@ -794,25 +761,25 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+        /// Returns a 401 status code when the request is blocked by a Service Auth policy.
         /// </summary>
         [Input("serviceAuth401Redirect")]
         public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Option to skip the App Launcher landing page. Defaults to `false`.
+        /// Determines when to skip the App Launcher landing page.
         /// </summary>
         [Input("skipAppLauncherLoginPage")]
         public Input<bool>? SkipAppLauncherLoginPage { get; set; }
 
         /// <summary>
-        /// Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        /// Enables automatic authentication through cloudflared.
         /// </summary>
         [Input("skipInterstitial")]
         public Input<bool>? SkipInterstitial { get; set; }
@@ -821,7 +788,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The itags associated with the application.
+        /// The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         /// </summary>
         public InputList<string> Tags
         {
@@ -831,10 +798,6 @@ namespace Pulumi.Cloudflare
 
         [Input("targetCriterias")]
         private InputList<Inputs.AccessApplicationTargetCriteriaGetArgs>? _targetCriterias;
-
-        /// <summary>
-        /// The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-        /// </summary>
         public InputList<Inputs.AccessApplicationTargetCriteriaGetArgs> TargetCriterias
         {
             get => _targetCriterias ?? (_targetCriterias = new InputList<Inputs.AccessApplicationTargetCriteriaGetArgs>());
@@ -842,13 +805,16 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+        /// The application type.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
+
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

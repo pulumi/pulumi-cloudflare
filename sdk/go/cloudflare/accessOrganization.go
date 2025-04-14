@@ -7,101 +7,56 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Zero Trust organization defines the user login experience.
-//
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessOrganization(ctx, "example", &cloudflare.AccessOrganizationArgs{
-//				AccountId:                      pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:                           pulumi.String("example.cloudflareaccess.com"),
-//				AuthDomain:                     pulumi.String("example.cloudflareaccess.com"),
-//				IsUiReadOnly:                   pulumi.Bool(false),
-//				UserSeatExpirationInactiveTime: pulumi.String("720h"),
-//				AutoRedirectToIdentity:         pulumi.Bool(false),
-//				LoginDesigns: cloudflare.AccessOrganizationLoginDesignArray{
-//					&cloudflare.AccessOrganizationLoginDesignArgs{
-//						BackgroundColor: pulumi.String("#ffffff"),
-//						TextColor:       pulumi.String("#000000"),
-//						LogoPath:        pulumi.String("https://example.com/logo.png"),
-//						HeaderText:      pulumi.String("My header text"),
-//						FooterText:      pulumi.String("My footer text"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
-// ```
+// Deprecated: cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization
 type AccessOrganization struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	AllowAuthenticateViaWarp pulumi.BoolPtrOutput `pulumi:"allowAuthenticateViaWarp"`
 	// The unique subdomain assigned to your Zero Trust organization.
-	AuthDomain pulumi.StringOutput `pulumi:"authDomain"`
-	// When set to true, users skip the identity provider selection step during login.
-	AutoRedirectToIdentity pulumi.BoolPtrOutput `pulumi:"autoRedirectToIdentity"`
-	// Custom pages for your Zero Trust organization.
-	CustomPages AccessOrganizationCustomPageArrayOutput `pulumi:"customPages"`
-	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-	IsUiReadOnly pulumi.BoolPtrOutput                     `pulumi:"isUiReadOnly"`
-	LoginDesigns AccessOrganizationLoginDesignArrayOutput `pulumi:"loginDesigns"`
+	AuthDomain pulumi.StringPtrOutput `pulumi:"authDomain"`
+	// When set to `true`, users skip the identity provider selection step during login.
+	AutoRedirectToIdentity pulumi.BoolOutput                   `pulumi:"autoRedirectToIdentity"`
+	CreatedAt              pulumi.StringOutput                 `pulumi:"createdAt"`
+	CustomPages            AccessOrganizationCustomPagesOutput `pulumi:"customPages"`
+	IsUiReadOnly           pulumi.BoolPtrOutput                `pulumi:"isUiReadOnly"`
+	LoginDesign            AccessOrganizationLoginDesignOutput `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrOutput `pulumi:"uiReadOnlyToggleReason"`
-	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	UpdatedAt              pulumi.StringOutput    `pulumi:"updatedAt"`
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrOutput `pulumi:"userSeatExpirationInactiveTime"`
-	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 	WarpAuthSessionDuration pulumi.StringPtrOutput `pulumi:"warpAuthSessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewAccessOrganization registers a new resource with the given unique name, arguments, and options.
 func NewAccessOrganization(ctx *pulumi.Context,
 	name string, args *AccessOrganizationArgs, opts ...pulumi.ResourceOption) (*AccessOrganization, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AccessOrganizationArgs{}
 	}
 
-	if args.AuthDomain == nil {
-		return nil, errors.New("invalid value for required argument 'AuthDomain'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessOrganization:AccessOrganization"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessOrganization
 	err := ctx.RegisterResource("cloudflare:index/accessOrganization:AccessOrganization", name, args, &resource, opts...)
@@ -125,58 +80,58 @@ func GetAccessOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessOrganization resources.
 type accessOrganizationState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain *string `pulumi:"authDomain"`
-	// When set to true, users skip the identity provider selection step during login.
-	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
-	// Custom pages for your Zero Trust organization.
-	CustomPages []AccessOrganizationCustomPage `pulumi:"customPages"`
-	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-	IsUiReadOnly *bool                           `pulumi:"isUiReadOnly"`
-	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
+	// When set to `true`, users skip the identity provider selection step during login.
+	AutoRedirectToIdentity *bool                          `pulumi:"autoRedirectToIdentity"`
+	CreatedAt              *string                        `pulumi:"createdAt"`
+	CustomPages            *AccessOrganizationCustomPages `pulumi:"customPages"`
+	IsUiReadOnly           *bool                          `pulumi:"isUiReadOnly"`
+	LoginDesign            *AccessOrganizationLoginDesign `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
-	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	UpdatedAt              *string `pulumi:"updatedAt"`
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	UserSeatExpirationInactiveTime *string `pulumi:"userSeatExpirationInactiveTime"`
-	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 	WarpAuthSessionDuration *string `pulumi:"warpAuthSessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessOrganizationState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	AllowAuthenticateViaWarp pulumi.BoolPtrInput
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringPtrInput
-	// When set to true, users skip the identity provider selection step during login.
+	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
-	// Custom pages for your Zero Trust organization.
-	CustomPages AccessOrganizationCustomPageArrayInput
-	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-	IsUiReadOnly pulumi.BoolPtrInput
-	LoginDesigns AccessOrganizationLoginDesignArrayInput
+	CreatedAt              pulumi.StringPtrInput
+	CustomPages            AccessOrganizationCustomPagesPtrInput
+	IsUiReadOnly           pulumi.BoolPtrInput
+	LoginDesign            AccessOrganizationLoginDesignPtrInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrInput
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrInput
-	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	UpdatedAt              pulumi.StringPtrInput
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrInput
-	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 	WarpAuthSessionDuration pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -185,59 +140,55 @@ func (AccessOrganizationState) ElementType() reflect.Type {
 }
 
 type accessOrganizationArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
 	// The unique subdomain assigned to your Zero Trust organization.
-	AuthDomain string `pulumi:"authDomain"`
-	// When set to true, users skip the identity provider selection step during login.
-	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
-	// Custom pages for your Zero Trust organization.
-	CustomPages []AccessOrganizationCustomPage `pulumi:"customPages"`
-	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-	IsUiReadOnly *bool                           `pulumi:"isUiReadOnly"`
-	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
+	AuthDomain *string `pulumi:"authDomain"`
+	// When set to `true`, users skip the identity provider selection step during login.
+	AutoRedirectToIdentity *bool                          `pulumi:"autoRedirectToIdentity"`
+	CustomPages            *AccessOrganizationCustomPages `pulumi:"customPages"`
+	IsUiReadOnly           *bool                          `pulumi:"isUiReadOnly"`
+	LoginDesign            *AccessOrganizationLoginDesign `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
-	Name string `pulumi:"name"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	Name *string `pulumi:"name"`
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
-	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	UserSeatExpirationInactiveTime *string `pulumi:"userSeatExpirationInactiveTime"`
-	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 	WarpAuthSessionDuration *string `pulumi:"warpAuthSessionDuration"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessOrganization resource.
 type AccessOrganizationArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
 	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
 	AllowAuthenticateViaWarp pulumi.BoolPtrInput
 	// The unique subdomain assigned to your Zero Trust organization.
-	AuthDomain pulumi.StringInput
-	// When set to true, users skip the identity provider selection step during login.
+	AuthDomain pulumi.StringPtrInput
+	// When set to `true`, users skip the identity provider selection step during login.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
-	// Custom pages for your Zero Trust organization.
-	CustomPages AccessOrganizationCustomPageArrayInput
-	// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-	IsUiReadOnly pulumi.BoolPtrInput
-	LoginDesigns AccessOrganizationLoginDesignArrayInput
+	CustomPages            AccessOrganizationCustomPagesPtrInput
+	IsUiReadOnly           pulumi.BoolPtrInput
+	LoginDesign            AccessOrganizationLoginDesignPtrInput
 	// The name of your Zero Trust organization.
-	Name pulumi.StringInput
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+	Name pulumi.StringPtrInput
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 	SessionDuration pulumi.StringPtrInput
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrInput
-	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrInput
-	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+	// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 	WarpAuthSessionDuration pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -328,9 +279,9 @@ func (o AccessOrganizationOutput) ToAccessOrganizationOutputWithContext(ctx cont
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
-func (o AccessOrganizationOutput) AccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+func (o AccessOrganizationOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
@@ -339,35 +290,37 @@ func (o AccessOrganizationOutput) AllowAuthenticateViaWarp() pulumi.BoolPtrOutpu
 }
 
 // The unique subdomain assigned to your Zero Trust organization.
-func (o AccessOrganizationOutput) AuthDomain() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.AuthDomain }).(pulumi.StringOutput)
+func (o AccessOrganizationOutput) AuthDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.AuthDomain }).(pulumi.StringPtrOutput)
 }
 
-// When set to true, users skip the identity provider selection step during login.
-func (o AccessOrganizationOutput) AutoRedirectToIdentity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolPtrOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolPtrOutput)
+// When set to `true`, users skip the identity provider selection step during login.
+func (o AccessOrganizationOutput) AutoRedirectToIdentity() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolOutput)
 }
 
-// Custom pages for your Zero Trust organization.
-func (o AccessOrganizationOutput) CustomPages() AccessOrganizationCustomPageArrayOutput {
-	return o.ApplyT(func(v *AccessOrganization) AccessOrganizationCustomPageArrayOutput { return v.CustomPages }).(AccessOrganizationCustomPageArrayOutput)
+func (o AccessOrganizationOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
+func (o AccessOrganizationOutput) CustomPages() AccessOrganizationCustomPagesOutput {
+	return o.ApplyT(func(v *AccessOrganization) AccessOrganizationCustomPagesOutput { return v.CustomPages }).(AccessOrganizationCustomPagesOutput)
+}
+
 func (o AccessOrganizationOutput) IsUiReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolPtrOutput { return v.IsUiReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-func (o AccessOrganizationOutput) LoginDesigns() AccessOrganizationLoginDesignArrayOutput {
-	return o.ApplyT(func(v *AccessOrganization) AccessOrganizationLoginDesignArrayOutput { return v.LoginDesigns }).(AccessOrganizationLoginDesignArrayOutput)
+func (o AccessOrganizationOutput) LoginDesign() AccessOrganizationLoginDesignOutput {
+	return o.ApplyT(func(v *AccessOrganization) AccessOrganizationLoginDesignOutput { return v.LoginDesign }).(AccessOrganizationLoginDesignOutput)
 }
 
 // The name of your Zero Trust organization.
-func (o AccessOrganizationOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o AccessOrganizationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
 func (o AccessOrganizationOutput) SessionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
 }
@@ -377,19 +330,23 @@ func (o AccessOrganizationOutput) UiReadOnlyToggleReason() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.UiReadOnlyToggleReason }).(pulumi.StringPtrOutput)
 }
 
-// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+func (o AccessOrganizationOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
 func (o AccessOrganizationOutput) UserSeatExpirationInactiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.UserSeatExpirationInactiveTime }).(pulumi.StringPtrOutput)
 }
 
-// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+// The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
 func (o AccessOrganizationOutput) WarpAuthSessionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.WarpAuthSessionDuration }).(pulumi.StringPtrOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
-func (o AccessOrganizationOutput) ZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+func (o AccessOrganizationOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type AccessOrganizationArrayOutput struct{ *pulumi.OutputState }

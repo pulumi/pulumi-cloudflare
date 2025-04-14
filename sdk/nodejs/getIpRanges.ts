@@ -5,31 +5,33 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * as example from "@pulumi/example";
  *
- * const cloudflare = cloudflare.getIpRanges({});
- * const example = new example.index.FirewallResource("example", {
- *     name: "from-cloudflare",
- *     network: "default",
- *     sourceRanges: cloudflare.ipv4CidrBlocks,
- *     allow: [{
- *         ports: "443",
- *         protocol: "tcp",
- *     }],
+ * const exampleIpRanges = cloudflare.getIpRanges({
+ *     networks: "networks",
  * });
  * ```
  */
-export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> {
+export function getIpRanges(args?: GetIpRangesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getIpRanges:getIpRanges", {
+        "networks": args.networks,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getIpRanges.
+ */
+export interface GetIpRangesArgs {
+    /**
+     * Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+     */
+    networks?: string;
 }
 
 /**
@@ -37,54 +39,56 @@ export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesRes
  */
 export interface GetIpRangesResult {
     /**
-     * The lexically ordered list of only the IPv4 China CIDR blocks.
+     * A digest of the IP data. Useful for determining if the data has changed.
      */
-    readonly chinaIpv4CidrBlocks: string[];
-    /**
-     * The lexically ordered list of only the IPv6 China CIDR blocks.
-     */
-    readonly chinaIpv6CidrBlocks: string[];
-    /**
-     * The lexically ordered list of all non-China CIDR blocks.
-     */
-    readonly cidrBlocks: string[];
+    readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * The lexically ordered list of only the IPv4 CIDR blocks.
+     * List of Cloudflare IPv4 CIDR addresses.
      */
-    readonly ipv4CidrBlocks: string[];
+    readonly ipv4Cidrs: string[];
     /**
-     * The lexically ordered list of only the IPv6 CIDR blocks.
+     * List of Cloudflare IPv6 CIDR addresses.
      */
-    readonly ipv6CidrBlocks: string[];
+    readonly ipv6Cidrs: string[];
+    /**
+     * List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.
+     */
+    readonly jdcloudCidrs: string[];
+    /**
+     * Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+     */
+    readonly networks?: string;
 }
 /**
- * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * as example from "@pulumi/example";
  *
- * const cloudflare = cloudflare.getIpRanges({});
- * const example = new example.index.FirewallResource("example", {
- *     name: "from-cloudflare",
- *     network: "default",
- *     sourceRanges: cloudflare.ipv4CidrBlocks,
- *     allow: [{
- *         ports: "443",
- *         protocol: "tcp",
- *     }],
+ * const exampleIpRanges = cloudflare.getIpRanges({
+ *     networks: "networks",
  * });
  * ```
  */
-export function getIpRangesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpRangesResult> {
+export function getIpRangesOutput(args?: GetIpRangesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpRangesResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getIpRanges:getIpRanges", {
+        "networks": args.networks,
     }, opts);
+}
+
+/**
+ * A collection of arguments for invoking getIpRanges.
+ */
+export interface GetIpRangesOutputArgs {
+    /**
+     * Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+     */
+    networks?: pulumi.Input<string>;
 }

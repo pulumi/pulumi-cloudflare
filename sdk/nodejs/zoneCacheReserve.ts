@@ -5,28 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Cache Reserve resource. Cache Reserve can
- * increase cache lifetimes by automatically storing all cacheable
- * files in Cloudflare's persistent object storage buckets.
- *
- * Note: Using Cache Reserve without Tiered Cache is not recommended.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ZoneCacheReserve("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     enabled: true,
+ * const exampleZoneCacheReserve = new cloudflare.ZoneCacheReserve("example_zone_cache_reserve", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     value: "on",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example <zone_id>
+ * $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example '<zone_id>'
  * ```
  */
 export class ZoneCacheReserve extends pulumi.CustomResource {
@@ -58,11 +52,20 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to enable or disable Cache Reserve support for a given zone.
+     * Whether the setting is editable
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    public /*out*/ readonly editable!: pulumi.Output<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Last time this setting was modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * Value of the Cache Reserve zone setting.
+     * Available values: "on", "off".
+     */
+    public readonly value!: pulumi.Output<string>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -79,18 +82,19 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneCacheReserveState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["editable"] = state ? state.editable : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneCacheReserveArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'enabled'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["editable"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneCacheReserve.__pulumiType, name, resourceInputs, opts);
@@ -102,11 +106,20 @@ export class ZoneCacheReserve extends pulumi.CustomResource {
  */
 export interface ZoneCacheReserveState {
     /**
-     * Whether to enable or disable Cache Reserve support for a given zone.
+     * Whether the setting is editable
      */
-    enabled?: pulumi.Input<boolean>;
+    editable?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Last time this setting was modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * Value of the Cache Reserve zone setting.
+     * Available values: "on", "off".
+     */
+    value?: pulumi.Input<string>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -116,11 +129,12 @@ export interface ZoneCacheReserveState {
  */
 export interface ZoneCacheReserveArgs {
     /**
-     * Whether to enable or disable Cache Reserve support for a given zone.
+     * Value of the Cache Reserve zone setting.
+     * Available values: "on", "off".
      */
-    enabled: pulumi.Input<boolean>;
+    value?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

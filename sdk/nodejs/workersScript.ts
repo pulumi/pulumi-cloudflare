@@ -7,64 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as std from "@pulumi/std";
- *
- * const myNamespace = new cloudflare.WorkersKvNamespace("my_namespace", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     title: "example",
- * });
- * // Sets the script with the name "script_1"
- * const myScript = new cloudflare.WorkersScript("my_script", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "script_1",
- *     content: std.file({
- *         input: "script.js",
- *     }).then(invoke => invoke.result),
- *     kvNamespaceBindings: [{
- *         name: "MY_EXAMPLE_KV_NAMESPACE",
- *         namespaceId: myNamespace.id,
- *     }],
- *     plainTextBindings: [{
- *         name: "MY_EXAMPLE_PLAIN_TEXT",
- *         text: "foobar",
- *     }],
- *     secretTextBindings: [{
- *         name: "MY_EXAMPLE_SECRET_TEXT",
- *         text: secretFooValue,
- *     }],
- *     webassemblyBindings: [{
- *         name: "MY_EXAMPLE_WASM",
- *         module: std.filebase64({
- *             input: "example.wasm",
- *         }).then(invoke => invoke.result),
- *     }],
- *     serviceBindings: [{
- *         name: "MY_SERVICE_BINDING",
- *         service: "MY_SERVICE",
- *         environment: "production",
- *     }],
- *     r2BucketBindings: [{
- *         name: "MY_BUCKET",
- *         bucketName: "MY_BUCKET_NAME",
- *     }],
- *     analyticsEngineBindings: [{
- *         name: "MY_DATASET",
- *         dataset: "dataset1",
- *     }],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workersScript:WorkersScript example <account_id>/<script_name>
+ * $ pulumi import cloudflare:index/workersScript:WorkersScript example '<account_id>/<script_name>'
  * ```
  */
 export class WorkersScript extends pulumi.CustomResource {
@@ -96,49 +44,95 @@ export class WorkersScript extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
-    public readonly analyticsEngineBindings!: pulumi.Output<outputs.WorkersScriptAnalyticsEngineBinding[] | undefined>;
     /**
-     * The date to use for the compatibility flag.
+     * Configuration for assets within a Worker
+     */
+    public readonly assets!: pulumi.Output<outputs.WorkersScriptAssets | undefined>;
+    /**
+     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     */
+    public readonly bindings!: pulumi.Output<outputs.WorkersScriptBinding[]>;
+    /**
+     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     */
+    public readonly bodyPart!: pulumi.Output<string | undefined>;
+    /**
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
     public readonly compatibilityDate!: pulumi.Output<string | undefined>;
     /**
-     * Compatibility flags used for Worker Scripts.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    public readonly compatibilityFlags!: pulumi.Output<string[]>;
+    public readonly compatibilityFlags!: pulumi.Output<string[] | undefined>;
     /**
-     * The script content.
+     * Module or Service Worker contents of the Worker.
      */
     public readonly content!: pulumi.Output<string>;
-    public readonly d1DatabaseBindings!: pulumi.Output<outputs.WorkersScriptD1DatabaseBinding[] | undefined>;
     /**
-     * Name of the Workers for Platforms dispatch namespace.
+     * When the script was created.
      */
-    public readonly dispatchNamespace!: pulumi.Output<string | undefined>;
-    public readonly hyperdriveConfigBindings!: pulumi.Output<outputs.WorkersScriptHyperdriveConfigBinding[] | undefined>;
-    public readonly kvNamespaceBindings!: pulumi.Output<outputs.WorkersScriptKvNamespaceBinding[] | undefined>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     * Hashed script content, can be used in a If-None-Match header when updating.
      */
-    public readonly logpush!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * Whether to upload Worker as a module.
+     * Whether a Worker contains assets.
      */
-    public readonly module!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly hasAssets!: pulumi.Output<boolean>;
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * Whether a Worker contains modules.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly placements!: pulumi.Output<outputs.WorkersScriptPlacement[] | undefined>;
-    public readonly plainTextBindings!: pulumi.Output<outputs.WorkersScriptPlainTextBinding[] | undefined>;
-    public readonly queueBindings!: pulumi.Output<outputs.WorkersScriptQueueBinding[] | undefined>;
-    public readonly r2BucketBindings!: pulumi.Output<outputs.WorkersScriptR2BucketBinding[] | undefined>;
-    public readonly secretTextBindings!: pulumi.Output<outputs.WorkersScriptSecretTextBinding[] | undefined>;
-    public readonly serviceBindings!: pulumi.Output<outputs.WorkersScriptServiceBinding[] | undefined>;
-    public readonly tags!: pulumi.Output<string[]>;
-    public readonly webassemblyBindings!: pulumi.Output<outputs.WorkersScriptWebassemblyBinding[] | undefined>;
+    public /*out*/ readonly hasModules!: pulumi.Output<boolean>;
+    /**
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     */
+    public readonly keepAssets!: pulumi.Output<boolean | undefined>;
+    /**
+     * List of binding types to keep from previous_upload.
+     */
+    public readonly keepBindings!: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether Logpush is turned on for the Worker.
+     */
+    public readonly logpush!: pulumi.Output<boolean>;
+    /**
+     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+     */
+    public readonly mainModule!: pulumi.Output<string | undefined>;
+    /**
+     * Migrations to apply for Durable Objects associated with this Worker.
+     */
+    public readonly migrations!: pulumi.Output<outputs.WorkersScriptMigrations>;
+    /**
+     * When the script was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * Observability settings for the Worker.
+     */
+    public readonly observability!: pulumi.Output<outputs.WorkersScriptObservability>;
+    /**
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     */
+    public readonly placement!: pulumi.Output<outputs.WorkersScriptPlacement>;
+    /**
+     * Name of the script, used in URLs and route configuration.
+     */
+    public readonly scriptName!: pulumi.Output<string>;
+    public /*out*/ readonly startupTimeMs!: pulumi.Output<number>;
+    /**
+     * List of Workers that will consume logs from the attached Worker.
+     */
+    public readonly tailConsumers!: pulumi.Output<outputs.WorkersScriptTailConsumer[]>;
+    /**
+     * Usage model for the Worker invocations.
+     * Available values: "standard".
+     */
+    public readonly usageModel!: pulumi.Output<string>;
 
     /**
      * Create a WorkersScript resource with the given unique name, arguments, and options.
@@ -154,25 +148,28 @@ export class WorkersScript extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkersScriptState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["analyticsEngineBindings"] = state ? state.analyticsEngineBindings : undefined;
+            resourceInputs["assets"] = state ? state.assets : undefined;
+            resourceInputs["bindings"] = state ? state.bindings : undefined;
+            resourceInputs["bodyPart"] = state ? state.bodyPart : undefined;
             resourceInputs["compatibilityDate"] = state ? state.compatibilityDate : undefined;
             resourceInputs["compatibilityFlags"] = state ? state.compatibilityFlags : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["d1DatabaseBindings"] = state ? state.d1DatabaseBindings : undefined;
-            resourceInputs["dispatchNamespace"] = state ? state.dispatchNamespace : undefined;
-            resourceInputs["hyperdriveConfigBindings"] = state ? state.hyperdriveConfigBindings : undefined;
-            resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["hasAssets"] = state ? state.hasAssets : undefined;
+            resourceInputs["hasModules"] = state ? state.hasModules : undefined;
+            resourceInputs["keepAssets"] = state ? state.keepAssets : undefined;
+            resourceInputs["keepBindings"] = state ? state.keepBindings : undefined;
             resourceInputs["logpush"] = state ? state.logpush : undefined;
-            resourceInputs["module"] = state ? state.module : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["placements"] = state ? state.placements : undefined;
-            resourceInputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
-            resourceInputs["queueBindings"] = state ? state.queueBindings : undefined;
-            resourceInputs["r2BucketBindings"] = state ? state.r2BucketBindings : undefined;
-            resourceInputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
-            resourceInputs["serviceBindings"] = state ? state.serviceBindings : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
+            resourceInputs["mainModule"] = state ? state.mainModule : undefined;
+            resourceInputs["migrations"] = state ? state.migrations : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["observability"] = state ? state.observability : undefined;
+            resourceInputs["placement"] = state ? state.placement : undefined;
+            resourceInputs["scriptName"] = state ? state.scriptName : undefined;
+            resourceInputs["startupTimeMs"] = state ? state.startupTimeMs : undefined;
+            resourceInputs["tailConsumers"] = state ? state.tailConsumers : undefined;
+            resourceInputs["usageModel"] = state ? state.usageModel : undefined;
         } else {
             const args = argsOrState as WorkersScriptArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -181,31 +178,36 @@ export class WorkersScript extends pulumi.CustomResource {
             if ((!args || args.content === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
+            if ((!args || args.scriptName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'scriptName'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["analyticsEngineBindings"] = args ? args.analyticsEngineBindings : undefined;
+            resourceInputs["assets"] = args ? args.assets : undefined;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["bodyPart"] = args ? args.bodyPart : undefined;
             resourceInputs["compatibilityDate"] = args ? args.compatibilityDate : undefined;
             resourceInputs["compatibilityFlags"] = args ? args.compatibilityFlags : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["d1DatabaseBindings"] = args ? args.d1DatabaseBindings : undefined;
-            resourceInputs["dispatchNamespace"] = args ? args.dispatchNamespace : undefined;
-            resourceInputs["hyperdriveConfigBindings"] = args ? args.hyperdriveConfigBindings : undefined;
-            resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
+            resourceInputs["keepAssets"] = args ? args.keepAssets : undefined;
+            resourceInputs["keepBindings"] = args ? args.keepBindings : undefined;
             resourceInputs["logpush"] = args ? args.logpush : undefined;
-            resourceInputs["module"] = args ? args.module : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["placements"] = args ? args.placements : undefined;
-            resourceInputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
-            resourceInputs["queueBindings"] = args ? args.queueBindings : undefined;
-            resourceInputs["r2BucketBindings"] = args ? args.r2BucketBindings : undefined;
-            resourceInputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
-            resourceInputs["serviceBindings"] = args ? args.serviceBindings : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["webassemblyBindings"] = args ? args.webassemblyBindings : undefined;
+            resourceInputs["mainModule"] = args ? args.mainModule : undefined;
+            resourceInputs["migrations"] = args ? args.migrations : undefined;
+            resourceInputs["observability"] = args ? args.observability : undefined;
+            resourceInputs["placement"] = args ? args.placement : undefined;
+            resourceInputs["scriptName"] = args ? args.scriptName : undefined;
+            resourceInputs["tailConsumers"] = args ? args.tailConsumers : undefined;
+            resourceInputs["usageModel"] = args ? args.usageModel : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["hasAssets"] = undefined /*out*/;
+            resourceInputs["hasModules"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["startupTimeMs"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerScript:WorkerScript" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkersScript.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -215,49 +217,95 @@ export class WorkersScript extends pulumi.CustomResource {
  */
 export interface WorkersScriptState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
-    analyticsEngineBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptAnalyticsEngineBinding>[]>;
     /**
-     * The date to use for the compatibility flag.
+     * Configuration for assets within a Worker
+     */
+    assets?: pulumi.Input<inputs.WorkersScriptAssets>;
+    /**
+     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     */
+    bindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptBinding>[]>;
+    /**
+     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     */
+    bodyPart?: pulumi.Input<string>;
+    /**
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
     compatibilityDate?: pulumi.Input<string>;
     /**
-     * Compatibility flags used for Worker Scripts.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The script content.
+     * Module or Service Worker contents of the Worker.
      */
     content?: pulumi.Input<string>;
-    d1DatabaseBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptD1DatabaseBinding>[]>;
     /**
-     * Name of the Workers for Platforms dispatch namespace.
+     * When the script was created.
      */
-    dispatchNamespace?: pulumi.Input<string>;
-    hyperdriveConfigBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptHyperdriveConfigBinding>[]>;
-    kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptKvNamespaceBinding>[]>;
+    createdOn?: pulumi.Input<string>;
     /**
-     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     * Hashed script content, can be used in a If-None-Match header when updating.
+     */
+    etag?: pulumi.Input<string>;
+    /**
+     * Whether a Worker contains assets.
+     */
+    hasAssets?: pulumi.Input<boolean>;
+    /**
+     * Whether a Worker contains modules.
+     */
+    hasModules?: pulumi.Input<boolean>;
+    /**
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     */
+    keepAssets?: pulumi.Input<boolean>;
+    /**
+     * List of binding types to keep from previous_upload.
+     */
+    keepBindings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Logpush is turned on for the Worker.
      */
     logpush?: pulumi.Input<boolean>;
     /**
-     * Whether to upload Worker as a module.
+     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
-    module?: pulumi.Input<boolean>;
+    mainModule?: pulumi.Input<string>;
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * Migrations to apply for Durable Objects associated with this Worker.
      */
-    name?: pulumi.Input<string>;
-    placements?: pulumi.Input<pulumi.Input<inputs.WorkersScriptPlacement>[]>;
-    plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptPlainTextBinding>[]>;
-    queueBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptQueueBinding>[]>;
-    r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptR2BucketBinding>[]>;
-    secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptSecretTextBinding>[]>;
-    serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptServiceBinding>[]>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptWebassemblyBinding>[]>;
+    migrations?: pulumi.Input<inputs.WorkersScriptMigrations>;
+    /**
+     * When the script was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * Observability settings for the Worker.
+     */
+    observability?: pulumi.Input<inputs.WorkersScriptObservability>;
+    /**
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     */
+    placement?: pulumi.Input<inputs.WorkersScriptPlacement>;
+    /**
+     * Name of the script, used in URLs and route configuration.
+     */
+    scriptName?: pulumi.Input<string>;
+    startupTimeMs?: pulumi.Input<number>;
+    /**
+     * List of Workers that will consume logs from the attached Worker.
+     */
+    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptTailConsumer>[]>;
+    /**
+     * Usage model for the Worker invocations.
+     * Available values: "standard".
+     */
+    usageModel?: pulumi.Input<string>;
 }
 
 /**
@@ -265,47 +313,72 @@ export interface WorkersScriptState {
  */
 export interface WorkersScriptArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
-    analyticsEngineBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptAnalyticsEngineBinding>[]>;
     /**
-     * The date to use for the compatibility flag.
+     * Configuration for assets within a Worker
+     */
+    assets?: pulumi.Input<inputs.WorkersScriptAssets>;
+    /**
+     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     */
+    bindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptBinding>[]>;
+    /**
+     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     */
+    bodyPart?: pulumi.Input<string>;
+    /**
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
     compatibilityDate?: pulumi.Input<string>;
     /**
-     * Compatibility flags used for Worker Scripts.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
     compatibilityFlags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The script content.
+     * Module or Service Worker contents of the Worker.
      */
     content: pulumi.Input<string>;
-    d1DatabaseBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptD1DatabaseBinding>[]>;
     /**
-     * Name of the Workers for Platforms dispatch namespace.
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
      */
-    dispatchNamespace?: pulumi.Input<string>;
-    hyperdriveConfigBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptHyperdriveConfigBinding>[]>;
-    kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptKvNamespaceBinding>[]>;
+    keepAssets?: pulumi.Input<boolean>;
     /**
-     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     * List of binding types to keep from previous_upload.
+     */
+    keepBindings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Logpush is turned on for the Worker.
      */
     logpush?: pulumi.Input<boolean>;
     /**
-     * Whether to upload Worker as a module.
+     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      */
-    module?: pulumi.Input<boolean>;
+    mainModule?: pulumi.Input<string>;
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * Migrations to apply for Durable Objects associated with this Worker.
      */
-    name: pulumi.Input<string>;
-    placements?: pulumi.Input<pulumi.Input<inputs.WorkersScriptPlacement>[]>;
-    plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptPlainTextBinding>[]>;
-    queueBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptQueueBinding>[]>;
-    r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptR2BucketBinding>[]>;
-    secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptSecretTextBinding>[]>;
-    serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptServiceBinding>[]>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkersScriptWebassemblyBinding>[]>;
+    migrations?: pulumi.Input<inputs.WorkersScriptMigrations>;
+    /**
+     * Observability settings for the Worker.
+     */
+    observability?: pulumi.Input<inputs.WorkersScriptObservability>;
+    /**
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     */
+    placement?: pulumi.Input<inputs.WorkersScriptPlacement>;
+    /**
+     * Name of the script, used in URLs and route configuration.
+     */
+    scriptName: pulumi.Input<string>;
+    /**
+     * List of Workers that will consume logs from the attached Worker.
+     */
+    tailConsumers?: pulumi.Input<pulumi.Input<inputs.WorkersScriptTailConsumer>[]>;
+    /**
+     * Usage model for the Worker invocations.
+     * Available values: "standard".
+     */
+    usageModel?: pulumi.Input<string>;
 }

@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['WorkersRouteArgs', 'WorkersRoute']
 
@@ -22,24 +24,24 @@ class WorkersRouteArgs:
     def __init__(__self__, *,
                  pattern: pulumi.Input[builtins.str],
                  zone_id: pulumi.Input[builtins.str],
-                 script_name: Optional[pulumi.Input[builtins.str]] = None):
+                 route_id: Optional[pulumi.Input[builtins.str]] = None,
+                 script: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersRoute resource.
-        :param pulumi.Input[builtins.str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] script_name: Worker script name to invoke for requests that match the route pattern.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] script: Name of the script, used in URLs and route configuration.
         """
         pulumi.set(__self__, "pattern", pattern)
         pulumi.set(__self__, "zone_id", zone_id)
-        if script_name is not None:
-            pulumi.set(__self__, "script_name", script_name)
+        if route_id is not None:
+            pulumi.set(__self__, "route_id", route_id)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
 
     @property
     @pulumi.getter
     def pattern(self) -> pulumi.Input[builtins.str]:
-        """
-        The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -50,7 +52,7 @@ class WorkersRouteArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -59,43 +61,83 @@ class WorkersRouteArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
-    @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="routeId")
+    def route_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Worker script name to invoke for requests that match the route pattern.
+        Identifier
         """
-        return pulumi.get(self, "script_name")
+        return pulumi.get(self, "route_id")
 
-    @script_name.setter
-    def script_name(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "script_name", value)
+    @route_id.setter
+    def route_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "route_id", value)
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the script, used in URLs and route configuration.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "script", value)
 
 
 @pulumi.input_type
 class _WorkersRouteState:
     def __init__(__self__, *,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersRouteErrorArgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersRouteMessageArgs']]]] = None,
                  pattern: Optional[pulumi.Input[builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[builtins.str]] = None,
+                 route_id: Optional[pulumi.Input[builtins.str]] = None,
+                 script: Optional[pulumi.Input[builtins.str]] = None,
+                 success: Optional[pulumi.Input[builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersRoute resources.
-        :param pulumi.Input[builtins.str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        :param pulumi.Input[builtins.str] script_name: Worker script name to invoke for requests that match the route pattern.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] script: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[builtins.bool] success: Whether the API call was successful
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
         if pattern is not None:
             pulumi.set(__self__, "pattern", pattern)
-        if script_name is not None:
-            pulumi.set(__self__, "script_name", script_name)
+        if route_id is not None:
+            pulumi.set(__self__, "route_id", route_id)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
+        if success is not None:
+            pulumi.set(__self__, "success", success)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersRouteErrorArgs']]]]:
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersRouteErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkersRouteMessageArgs']]]]:
+        return pulumi.get(self, "messages")
+
+    @messages.setter
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkersRouteMessageArgs']]]]):
+        pulumi.set(self, "messages", value)
+
+    @property
+    @pulumi.getter
     def pattern(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        """
         return pulumi.get(self, "pattern")
 
     @pattern.setter
@@ -103,22 +145,46 @@ class _WorkersRouteState:
         pulumi.set(self, "pattern", value)
 
     @property
-    @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="routeId")
+    def route_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Worker script name to invoke for requests that match the route pattern.
+        Identifier
         """
-        return pulumi.get(self, "script_name")
+        return pulumi.get(self, "route_id")
 
-    @script_name.setter
-    def script_name(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "script_name", value)
+    @route_id.setter
+    def route_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "route_id", value)
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the script, used in URLs and route configuration.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "script", value)
+
+    @property
+    @pulumi.getter
+    def success(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether the API call was successful
+        """
+        return pulumi.get(self, "success")
+
+    @success.setter
+    def success(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "success", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -133,37 +199,28 @@ class WorkersRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  pattern: Optional[pulumi.Input[builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[builtins.str]] = None,
+                 route_id: Optional[pulumi.Input[builtins.str]] = None,
+                 script: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        my_script = cloudflare.WorkersScript("my_script")
-        # Runs the specified worker script for all URLs that match `example.com/*`
-        my_route = cloudflare.WorkersRoute("my_route",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            pattern="example.com/*",
-            script_name=my_script.name)
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/workersRoute:WorkersRoute example <zone_id>/<route_id>
+        example_workers_route = cloudflare.WorkersRoute("example_workers_route",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            pattern="example.net/*",
+            script="this-is_my_script-01")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        :param pulumi.Input[builtins.str] script_name: Worker script name to invoke for requests that match the route pattern.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] script: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -172,26 +229,16 @@ class WorkersRoute(pulumi.CustomResource):
                  args: WorkersRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        my_script = cloudflare.WorkersScript("my_script")
-        # Runs the specified worker script for all URLs that match `example.com/*`
-        my_route = cloudflare.WorkersRoute("my_route",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            pattern="example.com/*",
-            script_name=my_script.name)
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/workersRoute:WorkersRoute example <zone_id>/<route_id>
+        example_workers_route = cloudflare.WorkersRoute("example_workers_route",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            pattern="example.net/*",
+            script="this-is_my_script-01")
         ```
 
         :param str resource_name: The name of the resource.
@@ -210,7 +257,8 @@ class WorkersRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  pattern: Optional[pulumi.Input[builtins.str]] = None,
-                 script_name: Optional[pulumi.Input[builtins.str]] = None,
+                 route_id: Optional[pulumi.Input[builtins.str]] = None,
+                 script: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -224,10 +272,14 @@ class WorkersRoute(pulumi.CustomResource):
             if pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'pattern'")
             __props__.__dict__["pattern"] = pattern
-            __props__.__dict__["script_name"] = script_name
+            __props__.__dict__["route_id"] = route_id
+            __props__.__dict__["script"] = script
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["errors"] = None
+            __props__.__dict__["messages"] = None
+            __props__.__dict__["success"] = None
         super(WorkersRoute, __self__).__init__(
             'cloudflare:index/workersRoute:WorkersRoute',
             resource_name,
@@ -238,8 +290,12 @@ class WorkersRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersRouteErrorArgs', 'WorkersRouteErrorArgsDict']]]]] = None,
+            messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkersRouteMessageArgs', 'WorkersRouteMessageArgsDict']]]]] = None,
             pattern: Optional[pulumi.Input[builtins.str]] = None,
-            script_name: Optional[pulumi.Input[builtins.str]] = None,
+            route_id: Optional[pulumi.Input[builtins.str]] = None,
+            script: Optional[pulumi.Input[builtins.str]] = None,
+            success: Optional[pulumi.Input[builtins.bool]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'WorkersRoute':
         """
         Get an existing WorkersRoute resource's state with the given name, id, and optional extra
@@ -248,40 +304,68 @@ class WorkersRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        :param pulumi.Input[builtins.str] script_name: Worker script name to invoke for requests that match the route pattern.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] script: Name of the script, used in URLs and route configuration.
+        :param pulumi.Input[builtins.bool] success: Whether the API call was successful
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WorkersRouteState.__new__(_WorkersRouteState)
 
+        __props__.__dict__["errors"] = errors
+        __props__.__dict__["messages"] = messages
         __props__.__dict__["pattern"] = pattern
-        __props__.__dict__["script_name"] = script_name
+        __props__.__dict__["route_id"] = route_id
+        __props__.__dict__["script"] = script
+        __props__.__dict__["success"] = success
         __props__.__dict__["zone_id"] = zone_id
         return WorkersRoute(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
+    def errors(self) -> pulumi.Output[Sequence['outputs.WorkersRouteError']]:
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter
+    def messages(self) -> pulumi.Output[Sequence['outputs.WorkersRouteMessage']]:
+        return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter
     def pattern(self) -> pulumi.Output[builtins.str]:
-        """
-        The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-        """
         return pulumi.get(self, "pattern")
 
     @property
-    @pulumi.getter(name="scriptName")
-    def script_name(self) -> pulumi.Output[Optional[builtins.str]]:
+    @pulumi.getter(name="routeId")
+    def route_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Worker script name to invoke for requests that match the route pattern.
+        Identifier
         """
-        return pulumi.get(self, "script_name")
+        return pulumi.get(self, "route_id")
+
+    @property
+    @pulumi.getter
+    def script(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Name of the script, used in URLs and route configuration.
+        """
+        return pulumi.get(self, "script")
+
+    @property
+    @pulumi.getter
+    def success(self) -> pulumi.Output[builtins.bool]:
+        """
+        Whether the API call was successful
+        """
+        return pulumi.get(self, "success")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

@@ -8,18 +8,48 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustRiskBehavior(ctx, "example_zero_trust_risk_behavior", &cloudflare.ZeroTrustRiskBehaviorArgs{
+//				AccountId: pulumi.String("account_id"),
+//				Behaviors: cloudflare.ZeroTrustRiskBehaviorBehaviorsMap{
+//					"foo": &cloudflare.ZeroTrustRiskBehaviorBehaviorsArgs{
+//						Enabled:   pulumi.Bool(true),
+//						RiskLevel: pulumi.String("low"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Deprecated: cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior
 type RiskBehavior struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Zero Trust risk behaviors configured on this account
-	Behaviors RiskBehaviorBehaviorArrayOutput `pulumi:"behaviors"`
+	AccountId pulumi.StringOutput            `pulumi:"accountId"`
+	Behaviors RiskBehaviorBehaviorsMapOutput `pulumi:"behaviors"`
 }
 
 // NewRiskBehavior registers a new resource with the given unique name, arguments, and options.
@@ -32,6 +62,15 @@ func NewRiskBehavior(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	if args.Behaviors == nil {
+		return nil, errors.New("invalid value for required argument 'Behaviors'")
+	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/riskBehavior:RiskBehavior"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RiskBehavior
 	err := ctx.RegisterResource("cloudflare:index/riskBehavior:RiskBehavior", name, args, &resource, opts...)
@@ -55,17 +94,13 @@ func GetRiskBehavior(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RiskBehavior resources.
 type riskBehaviorState struct {
-	// The account identifier to target for the resource.
-	AccountId *string `pulumi:"accountId"`
-	// Zero Trust risk behaviors configured on this account
-	Behaviors []RiskBehaviorBehavior `pulumi:"behaviors"`
+	AccountId *string                          `pulumi:"accountId"`
+	Behaviors map[string]RiskBehaviorBehaviors `pulumi:"behaviors"`
 }
 
 type RiskBehaviorState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Zero Trust risk behaviors configured on this account
-	Behaviors RiskBehaviorBehaviorArrayInput
+	Behaviors RiskBehaviorBehaviorsMapInput
 }
 
 func (RiskBehaviorState) ElementType() reflect.Type {
@@ -73,18 +108,14 @@ func (RiskBehaviorState) ElementType() reflect.Type {
 }
 
 type riskBehaviorArgs struct {
-	// The account identifier to target for the resource.
-	AccountId string `pulumi:"accountId"`
-	// Zero Trust risk behaviors configured on this account
-	Behaviors []RiskBehaviorBehavior `pulumi:"behaviors"`
+	AccountId string                           `pulumi:"accountId"`
+	Behaviors map[string]RiskBehaviorBehaviors `pulumi:"behaviors"`
 }
 
 // The set of arguments for constructing a RiskBehavior resource.
 type RiskBehaviorArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// Zero Trust risk behaviors configured on this account
-	Behaviors RiskBehaviorBehaviorArrayInput
+	Behaviors RiskBehaviorBehaviorsMapInput
 }
 
 func (RiskBehaviorArgs) ElementType() reflect.Type {
@@ -174,14 +205,12 @@ func (o RiskBehaviorOutput) ToRiskBehaviorOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o RiskBehaviorOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RiskBehavior) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Zero Trust risk behaviors configured on this account
-func (o RiskBehaviorOutput) Behaviors() RiskBehaviorBehaviorArrayOutput {
-	return o.ApplyT(func(v *RiskBehavior) RiskBehaviorBehaviorArrayOutput { return v.Behaviors }).(RiskBehaviorBehaviorArrayOutput)
+func (o RiskBehaviorOutput) Behaviors() RiskBehaviorBehaviorsMapOutput {
+	return o.ApplyT(func(v *RiskBehavior) RiskBehaviorBehaviorsMapOutput { return v.Behaviors }).(RiskBehaviorBehaviorsMapOutput)
 }
 
 type RiskBehaviorArrayOutput struct{ *pulumi.OutputState }

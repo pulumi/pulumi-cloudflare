@@ -2,31 +2,29 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource which manages Cloudflare account members.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.AccountMember("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     emailAddress: "user@example.com",
- *     roleIds: [
- *         "68b329da9893e34099c7d8ad5cb9c940",
- *         "d784fa8b6d98d27699781bd9a7cf19f0",
- *     ],
+ * const exampleAccountMember = new cloudflare.AccountMember("example_account_member", {
+ *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     email: "user@example.com",
+ *     roles: ["3536bcfad5faccb999b47003c79917fb"],
+ *     status: "accepted",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
+ * $ pulumi import cloudflare:index/accountMember:AccountMember example '<account_id>/<member_id>'
  * ```
  */
 export class AccountMember extends pulumi.CustomResource {
@@ -58,21 +56,29 @@ export class AccountMember extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID to create the account member in.
+     * Account identifier tag.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * The contact email address of the user.
      */
-    public readonly emailAddress!: pulumi.Output<string>;
+    public readonly email!: pulumi.Output<string>;
     /**
-     * List of account role IDs that you want to assign to a member.
+     * Array of policies associated with this member.
      */
-    public readonly roleIds!: pulumi.Output<string[]>;
+    public readonly policies!: pulumi.Output<outputs.AccountMemberPolicy[]>;
     /**
-     * A member's status in the account. Available values: `accepted`, `pending`.
+     * Array of roles associated with this member.
+     */
+    public readonly roles!: pulumi.Output<string[] | undefined>;
+    /**
+     * Available values: "accepted", "pending".
      */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * Details of the user associated to the membership.
+     */
+    public /*out*/ readonly user!: pulumi.Output<outputs.AccountMemberUser>;
 
     /**
      * Create a AccountMember resource with the given unique name, arguments, and options.
@@ -88,24 +94,25 @@ export class AccountMember extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccountMemberState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["emailAddress"] = state ? state.emailAddress : undefined;
-            resourceInputs["roleIds"] = state ? state.roleIds : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["roles"] = state ? state.roles : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as AccountMemberArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.emailAddress === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'emailAddress'");
-            }
-            if ((!args || args.roleIds === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'roleIds'");
+            if ((!args || args.email === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'email'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["emailAddress"] = args ? args.emailAddress : undefined;
-            resourceInputs["roleIds"] = args ? args.roleIds : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["user"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccountMember.__pulumiType, name, resourceInputs, opts);
@@ -117,21 +124,29 @@ export class AccountMember extends pulumi.CustomResource {
  */
 export interface AccountMemberState {
     /**
-     * Account ID to create the account member in.
+     * Account identifier tag.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * The contact email address of the user.
      */
-    emailAddress?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
-     * List of account role IDs that you want to assign to a member.
+     * Array of policies associated with this member.
      */
-    roleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicy>[]>;
     /**
-     * A member's status in the account. Available values: `accepted`, `pending`.
+     * Array of roles associated with this member.
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Available values: "accepted", "pending".
      */
     status?: pulumi.Input<string>;
+    /**
+     * Details of the user associated to the membership.
+     */
+    user?: pulumi.Input<inputs.AccountMemberUser>;
 }
 
 /**
@@ -139,19 +154,23 @@ export interface AccountMemberState {
  */
 export interface AccountMemberArgs {
     /**
-     * Account ID to create the account member in.
+     * Account identifier tag.
      */
     accountId: pulumi.Input<string>;
     /**
-     * The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and cannot be updated.
+     * The contact email address of the user.
      */
-    emailAddress: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
-     * List of account role IDs that you want to assign to a member.
+     * Array of policies associated with this member.
      */
-    roleIds: pulumi.Input<pulumi.Input<string>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.AccountMemberPolicy>[]>;
     /**
-     * A member's status in the account. Available values: `accepted`, `pending`.
+     * Array of roles associated with this member.
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Available values: "accepted", "pending".
      */
     status?: pulumi.Input<string>;
 }

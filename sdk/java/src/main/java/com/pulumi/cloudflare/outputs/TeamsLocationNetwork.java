@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class TeamsLocationNetwork {
     /**
-     * @return CIDR notation representation of the network IP.
+     * @return The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
      * 
      */
     private String network;
 
     private TeamsLocationNetwork() {}
     /**
-     * @return CIDR notation representation of the network IP.
+     * @return The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
      * 
      */
     public String network() {

@@ -17,32 +17,16 @@ public final class TeamsRuleRuleSettingsDnsResolversArgs extends com.pulumi.reso
 
     public static final TeamsRuleRuleSettingsDnsResolversArgs Empty = new TeamsRuleRuleSettingsDnsResolversArgs();
 
-    /**
-     * IPv4 resolvers.
-     * 
-     */
     @Import(name="ipv4s")
     private @Nullable Output<List<TeamsRuleRuleSettingsDnsResolversIpv4Args>> ipv4s;
 
-    /**
-     * @return IPv4 resolvers.
-     * 
-     */
     public Optional<Output<List<TeamsRuleRuleSettingsDnsResolversIpv4Args>>> ipv4s() {
         return Optional.ofNullable(this.ipv4s);
     }
 
-    /**
-     * IPv6 resolvers.
-     * 
-     */
     @Import(name="ipv6s")
     private @Nullable Output<List<TeamsRuleRuleSettingsDnsResolversIpv6Args>> ipv6s;
 
-    /**
-     * @return IPv6 resolvers.
-     * 
-     */
     public Optional<Output<List<TeamsRuleRuleSettingsDnsResolversIpv6Args>>> ipv6s() {
         return Optional.ofNullable(this.ipv6s);
     }
@@ -72,64 +56,28 @@ public final class TeamsRuleRuleSettingsDnsResolversArgs extends com.pulumi.reso
             $ = new TeamsRuleRuleSettingsDnsResolversArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ipv4s IPv4 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv4s(@Nullable Output<List<TeamsRuleRuleSettingsDnsResolversIpv4Args>> ipv4s) {
             $.ipv4s = ipv4s;
             return this;
         }
 
-        /**
-         * @param ipv4s IPv4 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv4s(List<TeamsRuleRuleSettingsDnsResolversIpv4Args> ipv4s) {
             return ipv4s(Output.of(ipv4s));
         }
 
-        /**
-         * @param ipv4s IPv4 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv4s(TeamsRuleRuleSettingsDnsResolversIpv4Args... ipv4s) {
             return ipv4s(List.of(ipv4s));
         }
 
-        /**
-         * @param ipv6s IPv6 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv6s(@Nullable Output<List<TeamsRuleRuleSettingsDnsResolversIpv6Args>> ipv6s) {
             $.ipv6s = ipv6s;
             return this;
         }
 
-        /**
-         * @param ipv6s IPv6 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv6s(List<TeamsRuleRuleSettingsDnsResolversIpv6Args> ipv6s) {
             return ipv6s(Output.of(ipv6s));
         }
 
-        /**
-         * @param ipv6s IPv6 resolvers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipv6s(TeamsRuleRuleSettingsDnsResolversIpv6Args... ipv6s) {
             return ipv6s(List.of(ipv6s));
         }

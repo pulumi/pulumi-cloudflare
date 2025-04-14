@@ -3,11 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.RiskBehaviorBehaviorArgs;
+import com.pulumi.cloudflare.inputs.RiskBehaviorBehaviorsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,33 +17,17 @@ public final class RiskBehaviorState extends com.pulumi.resources.ResourceArgs {
 
     public static final RiskBehaviorState Empty = new RiskBehaviorState();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * Zero Trust risk behaviors configured on this account
-     * 
-     */
     @Import(name="behaviors")
-    private @Nullable Output<List<RiskBehaviorBehaviorArgs>> behaviors;
+    private @Nullable Output<Map<String,RiskBehaviorBehaviorsArgs>> behaviors;
 
-    /**
-     * @return Zero Trust risk behaviors configured on this account
-     * 
-     */
-    public Optional<Output<List<RiskBehaviorBehaviorArgs>>> behaviors() {
+    public Optional<Output<Map<String,RiskBehaviorBehaviorsArgs>>> behaviors() {
         return Optional.ofNullable(this.behaviors);
     }
 
@@ -72,56 +56,22 @@ public final class RiskBehaviorState extends com.pulumi.resources.ResourceArgs {
             $ = new RiskBehaviorState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param behaviors Zero Trust risk behaviors configured on this account
-         * 
-         * @return builder
-         * 
-         */
-        public Builder behaviors(@Nullable Output<List<RiskBehaviorBehaviorArgs>> behaviors) {
+        public Builder behaviors(@Nullable Output<Map<String,RiskBehaviorBehaviorsArgs>> behaviors) {
             $.behaviors = behaviors;
             return this;
         }
 
-        /**
-         * @param behaviors Zero Trust risk behaviors configured on this account
-         * 
-         * @return builder
-         * 
-         */
-        public Builder behaviors(List<RiskBehaviorBehaviorArgs> behaviors) {
+        public Builder behaviors(Map<String,RiskBehaviorBehaviorsArgs> behaviors) {
             return behaviors(Output.of(behaviors));
-        }
-
-        /**
-         * @param behaviors Zero Trust risk behaviors configured on this account
-         * 
-         * @return builder
-         * 
-         */
-        public Builder behaviors(RiskBehaviorBehaviorArgs... behaviors) {
-            return behaviors(List.of(behaviors));
         }
 
         public RiskBehaviorState build() {

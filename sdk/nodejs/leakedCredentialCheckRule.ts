@@ -5,31 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Leaked Credential Check Rule resource for managing user-defined Leaked Credential detection patterns within a specific zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Enable the Leaked Credentials Check detection before trying
- * // to add detections.
- * const example = new cloudflare.LeakedCredentialCheck("example", {
- *     zoneId: "399c6f4950c01a5a141b99ff7fbcbd8b",
- *     enabled: true,
- * });
- * const exampleLeakedCredentialCheckRule = new cloudflare.LeakedCredentialCheckRule("example", {
- *     zoneId: example.zoneId,
+ * const exampleLeakedCredentialCheckRule = new cloudflare.LeakedCredentialCheckRule("example_leaked_credential_check_rule", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     password: "lookup_json_string(http.request.body.raw, \"secret\")",
  *     username: "lookup_json_string(http.request.body.raw, \"user\")",
- *     password: "lookup_json_string(http.request.body.raw, \"pass\")",
  * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example <zone_id>/<resource_id>
  * ```
  */
 export class LeakedCredentialCheckRule extends pulumi.CustomResource {
@@ -63,13 +49,13 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
     /**
      * The ruleset expression to use in matching the password in a request
      */
-    public readonly password!: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The ruleset expression to use in matching the username in a request.
+     * The ruleset expression to use in matching the username in a request
      */
-    public readonly username!: pulumi.Output<string>;
+    public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -91,12 +77,6 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LeakedCredentialCheckRuleArgs | undefined;
-            if ((!args || args.password === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'password'");
-            }
-            if ((!args || args.username === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'username'");
-            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -118,11 +98,11 @@ export interface LeakedCredentialCheckRuleState {
      */
     password?: pulumi.Input<string>;
     /**
-     * The ruleset expression to use in matching the username in a request.
+     * The ruleset expression to use in matching the username in a request
      */
     username?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -134,13 +114,13 @@ export interface LeakedCredentialCheckRuleArgs {
     /**
      * The ruleset expression to use in matching the password in a request
      */
-    password: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
-     * The ruleset expression to use in matching the username in a request.
+     * The ruleset expression to use in matching the username in a request
      */
-    username: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

@@ -10,19 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+    /// ## Example Usage
     /// </summary>
     [CloudflareResourceType("cloudflare:index/snippetRules:SnippetRules")]
     public partial class SnippetRules : global::Pulumi.CustomResource
     {
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        [Output("expression")]
+        public Output<string> Expression { get; private set; } = null!;
+
         /// <summary>
-        /// List of Snippet Rules
+        /// List of snippet rules
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.SnippetRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Snippet identifying name
+        /// </summary>
+        [Output("snippetName")]
+        public Output<string> SnippetName { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -77,7 +92,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.SnippetRulesRuleArgs>? _rules;
 
         /// <summary>
-        /// List of Snippet Rules
+        /// List of snippet rules
         /// </summary>
         public InputList<Inputs.SnippetRulesRuleArgs> Rules
         {
@@ -86,7 +101,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -99,11 +114,20 @@ namespace Pulumi.Cloudflare
 
     public sealed class SnippetRulesState : global::Pulumi.ResourceArgs
     {
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
+
         [Input("rules")]
         private InputList<Inputs.SnippetRulesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of Snippet Rules
+        /// List of snippet rules
         /// </summary>
         public InputList<Inputs.SnippetRulesRuleGetArgs> Rules
         {
@@ -112,7 +136,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Snippet identifying name
+        /// </summary>
+        [Input("snippetName")]
+        public Input<string>? SnippetName { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

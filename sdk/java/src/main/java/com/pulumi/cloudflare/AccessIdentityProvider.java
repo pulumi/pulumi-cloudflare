@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessIdentityProviderState;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderConfig;
 import com.pulumi.cloudflare.outputs.AccessIdentityProviderScimConfig;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -18,185 +19,105 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Identity Provider resource. Identity
- * Providers are used as an authentication or authorisation source
- * within Access.
- * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in
- *    most cases using either is fine. However, if you&#39;re using a scoped
- *    access token, you must provide the argument that matches the token&#39;s
- *    scope. For example, an access token that is scoped to the &#34;example.com&#34;
- *    zone needs to use the `zone_id` argument.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccessIdentityProvider;
- * import com.pulumi.cloudflare.AccessIdentityProviderArgs;
- * import com.pulumi.cloudflare.inputs.AccessIdentityProviderConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // one time pin
- *         var pinLogin = new AccessIdentityProvider("pinLogin", AccessIdentityProviderArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("PIN login")
- *             .type("onetimepin")
- *             .build());
- * 
- *         // oauth
- *         var githubOauth = new AccessIdentityProvider("githubOauth", AccessIdentityProviderArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("GitHub OAuth")
- *             .type("github")
- *             .configs(AccessIdentityProviderConfigArgs.builder()
- *                 .clientId("example")
- *                 .clientSecret("secret_key")
- *                 .build())
- *             .build());
- * 
- *         // saml
- *         var jumpcloudSaml = new AccessIdentityProvider("jumpcloudSaml", AccessIdentityProviderArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("JumpCloud SAML")
- *             .type("saml")
- *             .configs(AccessIdentityProviderConfigArgs.builder()
- *                 .issuerUrl("jumpcloud")
- *                 .ssoTargetUrl("https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess")
- *                 .attributes(                
- *                     "email",
- *                     "username")
- *                 .signRequest(false)
- *                 .idpPublicCert("""
- * MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o                """)
- *                 .build())
- *             .build());
- * 
- *         // okta
- *         var okta = new AccessIdentityProvider("okta", AccessIdentityProviderArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("Okta")
- *             .type("okta")
- *             .configs(AccessIdentityProviderConfigArgs.builder()
- *                 .clientId("example")
- *                 .clientSecret("secret_key")
- *                 .apiToken("okta_api_token")
- *                 .oktaAccount("https://example.com")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example &lt;account_id&gt;/&lt;identity_provider_id&gt;
+ * $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;identity_provider_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider
+ * 
  */
+@Deprecated /* cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider */
 @ResourceType(type="cloudflare:index/accessIdentityProvider:AccessIdentityProvider")
 public class AccessIdentityProvider extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * 
      */
-    @Export(name="configs", refs={List.class,AccessIdentityProviderConfig.class}, tree="[0,1]")
-    private Output<List<AccessIdentityProviderConfig>> configs;
+    @Export(name="config", refs={AccessIdentityProviderConfig.class}, tree="[0]")
+    private Output<AccessIdentityProviderConfig> config;
 
     /**
-     * @return Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+     * @return The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
      * 
      */
-    public Output<List<AccessIdentityProviderConfig>> configs() {
-        return this.configs;
+    public Output<AccessIdentityProviderConfig> config() {
+        return this.config;
     }
     /**
-     * Friendly name of the Access Identity Provider configuration.
+     * The name of the identity provider, shown to users on the login page.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Identity Provider configuration.
+     * @return The name of the identity provider, shown to users on the login page.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Configuration for SCIM settings for a given IDP.
+     * The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
-    @Export(name="scimConfigs", refs={List.class,AccessIdentityProviderScimConfig.class}, tree="[0,1]")
-    private Output<List<AccessIdentityProviderScimConfig>> scimConfigs;
+    @Export(name="scimConfig", refs={AccessIdentityProviderScimConfig.class}, tree="[0]")
+    private Output<AccessIdentityProviderScimConfig> scimConfig;
 
     /**
-     * @return Configuration for SCIM settings for a given IDP.
+     * @return The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
      * 
      */
-    public Output<List<AccessIdentityProviderScimConfig>> scimConfigs() {
-        return this.scimConfigs;
+    public Output<AccessIdentityProviderScimConfig> scimConfig() {
+        return this.scimConfig;
     }
     /**
-     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
+     * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Output<Optional<String>> zoneId() {
@@ -242,6 +163,9 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessIdentityProvider:AccessIdentityProvider").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

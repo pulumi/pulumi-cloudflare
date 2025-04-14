@@ -5,17 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getList({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "list_name",
+ * const exampleList = cloudflare.getList({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  * });
  * ```
  */
@@ -23,7 +21,7 @@ export function getList(args: GetListArgs, opts?: pulumi.InvokeOptions): Promise
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getList:getList", {
         "accountId": args.accountId,
-        "name": args.name,
+        "listId": args.listId,
     }, opts);
 }
 
@@ -32,13 +30,13 @@ export function getList(args: GetListArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetListArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: string;
     /**
-     * The list name to target for the resource.
+     * The unique ID of the list.
      */
-    name: string;
+    listId?: string;
 }
 
 /**
@@ -46,42 +44,57 @@ export interface GetListArgs {
  */
 export interface GetListResult {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     readonly accountId: string;
     /**
-     * List description.
+     * The RFC 3339 timestamp of when the list was created.
+     */
+    readonly createdOn: string;
+    /**
+     * An informative summary of the list.
      */
     readonly description: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The unique ID of the list.
      */
     readonly id: string;
     /**
-     * List kind.
+     * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: "ip", "redirect", "hostname", "asn".
      */
     readonly kind: string;
     /**
-     * The list name to target for the resource.
+     * The unique ID of the list.
+     */
+    readonly listId?: string;
+    /**
+     * The RFC 3339 timestamp of when the list was last modified.
+     */
+    readonly modifiedOn: string;
+    /**
+     * An informative name for the list. Use this name in filter and rule expressions.
      */
     readonly name: string;
     /**
-     * Number of items in list.
+     * The number of items in the list.
      */
-    readonly numitems: number;
+    readonly numItems: number;
+    /**
+     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     */
+    readonly numReferencingFilters: number;
 }
 /**
- * Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = cloudflare.getList({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "list_name",
+ * const exampleList = cloudflare.getList({
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  * });
  * ```
  */
@@ -89,7 +102,7 @@ export function getListOutput(args: GetListOutputArgs, opts?: pulumi.InvokeOutpu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getList:getList", {
         "accountId": args.accountId,
-        "name": args.name,
+        "listId": args.listId,
     }, opts);
 }
 
@@ -98,11 +111,11 @@ export function getListOutput(args: GetListOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetListOutputArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * The list name to target for the resource.
+     * The unique ID of the list.
      */
-    name: pulumi.Input<string>;
+    listId?: pulumi.Input<string>;
 }

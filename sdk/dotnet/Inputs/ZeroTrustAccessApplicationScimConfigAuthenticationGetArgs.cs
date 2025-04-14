@@ -24,17 +24,31 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        [Input("clientSecret")]
+        private Input<string>? _clientSecret;
+
         /// <summary>
         /// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
         /// </summary>
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
+        /// <summary>
+        /// Password used to authenticate with the remote SCIM service.
+        /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
         /// The authentication scheme to use when making SCIM requests to this application.
+        /// Available values: "httpbasic".
         /// </summary>
         [Input("scheme", required: true)]
         public Input<string> Scheme { get; set; } = null!;
@@ -51,11 +65,21 @@ namespace Pulumi.Cloudflare.Inputs
             set => _scopes = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// Token used to authenticate with the remote SCIM service.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// URL used to generate the token used to authenticate with the remote SCIM service.

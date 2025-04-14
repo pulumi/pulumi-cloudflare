@@ -8,14 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams List resource. Teams lists are
-// referenced when creating secure web gateway policies or device
-// posture rules.
-//
 // ## Example Usage
 //
 // ```go
@@ -23,22 +19,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZeroTrustList(ctx, "example", &cloudflare.ZeroTrustListArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:        pulumi.String("Corporate devices"),
+//			_, err := cloudflare.NewZeroTrustList(ctx, "example_zero_trust_list", &cloudflare.ZeroTrustListArgs{
+//				AccountId:   pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Name:        pulumi.String("Admin Serial Numbers"),
 //				Type:        pulumi.String("SERIAL"),
-//				Description: pulumi.String("Serial numbers for all corporate devices."),
-//				Items: pulumi.StringArray{
-//					pulumi.String("8GE8721REF"),
-//					pulumi.String("5RE8543EGG"),
-//					pulumi.String("1YE2880LNP"),
+//				Description: pulumi.String("The serial numbers for administrators"),
+//				Items: cloudflare.ZeroTrustListItemArray{
+//					&cloudflare.ZeroTrustListItemArgs{
+//						Description: pulumi.String("Austin office IP"),
+//						Value:       pulumi.String("8GE8721REF"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -53,23 +50,25 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example <account_id>/<teams_list_id>
+// $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example '<account_id>/<list_id>'
 // ```
 type ZeroTrustList struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The description of the teams list.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The description of the list.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The items of the teams list.
-	Items pulumi.StringArrayOutput `pulumi:"items"`
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions ZeroTrustListItemsWithDescriptionArrayOutput `pulumi:"itemsWithDescriptions"`
-	// Name of the teams list.
+	// The items in the list.
+	Items ZeroTrustListItemArrayOutput `pulumi:"items"`
+	// The number of items in the list.
+	ListCount pulumi.Float64Output `pulumi:"listCount"`
+	// The name of the list.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
-	Type pulumi.StringOutput `pulumi:"type"`
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	Type      pulumi.StringOutput `pulumi:"type"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
 // NewZeroTrustList registers a new resource with the given unique name, arguments, and options.
@@ -88,6 +87,12 @@ func NewZeroTrustList(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsList:TeamsList"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZeroTrustList
 	err := ctx.RegisterResource("cloudflare:index/zeroTrustList:ZeroTrustList", name, args, &resource, opts...)
@@ -111,33 +116,37 @@ func GetZeroTrustList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustList resources.
 type zeroTrustListState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The description of the teams list.
+	CreatedAt *string `pulumi:"createdAt"`
+	// The description of the list.
 	Description *string `pulumi:"description"`
-	// The items of the teams list.
-	Items []string `pulumi:"items"`
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions []ZeroTrustListItemsWithDescription `pulumi:"itemsWithDescriptions"`
-	// Name of the teams list.
+	// The items in the list.
+	Items []ZeroTrustListItem `pulumi:"items"`
+	// The number of items in the list.
+	ListCount *float64 `pulumi:"listCount"`
+	// The name of the list.
 	Name *string `pulumi:"name"`
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
-	Type *string `pulumi:"type"`
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	Type      *string `pulumi:"type"`
+	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type ZeroTrustListState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The description of the teams list.
+	CreatedAt pulumi.StringPtrInput
+	// The description of the list.
 	Description pulumi.StringPtrInput
-	// The items of the teams list.
-	Items pulumi.StringArrayInput
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions ZeroTrustListItemsWithDescriptionArrayInput
-	// Name of the teams list.
+	// The items in the list.
+	Items ZeroTrustListItemArrayInput
+	// The number of items in the list.
+	ListCount pulumi.Float64PtrInput
+	// The name of the list.
 	Name pulumi.StringPtrInput
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
-	Type pulumi.StringPtrInput
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
+	Type      pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (ZeroTrustListState) ElementType() reflect.Type {
@@ -145,33 +154,29 @@ func (ZeroTrustListState) ElementType() reflect.Type {
 }
 
 type zeroTrustListArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The description of the teams list.
+	// The description of the list.
 	Description *string `pulumi:"description"`
-	// The items of the teams list.
-	Items []string `pulumi:"items"`
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions []ZeroTrustListItemsWithDescription `pulumi:"itemsWithDescriptions"`
-	// Name of the teams list.
+	// The items in the list.
+	Items []ZeroTrustListItem `pulumi:"items"`
+	// The name of the list.
 	Name string `pulumi:"name"`
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ZeroTrustList resource.
 type ZeroTrustListArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The description of the teams list.
+	// The description of the list.
 	Description pulumi.StringPtrInput
-	// The items of the teams list.
-	Items pulumi.StringArrayInput
-	// The items of the teams list that has explicit description.
-	ItemsWithDescriptions ZeroTrustListItemsWithDescriptionArrayInput
-	// Name of the teams list.
+	// The items in the list.
+	Items ZeroTrustListItemArrayInput
+	// The name of the list.
 	Name pulumi.StringInput
-	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+	// The type of list.
+	// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 	Type pulumi.StringInput
 }
 
@@ -262,34 +267,42 @@ func (o ZeroTrustListOutput) ToZeroTrustListOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o ZeroTrustListOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The description of the teams list.
+func (o ZeroTrustListOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the list.
 func (o ZeroTrustListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The items of the teams list.
-func (o ZeroTrustListOutput) Items() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringArrayOutput { return v.Items }).(pulumi.StringArrayOutput)
+// The items in the list.
+func (o ZeroTrustListOutput) Items() ZeroTrustListItemArrayOutput {
+	return o.ApplyT(func(v *ZeroTrustList) ZeroTrustListItemArrayOutput { return v.Items }).(ZeroTrustListItemArrayOutput)
 }
 
-// The items of the teams list that has explicit description.
-func (o ZeroTrustListOutput) ItemsWithDescriptions() ZeroTrustListItemsWithDescriptionArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustList) ZeroTrustListItemsWithDescriptionArrayOutput { return v.ItemsWithDescriptions }).(ZeroTrustListItemsWithDescriptionArrayOutput)
+// The number of items in the list.
+func (o ZeroTrustListOutput) ListCount() pulumi.Float64Output {
+	return o.ApplyT(func(v *ZeroTrustList) pulumi.Float64Output { return v.ListCount }).(pulumi.Float64Output)
 }
 
-// Name of the teams list.
+// The name of the list.
 func (o ZeroTrustListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+// The type of list.
+// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
 func (o ZeroTrustListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o ZeroTrustListOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustList) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type ZeroTrustListArrayOutput struct{ *pulumi.OutputState }

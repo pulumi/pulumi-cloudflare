@@ -8,35 +8,28 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class EmailRoutingRuleAction {
     /**
-     * @return Type of action. Available values: `forward`, `worker`, `drop`
+     * @return Type of supported action.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     private String type;
-    /**
-     * @return Value to match on. Required for `type` of `literal`.
-     * 
-     */
-    private @Nullable List<String> values;
+    private List<String> values;
 
     private EmailRoutingRuleAction() {}
     /**
-     * @return Type of action. Available values: `forward`, `worker`, `drop`
+     * @return Type of supported action.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     public String type() {
         return this.type;
     }
-    /**
-     * @return Value to match on. Required for `type` of `literal`.
-     * 
-     */
     public List<String> values() {
-        return this.values == null ? List.of() : this.values;
+        return this.values;
     }
 
     public static Builder builder() {
@@ -49,7 +42,7 @@ public final class EmailRoutingRuleAction {
     @CustomType.Builder
     public static final class Builder {
         private String type;
-        private @Nullable List<String> values;
+        private List<String> values;
         public Builder() {}
         public Builder(EmailRoutingRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
@@ -66,8 +59,10 @@ public final class EmailRoutingRuleAction {
             return this;
         }
         @CustomType.Setter
-        public Builder values(@Nullable List<String> values) {
-
+        public Builder values(List<String> values) {
+            if (values == null) {
+              throw new MissingRequiredPropertyException("EmailRoutingRuleAction", "values");
+            }
             this.values = values;
             return this;
         }

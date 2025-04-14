@@ -7,7 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Risk Behavior](https://developers.cloudflare.com/cloudflare-one/insights/risk-score/) resource allows you to configure Cloudflare Risk Behaviors for an account.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustRiskBehavior = new cloudflare.ZeroTrustRiskBehavior("example_zero_trust_risk_behavior", {
+ *     accountId: "account_id",
+ *     behaviors: {
+ *         foo: {
+ *             enabled: true,
+ *             riskLevel: "low",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * @deprecated cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior
  */
 export class RiskBehavior extends pulumi.CustomResource {
     /**
@@ -20,6 +37,7 @@ export class RiskBehavior extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RiskBehaviorState, opts?: pulumi.CustomResourceOptions): RiskBehavior {
+        pulumi.log.warn("RiskBehavior is deprecated: cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior")
         return new RiskBehavior(name, <any>state, { ...opts, id: id });
     }
 
@@ -37,14 +55,8 @@ export class RiskBehavior extends pulumi.CustomResource {
         return obj['__pulumiType'] === RiskBehavior.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
-    /**
-     * Zero Trust risk behaviors configured on this account
-     */
-    public readonly behaviors!: pulumi.Output<outputs.RiskBehaviorBehavior[] | undefined>;
+    public readonly behaviors!: pulumi.Output<{[key: string]: outputs.RiskBehaviorBehaviors}>;
 
     /**
      * Create a RiskBehavior resource with the given unique name, arguments, and options.
@@ -53,8 +65,11 @@ export class RiskBehavior extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior */
     constructor(name: string, args: RiskBehaviorArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior */
     constructor(name: string, argsOrState?: RiskBehaviorArgs | RiskBehaviorState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("RiskBehavior is deprecated: cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -66,10 +81,15 @@ export class RiskBehavior extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.behaviors === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'behaviors'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["behaviors"] = args ? args.behaviors : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/riskBehavior:RiskBehavior" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RiskBehavior.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -78,26 +98,14 @@ export class RiskBehavior extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RiskBehavior resources.
  */
 export interface RiskBehaviorState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
-    /**
-     * Zero Trust risk behaviors configured on this account
-     */
-    behaviors?: pulumi.Input<pulumi.Input<inputs.RiskBehaviorBehavior>[]>;
+    behaviors?: pulumi.Input<{[key: string]: pulumi.Input<inputs.RiskBehaviorBehaviors>}>;
 }
 
 /**
  * The set of arguments for constructing a RiskBehavior resource.
  */
 export interface RiskBehaviorArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
-    /**
-     * Zero Trust risk behaviors configured on this account
-     */
-    behaviors?: pulumi.Input<pulumi.Input<inputs.RiskBehaviorBehavior>[]>;
+    behaviors: pulumi.Input<{[key: string]: pulumi.Input<inputs.RiskBehaviorBehaviors>}>;
 }

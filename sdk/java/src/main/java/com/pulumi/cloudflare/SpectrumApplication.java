@@ -9,23 +9,18 @@ import com.pulumi.cloudflare.inputs.SpectrumApplicationState;
 import com.pulumi.cloudflare.outputs.SpectrumApplicationDns;
 import com.pulumi.cloudflare.outputs.SpectrumApplicationEdgeIps;
 import com.pulumi.cloudflare.outputs.SpectrumApplicationOriginDns;
-import com.pulumi.cloudflare.outputs.SpectrumApplicationOriginPortRange;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Spectrum Application. You can extend the power
- * of Cloudflare&#39;s DDoS, TLS, and IP Firewall to your other TCP-based
- * services.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -40,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.SpectrumApplicationArgs;
  * import com.pulumi.cloudflare.inputs.SpectrumApplicationDnsArgs;
  * import com.pulumi.cloudflare.inputs.SpectrumApplicationEdgeIpsArgs;
+ * import com.pulumi.cloudflare.inputs.SpectrumApplicationOriginDnsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,21 +49,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new SpectrumApplication("example", SpectrumApplicationArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .protocol("tcp/22")
- *             .trafficType("direct")
+ *         var exampleSpectrumApplication = new SpectrumApplication("exampleSpectrumApplication", SpectrumApplicationArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .dns(SpectrumApplicationDnsArgs.builder()
- *                 .type("CNAME")
  *                 .name("ssh.example.com")
+ *                 .type("CNAME")
  *                 .build())
- *             .originDirects("tcp://192.0.2.1:22")
+ *             .ipFirewall(true)
+ *             .protocol("tcp/22")
+ *             .proxyProtocol("off")
+ *             .tls("off")
+ *             .trafficType("direct")
+ *             .argoSmartRouting(true)
  *             .edgeIps(SpectrumApplicationEdgeIpsArgs.builder()
- *                 .type("static")
- *                 .ips(                
- *                     "203.0.113.1",
- *                     "203.0.113.2")
+ *                 .connectivity("all")
+ *                 .type("dynamic")
  *                 .build())
+ *             .originDirects("tcp://127.0.0.1:8080")
+ *             .originDns(SpectrumApplicationOriginDnsArgs.builder()
+ *                 .name("origin.example.com")
+ *                 .ttl(600)
+ *                 .type("")
+ *                 .build())
+ *             .originPort(22)
  *             .build());
  * 
  *     }
@@ -79,25 +83,41 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example &lt;zone_id&gt;/&lt;spectrum_application_id&gt;
+ * $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example &#39;&lt;zone_id&gt;/&lt;app_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/spectrumApplication:SpectrumApplication")
 public class SpectrumApplication extends com.pulumi.resources.CustomResource {
     /**
-     * Enables Argo Smart Routing.
+     * Enables Argo Smart Routing for this application.
+     * Notes: Only available for TCP applications with traffic_type set to &#34;direct&#34;.
      * 
      */
     @Export(name="argoSmartRouting", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> argoSmartRouting;
 
     /**
-     * @return Enables Argo Smart Routing.
+     * @return Enables Argo Smart Routing for this application.
+     * Notes: Only available for TCP applications with traffic_type set to &#34;direct&#34;.
      * 
      */
     public Output<Boolean> argoSmartRouting() {
         return this.argoSmartRouting;
+    }
+    /**
+     * When the Application was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return When the Application was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
     }
     /**
      * The name and type of DNS record for the Spectrum application.
@@ -128,140 +148,150 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return this.edgeIps;
     }
     /**
-     * Enables the IP Firewall for this application.
+     * Enables IP Access Rules for this application.
+     * Notes: Only available for TCP applications.
      * 
      */
     @Export(name="ipFirewall", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> ipFirewall;
+    private Output</* @Nullable */ Boolean> ipFirewall;
 
     /**
-     * @return Enables the IP Firewall for this application.
+     * @return Enables IP Access Rules for this application.
+     * Notes: Only available for TCP applications.
      * 
      */
-    public Output<Boolean> ipFirewall() {
-        return this.ipFirewall;
+    public Output<Optional<Boolean>> ipFirewall() {
+        return Codegen.optional(this.ipFirewall);
     }
     /**
-     * A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
+     * When the Application was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return When the Application was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
      * 
      */
     @Export(name="originDirects", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> originDirects;
 
     /**
-     * @return A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
+     * @return List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
      * 
      */
     public Output<Optional<List<String>>> originDirects() {
         return Codegen.optional(this.originDirects);
     }
     /**
-     * A destination DNS addresses to the origin.
+     * The name and type of DNS record for the Spectrum application.
      * 
      */
     @Export(name="originDns", refs={SpectrumApplicationOriginDns.class}, tree="[0]")
-    private Output</* @Nullable */ SpectrumApplicationOriginDns> originDns;
+    private Output<SpectrumApplicationOriginDns> originDns;
 
     /**
-     * @return A destination DNS addresses to the origin.
+     * @return The name and type of DNS record for the Spectrum application.
      * 
      */
-    public Output<Optional<SpectrumApplicationOriginDns>> originDns() {
-        return Codegen.optional(this.originDns);
+    public Output<SpectrumApplicationOriginDns> originDns() {
+        return this.originDns;
     }
     /**
-     * Origin port to proxy traffice to. Conflicts with `origin_port_range`.
+     * The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `&#34;1000-2000&#34;`.
+     * Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the &#34;protocol&#34; field.
      * 
      */
-    @Export(name="originPort", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> originPort;
+    @Export(name="originPort", refs={Object.class}, tree="[0]")
+    private Output</* @Nullable */ Object> originPort;
 
     /**
-     * @return Origin port to proxy traffice to. Conflicts with `origin_port_range`.
+     * @return The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `&#34;1000-2000&#34;`.
+     * Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the &#34;protocol&#34; field.
      * 
      */
-    public Output<Optional<Integer>> originPort() {
+    public Output<Optional<Object>> originPort() {
         return Codegen.optional(this.originPort);
     }
     /**
-     * Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
-     * 
-     */
-    @Export(name="originPortRange", refs={SpectrumApplicationOriginPortRange.class}, tree="[0]")
-    private Output</* @Nullable */ SpectrumApplicationOriginPortRange> originPortRange;
-
-    /**
-     * @return Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
-     * 
-     */
-    public Output<Optional<SpectrumApplicationOriginPortRange>> originPortRange() {
-        return Codegen.optional(this.originPortRange);
-    }
-    /**
-     * The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
+     * The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return The port configuration at Cloudflare&#39;s edge. e.g. `tcp/22`.
+     * @return The port configuration at Cloudflare&#39;s edge. May specify a single port, for example `&#34;tcp/1000&#34;`, or a range of ports, for example `&#34;tcp/1000-2000&#34;`.
      * 
      */
     public Output<String> protocol() {
         return this.protocol;
     }
     /**
-     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
+     * Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: &#34;off&#34;, &#34;v1&#34;, &#34;v2&#34;, &#34;simple&#34;.
      * 
      */
     @Export(name="proxyProtocol", refs={String.class}, tree="[0]")
     private Output<String> proxyProtocol;
 
     /**
-     * @return Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
+     * @return Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
+     * Available values: &#34;off&#34;, &#34;v1&#34;, &#34;v2&#34;, &#34;simple&#34;.
      * 
      */
     public Output<String> proxyProtocol() {
         return this.proxyProtocol;
     }
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
+     * The type of TLS termination associated with the application.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
      * 
      */
     @Export(name="tls", refs={String.class}, tree="[0]")
-    private Output<String> tls;
+    private Output</* @Nullable */ String> tls;
 
     /**
-     * @return TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
+     * @return The type of TLS termination associated with the application.
+     * Available values: &#34;off&#34;, &#34;flexible&#34;, &#34;full&#34;, &#34;strict&#34;.
      * 
      */
-    public Output<String> tls() {
-        return this.tls;
+    public Output<Optional<String>> tls() {
+        return Codegen.optional(this.tls);
     }
     /**
-     * Sets application type. Available values: `direct`, `http`, `https`.
+     * Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
      * 
      */
     @Export(name="trafficType", refs={String.class}, tree="[0]")
     private Output<String> trafficType;
 
     /**
-     * @return Sets application type. Available values: `direct`, `http`, `https`.
+     * @return Determines how data travels from the edge to your origin. When set to &#34;direct&#34;, Spectrum will send traffic directly to your origin, and the application&#39;s type is derived from the `protocol`. When set to &#34;http&#34; or &#34;https&#34;, Spectrum will apply Cloudflare&#39;s HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
+     * Available values: &#34;direct&#34;, &#34;http&#34;, &#34;https&#34;.
      * 
      */
     public Output<String> trafficType() {
         return this.trafficType;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Zone identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Zone identifier.
      * 
      */
     public Output<String> zoneId() {

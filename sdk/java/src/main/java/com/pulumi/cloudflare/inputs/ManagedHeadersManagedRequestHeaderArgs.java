@@ -8,7 +8,10 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,14 +19,29 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
     public static final ManagedHeadersManagedRequestHeaderArgs Empty = new ManagedHeadersManagedRequestHeaderArgs();
 
     /**
-     * Whether the headers rule is active.
+     * The Managed Transforms that this Managed Transform conflicts with.
+     * 
+     */
+    @Import(name="conflictsWiths")
+    private @Nullable Output<List<String>> conflictsWiths;
+
+    /**
+     * @return The Managed Transforms that this Managed Transform conflicts with.
+     * 
+     */
+    public Optional<Output<List<String>>> conflictsWiths() {
+        return Optional.ofNullable(this.conflictsWiths);
+    }
+
+    /**
+     * Whether the Managed Transform is enabled.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the headers rule is active.
+     * @return Whether the Managed Transform is enabled.
      * 
      */
     public Output<Boolean> enabled() {
@@ -31,14 +49,29 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
     }
 
     /**
-     * Unique headers rule identifier.
+     * Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+     * 
+     */
+    @Import(name="hasConflict")
+    private @Nullable Output<Boolean> hasConflict;
+
+    /**
+     * @return Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+     * 
+     */
+    public Optional<Output<Boolean>> hasConflict() {
+        return Optional.ofNullable(this.hasConflict);
+    }
+
+    /**
+     * The human-readable identifier of the Managed Transform.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Unique headers rule identifier.
+     * @return The human-readable identifier of the Managed Transform.
      * 
      */
     public Output<String> id() {
@@ -48,7 +81,9 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
     private ManagedHeadersManagedRequestHeaderArgs() {}
 
     private ManagedHeadersManagedRequestHeaderArgs(ManagedHeadersManagedRequestHeaderArgs $) {
+        this.conflictsWiths = $.conflictsWiths;
         this.enabled = $.enabled;
+        this.hasConflict = $.hasConflict;
         this.id = $.id;
     }
 
@@ -71,7 +106,38 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
         }
 
         /**
-         * @param enabled Whether the headers rule is active.
+         * @param conflictsWiths The Managed Transforms that this Managed Transform conflicts with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conflictsWiths(@Nullable Output<List<String>> conflictsWiths) {
+            $.conflictsWiths = conflictsWiths;
+            return this;
+        }
+
+        /**
+         * @param conflictsWiths The Managed Transforms that this Managed Transform conflicts with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conflictsWiths(List<String> conflictsWiths) {
+            return conflictsWiths(Output.of(conflictsWiths));
+        }
+
+        /**
+         * @param conflictsWiths The Managed Transforms that this Managed Transform conflicts with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conflictsWiths(String... conflictsWiths) {
+            return conflictsWiths(List.of(conflictsWiths));
+        }
+
+        /**
+         * @param enabled Whether the Managed Transform is enabled.
          * 
          * @return builder
          * 
@@ -82,7 +148,7 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
         }
 
         /**
-         * @param enabled Whether the headers rule is active.
+         * @param enabled Whether the Managed Transform is enabled.
          * 
          * @return builder
          * 
@@ -92,7 +158,28 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
         }
 
         /**
-         * @param id Unique headers rule identifier.
+         * @param hasConflict Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasConflict(@Nullable Output<Boolean> hasConflict) {
+            $.hasConflict = hasConflict;
+            return this;
+        }
+
+        /**
+         * @param hasConflict Whether the Managed Transform conflicts with the currently-enabled Managed Transforms.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasConflict(Boolean hasConflict) {
+            return hasConflict(Output.of(hasConflict));
+        }
+
+        /**
+         * @param id The human-readable identifier of the Managed Transform.
          * 
          * @return builder
          * 
@@ -103,7 +190,7 @@ public final class ManagedHeadersManagedRequestHeaderArgs extends com.pulumi.res
         }
 
         /**
-         * @param id Unique headers rule identifier.
+         * @param id The human-readable identifier of the Managed Transform.
          * 
          * @return builder
          * 

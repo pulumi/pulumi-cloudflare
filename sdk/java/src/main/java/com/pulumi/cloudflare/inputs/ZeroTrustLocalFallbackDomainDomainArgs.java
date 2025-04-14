@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -50,15 +51,15 @@ public final class ZeroTrustLocalFallbackDomainDomainArgs extends com.pulumi.res
      * The domain suffix to match when resolving locally.
      * 
      */
-    @Import(name="suffix")
-    private @Nullable Output<String> suffix;
+    @Import(name="suffix", required=true)
+    private Output<String> suffix;
 
     /**
      * @return The domain suffix to match when resolving locally.
      * 
      */
-    public Optional<Output<String>> suffix() {
-        return Optional.ofNullable(this.suffix);
+    public Output<String> suffix() {
+        return this.suffix;
     }
 
     private ZeroTrustLocalFallbackDomainDomainArgs() {}
@@ -145,7 +146,7 @@ public final class ZeroTrustLocalFallbackDomainDomainArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder suffix(@Nullable Output<String> suffix) {
+        public Builder suffix(Output<String> suffix) {
             $.suffix = suffix;
             return this;
         }
@@ -161,6 +162,9 @@ public final class ZeroTrustLocalFallbackDomainDomainArgs extends com.pulumi.res
         }
 
         public ZeroTrustLocalFallbackDomainDomainArgs build() {
+            if ($.suffix == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustLocalFallbackDomainDomainArgs", "suffix");
+            }
             return $;
         }
     }

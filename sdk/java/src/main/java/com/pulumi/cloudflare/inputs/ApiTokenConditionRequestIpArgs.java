@@ -17,14 +17,14 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
     public static final ApiTokenConditionRequestIpArgs Empty = new ApiTokenConditionRequestIpArgs();
 
     /**
-     * List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+     * List of IPv4/IPv6 CIDR addresses.
      * 
      */
     @Import(name="ins")
     private @Nullable Output<List<String>> ins;
 
     /**
-     * @return List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+     * @return List of IPv4/IPv6 CIDR addresses.
      * 
      */
     public Optional<Output<List<String>>> ins() {
@@ -32,14 +32,14 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
     }
 
     /**
-     * List of IP addresses or CIDR notation where the token should not be used from.
+     * List of IPv4/IPv6 CIDR addresses.
      * 
      */
     @Import(name="notIns")
     private @Nullable Output<List<String>> notIns;
 
     /**
-     * @return List of IP addresses or CIDR notation where the token should not be used from.
+     * @return List of IPv4/IPv6 CIDR addresses.
      * 
      */
     public Optional<Output<List<String>>> notIns() {
@@ -72,7 +72,7 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ins List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+         * @param ins List of IPv4/IPv6 CIDR addresses.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ins List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+         * @param ins List of IPv4/IPv6 CIDR addresses.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param ins List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+         * @param ins List of IPv4/IPv6 CIDR addresses.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param notIns List of IP addresses or CIDR notation where the token should not be used from.
+         * @param notIns List of IPv4/IPv6 CIDR addresses.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param notIns List of IP addresses or CIDR notation where the token should not be used from.
+         * @param notIns List of IPv4/IPv6 CIDR addresses.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param notIns List of IP addresses or CIDR notation where the token should not be used from.
+         * @param notIns List of IPv4/IPv6 CIDR addresses.
          * 
          * @return builder
          * 

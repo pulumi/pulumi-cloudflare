@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Web Analytics Rule resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,33 +19,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := cloudflare.NewWebAnalyticsSite(ctx, "example", &cloudflare.WebAnalyticsSiteArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ZoneTag:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				AutoInstall: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWebAnalyticsRule(ctx, "example", &cloudflare.WebAnalyticsRuleArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				RulesetId: example.RulesetId,
-//				Host:      pulumi.String("*"),
-//				Paths: pulumi.StringArray{
-//					pulumi.String("/excluded"),
-//				},
-//				Inclusive: pulumi.Bool(false),
+//			_, err := cloudflare.NewWebAnalyticsRule(ctx, "example_web_analytics_rule", &cloudflare.WebAnalyticsRuleArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				RulesetId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				Host:      pulumi.String("example.com"),
+//				Inclusive: pulumi.Bool(true),
 //				IsPaused:  pulumi.Bool(false),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				example,
-//			}))
+//				Paths: pulumi.StringArray{
+//					pulumi.String("*"),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -56,26 +44,20 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example <account_id>/<ruleset_id>/<rule_id>
-// ```
 type WebAnalyticsRule struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The host to apply the rule to.
-	Host pulumi.StringOutput `pulumi:"host"`
-	// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
-	Inclusive pulumi.BoolOutput `pulumi:"inclusive"`
+	// Identifier
+	AccountId pulumi.StringOutput    `pulumi:"accountId"`
+	Created   pulumi.StringOutput    `pulumi:"created"`
+	Host      pulumi.StringPtrOutput `pulumi:"host"`
+	// Whether the rule includes or excludes traffic from being measured.
+	Inclusive pulumi.BoolPtrOutput `pulumi:"inclusive"`
 	// Whether the rule is paused or not.
-	IsPaused pulumi.BoolOutput `pulumi:"isPaused"`
-	// A list of paths to apply the rule to.
-	Paths pulumi.StringArrayOutput `pulumi:"paths"`
-	// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+	IsPaused pulumi.BoolPtrOutput     `pulumi:"isPaused"`
+	Paths    pulumi.StringArrayOutput `pulumi:"paths"`
+	Priority pulumi.Float64Output     `pulumi:"priority"`
+	// The Web Analytics ruleset identifier.
 	RulesetId pulumi.StringOutput `pulumi:"rulesetId"`
 }
 
@@ -88,18 +70,6 @@ func NewWebAnalyticsRule(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.Host == nil {
-		return nil, errors.New("invalid value for required argument 'Host'")
-	}
-	if args.Inclusive == nil {
-		return nil, errors.New("invalid value for required argument 'Inclusive'")
-	}
-	if args.IsPaused == nil {
-		return nil, errors.New("invalid value for required argument 'IsPaused'")
-	}
-	if args.Paths == nil {
-		return nil, errors.New("invalid value for required argument 'Paths'")
 	}
 	if args.RulesetId == nil {
 		return nil, errors.New("invalid value for required argument 'RulesetId'")
@@ -127,32 +97,32 @@ func GetWebAnalyticsRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebAnalyticsRule resources.
 type webAnalyticsRuleState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// The host to apply the rule to.
-	Host *string `pulumi:"host"`
-	// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+	Created   *string `pulumi:"created"`
+	Host      *string `pulumi:"host"`
+	// Whether the rule includes or excludes traffic from being measured.
 	Inclusive *bool `pulumi:"inclusive"`
 	// Whether the rule is paused or not.
-	IsPaused *bool `pulumi:"isPaused"`
-	// A list of paths to apply the rule to.
-	Paths []string `pulumi:"paths"`
-	// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+	IsPaused *bool    `pulumi:"isPaused"`
+	Paths    []string `pulumi:"paths"`
+	Priority *float64 `pulumi:"priority"`
+	// The Web Analytics ruleset identifier.
 	RulesetId *string `pulumi:"rulesetId"`
 }
 
 type WebAnalyticsRuleState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// The host to apply the rule to.
-	Host pulumi.StringPtrInput
-	// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+	Created   pulumi.StringPtrInput
+	Host      pulumi.StringPtrInput
+	// Whether the rule includes or excludes traffic from being measured.
 	Inclusive pulumi.BoolPtrInput
 	// Whether the rule is paused or not.
 	IsPaused pulumi.BoolPtrInput
-	// A list of paths to apply the rule to.
-	Paths pulumi.StringArrayInput
-	// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+	Paths    pulumi.StringArrayInput
+	Priority pulumi.Float64PtrInput
+	// The Web Analytics ruleset identifier.
 	RulesetId pulumi.StringPtrInput
 }
 
@@ -161,33 +131,29 @@ func (WebAnalyticsRuleState) ElementType() reflect.Type {
 }
 
 type webAnalyticsRuleArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId string `pulumi:"accountId"`
-	// The host to apply the rule to.
-	Host string `pulumi:"host"`
-	// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
-	Inclusive bool `pulumi:"inclusive"`
+	// Identifier
+	AccountId string  `pulumi:"accountId"`
+	Host      *string `pulumi:"host"`
+	// Whether the rule includes or excludes traffic from being measured.
+	Inclusive *bool `pulumi:"inclusive"`
 	// Whether the rule is paused or not.
-	IsPaused bool `pulumi:"isPaused"`
-	// A list of paths to apply the rule to.
-	Paths []string `pulumi:"paths"`
-	// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+	IsPaused *bool    `pulumi:"isPaused"`
+	Paths    []string `pulumi:"paths"`
+	// The Web Analytics ruleset identifier.
 	RulesetId string `pulumi:"rulesetId"`
 }
 
 // The set of arguments for constructing a WebAnalyticsRule resource.
 type WebAnalyticsRuleArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringInput
-	// The host to apply the rule to.
-	Host pulumi.StringInput
-	// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
-	Inclusive pulumi.BoolInput
+	Host      pulumi.StringPtrInput
+	// Whether the rule includes or excludes traffic from being measured.
+	Inclusive pulumi.BoolPtrInput
 	// Whether the rule is paused or not.
-	IsPaused pulumi.BoolInput
-	// A list of paths to apply the rule to.
-	Paths pulumi.StringArrayInput
-	// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+	IsPaused pulumi.BoolPtrInput
+	Paths    pulumi.StringArrayInput
+	// The Web Analytics ruleset identifier.
 	RulesetId pulumi.StringInput
 }
 
@@ -278,32 +244,38 @@ func (o WebAnalyticsRuleOutput) ToWebAnalyticsRuleOutputWithContext(ctx context.
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o WebAnalyticsRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The host to apply the rule to.
-func (o WebAnalyticsRuleOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+func (o WebAnalyticsRuleOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
-func (o WebAnalyticsRuleOutput) Inclusive() pulumi.BoolOutput {
-	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.BoolOutput { return v.Inclusive }).(pulumi.BoolOutput)
+func (o WebAnalyticsRuleOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Whether the rule includes or excludes traffic from being measured.
+func (o WebAnalyticsRuleOutput) Inclusive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.BoolPtrOutput { return v.Inclusive }).(pulumi.BoolPtrOutput)
 }
 
 // Whether the rule is paused or not.
-func (o WebAnalyticsRuleOutput) IsPaused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.BoolOutput { return v.IsPaused }).(pulumi.BoolOutput)
+func (o WebAnalyticsRuleOutput) IsPaused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.BoolPtrOutput { return v.IsPaused }).(pulumi.BoolPtrOutput)
 }
 
-// A list of paths to apply the rule to.
 func (o WebAnalyticsRuleOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.StringArrayOutput { return v.Paths }).(pulumi.StringArrayOutput)
 }
 
-// The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+func (o WebAnalyticsRuleOutput) Priority() pulumi.Float64Output {
+	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.Float64Output { return v.Priority }).(pulumi.Float64Output)
+}
+
+// The Web Analytics ruleset identifier.
 func (o WebAnalyticsRuleOutput) RulesetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.StringOutput { return v.RulesetId }).(pulumi.StringOutput)
 }

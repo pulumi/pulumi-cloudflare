@@ -23,12 +23,15 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
-	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v5"
+	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v6"
 )
 
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
 func main() {
-	tfbridge.MainWithMuxer(context.Background(), "cloudflare", cloudflare.Provider(), pulumiSchema)
+	meta := tfbridge.ProviderMetadata{
+		PackageSchema: pulumiSchema,
+	}
+	tfbridge.Main(context.Background(), "cloudflare", cloudflare.Provider(), meta)
 }

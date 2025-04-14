@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class HyperdriveConfigCaching
     {
         /// <summary>
-        /// Disable caching for this Hyperdrive configuration.
+        /// When set to true, disables the caching of SQL responses. (Default: false)
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Configure the `max_age` value of this Hyperdrive configuration.
+        /// When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
         /// </summary>
         public readonly int? MaxAge;
         /// <summary>
-        /// Disable caching for this Hyperdrive configuration.
+        /// When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
         /// </summary>
         public readonly int? StaleWhileRevalidate;
 

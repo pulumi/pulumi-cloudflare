@@ -12,35 +12,20 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PageRuleActionsCacheKeyFieldsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Controls what cookies go into Cache Key:
-        /// </summary>
         [Input("cookie")]
         public Input<Inputs.PageRuleActionsCacheKeyFieldsCookieArgs>? Cookie { get; set; }
 
-        /// <summary>
-        /// Controls what HTTP headers go into Cache Key:
-        /// </summary>
         [Input("header")]
         public Input<Inputs.PageRuleActionsCacheKeyFieldsHeaderArgs>? Header { get; set; }
 
-        /// <summary>
-        /// Controls which Host header goes into Cache Key:
-        /// </summary>
-        [Input("host", required: true)]
-        public Input<Inputs.PageRuleActionsCacheKeyFieldsHostArgs> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsHostArgs>? Host { get; set; }
 
-        /// <summary>
-        /// Controls which URL query string parameters go into the Cache Key.
-        /// </summary>
-        [Input("queryString", required: true)]
-        public Input<Inputs.PageRuleActionsCacheKeyFieldsQueryStringArgs> QueryString { get; set; } = null!;
+        [Input("queryString")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsQueryStringArgs>? QueryString { get; set; }
 
-        /// <summary>
-        /// Controls which end user-related features go into the Cache Key.
-        /// </summary>
-        [Input("user", required: true)]
-        public Input<Inputs.PageRuleActionsCacheKeyFieldsUserArgs> User { get; set; } = null!;
+        [Input("user")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsUserArgs>? User { get; set; }
 
         public PageRuleActionsCacheKeyFieldsArgs()
         {

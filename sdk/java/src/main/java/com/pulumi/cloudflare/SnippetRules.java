@@ -11,40 +11,75 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/snippetRules:SnippetRules")
 public class SnippetRules extends com.pulumi.resources.CustomResource {
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    public Output<String> description() {
+        return this.description;
+    }
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+    @Export(name="expression", refs={String.class}, tree="[0]")
+    private Output<String> expression;
+
+    public Output<String> expression() {
+        return this.expression;
+    }
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      * 
      */
     @Export(name="rules", refs={List.class,SnippetRulesRule.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<SnippetRulesRule>> rules;
+    private Output<List<SnippetRulesRule>> rules;
 
     /**
-     * @return List of Snippet Rules
+     * @return List of snippet rules
      * 
      */
-    public Output<Optional<List<SnippetRulesRule>>> rules() {
-        return Codegen.optional(this.rules);
+    public Output<List<SnippetRulesRule>> rules() {
+        return this.rules;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Snippet identifying name
+     * 
+     */
+    @Export(name="snippetName", refs={String.class}, tree="[0]")
+    private Output<String> snippetName;
+
+    /**
+     * @return Snippet identifying name
+     * 
+     */
+    public Output<String> snippetName() {
+        return this.snippetName;
+    }
+    /**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

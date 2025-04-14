@@ -32,14 +32,14 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
     }
 
     /**
-     * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+     * State of the zone settings for Email Routing.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+     * @return State of the zone settings for Email Routing.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -93,6 +93,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
 
     /**
      * Show the state of your account, and the type or configuration error.
+     * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
      * 
      */
     @Import(name="status")
@@ -100,6 +101,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
 
     /**
      * @return Show the state of your account, and the type or configuration error.
+     * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -107,14 +109,14 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Email Routing settings identifier.
+     * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
-     * @return Email Routing settings identifier.
+     * @return Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      * 
      */
     public Optional<Output<String>> tag() {
@@ -122,14 +124,14 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -189,7 +191,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+         * @param enabled State of the zone settings for Email Routing.
          * 
          * @return builder
          * 
@@ -200,7 +202,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+         * @param enabled State of the zone settings for Email Routing.
          * 
          * @return builder
          * 
@@ -274,6 +276,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
 
         /**
          * @param status Show the state of your account, and the type or configuration error.
+         * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
          * 
          * @return builder
          * 
@@ -285,6 +288,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
 
         /**
          * @param status Show the state of your account, and the type or configuration error.
+         * Available values: &#34;ready&#34;, &#34;unconfigured&#34;, &#34;misconfigured&#34;, &#34;misconfigured/locked&#34;, &#34;unlocked&#34;.
          * 
          * @return builder
          * 
@@ -294,7 +298,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tag Email Routing settings identifier.
+         * @param tag Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
          * 
          * @return builder
          * 
@@ -305,7 +309,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tag Email Routing settings identifier.
+         * @param tag Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
          * 
          * @return builder
          * 
@@ -315,7 +319,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -326,7 +330,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

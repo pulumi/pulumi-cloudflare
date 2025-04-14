@@ -12,19 +12,91 @@ namespace Pulumi.Cloudflare
     public static class GetZones
     {
         /// <summary>
-        /// Use this data source to look up Zone results for use in other resources.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZones = Cloudflare.GetZones.Invoke(new()
+        ///     {
+        ///         Account = new Cloudflare.Inputs.GetZonesAccountInputArgs
+        ///         {
+        ///             Id = "id",
+        ///             Name = "name",
+        ///         },
+        ///         Direction = "asc",
+        ///         Name = "name",
+        ///         Order = "name",
+        ///         Status = "initializing",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetZonesResult> InvokeAsync(GetZonesArgs args, InvokeOptions? options = null)
+        public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to look up Zone results for use in other resources.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZones = Cloudflare.GetZones.Invoke(new()
+        ///     {
+        ///         Account = new Cloudflare.Inputs.GetZonesAccountInputArgs
+        ///         {
+        ///             Id = "id",
+        ///             Name = "name",
+        ///         },
+        ///         Direction = "asc",
+        ///         Name = "name",
+        ///         Order = "name",
+        ///         Status = "initializing",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to look up Zone results for use in other resources.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZones = Cloudflare.GetZones.Invoke(new()
+        ///     {
+        ///         Account = new Cloudflare.Inputs.GetZonesAccountInputArgs
+        ///         {
+        ///             Id = "id",
+        ///             Name = "name",
+        ///         },
+        ///         Direction = "asc",
+        ///         Name = "name",
+        ///         Order = "name",
+        ///         Status = "initializing",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
@@ -33,11 +105,26 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZonesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-        /// </summary>
-        [Input("filter", required: true)]
-        public Inputs.GetZonesFilterArgs Filter { get; set; } = null!;
+        [Input("account")]
+        public Inputs.GetZonesAccountArgs? Account { get; set; }
+
+        [Input("direction")]
+        public string? Direction { get; set; }
+
+        [Input("match")]
+        public string? Match { get; set; }
+
+        [Input("maxItems")]
+        public int? MaxItems { get; set; }
+
+        [Input("name")]
+        public string? Name { get; set; }
+
+        [Input("order")]
+        public string? Order { get; set; }
+
+        [Input("status")]
+        public string? Status { get; set; }
 
         public GetZonesArgs()
         {
@@ -47,11 +134,26 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-        /// </summary>
-        [Input("filter", required: true)]
-        public Input<Inputs.GetZonesFilterInputArgs> Filter { get; set; } = null!;
+        [Input("account")]
+        public Input<Inputs.GetZonesAccountInputArgs>? Account { get; set; }
+
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
+        [Input("match")]
+        public Input<string>? Match { get; set; }
+
+        [Input("maxItems")]
+        public Input<int>? MaxItems { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        [Input("order")]
+        public Input<string>? Order { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public GetZonesInvokeArgs()
         {
@@ -63,30 +165,48 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZonesResult
     {
-        /// <summary>
-        /// One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
-        /// </summary>
-        public readonly Outputs.GetZonesFilterResult Filter;
+        public readonly Outputs.GetZonesAccountResult? Account;
+        public readonly string? Direction;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of zone objects.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
+        public readonly string Match;
+        public readonly int? MaxItems;
+        public readonly string? Name;
+        public readonly string? Order;
+        public readonly ImmutableArray<Outputs.GetZonesResultResult> Results;
+        public readonly string? Status;
 
         [OutputConstructor]
         private GetZonesResult(
-            Outputs.GetZonesFilterResult filter,
+            Outputs.GetZonesAccountResult? account,
+
+            string? direction,
 
             string id,
 
-            ImmutableArray<Outputs.GetZonesZoneResult> zones)
+            string match,
+
+            int? maxItems,
+
+            string? name,
+
+            string? order,
+
+            ImmutableArray<Outputs.GetZonesResultResult> results,
+
+            string? status)
         {
-            Filter = filter;
+            Account = account;
+            Direction = direction;
             Id = id;
-            Zones = zones;
+            Match = match;
+            MaxItems = maxItems;
+            Name = name;
+            Order = order;
+            Results = results;
+            Status = status;
         }
     }
 }

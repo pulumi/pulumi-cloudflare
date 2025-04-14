@@ -13,22 +13,24 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class EmailRoutingRuleMatcherGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field to match on. Required for `type` of `literal`.
+        /// Field for type matcher.
+        /// Available values: "to".
         /// </summary>
-        [Input("field")]
-        public Input<string>? Field { get; set; }
+        [Input("field", required: true)]
+        public Input<string> Field { get; set; } = null!;
 
         /// <summary>
-        /// Type of matcher. Available values: `literal`, `all`
+        /// Type of matcher.
+        /// Available values: "literal".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// Value to match on. Required for `type` of `literal`.
+        /// Value for matcher.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public EmailRoutingRuleMatcherGetArgs()
         {

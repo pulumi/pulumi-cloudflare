@@ -14,25 +14,25 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersResponse
     {
         /// <summary>
-        /// Body content to include in the response.
+        /// The content to return.
         /// </summary>
-        public readonly string? Content;
+        public readonly string Content;
         /// <summary>
-        /// HTTP content type to send in the response.
+        /// The type of the content to return.
         /// </summary>
-        public readonly string? ContentType;
+        public readonly string ContentType;
         /// <summary>
-        /// HTTP status code to send in the response.
+        /// The status code to return.
         /// </summary>
-        public readonly int? StatusCode;
+        public readonly int StatusCode;
 
         [OutputConstructor]
         private RulesetRuleActionParametersResponse(
-            string? content,
+            string content,
 
-            string? contentType,
+            string contentType,
 
-            int? statusCode)
+            int statusCode)
         {
             Content = content;
             ContentType = contentType;

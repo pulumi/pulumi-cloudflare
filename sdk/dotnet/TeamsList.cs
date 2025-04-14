@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams List resource. Teams lists are
-    /// referenced when creating secure web gateway policies or device
-    /// posture rules.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -24,17 +20,19 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.TeamsList("example", new()
+    ///     var exampleZeroTrustList = new Cloudflare.ZeroTrustList("example_zero_trust_list", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "Corporate devices",
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Name = "Admin Serial Numbers",
     ///         Type = "SERIAL",
-    ///         Description = "Serial numbers for all corporate devices.",
+    ///         Description = "The serial numbers for administrators",
     ///         Items = new[]
     ///         {
-    ///             "8GE8721REF",
-    ///             "5RE8543EGG",
-    ///             "1YE2880LNP",
+    ///             new Cloudflare.Inputs.ZeroTrustListItemArgs
+    ///             {
+    ///                 Description = "Austin office IP",
+    ///                 Value = "8GE8721REF",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -44,47 +42,52 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/teamsList:TeamsList example &lt;account_id&gt;/&lt;teams_list_id&gt;
+    /// $ pulumi import cloudflare:index/teamsList:TeamsList example '&lt;account_id&gt;/&lt;list_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/teamslist.TeamsList has been deprecated in favor of cloudflare.index/zerotrustlist.ZeroTrustList")]
     [CloudflareResourceType("cloudflare:index/teamsList:TeamsList")]
     public partial class TeamsList : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// The description of the teams list.
+        /// The description of the list.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The items of the teams list.
+        /// The items in the list.
         /// </summary>
         [Output("items")]
-        public Output<ImmutableArray<string>> Items { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.TeamsListItem>> Items { get; private set; } = null!;
 
         /// <summary>
-        /// The items of the teams list that has explicit description.
+        /// The number of items in the list.
         /// </summary>
-        [Output("itemsWithDescriptions")]
-        public Output<ImmutableArray<Outputs.TeamsListItemsWithDescription>> ItemsWithDescriptions { get; private set; } = null!;
+        [Output("listCount")]
+        public Output<double> ListCount { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the teams list.
+        /// The name of the list.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        /// The type of list.
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -109,6 +112,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsList:TeamsList" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -132,50 +139,36 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsListArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the teams list.
+        /// The description of the list.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("items")]
-        private InputList<string>? _items;
+        private InputList<Inputs.TeamsListItemArgs>? _items;
 
         /// <summary>
-        /// The items of the teams list.
+        /// The items in the list.
         /// </summary>
-        public InputList<string> Items
+        public InputList<Inputs.TeamsListItemArgs> Items
         {
-            get => _items ?? (_items = new InputList<string>());
+            get => _items ?? (_items = new InputList<Inputs.TeamsListItemArgs>());
             set => _items = value;
         }
 
-        [Input("itemsWithDescriptions")]
-        private InputList<Inputs.TeamsListItemsWithDescriptionArgs>? _itemsWithDescriptions;
-
         /// <summary>
-        /// The items of the teams list that has explicit description.
-        /// </summary>
-        public InputList<Inputs.TeamsListItemsWithDescriptionArgs> ItemsWithDescriptions
-        {
-            get => _itemsWithDescriptions ?? (_itemsWithDescriptions = new InputList<Inputs.TeamsListItemsWithDescriptionArgs>());
-            set => _itemsWithDescriptions = value;
-        }
-
-        /// <summary>
-        /// Name of the teams list.
+        /// The name of the list.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        /// The type of list.
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -188,53 +181,51 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsListState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
-        /// The description of the teams list.
+        /// The description of the list.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("items")]
-        private InputList<string>? _items;
+        private InputList<Inputs.TeamsListItemGetArgs>? _items;
 
         /// <summary>
-        /// The items of the teams list.
+        /// The items in the list.
         /// </summary>
-        public InputList<string> Items
+        public InputList<Inputs.TeamsListItemGetArgs> Items
         {
-            get => _items ?? (_items = new InputList<string>());
+            get => _items ?? (_items = new InputList<Inputs.TeamsListItemGetArgs>());
             set => _items = value;
         }
 
-        [Input("itemsWithDescriptions")]
-        private InputList<Inputs.TeamsListItemsWithDescriptionGetArgs>? _itemsWithDescriptions;
-
         /// <summary>
-        /// The items of the teams list that has explicit description.
+        /// The number of items in the list.
         /// </summary>
-        public InputList<Inputs.TeamsListItemsWithDescriptionGetArgs> ItemsWithDescriptions
-        {
-            get => _itemsWithDescriptions ?? (_itemsWithDescriptions = new InputList<Inputs.TeamsListItemsWithDescriptionGetArgs>());
-            set => _itemsWithDescriptions = value;
-        }
+        [Input("listCount")]
+        public Input<double>? ListCount { get; set; }
 
         /// <summary>
-        /// Name of the teams list.
+        /// The name of the list.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
+        /// The type of list.
+        /// Available values: "SERIAL", "URL", "DOMAIN", "EMAIL", "IP".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public TeamsListState()
         {

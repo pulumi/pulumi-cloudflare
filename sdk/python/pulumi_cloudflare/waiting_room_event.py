@@ -37,21 +37,20 @@ class WaitingRoomEventArgs:
                  total_active_users: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a WaitingRoomEvent resource.
-        :param pulumi.Input[builtins.str] event_end_time: ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[builtins.str] description: A description to let users add more details about the event.
-        :param pulumi.Input[builtins.bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[builtins.int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[builtins.str] prequeue_start_time: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
-        :param pulumi.Input[builtins.str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
-        :param pulumi.Input[builtins.int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
-        :param pulumi.Input[builtins.bool] shuffle_at_event_start: Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
-        :param pulumi.Input[builtins.bool] suspended: If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
-        :param pulumi.Input[builtins.int] total_active_users: The total number of active user sessions on the route at a point in time.
+        :param pulumi.Input[builtins.str] event_end_time: An ISO 8601 timestamp that marks the end of the event.
+        :param pulumi.Input[builtins.str] event_start_time: An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
+        :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] custom_page_html: If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.str] description: A note that you can use to add more details about the event.
+        :param pulumi.Input[builtins.bool] disable_session_renewal: If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.int] new_users_per_minute: If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
+        :param pulumi.Input[builtins.str] prequeue_start_time: An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+        :param pulumi.Input[builtins.str] queueing_method: If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.int] session_duration: If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.bool] shuffle_at_event_start: If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+        :param pulumi.Input[builtins.bool] suspended: Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
+        :param pulumi.Input[builtins.int] total_active_users: If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
         """
         pulumi.set(__self__, "event_end_time", event_end_time)
         pulumi.set(__self__, "event_start_time", event_start_time)
@@ -83,7 +82,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="eventEndTime")
     def event_end_time(self) -> pulumi.Input[builtins.str]:
         """
-        ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+        An ISO 8601 timestamp that marks the end of the event.
         """
         return pulumi.get(self, "event_end_time")
 
@@ -95,7 +94,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="eventStartTime")
     def event_start_time(self) -> pulumi.Input[builtins.str]:
         """
-        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+        An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
         """
         return pulumi.get(self, "event_start_time")
 
@@ -107,7 +106,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+        A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
         """
         return pulumi.get(self, "name")
 
@@ -118,9 +117,6 @@ class WaitingRoomEventArgs:
     @property
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Input[builtins.str]:
-        """
-        The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-        """
         return pulumi.get(self, "waiting_room_id")
 
     @waiting_room_id.setter
@@ -131,7 +127,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -143,7 +139,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        This is a templated html file that will be rendered at the edge.
+        If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "custom_page_html")
 
@@ -155,7 +151,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A description to let users add more details about the event.
+        A note that you can use to add more details about the event.
         """
         return pulumi.get(self, "description")
 
@@ -167,7 +163,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="disableSessionRenewal")
     def disable_session_renewal(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Disables automatic renewal of session cookies.
+        If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "disable_session_renewal")
 
@@ -179,7 +175,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="newUsersPerMinute")
     def new_users_per_minute(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The number of new users that will be let into the route every minute.
+        If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
         """
         return pulumi.get(self, "new_users_per_minute")
 
@@ -191,7 +187,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="prequeueStartTime")
     def prequeue_start_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+        An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
         """
         return pulumi.get(self, "prequeue_start_time")
 
@@ -203,7 +199,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="queueingMethod")
     def queueing_method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+        If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "queueing_method")
 
@@ -215,7 +211,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "session_duration")
 
@@ -227,7 +223,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="shuffleAtEventStart")
     def shuffle_at_event_start(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+        If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         """
         return pulumi.get(self, "shuffle_at_event_start")
 
@@ -239,7 +235,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter
     def suspended(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+        Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         """
         return pulumi.get(self, "suspended")
 
@@ -251,7 +247,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="totalActiveUsers")
     def total_active_users(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The total number of active user sessions on the route at a point in time.
+        If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
         """
         return pulumi.get(self, "total_active_users")
 
@@ -282,23 +278,20 @@ class _WaitingRoomEventState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomEvent resources.
-        :param pulumi.Input[builtins.str] created_on: Creation time.
-        :param pulumi.Input[builtins.str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[builtins.str] description: A description to let users add more details about the event.
-        :param pulumi.Input[builtins.bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[builtins.str] event_end_time: ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] modified_on: Last modified time.
-        :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[builtins.str] prequeue_start_time: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
-        :param pulumi.Input[builtins.str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
-        :param pulumi.Input[builtins.int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
-        :param pulumi.Input[builtins.bool] shuffle_at_event_start: Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
-        :param pulumi.Input[builtins.bool] suspended: If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
-        :param pulumi.Input[builtins.int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[builtins.str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] custom_page_html: If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.str] description: A note that you can use to add more details about the event.
+        :param pulumi.Input[builtins.bool] disable_session_renewal: If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.str] event_end_time: An ISO 8601 timestamp that marks the end of the event.
+        :param pulumi.Input[builtins.str] event_start_time: An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
+        :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
+        :param pulumi.Input[builtins.int] new_users_per_minute: If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
+        :param pulumi.Input[builtins.str] prequeue_start_time: An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+        :param pulumi.Input[builtins.str] queueing_method: If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.int] session_duration: If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.bool] shuffle_at_event_start: If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+        :param pulumi.Input[builtins.bool] suspended: Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
+        :param pulumi.Input[builtins.int] total_active_users: If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
@@ -338,9 +331,6 @@ class _WaitingRoomEventState:
     @property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Creation time.
-        """
         return pulumi.get(self, "created_on")
 
     @created_on.setter
@@ -351,7 +341,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        This is a templated html file that will be rendered at the edge.
+        If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "custom_page_html")
 
@@ -363,7 +353,7 @@ class _WaitingRoomEventState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A description to let users add more details about the event.
+        A note that you can use to add more details about the event.
         """
         return pulumi.get(self, "description")
 
@@ -375,7 +365,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="disableSessionRenewal")
     def disable_session_renewal(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Disables automatic renewal of session cookies.
+        If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "disable_session_renewal")
 
@@ -387,7 +377,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="eventEndTime")
     def event_end_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+        An ISO 8601 timestamp that marks the end of the event.
         """
         return pulumi.get(self, "event_end_time")
 
@@ -399,7 +389,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="eventStartTime")
     def event_start_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+        An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
         """
         return pulumi.get(self, "event_start_time")
 
@@ -410,9 +400,6 @@ class _WaitingRoomEventState:
     @property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Last modified time.
-        """
         return pulumi.get(self, "modified_on")
 
     @modified_on.setter
@@ -423,7 +410,7 @@ class _WaitingRoomEventState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+        A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
         """
         return pulumi.get(self, "name")
 
@@ -435,7 +422,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="newUsersPerMinute")
     def new_users_per_minute(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The number of new users that will be let into the route every minute.
+        If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
         """
         return pulumi.get(self, "new_users_per_minute")
 
@@ -447,7 +434,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="prequeueStartTime")
     def prequeue_start_time(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+        An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
         """
         return pulumi.get(self, "prequeue_start_time")
 
@@ -459,7 +446,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="queueingMethod")
     def queueing_method(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+        If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "queueing_method")
 
@@ -471,7 +458,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "session_duration")
 
@@ -483,7 +470,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="shuffleAtEventStart")
     def shuffle_at_event_start(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+        If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         """
         return pulumi.get(self, "shuffle_at_event_start")
 
@@ -495,7 +482,7 @@ class _WaitingRoomEventState:
     @pulumi.getter
     def suspended(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+        Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         """
         return pulumi.get(self, "suspended")
 
@@ -507,7 +494,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="totalActiveUsers")
     def total_active_users(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The total number of active user sessions on the route at a point in time.
+        If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
         """
         return pulumi.get(self, "total_active_users")
 
@@ -518,9 +505,6 @@ class _WaitingRoomEventState:
     @property
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-        """
         return pulumi.get(self, "waiting_room_id")
 
     @waiting_room_id.setter
@@ -531,7 +515,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -562,48 +546,52 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Waiting Room Event resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Waiting Room Event
-        example = cloudflare.WaitingRoomEvent("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
-            name="foo",
-            event_start_time="2006-01-02T15:04:05Z",
-            event_end_time="2006-01-02T20:04:05Z")
+        example_waiting_room_event = cloudflare.WaitingRoomEvent("example_waiting_room_event",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            waiting_room_id="699d98642c564d2e855e9661899b7252",
+            event_end_time="2021-09-28T17:00:00.000Z",
+            event_start_time="2021-09-28T15:30:00.000Z",
+            name="production_webinar_event",
+            custom_page_html="{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
+            description="Production event - DO NOT MODIFY",
+            disable_session_renewal=True,
+            new_users_per_minute=200,
+            prequeue_start_time="2021-09-28T15:00:00.000Z",
+            queueing_method="random",
+            session_duration=1,
+            shuffle_at_event_start=True,
+            suspended=True,
+            total_active_users=200)
         ```
 
         ## Import
 
-        Use the Zone ID, Waiting Room ID, and Event ID to import.
-
         ```sh
-        $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
+        $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example '<zone_id>/<waiting_room_id>/<event_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[builtins.str] description: A description to let users add more details about the event.
-        :param pulumi.Input[builtins.bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[builtins.str] event_end_time: ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[builtins.str] prequeue_start_time: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
-        :param pulumi.Input[builtins.str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
-        :param pulumi.Input[builtins.int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
-        :param pulumi.Input[builtins.bool] shuffle_at_event_start: Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
-        :param pulumi.Input[builtins.bool] suspended: If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
-        :param pulumi.Input[builtins.int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[builtins.str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] custom_page_html: If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.str] description: A note that you can use to add more details about the event.
+        :param pulumi.Input[builtins.bool] disable_session_renewal: If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.str] event_end_time: An ISO 8601 timestamp that marks the end of the event.
+        :param pulumi.Input[builtins.str] event_start_time: An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
+        :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
+        :param pulumi.Input[builtins.int] new_users_per_minute: If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
+        :param pulumi.Input[builtins.str] prequeue_start_time: An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+        :param pulumi.Input[builtins.str] queueing_method: If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.int] session_duration: If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.bool] shuffle_at_event_start: If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+        :param pulumi.Input[builtins.bool] suspended: Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
+        :param pulumi.Input[builtins.int] total_active_users: If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -612,29 +600,34 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  args: WaitingRoomEventArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Waiting Room Event resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Waiting Room Event
-        example = cloudflare.WaitingRoomEvent("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
-            name="foo",
-            event_start_time="2006-01-02T15:04:05Z",
-            event_end_time="2006-01-02T20:04:05Z")
+        example_waiting_room_event = cloudflare.WaitingRoomEvent("example_waiting_room_event",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            waiting_room_id="699d98642c564d2e855e9661899b7252",
+            event_end_time="2021-09-28T17:00:00.000Z",
+            event_start_time="2021-09-28T15:30:00.000Z",
+            name="production_webinar_event",
+            custom_page_html="{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Event is prequeueing / Queue all enabled {{/waitTimeKnown}}",
+            description="Production event - DO NOT MODIFY",
+            disable_session_renewal=True,
+            new_users_per_minute=200,
+            prequeue_start_time="2021-09-28T15:00:00.000Z",
+            queueing_method="random",
+            session_duration=1,
+            shuffle_at_event_start=True,
+            suspended=True,
+            total_active_users=200)
         ```
 
         ## Import
 
-        Use the Zone ID, Waiting Room ID, and Event ID to import.
-
         ```sh
-        $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
+        $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent example '<zone_id>/<waiting_room_id>/<event_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -737,23 +730,20 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] created_on: Creation time.
-        :param pulumi.Input[builtins.str] custom_page_html: This is a templated html file that will be rendered at the edge.
-        :param pulumi.Input[builtins.str] description: A description to let users add more details about the event.
-        :param pulumi.Input[builtins.bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[builtins.str] event_end_time: ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] event_start_time: ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] modified_on: Last modified time.
-        :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[builtins.str] prequeue_start_time: ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
-        :param pulumi.Input[builtins.str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
-        :param pulumi.Input[builtins.int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
-        :param pulumi.Input[builtins.bool] shuffle_at_event_start: Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
-        :param pulumi.Input[builtins.bool] suspended: If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
-        :param pulumi.Input[builtins.int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[builtins.str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] custom_page_html: If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.str] description: A note that you can use to add more details about the event.
+        :param pulumi.Input[builtins.bool] disable_session_renewal: If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.str] event_end_time: An ISO 8601 timestamp that marks the end of the event.
+        :param pulumi.Input[builtins.str] event_start_time: An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
+        :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
+        :param pulumi.Input[builtins.int] new_users_per_minute: If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
+        :param pulumi.Input[builtins.str] prequeue_start_time: An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
+        :param pulumi.Input[builtins.str] queueing_method: If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.int] session_duration: If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
+        :param pulumi.Input[builtins.bool] shuffle_at_event_start: If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
+        :param pulumi.Input[builtins.bool] suspended: Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
+        :param pulumi.Input[builtins.int] total_active_users: If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -781,24 +771,21 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[builtins.str]:
-        """
-        Creation time.
-        """
         return pulumi.get(self, "created_on")
 
     @property
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        This is a templated html file that will be rendered at the edge.
+        If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "custom_page_html")
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[builtins.str]]:
+    def description(self) -> pulumi.Output[builtins.str]:
         """
-        A description to let users add more details about the event.
+        A note that you can use to add more details about the event.
         """
         return pulumi.get(self, "description")
 
@@ -806,7 +793,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="disableSessionRenewal")
     def disable_session_renewal(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Disables automatic renewal of session cookies.
+        If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "disable_session_renewal")
 
@@ -814,7 +801,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="eventEndTime")
     def event_end_time(self) -> pulumi.Output[builtins.str]:
         """
-        ISO 8601 timestamp that marks the end of the event. **Modifying this attribute will force creation of a new resource.**
+        An ISO 8601 timestamp that marks the end of the event.
         """
         return pulumi.get(self, "event_end_time")
 
@@ -822,23 +809,20 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="eventStartTime")
     def event_start_time(self) -> pulumi.Output[builtins.str]:
         """
-        ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`. **Modifying this attribute will force creation of a new resource.**
+        An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
         """
         return pulumi.get(self, "event_start_time")
 
     @property
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[builtins.str]:
-        """
-        Last modified time.
-        """
         return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed. **Modifying this attribute will force creation of a new resource.**
+        A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
         """
         return pulumi.get(self, "name")
 
@@ -846,7 +830,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="newUsersPerMinute")
     def new_users_per_minute(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        The number of new users that will be let into the route every minute.
+        If set, the event will override the waiting room's `new_users_per_minute` property while it is active. If null, the event will inherit it. This can only be set if the event's `total_active_users` property is also set.
         """
         return pulumi.get(self, "new_users_per_minute")
 
@@ -854,7 +838,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="prequeueStartTime")
     def prequeue_start_time(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before `event_start_time`.
+        An ISO 8601 timestamp that marks when to begin queueing all users before the event starts. The prequeue must start at least five minutes before `event_start_time`.
         """
         return pulumi.get(self, "prequeue_start_time")
 
@@ -862,7 +846,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="queueingMethod")
     def queueing_method(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`.
+        If set, the event will override the waiting room's `queueing_method` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "queueing_method")
 
@@ -870,23 +854,23 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        If set, the event will override the waiting room's `session_duration` property while it is active. If null, the event will inherit it.
         """
         return pulumi.get(self, "session_duration")
 
     @property
     @pulumi.getter(name="shuffleAtEventStart")
-    def shuffle_at_event_start(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def shuffle_at_event_start(self) -> pulumi.Output[builtins.bool]:
         """
-        Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Defaults to `false`.
+        If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         """
         return pulumi.get(self, "shuffle_at_event_start")
 
     @property
     @pulumi.getter
-    def suspended(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def suspended(self) -> pulumi.Output[builtins.bool]:
         """
-        If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
+        Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         """
         return pulumi.get(self, "suspended")
 
@@ -894,23 +878,20 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="totalActiveUsers")
     def total_active_users(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        The total number of active user sessions on the route at a point in time.
+        If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
         """
         return pulumi.get(self, "total_active_users")
 
     @property
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> pulumi.Output[builtins.str]:
-        """
-        The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
-        """
         return pulumi.get(self, "waiting_room_id")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

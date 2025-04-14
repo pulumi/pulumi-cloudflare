@@ -16,14 +16,14 @@ public final class ApiTokenConditionArgs extends com.pulumi.resources.ResourceAr
     public static final ApiTokenConditionArgs Empty = new ApiTokenConditionArgs();
 
     /**
-     * Request IP related conditions.
+     * Client IP restrictions.
      * 
      */
     @Import(name="requestIp")
     private @Nullable Output<ApiTokenConditionRequestIpArgs> requestIp;
 
     /**
-     * @return Request IP related conditions.
+     * @return Client IP restrictions.
      * 
      */
     public Optional<Output<ApiTokenConditionRequestIpArgs>> requestIp() {
@@ -55,7 +55,7 @@ public final class ApiTokenConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param requestIp Request IP related conditions.
+         * @param requestIp Client IP restrictions.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ApiTokenConditionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param requestIp Request IP related conditions.
+         * @param requestIp Client IP restrictions.
          * 
          * @return builder
          * 

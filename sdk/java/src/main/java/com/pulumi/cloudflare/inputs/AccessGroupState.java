@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.AccessGroupIncludeArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,57 +21,118 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
     public static final AccessGroupState Empty = new AccessGroupState();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+     * 
+     */
     @Import(name="excludes")
     private @Nullable Output<List<AccessGroupExcludeArgs>> excludes;
 
+    /**
+     * @return Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+     * 
+     */
     public Optional<Output<List<AccessGroupExcludeArgs>>> excludes() {
         return Optional.ofNullable(this.excludes);
     }
 
+    /**
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     * 
+     */
     @Import(name="includes")
     private @Nullable Output<List<AccessGroupIncludeArgs>> includes;
 
+    /**
+     * @return Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     * 
+     */
     public Optional<Output<List<AccessGroupIncludeArgs>>> includes() {
         return Optional.ofNullable(this.includes);
     }
 
+    /**
+     * Whether this is the default group
+     * 
+     */
+    @Import(name="isDefault")
+    private @Nullable Output<Boolean> isDefault;
+
+    /**
+     * @return Whether this is the default group
+     * 
+     */
+    public Optional<Output<Boolean>> isDefault() {
+        return Optional.ofNullable(this.isDefault);
+    }
+
+    /**
+     * The name of the Access group.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the Access group.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+     * 
+     */
     @Import(name="requires")
     private @Nullable Output<List<AccessGroupRequireArgs>> requires;
 
+    /**
+     * @return Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+     * 
+     */
     public Optional<Output<List<AccessGroupRequireArgs>>> requires() {
         return Optional.ofNullable(this.requires);
     }
 
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
+    }
+
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -81,10 +143,13 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
 
     private AccessGroupState(AccessGroupState $) {
         this.accountId = $.accountId;
+        this.createdAt = $.createdAt;
         this.excludes = $.excludes;
         this.includes = $.includes;
+        this.isDefault = $.isDefault;
         this.name = $.name;
         this.requires = $.requires;
+        this.updatedAt = $.updatedAt;
         this.zoneId = $.zoneId;
     }
 
@@ -107,7 +172,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -118,7 +183,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -127,56 +192,161 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
             return accountId(Output.of(accountId));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param excludes Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludes(@Nullable Output<List<AccessGroupExcludeArgs>> excludes) {
             $.excludes = excludes;
             return this;
         }
 
+        /**
+         * @param excludes Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludes(List<AccessGroupExcludeArgs> excludes) {
             return excludes(Output.of(excludes));
         }
 
+        /**
+         * @param excludes Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludes(AccessGroupExcludeArgs... excludes) {
             return excludes(List.of(excludes));
         }
 
+        /**
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(@Nullable Output<List<AccessGroupIncludeArgs>> includes) {
             $.includes = includes;
             return this;
         }
 
+        /**
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(List<AccessGroupIncludeArgs> includes) {
             return includes(Output.of(includes));
         }
 
+        /**
+         * @param includes Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(AccessGroupIncludeArgs... includes) {
             return includes(List.of(includes));
         }
 
+        /**
+         * @param isDefault Whether this is the default group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(@Nullable Output<Boolean> isDefault) {
+            $.isDefault = isDefault;
+            return this;
+        }
+
+        /**
+         * @param isDefault Whether this is the default group
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(Boolean isDefault) {
+            return isDefault(Output.of(isDefault));
+        }
+
+        /**
+         * @param name The name of the Access group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the Access group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param requires Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requires(@Nullable Output<List<AccessGroupRequireArgs>> requires) {
             $.requires = requires;
             return this;
         }
 
+        /**
+         * @param requires Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requires(List<AccessGroupRequireArgs> requires) {
             return requires(Output.of(requires));
         }
 
+        /**
+         * @param requires Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requires(AccessGroupRequireArgs... requires) {
             return requires(List.of(requires));
         }
 
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
+        }
+
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -187,7 +357,7 @@ public final class AccessGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

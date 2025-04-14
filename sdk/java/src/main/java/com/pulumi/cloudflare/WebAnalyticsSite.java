@@ -6,6 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WebAnalyticsSiteArgs;
 import com.pulumi.cloudflare.inputs.WebAnalyticsSiteState;
+import com.pulumi.cloudflare.outputs.WebAnalyticsSiteRule;
+import com.pulumi.cloudflare.outputs.WebAnalyticsSiteRuleset;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,8 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Web Analytics Site resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -44,10 +44,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WebAnalyticsSite("example", WebAnalyticsSiteArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .zoneTag("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleWebAnalyticsSite = new WebAnalyticsSite("exampleWebAnalyticsSite", WebAnalyticsSiteArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .autoInstall(true)
+ *             .host("example.com")
+ *             .zoneTag("023e105f4ecef8ad9ca31a8372d0c353")
  *             .build());
  * 
  *     }
@@ -59,119 +60,159 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example &lt;account_id&gt;/&lt;site_tag&gt;
+ * $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example &#39;&lt;account_id&gt;/&lt;site_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/webAnalyticsSite:WebAnalyticsSite")
 public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      * 
      */
     @Export(name="autoInstall", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> autoInstall;
+    private Output</* @Nullable */ Boolean> autoInstall;
 
     /**
-     * @return Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
+     * @return If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
      * 
      */
-    public Output<Boolean> autoInstall() {
-        return this.autoInstall;
+    public Output<Optional<Boolean>> autoInstall() {
+        return Codegen.optional(this.autoInstall);
+    }
+    @Export(name="created", refs={String.class}, tree="[0]")
+    private Output<String> created;
+
+    public Output<String> created() {
+        return this.created;
     }
     /**
-     * The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+     * Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * 
+     */
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enabled;
+
+    /**
+     * @return Enables or disables RUM. This option can be used only when auto_install is set to true.
+     * 
+     */
+    public Output<Optional<Boolean>> enabled() {
+        return Codegen.optional(this.enabled);
+    }
+    /**
+     * The hostname to use for gray-clouded sites.
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     /**
-     * @return The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
+     * @return The hostname to use for gray-clouded sites.
      * 
      */
     public Output<Optional<String>> host() {
         return Codegen.optional(this.host);
     }
     /**
-     * The ID for the ruleset associated to this Web Analytics Site.
+     * If enabled, the JavaScript snippet will not be injected for visitors from the EU.
      * 
      */
-    @Export(name="rulesetId", refs={String.class}, tree="[0]")
-    private Output<String> rulesetId;
+    @Export(name="lite", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> lite;
 
     /**
-     * @return The ID for the ruleset associated to this Web Analytics Site.
+     * @return If enabled, the JavaScript snippet will not be injected for visitors from the EU.
      * 
      */
-    public Output<String> rulesetId() {
-        return this.rulesetId;
+    public Output<Optional<Boolean>> lite() {
+        return Codegen.optional(this.lite);
     }
     /**
-     * The Web Analytics site tag.
+     * A list of rules.
+     * 
+     */
+    @Export(name="rules", refs={List.class,WebAnalyticsSiteRule.class}, tree="[0,1]")
+    private Output<List<WebAnalyticsSiteRule>> rules;
+
+    /**
+     * @return A list of rules.
+     * 
+     */
+    public Output<List<WebAnalyticsSiteRule>> rules() {
+        return this.rules;
+    }
+    @Export(name="ruleset", refs={WebAnalyticsSiteRuleset.class}, tree="[0]")
+    private Output<WebAnalyticsSiteRuleset> ruleset;
+
+    public Output<WebAnalyticsSiteRuleset> ruleset() {
+        return this.ruleset;
+    }
+    /**
+     * The Web Analytics site identifier.
      * 
      */
     @Export(name="siteTag", refs={String.class}, tree="[0]")
     private Output<String> siteTag;
 
     /**
-     * @return The Web Analytics site tag.
+     * @return The Web Analytics site identifier.
      * 
      */
     public Output<String> siteTag() {
         return this.siteTag;
     }
     /**
-     * The token for the Web Analytics site.
+     * The Web Analytics site token.
      * 
      */
     @Export(name="siteToken", refs={String.class}, tree="[0]")
     private Output<String> siteToken;
 
     /**
-     * @return The token for the Web Analytics site.
+     * @return The Web Analytics site token.
      * 
      */
     public Output<String> siteToken() {
         return this.siteToken;
     }
     /**
-     * The encoded JS snippet to add to your site&#39;s HTML page if auto_install is false.
+     * Encoded JavaScript snippet.
      * 
      */
     @Export(name="snippet", refs={String.class}, tree="[0]")
     private Output<String> snippet;
 
     /**
-     * @return The encoded JS snippet to add to your site&#39;s HTML page if auto_install is false.
+     * @return Encoded JavaScript snippet.
      * 
      */
     public Output<String> snippet() {
         return this.snippet;
     }
     /**
-     * The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * The zone identifier.
      * 
      */
     @Export(name="zoneTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneTag;
 
     /**
-     * @return The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
+     * @return The zone identifier.
      * 
      */
     public Output<Optional<String>> zoneTag() {
@@ -217,10 +258,6 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
-            .additionalSecretOutputs(List.of(
-                "siteToken",
-                "snippet"
-            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

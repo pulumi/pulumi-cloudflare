@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Account resource. Account is the basic resource for
-    /// working with Cloudflare zones, teams and users.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,11 +20,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.Account("example", new()
+    ///     var exampleAccount = new Cloudflare.Account("example_account", new()
     ///     {
-    ///         Name = "some-enterprise-account",
-    ///         Type = "enterprise",
-    ///         EnforceTwofactor = true,
+    ///         Name = "name",
+    ///         Type = "standard",
+    ///         Unit = new Cloudflare.Inputs.AccountUnitArgs
+    ///         {
+    ///             Id = "f267e341f3dd4697bd3b9f71dd96247f",
+    ///         },
     ///     });
     /// 
     /// });
@@ -36,29 +36,42 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/account:Account example &lt;account_id&gt;
+    /// $ pulumi import cloudflare:index/account:Account example '&lt;account_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/account:Account")]
     public partial class Account : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether 2FA is enforced on the account. Defaults to `false`.
+        /// Timestamp for the creation of the account
         /// </summary>
-        [Output("enforceTwofactor")]
-        public Output<bool?> EnforceTwofactor { get; private set; } = null!;
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the account that is displayed in the Cloudflare dashboard.
+        /// Account name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        /// Account settings
+        /// </summary>
+        [Output("settings")]
+        public Output<Outputs.AccountSettings> Settings { get; private set; } = null!;
+
+        /// <summary>
+        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        /// Available values: "standard", "enterprise".
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        /// </summary>
+        [Output("unit")]
+        public Output<Outputs.AccountUnit> Unit { get; private set; } = null!;
 
 
         /// <summary>
@@ -107,22 +120,29 @@ namespace Pulumi.Cloudflare
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether 2FA is enforced on the account. Defaults to `false`.
-        /// </summary>
-        [Input("enforceTwofactor")]
-        public Input<bool>? EnforceTwofactor { get; set; }
-
-        /// <summary>
-        /// The name of the account that is displayed in the Cloudflare dashboard.
+        /// Account name
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        /// Account settings
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("settings")]
+        public Input<Inputs.AccountSettingsArgs>? Settings { get; set; }
+
+        /// <summary>
+        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        /// Available values: "standard", "enterprise".
+        /// </summary>
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
+
+        /// <summary>
+        /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        /// </summary>
+        [Input("unit")]
+        public Input<Inputs.AccountUnitArgs>? Unit { get; set; }
 
         public AccountArgs()
         {
@@ -133,22 +153,35 @@ namespace Pulumi.Cloudflare
     public sealed class AccountState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether 2FA is enforced on the account. Defaults to `false`.
+        /// Timestamp for the creation of the account
         /// </summary>
-        [Input("enforceTwofactor")]
-        public Input<bool>? EnforceTwofactor { get; set; }
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// The name of the account that is displayed in the Cloudflare dashboard.
+        /// Account name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
+        /// Account settings
+        /// </summary>
+        [Input("settings")]
+        public Input<Inputs.AccountSettingsGetArgs>? Settings { get; set; }
+
+        /// <summary>
+        /// the type of account being created. For self-serve customers, use standard. for enterprise customers, use enterprise.
+        /// Available values: "standard", "enterprise".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+        /// </summary>
+        [Input("unit")]
+        public Input<Inputs.AccountUnitGetArgs>? Unit { get; set; }
 
         public AccountState()
         {

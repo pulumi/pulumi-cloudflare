@@ -10,191 +10,153 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myNamespace = new Cloudflare.WorkersKvNamespace("my_namespace", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Title = "example",
-    ///     });
-    /// 
-    ///     // Sets the script with the name "script_1"
-    ///     var myScript = new Cloudflare.WorkerScript("my_script", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "script_1",
-    ///         Content = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "script.js",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         KvNamespaceBindings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkerScriptKvNamespaceBindingArgs
-    ///             {
-    ///                 Name = "MY_EXAMPLE_KV_NAMESPACE",
-    ///                 NamespaceId = myNamespace.Id,
-    ///             },
-    ///         },
-    ///         PlainTextBindings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkerScriptPlainTextBindingArgs
-    ///             {
-    ///                 Name = "MY_EXAMPLE_PLAIN_TEXT",
-    ///                 Text = "foobar",
-    ///             },
-    ///         },
-    ///         SecretTextBindings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkerScriptSecretTextBindingArgs
-    ///             {
-    ///                 Name = "MY_EXAMPLE_SECRET_TEXT",
-    ///                 Text = secretFooValue,
-    ///             },
-    ///         },
-    ///         WebassemblyBindings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkerScriptWebassemblyBindingArgs
-    ///             {
-    ///                 Name = "MY_EXAMPLE_WASM",
-    ///                 Module = Std.Filebase64.Invoke(new()
-    ///                 {
-    ///                     Input = "example.wasm",
-    ///                 }).Apply(invoke =&gt; invoke.Result),
-    ///             },
-    ///         },
-    ///         ServiceBindings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkerScriptServiceBindingArgs
-    ///             {
-    ///                 Name = "MY_SERVICE_BINDING",
-    ///                 Service = "MY_SERVICE",
-    ///                 Environment = "production",
-    ///             },
-    ///         },
-    ///         R2BucketBindings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkerScriptR2BucketBindingArgs
-    ///             {
-    ///                 Name = "MY_BUCKET",
-    ///                 BucketName = "MY_BUCKET_NAME",
-    ///             },
-    ///         },
-    ///         AnalyticsEngineBindings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.WorkerScriptAnalyticsEngineBindingArgs
-    ///             {
-    ///                 Name = "MY_DATASET",
-    ///                 Dataset = "dataset1",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/workerScript:WorkerScript example &lt;account_id&gt;/&lt;script_name&gt;
+    /// $ pulumi import cloudflare:index/workerScript:WorkerScript example '&lt;account_id&gt;/&lt;script_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript")]
     [CloudflareResourceType("cloudflare:index/workerScript:WorkerScript")]
     public partial class WorkerScript : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
-        [Output("analyticsEngineBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptAnalyticsEngineBinding>> AnalyticsEngineBindings { get; private set; } = null!;
+        /// <summary>
+        /// Configuration for assets within a Worker
+        /// </summary>
+        [Output("assets")]
+        public Output<Outputs.WorkerScriptAssets?> Assets { get; private set; } = null!;
 
         /// <summary>
-        /// The date to use for the compatibility flag.
+        /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        /// </summary>
+        [Output("bindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptBinding>> Bindings { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// </summary>
+        [Output("bodyPart")]
+        public Output<string?> BodyPart { get; private set; } = null!;
+
+        /// <summary>
+        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Output("compatibilityDate")]
         public Output<string?> CompatibilityDate { get; private set; } = null!;
 
         /// <summary>
-        /// Compatibility flags used for Worker Scripts.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         /// </summary>
         [Output("compatibilityFlags")]
         public Output<ImmutableArray<string>> CompatibilityFlags { get; private set; } = null!;
 
         /// <summary>
-        /// The script content.
+        /// Module or Service Worker contents of the Worker.
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
 
-        [Output("d1DatabaseBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptD1DatabaseBinding>> D1DatabaseBindings { get; private set; } = null!;
-
         /// <summary>
-        /// Name of the Workers for Platforms dispatch namespace.
+        /// When the script was created.
         /// </summary>
-        [Output("dispatchNamespace")]
-        public Output<string?> DispatchNamespace { get; private set; } = null!;
-
-        [Output("hyperdriveConfigBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptHyperdriveConfigBinding>> HyperdriveConfigBindings { get; private set; } = null!;
-
-        [Output("kvNamespaceBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBinding>> KvNamespaceBindings { get; private set; } = null!;
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Enabling allows Worker events to be sent to a defined Logpush destination.
+        /// Hashed script content, can be used in a If-None-Match header when updating.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether a Worker contains assets.
+        /// </summary>
+        [Output("hasAssets")]
+        public Output<bool> HasAssets { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether a Worker contains modules.
+        /// </summary>
+        [Output("hasModules")]
+        public Output<bool> HasModules { get; private set; } = null!;
+
+        /// <summary>
+        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        /// </summary>
+        [Output("keepAssets")]
+        public Output<bool?> KeepAssets { get; private set; } = null!;
+
+        /// <summary>
+        /// List of binding types to keep from previous_upload.
+        /// </summary>
+        [Output("keepBindings")]
+        public Output<ImmutableArray<string>> KeepBindings { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Logpush is turned on for the Worker.
         /// </summary>
         [Output("logpush")]
-        public Output<bool?> Logpush { get; private set; } = null!;
+        public Output<bool> Logpush { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to upload Worker as a module.
+        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
-        [Output("module")]
-        public Output<bool?> Module { get; private set; } = null!;
+        [Output("mainModule")]
+        public Output<string?> MainModule { get; private set; } = null!;
 
         /// <summary>
-        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
+        /// Migrations to apply for Durable Objects associated with this Worker.
         /// </summary>
-        [Output("name")]
-        public Output<string> Name { get; private set; } = null!;
+        [Output("migrations")]
+        public Output<Outputs.WorkerScriptMigrations> Migrations { get; private set; } = null!;
 
-        [Output("placements")]
-        public Output<ImmutableArray<Outputs.WorkerScriptPlacement>> Placements { get; private set; } = null!;
+        /// <summary>
+        /// When the script was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
 
-        [Output("plainTextBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptPlainTextBinding>> PlainTextBindings { get; private set; } = null!;
+        /// <summary>
+        /// Observability settings for the Worker.
+        /// </summary>
+        [Output("observability")]
+        public Output<Outputs.WorkerScriptObservability> Observability { get; private set; } = null!;
 
-        [Output("queueBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptQueueBinding>> QueueBindings { get; private set; } = null!;
+        /// <summary>
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// </summary>
+        [Output("placement")]
+        public Output<Outputs.WorkerScriptPlacement> Placement { get; private set; } = null!;
 
-        [Output("r2BucketBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptR2BucketBinding>> R2BucketBindings { get; private set; } = null!;
+        /// <summary>
+        /// Name of the script, used in URLs and route configuration.
+        /// </summary>
+        [Output("scriptName")]
+        public Output<string> ScriptName { get; private set; } = null!;
 
-        [Output("secretTextBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptSecretTextBinding>> SecretTextBindings { get; private set; } = null!;
+        [Output("startupTimeMs")]
+        public Output<int> StartupTimeMs { get; private set; } = null!;
 
-        [Output("serviceBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptServiceBinding>> ServiceBindings { get; private set; } = null!;
+        /// <summary>
+        /// List of Workers that will consume logs from the attached Worker.
+        /// </summary>
+        [Output("tailConsumers")]
+        public Output<ImmutableArray<Outputs.WorkerScriptTailConsumer>> TailConsumers { get; private set; } = null!;
 
-        [Output("tags")]
-        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
-
-        [Output("webassemblyBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptWebassemblyBinding>> WebassemblyBindings { get; private set; } = null!;
+        /// <summary>
+        /// Usage model for the Worker invocations.
+        /// Available values: "standard".
+        /// </summary>
+        [Output("usageModel")]
+        public Output<string> UsageModel { get; private set; } = null!;
 
 
         /// <summary>
@@ -219,6 +181,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/workerScript:WorkerScript" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -243,21 +209,37 @@ namespace Pulumi.Cloudflare
     public sealed class WorkerScriptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        [Input("analyticsEngineBindings")]
-        private InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs>? _analyticsEngineBindings;
-        public InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs> AnalyticsEngineBindings
+        /// <summary>
+        /// Configuration for assets within a Worker
+        /// </summary>
+        [Input("assets")]
+        public Input<Inputs.WorkerScriptAssetsArgs>? Assets { get; set; }
+
+        [Input("bindings")]
+        private InputList<Inputs.WorkerScriptBindingArgs>? _bindings;
+
+        /// <summary>
+        /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        /// </summary>
+        public InputList<Inputs.WorkerScriptBindingArgs> Bindings
         {
-            get => _analyticsEngineBindings ?? (_analyticsEngineBindings = new InputList<Inputs.WorkerScriptAnalyticsEngineBindingArgs>());
-            set => _analyticsEngineBindings = value;
+            get => _bindings ?? (_bindings = new InputList<Inputs.WorkerScriptBindingArgs>());
+            set => _bindings = value;
         }
 
         /// <summary>
-        /// The date to use for the compatibility flag.
+        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// </summary>
+        [Input("bodyPart")]
+        public Input<string>? BodyPart { get; set; }
+
+        /// <summary>
+        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Input("compatibilityDate")]
         public Input<string>? CompatibilityDate { get; set; }
@@ -266,7 +248,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Compatibility flags used for Worker Scripts.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -275,122 +257,83 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The script content.
+        /// Module or Service Worker contents of the Worker.
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
-        [Input("d1DatabaseBindings")]
-        private InputList<Inputs.WorkerScriptD1DatabaseBindingArgs>? _d1DatabaseBindings;
-        public InputList<Inputs.WorkerScriptD1DatabaseBindingArgs> D1DatabaseBindings
-        {
-            get => _d1DatabaseBindings ?? (_d1DatabaseBindings = new InputList<Inputs.WorkerScriptD1DatabaseBindingArgs>());
-            set => _d1DatabaseBindings = value;
-        }
-
         /// <summary>
-        /// Name of the Workers for Platforms dispatch namespace.
+        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
         /// </summary>
-        [Input("dispatchNamespace")]
-        public Input<string>? DispatchNamespace { get; set; }
+        [Input("keepAssets")]
+        public Input<bool>? KeepAssets { get; set; }
 
-        [Input("hyperdriveConfigBindings")]
-        private InputList<Inputs.WorkerScriptHyperdriveConfigBindingArgs>? _hyperdriveConfigBindings;
-        public InputList<Inputs.WorkerScriptHyperdriveConfigBindingArgs> HyperdriveConfigBindings
-        {
-            get => _hyperdriveConfigBindings ?? (_hyperdriveConfigBindings = new InputList<Inputs.WorkerScriptHyperdriveConfigBindingArgs>());
-            set => _hyperdriveConfigBindings = value;
-        }
+        [Input("keepBindings")]
+        private InputList<string>? _keepBindings;
 
-        [Input("kvNamespaceBindings")]
-        private InputList<Inputs.WorkerScriptKvNamespaceBindingArgs>? _kvNamespaceBindings;
-        public InputList<Inputs.WorkerScriptKvNamespaceBindingArgs> KvNamespaceBindings
+        /// <summary>
+        /// List of binding types to keep from previous_upload.
+        /// </summary>
+        public InputList<string> KeepBindings
         {
-            get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingArgs>());
-            set => _kvNamespaceBindings = value;
+            get => _keepBindings ?? (_keepBindings = new InputList<string>());
+            set => _keepBindings = value;
         }
 
         /// <summary>
-        /// Enabling allows Worker events to be sent to a defined Logpush destination.
+        /// Whether Logpush is turned on for the Worker.
         /// </summary>
         [Input("logpush")]
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Whether to upload Worker as a module.
+        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
-        [Input("module")]
-        public Input<bool>? Module { get; set; }
+        [Input("mainModule")]
+        public Input<string>? MainModule { get; set; }
 
         /// <summary>
-        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
+        /// Migrations to apply for Durable Objects associated with this Worker.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("migrations")]
+        public Input<Inputs.WorkerScriptMigrationsArgs>? Migrations { get; set; }
 
-        [Input("placements")]
-        private InputList<Inputs.WorkerScriptPlacementArgs>? _placements;
-        public InputList<Inputs.WorkerScriptPlacementArgs> Placements
+        /// <summary>
+        /// Observability settings for the Worker.
+        /// </summary>
+        [Input("observability")]
+        public Input<Inputs.WorkerScriptObservabilityArgs>? Observability { get; set; }
+
+        /// <summary>
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// </summary>
+        [Input("placement")]
+        public Input<Inputs.WorkerScriptPlacementArgs>? Placement { get; set; }
+
+        /// <summary>
+        /// Name of the script, used in URLs and route configuration.
+        /// </summary>
+        [Input("scriptName", required: true)]
+        public Input<string> ScriptName { get; set; } = null!;
+
+        [Input("tailConsumers")]
+        private InputList<Inputs.WorkerScriptTailConsumerArgs>? _tailConsumers;
+
+        /// <summary>
+        /// List of Workers that will consume logs from the attached Worker.
+        /// </summary>
+        public InputList<Inputs.WorkerScriptTailConsumerArgs> TailConsumers
         {
-            get => _placements ?? (_placements = new InputList<Inputs.WorkerScriptPlacementArgs>());
-            set => _placements = value;
+            get => _tailConsumers ?? (_tailConsumers = new InputList<Inputs.WorkerScriptTailConsumerArgs>());
+            set => _tailConsumers = value;
         }
 
-        [Input("plainTextBindings")]
-        private InputList<Inputs.WorkerScriptPlainTextBindingArgs>? _plainTextBindings;
-        public InputList<Inputs.WorkerScriptPlainTextBindingArgs> PlainTextBindings
-        {
-            get => _plainTextBindings ?? (_plainTextBindings = new InputList<Inputs.WorkerScriptPlainTextBindingArgs>());
-            set => _plainTextBindings = value;
-        }
-
-        [Input("queueBindings")]
-        private InputList<Inputs.WorkerScriptQueueBindingArgs>? _queueBindings;
-        public InputList<Inputs.WorkerScriptQueueBindingArgs> QueueBindings
-        {
-            get => _queueBindings ?? (_queueBindings = new InputList<Inputs.WorkerScriptQueueBindingArgs>());
-            set => _queueBindings = value;
-        }
-
-        [Input("r2BucketBindings")]
-        private InputList<Inputs.WorkerScriptR2BucketBindingArgs>? _r2BucketBindings;
-        public InputList<Inputs.WorkerScriptR2BucketBindingArgs> R2BucketBindings
-        {
-            get => _r2BucketBindings ?? (_r2BucketBindings = new InputList<Inputs.WorkerScriptR2BucketBindingArgs>());
-            set => _r2BucketBindings = value;
-        }
-
-        [Input("secretTextBindings")]
-        private InputList<Inputs.WorkerScriptSecretTextBindingArgs>? _secretTextBindings;
-        public InputList<Inputs.WorkerScriptSecretTextBindingArgs> SecretTextBindings
-        {
-            get => _secretTextBindings ?? (_secretTextBindings = new InputList<Inputs.WorkerScriptSecretTextBindingArgs>());
-            set => _secretTextBindings = value;
-        }
-
-        [Input("serviceBindings")]
-        private InputList<Inputs.WorkerScriptServiceBindingArgs>? _serviceBindings;
-        public InputList<Inputs.WorkerScriptServiceBindingArgs> ServiceBindings
-        {
-            get => _serviceBindings ?? (_serviceBindings = new InputList<Inputs.WorkerScriptServiceBindingArgs>());
-            set => _serviceBindings = value;
-        }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        [Input("webassemblyBindings")]
-        private InputList<Inputs.WorkerScriptWebassemblyBindingArgs>? _webassemblyBindings;
-        public InputList<Inputs.WorkerScriptWebassemblyBindingArgs> WebassemblyBindings
-        {
-            get => _webassemblyBindings ?? (_webassemblyBindings = new InputList<Inputs.WorkerScriptWebassemblyBindingArgs>());
-            set => _webassemblyBindings = value;
-        }
+        /// <summary>
+        /// Usage model for the Worker invocations.
+        /// Available values: "standard".
+        /// </summary>
+        [Input("usageModel")]
+        public Input<string>? UsageModel { get; set; }
 
         public WorkerScriptArgs()
         {
@@ -401,21 +344,37 @@ namespace Pulumi.Cloudflare
     public sealed class WorkerScriptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("analyticsEngineBindings")]
-        private InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs>? _analyticsEngineBindings;
-        public InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs> AnalyticsEngineBindings
+        /// <summary>
+        /// Configuration for assets within a Worker
+        /// </summary>
+        [Input("assets")]
+        public Input<Inputs.WorkerScriptAssetsGetArgs>? Assets { get; set; }
+
+        [Input("bindings")]
+        private InputList<Inputs.WorkerScriptBindingGetArgs>? _bindings;
+
+        /// <summary>
+        /// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+        /// </summary>
+        public InputList<Inputs.WorkerScriptBindingGetArgs> Bindings
         {
-            get => _analyticsEngineBindings ?? (_analyticsEngineBindings = new InputList<Inputs.WorkerScriptAnalyticsEngineBindingGetArgs>());
-            set => _analyticsEngineBindings = value;
+            get => _bindings ?? (_bindings = new InputList<Inputs.WorkerScriptBindingGetArgs>());
+            set => _bindings = value;
         }
 
         /// <summary>
-        /// The date to use for the compatibility flag.
+        /// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+        /// </summary>
+        [Input("bodyPart")]
+        public Input<string>? BodyPart { get; set; }
+
+        /// <summary>
+        /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Input("compatibilityDate")]
         public Input<string>? CompatibilityDate { get; set; }
@@ -424,7 +383,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _compatibilityFlags;
 
         /// <summary>
-        /// Compatibility flags used for Worker Scripts.
+        /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         /// </summary>
         public InputList<string> CompatibilityFlags
         {
@@ -433,122 +392,116 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The script content.
+        /// Module or Service Worker contents of the Worker.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
-        [Input("d1DatabaseBindings")]
-        private InputList<Inputs.WorkerScriptD1DatabaseBindingGetArgs>? _d1DatabaseBindings;
-        public InputList<Inputs.WorkerScriptD1DatabaseBindingGetArgs> D1DatabaseBindings
-        {
-            get => _d1DatabaseBindings ?? (_d1DatabaseBindings = new InputList<Inputs.WorkerScriptD1DatabaseBindingGetArgs>());
-            set => _d1DatabaseBindings = value;
-        }
-
         /// <summary>
-        /// Name of the Workers for Platforms dispatch namespace.
+        /// When the script was created.
         /// </summary>
-        [Input("dispatchNamespace")]
-        public Input<string>? DispatchNamespace { get; set; }
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
 
-        [Input("hyperdriveConfigBindings")]
-        private InputList<Inputs.WorkerScriptHyperdriveConfigBindingGetArgs>? _hyperdriveConfigBindings;
-        public InputList<Inputs.WorkerScriptHyperdriveConfigBindingGetArgs> HyperdriveConfigBindings
-        {
-            get => _hyperdriveConfigBindings ?? (_hyperdriveConfigBindings = new InputList<Inputs.WorkerScriptHyperdriveConfigBindingGetArgs>());
-            set => _hyperdriveConfigBindings = value;
-        }
+        /// <summary>
+        /// Hashed script content, can be used in a If-None-Match header when updating.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
 
-        [Input("kvNamespaceBindings")]
-        private InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs>? _kvNamespaceBindings;
-        public InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs> KvNamespaceBindings
+        /// <summary>
+        /// Whether a Worker contains assets.
+        /// </summary>
+        [Input("hasAssets")]
+        public Input<bool>? HasAssets { get; set; }
+
+        /// <summary>
+        /// Whether a Worker contains modules.
+        /// </summary>
+        [Input("hasModules")]
+        public Input<bool>? HasModules { get; set; }
+
+        /// <summary>
+        /// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+        /// </summary>
+        [Input("keepAssets")]
+        public Input<bool>? KeepAssets { get; set; }
+
+        [Input("keepBindings")]
+        private InputList<string>? _keepBindings;
+
+        /// <summary>
+        /// List of binding types to keep from previous_upload.
+        /// </summary>
+        public InputList<string> KeepBindings
         {
-            get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs>());
-            set => _kvNamespaceBindings = value;
+            get => _keepBindings ?? (_keepBindings = new InputList<string>());
+            set => _keepBindings = value;
         }
 
         /// <summary>
-        /// Enabling allows Worker events to be sent to a defined Logpush destination.
+        /// Whether Logpush is turned on for the Worker.
         /// </summary>
         [Input("logpush")]
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Whether to upload Worker as a module.
+        /// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
         /// </summary>
-        [Input("module")]
-        public Input<bool>? Module { get; set; }
+        [Input("mainModule")]
+        public Input<string>? MainModule { get; set; }
 
         /// <summary>
-        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
+        /// Migrations to apply for Durable Objects associated with this Worker.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("migrations")]
+        public Input<Inputs.WorkerScriptMigrationsGetArgs>? Migrations { get; set; }
 
-        [Input("placements")]
-        private InputList<Inputs.WorkerScriptPlacementGetArgs>? _placements;
-        public InputList<Inputs.WorkerScriptPlacementGetArgs> Placements
+        /// <summary>
+        /// When the script was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
+
+        /// <summary>
+        /// Observability settings for the Worker.
+        /// </summary>
+        [Input("observability")]
+        public Input<Inputs.WorkerScriptObservabilityGetArgs>? Observability { get; set; }
+
+        /// <summary>
+        /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// </summary>
+        [Input("placement")]
+        public Input<Inputs.WorkerScriptPlacementGetArgs>? Placement { get; set; }
+
+        /// <summary>
+        /// Name of the script, used in URLs and route configuration.
+        /// </summary>
+        [Input("scriptName")]
+        public Input<string>? ScriptName { get; set; }
+
+        [Input("startupTimeMs")]
+        public Input<int>? StartupTimeMs { get; set; }
+
+        [Input("tailConsumers")]
+        private InputList<Inputs.WorkerScriptTailConsumerGetArgs>? _tailConsumers;
+
+        /// <summary>
+        /// List of Workers that will consume logs from the attached Worker.
+        /// </summary>
+        public InputList<Inputs.WorkerScriptTailConsumerGetArgs> TailConsumers
         {
-            get => _placements ?? (_placements = new InputList<Inputs.WorkerScriptPlacementGetArgs>());
-            set => _placements = value;
+            get => _tailConsumers ?? (_tailConsumers = new InputList<Inputs.WorkerScriptTailConsumerGetArgs>());
+            set => _tailConsumers = value;
         }
 
-        [Input("plainTextBindings")]
-        private InputList<Inputs.WorkerScriptPlainTextBindingGetArgs>? _plainTextBindings;
-        public InputList<Inputs.WorkerScriptPlainTextBindingGetArgs> PlainTextBindings
-        {
-            get => _plainTextBindings ?? (_plainTextBindings = new InputList<Inputs.WorkerScriptPlainTextBindingGetArgs>());
-            set => _plainTextBindings = value;
-        }
-
-        [Input("queueBindings")]
-        private InputList<Inputs.WorkerScriptQueueBindingGetArgs>? _queueBindings;
-        public InputList<Inputs.WorkerScriptQueueBindingGetArgs> QueueBindings
-        {
-            get => _queueBindings ?? (_queueBindings = new InputList<Inputs.WorkerScriptQueueBindingGetArgs>());
-            set => _queueBindings = value;
-        }
-
-        [Input("r2BucketBindings")]
-        private InputList<Inputs.WorkerScriptR2BucketBindingGetArgs>? _r2BucketBindings;
-        public InputList<Inputs.WorkerScriptR2BucketBindingGetArgs> R2BucketBindings
-        {
-            get => _r2BucketBindings ?? (_r2BucketBindings = new InputList<Inputs.WorkerScriptR2BucketBindingGetArgs>());
-            set => _r2BucketBindings = value;
-        }
-
-        [Input("secretTextBindings")]
-        private InputList<Inputs.WorkerScriptSecretTextBindingGetArgs>? _secretTextBindings;
-        public InputList<Inputs.WorkerScriptSecretTextBindingGetArgs> SecretTextBindings
-        {
-            get => _secretTextBindings ?? (_secretTextBindings = new InputList<Inputs.WorkerScriptSecretTextBindingGetArgs>());
-            set => _secretTextBindings = value;
-        }
-
-        [Input("serviceBindings")]
-        private InputList<Inputs.WorkerScriptServiceBindingGetArgs>? _serviceBindings;
-        public InputList<Inputs.WorkerScriptServiceBindingGetArgs> ServiceBindings
-        {
-            get => _serviceBindings ?? (_serviceBindings = new InputList<Inputs.WorkerScriptServiceBindingGetArgs>());
-            set => _serviceBindings = value;
-        }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        [Input("webassemblyBindings")]
-        private InputList<Inputs.WorkerScriptWebassemblyBindingGetArgs>? _webassemblyBindings;
-        public InputList<Inputs.WorkerScriptWebassemblyBindingGetArgs> WebassemblyBindings
-        {
-            get => _webassemblyBindings ?? (_webassemblyBindings = new InputList<Inputs.WorkerScriptWebassemblyBindingGetArgs>());
-            set => _webassemblyBindings = value;
-        }
+        /// <summary>
+        /// Usage model for the Worker invocations.
+        /// Available values: "standard".
+        /// </summary>
+        [Input("usageModel")]
+        public Input<string>? UsageModel { get; set; }
 
         public WorkerScriptState()
         {

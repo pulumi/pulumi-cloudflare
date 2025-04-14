@@ -17,14 +17,14 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
     public static final AccessTagState Empty = new AccessTagState();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,48 +32,47 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of apps associated with the tag.
+     * The number of applications that have this tag
      * 
      */
     @Import(name="appCount")
     private @Nullable Output<Integer> appCount;
 
     /**
-     * @return Number of apps associated with the tag.
+     * @return The number of applications that have this tag
      * 
      */
     public Optional<Output<Integer>> appCount() {
         return Optional.ofNullable(this.appCount);
     }
 
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     /**
-     * Friendly name of the Access Tag.
+     * The name of the tag
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Friendly name of the Access Tag.
+     * @return The name of the tag
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
 
-    /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
     }
 
     private AccessTagState() {}
@@ -81,8 +80,9 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
     private AccessTagState(AccessTagState $) {
         this.accountId = $.accountId;
         this.appCount = $.appCount;
+        this.createdAt = $.createdAt;
         this.name = $.name;
-        this.zoneId = $.zoneId;
+        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -104,7 +104,7 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCount Number of apps associated with the tag.
+         * @param appCount The number of applications that have this tag
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appCount Number of apps associated with the tag.
+         * @param appCount The number of applications that have this tag
          * 
          * @return builder
          * 
@@ -145,8 +145,17 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
             return appCount(Output.of(appCount));
         }
 
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         /**
-         * @param name Friendly name of the Access Tag.
+         * @param name The name of the tag
          * 
          * @return builder
          * 
@@ -157,7 +166,7 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Friendly name of the Access Tag.
+         * @param name The name of the tag
          * 
          * @return builder
          * 
@@ -166,25 +175,13 @@ public final class AccessTagState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
-            $.zoneId = zoneId;
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
             return this;
         }
 
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(String zoneId) {
-            return zoneId(Output.of(zoneId));
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public AccessTagState build() {

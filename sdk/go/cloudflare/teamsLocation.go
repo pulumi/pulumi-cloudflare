@@ -8,13 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams Location resource. Teams Locations are
-// referenced when creating secure web gateway policies.
-//
 // ## Example Usage
 //
 // ```go
@@ -22,24 +19,52 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsLocation(ctx, "example", &cloudflare.TeamsLocationArgs{
-//				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:          pulumi.String("office"),
-//				ClientDefault: pulumi.Bool(true),
-//				EcsSupport:    pulumi.Bool(false),
-//				Networks: cloudflare.TeamsLocationNetworkArray{
-//					&cloudflare.TeamsLocationNetworkArgs{
-//						Network: pulumi.String("203.0.113.1/32"),
+//			_, err := cloudflare.NewZeroTrustDnsLocation(ctx, "example_zero_trust_dns_location", &cloudflare.ZeroTrustDnsLocationArgs{
+//				AccountId:           pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Name:                pulumi.String("Austin Office Location"),
+//				ClientDefault:       pulumi.Bool(false),
+//				DnsDestinationIpsId: pulumi.String("0e4a32c6-6fb8-4858-9296-98f51631e8e6"),
+//				EcsSupport:          pulumi.Bool(false),
+//				Endpoints: &cloudflare.ZeroTrustDnsLocationEndpointsArgs{
+//					Doh: &cloudflare.ZeroTrustDnsLocationEndpointsDohArgs{
+//						Enabled: pulumi.Bool(true),
+//						Networks: cloudflare.ZeroTrustDnsLocationEndpointsDohNetworkArray{
+//							&cloudflare.ZeroTrustDnsLocationEndpointsDohNetworkArgs{
+//								Network: pulumi.String("2001:85a3::/64"),
+//							},
+//						},
+//						RequireToken: pulumi.Bool(true),
 //					},
-//					&cloudflare.TeamsLocationNetworkArgs{
-//						Network: pulumi.String("203.0.113.2/32"),
+//					Dot: &cloudflare.ZeroTrustDnsLocationEndpointsDotArgs{
+//						Enabled: pulumi.Bool(true),
+//						Networks: cloudflare.ZeroTrustDnsLocationEndpointsDotNetworkArray{
+//							&cloudflare.ZeroTrustDnsLocationEndpointsDotNetworkArgs{
+//								Network: pulumi.String("2001:85a3::/64"),
+//							},
+//						},
+//					},
+//					Ipv4: &cloudflare.ZeroTrustDnsLocationEndpointsIpv4Args{
+//						Enabled: pulumi.Bool(true),
+//					},
+//					Ipv6: &cloudflare.ZeroTrustDnsLocationEndpointsIpv6Args{
+//						Enabled: pulumi.Bool(true),
+//						Networks: cloudflare.ZeroTrustDnsLocationEndpointsIpv6NetworkArray{
+//							&cloudflare.ZeroTrustDnsLocationEndpointsIpv6NetworkArgs{
+//								Network: pulumi.String("2001:85a3::/64"),
+//							},
+//						},
+//					},
+//				},
+//				Networks: cloudflare.ZeroTrustDnsLocationNetworkArray{
+//					&cloudflare.ZeroTrustDnsLocationNetworkArgs{
+//						Network: pulumi.String("192.0.2.1/32"),
 //					},
 //				},
 //			})
@@ -55,37 +80,38 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example <account_id>/<teams_location_id>
+// $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example '<account_id>/<location_id>'
 // ```
+//
+// Deprecated: cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation
 type TeamsLocation struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Indicator that anonymized logs are enabled.
-	AnonymizedLogsEnabled pulumi.BoolOutput `pulumi:"anonymizedLogsEnabled"`
-	// Indicator that this is the default location.
+	// True if the location is the default location.
 	ClientDefault pulumi.BoolPtrOutput `pulumi:"clientDefault"`
-	// IPv4 binding assigned to this location.
-	DnsDestinationIpsId pulumi.StringOutput `pulumi:"dnsDestinationIpsId"`
-	// IPv6 block binding assigned to this location.
+	CreatedAt     pulumi.StringOutput  `pulumi:"createdAt"`
+	// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+	DnsDestinationIpsId pulumi.StringPtrOutput `pulumi:"dnsDestinationIpsId"`
+	// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
 	DnsDestinationIpv6BlockId pulumi.StringOutput `pulumi:"dnsDestinationIpv6BlockId"`
-	// The FQDN that DoH clients should be pointed at.
+	// The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
 	DohSubdomain pulumi.StringOutput `pulumi:"dohSubdomain"`
-	// Indicator that this location needs to resolve EDNS queries.
+	// True if the location needs to resolve EDNS queries.
 	EcsSupport pulumi.BoolPtrOutput `pulumi:"ecsSupport"`
-	// Endpoints assigned to this location.
-	Endpoints TeamsLocationEndpointsPtrOutput `pulumi:"endpoints"`
-	// Client IP address.
+	// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+	Endpoints TeamsLocationEndpointsOutput `pulumi:"endpoints"`
+	// IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
 	Ip pulumi.StringOutput `pulumi:"ip"`
-	// IPv4 to direct all IPv4 DNS queries to.
+	// The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
 	Ipv4Destination pulumi.StringOutput `pulumi:"ipv4Destination"`
-	// Backup IPv4 to direct all IPv4 DNS queries to.
+	// The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
 	Ipv4DestinationBackup pulumi.StringOutput `pulumi:"ipv4DestinationBackup"`
-	// Name of the teams location.
+	// The name of the location.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The networks CIDRs that comprise the location.
-	Networks TeamsLocationNetworkArrayOutput `pulumi:"networks"`
+	// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
+	Networks  TeamsLocationNetworkArrayOutput `pulumi:"networks"`
+	UpdatedAt pulumi.StringOutput             `pulumi:"updatedAt"`
 }
 
 // NewTeamsLocation registers a new resource with the given unique name, arguments, and options.
@@ -101,6 +127,12 @@ func NewTeamsLocation(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsLocation:TeamsLocation"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TeamsLocation
 	err := ctx.RegisterResource("cloudflare:index/teamsLocation:TeamsLocation", name, args, &resource, opts...)
@@ -124,61 +156,59 @@ func GetTeamsLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsLocation resources.
 type teamsLocationState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Indicator that anonymized logs are enabled.
-	AnonymizedLogsEnabled *bool `pulumi:"anonymizedLogsEnabled"`
-	// Indicator that this is the default location.
-	ClientDefault *bool `pulumi:"clientDefault"`
-	// IPv4 binding assigned to this location.
+	// True if the location is the default location.
+	ClientDefault *bool   `pulumi:"clientDefault"`
+	CreatedAt     *string `pulumi:"createdAt"`
+	// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId *string `pulumi:"dnsDestinationIpsId"`
-	// IPv6 block binding assigned to this location.
+	// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
 	DnsDestinationIpv6BlockId *string `pulumi:"dnsDestinationIpv6BlockId"`
-	// The FQDN that DoH clients should be pointed at.
+	// The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
 	DohSubdomain *string `pulumi:"dohSubdomain"`
-	// Indicator that this location needs to resolve EDNS queries.
+	// True if the location needs to resolve EDNS queries.
 	EcsSupport *bool `pulumi:"ecsSupport"`
-	// Endpoints assigned to this location.
+	// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
 	Endpoints *TeamsLocationEndpoints `pulumi:"endpoints"`
-	// Client IP address.
+	// IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
 	Ip *string `pulumi:"ip"`
-	// IPv4 to direct all IPv4 DNS queries to.
+	// The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
 	Ipv4Destination *string `pulumi:"ipv4Destination"`
-	// Backup IPv4 to direct all IPv4 DNS queries to.
+	// The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
 	Ipv4DestinationBackup *string `pulumi:"ipv4DestinationBackup"`
-	// Name of the teams location.
+	// The name of the location.
 	Name *string `pulumi:"name"`
-	// The networks CIDRs that comprise the location.
-	Networks []TeamsLocationNetwork `pulumi:"networks"`
+	// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
+	Networks  []TeamsLocationNetwork `pulumi:"networks"`
+	UpdatedAt *string                `pulumi:"updatedAt"`
 }
 
 type TeamsLocationState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Indicator that anonymized logs are enabled.
-	AnonymizedLogsEnabled pulumi.BoolPtrInput
-	// Indicator that this is the default location.
+	// True if the location is the default location.
 	ClientDefault pulumi.BoolPtrInput
-	// IPv4 binding assigned to this location.
+	CreatedAt     pulumi.StringPtrInput
+	// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId pulumi.StringPtrInput
-	// IPv6 block binding assigned to this location.
+	// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
 	DnsDestinationIpv6BlockId pulumi.StringPtrInput
-	// The FQDN that DoH clients should be pointed at.
+	// The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
 	DohSubdomain pulumi.StringPtrInput
-	// Indicator that this location needs to resolve EDNS queries.
+	// True if the location needs to resolve EDNS queries.
 	EcsSupport pulumi.BoolPtrInput
-	// Endpoints assigned to this location.
+	// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
 	Endpoints TeamsLocationEndpointsPtrInput
-	// Client IP address.
+	// IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
 	Ip pulumi.StringPtrInput
-	// IPv4 to direct all IPv4 DNS queries to.
+	// The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
 	Ipv4Destination pulumi.StringPtrInput
-	// Backup IPv4 to direct all IPv4 DNS queries to.
+	// The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
 	Ipv4DestinationBackup pulumi.StringPtrInput
-	// Name of the teams location.
+	// The name of the location.
 	Name pulumi.StringPtrInput
-	// The networks CIDRs that comprise the location.
-	Networks TeamsLocationNetworkArrayInput
+	// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
+	Networks  TeamsLocationNetworkArrayInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (TeamsLocationState) ElementType() reflect.Type {
@@ -186,41 +216,35 @@ func (TeamsLocationState) ElementType() reflect.Type {
 }
 
 type teamsLocationArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// Indicator that this is the default location.
+	// True if the location is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
-	// IPv4 binding assigned to this location.
+	// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId *string `pulumi:"dnsDestinationIpsId"`
-	// IPv6 block binding assigned to this location.
-	DnsDestinationIpv6BlockId *string `pulumi:"dnsDestinationIpv6BlockId"`
-	// Indicator that this location needs to resolve EDNS queries.
+	// True if the location needs to resolve EDNS queries.
 	EcsSupport *bool `pulumi:"ecsSupport"`
-	// Endpoints assigned to this location.
+	// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
 	Endpoints *TeamsLocationEndpoints `pulumi:"endpoints"`
-	// Name of the teams location.
+	// The name of the location.
 	Name string `pulumi:"name"`
-	// The networks CIDRs that comprise the location.
+	// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
 	Networks []TeamsLocationNetwork `pulumi:"networks"`
 }
 
 // The set of arguments for constructing a TeamsLocation resource.
 type TeamsLocationArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// Indicator that this is the default location.
+	// True if the location is the default location.
 	ClientDefault pulumi.BoolPtrInput
-	// IPv4 binding assigned to this location.
+	// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
 	DnsDestinationIpsId pulumi.StringPtrInput
-	// IPv6 block binding assigned to this location.
-	DnsDestinationIpv6BlockId pulumi.StringPtrInput
-	// Indicator that this location needs to resolve EDNS queries.
+	// True if the location needs to resolve EDNS queries.
 	EcsSupport pulumi.BoolPtrInput
-	// Endpoints assigned to this location.
+	// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
 	Endpoints TeamsLocationEndpointsPtrInput
-	// Name of the teams location.
+	// The name of the location.
 	Name pulumi.StringInput
-	// The networks CIDRs that comprise the location.
+	// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
 	Networks TeamsLocationNetworkArrayInput
 }
 
@@ -311,69 +335,71 @@ func (o TeamsLocationOutput) ToTeamsLocationOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o TeamsLocationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Indicator that anonymized logs are enabled.
-func (o TeamsLocationOutput) AnonymizedLogsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *TeamsLocation) pulumi.BoolOutput { return v.AnonymizedLogsEnabled }).(pulumi.BoolOutput)
-}
-
-// Indicator that this is the default location.
+// True if the location is the default location.
 func (o TeamsLocationOutput) ClientDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.BoolPtrOutput { return v.ClientDefault }).(pulumi.BoolPtrOutput)
 }
 
-// IPv4 binding assigned to this location.
-func (o TeamsLocationOutput) DnsDestinationIpsId() pulumi.StringOutput {
-	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.DnsDestinationIpsId }).(pulumi.StringOutput)
+func (o TeamsLocationOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// IPv6 block binding assigned to this location.
+// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+func (o TeamsLocationOutput) DnsDestinationIpsId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringPtrOutput { return v.DnsDestinationIpsId }).(pulumi.StringPtrOutput)
+}
+
+// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
 func (o TeamsLocationOutput) DnsDestinationIpv6BlockId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.DnsDestinationIpv6BlockId }).(pulumi.StringOutput)
 }
 
-// The FQDN that DoH clients should be pointed at.
+// The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
 func (o TeamsLocationOutput) DohSubdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.DohSubdomain }).(pulumi.StringOutput)
 }
 
-// Indicator that this location needs to resolve EDNS queries.
+// True if the location needs to resolve EDNS queries.
 func (o TeamsLocationOutput) EcsSupport() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.BoolPtrOutput { return v.EcsSupport }).(pulumi.BoolPtrOutput)
 }
 
-// Endpoints assigned to this location.
-func (o TeamsLocationOutput) Endpoints() TeamsLocationEndpointsPtrOutput {
-	return o.ApplyT(func(v *TeamsLocation) TeamsLocationEndpointsPtrOutput { return v.Endpoints }).(TeamsLocationEndpointsPtrOutput)
+// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
+func (o TeamsLocationOutput) Endpoints() TeamsLocationEndpointsOutput {
+	return o.ApplyT(func(v *TeamsLocation) TeamsLocationEndpointsOutput { return v.Endpoints }).(TeamsLocationEndpointsOutput)
 }
 
-// Client IP address.
+// IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
 func (o TeamsLocationOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
-// IPv4 to direct all IPv4 DNS queries to.
+// The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
 func (o TeamsLocationOutput) Ipv4Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.Ipv4Destination }).(pulumi.StringOutput)
 }
 
-// Backup IPv4 to direct all IPv4 DNS queries to.
+// The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
 func (o TeamsLocationOutput) Ipv4DestinationBackup() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.Ipv4DestinationBackup }).(pulumi.StringOutput)
 }
 
-// Name of the teams location.
+// The name of the location.
 func (o TeamsLocationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The networks CIDRs that comprise the location.
+// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
 func (o TeamsLocationOutput) Networks() TeamsLocationNetworkArrayOutput {
 	return o.ApplyT(func(v *TeamsLocation) TeamsLocationNetworkArrayOutput { return v.Networks }).(TeamsLocationNetworkArrayOutput)
+}
+
+func (o TeamsLocationOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type TeamsLocationArrayOutput struct{ *pulumi.OutputState }

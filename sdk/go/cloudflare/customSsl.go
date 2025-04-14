@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare custom SSL resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,22 +19,76 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomSsl(ctx, "example", &cloudflare.CustomSslArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				CustomSslOptions: &cloudflare.CustomSslCustomSslOptionsArgs{
-//					Certificate:     pulumi.String("-----INSERT CERTIFICATE-----"),
-//					PrivateKey:      pulumi.String("-----INSERT PRIVATE KEY-----"),
-//					BundleMethod:    pulumi.String("ubiquitous"),
-//					GeoRestrictions: pulumi.String("us"),
-//					Type:            pulumi.String("legacy_custom"),
+//			_, err := cloudflare.NewCustomSsl(ctx, "example_custom_ssl", &cloudflare.CustomSslArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Certificate: pulumi.String(`  -----BEGIN CERTIFICATE-----
+//	  MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+//	  BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
+//	  aWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF
+//	  MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50
+//	  ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+//	  CgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1
+//	  CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB
+//	  KwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5
+//	  0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI
+//	  dZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2
+//	  izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4
+//	  9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI
+//	  GKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV
+//	  BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF
+//	  MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2
+//	  2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP
+//	  Mlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG
+//	  SvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq
+//	  2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw
+//	  YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=
+//	  -----END CERTIFICATE-----
+//
+// `),
+//
+//				PrivateKey: pulumi.String(`  -----BEGIN RSA PRIVATE KEY-----
+//	  MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
+//	  dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
+//	  abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid
+//	  tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py
+//	  FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE
+//	  ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb
+//	  HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/
+//	  axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb
+//	  +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g
+//	  +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv
+//	  KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7
+//	  9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo
+//	  /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu
+//	  iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9
+//	  N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe
+//	  VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB
+//	  vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U
+//	  lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR
+//	  9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7
+//	  mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX
+//	  dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe
+//	  PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS
+//	  fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W
+//	  qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T
+//	  lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
+//	  -----END RSA PRIVATE KEY-----
+//
+// `),
+//
+//				BundleMethod: pulumi.String("ubiquitous"),
+//				GeoRestrictions: &cloudflare.CustomSslGeoRestrictionsArgs{
+//					Label: pulumi.String("us"),
 //				},
+//				Policy: pulumi.String("(country: US) or (region: EU)"),
+//				Type:   pulumi.String("legacy_custom"),
 //			})
 //			if err != nil {
 //				return err
@@ -50,23 +102,43 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
+// $ pulumi import cloudflare:index/customSsl:CustomSsl example '<zone_id>/<custom_certificate_id>'
 // ```
 type CustomSsl struct {
 	pulumi.CustomResourceState
 
-	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-	CustomSslOptions    CustomSslCustomSslOptionsPtrOutput    `pulumi:"customSslOptions"`
-	CustomSslPriorities CustomSslCustomSslPriorityArrayOutput `pulumi:"customSslPriorities"`
-	ExpiresOn           pulumi.StringOutput                   `pulumi:"expiresOn"`
-	Hosts               pulumi.StringArrayOutput              `pulumi:"hosts"`
-	Issuer              pulumi.StringOutput                   `pulumi:"issuer"`
-	ModifiedOn          pulumi.StringOutput                   `pulumi:"modifiedOn"`
-	Priority            pulumi.IntOutput                      `pulumi:"priority"`
-	Signature           pulumi.StringOutput                   `pulumi:"signature"`
-	Status              pulumi.StringOutput                   `pulumi:"status"`
-	UploadedOn          pulumi.StringOutput                   `pulumi:"uploadedOn"`
-	// The zone identifier to target for the resource.
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
+	BundleMethod pulumi.StringOutput `pulumi:"bundleMethod"`
+	// The zone's SSL certificate or certificate and the intermediate(s).
+	Certificate pulumi.StringOutput `pulumi:"certificate"`
+	// When the certificate from the authority expires.
+	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
+	// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+	GeoRestrictions CustomSslGeoRestrictionsOutput `pulumi:"geoRestrictions"`
+	Hosts           pulumi.StringArrayOutput       `pulumi:"hosts"`
+	// The certificate authority that issued the certificate.
+	Issuer        pulumi.StringOutput          `pulumi:"issuer"`
+	KeylessServer CustomSslKeylessServerOutput `pulumi:"keylessServer"`
+	// When the certificate was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+	Policy pulumi.StringPtrOutput `pulumi:"policy"`
+	// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+	Priority pulumi.Float64Output `pulumi:"priority"`
+	// The zone's private key.
+	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
+	// The type of hash used for the certificate.
+	Signature pulumi.StringOutput `pulumi:"signature"`
+	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
+	Status pulumi.StringOutput `pulumi:"status"`
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
+	Type pulumi.StringOutput `pulumi:"type"`
+	// When the certificate was uploaded to Cloudflare.
+	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -77,9 +149,22 @@ func NewCustomSsl(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Certificate == nil {
+		return nil, errors.New("invalid value for required argument 'Certificate'")
+	}
+	if args.PrivateKey == nil {
+		return nil, errors.New("invalid value for required argument 'PrivateKey'")
+	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	if args.PrivateKey != nil {
+		args.PrivateKey = pulumi.ToSecret(args.PrivateKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomSsl
 	err := ctx.RegisterResource("cloudflare:index/customSsl:CustomSsl", name, args, &resource, opts...)
@@ -103,34 +188,74 @@ func GetCustomSsl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomSsl resources.
 type customSslState struct {
-	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-	CustomSslOptions    *CustomSslCustomSslOptions   `pulumi:"customSslOptions"`
-	CustomSslPriorities []CustomSslCustomSslPriority `pulumi:"customSslPriorities"`
-	ExpiresOn           *string                      `pulumi:"expiresOn"`
-	Hosts               []string                     `pulumi:"hosts"`
-	Issuer              *string                      `pulumi:"issuer"`
-	ModifiedOn          *string                      `pulumi:"modifiedOn"`
-	Priority            *int                         `pulumi:"priority"`
-	Signature           *string                      `pulumi:"signature"`
-	Status              *string                      `pulumi:"status"`
-	UploadedOn          *string                      `pulumi:"uploadedOn"`
-	// The zone identifier to target for the resource.
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
+	BundleMethod *string `pulumi:"bundleMethod"`
+	// The zone's SSL certificate or certificate and the intermediate(s).
+	Certificate *string `pulumi:"certificate"`
+	// When the certificate from the authority expires.
+	ExpiresOn *string `pulumi:"expiresOn"`
+	// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+	GeoRestrictions *CustomSslGeoRestrictions `pulumi:"geoRestrictions"`
+	Hosts           []string                  `pulumi:"hosts"`
+	// The certificate authority that issued the certificate.
+	Issuer        *string                 `pulumi:"issuer"`
+	KeylessServer *CustomSslKeylessServer `pulumi:"keylessServer"`
+	// When the certificate was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+	Policy *string `pulumi:"policy"`
+	// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+	Priority *float64 `pulumi:"priority"`
+	// The zone's private key.
+	PrivateKey *string `pulumi:"privateKey"`
+	// The type of hash used for the certificate.
+	Signature *string `pulumi:"signature"`
+	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
+	Status *string `pulumi:"status"`
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
+	Type *string `pulumi:"type"`
+	// When the certificate was uploaded to Cloudflare.
+	UploadedOn *string `pulumi:"uploadedOn"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type CustomSslState struct {
-	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-	CustomSslOptions    CustomSslCustomSslOptionsPtrInput
-	CustomSslPriorities CustomSslCustomSslPriorityArrayInput
-	ExpiresOn           pulumi.StringPtrInput
-	Hosts               pulumi.StringArrayInput
-	Issuer              pulumi.StringPtrInput
-	ModifiedOn          pulumi.StringPtrInput
-	Priority            pulumi.IntPtrInput
-	Signature           pulumi.StringPtrInput
-	Status              pulumi.StringPtrInput
-	UploadedOn          pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
+	BundleMethod pulumi.StringPtrInput
+	// The zone's SSL certificate or certificate and the intermediate(s).
+	Certificate pulumi.StringPtrInput
+	// When the certificate from the authority expires.
+	ExpiresOn pulumi.StringPtrInput
+	// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+	GeoRestrictions CustomSslGeoRestrictionsPtrInput
+	Hosts           pulumi.StringArrayInput
+	// The certificate authority that issued the certificate.
+	Issuer        pulumi.StringPtrInput
+	KeylessServer CustomSslKeylessServerPtrInput
+	// When the certificate was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+	Policy pulumi.StringPtrInput
+	// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+	Priority pulumi.Float64PtrInput
+	// The zone's private key.
+	PrivateKey pulumi.StringPtrInput
+	// The type of hash used for the certificate.
+	Signature pulumi.StringPtrInput
+	// Status of the zone's custom SSL.
+	// Available values: "active", "expired", "deleted", "pending", "initializing".
+	Status pulumi.StringPtrInput
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
+	Type pulumi.StringPtrInput
+	// When the certificate was uploaded to Cloudflare.
+	UploadedOn pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -139,19 +264,41 @@ func (CustomSslState) ElementType() reflect.Type {
 }
 
 type customSslArgs struct {
-	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-	CustomSslOptions    *CustomSslCustomSslOptions   `pulumi:"customSslOptions"`
-	CustomSslPriorities []CustomSslCustomSslPriority `pulumi:"customSslPriorities"`
-	// The zone identifier to target for the resource.
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
+	BundleMethod *string `pulumi:"bundleMethod"`
+	// The zone's SSL certificate or certificate and the intermediate(s).
+	Certificate string `pulumi:"certificate"`
+	// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+	GeoRestrictions *CustomSslGeoRestrictions `pulumi:"geoRestrictions"`
+	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+	Policy *string `pulumi:"policy"`
+	// The zone's private key.
+	PrivateKey string `pulumi:"privateKey"`
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
+	Type *string `pulumi:"type"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CustomSsl resource.
 type CustomSslArgs struct {
-	// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-	CustomSslOptions    CustomSslCustomSslOptionsPtrInput
-	CustomSslPriorities CustomSslCustomSslPriorityArrayInput
-	// The zone identifier to target for the resource.
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
+	BundleMethod pulumi.StringPtrInput
+	// The zone's SSL certificate or certificate and the intermediate(s).
+	Certificate pulumi.StringInput
+	// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+	GeoRestrictions CustomSslGeoRestrictionsPtrInput
+	// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+	Policy pulumi.StringPtrInput
+	// The zone's private key.
+	PrivateKey pulumi.StringInput
+	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+	// Available values: "legacy*custom", "sniCustom".
+	Type pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -242,48 +389,83 @@ func (o CustomSslOutput) ToCustomSslOutputWithContext(ctx context.Context) Custo
 	return o
 }
 
-// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
-func (o CustomSslOutput) CustomSslOptions() CustomSslCustomSslOptionsPtrOutput {
-	return o.ApplyT(func(v *CustomSsl) CustomSslCustomSslOptionsPtrOutput { return v.CustomSslOptions }).(CustomSslCustomSslOptionsPtrOutput)
+// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+// Available values: "ubiquitous", "optimal", "force".
+func (o CustomSslOutput) BundleMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.BundleMethod }).(pulumi.StringOutput)
 }
 
-func (o CustomSslOutput) CustomSslPriorities() CustomSslCustomSslPriorityArrayOutput {
-	return o.ApplyT(func(v *CustomSsl) CustomSslCustomSslPriorityArrayOutput { return v.CustomSslPriorities }).(CustomSslCustomSslPriorityArrayOutput)
+// The zone's SSL certificate or certificate and the intermediate(s).
+func (o CustomSslOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
+// When the certificate from the authority expires.
 func (o CustomSslOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+func (o CustomSslOutput) GeoRestrictions() CustomSslGeoRestrictionsOutput {
+	return o.ApplyT(func(v *CustomSsl) CustomSslGeoRestrictionsOutput { return v.GeoRestrictions }).(CustomSslGeoRestrictionsOutput)
 }
 
 func (o CustomSslOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringArrayOutput { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// The certificate authority that issued the certificate.
 func (o CustomSslOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
 
+func (o CustomSslOutput) KeylessServer() CustomSslKeylessServerOutput {
+	return o.ApplyT(func(v *CustomSsl) CustomSslKeylessServerOutput { return v.KeylessServer }).(CustomSslKeylessServerOutput)
+}
+
+// When the certificate was last modified.
 func (o CustomSslOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-func (o CustomSslOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func(v *CustomSsl) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+func (o CustomSslOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringPtrOutput { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
+// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+func (o CustomSslOutput) Priority() pulumi.Float64Output {
+	return o.ApplyT(func(v *CustomSsl) pulumi.Float64Output { return v.Priority }).(pulumi.Float64Output)
+}
+
+// The zone's private key.
+func (o CustomSslOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// The type of hash used for the certificate.
 func (o CustomSslOutput) Signature() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Signature }).(pulumi.StringOutput)
 }
 
+// Status of the zone's custom SSL.
+// Available values: "active", "expired", "deleted", "pending", "initializing".
 func (o CustomSslOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+// Available values: "legacy*custom", "sniCustom".
+func (o CustomSslOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// When the certificate was uploaded to Cloudflare.
 func (o CustomSslOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// Identifier
 func (o CustomSslOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

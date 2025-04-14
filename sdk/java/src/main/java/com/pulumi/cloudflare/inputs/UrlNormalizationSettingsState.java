@@ -17,6 +17,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
     /**
      * The scope of the URL normalization.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;.
      * 
      */
     @Import(name="scope")
@@ -24,6 +25,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
     /**
      * @return The scope of the URL normalization.
+     * Available values: &#34;incoming&#34;, &#34;both&#34;.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -32,6 +34,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
     /**
      * The type of URL normalization performed by Cloudflare.
+     * Available values: &#34;cloudflare&#34;, &#34;rfc3986&#34;.
      * 
      */
     @Import(name="type")
@@ -39,6 +42,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
     /**
      * @return The type of URL normalization performed by Cloudflare.
+     * Available values: &#34;cloudflare&#34;, &#34;rfc3986&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -46,14 +50,14 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The unique ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return The unique ID of the zone.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -88,6 +92,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
         /**
          * @param scope The scope of the URL normalization.
+         * Available values: &#34;incoming&#34;, &#34;both&#34;.
          * 
          * @return builder
          * 
@@ -99,6 +104,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
         /**
          * @param scope The scope of the URL normalization.
+         * Available values: &#34;incoming&#34;, &#34;both&#34;.
          * 
          * @return builder
          * 
@@ -109,6 +115,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
         /**
          * @param type The type of URL normalization performed by Cloudflare.
+         * Available values: &#34;cloudflare&#34;, &#34;rfc3986&#34;.
          * 
          * @return builder
          * 
@@ -120,6 +127,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
 
         /**
          * @param type The type of URL normalization performed by Cloudflare.
+         * Available values: &#34;cloudflare&#34;, &#34;rfc3986&#34;.
          * 
          * @return builder
          * 
@@ -129,7 +137,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 
@@ -140,7 +148,7 @@ public final class UrlNormalizationSettingsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId The unique ID of the zone.
          * 
          * @return builder
          * 

@@ -14,10 +14,6 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("ipv4s")]
         private InputList<Inputs.TeamsRuleRuleSettingsDnsResolversIpv4Args>? _ipv4s;
-
-        /// <summary>
-        /// IPv4 resolvers.
-        /// </summary>
         public InputList<Inputs.TeamsRuleRuleSettingsDnsResolversIpv4Args> Ipv4s
         {
             get => _ipv4s ?? (_ipv4s = new InputList<Inputs.TeamsRuleRuleSettingsDnsResolversIpv4Args>());
@@ -26,10 +22,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("ipv6s")]
         private InputList<Inputs.TeamsRuleRuleSettingsDnsResolversIpv6Args>? _ipv6s;
-
-        /// <summary>
-        /// IPv6 resolvers.
-        /// </summary>
         public InputList<Inputs.TeamsRuleRuleSettingsDnsResolversIpv6Args> Ipv6s
         {
             get => _ipv6s ?? (_ipv6s = new InputList<Inputs.TeamsRuleRuleSettingsDnsResolversIpv6Args>());

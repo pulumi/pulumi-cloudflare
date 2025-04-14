@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,104 +17,214 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
     public static final ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs();
 
     /**
-     * Disable clipboard redirection.
+     * Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
-    @Import(name="disableClipboardRedirection")
-    private @Nullable Output<Boolean> disableClipboardRedirection;
+    @Import(name="copy")
+    private @Nullable Output<String> copy;
 
     /**
-     * @return Disable clipboard redirection.
+     * @return Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
-    public Optional<Output<Boolean>> disableClipboardRedirection() {
-        return Optional.ofNullable(this.disableClipboardRedirection);
+    public Optional<Output<String>> copy() {
+        return Optional.ofNullable(this.copy);
     }
 
     /**
-     * Disable copy-paste.
+     * Set to false to enable copy-pasting. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    @Import(name="disableCopyPaste")
-    private @Nullable Output<Boolean> disableCopyPaste;
+    @Import(name="dcp")
+    private @Nullable Output<Boolean> dcp;
 
     /**
-     * @return Disable copy-paste.
+     * @return Set to false to enable copy-pasting. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    public Optional<Output<Boolean>> disableCopyPaste() {
-        return Optional.ofNullable(this.disableCopyPaste);
+    public Optional<Output<Boolean>> dcp() {
+        return Optional.ofNullable(this.dcp);
     }
 
     /**
-     * Disable download.
+     * Set to false to enable downloading. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    @Import(name="disableDownload")
-    private @Nullable Output<Boolean> disableDownload;
+    @Import(name="dd")
+    private @Nullable Output<Boolean> dd;
 
     /**
-     * @return Disable download.
+     * @return Set to false to enable downloading. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    public Optional<Output<Boolean>> disableDownload() {
-        return Optional.ofNullable(this.disableDownload);
+    public Optional<Output<Boolean>> dd() {
+        return Optional.ofNullable(this.dd);
     }
 
     /**
-     * Disable keyboard usage.
+     * Set to false to enable keyboard usage. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    @Import(name="disableKeyboard")
-    private @Nullable Output<Boolean> disableKeyboard;
+    @Import(name="dk")
+    private @Nullable Output<Boolean> dk;
 
     /**
-     * @return Disable keyboard usage.
+     * @return Set to false to enable keyboard usage. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    public Optional<Output<Boolean>> disableKeyboard() {
-        return Optional.ofNullable(this.disableKeyboard);
+    public Optional<Output<Boolean>> dk() {
+        return Optional.ofNullable(this.dk);
     }
 
     /**
-     * Disable printing.
+     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
-    @Import(name="disablePrinting")
-    private @Nullable Output<Boolean> disablePrinting;
+    @Import(name="download")
+    private @Nullable Output<String> download;
 
     /**
-     * @return Disable printing.
+     * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
-    public Optional<Output<Boolean>> disablePrinting() {
-        return Optional.ofNullable(this.disablePrinting);
+    public Optional<Output<String>> download() {
+        return Optional.ofNullable(this.download);
     }
 
     /**
-     * Disable upload.
+     * Set to false to enable printing. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    @Import(name="disableUpload")
-    private @Nullable Output<Boolean> disableUpload;
+    @Import(name="dp")
+    private @Nullable Output<Boolean> dp;
 
     /**
-     * @return Disable upload.
+     * @return Set to false to enable printing. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    public Optional<Output<Boolean>> disableUpload() {
-        return Optional.ofNullable(this.disableUpload);
+    public Optional<Output<Boolean>> dp() {
+        return Optional.ofNullable(this.dp);
+    }
+
+    /**
+     * Set to false to enable uploading. Only applies when `version == &#34;v1&#34;`.
+     * 
+     */
+    @Import(name="du")
+    private @Nullable Output<Boolean> du;
+
+    /**
+     * @return Set to false to enable uploading. Only applies when `version == &#34;v1&#34;`.
+     * 
+     */
+    public Optional<Output<Boolean>> du() {
+        return Optional.ofNullable(this.du);
+    }
+
+    /**
+     * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    @Import(name="keyboard")
+    private @Nullable Output<String> keyboard;
+
+    /**
+     * @return Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Optional<Output<String>> keyboard() {
+        return Optional.ofNullable(this.keyboard);
+    }
+
+    /**
+     * Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
+     * 
+     */
+    @Import(name="paste")
+    private @Nullable Output<String> paste;
+
+    /**
+     * @return Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
+     * 
+     */
+    public Optional<Output<String>> paste() {
+        return Optional.ofNullable(this.paste);
+    }
+
+    /**
+     * Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    @Import(name="printing")
+    private @Nullable Output<String> printing;
+
+    /**
+     * @return Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Optional<Output<String>> printing() {
+        return Optional.ofNullable(this.printing);
+    }
+
+    /**
+     * Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    @Import(name="upload")
+    private @Nullable Output<String> upload;
+
+    /**
+     * @return Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Optional<Output<String>> upload() {
+        return Optional.ofNullable(this.upload);
+    }
+
+    /**
+     * Indicates which version of the browser isolation controls should apply.
+     * Available values: &#34;v1&#34;, &#34;v2&#34;.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return Indicates which version of the browser isolation controls should apply.
+     * Available values: &#34;v1&#34;, &#34;v2&#34;.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
     }
 
     private ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs() {}
 
     private ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs $) {
-        this.disableClipboardRedirection = $.disableClipboardRedirection;
-        this.disableCopyPaste = $.disableCopyPaste;
-        this.disableDownload = $.disableDownload;
-        this.disableKeyboard = $.disableKeyboard;
-        this.disablePrinting = $.disablePrinting;
-        this.disableUpload = $.disableUpload;
+        this.copy = $.copy;
+        this.dcp = $.dcp;
+        this.dd = $.dd;
+        this.dk = $.dk;
+        this.download = $.download;
+        this.dp = $.dp;
+        this.du = $.du;
+        this.keyboard = $.keyboard;
+        this.paste = $.paste;
+        this.printing = $.printing;
+        this.upload = $.upload;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -135,129 +246,269 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs exten
         }
 
         /**
-         * @param disableClipboardRedirection Disable clipboard redirection.
+         * @param copy Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder disableClipboardRedirection(@Nullable Output<Boolean> disableClipboardRedirection) {
-            $.disableClipboardRedirection = disableClipboardRedirection;
+        public Builder copy(@Nullable Output<String> copy) {
+            $.copy = copy;
             return this;
         }
 
         /**
-         * @param disableClipboardRedirection Disable clipboard redirection.
+         * @param copy Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder disableClipboardRedirection(Boolean disableClipboardRedirection) {
-            return disableClipboardRedirection(Output.of(disableClipboardRedirection));
+        public Builder copy(String copy) {
+            return copy(Output.of(copy));
         }
 
         /**
-         * @param disableCopyPaste Disable copy-paste.
+         * @param dcp Set to false to enable copy-pasting. Only applies when `version == &#34;v1&#34;`.
          * 
          * @return builder
          * 
          */
-        public Builder disableCopyPaste(@Nullable Output<Boolean> disableCopyPaste) {
-            $.disableCopyPaste = disableCopyPaste;
+        public Builder dcp(@Nullable Output<Boolean> dcp) {
+            $.dcp = dcp;
             return this;
         }
 
         /**
-         * @param disableCopyPaste Disable copy-paste.
+         * @param dcp Set to false to enable copy-pasting. Only applies when `version == &#34;v1&#34;`.
          * 
          * @return builder
          * 
          */
-        public Builder disableCopyPaste(Boolean disableCopyPaste) {
-            return disableCopyPaste(Output.of(disableCopyPaste));
+        public Builder dcp(Boolean dcp) {
+            return dcp(Output.of(dcp));
         }
 
         /**
-         * @param disableDownload Disable download.
+         * @param dd Set to false to enable downloading. Only applies when `version == &#34;v1&#34;`.
          * 
          * @return builder
          * 
          */
-        public Builder disableDownload(@Nullable Output<Boolean> disableDownload) {
-            $.disableDownload = disableDownload;
+        public Builder dd(@Nullable Output<Boolean> dd) {
+            $.dd = dd;
             return this;
         }
 
         /**
-         * @param disableDownload Disable download.
+         * @param dd Set to false to enable downloading. Only applies when `version == &#34;v1&#34;`.
          * 
          * @return builder
          * 
          */
-        public Builder disableDownload(Boolean disableDownload) {
-            return disableDownload(Output.of(disableDownload));
+        public Builder dd(Boolean dd) {
+            return dd(Output.of(dd));
         }
 
         /**
-         * @param disableKeyboard Disable keyboard usage.
+         * @param dk Set to false to enable keyboard usage. Only applies when `version == &#34;v1&#34;`.
          * 
          * @return builder
          * 
          */
-        public Builder disableKeyboard(@Nullable Output<Boolean> disableKeyboard) {
-            $.disableKeyboard = disableKeyboard;
+        public Builder dk(@Nullable Output<Boolean> dk) {
+            $.dk = dk;
             return this;
         }
 
         /**
-         * @param disableKeyboard Disable keyboard usage.
+         * @param dk Set to false to enable keyboard usage. Only applies when `version == &#34;v1&#34;`.
          * 
          * @return builder
          * 
          */
-        public Builder disableKeyboard(Boolean disableKeyboard) {
-            return disableKeyboard(Output.of(disableKeyboard));
+        public Builder dk(Boolean dk) {
+            return dk(Output.of(dk));
         }
 
         /**
-         * @param disablePrinting Disable printing.
+         * @param download Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder disablePrinting(@Nullable Output<Boolean> disablePrinting) {
-            $.disablePrinting = disablePrinting;
+        public Builder download(@Nullable Output<String> download) {
+            $.download = download;
             return this;
         }
 
         /**
-         * @param disablePrinting Disable printing.
+         * @param download Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder disablePrinting(Boolean disablePrinting) {
-            return disablePrinting(Output.of(disablePrinting));
+        public Builder download(String download) {
+            return download(Output.of(download));
         }
 
         /**
-         * @param disableUpload Disable upload.
+         * @param dp Set to false to enable printing. Only applies when `version == &#34;v1&#34;`.
          * 
          * @return builder
          * 
          */
-        public Builder disableUpload(@Nullable Output<Boolean> disableUpload) {
-            $.disableUpload = disableUpload;
+        public Builder dp(@Nullable Output<Boolean> dp) {
+            $.dp = dp;
             return this;
         }
 
         /**
-         * @param disableUpload Disable upload.
+         * @param dp Set to false to enable printing. Only applies when `version == &#34;v1&#34;`.
          * 
          * @return builder
          * 
          */
-        public Builder disableUpload(Boolean disableUpload) {
-            return disableUpload(Output.of(disableUpload));
+        public Builder dp(Boolean dp) {
+            return dp(Output.of(dp));
+        }
+
+        /**
+         * @param du Set to false to enable uploading. Only applies when `version == &#34;v1&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder du(@Nullable Output<Boolean> du) {
+            $.du = du;
+            return this;
+        }
+
+        /**
+         * @param du Set to false to enable uploading. Only applies when `version == &#34;v1&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder du(Boolean du) {
+            return du(Output.of(du));
+        }
+
+        /**
+         * @param keyboard Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyboard(@Nullable Output<String> keyboard) {
+            $.keyboard = keyboard;
+            return this;
+        }
+
+        /**
+         * @param keyboard Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyboard(String keyboard) {
+            return keyboard(Output.of(keyboard));
+        }
+
+        /**
+         * @param paste Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paste(@Nullable Output<String> paste) {
+            $.paste = paste;
+            return this;
+        }
+
+        /**
+         * @param paste Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paste(String paste) {
+            return paste(Output.of(paste));
+        }
+
+        /**
+         * @param printing Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder printing(@Nullable Output<String> printing) {
+            $.printing = printing;
+            return this;
+        }
+
+        /**
+         * @param printing Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder printing(String printing) {
+            return printing(Output.of(printing));
+        }
+
+        /**
+         * @param upload Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upload(@Nullable Output<String> upload) {
+            $.upload = upload;
+            return this;
+        }
+
+        /**
+         * @param upload Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upload(String upload) {
+            return upload(Output.of(upload));
+        }
+
+        /**
+         * @param version Indicates which version of the browser isolation controls should apply.
+         * Available values: &#34;v1&#34;, &#34;v2&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Indicates which version of the browser isolation controls should apply.
+         * Available values: &#34;v1&#34;, &#34;v2&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs build() {

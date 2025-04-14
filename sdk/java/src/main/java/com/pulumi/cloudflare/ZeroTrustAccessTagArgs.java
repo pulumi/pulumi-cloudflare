@@ -6,11 +6,8 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,72 +15,40 @@ public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceA
     public static final ZeroTrustAccessTagArgs Empty = new ZeroTrustAccessTagArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * Number of apps associated with the tag.
-     * 
-     */
-    @Import(name="appCount")
-    private @Nullable Output<Integer> appCount;
-
-    /**
-     * @return Number of apps associated with the tag.
-     * 
-     */
-    public Optional<Output<Integer>> appCount() {
-        return Optional.ofNullable(this.appCount);
-    }
-
-    /**
-     * Friendly name of the Access Tag.
+     * The name of the tag
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Tag.
+     * @return The name of the tag
      * 
      */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    @Import(name="zoneId")
-    private @Nullable Output<String> zoneId;
-
-    /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
-    public Optional<Output<String>> zoneId() {
-        return Optional.ofNullable(this.zoneId);
-    }
-
     private ZeroTrustAccessTagArgs() {}
 
     private ZeroTrustAccessTagArgs(ZeroTrustAccessTagArgs $) {
         this.accountId = $.accountId;
-        this.appCount = $.appCount;
         this.name = $.name;
-        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -105,18 +70,18 @@ public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -126,28 +91,7 @@ public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param appCount Number of apps associated with the tag.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(@Nullable Output<Integer> appCount) {
-            $.appCount = appCount;
-            return this;
-        }
-
-        /**
-         * @param appCount Number of apps associated with the tag.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder appCount(Integer appCount) {
-            return appCount(Output.of(appCount));
-        }
-
-        /**
-         * @param name Friendly name of the Access Tag.
+         * @param name The name of the tag
          * 
          * @return builder
          * 
@@ -158,7 +102,7 @@ public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Friendly name of the Access Tag.
+         * @param name The name of the tag
          * 
          * @return builder
          * 
@@ -167,28 +111,10 @@ public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceA
             return name(Output.of(name));
         }
 
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(@Nullable Output<String> zoneId) {
-            $.zoneId = zoneId;
-            return this;
-        }
-
-        /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
-        public Builder zoneId(String zoneId) {
-            return zoneId(Output.of(zoneId));
-        }
-
         public ZeroTrustAccessTagArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessTagArgs", "accountId");
+            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessTagArgs", "name");
             }

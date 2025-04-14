@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationSaasAppHybridAndImplicitOptions {
     /**
-     * @return If true, the authorization endpoint will return an access token.
+     * @return If an Access Token should be returned from the OIDC Authorization endpoint
      * 
      */
     private @Nullable Boolean returnAccessTokenFromAuthorizationEndpoint;
     /**
-     * @return If true, the authorization endpoint will return an id token.
+     * @return If an ID Token should be returned from the OIDC Authorization endpoint
      * 
      */
     private @Nullable Boolean returnIdTokenFromAuthorizationEndpoint;
 
     private AccessApplicationSaasAppHybridAndImplicitOptions() {}
     /**
-     * @return If true, the authorization endpoint will return an access token.
+     * @return If an Access Token should be returned from the OIDC Authorization endpoint
      * 
      */
     public Optional<Boolean> returnAccessTokenFromAuthorizationEndpoint() {
         return Optional.ofNullable(this.returnAccessTokenFromAuthorizationEndpoint);
     }
     /**
-     * @return If true, the authorization endpoint will return an id token.
+     * @return If an ID Token should be returned from the OIDC Authorization endpoint
      * 
      */
     public Optional<Boolean> returnIdTokenFromAuthorizationEndpoint() {

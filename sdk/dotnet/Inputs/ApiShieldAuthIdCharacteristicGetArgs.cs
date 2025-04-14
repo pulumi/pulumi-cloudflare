@@ -13,16 +13,17 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ApiShieldAuthIdCharacteristicGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the characteristic.
+        /// The name of the characteristic field, i.e., the header or cookie name.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The type of characteristic. Available values: `header`, `cookie`.
+        /// The type of characteristic.
+        /// Available values: "header", "cookie".
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public ApiShieldAuthIdCharacteristicGetArgs()
         {

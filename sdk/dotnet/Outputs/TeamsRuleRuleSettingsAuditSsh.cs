@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsAuditSsh
     {
         /// <summary>
-        /// Log all SSH commands.
+        /// Enable to turn on SSH command logging.
         /// </summary>
-        public readonly bool CommandLogging;
+        public readonly bool? CommandLogging;
 
         [OutputConstructor]
-        private TeamsRuleRuleSettingsAuditSsh(bool commandLogging)
+        private TeamsRuleRuleSettingsAuditSsh(bool? commandLogging)
         {
             CommandLogging = commandLogging;
         }

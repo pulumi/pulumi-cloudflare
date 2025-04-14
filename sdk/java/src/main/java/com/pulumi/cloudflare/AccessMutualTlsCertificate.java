@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.AccessMutualTlsCertificateArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessMutualTlsCertificateState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -16,18 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Mutual TLS Certificate resource.
- * Mutual TLS authentication ensures that the traffic is secure and
- * trusted in both directions between a client and server and can be
- *  used with Access to only allows requests from devices with a
- *  corresponding client certificate.
- * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in
- *    most cases using either is fine. However, if you&#39;re using a scoped
- *    access token, you must provide the argument that matches the token&#39;s
- *    scope. For example, an access token that is scoped to the &#34;example.com&#34;
- *    zone needs to use the `zone_id` argument.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -38,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccessMutualTlsCertificate;
- * import com.pulumi.cloudflare.AccessMutualTlsCertificateArgs;
+ * import com.pulumi.cloudflare.ZeroTrustAccessMtlsCertificate;
+ * import com.pulumi.cloudflare.ZeroTrustAccessMtlsCertificateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,11 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myCert = new AccessMutualTlsCertificate("myCert", AccessMutualTlsCertificateArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .name("My Root Cert")
- *             .certificate(caPem)
- *             .associatedHostnames("staging.example.com")
+ *         var exampleZeroTrustAccessMtlsCertificate = new ZeroTrustAccessMtlsCertificate("exampleZeroTrustAccessMtlsCertificate", ZeroTrustAccessMtlsCertificateArgs.builder()
+ *             .certificate("""
+ *   -----BEGIN CERTIFICATE-----
+ *   MIIGAjCCA+qgAwIBAgIJAI7kymlF7CWT...N4RI7KKB7nikiuUf8vhULKy5IX10
+ *   DrUtmu/B
+ *   -----END CERTIFICATE-----
+ *             """)
+ *             .name("Allow devs")
+ *             .zoneId("zone_id")
+ *             .associatedHostnames("admin.example.com")
  *             .build());
  * 
  *     }
@@ -68,66 +62,82 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Account level import.
- * 
  * ```sh
- * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/&lt;account_id&gt;/&lt;mutual_tls_certificate_id&gt;
+ * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;certificate_id&gt;&#39;
  * ```
  * 
- * Zone level import.
- * 
- * ```sh
- * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/&lt;zone_id&gt;/&lt;mutual_tls_certificate_id&gt;
- * ```
+ * @deprecated
+ * cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate
  * 
  */
+@Deprecated /* cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate */
 @ResourceType(type="cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate")
 public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
-     * The hostnames that will be prompted for this certificate.
+     * The hostnames of the applications that will use this certificate.
      * 
      */
     @Export(name="associatedHostnames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> associatedHostnames;
 
     /**
-     * @return The hostnames that will be prompted for this certificate.
+     * @return The hostnames of the applications that will use this certificate.
      * 
      */
     public Output<Optional<List<String>>> associatedHostnames() {
         return Codegen.optional(this.associatedHostnames);
     }
     /**
-     * The Root CA for your certificates.
+     * The certificate content.
      * 
      */
     @Export(name="certificate", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> certificate;
+    private Output<String> certificate;
 
     /**
-     * @return The Root CA for your certificates.
+     * @return The certificate content.
      * 
      */
-    public Output<Optional<String>> certificate() {
-        return Codegen.optional(this.certificate);
+    public Output<String> certificate() {
+        return this.certificate;
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    @Export(name="expiresOn", refs={String.class}, tree="[0]")
+    private Output<String> expiresOn;
+
+    public Output<String> expiresOn() {
+        return this.expiresOn;
+    }
+    /**
+     * The MD5 fingerprint of the certificate.
+     * 
+     */
     @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
+    /**
+     * @return The MD5 fingerprint of the certificate.
+     * 
+     */
     public Output<String> fingerprint() {
         return this.fingerprint;
     }
@@ -145,19 +155,25 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
     public Output<String> name() {
         return this.name;
     }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
+    }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**
@@ -199,6 +215,9 @@ public class AccessMutualTlsCertificate extends com.pulumi.resources.CustomResou
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/cloudflareAccessMutualTlsCertificate:AccessMutualTlsCertificate").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

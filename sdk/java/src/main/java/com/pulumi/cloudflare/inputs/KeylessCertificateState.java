@@ -3,11 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.KeylessCertificateTunnelArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +20,16 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
     public static final KeylessCertificateState Empty = new KeylessCertificateState();
 
     /**
-     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     @Import(name="bundleMethod")
     private @Nullable Output<String> bundleMethod;
 
     /**
-     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public Optional<Output<String>> bundleMethod() {
@@ -33,14 +37,14 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The zone&#39;s SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+     * The zone&#39;s SSL certificate or SSL certificate and intermediate(s).
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return The zone&#39;s SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+     * @return The zone&#39;s SSL certificate or SSL certificate and intermediate(s).
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -48,14 +52,29 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Whether the KeyLess SSL is on.
+     * When the Keyless SSL was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return When the Keyless SSL was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
+     * Whether or not the Keyless SSL is on or off.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the KeyLess SSL is on.
+     * @return Whether or not the Keyless SSL is on or off.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -63,14 +82,14 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The KeyLess SSL host.
+     * The keyless SSL name.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return The KeyLess SSL host.
+     * @return The keyless SSL name.
      * 
      */
     public Optional<Output<String>> host() {
@@ -78,14 +97,29 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The KeyLess SSL name.
+     * When the Keyless SSL was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return When the Keyless SSL was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
+    /**
+     * The keyless SSL name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The KeyLess SSL name.
+     * @return The keyless SSL name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -93,29 +127,46 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The KeyLess SSL port used to communicate between Cloudflare and the client&#39;s KeyLess SSL server. Defaults to `24008`.
+     * Available permissions for the Keyless SSL for the current user requesting the item.
+     * 
+     */
+    @Import(name="permissions")
+    private @Nullable Output<List<String>> permissions;
+
+    /**
+     * @return Available permissions for the Keyless SSL for the current user requesting the item.
+     * 
+     */
+    public Optional<Output<List<String>>> permissions() {
+        return Optional.ofNullable(this.permissions);
+    }
+
+    /**
+     * The keyless SSL port used to communicate between Cloudflare and the client&#39;s Keyless SSL server.
      * 
      */
     @Import(name="port")
-    private @Nullable Output<Integer> port;
+    private @Nullable Output<Double> port;
 
     /**
-     * @return The KeyLess SSL port used to communicate between Cloudflare and the client&#39;s KeyLess SSL server. Defaults to `24008`.
+     * @return The keyless SSL port used to communicate between Cloudflare and the client&#39;s Keyless SSL server.
      * 
      */
-    public Optional<Output<Integer>> port() {
+    public Optional<Output<Double>> port() {
         return Optional.ofNullable(this.port);
     }
 
     /**
-     * Status of the KeyLess SSL.
+     * Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the KeyLess SSL.
+     * @return Status of the Keyless SSL.
+     * Available values: &#34;active&#34;, &#34;deleted&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -123,14 +174,29 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * 
+     */
+    @Import(name="tunnel")
+    private @Nullable Output<KeylessCertificateTunnelArgs> tunnel;
+
+    /**
+     * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
+     * 
+     */
+    public Optional<Output<KeylessCertificateTunnelArgs>> tunnel() {
+        return Optional.ofNullable(this.tunnel);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -142,11 +208,15 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
     private KeylessCertificateState(KeylessCertificateState $) {
         this.bundleMethod = $.bundleMethod;
         this.certificate = $.certificate;
+        this.createdOn = $.createdOn;
         this.enabled = $.enabled;
         this.host = $.host;
+        this.modifiedOn = $.modifiedOn;
         this.name = $.name;
+        this.permissions = $.permissions;
         this.port = $.port;
         this.status = $.status;
+        this.tunnel = $.tunnel;
         this.zoneId = $.zoneId;
     }
 
@@ -169,7 +239,8 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -180,7 +251,8 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -190,7 +262,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param certificate The zone&#39;s SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+         * @param certificate The zone&#39;s SSL certificate or SSL certificate and intermediate(s).
          * 
          * @return builder
          * 
@@ -201,7 +273,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param certificate The zone&#39;s SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+         * @param certificate The zone&#39;s SSL certificate or SSL certificate and intermediate(s).
          * 
          * @return builder
          * 
@@ -211,7 +283,28 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether the KeyLess SSL is on.
+         * @param createdOn When the Keyless SSL was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn When the Keyless SSL was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
+         * @param enabled Whether or not the Keyless SSL is on or off.
          * 
          * @return builder
          * 
@@ -222,7 +315,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled Whether the KeyLess SSL is on.
+         * @param enabled Whether or not the Keyless SSL is on or off.
          * 
          * @return builder
          * 
@@ -232,7 +325,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param host The KeyLess SSL host.
+         * @param host The keyless SSL name.
          * 
          * @return builder
          * 
@@ -243,7 +336,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param host The KeyLess SSL host.
+         * @param host The keyless SSL name.
          * 
          * @return builder
          * 
@@ -253,7 +346,28 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The KeyLess SSL name.
+         * @param modifiedOn When the Keyless SSL was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn When the Keyless SSL was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
+        }
+
+        /**
+         * @param name The keyless SSL name.
          * 
          * @return builder
          * 
@@ -264,7 +378,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name The KeyLess SSL name.
+         * @param name The keyless SSL name.
          * 
          * @return builder
          * 
@@ -274,28 +388,60 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param port The KeyLess SSL port used to communicate between Cloudflare and the client&#39;s KeyLess SSL server. Defaults to `24008`.
+         * @param permissions Available permissions for the Keyless SSL for the current user requesting the item.
          * 
          * @return builder
          * 
          */
-        public Builder port(@Nullable Output<Integer> port) {
+        public Builder permissions(@Nullable Output<List<String>> permissions) {
+            $.permissions = permissions;
+            return this;
+        }
+
+        /**
+         * @param permissions Available permissions for the Keyless SSL for the current user requesting the item.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissions(List<String> permissions) {
+            return permissions(Output.of(permissions));
+        }
+
+        /**
+         * @param permissions Available permissions for the Keyless SSL for the current user requesting the item.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissions(String... permissions) {
+            return permissions(List.of(permissions));
+        }
+
+        /**
+         * @param port The keyless SSL port used to communicate between Cloudflare and the client&#39;s Keyless SSL server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<Double> port) {
             $.port = port;
             return this;
         }
 
         /**
-         * @param port The KeyLess SSL port used to communicate between Cloudflare and the client&#39;s KeyLess SSL server. Defaults to `24008`.
+         * @param port The keyless SSL port used to communicate between Cloudflare and the client&#39;s Keyless SSL server.
          * 
          * @return builder
          * 
          */
-        public Builder port(Integer port) {
+        public Builder port(Double port) {
             return port(Output.of(port));
         }
 
         /**
-         * @param status Status of the KeyLess SSL.
+         * @param status Status of the Keyless SSL.
+         * Available values: &#34;active&#34;, &#34;deleted&#34;.
          * 
          * @return builder
          * 
@@ -306,7 +452,8 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status Status of the KeyLess SSL.
+         * @param status Status of the Keyless SSL.
+         * Available values: &#34;active&#34;, &#34;deleted&#34;.
          * 
          * @return builder
          * 
@@ -316,7 +463,28 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnel(@Nullable Output<KeylessCertificateTunnelArgs> tunnel) {
+            $.tunnel = tunnel;
+            return this;
+        }
+
+        /**
+         * @param tunnel Configuration for using Keyless SSL through a Cloudflare Tunnel
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnel(KeylessCertificateTunnelArgs tunnel) {
+            return tunnel(Output.of(tunnel));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -327,7 +495,7 @@ public final class KeylessCertificateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

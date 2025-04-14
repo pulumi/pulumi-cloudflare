@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOriginCaCertificateResult',
@@ -27,13 +29,22 @@ class GetOriginCaCertificateResult:
     """
     A collection of values returned by getOriginCaCertificate.
     """
-    def __init__(__self__, certificate=None, expires_on=None, hostnames=None, id=None, request_type=None, revoked_at=None):
+    def __init__(__self__, certificate=None, certificate_id=None, csr=None, expires_on=None, filter=None, hostnames=None, id=None, request_type=None, requested_validity=None):
         if certificate and not isinstance(certificate, str):
             raise TypeError("Expected argument 'certificate' to be a str")
         pulumi.set(__self__, "certificate", certificate)
+        if certificate_id and not isinstance(certificate_id, str):
+            raise TypeError("Expected argument 'certificate_id' to be a str")
+        pulumi.set(__self__, "certificate_id", certificate_id)
+        if csr and not isinstance(csr, str):
+            raise TypeError("Expected argument 'csr' to be a str")
+        pulumi.set(__self__, "csr", csr)
         if expires_on and not isinstance(expires_on, str):
             raise TypeError("Expected argument 'expires_on' to be a str")
         pulumi.set(__self__, "expires_on", expires_on)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if hostnames and not isinstance(hostnames, list):
             raise TypeError("Expected argument 'hostnames' to be a list")
         pulumi.set(__self__, "hostnames", hostnames)
@@ -43,31 +54,52 @@ class GetOriginCaCertificateResult:
         if request_type and not isinstance(request_type, str):
             raise TypeError("Expected argument 'request_type' to be a str")
         pulumi.set(__self__, "request_type", request_type)
-        if revoked_at and not isinstance(revoked_at, str):
-            raise TypeError("Expected argument 'revoked_at' to be a str")
-        pulumi.set(__self__, "revoked_at", revoked_at)
+        if requested_validity and not isinstance(requested_validity, float):
+            raise TypeError("Expected argument 'requested_validity' to be a float")
+        pulumi.set(__self__, "requested_validity", requested_validity)
 
     @property
     @pulumi.getter
     def certificate(self) -> builtins.str:
         """
-        The Origin CA certificate.
+        The Origin CA certificate. Will be newline-encoded.
         """
         return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[builtins.str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @property
+    @pulumi.getter
+    def csr(self) -> builtins.str:
+        """
+        The Certificate Signing Request (CSR). Must be newline-encoded.
+        """
+        return pulumi.get(self, "csr")
 
     @property
     @pulumi.getter(name="expiresOn")
     def expires_on(self) -> builtins.str:
         """
-        The timestamp when the certificate will expire.
+        When the certificate will expire.
         """
         return pulumi.get(self, "expires_on")
 
     @property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.GetOriginCaCertificateFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
     def hostnames(self) -> Sequence[builtins.str]:
         """
-        A list of hostnames or wildcard names bound to the certificate.
+        Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
         """
         return pulumi.get(self, "hostnames")
 
@@ -75,7 +107,7 @@ class GetOriginCaCertificateResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        The Origin CA Certificate unique identifier.
+        Identifier
         """
         return pulumi.get(self, "id")
 
@@ -83,17 +115,19 @@ class GetOriginCaCertificateResult:
     @pulumi.getter(name="requestType")
     def request_type(self) -> builtins.str:
         """
-        The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`
+        Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
+        Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
         """
         return pulumi.get(self, "request_type")
 
     @property
-    @pulumi.getter(name="revokedAt")
-    def revoked_at(self) -> builtins.str:
+    @pulumi.getter(name="requestedValidity")
+    def requested_validity(self) -> builtins.float:
         """
-        The timestamp when the certificate was revoked.
+        The number of days for which the certificate should be valid.
+        Available values: 7, 30, 90, 365, 730, 1095, 5475.
         """
-        return pulumi.get(self, "revoked_at")
+        return pulumi.get(self, "requested_validity")
 
 
 class AwaitableGetOriginCaCertificateResult(GetOriginCaCertificateResult):
@@ -103,67 +137,76 @@ class AwaitableGetOriginCaCertificateResult(GetOriginCaCertificateResult):
             yield self
         return GetOriginCaCertificateResult(
             certificate=self.certificate,
+            certificate_id=self.certificate_id,
+            csr=self.csr,
             expires_on=self.expires_on,
+            filter=self.filter,
             hostnames=self.hostnames,
             id=self.id,
             request_type=self.request_type,
-            revoked_at=self.revoked_at)
+            requested_validity=self.requested_validity)
 
 
-def get_origin_ca_certificate(id: Optional[builtins.str] = None,
+def get_origin_ca_certificate(certificate_id: Optional[builtins.str] = None,
+                              filter: Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOriginCaCertificateResult:
     """
-    Use this data source to retrieve an existing origin ca certificate.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_origin_ca_certificate(id="REPLACE_ME")
+    example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param builtins.str id: The Origin CA Certificate unique identifier.
+    :param builtins.str certificate_id: Identifier
     """
     __args__ = dict()
-    __args__['id'] = id
+    __args__['certificateId'] = certificate_id
+    __args__['filter'] = filter
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getOriginCaCertificate:getOriginCaCertificate', __args__, opts=opts, typ=GetOriginCaCertificateResult).value
 
     return AwaitableGetOriginCaCertificateResult(
         certificate=pulumi.get(__ret__, 'certificate'),
+        certificate_id=pulumi.get(__ret__, 'certificate_id'),
+        csr=pulumi.get(__ret__, 'csr'),
         expires_on=pulumi.get(__ret__, 'expires_on'),
+        filter=pulumi.get(__ret__, 'filter'),
         hostnames=pulumi.get(__ret__, 'hostnames'),
         id=pulumi.get(__ret__, 'id'),
         request_type=pulumi.get(__ret__, 'request_type'),
-        revoked_at=pulumi.get(__ret__, 'revoked_at'))
-def get_origin_ca_certificate_output(id: Optional[pulumi.Input[builtins.str]] = None,
+        requested_validity=pulumi.get(__ret__, 'requested_validity'))
+def get_origin_ca_certificate_output(certificate_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                     filter: Optional[pulumi.Input[Optional[Union['GetOriginCaCertificateFilterArgs', 'GetOriginCaCertificateFilterArgsDict']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOriginCaCertificateResult]:
     """
-    Use this data source to retrieve an existing origin ca certificate.
-
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_origin_ca_certificate(id="REPLACE_ME")
+    example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
-    :param builtins.str id: The Origin CA Certificate unique identifier.
+    :param builtins.str certificate_id: Identifier
     """
     __args__ = dict()
-    __args__['id'] = id
+    __args__['certificateId'] = certificate_id
+    __args__['filter'] = filter
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getOriginCaCertificate:getOriginCaCertificate', __args__, opts=opts, typ=GetOriginCaCertificateResult)
     return __ret__.apply(lambda __response__: GetOriginCaCertificateResult(
         certificate=pulumi.get(__response__, 'certificate'),
+        certificate_id=pulumi.get(__response__, 'certificate_id'),
+        csr=pulumi.get(__response__, 'csr'),
         expires_on=pulumi.get(__response__, 'expires_on'),
+        filter=pulumi.get(__response__, 'filter'),
         hostnames=pulumi.get(__response__, 'hostnames'),
         id=pulumi.get(__response__, 'id'),
         request_type=pulumi.get(__response__, 'request_type'),
-        revoked_at=pulumi.get(__response__, 'revoked_at')))
+        requested_validity=pulumi.get(__response__, 'requested_validity')))

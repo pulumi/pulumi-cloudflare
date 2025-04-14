@@ -14,17 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class SpectrumApplicationEdgeIps
     {
         /// <summary>
-        /// The IP versions supported for inbound connections on Spectrum anycast IPs. Required when `type` is not `static`. Available values: `all`, `ipv4`, `ipv6`.
+        /// The IP versions supported for inbound connections on Spectrum anycast IPs.
+        /// Available values: "all", "ipv4", "ipv6".
         /// </summary>
         public readonly string? Connectivity;
         /// <summary>
-        /// The collection of customer owned IPs to broadcast via anycast for this hostname and application. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        /// The array of customer owned IPs we broadcast via anycast for this hostname and application.
         /// </summary>
         public readonly ImmutableArray<string> Ips;
         /// <summary>
-        /// The type of edge IP configuration specified. Available values: `dynamic`, `static`.
+        /// The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
+        /// Available values: "dynamic".
         /// </summary>
-        public readonly string Type;
+        public readonly string? Type;
 
         [OutputConstructor]
         private SpectrumApplicationEdgeIps(
@@ -32,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> ips,
 
-            string type)
+            string? type)
         {
             Connectivity = connectivity;
             Ips = ips;

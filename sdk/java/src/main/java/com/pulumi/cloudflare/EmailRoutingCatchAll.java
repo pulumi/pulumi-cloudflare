@@ -19,66 +19,29 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource for managing Email Routing Addresses catch all behaviour.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.EmailRoutingCatchAll;
- * import com.pulumi.cloudflare.EmailRoutingCatchAllArgs;
- * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllMatcherArgs;
- * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllActionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var example = new EmailRoutingCatchAll("example", EmailRoutingCatchAllArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .name("example catch all")
- *             .enabled(true)
- *             .matchers(EmailRoutingCatchAllMatcherArgs.builder()
- *                 .type("all")
- *                 .build())
- *             .actions(EmailRoutingCatchAllActionArgs.builder()
- *                 .type("forward")
- *                 .values("destinationaddress}{@literal @}{@code example.net")
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll example &#39;&lt;zone_id&gt;&#39;
+ * ```
  * 
  */
 @ResourceType(type="cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll")
 public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
     /**
-     * List actions patterns.
+     * List actions for the catch-all routing rule.
      * 
      */
     @Export(name="actions", refs={List.class,EmailRoutingCatchAllAction.class}, tree="[0,1]")
     private Output<List<EmailRoutingCatchAllAction>> actions;
 
     /**
-     * @return List actions patterns.
+     * @return List actions for the catch-all routing rule.
      * 
      */
     public Output<List<EmailRoutingCatchAllAction>> actions() {
@@ -89,24 +52,24 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
      * @return Routing rule status.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
-     * Matching patterns to forward to your actions.
+     * List of matchers for the catch-all routing rule.
      * 
      */
     @Export(name="matchers", refs={List.class,EmailRoutingCatchAllMatcher.class}, tree="[0,1]")
     private Output<List<EmailRoutingCatchAllMatcher>> matchers;
 
     /**
-     * @return Matching patterns to forward to your actions.
+     * @return List of matchers for the catch-all routing rule.
      * 
      */
     public Output<List<EmailRoutingCatchAllMatcher>> matchers() {
@@ -117,38 +80,38 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
      * @return Routing rule name.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     /**
-     * Routing rule identifier.
+     * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      */
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
-     * @return Routing rule identifier.
+     * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      */
     public Output<String> tag() {
         return this.tag;
     }
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

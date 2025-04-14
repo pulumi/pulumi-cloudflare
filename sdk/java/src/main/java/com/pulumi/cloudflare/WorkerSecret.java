@@ -6,17 +6,17 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkerSecretArgs;
 import com.pulumi.cloudflare.inputs.WorkerSecretState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Worker secret resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkerSecret;
- * import com.pulumi.cloudflare.WorkerSecretArgs;
+ * import com.pulumi.cloudflare.WorkersSecret;
+ * import com.pulumi.cloudflare.WorkersSecretArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,11 +42,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mySecret = new WorkerSecret("mySecret", WorkerSecretArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("MY_EXAMPLE_SECRET_TEXT")
- *             .scriptName("script_1")
- *             .secretText("my_secret_value")
+ *         var exampleWorkersSecret = new WorkersSecret("exampleWorkersSecret", WorkersSecretArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .dispatchNamespace("my-dispatch-namespace")
+ *             .scriptName("this-is_my_script-01")
+ *             .name("MY_SECRET")
+ *             .text("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9")
+ *             .type("secret_text")
  *             .build());
  * 
  *     }
@@ -58,67 +60,101 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workerSecret:WorkerSecret example &lt;account_id&gt;/&lt;script_name&gt;/&lt;secret_name&gt;
+ * $ pulumi import cloudflare:index/workerSecret:WorkerSecret example &#39;&lt;account_id&gt;/&lt;dispatch_namespace&gt;/&lt;script_name&gt;/&lt;secret_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret
+ * 
  */
+@Deprecated /* cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret */
 @ResourceType(type="cloudflare:index/workerSecret:WorkerSecret")
 public class WorkerSecret extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    @Export(name="dispatchNamespace", refs={String.class}, tree="[0]")
+    private Output<String> dispatchNamespace;
+
+    /**
+     * @return Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    public Output<String> dispatchNamespace() {
+        return this.dispatchNamespace;
+    }
+    /**
+     * The name of this secret, this is what will be used to access it inside the Worker.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * @return The name of this secret, this is what will be used to access it inside the Worker.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
      * 
      */
     @Export(name="scriptName", refs={String.class}, tree="[0]")
     private Output<String> scriptName;
 
     /**
-     * @return The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the script, used in URLs and route configuration.
      * 
      */
     public Output<String> scriptName() {
         return this.scriptName;
     }
     /**
-     * The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * The value of the secret.
      * 
      */
-    @Export(name="secretText", refs={String.class}, tree="[0]")
-    private Output<String> secretText;
+    @Export(name="text", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> text;
 
     /**
-     * @return The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**
+     * @return The value of the secret.
      * 
      */
-    public Output<String> secretText() {
-        return this.secretText;
+    public Output<Optional<String>> text() {
+        return Codegen.optional(this.text);
+    }
+    /**
+     * The type of secret to put.
+     * Available values: &#34;secret_text&#34;.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> type;
+
+    /**
+     * @return The type of secret to put.
+     * Available values: &#34;secret_text&#34;.
+     * 
+     */
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
 
     /**
@@ -160,8 +196,11 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/workerSecret:WorkerSecret").build())
+            ))
             .additionalSecretOutputs(List.of(
-                "secretText"
+                "text"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

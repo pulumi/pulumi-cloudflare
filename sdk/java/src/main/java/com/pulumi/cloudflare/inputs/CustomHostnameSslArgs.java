@@ -3,9 +3,8 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.CustomHostnameSslSettingArgs;
-import com.pulumi.cloudflare.inputs.CustomHostnameSslValidationErrorArgs;
-import com.pulumi.cloudflare.inputs.CustomHostnameSslValidationRecordArgs;
+import com.pulumi.cloudflare.inputs.CustomHostnameSslCustomCertBundleArgs;
+import com.pulumi.cloudflare.inputs.CustomHostnameSslSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -21,25 +20,67 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     public static final CustomHostnameSslArgs Empty = new CustomHostnameSslArgs();
 
     /**
-     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     * A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     @Import(name="bundleMethod")
     private @Nullable Output<String> bundleMethod;
 
     /**
-     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+     * @return A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+     * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
      * 
      */
     public Optional<Output<String>> bundleMethod() {
         return Optional.ofNullable(this.bundleMethod);
     }
 
+    /**
+     * The Certificate Authority that will issue the certificate
+     * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
     @Import(name="certificateAuthority")
     private @Nullable Output<String> certificateAuthority;
 
+    /**
+     * @return The Certificate Authority that will issue the certificate
+     * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+     * 
+     */
     public Optional<Output<String>> certificateAuthority() {
         return Optional.ofNullable(this.certificateAuthority);
+    }
+
+    /**
+     * Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * 
+     */
+    @Import(name="cloudflareBranding")
+    private @Nullable Output<Boolean> cloudflareBranding;
+
+    /**
+     * @return Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+     * 
+     */
+    public Optional<Output<Boolean>> cloudflareBranding() {
+        return Optional.ofNullable(this.cloudflareBranding);
+    }
+
+    /**
+     * Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * 
+     */
+    @Import(name="customCertBundles")
+    private @Nullable Output<List<CustomHostnameSslCustomCertBundleArgs>> customCertBundles;
+
+    /**
+     * @return Array of custom certificate and key pairs (1 or 2 pairs allowed)
+     * 
+     */
+    public Optional<Output<List<CustomHostnameSslCustomCertBundleArgs>>> customCertBundles() {
+        return Optional.ofNullable(this.customCertBundles);
     }
 
     /**
@@ -73,14 +114,16 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+     * Domain control validation (DCV) method used for this hostname.
+     * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
      * 
      */
     @Import(name="method")
     private @Nullable Output<String> method;
 
     /**
-     * @return Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+     * @return Domain control validation (DCV) method used for this hostname.
+     * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
      * 
      */
     public Optional<Output<String>> method() {
@@ -88,54 +131,35 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * SSL/TLS settings for the certificate.
+     * SSL specific settings.
      * 
      */
     @Import(name="settings")
-    private @Nullable Output<List<CustomHostnameSslSettingArgs>> settings;
+    private @Nullable Output<CustomHostnameSslSettingsArgs> settings;
 
     /**
-     * @return SSL/TLS settings for the certificate.
+     * @return SSL specific settings.
      * 
      */
-    public Optional<Output<List<CustomHostnameSslSettingArgs>>> settings() {
+    public Optional<Output<CustomHostnameSslSettingsArgs>> settings() {
         return Optional.ofNullable(this.settings);
     }
 
-    @Import(name="status")
-    private @Nullable Output<String> status;
-
-    public Optional<Output<String>> status() {
-        return Optional.ofNullable(this.status);
-    }
-
     /**
-     * Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+     * Level of validation to be used for this hostname. Domain validation (dv) must be used.
+     * Available values: &#34;dv&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+     * @return Level of validation to be used for this hostname. Domain validation (dv) must be used.
+     * Available values: &#34;dv&#34;.
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
-    }
-
-    @Import(name="validationErrors")
-    private @Nullable Output<List<CustomHostnameSslValidationErrorArgs>> validationErrors;
-
-    public Optional<Output<List<CustomHostnameSslValidationErrorArgs>>> validationErrors() {
-        return Optional.ofNullable(this.validationErrors);
-    }
-
-    @Import(name="validationRecords")
-    private @Nullable Output<List<CustomHostnameSslValidationRecordArgs>> validationRecords;
-
-    public Optional<Output<List<CustomHostnameSslValidationRecordArgs>>> validationRecords() {
-        return Optional.ofNullable(this.validationRecords);
     }
 
     /**
@@ -158,14 +182,13 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
     private CustomHostnameSslArgs(CustomHostnameSslArgs $) {
         this.bundleMethod = $.bundleMethod;
         this.certificateAuthority = $.certificateAuthority;
+        this.cloudflareBranding = $.cloudflareBranding;
+        this.customCertBundles = $.customCertBundles;
         this.customCertificate = $.customCertificate;
         this.customKey = $.customKey;
         this.method = $.method;
         this.settings = $.settings;
-        this.status = $.status;
         this.type = $.type;
-        this.validationErrors = $.validationErrors;
-        this.validationRecords = $.validationRecords;
         this.wildcard = $.wildcard;
     }
 
@@ -188,7 +211,8 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -199,7 +223,8 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`.
+         * @param bundleMethod A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+         * Available values: &#34;ubiquitous&#34;, &#34;optimal&#34;, &#34;force&#34;.
          * 
          * @return builder
          * 
@@ -208,13 +233,79 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
             return bundleMethod(Output.of(bundleMethod));
         }
 
+        /**
+         * @param certificateAuthority The Certificate Authority that will issue the certificate
+         * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateAuthority(@Nullable Output<String> certificateAuthority) {
             $.certificateAuthority = certificateAuthority;
             return this;
         }
 
+        /**
+         * @param certificateAuthority The Certificate Authority that will issue the certificate
+         * Available values: &#34;digicert&#34;, &#34;google&#34;, &#34;lets*encrypt&#34;, &#34;ssl*com&#34;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateAuthority(String certificateAuthority) {
             return certificateAuthority(Output.of(certificateAuthority));
+        }
+
+        /**
+         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudflareBranding(@Nullable Output<Boolean> cloudflareBranding) {
+            $.cloudflareBranding = cloudflareBranding;
+            return this;
+        }
+
+        /**
+         * @param cloudflareBranding Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudflareBranding(Boolean cloudflareBranding) {
+            return cloudflareBranding(Output.of(cloudflareBranding));
+        }
+
+        /**
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCertBundles(@Nullable Output<List<CustomHostnameSslCustomCertBundleArgs>> customCertBundles) {
+            $.customCertBundles = customCertBundles;
+            return this;
+        }
+
+        /**
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCertBundles(List<CustomHostnameSslCustomCertBundleArgs> customCertBundles) {
+            return customCertBundles(Output.of(customCertBundles));
+        }
+
+        /**
+         * @param customCertBundles Array of custom certificate and key pairs (1 or 2 pairs allowed)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCertBundles(CustomHostnameSslCustomCertBundleArgs... customCertBundles) {
+            return customCertBundles(List.of(customCertBundles));
         }
 
         /**
@@ -260,7 +351,8 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param method Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+         * @param method Domain control validation (DCV) method used for this hostname.
+         * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -271,7 +363,8 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param method Domain control validation (DCV) method used for this hostname. Available values: `http`, `txt`, `email`.
+         * @param method Domain control validation (DCV) method used for this hostname.
+         * Available values: &#34;http&#34;, &#34;txt&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -281,47 +374,29 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param settings SSL/TLS settings for the certificate.
+         * @param settings SSL specific settings.
          * 
          * @return builder
          * 
          */
-        public Builder settings(@Nullable Output<List<CustomHostnameSslSettingArgs>> settings) {
+        public Builder settings(@Nullable Output<CustomHostnameSslSettingsArgs> settings) {
             $.settings = settings;
             return this;
         }
 
         /**
-         * @param settings SSL/TLS settings for the certificate.
+         * @param settings SSL specific settings.
          * 
          * @return builder
          * 
          */
-        public Builder settings(List<CustomHostnameSslSettingArgs> settings) {
+        public Builder settings(CustomHostnameSslSettingsArgs settings) {
             return settings(Output.of(settings));
         }
 
         /**
-         * @param settings SSL/TLS settings for the certificate.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder settings(CustomHostnameSslSettingArgs... settings) {
-            return settings(List.of(settings));
-        }
-
-        public Builder status(@Nullable Output<String> status) {
-            $.status = status;
-            return this;
-        }
-
-        public Builder status(String status) {
-            return status(Output.of(status));
-        }
-
-        /**
-         * @param type Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+         * @param type Level of validation to be used for this hostname. Domain validation (dv) must be used.
+         * Available values: &#34;dv&#34;.
          * 
          * @return builder
          * 
@@ -332,39 +407,14 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
+         * @param type Level of validation to be used for this hostname. Domain validation (dv) must be used.
+         * Available values: &#34;dv&#34;.
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
-        }
-
-        public Builder validationErrors(@Nullable Output<List<CustomHostnameSslValidationErrorArgs>> validationErrors) {
-            $.validationErrors = validationErrors;
-            return this;
-        }
-
-        public Builder validationErrors(List<CustomHostnameSslValidationErrorArgs> validationErrors) {
-            return validationErrors(Output.of(validationErrors));
-        }
-
-        public Builder validationErrors(CustomHostnameSslValidationErrorArgs... validationErrors) {
-            return validationErrors(List.of(validationErrors));
-        }
-
-        public Builder validationRecords(@Nullable Output<List<CustomHostnameSslValidationRecordArgs>> validationRecords) {
-            $.validationRecords = validationRecords;
-            return this;
-        }
-
-        public Builder validationRecords(List<CustomHostnameSslValidationRecordArgs> validationRecords) {
-            return validationRecords(Output.of(validationRecords));
-        }
-
-        public Builder validationRecords(CustomHostnameSslValidationRecordArgs... validationRecords) {
-            return validationRecords(List.of(validationRecords));
         }
 
         /**

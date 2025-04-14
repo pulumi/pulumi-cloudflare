@@ -10,9 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Teams Location resource. Teams Locations are
-    /// referenced when creating secure web gateway policies.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -23,21 +20,59 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.TeamsLocation("example", new()
+    ///     var exampleZeroTrustDnsLocation = new Cloudflare.ZeroTrustDnsLocation("example_zero_trust_dns_location", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "office",
-    ///         ClientDefault = true,
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Name = "Austin Office Location",
+    ///         ClientDefault = false,
+    ///         DnsDestinationIpsId = "0e4a32c6-6fb8-4858-9296-98f51631e8e6",
     ///         EcsSupport = false,
+    ///         Endpoints = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsArgs
+    ///         {
+    ///             Doh = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsDohArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Networks = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsDohNetworkArgs
+    ///                     {
+    ///                         Network = "2001:85a3::/64",
+    ///                     },
+    ///                 },
+    ///                 RequireToken = true,
+    ///             },
+    ///             Dot = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsDotArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Networks = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsDotNetworkArgs
+    ///                     {
+    ///                         Network = "2001:85a3::/64",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Ipv4 = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsIpv4Args
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///             Ipv6 = new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsIpv6Args
+    ///             {
+    ///                 Enabled = true,
+    ///                 Networks = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.ZeroTrustDnsLocationEndpointsIpv6NetworkArgs
+    ///                     {
+    ///                         Network = "2001:85a3::/64",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///         Networks = new[]
     ///         {
-    ///             new Cloudflare.Inputs.TeamsLocationNetworkArgs
+    ///             new Cloudflare.Inputs.ZeroTrustDnsLocationNetworkArgs
     ///             {
-    ///                 Network = "203.0.113.1/32",
-    ///             },
-    ///             new Cloudflare.Inputs.TeamsLocationNetworkArgs
-    ///             {
-    ///                 Network = "203.0.113.2/32",
+    ///                 Network = "192.0.2.1/32",
     ///             },
     ///         },
     ///     });
@@ -48,89 +83,87 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example &lt;account_id&gt;/&lt;teams_location_id&gt;
+    /// $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example '&lt;account_id&gt;/&lt;location_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation")]
     [CloudflareResourceType("cloudflare:index/teamsLocation:TeamsLocation")]
     public partial class TeamsLocation : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Indicator that anonymized logs are enabled.
-        /// </summary>
-        [Output("anonymizedLogsEnabled")]
-        public Output<bool> AnonymizedLogsEnabled { get; private set; } = null!;
-
-        /// <summary>
-        /// Indicator that this is the default location.
+        /// True if the location is the default location.
         /// </summary>
         [Output("clientDefault")]
         public Output<bool?> ClientDefault { get; private set; } = null!;
 
-        /// <summary>
-        /// IPv4 binding assigned to this location.
-        /// </summary>
-        [Output("dnsDestinationIpsId")]
-        public Output<string> DnsDestinationIpsId { get; private set; } = null!;
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// IPv6 block binding assigned to this location.
+        /// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
+        /// </summary>
+        [Output("dnsDestinationIpsId")]
+        public Output<string?> DnsDestinationIpsId { get; private set; } = null!;
+
+        /// <summary>
+        /// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
         /// </summary>
         [Output("dnsDestinationIpv6BlockId")]
         public Output<string> DnsDestinationIpv6BlockId { get; private set; } = null!;
 
         /// <summary>
-        /// The FQDN that DoH clients should be pointed at.
+        /// The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
         /// </summary>
         [Output("dohSubdomain")]
         public Output<string> DohSubdomain { get; private set; } = null!;
 
         /// <summary>
-        /// Indicator that this location needs to resolve EDNS queries.
+        /// True if the location needs to resolve EDNS queries.
         /// </summary>
         [Output("ecsSupport")]
         public Output<bool?> EcsSupport { get; private set; } = null!;
 
         /// <summary>
-        /// Endpoints assigned to this location.
+        /// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
         /// </summary>
         [Output("endpoints")]
-        public Output<Outputs.TeamsLocationEndpoints?> Endpoints { get; private set; } = null!;
+        public Output<Outputs.TeamsLocationEndpoints> Endpoints { get; private set; } = null!;
 
         /// <summary>
-        /// Client IP address.
+        /// IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
         /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
         /// <summary>
-        /// IPv4 to direct all IPv4 DNS queries to.
+        /// The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
         /// </summary>
         [Output("ipv4Destination")]
         public Output<string> Ipv4Destination { get; private set; } = null!;
 
         /// <summary>
-        /// Backup IPv4 to direct all IPv4 DNS queries to.
+        /// The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
         /// </summary>
         [Output("ipv4DestinationBackup")]
         public Output<string> Ipv4DestinationBackup { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the teams location.
+        /// The name of the location.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The networks CIDRs that comprise the location.
+        /// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.TeamsLocationNetwork>> Networks { get; private set; } = null!;
+
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -155,6 +188,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/teamsLocation:TeamsLocation" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -178,44 +215,35 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsLocationArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Indicator that this is the default location.
+        /// True if the location is the default location.
         /// </summary>
         [Input("clientDefault")]
         public Input<bool>? ClientDefault { get; set; }
 
         /// <summary>
-        /// IPv4 binding assigned to this location.
+        /// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
         /// </summary>
         [Input("dnsDestinationIpsId")]
         public Input<string>? DnsDestinationIpsId { get; set; }
 
         /// <summary>
-        /// IPv6 block binding assigned to this location.
-        /// </summary>
-        [Input("dnsDestinationIpv6BlockId")]
-        public Input<string>? DnsDestinationIpv6BlockId { get; set; }
-
-        /// <summary>
-        /// Indicator that this location needs to resolve EDNS queries.
+        /// True if the location needs to resolve EDNS queries.
         /// </summary>
         [Input("ecsSupport")]
         public Input<bool>? EcsSupport { get; set; }
 
         /// <summary>
-        /// Endpoints assigned to this location.
+        /// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
         /// </summary>
         [Input("endpoints")]
         public Input<Inputs.TeamsLocationEndpointsArgs>? Endpoints { get; set; }
 
         /// <summary>
-        /// Name of the teams location.
+        /// The name of the location.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -224,7 +252,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.TeamsLocationNetworkArgs>? _networks;
 
         /// <summary>
-        /// The networks CIDRs that comprise the location.
+        /// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         /// </summary>
         public InputList<Inputs.TeamsLocationNetworkArgs> Networks
         {
@@ -240,74 +268,68 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsLocationState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The account identifier to target for the resource.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Indicator that anonymized logs are enabled.
-        /// </summary>
-        [Input("anonymizedLogsEnabled")]
-        public Input<bool>? AnonymizedLogsEnabled { get; set; }
-
-        /// <summary>
-        /// Indicator that this is the default location.
+        /// True if the location is the default location.
         /// </summary>
         [Input("clientDefault")]
         public Input<bool>? ClientDefault { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
-        /// IPv4 binding assigned to this location.
+        /// The identifier of the pair of IPv4 addresses assigned to this location. When creating a location, if this field is absent or set with null, the pair of shared IPv4 addresses (0e4a32c6-6fb8-4858-9296-98f51631e8e6) is auto-assigned. When updating a location, if the field is absent or set with null, the pre-assigned pair remains unchanged.
         /// </summary>
         [Input("dnsDestinationIpsId")]
         public Input<string>? DnsDestinationIpsId { get; set; }
 
         /// <summary>
-        /// IPv6 block binding assigned to this location.
+        /// The uuid identifier of the IPv6 block brought to the gateway, so that this location's IPv6 address is allocated from the Bring Your Own Ipv6(BYOIPv6) block and not from the standard CloudFlare IPv6 block.
         /// </summary>
         [Input("dnsDestinationIpv6BlockId")]
         public Input<string>? DnsDestinationIpv6BlockId { get; set; }
 
         /// <summary>
-        /// The FQDN that DoH clients should be pointed at.
+        /// The DNS over HTTPS domain to send DNS requests to. This field is auto-generated by Gateway.
         /// </summary>
         [Input("dohSubdomain")]
         public Input<string>? DohSubdomain { get; set; }
 
         /// <summary>
-        /// Indicator that this location needs to resolve EDNS queries.
+        /// True if the location needs to resolve EDNS queries.
         /// </summary>
         [Input("ecsSupport")]
         public Input<bool>? EcsSupport { get; set; }
 
         /// <summary>
-        /// Endpoints assigned to this location.
+        /// The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
         /// </summary>
         [Input("endpoints")]
         public Input<Inputs.TeamsLocationEndpointsGetArgs>? Endpoints { get; set; }
 
         /// <summary>
-        /// Client IP address.
+        /// IPV6 destination ip assigned to this location. DNS requests sent to this IP will counted as the request under this location. This field is auto-generated by Gateway.
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// IPv4 to direct all IPv4 DNS queries to.
+        /// The primary destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
         /// </summary>
         [Input("ipv4Destination")]
         public Input<string>? Ipv4Destination { get; set; }
 
         /// <summary>
-        /// Backup IPv4 to direct all IPv4 DNS queries to.
+        /// The backup destination IPv4 address from the pair identified by the dns*destination*ips_id. This field is read-only.
         /// </summary>
         [Input("ipv4DestinationBackup")]
         public Input<string>? Ipv4DestinationBackup { get; set; }
 
         /// <summary>
-        /// Name of the teams location.
+        /// The name of the location.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -316,13 +338,16 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.TeamsLocationNetworkGetArgs>? _networks;
 
         /// <summary>
-        /// The networks CIDRs that comprise the location.
+        /// A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         /// </summary>
         public InputList<Inputs.TeamsLocationNetworkGetArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.TeamsLocationNetworkGetArgs>());
             set => _networks = value;
         }
+
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public TeamsLocationState()
         {

@@ -8,107 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource which customizes Cloudflare zone cache variants.
-//
 // ## Example Usage
 //
-// ```go
-// package main
+// ## Import
 //
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewZoneCacheVariants(ctx, "example", &cloudflare.ZoneCacheVariantsArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Avifs: pulumi.StringArray{
-//					pulumi.String("image/avif"),
-//					pulumi.String("image/webp"),
-//				},
-//				Bmps: pulumi.StringArray{
-//					pulumi.String("image/bmp"),
-//					pulumi.String("image/webp"),
-//				},
-//				Gifs: pulumi.StringArray{
-//					pulumi.String("image/gif"),
-//					pulumi.String("image/webp"),
-//				},
-//				Jpegs: pulumi.StringArray{
-//					pulumi.String("image/jpeg"),
-//					pulumi.String("image/webp"),
-//				},
-//				Jpgs: pulumi.StringArray{
-//					pulumi.String("image/jpg"),
-//					pulumi.String("image/webp"),
-//				},
-//				Jpg2s: pulumi.StringArray{
-//					pulumi.String("image/jpg2"),
-//					pulumi.String("image/webp"),
-//				},
-//				Jp2s: pulumi.StringArray{
-//					pulumi.String("image/jp2"),
-//					pulumi.String("image/webp"),
-//				},
-//				Pngs: pulumi.StringArray{
-//					pulumi.String("image/png"),
-//					pulumi.String("image/webp"),
-//				},
-//				Tiffs: pulumi.StringArray{
-//					pulumi.String("image/tiff"),
-//					pulumi.String("image/webp"),
-//				},
-//				Tifs: pulumi.StringArray{
-//					pulumi.String("image/tif"),
-//					pulumi.String("image/webp"),
-//				},
-//				Webps: pulumi.StringArray{
-//					pulumi.String("image/jpeg"),
-//					pulumi.String("image/webp"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// ```sh
+// $ pulumi import cloudflare:index/zoneCacheVariants:ZoneCacheVariants example '<zone_id>'
 // ```
 type ZoneCacheVariants struct {
 	pulumi.CustomResourceState
 
-	// List of strings with the MIME types of all the variants that should be served for avif.
-	Avifs pulumi.StringArrayOutput `pulumi:"avifs"`
-	// List of strings with the MIME types of all the variants that should be served for bmp.
-	Bmps pulumi.StringArrayOutput `pulumi:"bmps"`
-	// List of strings with the MIME types of all the variants that should be served for gif.
-	Gifs pulumi.StringArrayOutput `pulumi:"gifs"`
-	// List of strings with the MIME types of all the variants that should be served for jp2.
-	Jp2s pulumi.StringArrayOutput `pulumi:"jp2s"`
-	// List of strings with the MIME types of all the variants that should be served for jpeg.
-	Jpegs pulumi.StringArrayOutput `pulumi:"jpegs"`
-	// List of strings with the MIME types of all the variants that should be served for jpg2.
-	Jpg2s pulumi.StringArrayOutput `pulumi:"jpg2s"`
-	// List of strings with the MIME types of all the variants that should be served for jpg.
-	Jpgs pulumi.StringArrayOutput `pulumi:"jpgs"`
-	// List of strings with the MIME types of all the variants that should be served for png.
-	Pngs pulumi.StringArrayOutput `pulumi:"pngs"`
-	// List of strings with the MIME types of all the variants that should be served for tiff.
-	Tiffs pulumi.StringArrayOutput `pulumi:"tiffs"`
-	// List of strings with the MIME types of all the variants that should be served for tif.
-	Tifs pulumi.StringArrayOutput `pulumi:"tifs"`
-	// List of strings with the MIME types of all the variants that should be served for webp.
-	Webps pulumi.StringArrayOutput `pulumi:"webps"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable pulumi.BoolOutput `pulumi:"editable"`
+	// Last time this setting was modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// Value of the zone setting.
+	Value ZoneCacheVariantsValueOutput `pulumi:"value"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -119,6 +39,9 @@ func NewZoneCacheVariants(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
+	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
@@ -145,56 +68,24 @@ func GetZoneCacheVariants(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneCacheVariants resources.
 type zoneCacheVariantsState struct {
-	// List of strings with the MIME types of all the variants that should be served for avif.
-	Avifs []string `pulumi:"avifs"`
-	// List of strings with the MIME types of all the variants that should be served for bmp.
-	Bmps []string `pulumi:"bmps"`
-	// List of strings with the MIME types of all the variants that should be served for gif.
-	Gifs []string `pulumi:"gifs"`
-	// List of strings with the MIME types of all the variants that should be served for jp2.
-	Jp2s []string `pulumi:"jp2s"`
-	// List of strings with the MIME types of all the variants that should be served for jpeg.
-	Jpegs []string `pulumi:"jpegs"`
-	// List of strings with the MIME types of all the variants that should be served for jpg2.
-	Jpg2s []string `pulumi:"jpg2s"`
-	// List of strings with the MIME types of all the variants that should be served for jpg.
-	Jpgs []string `pulumi:"jpgs"`
-	// List of strings with the MIME types of all the variants that should be served for png.
-	Pngs []string `pulumi:"pngs"`
-	// List of strings with the MIME types of all the variants that should be served for tiff.
-	Tiffs []string `pulumi:"tiffs"`
-	// List of strings with the MIME types of all the variants that should be served for tif.
-	Tifs []string `pulumi:"tifs"`
-	// List of strings with the MIME types of all the variants that should be served for webp.
-	Webps []string `pulumi:"webps"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable *bool `pulumi:"editable"`
+	// Last time this setting was modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// Value of the zone setting.
+	Value *ZoneCacheVariantsValue `pulumi:"value"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZoneCacheVariantsState struct {
-	// List of strings with the MIME types of all the variants that should be served for avif.
-	Avifs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for bmp.
-	Bmps pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for gif.
-	Gifs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for jp2.
-	Jp2s pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for jpeg.
-	Jpegs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for jpg2.
-	Jpg2s pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for jpg.
-	Jpgs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for png.
-	Pngs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for tiff.
-	Tiffs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for tif.
-	Tifs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for webp.
-	Webps pulumi.StringArrayInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Whether the setting is editable
+	Editable pulumi.BoolPtrInput
+	// Last time this setting was modified.
+	ModifiedOn pulumi.StringPtrInput
+	// Value of the zone setting.
+	Value ZoneCacheVariantsValuePtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -203,57 +94,17 @@ func (ZoneCacheVariantsState) ElementType() reflect.Type {
 }
 
 type zoneCacheVariantsArgs struct {
-	// List of strings with the MIME types of all the variants that should be served for avif.
-	Avifs []string `pulumi:"avifs"`
-	// List of strings with the MIME types of all the variants that should be served for bmp.
-	Bmps []string `pulumi:"bmps"`
-	// List of strings with the MIME types of all the variants that should be served for gif.
-	Gifs []string `pulumi:"gifs"`
-	// List of strings with the MIME types of all the variants that should be served for jp2.
-	Jp2s []string `pulumi:"jp2s"`
-	// List of strings with the MIME types of all the variants that should be served for jpeg.
-	Jpegs []string `pulumi:"jpegs"`
-	// List of strings with the MIME types of all the variants that should be served for jpg2.
-	Jpg2s []string `pulumi:"jpg2s"`
-	// List of strings with the MIME types of all the variants that should be served for jpg.
-	Jpgs []string `pulumi:"jpgs"`
-	// List of strings with the MIME types of all the variants that should be served for png.
-	Pngs []string `pulumi:"pngs"`
-	// List of strings with the MIME types of all the variants that should be served for tiff.
-	Tiffs []string `pulumi:"tiffs"`
-	// List of strings with the MIME types of all the variants that should be served for tif.
-	Tifs []string `pulumi:"tifs"`
-	// List of strings with the MIME types of all the variants that should be served for webp.
-	Webps []string `pulumi:"webps"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Value of the zone setting.
+	Value ZoneCacheVariantsValue `pulumi:"value"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneCacheVariants resource.
 type ZoneCacheVariantsArgs struct {
-	// List of strings with the MIME types of all the variants that should be served for avif.
-	Avifs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for bmp.
-	Bmps pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for gif.
-	Gifs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for jp2.
-	Jp2s pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for jpeg.
-	Jpegs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for jpg2.
-	Jpg2s pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for jpg.
-	Jpgs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for png.
-	Pngs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for tiff.
-	Tiffs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for tif.
-	Tifs pulumi.StringArrayInput
-	// List of strings with the MIME types of all the variants that should be served for webp.
-	Webps pulumi.StringArrayInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Value of the zone setting.
+	Value ZoneCacheVariantsValueInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -344,62 +195,22 @@ func (o ZoneCacheVariantsOutput) ToZoneCacheVariantsOutputWithContext(ctx contex
 	return o
 }
 
-// List of strings with the MIME types of all the variants that should be served for avif.
-func (o ZoneCacheVariantsOutput) Avifs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Avifs }).(pulumi.StringArrayOutput)
+// Whether the setting is editable
+func (o ZoneCacheVariantsOutput) Editable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
 }
 
-// List of strings with the MIME types of all the variants that should be served for bmp.
-func (o ZoneCacheVariantsOutput) Bmps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Bmps }).(pulumi.StringArrayOutput)
+// Last time this setting was modified.
+func (o ZoneCacheVariantsOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// List of strings with the MIME types of all the variants that should be served for gif.
-func (o ZoneCacheVariantsOutput) Gifs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Gifs }).(pulumi.StringArrayOutput)
+// Value of the zone setting.
+func (o ZoneCacheVariantsOutput) Value() ZoneCacheVariantsValueOutput {
+	return o.ApplyT(func(v *ZoneCacheVariants) ZoneCacheVariantsValueOutput { return v.Value }).(ZoneCacheVariantsValueOutput)
 }
 
-// List of strings with the MIME types of all the variants that should be served for jp2.
-func (o ZoneCacheVariantsOutput) Jp2s() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Jp2s }).(pulumi.StringArrayOutput)
-}
-
-// List of strings with the MIME types of all the variants that should be served for jpeg.
-func (o ZoneCacheVariantsOutput) Jpegs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Jpegs }).(pulumi.StringArrayOutput)
-}
-
-// List of strings with the MIME types of all the variants that should be served for jpg2.
-func (o ZoneCacheVariantsOutput) Jpg2s() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Jpg2s }).(pulumi.StringArrayOutput)
-}
-
-// List of strings with the MIME types of all the variants that should be served for jpg.
-func (o ZoneCacheVariantsOutput) Jpgs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Jpgs }).(pulumi.StringArrayOutput)
-}
-
-// List of strings with the MIME types of all the variants that should be served for png.
-func (o ZoneCacheVariantsOutput) Pngs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Pngs }).(pulumi.StringArrayOutput)
-}
-
-// List of strings with the MIME types of all the variants that should be served for tiff.
-func (o ZoneCacheVariantsOutput) Tiffs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Tiffs }).(pulumi.StringArrayOutput)
-}
-
-// List of strings with the MIME types of all the variants that should be served for tif.
-func (o ZoneCacheVariantsOutput) Tifs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Tifs }).(pulumi.StringArrayOutput)
-}
-
-// List of strings with the MIME types of all the variants that should be served for webp.
-func (o ZoneCacheVariantsOutput) Webps() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringArrayOutput { return v.Webps }).(pulumi.StringArrayOutput)
-}
-
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o ZoneCacheVariantsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneCacheVariants) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

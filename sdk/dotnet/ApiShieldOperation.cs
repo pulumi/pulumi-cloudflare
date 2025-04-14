@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Api shield operation
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,40 +20,59 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.ApiShieldOperation("example", new()
+    ///     var exampleApiShieldOperation = new Cloudflare.ApiShieldOperation("example_api_shield_operation", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Endpoint = "/api/v1/users/{var1}",
+    ///         Host = "www.example.com",
     ///         Method = "GET",
-    ///         Host = "api.example.com",
-    ///         Endpoint = "/path",
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '&lt;zone_id&gt;/&lt;operation_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiShieldOperation:ApiShieldOperation")]
     public partial class ApiShieldOperation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        /// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
 
+        [Output("features")]
+        public Output<Outputs.ApiShieldOperationFeatures> Features { get; private set; } = null!;
+
         /// <summary>
-        /// RFC3986-compliant host
+        /// RFC3986-compliant host.
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
 
+        [Output("lastUpdated")]
+        public Output<string> LastUpdated { get; private set; } = null!;
+
         /// <summary>
-        /// The HTTP method used to access the endpoint
+        /// The HTTP method used to access the endpoint.
+        /// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         /// </summary>
         [Output("method")]
         public Output<string> Method { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// UUID
+        /// </summary>
+        [Output("operationId")]
+        public Output<string> OperationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -107,25 +124,26 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldOperationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        /// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
-        /// RFC3986-compliant host
+        /// RFC3986-compliant host.
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// The HTTP method used to access the endpoint
+        /// The HTTP method used to access the endpoint.
+        /// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         /// </summary>
         [Input("method", required: true)]
         public Input<string> Method { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -139,25 +157,38 @@ namespace Pulumi.Cloudflare
     public sealed class ApiShieldOperationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+        /// The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        [Input("features")]
+        public Input<Inputs.ApiShieldOperationFeaturesGetArgs>? Features { get; set; }
+
         /// <summary>
-        /// RFC3986-compliant host
+        /// RFC3986-compliant host.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        [Input("lastUpdated")]
+        public Input<string>? LastUpdated { get; set; }
+
         /// <summary>
-        /// The HTTP method used to access the endpoint
+        /// The HTTP method used to access the endpoint.
+        /// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// UUID
+        /// </summary>
+        [Input("operationId")]
+        public Input<string>? OperationId { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

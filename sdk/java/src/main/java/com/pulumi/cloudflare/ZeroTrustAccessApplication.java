@@ -6,13 +6,15 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustAccessApplicationArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationState;
-import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationCorsHeader;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationCorsHeaders;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationDestination;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationFooterLink;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationLandingPageDesign;
+import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationPolicy;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasApp;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationScimConfig;
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationTargetCriteria;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -24,398 +26,380 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Access Application resource. Access
- * Applications are used to restrict access to a whole application using an
- * authorisation gateway managed by Cloudflare.
- * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in
- *    most cases using either is fine. However, if you&#39;re using a scoped
- *    access token, you must provide the argument that matches the token&#39;s
- *    scope. For example, an access token that is scoped to the &#34;example.com&#34;
- *    zone needs to use the `zone_id` argument.
+ * ## Example Usage
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example &lt;account_id&gt;/&lt;application_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication example &#39;&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;app_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication")
 public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
-     * When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+     * When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      * 
      */
     @Export(name="allowAuthenticateViaWarp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowAuthenticateViaWarp;
 
     /**
-     * @return When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+     * @return When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      * 
      */
     public Output<Optional<Boolean>> allowAuthenticateViaWarp() {
         return Codegen.optional(this.allowAuthenticateViaWarp);
     }
     /**
-     * The identity providers selected for the application.
+     * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      * 
      */
     @Export(name="allowedIdps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedIdps;
 
     /**
-     * @return The identity providers selected for the application.
+     * @return The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      * 
      */
     public Output<Optional<List<String>>> allowedIdps() {
         return Codegen.optional(this.allowedIdps);
     }
     /**
-     * The logo URL of the app launcher.
+     * The image URL of the logo shown in the App Launcher header.
      * 
      */
     @Export(name="appLauncherLogoUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appLauncherLogoUrl;
 
     /**
-     * @return The logo URL of the app launcher.
+     * @return The image URL of the logo shown in the App Launcher header.
      * 
      */
     public Output<Optional<String>> appLauncherLogoUrl() {
         return Codegen.optional(this.appLauncherLogoUrl);
     }
     /**
-     * Option to show/hide applications in App Launcher. Defaults to `true`.
+     * Displays the application in the App Launcher.
      * 
      */
     @Export(name="appLauncherVisible", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> appLauncherVisible;
+    private Output<Boolean> appLauncherVisible;
 
     /**
-     * @return Option to show/hide applications in App Launcher. Defaults to `true`.
+     * @return Displays the application in the App Launcher.
      * 
      */
-    public Output<Optional<Boolean>> appLauncherVisible() {
-        return Codegen.optional(this.appLauncherVisible);
+    public Output<Boolean> appLauncherVisible() {
+        return this.appLauncherVisible;
     }
     /**
-     * Application Audience (AUD) Tag of the application.
+     * Audience tag.
      * 
      */
     @Export(name="aud", refs={String.class}, tree="[0]")
     private Output<String> aud;
 
     /**
-     * @return Application Audience (AUD) Tag of the application.
+     * @return Audience tag.
      * 
      */
     public Output<String> aud() {
         return this.aud;
     }
     /**
-     * Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+     * When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      * 
      */
     @Export(name="autoRedirectToIdentity", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> autoRedirectToIdentity;
+    private Output<Boolean> autoRedirectToIdentity;
 
     /**
-     * @return Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+     * @return When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
      * 
      */
-    public Output<Optional<Boolean>> autoRedirectToIdentity() {
-        return Codegen.optional(this.autoRedirectToIdentity);
+    public Output<Boolean> autoRedirectToIdentity() {
+        return this.autoRedirectToIdentity;
     }
     /**
-     * The background color of the app launcher.
+     * The background color of the App Launcher page.
      * 
      */
     @Export(name="bgColor", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bgColor;
 
     /**
-     * @return The background color of the app launcher.
+     * @return The background color of the App Launcher page.
      * 
      */
     public Output<Optional<String>> bgColor() {
         return Codegen.optional(this.bgColor);
     }
-    /**
-     * CORS configuration for the Access Application. See below for reference structure.
-     * 
-     */
-    @Export(name="corsHeaders", refs={List.class,ZeroTrustAccessApplicationCorsHeader.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessApplicationCorsHeader>> corsHeaders;
+    @Export(name="corsHeaders", refs={ZeroTrustAccessApplicationCorsHeaders.class}, tree="[0]")
+    private Output<ZeroTrustAccessApplicationCorsHeaders> corsHeaders;
 
-    /**
-     * @return CORS configuration for the Access Application. See below for reference structure.
-     * 
-     */
-    public Output<Optional<List<ZeroTrustAccessApplicationCorsHeader>>> corsHeaders() {
-        return Codegen.optional(this.corsHeaders);
+    public Output<ZeroTrustAccessApplicationCorsHeaders> corsHeaders() {
+        return this.corsHeaders;
+    }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
     /**
-     * Option that returns a custom error message when a user is denied access to the application.
+     * The custom error message shown to a user when they are denied access to the application.
      * 
      */
     @Export(name="customDenyMessage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customDenyMessage;
 
     /**
-     * @return Option that returns a custom error message when a user is denied access to the application.
+     * @return The custom error message shown to a user when they are denied access to the application.
      * 
      */
     public Output<Optional<String>> customDenyMessage() {
         return Codegen.optional(this.customDenyMessage);
     }
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+     * The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
      * 
      */
     @Export(name="customDenyUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customDenyUrl;
 
     /**
-     * @return Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+     * @return The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
      * 
      */
     public Output<Optional<String>> customDenyUrl() {
         return Codegen.optional(this.customDenyUrl);
     }
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     * The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
      * 
      */
     @Export(name="customNonIdentityDenyUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customNonIdentityDenyUrl;
 
     /**
-     * @return Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     * @return The custom URL a user is redirected to when they are denied access to the application when failing non-identity rules.
      * 
      */
     public Output<Optional<String>> customNonIdentityDenyUrl() {
         return Codegen.optional(this.customNonIdentityDenyUrl);
     }
     /**
-     * The custom pages selected for the application.
+     * The custom pages that will be displayed when applicable for this application
      * 
      */
     @Export(name="customPages", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> customPages;
 
     /**
-     * @return The custom pages selected for the application.
+     * @return The custom pages that will be displayed when applicable for this application
      * 
      */
     public Output<Optional<List<String>>> customPages() {
         return Codegen.optional(this.customPages);
     }
     /**
-     * A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+     * List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
     @Export(name="destinations", refs={List.class,ZeroTrustAccessApplicationDestination.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessApplicationDestination>> destinations;
+    private Output<List<ZeroTrustAccessApplicationDestination>> destinations;
 
     /**
-     * @return A destination secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Supersedes `self_hosted_domains` to allow for more flexibility in defining different types of destinations. Conflicts with `self_hosted_domains`.
+     * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessApplicationDestination>>> destinations() {
-        return Codegen.optional(this.destinations);
+    public Output<List<ZeroTrustAccessApplicationDestination>> destinations() {
+        return this.destinations;
     }
     /**
-     * The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+     * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
-    private Output<String> domain;
+    private Output</* @Nullable */ String> domain;
 
     /**
-     * @return The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
+     * @return The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      * 
      */
-    public Output<String> domain() {
-        return this.domain;
+    public Output<Optional<String>> domain() {
+        return Codegen.optional(this.domain);
     }
     /**
-     * The type of the primary domain. Available values: `public`, `private`.
-     * 
-     */
-    @Export(name="domainType", refs={String.class}, tree="[0]")
-    private Output<String> domainType;
-
-    /**
-     * @return The type of the primary domain. Available values: `public`, `private`.
-     * 
-     */
-    public Output<String> domainType() {
-        return this.domainType;
-    }
-    /**
-     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional &#34;binding&#34; cookie on requests. Defaults to `false`.
+     * Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      * 
      */
     @Export(name="enableBindingCookie", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enableBindingCookie;
+    private Output<Boolean> enableBindingCookie;
 
     /**
-     * @return Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional &#34;binding&#34; cookie on requests. Defaults to `false`.
+     * @return Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
      * 
      */
-    public Output<Optional<Boolean>> enableBindingCookie() {
-        return Codegen.optional(this.enableBindingCookie);
+    public Output<Boolean> enableBindingCookie() {
+        return this.enableBindingCookie;
     }
     /**
-     * The footer links of the app launcher.
+     * The links in the App Launcher footer.
      * 
      */
     @Export(name="footerLinks", refs={List.class,ZeroTrustAccessApplicationFooterLink.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessApplicationFooterLink>> footerLinks;
+    private Output<List<ZeroTrustAccessApplicationFooterLink>> footerLinks;
 
     /**
-     * @return The footer links of the app launcher.
+     * @return The links in the App Launcher footer.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessApplicationFooterLink>>> footerLinks() {
-        return Codegen.optional(this.footerLinks);
+    public Output<List<ZeroTrustAccessApplicationFooterLink>> footerLinks() {
+        return this.footerLinks;
     }
     /**
-     * The background color of the header bar in the app launcher.
+     * The background color of the App Launcher header.
      * 
      */
     @Export(name="headerBgColor", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> headerBgColor;
 
     /**
-     * @return The background color of the header bar in the app launcher.
+     * @return The background color of the App Launcher header.
      * 
      */
     public Output<Optional<String>> headerBgColor() {
         return Codegen.optional(this.headerBgColor);
     }
     /**
-     * Option to add the `HttpOnly` cookie flag to access tokens.
+     * Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
      * 
      */
     @Export(name="httpOnlyCookieAttribute", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> httpOnlyCookieAttribute;
+    private Output<Boolean> httpOnlyCookieAttribute;
 
     /**
-     * @return Option to add the `HttpOnly` cookie flag to access tokens.
+     * @return Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
      * 
      */
-    public Output<Optional<Boolean>> httpOnlyCookieAttribute() {
-        return Codegen.optional(this.httpOnlyCookieAttribute);
+    public Output<Boolean> httpOnlyCookieAttribute() {
+        return this.httpOnlyCookieAttribute;
     }
     /**
-     * The landing page design of the app launcher.
+     * The design of the App Launcher landing page shown to users when they log in.
      * 
      */
     @Export(name="landingPageDesign", refs={ZeroTrustAccessApplicationLandingPageDesign.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign;
+    private Output<ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign;
 
     /**
-     * @return The landing page design of the app launcher.
+     * @return The design of the App Launcher landing page shown to users when they log in.
      * 
      */
-    public Output<Optional<ZeroTrustAccessApplicationLandingPageDesign>> landingPageDesign() {
-        return Codegen.optional(this.landingPageDesign);
+    public Output<ZeroTrustAccessApplicationLandingPageDesign> landingPageDesign() {
+        return this.landingPageDesign;
     }
     /**
-     * Image URL for the logo shown in the app launcher dashboard.
+     * The image URL for the logo shown in the App Launcher dashboard.
      * 
      */
     @Export(name="logoUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logoUrl;
 
     /**
-     * @return Image URL for the logo shown in the app launcher dashboard.
+     * @return The image URL for the logo shown in the App Launcher dashboard.
      * 
      */
     public Output<Optional<String>> logoUrl() {
         return Codegen.optional(this.logoUrl);
     }
     /**
-     * Friendly name of the Access Application.
+     * The name of the application.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    private Output</* @Nullable */ String> name;
 
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the application.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<Optional<String>> name() {
+        return Codegen.optional(this.name);
     }
     /**
-     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
      * 
      */
     @Export(name="optionsPreflightBypass", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> optionsPreflightBypass;
 
     /**
-     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
      * 
      */
     public Output<Optional<Boolean>> optionsPreflightBypass() {
         return Codegen.optional(this.optionsPreflightBypass);
     }
     /**
-     * The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * Enables cookie paths to scope an application&#39;s JWT to the application path. If disabled, the JWT will scope to the hostname by default
      * 
      */
-    @Export(name="policies", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> policies;
+    @Export(name="pathCookieAttribute", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> pathCookieAttribute;
 
     /**
-     * @return The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * @return Enables cookie paths to scope an application&#39;s JWT to the application path. If disabled, the JWT will scope to the hostname by default
      * 
      */
-    public Output<Optional<List<String>>> policies() {
-        return Codegen.optional(this.policies);
+    public Output<Boolean> pathCookieAttribute() {
+        return this.pathCookieAttribute;
     }
     /**
-     * SaaS configuration for the Access Application.
+     * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      * 
      */
+    @Export(name="policies", refs={List.class,ZeroTrustAccessApplicationPolicy.class}, tree="[0,1]")
+    private Output<List<ZeroTrustAccessApplicationPolicy>> policies;
+
+    /**
+     * @return The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+     * 
+     */
+    public Output<List<ZeroTrustAccessApplicationPolicy>> policies() {
+        return this.policies;
+    }
     @Export(name="saasApp", refs={ZeroTrustAccessApplicationSaasApp.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustAccessApplicationSaasApp> saasApp;
+    private Output<ZeroTrustAccessApplicationSaasApp> saasApp;
 
-    /**
-     * @return SaaS configuration for the Access Application.
-     * 
-     */
-    public Output<Optional<ZeroTrustAccessApplicationSaasApp>> saasApp() {
-        return Codegen.optional(this.saasApp);
+    public Output<ZeroTrustAccessApplicationSaasApp> saasApp() {
+        return this.saasApp;
     }
     /**
-     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+     * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
      * 
      */
     @Export(name="sameSiteCookieAttribute", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sameSiteCookieAttribute;
 
     /**
-     * @return Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+     * @return Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
      * 
      */
     public Output<Optional<String>> sameSiteCookieAttribute() {
@@ -426,144 +410,138 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="scimConfig", refs={ZeroTrustAccessApplicationScimConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustAccessApplicationScimConfig> scimConfig;
+    private Output<ZeroTrustAccessApplicationScimConfig> scimConfig;
 
     /**
      * @return Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      * 
      */
-    public Output<Optional<ZeroTrustAccessApplicationScimConfig>> scimConfig() {
-        return Codegen.optional(this.scimConfig);
+    public Output<ZeroTrustAccessApplicationScimConfig> scimConfig() {
+        return this.scimConfig;
     }
     /**
-     * List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
-     * 
-     * @deprecated
-     * Use `destinations` instead
+     * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    @Deprecated /* Use `destinations` instead */
     @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> selfHostedDomains;
 
     /**
-     * @return List of public domains secured by Access. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`. Deprecated in favor of `destinations` and will be removed in the next major version. Conflicts with `destinations`.
+     * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
     public Output<Optional<List<String>>> selfHostedDomains() {
         return Codegen.optional(this.selfHostedDomains);
     }
     /**
-     * Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+     * Returns a 401 status code when the request is blocked by a Service Auth policy.
      * 
      */
     @Export(name="serviceAuth401Redirect", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> serviceAuth401Redirect;
 
     /**
-     * @return Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
+     * @return Returns a 401 status code when the request is blocked by a Service Auth policy.
      * 
      */
     public Output<Optional<Boolean>> serviceAuth401Redirect() {
         return Codegen.optional(this.serviceAuth401Redirect);
     }
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> sessionDuration;
+    private Output<String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
-    public Output<Optional<String>> sessionDuration() {
-        return Codegen.optional(this.sessionDuration);
+    public Output<String> sessionDuration() {
+        return this.sessionDuration;
     }
     /**
-     * Option to skip the App Launcher landing page. Defaults to `false`.
+     * Determines when to skip the App Launcher landing page.
      * 
      */
     @Export(name="skipAppLauncherLoginPage", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> skipAppLauncherLoginPage;
+    private Output<Boolean> skipAppLauncherLoginPage;
 
     /**
-     * @return Option to skip the App Launcher landing page. Defaults to `false`.
+     * @return Determines when to skip the App Launcher landing page.
      * 
      */
-    public Output<Optional<Boolean>> skipAppLauncherLoginPage() {
-        return Codegen.optional(this.skipAppLauncherLoginPage);
+    public Output<Boolean> skipAppLauncherLoginPage() {
+        return this.skipAppLauncherLoginPage;
     }
     /**
-     * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+     * Enables automatic authentication through cloudflared.
      * 
      */
     @Export(name="skipInterstitial", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> skipInterstitial;
 
     /**
-     * @return Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+     * @return Enables automatic authentication through cloudflared.
      * 
      */
     public Output<Optional<Boolean>> skipInterstitial() {
         return Codegen.optional(this.skipInterstitial);
     }
     /**
-     * The itags associated with the application.
+     * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return The itags associated with the application.
+     * @return The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
     @Export(name="targetCriterias", refs={List.class,ZeroTrustAccessApplicationTargetCriteria.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias;
+    private Output<List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias;
 
-    /**
-     * @return The payload for an infrastructure application which defines the port, protocol, and target attributes. Only applicable to Infrastructure Applications, in which case this field is required.
-     * 
-     */
-    public Output<Optional<List<ZeroTrustAccessApplicationTargetCriteria>>> targetCriterias() {
-        return Codegen.optional(this.targetCriterias);
+    public Output<List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias() {
+        return this.targetCriterias;
     }
     /**
-     * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+     * The application type.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`, `infrastructure`. Defaults to `self_hosted`.
+     * @return The application type.
      * 
      */
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
     }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
+    }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**
@@ -605,6 +583,9 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/accessApplication:AccessApplication").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

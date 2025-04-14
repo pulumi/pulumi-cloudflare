@@ -5,19 +5,22 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages Cloudflare Tiered Cache settings.
- * This allows you to adjust topologies for your zone.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.TieredCache("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     cacheType: "smart",
+ * const exampleTieredCache = new cloudflare.TieredCache("example_tiered_cache", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     value: "on",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/tieredCache:TieredCache example '<zone_id>'
  * ```
  */
 export class TieredCache extends pulumi.CustomResource {
@@ -49,11 +52,20 @@ export class TieredCache extends pulumi.CustomResource {
     }
 
     /**
-     * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * Whether the setting is editable
      */
-    public readonly cacheType!: pulumi.Output<string>;
+    public /*out*/ readonly editable!: pulumi.Output<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Last time this setting was modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * Enable or disable the Smart Tiered Cache
+     * Available values: "on", "off".
+     */
+    public readonly value!: pulumi.Output<string>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -70,18 +82,22 @@ export class TieredCache extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TieredCacheState | undefined;
-            resourceInputs["cacheType"] = state ? state.cacheType : undefined;
+            resourceInputs["editable"] = state ? state.editable : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as TieredCacheArgs | undefined;
-            if ((!args || args.cacheType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cacheType'");
+            if ((!args || args.value === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'value'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["cacheType"] = args ? args.cacheType : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["editable"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TieredCache.__pulumiType, name, resourceInputs, opts);
@@ -93,11 +109,20 @@ export class TieredCache extends pulumi.CustomResource {
  */
 export interface TieredCacheState {
     /**
-     * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * Whether the setting is editable
      */
-    cacheType?: pulumi.Input<string>;
+    editable?: pulumi.Input<boolean>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Last time this setting was modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * Enable or disable the Smart Tiered Cache
+     * Available values: "on", "off".
+     */
+    value?: pulumi.Input<string>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -107,11 +132,12 @@ export interface TieredCacheState {
  */
 export interface TieredCacheArgs {
     /**
-     * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * Enable or disable the Smart Tiered Cache
+     * Available values: "on", "off".
      */
-    cacheType: pulumi.Input<string>;
+    value: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

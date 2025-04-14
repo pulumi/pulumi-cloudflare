@@ -4,10 +4,9 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessGroupExcludeExternalEvaluation {
@@ -15,27 +14,27 @@ public final class AccessGroupExcludeExternalEvaluation {
      * @return The API endpoint containing your business logic.
      * 
      */
-    private @Nullable String evaluateUrl;
+    private String evaluateUrl;
     /**
      * @return The API endpoint containing the key that Access uses to verify that the response came from your API.
      * 
      */
-    private @Nullable String keysUrl;
+    private String keysUrl;
 
     private AccessGroupExcludeExternalEvaluation() {}
     /**
      * @return The API endpoint containing your business logic.
      * 
      */
-    public Optional<String> evaluateUrl() {
-        return Optional.ofNullable(this.evaluateUrl);
+    public String evaluateUrl() {
+        return this.evaluateUrl;
     }
     /**
      * @return The API endpoint containing the key that Access uses to verify that the response came from your API.
      * 
      */
-    public Optional<String> keysUrl() {
-        return Optional.ofNullable(this.keysUrl);
+    public String keysUrl() {
+        return this.keysUrl;
     }
 
     public static Builder builder() {
@@ -47,8 +46,8 @@ public final class AccessGroupExcludeExternalEvaluation {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String evaluateUrl;
-        private @Nullable String keysUrl;
+        private String evaluateUrl;
+        private String keysUrl;
         public Builder() {}
         public Builder(AccessGroupExcludeExternalEvaluation defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,14 +56,18 @@ public final class AccessGroupExcludeExternalEvaluation {
         }
 
         @CustomType.Setter
-        public Builder evaluateUrl(@Nullable String evaluateUrl) {
-
+        public Builder evaluateUrl(String evaluateUrl) {
+            if (evaluateUrl == null) {
+              throw new MissingRequiredPropertyException("AccessGroupExcludeExternalEvaluation", "evaluateUrl");
+            }
             this.evaluateUrl = evaluateUrl;
             return this;
         }
         @CustomType.Setter
-        public Builder keysUrl(@Nullable String keysUrl) {
-
+        public Builder keysUrl(String keysUrl) {
+            if (keysUrl == null) {
+              throw new MissingRequiredPropertyException("AccessGroupExcludeExternalEvaluation", "keysUrl");
+            }
             this.keysUrl = keysUrl;
             return this;
         }

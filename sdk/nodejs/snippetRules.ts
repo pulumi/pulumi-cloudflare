@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The [Snippet Rules](https://developers.cloudflare.com/rules/snippets/) resource allows you to create and manage snippet rules for a zone.
+ * ## Example Usage
  */
 export class SnippetRules extends pulumi.CustomResource {
     /**
@@ -37,12 +37,19 @@ export class SnippetRules extends pulumi.CustomResource {
         return obj['__pulumiType'] === SnippetRules.__pulumiType;
     }
 
+    public /*out*/ readonly description!: pulumi.Output<string>;
+    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
+    public /*out*/ readonly expression!: pulumi.Output<string>;
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      */
-    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[] | undefined>;
+    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Snippet identifying name
+     */
+    public /*out*/ readonly snippetName!: pulumi.Output<string>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -59,7 +66,11 @@ export class SnippetRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnippetRulesState | undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["snippetName"] = state ? state.snippetName : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SnippetRulesArgs | undefined;
@@ -68,6 +79,10 @@ export class SnippetRules extends pulumi.CustomResource {
             }
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enabled"] = undefined /*out*/;
+            resourceInputs["expression"] = undefined /*out*/;
+            resourceInputs["snippetName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SnippetRules.__pulumiType, name, resourceInputs, opts);
@@ -78,12 +93,19 @@ export class SnippetRules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnippetRules resources.
  */
 export interface SnippetRulesState {
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    expression?: pulumi.Input<string>;
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Snippet identifying name
+     */
+    snippetName?: pulumi.Input<string>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -93,11 +115,11 @@ export interface SnippetRulesState {
  */
 export interface SnippetRulesArgs {
     /**
-     * List of Snippet Rules
+     * List of snippet rules
      */
     rules?: pulumi.Input<pulumi.Input<inputs.SnippetRulesRule>[]>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

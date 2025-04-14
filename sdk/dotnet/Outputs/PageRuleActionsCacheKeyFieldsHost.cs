@@ -13,9 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PageRuleActionsCacheKeyFieldsHost
     {
-        /// <summary>
-        /// `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-        /// </summary>
         public readonly bool? Resolved;
 
         [OutputConstructor]

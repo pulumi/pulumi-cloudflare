@@ -8,148 +8,54 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Standalone Health Checks provide a way to monitor origin servers
-// without needing a Cloudflare Load Balancer.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// HTTPS Healthcheck
-//			_, err := cloudflare.NewHealthcheck(ctx, "http_health_check", &cloudflare.HealthcheckArgs{
-//				ZoneId:      pulumi.Any(cloudflareZoneId),
-//				Name:        pulumi.String("http-health-check"),
-//				Description: pulumi.String("example http health check"),
-//				Address:     pulumi.String("example.com"),
-//				Suspended:   pulumi.Bool(false),
-//				CheckRegions: pulumi.StringArray{
-//					pulumi.String("WEU"),
-//					pulumi.String("EEU"),
-//				},
-//				Type:         pulumi.String("HTTPS"),
-//				Port:         pulumi.Int(443),
-//				Method:       pulumi.String("GET"),
-//				Path:         pulumi.String("/health"),
-//				ExpectedBody: pulumi.String("alive"),
-//				ExpectedCodes: pulumi.StringArray{
-//					pulumi.String("2xx"),
-//					pulumi.String("301"),
-//				},
-//				FollowRedirects: pulumi.Bool(true),
-//				AllowInsecure:   pulumi.Bool(false),
-//				Headers: cloudflare.HealthcheckHeaderArray{
-//					&cloudflare.HealthcheckHeaderArgs{
-//						Header: pulumi.String("Host"),
-//						Values: pulumi.StringArray{
-//							pulumi.String("example.com"),
-//						},
-//					},
-//				},
-//				Timeout:              pulumi.Int(10),
-//				Retries:              pulumi.Int(2),
-//				Interval:             pulumi.Int(60),
-//				ConsecutiveFails:     pulumi.Int(3),
-//				ConsecutiveSuccesses: pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// TCP Healthcheck
-//			_, err = cloudflare.NewHealthcheck(ctx, "tcp_health_check", &cloudflare.HealthcheckArgs{
-//				ZoneId:      pulumi.Any(cloudflareZoneId),
-//				Name:        pulumi.String("tcp-health-check"),
-//				Description: pulumi.String("example tcp health check"),
-//				Address:     pulumi.String("example.com"),
-//				Suspended:   pulumi.Bool(false),
-//				CheckRegions: pulumi.StringArray{
-//					pulumi.String("WEU"),
-//					pulumi.String("EEU"),
-//				},
-//				Type:                 pulumi.String("TCP"),
-//				Port:                 pulumi.Int(22),
-//				Method:               pulumi.String("connection_established"),
-//				Timeout:              pulumi.Int(10),
-//				Retries:              pulumi.Int(2),
-//				Interval:             pulumi.Int(60),
-//				ConsecutiveFails:     pulumi.Int(3),
-//				ConsecutiveSuccesses: pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
-// Use the Zone ID and Healthcheck ID to import.
-//
 // ```sh
-// $ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
+// $ pulumi import cloudflare:index/healthcheck:Healthcheck example '<zone_id>/<healthcheck_id>'
 // ```
 type Healthcheck struct {
 	pulumi.CustomResourceState
 
 	// The hostname or IP address of the origin server to run health checks on.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-	AllowInsecure pulumi.BoolPtrOutput `pulumi:"allowInsecure"`
-	// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+	// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	CheckRegions pulumi.StringArrayOutput `pulumi:"checkRegions"`
-	// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
-	ConsecutiveFails pulumi.IntPtrOutput `pulumi:"consecutiveFails"`
-	// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
-	ConsecutiveSuccesses pulumi.IntPtrOutput `pulumi:"consecutiveSuccesses"`
-	// Creation time.
-	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// The number of consecutive fails required from a health check before changing the health to unhealthy.
+	ConsecutiveFails pulumi.IntOutput `pulumi:"consecutiveFails"`
+	// The number of consecutive successes required from a health check before changing the health to healthy.
+	ConsecutiveSuccesses pulumi.IntOutput    `pulumi:"consecutiveSuccesses"`
+	CreatedOn            pulumi.StringOutput `pulumi:"createdOn"`
 	// A human-readable description of the health check.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
-	ExpectedBody pulumi.StringPtrOutput `pulumi:"expectedBody"`
-	// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
-	ExpectedCodes pulumi.StringArrayOutput `pulumi:"expectedCodes"`
-	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-	FollowRedirects pulumi.BoolPtrOutput `pulumi:"followRedirects"`
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-	Headers HealthcheckHeaderArrayOutput `pulumi:"headers"`
-	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
-	Interval pulumi.IntPtrOutput `pulumi:"interval"`
-	// The HTTP method to use for the health check. Available values: `connectionEstablished`, `GET`, `HEAD`.
-	Method pulumi.StringOutput `pulumi:"method"`
-	// Last modified time.
+	// The current failure reason if status is unhealthy.
+	FailureReason pulumi.StringOutput `pulumi:"failureReason"`
+	// Parameters specific to an HTTP or HTTPS health check.
+	HttpConfig HealthcheckHttpConfigOutput `pulumi:"httpConfig"`
+	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
+	Interval   pulumi.IntOutput    `pulumi:"interval"`
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The endpoint path to health check against. Defaults to `/`.
-	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// Port number to connect to for the health check. Defaults to `80`.
-	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
-	Retries pulumi.IntPtrOutput `pulumi:"retries"`
-	// If suspended, no health checks are sent to the origin. Defaults to `false`.
-	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
-	// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
-	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
-	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
+	Retries pulumi.IntOutput `pulumi:"retries"`
+	// The current status of the origin server according to the health check.
+	// Available values: "unknown", "healthy", "unhealthy", "suspended".
+	Status pulumi.StringOutput `pulumi:"status"`
+	// If suspended, no health checks are sent to the origin.
+	Suspended pulumi.BoolOutput `pulumi:"suspended"`
+	// Parameters specific to TCP health check.
+	TcpConfig HealthcheckTcpConfigOutput `pulumi:"tcpConfig"`
+	// The timeout (in seconds) before marking the health check as failed.
+	Timeout pulumi.IntOutput `pulumi:"timeout"`
+	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -165,9 +71,6 @@ func NewHealthcheck(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
-	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -197,94 +100,76 @@ func GetHealthcheck(ctx *pulumi.Context,
 type healthcheckState struct {
 	// The hostname or IP address of the origin server to run health checks on.
 	Address *string `pulumi:"address"`
-	// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+	// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	CheckRegions []string `pulumi:"checkRegions"`
-	// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+	// The number of consecutive fails required from a health check before changing the health to unhealthy.
 	ConsecutiveFails *int `pulumi:"consecutiveFails"`
-	// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
-	ConsecutiveSuccesses *int `pulumi:"consecutiveSuccesses"`
-	// Creation time.
-	CreatedOn *string `pulumi:"createdOn"`
+	// The number of consecutive successes required from a health check before changing the health to healthy.
+	ConsecutiveSuccesses *int    `pulumi:"consecutiveSuccesses"`
+	CreatedOn            *string `pulumi:"createdOn"`
 	// A human-readable description of the health check.
 	Description *string `pulumi:"description"`
-	// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
-	ExpectedBody *string `pulumi:"expectedBody"`
-	// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
-	ExpectedCodes []string `pulumi:"expectedCodes"`
-	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-	FollowRedirects *bool `pulumi:"followRedirects"`
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-	Headers []HealthcheckHeader `pulumi:"headers"`
-	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
-	Interval *int `pulumi:"interval"`
-	// The HTTP method to use for the health check. Available values: `connectionEstablished`, `GET`, `HEAD`.
-	Method *string `pulumi:"method"`
-	// Last modified time.
+	// The current failure reason if status is unhealthy.
+	FailureReason *string `pulumi:"failureReason"`
+	// Parameters specific to an HTTP or HTTPS health check.
+	HttpConfig *HealthcheckHttpConfig `pulumi:"httpConfig"`
+	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
+	Interval   *int    `pulumi:"interval"`
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name *string `pulumi:"name"`
-	// The endpoint path to health check against. Defaults to `/`.
-	Path *string `pulumi:"path"`
-	// Port number to connect to for the health check. Defaults to `80`.
-	Port *int `pulumi:"port"`
-	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries *int `pulumi:"retries"`
-	// If suspended, no health checks are sent to the origin. Defaults to `false`.
+	// The current status of the origin server according to the health check.
+	// Available values: "unknown", "healthy", "unhealthy", "suspended".
+	Status *string `pulumi:"status"`
+	// If suspended, no health checks are sent to the origin.
 	Suspended *bool `pulumi:"suspended"`
-	// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+	// Parameters specific to TCP health check.
+	TcpConfig *HealthcheckTcpConfig `pulumi:"tcpConfig"`
+	// The timeout (in seconds) before marking the health check as failed.
 	Timeout *int `pulumi:"timeout"`
-	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	Type *string `pulumi:"type"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type HealthcheckState struct {
 	// The hostname or IP address of the origin server to run health checks on.
 	Address pulumi.StringPtrInput
-	// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-	AllowInsecure pulumi.BoolPtrInput
-	// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+	// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	CheckRegions pulumi.StringArrayInput
-	// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+	// The number of consecutive fails required from a health check before changing the health to unhealthy.
 	ConsecutiveFails pulumi.IntPtrInput
-	// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+	// The number of consecutive successes required from a health check before changing the health to healthy.
 	ConsecutiveSuccesses pulumi.IntPtrInput
-	// Creation time.
-	CreatedOn pulumi.StringPtrInput
+	CreatedOn            pulumi.StringPtrInput
 	// A human-readable description of the health check.
 	Description pulumi.StringPtrInput
-	// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
-	ExpectedBody pulumi.StringPtrInput
-	// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
-	ExpectedCodes pulumi.StringArrayInput
-	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-	FollowRedirects pulumi.BoolPtrInput
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-	Headers HealthcheckHeaderArrayInput
-	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
-	Interval pulumi.IntPtrInput
-	// The HTTP method to use for the health check. Available values: `connectionEstablished`, `GET`, `HEAD`.
-	Method pulumi.StringPtrInput
-	// Last modified time.
+	// The current failure reason if status is unhealthy.
+	FailureReason pulumi.StringPtrInput
+	// Parameters specific to an HTTP or HTTPS health check.
+	HttpConfig HealthcheckHttpConfigPtrInput
+	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
+	Interval   pulumi.IntPtrInput
 	ModifiedOn pulumi.StringPtrInput
-	// A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringPtrInput
-	// The endpoint path to health check against. Defaults to `/`.
-	Path pulumi.StringPtrInput
-	// Port number to connect to for the health check. Defaults to `80`.
-	Port pulumi.IntPtrInput
-	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries pulumi.IntPtrInput
-	// If suspended, no health checks are sent to the origin. Defaults to `false`.
+	// The current status of the origin server according to the health check.
+	// Available values: "unknown", "healthy", "unhealthy", "suspended".
+	Status pulumi.StringPtrInput
+	// If suspended, no health checks are sent to the origin.
 	Suspended pulumi.BoolPtrInput
-	// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+	// Parameters specific to TCP health check.
+	TcpConfig HealthcheckTcpConfigPtrInput
+	// The timeout (in seconds) before marking the health check as failed.
 	Timeout pulumi.IntPtrInput
-	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 	Type pulumi.StringPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -295,43 +180,31 @@ func (HealthcheckState) ElementType() reflect.Type {
 type healthcheckArgs struct {
 	// The hostname or IP address of the origin server to run health checks on.
 	Address string `pulumi:"address"`
-	// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+	// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	CheckRegions []string `pulumi:"checkRegions"`
-	// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+	// The number of consecutive fails required from a health check before changing the health to unhealthy.
 	ConsecutiveFails *int `pulumi:"consecutiveFails"`
-	// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+	// The number of consecutive successes required from a health check before changing the health to healthy.
 	ConsecutiveSuccesses *int `pulumi:"consecutiveSuccesses"`
 	// A human-readable description of the health check.
 	Description *string `pulumi:"description"`
-	// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
-	ExpectedBody *string `pulumi:"expectedBody"`
-	// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
-	ExpectedCodes []string `pulumi:"expectedCodes"`
-	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-	FollowRedirects *bool `pulumi:"followRedirects"`
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-	Headers []HealthcheckHeader `pulumi:"headers"`
-	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
+	// Parameters specific to an HTTP or HTTPS health check.
+	HttpConfig *HealthcheckHttpConfig `pulumi:"httpConfig"`
+	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
 	Interval *int `pulumi:"interval"`
-	// The HTTP method to use for the health check. Available values: `connectionEstablished`, `GET`, `HEAD`.
-	Method *string `pulumi:"method"`
-	// A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name string `pulumi:"name"`
-	// The endpoint path to health check against. Defaults to `/`.
-	Path *string `pulumi:"path"`
-	// Port number to connect to for the health check. Defaults to `80`.
-	Port *int `pulumi:"port"`
-	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries *int `pulumi:"retries"`
-	// If suspended, no health checks are sent to the origin. Defaults to `false`.
+	// If suspended, no health checks are sent to the origin.
 	Suspended *bool `pulumi:"suspended"`
-	// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+	// Parameters specific to TCP health check.
+	TcpConfig *HealthcheckTcpConfig `pulumi:"tcpConfig"`
+	// The timeout (in seconds) before marking the health check as failed.
 	Timeout *int `pulumi:"timeout"`
-	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
-	Type string `pulumi:"type"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
+	Type *string `pulumi:"type"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -339,43 +212,31 @@ type healthcheckArgs struct {
 type HealthcheckArgs struct {
 	// The hostname or IP address of the origin server to run health checks on.
 	Address pulumi.StringInput
-	// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-	AllowInsecure pulumi.BoolPtrInput
-	// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+	// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 	CheckRegions pulumi.StringArrayInput
-	// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+	// The number of consecutive fails required from a health check before changing the health to unhealthy.
 	ConsecutiveFails pulumi.IntPtrInput
-	// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+	// The number of consecutive successes required from a health check before changing the health to healthy.
 	ConsecutiveSuccesses pulumi.IntPtrInput
 	// A human-readable description of the health check.
 	Description pulumi.StringPtrInput
-	// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
-	ExpectedBody pulumi.StringPtrInput
-	// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
-	ExpectedCodes pulumi.StringArrayInput
-	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-	FollowRedirects pulumi.BoolPtrInput
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-	Headers HealthcheckHeaderArrayInput
-	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
+	// Parameters specific to an HTTP or HTTPS health check.
+	HttpConfig HealthcheckHttpConfigPtrInput
+	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
 	Interval pulumi.IntPtrInput
-	// The HTTP method to use for the health check. Available values: `connectionEstablished`, `GET`, `HEAD`.
-	Method pulumi.StringPtrInput
-	// A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringInput
-	// The endpoint path to health check against. Defaults to `/`.
-	Path pulumi.StringPtrInput
-	// Port number to connect to for the health check. Defaults to `80`.
-	Port pulumi.IntPtrInput
-	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
 	Retries pulumi.IntPtrInput
-	// If suspended, no health checks are sent to the origin. Defaults to `false`.
+	// If suspended, no health checks are sent to the origin.
 	Suspended pulumi.BoolPtrInput
-	// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+	// Parameters specific to TCP health check.
+	TcpConfig HealthcheckTcpConfigPtrInput
+	// The timeout (in seconds) before marking the health check as failed.
 	Timeout pulumi.IntPtrInput
-	// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
-	Type pulumi.StringInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
+	Type pulumi.StringPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -471,27 +332,21 @@ func (o HealthcheckOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-func (o HealthcheckOutput) AllowInsecure() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.BoolPtrOutput { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
-}
-
-// A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+// A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
 func (o HealthcheckOutput) CheckRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringArrayOutput { return v.CheckRegions }).(pulumi.StringArrayOutput)
 }
 
-// The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
-func (o HealthcheckOutput) ConsecutiveFails() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.ConsecutiveFails }).(pulumi.IntPtrOutput)
+// The number of consecutive fails required from a health check before changing the health to unhealthy.
+func (o HealthcheckOutput) ConsecutiveFails() pulumi.IntOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntOutput { return v.ConsecutiveFails }).(pulumi.IntOutput)
 }
 
-// The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
-func (o HealthcheckOutput) ConsecutiveSuccesses() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.ConsecutiveSuccesses }).(pulumi.IntPtrOutput)
+// The number of consecutive successes required from a health check before changing the health to healthy.
+func (o HealthcheckOutput) ConsecutiveSuccesses() pulumi.IntOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntOutput { return v.ConsecutiveSuccesses }).(pulumi.IntOutput)
 }
 
-// Creation time.
 func (o HealthcheckOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
@@ -501,77 +356,62 @@ func (o HealthcheckOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
-func (o HealthcheckOutput) ExpectedBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.StringPtrOutput { return v.ExpectedBody }).(pulumi.StringPtrOutput)
+// The current failure reason if status is unhealthy.
+func (o HealthcheckOutput) FailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.FailureReason }).(pulumi.StringOutput)
 }
 
-// The expected HTTP response codes (e.g. '200') or code ranges (e.g. '2xx' for all codes starting with 2) of the health check.
-func (o HealthcheckOutput) ExpectedCodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.StringArrayOutput { return v.ExpectedCodes }).(pulumi.StringArrayOutput)
+// Parameters specific to an HTTP or HTTPS health check.
+func (o HealthcheckOutput) HttpConfig() HealthcheckHttpConfigOutput {
+	return o.ApplyT(func(v *Healthcheck) HealthcheckHttpConfigOutput { return v.HttpConfig }).(HealthcheckHttpConfigOutput)
 }
 
-// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-func (o HealthcheckOutput) FollowRedirects() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.BoolPtrOutput { return v.FollowRedirects }).(pulumi.BoolPtrOutput)
+// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
+func (o HealthcheckOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntOutput { return v.Interval }).(pulumi.IntOutput)
 }
 
-// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-func (o HealthcheckOutput) Headers() HealthcheckHeaderArrayOutput {
-	return o.ApplyT(func(v *Healthcheck) HealthcheckHeaderArrayOutput { return v.Headers }).(HealthcheckHeaderArrayOutput)
-}
-
-// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
-func (o HealthcheckOutput) Interval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.Interval }).(pulumi.IntPtrOutput)
-}
-
-// The HTTP method to use for the health check. Available values: `connectionEstablished`, `GET`, `HEAD`.
-func (o HealthcheckOutput) Method() pulumi.StringOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Method }).(pulumi.StringOutput)
-}
-
-// Last modified time.
 func (o HealthcheckOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 func (o HealthcheckOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The endpoint path to health check against. Defaults to `/`.
-func (o HealthcheckOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
+// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
+func (o HealthcheckOutput) Retries() pulumi.IntOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntOutput { return v.Retries }).(pulumi.IntOutput)
 }
 
-// Port number to connect to for the health check. Defaults to `80`.
-func (o HealthcheckOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+// The current status of the origin server according to the health check.
+// Available values: "unknown", "healthy", "unhealthy", "suspended".
+func (o HealthcheckOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
-func (o HealthcheckOutput) Retries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.Retries }).(pulumi.IntPtrOutput)
+// If suspended, no health checks are sent to the origin.
+func (o HealthcheckOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.BoolOutput { return v.Suspended }).(pulumi.BoolOutput)
 }
 
-// If suspended, no health checks are sent to the origin. Defaults to `false`.
-func (o HealthcheckOutput) Suspended() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
+// Parameters specific to TCP health check.
+func (o HealthcheckOutput) TcpConfig() HealthcheckTcpConfigOutput {
+	return o.ApplyT(func(v *Healthcheck) HealthcheckTcpConfigOutput { return v.TcpConfig }).(HealthcheckTcpConfigOutput)
 }
 
-// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
-func (o HealthcheckOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.Timeout }).(pulumi.IntPtrOutput)
+// The timeout (in seconds) before marking the health check as failed.
+func (o HealthcheckOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+// The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'.
 func (o HealthcheckOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o HealthcheckOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

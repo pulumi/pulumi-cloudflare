@@ -8,16 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
-// you to define one or more URLs (with wildcard matching on the domain
-// or path) that will only permit access if the request originates
-// from an IP address that matches a safelist of one or more IP
-// addresses and/or IP ranges.
-//
 // ## Example Usage
 //
 // ```go
@@ -25,26 +19,23 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Restrict access to these endpoints to requests from a known IP address range.
-//			_, err := cloudflare.NewZoneLockdown(ctx, "example", &cloudflare.ZoneLockdownArgs{
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Paused:      pulumi.Bool(false),
-//				Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address range"),
-//				Urls: pulumi.StringArray{
-//					pulumi.String("api.mysite.com/some/endpoint*"),
-//				},
+//			_, err := cloudflare.NewZoneLockdown(ctx, "example_zone_lockdown", &cloudflare.ZoneLockdownArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Configurations: cloudflare.ZoneLockdownConfigurationArray{
 //					&cloudflare.ZoneLockdownConfigurationArgs{
-//						Target: pulumi.String("ip_range"),
-//						Value:  pulumi.String("192.0.2.0/24"),
+//						Target: pulumi.String("ip"),
+//						Value:  pulumi.String("198.51.100.4"),
 //					},
+//				},
+//				Urls: pulumi.StringArray{
+//					pulumi.String("shop.example.com/*"),
 //				},
 //			})
 //			if err != nil {
@@ -59,21 +50,24 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example <zone_id>/<lockdown_id>
+// $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example '<zone_id>/<lock_downs_id>'
 // ```
 type ZoneLockdown struct {
 	pulumi.CustomResourceState
 
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+	// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 	Configurations ZoneLockdownConfigurationArrayOutput `pulumi:"configurations"`
-	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-	Paused   pulumi.BoolPtrOutput `pulumi:"paused"`
-	Priority pulumi.IntPtrOutput  `pulumi:"priority"`
-	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+	// The timestamp of when the rule was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// An informative summary of the rule.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// The timestamp of when the rule was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// When true, indicates that the rule is currently paused.
+	Paused pulumi.BoolOutput `pulumi:"paused"`
+	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -116,30 +110,36 @@ func GetZoneLockdown(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneLockdown resources.
 type zoneLockdownState struct {
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+	// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 	Configurations []ZoneLockdownConfiguration `pulumi:"configurations"`
-	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+	// The timestamp of when the rule was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// An informative summary of the rule.
 	Description *string `pulumi:"description"`
-	// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-	Paused   *bool `pulumi:"paused"`
-	Priority *int  `pulumi:"priority"`
-	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+	// The timestamp of when the rule was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// When true, indicates that the rule is currently paused.
+	Paused *bool `pulumi:"paused"`
+	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZoneLockdownState struct {
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+	// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 	Configurations ZoneLockdownConfigurationArrayInput
-	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+	// The timestamp of when the rule was created.
+	CreatedOn pulumi.StringPtrInput
+	// An informative summary of the rule.
 	Description pulumi.StringPtrInput
-	// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-	Paused   pulumi.BoolPtrInput
-	Priority pulumi.IntPtrInput
-	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+	// The timestamp of when the rule was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// When true, indicates that the rule is currently paused.
+	Paused pulumi.BoolPtrInput
+	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -148,31 +148,21 @@ func (ZoneLockdownState) ElementType() reflect.Type {
 }
 
 type zoneLockdownArgs struct {
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+	// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 	Configurations []ZoneLockdownConfiguration `pulumi:"configurations"`
-	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-	Description *string `pulumi:"description"`
-	// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-	Paused   *bool `pulumi:"paused"`
-	Priority *int  `pulumi:"priority"`
-	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneLockdown resource.
 type ZoneLockdownArgs struct {
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+	// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 	Configurations ZoneLockdownConfigurationArrayInput
-	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-	Description pulumi.StringPtrInput
-	// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-	Paused   pulumi.BoolPtrInput
-	Priority pulumi.IntPtrInput
-	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -263,31 +253,37 @@ func (o ZoneLockdownOutput) ToZoneLockdownOutputWithContext(ctx context.Context)
 	return o
 }
 
-// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
+// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 func (o ZoneLockdownOutput) Configurations() ZoneLockdownConfigurationArrayOutput {
 	return o.ApplyT(func(v *ZoneLockdown) ZoneLockdownConfigurationArrayOutput { return v.Configurations }).(ZoneLockdownConfigurationArrayOutput)
 }
 
-// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-func (o ZoneLockdownOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+// The timestamp of when the rule was created.
+func (o ZoneLockdownOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Boolean of whether this zone lockdown is currently paused. Defaults to `false`.
-func (o ZoneLockdownOutput) Paused() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneLockdown) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
+// An informative summary of the rule.
+func (o ZoneLockdownOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o ZoneLockdownOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ZoneLockdown) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+// The timestamp of when the rule was last modified.
+func (o ZoneLockdownOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+// When true, indicates that the rule is currently paused.
+func (o ZoneLockdownOutput) Paused() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+}
+
+// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 func (o ZoneLockdownOutput) Urls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o ZoneLockdownOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

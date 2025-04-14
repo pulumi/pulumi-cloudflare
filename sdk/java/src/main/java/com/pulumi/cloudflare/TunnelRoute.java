@@ -6,93 +6,162 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TunnelRouteArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TunnelRouteState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource, that manages Cloudflare tunnel routes for Zero
- * Trust. Tunnel routes are used to direct IP traffic through
- * Cloudflare Tunnels.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredRoute;
+ * import com.pulumi.cloudflare.ZeroTrustTunnelCloudflaredRouteArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZeroTrustTunnelCloudflaredRoute = new ZeroTrustTunnelCloudflaredRoute("exampleZeroTrustTunnelCloudflaredRoute", ZeroTrustTunnelCloudflaredRouteArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .network("172.16.0.0/16")
+ *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+ *             .comment("Example comment for this route.")
+ *             .virtualNetworkId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &lt;account_id&gt;/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
+ * $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example &#39;&lt;account_id&gt;/&lt;route_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute
+ * 
  */
+@Deprecated /* cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute */
 @ResourceType(type="cloudflare:index/tunnelRoute:TunnelRoute")
 public class TunnelRoute extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Description of the tunnel route.
+     * Optional remark describing the route.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Description of the tunnel route.
+     * @return Optional remark describing the route.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+     * Timestamp of when the resource was created.
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return Timestamp of when the resource was created.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    @Export(name="deletedAt", refs={String.class}, tree="[0]")
+    private Output<String> deletedAt;
+
+    /**
+     * @return Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    public Output<String> deletedAt() {
+        return this.deletedAt;
+    }
+    /**
+     * The private IPv4 or IPv6 range connected by the route, in CIDR notation.
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
-     * @return The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+     * @return The private IPv4 or IPv6 range connected by the route, in CIDR notation.
      * 
      */
     public Output<String> network() {
         return this.network;
     }
     /**
-     * The ID of the tunnel that will service the tunnel route.
+     * UUID of the tunnel.
      * 
      */
     @Export(name="tunnelId", refs={String.class}, tree="[0]")
     private Output<String> tunnelId;
 
     /**
-     * @return The ID of the tunnel that will service the tunnel route.
+     * @return UUID of the tunnel.
      * 
      */
     public Output<String> tunnelId() {
         return this.tunnelId;
     }
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+     * UUID of the virtual network.
      * 
      */
     @Export(name="virtualNetworkId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> virtualNetworkId;
 
     /**
-     * @return The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+     * @return UUID of the virtual network.
      * 
      */
     public Output<Optional<String>> virtualNetworkId() {
@@ -138,6 +207,9 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/tunnelRoute:TunnelRoute").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

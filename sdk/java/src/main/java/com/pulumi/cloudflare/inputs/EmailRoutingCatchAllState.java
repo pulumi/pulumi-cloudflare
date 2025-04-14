@@ -20,14 +20,14 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
     public static final EmailRoutingCatchAllState Empty = new EmailRoutingCatchAllState();
 
     /**
-     * List actions patterns.
+     * List actions for the catch-all routing rule.
      * 
      */
     @Import(name="actions")
     private @Nullable Output<List<EmailRoutingCatchAllActionArgs>> actions;
 
     /**
-     * @return List actions patterns.
+     * @return List actions for the catch-all routing rule.
      * 
      */
     public Optional<Output<List<EmailRoutingCatchAllActionArgs>>> actions() {
@@ -50,14 +50,14 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Matching patterns to forward to your actions.
+     * List of matchers for the catch-all routing rule.
      * 
      */
     @Import(name="matchers")
     private @Nullable Output<List<EmailRoutingCatchAllMatcherArgs>> matchers;
 
     /**
-     * @return Matching patterns to forward to your actions.
+     * @return List of matchers for the catch-all routing rule.
      * 
      */
     public Optional<Output<List<EmailRoutingCatchAllMatcherArgs>>> matchers() {
@@ -80,14 +80,14 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Routing rule identifier.
+     * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
-     * @return Routing rule identifier.
+     * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
      */
     public Optional<Output<String>> tag() {
@@ -95,14 +95,14 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -139,7 +139,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions List actions for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions List actions for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions List actions for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param matchers Matching patterns to forward to your actions.
+         * @param matchers List of matchers for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param matchers Matching patterns to forward to your actions.
+         * @param matchers List of matchers for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param matchers Matching patterns to forward to your actions.
+         * @param matchers List of matchers for the catch-all routing rule.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tag Routing rule identifier.
+         * @param tag Routing rule tag. (Deprecated, replaced by routing rule identifier)
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tag Routing rule identifier.
+         * @param tag Routing rule tag. (Deprecated, replaced by routing rule identifier)
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

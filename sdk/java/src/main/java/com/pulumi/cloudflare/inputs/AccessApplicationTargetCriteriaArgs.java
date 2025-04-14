@@ -3,13 +3,13 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.AccessApplicationTargetCriteriaTargetAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -34,6 +34,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
 
     /**
      * The communication protocol your application secures.
+     * Available values: &#34;ssh&#34;.
      * 
      */
     @Import(name="protocol", required=true)
@@ -41,6 +42,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
 
     /**
      * @return The communication protocol your application secures.
+     * Available values: &#34;ssh&#34;.
      * 
      */
     public Output<String> protocol() {
@@ -52,13 +54,13 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
      * 
      */
     @Import(name="targetAttributes", required=true)
-    private Output<List<AccessApplicationTargetCriteriaTargetAttributeArgs>> targetAttributes;
+    private Output<Map<String,List<String>>> targetAttributes;
 
     /**
      * @return Contains a map of target attribute keys to target attribute values.
      * 
      */
-    public Output<List<AccessApplicationTargetCriteriaTargetAttributeArgs>> targetAttributes() {
+    public Output<Map<String,List<String>>> targetAttributes() {
         return this.targetAttributes;
     }
 
@@ -111,6 +113,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
 
         /**
          * @param protocol The communication protocol your application secures.
+         * Available values: &#34;ssh&#34;.
          * 
          * @return builder
          * 
@@ -122,6 +125,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
 
         /**
          * @param protocol The communication protocol your application secures.
+         * Available values: &#34;ssh&#34;.
          * 
          * @return builder
          * 
@@ -136,7 +140,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder targetAttributes(Output<List<AccessApplicationTargetCriteriaTargetAttributeArgs>> targetAttributes) {
+        public Builder targetAttributes(Output<Map<String,List<String>>> targetAttributes) {
             $.targetAttributes = targetAttributes;
             return this;
         }
@@ -147,18 +151,8 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder targetAttributes(List<AccessApplicationTargetCriteriaTargetAttributeArgs> targetAttributes) {
+        public Builder targetAttributes(Map<String,List<String>> targetAttributes) {
             return targetAttributes(Output.of(targetAttributes));
-        }
-
-        /**
-         * @param targetAttributes Contains a map of target attribute keys to target attribute values.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder targetAttributes(AccessApplicationTargetCriteriaTargetAttributeArgs... targetAttributes) {
-            return targetAttributes(List.of(targetAttributes));
         }
 
         public AccessApplicationTargetCriteriaArgs build() {

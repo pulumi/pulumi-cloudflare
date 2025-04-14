@@ -14,9 +14,17 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PagesProjectDeploymentConfigsPreview
     {
         /// <summary>
-        /// Use latest compatibility date for Pages Functions. Defaults to `false`.
+        /// Constellation bindings used for Pages Functions.
         /// </summary>
-        public readonly bool? AlwaysUseLatestCompatibilityDate;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewAiBindings>? AiBindings;
+        /// <summary>
+        /// Analytics Engine bindings used for Pages Functions.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets>? AnalyticsEngineDatasets;
+        /// <summary>
+        /// Browser bindings used for Pages Functions.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewBrowsers>? Browsers;
         /// <summary>
         /// Compatibility date used for Pages Functions.
         /// </summary>
@@ -26,87 +34,100 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> CompatibilityFlags;
         /// <summary>
-        /// D1 Databases used for Pages Functions. Defaults to `map[]`.
+        /// D1 databases used for Pages Functions.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? D1Databases;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewD1Databases>? D1Databases;
         /// <summary>
-        /// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        /// Durable Object namespaces used for Pages Functions.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? DurableObjectNamespaces;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces>? DurableObjectNamespaces;
         /// <summary>
-        /// Environment variables for Pages Functions. Defaults to `map[]`.
+        /// Environment variables used for builds and Pages Functions.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? EnvironmentVariables;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewEnvVars>? EnvVars;
         /// <summary>
-        /// Fail open used for Pages Functions. Defaults to `false`.
+        /// Hyperdrive bindings used for Pages Functions.
         /// </summary>
-        public readonly bool? FailOpen;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindings>? HyperdriveBindings;
         /// <summary>
-        /// KV namespaces used for Pages Functions. Defaults to `map[]`.
+        /// KV namespaces used for Pages Functions.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? KvNamespaces;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewKvNamespaces>? KvNamespaces;
         /// <summary>
-        /// Configuration for placement in the Cloudflare Pages project.
+        /// mTLS bindings used for Pages Functions.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewMtlsCertificates>? MtlsCertificates;
+        /// <summary>
+        /// Placement setting used for Pages Functions.
         /// </summary>
         public readonly Outputs.PagesProjectDeploymentConfigsPreviewPlacement? Placement;
         /// <summary>
-        /// R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        /// Queue Producer bindings used for Pages Functions.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? R2Buckets;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewQueueProducers>? QueueProducers;
         /// <summary>
-        /// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        /// R2 buckets used for Pages Functions.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? Secrets;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewR2Buckets>? R2Buckets;
         /// <summary>
         /// Services used for Pages Functions.
         /// </summary>
-        public readonly ImmutableArray<Outputs.PagesProjectDeploymentConfigsPreviewServiceBinding> ServiceBindings;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewServices>? Services;
         /// <summary>
-        /// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
+        /// Vectorize bindings used for Pages Functions.
         /// </summary>
-        public readonly string? UsageModel;
+        public readonly ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewVectorizeBindings>? VectorizeBindings;
 
         [OutputConstructor]
         private PagesProjectDeploymentConfigsPreview(
-            bool? alwaysUseLatestCompatibilityDate,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewAiBindings>? aiBindings,
+
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets>? analyticsEngineDatasets,
+
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewBrowsers>? browsers,
 
             string? compatibilityDate,
 
             ImmutableArray<string> compatibilityFlags,
 
-            ImmutableDictionary<string, string>? d1Databases,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewD1Databases>? d1Databases,
 
-            ImmutableDictionary<string, string>? durableObjectNamespaces,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces>? durableObjectNamespaces,
 
-            ImmutableDictionary<string, string>? environmentVariables,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewEnvVars>? envVars,
 
-            bool? failOpen,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindings>? hyperdriveBindings,
 
-            ImmutableDictionary<string, string>? kvNamespaces,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewKvNamespaces>? kvNamespaces,
+
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewMtlsCertificates>? mtlsCertificates,
 
             Outputs.PagesProjectDeploymentConfigsPreviewPlacement? placement,
 
-            ImmutableDictionary<string, string>? r2Buckets,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewQueueProducers>? queueProducers,
 
-            ImmutableDictionary<string, string>? secrets,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewR2Buckets>? r2Buckets,
 
-            ImmutableArray<Outputs.PagesProjectDeploymentConfigsPreviewServiceBinding> serviceBindings,
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewServices>? services,
 
-            string? usageModel)
+            ImmutableDictionary<string, Outputs.PagesProjectDeploymentConfigsPreviewVectorizeBindings>? vectorizeBindings)
         {
-            AlwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
+            AiBindings = aiBindings;
+            AnalyticsEngineDatasets = analyticsEngineDatasets;
+            Browsers = browsers;
             CompatibilityDate = compatibilityDate;
             CompatibilityFlags = compatibilityFlags;
             D1Databases = d1Databases;
             DurableObjectNamespaces = durableObjectNamespaces;
-            EnvironmentVariables = environmentVariables;
-            FailOpen = failOpen;
+            EnvVars = envVars;
+            HyperdriveBindings = hyperdriveBindings;
             KvNamespaces = kvNamespaces;
+            MtlsCertificates = mtlsCertificates;
             Placement = placement;
+            QueueProducers = queueProducers;
             R2Buckets = r2Buckets;
-            Secrets = secrets;
-            ServiceBindings = serviceBindings;
-            UsageModel = usageModel;
+            Services = services;
+            VectorizeBindings = vectorizeBindings;
         }
     }
 }

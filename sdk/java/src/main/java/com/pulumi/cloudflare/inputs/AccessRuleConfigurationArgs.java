@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AccessRuleConfigurationArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,33 +16,35 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
     public static final AccessRuleConfigurationArgs Empty = new AccessRuleConfigurationArgs();
 
     /**
-     * The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
-    @Import(name="target", required=true)
-    private Output<String> target;
+    @Import(name="target")
+    private @Nullable Output<String> target;
 
     /**
-     * @return The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+     * Available values: &#34;ip&#34;.
      * 
      */
-    public Output<String> target() {
-        return this.target;
+    public Optional<Output<String>> target() {
+        return Optional.ofNullable(this.target);
     }
 
     /**
-     * The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
+     * The IP address to match. This address will be compared to the IP address of incoming requests.
      * 
      */
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
     /**
-     * @return The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
+     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private AccessRuleConfigurationArgs() {}
@@ -70,18 +73,20 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param target The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+         * Available values: &#34;ip&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder target(Output<String> target) {
+        public Builder target(@Nullable Output<String> target) {
             $.target = target;
             return this;
         }
 
         /**
-         * @param target The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+         * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+         * Available values: &#34;ip&#34;.
          * 
          * @return builder
          * 
@@ -91,18 +96,18 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
+         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
          * 
          * @return builder
          * 
          */
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
         /**
-         * @param value The value to target. Depends on target&#39;s type. **Modifying this attribute will force creation of a new resource.**
+         * @param value The IP address to match. This address will be compared to the IP address of incoming requests.
          * 
          * @return builder
          * 
@@ -112,12 +117,6 @@ public final class AccessRuleConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         public AccessRuleConfigurationArgs build() {
-            if ($.target == null) {
-                throw new MissingRequiredPropertyException("AccessRuleConfigurationArgs", "target");
-            }
-            if ($.value == null) {
-                throw new MissingRequiredPropertyException("AccessRuleConfigurationArgs", "value");
-            }
             return $;
         }
     }

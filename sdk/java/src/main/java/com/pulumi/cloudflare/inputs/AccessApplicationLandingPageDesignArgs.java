@@ -16,14 +16,14 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
     public static final AccessApplicationLandingPageDesignArgs Empty = new AccessApplicationLandingPageDesignArgs();
 
     /**
-     * The button color of the landing page.
+     * The background color of the log in button on the landing page.
      * 
      */
     @Import(name="buttonColor")
     private @Nullable Output<String> buttonColor;
 
     /**
-     * @return The button color of the landing page.
+     * @return The background color of the log in button on the landing page.
      * 
      */
     public Optional<Output<String>> buttonColor() {
@@ -31,14 +31,14 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
     }
 
     /**
-     * The button text color of the landing page.
+     * The color of the text in the log in button on the landing page.
      * 
      */
     @Import(name="buttonTextColor")
     private @Nullable Output<String> buttonTextColor;
 
     /**
-     * @return The button text color of the landing page.
+     * @return The color of the text in the log in button on the landing page.
      * 
      */
     public Optional<Output<String>> buttonTextColor() {
@@ -46,14 +46,14 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
     }
 
     /**
-     * The URL of the image to be displayed in the landing page.
+     * The URL of the image shown on the landing page.
      * 
      */
     @Import(name="imageUrl")
     private @Nullable Output<String> imageUrl;
 
     /**
-     * @return The URL of the image to be displayed in the landing page.
+     * @return The URL of the image shown on the landing page.
      * 
      */
     public Optional<Output<String>> imageUrl() {
@@ -61,14 +61,14 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
     }
 
     /**
-     * The message of the landing page.
+     * The message shown on the landing page.
      * 
      */
     @Import(name="message")
     private @Nullable Output<String> message;
 
     /**
-     * @return The message of the landing page.
+     * @return The message shown on the landing page.
      * 
      */
     public Optional<Output<String>> message() {
@@ -76,14 +76,14 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
     }
 
     /**
-     * The title of the landing page.
+     * The title shown on the landing page.
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return The title of the landing page.
+     * @return The title shown on the landing page.
      * 
      */
     public Optional<Output<String>> title() {
@@ -119,7 +119,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param buttonColor The button color of the landing page.
+         * @param buttonColor The background color of the log in button on the landing page.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param buttonColor The button color of the landing page.
+         * @param buttonColor The background color of the log in button on the landing page.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param buttonTextColor The button text color of the landing page.
+         * @param buttonTextColor The color of the text in the log in button on the landing page.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param buttonTextColor The button text color of the landing page.
+         * @param buttonTextColor The color of the text in the log in button on the landing page.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param imageUrl The URL of the image to be displayed in the landing page.
+         * @param imageUrl The URL of the image shown on the landing page.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param imageUrl The URL of the image to be displayed in the landing page.
+         * @param imageUrl The URL of the image shown on the landing page.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param message The message of the landing page.
+         * @param message The message shown on the landing page.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param message The message of the landing page.
+         * @param message The message shown on the landing page.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param title The title of the landing page.
+         * @param title The title shown on the landing page.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class AccessApplicationLandingPageDesignArgs extends com.pulumi.res
         }
 
         /**
-         * @param title The title of the landing page.
+         * @param title The title shown on the landing page.
          * 
          * @return builder
          * 

@@ -22,58 +22,46 @@ __all__ = ['AccessPolicyArgs', 'AccessPolicy']
 @pulumi.input_type
 class AccessPolicyArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[builtins.str],
                  decision: pulumi.Input[builtins.str],
                  includes: pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]],
                  name: pulumi.Input[builtins.str],
-                 account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[builtins.str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[builtins.bool]] = None,
-                 connection_rules: Optional[pulumi.Input['AccessPolicyConnectionRulesArgs']] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
                  isolation_required: Optional[pulumi.Input[builtins.bool]] = None,
-                 precedence: Optional[pulumi.Input[builtins.int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[builtins.str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[builtins.bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
-                 session_duration: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None):
+                 session_duration: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AccessPolicy resource.
-        :param pulumi.Input[builtins.str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Policy.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input['AccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
-        :param pulumi.Input[builtins.int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
-        :param pulumi.Input[builtins.str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
-        :param pulumi.Input[builtins.bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[builtins.str] name: The name of the Access policy.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
+        :param pulumi.Input[builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
+        :param pulumi.Input[builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
+        :param pulumi.Input[builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "decision", decision)
         pulumi.set(__self__, "includes", includes)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
             pulumi.set(__self__, "approval_required", approval_required)
-        if connection_rules is not None:
-            pulumi.set(__self__, "connection_rules", connection_rules)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
         if isolation_required is not None:
             pulumi.set(__self__, "isolation_required", isolation_required)
-        if precedence is not None:
-            pulumi.set(__self__, "precedence", precedence)
         if purpose_justification_prompt is not None:
             pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
         if purpose_justification_required is not None:
@@ -82,14 +70,25 @@ class AccessPolicyArgs:
             pulumi.set(__self__, "requires", requires)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
     def decision(self) -> pulumi.Input[builtins.str]:
         """
-        Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+        The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
         """
         return pulumi.get(self, "decision")
 
@@ -101,7 +100,7 @@ class AccessPolicyArgs:
     @pulumi.getter
     def includes(self) -> pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         """
         return pulumi.get(self, "includes")
 
@@ -113,7 +112,7 @@ class AccessPolicyArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        Friendly name of the Access Policy.
+        The name of the Access policy.
         """
         return pulumi.get(self, "name")
 
@@ -122,32 +121,11 @@ class AccessPolicyArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "application_id")
-
-    @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "application_id", value)
-
-    @property
     @pulumi.getter(name="approvalGroups")
     def approval_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]]:
+        """
+        Administrators who can approve a temporary authentication request.
+        """
         return pulumi.get(self, "approval_groups")
 
     @approval_groups.setter
@@ -157,6 +135,9 @@ class AccessPolicyArgs:
     @property
     @pulumi.getter(name="approvalRequired")
     def approval_required(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Requires the user to request access from an administrator at the start of each session.
+        """
         return pulumi.get(self, "approval_required")
 
     @approval_required.setter
@@ -164,22 +145,10 @@ class AccessPolicyArgs:
         pulumi.set(self, "approval_required", value)
 
     @property
-    @pulumi.getter(name="connectionRules")
-    def connection_rules(self) -> Optional[pulumi.Input['AccessPolicyConnectionRulesArgs']]:
-        """
-        The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        """
-        return pulumi.get(self, "connection_rules")
-
-    @connection_rules.setter
-    def connection_rules(self, value: Optional[pulumi.Input['AccessPolicyConnectionRulesArgs']]):
-        pulumi.set(self, "connection_rules", value)
-
-    @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         """
         return pulumi.get(self, "excludes")
 
@@ -191,7 +160,7 @@ class AccessPolicyArgs:
     @pulumi.getter(name="isolationRequired")
     def isolation_required(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Require this application to be served in an isolated browser for users matching this policy.
+        Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         """
         return pulumi.get(self, "isolation_required")
 
@@ -200,22 +169,10 @@ class AccessPolicyArgs:
         pulumi.set(self, "isolation_required", value)
 
     @property
-    @pulumi.getter
-    def precedence(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        The unique precedence for policies on a single application. Required when using `application_id`.
-        """
-        return pulumi.get(self, "precedence")
-
-    @precedence.setter
-    def precedence(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "precedence", value)
-
-    @property
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+        A custom message that will appear on the purpose justification screen.
         """
         return pulumi.get(self, "purpose_justification_prompt")
 
@@ -227,7 +184,7 @@ class AccessPolicyArgs:
     @pulumi.getter(name="purposeJustificationRequired")
     def purpose_justification_required(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to prompt the user for a justification for accessing the resource.
+        Require users to enter a justification when they log in to the application.
         """
         return pulumi.get(self, "purpose_justification_required")
 
@@ -239,7 +196,7 @@ class AccessPolicyArgs:
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         """
         return pulumi.get(self, "requires")
 
@@ -251,7 +208,7 @@ class AccessPolicyArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+        The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
 
@@ -259,65 +216,53 @@ class AccessPolicyArgs:
     def session_duration(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "session_duration", value)
 
-    @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "zone_id", value)
-
 
 @pulumi.input_type
 class _AccessPolicyState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[builtins.str]] = None,
+                 app_count: Optional[pulumi.Input[builtins.int]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[builtins.bool]] = None,
-                 connection_rules: Optional[pulumi.Input['AccessPolicyConnectionRulesArgs']] = None,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
                  decision: Optional[pulumi.Input[builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
                  isolation_required: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 precedence: Optional[pulumi.Input[builtins.int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[builtins.str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[builtins.bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
+                 reusable: Optional[pulumi.Input[builtins.bool]] = None,
                  session_duration: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None):
+                 updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPolicy resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input['AccessPolicyConnectionRulesArgs'] connection_rules: The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        :param pulumi.Input[builtins.str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Policy.
-        :param pulumi.Input[builtins.int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
-        :param pulumi.Input[builtins.str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
-        :param pulumi.Input[builtins.bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.int] app_count: Number of access applications currently using this policy.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
+        :param pulumi.Input[builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
+        :param pulumi.Input[builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
+        :param pulumi.Input[builtins.str] name: The name of the Access policy.
+        :param pulumi.Input[builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
+        :param pulumi.Input[builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+        if app_count is not None:
+            pulumi.set(__self__, "app_count", app_count)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
             pulumi.set(__self__, "approval_required", approval_required)
-        if connection_rules is not None:
-            pulumi.set(__self__, "connection_rules", connection_rules)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if decision is not None:
             pulumi.set(__self__, "decision", decision)
         if excludes is not None:
@@ -328,24 +273,24 @@ class _AccessPolicyState:
             pulumi.set(__self__, "isolation_required", isolation_required)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if precedence is not None:
-            pulumi.set(__self__, "precedence", precedence)
         if purpose_justification_prompt is not None:
             pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
         if purpose_justification_required is not None:
             pulumi.set(__self__, "purpose_justification_required", purpose_justification_required)
         if requires is not None:
             pulumi.set(__self__, "requires", requires)
+        if reusable is not None:
+            pulumi.set(__self__, "reusable", reusable)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -354,20 +299,23 @@ class _AccessPolicyState:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="appCount")
+    def app_count(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        Number of access applications currently using this policy.
         """
-        return pulumi.get(self, "application_id")
+        return pulumi.get(self, "app_count")
 
-    @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "application_id", value)
+    @app_count.setter
+    def app_count(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "app_count", value)
 
     @property
     @pulumi.getter(name="approvalGroups")
     def approval_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]]:
+        """
+        Administrators who can approve a temporary authentication request.
+        """
         return pulumi.get(self, "approval_groups")
 
     @approval_groups.setter
@@ -377,6 +325,9 @@ class _AccessPolicyState:
     @property
     @pulumi.getter(name="approvalRequired")
     def approval_required(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Requires the user to request access from an administrator at the start of each session.
+        """
         return pulumi.get(self, "approval_required")
 
     @approval_required.setter
@@ -384,22 +335,20 @@ class _AccessPolicyState:
         pulumi.set(self, "approval_required", value)
 
     @property
-    @pulumi.getter(name="connectionRules")
-    def connection_rules(self) -> Optional[pulumi.Input['AccessPolicyConnectionRulesArgs']]:
-        """
-        The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        """
-        return pulumi.get(self, "connection_rules")
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
 
-    @connection_rules.setter
-    def connection_rules(self, value: Optional[pulumi.Input['AccessPolicyConnectionRulesArgs']]):
-        pulumi.set(self, "connection_rules", value)
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
 
     @property
     @pulumi.getter
     def decision(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+        The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
         """
         return pulumi.get(self, "decision")
 
@@ -411,7 +360,7 @@ class _AccessPolicyState:
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         """
         return pulumi.get(self, "excludes")
 
@@ -423,7 +372,7 @@ class _AccessPolicyState:
     @pulumi.getter
     def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         """
         return pulumi.get(self, "includes")
 
@@ -435,7 +384,7 @@ class _AccessPolicyState:
     @pulumi.getter(name="isolationRequired")
     def isolation_required(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Require this application to be served in an isolated browser for users matching this policy.
+        Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         """
         return pulumi.get(self, "isolation_required")
 
@@ -447,7 +396,7 @@ class _AccessPolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Friendly name of the Access Policy.
+        The name of the Access policy.
         """
         return pulumi.get(self, "name")
 
@@ -456,22 +405,10 @@ class _AccessPolicyState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    def precedence(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        The unique precedence for policies on a single application. Required when using `application_id`.
-        """
-        return pulumi.get(self, "precedence")
-
-    @precedence.setter
-    def precedence(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "precedence", value)
-
-    @property
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+        A custom message that will appear on the purpose justification screen.
         """
         return pulumi.get(self, "purpose_justification_prompt")
 
@@ -483,7 +420,7 @@ class _AccessPolicyState:
     @pulumi.getter(name="purposeJustificationRequired")
     def purpose_justification_required(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to prompt the user for a justification for accessing the resource.
+        Require users to enter a justification when they log in to the application.
         """
         return pulumi.get(self, "purpose_justification_required")
 
@@ -495,7 +432,7 @@ class _AccessPolicyState:
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         """
         return pulumi.get(self, "requires")
 
@@ -504,10 +441,19 @@ class _AccessPolicyState:
         pulumi.set(self, "requires", value)
 
     @property
+    @pulumi.getter
+    def reusable(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "reusable")
+
+    @reusable.setter
+    def reusable(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "reusable", value)
+
+    @property
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+        The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
 
@@ -516,75 +462,65 @@ class _AccessPolicyState:
         pulumi.set(self, "session_duration", value)
 
     @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
-        """
-        return pulumi.get(self, "zone_id")
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "updated_at")
 
-    @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "zone_id", value)
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+warnings.warn("""cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy""", DeprecationWarning)
 
 
 class AccessPolicy(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[builtins.str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
                  approval_required: Optional[pulumi.Input[builtins.bool]] = None,
-                 connection_rules: Optional[pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']]] = None,
                  decision: Optional[pulumi.Input[builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
                  isolation_required: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 precedence: Optional[pulumi.Input[builtins.int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[builtins.str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[builtins.bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
                  session_duration: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Access Policy resource. Access Policies are
-        used in conjunction with Access Applications to restrict access to
-        a particular resource.
-
-        > It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
-           However, if you're using a scoped access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zone_id` argument.
-           If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-           Any AccessApplication resource can reference reusable policies through its `policies` argument.
+        > If 'application_id' is omitted, the policy created can be reused by multiple access applications.
+           Any `ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
            To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-           lifecycle option `create_before_destroy` to true on the 'cloudflare_access_policy' resource.
+           lifecycle option `create_before_destroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+        $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example '<account_id>/<policy_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        :param pulumi.Input[builtins.str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]] excludes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]] includes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Policy.
-        :param pulumi.Input[builtins.int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
-        :param pulumi.Input[builtins.str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
-        :param pulumi.Input[builtins.bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]] requires: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
+        :param pulumi.Input[builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
+        :param pulumi.Input[builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
+        :param pulumi.Input[builtins.str] name: The name of the Access policy.
+        :param pulumi.Input[builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
+        :param pulumi.Input[builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         ...
     @overload
@@ -593,22 +529,15 @@ class AccessPolicy(pulumi.CustomResource):
                  args: AccessPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Access Policy resource. Access Policies are
-        used in conjunction with Access Applications to restrict access to
-        a particular resource.
-
-        > It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
-           However, if you're using a scoped access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zone_id` argument.
-           If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-           Any AccessApplication resource can reference reusable policies through its `policies` argument.
+        > If 'application_id' is omitted, the policy created can be reused by multiple access applications.
+           Any `ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
            To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-           lifecycle option `create_before_destroy` to true on the 'cloudflare_access_policy' resource.
+           lifecycle option `create_before_destroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+        $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example '<account_id>/<policy_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -627,22 +556,19 @@ class AccessPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[builtins.str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
                  approval_required: Optional[pulumi.Input[builtins.bool]] = None,
-                 connection_rules: Optional[pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']]] = None,
                  decision: Optional[pulumi.Input[builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
                  isolation_required: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 precedence: Optional[pulumi.Input[builtins.int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[builtins.str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[builtins.bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
                  session_duration: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccessPolicy is deprecated: cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -651,11 +577,11 @@ class AccessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessPolicyArgs.__new__(AccessPolicyArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["application_id"] = application_id
             __props__.__dict__["approval_groups"] = approval_groups
             __props__.__dict__["approval_required"] = approval_required
-            __props__.__dict__["connection_rules"] = connection_rules
             if decision is None and not opts.urn:
                 raise TypeError("Missing required property 'decision'")
             __props__.__dict__["decision"] = decision
@@ -667,12 +593,16 @@ class AccessPolicy(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["precedence"] = precedence
             __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
             __props__.__dict__["purpose_justification_required"] = purpose_justification_required
             __props__.__dict__["requires"] = requires
             __props__.__dict__["session_duration"] = session_duration
-            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["app_count"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["reusable"] = None
+            __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessPolicy:AccessPolicy")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessPolicy, __self__).__init__(
             'cloudflare:index/accessPolicy:AccessPolicy',
             resource_name,
@@ -684,21 +614,21 @@ class AccessPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            application_id: Optional[pulumi.Input[builtins.str]] = None,
+            app_count: Optional[pulumi.Input[builtins.int]] = None,
             approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]]] = None,
             approval_required: Optional[pulumi.Input[builtins.bool]] = None,
-            connection_rules: Optional[pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']]] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
             decision: Optional[pulumi.Input[builtins.str]] = None,
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]]] = None,
             isolation_required: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
-            precedence: Optional[pulumi.Input[builtins.int]] = None,
             purpose_justification_prompt: Optional[pulumi.Input[builtins.str]] = None,
             purpose_justification_required: Optional[pulumi.Input[builtins.bool]] = None,
             requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]]] = None,
+            reusable: Optional[pulumi.Input[builtins.bool]] = None,
             session_duration: Optional[pulumi.Input[builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessPolicy':
+            updated_at: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessPolicy':
         """
         Get an existing AccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -706,90 +636,94 @@ class AccessPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Union['AccessPolicyConnectionRulesArgs', 'AccessPolicyConnectionRulesArgsDict']] connection_rules: The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        :param pulumi.Input[builtins.str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]] excludes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]] includes: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Policy.
-        :param pulumi.Input[builtins.int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
-        :param pulumi.Input[builtins.str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
-        :param pulumi.Input[builtins.bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]] requires: A series of access conditions, see Access Groups.
-        :param pulumi.Input[builtins.str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.int] app_count: Number of access applications currently using this policy.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
+        :param pulumi.Input[builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
+        :param pulumi.Input[builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+               Available values: "allow", "deny", "non_identity", "bypass".
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyExcludeArgs', 'AccessPolicyExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyIncludeArgs', 'AccessPolicyIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
+        :param pulumi.Input[builtins.str] name: The name of the Access policy.
+        :param pulumi.Input[builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
+        :param pulumi.Input[builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyRequireArgs', 'AccessPolicyRequireArgsDict']]]] requires: Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
+        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccessPolicyState.__new__(_AccessPolicyState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["application_id"] = application_id
+        __props__.__dict__["app_count"] = app_count
         __props__.__dict__["approval_groups"] = approval_groups
         __props__.__dict__["approval_required"] = approval_required
-        __props__.__dict__["connection_rules"] = connection_rules
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["decision"] = decision
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["includes"] = includes
         __props__.__dict__["isolation_required"] = isolation_required
         __props__.__dict__["name"] = name
-        __props__.__dict__["precedence"] = precedence
         __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
         __props__.__dict__["purpose_justification_required"] = purpose_justification_required
         __props__.__dict__["requires"] = requires
+        __props__.__dict__["reusable"] = reusable
         __props__.__dict__["session_duration"] = session_duration
-        __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["updated_at"] = updated_at
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
     @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    @pulumi.getter(name="appCount")
+    def app_count(self) -> pulumi.Output[builtins.int]:
         """
-        The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        Number of access applications currently using this policy.
         """
-        return pulumi.get(self, "application_id")
+        return pulumi.get(self, "app_count")
 
     @property
     @pulumi.getter(name="approvalGroups")
-    def approval_groups(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyApprovalGroup']]]:
+    def approval_groups(self) -> pulumi.Output[Sequence['outputs.AccessPolicyApprovalGroup']]:
+        """
+        Administrators who can approve a temporary authentication request.
+        """
         return pulumi.get(self, "approval_groups")
 
     @property
     @pulumi.getter(name="approvalRequired")
-    def approval_required(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def approval_required(self) -> pulumi.Output[builtins.bool]:
+        """
+        Requires the user to request access from an administrator at the start of each session.
+        """
         return pulumi.get(self, "approval_required")
 
     @property
-    @pulumi.getter(name="connectionRules")
-    def connection_rules(self) -> pulumi.Output[Optional['outputs.AccessPolicyConnectionRules']]:
-        """
-        The rules that define how users may connect to the targets secured by your application. Only applicable to Infrastructure Applications, in which case this field is required.
-        """
-        return pulumi.get(self, "connection_rules")
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def decision(self) -> pulumi.Output[builtins.str]:
         """
-        Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
+        The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
+        Available values: "allow", "deny", "non_identity", "bypass".
         """
         return pulumi.get(self, "decision")
 
     @property
     @pulumi.getter
-    def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyExclude']]]:
+    def excludes(self) -> pulumi.Output[Sequence['outputs.AccessPolicyExclude']]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         """
         return pulumi.get(self, "excludes")
 
@@ -797,15 +731,15 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def includes(self) -> pulumi.Output[Sequence['outputs.AccessPolicyInclude']]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         """
         return pulumi.get(self, "includes")
 
     @property
     @pulumi.getter(name="isolationRequired")
-    def isolation_required(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def isolation_required(self) -> pulumi.Output[builtins.bool]:
         """
-        Require this application to be served in an isolated browser for users matching this policy.
+        Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         """
         return pulumi.get(self, "isolation_required")
 
@@ -813,55 +747,49 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Friendly name of the Access Policy.
+        The name of the Access policy.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def precedence(self) -> pulumi.Output[Optional[builtins.int]]:
-        """
-        The unique precedence for policies on a single application. Required when using `application_id`.
-        """
-        return pulumi.get(self, "precedence")
 
     @property
     @pulumi.getter(name="purposeJustificationPrompt")
     def purpose_justification_prompt(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
+        A custom message that will appear on the purpose justification screen.
         """
         return pulumi.get(self, "purpose_justification_prompt")
 
     @property
     @pulumi.getter(name="purposeJustificationRequired")
-    def purpose_justification_required(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def purpose_justification_required(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether to prompt the user for a justification for accessing the resource.
+        Require users to enter a justification when they log in to the application.
         """
         return pulumi.get(self, "purpose_justification_required")
 
     @property
     @pulumi.getter
-    def requires(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyRequire']]]:
+    def requires(self) -> pulumi.Output[Sequence['outputs.AccessPolicyRequire']]:
         """
-        A series of access conditions, see Access Groups.
+        Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         """
         return pulumi.get(self, "requires")
 
     @property
+    @pulumi.getter
+    def reusable(self) -> pulumi.Output[builtins.bool]:
+        return pulumi.get(self, "reusable")
+
+    @property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> pulumi.Output[Optional[builtins.str]]:
+    def session_duration(self) -> pulumi.Output[builtins.str]:
         """
-        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+        The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
         """
         return pulumi.get(self, "session_duration")
 
     @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
-        """
-        return pulumi.get(self, "zone_id")
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "updated_at")
 

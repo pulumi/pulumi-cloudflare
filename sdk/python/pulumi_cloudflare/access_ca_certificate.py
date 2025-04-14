@@ -20,38 +20,38 @@ __all__ = ['AccessCaCertificateArgs', 'AccessCaCertificate']
 @pulumi.input_type
 class AccessCaCertificateArgs:
     def __init__(__self__, *,
-                 application_id: pulumi.Input[builtins.str],
+                 app_id: pulumi.Input[builtins.str],
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AccessCaCertificate resource.
-        :param pulumi.Input[builtins.str] application_id: The Access Application ID to associate with the CA certificate.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] app_id: UUID
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
-        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "app_id", app_id)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> pulumi.Input[builtins.str]:
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[builtins.str]:
         """
-        The Access Application ID to associate with the CA certificate.
+        UUID
         """
-        return pulumi.get(self, "application_id")
+        return pulumi.get(self, "app_id")
 
-    @application_id.setter
-    def application_id(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "application_id", value)
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "app_id", value)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -63,7 +63,7 @@ class AccessCaCertificateArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -76,22 +76,22 @@ class AccessCaCertificateArgs:
 class _AccessCaCertificateState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[builtins.str]] = None,
+                 app_id: Optional[pulumi.Input[builtins.str]] = None,
                  aud: Optional[pulumi.Input[builtins.str]] = None,
                  public_key: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessCaCertificate resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] application_id: The Access Application ID to associate with the CA certificate.
-        :param pulumi.Input[builtins.str] aud: Application Audience (AUD) Tag of the CA certificate.
-        :param pulumi.Input[builtins.str] public_key: Cryptographic public key of the generated CA certificate.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] app_id: UUID
+        :param pulumi.Input[builtins.str] aud: The Application Audience (AUD) tag. Identifies the application associated with the CA.
+        :param pulumi.Input[builtins.str] public_key: The public key to add to your SSH server configuration.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if application_id is not None:
-            pulumi.set(__self__, "application_id", application_id)
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
         if aud is not None:
             pulumi.set(__self__, "aud", aud)
         if public_key is not None:
@@ -103,7 +103,7 @@ class _AccessCaCertificateState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -112,22 +112,22 @@ class _AccessCaCertificateState:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The Access Application ID to associate with the CA certificate.
+        UUID
         """
-        return pulumi.get(self, "application_id")
+        return pulumi.get(self, "app_id")
 
-    @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "application_id", value)
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "app_id", value)
 
     @property
     @pulumi.getter
     def aud(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Application Audience (AUD) Tag of the CA certificate.
+        The Application Audience (AUD) tag. Identifies the application associated with the CA.
         """
         return pulumi.get(self, "aud")
 
@@ -139,7 +139,7 @@ class _AccessCaCertificateState:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Cryptographic public key of the generated CA certificate.
+        The public key to add to your SSH server configuration.
         """
         return pulumi.get(self, "public_key")
 
@@ -151,7 +151,7 @@ class _AccessCaCertificateState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -160,61 +160,43 @@ class _AccessCaCertificateState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare.index/accesscacertificate.AccessCaCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessshortlivedcertificate.ZeroTrustAccessShortLivedCertificate""", DeprecationWarning)
+
+
 class AccessCaCertificate(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/accesscacertificate.AccessCaCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessshortlivedcertificate.ZeroTrustAccessShortLivedCertificate""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[builtins.str]] = None,
+                 app_id: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Cloudflare Access can replace traditional SSH key models with
-        short-lived certificates issued to your users based on the token
-        generated by their Access login.
-
-        > It's required that an `account_id` or `zone_id` is provided and in
-           most cases using either is fine. However, if you're using a scoped
-           access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com"
-           zone needs to use the `zone_id` argument.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # account level
-        example = cloudflare.AccessCaCertificate("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            application_id="6cd6cea3-3ef2-4542-9aea-85a0bbcd5414")
-        # zone level
-        another_example = cloudflare.AccessCaCertificate("another_example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            application_id="fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2")
+        example_zero_trust_access_short_lived_certificate = cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate",
+            app_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+            zone_id="zone_id")
         ```
 
         ## Import
 
-        Account level CA certificate import.
-
         ```sh
-        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
-        ```
-
-        Zone level CA certificate import.
-
-        ```sh
-        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
+        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] application_id: The Access Application ID to associate with the CA certificate.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] app_id: UUID
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -223,44 +205,21 @@ class AccessCaCertificate(pulumi.CustomResource):
                  args: AccessCaCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Cloudflare Access can replace traditional SSH key models with
-        short-lived certificates issued to your users based on the token
-        generated by their Access login.
-
-        > It's required that an `account_id` or `zone_id` is provided and in
-           most cases using either is fine. However, if you're using a scoped
-           access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com"
-           zone needs to use the `zone_id` argument.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # account level
-        example = cloudflare.AccessCaCertificate("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            application_id="6cd6cea3-3ef2-4542-9aea-85a0bbcd5414")
-        # zone level
-        another_example = cloudflare.AccessCaCertificate("another_example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            application_id="fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2")
+        example_zero_trust_access_short_lived_certificate = cloudflare.ZeroTrustAccessShortLivedCertificate("example_zero_trust_access_short_lived_certificate",
+            app_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+            zone_id="zone_id")
         ```
 
         ## Import
 
-        Account level CA certificate import.
-
         ```sh
-        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
-        ```
-
-        Zone level CA certificate import.
-
-        ```sh
-        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
+        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example '<{accounts|zones}/{account_id|zone_id}>/<app_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -279,9 +238,10 @@ class AccessCaCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 application_id: Optional[pulumi.Input[builtins.str]] = None,
+                 app_id: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccessCaCertificate is deprecated: cloudflare.index/accesscacertificate.AccessCaCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessshortlivedcertificate.ZeroTrustAccessShortLivedCertificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -291,12 +251,14 @@ class AccessCaCertificate(pulumi.CustomResource):
             __props__ = AccessCaCertificateArgs.__new__(AccessCaCertificateArgs)
 
             __props__.__dict__["account_id"] = account_id
-            if application_id is None and not opts.urn:
-                raise TypeError("Missing required property 'application_id'")
-            __props__.__dict__["application_id"] = application_id
+            if app_id is None and not opts.urn:
+                raise TypeError("Missing required property 'app_id'")
+            __props__.__dict__["app_id"] = app_id
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
             __props__.__dict__["public_key"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessCaCertificate:AccessCaCertificate")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessCaCertificate, __self__).__init__(
             'cloudflare:index/accessCaCertificate:AccessCaCertificate',
             resource_name,
@@ -308,7 +270,7 @@ class AccessCaCertificate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            application_id: Optional[pulumi.Input[builtins.str]] = None,
+            app_id: Optional[pulumi.Input[builtins.str]] = None,
             aud: Optional[pulumi.Input[builtins.str]] = None,
             public_key: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessCaCertificate':
@@ -319,18 +281,18 @@ class AccessCaCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] application_id: The Access Application ID to associate with the CA certificate.
-        :param pulumi.Input[builtins.str] aud: Application Audience (AUD) Tag of the CA certificate.
-        :param pulumi.Input[builtins.str] public_key: Cryptographic public key of the generated CA certificate.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] app_id: UUID
+        :param pulumi.Input[builtins.str] aud: The Application Audience (AUD) tag. Identifies the application associated with the CA.
+        :param pulumi.Input[builtins.str] public_key: The public key to add to your SSH server configuration.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccessCaCertificateState.__new__(_AccessCaCertificateState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["application_id"] = application_id
+        __props__.__dict__["app_id"] = app_id
         __props__.__dict__["aud"] = aud
         __props__.__dict__["public_key"] = public_key
         __props__.__dict__["zone_id"] = zone_id
@@ -338,25 +300,25 @@ class AccessCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Output[builtins.str]:
         """
-        The Access Application ID to associate with the CA certificate.
+        UUID
         """
-        return pulumi.get(self, "application_id")
+        return pulumi.get(self, "app_id")
 
     @property
     @pulumi.getter
     def aud(self) -> pulumi.Output[builtins.str]:
         """
-        Application Audience (AUD) Tag of the CA certificate.
+        The Application Audience (AUD) tag. Identifies the application associated with the CA.
         """
         return pulumi.get(self, "aud")
 
@@ -364,15 +326,15 @@ class AccessCaCertificate(pulumi.CustomResource):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[builtins.str]:
         """
-        Cryptographic public key of the generated CA certificate.
+        The public key to add to your SSH server configuration.
         """
         return pulumi.get(self, "public_key")
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

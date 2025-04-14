@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsLocationNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CIDR notation representation of the network IP.
+        /// The IPv4 address or IPv4 CIDR. IPv4 CIDRs are limited to a maximum of /24.
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;

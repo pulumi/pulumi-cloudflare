@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,78 +13,164 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     /**
-     * @return Disable clipboard redirection.
+     * @return Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
-    private @Nullable Boolean disableClipboardRedirection;
+    private @Nullable String copy;
     /**
-     * @return Disable copy-paste.
+     * @return Set to false to enable copy-pasting. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    private @Nullable Boolean disableCopyPaste;
+    private @Nullable Boolean dcp;
     /**
-     * @return Disable download.
+     * @return Set to false to enable downloading. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    private @Nullable Boolean disableDownload;
+    private @Nullable Boolean dd;
     /**
-     * @return Disable keyboard usage.
+     * @return Set to false to enable keyboard usage. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    private @Nullable Boolean disableKeyboard;
+    private @Nullable Boolean dk;
     /**
-     * @return Disable printing.
+     * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
-    private @Nullable Boolean disablePrinting;
+    private @Nullable String download;
     /**
-     * @return Disable upload.
+     * @return Set to false to enable printing. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    private @Nullable Boolean disableUpload;
+    private @Nullable Boolean dp;
+    /**
+     * @return Set to false to enable uploading. Only applies when `version == &#34;v1&#34;`.
+     * 
+     */
+    private @Nullable Boolean du;
+    /**
+     * @return Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    private @Nullable String keyboard;
+    /**
+     * @return Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
+     * 
+     */
+    private @Nullable String paste;
+    /**
+     * @return Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    private @Nullable String printing;
+    /**
+     * @return Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    private @Nullable String upload;
+    /**
+     * @return Indicates which version of the browser isolation controls should apply.
+     * Available values: &#34;v1&#34;, &#34;v2&#34;.
+     * 
+     */
+    private @Nullable String version;
 
     private ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls() {}
     /**
-     * @return Disable clipboard redirection.
+     * @return Configure whether copy is enabled or not. When set with &#34;remote*only&#34;, copying isolated content from the remote browser to the user&#39;s local clipboard is disabled. When absent, copy is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
-    public Optional<Boolean> disableClipboardRedirection() {
-        return Optional.ofNullable(this.disableClipboardRedirection);
+    public Optional<String> copy() {
+        return Optional.ofNullable(this.copy);
     }
     /**
-     * @return Disable copy-paste.
+     * @return Set to false to enable copy-pasting. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    public Optional<Boolean> disableCopyPaste() {
-        return Optional.ofNullable(this.disableCopyPaste);
+    public Optional<Boolean> dcp() {
+        return Optional.ofNullable(this.dcp);
     }
     /**
-     * @return Disable download.
+     * @return Set to false to enable downloading. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    public Optional<Boolean> disableDownload() {
-        return Optional.ofNullable(this.disableDownload);
+    public Optional<Boolean> dd() {
+        return Optional.ofNullable(this.dd);
     }
     /**
-     * @return Disable keyboard usage.
+     * @return Set to false to enable keyboard usage. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    public Optional<Boolean> disableKeyboard() {
-        return Optional.ofNullable(this.disableKeyboard);
+    public Optional<Boolean> dk() {
+        return Optional.ofNullable(this.dk);
     }
     /**
-     * @return Disable printing.
+     * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
      * 
      */
-    public Optional<Boolean> disablePrinting() {
-        return Optional.ofNullable(this.disablePrinting);
+    public Optional<String> download() {
+        return Optional.ofNullable(this.download);
     }
     /**
-     * @return Disable upload.
+     * @return Set to false to enable printing. Only applies when `version == &#34;v1&#34;`.
      * 
      */
-    public Optional<Boolean> disableUpload() {
-        return Optional.ofNullable(this.disableUpload);
+    public Optional<Boolean> dp() {
+        return Optional.ofNullable(this.dp);
+    }
+    /**
+     * @return Set to false to enable uploading. Only applies when `version == &#34;v1&#34;`.
+     * 
+     */
+    public Optional<Boolean> du() {
+        return Optional.ofNullable(this.du);
+    }
+    /**
+     * @return Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Optional<String> keyboard() {
+        return Optional.ofNullable(this.keyboard);
+    }
+    /**
+     * @return Configure whether pasting is enabled or not. When set with &#34;remote*only&#34;, pasting content from the user&#39;s local clipboard into isolated pages is disabled. When absent, paste is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
+     * 
+     */
+    public Optional<String> paste() {
+        return Optional.ofNullable(this.paste);
+    }
+    /**
+     * @return Configure whether printing is enabled or not. When absent, printing is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Optional<String> printing() {
+        return Optional.ofNullable(this.printing);
+    }
+    /**
+     * @return Configure whether uploading is enabled or not. When absent, uploading is enabled. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * 
+     */
+    public Optional<String> upload() {
+        return Optional.ofNullable(this.upload);
+    }
+    /**
+     * @return Indicates which version of the browser isolation controls should apply.
+     * Available values: &#34;v1&#34;, &#34;v2&#34;.
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -95,67 +182,121 @@ public final class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean disableClipboardRedirection;
-        private @Nullable Boolean disableCopyPaste;
-        private @Nullable Boolean disableDownload;
-        private @Nullable Boolean disableKeyboard;
-        private @Nullable Boolean disablePrinting;
-        private @Nullable Boolean disableUpload;
+        private @Nullable String copy;
+        private @Nullable Boolean dcp;
+        private @Nullable Boolean dd;
+        private @Nullable Boolean dk;
+        private @Nullable String download;
+        private @Nullable Boolean dp;
+        private @Nullable Boolean du;
+        private @Nullable String keyboard;
+        private @Nullable String paste;
+        private @Nullable String printing;
+        private @Nullable String upload;
+        private @Nullable String version;
         public Builder() {}
         public Builder(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.disableClipboardRedirection = defaults.disableClipboardRedirection;
-    	      this.disableCopyPaste = defaults.disableCopyPaste;
-    	      this.disableDownload = defaults.disableDownload;
-    	      this.disableKeyboard = defaults.disableKeyboard;
-    	      this.disablePrinting = defaults.disablePrinting;
-    	      this.disableUpload = defaults.disableUpload;
+    	      this.copy = defaults.copy;
+    	      this.dcp = defaults.dcp;
+    	      this.dd = defaults.dd;
+    	      this.dk = defaults.dk;
+    	      this.download = defaults.download;
+    	      this.dp = defaults.dp;
+    	      this.du = defaults.du;
+    	      this.keyboard = defaults.keyboard;
+    	      this.paste = defaults.paste;
+    	      this.printing = defaults.printing;
+    	      this.upload = defaults.upload;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
-        public Builder disableClipboardRedirection(@Nullable Boolean disableClipboardRedirection) {
+        public Builder copy(@Nullable String copy) {
 
-            this.disableClipboardRedirection = disableClipboardRedirection;
+            this.copy = copy;
             return this;
         }
         @CustomType.Setter
-        public Builder disableCopyPaste(@Nullable Boolean disableCopyPaste) {
+        public Builder dcp(@Nullable Boolean dcp) {
 
-            this.disableCopyPaste = disableCopyPaste;
+            this.dcp = dcp;
             return this;
         }
         @CustomType.Setter
-        public Builder disableDownload(@Nullable Boolean disableDownload) {
+        public Builder dd(@Nullable Boolean dd) {
 
-            this.disableDownload = disableDownload;
+            this.dd = dd;
             return this;
         }
         @CustomType.Setter
-        public Builder disableKeyboard(@Nullable Boolean disableKeyboard) {
+        public Builder dk(@Nullable Boolean dk) {
 
-            this.disableKeyboard = disableKeyboard;
+            this.dk = dk;
             return this;
         }
         @CustomType.Setter
-        public Builder disablePrinting(@Nullable Boolean disablePrinting) {
+        public Builder download(@Nullable String download) {
 
-            this.disablePrinting = disablePrinting;
+            this.download = download;
             return this;
         }
         @CustomType.Setter
-        public Builder disableUpload(@Nullable Boolean disableUpload) {
+        public Builder dp(@Nullable Boolean dp) {
 
-            this.disableUpload = disableUpload;
+            this.dp = dp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder du(@Nullable Boolean du) {
+
+            this.du = du;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keyboard(@Nullable String keyboard) {
+
+            this.keyboard = keyboard;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder paste(@Nullable String paste) {
+
+            this.paste = paste;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder printing(@Nullable String printing) {
+
+            this.printing = printing;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder upload(@Nullable String upload) {
+
+            this.upload = upload;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+
+            this.version = version;
             return this;
         }
         public ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls build() {
             final var _resultValue = new ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls();
-            _resultValue.disableClipboardRedirection = disableClipboardRedirection;
-            _resultValue.disableCopyPaste = disableCopyPaste;
-            _resultValue.disableDownload = disableDownload;
-            _resultValue.disableKeyboard = disableKeyboard;
-            _resultValue.disablePrinting = disablePrinting;
-            _resultValue.disableUpload = disableUpload;
+            _resultValue.copy = copy;
+            _resultValue.dcp = dcp;
+            _resultValue.dd = dd;
+            _resultValue.dk = dk;
+            _resultValue.download = download;
+            _resultValue.dp = dp;
+            _resultValue.du = du;
+            _resultValue.keyboard = keyboard;
+            _resultValue.paste = paste;
+            _resultValue.printing = printing;
+            _resultValue.upload = upload;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

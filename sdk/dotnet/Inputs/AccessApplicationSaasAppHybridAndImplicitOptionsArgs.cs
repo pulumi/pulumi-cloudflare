@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppHybridAndImplicitOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, the authorization endpoint will return an access token.
+        /// If an Access Token should be returned from the OIDC Authorization endpoint
         /// </summary>
         [Input("returnAccessTokenFromAuthorizationEndpoint")]
         public Input<bool>? ReturnAccessTokenFromAuthorizationEndpoint { get; set; }
 
         /// <summary>
-        /// If true, the authorization endpoint will return an id token.
+        /// If an ID Token should be returned from the OIDC Authorization endpoint
         /// </summary>
         [Input("returnIdTokenFromAuthorizationEndpoint")]
         public Input<bool>? ReturnIdTokenFromAuthorizationEndpoint { get; set; }

@@ -13,33 +13,15 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ListItemRedirect
     {
-        /// <summary>
-        /// Whether the redirect also matches subdomains of the source url.
-        /// </summary>
         public readonly bool? IncludeSubdomains;
-        /// <summary>
-        /// Whether the redirect target url should keep the query string of the request's url.
-        /// </summary>
         public readonly bool? PreservePathSuffix;
-        /// <summary>
-        /// Whether the redirect target url should keep the query string of the request's url.
-        /// </summary>
         public readonly bool? PreserveQueryString;
-        /// <summary>
-        /// The source url of the redirect.
-        /// </summary>
         public readonly string SourceUrl;
         /// <summary>
-        /// The status code to be used when redirecting a request.
+        /// Available values: 301, 302, 307, 308.
         /// </summary>
         public readonly int? StatusCode;
-        /// <summary>
-        /// Whether the redirect also matches subpaths of the source url.
-        /// </summary>
         public readonly bool? SubpathMatching;
-        /// <summary>
-        /// The target url of the redirect.
-        /// </summary>
         public readonly string TargetUrl;
 
         [OutputConstructor]

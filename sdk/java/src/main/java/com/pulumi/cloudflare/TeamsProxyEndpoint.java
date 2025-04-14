@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TeamsProxyEndpointArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TeamsProxyEndpointState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -15,10 +16,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
- * Endpoints are used for pointing proxy clients at Cloudflare Secure
- * Gateway.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -29,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.TeamsProxyEndpoint;
- * import com.pulumi.cloudflare.TeamsProxyEndpointArgs;
+ * import com.pulumi.cloudflare.ZeroTrustGatewayProxyEndpoint;
+ * import com.pulumi.cloudflare.ZeroTrustGatewayProxyEndpointArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,10 +41,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsProxyEndpoint("example", TeamsProxyEndpointArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("office")
- *             .ips("192.0.2.0/24")
+ *         var exampleZeroTrustGatewayProxyEndpoint = new ZeroTrustGatewayProxyEndpoint("exampleZeroTrustGatewayProxyEndpoint", ZeroTrustGatewayProxyEndpointArgs.builder()
+ *             .accountId("699d98642c564d2e855e9661899b7252")
+ *             .ips("192.0.2.1/32")
+ *             .name("Devops team")
  *             .build());
  * 
  *     }
@@ -59,67 +56,75 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example &lt;account_id&gt;/&lt;proxy_endpoint_id&gt;
+ * $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint example &#39;&lt;account_id&gt;/&lt;proxy_endpoint_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint
+ * 
  */
+@Deprecated /* cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint */
 @ResourceType(type="cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint")
 public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
     /**
-     * The networks CIDRs that will be allowed to initiate proxy connections.
+     * A list of CIDRs to restrict ingress connections.
      * 
      */
     @Export(name="ips", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ips;
 
     /**
-     * @return The networks CIDRs that will be allowed to initiate proxy connections.
+     * @return A list of CIDRs to restrict ingress connections.
      * 
      */
     public Output<List<String>> ips() {
         return this.ips;
     }
     /**
-     * Name of the teams proxy endpoint.
+     * The name of the proxy endpoint.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the teams proxy endpoint.
+     * @return The name of the proxy endpoint.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The FQDN that proxy clients should be pointed at.
+     * The subdomain to be used as the destination in the proxy client.
      * 
      */
     @Export(name="subdomain", refs={String.class}, tree="[0]")
     private Output<String> subdomain;
 
     /**
-     * @return The FQDN that proxy clients should be pointed at.
+     * @return The subdomain to be used as the destination in the proxy client.
      * 
      */
     public Output<String> subdomain() {
         return this.subdomain;
+    }
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
+
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**
@@ -161,6 +166,9 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

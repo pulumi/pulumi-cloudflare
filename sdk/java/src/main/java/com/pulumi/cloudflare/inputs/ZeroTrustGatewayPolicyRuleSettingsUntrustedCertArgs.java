@@ -16,14 +16,16 @@ public final class ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs extends c
     public static final ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs Empty = new ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs();
 
     /**
-     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+     * The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+     * @return The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+     * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -55,7 +57,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs extends c
         }
 
         /**
-         * @param action Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+         * @param action The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+         * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs extends c
         }
 
         /**
-         * @param action Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+         * @param action The action performed when an untrusted certificate is seen. The default action is an error with HTTP code 526.
+         * Available values: &#34;pass_through&#34;, &#34;block&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 

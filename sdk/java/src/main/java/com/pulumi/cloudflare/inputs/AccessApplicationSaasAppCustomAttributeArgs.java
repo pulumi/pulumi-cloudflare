@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomAttributeSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -19,14 +18,14 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
     public static final AccessApplicationSaasAppCustomAttributeArgs Empty = new AccessApplicationSaasAppCustomAttributeArgs();
 
     /**
-     * A friendly name for the attribute as provided to the SaaS app.
+     * The SAML FriendlyName of the attribute.
      * 
      */
     @Import(name="friendlyName")
     private @Nullable Output<String> friendlyName;
 
     /**
-     * @return A friendly name for the attribute as provided to the SaaS app.
+     * @return The SAML FriendlyName of the attribute.
      * 
      */
     public Optional<Output<String>> friendlyName() {
@@ -34,14 +33,14 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
     }
 
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the attribute.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the attribute.
      * 
      */
     public Optional<Output<String>> name() {
@@ -50,6 +49,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
 
     /**
      * A globally unique name for an identity or service provider.
+     * Available values: &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#34;.
      * 
      */
     @Import(name="nameFormat")
@@ -57,6 +57,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
 
     /**
      * @return A globally unique name for an identity or service provider.
+     * Available values: &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#34;.
      * 
      */
     public Optional<Output<String>> nameFormat() {
@@ -64,25 +65,25 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
     }
 
     /**
-     * True if the attribute must be always present.
+     * If the attribute is required when building a SAML assertion.
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return True if the attribute must be always present.
+     * @return If the attribute is required when building a SAML assertion.
      * 
      */
     public Optional<Output<Boolean>> required() {
         return Optional.ofNullable(this.required);
     }
 
-    @Import(name="source", required=true)
-    private Output<AccessApplicationSaasAppCustomAttributeSourceArgs> source;
+    @Import(name="source")
+    private @Nullable Output<AccessApplicationSaasAppCustomAttributeSourceArgs> source;
 
-    public Output<AccessApplicationSaasAppCustomAttributeSourceArgs> source() {
-        return this.source;
+    public Optional<Output<AccessApplicationSaasAppCustomAttributeSourceArgs>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     private AccessApplicationSaasAppCustomAttributeArgs() {}
@@ -114,7 +115,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param friendlyName A friendly name for the attribute as provided to the SaaS app.
+         * @param friendlyName The SAML FriendlyName of the attribute.
          * 
          * @return builder
          * 
@@ -125,7 +126,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param friendlyName A friendly name for the attribute as provided to the SaaS app.
+         * @param friendlyName The SAML FriendlyName of the attribute.
          * 
          * @return builder
          * 
@@ -135,7 +136,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the attribute.
          * 
          * @return builder
          * 
@@ -146,7 +147,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the attribute.
          * 
          * @return builder
          * 
@@ -157,6 +158,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
 
         /**
          * @param nameFormat A globally unique name for an identity or service provider.
+         * Available values: &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#34;.
          * 
          * @return builder
          * 
@@ -168,6 +170,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
 
         /**
          * @param nameFormat A globally unique name for an identity or service provider.
+         * Available values: &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#34;.
          * 
          * @return builder
          * 
@@ -177,7 +180,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param required True if the attribute must be always present.
+         * @param required If the attribute is required when building a SAML assertion.
          * 
          * @return builder
          * 
@@ -188,7 +191,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param required True if the attribute must be always present.
+         * @param required If the attribute is required when building a SAML assertion.
          * 
          * @return builder
          * 
@@ -197,7 +200,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
             return required(Output.of(required));
         }
 
-        public Builder source(Output<AccessApplicationSaasAppCustomAttributeSourceArgs> source) {
+        public Builder source(@Nullable Output<AccessApplicationSaasAppCustomAttributeSourceArgs> source) {
             $.source = source;
             return this;
         }
@@ -207,9 +210,6 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         public AccessApplicationSaasAppCustomAttributeArgs build() {
-            if ($.source == null) {
-                throw new MissingRequiredPropertyException("AccessApplicationSaasAppCustomAttributeArgs", "source");
-            }
             return $;
         }
     }

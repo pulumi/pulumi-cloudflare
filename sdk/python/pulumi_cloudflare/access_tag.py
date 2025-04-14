@@ -20,30 +20,33 @@ __all__ = ['AccessTagArgs', 'AccessTag']
 @pulumi.input_type
 class AccessTagArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[builtins.str],
-                 account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None):
+                 account_id: pulumi.Input[builtins.str],
+                 name: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a AccessTag resource.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Tag.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] app_count: Number of apps associated with the tag.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] name: The name of the tag
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        Friendly name of the Access Tag.
+        The name of the tag
         """
         return pulumi.get(self, "name")
 
@@ -51,71 +54,37 @@ class AccessTagArgs:
     def name(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "name", value)
 
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter(name="appCount")
-    def app_count(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of apps associated with the tag.
-        """
-        return pulumi.get(self, "app_count")
-
-    @app_count.setter
-    def app_count(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "app_count", value)
-
-    @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "zone_id")
-
-    @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "zone_id", value)
-
 
 @pulumi.input_type
 class _AccessTagState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  app_count: Optional[pulumi.Input[builtins.int]] = None,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None):
+                 updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessTag resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] app_count: Number of apps associated with the tag.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Tag.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.int] app_count: The number of applications that have this tag
+        :param pulumi.Input[builtins.str] name: The name of the tag
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if app_count is not None:
             pulumi.set(__self__, "app_count", app_count)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -127,7 +96,7 @@ class _AccessTagState:
     @pulumi.getter(name="appCount")
     def app_count(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Number of apps associated with the tag.
+        The number of applications that have this tag
         """
         return pulumi.get(self, "app_count")
 
@@ -136,10 +105,19 @@ class _AccessTagState:
         pulumi.set(self, "app_count", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Friendly name of the Access Tag.
+        The name of the tag
         """
         return pulumi.get(self, "name")
 
@@ -148,38 +126,50 @@ class _AccessTagState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "zone_id")
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "updated_at")
 
-    @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "zone_id", value)
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+warnings.warn("""cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag""", DeprecationWarning)
 
 
 class AccessTag(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a resource to customize the pages your end users will see
-        when trying to reach applications behind Cloudflare Access.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_tag = cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="engineers")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/accessTag:AccessTag example '<account_id>/<tag_name>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] app_count: Number of apps associated with the tag.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Tag.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] name: The name of the tag
         """
         ...
     @overload
@@ -188,8 +178,22 @@ class AccessTag(pulumi.CustomResource):
                  args: AccessTagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource to customize the pages your end users will see
-        when trying to reach applications behind Cloudflare Access.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_tag = cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            name="engineers")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/accessTag:AccessTag example '<account_id>/<tag_name>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessTagArgs args: The arguments to use to populate this resource's properties.
@@ -207,10 +211,9 @@ class AccessTag(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 app_count: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccessTag is deprecated: cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -219,12 +222,17 @@ class AccessTag(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessTagArgs.__new__(AccessTagArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["app_count"] = app_count
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["app_count"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessTag:AccessTag")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessTag, __self__).__init__(
             'cloudflare:index/accessTag:AccessTag',
             resource_name,
@@ -237,8 +245,9 @@ class AccessTag(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
             app_count: Optional[pulumi.Input[builtins.int]] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessTag':
+            updated_at: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessTag':
         """
         Get an existing AccessTag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -246,10 +255,9 @@ class AccessTag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.int] app_count: Number of apps associated with the tag.
-        :param pulumi.Input[builtins.str] name: Friendly name of the Access Tag.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.int] app_count: The number of applications that have this tag
+        :param pulumi.Input[builtins.str] name: The name of the tag
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -257,15 +265,16 @@ class AccessTag(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["app_count"] = app_count
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["name"] = name
-        __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["updated_at"] = updated_at
         return AccessTag(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -273,23 +282,25 @@ class AccessTag(pulumi.CustomResource):
     @pulumi.getter(name="appCount")
     def app_count(self) -> pulumi.Output[builtins.int]:
         """
-        Number of apps associated with the tag.
+        The number of applications that have this tag
         """
         return pulumi.get(self, "app_count")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Friendly name of the Access Tag.
+        The name of the tag
         """
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "zone_id")
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "updated_at")
 

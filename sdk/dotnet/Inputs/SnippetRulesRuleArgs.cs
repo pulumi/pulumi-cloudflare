@@ -12,29 +12,20 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class SnippetRulesRuleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Brief summary of the snippet rule and its intended use.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Whether the headers rule is active.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-        /// </summary>
-        [Input("expression", required: true)]
-        public Input<string> Expression { get; set; } = null!;
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Name of the snippet invoked by this rule.
+        /// Snippet identifying name
         /// </summary>
-        [Input("snippetName", required: true)]
-        public Input<string> SnippetName { get; set; } = null!;
+        [Input("snippetName")]
+        public Input<string>? SnippetName { get; set; }
 
         public SnippetRulesRuleArgs()
         {

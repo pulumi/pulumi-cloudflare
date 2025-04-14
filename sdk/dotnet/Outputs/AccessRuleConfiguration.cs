@@ -14,19 +14,20 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessRuleConfiguration
     {
         /// <summary>
-        /// The request property to target. Available values: `ip`, `ip6`, `ip_range`, `asn`, `country`. **Modifying this attribute will force creation of a new resource.**
+        /// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+        /// Available values: "ip".
         /// </summary>
-        public readonly string Target;
+        public readonly string? Target;
         /// <summary>
-        /// The value to target. Depends on target's type. **Modifying this attribute will force creation of a new resource.**
+        /// The IP address to match. This address will be compared to the IP address of incoming requests.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private AccessRuleConfiguration(
-            string target,
+            string? target,
 
-            string value)
+            string? value)
         {
             Target = target;
             Value = value;

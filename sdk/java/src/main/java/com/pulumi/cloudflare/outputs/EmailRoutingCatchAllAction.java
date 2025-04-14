@@ -8,34 +8,29 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class EmailRoutingCatchAllAction {
     /**
-     * @return Type of supported action. Available values: `drop`, `forward`, `worker`.
+     * @return Type of action for catch-all rule.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     private String type;
-    /**
-     * @return A list with items in the following form.
-     * 
-     */
-    private List<String> values;
+    private @Nullable List<String> values;
 
     private EmailRoutingCatchAllAction() {}
     /**
-     * @return Type of supported action. Available values: `drop`, `forward`, `worker`.
+     * @return Type of action for catch-all rule.
+     * Available values: &#34;drop&#34;, &#34;forward&#34;, &#34;worker&#34;.
      * 
      */
     public String type() {
         return this.type;
     }
-    /**
-     * @return A list with items in the following form.
-     * 
-     */
     public List<String> values() {
-        return this.values;
+        return this.values == null ? List.of() : this.values;
     }
 
     public static Builder builder() {
@@ -48,7 +43,7 @@ public final class EmailRoutingCatchAllAction {
     @CustomType.Builder
     public static final class Builder {
         private String type;
-        private List<String> values;
+        private @Nullable List<String> values;
         public Builder() {}
         public Builder(EmailRoutingCatchAllAction defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,10 +60,8 @@ public final class EmailRoutingCatchAllAction {
             return this;
         }
         @CustomType.Setter
-        public Builder values(List<String> values) {
-            if (values == null) {
-              throw new MissingRequiredPropertyException("EmailRoutingCatchAllAction", "values");
-            }
+        public Builder values(@Nullable List<String> values) {
+
             this.values = values;
             return this;
         }

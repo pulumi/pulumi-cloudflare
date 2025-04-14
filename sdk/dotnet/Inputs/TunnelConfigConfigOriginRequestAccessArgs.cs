@@ -12,11 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TunnelConfigConfigOriginRequestAccessArgs : global::Pulumi.ResourceArgs
     {
-        [Input("audTags")]
+        [Input("audTags", required: true)]
         private InputList<string>? _audTags;
 
         /// <summary>
-        /// Audience tags of the access rule.
+        /// Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
         /// </summary>
         public InputList<string> AudTags
         {
@@ -25,14 +25,11 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Whether the access rule is required.
+        /// Deny traffic that has not fulfilled Access authorization.
         /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
-        /// <summary>
-        /// Name of the team to which the access rule applies.
-        /// </summary>
         [Input("teamName")]
         public Input<string>? TeamName { get; set; }
 

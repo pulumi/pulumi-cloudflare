@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HyperdriveConfigCaching {
     /**
-     * @return Disable caching for this Hyperdrive configuration.
+     * @return When set to true, disables the caching of SQL responses. (Default: false)
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Configure the `max_age` value of this Hyperdrive configuration.
+     * @return When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
      * 
      */
     private @Nullable Integer maxAge;
     /**
-     * @return Disable caching for this Hyperdrive configuration.
+     * @return When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
      * 
      */
     private @Nullable Integer staleWhileRevalidate;
 
     private HyperdriveConfigCaching() {}
     /**
-     * @return Disable caching for this Hyperdrive configuration.
+     * @return When set to true, disables the caching of SQL responses. (Default: false)
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Configure the `max_age` value of this Hyperdrive configuration.
+     * @return When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
      * 
      */
     public Optional<Integer> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
     /**
-     * @return Disable caching for this Hyperdrive configuration.
+     * @return When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
      * 
      */
     public Optional<Integer> staleWhileRevalidate() {

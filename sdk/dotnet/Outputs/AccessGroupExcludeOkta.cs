@@ -16,20 +16,20 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// The ID of your Okta identity provider.
         /// </summary>
-        public readonly string? IdentityProviderId;
+        public readonly string IdentityProviderId;
         /// <summary>
-        /// The name of the Okta Group.
+        /// The name of the Okta group.
         /// </summary>
-        public readonly ImmutableArray<string> Names;
+        public readonly string Name;
 
         [OutputConstructor]
         private AccessGroupExcludeOkta(
-            string? identityProviderId,
+            string identityProviderId,
 
-            ImmutableArray<string> names)
+            string name)
         {
             IdentityProviderId = identityProviderId;
-            Names = names;
+            Name = name;
         }
     }
 }

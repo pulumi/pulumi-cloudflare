@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,26 +19,26 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
      * The IPv4 address to be used for egress.
      * 
      */
-    @Import(name="ipv4", required=true)
-    private Output<String> ipv4;
+    @Import(name="ipv4")
+    private @Nullable Output<String> ipv4;
 
     /**
      * @return The IPv4 address to be used for egress.
      * 
      */
-    public Output<String> ipv4() {
-        return this.ipv4;
+    public Optional<Output<String>> ipv4() {
+        return Optional.ofNullable(this.ipv4);
     }
 
     /**
-     * The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egreass via Warp IPs.
+     * The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
      * 
      */
     @Import(name="ipv4Fallback")
     private @Nullable Output<String> ipv4Fallback;
 
     /**
-     * @return The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egreass via Warp IPs.
+     * @return The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
      * 
      */
     public Optional<Output<String>> ipv4Fallback() {
@@ -50,15 +49,15 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
      * The IPv6 range to be used for egress.
      * 
      */
-    @Import(name="ipv6", required=true)
-    private Output<String> ipv6;
+    @Import(name="ipv6")
+    private @Nullable Output<String> ipv6;
 
     /**
      * @return The IPv6 range to be used for egress.
      * 
      */
-    public Output<String> ipv6() {
-        return this.ipv6;
+    public Optional<Output<String>> ipv6() {
+        return Optional.ofNullable(this.ipv6);
     }
 
     private TeamsRuleRuleSettingsEgressArgs() {}
@@ -93,7 +92,7 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder ipv4(Output<String> ipv4) {
+        public Builder ipv4(@Nullable Output<String> ipv4) {
             $.ipv4 = ipv4;
             return this;
         }
@@ -109,7 +108,7 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ipv4Fallback The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egreass via Warp IPs.
+         * @param ipv4Fallback The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
          * 
          * @return builder
          * 
@@ -120,7 +119,7 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ipv4Fallback The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egreass via Warp IPs.
+         * @param ipv4Fallback The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
          * 
          * @return builder
          * 
@@ -135,7 +134,7 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder ipv6(Output<String> ipv6) {
+        public Builder ipv6(@Nullable Output<String> ipv6) {
             $.ipv6 = ipv6;
             return this;
         }
@@ -151,12 +150,6 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
         }
 
         public TeamsRuleRuleSettingsEgressArgs build() {
-            if ($.ipv4 == null) {
-                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsEgressArgs", "ipv4");
-            }
-            if ($.ipv6 == null) {
-                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsEgressArgs", "ipv6");
-            }
             return $;
         }
     }

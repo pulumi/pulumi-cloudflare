@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ContentScanningExpressionBodyArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,15 +17,22 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     public static final ContentScanningExpressionState Empty = new ContentScanningExpressionState();
 
+    @Import(name="bodies")
+    private @Nullable Output<List<ContentScanningExpressionBodyArgs>> bodies;
+
+    public Optional<Output<List<ContentScanningExpressionBodyArgs>>> bodies() {
+        return Optional.ofNullable(this.bodies);
+    }
+
     /**
-     * Custom scan expression to tell the content scanner where to find the content objects.
+     * Ruleset expression to use in matching content objects
      * 
      */
     @Import(name="payload")
     private @Nullable Output<String> payload;
 
     /**
-     * @return Custom scan expression to tell the content scanner where to find the content objects.
+     * @return Ruleset expression to use in matching content objects
      * 
      */
     public Optional<Output<String>> payload() {
@@ -31,14 +40,14 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -48,6 +57,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
     private ContentScanningExpressionState() {}
 
     private ContentScanningExpressionState(ContentScanningExpressionState $) {
+        this.bodies = $.bodies;
         this.payload = $.payload;
         this.zoneId = $.zoneId;
     }
@@ -70,8 +80,21 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
             $ = new ContentScanningExpressionState(Objects.requireNonNull(defaults));
         }
 
+        public Builder bodies(@Nullable Output<List<ContentScanningExpressionBodyArgs>> bodies) {
+            $.bodies = bodies;
+            return this;
+        }
+
+        public Builder bodies(List<ContentScanningExpressionBodyArgs> bodies) {
+            return bodies(Output.of(bodies));
+        }
+
+        public Builder bodies(ContentScanningExpressionBodyArgs... bodies) {
+            return bodies(List.of(bodies));
+        }
+
         /**
-         * @param payload Custom scan expression to tell the content scanner where to find the content objects.
+         * @param payload Ruleset expression to use in matching content objects
          * 
          * @return builder
          * 
@@ -82,7 +105,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param payload Custom scan expression to tell the content scanner where to find the content objects.
+         * @param payload Ruleset expression to use in matching content objects
          * 
          * @return builder
          * 
@@ -92,7 +115,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -103,7 +126,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

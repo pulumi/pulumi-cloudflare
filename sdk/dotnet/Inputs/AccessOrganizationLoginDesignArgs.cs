@@ -13,31 +13,31 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessOrganizationLoginDesignArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The background color on the login page.
+        /// The background color on your login page.
         /// </summary>
         [Input("backgroundColor")]
         public Input<string>? BackgroundColor { get; set; }
 
         /// <summary>
-        /// The text at the bottom of the login page.
+        /// The text at the bottom of your login page.
         /// </summary>
         [Input("footerText")]
         public Input<string>? FooterText { get; set; }
 
         /// <summary>
-        /// The text at the top of the login page.
+        /// The text at the top of your login page.
         /// </summary>
         [Input("headerText")]
         public Input<string>? HeaderText { get; set; }
 
         /// <summary>
-        /// The URL of the logo on the login page.
+        /// The URL of the logo on your login page.
         /// </summary>
         [Input("logoPath")]
         public Input<string>? LogoPath { get; set; }
 
         /// <summary>
-        /// The text color on the login page.
+        /// The text color on your login page.
         /// </summary>
         [Input("textColor")]
         public Input<string>? TextColor { get; set; }

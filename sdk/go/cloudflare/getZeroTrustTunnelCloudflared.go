@@ -7,11 +7,36 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this datasource to lookup a tunnel in an account.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.LookupZeroTrustTunnelCloudflared(ctx, &cloudflare.LookupZeroTrustTunnelCloudflaredArgs{
+//				AccountId: "699d98642c564d2e855e9661899b7252",
+//				TunnelId:  pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZeroTrustTunnelCloudflared(ctx *pulumi.Context, args *LookupZeroTrustTunnelCloudflaredArgs, opts ...pulumi.InvokeOption) (*LookupZeroTrustTunnelCloudflaredResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZeroTrustTunnelCloudflaredResult
@@ -24,30 +49,46 @@ func LookupZeroTrustTunnelCloudflared(ctx *pulumi.Context, args *LookupZeroTrust
 
 // A collection of arguments for invoking getZeroTrustTunnelCloudflared.
 type LookupZeroTrustTunnelCloudflaredArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId string `pulumi:"accountId"`
-	// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-	IsDeleted *bool `pulumi:"isDeleted"`
-	// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
-	Name string `pulumi:"name"`
+	// Cloudflare account ID
+	AccountId string                               `pulumi:"accountId"`
+	Filter    *GetZeroTrustTunnelCloudflaredFilter `pulumi:"filter"`
+	// UUID of the tunnel.
+	TunnelId *string `pulumi:"tunnelId"`
 }
 
 // A collection of values returned by getZeroTrustTunnelCloudflared.
 type LookupZeroTrustTunnelCloudflaredResult struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Cloudflare account ID
 	AccountId string `pulumi:"accountId"`
-	// ID of the tunnel.
+	// Cloudflare account ID
+	AccountTag string `pulumi:"accountTag"`
+	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+	Connections []GetZeroTrustTunnelCloudflaredConnection `pulumi:"connections"`
+	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+	ConnsActiveAt string `pulumi:"connsActiveAt"`
+	// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+	ConnsInactiveAt string `pulumi:"connsInactiveAt"`
+	// Timestamp of when the resource was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+	DeletedAt string                               `pulumi:"deletedAt"`
+	Filter    *GetZeroTrustTunnelCloudflaredFilter `pulumi:"filter"`
+	// UUID of the tunnel.
 	Id string `pulumi:"id"`
-	// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-	IsDeleted *bool `pulumi:"isDeleted"`
-	// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+	// Metadata associated with the tunnel.
+	Metadata string `pulumi:"metadata"`
+	// A user-friendly name for a tunnel.
 	Name string `pulumi:"name"`
-	// Whether the tunnel can be configured remotely from the Zero Trust dashboard.
+	// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
 	RemoteConfig bool `pulumi:"remoteConfig"`
-	// The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`.
+	// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+	// Available values: "inactive", "degraded", "healthy", "down".
 	Status string `pulumi:"status"`
-	// The type of the tunnel. Available values: `cfdTunnel`, `warpConnector`.
-	TunnelType string `pulumi:"tunnelType"`
+	// The type of tunnel.
+	// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+	TunType string `pulumi:"tunType"`
+	// UUID of the tunnel.
+	TunnelId *string `pulumi:"tunnelId"`
 }
 
 func LookupZeroTrustTunnelCloudflaredOutput(ctx *pulumi.Context, args LookupZeroTrustTunnelCloudflaredOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustTunnelCloudflaredResultOutput {
@@ -61,12 +102,11 @@ func LookupZeroTrustTunnelCloudflaredOutput(ctx *pulumi.Context, args LookupZero
 
 // A collection of arguments for invoking getZeroTrustTunnelCloudflared.
 type LookupZeroTrustTunnelCloudflaredOutputArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
-	// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
-	Name pulumi.StringInput `pulumi:"name"`
+	// Cloudflare account ID
+	AccountId pulumi.StringInput                          `pulumi:"accountId"`
+	Filter    GetZeroTrustTunnelCloudflaredFilterPtrInput `pulumi:"filter"`
+	// UUID of the tunnel.
+	TunnelId pulumi.StringPtrInput `pulumi:"tunnelId"`
 }
 
 func (LookupZeroTrustTunnelCloudflaredOutputArgs) ElementType() reflect.Type {
@@ -88,39 +128,82 @@ func (o LookupZeroTrustTunnelCloudflaredResultOutput) ToLookupZeroTrustTunnelClo
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Cloudflare account ID
 func (o LookupZeroTrustTunnelCloudflaredResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// ID of the tunnel.
+// Cloudflare account ID
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) AccountTag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.AccountTag }).(pulumi.StringOutput)
+}
+
+// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) Connections() GetZeroTrustTunnelCloudflaredConnectionArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) []GetZeroTrustTunnelCloudflaredConnection {
+		return v.Connections
+	}).(GetZeroTrustTunnelCloudflaredConnectionArrayOutput)
+}
+
+// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) ConnsActiveAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.ConnsActiveAt }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) ConnsInactiveAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.ConnsInactiveAt }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the resource was created.
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) Filter() GetZeroTrustTunnelCloudflaredFilterPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) *GetZeroTrustTunnelCloudflaredFilter { return v.Filter }).(GetZeroTrustTunnelCloudflaredFilterPtrOutput)
+}
+
+// UUID of the tunnel.
 func (o LookupZeroTrustTunnelCloudflaredResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
-func (o LookupZeroTrustTunnelCloudflaredResultOutput) IsDeleted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) *bool { return v.IsDeleted }).(pulumi.BoolPtrOutput)
+// Metadata associated with the tunnel.
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) Metadata() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.Metadata }).(pulumi.StringOutput)
 }
 
-// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+// A user-friendly name for a tunnel.
 func (o LookupZeroTrustTunnelCloudflaredResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Whether the tunnel can be configured remotely from the Zero Trust dashboard.
+// If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
 func (o LookupZeroTrustTunnelCloudflaredResultOutput) RemoteConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) bool { return v.RemoteConfig }).(pulumi.BoolOutput)
 }
 
-// The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`.
+// The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+// Available values: "inactive", "degraded", "healthy", "down".
 func (o LookupZeroTrustTunnelCloudflaredResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The type of the tunnel. Available values: `cfdTunnel`, `warpConnector`.
-func (o LookupZeroTrustTunnelCloudflaredResultOutput) TunnelType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.TunnelType }).(pulumi.StringOutput)
+// The type of tunnel.
+// Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) TunType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) string { return v.TunType }).(pulumi.StringOutput)
+}
+
+// UUID of the tunnel.
+func (o LookupZeroTrustTunnelCloudflaredResultOutput) TunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) *string { return v.TunnelId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

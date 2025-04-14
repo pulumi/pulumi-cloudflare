@@ -7,145 +7,93 @@ import com.pulumi.cloudflare.DevicePostureIntegrationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DevicePostureIntegrationState;
 import com.pulumi.cloudflare.outputs.DevicePostureIntegrationConfig;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Device Posture Integration resource. Device
- * posture integrations configure third-party data providers for device
- * posture rules.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DevicePostureIntegration;
- * import com.pulumi.cloudflare.DevicePostureIntegrationArgs;
- * import com.pulumi.cloudflare.inputs.DevicePostureIntegrationConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new DevicePostureIntegration("example", DevicePostureIntegrationArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("Device posture integration")
- *             .type("workspace_one")
- *             .interval("24h")
- *             .configs(DevicePostureIntegrationConfigArgs.builder()
- *                 .apiUrl("https://example.com/api")
- *                 .authUrl("https://example.com/connect/token")
- *                 .clientId("client-id")
- *                 .clientSecret("client-secret")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example &lt;account_id&gt;/&lt;device_posture_integration_id&gt;
+ * $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example &#39;&lt;account_id&gt;/&lt;integration_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration
+ * 
  */
+@Deprecated /* cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration */
 @ResourceType(type="cloudflare:index/devicePostureIntegration:DevicePostureIntegration")
 public class DevicePostureIntegration extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The device posture integration&#39;s connection authorization parameters.
+     * The configuration object containing third-party integration information.
      * 
      */
-    @Export(name="configs", refs={List.class,DevicePostureIntegrationConfig.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<DevicePostureIntegrationConfig>> configs;
+    @Export(name="config", refs={DevicePostureIntegrationConfig.class}, tree="[0]")
+    private Output<DevicePostureIntegrationConfig> config;
 
     /**
-     * @return The device posture integration&#39;s connection authorization parameters.
+     * @return The configuration object containing third-party integration information.
      * 
      */
-    public Output<Optional<List<DevicePostureIntegrationConfig>>> configs() {
-        return Codegen.optional(this.configs);
-    }
-    @Export(name="identifier", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> identifier;
-
-    public Output<Optional<String>> identifier() {
-        return Codegen.optional(this.identifier);
+    public Output<DevicePostureIntegrationConfig> config() {
+        return this.config;
     }
     /**
-     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
      */
     @Export(name="interval", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> interval;
+    private Output<String> interval;
 
     /**
-     * @return Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * @return The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
      */
-    public Output<Optional<String>> interval() {
-        return Codegen.optional(this.interval);
+    public Output<String> interval() {
+        return this.interval;
     }
     /**
-     * Name of the device posture integration.
+     * The name of the device posture integration.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the device posture integration.
+     * @return The name of the device posture integration.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+     * The type of device posture integration.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+     * @return The type of device posture integration.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     public Output<String> type() {
@@ -191,6 +139,9 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/devicePostureIntegration:DevicePostureIntegration").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -4,25 +4,42 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkersScriptPlacement {
     /**
-     * @return The placement mode for the Worker. Available values: `smart`.
+     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
-    private String mode;
+    private @Nullable String mode;
+    /**
+     * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * 
+     */
+    private @Nullable String status;
 
     private WorkersScriptPlacement() {}
     /**
-     * @return The placement mode for the Worker. Available values: `smart`.
+     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
-    public String mode() {
-        return this.mode;
+    public Optional<String> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+    /**
+     * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -34,24 +51,31 @@ public final class WorkersScriptPlacement {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String mode;
+        private @Nullable String mode;
+        private @Nullable String status;
         public Builder() {}
         public Builder(WorkersScriptPlacement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
-        public Builder mode(String mode) {
-            if (mode == null) {
-              throw new MissingRequiredPropertyException("WorkersScriptPlacement", "mode");
-            }
+        public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
             return this;
         }
         public WorkersScriptPlacement build() {
             final var _resultValue = new WorkersScriptPlacement();
             _resultValue.mode = mode;
+            _resultValue.status = status;
             return _resultValue;
         }
     }

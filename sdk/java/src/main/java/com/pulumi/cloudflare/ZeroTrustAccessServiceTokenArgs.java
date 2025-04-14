@@ -6,7 +6,6 @@ package com.pulumi.cloudflare;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,14 +17,14 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     public static final ZeroTrustAccessServiceTokenArgs Empty = new ZeroTrustAccessServiceTokenArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,36 +32,29 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+     * The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+     * @return The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
      * 
      */
     public Optional<Output<String>> duration() {
         return Optional.ofNullable(this.duration);
     }
 
-    @Import(name="minDaysForRenewal")
-    private @Nullable Output<Integer> minDaysForRenewal;
-
-    public Optional<Output<Integer>> minDaysForRenewal() {
-        return Optional.ofNullable(this.minDaysForRenewal);
-    }
-
     /**
-     * Friendly name of the token&#39;s intent.
+     * The name of the service token.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Friendly name of the token&#39;s intent.
+     * @return The name of the service token.
      * 
      */
     public Output<String> name() {
@@ -70,14 +62,14 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -89,7 +81,6 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
     private ZeroTrustAccessServiceTokenArgs(ZeroTrustAccessServiceTokenArgs $) {
         this.accountId = $.accountId;
         this.duration = $.duration;
-        this.minDaysForRenewal = $.minDaysForRenewal;
         this.name = $.name;
         this.zoneId = $.zoneId;
     }
@@ -113,7 +104,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -124,7 +115,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -134,7 +125,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+         * @param duration The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
          * 
          * @return builder
          * 
@@ -145,7 +136,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+         * @param duration The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
          * 
          * @return builder
          * 
@@ -154,17 +145,8 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
             return duration(Output.of(duration));
         }
 
-        public Builder minDaysForRenewal(@Nullable Output<Integer> minDaysForRenewal) {
-            $.minDaysForRenewal = minDaysForRenewal;
-            return this;
-        }
-
-        public Builder minDaysForRenewal(Integer minDaysForRenewal) {
-            return minDaysForRenewal(Output.of(minDaysForRenewal));
-        }
-
         /**
-         * @param name Friendly name of the token&#39;s intent.
+         * @param name The name of the service token.
          * 
          * @return builder
          * 
@@ -175,7 +157,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name Friendly name of the token&#39;s intent.
+         * @param name The name of the service token.
          * 
          * @return builder
          * 
@@ -185,7 +167,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -196,7 +178,7 @@ public final class ZeroTrustAccessServiceTokenArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 

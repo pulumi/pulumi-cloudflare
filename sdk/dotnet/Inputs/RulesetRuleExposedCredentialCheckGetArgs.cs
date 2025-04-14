@@ -13,16 +13,16 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleExposedCredentialCheckGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+        /// Expression that selects the password used in the credentials check.
         /// </summary>
-        [Input("passwordExpression")]
-        public Input<string>? PasswordExpression { get; set; }
+        [Input("passwordExpression", required: true)]
+        public Input<string> PasswordExpression { get; set; } = null!;
 
         /// <summary>
-        /// Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+        /// Expression that selects the user ID used in the credentials check.
         /// </summary>
-        [Input("usernameExpression")]
-        public Input<string>? UsernameExpression { get; set; }
+        [Input("usernameExpression", required: true)]
+        public Input<string> UsernameExpression { get; set; } = null!;
 
         public RulesetRuleExposedCredentialCheckGetArgs()
         {

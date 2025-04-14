@@ -10,14 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Manages Web3 hostnames for IPFS and Ethereum gateways.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleWeb3Hostname = new Cloudflare.Web3Hostname("example_web3_hostname", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "gateway.example.com",
+    ///         Target = "ethereum",
+    ///         Description = "This is my IPFS gateway.",
+    ///         Dnslink = "/ipns/onboarding.ipfs.cloudflare.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/web3Hostname:Web3Hostname example '&lt;zone_id&gt;/&lt;identifier&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/web3Hostname:Web3Hostname")]
     public partial class Web3Hostname : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Creation time.
-        /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
@@ -33,9 +56,6 @@ namespace Pulumi.Cloudflare
         [Output("dnslink")]
         public Output<string?> Dnslink { get; private set; } = null!;
 
-        /// <summary>
-        /// Last modification time.
-        /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
@@ -47,18 +67,20 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the hostname's activation.
+        /// Available values: "active", "pending", "deleting", "error".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// Target gateway of the hostname.
+        /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -129,12 +151,13 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Target gateway of the hostname.
+        /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -147,9 +170,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class Web3HostnameState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Creation time.
-        /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
@@ -165,9 +185,6 @@ namespace Pulumi.Cloudflare
         [Input("dnslink")]
         public Input<string>? Dnslink { get; set; }
 
-        /// <summary>
-        /// Last modification time.
-        /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
@@ -179,18 +196,20 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Status of the hostname's activation.
+        /// Available values: "active", "pending", "deleting", "error".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Target gateway of the hostname.
+        /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -8,77 +8,59 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class DevicePostureIntegrationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DevicePostureIntegrationArgs Empty = new DevicePostureIntegrationArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * The device posture integration&#39;s connection authorization parameters.
+     * The configuration object containing third-party integration information.
      * 
      */
-    @Import(name="configs")
-    private @Nullable Output<List<DevicePostureIntegrationConfigArgs>> configs;
+    @Import(name="config", required=true)
+    private Output<DevicePostureIntegrationConfigArgs> config;
 
     /**
-     * @return The device posture integration&#39;s connection authorization parameters.
+     * @return The configuration object containing third-party integration information.
      * 
      */
-    public Optional<Output<List<DevicePostureIntegrationConfigArgs>>> configs() {
-        return Optional.ofNullable(this.configs);
-    }
-
-    @Import(name="identifier")
-    private @Nullable Output<String> identifier;
-
-    public Optional<Output<String>> identifier() {
-        return Optional.ofNullable(this.identifier);
+    public Output<DevicePostureIntegrationConfigArgs> config() {
+        return this.config;
     }
 
     /**
-     * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
      */
-    @Import(name="interval")
-    private @Nullable Output<String> interval;
+    @Import(name="interval", required=true)
+    private Output<String> interval;
 
     /**
-     * @return Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+     * @return The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
      * 
      */
-    public Optional<Output<String>> interval() {
-        return Optional.ofNullable(this.interval);
+    public Output<String> interval() {
+        return this.interval;
     }
 
     /**
-     * Name of the device posture integration.
+     * The name of the device posture integration.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the device posture integration.
+     * @return The name of the device posture integration.
      * 
      */
     public Output<String> name() {
@@ -86,14 +68,16 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+     * The type of device posture integration.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+     * @return The type of device posture integration.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
      * 
      */
     public Output<String> type() {
@@ -104,8 +88,7 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
 
     private DevicePostureIntegrationArgs(DevicePostureIntegrationArgs $) {
         this.accountId = $.accountId;
-        this.configs = $.configs;
-        this.identifier = $.identifier;
+        this.config = $.config;
         this.interval = $.interval;
         this.name = $.name;
         this.type = $.type;
@@ -129,80 +112,49 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
             $ = new DevicePostureIntegrationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param configs The device posture integration&#39;s connection authorization parameters.
+         * @param config The configuration object containing third-party integration information.
          * 
          * @return builder
          * 
          */
-        public Builder configs(@Nullable Output<List<DevicePostureIntegrationConfigArgs>> configs) {
-            $.configs = configs;
+        public Builder config(Output<DevicePostureIntegrationConfigArgs> config) {
+            $.config = config;
             return this;
         }
 
         /**
-         * @param configs The device posture integration&#39;s connection authorization parameters.
+         * @param config The configuration object containing third-party integration information.
          * 
          * @return builder
          * 
          */
-        public Builder configs(List<DevicePostureIntegrationConfigArgs> configs) {
-            return configs(Output.of(configs));
+        public Builder config(DevicePostureIntegrationConfigArgs config) {
+            return config(Output.of(config));
         }
 
         /**
-         * @param configs The device posture integration&#39;s connection authorization parameters.
+         * @param interval The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
          * 
          * @return builder
          * 
          */
-        public Builder configs(DevicePostureIntegrationConfigArgs... configs) {
-            return configs(List.of(configs));
-        }
-
-        public Builder identifier(@Nullable Output<String> identifier) {
-            $.identifier = identifier;
-            return this;
-        }
-
-        public Builder identifier(String identifier) {
-            return identifier(Output.of(identifier));
-        }
-
-        /**
-         * @param interval Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder interval(@Nullable Output<String> interval) {
+        public Builder interval(Output<String> interval) {
             $.interval = interval;
             return this;
         }
 
         /**
-         * @param interval Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+         * @param interval The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
          * 
          * @return builder
          * 
@@ -212,7 +164,7 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name Name of the device posture integration.
+         * @param name The name of the device posture integration.
          * 
          * @return builder
          * 
@@ -223,7 +175,7 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name Name of the device posture integration.
+         * @param name The name of the device posture integration.
          * 
          * @return builder
          * 
@@ -233,7 +185,8 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+         * @param type The type of device posture integration.
+         * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
          * 
          * @return builder
          * 
@@ -244,7 +197,8 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+         * @param type The type of device posture integration.
+         * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
          * 
          * @return builder
          * 
@@ -256,6 +210,12 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
         public DevicePostureIntegrationArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("DevicePostureIntegrationArgs", "accountId");
+            }
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("DevicePostureIntegrationArgs", "config");
+            }
+            if ($.interval == null) {
+                throw new MissingRequiredPropertyException("DevicePostureIntegrationArgs", "interval");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("DevicePostureIntegrationArgs", "name");

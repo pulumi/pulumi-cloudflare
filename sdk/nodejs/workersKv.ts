@@ -5,30 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to manage a Cloudflare Workers KV Pair.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNs = new cloudflare.WorkersKvNamespace("example_ns", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     title: "test-namespace",
- * });
- * const example = new cloudflare.WorkersKv("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     namespaceId: exampleNs.id,
- *     key: "test-key",
- *     value: "test value",
+ * const exampleWorkersKv = new cloudflare.WorkersKv("example_workers_kv", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     namespaceId: "0f2ac74b498b48028cb68387c421e279",
+ *     keyName: "My-Key",
+ *     metadata: "{\"someMetadataKey\": \"someMetadataValue\"}",
+ *     value: "Some Value",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
+ * $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
  * ```
  */
 export class WorkersKv extends pulumi.CustomResource {
@@ -60,19 +55,23 @@ export class WorkersKv extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
-    public readonly key!: pulumi.Output<string>;
+    public readonly keyName!: pulumi.Output<string>;
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * Arbitrary JSON to be associated with a key/value pair.
+     */
+    public readonly metadata!: pulumi.Output<string | undefined>;
+    /**
+     * Namespace identifier tag.
      */
     public readonly namespaceId!: pulumi.Output<string>;
     /**
-     * Value of the KV pair.
+     * A byte sequence to be stored, up to 25 MiB in length.
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -90,7 +89,8 @@ export class WorkersKv extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkersKvState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["keyName"] = state ? state.keyName : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
         } else {
@@ -98,8 +98,8 @@ export class WorkersKv extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.key === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'key'");
+            if ((!args || args.keyName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keyName'");
             }
             if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
@@ -108,7 +108,8 @@ export class WorkersKv extends pulumi.CustomResource {
                 throw new Error("Missing required property 'value'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["keyName"] = args ? args.keyName : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
         }
@@ -122,19 +123,23 @@ export class WorkersKv extends pulumi.CustomResource {
  */
 export interface WorkersKvState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
-    key?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string>;
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * Arbitrary JSON to be associated with a key/value pair.
+     */
+    metadata?: pulumi.Input<string>;
+    /**
+     * Namespace identifier tag.
      */
     namespaceId?: pulumi.Input<string>;
     /**
-     * Value of the KV pair.
+     * A byte sequence to be stored, up to 25 MiB in length.
      */
     value?: pulumi.Input<string>;
 }
@@ -144,19 +149,23 @@ export interface WorkersKvState {
  */
 export interface WorkersKvArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
      */
-    key: pulumi.Input<string>;
+    keyName: pulumi.Input<string>;
     /**
-     * The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+     * Arbitrary JSON to be associated with a key/value pair.
+     */
+    metadata?: pulumi.Input<string>;
+    /**
+     * Namespace identifier tag.
      */
     namespaceId: pulumi.Input<string>;
     /**
-     * Value of the KV pair.
+     * A byte sequence to be stored, up to 25 MiB in length.
      */
     value: pulumi.Input<string>;
 }

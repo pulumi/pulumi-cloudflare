@@ -10,35 +10,58 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource to customize the pages your end users will see
-    /// when trying to reach applications behind Cloudflare Access.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZeroTrustAccessTag = new Cloudflare.ZeroTrustAccessTag("example_zero_trust_access_tag", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Name = "engineers",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/accessTag:AccessTag example '&lt;account_id&gt;/&lt;tag_name&gt;'
+    /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag")]
     [CloudflareResourceType("cloudflare:index/accessTag:AccessTag")]
     public partial class AccessTag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Number of apps associated with the tag.
+        /// The number of applications that have this tag
         /// </summary>
         [Output("appCount")]
         public Output<int> AppCount { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// Friendly name of the Access Tag.
+        /// The name of the tag
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Output("zoneId")]
-        public Output<string?> ZoneId { get; private set; } = null!;
+        [Output("updatedAt")]
+        public Output<string> UpdatedAt { get; private set; } = null!;
 
 
         /// <summary>
@@ -63,6 +86,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessTag:AccessTag" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -87,28 +114,16 @@ namespace Pulumi.Cloudflare
     public sealed class AccessTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Number of apps associated with the tag.
-        /// </summary>
-        [Input("appCount")]
-        public Input<int>? AppCount { get; set; }
-
-        /// <summary>
-        /// Friendly name of the Access Tag.
+        /// The name of the tag
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
 
         public AccessTagArgs()
         {
@@ -119,28 +134,28 @@ namespace Pulumi.Cloudflare
     public sealed class AccessTagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Number of apps associated with the tag.
+        /// The number of applications that have this tag
         /// </summary>
         [Input("appCount")]
         public Input<int>? AppCount { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
-        /// Friendly name of the Access Tag.
+        /// The name of the tag
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("zoneId")]
-        public Input<string>? ZoneId { get; set; }
+        [Input("updatedAt")]
+        public Input<string>? UpdatedAt { get; set; }
 
         public AccessTagState()
         {

@@ -31,14 +31,14 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * The ruleset expression to use in matching the username in a request.
+     * The ruleset expression to use in matching the username in a request
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The ruleset expression to use in matching the username in a request.
+     * @return The ruleset expression to use in matching the username in a request
      * 
      */
     public Optional<Output<String>> username() {
@@ -46,14 +46,14 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -108,7 +108,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param username The ruleset expression to use in matching the username in a request.
+         * @param username The ruleset expression to use in matching the username in a request
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param username The ruleset expression to use in matching the username in a request.
+         * @param username The ruleset expression to use in matching the username in a request
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

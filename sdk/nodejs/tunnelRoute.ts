@@ -5,15 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource, that manages Cloudflare tunnel routes for Zero
- * Trust. Tunnel routes are used to direct IP traffic through
- * Cloudflare Tunnels.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustTunnelCloudflaredRoute = new cloudflare.ZeroTrustTunnelCloudflaredRoute("example_zero_trust_tunnel_cloudflared_route", {
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     network: "172.16.0.0/16",
+ *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+ *     comment: "Example comment for this route.",
+ *     virtualNetworkId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+ * });
+ * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
+ * $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example '<account_id>/<route_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute
  */
 export class TunnelRoute extends pulumi.CustomResource {
     /**
@@ -26,6 +39,7 @@ export class TunnelRoute extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TunnelRouteState, opts?: pulumi.CustomResourceOptions): TunnelRoute {
+        pulumi.log.warn("TunnelRoute is deprecated: cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute")
         return new TunnelRoute(name, <any>state, { ...opts, id: id });
     }
 
@@ -44,23 +58,31 @@ export class TunnelRoute extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Description of the tunnel route.
+     * Optional remark describing the route.
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+     * Timestamp of when the resource was created.
+     */
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     */
+    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
+    /**
+     * The private IPv4 or IPv6 range connected by the route, in CIDR notation.
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * The ID of the tunnel that will service the tunnel route.
+     * UUID of the tunnel.
      */
     public readonly tunnelId!: pulumi.Output<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+     * UUID of the virtual network.
      */
     public readonly virtualNetworkId!: pulumi.Output<string | undefined>;
 
@@ -71,14 +93,19 @@ export class TunnelRoute extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute */
     constructor(name: string, args: TunnelRouteArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute */
     constructor(name: string, argsOrState?: TunnelRouteArgs | TunnelRouteState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("TunnelRoute is deprecated: cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TunnelRouteState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["comment"] = state ? state.comment : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["tunnelId"] = state ? state.tunnelId : undefined;
             resourceInputs["virtualNetworkId"] = state ? state.virtualNetworkId : undefined;
@@ -98,8 +125,12 @@ export class TunnelRoute extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["tunnelId"] = args ? args.tunnelId : undefined;
             resourceInputs["virtualNetworkId"] = args ? args.virtualNetworkId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["deletedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/tunnelRoute:TunnelRoute" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TunnelRoute.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -109,23 +140,31 @@ export class TunnelRoute extends pulumi.CustomResource {
  */
 export interface TunnelRouteState {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Description of the tunnel route.
+     * Optional remark describing the route.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+     * Timestamp of when the resource was created.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * The private IPv4 or IPv6 range connected by the route, in CIDR notation.
      */
     network?: pulumi.Input<string>;
     /**
-     * The ID of the tunnel that will service the tunnel route.
+     * UUID of the tunnel.
      */
     tunnelId?: pulumi.Input<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+     * UUID of the virtual network.
      */
     virtualNetworkId?: pulumi.Input<string>;
 }
@@ -135,23 +174,23 @@ export interface TunnelRouteState {
  */
 export interface TunnelRouteArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     accountId: pulumi.Input<string>;
     /**
-     * Description of the tunnel route.
+     * Optional remark describing the route.
      */
     comment?: pulumi.Input<string>;
     /**
-     * The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+     * The private IPv4 or IPv6 range connected by the route, in CIDR notation.
      */
     network: pulumi.Input<string>;
     /**
-     * The ID of the tunnel that will service the tunnel route.
+     * UUID of the tunnel.
      */
     tunnelId: pulumi.Input<string>;
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+     * UUID of the virtual network.
      */
     virtualNetworkId?: pulumi.Input<string>;
 }

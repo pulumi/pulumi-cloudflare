@@ -6,11 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.ListArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.ListState;
-import com.pulumi.cloudflare.outputs.ListItem;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,84 +18,164 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.List;
+ * import com.pulumi.cloudflare.ListArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleList = new List("exampleList", ListArgs.builder()
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .kind("ip")
+ *             .name("list1")
+ *             .description("This is a note")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/list:List example &lt;account_id&gt;/&lt;list_id&gt;
+ * $ pulumi import cloudflare:index/list:List example &#39;&lt;account_id&gt;/&lt;list_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/list:List")
 public class List extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * An optional description of the list.
+     * The RFC 3339 timestamp of when the list was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return The RFC 3339 timestamp of when the list was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
+     * An informative summary of the list.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An optional description of the list.
+     * @return An informative summary of the list.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The items in the list.
-     * 
-     */
-    @Export(name="items", refs={java.util.List.class,ListItem.class}, tree="[0,1]")
-    private Output</* @Nullable */ java.util.List<ListItem>> items;
-
-    /**
-     * @return The items in the list.
-     * 
-     */
-    public Output<Optional<java.util.List<ListItem>>> items() {
-        return Codegen.optional(this.items);
-    }
-    /**
-     * The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
-     * @return The type of items the list will contain. Must provide only one of: `ip`, `redirect`, `hostname`, `asn`..
+     * @return The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
+     * Available values: &#34;ip&#34;, &#34;redirect&#34;, &#34;hostname&#34;, &#34;asn&#34;.
      * 
      */
     public Output<String> kind() {
         return this.kind;
     }
     /**
-     * The name of the list.
+     * The RFC 3339 timestamp of when the list was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return The RFC 3339 timestamp of when the list was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
+    /**
+     * An informative name for the list. Use this name in filter and rule expressions.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the list.
+     * @return An informative name for the list. Use this name in filter and rule expressions.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The number of items in the list.
+     * 
+     */
+    @Export(name="numItems", refs={Double.class}, tree="[0]")
+    private Output<Double> numItems;
+
+    /**
+     * @return The number of items in the list.
+     * 
+     */
+    public Output<Double> numItems() {
+        return this.numItems;
+    }
+    /**
+     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * 
+     */
+    @Export(name="numReferencingFilters", refs={Double.class}, tree="[0]")
+    private Output<Double> numReferencingFilters;
+
+    /**
+     * @return The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
+     * 
+     */
+    public Output<Double> numReferencingFilters() {
+        return this.numReferencingFilters;
     }
 
     /**

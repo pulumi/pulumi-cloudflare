@@ -13,25 +13,23 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsLocationEndpointsDot
     {
-        public readonly bool? AuthenticationEnabled;
-        public readonly bool Enabled;
+        /// <summary>
+        /// True if the endpoint is enabled for this location.
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
+        /// A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+        /// </summary>
         public readonly ImmutableArray<Outputs.TeamsLocationEndpointsDotNetwork> Networks;
-        public readonly bool? RequireToken;
 
         [OutputConstructor]
         private TeamsLocationEndpointsDot(
-            bool? authenticationEnabled,
+            bool? enabled,
 
-            bool enabled,
-
-            ImmutableArray<Outputs.TeamsLocationEndpointsDotNetwork> networks,
-
-            bool? requireToken)
+            ImmutableArray<Outputs.TeamsLocationEndpointsDotNetwork> networks)
         {
-            AuthenticationEnabled = authenticationEnabled;
             Enabled = enabled;
             Networks = networks;
-            RequireToken = requireToken;
         }
     }
 }

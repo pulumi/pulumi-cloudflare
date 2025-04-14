@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Leaked Credential Check Rule resource for managing user-defined Leaked Credential detection patterns within a specific zone.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,28 +20,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Enable the Leaked Credentials Check detection before trying
-    ///     // to add detections.
-    ///     var example = new Cloudflare.LeakedCredentialCheck("example", new()
+    ///     var exampleLeakedCredentialCheckRule = new Cloudflare.LeakedCredentialCheckRule("example_leaked_credential_check_rule", new()
     ///     {
-    ///         ZoneId = "399c6f4950c01a5a141b99ff7fbcbd8b",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     var exampleLeakedCredentialCheckRule = new Cloudflare.LeakedCredentialCheckRule("example", new()
-    ///     {
-    ///         ZoneId = example.ZoneId,
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Password = "lookup_json_string(http.request.body.raw, \"secret\")",
     ///         Username = "lookup_json_string(http.request.body.raw, \"user\")",
-    ///         Password = "lookup_json_string(http.request.body.raw, \"pass\")",
     ///     });
     /// 
     /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule example &lt;zone_id&gt;/&lt;resource_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")]
@@ -53,16 +37,16 @@ namespace Pulumi.Cloudflare
         /// The ruleset expression to use in matching the password in a request
         /// </summary>
         [Output("password")]
-        public Output<string> Password { get; private set; } = null!;
+        public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The ruleset expression to use in matching the username in a request.
+        /// The ruleset expression to use in matching the username in a request
         /// </summary>
         [Output("username")]
-        public Output<string> Username { get; private set; } = null!;
+        public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -116,17 +100,17 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The ruleset expression to use in matching the password in a request
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The ruleset expression to use in matching the username in a request.
+        /// The ruleset expression to use in matching the username in a request
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -146,13 +130,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The ruleset expression to use in matching the username in a request.
+        /// The ruleset expression to use in matching the username in a request
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

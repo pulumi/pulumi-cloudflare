@@ -3,14 +3,12 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.AccessOrganizationCustomPageArgs;
+import com.pulumi.cloudflare.inputs.AccessOrganizationCustomPagesArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationLoginDesignArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,14 +19,14 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     public static final AccessOrganizationArgs Empty = new AccessOrganizationArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -54,93 +52,77 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
      * The unique subdomain assigned to your Zero Trust organization.
      * 
      */
-    @Import(name="authDomain", required=true)
-    private Output<String> authDomain;
+    @Import(name="authDomain")
+    private @Nullable Output<String> authDomain;
 
     /**
      * @return The unique subdomain assigned to your Zero Trust organization.
      * 
      */
-    public Output<String> authDomain() {
-        return this.authDomain;
+    public Optional<Output<String>> authDomain() {
+        return Optional.ofNullable(this.authDomain);
     }
 
     /**
-     * When set to true, users skip the identity provider selection step during login.
+     * When set to `true`, users skip the identity provider selection step during login.
      * 
      */
     @Import(name="autoRedirectToIdentity")
     private @Nullable Output<Boolean> autoRedirectToIdentity;
 
     /**
-     * @return When set to true, users skip the identity provider selection step during login.
+     * @return When set to `true`, users skip the identity provider selection step during login.
      * 
      */
     public Optional<Output<Boolean>> autoRedirectToIdentity() {
         return Optional.ofNullable(this.autoRedirectToIdentity);
     }
 
-    /**
-     * Custom pages for your Zero Trust organization.
-     * 
-     */
     @Import(name="customPages")
-    private @Nullable Output<List<AccessOrganizationCustomPageArgs>> customPages;
+    private @Nullable Output<AccessOrganizationCustomPagesArgs> customPages;
 
-    /**
-     * @return Custom pages for your Zero Trust organization.
-     * 
-     */
-    public Optional<Output<List<AccessOrganizationCustomPageArgs>>> customPages() {
+    public Optional<Output<AccessOrganizationCustomPagesArgs>> customPages() {
         return Optional.ofNullable(this.customPages);
     }
 
-    /**
-     * When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-     * 
-     */
     @Import(name="isUiReadOnly")
     private @Nullable Output<Boolean> isUiReadOnly;
 
-    /**
-     * @return When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-     * 
-     */
     public Optional<Output<Boolean>> isUiReadOnly() {
         return Optional.ofNullable(this.isUiReadOnly);
     }
 
-    @Import(name="loginDesigns")
-    private @Nullable Output<List<AccessOrganizationLoginDesignArgs>> loginDesigns;
+    @Import(name="loginDesign")
+    private @Nullable Output<AccessOrganizationLoginDesignArgs> loginDesign;
 
-    public Optional<Output<List<AccessOrganizationLoginDesignArgs>>> loginDesigns() {
-        return Optional.ofNullable(this.loginDesigns);
+    public Optional<Output<AccessOrganizationLoginDesignArgs>> loginDesign() {
+        return Optional.ofNullable(this.loginDesign);
     }
 
     /**
      * The name of your Zero Trust organization.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return The name of your Zero Trust organization.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+     * @return The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
@@ -163,14 +145,14 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      * 
      */
     @Import(name="userSeatExpirationInactiveTime")
     private @Nullable Output<String> userSeatExpirationInactiveTime;
 
     /**
-     * @return The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+     * @return The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
      * 
      */
     public Optional<Output<String>> userSeatExpirationInactiveTime() {
@@ -178,14 +160,14 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      * 
      */
     @Import(name="warpAuthSessionDuration")
     private @Nullable Output<String> warpAuthSessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+     * @return The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
      * 
      */
     public Optional<Output<String>> warpAuthSessionDuration() {
@@ -193,14 +175,14 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -216,7 +198,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         this.autoRedirectToIdentity = $.autoRedirectToIdentity;
         this.customPages = $.customPages;
         this.isUiReadOnly = $.isUiReadOnly;
-        this.loginDesigns = $.loginDesigns;
+        this.loginDesign = $.loginDesign;
         this.name = $.name;
         this.sessionDuration = $.sessionDuration;
         this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
@@ -244,7 +226,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -255,7 +237,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
          * 
          * @return builder
          * 
@@ -291,7 +273,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder authDomain(Output<String> authDomain) {
+        public Builder authDomain(@Nullable Output<String> authDomain) {
             $.authDomain = authDomain;
             return this;
         }
@@ -307,7 +289,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRedirectToIdentity When set to true, users skip the identity provider selection step during login.
+         * @param autoRedirectToIdentity When set to `true`, users skip the identity provider selection step during login.
          * 
          * @return builder
          * 
@@ -318,7 +300,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param autoRedirectToIdentity When set to true, users skip the identity provider selection step during login.
+         * @param autoRedirectToIdentity When set to `true`, users skip the identity provider selection step during login.
          * 
          * @return builder
          * 
@@ -327,69 +309,31 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
             return autoRedirectToIdentity(Output.of(autoRedirectToIdentity));
         }
 
-        /**
-         * @param customPages Custom pages for your Zero Trust organization.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customPages(@Nullable Output<List<AccessOrganizationCustomPageArgs>> customPages) {
+        public Builder customPages(@Nullable Output<AccessOrganizationCustomPagesArgs> customPages) {
             $.customPages = customPages;
             return this;
         }
 
-        /**
-         * @param customPages Custom pages for your Zero Trust organization.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customPages(List<AccessOrganizationCustomPageArgs> customPages) {
+        public Builder customPages(AccessOrganizationCustomPagesArgs customPages) {
             return customPages(Output.of(customPages));
         }
 
-        /**
-         * @param customPages Custom pages for your Zero Trust organization.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customPages(AccessOrganizationCustomPageArgs... customPages) {
-            return customPages(List.of(customPages));
-        }
-
-        /**
-         * @param isUiReadOnly When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isUiReadOnly(@Nullable Output<Boolean> isUiReadOnly) {
             $.isUiReadOnly = isUiReadOnly;
             return this;
         }
 
-        /**
-         * @param isUiReadOnly When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isUiReadOnly(Boolean isUiReadOnly) {
             return isUiReadOnly(Output.of(isUiReadOnly));
         }
 
-        public Builder loginDesigns(@Nullable Output<List<AccessOrganizationLoginDesignArgs>> loginDesigns) {
-            $.loginDesigns = loginDesigns;
+        public Builder loginDesign(@Nullable Output<AccessOrganizationLoginDesignArgs> loginDesign) {
+            $.loginDesign = loginDesign;
             return this;
         }
 
-        public Builder loginDesigns(List<AccessOrganizationLoginDesignArgs> loginDesigns) {
-            return loginDesigns(Output.of(loginDesigns));
-        }
-
-        public Builder loginDesigns(AccessOrganizationLoginDesignArgs... loginDesigns) {
-            return loginDesigns(List.of(loginDesigns));
+        public Builder loginDesign(AccessOrganizationLoginDesignArgs loginDesign) {
+            return loginDesign(Output.of(loginDesign));
         }
 
         /**
@@ -398,7 +342,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -414,7 +358,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+         * @param sessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
          * 
@@ -425,7 +369,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
+         * @param sessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
          * 
          * @return builder
          * 
@@ -456,7 +400,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param userSeatExpirationInactiveTime The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+         * @param userSeatExpirationInactiveTime The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
          * 
          * @return builder
          * 
@@ -467,7 +411,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param userSeatExpirationInactiveTime The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+         * @param userSeatExpirationInactiveTime The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count.  Minimum value for this setting is 1 month (730h). Must be in the format `300ms` or `2h45m`. Valid time units are: `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`.
          * 
          * @return builder
          * 
@@ -477,7 +421,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
          * 
          * @return builder
          * 
@@ -488,7 +432,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
+         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format `30m` or `2h45m`. Valid time units are: m, h.
          * 
          * @return builder
          * 
@@ -498,7 +442,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -509,7 +453,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
          * 
          * @return builder
          * 
@@ -519,12 +463,6 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         public AccessOrganizationArgs build() {
-            if ($.authDomain == null) {
-                throw new MissingRequiredPropertyException("AccessOrganizationArgs", "authDomain");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("AccessOrganizationArgs", "name");
-            }
             return $;
         }
     }

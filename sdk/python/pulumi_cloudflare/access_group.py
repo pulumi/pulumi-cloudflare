@@ -26,12 +26,18 @@ class AccessGroupArgs:
                  name: pulumi.Input[builtins.str],
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
+                 is_default: Optional[pulumi.Input[builtins.bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[builtins.str] name: The name of the Access group.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[builtins.bool] is_default: Whether this is the default group
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]] requires: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         pulumi.set(__self__, "includes", includes)
         pulumi.set(__self__, "name", name)
@@ -39,6 +45,8 @@ class AccessGroupArgs:
             pulumi.set(__self__, "account_id", account_id)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
         if requires is not None:
             pulumi.set(__self__, "requires", requires)
         if zone_id is not None:
@@ -47,6 +55,9 @@ class AccessGroupArgs:
     @property
     @pulumi.getter
     def includes(self) -> pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]:
+        """
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        """
         return pulumi.get(self, "includes")
 
     @includes.setter
@@ -56,6 +67,9 @@ class AccessGroupArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
+        """
+        The name of the Access group.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -66,7 +80,7 @@ class AccessGroupArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -77,6 +91,9 @@ class AccessGroupArgs:
     @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]:
+        """
+        Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
@@ -84,8 +101,23 @@ class AccessGroupArgs:
         pulumi.set(self, "excludes", value)
 
     @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether this is the default group
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @property
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]:
+        """
+        Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        """
         return pulumi.get(self, "requires")
 
     @requires.setter
@@ -96,7 +128,7 @@ class AccessGroupArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -109,26 +141,40 @@ class AccessGroupArgs:
 class _AccessGroupState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]] = None,
+                 is_default: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
+                 updated_at: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[builtins.bool] is_default: Whether this is the default group
+        :param pulumi.Input[builtins.str] name: The name of the Access group.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]] requires: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
         if includes is not None:
             pulumi.set(__self__, "includes", includes)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if requires is not None:
             pulumi.set(__self__, "requires", requires)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -136,7 +182,7 @@ class _AccessGroupState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -145,8 +191,20 @@ class _AccessGroupState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]:
+        """
+        Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
@@ -156,6 +214,9 @@ class _AccessGroupState:
     @property
     @pulumi.getter
     def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]]:
+        """
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        """
         return pulumi.get(self, "includes")
 
     @includes.setter
@@ -163,8 +224,23 @@ class _AccessGroupState:
         pulumi.set(self, "includes", value)
 
     @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Whether this is the default group
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the Access group.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -174,6 +250,9 @@ class _AccessGroupState:
     @property
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]:
+        """
+        Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        """
         return pulumi.get(self, "requires")
 
     @requires.setter
@@ -181,10 +260,19 @@ class _AccessGroupState:
         pulumi.set(self, "requires", value)
 
     @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -193,7 +281,12 @@ class _AccessGroupState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup""", DeprecationWarning)
+
+
 class AccessGroup(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -201,31 +294,54 @@ class AccessGroup(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
+                 is_default: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Access Group resource. Access Groups are used
-        in conjunction with Access Policies to restrict access to a
-        particular resource based on group membership.
+        ## Example Usage
 
-        > It's required that an `account_id` or `zone_id` is provided and in
-           most cases using either is fine. However, if you're using a scoped
-           access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com"
-           zone needs to use the `zone_id` argument.
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_group = cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group",
+            includes=[{
+                "group": {
+                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+                },
+            }],
+            name="Allow devs",
+            zone_id="zone_id",
+            excludes=[{
+                "group": {
+                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+                },
+            }],
+            is_default=True,
+            requires=[{
+                "group": {
+                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+                },
+            }])
+        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+        $ pulumi import cloudflare:index/accessGroup:AccessGroup example '<{accounts|zones}/{account_id|zone_id}>/<group_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[builtins.bool] is_default: Whether this is the default group
+        :param pulumi.Input[builtins.str] name: The name of the Access group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]] requires: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -234,20 +350,37 @@ class AccessGroup(pulumi.CustomResource):
                  args: AccessGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Access Group resource. Access Groups are used
-        in conjunction with Access Policies to restrict access to a
-        particular resource based on group membership.
+        ## Example Usage
 
-        > It's required that an `account_id` or `zone_id` is provided and in
-           most cases using either is fine. However, if you're using a scoped
-           access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com"
-           zone needs to use the `zone_id` argument.
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_group = cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group",
+            includes=[{
+                "group": {
+                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+                },
+            }],
+            name="Allow devs",
+            zone_id="zone_id",
+            excludes=[{
+                "group": {
+                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+                },
+            }],
+            is_default=True,
+            requires=[{
+                "group": {
+                    "id": "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+                },
+            }])
+        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+        $ pulumi import cloudflare:index/accessGroup:AccessGroup example '<{accounts|zones}/{account_id|zone_id}>/<group_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -268,10 +401,12 @@ class AccessGroup(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
+                 is_default: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccessGroup is deprecated: cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -285,11 +420,16 @@ class AccessGroup(pulumi.CustomResource):
             if includes is None and not opts.urn:
                 raise TypeError("Missing required property 'includes'")
             __props__.__dict__["includes"] = includes
+            __props__.__dict__["is_default"] = is_default
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["requires"] = requires
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessGroup:AccessGroup")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(AccessGroup, __self__).__init__(
             'cloudflare:index/accessGroup:AccessGroup',
             resource_name,
@@ -301,10 +441,13 @@ class AccessGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]]] = None,
+            is_default: Optional[pulumi.Input[builtins.bool]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             requires: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]]] = None,
+            updated_at: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessGroup':
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
@@ -313,18 +456,26 @@ class AccessGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupExcludeArgs', 'AccessGroupExcludeArgsDict']]]] excludes: Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupIncludeArgs', 'AccessGroupIncludeArgsDict']]]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        :param pulumi.Input[builtins.bool] is_default: Whether this is the default group
+        :param pulumi.Input[builtins.str] name: The name of the Access group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessGroupRequireArgs', 'AccessGroupRequireArgsDict']]]] requires: Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccessGroupState.__new__(_AccessGroupState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["includes"] = includes
+        __props__.__dict__["is_default"] = is_default
         __props__.__dict__["name"] = name
         __props__.__dict__["requires"] = requires
+        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return AccessGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -332,35 +483,65 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
+
+    @property
     @pulumi.getter
-    def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.AccessGroupExclude']]]:
+    def excludes(self) -> pulumi.Output[Sequence['outputs.AccessGroupExclude']]:
+        """
+        Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+        """
         return pulumi.get(self, "excludes")
 
     @property
     @pulumi.getter
     def includes(self) -> pulumi.Output[Sequence['outputs.AccessGroupInclude']]:
+        """
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        """
         return pulumi.get(self, "includes")
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Whether this is the default group
+        """
+        return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
+        """
+        The name of the Access group.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
-    def requires(self) -> pulumi.Output[Optional[Sequence['outputs.AccessGroupRequire']]]:
+    def requires(self) -> pulumi.Output[Sequence['outputs.AccessGroupRequire']]:
+        """
+        Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+        """
         return pulumi.get(self, "requires")
 
     @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "updated_at")
+
+    @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[builtins.str]:
+    def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

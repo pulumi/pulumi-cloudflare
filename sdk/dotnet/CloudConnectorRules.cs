@@ -10,19 +10,41 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) resource allows you to create and manage cloud connector rules for a zone.
+    /// ## Example Usage
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudConnectorRules:CloudConnectorRules")]
     public partial class CloudConnectorRules : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of Cloud Connector Rules
+        /// Cloud Provider type
+        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
+        /// </summary>
+        [Output("cloudProvider")]
+        public Output<string> CloudProvider { get; private set; } = null!;
+
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        [Output("expression")]
+        public Output<string> Expression { get; private set; } = null!;
+
+        /// <summary>
+        /// Parameters of Cloud Connector Rule
+        /// </summary>
+        [Output("parameters")]
+        public Output<Outputs.CloudConnectorRulesParameters> Parameters { get; private set; } = null!;
+
+        /// <summary>
+        /// List of Cloud Connector rules
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.CloudConnectorRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -77,7 +99,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.CloudConnectorRulesRuleArgs>? _rules;
 
         /// <summary>
-        /// List of Cloud Connector Rules
+        /// List of Cloud Connector rules
         /// </summary>
         public InputList<Inputs.CloudConnectorRulesRuleArgs> Rules
         {
@@ -86,7 +108,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -99,11 +121,33 @@ namespace Pulumi.Cloudflare
 
     public sealed class CloudConnectorRulesState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cloud Provider type
+        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
+        /// </summary>
+        [Input("cloudProvider")]
+        public Input<string>? CloudProvider { get; set; }
+
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("expression")]
+        public Input<string>? Expression { get; set; }
+
+        /// <summary>
+        /// Parameters of Cloud Connector Rule
+        /// </summary>
+        [Input("parameters")]
+        public Input<Inputs.CloudConnectorRulesParametersGetArgs>? Parameters { get; set; }
+
         [Input("rules")]
         private InputList<Inputs.CloudConnectorRulesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of Cloud Connector Rules
+        /// List of Cloud Connector rules
         /// </summary>
         public InputList<Inputs.CloudConnectorRulesRuleGetArgs> Rules
         {
@@ -112,7 +156,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

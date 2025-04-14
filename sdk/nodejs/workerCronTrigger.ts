@@ -2,43 +2,20 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Worker Cron Triggers allow users to map a cron expression to a Worker script
- * using a `ScheduledEvent` listener that enables Workers to be executed on a
- * schedule. Worker Cron Triggers are ideal for running periodic jobs for
- * maintenance or calling third-party APIs to collect up-to-date data.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as std from "@pulumi/std";
- *
- * const exampleScript = new cloudflare.WorkersScript("example_script", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example-script",
- *     content: std.file({
- *         input: "path/to/my.js",
- *     }).then(invoke => invoke.result),
- * });
- * const exampleTrigger = new cloudflare.WorkerCronTrigger("example_trigger", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     scriptName: exampleScript.name,
- *     schedules: [
- *         "*&#47;5 * * * *",
- *         "10 7 * * mon-fri",
- *     ],
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
+ * $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example '<account_id>/<script_name>'
  * ```
+ *
+ * @deprecated cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger
  */
 export class WorkerCronTrigger extends pulumi.CustomResource {
     /**
@@ -51,6 +28,7 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkerCronTriggerState, opts?: pulumi.CustomResourceOptions): WorkerCronTrigger {
+        pulumi.log.warn("WorkerCronTrigger is deprecated: cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger")
         return new WorkerCronTrigger(name, <any>state, { ...opts, id: id });
     }
 
@@ -69,15 +47,12 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
+    public readonly schedules!: pulumi.Output<outputs.WorkerCronTriggerSchedule[]>;
     /**
-     * Cron expressions to execute the Worker script.
-     */
-    public readonly schedules!: pulumi.Output<string[]>;
-    /**
-     * Worker script to target for the schedules.
+     * Name of the script, used in URLs and route configuration.
      */
     public readonly scriptName!: pulumi.Output<string>;
 
@@ -88,8 +63,11 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger */
     constructor(name: string, args: WorkerCronTriggerArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger */
     constructor(name: string, argsOrState?: WorkerCronTriggerArgs | WorkerCronTriggerState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkerCronTrigger is deprecated: cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -113,6 +91,8 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
             resourceInputs["scriptName"] = args ? args.scriptName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerCronTrigger:WorkerCronTrigger" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkerCronTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -122,15 +102,12 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
  */
 export interface WorkerCronTriggerState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
+    schedules?: pulumi.Input<pulumi.Input<inputs.WorkerCronTriggerSchedule>[]>;
     /**
-     * Cron expressions to execute the Worker script.
-     */
-    schedules?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Worker script to target for the schedules.
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName?: pulumi.Input<string>;
 }
@@ -140,15 +117,12 @@ export interface WorkerCronTriggerState {
  */
 export interface WorkerCronTriggerArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
+    schedules: pulumi.Input<pulumi.Input<inputs.WorkerCronTriggerSchedule>[]>;
     /**
-     * Cron expressions to execute the Worker script.
-     */
-    schedules: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Worker script to target for the schedules.
+     * Name of the script, used in URLs and route configuration.
      */
     scriptName: pulumi.Input<string>;
 }

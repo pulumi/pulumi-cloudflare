@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DeviceManagedNetworksConfig {
@@ -14,7 +16,7 @@ public final class DeviceManagedNetworksConfig {
      * @return The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
      * 
      */
-    private String sha256;
+    private @Nullable String sha256;
     /**
      * @return A network address of the form &#34;host:port&#34; that the WARP client will use to detect the presence of a TLS host.
      * 
@@ -26,8 +28,8 @@ public final class DeviceManagedNetworksConfig {
      * @return The SHA-256 hash of the TLS certificate presented by the host found at tls_sockaddr. If absent, regular certificate verification (trusted roots, valid timestamp, etc) will be used to validate the certificate.
      * 
      */
-    public String sha256() {
-        return this.sha256;
+    public Optional<String> sha256() {
+        return Optional.ofNullable(this.sha256);
     }
     /**
      * @return A network address of the form &#34;host:port&#34; that the WARP client will use to detect the presence of a TLS host.
@@ -46,7 +48,7 @@ public final class DeviceManagedNetworksConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String sha256;
+        private @Nullable String sha256;
         private String tlsSockaddr;
         public Builder() {}
         public Builder(DeviceManagedNetworksConfig defaults) {
@@ -56,10 +58,8 @@ public final class DeviceManagedNetworksConfig {
         }
 
         @CustomType.Setter
-        public Builder sha256(String sha256) {
-            if (sha256 == null) {
-              throw new MissingRequiredPropertyException("DeviceManagedNetworksConfig", "sha256");
-            }
+        public Builder sha256(@Nullable String sha256) {
+
             this.sha256 = sha256;
             return this;
         }

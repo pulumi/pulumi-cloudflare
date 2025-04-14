@@ -29,11 +29,12 @@ class AccessRuleArgs:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
-        :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: The rule configuration.
+        :param pulumi.Input[builtins.str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] notes: An informative summary of the rule, typically used as a reminder or explanation.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         pulumi.set(__self__, "configuration", configuration)
         pulumi.set(__self__, "mode", mode)
@@ -48,7 +49,7 @@ class AccessRuleArgs:
     @pulumi.getter
     def configuration(self) -> pulumi.Input['AccessRuleConfigurationArgs']:
         """
-        Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+        The rule configuration.
         """
         return pulumi.get(self, "configuration")
 
@@ -60,7 +61,8 @@ class AccessRuleArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[builtins.str]:
         """
-        The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+        The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 
@@ -72,7 +74,7 @@ class AccessRuleArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -84,7 +86,7 @@ class AccessRuleArgs:
     @pulumi.getter
     def notes(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A personal note about the rule. Typically used as a reminder or explanation for the rule.
+        An informative summary of the rule, typically used as a reminder or explanation.
         """
         return pulumi.get(self, "notes")
 
@@ -96,7 +98,7 @@ class AccessRuleArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -109,26 +111,43 @@ class AccessRuleArgs:
 class _AccessRuleState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 allowed_modes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  configuration: Optional[pulumi.Input['AccessRuleConfigurationArgs']] = None,
+                 created_on: Optional[pulumi.Input[builtins.str]] = None,
                  mode: Optional[pulumi.Input[builtins.str]] = None,
+                 modified_on: Optional[pulumi.Input[builtins.str]] = None,
                  notes: Optional[pulumi.Input[builtins.str]] = None,
+                 scope: Optional[pulumi.Input['AccessRuleScopeArgs']] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
-        :param pulumi.Input[builtins.str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_modes: The available actions that a rule can apply to a matched request.
+        :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: The rule configuration.
+        :param pulumi.Input[builtins.str] created_on: The timestamp of when the rule was created.
+        :param pulumi.Input[builtins.str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+        :param pulumi.Input[builtins.str] modified_on: The timestamp of when the rule was last modified.
+        :param pulumi.Input[builtins.str] notes: An informative summary of the rule, typically used as a reminder or explanation.
+        :param pulumi.Input['AccessRuleScopeArgs'] scope: All zones owned by the user will have the rule applied.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if allowed_modes is not None:
+            pulumi.set(__self__, "allowed_modes", allowed_modes)
         if configuration is not None:
             pulumi.set(__self__, "configuration", configuration)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if notes is not None:
             pulumi.set(__self__, "notes", notes)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -136,7 +155,7 @@ class _AccessRuleState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -145,10 +164,22 @@ class _AccessRuleState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="allowedModes")
+    def allowed_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        The available actions that a rule can apply to a matched request.
+        """
+        return pulumi.get(self, "allowed_modes")
+
+    @allowed_modes.setter
+    def allowed_modes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "allowed_modes", value)
+
+    @property
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['AccessRuleConfigurationArgs']]:
         """
-        Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+        The rule configuration.
         """
         return pulumi.get(self, "configuration")
 
@@ -157,10 +188,23 @@ class _AccessRuleState:
         pulumi.set(self, "configuration", value)
 
     @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The timestamp of when the rule was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+        The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
 
@@ -169,10 +213,22 @@ class _AccessRuleState:
         pulumi.set(self, "mode", value)
 
     @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The timestamp of when the rule was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
     @pulumi.getter
     def notes(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A personal note about the rule. Typically used as a reminder or explanation for the rule.
+        An informative summary of the rule, typically used as a reminder or explanation.
         """
         return pulumi.get(self, "notes")
 
@@ -181,10 +237,22 @@ class _AccessRuleState:
         pulumi.set(self, "notes", value)
 
     @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input['AccessRuleScopeArgs']]:
+        """
+        All zones owned by the user will have the rule applied.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input['AccessRuleScopeArgs']]):
+        pulumi.set(self, "scope", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -205,81 +273,36 @@ class AccessRule(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare IP Firewall Access Rule resource. Access
-        control can be applied on basis of IP addresses, IP ranges, AS
-        numbers or countries.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Challenge requests coming from known Tor exit nodes.
-        tor_exit_nodes = cloudflare.AccessRule("tor_exit_nodes",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            notes="Requests coming from known Tor exit nodes",
-            mode="challenge",
+        example_access_rule = cloudflare.AccessRule("example_access_rule",
             configuration={
-                "target": "country",
-                "value": "T1",
-            })
-        # Allowlist requests coming from Antarctica, but only for single zone.
-        antarctica = cloudflare.AccessRule("antarctica",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            notes="Requests coming from Antarctica",
-            mode="whitelist",
-            configuration={
-                "target": "country",
-                "value": "AQ",
-            })
-        config = pulumi.Config()
-        my_office = config.get_object("myOffice")
-        if my_office is None:
-            my_office = [
-                "192.0.2.0/24",
-                "198.51.100.0/24",
-                "2001:db8::/56",
-            ]
-        office_network = []
-        for range in [{"value": i} for i in range(0, len(my_office))]:
-            office_network.append(cloudflare.AccessRule(f"office_network-{range['value']}",
-                account_id="f037e56e89293a057740de681ac9abbe",
-                notes="Requests coming from office network",
-                mode="whitelist",
-                configuration={
-                    "target": "ip_range",
-                    "value": my_office[range["value"]],
-                }))
+                "target": "ip",
+                "value": "198.51.100.4",
+            },
+            mode="block",
+            zone_id="zone_id",
+            notes="This rule is enabled because of an event that occurred on date X.")
         ```
 
         ## Import
 
-        User level access rule import.
-
         ```sh
-        $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
-        ```
-
-        Zone level access rule import.
-
-        ```sh
-        $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
-        ```
-
-        Account level access rule import.
-
-        ```sh
-        $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
+        $ pulumi import cloudflare:index/accessRule:AccessRule example '<{accounts|zones}/{account_id|zone_id}>/<rule_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
-        :param pulumi.Input[builtins.str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: The rule configuration.
+        :param pulumi.Input[builtins.str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+        :param pulumi.Input[builtins.str] notes: An informative summary of the rule, typically used as a reminder or explanation.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -288,72 +311,26 @@ class AccessRule(pulumi.CustomResource):
                  args: AccessRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare IP Firewall Access Rule resource. Access
-        control can be applied on basis of IP addresses, IP ranges, AS
-        numbers or countries.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Challenge requests coming from known Tor exit nodes.
-        tor_exit_nodes = cloudflare.AccessRule("tor_exit_nodes",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            notes="Requests coming from known Tor exit nodes",
-            mode="challenge",
+        example_access_rule = cloudflare.AccessRule("example_access_rule",
             configuration={
-                "target": "country",
-                "value": "T1",
-            })
-        # Allowlist requests coming from Antarctica, but only for single zone.
-        antarctica = cloudflare.AccessRule("antarctica",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            notes="Requests coming from Antarctica",
-            mode="whitelist",
-            configuration={
-                "target": "country",
-                "value": "AQ",
-            })
-        config = pulumi.Config()
-        my_office = config.get_object("myOffice")
-        if my_office is None:
-            my_office = [
-                "192.0.2.0/24",
-                "198.51.100.0/24",
-                "2001:db8::/56",
-            ]
-        office_network = []
-        for range in [{"value": i} for i in range(0, len(my_office))]:
-            office_network.append(cloudflare.AccessRule(f"office_network-{range['value']}",
-                account_id="f037e56e89293a057740de681ac9abbe",
-                notes="Requests coming from office network",
-                mode="whitelist",
-                configuration={
-                    "target": "ip_range",
-                    "value": my_office[range["value"]],
-                }))
+                "target": "ip",
+                "value": "198.51.100.4",
+            },
+            mode="block",
+            zone_id="zone_id",
+            notes="This rule is enabled because of an event that occurred on date X.")
         ```
 
         ## Import
 
-        User level access rule import.
-
         ```sh
-        $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
-        ```
-
-        Zone level access rule import.
-
-        ```sh
-        $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
-        ```
-
-        Account level access rule import.
-
-        ```sh
-        $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
+        $ pulumi import cloudflare:index/accessRule:AccessRule example '<{accounts|zones}/{account_id|zone_id}>/<rule_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -394,6 +371,10 @@ class AccessRule(pulumi.CustomResource):
             __props__.__dict__["mode"] = mode
             __props__.__dict__["notes"] = notes
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["allowed_modes"] = None
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_on"] = None
+            __props__.__dict__["scope"] = None
         super(AccessRule, __self__).__init__(
             'cloudflare:index/accessRule:AccessRule',
             resource_name,
@@ -405,9 +386,13 @@ class AccessRule(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            allowed_modes: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             configuration: Optional[pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']]] = None,
+            created_on: Optional[pulumi.Input[builtins.str]] = None,
             mode: Optional[pulumi.Input[builtins.str]] = None,
+            modified_on: Optional[pulumi.Input[builtins.str]] = None,
             notes: Optional[pulumi.Input[builtins.str]] = None,
+            scope: Optional[pulumi.Input[Union['AccessRuleScopeArgs', 'AccessRuleScopeArgsDict']]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessRule':
         """
         Get an existing AccessRule resource's state with the given name, id, and optional extra
@@ -416,60 +401,102 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] mode: The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
-        :param pulumi.Input[builtins.str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_modes: The available actions that a rule can apply to a matched request.
+        :param pulumi.Input[Union['AccessRuleConfigurationArgs', 'AccessRuleConfigurationArgsDict']] configuration: The rule configuration.
+        :param pulumi.Input[builtins.str] created_on: The timestamp of when the rule was created.
+        :param pulumi.Input[builtins.str] mode: The action to apply to a matched request.
+               Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+        :param pulumi.Input[builtins.str] modified_on: The timestamp of when the rule was last modified.
+        :param pulumi.Input[builtins.str] notes: An informative summary of the rule, typically used as a reminder or explanation.
+        :param pulumi.Input[Union['AccessRuleScopeArgs', 'AccessRuleScopeArgsDict']] scope: All zones owned by the user will have the rule applied.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AccessRuleState.__new__(_AccessRuleState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["allowed_modes"] = allowed_modes
         __props__.__dict__["configuration"] = configuration
+        __props__.__dict__["created_on"] = created_on
         __props__.__dict__["mode"] = mode
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["notes"] = notes
+        __props__.__dict__["scope"] = scope
         __props__.__dict__["zone_id"] = zone_id
         return AccessRule(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[builtins.str]:
+    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="allowedModes")
+    def allowed_modes(self) -> pulumi.Output[Sequence[builtins.str]]:
+        """
+        The available actions that a rule can apply to a matched request.
+        """
+        return pulumi.get(self, "allowed_modes")
 
     @property
     @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.AccessRuleConfiguration']:
         """
-        Rule configuration to apply to a matched request. **Modifying this attribute will force creation of a new resource.**
+        The rule configuration.
         """
         return pulumi.get(self, "configuration")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[builtins.str]:
+        """
+        The timestamp of when the rule was created.
+        """
+        return pulumi.get(self, "created_on")
 
     @property
     @pulumi.getter
     def mode(self) -> pulumi.Output[builtins.str]:
         """
-        The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`, `managed_challenge`.
+        The action to apply to a matched request.
+        Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[builtins.str]:
+        """
+        The timestamp of when the rule was last modified.
+        """
+        return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
     def notes(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        A personal note about the rule. Typically used as a reminder or explanation for the rule.
+        An informative summary of the rule, typically used as a reminder or explanation.
         """
         return pulumi.get(self, "notes")
 
     @property
-    @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter
+    def scope(self) -> pulumi.Output['outputs.AccessRuleScope']:
         """
-        The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        All zones owned by the user will have the rule applied.
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

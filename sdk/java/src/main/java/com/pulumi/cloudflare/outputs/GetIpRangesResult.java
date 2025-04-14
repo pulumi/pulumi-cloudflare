@@ -8,61 +8,49 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIpRangesResult {
     /**
-     * @return The lexically ordered list of only the IPv4 China CIDR blocks.
+     * @return A digest of the IP data. Useful for determining if the data has changed.
      * 
      */
-    private List<String> chinaIpv4CidrBlocks;
-    /**
-     * @return The lexically ordered list of only the IPv6 China CIDR blocks.
-     * 
-     */
-    private List<String> chinaIpv6CidrBlocks;
-    /**
-     * @return The lexically ordered list of all non-China CIDR blocks.
-     * 
-     */
-    private List<String> cidrBlocks;
+    private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return The lexically ordered list of only the IPv4 CIDR blocks.
+     * @return List of Cloudflare IPv4 CIDR addresses.
      * 
      */
-    private List<String> ipv4CidrBlocks;
+    private List<String> ipv4Cidrs;
     /**
-     * @return The lexically ordered list of only the IPv6 CIDR blocks.
+     * @return List of Cloudflare IPv6 CIDR addresses.
      * 
      */
-    private List<String> ipv6CidrBlocks;
+    private List<String> ipv6Cidrs;
+    /**
+     * @return List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.
+     * 
+     */
+    private List<String> jdcloudCidrs;
+    /**
+     * @return Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+     * 
+     */
+    private @Nullable String networks;
 
     private GetIpRangesResult() {}
     /**
-     * @return The lexically ordered list of only the IPv4 China CIDR blocks.
+     * @return A digest of the IP data. Useful for determining if the data has changed.
      * 
      */
-    public List<String> chinaIpv4CidrBlocks() {
-        return this.chinaIpv4CidrBlocks;
-    }
-    /**
-     * @return The lexically ordered list of only the IPv6 China CIDR blocks.
-     * 
-     */
-    public List<String> chinaIpv6CidrBlocks() {
-        return this.chinaIpv6CidrBlocks;
-    }
-    /**
-     * @return The lexically ordered list of all non-China CIDR blocks.
-     * 
-     */
-    public List<String> cidrBlocks() {
-        return this.cidrBlocks;
+    public String etag() {
+        return this.etag;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -72,18 +60,32 @@ public final class GetIpRangesResult {
         return this.id;
     }
     /**
-     * @return The lexically ordered list of only the IPv4 CIDR blocks.
+     * @return List of Cloudflare IPv4 CIDR addresses.
      * 
      */
-    public List<String> ipv4CidrBlocks() {
-        return this.ipv4CidrBlocks;
+    public List<String> ipv4Cidrs() {
+        return this.ipv4Cidrs;
     }
     /**
-     * @return The lexically ordered list of only the IPv6 CIDR blocks.
+     * @return List of Cloudflare IPv6 CIDR addresses.
      * 
      */
-    public List<String> ipv6CidrBlocks() {
-        return this.ipv6CidrBlocks;
+    public List<String> ipv6Cidrs() {
+        return this.ipv6Cidrs;
+    }
+    /**
+     * @return List IPv4 and IPv6 CIDRs, only populated if `?networks=jdcloud` is used.
+     * 
+     */
+    public List<String> jdcloudCidrs() {
+        return this.jdcloudCidrs;
+    }
+    /**
+     * @return Specified as `jdcloud` to list IPs used by JD Cloud data centers.
+     * 
+     */
+    public Optional<String> networks() {
+        return Optional.ofNullable(this.networks);
     }
 
     public static Builder builder() {
@@ -95,55 +97,30 @@ public final class GetIpRangesResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<String> chinaIpv4CidrBlocks;
-        private List<String> chinaIpv6CidrBlocks;
-        private List<String> cidrBlocks;
+        private String etag;
         private String id;
-        private List<String> ipv4CidrBlocks;
-        private List<String> ipv6CidrBlocks;
+        private List<String> ipv4Cidrs;
+        private List<String> ipv6Cidrs;
+        private List<String> jdcloudCidrs;
+        private @Nullable String networks;
         public Builder() {}
         public Builder(GetIpRangesResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.chinaIpv4CidrBlocks = defaults.chinaIpv4CidrBlocks;
-    	      this.chinaIpv6CidrBlocks = defaults.chinaIpv6CidrBlocks;
-    	      this.cidrBlocks = defaults.cidrBlocks;
+    	      this.etag = defaults.etag;
     	      this.id = defaults.id;
-    	      this.ipv4CidrBlocks = defaults.ipv4CidrBlocks;
-    	      this.ipv6CidrBlocks = defaults.ipv6CidrBlocks;
+    	      this.ipv4Cidrs = defaults.ipv4Cidrs;
+    	      this.ipv6Cidrs = defaults.ipv6Cidrs;
+    	      this.jdcloudCidrs = defaults.jdcloudCidrs;
+    	      this.networks = defaults.networks;
         }
 
         @CustomType.Setter
-        public Builder chinaIpv4CidrBlocks(List<String> chinaIpv4CidrBlocks) {
-            if (chinaIpv4CidrBlocks == null) {
-              throw new MissingRequiredPropertyException("GetIpRangesResult", "chinaIpv4CidrBlocks");
+        public Builder etag(String etag) {
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "etag");
             }
-            this.chinaIpv4CidrBlocks = chinaIpv4CidrBlocks;
+            this.etag = etag;
             return this;
-        }
-        public Builder chinaIpv4CidrBlocks(String... chinaIpv4CidrBlocks) {
-            return chinaIpv4CidrBlocks(List.of(chinaIpv4CidrBlocks));
-        }
-        @CustomType.Setter
-        public Builder chinaIpv6CidrBlocks(List<String> chinaIpv6CidrBlocks) {
-            if (chinaIpv6CidrBlocks == null) {
-              throw new MissingRequiredPropertyException("GetIpRangesResult", "chinaIpv6CidrBlocks");
-            }
-            this.chinaIpv6CidrBlocks = chinaIpv6CidrBlocks;
-            return this;
-        }
-        public Builder chinaIpv6CidrBlocks(String... chinaIpv6CidrBlocks) {
-            return chinaIpv6CidrBlocks(List.of(chinaIpv6CidrBlocks));
-        }
-        @CustomType.Setter
-        public Builder cidrBlocks(List<String> cidrBlocks) {
-            if (cidrBlocks == null) {
-              throw new MissingRequiredPropertyException("GetIpRangesResult", "cidrBlocks");
-            }
-            this.cidrBlocks = cidrBlocks;
-            return this;
-        }
-        public Builder cidrBlocks(String... cidrBlocks) {
-            return cidrBlocks(List.of(cidrBlocks));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -154,35 +131,52 @@ public final class GetIpRangesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder ipv4CidrBlocks(List<String> ipv4CidrBlocks) {
-            if (ipv4CidrBlocks == null) {
-              throw new MissingRequiredPropertyException("GetIpRangesResult", "ipv4CidrBlocks");
+        public Builder ipv4Cidrs(List<String> ipv4Cidrs) {
+            if (ipv4Cidrs == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "ipv4Cidrs");
             }
-            this.ipv4CidrBlocks = ipv4CidrBlocks;
+            this.ipv4Cidrs = ipv4Cidrs;
             return this;
         }
-        public Builder ipv4CidrBlocks(String... ipv4CidrBlocks) {
-            return ipv4CidrBlocks(List.of(ipv4CidrBlocks));
+        public Builder ipv4Cidrs(String... ipv4Cidrs) {
+            return ipv4Cidrs(List.of(ipv4Cidrs));
         }
         @CustomType.Setter
-        public Builder ipv6CidrBlocks(List<String> ipv6CidrBlocks) {
-            if (ipv6CidrBlocks == null) {
-              throw new MissingRequiredPropertyException("GetIpRangesResult", "ipv6CidrBlocks");
+        public Builder ipv6Cidrs(List<String> ipv6Cidrs) {
+            if (ipv6Cidrs == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "ipv6Cidrs");
             }
-            this.ipv6CidrBlocks = ipv6CidrBlocks;
+            this.ipv6Cidrs = ipv6Cidrs;
             return this;
         }
-        public Builder ipv6CidrBlocks(String... ipv6CidrBlocks) {
-            return ipv6CidrBlocks(List.of(ipv6CidrBlocks));
+        public Builder ipv6Cidrs(String... ipv6Cidrs) {
+            return ipv6Cidrs(List.of(ipv6Cidrs));
+        }
+        @CustomType.Setter
+        public Builder jdcloudCidrs(List<String> jdcloudCidrs) {
+            if (jdcloudCidrs == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "jdcloudCidrs");
+            }
+            this.jdcloudCidrs = jdcloudCidrs;
+            return this;
+        }
+        public Builder jdcloudCidrs(String... jdcloudCidrs) {
+            return jdcloudCidrs(List.of(jdcloudCidrs));
+        }
+        @CustomType.Setter
+        public Builder networks(@Nullable String networks) {
+
+            this.networks = networks;
+            return this;
         }
         public GetIpRangesResult build() {
             final var _resultValue = new GetIpRangesResult();
-            _resultValue.chinaIpv4CidrBlocks = chinaIpv4CidrBlocks;
-            _resultValue.chinaIpv6CidrBlocks = chinaIpv6CidrBlocks;
-            _resultValue.cidrBlocks = cidrBlocks;
+            _resultValue.etag = etag;
             _resultValue.id = id;
-            _resultValue.ipv4CidrBlocks = ipv4CidrBlocks;
-            _resultValue.ipv6CidrBlocks = ipv6CidrBlocks;
+            _resultValue.ipv4Cidrs = ipv4Cidrs;
+            _resultValue.ipv6Cidrs = ipv6Cidrs;
+            _resultValue.jdcloudCidrs = jdcloudCidrs;
+            _resultValue.networks = networks;
             return _resultValue;
         }
     }

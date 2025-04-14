@@ -6,12 +6,13 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.CustomHostnameArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.CustomHostnameState;
+import com.pulumi.cloudflare.outputs.CustomHostnameOwnershipVerification;
+import com.pulumi.cloudflare.outputs.CustomHostnameOwnershipVerificationHttp;
 import com.pulumi.cloudflare.outputs.CustomHostnameSsl;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,176 +20,171 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CustomHostname;
- * import com.pulumi.cloudflare.CustomHostnameArgs;
- * import com.pulumi.cloudflare.inputs.CustomHostnameSslArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new CustomHostname("example", CustomHostnameArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .hostname("hostname.example.com")
- *             .ssls(CustomHostnameSslArgs.builder()
- *                 .method("txt")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/customHostname:CustomHostname example 1d5fdc9e88c8a8c4518b068cd94331fe/0d89c70d-ad9f-4843-b99f-6cc0252067e9
+ * $ pulumi import cloudflare:index/customHostname:CustomHostname example &#39;&lt;zone_id&gt;/&lt;custom_hostname_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/customHostname:CustomHostname")
 public class CustomHostname extends com.pulumi.resources.CustomResource {
     /**
-     * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * This is the time the hostname was created.
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return This is the time the hostname was created.
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      * 
      */
     @Export(name="customMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customMetadata;
 
     /**
-     * @return Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
+     * @return Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
      * 
      */
     public Output<Optional<Map<String,String>>> customMetadata() {
         return Codegen.optional(this.customMetadata);
     }
     /**
-     * The custom origin server used for certificates.
+     * a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      * 
      */
     @Export(name="customOriginServer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customOriginServer;
 
     /**
-     * @return The custom origin server used for certificates.
+     * @return a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
      * 
      */
     public Output<Optional<String>> customOriginServer() {
         return Codegen.optional(this.customOriginServer);
     }
     /**
-     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      * 
      */
     @Export(name="customOriginSni", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customOriginSni;
 
     /**
-     * @return The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     * @return A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string &#39;:request*host*header:&#39; which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
      * 
      */
     public Output<Optional<String>> customOriginSni() {
         return Codegen.optional(this.customOriginSni);
     }
     /**
-     * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * The custom hostname that will point to your hostname via CNAME.
      * 
      */
     @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
-     * @return Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
+     * @return The custom hostname that will point to your hostname via CNAME.
      * 
      */
     public Output<String> hostname() {
         return this.hostname;
     }
-    @Export(name="ownershipVerification", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> ownershipVerification;
+    /**
+     * This is a record which can be placed to activate a hostname.
+     * 
+     */
+    @Export(name="ownershipVerification", refs={CustomHostnameOwnershipVerification.class}, tree="[0]")
+    private Output<CustomHostnameOwnershipVerification> ownershipVerification;
 
-    public Output<Map<String,String>> ownershipVerification() {
+    /**
+     * @return This is a record which can be placed to activate a hostname.
+     * 
+     */
+    public Output<CustomHostnameOwnershipVerification> ownershipVerification() {
         return this.ownershipVerification;
     }
-    @Export(name="ownershipVerificationHttp", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> ownershipVerificationHttp;
+    /**
+     * This presents the token to be served by the given http url to activate a hostname.
+     * 
+     */
+    @Export(name="ownershipVerificationHttp", refs={CustomHostnameOwnershipVerificationHttp.class}, tree="[0]")
+    private Output<CustomHostnameOwnershipVerificationHttp> ownershipVerificationHttp;
 
-    public Output<Map<String,String>> ownershipVerificationHttp() {
+    /**
+     * @return This presents the token to be served by the given http url to activate a hostname.
+     * 
+     */
+    public Output<CustomHostnameOwnershipVerificationHttp> ownershipVerificationHttp() {
         return this.ownershipVerificationHttp;
     }
     /**
      * SSL properties used when creating the custom hostname.
      * 
      */
-    @Export(name="ssls", refs={List.class,CustomHostnameSsl.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<CustomHostnameSsl>> ssls;
+    @Export(name="ssl", refs={CustomHostnameSsl.class}, tree="[0]")
+    private Output<CustomHostnameSsl> ssl;
 
     /**
      * @return SSL properties used when creating the custom hostname.
      * 
      */
-    public Output<Optional<List<CustomHostnameSsl>>> ssls() {
-        return Codegen.optional(this.ssls);
+    public Output<CustomHostnameSsl> ssl() {
+        return this.ssl;
     }
     /**
-     * Status of the certificate.
+     * Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of the certificate.
+     * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;active*redeploying&#34;, &#34;moved&#34;, &#34;pending*deletion&#34;, &#34;deleted&#34;, &#34;pending*blocked&#34;, &#34;pending*migration&#34;, &#34;pending*provisioned&#34;, &#34;test*pending&#34;, &#34;test*active&#34;, &#34;test*active*apex&#34;, &#34;test*blocked&#34;, &#34;test_failed&#34;, &#34;provisioned&#34;, &#34;blocked&#34;.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * These are errors that were encountered while trying to activate a hostname.
      * 
      */
-    @Export(name="waitForSslPendingValidation", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> waitForSslPendingValidation;
+    @Export(name="verificationErrors", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> verificationErrors;
 
     /**
-     * @return Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
+     * @return These are errors that were encountered while trying to activate a hostname.
      * 
      */
-    public Output<Optional<Boolean>> waitForSslPendingValidation() {
-        return Codegen.optional(this.waitForSslPendingValidation);
+    public Output<List<String>> verificationErrors() {
+        return this.verificationErrors;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

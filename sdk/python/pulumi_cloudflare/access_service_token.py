@@ -23,22 +23,19 @@ class AccessServiceTokenArgs:
                  name: pulumi.Input[builtins.str],
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  duration: Optional[pulumi.Input[builtins.str]] = None,
-                 min_days_for_renewal: Optional[pulumi.Input[builtins.int]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AccessServiceToken resource.
-        :param pulumi.Input[builtins.str] name: Friendly name of the token's intent.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] name: The name of the service token.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         pulumi.set(__self__, "name", name)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
-        if min_days_for_renewal is not None:
-            pulumi.set(__self__, "min_days_for_renewal", min_days_for_renewal)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -46,7 +43,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        Friendly name of the token's intent.
+        The name of the service token.
         """
         return pulumi.get(self, "name")
 
@@ -58,7 +55,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -70,7 +67,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         """
         return pulumi.get(self, "duration")
 
@@ -79,19 +76,10 @@ class AccessServiceTokenArgs:
         pulumi.set(self, "duration", value)
 
     @property
-    @pulumi.getter(name="minDaysForRenewal")
-    def min_days_for_renewal(self) -> Optional[pulumi.Input[builtins.int]]:
-        return pulumi.get(self, "min_days_for_renewal")
-
-    @min_days_for_renewal.setter
-    def min_days_for_renewal(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "min_days_for_renewal", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -106,20 +94,21 @@ class _AccessServiceTokenState:
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_id: Optional[pulumi.Input[builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[builtins.str]] = None,
                  duration: Optional[pulumi.Input[builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[builtins.str]] = None,
-                 min_days_for_renewal: Optional[pulumi.Input[builtins.int]] = None,
+                 last_seen_at: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessServiceToken resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] client_id: Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] client_secret: A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-        :param pulumi.Input[builtins.str] expires_at: Date when the token expires.
-        :param pulumi.Input[builtins.str] name: Friendly name of the token's intent.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
+        :param pulumi.Input[builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
+        :param pulumi.Input[builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[builtins.str] name: The name of the service token.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -127,14 +116,18 @@ class _AccessServiceTokenState:
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if expires_at is not None:
             pulumi.set(__self__, "expires_at", expires_at)
-        if min_days_for_renewal is not None:
-            pulumi.set(__self__, "min_days_for_renewal", min_days_for_renewal)
+        if last_seen_at is not None:
+            pulumi.set(__self__, "last_seen_at", last_seen_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -142,7 +135,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -154,7 +147,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+        The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         """
         return pulumi.get(self, "client_id")
 
@@ -166,7 +159,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+        The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
         """
         return pulumi.get(self, "client_secret")
 
@@ -175,10 +168,19 @@ class _AccessServiceTokenState:
         pulumi.set(self, "client_secret", value)
 
     @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         """
         return pulumi.get(self, "duration")
 
@@ -189,9 +191,6 @@ class _AccessServiceTokenState:
     @property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Date when the token expires.
-        """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
@@ -199,19 +198,19 @@ class _AccessServiceTokenState:
         pulumi.set(self, "expires_at", value)
 
     @property
-    @pulumi.getter(name="minDaysForRenewal")
-    def min_days_for_renewal(self) -> Optional[pulumi.Input[builtins.int]]:
-        return pulumi.get(self, "min_days_for_renewal")
+    @pulumi.getter(name="lastSeenAt")
+    def last_seen_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "last_seen_at")
 
-    @min_days_for_renewal.setter
-    def min_days_for_renewal(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "min_days_for_renewal", value)
+    @last_seen_at.setter
+    def last_seen_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_seen_at", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Friendly name of the token's intent.
+        The name of the service token.
         """
         return pulumi.get(self, "name")
 
@@ -220,10 +219,19 @@ class _AccessServiceTokenState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -232,41 +240,46 @@ class _AccessServiceTokenState:
         pulumi.set(self, "zone_id", value)
 
 
+warnings.warn("""cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken""", DeprecationWarning)
+
+
 class AccessServiceToken(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  duration: Optional[pulumi.Input[builtins.str]] = None,
-                 min_days_for_renewal: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Access Service Tokens are used for service-to-service communication
-        when an application is behind Cloudflare Access.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_service_token = cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token",
+            name="CI/CD token",
+            zone_id="zone_id",
+            duration="60m")
+        ```
 
         ## Import
 
-        If you are importing an Access Service Token you will not have the
-
-        client_secret available in the state for use. The client_secret is only
-
-        available once, at creation. In most cases, it is better to just create a new
-
-        resource should you need to reference it in other resources.
-
         ```sh
-        $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
+        $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example '<{accounts|zones}/{account_id|zone_id}>/<service_token_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-        :param pulumi.Input[builtins.str] name: Friendly name of the token's intent.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[builtins.str] name: The name of the service token.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
     @overload
@@ -275,21 +288,22 @@ class AccessServiceToken(pulumi.CustomResource):
                  args: AccessServiceTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Access Service Tokens are used for service-to-service communication
-        when an application is behind Cloudflare Access.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zero_trust_access_service_token = cloudflare.ZeroTrustAccessServiceToken("example_zero_trust_access_service_token",
+            name="CI/CD token",
+            zone_id="zone_id",
+            duration="60m")
+        ```
 
         ## Import
 
-        If you are importing an Access Service Token you will not have the
-
-        client_secret available in the state for use. The client_secret is only
-
-        available once, at creation. In most cases, it is better to just create a new
-
-        resource should you need to reference it in other resources.
-
         ```sh
-        $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
+        $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example '<{accounts|zones}/{account_id|zone_id}>/<service_token_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -309,10 +323,10 @@ class AccessServiceToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  duration: Optional[pulumi.Input[builtins.str]] = None,
-                 min_days_for_renewal: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""AccessServiceToken is deprecated: cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -323,14 +337,18 @@ class AccessServiceToken(pulumi.CustomResource):
 
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["duration"] = duration
-            __props__.__dict__["min_days_for_renewal"] = min_days_for_renewal
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["client_id"] = None
             __props__.__dict__["client_secret"] = None
+            __props__.__dict__["created_at"] = None
             __props__.__dict__["expires_at"] = None
+            __props__.__dict__["last_seen_at"] = None
+            __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/accessServiceToken:AccessServiceToken")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AccessServiceToken, __self__).__init__(
@@ -346,10 +364,12 @@ class AccessServiceToken(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[builtins.str]] = None,
             client_id: Optional[pulumi.Input[builtins.str]] = None,
             client_secret: Optional[pulumi.Input[builtins.str]] = None,
+            created_at: Optional[pulumi.Input[builtins.str]] = None,
             duration: Optional[pulumi.Input[builtins.str]] = None,
             expires_at: Optional[pulumi.Input[builtins.str]] = None,
-            min_days_for_renewal: Optional[pulumi.Input[builtins.int]] = None,
+            last_seen_at: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
+            updated_at: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'AccessServiceToken':
         """
         Get an existing AccessServiceToken resource's state with the given name, id, and optional extra
@@ -358,13 +378,12 @@ class AccessServiceToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[builtins.str] client_id: Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] client_secret: A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-        :param pulumi.Input[builtins.str] expires_at: Date when the token expires.
-        :param pulumi.Input[builtins.str] name: Friendly name of the token's intent.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
+        :param pulumi.Input[builtins.str] client_id: The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
+        :param pulumi.Input[builtins.str] client_secret: The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
+        :param pulumi.Input[builtins.str] duration: The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+        :param pulumi.Input[builtins.str] name: The name of the service token.
+        :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -373,10 +392,12 @@ class AccessServiceToken(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_secret"] = client_secret
+        __props__.__dict__["created_at"] = created_at
         __props__.__dict__["duration"] = duration
         __props__.__dict__["expires_at"] = expires_at
-        __props__.__dict__["min_days_for_renewal"] = min_days_for_renewal
+        __props__.__dict__["last_seen_at"] = last_seen_at
         __props__.__dict__["name"] = name
+        __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["zone_id"] = zone_id
         return AccessServiceToken(resource_name, opts=opts, __props__=__props__)
 
@@ -384,7 +405,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -392,7 +413,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[builtins.str]:
         """
-        Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+        The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
         """
         return pulumi.get(self, "client_id")
 
@@ -400,44 +421,51 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[builtins.str]:
         """
-        A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+        The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
         """
         return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Output[builtins.str]:
         """
-        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+        The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
         """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[builtins.str]:
-        """
-        Date when the token expires.
-        """
         return pulumi.get(self, "expires_at")
 
     @property
-    @pulumi.getter(name="minDaysForRenewal")
-    def min_days_for_renewal(self) -> pulumi.Output[Optional[builtins.int]]:
-        return pulumi.get(self, "min_days_for_renewal")
+    @pulumi.getter(name="lastSeenAt")
+    def last_seen_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "last_seen_at")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Friendly name of the token's intent.
+        The name of the service token.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         return pulumi.get(self, "zone_id")
 

@@ -13,10 +13,10 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppCustomClaimSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the attribute as provided by the IDP.
+        /// The name of the IdP claim.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("nameByIdp")]
         private InputMap<string>? _nameByIdp;

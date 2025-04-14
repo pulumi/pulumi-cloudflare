@@ -7,34 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
- *
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.TeamsRule("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "office",
- *     description: "desc",
- *     precedence: 1,
- *     action: "block",
- *     filters: ["http"],
- *     traffic: "http.request.uri == \"https://www.example.com/malicious\"",
- *     ruleSettings: {
- *         blockPageEnabled: true,
- *         blockPageReason: "access not permitted",
- *     },
- * });
- * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
+ * $ pulumi import cloudflare:index/teamsRule:TeamsRule example '<account_id>/<rule_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy
  */
 export class TeamsRule extends pulumi.CustomResource {
     /**
@@ -47,6 +28,7 @@ export class TeamsRule extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TeamsRuleState, opts?: pulumi.CustomResourceOptions): TeamsRule {
+        pulumi.log.warn("TeamsRule is deprecated: cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy")
         return new TeamsRule(name, <any>state, { ...opts, id: id });
     }
 
@@ -64,50 +46,67 @@ export class TeamsRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsRule.__pulumiType;
     }
 
-    /**
-     * The account identifier to target for the resource.
-     */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
+     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
      */
     public readonly action!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The description of the teams rule.
+     * Date of deletion, if any.
      */
-    public readonly description!: pulumi.Output<string>;
+    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
     /**
-     * The wirefilter expression to be used for devicePosture check matching.
+     * The description of the rule.
      */
-    public readonly devicePosture!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Indicator of rule enablement.
+     * The wirefilter expression used for device posture check matching.
+     */
+    public readonly devicePosture!: pulumi.Output<string | undefined>;
+    /**
+     * True if the rule is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The protocol or layer to evaluate the traffic and identity expressions.
+     * The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy's `schedule` configuration, if any.
+     */
+    public readonly expiration!: pulumi.Output<outputs.TeamsRuleExpiration>;
+    /**
+     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     public readonly filters!: pulumi.Output<string[] | undefined>;
     /**
-     * The wirefilter expression to be used for identity matching.
+     * The wirefilter expression used for identity matching.
      */
-    public readonly identity!: pulumi.Output<string>;
+    public readonly identity!: pulumi.Output<string | undefined>;
     /**
-     * The name of the teams rule.
+     * The name of the rule.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The evaluation precedence of the teams rule.
+     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      */
-    public readonly precedence!: pulumi.Output<number>;
+    public readonly precedence!: pulumi.Output<number | undefined>;
     /**
-     * Additional rule settings.
+     * Additional settings that modify the rule's action.
      */
     public readonly ruleSettings!: pulumi.Output<outputs.TeamsRuleRuleSettings>;
     /**
-     * The wirefilter expression to be used for traffic matching.
+     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      */
-    public readonly traffic!: pulumi.Output<string>;
+    public readonly schedule!: pulumi.Output<outputs.TeamsRuleSchedule>;
+    /**
+     * The wirefilter expression used for traffic matching.
+     */
+    public readonly traffic!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * version number of the rule
+     */
     public /*out*/ readonly version!: pulumi.Output<number>;
 
     /**
@@ -117,23 +116,31 @@ export class TeamsRule extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy */
     constructor(name: string, args: TeamsRuleArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy */
     constructor(name: string, argsOrState?: TeamsRuleArgs | TeamsRuleState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("TeamsRule is deprecated: cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsRuleState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["devicePosture"] = state ? state.devicePosture : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["expiration"] = state ? state.expiration : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["identity"] = state ? state.identity : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["precedence"] = state ? state.precedence : undefined;
             resourceInputs["ruleSettings"] = state ? state.ruleSettings : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["traffic"] = state ? state.traffic : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as TeamsRuleArgs | undefined;
@@ -143,29 +150,30 @@ export class TeamsRule extends pulumi.CustomResource {
             if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'description'");
-            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
-            }
-            if ((!args || args.precedence === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'precedence'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["devicePosture"] = args ? args.devicePosture : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["expiration"] = args ? args.expiration : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["precedence"] = args ? args.precedence : undefined;
             resourceInputs["ruleSettings"] = args ? args.ruleSettings : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["traffic"] = args ? args.traffic : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["deletedAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsRule:TeamsRule" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TeamsRule.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -174,50 +182,67 @@ export class TeamsRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsRule resources.
  */
 export interface TeamsRuleState {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId?: pulumi.Input<string>;
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
+     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
      */
     action?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * The description of the teams rule.
+     * Date of deletion, if any.
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * The description of the rule.
      */
     description?: pulumi.Input<string>;
     /**
-     * The wirefilter expression to be used for devicePosture check matching.
+     * The wirefilter expression used for device posture check matching.
      */
     devicePosture?: pulumi.Input<string>;
     /**
-     * Indicator of rule enablement.
+     * True if the rule is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The protocol or layer to evaluate the traffic and identity expressions.
+     * The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy's `schedule` configuration, if any.
+     */
+    expiration?: pulumi.Input<inputs.TeamsRuleExpiration>;
+    /**
+     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The wirefilter expression to be used for identity matching.
+     * The wirefilter expression used for identity matching.
      */
     identity?: pulumi.Input<string>;
     /**
-     * The name of the teams rule.
+     * The name of the rule.
      */
     name?: pulumi.Input<string>;
     /**
-     * The evaluation precedence of the teams rule.
+     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      */
     precedence?: pulumi.Input<number>;
     /**
-     * Additional rule settings.
+     * Additional settings that modify the rule's action.
      */
     ruleSettings?: pulumi.Input<inputs.TeamsRuleRuleSettings>;
     /**
-     * The wirefilter expression to be used for traffic matching.
+     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     */
+    schedule?: pulumi.Input<inputs.TeamsRuleSchedule>;
+    /**
+     * The wirefilter expression used for traffic matching.
      */
     traffic?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * version number of the rule
+     */
     version?: pulumi.Input<number>;
 }
 
@@ -225,48 +250,56 @@ export interface TeamsRuleState {
  * The set of arguments for constructing a TeamsRule resource.
  */
 export interface TeamsRuleArgs {
-    /**
-     * The account identifier to target for the resource.
-     */
     accountId: pulumi.Input<string>;
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
+     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
      */
     action: pulumi.Input<string>;
     /**
-     * The description of the teams rule.
+     * The description of the rule.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
-     * The wirefilter expression to be used for devicePosture check matching.
+     * The wirefilter expression used for device posture check matching.
      */
     devicePosture?: pulumi.Input<string>;
     /**
-     * Indicator of rule enablement.
+     * True if the rule is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The protocol or layer to evaluate the traffic and identity expressions.
+     * The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy's `schedule` configuration, if any.
+     */
+    expiration?: pulumi.Input<inputs.TeamsRuleExpiration>;
+    /**
+     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      */
     filters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The wirefilter expression to be used for identity matching.
+     * The wirefilter expression used for identity matching.
      */
     identity?: pulumi.Input<string>;
     /**
-     * The name of the teams rule.
+     * The name of the rule.
      */
     name: pulumi.Input<string>;
     /**
-     * The evaluation precedence of the teams rule.
+     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      */
-    precedence: pulumi.Input<number>;
+    precedence?: pulumi.Input<number>;
     /**
-     * Additional rule settings.
+     * Additional settings that modify the rule's action.
      */
     ruleSettings?: pulumi.Input<inputs.TeamsRuleRuleSettings>;
     /**
-     * The wirefilter expression to be used for traffic matching.
+     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     */
+    schedule?: pulumi.Input<inputs.TeamsRuleSchedule>;
+    /**
+     * The wirefilter expression used for traffic matching.
      */
     traffic?: pulumi.Input<string>;
 }

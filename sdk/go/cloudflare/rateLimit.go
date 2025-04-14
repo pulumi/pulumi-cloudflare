@@ -8,14 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare rate limit resource for a given zone. This can
-// be used to limit the traffic you receive zone-wide, or matching more
-// specific types of requests/responses.
-//
 // > `RateLimit` is in a deprecation phase until June 15th, 2025.
 //
 //	During this time period, this resource is still
@@ -30,75 +26,48 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewRateLimit(ctx, "example", &cloudflare.RateLimitArgs{
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Threshold: pulumi.Int(2000),
-//				Period:    pulumi.Int(2),
+//			_, err := cloudflare.NewRateLimit(ctx, "example_rate_limit", &cloudflare.RateLimitArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Action: &cloudflare.RateLimitActionArgs{
+//					Mode: pulumi.String("simulate"),
+//					Response: &cloudflare.RateLimitActionResponseArgs{
+//						Body:        pulumi.String("<error>This request has been rate-limited.</error>"),
+//						ContentType: pulumi.String("text/xml"),
+//					},
+//					Timeout: pulumi.Float64(86400),
+//				},
 //				Match: &cloudflare.RateLimitMatchArgs{
+//					Headers: cloudflare.RateLimitMatchHeaderArray{
+//						&cloudflare.RateLimitMatchHeaderArgs{
+//							Name:  pulumi.String("Cf-Cache-Status"),
+//							Op:    pulumi.String("eq"),
+//							Value: pulumi.String("HIT"),
+//						},
+//					},
 //					Request: &cloudflare.RateLimitMatchRequestArgs{
-//						UrlPattern: pulumi.Sprintf("%v/*", cloudflareZone),
+//						Methods: pulumi.StringArray{
+//							pulumi.String("GET"),
+//							pulumi.String("POST"),
+//						},
 //						Schemes: pulumi.StringArray{
 //							pulumi.String("HTTP"),
 //							pulumi.String("HTTPS"),
 //						},
-//						Methods: pulumi.StringArray{
-//							pulumi.String("GET"),
-//							pulumi.String("POST"),
-//							pulumi.String("PUT"),
-//							pulumi.String("DELETE"),
-//							pulumi.String("PATCH"),
-//							pulumi.String("HEAD"),
-//						},
+//						Url: pulumi.String("*.example.org/path*"),
 //					},
 //					Response: &cloudflare.RateLimitMatchResponseArgs{
-//						Statuses: pulumi.IntArray{
-//							pulumi.Int(200),
-//							pulumi.Int(201),
-//							pulumi.Int(202),
-//							pulumi.Int(301),
-//							pulumi.Int(429),
-//						},
-//						OriginTraffic: pulumi.Bool(false),
-//						Headers: pulumi.StringMapArray{
-//							pulumi.StringMap{
-//								"name":  pulumi.String("Host"),
-//								"op":    pulumi.String("eq"),
-//								"value": pulumi.String("localhost"),
-//							},
-//							pulumi.StringMap{
-//								"name":  pulumi.String("X-Example"),
-//								"op":    pulumi.String("ne"),
-//								"value": pulumi.String("my-example"),
-//							},
-//						},
+//						OriginTraffic: pulumi.Bool(true),
 //					},
 //				},
-//				Action: &cloudflare.RateLimitActionArgs{
-//					Mode:    pulumi.String("simulate"),
-//					Timeout: pulumi.Int(43200),
-//					Response: &cloudflare.RateLimitActionResponseArgs{
-//						ContentType: pulumi.String("text/plain"),
-//						Body:        pulumi.String("custom response body"),
-//					},
-//				},
-//				Correlate: &cloudflare.RateLimitCorrelateArgs{
-//					By: pulumi.String("nat"),
-//				},
-//				Disabled:    pulumi.Bool(false),
-//				Description: pulumi.String("example rate limit for a zone"),
-//				BypassUrlPatterns: pulumi.StringArray{
-//					pulumi.String("example.com/bypass1"),
-//					pulumi.String("example.com/bypass2"),
-//				},
+//				Period:    pulumi.Float64(900),
+//				Threshold: pulumi.Float64(60),
 //			})
 //			if err != nil {
 //				return err
@@ -112,27 +81,26 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
+// $ pulumi import cloudflare:index/rateLimit:RateLimit example '<zone_id>/<rate_limit_id>'
 // ```
 type RateLimit struct {
 	pulumi.CustomResourceState
 
-	// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-	Action            RateLimitActionOutput    `pulumi:"action"`
-	BypassUrlPatterns pulumi.StringArrayOutput `pulumi:"bypassUrlPatterns"`
-	// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-	Correlate RateLimitCorrelatePtrOutput `pulumi:"correlate"`
-	// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether this ratelimit is currently disabled. Defaults to `false`.
-	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
+	Action RateLimitActionOutput `pulumi:"action"`
+	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+	Bypasses RateLimitBypassArrayOutput `pulumi:"bypasses"`
+	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	Description pulumi.StringOutput `pulumi:"description"`
+	// When true, indicates that the rate limit is currently disabled.
+	Disabled pulumi.BoolOutput `pulumi:"disabled"`
+	// Determines which traffic the rate limit counts towards the threshold.
 	Match RateLimitMatchOutput `pulumi:"match"`
-	// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
-	Period pulumi.IntOutput `pulumi:"period"`
-	// The threshold that triggers the rate limit mitigations, combine with period.
-	Threshold pulumi.IntOutput `pulumi:"threshold"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
+	Period pulumi.Float64Output `pulumi:"period"`
+	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+	Threshold pulumi.Float64Output `pulumi:"threshold"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -145,6 +113,9 @@ func NewRateLimit(ctx *pulumi.Context,
 
 	if args.Action == nil {
 		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.Match == nil {
+		return nil, errors.New("invalid value for required argument 'Match'")
 	}
 	if args.Period == nil {
 		return nil, errors.New("invalid value for required argument 'Period'")
@@ -178,42 +149,40 @@ func GetRateLimit(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RateLimit resources.
 type rateLimitState struct {
-	// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-	Action            *RateLimitAction `pulumi:"action"`
-	BypassUrlPatterns []string         `pulumi:"bypassUrlPatterns"`
-	// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-	Correlate *RateLimitCorrelate `pulumi:"correlate"`
-	// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
+	Action *RateLimitAction `pulumi:"action"`
+	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+	Bypasses []RateLimitBypass `pulumi:"bypasses"`
+	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
 	Description *string `pulumi:"description"`
-	// Whether this ratelimit is currently disabled. Defaults to `false`.
+	// When true, indicates that the rate limit is currently disabled.
 	Disabled *bool `pulumi:"disabled"`
-	// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+	// Determines which traffic the rate limit counts towards the threshold.
 	Match *RateLimitMatch `pulumi:"match"`
-	// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
-	Period *int `pulumi:"period"`
-	// The threshold that triggers the rate limit mitigations, combine with period.
-	Threshold *int `pulumi:"threshold"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
+	Period *float64 `pulumi:"period"`
+	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+	Threshold *float64 `pulumi:"threshold"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type RateLimitState struct {
-	// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-	Action            RateLimitActionPtrInput
-	BypassUrlPatterns pulumi.StringArrayInput
-	// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-	Correlate RateLimitCorrelatePtrInput
-	// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
+	Action RateLimitActionPtrInput
+	// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+	Bypasses RateLimitBypassArrayInput
+	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
 	Description pulumi.StringPtrInput
-	// Whether this ratelimit is currently disabled. Defaults to `false`.
+	// When true, indicates that the rate limit is currently disabled.
 	Disabled pulumi.BoolPtrInput
-	// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+	// Determines which traffic the rate limit counts towards the threshold.
 	Match RateLimitMatchPtrInput
-	// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
-	Period pulumi.IntPtrInput
-	// The threshold that triggers the rate limit mitigations, combine with period.
-	Threshold pulumi.IntPtrInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
+	Period pulumi.Float64PtrInput
+	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+	Threshold pulumi.Float64PtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -222,43 +191,29 @@ func (RateLimitState) ElementType() reflect.Type {
 }
 
 type rateLimitArgs struct {
-	// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-	Action            RateLimitAction `pulumi:"action"`
-	BypassUrlPatterns []string        `pulumi:"bypassUrlPatterns"`
-	// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-	Correlate *RateLimitCorrelate `pulumi:"correlate"`
-	// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-	Description *string `pulumi:"description"`
-	// Whether this ratelimit is currently disabled. Defaults to `false`.
-	Disabled *bool `pulumi:"disabled"`
-	// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
-	Match *RateLimitMatch `pulumi:"match"`
-	// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
-	Period int `pulumi:"period"`
-	// The threshold that triggers the rate limit mitigations, combine with period.
-	Threshold int `pulumi:"threshold"`
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
+	Action RateLimitAction `pulumi:"action"`
+	// Determines which traffic the rate limit counts towards the threshold.
+	Match RateLimitMatch `pulumi:"match"`
+	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
+	Period float64 `pulumi:"period"`
+	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+	Threshold float64 `pulumi:"threshold"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a RateLimit resource.
 type RateLimitArgs struct {
-	// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-	Action            RateLimitActionInput
-	BypassUrlPatterns pulumi.StringArrayInput
-	// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-	Correlate RateLimitCorrelatePtrInput
-	// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-	Description pulumi.StringPtrInput
-	// Whether this ratelimit is currently disabled. Defaults to `false`.
-	Disabled pulumi.BoolPtrInput
-	// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
-	Match RateLimitMatchPtrInput
-	// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
-	Period pulumi.IntInput
-	// The threshold that triggers the rate limit mitigations, combine with period.
-	Threshold pulumi.IntInput
-	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
+	Action RateLimitActionInput
+	// Determines which traffic the rate limit counts towards the threshold.
+	Match RateLimitMatchInput
+	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
+	Period pulumi.Float64Input
+	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+	Threshold pulumi.Float64Input
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -349,46 +304,42 @@ func (o RateLimitOutput) ToRateLimitOutputWithContext(ctx context.Context) RateL
 	return o
 }
 
-// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 func (o RateLimitOutput) Action() RateLimitActionOutput {
 	return o.ApplyT(func(v *RateLimit) RateLimitActionOutput { return v.Action }).(RateLimitActionOutput)
 }
 
-func (o RateLimitOutput) BypassUrlPatterns() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RateLimit) pulumi.StringArrayOutput { return v.BypassUrlPatterns }).(pulumi.StringArrayOutput)
+// Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
+func (o RateLimitOutput) Bypasses() RateLimitBypassArrayOutput {
+	return o.ApplyT(func(v *RateLimit) RateLimitBypassArrayOutput { return v.Bypasses }).(RateLimitBypassArrayOutput)
 }
 
-// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-func (o RateLimitOutput) Correlate() RateLimitCorrelatePtrOutput {
-	return o.ApplyT(func(v *RateLimit) RateLimitCorrelatePtrOutput { return v.Correlate }).(RateLimitCorrelatePtrOutput)
+// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+func (o RateLimitOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-func (o RateLimitOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RateLimit) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+// When true, indicates that the rate limit is currently disabled.
+func (o RateLimitOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// Whether this ratelimit is currently disabled. Defaults to `false`.
-func (o RateLimitOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RateLimit) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
-}
-
-// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+// Determines which traffic the rate limit counts towards the threshold.
 func (o RateLimitOutput) Match() RateLimitMatchOutput {
 	return o.ApplyT(func(v *RateLimit) RateLimitMatchOutput { return v.Match }).(RateLimitMatchOutput)
 }
 
-// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
-func (o RateLimitOutput) Period() pulumi.IntOutput {
-	return o.ApplyT(func(v *RateLimit) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
+func (o RateLimitOutput) Period() pulumi.Float64Output {
+	return o.ApplyT(func(v *RateLimit) pulumi.Float64Output { return v.Period }).(pulumi.Float64Output)
 }
 
-// The threshold that triggers the rate limit mitigations, combine with period.
-func (o RateLimitOutput) Threshold() pulumi.IntOutput {
-	return o.ApplyT(func(v *RateLimit) pulumi.IntOutput { return v.Threshold }).(pulumi.IntOutput)
+// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
+func (o RateLimitOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v *RateLimit) pulumi.Float64Output { return v.Threshold }).(pulumi.Float64Output)
 }
 
-// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o RateLimitOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RateLimit) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

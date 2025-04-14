@@ -3,12 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.TunnelConfigConfigIngressRuleArgs;
+import com.pulumi.cloudflare.inputs.TunnelConfigConfigIngressArgs;
 import com.pulumi.cloudflare.inputs.TunnelConfigConfigOriginRequestArgs;
 import com.pulumi.cloudflare.inputs.TunnelConfigConfigWarpRoutingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,36 +19,44 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
     public static final TunnelConfigConfigArgs Empty = new TunnelConfigConfigArgs();
 
     /**
-     * Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      * 
      */
-    @Import(name="ingressRules", required=true)
-    private Output<List<TunnelConfigConfigIngressRuleArgs>> ingressRules;
+    @Import(name="ingresses")
+    private @Nullable Output<List<TunnelConfigConfigIngressArgs>> ingresses;
 
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      * 
      */
-    public Output<List<TunnelConfigConfigIngressRuleArgs>> ingressRules() {
-        return this.ingressRules;
+    public Optional<Output<List<TunnelConfigConfigIngressArgs>>> ingresses() {
+        return Optional.ofNullable(this.ingresses);
     }
 
+    /**
+     * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     * 
+     */
     @Import(name="originRequest")
     private @Nullable Output<TunnelConfigConfigOriginRequestArgs> originRequest;
 
+    /**
+     * @return Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+     * 
+     */
     public Optional<Output<TunnelConfigConfigOriginRequestArgs>> originRequest() {
         return Optional.ofNullable(this.originRequest);
     }
 
     /**
-     * If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      * 
      */
     @Import(name="warpRouting")
     private @Nullable Output<TunnelConfigConfigWarpRoutingArgs> warpRouting;
 
     /**
-     * @return If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+     * @return Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      * 
      */
     public Optional<Output<TunnelConfigConfigWarpRoutingArgs>> warpRouting() {
@@ -59,7 +66,7 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
     private TunnelConfigConfigArgs() {}
 
     private TunnelConfigConfigArgs(TunnelConfigConfigArgs $) {
-        this.ingressRules = $.ingressRules;
+        this.ingresses = $.ingresses;
         this.originRequest = $.originRequest;
         this.warpRouting = $.warpRouting;
     }
@@ -83,47 +90,59 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingresses List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
          * 
          * @return builder
          * 
          */
-        public Builder ingressRules(Output<List<TunnelConfigConfigIngressRuleArgs>> ingressRules) {
-            $.ingressRules = ingressRules;
+        public Builder ingresses(@Nullable Output<List<TunnelConfigConfigIngressArgs>> ingresses) {
+            $.ingresses = ingresses;
             return this;
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingresses List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
          * 
          * @return builder
          * 
          */
-        public Builder ingressRules(List<TunnelConfigConfigIngressRuleArgs> ingressRules) {
-            return ingressRules(Output.of(ingressRules));
+        public Builder ingresses(List<TunnelConfigConfigIngressArgs> ingresses) {
+            return ingresses(Output.of(ingresses));
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingresses List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
          * 
          * @return builder
          * 
          */
-        public Builder ingressRules(TunnelConfigConfigIngressRuleArgs... ingressRules) {
-            return ingressRules(List.of(ingressRules));
+        public Builder ingresses(TunnelConfigConfigIngressArgs... ingresses) {
+            return ingresses(List.of(ingresses));
         }
 
+        /**
+         * @param originRequest Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder originRequest(@Nullable Output<TunnelConfigConfigOriginRequestArgs> originRequest) {
             $.originRequest = originRequest;
             return this;
         }
 
+        /**
+         * @param originRequest Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder originRequest(TunnelConfigConfigOriginRequestArgs originRequest) {
             return originRequest(Output.of(originRequest));
         }
 
         /**
-         * @param warpRouting If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+         * @param warpRouting Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
          * 
          * @return builder
          * 
@@ -134,7 +153,7 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param warpRouting If you&#39;re exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
+         * @param warpRouting Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
          * 
          * @return builder
          * 
@@ -144,9 +163,6 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public TunnelConfigConfigArgs build() {
-            if ($.ingressRules == null) {
-                throw new MissingRequiredPropertyException("TunnelConfigConfigArgs", "ingressRules");
-            }
             return $;
         }
     }

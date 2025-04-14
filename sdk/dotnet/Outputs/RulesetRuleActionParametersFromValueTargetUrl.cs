@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersFromValueTargetUrl
     {
         /// <summary>
-        /// Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// An expression to evaluate to get the URL to redirect the request to.
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// Static value to provide as the HTTP request header value.
+        /// The URL to redirect the request to.
         /// </summary>
         public readonly string? Value;
 

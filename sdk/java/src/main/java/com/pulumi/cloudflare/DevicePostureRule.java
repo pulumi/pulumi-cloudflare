@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DevicePostureRuleState;
 import com.pulumi.cloudflare.outputs.DevicePostureRuleInput;
 import com.pulumi.cloudflare.outputs.DevicePostureRuleMatch;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -18,169 +19,125 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.DevicePostureRule;
- * import com.pulumi.cloudflare.DevicePostureRuleArgs;
- * import com.pulumi.cloudflare.inputs.DevicePostureRuleMatchArgs;
- * import com.pulumi.cloudflare.inputs.DevicePostureRuleInputArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var eaxmple = new DevicePostureRule("eaxmple", DevicePostureRuleArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("Corporate devices posture rule")
- *             .type("os_version")
- *             .description("Device posture rule for corporate devices.")
- *             .schedule("24h")
- *             .expiration("24h")
- *             .matches(DevicePostureRuleMatchArgs.builder()
- *                 .platform("linux")
- *                 .build())
- *             .inputs(DevicePostureRuleInputArgs.builder()
- *                 .id(corporateDevices.id())
- *                 .version("1.0.0")
- *                 .operator("<")
- *                 .osDistroName("ubuntu")
- *                 .osDistroRevision("1.0.0")
- *                 .osVersionExtra("(a)")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example &lt;account_id&gt;/&lt;device_posture_rule_id&gt;
+ * $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example &#39;&lt;account_id&gt;/&lt;rule_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule
+ * 
  */
+@Deprecated /* cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule */
 @ResourceType(type="cloudflare:index/devicePostureRule:DevicePostureRule")
 public class DevicePostureRule extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * The description of the device posture rule.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the device posture rule.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      * 
      */
     @Export(name="expiration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiration;
 
     /**
-     * @return Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * @return Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      * 
      */
     public Output<Optional<String>> expiration() {
         return Codegen.optional(this.expiration);
     }
     /**
-     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * The value to be checked against.
      * 
      */
-    @Export(name="inputs", refs={List.class,DevicePostureRuleInput.class}, tree="[0,1]")
-    private Output<List<DevicePostureRuleInput>> inputs;
+    @Export(name="input", refs={DevicePostureRuleInput.class}, tree="[0]")
+    private Output<DevicePostureRuleInput> input;
 
     /**
-     * @return Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * @return The value to be checked against.
      * 
      */
-    public Output<List<DevicePostureRuleInput>> inputs() {
-        return this.inputs;
+    public Output<DevicePostureRuleInput> input() {
+        return this.input;
     }
     /**
      * The conditions that the client must match to run the rule.
      * 
      */
     @Export(name="matches", refs={List.class,DevicePostureRuleMatch.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<DevicePostureRuleMatch>> matches;
+    private Output<List<DevicePostureRuleMatch>> matches;
 
     /**
      * @return The conditions that the client must match to run the rule.
      * 
      */
-    public Output<Optional<List<DevicePostureRuleMatch>>> matches() {
-        return Codegen.optional(this.matches);
+    public Output<List<DevicePostureRuleMatch>> matches() {
+        return this.matches;
     }
     /**
-     * Name of the device posture rule.
+     * The name of the device posture rule.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
-     * @return Name of the device posture rule.
+     * @return The name of the device posture rule.
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     /**
-     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      * 
      */
     @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> schedule;
 
     /**
-     * @return Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * @return Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
      * 
      */
     public Output<Optional<String>> schedule() {
         return Codegen.optional(this.schedule);
     }
     /**
-     * The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+     * The type of device posture rule.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `client_certificate_v2`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`, `custom_s2s`.
+     * @return The type of device posture rule.
+     * Available values: &#34;file&#34;, &#34;application&#34;, &#34;tanium&#34;, &#34;gateway&#34;, &#34;warp&#34;, &#34;disk*encryption&#34;, &#34;sentinelone&#34;, &#34;carbonblack&#34;, &#34;firewall&#34;, &#34;os*version&#34;, &#34;domain*joined&#34;, &#34;client*certificate&#34;, &#34;client*certificate*v2&#34;, &#34;unique*client*id&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;crowdstrike*s2s&#34;, &#34;intune&#34;, &#34;workspace*one&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
      * 
      */
     public Output<String> type() {
@@ -226,6 +183,9 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/devicePostureRule:DevicePostureRule").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

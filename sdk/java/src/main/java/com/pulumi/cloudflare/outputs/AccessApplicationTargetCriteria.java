@@ -3,12 +3,12 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.AccessApplicationTargetCriteriaTargetAttribute;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
@@ -20,6 +20,7 @@ public final class AccessApplicationTargetCriteria {
     private Integer port;
     /**
      * @return The communication protocol your application secures.
+     * Available values: &#34;ssh&#34;.
      * 
      */
     private String protocol;
@@ -27,7 +28,7 @@ public final class AccessApplicationTargetCriteria {
      * @return Contains a map of target attribute keys to target attribute values.
      * 
      */
-    private List<AccessApplicationTargetCriteriaTargetAttribute> targetAttributes;
+    private Map<String,List<String>> targetAttributes;
 
     private AccessApplicationTargetCriteria() {}
     /**
@@ -39,6 +40,7 @@ public final class AccessApplicationTargetCriteria {
     }
     /**
      * @return The communication protocol your application secures.
+     * Available values: &#34;ssh&#34;.
      * 
      */
     public String protocol() {
@@ -48,7 +50,7 @@ public final class AccessApplicationTargetCriteria {
      * @return Contains a map of target attribute keys to target attribute values.
      * 
      */
-    public List<AccessApplicationTargetCriteriaTargetAttribute> targetAttributes() {
+    public Map<String,List<String>> targetAttributes() {
         return this.targetAttributes;
     }
 
@@ -63,7 +65,7 @@ public final class AccessApplicationTargetCriteria {
     public static final class Builder {
         private Integer port;
         private String protocol;
-        private List<AccessApplicationTargetCriteriaTargetAttribute> targetAttributes;
+        private Map<String,List<String>> targetAttributes;
         public Builder() {}
         public Builder(AccessApplicationTargetCriteria defaults) {
     	      Objects.requireNonNull(defaults);
@@ -89,15 +91,12 @@ public final class AccessApplicationTargetCriteria {
             return this;
         }
         @CustomType.Setter
-        public Builder targetAttributes(List<AccessApplicationTargetCriteriaTargetAttribute> targetAttributes) {
+        public Builder targetAttributes(Map<String,List<String>> targetAttributes) {
             if (targetAttributes == null) {
               throw new MissingRequiredPropertyException("AccessApplicationTargetCriteria", "targetAttributes");
             }
             this.targetAttributes = targetAttributes;
             return this;
-        }
-        public Builder targetAttributes(AccessApplicationTargetCriteriaTargetAttribute... targetAttributes) {
-            return targetAttributes(List.of(targetAttributes));
         }
         public AccessApplicationTargetCriteria build() {
             final var _resultValue = new AccessApplicationTargetCriteria();

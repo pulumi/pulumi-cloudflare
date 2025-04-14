@@ -8,67 +8,45 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource, that manages Keyless certificates.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewKeylessCertificate(ctx, "example", &cloudflare.KeylessCertificateArgs{
-//				ZoneId:       pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				BundleMethod: pulumi.String("ubiquitous"),
-//				Name:         pulumi.String("example.com Keyless SSL"),
-//				Host:         pulumi.String("example.com"),
-//				Port:         pulumi.Int(24008),
-//				Enabled:      pulumi.Bool(true),
-//				Certificate:  pulumi.String("-----INSERT CERTIFICATE-----"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example <zone_id>/<keyless_certificate_id>
+// $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example '<zone_id>/<keyless_certificate_id>'
 // ```
 type KeylessCertificate struct {
 	pulumi.CustomResourceState
 
-	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
-	BundleMethod pulumi.StringPtrOutput `pulumi:"bundleMethod"`
-	// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
+	BundleMethod pulumi.StringOutput `pulumi:"bundleMethod"`
+	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	// Whether the KeyLess SSL is on.
+	// When the Keyless SSL was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Whether or not the Keyless SSL is on or off.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The KeyLess SSL host.
+	// The keyless SSL name.
 	Host pulumi.StringOutput `pulumi:"host"`
-	// The KeyLess SSL name.
+	// When the Keyless SSL was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// The keyless SSL name.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
-	Port pulumi.IntPtrOutput `pulumi:"port"`
-	// Status of the KeyLess SSL.
+	// Available permissions for the Keyless SSL for the current user requesting the item.
+	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
+	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
+	Port pulumi.Float64Output `pulumi:"port"`
+	// Status of the Keyless SSL.
+	// Available values: "active", "deleted".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The zone identifier to target for the resource.
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	Tunnel KeylessCertificateTunnelOutput `pulumi:"tunnel"`
+	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -111,40 +89,60 @@ func GetKeylessCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeylessCertificate resources.
 type keylessCertificateState struct {
-	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `pulumi:"bundleMethod"`
-	// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate *string `pulumi:"certificate"`
-	// Whether the KeyLess SSL is on.
+	// When the Keyless SSL was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// Whether or not the Keyless SSL is on or off.
 	Enabled *bool `pulumi:"enabled"`
-	// The KeyLess SSL host.
+	// The keyless SSL name.
 	Host *string `pulumi:"host"`
-	// The KeyLess SSL name.
+	// When the Keyless SSL was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// The keyless SSL name.
 	Name *string `pulumi:"name"`
-	// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
-	Port *int `pulumi:"port"`
-	// Status of the KeyLess SSL.
+	// Available permissions for the Keyless SSL for the current user requesting the item.
+	Permissions []string `pulumi:"permissions"`
+	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
+	Port *float64 `pulumi:"port"`
+	// Status of the Keyless SSL.
+	// Available values: "active", "deleted".
 	Status *string `pulumi:"status"`
-	// The zone identifier to target for the resource.
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	Tunnel *KeylessCertificateTunnel `pulumi:"tunnel"`
+	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type KeylessCertificateState struct {
-	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod pulumi.StringPtrInput
-	// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate pulumi.StringPtrInput
-	// Whether the KeyLess SSL is on.
+	// When the Keyless SSL was created.
+	CreatedOn pulumi.StringPtrInput
+	// Whether or not the Keyless SSL is on or off.
 	Enabled pulumi.BoolPtrInput
-	// The KeyLess SSL host.
+	// The keyless SSL name.
 	Host pulumi.StringPtrInput
-	// The KeyLess SSL name.
+	// When the Keyless SSL was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// The keyless SSL name.
 	Name pulumi.StringPtrInput
-	// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
-	Port pulumi.IntPtrInput
-	// Status of the KeyLess SSL.
+	// Available permissions for the Keyless SSL for the current user requesting the item.
+	Permissions pulumi.StringArrayInput
+	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
+	Port pulumi.Float64PtrInput
+	// Status of the Keyless SSL.
+	// Available values: "active", "deleted".
 	Status pulumi.StringPtrInput
-	// The zone identifier to target for the resource.
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	Tunnel KeylessCertificateTunnelPtrInput
+	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -153,37 +151,43 @@ func (KeylessCertificateState) ElementType() reflect.Type {
 }
 
 type keylessCertificateArgs struct {
-	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod *string `pulumi:"bundleMethod"`
-	// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate string `pulumi:"certificate"`
-	// Whether the KeyLess SSL is on.
+	// Whether or not the Keyless SSL is on or off.
 	Enabled *bool `pulumi:"enabled"`
-	// The KeyLess SSL host.
+	// The keyless SSL name.
 	Host string `pulumi:"host"`
-	// The KeyLess SSL name.
+	// The keyless SSL name.
 	Name *string `pulumi:"name"`
-	// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
-	Port *int `pulumi:"port"`
-	// The zone identifier to target for the resource.
+	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
+	Port *float64 `pulumi:"port"`
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	Tunnel *KeylessCertificateTunnel `pulumi:"tunnel"`
+	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a KeylessCertificate resource.
 type KeylessCertificateArgs struct {
-	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
+	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod pulumi.StringPtrInput
-	// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate pulumi.StringInput
-	// Whether the KeyLess SSL is on.
+	// Whether or not the Keyless SSL is on or off.
 	Enabled pulumi.BoolPtrInput
-	// The KeyLess SSL host.
+	// The keyless SSL name.
 	Host pulumi.StringInput
-	// The KeyLess SSL name.
+	// The keyless SSL name.
 	Name pulumi.StringPtrInput
-	// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
-	Port pulumi.IntPtrInput
-	// The zone identifier to target for the resource.
+	// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
+	Port pulumi.Float64PtrInput
+	// Configuration for using Keyless SSL through a Cloudflare Tunnel
+	Tunnel KeylessCertificateTunnelPtrInput
+	// Identifier
 	ZoneId pulumi.StringInput
 }
 
@@ -274,42 +278,64 @@ func (o KeylessCertificateOutput) ToKeylessCertificateOutputWithContext(ctx cont
 	return o
 }
 
-// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**
-func (o KeylessCertificateOutput) BundleMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringPtrOutput { return v.BundleMethod }).(pulumi.StringPtrOutput)
+// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+// Available values: "ubiquitous", "optimal", "force".
+func (o KeylessCertificateOutput) BundleMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.BundleMethod }).(pulumi.StringOutput)
 }
 
-// The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**
+// The zone's SSL certificate or SSL certificate and intermediate(s).
 func (o KeylessCertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// Whether the KeyLess SSL is on.
+// When the Keyless SSL was created.
+func (o KeylessCertificateOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Whether or not the Keyless SSL is on or off.
 func (o KeylessCertificateOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The KeyLess SSL host.
+// The keyless SSL name.
 func (o KeylessCertificateOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// The KeyLess SSL name.
+// When the Keyless SSL was last modified.
+func (o KeylessCertificateOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The keyless SSL name.
 func (o KeylessCertificateOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.
-func (o KeylessCertificateOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *KeylessCertificate) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+// Available permissions for the Keyless SSL for the current user requesting the item.
+func (o KeylessCertificateOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
-// Status of the KeyLess SSL.
+// The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
+func (o KeylessCertificateOutput) Port() pulumi.Float64Output {
+	return o.ApplyT(func(v *KeylessCertificate) pulumi.Float64Output { return v.Port }).(pulumi.Float64Output)
+}
+
+// Status of the Keyless SSL.
+// Available values: "active", "deleted".
 func (o KeylessCertificateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource.
+// Configuration for using Keyless SSL through a Cloudflare Tunnel
+func (o KeylessCertificateOutput) Tunnel() KeylessCertificateTunnelOutput {
+	return o.ApplyT(func(v *KeylessCertificate) KeylessCertificateTunnelOutput { return v.Tunnel }).(KeylessCertificateTunnelOutput)
+}
+
+// Identifier
 func (o KeylessCertificateOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

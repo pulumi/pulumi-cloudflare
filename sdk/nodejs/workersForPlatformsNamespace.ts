@@ -5,36 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
- * to manage Cloudflare Workers for Platforms namespaces.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * as std from "@pulumi/std";
  *
- * const example = new cloudflare.WorkersForPlatformsNamespace("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example-namespace",
- * });
- * const customerWorker1 = new cloudflare.WorkersScript("customer_worker_1", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "customer-worker-1",
- *     content: std.file({
- *         input: "script.js",
- *     }).then(invoke => invoke.result),
- *     dispatchNamespace: example.name,
- *     tags: ["free"],
+ * const exampleWorkersForPlatformsDispatchNamespace = new cloudflare.WorkersForPlatformsDispatchNamespace("example_workers_for_platforms_dispatch_namespace", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     name: "my-dispatch-namespace",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example <account_id>/<namespace_name>
+ * $ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example '<account_id>/<dispatch_namespace>'
  * ```
+ *
+ * @deprecated cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace
  */
 export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
     /**
@@ -47,6 +36,7 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersForPlatformsNamespaceState, opts?: pulumi.CustomResourceOptions): WorkersForPlatformsNamespace {
+        pulumi.log.warn("WorkersForPlatformsNamespace is deprecated: cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace")
         return new WorkersForPlatformsNamespace(name, <any>state, { ...opts, id: id });
     }
 
@@ -65,13 +55,41 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The name of the Workers for Platforms namespace.
+     * Identifier
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    /**
+     * When the script was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    /**
+     * Identifier
+     */
+    public /*out*/ readonly modifiedBy!: pulumi.Output<string>;
+    /**
+     * When the script was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
+    /**
+     * The name of the dispatch namespace
+     */
+    public readonly name!: pulumi.Output<string | undefined>;
+    /**
+     * API Resource UUID tag.
+     */
+    public /*out*/ readonly namespaceId!: pulumi.Output<string>;
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    public /*out*/ readonly namespaceName!: pulumi.Output<string>;
+    /**
+     * The current number of scripts in this Dispatch Namespace
+     */
+    public /*out*/ readonly scriptCount!: pulumi.Output<number>;
 
     /**
      * Create a WorkersForPlatformsNamespace resource with the given unique name, arguments, and options.
@@ -80,26 +98,42 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace */
     constructor(name: string, args: WorkersForPlatformsNamespaceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace */
     constructor(name: string, argsOrState?: WorkersForPlatformsNamespaceArgs | WorkersForPlatformsNamespaceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("WorkersForPlatformsNamespace is deprecated: cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersForPlatformsNamespaceState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["modifiedBy"] = state ? state.modifiedBy : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["namespaceName"] = state ? state.namespaceName : undefined;
+            resourceInputs["scriptCount"] = state ? state.scriptCount : undefined;
         } else {
             const args = argsOrState as WorkersForPlatformsNamespaceArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedBy"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["namespaceId"] = undefined /*out*/;
+            resourceInputs["namespaceName"] = undefined /*out*/;
+            resourceInputs["scriptCount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkersForPlatformsNamespace.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -109,13 +143,41 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
  */
 export interface WorkersForPlatformsNamespaceState {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The name of the Workers for Platforms namespace.
+     * Identifier
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * When the script was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
+     * Identifier
+     */
+    modifiedBy?: pulumi.Input<string>;
+    /**
+     * When the script was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
+    /**
+     * The name of the dispatch namespace
      */
     name?: pulumi.Input<string>;
+    /**
+     * API Resource UUID tag.
+     */
+    namespaceId?: pulumi.Input<string>;
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    namespaceName?: pulumi.Input<string>;
+    /**
+     * The current number of scripts in this Dispatch Namespace
+     */
+    scriptCount?: pulumi.Input<number>;
 }
 
 /**
@@ -123,11 +185,11 @@ export interface WorkersForPlatformsNamespaceState {
  */
 export interface WorkersForPlatformsNamespaceArgs {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      */
     accountId: pulumi.Input<string>;
     /**
-     * The name of the Workers for Platforms namespace.
+     * The name of the dispatch namespace
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

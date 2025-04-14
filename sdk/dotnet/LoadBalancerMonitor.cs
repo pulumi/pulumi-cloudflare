@@ -10,133 +10,167 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// If Cloudflare's Load Balancing to load-balance across multiple
-    /// origin servers or data centers, you configure one of these Monitors
-    /// to actively check the availability of those servers over HTTP(S) or
-    /// TCP.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleLoadBalancerMonitor = new Cloudflare.LoadBalancerMonitor("example_load_balancer_monitor", new()
+    ///     {
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         AllowInsecure = true,
+    ///         ConsecutiveDown = 0,
+    ///         ConsecutiveUp = 0,
+    ///         Description = "Login page monitor",
+    ///         ExpectedBody = "alive",
+    ///         ExpectedCodes = "2xx",
+    ///         FollowRedirects = true,
+    ///         Header = 
+    ///         {
+    ///             { "Host", new[]
+    ///             {
+    ///                 "example.com",
+    ///             } },
+    ///             { "X-App-ID", new[]
+    ///             {
+    ///                 "abc123",
+    ///             } },
+    ///         },
+    ///         Interval = 0,
+    ///         Method = "GET",
+    ///         Path = "/health",
+    ///         Port = 0,
+    ///         ProbeZone = "example.com",
+    ///         Retries = 0,
+    ///         Timeout = 0,
+    ///         Type = "http",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example &lt;account_id&gt;/&lt;load_balancer_monitor_id&gt;
+    /// $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example '&lt;account_id&gt;/&lt;monitor_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor")]
     public partial class LoadBalancerMonitor : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
+        /// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("allowInsecure")]
-        public Output<bool?> AllowInsecure { get; private set; } = null!;
+        public Output<bool> AllowInsecure { get; private set; } = null!;
 
         /// <summary>
-        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         /// </summary>
         [Output("consecutiveDown")]
-        public Output<int?> ConsecutiveDown { get; private set; } = null!;
+        public Output<int> ConsecutiveDown { get; private set; } = null!;
 
         /// <summary>
-        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
         /// </summary>
         [Output("consecutiveUp")]
-        public Output<int?> ConsecutiveUp { get; private set; } = null!;
+        public Output<int> ConsecutiveUp { get; private set; } = null!;
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer monitor was created.
-        /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Free text description.
+        /// Object description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("expectedBody")]
         public Output<string?> ExpectedBody { get; private set; } = null!;
 
         /// <summary>
-        /// The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
+        /// The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("expectedCodes")]
         public Output<string?> ExpectedCodes { get; private set; } = null!;
 
         /// <summary>
-        /// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
+        /// Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("followRedirects")]
-        public Output<bool?> FollowRedirects { get; private set; } = null!;
+        public Output<bool> FollowRedirects { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
-        [Output("headers")]
-        public Output<ImmutableArray<Outputs.LoadBalancerMonitorHeader>> Headers { get; private set; } = null!;
+        [Output("header")]
+        public Output<ImmutableDictionary<string, ImmutableArray<string>>?> Header { get; private set; } = null!;
 
         /// <summary>
-        /// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+        /// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
         /// </summary>
         [Output("interval")]
-        public Output<int?> Interval { get; private set; } = null!;
+        public Output<int> Interval { get; private set; } = null!;
 
         /// <summary>
-        /// The method to use for the health check.
+        /// The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
         /// </summary>
         [Output("method")]
         public Output<string> Method { get; private set; } = null!;
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer monitor was last modified.
-        /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The endpoint path to health check against.
+        /// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
         /// <summary>
-        /// The port number to use for the healthcheck, required when creating a TCP monitor.
+        /// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
         /// </summary>
         [Output("port")]
-        public Output<int?> Port { get; private set; } = null!;
+        public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        /// Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Output("probeZone")]
         public Output<string?> ProbeZone { get; private set; } = null!;
 
         /// <summary>
-        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         /// </summary>
         [Output("retries")]
-        public Output<int?> Retries { get; private set; } = null!;
+        public Output<int> Retries { get; private set; } = null!;
 
         /// <summary>
-        /// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+        /// The timeout (in seconds) before marking the health check as failed.
         /// </summary>
         [Output("timeout")]
-        public Output<int?> Timeout { get; private set; } = null!;
+        public Output<int> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
+        /// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        /// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -185,109 +219,110 @@ namespace Pulumi.Cloudflare
     public sealed class LoadBalancerMonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
+        /// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("allowInsecure")]
         public Input<bool>? AllowInsecure { get; set; }
 
         /// <summary>
-        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         /// </summary>
         [Input("consecutiveDown")]
         public Input<int>? ConsecutiveDown { get; set; }
 
         /// <summary>
-        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
         /// </summary>
         [Input("consecutiveUp")]
         public Input<int>? ConsecutiveUp { get; set; }
 
         /// <summary>
-        /// Free text description.
+        /// Object description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("expectedBody")]
         public Input<string>? ExpectedBody { get; set; }
 
         /// <summary>
-        /// The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
+        /// The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("expectedCodes")]
         public Input<string>? ExpectedCodes { get; set; }
 
         /// <summary>
-        /// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
+        /// Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("followRedirects")]
         public Input<bool>? FollowRedirects { get; set; }
 
-        [Input("headers")]
-        private InputList<Inputs.LoadBalancerMonitorHeaderArgs>? _headers;
+        [Input("header")]
+        private InputMap<ImmutableArray<string>>? _header;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
-        public InputList<Inputs.LoadBalancerMonitorHeaderArgs> Headers
+        public InputMap<ImmutableArray<string>> Header
         {
-            get => _headers ?? (_headers = new InputList<Inputs.LoadBalancerMonitorHeaderArgs>());
-            set => _headers = value;
+            get => _header ?? (_header = new InputMap<ImmutableArray<string>>());
+            set => _header = value;
         }
 
         /// <summary>
-        /// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+        /// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The method to use for the health check.
+        /// The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// The endpoint path to health check against.
+        /// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The port number to use for the healthcheck, required when creating a TCP monitor.
+        /// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        /// Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("probeZone")]
         public Input<string>? ProbeZone { get; set; }
 
         /// <summary>
-        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
         /// <summary>
-        /// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+        /// The timeout (in seconds) before marking the health check as failed.
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
+        /// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        /// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -301,121 +336,116 @@ namespace Pulumi.Cloudflare
     public sealed class LoadBalancerMonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
+        /// Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("allowInsecure")]
         public Input<bool>? AllowInsecure { get; set; }
 
         /// <summary>
-        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times.
         /// </summary>
         [Input("consecutiveDown")]
         public Input<int>? ConsecutiveDown { get; set; }
 
         /// <summary>
-        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times.
         /// </summary>
         [Input("consecutiveUp")]
         public Input<int>? ConsecutiveUp { get; set; }
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer monitor was created.
-        /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Free text description.
+        /// Object description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("expectedBody")]
         public Input<string>? ExpectedBody { get; set; }
 
         /// <summary>
-        /// The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
+        /// The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("expectedCodes")]
         public Input<string>? ExpectedCodes { get; set; }
 
         /// <summary>
-        /// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
+        /// Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("followRedirects")]
         public Input<bool>? FollowRedirects { get; set; }
 
-        [Input("headers")]
-        private InputList<Inputs.LoadBalancerMonitorHeaderGetArgs>? _headers;
+        [Input("header")]
+        private InputMap<ImmutableArray<string>>? _header;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
-        public InputList<Inputs.LoadBalancerMonitorHeaderGetArgs> Headers
+        public InputMap<ImmutableArray<string>> Header
         {
-            get => _headers ?? (_headers = new InputList<Inputs.LoadBalancerMonitorHeaderGetArgs>());
-            set => _headers = value;
+            get => _header ?? (_header = new InputMap<ImmutableArray<string>>());
+            set => _header = value;
         }
 
         /// <summary>
-        /// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
+        /// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations.
         /// </summary>
         [Input("interval")]
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The method to use for the health check.
+        /// The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
-        /// <summary>
-        /// The RFC3339 timestamp of when the load balancer monitor was last modified.
-        /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The endpoint path to health check against.
+        /// The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The port number to use for the healthcheck, required when creating a TCP monitor.
+        /// The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443).
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        /// Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors.
         /// </summary>
         [Input("probeZone")]
         public Input<string>? ProbeZone { get; set; }
 
         /// <summary>
-        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+        /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
         /// </summary>
         [Input("retries")]
         public Input<int>? Retries { get; set; }
 
         /// <summary>
-        /// The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+        /// The timeout (in seconds) before marking the health check as failed.
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
+        /// The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'.
+        /// Available values: "http", "https", "tcp", "udp*icmp", "icmp*ping", "smtp".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

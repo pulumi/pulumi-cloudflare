@@ -2,17 +2,29 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this datasource to lookup a tunnel in an account.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustTunnelCloudflared = cloudflare.getZeroTrustTunnelCloudflared({
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+ * });
+ * ```
  */
 export function getZeroTrustTunnelCloudflared(args: GetZeroTrustTunnelCloudflaredArgs, opts?: pulumi.InvokeOptions): Promise<GetZeroTrustTunnelCloudflaredResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", {
         "accountId": args.accountId,
-        "isDeleted": args.isDeleted,
-        "name": args.name,
+        "filter": args.filter,
+        "tunnelId": args.tunnelId,
     }, opts);
 }
 
@@ -21,17 +33,14 @@ export function getZeroTrustTunnelCloudflared(args: GetZeroTrustTunnelCloudflare
  */
 export interface GetZeroTrustTunnelCloudflaredArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     accountId: string;
+    filter?: inputs.GetZeroTrustTunnelCloudflaredFilter;
     /**
-     * If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * UUID of the tunnel.
      */
-    isDeleted?: boolean;
-    /**
-     * Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
-     */
-    name: string;
+    tunnelId?: string;
 }
 
 /**
@@ -39,43 +48,84 @@ export interface GetZeroTrustTunnelCloudflaredArgs {
  */
 export interface GetZeroTrustTunnelCloudflaredResult {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     readonly accountId: string;
     /**
-     * ID of the tunnel.
+     * Cloudflare account ID
+     */
+    readonly accountTag: string;
+    /**
+     * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+     */
+    readonly connections: outputs.GetZeroTrustTunnelCloudflaredConnection[];
+    /**
+     * Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
+     */
+    readonly connsActiveAt: string;
+    /**
+     * Timestamp of when the tunnel became inactive (no connections to Cloudflare's edge). If `null`, the tunnel is active.
+     */
+    readonly connsInactiveAt: string;
+    /**
+     * Timestamp of when the resource was created.
+     */
+    readonly createdAt: string;
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     */
+    readonly deletedAt: string;
+    readonly filter?: outputs.GetZeroTrustTunnelCloudflaredFilter;
+    /**
+     * UUID of the tunnel.
      */
     readonly id: string;
     /**
-     * If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * Metadata associated with the tunnel.
      */
-    readonly isDeleted?: boolean;
+    readonly metadata: string;
     /**
-     * Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
+     * A user-friendly name for a tunnel.
      */
     readonly name: string;
     /**
-     * Whether the tunnel can be configured remotely from the Zero Trust dashboard.
+     * If `true`, the tunnel can be configured remotely from the Zero Trust dashboard. If `false`, the tunnel must be configured locally on the origin machine.
      */
     readonly remoteConfig: boolean;
     /**
-     * The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`.
+     * The status of the tunnel. Valid values are `inactive` (tunnel has never been run), `degraded` (tunnel is active and able to serve traffic but in an unhealthy state), `healthy` (tunnel is active and able to serve traffic), or `down` (tunnel can not serve traffic as it has no connections to the Cloudflare Edge).
+     * Available values: "inactive", "degraded", "healthy", "down".
      */
     readonly status: string;
     /**
-     * The type of the tunnel. Available values: `cfdTunnel`, `warpConnector`.
+     * The type of tunnel.
+     * Available values: "cfd*tunnel", "warp*connector", "warp", "magic", "ipSec", "gre", "cni".
      */
-    readonly tunnelType: string;
+    readonly tunType: string;
+    /**
+     * UUID of the tunnel.
+     */
+    readonly tunnelId?: string;
 }
 /**
- * Use this datasource to lookup a tunnel in an account.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustTunnelCloudflared = cloudflare.getZeroTrustTunnelCloudflared({
+ *     accountId: "699d98642c564d2e855e9661899b7252",
+ *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+ * });
+ * ```
  */
 export function getZeroTrustTunnelCloudflaredOutput(args: GetZeroTrustTunnelCloudflaredOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZeroTrustTunnelCloudflaredResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZeroTrustTunnelCloudflared:getZeroTrustTunnelCloudflared", {
         "accountId": args.accountId,
-        "isDeleted": args.isDeleted,
-        "name": args.name,
+        "filter": args.filter,
+        "tunnelId": args.tunnelId,
     }, opts);
 }
 
@@ -84,15 +134,12 @@ export function getZeroTrustTunnelCloudflaredOutput(args: GetZeroTrustTunnelClou
  */
 export interface GetZeroTrustTunnelCloudflaredOutputArgs {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      */
     accountId: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetZeroTrustTunnelCloudflaredFilterArgs>;
     /**
-     * If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * UUID of the tunnel.
      */
-    isDeleted?: pulumi.Input<boolean>;
-    /**
-     * Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
-     */
-    name: pulumi.Input<string>;
+    tunnelId?: pulumi.Input<string>;
 }

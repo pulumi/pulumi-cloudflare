@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -26,7 +27,7 @@ public final class ZeroTrustLocalFallbackDomainDomain {
      * @return The domain suffix to match when resolving locally.
      * 
      */
-    private @Nullable String suffix;
+    private String suffix;
 
     private ZeroTrustLocalFallbackDomainDomain() {}
     /**
@@ -47,8 +48,8 @@ public final class ZeroTrustLocalFallbackDomainDomain {
      * @return The domain suffix to match when resolving locally.
      * 
      */
-    public Optional<String> suffix() {
-        return Optional.ofNullable(this.suffix);
+    public String suffix() {
+        return this.suffix;
     }
 
     public static Builder builder() {
@@ -62,7 +63,7 @@ public final class ZeroTrustLocalFallbackDomainDomain {
     public static final class Builder {
         private @Nullable String description;
         private @Nullable List<String> dnsServers;
-        private @Nullable String suffix;
+        private String suffix;
         public Builder() {}
         public Builder(ZeroTrustLocalFallbackDomainDomain defaults) {
     	      Objects.requireNonNull(defaults);
@@ -87,8 +88,10 @@ public final class ZeroTrustLocalFallbackDomainDomain {
             return dnsServers(List.of(dnsServers));
         }
         @CustomType.Setter
-        public Builder suffix(@Nullable String suffix) {
-
+        public Builder suffix(String suffix) {
+            if (suffix == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustLocalFallbackDomainDomain", "suffix");
+            }
             this.suffix = suffix;
             return this;
         }

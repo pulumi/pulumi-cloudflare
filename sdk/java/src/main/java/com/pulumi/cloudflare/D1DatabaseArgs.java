@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +17,14 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     public static final D1DatabaseArgs Empty = new D1DatabaseArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Account identifier tag.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Account identifier tag.
      * 
      */
     public Output<String> accountId() {
@@ -30,18 +32,35 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the D1 Database.
+     * D1 database name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the D1 Database.
+     * @return D1 database name.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+
+    /**
+     * Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
+     * 
+     */
+    @Import(name="primaryLocationHint")
+    private @Nullable Output<String> primaryLocationHint;
+
+    /**
+     * @return Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+     * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
+     * 
+     */
+    public Optional<Output<String>> primaryLocationHint() {
+        return Optional.ofNullable(this.primaryLocationHint);
     }
 
     private D1DatabaseArgs() {}
@@ -49,6 +68,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     private D1DatabaseArgs(D1DatabaseArgs $) {
         this.accountId = $.accountId;
         this.name = $.name;
+        this.primaryLocationHint = $.primaryLocationHint;
     }
 
     public static Builder builder() {
@@ -70,7 +90,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Account identifier tag.
          * 
          * @return builder
          * 
@@ -81,7 +101,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Account identifier tag.
          * 
          * @return builder
          * 
@@ -91,7 +111,7 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the D1 Database.
+         * @param name D1 database name.
          * 
          * @return builder
          * 
@@ -102,13 +122,36 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the D1 Database.
+         * @param name D1 database name.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+         * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocationHint(@Nullable Output<String> primaryLocationHint) {
+            $.primaryLocationHint = primaryLocationHint;
+            return this;
+        }
+
+        /**
+         * @param primaryLocationHint Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
+         * Available values: &#34;wnam&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;eeur&#34;, &#34;apac&#34;, &#34;oc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryLocationHint(String primaryLocationHint) {
+            return primaryLocationHint(Output.of(primaryLocationHint));
         }
 
         public D1DatabaseArgs build() {

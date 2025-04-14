@@ -14,121 +14,97 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['MagicWanGreTunnelArgs', 'MagicWanGreTunnel']
 
 @pulumi.input_type
 class MagicWanGreTunnelArgs:
     def __init__(__self__, *,
-                 cloudflare_gre_endpoint: pulumi.Input[builtins.str],
-                 customer_gre_endpoint: pulumi.Input[builtins.str],
-                 interface_address: pulumi.Input[builtins.str],
-                 name: pulumi.Input[builtins.str],
-                 account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 account_id: pulumi.Input[builtins.str],
+                 cloudflare_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 customer_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 health_check_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 health_check_target: Optional[pulumi.Input[builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[builtins.str]] = None,
+                 gre_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+                 health_check: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']] = None,
+                 interface_address: Optional[pulumi.Input[builtins.str]] = None,
                  mtu: Optional[pulumi.Input[builtins.int]] = None,
+                 name: Optional[pulumi.Input[builtins.str]] = None,
                  ttl: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a MagicWanGreTunnel resource.
+        :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
         :param pulumi.Input[builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[builtins.str] interface_address: 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        :param pulumi.Input[builtins.str] name: Name of the GRE tunnel.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] description: Description of the GRE tunnel intent.
-        :param pulumi.Input[builtins.bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled.
-        :param pulumi.Input[builtins.str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks.
-        :param pulumi.Input[builtins.str] health_check_type: Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+        :param pulumi.Input[builtins.str] description: An optional description of the GRE tunnel.
+        :param pulumi.Input[builtins.str] gre_tunnel_id: Identifier
+        :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
+        :param pulumi.Input[builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         :param pulumi.Input[builtins.int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
-        pulumi.set(__self__, "cloudflare_gre_endpoint", cloudflare_gre_endpoint)
-        pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
-        pulumi.set(__self__, "interface_address", interface_address)
-        pulumi.set(__self__, "name", name)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
+        if cloudflare_gre_endpoint is not None:
+            pulumi.set(__self__, "cloudflare_gre_endpoint", cloudflare_gre_endpoint)
+        if customer_gre_endpoint is not None:
+            pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if health_check_enabled is not None:
-            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
-        if health_check_target is not None:
-            pulumi.set(__self__, "health_check_target", health_check_target)
-        if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+        if gre_tunnel_id is not None:
+            pulumi.set(__self__, "gre_tunnel_id", gre_tunnel_id)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
+        if interface_address is not None:
+            pulumi.set(__self__, "interface_address", interface_address)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
     @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Identifier
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
     @pulumi.getter(name="cloudflareGreEndpoint")
-    def cloudflare_gre_endpoint(self) -> pulumi.Input[builtins.str]:
+    def cloudflare_gre_endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The IP address assigned to the Cloudflare side of the GRE tunnel.
         """
         return pulumi.get(self, "cloudflare_gre_endpoint")
 
     @cloudflare_gre_endpoint.setter
-    def cloudflare_gre_endpoint(self, value: pulumi.Input[builtins.str]):
+    def cloudflare_gre_endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "cloudflare_gre_endpoint", value)
 
     @property
     @pulumi.getter(name="customerGreEndpoint")
-    def customer_gre_endpoint(self) -> pulumi.Input[builtins.str]:
+    def customer_gre_endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The IP address assigned to the customer side of the GRE tunnel.
         """
         return pulumi.get(self, "customer_gre_endpoint")
 
     @customer_gre_endpoint.setter
-    def customer_gre_endpoint(self, value: pulumi.Input[builtins.str]):
+    def customer_gre_endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "customer_gre_endpoint", value)
-
-    @property
-    @pulumi.getter(name="interfaceAddress")
-    def interface_address(self) -> pulumi.Input[builtins.str]:
-        """
-        31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        """
-        return pulumi.get(self, "interface_address")
-
-    @interface_address.setter
-    def interface_address(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "interface_address", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[builtins.str]:
-        """
-        Name of the GRE tunnel.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the GRE tunnel intent.
+        An optional description of the GRE tunnel.
         """
         return pulumi.get(self, "description")
 
@@ -137,52 +113,61 @@ class MagicWanGreTunnelArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="healthCheckEnabled")
-    def health_check_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+    @pulumi.getter(name="greTunnelId")
+    def gre_tunnel_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Specifies if ICMP tunnel health checks are enabled.
+        Identifier
         """
-        return pulumi.get(self, "health_check_enabled")
+        return pulumi.get(self, "gre_tunnel_id")
 
-    @health_check_enabled.setter
-    def health_check_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "health_check_enabled", value)
-
-    @property
-    @pulumi.getter(name="healthCheckTarget")
-    def health_check_target(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The IP address of the customer endpoint that will receive tunnel health checks.
-        """
-        return pulumi.get(self, "health_check_target")
-
-    @health_check_target.setter
-    def health_check_target(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "health_check_target", value)
+    @gre_tunnel_id.setter
+    def gre_tunnel_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "gre_tunnel_id", value)
 
     @property
-    @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        """
-        return pulumi.get(self, "health_check_type")
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]:
+        return pulumi.get(self, "health_check")
 
-    @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "health_check_type", value)
+    @health_check.setter
+    def health_check(self, value: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]):
+        pulumi.set(self, "health_check", value)
+
+    @property
+    @pulumi.getter(name="interfaceAddress")
+    def interface_address(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        """
+        return pulumi.get(self, "interface_address")
+
+    @interface_address.setter
+    def interface_address(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "interface_address", value)
 
     @property
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
     def mtu(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "mtu", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -204,25 +189,26 @@ class _MagicWanGreTunnelState:
                  cloudflare_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  customer_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 health_check_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 health_check_target: Optional[pulumi.Input[builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[builtins.str]] = None,
+                 gre_tunnel: Optional[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']] = None,
+                 gre_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+                 gre_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']]]] = None,
+                 health_check: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']] = None,
                  interface_address: Optional[pulumi.Input[builtins.str]] = None,
+                 modified: Optional[pulumi.Input[builtins.bool]] = None,
+                 modified_gre_tunnel: Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelArgs']] = None,
                  mtu: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  ttl: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicWanGreTunnel resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
         :param pulumi.Input[builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[builtins.str] description: Description of the GRE tunnel intent.
-        :param pulumi.Input[builtins.bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled.
-        :param pulumi.Input[builtins.str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks.
-        :param pulumi.Input[builtins.str] health_check_type: Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        :param pulumi.Input[builtins.str] interface_address: 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
-        :param pulumi.Input[builtins.str] name: Name of the GRE tunnel.
+        :param pulumi.Input[builtins.str] description: An optional description of the GRE tunnel.
+        :param pulumi.Input[builtins.str] gre_tunnel_id: Identifier
+        :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
+        :param pulumi.Input[builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         :param pulumi.Input[builtins.int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         if account_id is not None:
@@ -233,14 +219,20 @@ class _MagicWanGreTunnelState:
             pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if health_check_enabled is not None:
-            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
-        if health_check_target is not None:
-            pulumi.set(__self__, "health_check_target", health_check_target)
-        if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+        if gre_tunnel is not None:
+            pulumi.set(__self__, "gre_tunnel", gre_tunnel)
+        if gre_tunnel_id is not None:
+            pulumi.set(__self__, "gre_tunnel_id", gre_tunnel_id)
+        if gre_tunnels is not None:
+            pulumi.set(__self__, "gre_tunnels", gre_tunnels)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
         if interface_address is not None:
             pulumi.set(__self__, "interface_address", interface_address)
+        if modified is not None:
+            pulumi.set(__self__, "modified", modified)
+        if modified_gre_tunnel is not None:
+            pulumi.set(__self__, "modified_gre_tunnel", modified_gre_tunnel)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -252,7 +244,7 @@ class _MagicWanGreTunnelState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -288,7 +280,7 @@ class _MagicWanGreTunnelState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Description of the GRE tunnel intent.
+        An optional description of the GRE tunnel.
         """
         return pulumi.get(self, "description")
 
@@ -297,46 +289,49 @@ class _MagicWanGreTunnelState:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="healthCheckEnabled")
-    def health_check_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Specifies if ICMP tunnel health checks are enabled.
-        """
-        return pulumi.get(self, "health_check_enabled")
+    @pulumi.getter(name="greTunnel")
+    def gre_tunnel(self) -> Optional[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']]:
+        return pulumi.get(self, "gre_tunnel")
 
-    @health_check_enabled.setter
-    def health_check_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "health_check_enabled", value)
+    @gre_tunnel.setter
+    def gre_tunnel(self, value: Optional[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']]):
+        pulumi.set(self, "gre_tunnel", value)
 
     @property
-    @pulumi.getter(name="healthCheckTarget")
-    def health_check_target(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="greTunnelId")
+    def gre_tunnel_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The IP address of the customer endpoint that will receive tunnel health checks.
+        Identifier
         """
-        return pulumi.get(self, "health_check_target")
+        return pulumi.get(self, "gre_tunnel_id")
 
-    @health_check_target.setter
-    def health_check_target(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "health_check_target", value)
+    @gre_tunnel_id.setter
+    def gre_tunnel_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "gre_tunnel_id", value)
 
     @property
-    @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        """
-        return pulumi.get(self, "health_check_type")
+    @pulumi.getter(name="greTunnels")
+    def gre_tunnels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']]]]:
+        return pulumi.get(self, "gre_tunnels")
 
-    @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "health_check_type", value)
+    @gre_tunnels.setter
+    def gre_tunnels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanGreTunnelGreTunnelArgs']]]]):
+        pulumi.set(self, "gre_tunnels", value)
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]:
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: Optional[pulumi.Input['MagicWanGreTunnelHealthCheckArgs']]):
+        pulumi.set(self, "health_check", value)
 
     @property
     @pulumi.getter(name="interfaceAddress")
     def interface_address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         """
         return pulumi.get(self, "interface_address")
 
@@ -346,9 +341,27 @@ class _MagicWanGreTunnelState:
 
     @property
     @pulumi.getter
+    def modified(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "modified")
+
+    @modified.setter
+    def modified(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "modified", value)
+
+    @property
+    @pulumi.getter(name="modifiedGreTunnel")
+    def modified_gre_tunnel(self) -> Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelArgs']]:
+        return pulumi.get(self, "modified_gre_tunnel")
+
+    @modified_gre_tunnel.setter
+    def modified_gre_tunnel(self, value: Optional[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelArgs']]):
+        pulumi.set(self, "modified_gre_tunnel", value)
+
+    @property
+    @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         """
         return pulumi.get(self, "mtu")
 
@@ -360,7 +373,7 @@ class _MagicWanGreTunnelState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the GRE tunnel.
+        The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         """
         return pulumi.get(self, "name")
 
@@ -390,55 +403,33 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                  cloudflare_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  customer_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 health_check_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 health_check_target: Optional[pulumi.Input[builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[builtins.str]] = None,
+                 gre_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+                 health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
                  interface_address: Optional[pulumi.Input[builtins.str]] = None,
                  mtu: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  ttl: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages GRE tunnels for Magic Transit.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.MagicWanGreTunnel("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="GRE_1",
-            customer_gre_endpoint="203.0.113.1",
-            cloudflare_gre_endpoint="203.0.113.2",
-            interface_address="192.0.2.0/31",
-            description="Tunnel for ISP X",
-            ttl=64,
-            mtu=1476,
-            health_check_enabled=True,
-            health_check_target="203.0.113.1",
-            health_check_type="reply")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example <account_id>/<tunnel_id>
+        example_magic_wan_gre_tunnel = cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", account_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
         :param pulumi.Input[builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[builtins.str] description: Description of the GRE tunnel intent.
-        :param pulumi.Input[builtins.bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled.
-        :param pulumi.Input[builtins.str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks.
-        :param pulumi.Input[builtins.str] health_check_type: Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        :param pulumi.Input[builtins.str] interface_address: 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
-        :param pulumi.Input[builtins.str] name: Name of the GRE tunnel.
+        :param pulumi.Input[builtins.str] description: An optional description of the GRE tunnel.
+        :param pulumi.Input[builtins.str] gre_tunnel_id: Identifier
+        :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
+        :param pulumi.Input[builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         :param pulumi.Input[builtins.int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         ...
@@ -448,32 +439,13 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                  args: MagicWanGreTunnelArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages GRE tunnels for Magic Transit.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.MagicWanGreTunnel("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="GRE_1",
-            customer_gre_endpoint="203.0.113.1",
-            cloudflare_gre_endpoint="203.0.113.2",
-            interface_address="192.0.2.0/31",
-            description="Tunnel for ISP X",
-            ttl=64,
-            mtu=1476,
-            health_check_enabled=True,
-            health_check_target="203.0.113.1",
-            health_check_type="reply")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example <account_id>/<tunnel_id>
+        example_magic_wan_gre_tunnel = cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", account_id="023e105f4ecef8ad9ca31a8372d0c353")
         ```
 
         :param str resource_name: The name of the resource.
@@ -495,9 +467,8 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                  cloudflare_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  customer_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 health_check_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 health_check_target: Optional[pulumi.Input[builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[builtins.str]] = None,
+                 gre_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+                 health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
                  interface_address: Optional[pulumi.Input[builtins.str]] = None,
                  mtu: Optional[pulumi.Input[builtins.int]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
@@ -511,25 +482,24 @@ class MagicWanGreTunnel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MagicWanGreTunnelArgs.__new__(MagicWanGreTunnelArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if cloudflare_gre_endpoint is None and not opts.urn:
-                raise TypeError("Missing required property 'cloudflare_gre_endpoint'")
             __props__.__dict__["cloudflare_gre_endpoint"] = cloudflare_gre_endpoint
-            if customer_gre_endpoint is None and not opts.urn:
-                raise TypeError("Missing required property 'customer_gre_endpoint'")
             __props__.__dict__["customer_gre_endpoint"] = customer_gre_endpoint
             __props__.__dict__["description"] = description
-            __props__.__dict__["health_check_enabled"] = health_check_enabled
-            __props__.__dict__["health_check_target"] = health_check_target
-            __props__.__dict__["health_check_type"] = health_check_type
-            if interface_address is None and not opts.urn:
-                raise TypeError("Missing required property 'interface_address'")
+            __props__.__dict__["gre_tunnel_id"] = gre_tunnel_id
+            __props__.__dict__["health_check"] = health_check
             __props__.__dict__["interface_address"] = interface_address
             __props__.__dict__["mtu"] = mtu
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["ttl"] = ttl
+            __props__.__dict__["gre_tunnel"] = None
+            __props__.__dict__["gre_tunnels"] = None
+            __props__.__dict__["modified"] = None
+            __props__.__dict__["modified_gre_tunnel"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/greTunnel:GreTunnel")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(MagicWanGreTunnel, __self__).__init__(
             'cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel',
             resource_name,
@@ -544,10 +514,13 @@ class MagicWanGreTunnel(pulumi.CustomResource):
             cloudflare_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
             customer_gre_endpoint: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
-            health_check_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            health_check_target: Optional[pulumi.Input[builtins.str]] = None,
-            health_check_type: Optional[pulumi.Input[builtins.str]] = None,
+            gre_tunnel: Optional[pulumi.Input[Union['MagicWanGreTunnelGreTunnelArgs', 'MagicWanGreTunnelGreTunnelArgsDict']]] = None,
+            gre_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
+            gre_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicWanGreTunnelGreTunnelArgs', 'MagicWanGreTunnelGreTunnelArgsDict']]]]] = None,
+            health_check: Optional[pulumi.Input[Union['MagicWanGreTunnelHealthCheckArgs', 'MagicWanGreTunnelHealthCheckArgsDict']]] = None,
             interface_address: Optional[pulumi.Input[builtins.str]] = None,
+            modified: Optional[pulumi.Input[builtins.bool]] = None,
+            modified_gre_tunnel: Optional[pulumi.Input[Union['MagicWanGreTunnelModifiedGreTunnelArgs', 'MagicWanGreTunnelModifiedGreTunnelArgsDict']]] = None,
             mtu: Optional[pulumi.Input[builtins.int]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             ttl: Optional[pulumi.Input[builtins.int]] = None) -> 'MagicWanGreTunnel':
@@ -558,16 +531,14 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.str] cloudflare_gre_endpoint: The IP address assigned to the Cloudflare side of the GRE tunnel.
         :param pulumi.Input[builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
-        :param pulumi.Input[builtins.str] description: Description of the GRE tunnel intent.
-        :param pulumi.Input[builtins.bool] health_check_enabled: Specifies if ICMP tunnel health checks are enabled.
-        :param pulumi.Input[builtins.str] health_check_target: The IP address of the customer endpoint that will receive tunnel health checks.
-        :param pulumi.Input[builtins.str] health_check_type: Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        :param pulumi.Input[builtins.str] interface_address: 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-        :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
-        :param pulumi.Input[builtins.str] name: Name of the GRE tunnel.
+        :param pulumi.Input[builtins.str] description: An optional description of the GRE tunnel.
+        :param pulumi.Input[builtins.str] gre_tunnel_id: Identifier
+        :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+        :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
+        :param pulumi.Input[builtins.str] name: The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         :param pulumi.Input[builtins.int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -578,10 +549,13 @@ class MagicWanGreTunnel(pulumi.CustomResource):
         __props__.__dict__["cloudflare_gre_endpoint"] = cloudflare_gre_endpoint
         __props__.__dict__["customer_gre_endpoint"] = customer_gre_endpoint
         __props__.__dict__["description"] = description
-        __props__.__dict__["health_check_enabled"] = health_check_enabled
-        __props__.__dict__["health_check_target"] = health_check_target
-        __props__.__dict__["health_check_type"] = health_check_type
+        __props__.__dict__["gre_tunnel"] = gre_tunnel
+        __props__.__dict__["gre_tunnel_id"] = gre_tunnel_id
+        __props__.__dict__["gre_tunnels"] = gre_tunnels
+        __props__.__dict__["health_check"] = health_check
         __props__.__dict__["interface_address"] = interface_address
+        __props__.__dict__["modified"] = modified
+        __props__.__dict__["modified_gre_tunnel"] = modified_gre_tunnel
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["ttl"] = ttl
@@ -589,15 +563,15 @@ class MagicWanGreTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="cloudflareGreEndpoint")
-    def cloudflare_gre_endpoint(self) -> pulumi.Output[builtins.str]:
+    def cloudflare_gre_endpoint(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The IP address assigned to the Cloudflare side of the GRE tunnel.
         """
@@ -605,7 +579,7 @@ class MagicWanGreTunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customerGreEndpoint")
-    def customer_gre_endpoint(self) -> pulumi.Output[builtins.str]:
+    def customer_gre_endpoint(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The IP address assigned to the customer side of the GRE tunnel.
         """
@@ -615,55 +589,64 @@ class MagicWanGreTunnel(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Description of the GRE tunnel intent.
+        An optional description of the GRE tunnel.
         """
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="healthCheckEnabled")
-    def health_check_enabled(self) -> pulumi.Output[builtins.bool]:
-        """
-        Specifies if ICMP tunnel health checks are enabled.
-        """
-        return pulumi.get(self, "health_check_enabled")
+    @pulumi.getter(name="greTunnel")
+    def gre_tunnel(self) -> pulumi.Output['outputs.MagicWanGreTunnelGreTunnel']:
+        return pulumi.get(self, "gre_tunnel")
 
     @property
-    @pulumi.getter(name="healthCheckTarget")
-    def health_check_target(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter(name="greTunnelId")
+    def gre_tunnel_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The IP address of the customer endpoint that will receive tunnel health checks.
+        Identifier
         """
-        return pulumi.get(self, "health_check_target")
+        return pulumi.get(self, "gre_tunnel_id")
 
     @property
-    @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> pulumi.Output[builtins.str]:
-        """
-        Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-        """
-        return pulumi.get(self, "health_check_type")
+    @pulumi.getter(name="greTunnels")
+    def gre_tunnels(self) -> pulumi.Output[Sequence['outputs.MagicWanGreTunnelGreTunnel']]:
+        return pulumi.get(self, "gre_tunnels")
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> pulumi.Output['outputs.MagicWanGreTunnelHealthCheck']:
+        return pulumi.get(self, "health_check")
 
     @property
     @pulumi.getter(name="interfaceAddress")
-    def interface_address(self) -> pulumi.Output[builtins.str]:
+    def interface_address(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+        A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         """
         return pulumi.get(self, "interface_address")
 
     @property
     @pulumi.getter
+    def modified(self) -> pulumi.Output[builtins.bool]:
+        return pulumi.get(self, "modified")
+
+    @property
+    @pulumi.getter(name="modifiedGreTunnel")
+    def modified_gre_tunnel(self) -> pulumi.Output['outputs.MagicWanGreTunnelModifiedGreTunnel']:
+        return pulumi.get(self, "modified_gre_tunnel")
+
+    @property
+    @pulumi.getter
     def mtu(self) -> pulumi.Output[builtins.int]:
         """
-        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+        Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
         """
         return pulumi.get(self, "mtu")
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[builtins.str]:
+    def name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Name of the GRE tunnel.
+        The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         """
         return pulumi.get(self, "name")
 

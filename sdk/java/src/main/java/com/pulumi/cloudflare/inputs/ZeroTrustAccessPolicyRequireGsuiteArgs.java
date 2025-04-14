@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -19,15 +18,15 @@ public final class ZeroTrustAccessPolicyRequireGsuiteArgs extends com.pulumi.res
      * The email of the Google Workspace group.
      * 
      */
-    @Import(name="emails", required=true)
-    private Output<List<String>> emails;
+    @Import(name="email", required=true)
+    private Output<String> email;
 
     /**
      * @return The email of the Google Workspace group.
      * 
      */
-    public Output<List<String>> emails() {
-        return this.emails;
+    public Output<String> email() {
+        return this.email;
     }
 
     /**
@@ -48,7 +47,7 @@ public final class ZeroTrustAccessPolicyRequireGsuiteArgs extends com.pulumi.res
     private ZeroTrustAccessPolicyRequireGsuiteArgs() {}
 
     private ZeroTrustAccessPolicyRequireGsuiteArgs(ZeroTrustAccessPolicyRequireGsuiteArgs $) {
-        this.emails = $.emails;
+        this.email = $.email;
         this.identityProviderId = $.identityProviderId;
     }
 
@@ -71,34 +70,24 @@ public final class ZeroTrustAccessPolicyRequireGsuiteArgs extends com.pulumi.res
         }
 
         /**
-         * @param emails The email of the Google Workspace group.
+         * @param email The email of the Google Workspace group.
          * 
          * @return builder
          * 
          */
-        public Builder emails(Output<List<String>> emails) {
-            $.emails = emails;
+        public Builder email(Output<String> email) {
+            $.email = email;
             return this;
         }
 
         /**
-         * @param emails The email of the Google Workspace group.
+         * @param email The email of the Google Workspace group.
          * 
          * @return builder
          * 
          */
-        public Builder emails(List<String> emails) {
-            return emails(Output.of(emails));
-        }
-
-        /**
-         * @param emails The email of the Google Workspace group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emails(String... emails) {
-            return emails(List.of(emails));
+        public Builder email(String email) {
+            return email(Output.of(email));
         }
 
         /**
@@ -123,8 +112,8 @@ public final class ZeroTrustAccessPolicyRequireGsuiteArgs extends com.pulumi.res
         }
 
         public ZeroTrustAccessPolicyRequireGsuiteArgs build() {
-            if ($.emails == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyRequireGsuiteArgs", "emails");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyRequireGsuiteArgs", "email");
             }
             if ($.identityProviderId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustAccessPolicyRequireGsuiteArgs", "identityProviderId");

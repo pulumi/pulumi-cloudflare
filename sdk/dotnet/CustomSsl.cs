@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare custom SSL resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,17 +20,69 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.CustomSsl("example", new()
+    ///     var exampleCustomSsl = new Cloudflare.CustomSsl("example_custom_ssl", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Certificate = @"  -----BEGIN CERTIFICATE-----
+    ///   MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+    ///   BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
+    ///   aWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF
+    ///   MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50
+    ///   ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+    ///   CgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1
+    ///   CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB
+    ///   KwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5
+    ///   0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI
+    ///   dZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2
+    ///   izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4
+    ///   9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI
+    ///   GKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV
+    ///   BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF
+    ///   MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2
+    ///   2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP
+    ///   Mlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG
+    ///   SvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq
+    ///   2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw
+    ///   YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=
+    ///   -----END CERTIFICATE-----
+    /// 
+    /// ",
+    ///         PrivateKey = @"  -----BEGIN RSA PRIVATE KEY-----
+    ///   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
+    ///   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
+    ///   abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid
+    ///   tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py
+    ///   FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE
+    ///   ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb
+    ///   HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/
+    ///   axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb
+    ///   +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g
+    ///   +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv
+    ///   KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7
+    ///   9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo
+    ///   /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu
+    ///   iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9
+    ///   N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe
+    ///   VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB
+    ///   vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U
+    ///   lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR
+    ///   9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7
+    ///   mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX
+    ///   dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe
+    ///   PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS
+    ///   fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W
+    ///   qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T
+    ///   lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
+    ///   -----END RSA PRIVATE KEY-----
+    /// 
+    /// ",
+    ///         BundleMethod = "ubiquitous",
+    ///         GeoRestrictions = new Cloudflare.Inputs.CustomSslGeoRestrictionsArgs
     ///         {
-    ///             Certificate = "-----INSERT CERTIFICATE-----",
-    ///             PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///             BundleMethod = "ubiquitous",
-    ///             GeoRestrictions = "us",
-    ///             Type = "legacy_custom",
+    ///             Label = "us",
     ///         },
+    ///         Policy = "(country: US) or (region: EU)",
+    ///         Type = "legacy_custom",
     ///     });
     /// 
     /// });
@@ -41,47 +91,101 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/customSsl:CustomSsl example &lt;zone_id&gt;/&lt;certificate_id&gt;
+    /// $ pulumi import cloudflare:index/customSsl:CustomSsl example '&lt;zone_id&gt;/&lt;custom_certificate_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customSsl:CustomSsl")]
     public partial class CustomSsl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
-        [Output("customSslOptions")]
-        public Output<Outputs.CustomSslCustomSslOptions?> CustomSslOptions { get; private set; } = null!;
+        [Output("bundleMethod")]
+        public Output<string> BundleMethod { get; private set; } = null!;
 
-        [Output("customSslPriorities")]
-        public Output<ImmutableArray<Outputs.CustomSslCustomSslPriority>> CustomSslPriorities { get; private set; } = null!;
+        /// <summary>
+        /// The zone's SSL certificate or certificate and the intermediate(s).
+        /// </summary>
+        [Output("certificate")]
+        public Output<string> Certificate { get; private set; } = null!;
 
+        /// <summary>
+        /// When the certificate from the authority expires.
+        /// </summary>
         [Output("expiresOn")]
         public Output<string> ExpiresOn { get; private set; } = null!;
+
+        /// <summary>
+        /// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        /// </summary>
+        [Output("geoRestrictions")]
+        public Output<Outputs.CustomSslGeoRestrictions> GeoRestrictions { get; private set; } = null!;
 
         [Output("hosts")]
         public Output<ImmutableArray<string>> Hosts { get; private set; } = null!;
 
+        /// <summary>
+        /// The certificate authority that issued the certificate.
+        /// </summary>
         [Output("issuer")]
         public Output<string> Issuer { get; private set; } = null!;
 
+        [Output("keylessServer")]
+        public Output<Outputs.CustomSslKeylessServer> KeylessServer { get; private set; } = null!;
+
+        /// <summary>
+        /// When the certificate was last modified.
+        /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
-        [Output("priority")]
-        public Output<int> Priority { get; private set; } = null!;
+        /// <summary>
+        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// </summary>
+        [Output("policy")]
+        public Output<string?> Policy { get; private set; } = null!;
 
+        /// <summary>
+        /// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        /// </summary>
+        [Output("priority")]
+        public Output<double> Priority { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone's private key.
+        /// </summary>
+        [Output("privateKey")]
+        public Output<string> PrivateKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of hash used for the certificate.
+        /// </summary>
         [Output("signature")]
         public Output<string> Signature { get; private set; } = null!;
 
+        /// <summary>
+        /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// Available values: "legacy*custom", "sni_custom".
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// When the certificate was uploaded to Cloudflare.
+        /// </summary>
         [Output("uploadedOn")]
         public Output<string> UploadedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -109,6 +213,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -133,21 +241,55 @@ namespace Pulumi.Cloudflare
     public sealed class CustomSslArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
-        [Input("customSslOptions")]
-        public Input<Inputs.CustomSslCustomSslOptionsArgs>? CustomSslOptions { get; set; }
+        [Input("bundleMethod")]
+        public Input<string>? BundleMethod { get; set; }
 
-        [Input("customSslPriorities")]
-        private InputList<Inputs.CustomSslCustomSslPriorityArgs>? _customSslPriorities;
-        public InputList<Inputs.CustomSslCustomSslPriorityArgs> CustomSslPriorities
+        /// <summary>
+        /// The zone's SSL certificate or certificate and the intermediate(s).
+        /// </summary>
+        [Input("certificate", required: true)]
+        public Input<string> Certificate { get; set; } = null!;
+
+        /// <summary>
+        /// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        /// </summary>
+        [Input("geoRestrictions")]
+        public Input<Inputs.CustomSslGeoRestrictionsArgs>? GeoRestrictions { get; set; }
+
+        /// <summary>
+        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
+
+        [Input("privateKey", required: true)]
+        private Input<string>? _privateKey;
+
+        /// <summary>
+        /// The zone's private key.
+        /// </summary>
+        public Input<string>? PrivateKey
         {
-            get => _customSslPriorities ?? (_customSslPriorities = new InputList<Inputs.CustomSslCustomSslPriorityArgs>());
-            set => _customSslPriorities = value;
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// Available values: "legacy*custom", "sni_custom".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -161,21 +303,29 @@ namespace Pulumi.Cloudflare
     public sealed class CustomSslState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
+        /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
+        /// Available values: "ubiquitous", "optimal", "force".
         /// </summary>
-        [Input("customSslOptions")]
-        public Input<Inputs.CustomSslCustomSslOptionsGetArgs>? CustomSslOptions { get; set; }
+        [Input("bundleMethod")]
+        public Input<string>? BundleMethod { get; set; }
 
-        [Input("customSslPriorities")]
-        private InputList<Inputs.CustomSslCustomSslPriorityGetArgs>? _customSslPriorities;
-        public InputList<Inputs.CustomSslCustomSslPriorityGetArgs> CustomSslPriorities
-        {
-            get => _customSslPriorities ?? (_customSslPriorities = new InputList<Inputs.CustomSslCustomSslPriorityGetArgs>());
-            set => _customSslPriorities = value;
-        }
+        /// <summary>
+        /// The zone's SSL certificate or certificate and the intermediate(s).
+        /// </summary>
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
 
+        /// <summary>
+        /// When the certificate from the authority expires.
+        /// </summary>
         [Input("expiresOn")]
         public Input<string>? ExpiresOn { get; set; }
+
+        /// <summary>
+        /// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
+        /// </summary>
+        [Input("geoRestrictions")]
+        public Input<Inputs.CustomSslGeoRestrictionsGetArgs>? GeoRestrictions { get; set; }
 
         [Input("hosts")]
         private InputList<string>? _hosts;
@@ -185,26 +335,77 @@ namespace Pulumi.Cloudflare
             set => _hosts = value;
         }
 
+        /// <summary>
+        /// The certificate authority that issued the certificate.
+        /// </summary>
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
+        [Input("keylessServer")]
+        public Input<Inputs.CustomSslKeylessServerGetArgs>? KeylessServer { get; set; }
+
+        /// <summary>
+        /// When the certificate was last modified.
+        /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
-        [Input("priority")]
-        public Input<int>? Priority { get; set; }
+        /// <summary>
+        /// Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO*3166-1*alpha-2#Officially*assigned*code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected.
+        /// </summary>
+        [Input("policy")]
+        public Input<string>? Policy { get; set; }
 
+        /// <summary>
+        /// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy*custom' certificates, but 'legacy*custom' certificates will always supercede 'sni_custom' certificates.
+        /// </summary>
+        [Input("priority")]
+        public Input<double>? Priority { get; set; }
+
+        [Input("privateKey")]
+        private Input<string>? _privateKey;
+
+        /// <summary>
+        /// The zone's private key.
+        /// </summary>
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The type of hash used for the certificate.
+        /// </summary>
         [Input("signature")]
         public Input<string>? Signature { get; set; }
 
+        /// <summary>
+        /// Status of the zone's custom SSL.
+        /// Available values: "active", "expired", "deleted", "pending", "initializing".
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
+        /// Available values: "legacy*custom", "sni_custom".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// When the certificate was uploaded to Cloudflare.
+        /// </summary>
         [Input("uploadedOn")]
         public Input<string>? UploadedOn { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

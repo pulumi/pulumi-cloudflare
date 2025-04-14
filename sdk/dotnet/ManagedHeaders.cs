@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
-    /// allows you to add or remove some predefined headers to one's
-    /// requests or origin responses.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -24,23 +20,22 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Enable security headers using Managed Meaders
-    ///     var example = new Cloudflare.ManagedHeaders("example", new()
+    ///     var exampleManagedTransforms = new Cloudflare.ManagedTransforms("example_managed_transforms", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
     ///         ManagedRequestHeaders = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ManagedHeadersManagedRequestHeaderArgs
+    ///             new Cloudflare.Inputs.ManagedTransformsManagedRequestHeaderArgs
     ///             {
-    ///                 Id = "add_true_client_ip_headers",
+    ///                 Id = "add_bot_protection_headers",
     ///                 Enabled = true,
     ///             },
     ///         },
     ///         ManagedResponseHeaders = new[]
     ///         {
-    ///             new Cloudflare.Inputs.ManagedHeadersManagedResponseHeaderArgs
+    ///             new Cloudflare.Inputs.ManagedTransformsManagedResponseHeaderArgs
     ///             {
-    ///                 Id = "remove_x-powered-by_header",
+    ///                 Id = "add_security_headers",
     ///                 Enabled = true,
     ///             },
     ///         },
@@ -48,24 +43,31 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/managedHeaders:ManagedHeaders example '&lt;zone_id&gt;'
+    /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms")]
     [CloudflareResourceType("cloudflare:index/managedHeaders:ManagedHeaders")]
     public partial class ManagedHeaders : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The list of managed request headers.
+        /// The list of Managed Request Transforms.
         /// </summary>
         [Output("managedRequestHeaders")]
         public Output<ImmutableArray<Outputs.ManagedHeadersManagedRequestHeader>> ManagedRequestHeaders { get; private set; } = null!;
 
         /// <summary>
-        /// The list of managed response headers.
+        /// The list of Managed Response Transforms.
         /// </summary>
         [Output("managedResponseHeaders")]
         public Output<ImmutableArray<Outputs.ManagedHeadersManagedResponseHeader>> ManagedResponseHeaders { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The unique ID of the zone.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -93,6 +95,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/managedHeaders:ManagedHeaders" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -116,11 +122,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class ManagedHeadersArgs : global::Pulumi.ResourceArgs
     {
-        [Input("managedRequestHeaders")]
+        [Input("managedRequestHeaders", required: true)]
         private InputList<Inputs.ManagedHeadersManagedRequestHeaderArgs>? _managedRequestHeaders;
 
         /// <summary>
-        /// The list of managed request headers.
+        /// The list of Managed Request Transforms.
         /// </summary>
         public InputList<Inputs.ManagedHeadersManagedRequestHeaderArgs> ManagedRequestHeaders
         {
@@ -128,11 +134,11 @@ namespace Pulumi.Cloudflare
             set => _managedRequestHeaders = value;
         }
 
-        [Input("managedResponseHeaders")]
+        [Input("managedResponseHeaders", required: true)]
         private InputList<Inputs.ManagedHeadersManagedResponseHeaderArgs>? _managedResponseHeaders;
 
         /// <summary>
-        /// The list of managed response headers.
+        /// The list of Managed Response Transforms.
         /// </summary>
         public InputList<Inputs.ManagedHeadersManagedResponseHeaderArgs> ManagedResponseHeaders
         {
@@ -141,7 +147,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -158,7 +164,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ManagedHeadersManagedRequestHeaderGetArgs>? _managedRequestHeaders;
 
         /// <summary>
-        /// The list of managed request headers.
+        /// The list of Managed Request Transforms.
         /// </summary>
         public InputList<Inputs.ManagedHeadersManagedRequestHeaderGetArgs> ManagedRequestHeaders
         {
@@ -170,7 +176,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.ManagedHeadersManagedResponseHeaderGetArgs>? _managedResponseHeaders;
 
         /// <summary>
-        /// The list of managed response headers.
+        /// The list of Managed Response Transforms.
         /// </summary>
         public InputList<Inputs.ManagedHeadersManagedResponseHeaderGetArgs> ManagedResponseHeaders
         {
@@ -179,7 +185,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The unique ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

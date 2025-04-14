@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustAccessMtlsHostnameSettingsSetting {
@@ -17,12 +15,12 @@ public final class ZeroTrustAccessMtlsHostnameSettingsSetting {
      * @return Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
      * 
      */
-    private @Nullable Boolean chinaNetwork;
+    private Boolean chinaNetwork;
     /**
      * @return Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
      * 
      */
-    private @Nullable Boolean clientCertificateForwarding;
+    private Boolean clientCertificateForwarding;
     /**
      * @return The hostname that these settings apply to.
      * 
@@ -34,15 +32,15 @@ public final class ZeroTrustAccessMtlsHostnameSettingsSetting {
      * @return Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
      * 
      */
-    public Optional<Boolean> chinaNetwork() {
-        return Optional.ofNullable(this.chinaNetwork);
+    public Boolean chinaNetwork() {
+        return this.chinaNetwork;
     }
     /**
      * @return Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
      * 
      */
-    public Optional<Boolean> clientCertificateForwarding() {
-        return Optional.ofNullable(this.clientCertificateForwarding);
+    public Boolean clientCertificateForwarding() {
+        return this.clientCertificateForwarding;
     }
     /**
      * @return The hostname that these settings apply to.
@@ -61,8 +59,8 @@ public final class ZeroTrustAccessMtlsHostnameSettingsSetting {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean chinaNetwork;
-        private @Nullable Boolean clientCertificateForwarding;
+        private Boolean chinaNetwork;
+        private Boolean clientCertificateForwarding;
         private String hostname;
         public Builder() {}
         public Builder(ZeroTrustAccessMtlsHostnameSettingsSetting defaults) {
@@ -73,14 +71,18 @@ public final class ZeroTrustAccessMtlsHostnameSettingsSetting {
         }
 
         @CustomType.Setter
-        public Builder chinaNetwork(@Nullable Boolean chinaNetwork) {
-
+        public Builder chinaNetwork(Boolean chinaNetwork) {
+            if (chinaNetwork == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustAccessMtlsHostnameSettingsSetting", "chinaNetwork");
+            }
             this.chinaNetwork = chinaNetwork;
             return this;
         }
         @CustomType.Setter
-        public Builder clientCertificateForwarding(@Nullable Boolean clientCertificateForwarding) {
-
+        public Builder clientCertificateForwarding(Boolean clientCertificateForwarding) {
+            if (clientCertificateForwarding == null) {
+              throw new MissingRequiredPropertyException("ZeroTrustAccessMtlsHostnameSettingsSetting", "clientCertificateForwarding");
+            }
             this.clientCertificateForwarding = clientCertificateForwarding;
             return this;
         }

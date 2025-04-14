@@ -17,6 +17,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
 
     /**
      * The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+     * Available values: &#34;none&#34;, &#34;public_dns&#34;.
      * 
      */
     @Import(name="fallback")
@@ -24,6 +25,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
 
     /**
      * @return The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+     * Available values: &#34;none&#34;, &#34;public_dns&#34;.
      * 
      */
     public Optional<Output<String>> fallback() {
@@ -72,6 +74,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
 
         /**
          * @param fallback The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+         * Available values: &#34;none&#34;, &#34;public_dns&#34;.
          * 
          * @return builder
          * 
@@ -83,6 +86,7 @@ public final class TeamsRuleRuleSettingsResolveDnsInternallyArgs extends com.pul
 
         /**
          * @param fallback The fallback behavior to apply when the internal DNS response code is different from &#39;NOERROR&#39; or when the response data only contains CNAME records for &#39;A&#39; or &#39;AAAA&#39; queries.
+         * Available values: &#34;none&#34;, &#34;public_dns&#34;.
          * 
          * @return builder
          * 

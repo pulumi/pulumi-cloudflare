@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     public static final WorkersKvNamespaceState Empty = new WorkersKvNamespaceState();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +32,29 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Title value of the Worker KV Namespace.
+     * True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
+     * 
+     */
+    @Import(name="supportsUrlEncoding")
+    private @Nullable Output<Boolean> supportsUrlEncoding;
+
+    /**
+     * @return True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
+     * 
+     */
+    public Optional<Output<Boolean>> supportsUrlEncoding() {
+        return Optional.ofNullable(this.supportsUrlEncoding);
+    }
+
+    /**
+     * A human-readable string name for a Namespace.
      * 
      */
     @Import(name="title")
     private @Nullable Output<String> title;
 
     /**
-     * @return Title value of the Worker KV Namespace.
+     * @return A human-readable string name for a Namespace.
      * 
      */
     public Optional<Output<String>> title() {
@@ -49,6 +65,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
 
     private WorkersKvNamespaceState(WorkersKvNamespaceState $) {
         this.accountId = $.accountId;
+        this.supportsUrlEncoding = $.supportsUrlEncoding;
         this.title = $.title;
     }
 
@@ -71,7 +88,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -82,7 +99,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -92,7 +109,28 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param title Title value of the Worker KV Namespace.
+         * @param supportsUrlEncoding True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportsUrlEncoding(@Nullable Output<Boolean> supportsUrlEncoding) {
+            $.supportsUrlEncoding = supportsUrlEncoding;
+            return this;
+        }
+
+        /**
+         * @param supportsUrlEncoding True if keys written on the URL will be URL-decoded before storing. For example, if set to &#34;true&#34;, a key written on the URL as &#34;%3F&#34; will be stored as &#34;?&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportsUrlEncoding(Boolean supportsUrlEncoding) {
+            return supportsUrlEncoding(Output.of(supportsUrlEncoding));
+        }
+
+        /**
+         * @param title A human-readable string name for a Namespace.
          * 
          * @return builder
          * 
@@ -103,7 +141,7 @@ public final class WorkersKvNamespaceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param title Title value of the Worker KV Namespace.
+         * @param title A human-readable string name for a Namespace.
          * 
          * @return builder
          * 

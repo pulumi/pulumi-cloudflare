@@ -3,7 +3,9 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.TeamsRuleExpirationArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleScheduleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -20,30 +22,24 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TeamsRuleArgs Empty = new TeamsRuleArgs();
 
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
 
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+     * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+     * @return The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+     * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;.
      * 
      */
     public Output<String> action() {
@@ -51,29 +47,29 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the teams rule.
+     * The description of the rule.
      * 
      */
-    @Import(name="description", required=true)
-    private Output<String> description;
+    @Import(name="description")
+    private @Nullable Output<String> description;
 
     /**
-     * @return The description of the teams rule.
+     * @return The description of the rule.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
-     * The wirefilter expression to be used for device_posture check matching.
+     * The wirefilter expression used for device posture check matching.
      * 
      */
     @Import(name="devicePosture")
     private @Nullable Output<String> devicePosture;
 
     /**
-     * @return The wirefilter expression to be used for device_posture check matching.
+     * @return The wirefilter expression used for device posture check matching.
      * 
      */
     public Optional<Output<String>> devicePosture() {
@@ -81,14 +77,14 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicator of rule enablement.
+     * True if the rule is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Indicator of rule enablement.
+     * @return True if the rule is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -96,14 +92,31 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol or layer to evaluate the traffic and identity expressions.
+     * The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * 
+     */
+    @Import(name="expiration")
+    private @Nullable Output<TeamsRuleExpirationArgs> expiration;
+
+    /**
+     * @return The expiration time stamp and default duration of a DNS policy. Takes
+     * precedence over the policy&#39;s `schedule` configuration, if any.
+     * 
+     */
+    public Optional<Output<TeamsRuleExpirationArgs>> expiration() {
+        return Optional.ofNullable(this.expiration);
+    }
+
+    /**
+     * The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<String>> filters;
 
     /**
-     * @return The protocol or layer to evaluate the traffic and identity expressions.
+     * @return The protocol or layer to evaluate the traffic, identity, and device posture expressions.
      * 
      */
     public Optional<Output<List<String>>> filters() {
@@ -111,14 +124,14 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The wirefilter expression to be used for identity matching.
+     * The wirefilter expression used for identity matching.
      * 
      */
     @Import(name="identity")
     private @Nullable Output<String> identity;
 
     /**
-     * @return The wirefilter expression to be used for identity matching.
+     * @return The wirefilter expression used for identity matching.
      * 
      */
     public Optional<Output<String>> identity() {
@@ -126,14 +139,14 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the teams rule.
+     * The name of the rule.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the teams rule.
+     * @return The name of the rule.
      * 
      */
     public Output<String> name() {
@@ -141,29 +154,31 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The evaluation precedence of the teams rule.
+     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      * 
      */
-    @Import(name="precedence", required=true)
-    private Output<Integer> precedence;
+    @Import(name="precedence")
+    private @Nullable Output<Integer> precedence;
 
     /**
-     * @return The evaluation precedence of the teams rule.
+     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+     * rules are evaluated in ascending order of this value.
      * 
      */
-    public Output<Integer> precedence() {
-        return this.precedence;
+    public Optional<Output<Integer>> precedence() {
+        return Optional.ofNullable(this.precedence);
     }
 
     /**
-     * Additional rule settings.
+     * Additional settings that modify the rule&#39;s action.
      * 
      */
     @Import(name="ruleSettings")
     private @Nullable Output<TeamsRuleRuleSettingsArgs> ruleSettings;
 
     /**
-     * @return Additional rule settings.
+     * @return Additional settings that modify the rule&#39;s action.
      * 
      */
     public Optional<Output<TeamsRuleRuleSettingsArgs>> ruleSettings() {
@@ -171,14 +186,29 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The wirefilter expression to be used for traffic matching.
+     * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * 
+     */
+    @Import(name="schedule")
+    private @Nullable Output<TeamsRuleScheduleArgs> schedule;
+
+    /**
+     * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+     * 
+     */
+    public Optional<Output<TeamsRuleScheduleArgs>> schedule() {
+        return Optional.ofNullable(this.schedule);
+    }
+
+    /**
+     * The wirefilter expression used for traffic matching.
      * 
      */
     @Import(name="traffic")
     private @Nullable Output<String> traffic;
 
     /**
-     * @return The wirefilter expression to be used for traffic matching.
+     * @return The wirefilter expression used for traffic matching.
      * 
      */
     public Optional<Output<String>> traffic() {
@@ -193,11 +223,13 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.devicePosture = $.devicePosture;
         this.enabled = $.enabled;
+        this.expiration = $.expiration;
         this.filters = $.filters;
         this.identity = $.identity;
         this.name = $.name;
         this.precedence = $.precedence;
         this.ruleSettings = $.ruleSettings;
+        this.schedule = $.schedule;
         this.traffic = $.traffic;
     }
 
@@ -219,29 +251,18 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TeamsRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
-        /**
-         * @param accountId The account identifier to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
 
         /**
-         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+         * @param action The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+         * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;.
          * 
          * @return builder
          * 
@@ -252,7 +273,8 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
+         * @param action The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
+         * Available values: &#34;on&#34;, &#34;off&#34;, &#34;allow&#34;, &#34;block&#34;, &#34;scan&#34;, &#34;noscan&#34;, &#34;safesearch&#34;, &#34;ytrestricted&#34;, &#34;isolate&#34;, &#34;noisolate&#34;, &#34;override&#34;, &#34;l4_override&#34;, &#34;egress&#34;, &#34;resolve&#34;, &#34;quarantine&#34;.
          * 
          * @return builder
          * 
@@ -262,18 +284,18 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the teams rule.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
          */
-        public Builder description(Output<String> description) {
+        public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
         /**
-         * @param description The description of the teams rule.
+         * @param description The description of the rule.
          * 
          * @return builder
          * 
@@ -283,7 +305,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param devicePosture The wirefilter expression to be used for device_posture check matching.
+         * @param devicePosture The wirefilter expression used for device posture check matching.
          * 
          * @return builder
          * 
@@ -294,7 +316,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param devicePosture The wirefilter expression to be used for device_posture check matching.
+         * @param devicePosture The wirefilter expression used for device posture check matching.
          * 
          * @return builder
          * 
@@ -304,7 +326,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Indicator of rule enablement.
+         * @param enabled True if the rule is enabled.
          * 
          * @return builder
          * 
@@ -315,7 +337,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Indicator of rule enablement.
+         * @param enabled True if the rule is enabled.
          * 
          * @return builder
          * 
@@ -325,7 +347,30 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic and identity expressions.
+         * @param expiration The expiration time stamp and default duration of a DNS policy. Takes
+         * precedence over the policy&#39;s `schedule` configuration, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiration(@Nullable Output<TeamsRuleExpirationArgs> expiration) {
+            $.expiration = expiration;
+            return this;
+        }
+
+        /**
+         * @param expiration The expiration time stamp and default duration of a DNS policy. Takes
+         * precedence over the policy&#39;s `schedule` configuration, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiration(TeamsRuleExpirationArgs expiration) {
+            return expiration(Output.of(expiration));
+        }
+
+        /**
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -336,7 +381,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic and identity expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -346,7 +391,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters The protocol or layer to evaluate the traffic and identity expressions.
+         * @param filters The protocol or layer to evaluate the traffic, identity, and device posture expressions.
          * 
          * @return builder
          * 
@@ -356,7 +401,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identity The wirefilter expression to be used for identity matching.
+         * @param identity The wirefilter expression used for identity matching.
          * 
          * @return builder
          * 
@@ -367,7 +412,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param identity The wirefilter expression to be used for identity matching.
+         * @param identity The wirefilter expression used for identity matching.
          * 
          * @return builder
          * 
@@ -377,7 +422,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the teams rule.
+         * @param name The name of the rule.
          * 
          * @return builder
          * 
@@ -388,7 +433,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the teams rule.
+         * @param name The name of the rule.
          * 
          * @return builder
          * 
@@ -398,18 +443,20 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param precedence The evaluation precedence of the teams rule.
+         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+         * rules are evaluated in ascending order of this value.
          * 
          * @return builder
          * 
          */
-        public Builder precedence(Output<Integer> precedence) {
+        public Builder precedence(@Nullable Output<Integer> precedence) {
             $.precedence = precedence;
             return this;
         }
 
         /**
-         * @param precedence The evaluation precedence of the teams rule.
+         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
+         * rules are evaluated in ascending order of this value.
          * 
          * @return builder
          * 
@@ -419,7 +466,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleSettings Additional rule settings.
+         * @param ruleSettings Additional settings that modify the rule&#39;s action.
          * 
          * @return builder
          * 
@@ -430,7 +477,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleSettings Additional rule settings.
+         * @param ruleSettings Additional settings that modify the rule&#39;s action.
          * 
          * @return builder
          * 
@@ -440,7 +487,28 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param traffic The wirefilter expression to be used for traffic matching.
+         * @param schedule The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedule(@Nullable Output<TeamsRuleScheduleArgs> schedule) {
+            $.schedule = schedule;
+            return this;
+        }
+
+        /**
+         * @param schedule The schedule for activating DNS policies. This does not apply to HTTP or network policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schedule(TeamsRuleScheduleArgs schedule) {
+            return schedule(Output.of(schedule));
+        }
+
+        /**
+         * @param traffic The wirefilter expression used for traffic matching.
          * 
          * @return builder
          * 
@@ -451,7 +519,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param traffic The wirefilter expression to be used for traffic matching.
+         * @param traffic The wirefilter expression used for traffic matching.
          * 
          * @return builder
          * 
@@ -467,14 +535,8 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
             if ($.action == null) {
                 throw new MissingRequiredPropertyException("TeamsRuleArgs", "action");
             }
-            if ($.description == null) {
-                throw new MissingRequiredPropertyException("TeamsRuleArgs", "description");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("TeamsRuleArgs", "name");
-            }
-            if ($.precedence == null) {
-                throw new MissingRequiredPropertyException("TeamsRuleArgs", "precedence");
             }
             return $;
         }

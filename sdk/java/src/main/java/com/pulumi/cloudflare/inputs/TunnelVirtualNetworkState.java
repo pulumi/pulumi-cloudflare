@@ -17,14 +17,14 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
     public static final TunnelVirtualNetworkState Empty = new TunnelVirtualNetworkState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +32,14 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Description of the tunnel virtual network.
+     * Optional remark describing the virtual network.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Description of the tunnel virtual network.
+     * @return Optional remark describing the virtual network.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -47,14 +47,59 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * Timestamp of when the resource was created.
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return Timestamp of when the resource was created.
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    @Import(name="deletedAt")
+    private @Nullable Output<String> deletedAt;
+
+    /**
+     * @return Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    public Optional<Output<String>> deletedAt() {
+        return Optional.ofNullable(this.deletedAt);
+    }
+
+    /**
+     * If `true`, this virtual network is the default for the account.
+     * 
+     */
+    @Import(name="isDefault")
+    private @Nullable Output<Boolean> isDefault;
+
+    /**
+     * @return If `true`, this virtual network is the default for the account.
+     * 
+     */
+    public Optional<Output<Boolean>> isDefault() {
+        return Optional.ofNullable(this.isDefault);
+    }
+
+    /**
+     * If `true`, this virtual network is the default for the account.
      * 
      */
     @Import(name="isDefaultNetwork")
     private @Nullable Output<Boolean> isDefaultNetwork;
 
     /**
-     * @return Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+     * @return If `true`, this virtual network is the default for the account.
      * 
      */
     public Optional<Output<Boolean>> isDefaultNetwork() {
@@ -62,14 +107,14 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
     }
 
     /**
-     * A user-friendly name chosen when the virtual network is created.
+     * A user-friendly name for the virtual network.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A user-friendly name chosen when the virtual network is created.
+     * @return A user-friendly name for the virtual network.
      * 
      */
     public Optional<Output<String>> name() {
@@ -81,6 +126,9 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
     private TunnelVirtualNetworkState(TunnelVirtualNetworkState $) {
         this.accountId = $.accountId;
         this.comment = $.comment;
+        this.createdAt = $.createdAt;
+        this.deletedAt = $.deletedAt;
+        this.isDefault = $.isDefault;
         this.isDefaultNetwork = $.isDefaultNetwork;
         this.name = $.name;
     }
@@ -104,7 +152,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -115,7 +163,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -125,7 +173,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param comment Description of the tunnel virtual network.
+         * @param comment Optional remark describing the virtual network.
          * 
          * @return builder
          * 
@@ -136,7 +184,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param comment Description of the tunnel virtual network.
+         * @param comment Optional remark describing the virtual network.
          * 
          * @return builder
          * 
@@ -146,7 +194,70 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isDefaultNetwork Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+         * @param createdAt Timestamp of when the resource was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt Timestamp of when the resource was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param deletedAt Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletedAt(@Nullable Output<String> deletedAt) {
+            $.deletedAt = deletedAt;
+            return this;
+        }
+
+        /**
+         * @param deletedAt Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletedAt(String deletedAt) {
+            return deletedAt(Output.of(deletedAt));
+        }
+
+        /**
+         * @param isDefault If `true`, this virtual network is the default for the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(@Nullable Output<Boolean> isDefault) {
+            $.isDefault = isDefault;
+            return this;
+        }
+
+        /**
+         * @param isDefault If `true`, this virtual network is the default for the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(Boolean isDefault) {
+            return isDefault(Output.of(isDefault));
+        }
+
+        /**
+         * @param isDefaultNetwork If `true`, this virtual network is the default for the account.
          * 
          * @return builder
          * 
@@ -157,7 +268,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param isDefaultNetwork Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+         * @param isDefaultNetwork If `true`, this virtual network is the default for the account.
          * 
          * @return builder
          * 
@@ -167,7 +278,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name A user-friendly name chosen when the virtual network is created.
+         * @param name A user-friendly name for the virtual network.
          * 
          * @return builder
          * 
@@ -178,7 +289,7 @@ public final class TunnelVirtualNetworkState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name A user-friendly name chosen when the virtual network is created.
+         * @param name A user-friendly name for the virtual network.
          * 
          * @return builder
          * 

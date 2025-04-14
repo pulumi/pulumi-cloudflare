@@ -8,33 +8,39 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource which manages Cloudflare API tokens.
+// ## Example Usage
 //
-// Read more about permission groups and their applicable scopes in the
-// [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/apiToken:ApiToken example '<token_id>'
+// ```
 type ApiToken struct {
 	pulumi.CustomResourceState
 
-	// Conditions under which the token should be considered valid.
-	Condition ApiTokenConditionPtrOutput `pulumi:"condition"`
-	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	Condition ApiTokenConditionOutput `pulumi:"condition"`
+	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn pulumi.StringPtrOutput `pulumi:"expiresOn"`
-	// Timestamp of when the token was issued.
+	// The time on which the token was created.
 	IssuedOn pulumi.StringOutput `pulumi:"issuedOn"`
-	// Timestamp of when the token was last modified.
+	// Last time the token was used.
+	LastUsedOn pulumi.StringOutput `pulumi:"lastUsedOn"`
+	// Last time the token was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// Name of the API Token.
+	// Token name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore pulumi.StringPtrOutput `pulumi:"notBefore"`
-	// Permissions policy. Multiple policy blocks can be defined.
+	// List of access policies assigned to the token.
 	Policies ApiTokenPolicyArrayOutput `pulumi:"policies"`
-	Status   pulumi.StringOutput       `pulumi:"status"`
-	// The value of the API Token.
+	// Status of the token.
+	// Available values: "active", "disabled", "expired".
+	Status pulumi.StringPtrOutput `pulumi:"status"`
+	// The token value.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -78,42 +84,48 @@ func GetApiToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiToken resources.
 type apiTokenState struct {
-	// Conditions under which the token should be considered valid.
 	Condition *ApiTokenCondition `pulumi:"condition"`
-	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn *string `pulumi:"expiresOn"`
-	// Timestamp of when the token was issued.
+	// The time on which the token was created.
 	IssuedOn *string `pulumi:"issuedOn"`
-	// Timestamp of when the token was last modified.
+	// Last time the token was used.
+	LastUsedOn *string `pulumi:"lastUsedOn"`
+	// Last time the token was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// Name of the API Token.
+	// Token name.
 	Name *string `pulumi:"name"`
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore *string `pulumi:"notBefore"`
-	// Permissions policy. Multiple policy blocks can be defined.
+	// List of access policies assigned to the token.
 	Policies []ApiTokenPolicy `pulumi:"policies"`
-	Status   *string          `pulumi:"status"`
-	// The value of the API Token.
+	// Status of the token.
+	// Available values: "active", "disabled", "expired".
+	Status *string `pulumi:"status"`
+	// The token value.
 	Value *string `pulumi:"value"`
 }
 
 type ApiTokenState struct {
-	// Conditions under which the token should be considered valid.
 	Condition ApiTokenConditionPtrInput
-	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn pulumi.StringPtrInput
-	// Timestamp of when the token was issued.
+	// The time on which the token was created.
 	IssuedOn pulumi.StringPtrInput
-	// Timestamp of when the token was last modified.
+	// Last time the token was used.
+	LastUsedOn pulumi.StringPtrInput
+	// Last time the token was modified.
 	ModifiedOn pulumi.StringPtrInput
-	// Name of the API Token.
+	// Token name.
 	Name pulumi.StringPtrInput
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore pulumi.StringPtrInput
-	// Permissions policy. Multiple policy blocks can be defined.
+	// List of access policies assigned to the token.
 	Policies ApiTokenPolicyArrayInput
-	Status   pulumi.StringPtrInput
-	// The value of the API Token.
+	// Status of the token.
+	// Available values: "active", "disabled", "expired".
+	Status pulumi.StringPtrInput
+	// The token value.
 	Value pulumi.StringPtrInput
 }
 
@@ -122,30 +134,34 @@ func (ApiTokenState) ElementType() reflect.Type {
 }
 
 type apiTokenArgs struct {
-	// Conditions under which the token should be considered valid.
 	Condition *ApiTokenCondition `pulumi:"condition"`
-	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn *string `pulumi:"expiresOn"`
-	// Name of the API Token.
+	// Token name.
 	Name string `pulumi:"name"`
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore *string `pulumi:"notBefore"`
-	// Permissions policy. Multiple policy blocks can be defined.
+	// List of access policies assigned to the token.
 	Policies []ApiTokenPolicy `pulumi:"policies"`
+	// Status of the token.
+	// Available values: "active", "disabled", "expired".
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a ApiToken resource.
 type ApiTokenArgs struct {
-	// Conditions under which the token should be considered valid.
 	Condition ApiTokenConditionPtrInput
-	// The expiration time on or after which the token MUST NOT be accepted for processing.
+	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn pulumi.StringPtrInput
-	// Name of the API Token.
+	// Token name.
 	Name pulumi.StringInput
 	// The time before which the token MUST NOT be accepted for processing.
 	NotBefore pulumi.StringPtrInput
-	// Permissions policy. Multiple policy blocks can be defined.
+	// List of access policies assigned to the token.
 	Policies ApiTokenPolicyArrayInput
+	// Status of the token.
+	// Available values: "active", "disabled", "expired".
+	Status pulumi.StringPtrInput
 }
 
 func (ApiTokenArgs) ElementType() reflect.Type {
@@ -235,27 +251,31 @@ func (o ApiTokenOutput) ToApiTokenOutputWithContext(ctx context.Context) ApiToke
 	return o
 }
 
-// Conditions under which the token should be considered valid.
-func (o ApiTokenOutput) Condition() ApiTokenConditionPtrOutput {
-	return o.ApplyT(func(v *ApiToken) ApiTokenConditionPtrOutput { return v.Condition }).(ApiTokenConditionPtrOutput)
+func (o ApiTokenOutput) Condition() ApiTokenConditionOutput {
+	return o.ApplyT(func(v *ApiToken) ApiTokenConditionOutput { return v.Condition }).(ApiTokenConditionOutput)
 }
 
-// The expiration time on or after which the token MUST NOT be accepted for processing.
+// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 func (o ApiTokenOutput) ExpiresOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringPtrOutput { return v.ExpiresOn }).(pulumi.StringPtrOutput)
 }
 
-// Timestamp of when the token was issued.
+// The time on which the token was created.
 func (o ApiTokenOutput) IssuedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.IssuedOn }).(pulumi.StringOutput)
 }
 
-// Timestamp of when the token was last modified.
+// Last time the token was used.
+func (o ApiTokenOutput) LastUsedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.LastUsedOn }).(pulumi.StringOutput)
+}
+
+// Last time the token was modified.
 func (o ApiTokenOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Name of the API Token.
+// Token name.
 func (o ApiTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -265,16 +285,18 @@ func (o ApiTokenOutput) NotBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringPtrOutput { return v.NotBefore }).(pulumi.StringPtrOutput)
 }
 
-// Permissions policy. Multiple policy blocks can be defined.
+// List of access policies assigned to the token.
 func (o ApiTokenOutput) Policies() ApiTokenPolicyArrayOutput {
 	return o.ApplyT(func(v *ApiToken) ApiTokenPolicyArrayOutput { return v.Policies }).(ApiTokenPolicyArrayOutput)
 }
 
-func (o ApiTokenOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+// Status of the token.
+// Available values: "active", "disabled", "expired".
+func (o ApiTokenOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The value of the API Token.
+// The token value.
 func (o ApiTokenOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

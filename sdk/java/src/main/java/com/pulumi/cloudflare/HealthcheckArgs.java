@@ -3,7 +3,8 @@
 
 package com.pulumi.cloudflare;
 
-import com.pulumi.cloudflare.inputs.HealthcheckHeaderArgs;
+import com.pulumi.cloudflare.inputs.HealthcheckHttpConfigArgs;
+import com.pulumi.cloudflare.inputs.HealthcheckTcpConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -36,29 +37,14 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-     * 
-     */
-    @Import(name="allowInsecure")
-    private @Nullable Output<Boolean> allowInsecure;
-
-    /**
-     * @return Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-     * 
-     */
-    public Optional<Output<Boolean>> allowInsecure() {
-        return Optional.ofNullable(this.allowInsecure);
-    }
-
-    /**
-     * A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+     * A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
      * 
      */
     @Import(name="checkRegions")
     private @Nullable Output<List<String>> checkRegions;
 
     /**
-     * @return A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+     * @return A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
      * 
      */
     public Optional<Output<List<String>>> checkRegions() {
@@ -66,14 +52,14 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+     * The number of consecutive fails required from a health check before changing the health to unhealthy.
      * 
      */
     @Import(name="consecutiveFails")
     private @Nullable Output<Integer> consecutiveFails;
 
     /**
-     * @return The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+     * @return The number of consecutive fails required from a health check before changing the health to unhealthy.
      * 
      */
     public Optional<Output<Integer>> consecutiveFails() {
@@ -81,14 +67,14 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+     * The number of consecutive successes required from a health check before changing the health to healthy.
      * 
      */
     @Import(name="consecutiveSuccesses")
     private @Nullable Output<Integer> consecutiveSuccesses;
 
     /**
-     * @return The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+     * @return The number of consecutive successes required from a health check before changing the health to healthy.
      * 
      */
     public Optional<Output<Integer>> consecutiveSuccesses() {
@@ -111,74 +97,29 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
+     * Parameters specific to an HTTP or HTTPS health check.
      * 
      */
-    @Import(name="expectedBody")
-    private @Nullable Output<String> expectedBody;
+    @Import(name="httpConfig")
+    private @Nullable Output<HealthcheckHttpConfigArgs> httpConfig;
 
     /**
-     * @return A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
+     * @return Parameters specific to an HTTP or HTTPS health check.
      * 
      */
-    public Optional<Output<String>> expectedBody() {
-        return Optional.ofNullable(this.expectedBody);
+    public Optional<Output<HealthcheckHttpConfigArgs>> httpConfig() {
+        return Optional.ofNullable(this.httpConfig);
     }
 
     /**
-     * The expected HTTP response codes (e.g. &#39;200&#39;) or code ranges (e.g. &#39;2xx&#39; for all codes starting with 2) of the health check.
-     * 
-     */
-    @Import(name="expectedCodes")
-    private @Nullable Output<List<String>> expectedCodes;
-
-    /**
-     * @return The expected HTTP response codes (e.g. &#39;200&#39;) or code ranges (e.g. &#39;2xx&#39; for all codes starting with 2) of the health check.
-     * 
-     */
-    public Optional<Output<List<String>>> expectedCodes() {
-        return Optional.ofNullable(this.expectedCodes);
-    }
-
-    /**
-     * Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-     * 
-     */
-    @Import(name="followRedirects")
-    private @Nullable Output<Boolean> followRedirects;
-
-    /**
-     * @return Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-     * 
-     */
-    public Optional<Output<Boolean>> followRedirects() {
-        return Optional.ofNullable(this.followRedirects);
-    }
-
-    /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-     * 
-     */
-    @Import(name="headers")
-    private @Nullable Output<List<HealthcheckHeaderArgs>> headers;
-
-    /**
-     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-     * 
-     */
-    public Optional<Output<List<HealthcheckHeaderArgs>>> headers() {
-        return Optional.ofNullable(this.headers);
-    }
-
-    /**
-     * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
+     * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
+     * @return The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -186,29 +127,14 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
-     * 
-     */
-    @Import(name="method")
-    private @Nullable Output<String> method;
-
-    /**
-     * @return The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
-     * 
-     */
-    public Optional<Output<String>> method() {
-        return Optional.ofNullable(this.method);
-    }
-
-    /**
-     * A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+     * @return A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      * 
      */
     public Output<String> name() {
@@ -216,44 +142,14 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The endpoint path to health check against. Defaults to `/`.
-     * 
-     */
-    @Import(name="path")
-    private @Nullable Output<String> path;
-
-    /**
-     * @return The endpoint path to health check against. Defaults to `/`.
-     * 
-     */
-    public Optional<Output<String>> path() {
-        return Optional.ofNullable(this.path);
-    }
-
-    /**
-     * Port number to connect to for the health check. Defaults to `80`.
-     * 
-     */
-    @Import(name="port")
-    private @Nullable Output<Integer> port;
-
-    /**
-     * @return Port number to connect to for the health check. Defaults to `80`.
-     * 
-     */
-    public Optional<Output<Integer>> port() {
-        return Optional.ofNullable(this.port);
-    }
-
-    /**
-     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+     * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      * 
      */
     @Import(name="retries")
     private @Nullable Output<Integer> retries;
 
     /**
-     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+     * @return The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
      * 
      */
     public Optional<Output<Integer>> retries() {
@@ -261,14 +157,14 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If suspended, no health checks are sent to the origin. Defaults to `false`.
+     * If suspended, no health checks are sent to the origin.
      * 
      */
     @Import(name="suspended")
     private @Nullable Output<Boolean> suspended;
 
     /**
-     * @return If suspended, no health checks are sent to the origin. Defaults to `false`.
+     * @return If suspended, no health checks are sent to the origin.
      * 
      */
     public Optional<Output<Boolean>> suspended() {
@@ -276,14 +172,29 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+     * Parameters specific to TCP health check.
+     * 
+     */
+    @Import(name="tcpConfig")
+    private @Nullable Output<HealthcheckTcpConfigArgs> tcpConfig;
+
+    /**
+     * @return Parameters specific to TCP health check.
+     * 
+     */
+    public Optional<Output<HealthcheckTcpConfigArgs>> tcpConfig() {
+        return Optional.ofNullable(this.tcpConfig);
+    }
+
+    /**
+     * The timeout (in seconds) before marking the health check as failed.
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+     * @return The timeout (in seconds) before marking the health check as failed.
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -291,29 +202,29 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+     * The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39; and &#39;TCP&#39;.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
-     * @return The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+     * @return The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39; and &#39;TCP&#39;.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -324,22 +235,16 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
 
     private HealthcheckArgs(HealthcheckArgs $) {
         this.address = $.address;
-        this.allowInsecure = $.allowInsecure;
         this.checkRegions = $.checkRegions;
         this.consecutiveFails = $.consecutiveFails;
         this.consecutiveSuccesses = $.consecutiveSuccesses;
         this.description = $.description;
-        this.expectedBody = $.expectedBody;
-        this.expectedCodes = $.expectedCodes;
-        this.followRedirects = $.followRedirects;
-        this.headers = $.headers;
+        this.httpConfig = $.httpConfig;
         this.interval = $.interval;
-        this.method = $.method;
         this.name = $.name;
-        this.path = $.path;
-        this.port = $.port;
         this.retries = $.retries;
         this.suspended = $.suspended;
+        this.tcpConfig = $.tcpConfig;
         this.timeout = $.timeout;
         this.type = $.type;
         this.zoneId = $.zoneId;
@@ -385,28 +290,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowInsecure Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder allowInsecure(@Nullable Output<Boolean> allowInsecure) {
-            $.allowInsecure = allowInsecure;
-            return this;
-        }
-
-        /**
-         * @param allowInsecure Do not validate the certificate when the health check uses HTTPS. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder allowInsecure(Boolean allowInsecure) {
-            return allowInsecure(Output.of(allowInsecure));
-        }
-
-        /**
-         * @param checkRegions A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+         * @param checkRegions A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
          * 
          * @return builder
          * 
@@ -417,7 +301,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkRegions A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+         * @param checkRegions A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
          * 
          * @return builder
          * 
@@ -427,7 +311,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param checkRegions A list of regions from which to run health checks. If not set, Cloudflare will pick a default region. Available values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+         * @param checkRegions A list of regions from which to run health checks. Null means Cloudflare will pick a default region.
          * 
          * @return builder
          * 
@@ -437,7 +321,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consecutiveFails The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+         * @param consecutiveFails The number of consecutive fails required from a health check before changing the health to unhealthy.
          * 
          * @return builder
          * 
@@ -448,7 +332,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consecutiveFails The number of consecutive fails required from a health check before changing the health to unhealthy. Defaults to `1`.
+         * @param consecutiveFails The number of consecutive fails required from a health check before changing the health to unhealthy.
          * 
          * @return builder
          * 
@@ -458,7 +342,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consecutiveSuccesses The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+         * @param consecutiveSuccesses The number of consecutive successes required from a health check before changing the health to healthy.
          * 
          * @return builder
          * 
@@ -469,7 +353,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param consecutiveSuccesses The number of consecutive successes required from a health check before changing the health to healthy. Defaults to `1`.
+         * @param consecutiveSuccesses The number of consecutive successes required from a health check before changing the health to healthy.
          * 
          * @return builder
          * 
@@ -500,111 +384,28 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expectedBody A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
+         * @param httpConfig Parameters specific to an HTTP or HTTPS health check.
          * 
          * @return builder
          * 
          */
-        public Builder expectedBody(@Nullable Output<String> expectedBody) {
-            $.expectedBody = expectedBody;
+        public Builder httpConfig(@Nullable Output<HealthcheckHttpConfigArgs> httpConfig) {
+            $.httpConfig = httpConfig;
             return this;
         }
 
         /**
-         * @param expectedBody A case-insensitive sub-string to look for in the response body. If this string is not found the origin will be marked as unhealthy.
+         * @param httpConfig Parameters specific to an HTTP or HTTPS health check.
          * 
          * @return builder
          * 
          */
-        public Builder expectedBody(String expectedBody) {
-            return expectedBody(Output.of(expectedBody));
+        public Builder httpConfig(HealthcheckHttpConfigArgs httpConfig) {
+            return httpConfig(Output.of(httpConfig));
         }
 
         /**
-         * @param expectedCodes The expected HTTP response codes (e.g. &#39;200&#39;) or code ranges (e.g. &#39;2xx&#39; for all codes starting with 2) of the health check.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder expectedCodes(@Nullable Output<List<String>> expectedCodes) {
-            $.expectedCodes = expectedCodes;
-            return this;
-        }
-
-        /**
-         * @param expectedCodes The expected HTTP response codes (e.g. &#39;200&#39;) or code ranges (e.g. &#39;2xx&#39; for all codes starting with 2) of the health check.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder expectedCodes(List<String> expectedCodes) {
-            return expectedCodes(Output.of(expectedCodes));
-        }
-
-        /**
-         * @param expectedCodes The expected HTTP response codes (e.g. &#39;200&#39;) or code ranges (e.g. &#39;2xx&#39; for all codes starting with 2) of the health check.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder expectedCodes(String... expectedCodes) {
-            return expectedCodes(List.of(expectedCodes));
-        }
-
-        /**
-         * @param followRedirects Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder followRedirects(@Nullable Output<Boolean> followRedirects) {
-            $.followRedirects = followRedirects;
-            return this;
-        }
-
-        /**
-         * @param followRedirects Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder followRedirects(Boolean followRedirects) {
-            return followRedirects(Output.of(followRedirects));
-        }
-
-        /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(@Nullable Output<List<HealthcheckHeaderArgs>> headers) {
-            $.headers = headers;
-            return this;
-        }
-
-        /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(List<HealthcheckHeaderArgs> headers) {
-            return headers(Output.of(headers));
-        }
-
-        /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(HealthcheckHeaderArgs... headers) {
-            return headers(List.of(headers));
-        }
-
-        /**
-         * @param interval The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
+         * @param interval The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
          * 
          * @return builder
          * 
@@ -615,7 +416,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interval The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
+         * @param interval The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations.
          * 
          * @return builder
          * 
@@ -625,28 +426,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param method The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder method(@Nullable Output<String> method) {
-            $.method = method;
-            return this;
-        }
-
-        /**
-         * @param method The HTTP method to use for the health check. Available values: `connection_established`, `GET`, `HEAD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder method(String method) {
-            return method(Output.of(method));
-        }
-
-        /**
-         * @param name A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+         * @param name A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
          * 
          * @return builder
          * 
@@ -657,7 +437,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A short name to identify the health check. Only alphanumeric characters, hyphens, and underscores are allowed.
+         * @param name A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
          * 
          * @return builder
          * 
@@ -667,49 +447,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param path The endpoint path to health check against. Defaults to `/`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder path(@Nullable Output<String> path) {
-            $.path = path;
-            return this;
-        }
-
-        /**
-         * @param path The endpoint path to health check against. Defaults to `/`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder path(String path) {
-            return path(Output.of(path));
-        }
-
-        /**
-         * @param port Port number to connect to for the health check. Defaults to `80`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder port(@Nullable Output<Integer> port) {
-            $.port = port;
-            return this;
-        }
-
-        /**
-         * @param port Port number to connect to for the health check. Defaults to `80`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder port(Integer port) {
-            return port(Output.of(port));
-        }
-
-        /**
-         * @param retries The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+         * @param retries The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
          * 
          * @return builder
          * 
@@ -720,7 +458,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retries The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Defaults to `2`.
+         * @param retries The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately.
          * 
          * @return builder
          * 
@@ -730,7 +468,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param suspended If suspended, no health checks are sent to the origin. Defaults to `false`.
+         * @param suspended If suspended, no health checks are sent to the origin.
          * 
          * @return builder
          * 
@@ -741,7 +479,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param suspended If suspended, no health checks are sent to the origin. Defaults to `false`.
+         * @param suspended If suspended, no health checks are sent to the origin.
          * 
          * @return builder
          * 
@@ -751,7 +489,28 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeout The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+         * @param tcpConfig Parameters specific to TCP health check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tcpConfig(@Nullable Output<HealthcheckTcpConfigArgs> tcpConfig) {
+            $.tcpConfig = tcpConfig;
+            return this;
+        }
+
+        /**
+         * @param tcpConfig Parameters specific to TCP health check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tcpConfig(HealthcheckTcpConfigArgs tcpConfig) {
+            return tcpConfig(Output.of(tcpConfig));
+        }
+
+        /**
+         * @param timeout The timeout (in seconds) before marking the health check as failed.
          * 
          * @return builder
          * 
@@ -762,7 +521,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeout The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
+         * @param timeout The timeout (in seconds) before marking the health check as failed.
          * 
          * @return builder
          * 
@@ -772,18 +531,18 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+         * @param type The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39; and &#39;TCP&#39;.
          * 
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
+         * @param type The protocol to use for the health check. Currently supported protocols are &#39;HTTP&#39;, &#39;HTTPS&#39; and &#39;TCP&#39;.
          * 
          * @return builder
          * 
@@ -793,7 +552,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -804,7 +563,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -819,9 +578,6 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("HealthcheckArgs", "name");
-            }
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("HealthcheckArgs", "type");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("HealthcheckArgs", "zoneId");

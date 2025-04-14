@@ -5,9 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkersScriptPlacementArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,24 +16,44 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
     public static final WorkersScriptPlacementArgs Empty = new WorkersScriptPlacementArgs();
 
     /**
-     * The placement mode for the Worker. Available values: `smart`.
+     * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
-    @Import(name="mode", required=true)
-    private Output<String> mode;
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
 
     /**
-     * @return The placement mode for the Worker. Available values: `smart`.
+     * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;smart&#34;.
      * 
      */
-    public Output<String> mode() {
-        return this.mode;
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
+     * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
     }
 
     private WorkersScriptPlacementArgs() {}
 
     private WorkersScriptPlacementArgs(WorkersScriptPlacementArgs $) {
         this.mode = $.mode;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -54,18 +75,20 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mode The placement mode for the Worker. Available values: `smart`.
+         * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * Available values: &#34;smart&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder mode(Output<String> mode) {
+        public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
         /**
-         * @param mode The placement mode for the Worker. Available values: `smart`.
+         * @param mode Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * Available values: &#34;smart&#34;.
          * 
          * @return builder
          * 
@@ -74,10 +97,30 @@ public final class WorkersScriptPlacementArgs extends com.pulumi.resources.Resou
             return mode(Output.of(mode));
         }
 
+        /**
+         * @param status Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
         public WorkersScriptPlacementArgs build() {
-            if ($.mode == null) {
-                throw new MissingRequiredPropertyException("WorkersScriptPlacementArgs", "mode");
-            }
             return $;
         }
     }

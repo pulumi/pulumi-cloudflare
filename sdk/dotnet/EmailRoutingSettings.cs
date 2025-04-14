@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource for managing Email Routing settings.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,13 +20,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myZone = new Cloudflare.EmailRoutingSettings("my_zone", new()
+    ///     var exampleEmailRoutingSettings = new Cloudflare.EmailRoutingSettings("example_email_routing_settings", new()
     ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Enabled = true,
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/emailRoutingSettings:EmailRoutingSettings example '&lt;zone_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailRoutingSettings:EmailRoutingSettings")]
@@ -41,7 +44,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+        /// State of the zone settings for Email Routing.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -66,18 +69,19 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Show the state of your account, and the type or configuration error.
+        /// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Email Routing settings identifier.
+        /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         /// </summary>
         [Output("tag")]
         public Output<string> Tag { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -129,19 +133,7 @@ namespace Pulumi.Cloudflare
     public sealed class EmailRoutingSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
-
-        /// <summary>
-        /// Flag to check if the user skipped the configuration wizard.
-        /// </summary>
-        [Input("skipWizard")]
-        public Input<bool>? SkipWizard { get; set; }
-
-        /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -161,7 +153,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
+        /// State of the zone settings for Email Routing.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -186,18 +178,19 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Show the state of your account, and the type or configuration error.
+        /// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Email Routing settings identifier.
+        /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Identifier
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

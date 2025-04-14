@@ -6,17 +6,16 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkerDomainArgs;
 import com.pulumi.cloudflare.inputs.WorkerDomainState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Creates a Worker Custom Domain.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -27,8 +26,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkerDomain;
- * import com.pulumi.cloudflare.WorkerDomainArgs;
+ * import com.pulumi.cloudflare.WorkersCustomDomain;
+ * import com.pulumi.cloudflare.WorkersCustomDomainArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,11 +41,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkerDomain("example", WorkerDomainArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .hostname("subdomain.example.com")
- *             .service("my-service")
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *         var exampleWorkersCustomDomain = new WorkersCustomDomain("exampleWorkersCustomDomain", WorkersCustomDomainArgs.builder()
+ *             .accountId("9a7806061c88ada191ed06f989cc3dac")
+ *             .environment("production")
+ *             .hostname("foo.example.com")
+ *             .service("foo")
+ *             .zoneId("593c9c94de529bbbfaac7c53ced0447d")
  *             .build());
  * 
  *     }
@@ -58,39 +58,43 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workerDomain:WorkerDomain example &lt;account_id&gt;/&lt;worker_domain_id&gt;
+ * $ pulumi import cloudflare:index/workerDomain:WorkerDomain example &#39;&lt;account_id&gt;/&lt;domain_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain
+ * 
  */
+@Deprecated /* cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain */
 @ResourceType(type="cloudflare:index/workerDomain:WorkerDomain")
 public class WorkerDomain extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifer of the account.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifer of the account.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The name of the Worker environment. Defaults to `production`.
+     * Worker environment associated with the zone and hostname.
      * 
      */
     @Export(name="environment", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> environment;
+    private Output<String> environment;
 
     /**
-     * @return The name of the Worker environment. Defaults to `production`.
+     * @return Worker environment associated with the zone and hostname.
      * 
      */
-    public Output<Optional<String>> environment() {
-        return Codegen.optional(this.environment);
+    public Output<String> environment() {
+        return this.environment;
     }
     /**
      * Hostname of the Worker Domain.
@@ -107,32 +111,46 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
         return this.hostname;
     }
     /**
-     * Name of worker script to attach the domain to.
+     * Worker service associated with the zone and hostname.
      * 
      */
     @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
-     * @return Name of worker script to attach the domain to.
+     * @return Worker service associated with the zone and hostname.
      * 
      */
     public Output<String> service() {
         return this.service;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier of the zone.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier of the zone.
      * 
      */
     public Output<String> zoneId() {
         return this.zoneId;
+    }
+    /**
+     * Name of the zone.
+     * 
+     */
+    @Export(name="zoneName", refs={String.class}, tree="[0]")
+    private Output<String> zoneName;
+
+    /**
+     * @return Name of the zone.
+     * 
+     */
+    public Output<String> zoneName() {
+        return this.zoneName;
     }
 
     /**
@@ -174,6 +192,9 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/workerDomain:WorkerDomain").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

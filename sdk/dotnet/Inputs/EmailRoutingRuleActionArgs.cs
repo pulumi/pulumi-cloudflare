@@ -13,17 +13,14 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class EmailRoutingRuleActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of action. Available values: `forward`, `worker`, `drop`
+        /// Type of supported action.
+        /// Available values: "drop", "forward", "worker".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        [Input("values")]
+        [Input("values", required: true)]
         private InputList<string>? _values;
-
-        /// <summary>
-        /// Value to match on. Required for `type` of `literal`.
-        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

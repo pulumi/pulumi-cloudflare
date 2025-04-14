@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,44 +19,43 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
     public static final WebAnalyticsRuleState Empty = new WebAnalyticsRuleState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
 
-    /**
-     * The host to apply the rule to.
-     * 
-     */
+    @Import(name="created")
+    private @Nullable Output<String> created;
+
+    public Optional<Output<String>> created() {
+        return Optional.ofNullable(this.created);
+    }
+
     @Import(name="host")
     private @Nullable Output<String> host;
 
-    /**
-     * @return The host to apply the rule to.
-     * 
-     */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
     }
 
     /**
-     * Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+     * Whether the rule includes or excludes traffic from being measured.
      * 
      */
     @Import(name="inclusive")
     private @Nullable Output<Boolean> inclusive;
 
     /**
-     * @return Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+     * @return Whether the rule includes or excludes traffic from being measured.
      * 
      */
     public Optional<Output<Boolean>> inclusive() {
@@ -77,30 +77,29 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.isPaused);
     }
 
-    /**
-     * A list of paths to apply the rule to.
-     * 
-     */
     @Import(name="paths")
     private @Nullable Output<List<String>> paths;
 
-    /**
-     * @return A list of paths to apply the rule to.
-     * 
-     */
     public Optional<Output<List<String>>> paths() {
         return Optional.ofNullable(this.paths);
     }
 
+    @Import(name="priority")
+    private @Nullable Output<Double> priority;
+
+    public Optional<Output<Double>> priority() {
+        return Optional.ofNullable(this.priority);
+    }
+
     /**
-     * The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * The Web Analytics ruleset identifier.
      * 
      */
     @Import(name="rulesetId")
     private @Nullable Output<String> rulesetId;
 
     /**
-     * @return The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+     * @return The Web Analytics ruleset identifier.
      * 
      */
     public Optional<Output<String>> rulesetId() {
@@ -111,10 +110,12 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
 
     private WebAnalyticsRuleState(WebAnalyticsRuleState $) {
         this.accountId = $.accountId;
+        this.created = $.created;
         this.host = $.host;
         this.inclusive = $.inclusive;
         this.isPaused = $.isPaused;
         this.paths = $.paths;
+        this.priority = $.priority;
         this.rulesetId = $.rulesetId;
     }
 
@@ -137,7 +138,7 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -148,7 +149,7 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -157,29 +158,26 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param host The host to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
+        public Builder created(@Nullable Output<String> created) {
+            $.created = created;
+            return this;
+        }
+
+        public Builder created(String created) {
+            return created(Output.of(created));
+        }
+
         public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
-        /**
-         * @param host The host to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
 
         /**
-         * @param inclusive Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+         * @param inclusive Whether the rule includes or excludes traffic from being measured.
          * 
          * @return builder
          * 
@@ -190,7 +188,7 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param inclusive Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
+         * @param inclusive Whether the rule includes or excludes traffic from being measured.
          * 
          * @return builder
          * 
@@ -220,39 +218,30 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
             return isPaused(Output.of(isPaused));
         }
 
-        /**
-         * @param paths A list of paths to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder paths(@Nullable Output<List<String>> paths) {
             $.paths = paths;
             return this;
         }
 
-        /**
-         * @param paths A list of paths to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder paths(List<String> paths) {
             return paths(Output.of(paths));
         }
 
-        /**
-         * @param paths A list of paths to apply the rule to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder paths(String... paths) {
             return paths(List.of(paths));
         }
 
+        public Builder priority(@Nullable Output<Double> priority) {
+            $.priority = priority;
+            return this;
+        }
+
+        public Builder priority(Double priority) {
+            return priority(Output.of(priority));
+        }
+
         /**
-         * @param rulesetId The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+         * @param rulesetId The Web Analytics ruleset identifier.
          * 
          * @return builder
          * 
@@ -263,7 +252,7 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rulesetId The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
+         * @param rulesetId The Web Analytics ruleset identifier.
          * 
          * @return builder
          * 

@@ -12,19 +12,67 @@ namespace Pulumi.Cloudflare
     public static class GetDcvDelegation
     {
         /// <summary>
-        /// Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleDcvDelegation = Cloudflare.GetDcvDelegation.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDcvDelegationResult> InvokeAsync(GetDcvDelegationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDcvDelegationResult>("cloudflare:index/getDcvDelegation:getDcvDelegation", args ?? new GetDcvDelegationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleDcvDelegation = Cloudflare.GetDcvDelegation.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDcvDelegationResult> Invoke(GetDcvDelegationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDcvDelegationResult>("cloudflare:index/getDcvDelegation:getDcvDelegation", args ?? new GetDcvDelegationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to retrieve the DCV Delegation unique identifier for a zone.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleDcvDelegation = Cloudflare.GetDcvDelegation.Invoke(new()
+        ///     {
+        ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDcvDelegationResult> Invoke(GetDcvDelegationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDcvDelegationResult>("cloudflare:index/getDcvDelegation:getDcvDelegation", args ?? new GetDcvDelegationInvokeArgs(), options.WithDefaults());
@@ -34,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetDcvDelegationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -48,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetDcvDelegationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -64,28 +112,28 @@ namespace Pulumi.Cloudflare
     public sealed class GetDcvDelegationResult
     {
         /// <summary>
-        /// The DCV Delegation hostname
-        /// </summary>
-        public readonly string Hostname;
-        /// <summary>
-        /// The DCV Delegation unique identifier
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The DCV Delegation unique identifier.
+        /// </summary>
+        public readonly string Uuid;
+        /// <summary>
+        /// Identifier
         /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]
         private GetDcvDelegationResult(
-            string hostname,
-
             string id,
+
+            string uuid,
 
             string zoneId)
         {
-            Hostname = hostname;
             Id = id;
+            Uuid = uuid;
             ZoneId = zoneId;
         }
     }

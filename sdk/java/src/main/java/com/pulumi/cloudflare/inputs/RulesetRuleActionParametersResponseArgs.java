@@ -5,11 +5,10 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,48 +16,48 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
     public static final RulesetRuleActionParametersResponseArgs Empty = new RulesetRuleActionParametersResponseArgs();
 
     /**
-     * Body content to include in the response.
+     * The content to return.
      * 
      */
-    @Import(name="content")
-    private @Nullable Output<String> content;
+    @Import(name="content", required=true)
+    private Output<String> content;
 
     /**
-     * @return Body content to include in the response.
+     * @return The content to return.
      * 
      */
-    public Optional<Output<String>> content() {
-        return Optional.ofNullable(this.content);
+    public Output<String> content() {
+        return this.content;
     }
 
     /**
-     * HTTP content type to send in the response.
+     * The type of the content to return.
      * 
      */
-    @Import(name="contentType")
-    private @Nullable Output<String> contentType;
+    @Import(name="contentType", required=true)
+    private Output<String> contentType;
 
     /**
-     * @return HTTP content type to send in the response.
+     * @return The type of the content to return.
      * 
      */
-    public Optional<Output<String>> contentType() {
-        return Optional.ofNullable(this.contentType);
+    public Output<String> contentType() {
+        return this.contentType;
     }
 
     /**
-     * HTTP status code to send in the response.
+     * The status code to return.
      * 
      */
-    @Import(name="statusCode")
-    private @Nullable Output<Integer> statusCode;
+    @Import(name="statusCode", required=true)
+    private Output<Integer> statusCode;
 
     /**
-     * @return HTTP status code to send in the response.
+     * @return The status code to return.
      * 
      */
-    public Optional<Output<Integer>> statusCode() {
-        return Optional.ofNullable(this.statusCode);
+    public Output<Integer> statusCode() {
+        return this.statusCode;
     }
 
     private RulesetRuleActionParametersResponseArgs() {}
@@ -88,18 +87,18 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param content Body content to include in the response.
+         * @param content The content to return.
          * 
          * @return builder
          * 
          */
-        public Builder content(@Nullable Output<String> content) {
+        public Builder content(Output<String> content) {
             $.content = content;
             return this;
         }
 
         /**
-         * @param content Body content to include in the response.
+         * @param content The content to return.
          * 
          * @return builder
          * 
@@ -109,18 +108,18 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param contentType HTTP content type to send in the response.
+         * @param contentType The type of the content to return.
          * 
          * @return builder
          * 
          */
-        public Builder contentType(@Nullable Output<String> contentType) {
+        public Builder contentType(Output<String> contentType) {
             $.contentType = contentType;
             return this;
         }
 
         /**
-         * @param contentType HTTP content type to send in the response.
+         * @param contentType The type of the content to return.
          * 
          * @return builder
          * 
@@ -130,18 +129,18 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param statusCode HTTP status code to send in the response.
+         * @param statusCode The status code to return.
          * 
          * @return builder
          * 
          */
-        public Builder statusCode(@Nullable Output<Integer> statusCode) {
+        public Builder statusCode(Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
         /**
-         * @param statusCode HTTP status code to send in the response.
+         * @param statusCode The status code to return.
          * 
          * @return builder
          * 
@@ -151,6 +150,15 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         public RulesetRuleActionParametersResponseArgs build() {
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersResponseArgs", "content");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersResponseArgs", "contentType");
+            }
+            if ($.statusCode == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersResponseArgs", "statusCode");
+            }
             return $;
         }
     }

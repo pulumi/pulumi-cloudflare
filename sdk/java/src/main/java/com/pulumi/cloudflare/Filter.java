@@ -12,14 +12,9 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Filter expressions that can be referenced across multiple features,
- * e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
- * for more details and available fields and operators.
- * 
  * &gt; `cloudflare.Filter` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still fully
  *   supported but you are strongly advised to move to the
@@ -51,10 +46,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var wordpress = new Filter("wordpress", FilterArgs.builder()
- *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
- *             .description("Wordpress break-in attempts that are outside of the office")
- *             .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1")
+ *         var exampleFilter = new Filter("exampleFilter", FilterArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.addr ne 172.16.22.155")
  *             .build());
  * 
  *     }
@@ -66,77 +60,77 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/filter:Filter example &lt;zone_id&gt;/&lt;filter_id&gt;
+ * $ pulumi import cloudflare:index/filter:Filter example &#39;&lt;zone_id&gt;/&lt;filter_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/filter:Filter")
 public class Filter extends com.pulumi.resources.CustomResource {
     /**
-     * A note that you can use to describe the purpose of the filter.
+     * An informative summary of the filter.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
-     * @return A note that you can use to describe the purpose of the filter.
+     * @return An informative summary of the filter.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
-     * The filter expression to be used.
+     * The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
     @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
     /**
-     * @return The filter expression to be used.
+     * @return The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
      * 
      */
     public Output<String> expression() {
         return this.expression;
     }
     /**
-     * Whether this filter is currently paused.
+     * When true, indicates that the filter is currently paused.
      * 
      */
     @Export(name="paused", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> paused;
+    private Output<Boolean> paused;
 
     /**
-     * @return Whether this filter is currently paused.
+     * @return When true, indicates that the filter is currently paused.
      * 
      */
-    public Output<Optional<Boolean>> paused() {
-        return Codegen.optional(this.paused);
+    public Output<Boolean> paused() {
+        return this.paused;
     }
     /**
-     * Short reference tag to quickly select related rules.
+     * A short reference tag. Allows you to select related filters.
      * 
      */
     @Export(name="ref", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ref;
+    private Output<String> ref;
 
     /**
-     * @return Short reference tag to quickly select related rules.
+     * @return A short reference tag. Allows you to select related filters.
      * 
      */
-    public Output<Optional<String>> ref() {
-        return Codegen.optional(this.ref);
+    public Output<String> ref() {
+        return this.ref;
     }
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {

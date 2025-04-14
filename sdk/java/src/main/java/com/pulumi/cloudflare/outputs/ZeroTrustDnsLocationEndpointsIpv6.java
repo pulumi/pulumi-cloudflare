@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ZeroTrustDnsLocationEndpointsIpv6Network;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
@@ -14,17 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDnsLocationEndpointsIpv6 {
-    private @Nullable Boolean authenticationEnabled;
-    private Boolean enabled;
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    private @Nullable Boolean enabled;
+    /**
+     * @return A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     private @Nullable List<ZeroTrustDnsLocationEndpointsIpv6Network> networks;
 
     private ZeroTrustDnsLocationEndpointsIpv6() {}
-    public Optional<Boolean> authenticationEnabled() {
-        return Optional.ofNullable(this.authenticationEnabled);
+    /**
+     * @return True if the endpoint is enabled for this location.
+     * 
+     */
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
-    public Boolean enabled() {
-        return this.enabled;
-    }
+    /**
+     * @return A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
+     * 
+     */
     public List<ZeroTrustDnsLocationEndpointsIpv6Network> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
@@ -38,28 +49,18 @@ public final class ZeroTrustDnsLocationEndpointsIpv6 {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean authenticationEnabled;
-        private Boolean enabled;
+        private @Nullable Boolean enabled;
         private @Nullable List<ZeroTrustDnsLocationEndpointsIpv6Network> networks;
         public Builder() {}
         public Builder(ZeroTrustDnsLocationEndpointsIpv6 defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.authenticationEnabled = defaults.authenticationEnabled;
     	      this.enabled = defaults.enabled;
     	      this.networks = defaults.networks;
         }
 
         @CustomType.Setter
-        public Builder authenticationEnabled(@Nullable Boolean authenticationEnabled) {
+        public Builder enabled(@Nullable Boolean enabled) {
 
-            this.authenticationEnabled = authenticationEnabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            if (enabled == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustDnsLocationEndpointsIpv6", "enabled");
-            }
             this.enabled = enabled;
             return this;
         }
@@ -74,7 +75,6 @@ public final class ZeroTrustDnsLocationEndpointsIpv6 {
         }
         public ZeroTrustDnsLocationEndpointsIpv6 build() {
             final var _resultValue = new ZeroTrustDnsLocationEndpointsIpv6();
-            _resultValue.authenticationEnabled = authenticationEnabled;
             _resultValue.enabled = enabled;
             _resultValue.networks = networks;
             return _resultValue;

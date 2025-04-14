@@ -7,21 +7,41 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Group resource. Access Groups are used
- * in conjunction with Access Policies to restrict access to a
- * particular resource based on group membership.
+ * ## Example Usage
  *
- * > It's required that an `accountId` or `zoneId` is provided and in
- *    most cases using either is fine. However, if you're using a scoped
- *    access token, you must provide the argument that matches the token's
- *    scope. For example, an access token that is scoped to the "example.com"
- *    zone needs to use the `zoneId` argument.
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZeroTrustAccessGroup = new cloudflare.ZeroTrustAccessGroup("example_zero_trust_access_group", {
+ *     includes: [{
+ *         group: {
+ *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+ *         },
+ *     }],
+ *     name: "Allow devs",
+ *     zoneId: "zone_id",
+ *     excludes: [{
+ *         group: {
+ *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+ *         },
+ *     }],
+ *     isDefault: true,
+ *     requires: [{
+ *         group: {
+ *             id: "aa0a4aab-672b-4bdb-bc33-a59f1130a11f",
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+ * $ pulumi import cloudflare:index/accessGroup:AccessGroup example '<{accounts|zones}/{account_id|zone_id}>/<group_id>'
  * ```
+ *
+ * @deprecated cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup
  */
 export class AccessGroup extends pulumi.CustomResource {
     /**
@@ -34,6 +54,7 @@ export class AccessGroup extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessGroupState, opts?: pulumi.CustomResourceOptions): AccessGroup {
+        pulumi.log.warn("AccessGroup is deprecated: cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup")
         return new AccessGroup(name, <any>state, { ...opts, id: id });
     }
 
@@ -52,17 +73,35 @@ export class AccessGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
-    public readonly excludes!: pulumi.Output<outputs.AccessGroupExclude[] | undefined>;
-    public readonly includes!: pulumi.Output<outputs.AccessGroupInclude[]>;
-    public readonly name!: pulumi.Output<string>;
-    public readonly requires!: pulumi.Output<outputs.AccessGroupRequire[] | undefined>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    public readonly excludes!: pulumi.Output<outputs.AccessGroupExclude[]>;
+    /**
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     */
+    public readonly includes!: pulumi.Output<outputs.AccessGroupInclude[]>;
+    /**
+     * Whether this is the default group
+     */
+    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    /**
+     * The name of the Access group.
+     */
+    public readonly name!: pulumi.Output<string>;
+    /**
+     * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+     */
+    public readonly requires!: pulumi.Output<outputs.AccessGroupRequire[]>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
+     */
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessGroup resource with the given unique name, arguments, and options.
@@ -71,17 +110,23 @@ export class AccessGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup */
     constructor(name: string, args: AccessGroupArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup */
     constructor(name: string, argsOrState?: AccessGroupArgs | AccessGroupState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessGroup is deprecated: cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessGroupState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["excludes"] = state ? state.excludes : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
+            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["requires"] = state ? state.requires : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
@@ -94,11 +139,16 @@ export class AccessGroup extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["excludes"] = args ? args.excludes : undefined;
             resourceInputs["includes"] = args ? args.includes : undefined;
+            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["requires"] = args ? args.requires : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessGroup:AccessGroup" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -108,15 +158,33 @@ export class AccessGroup extends pulumi.CustomResource {
  */
 export interface AccessGroupState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
-    excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
-    includes?: pulumi.Input<pulumi.Input<inputs.AccessGroupInclude>[]>;
-    name?: pulumi.Input<string>;
-    requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+     */
+    excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
+    /**
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     */
+    includes?: pulumi.Input<pulumi.Input<inputs.AccessGroupInclude>[]>;
+    /**
+     * Whether this is the default group
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * The name of the Access group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+     */
+    requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -126,15 +194,31 @@ export interface AccessGroupState {
  */
 export interface AccessGroupArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
+     */
     excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
+    /**
+     * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+     */
     includes: pulumi.Input<pulumi.Input<inputs.AccessGroupInclude>[]>;
+    /**
+     * Whether this is the default group
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * The name of the Access group.
+     */
     name: pulumi.Input<string>;
+    /**
+     * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
+     */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
     zoneId?: pulumi.Input<string>;
 }

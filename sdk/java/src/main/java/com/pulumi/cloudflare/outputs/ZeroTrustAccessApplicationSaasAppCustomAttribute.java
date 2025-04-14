@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource;
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -15,37 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustAccessApplicationSaasAppCustomAttribute {
     /**
-     * @return A friendly name for the attribute as provided to the SaaS app.
+     * @return The SAML FriendlyName of the attribute.
      * 
      */
     private @Nullable String friendlyName;
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the attribute.
      * 
      */
     private @Nullable String name;
     /**
      * @return A globally unique name for an identity or service provider.
+     * Available values: &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#34;.
      * 
      */
     private @Nullable String nameFormat;
     /**
-     * @return True if the attribute must be always present.
+     * @return If the attribute is required when building a SAML assertion.
      * 
      */
     private @Nullable Boolean required;
-    private ZeroTrustAccessApplicationSaasAppCustomAttributeSource source;
+    private @Nullable ZeroTrustAccessApplicationSaasAppCustomAttributeSource source;
 
     private ZeroTrustAccessApplicationSaasAppCustomAttribute() {}
     /**
-     * @return A friendly name for the attribute as provided to the SaaS app.
+     * @return The SAML FriendlyName of the attribute.
      * 
      */
     public Optional<String> friendlyName() {
         return Optional.ofNullable(this.friendlyName);
     }
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the attribute.
      * 
      */
     public Optional<String> name() {
@@ -53,20 +53,21 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttribute {
     }
     /**
      * @return A globally unique name for an identity or service provider.
+     * Available values: &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:basic&#34;, &#34;urn:oasis:names:tc:SAML:2.0:attrname-format:uri&#34;.
      * 
      */
     public Optional<String> nameFormat() {
         return Optional.ofNullable(this.nameFormat);
     }
     /**
-     * @return True if the attribute must be always present.
+     * @return If the attribute is required when building a SAML assertion.
      * 
      */
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }
-    public ZeroTrustAccessApplicationSaasAppCustomAttributeSource source() {
-        return this.source;
+    public Optional<ZeroTrustAccessApplicationSaasAppCustomAttributeSource> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -82,7 +83,7 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttribute {
         private @Nullable String name;
         private @Nullable String nameFormat;
         private @Nullable Boolean required;
-        private ZeroTrustAccessApplicationSaasAppCustomAttributeSource source;
+        private @Nullable ZeroTrustAccessApplicationSaasAppCustomAttributeSource source;
         public Builder() {}
         public Builder(ZeroTrustAccessApplicationSaasAppCustomAttribute defaults) {
     	      Objects.requireNonNull(defaults);
@@ -118,10 +119,8 @@ public final class ZeroTrustAccessApplicationSaasAppCustomAttribute {
             return this;
         }
         @CustomType.Setter
-        public Builder source(ZeroTrustAccessApplicationSaasAppCustomAttributeSource source) {
-            if (source == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustAccessApplicationSaasAppCustomAttribute", "source");
-            }
+        public Builder source(@Nullable ZeroTrustAccessApplicationSaasAppCustomAttributeSource source) {
+
             this.source = source;
             return this;
         }

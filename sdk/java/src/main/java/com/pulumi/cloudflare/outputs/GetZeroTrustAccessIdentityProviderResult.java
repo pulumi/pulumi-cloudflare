@@ -3,6 +3,9 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProviderConfig;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProviderFilter;
+import com.pulumi.cloudflare.outputs.GetZeroTrustAccessIdentityProviderScimConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -13,62 +16,104 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustAccessIdentityProviderResult {
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     private @Nullable String accountId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * 
+     */
+    private GetZeroTrustAccessIdentityProviderConfig config;
+    private @Nullable GetZeroTrustAccessIdentityProviderFilter filter;
+    /**
+     * @return UUID
      * 
      */
     private String id;
     /**
-     * @return Access Identity Provider name to search for.
+     * @return UUID
+     * 
+     */
+    private @Nullable String identityProviderId;
+    /**
+     * @return The name of the identity provider, shown to users on the login page.
      * 
      */
     private String name;
     /**
-     * @return Access Identity Provider Type.
+     * @return The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+     * 
+     */
+    private GetZeroTrustAccessIdentityProviderScimConfig scimConfig;
+    /**
+     * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
      * 
      */
     private String type;
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     private @Nullable String zoneId;
 
     private GetZeroTrustAccessIdentityProviderResult() {}
     /**
-     * @return The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
      * 
      */
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * 
+     */
+    public GetZeroTrustAccessIdentityProviderConfig config() {
+        return this.config;
+    }
+    public Optional<GetZeroTrustAccessIdentityProviderFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+    /**
+     * @return UUID
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Access Identity Provider name to search for.
+     * @return UUID
+     * 
+     */
+    public Optional<String> identityProviderId() {
+        return Optional.ofNullable(this.identityProviderId);
+    }
+    /**
+     * @return The name of the identity provider, shown to users on the login page.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Access Identity Provider Type.
+     * @return The configuration settings for enabling a System for Cross-Domain Identity Management (SCIM) with the identity provider.
+     * 
+     */
+    public GetZeroTrustAccessIdentityProviderScimConfig scimConfig() {
+        return this.scimConfig;
+    }
+    /**
+     * @return The type of identity provider. To determine the value for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
+     * Available values: &#34;onetimepin&#34;, &#34;azureAD&#34;, &#34;saml&#34;, &#34;centrify&#34;, &#34;facebook&#34;, &#34;github&#34;, &#34;google-apps&#34;, &#34;google&#34;, &#34;linkedin&#34;, &#34;oidc&#34;, &#34;okta&#34;, &#34;onelogin&#34;, &#34;pingone&#34;, &#34;yandex&#34;.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return The zone identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
+     * @return The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      * 
      */
     public Optional<String> zoneId() {
@@ -85,16 +130,24 @@ public final class GetZeroTrustAccessIdentityProviderResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accountId;
+        private GetZeroTrustAccessIdentityProviderConfig config;
+        private @Nullable GetZeroTrustAccessIdentityProviderFilter filter;
         private String id;
+        private @Nullable String identityProviderId;
         private String name;
+        private GetZeroTrustAccessIdentityProviderScimConfig scimConfig;
         private String type;
         private @Nullable String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustAccessIdentityProviderResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.config = defaults.config;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.identityProviderId = defaults.identityProviderId;
     	      this.name = defaults.name;
+    	      this.scimConfig = defaults.scimConfig;
     	      this.type = defaults.type;
     	      this.zoneId = defaults.zoneId;
         }
@@ -106,6 +159,20 @@ public final class GetZeroTrustAccessIdentityProviderResult {
             return this;
         }
         @CustomType.Setter
+        public Builder config(GetZeroTrustAccessIdentityProviderConfig config) {
+            if (config == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderResult", "config");
+            }
+            this.config = config;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetZeroTrustAccessIdentityProviderFilter filter) {
+
+            this.filter = filter;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderResult", "id");
@@ -114,11 +181,25 @@ public final class GetZeroTrustAccessIdentityProviderResult {
             return this;
         }
         @CustomType.Setter
+        public Builder identityProviderId(@Nullable String identityProviderId) {
+
+            this.identityProviderId = identityProviderId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderResult", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder scimConfig(GetZeroTrustAccessIdentityProviderScimConfig scimConfig) {
+            if (scimConfig == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessIdentityProviderResult", "scimConfig");
+            }
+            this.scimConfig = scimConfig;
             return this;
         }
         @CustomType.Setter
@@ -138,8 +219,12 @@ public final class GetZeroTrustAccessIdentityProviderResult {
         public GetZeroTrustAccessIdentityProviderResult build() {
             final var _resultValue = new GetZeroTrustAccessIdentityProviderResult();
             _resultValue.accountId = accountId;
+            _resultValue.config = config;
+            _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.identityProviderId = identityProviderId;
             _resultValue.name = name;
+            _resultValue.scimConfig = scimConfig;
             _resultValue.type = type;
             _resultValue.zoneId = zoneId;
             return _resultValue;

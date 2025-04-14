@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RateLimitActionResponse
     {
         /// <summary>
-        /// The body to return, the content here should conform to the `content_type`.
+        /// The response body to return. The value must conform to the configured content type.
         /// </summary>
-        public readonly string Body;
+        public readonly string? Body;
         /// <summary>
-        /// The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+        /// The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`.
         /// </summary>
-        public readonly string ContentType;
+        public readonly string? ContentType;
 
         [OutputConstructor]
         private RateLimitActionResponse(
-            string body,
+            string? body,
 
-            string contentType)
+            string? contentType)
         {
             Body = body;
             ContentType = contentType;

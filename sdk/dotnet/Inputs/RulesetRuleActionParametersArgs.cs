@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<int>? _additionalCacheablePorts;
 
         /// <summary>
-        /// Specifies uncommon ports to allow cacheable assets to be served from.
+        /// List of additional ports that caching can be enabled on.
         /// </summary>
         public InputList<int> AdditionalCacheablePorts
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.RulesetRuleActionParametersAlgorithmArgs>? _algorithms;
 
         /// <summary>
-        /// Compression algorithms to use in order of preference.
+        /// Custom order for compression algorithms.
         /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersAlgorithmArgs> Algorithms
         {
@@ -37,74 +37,69 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Turn on or off Cloudflare Automatic HTTPS rewrites.
+        /// Turn on or off Automatic HTTPS Rewrites.
         /// </summary>
         [Input("automaticHttpsRewrites")]
         public Input<bool>? AutomaticHttpsRewrites { get; set; }
 
-        [Input("autominifies")]
-        private InputList<Inputs.RulesetRuleActionParametersAutominifyArgs>? _autominifies;
-
         /// <summary>
-        /// Indicate which file extensions to minify automatically.
+        /// Select which file extensions to minify automatically.
         /// </summary>
-        public InputList<Inputs.RulesetRuleActionParametersAutominifyArgs> Autominifies
-        {
-            get => _autominifies ?? (_autominifies = new InputList<Inputs.RulesetRuleActionParametersAutominifyArgs>());
-            set => _autominifies = value;
-        }
+        [Input("autominify")]
+        public Input<Inputs.RulesetRuleActionParametersAutominifyArgs>? Autominify { get; set; }
 
         /// <summary>
-        /// Inspect the visitor's browser for headers commonly associated with spammers and certain bots.
+        /// Turn on or off Browser Integrity Check.
         /// </summary>
         [Input("bic")]
         public Input<bool>? Bic { get; set; }
 
         /// <summary>
-        /// List of browser TTL parameters to apply to the request.
+        /// Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
         /// </summary>
         [Input("browserTtl")]
         public Input<Inputs.RulesetRuleActionParametersBrowserTtlArgs>? BrowserTtl { get; set; }
 
         /// <summary>
-        /// Whether to cache if expression matches.
+        /// Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
         /// </summary>
         [Input("cache")]
         public Input<bool>? Cache { get; set; }
 
         /// <summary>
-        /// List of cache key parameters to apply to the request.
+        /// Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
         /// </summary>
         [Input("cacheKey")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyArgs>? CacheKey { get; set; }
 
         /// <summary>
-        /// List of cache reserve parameters to apply to the request.
+        /// Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
         /// </summary>
         [Input("cacheReserve")]
         public Input<Inputs.RulesetRuleActionParametersCacheReserveArgs>? CacheReserve { get; set; }
 
         /// <summary>
-        /// Content of the custom error response.
+        /// Error response content.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Content-Type of the custom error response.
+        /// Content-type header to set with the response.
+        /// Available values: "application/json", "text/xml", "text/plain", "text/html".
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
         [Input("cookieFields")]
-        private InputList<string>? _cookieFields;
+        private InputList<Inputs.RulesetRuleActionParametersCookieFieldArgs>? _cookieFields;
 
         /// <summary>
-        /// List of cookie values to include as part of custom fields logging.
+        /// The cookie fields to log.
         /// </summary>
-        public InputList<string> CookieFields
+        public InputList<Inputs.RulesetRuleActionParametersCookieFieldArgs> CookieFields
         {
-            get => _cookieFields ?? (_cookieFields = new InputList<string>());
+            get => _cookieFields ?? (_cookieFields = new InputList<Inputs.RulesetRuleActionParametersCookieFieldArgs>());
             set => _cookieFields = value;
         }
 
@@ -115,124 +110,121 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? DisableApps { get; set; }
 
         /// <summary>
-        /// Turn off railgun feature of the Cloudflare Speed app.
-        /// </summary>
-        [Input("disableRailgun")]
-        public Input<bool>? DisableRailgun { get; set; }
-
-        /// <summary>
-        /// Turn off RUM feature.
+        /// Turn off Real User Monitoring (RUM).
         /// </summary>
         [Input("disableRum")]
         public Input<bool>? DisableRum { get; set; }
 
         /// <summary>
-        /// Turn off zaraz feature.
+        /// Turn off Zaraz.
         /// </summary>
         [Input("disableZaraz")]
         public Input<bool>? DisableZaraz { get; set; }
 
         /// <summary>
-        /// List of edge TTL parameters to apply to the request.
+        /// TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
         /// </summary>
         [Input("edgeTtl")]
         public Input<Inputs.RulesetRuleActionParametersEdgeTtlArgs>? EdgeTtl { get; set; }
 
         /// <summary>
-        /// Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+        /// Turn on or off Email Obfuscation.
         /// </summary>
         [Input("emailObfuscation")]
         public Input<bool>? EmailObfuscation { get; set; }
 
         /// <summary>
-        /// Toggle fonts.
+        /// Turn on or off Cloudflare Fonts.
         /// </summary>
         [Input("fonts")]
         public Input<bool>? Fonts { get; set; }
 
         /// <summary>
-        /// Use a list to lookup information for the action.
+        /// Serve a redirect based on a bulk list lookup.
         /// </summary>
         [Input("fromList")]
         public Input<Inputs.RulesetRuleActionParametersFromListArgs>? FromList { get; set; }
 
         /// <summary>
-        /// Use a value to lookup information for the action.
+        /// Serve a redirect based on the request properties.
         /// </summary>
         [Input("fromValue")]
         public Input<Inputs.RulesetRuleActionParametersFromValueArgs>? FromValue { get; set; }
 
         [Input("headers")]
-        private InputList<Inputs.RulesetRuleActionParametersHeaderArgs>? _headers;
+        private InputMap<Inputs.RulesetRuleActionParametersHeadersArgs>? _headers;
 
         /// <summary>
-        /// List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
+        /// Map of request headers to modify.
         /// </summary>
-        public InputList<Inputs.RulesetRuleActionParametersHeaderArgs> Headers
+        public InputMap<Inputs.RulesetRuleActionParametersHeadersArgs> Headers
         {
-            get => _headers ?? (_headers = new InputList<Inputs.RulesetRuleActionParametersHeaderArgs>());
+            get => _headers ?? (_headers = new InputMap<Inputs.RulesetRuleActionParametersHeadersArgs>());
             set => _headers = value;
         }
 
         /// <summary>
-        /// Host Header that request origin receives.
+        /// Rewrite the HTTP Host header.
         /// </summary>
         [Input("hostHeader")]
         public Input<string>? HostHeader { get; set; }
 
         /// <summary>
-        /// Turn on or off the hotlink protection feature.
+        /// Turn on or off the Hotlink Protection.
         /// </summary>
         [Input("hotlinkProtection")]
         public Input<bool>? HotlinkProtection { get; set; }
 
         /// <summary>
-        /// Identifier of the action parameter to modify.
+        /// The ID of the ruleset to execute.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Increment contains the delta to change the score and can be either positive or negative.
+        /// </summary>
         [Input("increment")]
         public Input<int>? Increment { get; set; }
 
         /// <summary>
-        /// List of properties to configure WAF payload logging.
+        /// The configuration to use for matched data logging.
         /// </summary>
         [Input("matchedData")]
         public Input<Inputs.RulesetRuleActionParametersMatchedDataArgs>? MatchedData { get; set; }
 
         /// <summary>
-        /// Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
+        /// Turn on or off Mirage.
         /// </summary>
         [Input("mirage")]
         public Input<bool>? Mirage { get; set; }
 
         /// <summary>
-        /// Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+        /// Turn on or off Opportunistic Encryption.
         /// </summary>
         [Input("opportunisticEncryption")]
         public Input<bool>? OpportunisticEncryption { get; set; }
 
         /// <summary>
-        /// List of properties to change request origin.
+        /// Override the IP/TCP destination.
         /// </summary>
         [Input("origin")]
         public Input<Inputs.RulesetRuleActionParametersOriginArgs>? Origin { get; set; }
 
         /// <summary>
-        /// Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+        /// When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
         /// </summary>
         [Input("originCacheControl")]
         public Input<bool>? OriginCacheControl { get; set; }
 
         /// <summary>
-        /// Pass-through error page for origin.
+        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
         /// </summary>
         [Input("originErrorPagePassthru")]
         public Input<bool>? OriginErrorPagePassthru { get; set; }
 
         /// <summary>
-        /// List of override configurations to apply to the ruleset.
+        /// A set of overrides to apply to the target ruleset.
         /// </summary>
         [Input("overrides")]
         public Input<Inputs.RulesetRuleActionParametersOverridesArgs>? Overrides { get; set; }
@@ -241,7 +233,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _phases;
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        /// A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
         /// </summary>
         public InputList<string> Phases
         {
@@ -250,7 +242,8 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Apply options from the Polish feature of the Cloudflare Speed app.
+        /// Configure the Polish level.
+        /// Available values: "off", "lossless", "lossy".
         /// </summary>
         [Input("polish")]
         public Input<string>? Polish { get; set; }
@@ -259,7 +252,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _products;
 
         /// <summary>
-        /// Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
+        /// A list of legacy security products to skip the execution of.
         /// </summary>
         public InputList<string> Products
         {
@@ -267,74 +260,81 @@ namespace Pulumi.Cloudflare.Inputs
             set => _products = value;
         }
 
+        [Input("rawResponseFields")]
+        private InputList<Inputs.RulesetRuleActionParametersRawResponseFieldArgs>? _rawResponseFields;
+
         /// <summary>
-        /// Specifies a maximum timeout for reading content from an origin server.
+        /// The raw response fields to log.
+        /// </summary>
+        public InputList<Inputs.RulesetRuleActionParametersRawResponseFieldArgs> RawResponseFields
+        {
+            get => _rawResponseFields ?? (_rawResponseFields = new InputList<Inputs.RulesetRuleActionParametersRawResponseFieldArgs>());
+            set => _rawResponseFields = value;
+        }
+
+        /// <summary>
+        /// Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
         /// </summary>
         [Input("readTimeout")]
         public Input<int>? ReadTimeout { get; set; }
 
         [Input("requestFields")]
-        private InputList<string>? _requestFields;
+        private InputList<Inputs.RulesetRuleActionParametersRequestFieldArgs>? _requestFields;
 
         /// <summary>
-        /// List of request headers to include as part of custom fields logging, in lowercase.
+        /// The raw request fields to log.
         /// </summary>
-        public InputList<string> RequestFields
+        public InputList<Inputs.RulesetRuleActionParametersRequestFieldArgs> RequestFields
         {
-            get => _requestFields ?? (_requestFields = new InputList<string>());
+            get => _requestFields ?? (_requestFields = new InputList<Inputs.RulesetRuleActionParametersRequestFieldArgs>());
             set => _requestFields = value;
         }
 
         /// <summary>
-        /// Respect strong ETags.
+        /// Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
         /// </summary>
         [Input("respectStrongEtags")]
         public Input<bool>? RespectStrongEtags { get; set; }
 
+        /// <summary>
+        /// The response to show when the block is applied.
+        /// </summary>
+        [Input("response")]
+        public Input<Inputs.RulesetRuleActionParametersResponseArgs>? Response { get; set; }
+
         [Input("responseFields")]
-        private InputList<string>? _responseFields;
+        private InputList<Inputs.RulesetRuleActionParametersResponseFieldArgs>? _responseFields;
 
         /// <summary>
-        /// List of response headers to include as part of custom fields logging, in lowercase.
+        /// The transformed response fields to log.
         /// </summary>
-        public InputList<string> ResponseFields
+        public InputList<Inputs.RulesetRuleActionParametersResponseFieldArgs> ResponseFields
         {
-            get => _responseFields ?? (_responseFields = new InputList<string>());
+            get => _responseFields ?? (_responseFields = new InputList<Inputs.RulesetRuleActionParametersResponseFieldArgs>());
             set => _responseFields = value;
         }
 
-        [Input("responses")]
-        private InputList<Inputs.RulesetRuleActionParametersResponseArgs>? _responses;
-
         /// <summary>
-        /// List of parameters that configure the response given to end users.
-        /// </summary>
-        public InputList<Inputs.RulesetRuleActionParametersResponseArgs> Responses
-        {
-            get => _responses ?? (_responses = new InputList<Inputs.RulesetRuleActionParametersResponseArgs>());
-            set => _responses = value;
-        }
-
-        /// <summary>
-        /// Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
+        /// Turn on or off Rocket Loader
         /// </summary>
         [Input("rocketLoader")]
         public Input<bool>? RocketLoader { get; set; }
 
         [Input("rules")]
-        private InputMap<string>? _rules;
+        private InputMap<ImmutableArray<string>>? _rules;
 
         /// <summary>
-        /// Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760" }`.
+        /// A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
         /// </summary>
-        public InputMap<string> Rules
+        public InputMap<ImmutableArray<string>> Rules
         {
-            get => _rules ?? (_rules = new InputMap<string>());
+            get => _rules ?? (_rules = new InputMap<ImmutableArray<string>>());
             set => _rules = value;
         }
 
         /// <summary>
-        /// Which ruleset ID to target.
+        /// A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+        /// Available values: "current".
         /// </summary>
         [Input("ruleset")]
         public Input<string>? Ruleset { get; set; }
@@ -343,7 +343,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _rulesets;
 
         /// <summary>
-        /// List of managed WAF rule IDs to target. Only valid when the `"action"` is set to skip.
+        /// A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
         /// </summary>
         public InputList<string> Rulesets
         {
@@ -352,49 +352,63 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Control options for the Security Level feature from the Security app.
+        /// Configure the Security Level.
+        /// Available values: "off", "essentially*off", "low", "medium", "high", "under*attack".
         /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
         /// <summary>
-        /// List of serve stale parameters to apply to the request.
+        /// Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
         /// </summary>
         [Input("serveStale")]
         public Input<Inputs.RulesetRuleActionParametersServeStaleArgs>? ServeStale { get; set; }
 
         /// <summary>
-        /// Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
+        /// Turn on or off Server Side Excludes.
         /// </summary>
         [Input("serverSideExcludes")]
         public Input<bool>? ServerSideExcludes { get; set; }
 
         /// <summary>
-        /// List of properties to manange Server Name Indication.
+        /// Override the Server Name Indication (SNI).
         /// </summary>
         [Input("sni")]
         public Input<Inputs.RulesetRuleActionParametersSniArgs>? Sni { get; set; }
 
         /// <summary>
-        /// Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+        /// Configure the SSL level.
+        /// Available values: "off", "flexible", "full", "strict", "origin_pull".
         /// </summary>
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }
 
         /// <summary>
-        /// HTTP status code of the custom error response.
+        /// The status code to use for the error.
         /// </summary>
         [Input("statusCode")]
-        public Input<int>? StatusCode { get; set; }
+        public Input<double>? StatusCode { get; set; }
 
         /// <summary>
-        /// Turn on or off the SXG feature.
+        /// Turn on or off Signed Exchanges (SXG).
         /// </summary>
         [Input("sxg")]
         public Input<bool>? Sxg { get; set; }
 
+        [Input("transformedRequestFields")]
+        private InputList<Inputs.RulesetRuleActionParametersTransformedRequestFieldArgs>? _transformedRequestFields;
+
         /// <summary>
-        /// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
+        /// The transformed request fields to log.
+        /// </summary>
+        public InputList<Inputs.RulesetRuleActionParametersTransformedRequestFieldArgs> TransformedRequestFields
+        {
+            get => _transformedRequestFields ?? (_transformedRequestFields = new InputList<Inputs.RulesetRuleActionParametersTransformedRequestFieldArgs>());
+            set => _transformedRequestFields = value;
+        }
+
+        /// <summary>
+        /// URI to rewrite the request to.
         /// </summary>
         [Input("uri")]
         public Input<Inputs.RulesetRuleActionParametersUriArgs>? Uri { get; set; }

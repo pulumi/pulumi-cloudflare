@@ -8,14 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource, that manages Cloudflare static routes for Magic
-// Transit or Magic WAN. Static routes are used to route traffic
-// through GRE tunnels.
-//
 // ## Example Usage
 //
 // ```go
@@ -23,26 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanStaticRoute(ctx, "example", &cloudflare.MagicWanStaticRouteArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Description: pulumi.String("New route for new prefix 192.0.2.0/24"),
-//				Prefix:      pulumi.String("192.0.2.0/24"),
-//				Nexthop:     pulumi.String("10.0.0.0"),
-//				Priority:    pulumi.Int(100),
-//				Weight:      pulumi.Int(10),
-//				ColoNames: pulumi.StringArray{
-//					pulumi.String("den01"),
-//				},
-//				ColoRegions: pulumi.StringArray{
-//					pulumi.String("APAC"),
-//				},
+//			_, err := cloudflare.NewMagicWanStaticRoute(ctx, "example_magic_wan_static_route", &cloudflare.MagicWanStaticRouteArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //			})
 //			if err != nil {
 //				return err
@@ -52,30 +37,28 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example <account_id>/<static_route_id>
-// ```
 type MagicWanStaticRoute struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// List of Cloudflare colocation regions for this static route.
-	ColoNames pulumi.StringArrayOutput `pulumi:"coloNames"`
-	// List of Cloudflare colocation names for this static route.
-	ColoRegions pulumi.StringArrayOutput `pulumi:"coloRegions"`
-	// Description of the static route.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The nexthop IP address where traffic will be routed to.
-	Nexthop pulumi.StringOutput `pulumi:"nexthop"`
-	// Your network prefix using CIDR notation.
-	Prefix pulumi.StringOutput `pulumi:"prefix"`
-	// The priority for the static route.
-	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// An optional human provided description of the static route.
+	Description   pulumi.StringPtrOutput                 `pulumi:"description"`
+	Modified      pulumi.BoolOutput                      `pulumi:"modified"`
+	ModifiedRoute MagicWanStaticRouteModifiedRouteOutput `pulumi:"modifiedRoute"`
+	// The next-hop IP Address for the static route.
+	Nexthop pulumi.StringPtrOutput `pulumi:"nexthop"`
+	// IP Prefix in Classless Inter-Domain Routing format.
+	Prefix pulumi.StringPtrOutput `pulumi:"prefix"`
+	// Priority of the static route.
+	Priority pulumi.IntPtrOutput            `pulumi:"priority"`
+	Route    MagicWanStaticRouteRouteOutput `pulumi:"route"`
+	// Identifier
+	RouteId pulumi.StringPtrOutput              `pulumi:"routeId"`
+	Routes  MagicWanStaticRouteRouteArrayOutput `pulumi:"routes"`
+	// Used only for ECMP routes.
+	Scope MagicWanStaticRouteScopeOutput `pulumi:"scope"`
+	// Optional weight of the ECMP scope - if provided.
 	Weight pulumi.IntPtrOutput `pulumi:"weight"`
 }
 
@@ -86,15 +69,15 @@ func NewMagicWanStaticRoute(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Nexthop == nil {
-		return nil, errors.New("invalid value for required argument 'Nexthop'")
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.Prefix == nil {
-		return nil, errors.New("invalid value for required argument 'Prefix'")
-	}
-	if args.Priority == nil {
-		return nil, errors.New("invalid value for required argument 'Priority'")
-	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/staticRoute:StaticRoute"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicWanStaticRoute
 	err := ctx.RegisterResource("cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute", name, args, &resource, opts...)
@@ -118,40 +101,48 @@ func GetMagicWanStaticRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MagicWanStaticRoute resources.
 type magicWanStaticRouteState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// List of Cloudflare colocation regions for this static route.
-	ColoNames []string `pulumi:"coloNames"`
-	// List of Cloudflare colocation names for this static route.
-	ColoRegions []string `pulumi:"coloRegions"`
-	// Description of the static route.
-	Description *string `pulumi:"description"`
-	// The nexthop IP address where traffic will be routed to.
+	// An optional human provided description of the static route.
+	Description   *string                           `pulumi:"description"`
+	Modified      *bool                             `pulumi:"modified"`
+	ModifiedRoute *MagicWanStaticRouteModifiedRoute `pulumi:"modifiedRoute"`
+	// The next-hop IP Address for the static route.
 	Nexthop *string `pulumi:"nexthop"`
-	// Your network prefix using CIDR notation.
+	// IP Prefix in Classless Inter-Domain Routing format.
 	Prefix *string `pulumi:"prefix"`
-	// The priority for the static route.
-	Priority *int `pulumi:"priority"`
-	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+	// Priority of the static route.
+	Priority *int                      `pulumi:"priority"`
+	Route    *MagicWanStaticRouteRoute `pulumi:"route"`
+	// Identifier
+	RouteId *string                    `pulumi:"routeId"`
+	Routes  []MagicWanStaticRouteRoute `pulumi:"routes"`
+	// Used only for ECMP routes.
+	Scope *MagicWanStaticRouteScope `pulumi:"scope"`
+	// Optional weight of the ECMP scope - if provided.
 	Weight *int `pulumi:"weight"`
 }
 
 type MagicWanStaticRouteState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// List of Cloudflare colocation regions for this static route.
-	ColoNames pulumi.StringArrayInput
-	// List of Cloudflare colocation names for this static route.
-	ColoRegions pulumi.StringArrayInput
-	// Description of the static route.
-	Description pulumi.StringPtrInput
-	// The nexthop IP address where traffic will be routed to.
+	// An optional human provided description of the static route.
+	Description   pulumi.StringPtrInput
+	Modified      pulumi.BoolPtrInput
+	ModifiedRoute MagicWanStaticRouteModifiedRoutePtrInput
+	// The next-hop IP Address for the static route.
 	Nexthop pulumi.StringPtrInput
-	// Your network prefix using CIDR notation.
+	// IP Prefix in Classless Inter-Domain Routing format.
 	Prefix pulumi.StringPtrInput
-	// The priority for the static route.
+	// Priority of the static route.
 	Priority pulumi.IntPtrInput
-	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+	Route    MagicWanStaticRouteRoutePtrInput
+	// Identifier
+	RouteId pulumi.StringPtrInput
+	Routes  MagicWanStaticRouteRouteArrayInput
+	// Used only for ECMP routes.
+	Scope MagicWanStaticRouteScopePtrInput
+	// Optional weight of the ECMP scope - if provided.
 	Weight pulumi.IntPtrInput
 }
 
@@ -160,41 +151,45 @@ func (MagicWanStaticRouteState) ElementType() reflect.Type {
 }
 
 type magicWanStaticRouteArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId *string `pulumi:"accountId"`
-	// List of Cloudflare colocation regions for this static route.
-	ColoNames []string `pulumi:"coloNames"`
-	// List of Cloudflare colocation names for this static route.
-	ColoRegions []string `pulumi:"coloRegions"`
-	// Description of the static route.
+	// Identifier
+	AccountId string `pulumi:"accountId"`
+	// An optional human provided description of the static route.
 	Description *string `pulumi:"description"`
-	// The nexthop IP address where traffic will be routed to.
-	Nexthop string `pulumi:"nexthop"`
-	// Your network prefix using CIDR notation.
-	Prefix string `pulumi:"prefix"`
-	// The priority for the static route.
-	Priority int `pulumi:"priority"`
-	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+	// The next-hop IP Address for the static route.
+	Nexthop *string `pulumi:"nexthop"`
+	// IP Prefix in Classless Inter-Domain Routing format.
+	Prefix *string `pulumi:"prefix"`
+	// Priority of the static route.
+	Priority *int                      `pulumi:"priority"`
+	Route    *MagicWanStaticRouteRoute `pulumi:"route"`
+	// Identifier
+	RouteId *string                    `pulumi:"routeId"`
+	Routes  []MagicWanStaticRouteRoute `pulumi:"routes"`
+	// Used only for ECMP routes.
+	Scope *MagicWanStaticRouteScope `pulumi:"scope"`
+	// Optional weight of the ECMP scope - if provided.
 	Weight *int `pulumi:"weight"`
 }
 
 // The set of arguments for constructing a MagicWanStaticRoute resource.
 type MagicWanStaticRouteArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrInput
-	// List of Cloudflare colocation regions for this static route.
-	ColoNames pulumi.StringArrayInput
-	// List of Cloudflare colocation names for this static route.
-	ColoRegions pulumi.StringArrayInput
-	// Description of the static route.
+	// Identifier
+	AccountId pulumi.StringInput
+	// An optional human provided description of the static route.
 	Description pulumi.StringPtrInput
-	// The nexthop IP address where traffic will be routed to.
-	Nexthop pulumi.StringInput
-	// Your network prefix using CIDR notation.
-	Prefix pulumi.StringInput
-	// The priority for the static route.
-	Priority pulumi.IntInput
-	// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+	// The next-hop IP Address for the static route.
+	Nexthop pulumi.StringPtrInput
+	// IP Prefix in Classless Inter-Domain Routing format.
+	Prefix pulumi.StringPtrInput
+	// Priority of the static route.
+	Priority pulumi.IntPtrInput
+	Route    MagicWanStaticRouteRoutePtrInput
+	// Identifier
+	RouteId pulumi.StringPtrInput
+	Routes  MagicWanStaticRouteRouteArrayInput
+	// Used only for ECMP routes.
+	Scope MagicWanStaticRouteScopePtrInput
+	// Optional weight of the ECMP scope - if provided.
 	Weight pulumi.IntPtrInput
 }
 
@@ -285,42 +280,58 @@ func (o MagicWanStaticRouteOutput) ToMagicWanStaticRouteOutputWithContext(ctx co
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-func (o MagicWanStaticRouteOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Identifier
+func (o MagicWanStaticRouteOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// List of Cloudflare colocation regions for this static route.
-func (o MagicWanStaticRouteOutput) ColoNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringArrayOutput { return v.ColoNames }).(pulumi.StringArrayOutput)
-}
-
-// List of Cloudflare colocation names for this static route.
-func (o MagicWanStaticRouteOutput) ColoRegions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringArrayOutput { return v.ColoRegions }).(pulumi.StringArrayOutput)
-}
-
-// Description of the static route.
+// An optional human provided description of the static route.
 func (o MagicWanStaticRouteOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The nexthop IP address where traffic will be routed to.
-func (o MagicWanStaticRouteOutput) Nexthop() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.Nexthop }).(pulumi.StringOutput)
+func (o MagicWanStaticRouteOutput) Modified() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.BoolOutput { return v.Modified }).(pulumi.BoolOutput)
 }
 
-// Your network prefix using CIDR notation.
-func (o MagicWanStaticRouteOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.Prefix }).(pulumi.StringOutput)
+func (o MagicWanStaticRouteOutput) ModifiedRoute() MagicWanStaticRouteModifiedRouteOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteModifiedRouteOutput { return v.ModifiedRoute }).(MagicWanStaticRouteModifiedRouteOutput)
 }
 
-// The priority for the static route.
-func (o MagicWanStaticRouteOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+// The next-hop IP Address for the static route.
+func (o MagicWanStaticRouteOutput) Nexthop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.Nexthop }).(pulumi.StringPtrOutput)
 }
 
-// The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
+// IP Prefix in Classless Inter-Domain Routing format.
+func (o MagicWanStaticRouteOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+// Priority of the static route.
+func (o MagicWanStaticRouteOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+func (o MagicWanStaticRouteOutput) Route() MagicWanStaticRouteRouteOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteRouteOutput { return v.Route }).(MagicWanStaticRouteRouteOutput)
+}
+
+// Identifier
+func (o MagicWanStaticRouteOutput) RouteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.RouteId }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanStaticRouteOutput) Routes() MagicWanStaticRouteRouteArrayOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteRouteArrayOutput { return v.Routes }).(MagicWanStaticRouteRouteArrayOutput)
+}
+
+// Used only for ECMP routes.
+func (o MagicWanStaticRouteOutput) Scope() MagicWanStaticRouteScopeOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteScopeOutput { return v.Scope }).(MagicWanStaticRouteScopeOutput)
+}
+
+// Optional weight of the ECMP scope - if provided.
 func (o MagicWanStaticRouteOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
 }

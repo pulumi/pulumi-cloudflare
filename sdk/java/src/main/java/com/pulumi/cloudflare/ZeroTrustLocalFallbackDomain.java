@@ -7,37 +7,67 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustLocalFallbackDomainArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustLocalFallbackDomainState;
 import com.pulumi.cloudflare.outputs.ZeroTrustLocalFallbackDomainDomain;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Fallback Domain resource. Fallback domains are
- * used to ignore DNS requests to a given list of domains. These DNS
- * requests will be passed back to other DNS servers configured on
- * existing network interfaces on the device.
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain example &#39;&lt;account_id&gt;/&lt;policy_id&gt;&#39;
+ * ```
+ * 
+ * @deprecated
+ * cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback
  * 
  */
+@Deprecated /* cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback */
 @ResourceType(type="cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain")
 public class ZeroTrustLocalFallbackDomain extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * A description of the fallback domain, displayed in the client UI.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output<String> description;
+
+    /**
+     * @return A description of the fallback domain, displayed in the client UI.
+     * 
+     */
+    public Output<String> description() {
+        return this.description;
+    }
+    /**
+     * A list of IP addresses to handle domain resolution.
+     * 
+     */
+    @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> dnsServers;
+
+    /**
+     * @return A list of IP addresses to handle domain resolution.
+     * 
+     */
+    public Output<List<String>> dnsServers() {
+        return this.dnsServers;
     }
     @Export(name="domains", refs={List.class,ZeroTrustLocalFallbackDomainDomain.class}, tree="[0,1]")
     private Output<List<ZeroTrustLocalFallbackDomainDomain>> domains;
@@ -46,18 +76,32 @@ public class ZeroTrustLocalFallbackDomain extends com.pulumi.resources.CustomRes
         return this.domains;
     }
     /**
-     * The settings policy for which to configure this fallback domain policy.
+     * Device ID.
      * 
      */
     @Export(name="policyId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> policyId;
+    private Output<String> policyId;
 
     /**
-     * @return The settings policy for which to configure this fallback domain policy.
+     * @return Device ID.
      * 
      */
-    public Output<Optional<String>> policyId() {
-        return Codegen.optional(this.policyId);
+    public Output<String> policyId() {
+        return this.policyId;
+    }
+    /**
+     * The domain suffix to match when resolving locally.
+     * 
+     */
+    @Export(name="suffix", refs={String.class}, tree="[0]")
+    private Output<String> suffix;
+
+    /**
+     * @return The domain suffix to match when resolving locally.
+     * 
+     */
+    public Output<String> suffix() {
+        return this.suffix;
     }
 
     /**
@@ -99,6 +143,10 @@ public class ZeroTrustLocalFallbackDomain extends com.pulumi.resources.CustomRes
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/fallbackDomain:FallbackDomain").build()),
+                Output.of(Alias.builder().type("cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

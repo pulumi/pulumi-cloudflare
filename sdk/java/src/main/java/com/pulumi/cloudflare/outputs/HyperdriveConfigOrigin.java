@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HyperdriveConfigOrigin {
     /**
-     * @return Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     * @return The Client ID of the Access token to use when connecting to the origin database.
      * 
      */
     private @Nullable String accessClientId;
     /**
-     * @return Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     * @return The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
      * 
      */
     private @Nullable String accessClientSecret;
@@ -34,7 +34,7 @@ public final class HyperdriveConfigOrigin {
      */
     private String host;
     /**
-     * @return The password of the Hyperdrive configuration.
+     * @return The password required to access your origin database. This value is write-only and never returned by the API.
      * 
      */
     private String password;
@@ -45,6 +45,7 @@ public final class HyperdriveConfigOrigin {
     private @Nullable Integer port;
     /**
      * @return Specifies the URL scheme used to connect to your origin database.
+     * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
      * 
      */
     private String scheme;
@@ -56,14 +57,14 @@ public final class HyperdriveConfigOrigin {
 
     private HyperdriveConfigOrigin() {}
     /**
-     * @return Client ID associated with the Cloudflare Access Service Token used to connect via Access.
+     * @return The Client ID of the Access token to use when connecting to the origin database.
      * 
      */
     public Optional<String> accessClientId() {
         return Optional.ofNullable(this.accessClientId);
     }
     /**
-     * @return Client Secret associated with the Cloudflare Access Service Token used to connect via Access.
+     * @return The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
      * 
      */
     public Optional<String> accessClientSecret() {
@@ -84,7 +85,7 @@ public final class HyperdriveConfigOrigin {
         return this.host;
     }
     /**
-     * @return The password of the Hyperdrive configuration.
+     * @return The password required to access your origin database. This value is write-only and never returned by the API.
      * 
      */
     public String password() {
@@ -99,6 +100,7 @@ public final class HyperdriveConfigOrigin {
     }
     /**
      * @return Specifies the URL scheme used to connect to your origin database.
+     * Available values: &#34;postgres&#34;, &#34;postgresql&#34;.
      * 
      */
     public String scheme() {

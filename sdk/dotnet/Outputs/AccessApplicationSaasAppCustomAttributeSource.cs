@@ -14,22 +14,22 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationSaasAppCustomAttributeSource
     {
         /// <summary>
-        /// The name of the attribute as provided by the IDP.
+        /// The name of the IdP attribute.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
-        /// A mapping from IdP ID to claim name.
+        /// A mapping from IdP ID to attribute name.
         /// </summary>
-        public readonly ImmutableDictionary<string, string>? NameByIdp;
+        public readonly ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttributeSourceNameByIdp> NameByIdps;
 
         [OutputConstructor]
         private AccessApplicationSaasAppCustomAttributeSource(
-            string name,
+            string? name,
 
-            ImmutableDictionary<string, string>? nameByIdp)
+            ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttributeSourceNameByIdp> nameByIdps)
         {
             Name = name;
-            NameByIdp = nameByIdp;
+            NameByIdps = nameByIdps;
         }
     }
 }

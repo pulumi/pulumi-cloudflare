@@ -21,26 +21,30 @@ __all__ = ['WorkersKvArgs', 'WorkersKv']
 class WorkersKvArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
-                 key: pulumi.Input[builtins.str],
+                 key_name: pulumi.Input[builtins.str],
                  namespace_id: pulumi.Input[builtins.str],
-                 value: pulumi.Input[builtins.str]):
+                 value: pulumi.Input[builtins.str],
+                 metadata: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersKv resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] key: Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] value: Value of the KV pair.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+        :param pulumi.Input[builtins.str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input[builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
+        :param pulumi.Input[builtins.str] metadata: Arbitrary JSON to be associated with a key/value pair.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key_name", key_name)
         pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "value", value)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -49,22 +53,22 @@ class WorkersKvArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[builtins.str]:
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+        A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         """
-        return pulumi.get(self, "key")
+        return pulumi.get(self, "key_name")
 
-    @key.setter
-    def key(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "key", value)
+    @key_name.setter
+    def key_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "key_name", value)
 
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Input[builtins.str]:
         """
-        The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+        Namespace identifier tag.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -76,7 +80,7 @@ class WorkersKvArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[builtins.str]:
         """
-        Value of the KV pair.
+        A byte sequence to be stored, up to 25 MiB in length.
         """
         return pulumi.get(self, "value")
 
@@ -84,25 +88,41 @@ class WorkersKvArgs:
     def value(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "value", value)
 
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Arbitrary JSON to be associated with a key/value pair.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "metadata", value)
+
 
 @pulumi.input_type
 class _WorkersKvState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 key_name: Optional[pulumi.Input[builtins.str]] = None,
+                 metadata: Optional[pulumi.Input[builtins.str]] = None,
                  namespace_id: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersKv resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] key: Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] value: Value of the KV pair.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+        :param pulumi.Input[builtins.str] metadata: Arbitrary JSON to be associated with a key/value pair.
+        :param pulumi.Input[builtins.str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input[builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
         if namespace_id is not None:
             pulumi.set(__self__, "namespace_id", namespace_id)
         if value is not None:
@@ -112,7 +132,7 @@ class _WorkersKvState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
@@ -121,22 +141,34 @@ class _WorkersKvState:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+        A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
         """
-        return pulumi.get(self, "key")
+        return pulumi.get(self, "key_name")
 
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "key", value)
+    @key_name.setter
+    def key_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key_name", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Arbitrary JSON to be associated with a key/value pair.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "metadata", value)
 
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+        Namespace identifier tag.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -148,7 +180,7 @@ class _WorkersKvState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Value of the KV pair.
+        A byte sequence to be stored, up to 25 MiB in length.
         """
         return pulumi.get(self, "value")
 
@@ -163,41 +195,39 @@ class WorkersKv(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 key_name: Optional[pulumi.Input[builtins.str]] = None,
+                 metadata: Optional[pulumi.Input[builtins.str]] = None,
                  namespace_id: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a resource to manage a Cloudflare Workers KV Pair.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_ns = cloudflare.WorkersKvNamespace("example_ns",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            title="test-namespace")
-        example = cloudflare.WorkersKv("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            namespace_id=example_ns.id,
-            key="test-key",
-            value="test value")
+        example_workers_kv = cloudflare.WorkersKv("example_workers_kv",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            namespace_id="0f2ac74b498b48028cb68387c421e279",
+            key_name="My-Key",
+            metadata="{\\"someMetadataKey\\": \\"someMetadataValue\\"}",
+            value="Some Value")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
+        $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] key: Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] value: Value of the KV pair.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+        :param pulumi.Input[builtins.str] metadata: Arbitrary JSON to be associated with a key/value pair.
+        :param pulumi.Input[builtins.str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input[builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
         ...
     @overload
@@ -206,28 +236,24 @@ class WorkersKv(pulumi.CustomResource):
                  args: WorkersKvArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource to manage a Cloudflare Workers KV Pair.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_ns = cloudflare.WorkersKvNamespace("example_ns",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            title="test-namespace")
-        example = cloudflare.WorkersKv("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            namespace_id=example_ns.id,
-            key="test-key",
-            value="test value")
+        example_workers_kv = cloudflare.WorkersKv("example_workers_kv",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            namespace_id="0f2ac74b498b48028cb68387c421e279",
+            key_name="My-Key",
+            metadata="{\\"someMetadataKey\\": \\"someMetadataValue\\"}",
+            value="Some Value")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
+        $ pulumi import cloudflare:index/workersKv:WorkersKv example '<account_id>/<namespace_id>/<key_name>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -246,7 +272,8 @@ class WorkersKv(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 key: Optional[pulumi.Input[builtins.str]] = None,
+                 key_name: Optional[pulumi.Input[builtins.str]] = None,
+                 metadata: Optional[pulumi.Input[builtins.str]] = None,
                  namespace_id: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -261,9 +288,10 @@ class WorkersKv(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if key is None and not opts.urn:
-                raise TypeError("Missing required property 'key'")
-            __props__.__dict__["key"] = key
+            if key_name is None and not opts.urn:
+                raise TypeError("Missing required property 'key_name'")
+            __props__.__dict__["key_name"] = key_name
+            __props__.__dict__["metadata"] = metadata
             if namespace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_id'")
             __props__.__dict__["namespace_id"] = namespace_id
@@ -281,7 +309,8 @@ class WorkersKv(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            key: Optional[pulumi.Input[builtins.str]] = None,
+            key_name: Optional[pulumi.Input[builtins.str]] = None,
+            metadata: Optional[pulumi.Input[builtins.str]] = None,
             namespace_id: Optional[pulumi.Input[builtins.str]] = None,
             value: Optional[pulumi.Input[builtins.str]] = None) -> 'WorkersKv':
         """
@@ -291,17 +320,19 @@ class WorkersKv(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] key: Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] value: Value of the KV pair.
+        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] key_name: A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+        :param pulumi.Input[builtins.str] metadata: Arbitrary JSON to be associated with a key/value pair.
+        :param pulumi.Input[builtins.str] namespace_id: Namespace identifier tag.
+        :param pulumi.Input[builtins.str] value: A byte sequence to be stored, up to 25 MiB in length.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WorkersKvState.__new__(_WorkersKvState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["key"] = key
+        __props__.__dict__["key_name"] = key_name
+        __props__.__dict__["metadata"] = metadata
         __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["value"] = value
         return WorkersKv(resource_name, opts=opts, __props__=__props__)
@@ -310,23 +341,31 @@ class WorkersKv(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource.
+        Identifier
         """
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> pulumi.Output[builtins.str]:
+        """
+        A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
+        """
+        return pulumi.get(self, "key_name")
+
+    @property
     @pulumi.getter
-    def key(self) -> pulumi.Output[builtins.str]:
+    def metadata(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Name of the KV pair. **Modifying this attribute will force creation of a new resource.**
+        Arbitrary JSON to be associated with a key/value pair.
         """
-        return pulumi.get(self, "key")
+        return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> pulumi.Output[builtins.str]:
         """
-        The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
+        Namespace identifier tag.
         """
         return pulumi.get(self, "namespace_id")
 
@@ -334,7 +373,7 @@ class WorkersKv(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[builtins.str]:
         """
-        Value of the KV pair.
+        A byte sequence to be stored, up to 25 MiB in length.
         """
         return pulumi.get(self, "value")
 

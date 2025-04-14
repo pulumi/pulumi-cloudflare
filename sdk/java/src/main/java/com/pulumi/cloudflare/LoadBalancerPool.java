@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.LoadBalancerPoolArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.LoadBalancerPoolState;
 import com.pulumi.cloudflare.outputs.LoadBalancerPoolLoadShedding;
+import com.pulumi.cloudflare.outputs.LoadBalancerPoolNotificationFilter;
 import com.pulumi.cloudflare.outputs.LoadBalancerPoolOrigin;
 import com.pulumi.cloudflare.outputs.LoadBalancerPoolOriginSteering;
 import com.pulumi.core.Output;
@@ -22,285 +23,241 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Load Balancer pool resource. This provides a
- * pool of origins that can be used by a Cloudflare Load Balancer.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LoadBalancerPool;
- * import com.pulumi.cloudflare.LoadBalancerPoolArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolLoadSheddingArgs;
- * import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginSteeringArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var example = new LoadBalancerPool("example", LoadBalancerPoolArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("example-pool")
- *             .origins(            
- *                 LoadBalancerPoolOriginArgs.builder()
- *                     .name("example-1")
- *                     .address("192.0.2.1")
- *                     .enabled(false)
- *                     .headers(LoadBalancerPoolOriginHeaderArgs.builder()
- *                         .header("Host")
- *                         .values("example-1")
- *                         .build())
- *                     .build(),
- *                 LoadBalancerPoolOriginArgs.builder()
- *                     .name("example-2")
- *                     .address("192.0.2.2")
- *                     .headers(LoadBalancerPoolOriginHeaderArgs.builder()
- *                         .header("Host")
- *                         .values("example-2")
- *                         .build())
- *                     .build())
- *             .latitude(55.0)
- *             .longitude(-12.0)
- *             .description("example load balancer pool")
- *             .enabled(false)
- *             .minimumOrigins(1)
- *             .notificationEmail("someone}{@literal @}{@code example.com")
- *             .loadSheddings(LoadBalancerPoolLoadSheddingArgs.builder()
- *                 .defaultPercent(55.0)
- *                 .defaultPolicy("random")
- *                 .sessionPercent(12.0)
- *                 .sessionPolicy("hash")
- *                 .build())
- *             .originSteerings(LoadBalancerPoolOriginSteeringArgs.builder()
- *                 .policy("random")
- *                 .build())
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &lt;account_id&gt;/&lt;load_balancer_pool_id&gt;
+ * $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &#39;&lt;account_id&gt;/&lt;pool_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/loadBalancerPool:LoadBalancerPool")
 public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+     * A list of regions from which to run health checks. Null means every Cloudflare data center.
      * 
      */
     @Export(name="checkRegions", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> checkRegions;
+    private Output</* @Nullable */ List<String>> checkRegions;
 
     /**
-     * @return A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+     * @return A list of regions from which to run health checks. Null means every Cloudflare data center.
      * 
      */
-    public Output<List<String>> checkRegions() {
-        return this.checkRegions;
+    public Output<Optional<List<String>>> checkRegions() {
+        return Codegen.optional(this.checkRegions);
     }
-    /**
-     * The RFC3339 timestamp of when the load balancer was created.
-     * 
-     */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
-    /**
-     * @return The RFC3339 timestamp of when the load balancer was created.
-     * 
-     */
     public Output<String> createdOn() {
         return this.createdOn;
     }
     /**
-     * Free text description.
+     * A human-readable description of the pool.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Free text description.
+     * @return A human-readable description of the pool.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+     * This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
+     * 
+     */
+    @Export(name="disabledAt", refs={String.class}, tree="[0]")
+    private Output<String> disabledAt;
+
+    /**
+     * @return This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
+     * 
+     */
+    public Output<String> disabledAt() {
+        return this.disabledAt;
+    }
+    /**
+     * Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+     * @return Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
-     * The latitude this pool is physically located at; used for proximity steering.
+     * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      * 
      */
     @Export(name="latitude", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> latitude;
 
     /**
-     * @return The latitude this pool is physically located at; used for proximity steering.
+     * @return The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      * 
      */
     public Output<Optional<Double>> latitude() {
         return Codegen.optional(this.latitude);
     }
     /**
-     * Setting for controlling load shedding for this pool.
+     * Configures load shedding policies and percentages for the pool.
      * 
      */
-    @Export(name="loadSheddings", refs={List.class,LoadBalancerPoolLoadShedding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<LoadBalancerPoolLoadShedding>> loadSheddings;
+    @Export(name="loadShedding", refs={LoadBalancerPoolLoadShedding.class}, tree="[0]")
+    private Output<LoadBalancerPoolLoadShedding> loadShedding;
 
     /**
-     * @return Setting for controlling load shedding for this pool.
+     * @return Configures load shedding policies and percentages for the pool.
      * 
      */
-    public Output<Optional<List<LoadBalancerPoolLoadShedding>>> loadSheddings() {
-        return Codegen.optional(this.loadSheddings);
+    public Output<LoadBalancerPoolLoadShedding> loadShedding() {
+        return this.loadShedding;
     }
     /**
-     * The longitude this pool is physically located at; used for proximity steering.
+     * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      * 
      */
     @Export(name="longitude", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> longitude;
 
     /**
-     * @return The longitude this pool is physically located at; used for proximity steering.
+     * @return The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      * 
      */
     public Output<Optional<Double>> longitude() {
         return Codegen.optional(this.longitude);
     }
     /**
-     * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+     * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
      * 
      */
     @Export(name="minimumOrigins", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> minimumOrigins;
+    private Output<Integer> minimumOrigins;
 
     /**
-     * @return The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+     * @return The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
      * 
      */
-    public Output<Optional<Integer>> minimumOrigins() {
-        return Codegen.optional(this.minimumOrigins);
+    public Output<Integer> minimumOrigins() {
+        return this.minimumOrigins;
     }
-    /**
-     * The RFC3339 timestamp of when the load balancer was last modified.
-     * 
-     */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
-    /**
-     * @return The RFC3339 timestamp of when the load balancer was last modified.
-     * 
-     */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * The ID of the Monitor to use for health checking origins within this pool.
+     * The ID of the Monitor to use for checking the health of origins within this pool.
      * 
      */
     @Export(name="monitor", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> monitor;
 
     /**
-     * @return The ID of the Monitor to use for health checking origins within this pool.
+     * @return The ID of the Monitor to use for checking the health of origins within this pool.
      * 
      */
     public Output<Optional<String>> monitor() {
         return Codegen.optional(this.monitor);
     }
     /**
-     * A short name (tag) for the pool.
+     * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A short name (tag) for the pool.
+     * @return A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+     * List of networks where Load Balancer or Pool is enabled.
+     * 
+     */
+    @Export(name="networks", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> networks;
+
+    /**
+     * @return List of networks where Load Balancer or Pool is enabled.
+     * 
+     */
+    public Output<List<String>> networks() {
+        return this.networks;
+    }
+    /**
+     * This field is now deprecated. It has been moved to Cloudflare&#39;s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      * 
      */
     @Export(name="notificationEmail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notificationEmail;
 
     /**
-     * @return The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+     * @return This field is now deprecated. It has been moved to Cloudflare&#39;s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      * 
      */
     public Output<Optional<String>> notificationEmail() {
         return Codegen.optional(this.notificationEmail);
     }
     /**
-     * Set an origin steering policy to control origin selection within a pool.
+     * Filter pool and origin health notifications by resource type or health status. Use null to reset.
      * 
      */
-    @Export(name="originSteerings", refs={List.class,LoadBalancerPoolOriginSteering.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<LoadBalancerPoolOriginSteering>> originSteerings;
+    @Export(name="notificationFilter", refs={LoadBalancerPoolNotificationFilter.class}, tree="[0]")
+    private Output<LoadBalancerPoolNotificationFilter> notificationFilter;
 
     /**
-     * @return Set an origin steering policy to control origin selection within a pool.
+     * @return Filter pool and origin health notifications by resource type or health status. Use null to reset.
      * 
      */
-    public Output<Optional<List<LoadBalancerPoolOriginSteering>>> originSteerings() {
-        return Codegen.optional(this.originSteerings);
+    public Output<LoadBalancerPoolNotificationFilter> notificationFilter() {
+        return this.notificationFilter;
+    }
+    /**
+     * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+     * 
+     */
+    @Export(name="originSteering", refs={LoadBalancerPoolOriginSteering.class}, tree="[0]")
+    private Output<LoadBalancerPoolOriginSteering> originSteering;
+
+    /**
+     * @return Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+     * 
+     */
+    public Output<LoadBalancerPoolOriginSteering> originSteering() {
+        return this.originSteering;
     }
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.

@@ -6,371 +6,62 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.ZeroTrustGatewaySettingsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsState;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsAntivirus;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsBlockPage;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsBodyScanning;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsCertificate;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsCustomCertificate;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsExtendedEmailMatching;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsFips;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsLogging;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsPayloadLog;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsProxy;
-import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSshSessionLog;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettings;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare Teams Account resource. The Teams Account
- * resource defines configuration for secure web gateway.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.ZeroTrustGatewaySettings;
- * import com.pulumi.cloudflare.ZeroTrustGatewaySettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsBlockPageArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsBodyScanningArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsAntivirusArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsFipsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsProxyArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsLoggingArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4Args;
- * import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsExtendedEmailMatchingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new ZeroTrustGatewaySettings("example", ZeroTrustGatewaySettingsArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .tlsDecryptEnabled(true)
- *             .protocolDetectionEnabled(true)
- *             .blockPage(ZeroTrustGatewaySettingsBlockPageArgs.builder()
- *                 .footerText("hello")
- *                 .headerText("hello")
- *                 .logoPath("https://example.com/logo.jpg")
- *                 .backgroundColor("#000000")
- *                 .build())
- *             .bodyScanning(ZeroTrustGatewaySettingsBodyScanningArgs.builder()
- *                 .inspectionMode("deep")
- *                 .build())
- *             .antivirus(ZeroTrustGatewaySettingsAntivirusArgs.builder()
- *                 .enabledDownloadPhase(true)
- *                 .enabledUploadPhase(false)
- *                 .failClosed(true)
- *                 .notificationSettings(ZeroTrustGatewaySettingsAntivirusNotificationSettingsArgs.builder()
- *                     .enabled(true)
- *                     .message("you are blocked")
- *                     .supportUrl("https://example.com/blocked")
- *                     .build())
- *                 .build())
- *             .fips(ZeroTrustGatewaySettingsFipsArgs.builder()
- *                 .tls(true)
- *                 .build())
- *             .proxy(ZeroTrustGatewaySettingsProxyArgs.builder()
- *                 .tcp(true)
- *                 .udp(true)
- *                 .rootCa(true)
- *                 .virtualIp(false)
- *                 .disableForTime(3600)
- *                 .build())
- *             .urlBrowserIsolationEnabled(true)
- *             .logging(ZeroTrustGatewaySettingsLoggingArgs.builder()
- *                 .redactPii(true)
- *                 .settingsByRuleType(ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeArgs.builder()
- *                     .dns(ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeDnsArgs.builder()
- *                         .logAll(false)
- *                         .logBlocks(true)
- *                         .build())
- *                     .http(ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeHttpArgs.builder()
- *                         .logAll(true)
- *                         .logBlocks(true)
- *                         .build())
- *                     .l4(ZeroTrustGatewaySettingsLoggingSettingsByRuleTypeL4Args.builder()
- *                         .logAll(false)
- *                         .logBlocks(true)
- *                         .build())
- *                     .build())
- *                 .build())
- *             .extendedEmailMatching(ZeroTrustGatewaySettingsExtendedEmailMatchingArgs.builder()
- *                 .enabled(true)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example &lt;account_id&gt;
+ * $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example &#39;&lt;account_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings")
 public class ZeroTrustGatewaySettings extends com.pulumi.resources.CustomResource {
-    /**
-     * The account identifier to target for the resource.
-     * 
-     */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
-    /**
-     * @return The account identifier to target for the resource.
-     * 
-     */
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * Whether to enable the activity log.
-     * 
-     */
-    @Export(name="activityLogEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> activityLogEnabled;
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
 
-    /**
-     * @return Whether to enable the activity log.
-     * 
-     */
-    public Output<Optional<Boolean>> activityLogEnabled() {
-        return Codegen.optional(this.activityLogEnabled);
+    public Output<String> createdAt() {
+        return this.createdAt;
     }
     /**
-     * Configuration block for antivirus traffic scanning.
+     * Account settings
      * 
      */
-    @Export(name="antivirus", refs={ZeroTrustGatewaySettingsAntivirus.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsAntivirus> antivirus;
+    @Export(name="settings", refs={ZeroTrustGatewaySettingsSettings.class}, tree="[0]")
+    private Output<ZeroTrustGatewaySettingsSettings> settings;
 
     /**
-     * @return Configuration block for antivirus traffic scanning.
+     * @return Account settings
      * 
      */
-    public Output<Optional<ZeroTrustGatewaySettingsAntivirus>> antivirus() {
-        return Codegen.optional(this.antivirus);
+    public Output<ZeroTrustGatewaySettingsSettings> settings() {
+        return this.settings;
     }
-    /**
-     * Configuration for a custom block page.
-     * 
-     */
-    @Export(name="blockPage", refs={ZeroTrustGatewaySettingsBlockPage.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsBlockPage> blockPage;
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    private Output<String> updatedAt;
 
-    /**
-     * @return Configuration for a custom block page.
-     * 
-     */
-    public Output<Optional<ZeroTrustGatewaySettingsBlockPage>> blockPage() {
-        return Codegen.optional(this.blockPage);
-    }
-    /**
-     * Configuration for body scanning.
-     * 
-     */
-    @Export(name="bodyScanning", refs={ZeroTrustGatewaySettingsBodyScanning.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsBodyScanning> bodyScanning;
-
-    /**
-     * @return Configuration for body scanning.
-     * 
-     */
-    public Output<Optional<ZeroTrustGatewaySettingsBodyScanning>> bodyScanning() {
-        return Codegen.optional(this.bodyScanning);
-    }
-    /**
-     * Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     * 
-     */
-    @Export(name="certificate", refs={ZeroTrustGatewaySettingsCertificate.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsCertificate> certificate;
-
-    /**
-     * @return Configuration for TLS interception certificate. This will be required starting Feb 2025.
-     * 
-     */
-    public Output<Optional<ZeroTrustGatewaySettingsCertificate>> certificate() {
-        return Codegen.optional(this.certificate);
-    }
-    /**
-     * Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     * 
-     * @deprecated
-     * Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration.
-     * 
-     */
-    @Deprecated /* Use `certificate` instead. Continuing to use custom_certificate may result in inconsistent configuration. */
-    @Export(name="customCertificate", refs={ZeroTrustGatewaySettingsCustomCertificate.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsCustomCertificate> customCertificate;
-
-    /**
-     * @return Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-     * 
-     */
-    public Output<Optional<ZeroTrustGatewaySettingsCustomCertificate>> customCertificate() {
-        return Codegen.optional(this.customCertificate);
-    }
-    /**
-     * Configuration for extended e-mail matching.
-     * 
-     */
-    @Export(name="extendedEmailMatching", refs={ZeroTrustGatewaySettingsExtendedEmailMatching.class}, tree="[0]")
-    private Output<ZeroTrustGatewaySettingsExtendedEmailMatching> extendedEmailMatching;
-
-    /**
-     * @return Configuration for extended e-mail matching.
-     * 
-     */
-    public Output<ZeroTrustGatewaySettingsExtendedEmailMatching> extendedEmailMatching() {
-        return this.extendedEmailMatching;
-    }
-    /**
-     * Configure compliance with Federal Information Processing Standards.
-     * 
-     */
-    @Export(name="fips", refs={ZeroTrustGatewaySettingsFips.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsFips> fips;
-
-    /**
-     * @return Configure compliance with Federal Information Processing Standards.
-     * 
-     */
-    public Output<Optional<ZeroTrustGatewaySettingsFips>> fips() {
-        return Codegen.optional(this.fips);
-    }
-    @Export(name="logging", refs={ZeroTrustGatewaySettingsLogging.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsLogging> logging;
-
-    public Output<Optional<ZeroTrustGatewaySettingsLogging>> logging() {
-        return Codegen.optional(this.logging);
-    }
-    /**
-     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     * 
-     */
-    @Export(name="nonIdentityBrowserIsolationEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> nonIdentityBrowserIsolationEnabled;
-
-    /**
-     * @return Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> nonIdentityBrowserIsolationEnabled() {
-        return Codegen.optional(this.nonIdentityBrowserIsolationEnabled);
-    }
-    /**
-     * Configuration for DLP Payload Logging.
-     * 
-     */
-    @Export(name="payloadLog", refs={ZeroTrustGatewaySettingsPayloadLog.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsPayloadLog> payloadLog;
-
-    /**
-     * @return Configuration for DLP Payload Logging.
-     * 
-     */
-    public Output<Optional<ZeroTrustGatewaySettingsPayloadLog>> payloadLog() {
-        return Codegen.optional(this.payloadLog);
-    }
-    /**
-     * Indicator that protocol detection is enabled.
-     * 
-     */
-    @Export(name="protocolDetectionEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> protocolDetectionEnabled;
-
-    /**
-     * @return Indicator that protocol detection is enabled.
-     * 
-     */
-    public Output<Optional<Boolean>> protocolDetectionEnabled() {
-        return Codegen.optional(this.protocolDetectionEnabled);
-    }
-    /**
-     * Configuration block for specifying which protocols are proxied.
-     * 
-     */
-    @Export(name="proxy", refs={ZeroTrustGatewaySettingsProxy.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsProxy> proxy;
-
-    /**
-     * @return Configuration block for specifying which protocols are proxied.
-     * 
-     */
-    public Output<Optional<ZeroTrustGatewaySettingsProxy>> proxy() {
-        return Codegen.optional(this.proxy);
-    }
-    /**
-     * Configuration for SSH Session Logging.
-     * 
-     */
-    @Export(name="sshSessionLog", refs={ZeroTrustGatewaySettingsSshSessionLog.class}, tree="[0]")
-    private Output</* @Nullable */ ZeroTrustGatewaySettingsSshSessionLog> sshSessionLog;
-
-    /**
-     * @return Configuration for SSH Session Logging.
-     * 
-     */
-    public Output<Optional<ZeroTrustGatewaySettingsSshSessionLog>> sshSessionLog() {
-        return Codegen.optional(this.sshSessionLog);
-    }
-    /**
-     * Indicator that decryption of TLS traffic is enabled.
-     * 
-     */
-    @Export(name="tlsDecryptEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> tlsDecryptEnabled;
-
-    /**
-     * @return Indicator that decryption of TLS traffic is enabled.
-     * 
-     */
-    public Output<Optional<Boolean>> tlsDecryptEnabled() {
-        return Codegen.optional(this.tlsDecryptEnabled);
-    }
-    /**
-     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     * 
-     */
-    @Export(name="urlBrowserIsolationEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> urlBrowserIsolationEnabled;
-
-    /**
-     * @return Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-     * 
-     */
-    public Output<Optional<Boolean>> urlBrowserIsolationEnabled() {
-        return Codegen.optional(this.urlBrowserIsolationEnabled);
+    public Output<String> updatedAt() {
+        return this.updatedAt;
     }
 
     /**
@@ -412,6 +103,9 @@ public class ZeroTrustGatewaySettings extends com.pulumi.resources.CustomResourc
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/teamsAccount:TeamsAccount").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

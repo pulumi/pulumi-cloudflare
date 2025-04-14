@@ -8,43 +8,63 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Access Service Tokens are used for service-to-service communication
-// when an application is behind Cloudflare Access.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZeroTrustAccessServiceToken(ctx, "example_zero_trust_access_service_token", &cloudflare.ZeroTrustAccessServiceTokenArgs{
+//				Name:     pulumi.String("CI/CD token"),
+//				ZoneId:   pulumi.String("zone_id"),
+//				Duration: pulumi.String("60m"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # If you are importing an Access Service Token you will not have the
-//
-// client_secret available in the state for use. The client_secret is only
-//
-// available once, at creation. In most cases, it is better to just create a new
-//
-// resource should you need to reference it in other resources.
-//
 // ```sh
-// $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
+// $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example '<{accounts|zones}/{account_id|zone_id}>/<service_token_id>'
 // ```
+//
+// Deprecated: cloudflare.index/accessservicetoken.AccessServiceToken has been deprecated in favor of cloudflare.index/zerotrustaccessservicetoken.ZeroTrustAccessServiceToken
 type AccessServiceToken struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+	// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
-	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-	Duration pulumi.StringOutput `pulumi:"duration"`
-	// Date when the token expires.
-	ExpiresAt         pulumi.StringOutput `pulumi:"expiresAt"`
-	MinDaysForRenewal pulumi.IntPtrOutput `pulumi:"minDaysForRenewal"`
-	// Friendly name of the token's intent.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	CreatedAt    pulumi.StringOutput `pulumi:"createdAt"`
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	Duration   pulumi.StringOutput `pulumi:"duration"`
+	ExpiresAt  pulumi.StringOutput `pulumi:"expiresAt"`
+	LastSeenAt pulumi.StringOutput `pulumi:"lastSeenAt"`
+	// The name of the service token.
+	Name      pulumi.StringOutput `pulumi:"name"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -58,6 +78,12 @@ func NewAccessServiceToken(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/accessServiceToken:AccessServiceToken"),
+		},
+	})
+	opts = append(opts, aliases)
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"clientSecret",
 	})
@@ -85,38 +111,40 @@ func GetAccessServiceToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessServiceToken resources.
 type accessServiceTokenState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+	// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
 	ClientId *string `pulumi:"clientId"`
-	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-	Duration *string `pulumi:"duration"`
-	// Date when the token expires.
-	ExpiresAt         *string `pulumi:"expiresAt"`
-	MinDaysForRenewal *int    `pulumi:"minDaysForRenewal"`
-	// Friendly name of the token's intent.
-	Name *string `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	CreatedAt    *string `pulumi:"createdAt"`
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	Duration   *string `pulumi:"duration"`
+	ExpiresAt  *string `pulumi:"expiresAt"`
+	LastSeenAt *string `pulumi:"lastSeenAt"`
+	// The name of the service token.
+	Name      *string `pulumi:"name"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessServiceTokenState struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+	// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
 	ClientId pulumi.StringPtrInput
-	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+	// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 	ClientSecret pulumi.StringPtrInput
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-	Duration pulumi.StringPtrInput
-	// Date when the token expires.
-	ExpiresAt         pulumi.StringPtrInput
-	MinDaysForRenewal pulumi.IntPtrInput
-	// Friendly name of the token's intent.
-	Name pulumi.StringPtrInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	CreatedAt    pulumi.StringPtrInput
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	Duration   pulumi.StringPtrInput
+	ExpiresAt  pulumi.StringPtrInput
+	LastSeenAt pulumi.StringPtrInput
+	// The name of the service token.
+	Name      pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -125,27 +153,25 @@ func (AccessServiceTokenState) ElementType() reflect.Type {
 }
 
 type accessServiceTokenArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-	Duration          *string `pulumi:"duration"`
-	MinDaysForRenewal *int    `pulumi:"minDaysForRenewal"`
-	// Friendly name of the token's intent.
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	Duration *string `pulumi:"duration"`
+	// The name of the service token.
 	Name string `pulumi:"name"`
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessServiceToken resource.
 type AccessServiceTokenArgs struct {
-	// The account identifier to target for the resource. Conflicts with `zoneId`.
+	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-	Duration          pulumi.StringPtrInput
-	MinDaysForRenewal pulumi.IntPtrInput
-	// Friendly name of the token's intent.
+	// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
+	Duration pulumi.StringPtrInput
+	// The name of the service token.
 	Name pulumi.StringInput
-	// The zone identifier to target for the resource. Conflicts with `accountId`.
+	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -236,41 +262,48 @@ func (o AccessServiceTokenOutput) ToAccessServiceTokenOutputWithContext(ctx cont
 	return o
 }
 
-// The account identifier to target for the resource. Conflicts with `zoneId`.
+// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 func (o AccessServiceTokenOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+// The Client ID for the service token. Access will check for this value in the `CF-Access-Client-ID` request header.
 func (o AccessServiceTokenOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
+// The Client Secret for the service token. Access will check for this value in the `CF-Access-Client-Secret` request header.
 func (o AccessServiceTokenOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
+func (o AccessServiceTokenOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The duration for how long the service token will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. The default is 1 year in hours (8760h).
 func (o AccessServiceTokenOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
 }
 
-// Date when the token expires.
 func (o AccessServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
-func (o AccessServiceTokenOutput) MinDaysForRenewal() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AccessServiceToken) pulumi.IntPtrOutput { return v.MinDaysForRenewal }).(pulumi.IntPtrOutput)
+func (o AccessServiceTokenOutput) LastSeenAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.LastSeenAt }).(pulumi.StringOutput)
 }
 
-// Friendly name of the token's intent.
+// The name of the service token.
 func (o AccessServiceTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The zone identifier to target for the resource. Conflicts with `accountId`.
+func (o AccessServiceTokenOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 func (o AccessServiceTokenOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

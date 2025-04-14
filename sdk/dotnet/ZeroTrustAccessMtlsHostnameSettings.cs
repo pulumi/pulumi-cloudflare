@@ -10,63 +10,40 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Mutual TLS Certificate Settings resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.ZeroTrustAccessMtlsHostnameSettings("example", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Settings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs
-    ///             {
-    ///                 Hostname = "example.com",
-    ///                 ClientCertificateForwarding = true,
-    ///                 ChinaNetwork = false,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Account level mTLS hostname settings import.
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example account/&lt;account_id&gt;
-    /// ```
-    /// 
-    /// Zone level mTLS hostname settings import.
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example zone/&lt;zone_id&gt;
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings")]
     public partial class ZeroTrustAccessMtlsHostnameSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        /// </summary>
+        [Output("chinaNetwork")]
+        public Output<bool> ChinaNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        /// </summary>
+        [Output("clientCertificateForwarding")]
+        public Output<bool> ClientCertificateForwarding { get; private set; } = null!;
+
+        /// <summary>
+        /// The hostname that these settings apply to.
+        /// </summary>
+        [Output("hostname")]
+        public Output<string> Hostname { get; private set; } = null!;
 
         [Output("settings")]
         public Output<ImmutableArray<Outputs.ZeroTrustAccessMtlsHostnameSettingsSetting>> Settings { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -79,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ZeroTrustAccessMtlsHostnameSettings(string name, ZeroTrustAccessMtlsHostnameSettingsArgs? args = null, CustomResourceOptions? options = null)
+        public ZeroTrustAccessMtlsHostnameSettings(string name, ZeroTrustAccessMtlsHostnameSettingsArgs args, CustomResourceOptions? options = null)
             : base("cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings", name, args ?? new ZeroTrustAccessMtlsHostnameSettingsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -94,6 +71,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -118,12 +99,12 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessMtlsHostnameSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        [Input("settings")]
+        [Input("settings", required: true)]
         private InputList<Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs>? _settings;
         public InputList<Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingArgs> Settings
         {
@@ -132,7 +113,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -146,10 +127,28 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessMtlsHostnameSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        /// </summary>
+        [Input("chinaNetwork")]
+        public Input<bool>? ChinaNetwork { get; set; }
+
+        /// <summary>
+        /// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        /// </summary>
+        [Input("clientCertificateForwarding")]
+        public Input<bool>? ClientCertificateForwarding { get; set; }
+
+        /// <summary>
+        /// The hostname that these settings apply to.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         [Input("settings")]
         private InputList<Inputs.ZeroTrustAccessMtlsHostnameSettingsSettingGetArgs>? _settings;
@@ -160,7 +159,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

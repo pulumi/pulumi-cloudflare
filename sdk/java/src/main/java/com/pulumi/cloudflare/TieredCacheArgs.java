@@ -15,29 +15,31 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
     public static final TieredCacheArgs Empty = new TieredCacheArgs();
 
     /**
-     * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * Enable or disable the Smart Tiered Cache
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
-    @Import(name="cacheType", required=true)
-    private Output<String> cacheType;
+    @Import(name="value", required=true)
+    private Output<String> value;
 
     /**
-     * @return The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+     * @return Enable or disable the Smart Tiered Cache
+     * Available values: &#34;on&#34;, &#34;off&#34;.
      * 
      */
-    public Output<String> cacheType() {
-        return this.cacheType;
+    public Output<String> value() {
+        return this.value;
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -47,7 +49,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
     private TieredCacheArgs() {}
 
     private TieredCacheArgs(TieredCacheArgs $) {
-        this.cacheType = $.cacheType;
+        this.value = $.value;
         this.zoneId = $.zoneId;
     }
 
@@ -70,28 +72,30 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacheType The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+         * @param value Enable or disable the Smart Tiered Cache
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder cacheType(Output<String> cacheType) {
-            $.cacheType = cacheType;
+        public Builder value(Output<String> value) {
+            $.value = value;
             return this;
         }
 
         /**
-         * @param cacheType The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
+         * @param value Enable or disable the Smart Tiered Cache
+         * Available values: &#34;on&#34;, &#34;off&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder cacheType(String cacheType) {
-            return cacheType(Output.of(cacheType));
+        public Builder value(String value) {
+            return value(Output.of(value));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -102,7 +106,7 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -112,8 +116,8 @@ public final class TieredCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TieredCacheArgs build() {
-            if ($.cacheType == null) {
-                throw new MissingRequiredPropertyException("TieredCacheArgs", "cacheType");
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("TieredCacheArgs", "value");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("TieredCacheArgs", "zoneId");

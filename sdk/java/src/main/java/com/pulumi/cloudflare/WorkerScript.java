@@ -6,310 +6,358 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkerScriptArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptState;
-import com.pulumi.cloudflare.outputs.WorkerScriptAnalyticsEngineBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptD1DatabaseBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptHyperdriveConfigBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptKvNamespaceBinding;
+import com.pulumi.cloudflare.outputs.WorkerScriptAssets;
+import com.pulumi.cloudflare.outputs.WorkerScriptBinding;
+import com.pulumi.cloudflare.outputs.WorkerScriptMigrations;
+import com.pulumi.cloudflare.outputs.WorkerScriptObservability;
 import com.pulumi.cloudflare.outputs.WorkerScriptPlacement;
-import com.pulumi.cloudflare.outputs.WorkerScriptPlainTextBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptQueueBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptR2BucketBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptSecretTextBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptServiceBinding;
-import com.pulumi.cloudflare.outputs.WorkerScriptWebassemblyBinding;
+import com.pulumi.cloudflare.outputs.WorkerScriptTailConsumer;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare worker script resource. In order for a script to be active, you&#39;ll also need to setup a `cloudflare.WorkerRoute`.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersKvNamespace;
- * import com.pulumi.cloudflare.WorkersKvNamespaceArgs;
- * import com.pulumi.cloudflare.WorkerScript;
- * import com.pulumi.cloudflare.WorkerScriptArgs;
- * import com.pulumi.cloudflare.inputs.WorkerScriptKvNamespaceBindingArgs;
- * import com.pulumi.cloudflare.inputs.WorkerScriptPlainTextBindingArgs;
- * import com.pulumi.cloudflare.inputs.WorkerScriptSecretTextBindingArgs;
- * import com.pulumi.cloudflare.inputs.WorkerScriptWebassemblyBindingArgs;
- * import com.pulumi.cloudflare.inputs.WorkerScriptServiceBindingArgs;
- * import com.pulumi.cloudflare.inputs.WorkerScriptR2BucketBindingArgs;
- * import com.pulumi.cloudflare.inputs.WorkerScriptAnalyticsEngineBindingArgs;
- * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.FileArgs;
- * import com.pulumi.std.inputs.Filebase64Args;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myNamespace = new WorkersKvNamespace("myNamespace", WorkersKvNamespaceArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .title("example")
- *             .build());
- * 
- *         // Sets the script with the name "script_1"
- *         var myScript = new WorkerScript("myScript", WorkerScriptArgs.builder()
- *             .accountId("f037e56e89293a057740de681ac9abbe")
- *             .name("script_1")
- *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input("script.js")
- *                 .build()).result())
- *             .kvNamespaceBindings(WorkerScriptKvNamespaceBindingArgs.builder()
- *                 .name("MY_EXAMPLE_KV_NAMESPACE")
- *                 .namespaceId(myNamespace.id())
- *                 .build())
- *             .plainTextBindings(WorkerScriptPlainTextBindingArgs.builder()
- *                 .name("MY_EXAMPLE_PLAIN_TEXT")
- *                 .text("foobar")
- *                 .build())
- *             .secretTextBindings(WorkerScriptSecretTextBindingArgs.builder()
- *                 .name("MY_EXAMPLE_SECRET_TEXT")
- *                 .text(secretFooValue)
- *                 .build())
- *             .webassemblyBindings(WorkerScriptWebassemblyBindingArgs.builder()
- *                 .name("MY_EXAMPLE_WASM")
- *                 .module(StdFunctions.filebase64(Filebase64Args.builder()
- *                     .input("example.wasm")
- *                     .build()).result())
- *                 .build())
- *             .serviceBindings(WorkerScriptServiceBindingArgs.builder()
- *                 .name("MY_SERVICE_BINDING")
- *                 .service("MY_SERVICE")
- *                 .environment("production")
- *                 .build())
- *             .r2BucketBindings(WorkerScriptR2BucketBindingArgs.builder()
- *                 .name("MY_BUCKET")
- *                 .bucketName("MY_BUCKET_NAME")
- *                 .build())
- *             .analyticsEngineBindings(WorkerScriptAnalyticsEngineBindingArgs.builder()
- *                 .name("MY_DATASET")
- *                 .dataset("dataset1")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workerScript:WorkerScript example &lt;account_id&gt;/&lt;script_name&gt;
+ * $ pulumi import cloudflare:index/workerScript:WorkerScript example &#39;&lt;account_id&gt;/&lt;script_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript
+ * 
  */
+@Deprecated /* cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript */
 @ResourceType(type="cloudflare:index/workerScript:WorkerScript")
 public class WorkerScript extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
-    @Export(name="analyticsEngineBindings", refs={List.class,WorkerScriptAnalyticsEngineBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptAnalyticsEngineBinding>> analyticsEngineBindings;
+    /**
+     * Configuration for assets within a Worker
+     * 
+     */
+    @Export(name="assets", refs={WorkerScriptAssets.class}, tree="[0]")
+    private Output</* @Nullable */ WorkerScriptAssets> assets;
 
-    public Output<Optional<List<WorkerScriptAnalyticsEngineBinding>>> analyticsEngineBindings() {
-        return Codegen.optional(this.analyticsEngineBindings);
+    /**
+     * @return Configuration for assets within a Worker
+     * 
+     */
+    public Output<Optional<WorkerScriptAssets>> assets() {
+        return Codegen.optional(this.assets);
     }
     /**
-     * The date to use for the compatibility flag.
+     * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     * 
+     */
+    @Export(name="bindings", refs={List.class,WorkerScriptBinding.class}, tree="[0,1]")
+    private Output<List<WorkerScriptBinding>> bindings;
+
+    /**
+     * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+     * 
+     */
+    public Output<List<WorkerScriptBinding>> bindings() {
+        return this.bindings;
+    }
+    /**
+     * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * 
+     */
+    @Export(name="bodyPart", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bodyPart;
+
+    /**
+     * @return Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+     * 
+     */
+    public Output<Optional<String>> bodyPart() {
+        return Codegen.optional(this.bodyPart);
+    }
+    /**
+     * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      * 
      */
     @Export(name="compatibilityDate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> compatibilityDate;
 
     /**
-     * @return The date to use for the compatibility flag.
+     * @return Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      * 
      */
     public Output<Optional<String>> compatibilityDate() {
         return Codegen.optional(this.compatibilityDate);
     }
     /**
-     * Compatibility flags used for Worker Scripts.
+     * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
      * 
      */
     @Export(name="compatibilityFlags", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> compatibilityFlags;
+    private Output</* @Nullable */ List<String>> compatibilityFlags;
 
     /**
-     * @return Compatibility flags used for Worker Scripts.
+     * @return Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
      * 
      */
-    public Output<List<String>> compatibilityFlags() {
-        return this.compatibilityFlags;
+    public Output<Optional<List<String>>> compatibilityFlags() {
+        return Codegen.optional(this.compatibilityFlags);
     }
     /**
-     * The script content.
+     * Module or Service Worker contents of the Worker.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
-     * @return The script content.
+     * @return Module or Service Worker contents of the Worker.
      * 
      */
     public Output<String> content() {
         return this.content;
     }
-    @Export(name="d1DatabaseBindings", refs={List.class,WorkerScriptD1DatabaseBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptD1DatabaseBinding>> d1DatabaseBindings;
-
-    public Output<Optional<List<WorkerScriptD1DatabaseBinding>>> d1DatabaseBindings() {
-        return Codegen.optional(this.d1DatabaseBindings);
-    }
     /**
-     * Name of the Workers for Platforms dispatch namespace.
+     * When the script was created.
      * 
      */
-    @Export(name="dispatchNamespace", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> dispatchNamespace;
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
 
     /**
-     * @return Name of the Workers for Platforms dispatch namespace.
+     * @return When the script was created.
      * 
      */
-    public Output<Optional<String>> dispatchNamespace() {
-        return Codegen.optional(this.dispatchNamespace);
-    }
-    @Export(name="hyperdriveConfigBindings", refs={List.class,WorkerScriptHyperdriveConfigBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptHyperdriveConfigBinding>> hyperdriveConfigBindings;
-
-    public Output<Optional<List<WorkerScriptHyperdriveConfigBinding>>> hyperdriveConfigBindings() {
-        return Codegen.optional(this.hyperdriveConfigBindings);
-    }
-    @Export(name="kvNamespaceBindings", refs={List.class,WorkerScriptKvNamespaceBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptKvNamespaceBinding>> kvNamespaceBindings;
-
-    public Output<Optional<List<WorkerScriptKvNamespaceBinding>>> kvNamespaceBindings() {
-        return Codegen.optional(this.kvNamespaceBindings);
+    public Output<String> createdOn() {
+        return this.createdOn;
     }
     /**
-     * Enabling allows Worker events to be sent to a defined Logpush destination.
+     * Hashed script content, can be used in a If-None-Match header when updating.
+     * 
+     */
+    @Export(name="etag", refs={String.class}, tree="[0]")
+    private Output<String> etag;
+
+    /**
+     * @return Hashed script content, can be used in a If-None-Match header when updating.
+     * 
+     */
+    public Output<String> etag() {
+        return this.etag;
+    }
+    /**
+     * Whether a Worker contains assets.
+     * 
+     */
+    @Export(name="hasAssets", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hasAssets;
+
+    /**
+     * @return Whether a Worker contains assets.
+     * 
+     */
+    public Output<Boolean> hasAssets() {
+        return this.hasAssets;
+    }
+    /**
+     * Whether a Worker contains modules.
+     * 
+     */
+    @Export(name="hasModules", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hasModules;
+
+    /**
+     * @return Whether a Worker contains modules.
+     * 
+     */
+    public Output<Boolean> hasModules() {
+        return this.hasModules;
+    }
+    /**
+     * Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * 
+     */
+    @Export(name="keepAssets", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> keepAssets;
+
+    /**
+     * @return Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+     * 
+     */
+    public Output<Optional<Boolean>> keepAssets() {
+        return Codegen.optional(this.keepAssets);
+    }
+    /**
+     * List of binding types to keep from previous_upload.
+     * 
+     */
+    @Export(name="keepBindings", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> keepBindings;
+
+    /**
+     * @return List of binding types to keep from previous_upload.
+     * 
+     */
+    public Output<Optional<List<String>>> keepBindings() {
+        return Codegen.optional(this.keepBindings);
+    }
+    /**
+     * Whether Logpush is turned on for the Worker.
      * 
      */
     @Export(name="logpush", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> logpush;
+    private Output<Boolean> logpush;
 
     /**
-     * @return Enabling allows Worker events to be sent to a defined Logpush destination.
+     * @return Whether Logpush is turned on for the Worker.
      * 
      */
-    public Output<Optional<Boolean>> logpush() {
-        return Codegen.optional(this.logpush);
+    public Output<Boolean> logpush() {
+        return this.logpush;
     }
     /**
-     * Whether to upload Worker as a module.
+     * Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      * 
      */
-    @Export(name="module", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> module;
+    @Export(name="mainModule", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> mainModule;
 
     /**
-     * @return Whether to upload Worker as a module.
+     * @return Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
      * 
      */
-    public Output<Optional<Boolean>> module() {
-        return Codegen.optional(this.module);
+    public Output<Optional<String>> mainModule() {
+        return Codegen.optional(this.mainModule);
     }
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
-    private Output<String> name;
+    @Export(name="migrations", refs={WorkerScriptMigrations.class}, tree="[0]")
+    private Output<WorkerScriptMigrations> migrations;
 
     /**
-     * @return The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * @return Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Output<WorkerScriptMigrations> migrations() {
+        return this.migrations;
     }
-    @Export(name="placements", refs={List.class,WorkerScriptPlacement.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptPlacement>> placements;
+    /**
+     * When the script was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
 
-    public Output<Optional<List<WorkerScriptPlacement>>> placements() {
-        return Codegen.optional(this.placements);
+    /**
+     * @return When the script was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
     }
-    @Export(name="plainTextBindings", refs={List.class,WorkerScriptPlainTextBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptPlainTextBinding>> plainTextBindings;
+    /**
+     * Observability settings for the Worker.
+     * 
+     */
+    @Export(name="observability", refs={WorkerScriptObservability.class}, tree="[0]")
+    private Output<WorkerScriptObservability> observability;
 
-    public Output<Optional<List<WorkerScriptPlainTextBinding>>> plainTextBindings() {
-        return Codegen.optional(this.plainTextBindings);
+    /**
+     * @return Observability settings for the Worker.
+     * 
+     */
+    public Output<WorkerScriptObservability> observability() {
+        return this.observability;
     }
-    @Export(name="queueBindings", refs={List.class,WorkerScriptQueueBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptQueueBinding>> queueBindings;
+    /**
+     * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    @Export(name="placement", refs={WorkerScriptPlacement.class}, tree="[0]")
+    private Output<WorkerScriptPlacement> placement;
 
-    public Output<Optional<List<WorkerScriptQueueBinding>>> queueBindings() {
-        return Codegen.optional(this.queueBindings);
+    /**
+     * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    public Output<WorkerScriptPlacement> placement() {
+        return this.placement;
     }
-    @Export(name="r2BucketBindings", refs={List.class,WorkerScriptR2BucketBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptR2BucketBinding>> r2BucketBindings;
+    /**
+     * Name of the script, used in URLs and route configuration.
+     * 
+     */
+    @Export(name="scriptName", refs={String.class}, tree="[0]")
+    private Output<String> scriptName;
 
-    public Output<Optional<List<WorkerScriptR2BucketBinding>>> r2BucketBindings() {
-        return Codegen.optional(this.r2BucketBindings);
+    /**
+     * @return Name of the script, used in URLs and route configuration.
+     * 
+     */
+    public Output<String> scriptName() {
+        return this.scriptName;
     }
-    @Export(name="secretTextBindings", refs={List.class,WorkerScriptSecretTextBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptSecretTextBinding>> secretTextBindings;
+    @Export(name="startupTimeMs", refs={Integer.class}, tree="[0]")
+    private Output<Integer> startupTimeMs;
 
-    public Output<Optional<List<WorkerScriptSecretTextBinding>>> secretTextBindings() {
-        return Codegen.optional(this.secretTextBindings);
+    public Output<Integer> startupTimeMs() {
+        return this.startupTimeMs;
     }
-    @Export(name="serviceBindings", refs={List.class,WorkerScriptServiceBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptServiceBinding>> serviceBindings;
+    /**
+     * List of Workers that will consume logs from the attached Worker.
+     * 
+     */
+    @Export(name="tailConsumers", refs={List.class,WorkerScriptTailConsumer.class}, tree="[0,1]")
+    private Output<List<WorkerScriptTailConsumer>> tailConsumers;
 
-    public Output<Optional<List<WorkerScriptServiceBinding>>> serviceBindings() {
-        return Codegen.optional(this.serviceBindings);
+    /**
+     * @return List of Workers that will consume logs from the attached Worker.
+     * 
+     */
+    public Output<List<WorkerScriptTailConsumer>> tailConsumers() {
+        return this.tailConsumers;
     }
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> tags;
+    /**
+     * Usage model for the Worker invocations.
+     * Available values: &#34;standard&#34;.
+     * 
+     */
+    @Export(name="usageModel", refs={String.class}, tree="[0]")
+    private Output<String> usageModel;
 
-    public Output<List<String>> tags() {
-        return this.tags;
-    }
-    @Export(name="webassemblyBindings", refs={List.class,WorkerScriptWebassemblyBinding.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<WorkerScriptWebassemblyBinding>> webassemblyBindings;
-
-    public Output<Optional<List<WorkerScriptWebassemblyBinding>>> webassemblyBindings() {
-        return Codegen.optional(this.webassemblyBindings);
+    /**
+     * @return Usage model for the Worker invocations.
+     * Available values: &#34;standard&#34;.
+     * 
+     */
+    public Output<String> usageModel() {
+        return this.usageModel;
     }
 
     /**
@@ -351,6 +399,9 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/workerScript:WorkerScript").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

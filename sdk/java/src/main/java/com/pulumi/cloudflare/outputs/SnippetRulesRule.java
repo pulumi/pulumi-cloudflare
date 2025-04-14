@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -13,55 +12,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SnippetRulesRule {
-    /**
-     * @return Brief summary of the snippet rule and its intended use.
-     * 
-     */
     private @Nullable String description;
-    /**
-     * @return Whether the headers rule is active.
-     * 
-     */
     private @Nullable Boolean enabled;
+    private @Nullable String expression;
     /**
-     * @return Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
+     * @return Snippet identifying name
      * 
      */
-    private String expression;
-    /**
-     * @return Name of the snippet invoked by this rule.
-     * 
-     */
-    private String snippetName;
+    private @Nullable String snippetName;
 
     private SnippetRulesRule() {}
-    /**
-     * @return Brief summary of the snippet rule and its intended use.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
-    /**
-     * @return Whether the headers rule is active.
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return Criteria for an HTTP request to trigger the snippet rule. Uses the Firewall Rules expression language based on Wireshark display filters.
-     * 
-     */
-    public String expression() {
-        return this.expression;
+    public Optional<String> expression() {
+        return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Name of the snippet invoked by this rule.
+     * @return Snippet identifying name
      * 
      */
-    public String snippetName() {
-        return this.snippetName;
+    public Optional<String> snippetName() {
+        return Optional.ofNullable(this.snippetName);
     }
 
     public static Builder builder() {
@@ -75,8 +50,8 @@ public final class SnippetRulesRule {
     public static final class Builder {
         private @Nullable String description;
         private @Nullable Boolean enabled;
-        private String expression;
-        private String snippetName;
+        private @Nullable String expression;
+        private @Nullable String snippetName;
         public Builder() {}
         public Builder(SnippetRulesRule defaults) {
     	      Objects.requireNonNull(defaults);
@@ -99,18 +74,14 @@ public final class SnippetRulesRule {
             return this;
         }
         @CustomType.Setter
-        public Builder expression(String expression) {
-            if (expression == null) {
-              throw new MissingRequiredPropertyException("SnippetRulesRule", "expression");
-            }
+        public Builder expression(@Nullable String expression) {
+
             this.expression = expression;
             return this;
         }
         @CustomType.Setter
-        public Builder snippetName(String snippetName) {
-            if (snippetName == null) {
-              throw new MissingRequiredPropertyException("SnippetRulesRule", "snippetName");
-            }
+        public Builder snippetName(@Nullable String snippetName) {
+
             this.snippetName = snippetName;
             return this;
         }

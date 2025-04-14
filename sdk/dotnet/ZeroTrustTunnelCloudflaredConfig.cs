@@ -10,124 +10,50 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Tunnel configuration resource.
-    /// 
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleTunnel = new Cloudflare.ZeroTrustTunnelCloudflared("example_tunnel", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example_tunnel",
-    ///         Secret = "&lt;32 character secret&gt;",
-    ///     });
-    /// 
-    ///     var exampleConfig = new Cloudflare.ZeroTrustTunnelCloudflaredConfig("example_config", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         TunnelId = exampleTunnel.Id,
-    ///         Config = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs
-    ///         {
-    ///             WarpRouting = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigWarpRoutingArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///             OriginRequest = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestArgs
-    ///             {
-    ///                 ConnectTimeout = "1m0s",
-    ///                 TlsTimeout = "1m0s",
-    ///                 TcpKeepAlive = "1m0s",
-    ///                 NoHappyEyeballs = false,
-    ///                 KeepAliveConnections = 1024,
-    ///                 KeepAliveTimeout = "1m0s",
-    ///                 HttpHostHeader = "baz",
-    ///                 OriginServerName = "foobar",
-    ///                 CaPool = "/path/to/unsigned/ca/pool",
-    ///                 NoTlsVerify = false,
-    ///                 DisableChunkedEncoding = false,
-    ///                 BastionMode = false,
-    ///                 ProxyAddress = "10.0.0.1",
-    ///                 ProxyPort = 8123,
-    ///                 ProxyType = "socks",
-    ///                 IpRules = new[]
-    ///                 {
-    ///                     new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestIpRuleArgs
-    ///                     {
-    ///                         Prefix = "/web",
-    ///                         Ports = new[]
-    ///                         {
-    ///                             80,
-    ///                             443,
-    ///                         },
-    ///                         Allow = false,
-    ///                     },
-    ///                 },
-    ///             },
-    ///             IngressRules = new[]
-    ///             {
-    ///                 new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs
-    ///                 {
-    ///                     Hostname = "foo",
-    ///                     Path = "/bar",
-    ///                     Service = "http://10.0.0.2:8080",
-    ///                     OriginRequest = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestArgs
-    ///                     {
-    ///                         ConnectTimeout = "2m0s",
-    ///                         Access = new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleOriginRequestAccessArgs
-    ///                         {
-    ///                             Required = true,
-    ///                             TeamName = "terraform",
-    ///                             AudTags = new[]
-    ///                             {
-    ///                                 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new Cloudflare.Inputs.ZeroTrustTunnelCloudflaredConfigConfigIngressRuleArgs
-    ///                 {
-    ///                     Service = "https://10.0.0.3:8081",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig example &lt;account_id&gt;/&lt;tunnel_id&gt;
+    /// $ pulumi import cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig example '&lt;account_id&gt;/&lt;tunnel_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zeroTrustTunnelCloudflaredConfig:ZeroTrustTunnelCloudflaredConfig")]
     public partial class ZeroTrustTunnelCloudflaredConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration block for Tunnel Configuration.
+        /// The tunnel configuration and ingress rules.
         /// </summary>
         [Output("config")]
         public Output<Outputs.ZeroTrustTunnelCloudflaredConfigConfig> Config { get; private set; } = null!;
 
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
         /// <summary>
-        /// Identifier of the Tunnel to target for this configuration.
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
+        /// </summary>
+        [Output("source")]
+        public Output<string> Source { get; private set; } = null!;
+
+        /// <summary>
+        /// UUID of the tunnel.
         /// </summary>
         [Output("tunnelId")]
         public Output<string> TunnelId { get; private set; } = null!;
+
+        /// <summary>
+        /// The version of the Tunnel Configuration.
+        /// </summary>
+        [Output("version")]
+        public Output<int> Version { get; private set; } = null!;
 
 
         /// <summary>
@@ -152,6 +78,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/tunnelConfig:TunnelConfig" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -176,19 +106,26 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustTunnelCloudflaredConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Configuration block for Tunnel Configuration.
+        /// The tunnel configuration and ingress rules.
         /// </summary>
-        [Input("config", required: true)]
-        public Input<Inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs> Config { get; set; } = null!;
+        [Input("config")]
+        public Input<Inputs.ZeroTrustTunnelCloudflaredConfigConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Identifier of the Tunnel to target for this configuration.
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
+        /// UUID of the tunnel.
         /// </summary>
         [Input("tunnelId", required: true)]
         public Input<string> TunnelId { get; set; } = null!;
@@ -202,22 +139,38 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustTunnelCloudflaredConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// Identifier
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Configuration block for Tunnel Configuration.
+        /// The tunnel configuration and ingress rules.
         /// </summary>
         [Input("config")]
         public Input<Inputs.ZeroTrustTunnelCloudflaredConfigConfigGetArgs>? Config { get; set; }
 
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
         /// <summary>
-        /// Identifier of the Tunnel to target for this configuration.
+        /// Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
+        /// Available values: "local", "cloudflare".
+        /// </summary>
+        [Input("source")]
+        public Input<string>? Source { get; set; }
+
+        /// <summary>
+        /// UUID of the tunnel.
         /// </summary>
         [Input("tunnelId")]
         public Input<string>? TunnelId { get; set; }
+
+        /// <summary>
+        /// The version of the Tunnel Configuration.
+        /// </summary>
+        [Input("version")]
+        public Input<int>? Version { get; set; }
 
         public ZeroTrustTunnelCloudflaredConfigState()
         {

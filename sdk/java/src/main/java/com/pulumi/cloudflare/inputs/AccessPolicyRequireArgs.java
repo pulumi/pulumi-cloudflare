@@ -3,18 +3,30 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireAnyValidServiceTokenArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyRequireAuthContextArgs;
-import com.pulumi.cloudflare.inputs.AccessPolicyRequireAzureArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireAuthMethodArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireAzureAdArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireCertificateArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireCommonNameArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireDevicePostureArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireEmailArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireEmailDomainArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireEmailListArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireEveryoneArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyRequireExternalEvaluationArgs;
-import com.pulumi.cloudflare.inputs.AccessPolicyRequireGithubArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireGeoArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireGithubOrganizationArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireGroupArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyRequireGsuiteArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireIpArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireIpListArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireLoginMethodArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyRequireOktaArgs;
 import com.pulumi.cloudflare.inputs.AccessPolicyRequireSamlArgs;
+import com.pulumi.cloudflare.inputs.AccessPolicyRequireServiceTokenArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
-import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,368 +37,200 @@ public final class AccessPolicyRequireArgs extends com.pulumi.resources.Resource
     public static final AccessPolicyRequireArgs Empty = new AccessPolicyRequireArgs();
 
     /**
-     * Matches any valid Access service token.
+     * An empty object which matches on all service tokens.
      * 
      */
     @Import(name="anyValidServiceToken")
-    private @Nullable Output<Boolean> anyValidServiceToken;
+    private @Nullable Output<AccessPolicyRequireAnyValidServiceTokenArgs> anyValidServiceToken;
 
     /**
-     * @return Matches any valid Access service token.
+     * @return An empty object which matches on all service tokens.
      * 
      */
-    public Optional<Output<Boolean>> anyValidServiceToken() {
+    public Optional<Output<AccessPolicyRequireAnyValidServiceTokenArgs>> anyValidServiceToken() {
         return Optional.ofNullable(this.anyValidServiceToken);
     }
 
-    @Import(name="authContexts")
-    private @Nullable Output<List<AccessPolicyRequireAuthContextArgs>> authContexts;
+    @Import(name="authContext")
+    private @Nullable Output<AccessPolicyRequireAuthContextArgs> authContext;
 
-    public Optional<Output<List<AccessPolicyRequireAuthContextArgs>>> authContexts() {
-        return Optional.ofNullable(this.authContexts);
+    public Optional<Output<AccessPolicyRequireAuthContextArgs>> authContext() {
+        return Optional.ofNullable(this.authContext);
     }
 
-    /**
-     * The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-     * 
-     */
     @Import(name="authMethod")
-    private @Nullable Output<String> authMethod;
+    private @Nullable Output<AccessPolicyRequireAuthMethodArgs> authMethod;
 
-    /**
-     * @return The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-     * 
-     */
-    public Optional<Output<String>> authMethod() {
+    public Optional<Output<AccessPolicyRequireAuthMethodArgs>> authMethod() {
         return Optional.ofNullable(this.authMethod);
     }
 
-    /**
-     * Matches an Azure group. Requires an Azure identity provider.
-     * 
-     */
-    @Import(name="azures")
-    private @Nullable Output<List<AccessPolicyRequireAzureArgs>> azures;
+    @Import(name="azureAd")
+    private @Nullable Output<AccessPolicyRequireAzureAdArgs> azureAd;
 
-    /**
-     * @return Matches an Azure group. Requires an Azure identity provider.
-     * 
-     */
-    public Optional<Output<List<AccessPolicyRequireAzureArgs>>> azures() {
-        return Optional.ofNullable(this.azures);
+    public Optional<Output<AccessPolicyRequireAzureAdArgs>> azureAd() {
+        return Optional.ofNullable(this.azureAd);
     }
 
-    /**
-     * Matches any valid client certificate.
-     * 
-     */
     @Import(name="certificate")
-    private @Nullable Output<Boolean> certificate;
+    private @Nullable Output<AccessPolicyRequireCertificateArgs> certificate;
 
-    /**
-     * @return Matches any valid client certificate.
-     * 
-     */
-    public Optional<Output<Boolean>> certificate() {
+    public Optional<Output<AccessPolicyRequireCertificateArgs>> certificate() {
         return Optional.ofNullable(this.certificate);
     }
 
-    /**
-     * Matches a valid client certificate common name.
-     * 
-     */
     @Import(name="commonName")
-    private @Nullable Output<String> commonName;
+    private @Nullable Output<AccessPolicyRequireCommonNameArgs> commonName;
 
-    /**
-     * @return Matches a valid client certificate common name.
-     * 
-     */
-    public Optional<Output<String>> commonName() {
+    public Optional<Output<AccessPolicyRequireCommonNameArgs>> commonName() {
         return Optional.ofNullable(this.commonName);
     }
 
-    /**
-     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-     * 
-     */
-    @Import(name="commonNames")
-    private @Nullable Output<List<String>> commonNames;
+    @Import(name="devicePosture")
+    private @Nullable Output<AccessPolicyRequireDevicePostureArgs> devicePosture;
 
-    /**
-     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-     * 
-     */
-    public Optional<Output<List<String>>> commonNames() {
-        return Optional.ofNullable(this.commonNames);
+    public Optional<Output<AccessPolicyRequireDevicePostureArgs>> devicePosture() {
+        return Optional.ofNullable(this.devicePosture);
+    }
+
+    @Import(name="email")
+    private @Nullable Output<AccessPolicyRequireEmailArgs> email;
+
+    public Optional<Output<AccessPolicyRequireEmailArgs>> email() {
+        return Optional.ofNullable(this.email);
+    }
+
+    @Import(name="emailDomain")
+    private @Nullable Output<AccessPolicyRequireEmailDomainArgs> emailDomain;
+
+    public Optional<Output<AccessPolicyRequireEmailDomainArgs>> emailDomain() {
+        return Optional.ofNullable(this.emailDomain);
+    }
+
+    @Import(name="emailList")
+    private @Nullable Output<AccessPolicyRequireEmailListArgs> emailList;
+
+    public Optional<Output<AccessPolicyRequireEmailListArgs>> emailList() {
+        return Optional.ofNullable(this.emailList);
     }
 
     /**
-     * The ID of a device posture integration.
-     * 
-     */
-    @Import(name="devicePostures")
-    private @Nullable Output<List<String>> devicePostures;
-
-    /**
-     * @return The ID of a device posture integration.
-     * 
-     */
-    public Optional<Output<List<String>>> devicePostures() {
-        return Optional.ofNullable(this.devicePostures);
-    }
-
-    /**
-     * The email domain to match.
-     * 
-     */
-    @Import(name="emailDomains")
-    private @Nullable Output<List<String>> emailDomains;
-
-    /**
-     * @return The email domain to match.
-     * 
-     */
-    public Optional<Output<List<String>>> emailDomains() {
-        return Optional.ofNullable(this.emailDomains);
-    }
-
-    /**
-     * The ID of a previously created email list.
-     * 
-     */
-    @Import(name="emailLists")
-    private @Nullable Output<List<String>> emailLists;
-
-    /**
-     * @return The ID of a previously created email list.
-     * 
-     */
-    public Optional<Output<List<String>>> emailLists() {
-        return Optional.ofNullable(this.emailLists);
-    }
-
-    /**
-     * The email of the user.
-     * 
-     */
-    @Import(name="emails")
-    private @Nullable Output<List<String>> emails;
-
-    /**
-     * @return The email of the user.
-     * 
-     */
-    public Optional<Output<List<String>>> emails() {
-        return Optional.ofNullable(this.emails);
-    }
-
-    /**
-     * Matches everyone.
+     * An empty object which matches on all users.
      * 
      */
     @Import(name="everyone")
-    private @Nullable Output<Boolean> everyone;
+    private @Nullable Output<AccessPolicyRequireEveryoneArgs> everyone;
 
     /**
-     * @return Matches everyone.
+     * @return An empty object which matches on all users.
      * 
      */
-    public Optional<Output<Boolean>> everyone() {
+    public Optional<Output<AccessPolicyRequireEveryoneArgs>> everyone() {
         return Optional.ofNullable(this.everyone);
     }
 
-    /**
-     * Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-     * 
-     */
     @Import(name="externalEvaluation")
     private @Nullable Output<AccessPolicyRequireExternalEvaluationArgs> externalEvaluation;
 
-    /**
-     * @return Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-     * 
-     */
     public Optional<Output<AccessPolicyRequireExternalEvaluationArgs>> externalEvaluation() {
         return Optional.ofNullable(this.externalEvaluation);
     }
 
-    /**
-     * Matches a specific country.
-     * 
-     */
-    @Import(name="geos")
-    private @Nullable Output<List<String>> geos;
+    @Import(name="geo")
+    private @Nullable Output<AccessPolicyRequireGeoArgs> geo;
 
-    /**
-     * @return Matches a specific country.
-     * 
-     */
-    public Optional<Output<List<String>>> geos() {
-        return Optional.ofNullable(this.geos);
+    public Optional<Output<AccessPolicyRequireGeoArgs>> geo() {
+        return Optional.ofNullable(this.geo);
     }
 
-    /**
-     * Matches a Github organization. Requires a Github identity provider.
-     * 
-     */
-    @Import(name="githubs")
-    private @Nullable Output<List<AccessPolicyRequireGithubArgs>> githubs;
+    @Import(name="githubOrganization")
+    private @Nullable Output<AccessPolicyRequireGithubOrganizationArgs> githubOrganization;
 
-    /**
-     * @return Matches a Github organization. Requires a Github identity provider.
-     * 
-     */
-    public Optional<Output<List<AccessPolicyRequireGithubArgs>>> githubs() {
-        return Optional.ofNullable(this.githubs);
+    public Optional<Output<AccessPolicyRequireGithubOrganizationArgs>> githubOrganization() {
+        return Optional.ofNullable(this.githubOrganization);
     }
 
-    /**
-     * The ID of a previously created Access group.
-     * 
-     */
-    @Import(name="groups")
-    private @Nullable Output<List<String>> groups;
+    @Import(name="group")
+    private @Nullable Output<AccessPolicyRequireGroupArgs> group;
 
-    /**
-     * @return The ID of a previously created Access group.
-     * 
-     */
-    public Optional<Output<List<String>>> groups() {
-        return Optional.ofNullable(this.groups);
+    public Optional<Output<AccessPolicyRequireGroupArgs>> group() {
+        return Optional.ofNullable(this.group);
     }
 
-    /**
-     * Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-     * 
-     */
-    @Import(name="gsuites")
-    private @Nullable Output<List<AccessPolicyRequireGsuiteArgs>> gsuites;
+    @Import(name="gsuite")
+    private @Nullable Output<AccessPolicyRequireGsuiteArgs> gsuite;
 
-    /**
-     * @return Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-     * 
-     */
-    public Optional<Output<List<AccessPolicyRequireGsuiteArgs>>> gsuites() {
-        return Optional.ofNullable(this.gsuites);
+    public Optional<Output<AccessPolicyRequireGsuiteArgs>> gsuite() {
+        return Optional.ofNullable(this.gsuite);
     }
 
-    /**
-     * The ID of a previously created IP list.
-     * 
-     */
-    @Import(name="ipLists")
-    private @Nullable Output<List<String>> ipLists;
+    @Import(name="ip")
+    private @Nullable Output<AccessPolicyRequireIpArgs> ip;
 
-    /**
-     * @return The ID of a previously created IP list.
-     * 
-     */
-    public Optional<Output<List<String>>> ipLists() {
-        return Optional.ofNullable(this.ipLists);
+    public Optional<Output<AccessPolicyRequireIpArgs>> ip() {
+        return Optional.ofNullable(this.ip);
     }
 
-    /**
-     * An IPv4 or IPv6 CIDR block.
-     * 
-     */
-    @Import(name="ips")
-    private @Nullable Output<List<String>> ips;
+    @Import(name="ipList")
+    private @Nullable Output<AccessPolicyRequireIpListArgs> ipList;
 
-    /**
-     * @return An IPv4 or IPv6 CIDR block.
-     * 
-     */
-    public Optional<Output<List<String>>> ips() {
-        return Optional.ofNullable(this.ips);
+    public Optional<Output<AccessPolicyRequireIpListArgs>> ipList() {
+        return Optional.ofNullable(this.ipList);
     }
 
-    /**
-     * The ID of a configured identity provider.
-     * 
-     */
-    @Import(name="loginMethods")
-    private @Nullable Output<List<String>> loginMethods;
+    @Import(name="loginMethod")
+    private @Nullable Output<AccessPolicyRequireLoginMethodArgs> loginMethod;
 
-    /**
-     * @return The ID of a configured identity provider.
-     * 
-     */
-    public Optional<Output<List<String>>> loginMethods() {
-        return Optional.ofNullable(this.loginMethods);
+    public Optional<Output<AccessPolicyRequireLoginMethodArgs>> loginMethod() {
+        return Optional.ofNullable(this.loginMethod);
     }
 
-    /**
-     * Matches an Okta group. Requires an Okta identity provider.
-     * 
-     */
-    @Import(name="oktas")
-    private @Nullable Output<List<AccessPolicyRequireOktaArgs>> oktas;
+    @Import(name="okta")
+    private @Nullable Output<AccessPolicyRequireOktaArgs> okta;
 
-    /**
-     * @return Matches an Okta group. Requires an Okta identity provider.
-     * 
-     */
-    public Optional<Output<List<AccessPolicyRequireOktaArgs>>> oktas() {
-        return Optional.ofNullable(this.oktas);
+    public Optional<Output<AccessPolicyRequireOktaArgs>> okta() {
+        return Optional.ofNullable(this.okta);
     }
 
-    /**
-     * Matches a SAML group. Requires a SAML identity provider.
-     * 
-     */
-    @Import(name="samls")
-    private @Nullable Output<List<AccessPolicyRequireSamlArgs>> samls;
+    @Import(name="saml")
+    private @Nullable Output<AccessPolicyRequireSamlArgs> saml;
 
-    /**
-     * @return Matches a SAML group. Requires a SAML identity provider.
-     * 
-     */
-    public Optional<Output<List<AccessPolicyRequireSamlArgs>>> samls() {
-        return Optional.ofNullable(this.samls);
+    public Optional<Output<AccessPolicyRequireSamlArgs>> saml() {
+        return Optional.ofNullable(this.saml);
     }
 
-    /**
-     * The ID of an Access service token.
-     * 
-     */
-    @Import(name="serviceTokens")
-    private @Nullable Output<List<String>> serviceTokens;
+    @Import(name="serviceToken")
+    private @Nullable Output<AccessPolicyRequireServiceTokenArgs> serviceToken;
 
-    /**
-     * @return The ID of an Access service token.
-     * 
-     */
-    public Optional<Output<List<String>>> serviceTokens() {
-        return Optional.ofNullable(this.serviceTokens);
+    public Optional<Output<AccessPolicyRequireServiceTokenArgs>> serviceToken() {
+        return Optional.ofNullable(this.serviceToken);
     }
 
     private AccessPolicyRequireArgs() {}
 
     private AccessPolicyRequireArgs(AccessPolicyRequireArgs $) {
         this.anyValidServiceToken = $.anyValidServiceToken;
-        this.authContexts = $.authContexts;
+        this.authContext = $.authContext;
         this.authMethod = $.authMethod;
-        this.azures = $.azures;
+        this.azureAd = $.azureAd;
         this.certificate = $.certificate;
         this.commonName = $.commonName;
-        this.commonNames = $.commonNames;
-        this.devicePostures = $.devicePostures;
-        this.emailDomains = $.emailDomains;
-        this.emailLists = $.emailLists;
-        this.emails = $.emails;
+        this.devicePosture = $.devicePosture;
+        this.email = $.email;
+        this.emailDomain = $.emailDomain;
+        this.emailList = $.emailList;
         this.everyone = $.everyone;
         this.externalEvaluation = $.externalEvaluation;
-        this.geos = $.geos;
-        this.githubs = $.githubs;
-        this.groups = $.groups;
-        this.gsuites = $.gsuites;
-        this.ipLists = $.ipLists;
-        this.ips = $.ips;
-        this.loginMethods = $.loginMethods;
-        this.oktas = $.oktas;
-        this.samls = $.samls;
-        this.serviceTokens = $.serviceTokens;
+        this.geo = $.geo;
+        this.githubOrganization = $.githubOrganization;
+        this.group = $.group;
+        this.gsuite = $.gsuite;
+        this.ip = $.ip;
+        this.ipList = $.ipList;
+        this.loginMethod = $.loginMethod;
+        this.okta = $.okta;
+        this.saml = $.saml;
+        this.serviceToken = $.serviceToken;
     }
 
     public static Builder builder() {
@@ -408,638 +252,225 @@ public final class AccessPolicyRequireArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param anyValidServiceToken Matches any valid Access service token.
+         * @param anyValidServiceToken An empty object which matches on all service tokens.
          * 
          * @return builder
          * 
          */
-        public Builder anyValidServiceToken(@Nullable Output<Boolean> anyValidServiceToken) {
+        public Builder anyValidServiceToken(@Nullable Output<AccessPolicyRequireAnyValidServiceTokenArgs> anyValidServiceToken) {
             $.anyValidServiceToken = anyValidServiceToken;
             return this;
         }
 
         /**
-         * @param anyValidServiceToken Matches any valid Access service token.
+         * @param anyValidServiceToken An empty object which matches on all service tokens.
          * 
          * @return builder
          * 
          */
-        public Builder anyValidServiceToken(Boolean anyValidServiceToken) {
+        public Builder anyValidServiceToken(AccessPolicyRequireAnyValidServiceTokenArgs anyValidServiceToken) {
             return anyValidServiceToken(Output.of(anyValidServiceToken));
         }
 
-        public Builder authContexts(@Nullable Output<List<AccessPolicyRequireAuthContextArgs>> authContexts) {
-            $.authContexts = authContexts;
+        public Builder authContext(@Nullable Output<AccessPolicyRequireAuthContextArgs> authContext) {
+            $.authContext = authContext;
             return this;
         }
 
-        public Builder authContexts(List<AccessPolicyRequireAuthContextArgs> authContexts) {
-            return authContexts(Output.of(authContexts));
+        public Builder authContext(AccessPolicyRequireAuthContextArgs authContext) {
+            return authContext(Output.of(authContext));
         }
 
-        public Builder authContexts(AccessPolicyRequireAuthContextArgs... authContexts) {
-            return authContexts(List.of(authContexts));
-        }
-
-        /**
-         * @param authMethod The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authMethod(@Nullable Output<String> authMethod) {
+        public Builder authMethod(@Nullable Output<AccessPolicyRequireAuthMethodArgs> authMethod) {
             $.authMethod = authMethod;
             return this;
         }
 
-        /**
-         * @param authMethod The type of authentication method. Refer to https://datatracker.ietf.org/doc/html/rfc8176#section-2 for possible types.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder authMethod(String authMethod) {
+        public Builder authMethod(AccessPolicyRequireAuthMethodArgs authMethod) {
             return authMethod(Output.of(authMethod));
         }
 
-        /**
-         * @param azures Matches an Azure group. Requires an Azure identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder azures(@Nullable Output<List<AccessPolicyRequireAzureArgs>> azures) {
-            $.azures = azures;
+        public Builder azureAd(@Nullable Output<AccessPolicyRequireAzureAdArgs> azureAd) {
+            $.azureAd = azureAd;
             return this;
         }
 
-        /**
-         * @param azures Matches an Azure group. Requires an Azure identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder azures(List<AccessPolicyRequireAzureArgs> azures) {
-            return azures(Output.of(azures));
+        public Builder azureAd(AccessPolicyRequireAzureAdArgs azureAd) {
+            return azureAd(Output.of(azureAd));
         }
 
-        /**
-         * @param azures Matches an Azure group. Requires an Azure identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder azures(AccessPolicyRequireAzureArgs... azures) {
-            return azures(List.of(azures));
-        }
-
-        /**
-         * @param certificate Matches any valid client certificate.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificate(@Nullable Output<Boolean> certificate) {
+        public Builder certificate(@Nullable Output<AccessPolicyRequireCertificateArgs> certificate) {
             $.certificate = certificate;
             return this;
         }
 
-        /**
-         * @param certificate Matches any valid client certificate.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder certificate(Boolean certificate) {
+        public Builder certificate(AccessPolicyRequireCertificateArgs certificate) {
             return certificate(Output.of(certificate));
         }
 
-        /**
-         * @param commonName Matches a valid client certificate common name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonName(@Nullable Output<String> commonName) {
+        public Builder commonName(@Nullable Output<AccessPolicyRequireCommonNameArgs> commonName) {
             $.commonName = commonName;
             return this;
         }
 
-        /**
-         * @param commonName Matches a valid client certificate common name.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonName(String commonName) {
+        public Builder commonName(AccessPolicyRequireCommonNameArgs commonName) {
             return commonName(Output.of(commonName));
         }
 
-        /**
-         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonNames(@Nullable Output<List<String>> commonNames) {
-            $.commonNames = commonNames;
+        public Builder devicePosture(@Nullable Output<AccessPolicyRequireDevicePostureArgs> devicePosture) {
+            $.devicePosture = devicePosture;
             return this;
         }
 
-        /**
-         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonNames(List<String> commonNames) {
-            return commonNames(Output.of(commonNames));
+        public Builder devicePosture(AccessPolicyRequireDevicePostureArgs devicePosture) {
+            return devicePosture(Output.of(devicePosture));
         }
 
-        /**
-         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder commonNames(String... commonNames) {
-            return commonNames(List.of(commonNames));
-        }
-
-        /**
-         * @param devicePostures The ID of a device posture integration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder devicePostures(@Nullable Output<List<String>> devicePostures) {
-            $.devicePostures = devicePostures;
+        public Builder email(@Nullable Output<AccessPolicyRequireEmailArgs> email) {
+            $.email = email;
             return this;
         }
 
-        /**
-         * @param devicePostures The ID of a device posture integration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder devicePostures(List<String> devicePostures) {
-            return devicePostures(Output.of(devicePostures));
+        public Builder email(AccessPolicyRequireEmailArgs email) {
+            return email(Output.of(email));
         }
 
-        /**
-         * @param devicePostures The ID of a device posture integration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder devicePostures(String... devicePostures) {
-            return devicePostures(List.of(devicePostures));
-        }
-
-        /**
-         * @param emailDomains The email domain to match.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailDomains(@Nullable Output<List<String>> emailDomains) {
-            $.emailDomains = emailDomains;
+        public Builder emailDomain(@Nullable Output<AccessPolicyRequireEmailDomainArgs> emailDomain) {
+            $.emailDomain = emailDomain;
             return this;
         }
 
-        /**
-         * @param emailDomains The email domain to match.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailDomains(List<String> emailDomains) {
-            return emailDomains(Output.of(emailDomains));
+        public Builder emailDomain(AccessPolicyRequireEmailDomainArgs emailDomain) {
+            return emailDomain(Output.of(emailDomain));
         }
 
-        /**
-         * @param emailDomains The email domain to match.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailDomains(String... emailDomains) {
-            return emailDomains(List.of(emailDomains));
-        }
-
-        /**
-         * @param emailLists The ID of a previously created email list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailLists(@Nullable Output<List<String>> emailLists) {
-            $.emailLists = emailLists;
+        public Builder emailList(@Nullable Output<AccessPolicyRequireEmailListArgs> emailList) {
+            $.emailList = emailList;
             return this;
         }
 
-        /**
-         * @param emailLists The ID of a previously created email list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emailLists(List<String> emailLists) {
-            return emailLists(Output.of(emailLists));
+        public Builder emailList(AccessPolicyRequireEmailListArgs emailList) {
+            return emailList(Output.of(emailList));
         }
 
         /**
-         * @param emailLists The ID of a previously created email list.
+         * @param everyone An empty object which matches on all users.
          * 
          * @return builder
          * 
          */
-        public Builder emailLists(String... emailLists) {
-            return emailLists(List.of(emailLists));
-        }
-
-        /**
-         * @param emails The email of the user.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emails(@Nullable Output<List<String>> emails) {
-            $.emails = emails;
-            return this;
-        }
-
-        /**
-         * @param emails The email of the user.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emails(List<String> emails) {
-            return emails(Output.of(emails));
-        }
-
-        /**
-         * @param emails The email of the user.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder emails(String... emails) {
-            return emails(List.of(emails));
-        }
-
-        /**
-         * @param everyone Matches everyone.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder everyone(@Nullable Output<Boolean> everyone) {
+        public Builder everyone(@Nullable Output<AccessPolicyRequireEveryoneArgs> everyone) {
             $.everyone = everyone;
             return this;
         }
 
         /**
-         * @param everyone Matches everyone.
+         * @param everyone An empty object which matches on all users.
          * 
          * @return builder
          * 
          */
-        public Builder everyone(Boolean everyone) {
+        public Builder everyone(AccessPolicyRequireEveryoneArgs everyone) {
             return everyone(Output.of(everyone));
         }
 
-        /**
-         * @param externalEvaluation Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-         * 
-         * @return builder
-         * 
-         */
         public Builder externalEvaluation(@Nullable Output<AccessPolicyRequireExternalEvaluationArgs> externalEvaluation) {
             $.externalEvaluation = externalEvaluation;
             return this;
         }
 
-        /**
-         * @param externalEvaluation Create Allow or Block policies which evaluate the user based on custom criteria. https://developers.cloudflare.com/cloudflare-one/policies/access/external-evaluation/.
-         * 
-         * @return builder
-         * 
-         */
         public Builder externalEvaluation(AccessPolicyRequireExternalEvaluationArgs externalEvaluation) {
             return externalEvaluation(Output.of(externalEvaluation));
         }
 
-        /**
-         * @param geos Matches a specific country.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder geos(@Nullable Output<List<String>> geos) {
-            $.geos = geos;
+        public Builder geo(@Nullable Output<AccessPolicyRequireGeoArgs> geo) {
+            $.geo = geo;
             return this;
         }
 
-        /**
-         * @param geos Matches a specific country.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder geos(List<String> geos) {
-            return geos(Output.of(geos));
+        public Builder geo(AccessPolicyRequireGeoArgs geo) {
+            return geo(Output.of(geo));
         }
 
-        /**
-         * @param geos Matches a specific country.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder geos(String... geos) {
-            return geos(List.of(geos));
-        }
-
-        /**
-         * @param githubs Matches a Github organization. Requires a Github identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder githubs(@Nullable Output<List<AccessPolicyRequireGithubArgs>> githubs) {
-            $.githubs = githubs;
+        public Builder githubOrganization(@Nullable Output<AccessPolicyRequireGithubOrganizationArgs> githubOrganization) {
+            $.githubOrganization = githubOrganization;
             return this;
         }
 
-        /**
-         * @param githubs Matches a Github organization. Requires a Github identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder githubs(List<AccessPolicyRequireGithubArgs> githubs) {
-            return githubs(Output.of(githubs));
+        public Builder githubOrganization(AccessPolicyRequireGithubOrganizationArgs githubOrganization) {
+            return githubOrganization(Output.of(githubOrganization));
         }
 
-        /**
-         * @param githubs Matches a Github organization. Requires a Github identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder githubs(AccessPolicyRequireGithubArgs... githubs) {
-            return githubs(List.of(githubs));
-        }
-
-        /**
-         * @param groups The ID of a previously created Access group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groups(@Nullable Output<List<String>> groups) {
-            $.groups = groups;
+        public Builder group(@Nullable Output<AccessPolicyRequireGroupArgs> group) {
+            $.group = group;
             return this;
         }
 
-        /**
-         * @param groups The ID of a previously created Access group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groups(List<String> groups) {
-            return groups(Output.of(groups));
+        public Builder group(AccessPolicyRequireGroupArgs group) {
+            return group(Output.of(group));
         }
 
-        /**
-         * @param groups The ID of a previously created Access group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder groups(String... groups) {
-            return groups(List.of(groups));
-        }
-
-        /**
-         * @param gsuites Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gsuites(@Nullable Output<List<AccessPolicyRequireGsuiteArgs>> gsuites) {
-            $.gsuites = gsuites;
+        public Builder gsuite(@Nullable Output<AccessPolicyRequireGsuiteArgs> gsuite) {
+            $.gsuite = gsuite;
             return this;
         }
 
-        /**
-         * @param gsuites Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gsuites(List<AccessPolicyRequireGsuiteArgs> gsuites) {
-            return gsuites(Output.of(gsuites));
+        public Builder gsuite(AccessPolicyRequireGsuiteArgs gsuite) {
+            return gsuite(Output.of(gsuite));
         }
 
-        /**
-         * @param gsuites Matches a group in Google Workspace. Requires a Google Workspace identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder gsuites(AccessPolicyRequireGsuiteArgs... gsuites) {
-            return gsuites(List.of(gsuites));
-        }
-
-        /**
-         * @param ipLists The ID of a previously created IP list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipLists(@Nullable Output<List<String>> ipLists) {
-            $.ipLists = ipLists;
+        public Builder ip(@Nullable Output<AccessPolicyRequireIpArgs> ip) {
+            $.ip = ip;
             return this;
         }
 
-        /**
-         * @param ipLists The ID of a previously created IP list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipLists(List<String> ipLists) {
-            return ipLists(Output.of(ipLists));
+        public Builder ip(AccessPolicyRequireIpArgs ip) {
+            return ip(Output.of(ip));
         }
 
-        /**
-         * @param ipLists The ID of a previously created IP list.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipLists(String... ipLists) {
-            return ipLists(List.of(ipLists));
-        }
-
-        /**
-         * @param ips An IPv4 or IPv6 CIDR block.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(@Nullable Output<List<String>> ips) {
-            $.ips = ips;
+        public Builder ipList(@Nullable Output<AccessPolicyRequireIpListArgs> ipList) {
+            $.ipList = ipList;
             return this;
         }
 
-        /**
-         * @param ips An IPv4 or IPv6 CIDR block.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(List<String> ips) {
-            return ips(Output.of(ips));
+        public Builder ipList(AccessPolicyRequireIpListArgs ipList) {
+            return ipList(Output.of(ipList));
         }
 
-        /**
-         * @param ips An IPv4 or IPv6 CIDR block.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ips(String... ips) {
-            return ips(List.of(ips));
-        }
-
-        /**
-         * @param loginMethods The ID of a configured identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loginMethods(@Nullable Output<List<String>> loginMethods) {
-            $.loginMethods = loginMethods;
+        public Builder loginMethod(@Nullable Output<AccessPolicyRequireLoginMethodArgs> loginMethod) {
+            $.loginMethod = loginMethod;
             return this;
         }
 
-        /**
-         * @param loginMethods The ID of a configured identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loginMethods(List<String> loginMethods) {
-            return loginMethods(Output.of(loginMethods));
+        public Builder loginMethod(AccessPolicyRequireLoginMethodArgs loginMethod) {
+            return loginMethod(Output.of(loginMethod));
         }
 
-        /**
-         * @param loginMethods The ID of a configured identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loginMethods(String... loginMethods) {
-            return loginMethods(List.of(loginMethods));
-        }
-
-        /**
-         * @param oktas Matches an Okta group. Requires an Okta identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oktas(@Nullable Output<List<AccessPolicyRequireOktaArgs>> oktas) {
-            $.oktas = oktas;
+        public Builder okta(@Nullable Output<AccessPolicyRequireOktaArgs> okta) {
+            $.okta = okta;
             return this;
         }
 
-        /**
-         * @param oktas Matches an Okta group. Requires an Okta identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oktas(List<AccessPolicyRequireOktaArgs> oktas) {
-            return oktas(Output.of(oktas));
+        public Builder okta(AccessPolicyRequireOktaArgs okta) {
+            return okta(Output.of(okta));
         }
 
-        /**
-         * @param oktas Matches an Okta group. Requires an Okta identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder oktas(AccessPolicyRequireOktaArgs... oktas) {
-            return oktas(List.of(oktas));
-        }
-
-        /**
-         * @param samls Matches a SAML group. Requires a SAML identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder samls(@Nullable Output<List<AccessPolicyRequireSamlArgs>> samls) {
-            $.samls = samls;
+        public Builder saml(@Nullable Output<AccessPolicyRequireSamlArgs> saml) {
+            $.saml = saml;
             return this;
         }
 
-        /**
-         * @param samls Matches a SAML group. Requires a SAML identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder samls(List<AccessPolicyRequireSamlArgs> samls) {
-            return samls(Output.of(samls));
+        public Builder saml(AccessPolicyRequireSamlArgs saml) {
+            return saml(Output.of(saml));
         }
 
-        /**
-         * @param samls Matches a SAML group. Requires a SAML identity provider.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder samls(AccessPolicyRequireSamlArgs... samls) {
-            return samls(List.of(samls));
-        }
-
-        /**
-         * @param serviceTokens The ID of an Access service token.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceTokens(@Nullable Output<List<String>> serviceTokens) {
-            $.serviceTokens = serviceTokens;
+        public Builder serviceToken(@Nullable Output<AccessPolicyRequireServiceTokenArgs> serviceToken) {
+            $.serviceToken = serviceToken;
             return this;
         }
 
-        /**
-         * @param serviceTokens The ID of an Access service token.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceTokens(List<String> serviceTokens) {
-            return serviceTokens(Output.of(serviceTokens));
-        }
-
-        /**
-         * @param serviceTokens The ID of an Access service token.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder serviceTokens(String... serviceTokens) {
-            return serviceTokens(List.of(serviceTokens));
+        public Builder serviceToken(AccessPolicyRequireServiceTokenArgs serviceToken) {
+            return serviceToken(Output.of(serviceToken));
         }
 
         public AccessPolicyRequireArgs build() {

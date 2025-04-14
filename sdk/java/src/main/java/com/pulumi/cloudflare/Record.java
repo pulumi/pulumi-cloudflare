@@ -7,316 +7,273 @@ import com.pulumi.cloudflare.RecordArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.RecordState;
 import com.pulumi.cloudflare.outputs.RecordData;
+import com.pulumi.cloudflare.outputs.RecordSettings;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Cloudflare record resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.Record;
- * import com.pulumi.cloudflare.RecordArgs;
- * import com.pulumi.cloudflare.inputs.RecordDataArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Add a record to the domain
- *         var example = new Record("example", RecordArgs.builder()
- *             .zoneId(cloudflareZoneId)
- *             .name("terraform")
- *             .content("192.0.2.1")
- *             .type("A")
- *             .ttl(3600)
- *             .build());
- * 
- *         // Add a record requiring a data map
- *         var _sipTls = new Record("_sipTls", RecordArgs.builder()
- *             .zoneId(cloudflareZoneId)
- *             .name("_sip._tls")
- *             .type("SRV")
- *             .data(RecordDataArgs.builder()
- *                 .service("_sip")
- *                 .proto("_tls")
- *                 .name("terraform-srv")
- *                 .priority(0)
- *                 .weight(0)
- *                 .port(443)
- *                 .target("example.com")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/record:Record example &lt;zone_id&gt;/&lt;record_id&gt;
+ * $ pulumi import cloudflare:index/record:Record example &#39;&lt;zone_id&gt;/&lt;dns_record_id&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord
+ * 
  */
+@Deprecated /* cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord */
 @ResourceType(type="cloudflare:index/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
-    @Export(name="allowOverwrite", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowOverwrite;
-
-    public Output<Optional<Boolean>> allowOverwrite() {
-        return Codegen.optional(this.allowOverwrite);
-    }
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> comment;
+    private Output<String> comment;
 
     /**
      * @return Comments or notes about the DNS record. This field has no effect on DNS responses.
      * 
      */
-    public Output<Optional<String>> comment() {
-        return Codegen.optional(this.comment);
+    public Output<String> comment() {
+        return this.comment;
     }
     /**
-     * The content of the record. Must provide only one of `data`, `content`, `value`.
+     * When the record comment was last modified. Omitted if there is no comment.
+     * 
+     */
+    @Export(name="commentModifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> commentModifiedOn;
+
+    /**
+     * @return When the record comment was last modified. Omitted if there is no comment.
+     * 
+     */
+    public Output<String> commentModifiedOn() {
+        return this.commentModifiedOn;
+    }
+    /**
+     * A valid IPv4 address.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
-     * @return The content of the record. Must provide only one of `data`, `content`, `value`.
+     * @return A valid IPv4 address.
      * 
      */
     public Output<String> content() {
         return this.content;
     }
     /**
-     * The RFC3339 timestamp of when the record was created.
+     * When the record was created.
      * 
      */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
-     * @return The RFC3339 timestamp of when the record was created.
+     * @return When the record was created.
      * 
      */
     public Output<String> createdOn() {
         return this.createdOn;
     }
     /**
-     * Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * Components of a CAA record.
      * 
      */
     @Export(name="data", refs={RecordData.class}, tree="[0]")
-    private Output</* @Nullable */ RecordData> data;
+    private Output<RecordData> data;
 
     /**
-     * @return Map of attributes that constitute the record value. Must provide only one of `data`, `content`, `value`.
+     * @return Components of a CAA record.
      * 
      */
-    public Output<Optional<RecordData>> data() {
-        return Codegen.optional(this.data);
+    public Output<RecordData> data() {
+        return this.data;
     }
     /**
-     * The FQDN of the record.
+     * Extra Cloudflare-specific information about the record.
      * 
      */
-    @Export(name="hostname", refs={String.class}, tree="[0]")
-    private Output<String> hostname;
+    @Export(name="meta", refs={String.class}, tree="[0]")
+    private Output<String> meta;
 
     /**
-     * @return The FQDN of the record.
+     * @return Extra Cloudflare-specific information about the record.
      * 
      */
-    public Output<String> hostname() {
-        return this.hostname;
+    public Output<String> meta() {
+        return this.meta;
     }
     /**
-     * A key-value map of string metadata Cloudflare associates with the record.
-     * 
-     */
-    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output<Map<String,String>> metadata;
-
-    /**
-     * @return A key-value map of string metadata Cloudflare associates with the record.
-     * 
-     */
-    public Output<Map<String,String>> metadata() {
-        return this.metadata;
-    }
-    /**
-     * The RFC3339 timestamp of when the record was last modified.
+     * When the record was last modified.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return The RFC3339 timestamp of when the record was last modified.
+     * @return When the record was last modified.
      * 
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * DNS record name (or {@literal @} for the zone apex) in Punycode.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * @return DNS record name (or {@literal @} for the zone apex) in Punycode.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The priority of the record.
+     * Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      * 
      */
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> priority;
+    @Export(name="priority", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> priority;
 
     /**
-     * @return The priority of the record.
+     * @return Required for MX, SRV and URI records; unused by other record types. Records with lower priorities are preferred.
      * 
      */
-    public Output<Optional<Integer>> priority() {
+    public Output<Optional<Double>> priority() {
         return Codegen.optional(this.priority);
     }
     /**
-     * Shows whether this record can be proxied.
+     * Whether the record can be proxied by Cloudflare or not.
      * 
      */
     @Export(name="proxiable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> proxiable;
 
     /**
-     * @return Shows whether this record can be proxied.
+     * @return Whether the record can be proxied by Cloudflare or not.
      * 
      */
     public Output<Boolean> proxiable() {
         return this.proxiable;
     }
     /**
-     * Whether the record gets Cloudflare&#39;s origin protection.
+     * Whether the record is receiving the performance and security benefits of Cloudflare.
      * 
      */
     @Export(name="proxied", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> proxied;
+    private Output<Boolean> proxied;
 
     /**
-     * @return Whether the record gets Cloudflare&#39;s origin protection.
+     * @return Whether the record is receiving the performance and security benefits of Cloudflare.
      * 
      */
-    public Output<Optional<Boolean>> proxied() {
-        return Codegen.optional(this.proxied);
+    public Output<Boolean> proxied() {
+        return this.proxied;
     }
     /**
-     * Custom tags for the DNS record.
+     * Settings for the DNS record.
+     * 
+     */
+    @Export(name="settings", refs={RecordSettings.class}, tree="[0]")
+    private Output<RecordSettings> settings;
+
+    /**
+     * @return Settings for the DNS record.
+     * 
+     */
+    public Output<RecordSettings> settings() {
+        return this.settings;
+    }
+    /**
+     * Custom tags for the DNS record. This field has no effect on DNS responses.
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tags;
+    private Output<List<String>> tags;
 
     /**
-     * @return Custom tags for the DNS record.
+     * @return Custom tags for the DNS record. This field has no effect on DNS responses.
      * 
      */
-    public Output<Optional<List<String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     /**
-     * The TTL of the record.
+     * When the record tags were last modified. Omitted if there are no tags.
      * 
      */
-    @Export(name="ttl", refs={Integer.class}, tree="[0]")
-    private Output<Integer> ttl;
+    @Export(name="tagsModifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> tagsModifiedOn;
 
     /**
-     * @return The TTL of the record.
+     * @return When the record tags were last modified. Omitted if there are no tags.
      * 
      */
-    public Output<Integer> ttl() {
+    public Output<String> tagsModifiedOn() {
+        return this.tagsModifiedOn;
+    }
+    /**
+     * Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+     * 
+     */
+    @Export(name="ttl", refs={Double.class}, tree="[0]")
+    private Output<Double> ttl;
+
+    /**
+     * @return Time To Live (TTL) of the DNS record in seconds. Setting to 1 means &#39;automatic&#39;. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
+     * 
+     */
+    public Output<Double> ttl() {
         return this.ttl;
     }
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * @return Record type.
+     * Available values: &#34;A&#34;.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The value of the record. Must provide only one of `data`, `content`, `value`.
-     * 
-     * @deprecated
-     * `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`.
-     * 
-     */
-    @Deprecated /* `value` is deprecated in favour of `content` and will be removed in the next major release. Due to reports of inconsistent behavior on the `value` field, we strongly recommend migrating to `content`. */
-    @Export(name="value", refs={String.class}, tree="[0]")
-    private Output<String> value;
-
-    /**
-     * @return The value of the record. Must provide only one of `data`, `content`, `value`.
-     * 
-     */
-    public Output<String> value() {
-        return this.value;
-    }
-    /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -362,6 +319,9 @@ public class Record extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("cloudflare:index/record:Record").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

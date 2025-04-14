@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['QueueArgs', 'Queue']
 
@@ -21,20 +23,22 @@ __all__ = ['QueueArgs', 'Queue']
 class QueueArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
-                 name: pulumi.Input[builtins.str]):
+                 queue_name: pulumi.Input[builtins.str],
+                 settings: Optional[pulumi.Input['QueueSettingsArgs']] = None):
         """
         The set of arguments for constructing a Queue resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] name: The name of the queue.
+        :param pulumi.Input[builtins.str] account_id: A Resource identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "queue_name", queue_name)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        The account identifier to target for the resource.
+        A Resource identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -43,38 +47,67 @@ class QueueArgs:
         pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[builtins.str]:
-        """
-        The name of the queue.
-        """
-        return pulumi.get(self, "name")
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "queue_name")
 
-    @name.setter
-    def name(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "name", value)
+    @queue_name.setter
+    def queue_name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "queue_name", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['QueueSettingsArgs']]:
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['QueueSettingsArgs']]):
+        pulumi.set(self, "settings", value)
 
 
 @pulumi.input_type
 class _QueueState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None):
+                 consumers: Optional[pulumi.Input[Sequence[pulumi.Input['QueueConsumerArgs']]]] = None,
+                 consumers_total_count: Optional[pulumi.Input[builtins.float]] = None,
+                 created_on: Optional[pulumi.Input[builtins.str]] = None,
+                 modified_on: Optional[pulumi.Input[builtins.str]] = None,
+                 producers: Optional[pulumi.Input[Sequence[pulumi.Input['QueueProducerArgs']]]] = None,
+                 producers_total_count: Optional[pulumi.Input[builtins.float]] = None,
+                 queue_id: Optional[pulumi.Input[builtins.str]] = None,
+                 queue_name: Optional[pulumi.Input[builtins.str]] = None,
+                 settings: Optional[pulumi.Input['QueueSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering Queue resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] name: The name of the queue.
+        :param pulumi.Input[builtins.str] account_id: A Resource identifier.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if consumers is not None:
+            pulumi.set(__self__, "consumers", consumers)
+        if consumers_total_count is not None:
+            pulumi.set(__self__, "consumers_total_count", consumers_total_count)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if producers is not None:
+            pulumi.set(__self__, "producers", producers)
+        if producers_total_count is not None:
+            pulumi.set(__self__, "producers_total_count", producers_total_count)
+        if queue_id is not None:
+            pulumi.set(__self__, "queue_id", queue_id)
+        if queue_name is not None:
+            pulumi.set(__self__, "queue_name", queue_name)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The account identifier to target for the resource.
+        A Resource identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -84,15 +117,84 @@ class _QueueState:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The name of the queue.
-        """
-        return pulumi.get(self, "name")
+    def consumers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueueConsumerArgs']]]]:
+        return pulumi.get(self, "consumers")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "name", value)
+    @consumers.setter
+    def consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueueConsumerArgs']]]]):
+        pulumi.set(self, "consumers", value)
+
+    @property
+    @pulumi.getter(name="consumersTotalCount")
+    def consumers_total_count(self) -> Optional[pulumi.Input[builtins.float]]:
+        return pulumi.get(self, "consumers_total_count")
+
+    @consumers_total_count.setter
+    def consumers_total_count(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "consumers_total_count", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def producers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueueProducerArgs']]]]:
+        return pulumi.get(self, "producers")
+
+    @producers.setter
+    def producers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueueProducerArgs']]]]):
+        pulumi.set(self, "producers", value)
+
+    @property
+    @pulumi.getter(name="producersTotalCount")
+    def producers_total_count(self) -> Optional[pulumi.Input[builtins.float]]:
+        return pulumi.get(self, "producers_total_count")
+
+    @producers_total_count.setter
+    def producers_total_count(self, value: Optional[pulumi.Input[builtins.float]]):
+        pulumi.set(self, "producers_total_count", value)
+
+    @property
+    @pulumi.getter(name="queueId")
+    def queue_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "queue_id")
+
+    @queue_id.setter
+    def queue_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "queue_id", value)
+
+    @property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "queue_name")
+
+    @queue_name.setter
+    def queue_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "queue_name", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['QueueSettingsArgs']]:
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['QueueSettingsArgs']]):
+        pulumi.set(self, "settings", value)
 
 
 class Queue(pulumi.CustomResource):
@@ -101,32 +203,30 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 queue_name: Optional[pulumi.Input[builtins.str]] = None,
+                 settings: Optional[pulumi.Input[Union['QueueSettingsArgs', 'QueueSettingsArgsDict']]] = None,
                  __props__=None):
         """
-        Provides the ability to manage Cloudflare Workers Queue features.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.Queue("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my-queue")
+        example_queue = cloudflare.Queue("example_queue",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            queue_name="example-queue")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
+        $ pulumi import cloudflare:index/queue:Queue example '<account_id>/<queue_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] name: The name of the queue.
+        :param pulumi.Input[builtins.str] account_id: A Resource identifier.
         """
         ...
     @overload
@@ -135,23 +235,21 @@ class Queue(pulumi.CustomResource):
                  args: QueueArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides the ability to manage Cloudflare Workers Queue features.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.Queue("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my-queue")
+        example_queue = cloudflare.Queue("example_queue",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            queue_name="example-queue")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
+        $ pulumi import cloudflare:index/queue:Queue example '<account_id>/<queue_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -170,7 +268,8 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 queue_name: Optional[pulumi.Input[builtins.str]] = None,
+                 settings: Optional[pulumi.Input[Union['QueueSettingsArgs', 'QueueSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -183,9 +282,17 @@ class Queue(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
-            __props__.__dict__["name"] = name
+            if queue_name is None and not opts.urn:
+                raise TypeError("Missing required property 'queue_name'")
+            __props__.__dict__["queue_name"] = queue_name
+            __props__.__dict__["settings"] = settings
+            __props__.__dict__["consumers"] = None
+            __props__.__dict__["consumers_total_count"] = None
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_on"] = None
+            __props__.__dict__["producers"] = None
+            __props__.__dict__["producers_total_count"] = None
+            __props__.__dict__["queue_id"] = None
         super(Queue, __self__).__init__(
             'cloudflare:index/queue:Queue',
             resource_name,
@@ -197,7 +304,15 @@ class Queue(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            name: Optional[pulumi.Input[builtins.str]] = None) -> 'Queue':
+            consumers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QueueConsumerArgs', 'QueueConsumerArgsDict']]]]] = None,
+            consumers_total_count: Optional[pulumi.Input[builtins.float]] = None,
+            created_on: Optional[pulumi.Input[builtins.str]] = None,
+            modified_on: Optional[pulumi.Input[builtins.str]] = None,
+            producers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QueueProducerArgs', 'QueueProducerArgsDict']]]]] = None,
+            producers_total_count: Optional[pulumi.Input[builtins.float]] = None,
+            queue_id: Optional[pulumi.Input[builtins.str]] = None,
+            queue_name: Optional[pulumi.Input[builtins.str]] = None,
+            settings: Optional[pulumi.Input[Union['QueueSettingsArgs', 'QueueSettingsArgsDict']]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -205,30 +320,74 @@ class Queue(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] name: The name of the queue.
+        :param pulumi.Input[builtins.str] account_id: A Resource identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _QueueState.__new__(_QueueState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["name"] = name
+        __props__.__dict__["consumers"] = consumers
+        __props__.__dict__["consumers_total_count"] = consumers_total_count
+        __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["producers"] = producers
+        __props__.__dict__["producers_total_count"] = producers_total_count
+        __props__.__dict__["queue_id"] = queue_id
+        __props__.__dict__["queue_name"] = queue_name
+        __props__.__dict__["settings"] = settings
         return Queue(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        The account identifier to target for the resource.
+        A Resource identifier.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[builtins.str]:
-        """
-        The name of the queue.
-        """
-        return pulumi.get(self, "name")
+    def consumers(self) -> pulumi.Output[Sequence['outputs.QueueConsumer']]:
+        return pulumi.get(self, "consumers")
+
+    @property
+    @pulumi.getter(name="consumersTotalCount")
+    def consumers_total_count(self) -> pulumi.Output[builtins.float]:
+        return pulumi.get(self, "consumers_total_count")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "created_on")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def producers(self) -> pulumi.Output[Sequence['outputs.QueueProducer']]:
+        return pulumi.get(self, "producers")
+
+    @property
+    @pulumi.getter(name="producersTotalCount")
+    def producers_total_count(self) -> pulumi.Output[builtins.float]:
+        return pulumi.get(self, "producers_total_count")
+
+    @property
+    @pulumi.getter(name="queueId")
+    def queue_id(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "queue_id")
+
+    @property
+    @pulumi.getter(name="queueName")
+    def queue_name(self) -> pulumi.Output[builtins.str]:
+        return pulumi.get(self, "queue_name")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> pulumi.Output['outputs.QueueSettings']:
+        return pulumi.get(self, "settings")
 

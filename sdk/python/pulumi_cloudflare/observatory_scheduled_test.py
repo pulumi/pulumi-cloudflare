@@ -14,57 +14,29 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ObservatoryScheduledTestArgs', 'ObservatoryScheduledTest']
 
 @pulumi.input_type
 class ObservatoryScheduledTestArgs:
     def __init__(__self__, *,
-                 frequency: pulumi.Input[builtins.str],
-                 region: pulumi.Input[builtins.str],
                  url: pulumi.Input[builtins.str],
                  zone_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ObservatoryScheduledTest resource.
-        :param pulumi.Input[builtins.str] frequency: The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] region: The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] url: The page to run the test on. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] url: A URL.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "url", url)
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
-    def frequency(self) -> pulumi.Input[builtins.str]:
-        """
-        The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "frequency", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[builtins.str]:
-        """
-        The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "region", value)
-
-    @property
-    @pulumi.getter
     def url(self) -> pulumi.Input[builtins.str]:
         """
-        The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+        A URL.
         """
         return pulumi.get(self, "url")
 
@@ -76,7 +48,7 @@ class ObservatoryScheduledTestArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -90,19 +62,28 @@ class _ObservatoryScheduledTestState:
     def __init__(__self__, *,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
+                 schedule: Optional[pulumi.Input['ObservatoryScheduledTestScheduleArgs']] = None,
+                 test: Optional[pulumi.Input['ObservatoryScheduledTestTestArgs']] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObservatoryScheduledTest resources.
-        :param pulumi.Input[builtins.str] frequency: The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] region: The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] url: The page to run the test on. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] frequency: The frequency of the test.
+               Available values: "DAILY", "WEEKLY".
+        :param pulumi.Input[builtins.str] region: A test region.
+               Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+        :param pulumi.Input['ObservatoryScheduledTestScheduleArgs'] schedule: The test schedule.
+        :param pulumi.Input[builtins.str] url: A URL.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if test is not None:
+            pulumi.set(__self__, "test", test)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if zone_id is not None:
@@ -112,7 +93,8 @@ class _ObservatoryScheduledTestState:
     @pulumi.getter
     def frequency(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+        The frequency of the test.
+        Available values: "DAILY", "WEEKLY".
         """
         return pulumi.get(self, "frequency")
 
@@ -124,7 +106,8 @@ class _ObservatoryScheduledTestState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+        A test region.
+        Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         """
         return pulumi.get(self, "region")
 
@@ -134,9 +117,30 @@ class _ObservatoryScheduledTestState:
 
     @property
     @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['ObservatoryScheduledTestScheduleArgs']]:
+        """
+        The test schedule.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['ObservatoryScheduledTestScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter
+    def test(self) -> Optional[pulumi.Input['ObservatoryScheduledTestTestArgs']]:
+        return pulumi.get(self, "test")
+
+    @test.setter
+    def test(self, value: Optional[pulumi.Input['ObservatoryScheduledTestTestArgs']]):
+        pulumi.set(self, "test", value)
+
+    @property
+    @pulumi.getter
     def url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+        A URL.
         """
         return pulumi.get(self, "url")
 
@@ -148,7 +152,7 @@ class _ObservatoryScheduledTestState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -162,39 +166,31 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 frequency: Optional[pulumi.Input[builtins.str]] = None,
-                 region: Optional[pulumi.Input[builtins.str]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Observatory Scheduled Test resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ObservatoryScheduledTest("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            url="example.com",
-            region="us-central1",
-            frequency="WEEKLY")
+        example_observatory_scheduled_test = cloudflare.ObservatoryScheduledTest("example_observatory_scheduled_test",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            url="example.com")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example <zone_id>:<url>:<region>
+        $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] frequency: The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] region: The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] url: The page to run the test on. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] url: A URL.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -203,25 +199,21 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
                  args: ObservatoryScheduledTestArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Observatory Scheduled Test resource.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.ObservatoryScheduledTest("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            url="example.com",
-            region="us-central1",
-            frequency="WEEKLY")
+        example_observatory_scheduled_test = cloudflare.ObservatoryScheduledTest("example_observatory_scheduled_test",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            url="example.com")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example <zone_id>:<url>:<region>
+        $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example '<zone_id>/<url>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -239,8 +231,6 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 frequency: Optional[pulumi.Input[builtins.str]] = None,
-                 region: Optional[pulumi.Input[builtins.str]] = None,
                  url: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -252,18 +242,16 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ObservatoryScheduledTestArgs.__new__(ObservatoryScheduledTestArgs)
 
-            if frequency is None and not opts.urn:
-                raise TypeError("Missing required property 'frequency'")
-            __props__.__dict__["frequency"] = frequency
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
-            __props__.__dict__["region"] = region
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__.__dict__["url"] = url
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["frequency"] = None
+            __props__.__dict__["region"] = None
+            __props__.__dict__["schedule"] = None
+            __props__.__dict__["test"] = None
         super(ObservatoryScheduledTest, __self__).__init__(
             'cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest',
             resource_name,
@@ -276,6 +264,8 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             frequency: Optional[pulumi.Input[builtins.str]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
+            schedule: Optional[pulumi.Input[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict']]] = None,
+            test: Optional[pulumi.Input[Union['ObservatoryScheduledTestTestArgs', 'ObservatoryScheduledTestTestArgsDict']]] = None,
             url: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ObservatoryScheduledTest':
         """
@@ -285,10 +275,13 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] frequency: The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] region: The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] url: The page to run the test on. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] frequency: The frequency of the test.
+               Available values: "DAILY", "WEEKLY".
+        :param pulumi.Input[builtins.str] region: A test region.
+               Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
+        :param pulumi.Input[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict']] schedule: The test schedule.
+        :param pulumi.Input[builtins.str] url: A URL.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -296,6 +289,8 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
 
         __props__.__dict__["frequency"] = frequency
         __props__.__dict__["region"] = region
+        __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["test"] = test
         __props__.__dict__["url"] = url
         __props__.__dict__["zone_id"] = zone_id
         return ObservatoryScheduledTest(resource_name, opts=opts, __props__=__props__)
@@ -304,7 +299,8 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     @pulumi.getter
     def frequency(self) -> pulumi.Output[builtins.str]:
         """
-        The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
+        The frequency of the test.
+        Available values: "DAILY", "WEEKLY".
         """
         return pulumi.get(self, "frequency")
 
@@ -312,15 +308,29 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**
+        A test region.
+        Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
+    def schedule(self) -> pulumi.Output['outputs.ObservatoryScheduledTestSchedule']:
+        """
+        The test schedule.
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def test(self) -> pulumi.Output['outputs.ObservatoryScheduledTestTest']:
+        return pulumi.get(self, "test")
+
+    @property
+    @pulumi.getter
     def url(self) -> pulumi.Output[builtins.str]:
         """
-        The page to run the test on. **Modifying this attribute will force creation of a new resource.**
+        A URL.
         """
         return pulumi.get(self, "url")
 
@@ -328,7 +338,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

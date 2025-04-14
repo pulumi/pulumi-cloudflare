@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Inputs
     {
         /// <summary>
         /// The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
+        /// Available values: "none", "public_dns".
         /// </summary>
         [Input("fallback")]
         public Input<string>? Fallback { get; set; }

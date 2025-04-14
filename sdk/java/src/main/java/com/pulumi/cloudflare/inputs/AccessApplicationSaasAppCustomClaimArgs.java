@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomClaimSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -19,14 +18,14 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
     public static final AccessApplicationSaasAppCustomClaimArgs Empty = new AccessApplicationSaasAppCustomClaimArgs();
 
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the claim.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the claim.
      * 
      */
     public Optional<Output<String>> name() {
@@ -34,14 +33,14 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
     }
 
     /**
-     * True if the attribute must be always present.
+     * If the claim is required when building an OIDC token.
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return True if the attribute must be always present.
+     * @return If the claim is required when building an OIDC token.
      * 
      */
     public Optional<Output<Boolean>> required() {
@@ -50,6 +49,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
 
     /**
      * The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     @Import(name="scope")
@@ -57,17 +57,18 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
 
     /**
      * @return The scope of the claim.
+     * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
      * 
      */
     public Optional<Output<String>> scope() {
         return Optional.ofNullable(this.scope);
     }
 
-    @Import(name="source", required=true)
-    private Output<AccessApplicationSaasAppCustomClaimSourceArgs> source;
+    @Import(name="source")
+    private @Nullable Output<AccessApplicationSaasAppCustomClaimSourceArgs> source;
 
-    public Output<AccessApplicationSaasAppCustomClaimSourceArgs> source() {
-        return this.source;
+    public Optional<Output<AccessApplicationSaasAppCustomClaimSourceArgs>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     private AccessApplicationSaasAppCustomClaimArgs() {}
@@ -98,7 +99,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the claim.
          * 
          * @return builder
          * 
@@ -109,7 +110,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the claim.
          * 
          * @return builder
          * 
@@ -119,7 +120,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
         }
 
         /**
-         * @param required True if the attribute must be always present.
+         * @param required If the claim is required when building an OIDC token.
          * 
          * @return builder
          * 
@@ -130,7 +131,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
         }
 
         /**
-         * @param required True if the attribute must be always present.
+         * @param required If the claim is required when building an OIDC token.
          * 
          * @return builder
          * 
@@ -141,6 +142,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
 
         /**
          * @param scope The scope of the claim.
+         * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
          * 
          * @return builder
          * 
@@ -152,6 +154,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
 
         /**
          * @param scope The scope of the claim.
+         * Available values: &#34;groups&#34;, &#34;profile&#34;, &#34;email&#34;, &#34;openid&#34;.
          * 
          * @return builder
          * 
@@ -160,7 +163,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
             return scope(Output.of(scope));
         }
 
-        public Builder source(Output<AccessApplicationSaasAppCustomClaimSourceArgs> source) {
+        public Builder source(@Nullable Output<AccessApplicationSaasAppCustomClaimSourceArgs> source) {
             $.source = source;
             return this;
         }
@@ -170,9 +173,6 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
         }
 
         public AccessApplicationSaasAppCustomClaimArgs build() {
-            if ($.source == null) {
-                throw new MissingRequiredPropertyException("AccessApplicationSaasAppCustomClaimArgs", "source");
-            }
             return $;
         }
     }

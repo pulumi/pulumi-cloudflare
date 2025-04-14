@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ApiTokenPolicyPermissionGroupArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -19,44 +20,61 @@ public final class ApiTokenPolicyArgs extends com.pulumi.resources.ResourceArgs 
     public static final ApiTokenPolicyArgs Empty = new ApiTokenPolicyArgs();
 
     /**
-     * Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+     * Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
-    @Import(name="effect")
-    private @Nullable Output<String> effect;
+    @Import(name="effect", required=true)
+    private Output<String> effect;
 
     /**
-     * @return Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+     * @return Allow or deny operations against the resources.
+     * Available values: &#34;allow&#34;, &#34;deny&#34;.
      * 
      */
-    public Optional<Output<String>> effect() {
-        return Optional.ofNullable(this.effect);
+    public Output<String> effect() {
+        return this.effect;
     }
 
     /**
-     * List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+     * Policy identifier.
+     * 
+     */
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    /**
+     * @return Policy identifier.
+     * 
+     */
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
+    /**
+     * A set of permission groups that are specified to the policy.
      * 
      */
     @Import(name="permissionGroups", required=true)
-    private Output<List<String>> permissionGroups;
+    private Output<List<ApiTokenPolicyPermissionGroupArgs>> permissionGroups;
 
     /**
-     * @return List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+     * @return A set of permission groups that are specified to the policy.
      * 
      */
-    public Output<List<String>> permissionGroups() {
+    public Output<List<ApiTokenPolicyPermissionGroupArgs>> permissionGroups() {
         return this.permissionGroups;
     }
 
     /**
-     * Describes what operations against which resources are allowed or denied.
+     * A list of resource names that the policy applies to.
      * 
      */
     @Import(name="resources", required=true)
     private Output<Map<String,String>> resources;
 
     /**
-     * @return Describes what operations against which resources are allowed or denied.
+     * @return A list of resource names that the policy applies to.
      * 
      */
     public Output<Map<String,String>> resources() {
@@ -67,6 +85,7 @@ public final class ApiTokenPolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     private ApiTokenPolicyArgs(ApiTokenPolicyArgs $) {
         this.effect = $.effect;
+        this.id = $.id;
         this.permissionGroups = $.permissionGroups;
         this.resources = $.resources;
     }
@@ -90,18 +109,20 @@ public final class ApiTokenPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param effect Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+         * @param effect Allow or deny operations against the resources.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder effect(@Nullable Output<String> effect) {
+        public Builder effect(Output<String> effect) {
             $.effect = effect;
             return this;
         }
 
         /**
-         * @param effect Effect of the policy. Available values: `allow`, `deny`. Defaults to `allow`.
+         * @param effect Allow or deny operations against the resources.
+         * Available values: &#34;allow&#34;, &#34;deny&#34;.
          * 
          * @return builder
          * 
@@ -111,38 +132,59 @@ public final class ApiTokenPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param permissionGroups List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+         * @param id Policy identifier.
          * 
          * @return builder
          * 
          */
-        public Builder permissionGroups(Output<List<String>> permissionGroups) {
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        /**
+         * @param id Policy identifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(String id) {
+            return id(Output.of(id));
+        }
+
+        /**
+         * @param permissionGroups A set of permission groups that are specified to the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permissionGroups(Output<List<ApiTokenPolicyPermissionGroupArgs>> permissionGroups) {
             $.permissionGroups = permissionGroups;
             return this;
         }
 
         /**
-         * @param permissionGroups List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+         * @param permissionGroups A set of permission groups that are specified to the policy.
          * 
          * @return builder
          * 
          */
-        public Builder permissionGroups(List<String> permissionGroups) {
+        public Builder permissionGroups(List<ApiTokenPolicyPermissionGroupArgs> permissionGroups) {
             return permissionGroups(Output.of(permissionGroups));
         }
 
         /**
-         * @param permissionGroups List of permissions groups IDs. See [documentation](https://developers.cloudflare.com/api/tokens/create/permissions) for more information.
+         * @param permissionGroups A set of permission groups that are specified to the policy.
          * 
          * @return builder
          * 
          */
-        public Builder permissionGroups(String... permissionGroups) {
+        public Builder permissionGroups(ApiTokenPolicyPermissionGroupArgs... permissionGroups) {
             return permissionGroups(List.of(permissionGroups));
         }
 
         /**
-         * @param resources Describes what operations against which resources are allowed or denied.
+         * @param resources A list of resource names that the policy applies to.
          * 
          * @return builder
          * 
@@ -153,7 +195,7 @@ public final class ApiTokenPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resources Describes what operations against which resources are allowed or denied.
+         * @param resources A list of resource names that the policy applies to.
          * 
          * @return builder
          * 
@@ -163,6 +205,9 @@ public final class ApiTokenPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ApiTokenPolicyArgs build() {
+            if ($.effect == null) {
+                throw new MissingRequiredPropertyException("ApiTokenPolicyArgs", "effect");
+            }
             if ($.permissionGroups == null) {
                 throw new MissingRequiredPropertyException("ApiTokenPolicyArgs", "permissionGroups");
             }

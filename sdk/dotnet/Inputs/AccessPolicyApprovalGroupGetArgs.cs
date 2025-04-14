@@ -13,16 +13,16 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessPolicyApprovalGroupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of approvals needed.
+        /// The number of approvals needed to obtain access.
         /// </summary>
         [Input("approvalsNeeded", required: true)]
-        public Input<int> ApprovalsNeeded { get; set; } = null!;
+        public Input<double> ApprovalsNeeded { get; set; } = null!;
 
         [Input("emailAddresses")]
         private InputList<string>? _emailAddresses;
 
         /// <summary>
-        /// List of emails to request approval from.
+        /// A list of emails that can approve the access request.
         /// </summary>
         public InputList<string> EmailAddresses
         {
@@ -30,6 +30,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _emailAddresses = value;
         }
 
+        /// <summary>
+        /// The UUID of an re-usable email list.
+        /// </summary>
         [Input("emailListUuid")]
         public Input<string>? EmailListUuid { get; set; }
 

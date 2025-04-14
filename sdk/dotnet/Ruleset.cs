@@ -10,67 +10,57 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The Cloudflare Ruleset Engine (https://developers.cloudflare.com/ruleset-engine/about/)
-    /// allows you to create and deploy rules and rulesets.
-    /// 
-    /// Cloudflare uses the Ruleset Engine in different products, allowing
-    /// you to configure several products using the same basic syntax.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 
-    /// Import an account scoped Ruleset configuration.
-    /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/ruleset:Ruleset example account/&lt;account_id&gt;/&lt;ruleset_id&gt;
-    /// ```
-    /// 
-    /// Import a zone scoped Ruleset configuration.
-    /// 
-    /// ```sh
-    /// $ pulumi import cloudflare:index/ruleset:Ruleset example zone/&lt;zone_id&gt;/&lt;ruleset_id&gt;
+    /// $ pulumi import cloudflare:index/ruleset:Ruleset example '&lt;{accounts|zones}/{account_id|zone_id}&gt;/&lt;ruleset_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/ruleset:Ruleset")]
     public partial class Ruleset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Brief summary of the ruleset and its intended use.
+        /// An informative description of the ruleset.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+        /// The kind of the ruleset.
+        /// Available values: "managed", "custom", "root", "zone".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ruleset.
+        /// The human-readable name of the ruleset.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        /// The phase of the ruleset.
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         [Output("phase")]
         public Output<string> Phase { get; private set; } = null!;
 
         /// <summary>
-        /// List of rules to apply to the ruleset.
+        /// The list of rules in the ruleset.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.RulesetRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -122,31 +112,33 @@ namespace Pulumi.Cloudflare
     public sealed class RulesetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Brief summary of the ruleset and its intended use.
+        /// An informative description of the ruleset.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+        /// The kind of the ruleset.
+        /// Available values: "managed", "custom", "root", "zone".
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// Name of the ruleset.
+        /// The human-readable name of the ruleset.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        /// The phase of the ruleset.
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         [Input("phase", required: true)]
         public Input<string> Phase { get; set; } = null!;
@@ -155,7 +147,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.RulesetRuleArgs>? _rules;
 
         /// <summary>
-        /// List of rules to apply to the ruleset.
+        /// The list of rules in the ruleset.
         /// </summary>
         public InputList<Inputs.RulesetRuleArgs> Rules
         {
@@ -164,7 +156,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -178,31 +170,33 @@ namespace Pulumi.Cloudflare
     public sealed class RulesetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource.
+        /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Brief summary of the ruleset and its intended use.
+        /// An informative description of the ruleset.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
+        /// The kind of the ruleset.
+        /// Available values: "managed", "custom", "root", "zone".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the ruleset.
+        /// The human-readable name of the ruleset.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        /// The phase of the ruleset.
+        /// Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
         /// </summary>
         [Input("phase")]
         public Input<string>? Phase { get; set; }
@@ -211,7 +205,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.RulesetRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of rules to apply to the ruleset.
+        /// The list of rules in the ruleset.
         /// </summary>
         public InputList<Inputs.RulesetRuleGetArgs> Rules
         {
@@ -220,7 +214,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The zone identifier to target for the resource.
+        /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -23,35 +23,27 @@ __all__ = ['DevicePostureIntegrationArgs', 'DevicePostureIntegration']
 class DevicePostureIntegrationArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
+                 config: pulumi.Input['DevicePostureIntegrationConfigArgs'],
+                 interval: pulumi.Input[builtins.str],
                  name: pulumi.Input[builtins.str],
-                 type: pulumi.Input[builtins.str],
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[builtins.str]] = None,
-                 interval: Optional[pulumi.Input[builtins.str]] = None):
+                 type: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a DevicePostureIntegration resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[builtins.str] name: Name of the device posture integration.
-        :param pulumi.Input[builtins.str] type: The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]] configs: The device posture integration's connection authorization parameters.
-        :param pulumi.Input[builtins.str] interval: Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+        :param pulumi.Input['DevicePostureIntegrationConfigArgs'] config: The configuration object containing third-party integration information.
+        :param pulumi.Input[builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        :param pulumi.Input[builtins.str] name: The name of the device posture integration.
+        :param pulumi.Input[builtins.str] type: The type of device posture integration.
+               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
-        if configs is not None:
-            pulumi.set(__self__, "configs", configs)
-        if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
-        if interval is not None:
-            pulumi.set(__self__, "interval", interval)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -60,9 +52,33 @@ class DevicePostureIntegrationArgs:
 
     @property
     @pulumi.getter
+    def config(self) -> pulumi.Input['DevicePostureIntegrationConfigArgs']:
+        """
+        The configuration object containing third-party integration information.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input['DevicePostureIntegrationConfigArgs']):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> pulumi.Input[builtins.str]:
+        """
+        The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the device posture integration.
+        The name of the device posture integration.
         """
         return pulumi.get(self, "name")
 
@@ -74,7 +90,8 @@ class DevicePostureIntegrationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[builtins.str]:
         """
-        The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        The type of device posture integration.
+        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         """
         return pulumi.get(self, "type")
 
@@ -82,63 +99,27 @@ class DevicePostureIntegrationArgs:
     def type(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "type", value)
 
-    @property
-    @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]]:
-        """
-        The device posture integration's connection authorization parameters.
-        """
-        return pulumi.get(self, "configs")
-
-    @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]]):
-        pulumi.set(self, "configs", value)
-
-    @property
-    @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "identifier")
-
-    @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "identifier", value)
-
-    @property
-    @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-        """
-        return pulumi.get(self, "interval")
-
-    @interval.setter
-    def interval(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "interval", value)
-
 
 @pulumi.input_type
 class _DevicePostureIntegrationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 config: Optional[pulumi.Input['DevicePostureIntegrationConfigArgs']] = None,
                  interval: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering DevicePostureIntegration resources.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]] configs: The device posture integration's connection authorization parameters.
-        :param pulumi.Input[builtins.str] interval: Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-        :param pulumi.Input[builtins.str] name: Name of the device posture integration.
-        :param pulumi.Input[builtins.str] type: The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        :param pulumi.Input['DevicePostureIntegrationConfigArgs'] config: The configuration object containing third-party integration information.
+        :param pulumi.Input[builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        :param pulumi.Input[builtins.str] name: The name of the device posture integration.
+        :param pulumi.Input[builtins.str] type: The type of device posture integration.
+               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
-        if configs is not None:
-            pulumi.set(__self__, "configs", configs)
-        if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
         if name is not None:
@@ -149,9 +130,6 @@ class _DevicePostureIntegrationState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -160,30 +138,21 @@ class _DevicePostureIntegrationState:
 
     @property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]]:
+    def config(self) -> Optional[pulumi.Input['DevicePostureIntegrationConfigArgs']]:
         """
-        The device posture integration's connection authorization parameters.
+        The configuration object containing third-party integration information.
         """
-        return pulumi.get(self, "configs")
+        return pulumi.get(self, "config")
 
-    @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]]):
-        pulumi.set(self, "configs", value)
-
-    @property
-    @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "identifier")
-
-    @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "identifier", value)
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['DevicePostureIntegrationConfigArgs']]):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+        The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         """
         return pulumi.get(self, "interval")
 
@@ -195,7 +164,7 @@ class _DevicePostureIntegrationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the device posture integration.
+        The name of the device posture integration.
         """
         return pulumi.get(self, "name")
 
@@ -207,7 +176,8 @@ class _DevicePostureIntegrationState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        The type of device posture integration.
+        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         """
         return pulumi.get(self, "type")
 
@@ -216,55 +186,38 @@ class _DevicePostureIntegrationState:
         pulumi.set(self, "type", value)
 
 
+warnings.warn("""cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration""", DeprecationWarning)
+
+
 class DevicePostureIntegration(pulumi.CustomResource):
+    warnings.warn("""cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 config: Optional[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]] = None,
                  interval: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Device Posture Integration resource. Device
-        posture integrations configure third-party data providers for device
-        posture rules.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.DevicePostureIntegration("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Device posture integration",
-            type="workspace_one",
-            interval="24h",
-            configs=[{
-                "api_url": "https://example.com/api",
-                "auth_url": "https://example.com/connect/token",
-                "client_id": "client-id",
-                "client_secret": "client-secret",
-            }])
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example <account_id>/<device_posture_integration_id>
+        $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example '<account_id>/<integration_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]] configs: The device posture integration's connection authorization parameters.
-        :param pulumi.Input[builtins.str] interval: Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-        :param pulumi.Input[builtins.str] name: Name of the device posture integration.
-        :param pulumi.Input[builtins.str] type: The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        :param pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']] config: The configuration object containing third-party integration information.
+        :param pulumi.Input[builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        :param pulumi.Input[builtins.str] name: The name of the device posture integration.
+        :param pulumi.Input[builtins.str] type: The type of device posture integration.
+               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         """
         ...
     @overload
@@ -273,33 +226,12 @@ class DevicePostureIntegration(pulumi.CustomResource):
                  args: DevicePostureIntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Device Posture Integration resource. Device
-        posture integrations configure third-party data providers for device
-        posture rules.
-
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.DevicePostureIntegration("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Device posture integration",
-            type="workspace_one",
-            interval="24h",
-            configs=[{
-                "api_url": "https://example.com/api",
-                "auth_url": "https://example.com/connect/token",
-                "client_id": "client-id",
-                "client_secret": "client-secret",
-            }])
-        ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example <account_id>/<device_posture_integration_id>
+        $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example '<account_id>/<integration_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -318,12 +250,12 @@ class DevicePostureIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 config: Optional[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]] = None,
                  interval: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""DevicePostureIntegration is deprecated: cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -335,8 +267,11 @@ class DevicePostureIntegration(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            __props__.__dict__["configs"] = configs
-            __props__.__dict__["identifier"] = identifier
+            if config is None and not opts.urn:
+                raise TypeError("Missing required property 'config'")
+            __props__.__dict__["config"] = config
+            if interval is None and not opts.urn:
+                raise TypeError("Missing required property 'interval'")
             __props__.__dict__["interval"] = interval
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -344,6 +279,8 @@ class DevicePostureIntegration(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/devicePostureIntegration:DevicePostureIntegration")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(DevicePostureIntegration, __self__).__init__(
             'cloudflare:index/devicePostureIntegration:DevicePostureIntegration',
             resource_name,
@@ -355,8 +292,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[builtins.str]] = None,
+            config: Optional[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]] = None,
             interval: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None) -> 'DevicePostureIntegration':
@@ -367,19 +303,18 @@ class DevicePostureIntegration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]] configs: The device posture integration's connection authorization parameters.
-        :param pulumi.Input[builtins.str] interval: Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
-        :param pulumi.Input[builtins.str] name: Name of the device posture integration.
-        :param pulumi.Input[builtins.str] type: The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        :param pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']] config: The configuration object containing third-party integration information.
+        :param pulumi.Input[builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
+        :param pulumi.Input[builtins.str] name: The name of the device posture integration.
+        :param pulumi.Input[builtins.str] type: The type of device posture integration.
+               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _DevicePostureIntegrationState.__new__(_DevicePostureIntegrationState)
 
         __props__.__dict__["account_id"] = account_id
-        __props__.__dict__["configs"] = configs
-        __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["config"] = config
         __props__.__dict__["interval"] = interval
         __props__.__dict__["name"] = name
         __props__.__dict__["type"] = type
@@ -388,29 +323,21 @@ class DevicePostureIntegration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
-        """
-        The account identifier to target for the resource.
-        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-    def configs(self) -> pulumi.Output[Optional[Sequence['outputs.DevicePostureIntegrationConfig']]]:
+    def config(self) -> pulumi.Output['outputs.DevicePostureIntegrationConfig']:
         """
-        The device posture integration's connection authorization parameters.
+        The configuration object containing third-party integration information.
         """
-        return pulumi.get(self, "configs")
+        return pulumi.get(self, "config")
 
     @property
     @pulumi.getter
-    def identifier(self) -> pulumi.Output[Optional[builtins.str]]:
-        return pulumi.get(self, "identifier")
-
-    @property
-    @pulumi.getter
-    def interval(self) -> pulumi.Output[Optional[builtins.str]]:
+    def interval(self) -> pulumi.Output[builtins.str]:
         """
-        Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
+        The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         """
         return pulumi.get(self, "interval")
 
@@ -418,7 +345,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the device posture integration.
+        The name of the device posture integration.
         """
         return pulumi.get(self, "name")
 
@@ -426,7 +353,8 @@ class DevicePostureIntegration(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[builtins.str]:
         """
-        The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`, `custom_s2s`.
+        The type of device posture integration.
+        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
         """
         return pulumi.get(self, "type")
 

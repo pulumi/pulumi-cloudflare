@@ -16,45 +16,52 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkersRouteArgs Empty = new WorkersRouteArgs();
 
-    /**
-     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     * 
-     */
     @Import(name="pattern", required=true)
     private Output<String> pattern;
 
-    /**
-     * @return The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-     * 
-     */
     public Output<String> pattern() {
         return this.pattern;
     }
 
     /**
-     * Worker script name to invoke for requests that match the route pattern.
+     * Identifier
      * 
      */
-    @Import(name="scriptName")
-    private @Nullable Output<String> scriptName;
+    @Import(name="routeId")
+    private @Nullable Output<String> routeId;
 
     /**
-     * @return Worker script name to invoke for requests that match the route pattern.
+     * @return Identifier
      * 
      */
-    public Optional<Output<String>> scriptName() {
-        return Optional.ofNullable(this.scriptName);
+    public Optional<Output<String>> routeId() {
+        return Optional.ofNullable(this.routeId);
     }
 
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Name of the script, used in URLs and route configuration.
+     * 
+     */
+    @Import(name="script")
+    private @Nullable Output<String> script;
+
+    /**
+     * @return Name of the script, used in URLs and route configuration.
+     * 
+     */
+    public Optional<Output<String>> script() {
+        return Optional.ofNullable(this.script);
+    }
+
+    /**
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Identifier
      * 
      */
     public Output<String> zoneId() {
@@ -65,7 +72,8 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     private WorkersRouteArgs(WorkersRouteArgs $) {
         this.pattern = $.pattern;
-        this.scriptName = $.scriptName;
+        this.routeId = $.routeId;
+        this.script = $.script;
         this.zoneId = $.zoneId;
     }
 
@@ -87,50 +95,59 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
             $ = new WorkersRouteArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param pattern The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pattern(Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
 
-        /**
-         * @param pattern The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pattern(String pattern) {
             return pattern(Output.of(pattern));
         }
 
         /**
-         * @param scriptName Worker script name to invoke for requests that match the route pattern.
+         * @param routeId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder scriptName(@Nullable Output<String> scriptName) {
-            $.scriptName = scriptName;
+        public Builder routeId(@Nullable Output<String> routeId) {
+            $.routeId = routeId;
             return this;
         }
 
         /**
-         * @param scriptName Worker script name to invoke for requests that match the route pattern.
+         * @param routeId Identifier
          * 
          * @return builder
          * 
          */
-        public Builder scriptName(String scriptName) {
-            return scriptName(Output.of(scriptName));
+        public Builder routeId(String routeId) {
+            return routeId(Output.of(routeId));
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param script Name of the script, used in URLs and route configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder script(@Nullable Output<String> script) {
+            $.script = script;
+            return this;
+        }
+
+        /**
+         * @param script Name of the script, used in URLs and route configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder script(String script) {
+            return script(Output.of(script));
+        }
+
+        /**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -141,7 +158,7 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

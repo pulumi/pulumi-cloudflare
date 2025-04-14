@@ -8,14 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
-// allows you to add or remove some predefined headers to one's
-// requests or origin responses.
-//
 // ## Example Usage
 //
 // ```go
@@ -23,25 +19,24 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Enable security headers using Managed Meaders
-//			_, err := cloudflare.NewManagedHeaders(ctx, "example", &cloudflare.ManagedHeadersArgs{
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				ManagedRequestHeaders: cloudflare.ManagedHeadersManagedRequestHeaderArray{
-//					&cloudflare.ManagedHeadersManagedRequestHeaderArgs{
-//						Id:      pulumi.String("add_true_client_ip_headers"),
+//			_, err := cloudflare.NewManagedTransforms(ctx, "example_managed_transforms", &cloudflare.ManagedTransformsArgs{
+//				ZoneId: pulumi.String("9f1839b6152d298aca64c4e906b6d074"),
+//				ManagedRequestHeaders: cloudflare.ManagedTransformsManagedRequestHeaderArray{
+//					&cloudflare.ManagedTransformsManagedRequestHeaderArgs{
+//						Id:      pulumi.String("add_bot_protection_headers"),
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				ManagedResponseHeaders: cloudflare.ManagedHeadersManagedResponseHeaderArray{
-//					&cloudflare.ManagedHeadersManagedResponseHeaderArgs{
-//						Id:      pulumi.String("remove_x-powered-by_header"),
+//				ManagedResponseHeaders: cloudflare.ManagedTransformsManagedResponseHeaderArray{
+//					&cloudflare.ManagedTransformsManagedResponseHeaderArgs{
+//						Id:      pulumi.String("add_security_headers"),
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
@@ -54,14 +49,22 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/managedHeaders:ManagedHeaders example '<zone_id>'
+// ```
+//
+// Deprecated: cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms
 type ManagedHeaders struct {
 	pulumi.CustomResourceState
 
-	// The list of managed request headers.
+	// The list of Managed Request Transforms.
 	ManagedRequestHeaders ManagedHeadersManagedRequestHeaderArrayOutput `pulumi:"managedRequestHeaders"`
-	// The list of managed response headers.
+	// The list of Managed Response Transforms.
 	ManagedResponseHeaders ManagedHeadersManagedResponseHeaderArrayOutput `pulumi:"managedResponseHeaders"`
-	// The zone identifier to target for the resource.
+	// The unique ID of the zone.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -72,9 +75,21 @@ func NewManagedHeaders(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ManagedRequestHeaders == nil {
+		return nil, errors.New("invalid value for required argument 'ManagedRequestHeaders'")
+	}
+	if args.ManagedResponseHeaders == nil {
+		return nil, errors.New("invalid value for required argument 'ManagedResponseHeaders'")
+	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/managedHeaders:ManagedHeaders"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ManagedHeaders
 	err := ctx.RegisterResource("cloudflare:index/managedHeaders:ManagedHeaders", name, args, &resource, opts...)
@@ -98,20 +113,20 @@ func GetManagedHeaders(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagedHeaders resources.
 type managedHeadersState struct {
-	// The list of managed request headers.
+	// The list of Managed Request Transforms.
 	ManagedRequestHeaders []ManagedHeadersManagedRequestHeader `pulumi:"managedRequestHeaders"`
-	// The list of managed response headers.
+	// The list of Managed Response Transforms.
 	ManagedResponseHeaders []ManagedHeadersManagedResponseHeader `pulumi:"managedResponseHeaders"`
-	// The zone identifier to target for the resource.
+	// The unique ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ManagedHeadersState struct {
-	// The list of managed request headers.
+	// The list of Managed Request Transforms.
 	ManagedRequestHeaders ManagedHeadersManagedRequestHeaderArrayInput
-	// The list of managed response headers.
+	// The list of Managed Response Transforms.
 	ManagedResponseHeaders ManagedHeadersManagedResponseHeaderArrayInput
-	// The zone identifier to target for the resource.
+	// The unique ID of the zone.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -120,21 +135,21 @@ func (ManagedHeadersState) ElementType() reflect.Type {
 }
 
 type managedHeadersArgs struct {
-	// The list of managed request headers.
+	// The list of Managed Request Transforms.
 	ManagedRequestHeaders []ManagedHeadersManagedRequestHeader `pulumi:"managedRequestHeaders"`
-	// The list of managed response headers.
+	// The list of Managed Response Transforms.
 	ManagedResponseHeaders []ManagedHeadersManagedResponseHeader `pulumi:"managedResponseHeaders"`
-	// The zone identifier to target for the resource.
+	// The unique ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ManagedHeaders resource.
 type ManagedHeadersArgs struct {
-	// The list of managed request headers.
+	// The list of Managed Request Transforms.
 	ManagedRequestHeaders ManagedHeadersManagedRequestHeaderArrayInput
-	// The list of managed response headers.
+	// The list of Managed Response Transforms.
 	ManagedResponseHeaders ManagedHeadersManagedResponseHeaderArrayInput
-	// The zone identifier to target for the resource.
+	// The unique ID of the zone.
 	ZoneId pulumi.StringInput
 }
 
@@ -225,19 +240,19 @@ func (o ManagedHeadersOutput) ToManagedHeadersOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The list of managed request headers.
+// The list of Managed Request Transforms.
 func (o ManagedHeadersOutput) ManagedRequestHeaders() ManagedHeadersManagedRequestHeaderArrayOutput {
 	return o.ApplyT(func(v *ManagedHeaders) ManagedHeadersManagedRequestHeaderArrayOutput { return v.ManagedRequestHeaders }).(ManagedHeadersManagedRequestHeaderArrayOutput)
 }
 
-// The list of managed response headers.
+// The list of Managed Response Transforms.
 func (o ManagedHeadersOutput) ManagedResponseHeaders() ManagedHeadersManagedResponseHeaderArrayOutput {
 	return o.ApplyT(func(v *ManagedHeaders) ManagedHeadersManagedResponseHeaderArrayOutput {
 		return v.ManagedResponseHeaders
 	}).(ManagedHeadersManagedResponseHeaderArrayOutput)
 }
 
-// The zone identifier to target for the resource.
+// The unique ID of the zone.
 func (o ManagedHeadersOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedHeaders) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

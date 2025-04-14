@@ -3,11 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleInputLocationArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustDevicePostureRuleInputLocationsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,29 +20,29 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     public static final ZeroTrustDevicePostureRuleInputArgs Empty = new ZeroTrustDevicePostureRuleInputArgs();
 
     /**
-     * The number of active threats from SentinelOne.
+     * The Number of active threats.
      * 
      */
     @Import(name="activeThreats")
-    private @Nullable Output<Integer> activeThreats;
+    private @Nullable Output<Double> activeThreats;
 
     /**
-     * @return The number of active threats from SentinelOne.
+     * @return The Number of active threats.
      * 
      */
-    public Optional<Output<Integer>> activeThreats() {
+    public Optional<Output<Double>> activeThreats() {
         return Optional.ofNullable(this.activeThreats);
     }
 
     /**
-     * The UUID of a Cloudflare managed certificate.
+     * UUID of Cloudflare managed certificate.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return The UUID of a Cloudflare managed certificate.
+     * @return UUID of Cloudflare managed certificate.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -50,14 +50,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Specific volume(s) to check for encryption.
+     * List of volume names to be checked for encryption.
      * 
      */
     @Import(name="checkDisks")
     private @Nullable Output<List<String>> checkDisks;
 
     /**
-     * @return Specific volume(s) to check for encryption.
+     * @return List of volume names to be checked for encryption.
      * 
      */
     public Optional<Output<List<String>>> checkDisks() {
@@ -65,14 +65,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Confirm the certificate was not imported from another device.
+     * Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
      * 
      */
     @Import(name="checkPrivateKey")
     private @Nullable Output<Boolean> checkPrivateKey;
 
     /**
-     * @return Confirm the certificate was not imported from another device.
+     * @return Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
      * 
      */
     public Optional<Output<Boolean>> checkPrivateKey() {
@@ -80,14 +80,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The common name for a certificate.
+     * Common Name that is protected by the certificate
      * 
      */
     @Import(name="cn")
     private @Nullable Output<String> cn;
 
     /**
-     * @return The common name for a certificate.
+     * @return Common Name that is protected by the certificate
      * 
      */
     public Optional<Output<String>> cn() {
@@ -95,14 +95,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+     * Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     @Import(name="complianceStatus")
     private @Nullable Output<String> complianceStatus;
 
     /**
-     * @return The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+     * @return Compliance Status
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<Output<String>> complianceStatus() {
@@ -110,14 +112,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The workspace one or intune connection id.
+     * Posture Integration ID.
      * 
      */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
 
     /**
-     * @return The workspace one or intune connection id.
+     * @return Posture Integration ID.
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -125,14 +127,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     @Import(name="countOperator")
     private @Nullable Output<String> countOperator;
 
     /**
-     * @return The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return Count Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<Output<String>> countOperator() {
@@ -140,14 +144,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The domain that the client must join.
+     * Domain
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The domain that the client must join.
+     * @return Domain
      * 
      */
     public Optional<Output<String>> domain() {
@@ -155,14 +159,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * For more details on eid last seen, refer to the Tanium documentation.
      * 
      */
     @Import(name="eidLastSeen")
     private @Nullable Output<String> eidLastSeen;
 
     /**
-     * @return The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * @return For more details on eid last seen, refer to the Tanium documentation.
      * 
      */
     public Optional<Output<String>> eidLastSeen() {
@@ -170,14 +174,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * True if the firewall must be enabled.
+     * Enabled
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return True if the firewall must be enabled.
+     * @return Enabled
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -185,14 +189,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Checks if the file should exist.
+     * Whether or not file exists
      * 
      */
     @Import(name="exists")
     private @Nullable Output<Boolean> exists;
 
     /**
-     * @return Checks if the file should exist.
+     * @return Whether or not file exists
      * 
      */
     public Optional<Output<Boolean>> exists() {
@@ -200,14 +204,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     * List of values indicating purposes for which the certificate public key can be used
      * 
      */
     @Import(name="extendedKeyUsages")
     private @Nullable Output<List<String>> extendedKeyUsages;
 
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+     * @return List of values indicating purposes for which the certificate public key can be used
      * 
      */
     public Optional<Output<List<String>>> extendedKeyUsages() {
@@ -215,14 +219,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+     * List ID.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+     * @return List ID.
      * 
      */
     public Optional<Output<String>> id() {
@@ -230,14 +234,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * True if SentinelOne device is infected.
+     * Whether device is infected.
      * 
      */
     @Import(name="infected")
     private @Nullable Output<Boolean> infected;
 
     /**
-     * @return True if SentinelOne device is infected.
+     * @return Whether device is infected.
      * 
      */
     public Optional<Output<Boolean>> infected() {
@@ -245,14 +249,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * True if SentinelOne device is active.
+     * Whether device is active.
      * 
      */
     @Import(name="isActive")
     private @Nullable Output<Boolean> isActive;
 
     /**
-     * @return True if SentinelOne device is active.
+     * @return Whether device is active.
      * 
      */
     public Optional<Output<Boolean>> isActive() {
@@ -260,14 +264,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The number of issues for kolide.
+     * The Number of Issues.
      * 
      */
     @Import(name="issueCount")
     private @Nullable Output<String> issueCount;
 
     /**
-     * @return The number of issues for kolide.
+     * @return The Number of Issues.
      * 
      */
     public Optional<Output<String>> issueCount() {
@@ -275,44 +279,38 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * For more details on last seen, please refer to the Crowdstrike documentation.
      * 
      */
     @Import(name="lastSeen")
     private @Nullable Output<String> lastSeen;
 
     /**
-     * @return The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * @return For more details on last seen, please refer to the Crowdstrike documentation.
      * 
      */
     public Optional<Output<String>> lastSeen() {
         return Optional.ofNullable(this.lastSeen);
     }
 
-    /**
-     * List of operating system locations to check for a client certificate..
-     * 
-     */
     @Import(name="locations")
-    private @Nullable Output<List<ZeroTrustDevicePostureRuleInputLocationArgs>> locations;
+    private @Nullable Output<ZeroTrustDevicePostureRuleInputLocationsArgs> locations;
 
-    /**
-     * @return List of operating system locations to check for a client certificate..
-     * 
-     */
-    public Optional<Output<List<ZeroTrustDevicePostureRuleInputLocationArgs>>> locations() {
+    public Optional<Output<ZeroTrustDevicePostureRuleInputLocationsArgs>> locations() {
         return Optional.ofNullable(this.locations);
     }
 
     /**
-     * The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     * Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     @Import(name="networkStatus")
     private @Nullable Output<String> networkStatus;
 
     /**
-     * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+     * @return Network status of device.
+     * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
      * 
      */
     public Optional<Output<String>> networkStatus() {
@@ -320,14 +318,33 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+     * Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * 
+     */
+    @Import(name="operatingSystem")
+    private @Nullable Output<String> operatingSystem;
+
+    /**
+     * @return Operating system
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * 
+     */
+    public Optional<Output<String>> operatingSystem() {
+        return Optional.ofNullable(this.operatingSystem);
+    }
+
+    /**
+     * Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     @Import(name="operationalState")
     private @Nullable Output<String> operationalState;
 
     /**
-     * @return The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+     * @return Agent operational state.
+     * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
      * 
      */
     public Optional<Output<String>> operationalState() {
@@ -335,14 +352,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
     /**
-     * @return The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<Output<String>> operator() {
@@ -350,14 +369,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * OS signal score from Crowdstrike. Value must be between 1 and 100.
+     * Os Version
      * 
      */
     @Import(name="os")
     private @Nullable Output<String> os;
 
     /**
-     * @return OS signal score from Crowdstrike. Value must be between 1 and 100.
+     * @return Os Version
      * 
      */
     public Optional<Output<String>> os() {
@@ -365,14 +384,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The operating system excluding version information.
+     * Operating System Distribution Name (linux only)
      * 
      */
     @Import(name="osDistroName")
     private @Nullable Output<String> osDistroName;
 
     /**
-     * @return The operating system excluding version information.
+     * @return Operating System Distribution Name (linux only)
      * 
      */
     public Optional<Output<String>> osDistroName() {
@@ -380,14 +399,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The operating system version excluding OS name information or release name.
+     * Version of OS Distribution (linux only)
      * 
      */
     @Import(name="osDistroRevision")
     private @Nullable Output<String> osDistroRevision;
 
     /**
-     * @return The operating system version excluding OS name information or release name.
+     * @return Version of OS Distribution (linux only)
      * 
      */
     public Optional<Output<String>> osDistroRevision() {
@@ -395,14 +414,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Extra version value following the operating system semantic version.
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
      * 
      */
     @Import(name="osVersionExtra")
     private @Nullable Output<String> osVersionExtra;
 
     /**
-     * @return Extra version value following the operating system semantic version.
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
      * 
      */
     public Optional<Output<String>> osVersionExtra() {
@@ -410,14 +429,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     * overall
      * 
      */
     @Import(name="overall")
     private @Nullable Output<String> overall;
 
     /**
-     * @return Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+     * @return overall
      * 
      */
     public Optional<Output<String>> overall() {
@@ -425,14 +444,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The path to the file.
+     * File path.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The path to the file.
+     * @return File path.
      * 
      */
     public Optional<Output<String>> path() {
@@ -440,14 +459,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * True if all drives must be encrypted.
+     * Whether to check all disks for encryption.
      * 
      */
     @Import(name="requireAll")
     private @Nullable Output<Boolean> requireAll;
 
     /**
-     * @return True if all drives must be encrypted.
+     * @return Whether to check all disks for encryption.
      * 
      */
     public Optional<Output<Boolean>> requireAll() {
@@ -455,14 +474,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     * For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     @Import(name="riskLevel")
     private @Nullable Output<String> riskLevel;
 
     /**
-     * @return The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     * @return For more details on risk level, refer to the Tanium documentation.
+     * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
      * 
      */
     public Optional<Output<String>> riskLevel() {
@@ -470,44 +491,46 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * Checks if the application should be running.
-     * 
-     */
-    @Import(name="running")
-    private @Nullable Output<Boolean> running;
-
-    /**
-     * @return Checks if the application should be running.
-     * 
-     */
-    public Optional<Output<Boolean>> running() {
-        return Optional.ofNullable(this.running);
-    }
-
-    /**
-     * A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     * A value between 0-100 assigned to devices set by the 3rd party posture provider.
      * 
      */
     @Import(name="score")
-    private @Nullable Output<Integer> score;
+    private @Nullable Output<Double> score;
 
     /**
-     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+     * @return A value between 0-100 assigned to devices set by the 3rd party posture provider.
      * 
      */
-    public Optional<Output<Integer>> score() {
+    public Optional<Output<Double>> score() {
         return Optional.ofNullable(this.score);
     }
 
     /**
-     * Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     * Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
+     * 
+     */
+    @Import(name="scoreOperator")
+    private @Nullable Output<String> scoreOperator;
+
+    /**
+     * @return Score Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
+     * 
+     */
+    public Optional<Output<String>> scoreOperator() {
+        return Optional.ofNullable(this.scoreOperator);
+    }
+
+    /**
+     * SensorConfig
      * 
      */
     @Import(name="sensorConfig")
     private @Nullable Output<String> sensorConfig;
 
     /**
-     * @return Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+     * @return SensorConfig
      * 
      */
     public Optional<Output<String>> sensorConfig() {
@@ -515,14 +538,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The sha256 hash of the file.
+     * SHA-256.
      * 
      */
     @Import(name="sha256")
     private @Nullable Output<String> sha256;
 
     /**
-     * @return The sha256 hash of the file.
+     * @return SHA-256.
      * 
      */
     public Optional<Output<String>> sha256() {
@@ -530,14 +553,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     * For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     * @return For more details on state, please refer to the Crowdstrike documentation.
+     * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
      * 
      */
     public Optional<Output<String>> state() {
@@ -545,14 +570,14 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The thumbprint of the file certificate.
+     * Signing certificate thumbprint.
      * 
      */
     @Import(name="thumbprint")
     private @Nullable Output<String> thumbprint;
 
     /**
-     * @return The thumbprint of the file certificate.
+     * @return Signing certificate thumbprint.
      * 
      */
     public Optional<Output<String>> thumbprint() {
@@ -560,29 +585,29 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The total score from Tanium.
+     * For more details on total score, refer to the Tanium documentation.
      * 
      */
     @Import(name="totalScore")
-    private @Nullable Output<Integer> totalScore;
+    private @Nullable Output<Double> totalScore;
 
     /**
-     * @return The total score from Tanium.
+     * @return For more details on total score, refer to the Tanium documentation.
      * 
      */
-    public Optional<Output<Integer>> totalScore() {
+    public Optional<Output<Double>> totalScore() {
         return Optional.ofNullable(this.totalScore);
     }
 
     /**
-     * The operating system semantic version.
+     * Version of OS
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return The operating system semantic version.
+     * @return Version of OS
      * 
      */
     public Optional<Output<String>> version() {
@@ -590,14 +615,16 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
     }
 
     /**
-     * The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     @Import(name="versionOperator")
     private @Nullable Output<String> versionOperator;
 
     /**
-     * @return The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+     * @return Version Operator
+     * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     public Optional<Output<String>> versionOperator() {
@@ -627,6 +654,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         this.lastSeen = $.lastSeen;
         this.locations = $.locations;
         this.networkStatus = $.networkStatus;
+        this.operatingSystem = $.operatingSystem;
         this.operationalState = $.operationalState;
         this.operator = $.operator;
         this.os = $.os;
@@ -637,8 +665,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         this.path = $.path;
         this.requireAll = $.requireAll;
         this.riskLevel = $.riskLevel;
-        this.running = $.running;
         this.score = $.score;
+        this.scoreOperator = $.scoreOperator;
         this.sensorConfig = $.sensorConfig;
         this.sha256 = $.sha256;
         this.state = $.state;
@@ -667,28 +695,28 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param activeThreats The number of active threats from SentinelOne.
+         * @param activeThreats The Number of active threats.
          * 
          * @return builder
          * 
          */
-        public Builder activeThreats(@Nullable Output<Integer> activeThreats) {
+        public Builder activeThreats(@Nullable Output<Double> activeThreats) {
             $.activeThreats = activeThreats;
             return this;
         }
 
         /**
-         * @param activeThreats The number of active threats from SentinelOne.
+         * @param activeThreats The Number of active threats.
          * 
          * @return builder
          * 
          */
-        public Builder activeThreats(Integer activeThreats) {
+        public Builder activeThreats(Double activeThreats) {
             return activeThreats(Output.of(activeThreats));
         }
 
         /**
-         * @param certificateId The UUID of a Cloudflare managed certificate.
+         * @param certificateId UUID of Cloudflare managed certificate.
          * 
          * @return builder
          * 
@@ -699,7 +727,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param certificateId The UUID of a Cloudflare managed certificate.
+         * @param certificateId UUID of Cloudflare managed certificate.
          * 
          * @return builder
          * 
@@ -709,7 +737,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param checkDisks Specific volume(s) to check for encryption.
+         * @param checkDisks List of volume names to be checked for encryption.
          * 
          * @return builder
          * 
@@ -720,7 +748,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param checkDisks Specific volume(s) to check for encryption.
+         * @param checkDisks List of volume names to be checked for encryption.
          * 
          * @return builder
          * 
@@ -730,7 +758,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param checkDisks Specific volume(s) to check for encryption.
+         * @param checkDisks List of volume names to be checked for encryption.
          * 
          * @return builder
          * 
@@ -740,7 +768,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param checkPrivateKey Confirm the certificate was not imported from another device.
+         * @param checkPrivateKey Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
          * 
          * @return builder
          * 
@@ -751,7 +779,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param checkPrivateKey Confirm the certificate was not imported from another device.
+         * @param checkPrivateKey Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
          * 
          * @return builder
          * 
@@ -761,7 +789,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param cn The common name for a certificate.
+         * @param cn Common Name that is protected by the certificate
          * 
          * @return builder
          * 
@@ -772,7 +800,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param cn The common name for a certificate.
+         * @param cn Common Name that is protected by the certificate
          * 
          * @return builder
          * 
@@ -782,7 +810,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param complianceStatus The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+         * @param complianceStatus Compliance Status
+         * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -793,7 +822,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param complianceStatus The workspace one or intune device compliance status. `compliant` and `noncompliant` are values supported by both providers. `unknown`, `conflict`, `error`, `ingraceperiod` values are only supported by intune. Available values: `compliant`, `noncompliant`, `unknown`, `conflict`, `error`, `ingraceperiod`.
+         * @param complianceStatus Compliance Status
+         * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -803,7 +833,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param connectionId The workspace one or intune connection id.
+         * @param connectionId Posture Integration ID.
          * 
          * @return builder
          * 
@@ -814,7 +844,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param connectionId The workspace one or intune connection id.
+         * @param connectionId Posture Integration ID.
          * 
          * @return builder
          * 
@@ -824,7 +854,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param countOperator The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param countOperator Count Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -835,7 +866,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param countOperator The count comparison operator for kolide. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param countOperator Count Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -845,7 +877,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param domain The domain that the client must join.
+         * @param domain Domain
          * 
          * @return builder
          * 
@@ -856,7 +888,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param domain The domain that the client must join.
+         * @param domain Domain
          * 
          * @return builder
          * 
@@ -866,7 +898,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param eidLastSeen The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+         * @param eidLastSeen For more details on eid last seen, refer to the Tanium documentation.
          * 
          * @return builder
          * 
@@ -877,7 +909,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param eidLastSeen The time a device last seen in Tanium. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+         * @param eidLastSeen For more details on eid last seen, refer to the Tanium documentation.
          * 
          * @return builder
          * 
@@ -887,7 +919,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled True if the firewall must be enabled.
+         * @param enabled Enabled
          * 
          * @return builder
          * 
@@ -898,7 +930,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled True if the firewall must be enabled.
+         * @param enabled Enabled
          * 
          * @return builder
          * 
@@ -908,7 +940,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param exists Checks if the file should exist.
+         * @param exists Whether or not file exists
          * 
          * @return builder
          * 
@@ -919,7 +951,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param exists Checks if the file should exist.
+         * @param exists Whether or not file exists
          * 
          * @return builder
          * 
@@ -929,7 +961,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used
          * 
          * @return builder
          * 
@@ -940,7 +972,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used
          * 
          * @return builder
          * 
@@ -950,7 +982,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used. Available values: `clientAuth`, `emailProtection`.
+         * @param extendedKeyUsages List of values indicating purposes for which the certificate public key can be used
          * 
          * @return builder
          * 
@@ -960,7 +992,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param id The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+         * @param id List ID.
          * 
          * @return builder
          * 
@@ -971,7 +1003,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param id The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
+         * @param id List ID.
          * 
          * @return builder
          * 
@@ -981,7 +1013,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param infected True if SentinelOne device is infected.
+         * @param infected Whether device is infected.
          * 
          * @return builder
          * 
@@ -992,7 +1024,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param infected True if SentinelOne device is infected.
+         * @param infected Whether device is infected.
          * 
          * @return builder
          * 
@@ -1002,7 +1034,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param isActive True if SentinelOne device is active.
+         * @param isActive Whether device is active.
          * 
          * @return builder
          * 
@@ -1013,7 +1045,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param isActive True if SentinelOne device is active.
+         * @param isActive Whether device is active.
          * 
          * @return builder
          * 
@@ -1023,7 +1055,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param issueCount The number of issues for kolide.
+         * @param issueCount The Number of Issues.
          * 
          * @return builder
          * 
@@ -1034,7 +1066,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param issueCount The number of issues for kolide.
+         * @param issueCount The Number of Issues.
          * 
          * @return builder
          * 
@@ -1044,7 +1076,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param lastSeen The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+         * @param lastSeen For more details on last seen, please refer to the Crowdstrike documentation.
          * 
          * @return builder
          * 
@@ -1055,7 +1087,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param lastSeen The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+         * @param lastSeen For more details on last seen, please refer to the Crowdstrike documentation.
          * 
          * @return builder
          * 
@@ -1064,39 +1096,18 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
             return lastSeen(Output.of(lastSeen));
         }
 
-        /**
-         * @param locations List of operating system locations to check for a client certificate..
-         * 
-         * @return builder
-         * 
-         */
-        public Builder locations(@Nullable Output<List<ZeroTrustDevicePostureRuleInputLocationArgs>> locations) {
+        public Builder locations(@Nullable Output<ZeroTrustDevicePostureRuleInputLocationsArgs> locations) {
             $.locations = locations;
             return this;
         }
 
-        /**
-         * @param locations List of operating system locations to check for a client certificate..
-         * 
-         * @return builder
-         * 
-         */
-        public Builder locations(List<ZeroTrustDevicePostureRuleInputLocationArgs> locations) {
+        public Builder locations(ZeroTrustDevicePostureRuleInputLocationsArgs locations) {
             return locations(Output.of(locations));
         }
 
         /**
-         * @param locations List of operating system locations to check for a client certificate..
-         * 
-         * @return builder
-         * 
-         */
-        public Builder locations(ZeroTrustDevicePostureRuleInputLocationArgs... locations) {
-            return locations(List.of(locations));
-        }
-
-        /**
-         * @param networkStatus The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+         * @param networkStatus Network status of device.
+         * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
          * 
          * @return builder
          * 
@@ -1107,7 +1118,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param networkStatus The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
+         * @param networkStatus Network status of device.
+         * Available values: &#34;connected&#34;, &#34;disconnected&#34;, &#34;disconnecting&#34;, &#34;connecting&#34;.
          * 
          * @return builder
          * 
@@ -1117,7 +1129,31 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param operationalState The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+         * @param operatingSystem Operating system
+         * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operatingSystem(@Nullable Output<String> operatingSystem) {
+            $.operatingSystem = operatingSystem;
+            return this;
+        }
+
+        /**
+         * @param operatingSystem Operating system
+         * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operatingSystem(String operatingSystem) {
+            return operatingSystem(Output.of(operatingSystem));
+        }
+
+        /**
+         * @param operationalState Agent operational state.
+         * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
          * 
          * @return builder
          * 
@@ -1128,7 +1164,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param operationalState The current operational state of a SentinelOne Agent. Available values: `na`, `partially_disabled`, `auto_fully_disabled`, `fully_disabled`, `auto_partially_disabled`, `disabled_error`, `db_corruption`.
+         * @param operationalState Agent operational state.
+         * Available values: &#34;na&#34;, &#34;partially*disabled&#34;, &#34;auto*fully*disabled&#34;, &#34;fully*disabled&#34;, &#34;auto*partially*disabled&#34;, &#34;disabled*error&#34;, &#34;db*corruption&#34;.
          * 
          * @return builder
          * 
@@ -1138,7 +1175,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param operator The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param operator operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1149,7 +1187,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param operator The version comparison operator. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param operator operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1159,7 +1198,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param os OS signal score from Crowdstrike. Value must be between 1 and 100.
+         * @param os Os Version
          * 
          * @return builder
          * 
@@ -1170,7 +1209,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param os OS signal score from Crowdstrike. Value must be between 1 and 100.
+         * @param os Os Version
          * 
          * @return builder
          * 
@@ -1180,7 +1219,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osDistroName The operating system excluding version information.
+         * @param osDistroName Operating System Distribution Name (linux only)
          * 
          * @return builder
          * 
@@ -1191,7 +1230,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osDistroName The operating system excluding version information.
+         * @param osDistroName Operating System Distribution Name (linux only)
          * 
          * @return builder
          * 
@@ -1201,7 +1240,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osDistroRevision The operating system version excluding OS name information or release name.
+         * @param osDistroRevision Version of OS Distribution (linux only)
          * 
          * @return builder
          * 
@@ -1212,7 +1251,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osDistroRevision The operating system version excluding OS name information or release name.
+         * @param osDistroRevision Version of OS Distribution (linux only)
          * 
          * @return builder
          * 
@@ -1222,7 +1261,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osVersionExtra Extra version value following the operating system semantic version.
+         * @param osVersionExtra Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
          * 
          * @return builder
          * 
@@ -1233,7 +1272,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param osVersionExtra Extra version value following the operating system semantic version.
+         * @param osVersionExtra Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
          * 
          * @return builder
          * 
@@ -1243,7 +1282,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param overall Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+         * @param overall overall
          * 
          * @return builder
          * 
@@ -1254,7 +1293,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param overall Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
+         * @param overall overall
          * 
          * @return builder
          * 
@@ -1264,7 +1303,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param path The path to the file.
+         * @param path File path.
          * 
          * @return builder
          * 
@@ -1275,7 +1314,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param path The path to the file.
+         * @param path File path.
          * 
          * @return builder
          * 
@@ -1285,7 +1324,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param requireAll True if all drives must be encrypted.
+         * @param requireAll Whether to check all disks for encryption.
          * 
          * @return builder
          * 
@@ -1296,7 +1335,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param requireAll True if all drives must be encrypted.
+         * @param requireAll Whether to check all disks for encryption.
          * 
          * @return builder
          * 
@@ -1306,7 +1345,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param riskLevel The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+         * @param riskLevel For more details on risk level, refer to the Tanium documentation.
+         * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
          * 
          * @return builder
          * 
@@ -1317,7 +1357,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param riskLevel The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+         * @param riskLevel For more details on risk level, refer to the Tanium documentation.
+         * Available values: &#34;low&#34;, &#34;medium&#34;, &#34;high&#34;, &#34;critical&#34;.
          * 
          * @return builder
          * 
@@ -1327,49 +1368,51 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param running Checks if the application should be running.
+         * @param score A value between 0-100 assigned to devices set by the 3rd party posture provider.
          * 
          * @return builder
          * 
          */
-        public Builder running(@Nullable Output<Boolean> running) {
-            $.running = running;
-            return this;
-        }
-
-        /**
-         * @param running Checks if the application should be running.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder running(Boolean running) {
-            return running(Output.of(running));
-        }
-
-        /**
-         * @param score A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder score(@Nullable Output<Integer> score) {
+        public Builder score(@Nullable Output<Double> score) {
             $.score = score;
             return this;
         }
 
         /**
-         * @param score A value between 0-100 assigned to devices set by the 3rd party posture provider for custom device posture integrations.
+         * @param score A value between 0-100 assigned to devices set by the 3rd party posture provider.
          * 
          * @return builder
          * 
          */
-        public Builder score(Integer score) {
+        public Builder score(Double score) {
             return score(Output.of(score));
         }
 
         /**
-         * @param sensorConfig Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+         * @param scoreOperator Score Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scoreOperator(@Nullable Output<String> scoreOperator) {
+            $.scoreOperator = scoreOperator;
+            return this;
+        }
+
+        /**
+         * @param scoreOperator Score Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scoreOperator(String scoreOperator) {
+            return scoreOperator(Output.of(scoreOperator));
+        }
+
+        /**
+         * @param sensorConfig SensorConfig
          * 
          * @return builder
          * 
@@ -1380,7 +1423,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param sensorConfig Sensor signal score from Crowdstrike. Value must be between 1 and 100.
+         * @param sensorConfig SensorConfig
          * 
          * @return builder
          * 
@@ -1390,7 +1433,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param sha256 The sha256 hash of the file.
+         * @param sha256 SHA-256.
          * 
          * @return builder
          * 
@@ -1401,7 +1444,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param sha256 The sha256 hash of the file.
+         * @param sha256 SHA-256.
          * 
          * @return builder
          * 
@@ -1411,7 +1454,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param state The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+         * @param state For more details on state, please refer to the Crowdstrike documentation.
+         * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -1422,7 +1466,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param state The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+         * @param state For more details on state, please refer to the Crowdstrike documentation.
+         * Available values: &#34;online&#34;, &#34;offline&#34;, &#34;unknown&#34;.
          * 
          * @return builder
          * 
@@ -1432,7 +1477,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param thumbprint The thumbprint of the file certificate.
+         * @param thumbprint Signing certificate thumbprint.
          * 
          * @return builder
          * 
@@ -1443,7 +1488,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param thumbprint The thumbprint of the file certificate.
+         * @param thumbprint Signing certificate thumbprint.
          * 
          * @return builder
          * 
@@ -1453,28 +1498,28 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param totalScore The total score from Tanium.
+         * @param totalScore For more details on total score, refer to the Tanium documentation.
          * 
          * @return builder
          * 
          */
-        public Builder totalScore(@Nullable Output<Integer> totalScore) {
+        public Builder totalScore(@Nullable Output<Double> totalScore) {
             $.totalScore = totalScore;
             return this;
         }
 
         /**
-         * @param totalScore The total score from Tanium.
+         * @param totalScore For more details on total score, refer to the Tanium documentation.
          * 
          * @return builder
          * 
          */
-        public Builder totalScore(Integer totalScore) {
+        public Builder totalScore(Double totalScore) {
             return totalScore(Output.of(totalScore));
         }
 
         /**
-         * @param version The operating system semantic version.
+         * @param version Version of OS
          * 
          * @return builder
          * 
@@ -1485,7 +1530,7 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param version The operating system semantic version.
+         * @param version Version of OS
          * 
          * @return builder
          * 
@@ -1495,7 +1540,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param versionOperator The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param versionOperator Version Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 
@@ -1506,7 +1552,8 @@ public final class ZeroTrustDevicePostureRuleInputArgs extends com.pulumi.resour
         }
 
         /**
-         * @param versionOperator The version comparison operator for Crowdstrike. Available values: `&gt;`, `&gt;=`, `&lt;`, `&lt;=`, `==`.
+         * @param versionOperator Version Operator
+         * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
          * 
          * @return builder
          * 

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.LoadBalancerPoolLoadSheddingArgs;
+import com.pulumi.cloudflare.inputs.LoadBalancerPoolNotificationFilterArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerPoolOriginSteeringArgs;
 import com.pulumi.core.Output;
@@ -24,14 +25,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     public static final LoadBalancerPoolArgs Empty = new LoadBalancerPoolArgs();
 
     /**
-     * The account identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Output<String> accountId() {
@@ -39,14 +40,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+     * A list of regions from which to run health checks. Null means every Cloudflare data center.
      * 
      */
     @Import(name="checkRegions")
     private @Nullable Output<List<String>> checkRegions;
 
     /**
-     * @return A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+     * @return A list of regions from which to run health checks. Null means every Cloudflare data center.
      * 
      */
     public Optional<Output<List<String>>> checkRegions() {
@@ -54,14 +55,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Free text description.
+     * A human-readable description of the pool.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Free text description.
+     * @return A human-readable description of the pool.
      * 
      */
     public Optional<Output<String>> description() {
@@ -69,14 +70,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+     * Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+     * @return Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -84,14 +85,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The latitude this pool is physically located at; used for proximity steering.
+     * The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      * 
      */
     @Import(name="latitude")
     private @Nullable Output<Double> latitude;
 
     /**
-     * @return The latitude this pool is physically located at; used for proximity steering.
+     * @return The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
      * 
      */
     public Optional<Output<Double>> latitude() {
@@ -99,29 +100,29 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Setting for controlling load shedding for this pool.
+     * Configures load shedding policies and percentages for the pool.
      * 
      */
-    @Import(name="loadSheddings")
-    private @Nullable Output<List<LoadBalancerPoolLoadSheddingArgs>> loadSheddings;
+    @Import(name="loadShedding")
+    private @Nullable Output<LoadBalancerPoolLoadSheddingArgs> loadShedding;
 
     /**
-     * @return Setting for controlling load shedding for this pool.
+     * @return Configures load shedding policies and percentages for the pool.
      * 
      */
-    public Optional<Output<List<LoadBalancerPoolLoadSheddingArgs>>> loadSheddings() {
-        return Optional.ofNullable(this.loadSheddings);
+    public Optional<Output<LoadBalancerPoolLoadSheddingArgs>> loadShedding() {
+        return Optional.ofNullable(this.loadShedding);
     }
 
     /**
-     * The longitude this pool is physically located at; used for proximity steering.
+     * The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      * 
      */
     @Import(name="longitude")
     private @Nullable Output<Double> longitude;
 
     /**
-     * @return The longitude this pool is physically located at; used for proximity steering.
+     * @return The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
      * 
      */
     public Optional<Output<Double>> longitude() {
@@ -129,14 +130,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+     * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
      * 
      */
     @Import(name="minimumOrigins")
     private @Nullable Output<Integer> minimumOrigins;
 
     /**
-     * @return The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+     * @return The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
      * 
      */
     public Optional<Output<Integer>> minimumOrigins() {
@@ -144,14 +145,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the Monitor to use for health checking origins within this pool.
+     * The ID of the Monitor to use for checking the health of origins within this pool.
      * 
      */
     @Import(name="monitor")
     private @Nullable Output<String> monitor;
 
     /**
-     * @return The ID of the Monitor to use for health checking origins within this pool.
+     * @return The ID of the Monitor to use for checking the health of origins within this pool.
      * 
      */
     public Optional<Output<String>> monitor() {
@@ -159,14 +160,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A short name (tag) for the pool.
+     * A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A short name (tag) for the pool.
+     * @return A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
      * 
      */
     public Output<String> name() {
@@ -174,14 +175,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+     * This field is now deprecated. It has been moved to Cloudflare&#39;s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      * 
      */
     @Import(name="notificationEmail")
     private @Nullable Output<String> notificationEmail;
 
     /**
-     * @return The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+     * @return This field is now deprecated. It has been moved to Cloudflare&#39;s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      * 
      */
     public Optional<Output<String>> notificationEmail() {
@@ -189,18 +190,33 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Set an origin steering policy to control origin selection within a pool.
+     * Filter pool and origin health notifications by resource type or health status. Use null to reset.
      * 
      */
-    @Import(name="originSteerings")
-    private @Nullable Output<List<LoadBalancerPoolOriginSteeringArgs>> originSteerings;
+    @Import(name="notificationFilter")
+    private @Nullable Output<LoadBalancerPoolNotificationFilterArgs> notificationFilter;
 
     /**
-     * @return Set an origin steering policy to control origin selection within a pool.
+     * @return Filter pool and origin health notifications by resource type or health status. Use null to reset.
      * 
      */
-    public Optional<Output<List<LoadBalancerPoolOriginSteeringArgs>>> originSteerings() {
-        return Optional.ofNullable(this.originSteerings);
+    public Optional<Output<LoadBalancerPoolNotificationFilterArgs>> notificationFilter() {
+        return Optional.ofNullable(this.notificationFilter);
+    }
+
+    /**
+     * Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+     * 
+     */
+    @Import(name="originSteering")
+    private @Nullable Output<LoadBalancerPoolOriginSteeringArgs> originSteering;
+
+    /**
+     * @return Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+     * 
+     */
+    public Optional<Output<LoadBalancerPoolOriginSteeringArgs>> originSteering() {
+        return Optional.ofNullable(this.originSteering);
     }
 
     /**
@@ -226,13 +242,14 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         this.description = $.description;
         this.enabled = $.enabled;
         this.latitude = $.latitude;
-        this.loadSheddings = $.loadSheddings;
+        this.loadShedding = $.loadShedding;
         this.longitude = $.longitude;
         this.minimumOrigins = $.minimumOrigins;
         this.monitor = $.monitor;
         this.name = $.name;
         this.notificationEmail = $.notificationEmail;
-        this.originSteerings = $.originSteerings;
+        this.notificationFilter = $.notificationFilter;
+        this.originSteering = $.originSteering;
         this.origins = $.origins;
     }
 
@@ -255,7 +272,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -266,7 +283,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId The account identifier to target for the resource.
+         * @param accountId Identifier
          * 
          * @return builder
          * 
@@ -276,7 +293,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param checkRegions A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+         * @param checkRegions A list of regions from which to run health checks. Null means every Cloudflare data center.
          * 
          * @return builder
          * 
@@ -287,7 +304,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param checkRegions A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+         * @param checkRegions A list of regions from which to run health checks. Null means every Cloudflare data center.
          * 
          * @return builder
          * 
@@ -297,7 +314,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param checkRegions A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
+         * @param checkRegions A list of regions from which to run health checks. Null means every Cloudflare data center.
          * 
          * @return builder
          * 
@@ -307,7 +324,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description Free text description.
+         * @param description A human-readable description of the pool.
          * 
          * @return builder
          * 
@@ -318,7 +335,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description Free text description.
+         * @param description A human-readable description of the pool.
          * 
          * @return builder
          * 
@@ -328,7 +345,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+         * @param enabled Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
          * 
          * @return builder
          * 
@@ -339,7 +356,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+         * @param enabled Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
          * 
          * @return builder
          * 
@@ -349,7 +366,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param latitude The latitude this pool is physically located at; used for proximity steering.
+         * @param latitude The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
          * 
          * @return builder
          * 
@@ -360,7 +377,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param latitude The latitude this pool is physically located at; used for proximity steering.
+         * @param latitude The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set.
          * 
          * @return builder
          * 
@@ -370,38 +387,28 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param loadSheddings Setting for controlling load shedding for this pool.
+         * @param loadShedding Configures load shedding policies and percentages for the pool.
          * 
          * @return builder
          * 
          */
-        public Builder loadSheddings(@Nullable Output<List<LoadBalancerPoolLoadSheddingArgs>> loadSheddings) {
-            $.loadSheddings = loadSheddings;
+        public Builder loadShedding(@Nullable Output<LoadBalancerPoolLoadSheddingArgs> loadShedding) {
+            $.loadShedding = loadShedding;
             return this;
         }
 
         /**
-         * @param loadSheddings Setting for controlling load shedding for this pool.
+         * @param loadShedding Configures load shedding policies and percentages for the pool.
          * 
          * @return builder
          * 
          */
-        public Builder loadSheddings(List<LoadBalancerPoolLoadSheddingArgs> loadSheddings) {
-            return loadSheddings(Output.of(loadSheddings));
+        public Builder loadShedding(LoadBalancerPoolLoadSheddingArgs loadShedding) {
+            return loadShedding(Output.of(loadShedding));
         }
 
         /**
-         * @param loadSheddings Setting for controlling load shedding for this pool.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder loadSheddings(LoadBalancerPoolLoadSheddingArgs... loadSheddings) {
-            return loadSheddings(List.of(loadSheddings));
-        }
-
-        /**
-         * @param longitude The longitude this pool is physically located at; used for proximity steering.
+         * @param longitude The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
          * 
          * @return builder
          * 
@@ -412,7 +419,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param longitude The longitude this pool is physically located at; used for proximity steering.
+         * @param longitude The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set.
          * 
          * @return builder
          * 
@@ -422,7 +429,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minimumOrigins The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+         * @param minimumOrigins The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
          * 
          * @return builder
          * 
@@ -433,7 +440,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minimumOrigins The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
+         * @param minimumOrigins The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool.
          * 
          * @return builder
          * 
@@ -443,7 +450,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param monitor The ID of the Monitor to use for health checking origins within this pool.
+         * @param monitor The ID of the Monitor to use for checking the health of origins within this pool.
          * 
          * @return builder
          * 
@@ -454,7 +461,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param monitor The ID of the Monitor to use for health checking origins within this pool.
+         * @param monitor The ID of the Monitor to use for checking the health of origins within this pool.
          * 
          * @return builder
          * 
@@ -464,7 +471,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name A short name (tag) for the pool.
+         * @param name A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
          * 
          * @return builder
          * 
@@ -475,7 +482,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name A short name (tag) for the pool.
+         * @param name A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.
          * 
          * @return builder
          * 
@@ -485,7 +492,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notificationEmail The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+         * @param notificationEmail This field is now deprecated. It has been moved to Cloudflare&#39;s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
          * 
          * @return builder
          * 
@@ -496,7 +503,7 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param notificationEmail The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+         * @param notificationEmail This field is now deprecated. It has been moved to Cloudflare&#39;s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
          * 
          * @return builder
          * 
@@ -506,34 +513,45 @@ public final class LoadBalancerPoolArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param originSteerings Set an origin steering policy to control origin selection within a pool.
+         * @param notificationFilter Filter pool and origin health notifications by resource type or health status. Use null to reset.
          * 
          * @return builder
          * 
          */
-        public Builder originSteerings(@Nullable Output<List<LoadBalancerPoolOriginSteeringArgs>> originSteerings) {
-            $.originSteerings = originSteerings;
+        public Builder notificationFilter(@Nullable Output<LoadBalancerPoolNotificationFilterArgs> notificationFilter) {
+            $.notificationFilter = notificationFilter;
             return this;
         }
 
         /**
-         * @param originSteerings Set an origin steering policy to control origin selection within a pool.
+         * @param notificationFilter Filter pool and origin health notifications by resource type or health status. Use null to reset.
          * 
          * @return builder
          * 
          */
-        public Builder originSteerings(List<LoadBalancerPoolOriginSteeringArgs> originSteerings) {
-            return originSteerings(Output.of(originSteerings));
+        public Builder notificationFilter(LoadBalancerPoolNotificationFilterArgs notificationFilter) {
+            return notificationFilter(Output.of(notificationFilter));
         }
 
         /**
-         * @param originSteerings Set an origin steering policy to control origin selection within a pool.
+         * @param originSteering Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
          * 
          * @return builder
          * 
          */
-        public Builder originSteerings(LoadBalancerPoolOriginSteeringArgs... originSteerings) {
-            return originSteerings(List.of(originSteerings));
+        public Builder originSteering(@Nullable Output<LoadBalancerPoolOriginSteeringArgs> originSteering) {
+            $.originSteering = originSteering;
+            return this;
+        }
+
+        /**
+         * @param originSteering Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder originSteering(LoadBalancerPoolOriginSteeringArgs originSteering) {
+            return originSteering(Output.of(originSteering));
         }
 
         /**

@@ -8,140 +8,68 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, "my_namespace", &cloudflare.WorkersKvNamespaceArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Title:     pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "script.js",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			invokeFilebase641, err := std.Filebase64(ctx, &std.Filebase64Args{
-//				Input: "example.wasm",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Sets the script with the name "script_1"
-//			_, err = cloudflare.NewWorkerScript(ctx, "my_script", &cloudflare.WorkerScriptArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("script_1"),
-//				Content:   pulumi.String(invokeFile.Result),
-//				KvNamespaceBindings: cloudflare.WorkerScriptKvNamespaceBindingArray{
-//					&cloudflare.WorkerScriptKvNamespaceBindingArgs{
-//						Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
-//						NamespaceId: myNamespace.ID(),
-//					},
-//				},
-//				PlainTextBindings: cloudflare.WorkerScriptPlainTextBindingArray{
-//					&cloudflare.WorkerScriptPlainTextBindingArgs{
-//						Name: pulumi.String("MY_EXAMPLE_PLAIN_TEXT"),
-//						Text: pulumi.String("foobar"),
-//					},
-//				},
-//				SecretTextBindings: cloudflare.WorkerScriptSecretTextBindingArray{
-//					&cloudflare.WorkerScriptSecretTextBindingArgs{
-//						Name: pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
-//						Text: pulumi.Any(secretFooValue),
-//					},
-//				},
-//				WebassemblyBindings: cloudflare.WorkerScriptWebassemblyBindingArray{
-//					&cloudflare.WorkerScriptWebassemblyBindingArgs{
-//						Name:   pulumi.String("MY_EXAMPLE_WASM"),
-//						Module: pulumi.String(invokeFilebase641.Result),
-//					},
-//				},
-//				ServiceBindings: cloudflare.WorkerScriptServiceBindingArray{
-//					&cloudflare.WorkerScriptServiceBindingArgs{
-//						Name:        pulumi.String("MY_SERVICE_BINDING"),
-//						Service:     pulumi.String("MY_SERVICE"),
-//						Environment: pulumi.String("production"),
-//					},
-//				},
-//				R2BucketBindings: cloudflare.WorkerScriptR2BucketBindingArray{
-//					&cloudflare.WorkerScriptR2BucketBindingArgs{
-//						Name:       pulumi.String("MY_BUCKET"),
-//						BucketName: pulumi.String("MY_BUCKET_NAME"),
-//					},
-//				},
-//				AnalyticsEngineBindings: cloudflare.WorkerScriptAnalyticsEngineBindingArray{
-//					&cloudflare.WorkerScriptAnalyticsEngineBindingArgs{
-//						Name:    pulumi.String("MY_DATASET"),
-//						Dataset: pulumi.String("dataset1"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
+// $ pulumi import cloudflare:index/workerScript:WorkerScript example '<account_id>/<script_name>'
 // ```
+//
+// Deprecated: cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript
 type WorkerScript struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId               pulumi.StringOutput                           `pulumi:"accountId"`
-	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayOutput `pulumi:"analyticsEngineBindings"`
-	// The date to use for the compatibility flag.
+	// Identifier
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Configuration for assets within a Worker
+	Assets WorkerScriptAssetsPtrOutput `pulumi:"assets"`
+	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+	Bindings WorkerScriptBindingArrayOutput `pulumi:"bindings"`
+	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	BodyPart pulumi.StringPtrOutput `pulumi:"bodyPart"`
+	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrOutput `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Worker Scripts.
+	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
-	// The script content.
-	Content            pulumi.StringOutput                      `pulumi:"content"`
-	D1DatabaseBindings WorkerScriptD1DatabaseBindingArrayOutput `pulumi:"d1DatabaseBindings"`
-	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace        pulumi.StringPtrOutput                         `pulumi:"dispatchNamespace"`
-	HyperdriveConfigBindings WorkerScriptHyperdriveConfigBindingArrayOutput `pulumi:"hyperdriveConfigBindings"`
-	KvNamespaceBindings      WorkerScriptKvNamespaceBindingArrayOutput      `pulumi:"kvNamespaceBindings"`
-	// Enabling allows Worker events to be sent to a defined Logpush destination.
-	Logpush pulumi.BoolPtrOutput `pulumi:"logpush"`
-	// Whether to upload Worker as a module.
-	Module pulumi.BoolPtrOutput `pulumi:"module"`
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
-	Name                pulumi.StringOutput                       `pulumi:"name"`
-	Placements          WorkerScriptPlacementArrayOutput          `pulumi:"placements"`
-	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
-	QueueBindings       WorkerScriptQueueBindingArrayOutput       `pulumi:"queueBindings"`
-	R2BucketBindings    WorkerScriptR2BucketBindingArrayOutput    `pulumi:"r2BucketBindings"`
-	SecretTextBindings  WorkerScriptSecretTextBindingArrayOutput  `pulumi:"secretTextBindings"`
-	ServiceBindings     WorkerScriptServiceBindingArrayOutput     `pulumi:"serviceBindings"`
-	Tags                pulumi.StringArrayOutput                  `pulumi:"tags"`
-	WebassemblyBindings WorkerScriptWebassemblyBindingArrayOutput `pulumi:"webassemblyBindings"`
+	// Module or Service Worker contents of the Worker.
+	Content pulumi.StringOutput `pulumi:"content"`
+	// When the script was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
+	// Hashed script content, can be used in a If-None-Match header when updating.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Whether a Worker contains assets.
+	HasAssets pulumi.BoolOutput `pulumi:"hasAssets"`
+	// Whether a Worker contains modules.
+	HasModules pulumi.BoolOutput `pulumi:"hasModules"`
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	KeepAssets pulumi.BoolPtrOutput `pulumi:"keepAssets"`
+	// List of binding types to keep from previous_upload.
+	KeepBindings pulumi.StringArrayOutput `pulumi:"keepBindings"`
+	// Whether Logpush is turned on for the Worker.
+	Logpush pulumi.BoolOutput `pulumi:"logpush"`
+	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	MainModule pulumi.StringPtrOutput `pulumi:"mainModule"`
+	// Migrations to apply for Durable Objects associated with this Worker.
+	Migrations WorkerScriptMigrationsOutput `pulumi:"migrations"`
+	// When the script was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
+	// Observability settings for the Worker.
+	Observability WorkerScriptObservabilityOutput `pulumi:"observability"`
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	Placement WorkerScriptPlacementOutput `pulumi:"placement"`
+	// Name of the script, used in URLs and route configuration.
+	ScriptName    pulumi.StringOutput `pulumi:"scriptName"`
+	StartupTimeMs pulumi.IntOutput    `pulumi:"startupTimeMs"`
+	// List of Workers that will consume logs from the attached Worker.
+	TailConsumers WorkerScriptTailConsumerArrayOutput `pulumi:"tailConsumers"`
+	// Usage model for the Worker invocations.
+	// Available values: "standard".
+	UsageModel pulumi.StringOutput `pulumi:"usageModel"`
 }
 
 // NewWorkerScript registers a new resource with the given unique name, arguments, and options.
@@ -157,9 +85,15 @@ func NewWorkerScript(ctx *pulumi.Context,
 	if args.Content == nil {
 		return nil, errors.New("invalid value for required argument 'Content'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.ScriptName == nil {
+		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workerScript:WorkerScript"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkerScript
 	err := ctx.RegisterResource("cloudflare:index/workerScript:WorkerScript", name, args, &resource, opts...)
@@ -183,65 +117,101 @@ func GetWorkerScript(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerScript resources.
 type workerScriptState struct {
-	// The account identifier to target for the resource.
-	AccountId               *string                              `pulumi:"accountId"`
-	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
-	// The date to use for the compatibility flag.
+	// Identifier
+	AccountId *string `pulumi:"accountId"`
+	// Configuration for assets within a Worker
+	Assets *WorkerScriptAssets `pulumi:"assets"`
+	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+	Bindings []WorkerScriptBinding `pulumi:"bindings"`
+	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	BodyPart *string `pulumi:"bodyPart"`
+	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Worker Scripts.
+	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// The script content.
-	Content            *string                         `pulumi:"content"`
-	D1DatabaseBindings []WorkerScriptD1DatabaseBinding `pulumi:"d1DatabaseBindings"`
-	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace        *string                               `pulumi:"dispatchNamespace"`
-	HyperdriveConfigBindings []WorkerScriptHyperdriveConfigBinding `pulumi:"hyperdriveConfigBindings"`
-	KvNamespaceBindings      []WorkerScriptKvNamespaceBinding      `pulumi:"kvNamespaceBindings"`
-	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	// Module or Service Worker contents of the Worker.
+	Content *string `pulumi:"content"`
+	// When the script was created.
+	CreatedOn *string `pulumi:"createdOn"`
+	// Hashed script content, can be used in a If-None-Match header when updating.
+	Etag *string `pulumi:"etag"`
+	// Whether a Worker contains assets.
+	HasAssets *bool `pulumi:"hasAssets"`
+	// Whether a Worker contains modules.
+	HasModules *bool `pulumi:"hasModules"`
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	KeepAssets *bool `pulumi:"keepAssets"`
+	// List of binding types to keep from previous_upload.
+	KeepBindings []string `pulumi:"keepBindings"`
+	// Whether Logpush is turned on for the Worker.
 	Logpush *bool `pulumi:"logpush"`
-	// Whether to upload Worker as a module.
-	Module *bool `pulumi:"module"`
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
-	Name                *string                          `pulumi:"name"`
-	Placements          []WorkerScriptPlacement          `pulumi:"placements"`
-	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
-	QueueBindings       []WorkerScriptQueueBinding       `pulumi:"queueBindings"`
-	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
-	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
-	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
-	Tags                []string                         `pulumi:"tags"`
-	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
+	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	MainModule *string `pulumi:"mainModule"`
+	// Migrations to apply for Durable Objects associated with this Worker.
+	Migrations *WorkerScriptMigrations `pulumi:"migrations"`
+	// When the script was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
+	// Observability settings for the Worker.
+	Observability *WorkerScriptObservability `pulumi:"observability"`
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	Placement *WorkerScriptPlacement `pulumi:"placement"`
+	// Name of the script, used in URLs and route configuration.
+	ScriptName    *string `pulumi:"scriptName"`
+	StartupTimeMs *int    `pulumi:"startupTimeMs"`
+	// List of Workers that will consume logs from the attached Worker.
+	TailConsumers []WorkerScriptTailConsumer `pulumi:"tailConsumers"`
+	// Usage model for the Worker invocations.
+	// Available values: "standard".
+	UsageModel *string `pulumi:"usageModel"`
 }
 
 type WorkerScriptState struct {
-	// The account identifier to target for the resource.
-	AccountId               pulumi.StringPtrInput
-	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
-	// The date to use for the compatibility flag.
+	// Identifier
+	AccountId pulumi.StringPtrInput
+	// Configuration for assets within a Worker
+	Assets WorkerScriptAssetsPtrInput
+	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+	Bindings WorkerScriptBindingArrayInput
+	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	BodyPart pulumi.StringPtrInput
+	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
-	// Compatibility flags used for Worker Scripts.
+	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayInput
-	// The script content.
-	Content            pulumi.StringPtrInput
-	D1DatabaseBindings WorkerScriptD1DatabaseBindingArrayInput
-	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace        pulumi.StringPtrInput
-	HyperdriveConfigBindings WorkerScriptHyperdriveConfigBindingArrayInput
-	KvNamespaceBindings      WorkerScriptKvNamespaceBindingArrayInput
-	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	// Module or Service Worker contents of the Worker.
+	Content pulumi.StringPtrInput
+	// When the script was created.
+	CreatedOn pulumi.StringPtrInput
+	// Hashed script content, can be used in a If-None-Match header when updating.
+	Etag pulumi.StringPtrInput
+	// Whether a Worker contains assets.
+	HasAssets pulumi.BoolPtrInput
+	// Whether a Worker contains modules.
+	HasModules pulumi.BoolPtrInput
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	KeepAssets pulumi.BoolPtrInput
+	// List of binding types to keep from previous_upload.
+	KeepBindings pulumi.StringArrayInput
+	// Whether Logpush is turned on for the Worker.
 	Logpush pulumi.BoolPtrInput
-	// Whether to upload Worker as a module.
-	Module pulumi.BoolPtrInput
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
-	Name                pulumi.StringPtrInput
-	Placements          WorkerScriptPlacementArrayInput
-	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
-	QueueBindings       WorkerScriptQueueBindingArrayInput
-	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
-	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
-	ServiceBindings     WorkerScriptServiceBindingArrayInput
-	Tags                pulumi.StringArrayInput
-	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
+	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	MainModule pulumi.StringPtrInput
+	// Migrations to apply for Durable Objects associated with this Worker.
+	Migrations WorkerScriptMigrationsPtrInput
+	// When the script was last modified.
+	ModifiedOn pulumi.StringPtrInput
+	// Observability settings for the Worker.
+	Observability WorkerScriptObservabilityPtrInput
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	Placement WorkerScriptPlacementPtrInput
+	// Name of the script, used in URLs and route configuration.
+	ScriptName    pulumi.StringPtrInput
+	StartupTimeMs pulumi.IntPtrInput
+	// List of Workers that will consume logs from the attached Worker.
+	TailConsumers WorkerScriptTailConsumerArrayInput
+	// Usage model for the Worker invocations.
+	// Available values: "standard".
+	UsageModel pulumi.StringPtrInput
 }
 
 func (WorkerScriptState) ElementType() reflect.Type {
@@ -249,66 +219,80 @@ func (WorkerScriptState) ElementType() reflect.Type {
 }
 
 type workerScriptArgs struct {
-	// The account identifier to target for the resource.
-	AccountId               string                               `pulumi:"accountId"`
-	AnalyticsEngineBindings []WorkerScriptAnalyticsEngineBinding `pulumi:"analyticsEngineBindings"`
-	// The date to use for the compatibility flag.
+	// Identifier
+	AccountId string `pulumi:"accountId"`
+	// Configuration for assets within a Worker
+	Assets *WorkerScriptAssets `pulumi:"assets"`
+	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+	Bindings []WorkerScriptBinding `pulumi:"bindings"`
+	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	BodyPart *string `pulumi:"bodyPart"`
+	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate *string `pulumi:"compatibilityDate"`
-	// Compatibility flags used for Worker Scripts.
+	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
-	// The script content.
-	Content            string                          `pulumi:"content"`
-	D1DatabaseBindings []WorkerScriptD1DatabaseBinding `pulumi:"d1DatabaseBindings"`
-	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace        *string                               `pulumi:"dispatchNamespace"`
-	HyperdriveConfigBindings []WorkerScriptHyperdriveConfigBinding `pulumi:"hyperdriveConfigBindings"`
-	KvNamespaceBindings      []WorkerScriptKvNamespaceBinding      `pulumi:"kvNamespaceBindings"`
-	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	// Module or Service Worker contents of the Worker.
+	Content string `pulumi:"content"`
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	KeepAssets *bool `pulumi:"keepAssets"`
+	// List of binding types to keep from previous_upload.
+	KeepBindings []string `pulumi:"keepBindings"`
+	// Whether Logpush is turned on for the Worker.
 	Logpush *bool `pulumi:"logpush"`
-	// Whether to upload Worker as a module.
-	Module *bool `pulumi:"module"`
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
-	Name                string                           `pulumi:"name"`
-	Placements          []WorkerScriptPlacement          `pulumi:"placements"`
-	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
-	QueueBindings       []WorkerScriptQueueBinding       `pulumi:"queueBindings"`
-	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
-	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
-	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
-	Tags                []string                         `pulumi:"tags"`
-	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
+	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	MainModule *string `pulumi:"mainModule"`
+	// Migrations to apply for Durable Objects associated with this Worker.
+	Migrations *WorkerScriptMigrations `pulumi:"migrations"`
+	// Observability settings for the Worker.
+	Observability *WorkerScriptObservability `pulumi:"observability"`
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	Placement *WorkerScriptPlacement `pulumi:"placement"`
+	// Name of the script, used in URLs and route configuration.
+	ScriptName string `pulumi:"scriptName"`
+	// List of Workers that will consume logs from the attached Worker.
+	TailConsumers []WorkerScriptTailConsumer `pulumi:"tailConsumers"`
+	// Usage model for the Worker invocations.
+	// Available values: "standard".
+	UsageModel *string `pulumi:"usageModel"`
 }
 
 // The set of arguments for constructing a WorkerScript resource.
 type WorkerScriptArgs struct {
-	// The account identifier to target for the resource.
-	AccountId               pulumi.StringInput
-	AnalyticsEngineBindings WorkerScriptAnalyticsEngineBindingArrayInput
-	// The date to use for the compatibility flag.
+	// Identifier
+	AccountId pulumi.StringInput
+	// Configuration for assets within a Worker
+	Assets WorkerScriptAssetsPtrInput
+	// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+	Bindings WorkerScriptBindingArrayInput
+	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+	BodyPart pulumi.StringPtrInput
+	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 	CompatibilityDate pulumi.StringPtrInput
-	// Compatibility flags used for Worker Scripts.
+	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayInput
-	// The script content.
-	Content            pulumi.StringInput
-	D1DatabaseBindings WorkerScriptD1DatabaseBindingArrayInput
-	// Name of the Workers for Platforms dispatch namespace.
-	DispatchNamespace        pulumi.StringPtrInput
-	HyperdriveConfigBindings WorkerScriptHyperdriveConfigBindingArrayInput
-	KvNamespaceBindings      WorkerScriptKvNamespaceBindingArrayInput
-	// Enabling allows Worker events to be sent to a defined Logpush destination.
+	// Module or Service Worker contents of the Worker.
+	Content pulumi.StringInput
+	// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+	KeepAssets pulumi.BoolPtrInput
+	// List of binding types to keep from previous_upload.
+	KeepBindings pulumi.StringArrayInput
+	// Whether Logpush is turned on for the Worker.
 	Logpush pulumi.BoolPtrInput
-	// Whether to upload Worker as a module.
-	Module pulumi.BoolPtrInput
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
-	Name                pulumi.StringInput
-	Placements          WorkerScriptPlacementArrayInput
-	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
-	QueueBindings       WorkerScriptQueueBindingArrayInput
-	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
-	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
-	ServiceBindings     WorkerScriptServiceBindingArrayInput
-	Tags                pulumi.StringArrayInput
-	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
+	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+	MainModule pulumi.StringPtrInput
+	// Migrations to apply for Durable Objects associated with this Worker.
+	Migrations WorkerScriptMigrationsPtrInput
+	// Observability settings for the Worker.
+	Observability WorkerScriptObservabilityPtrInput
+	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	Placement WorkerScriptPlacementPtrInput
+	// Name of the script, used in URLs and route configuration.
+	ScriptName pulumi.StringInput
+	// List of Workers that will consume logs from the attached Worker.
+	TailConsumers WorkerScriptTailConsumerArrayInput
+	// Usage model for the Worker invocations.
+	// Available values: "standard".
+	UsageModel pulumi.StringPtrInput
 }
 
 func (WorkerScriptArgs) ElementType() reflect.Type {
@@ -398,94 +382,119 @@ func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account identifier to target for the resource.
+// Identifier
 func (o WorkerScriptOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o WorkerScriptOutput) AnalyticsEngineBindings() WorkerScriptAnalyticsEngineBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptAnalyticsEngineBindingArrayOutput { return v.AnalyticsEngineBindings }).(WorkerScriptAnalyticsEngineBindingArrayOutput)
+// Configuration for assets within a Worker
+func (o WorkerScriptOutput) Assets() WorkerScriptAssetsPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptAssetsPtrOutput { return v.Assets }).(WorkerScriptAssetsPtrOutput)
 }
 
-// The date to use for the compatibility flag.
+// List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
+func (o WorkerScriptOutput) Bindings() WorkerScriptBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptBindingArrayOutput { return v.Bindings }).(WorkerScriptBindingArrayOutput)
+}
+
+// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
+func (o WorkerScriptOutput) BodyPart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.BodyPart }).(pulumi.StringPtrOutput)
+}
+
+// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
 func (o WorkerScriptOutput) CompatibilityDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.CompatibilityDate }).(pulumi.StringPtrOutput)
 }
 
-// Compatibility flags used for Worker Scripts.
+// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 func (o WorkerScriptOutput) CompatibilityFlags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringArrayOutput { return v.CompatibilityFlags }).(pulumi.StringArrayOutput)
 }
 
-// The script content.
+// Module or Service Worker contents of the Worker.
 func (o WorkerScriptOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
 
-func (o WorkerScriptOutput) D1DatabaseBindings() WorkerScriptD1DatabaseBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptD1DatabaseBindingArrayOutput { return v.D1DatabaseBindings }).(WorkerScriptD1DatabaseBindingArrayOutput)
+// When the script was created.
+func (o WorkerScriptOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Name of the Workers for Platforms dispatch namespace.
-func (o WorkerScriptOutput) DispatchNamespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.DispatchNamespace }).(pulumi.StringPtrOutput)
+// Hashed script content, can be used in a If-None-Match header when updating.
+func (o WorkerScriptOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o WorkerScriptOutput) HyperdriveConfigBindings() WorkerScriptHyperdriveConfigBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptHyperdriveConfigBindingArrayOutput {
-		return v.HyperdriveConfigBindings
-	}).(WorkerScriptHyperdriveConfigBindingArrayOutput)
+// Whether a Worker contains assets.
+func (o WorkerScriptOutput) HasAssets() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.BoolOutput { return v.HasAssets }).(pulumi.BoolOutput)
 }
 
-func (o WorkerScriptOutput) KvNamespaceBindings() WorkerScriptKvNamespaceBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptKvNamespaceBindingArrayOutput { return v.KvNamespaceBindings }).(WorkerScriptKvNamespaceBindingArrayOutput)
+// Whether a Worker contains modules.
+func (o WorkerScriptOutput) HasModules() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.BoolOutput { return v.HasModules }).(pulumi.BoolOutput)
 }
 
-// Enabling allows Worker events to be sent to a defined Logpush destination.
-func (o WorkerScriptOutput) Logpush() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.Logpush }).(pulumi.BoolPtrOutput)
+// Retain assets which exist for a previously uploaded Worker version; used in lieu of providing a completion token.
+func (o WorkerScriptOutput) KeepAssets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.KeepAssets }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to upload Worker as a module.
-func (o WorkerScriptOutput) Module() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.Module }).(pulumi.BoolPtrOutput)
+// List of binding types to keep from previous_upload.
+func (o WorkerScriptOutput) KeepBindings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringArrayOutput { return v.KeepBindings }).(pulumi.StringArrayOutput)
 }
 
-// The name for the script. **Modifying this attribute will force creation of a new resource.**
-func (o WorkerScriptOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// Whether Logpush is turned on for the Worker.
+func (o WorkerScriptOutput) Logpush() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.BoolOutput { return v.Logpush }).(pulumi.BoolOutput)
 }
 
-func (o WorkerScriptOutput) Placements() WorkerScriptPlacementArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptPlacementArrayOutput { return v.Placements }).(WorkerScriptPlacementArrayOutput)
+// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
+func (o WorkerScriptOutput) MainModule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.MainModule }).(pulumi.StringPtrOutput)
 }
 
-func (o WorkerScriptOutput) PlainTextBindings() WorkerScriptPlainTextBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptPlainTextBindingArrayOutput { return v.PlainTextBindings }).(WorkerScriptPlainTextBindingArrayOutput)
+// Migrations to apply for Durable Objects associated with this Worker.
+func (o WorkerScriptOutput) Migrations() WorkerScriptMigrationsOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptMigrationsOutput { return v.Migrations }).(WorkerScriptMigrationsOutput)
 }
 
-func (o WorkerScriptOutput) QueueBindings() WorkerScriptQueueBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptQueueBindingArrayOutput { return v.QueueBindings }).(WorkerScriptQueueBindingArrayOutput)
+// When the script was last modified.
+func (o WorkerScriptOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-func (o WorkerScriptOutput) R2BucketBindings() WorkerScriptR2BucketBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptR2BucketBindingArrayOutput { return v.R2BucketBindings }).(WorkerScriptR2BucketBindingArrayOutput)
+// Observability settings for the Worker.
+func (o WorkerScriptOutput) Observability() WorkerScriptObservabilityOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptObservabilityOutput { return v.Observability }).(WorkerScriptObservabilityOutput)
 }
 
-func (o WorkerScriptOutput) SecretTextBindings() WorkerScriptSecretTextBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptSecretTextBindingArrayOutput { return v.SecretTextBindings }).(WorkerScriptSecretTextBindingArrayOutput)
+// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+func (o WorkerScriptOutput) Placement() WorkerScriptPlacementOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptPlacementOutput { return v.Placement }).(WorkerScriptPlacementOutput)
 }
 
-func (o WorkerScriptOutput) ServiceBindings() WorkerScriptServiceBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptServiceBindingArrayOutput { return v.ServiceBindings }).(WorkerScriptServiceBindingArrayOutput)
+// Name of the script, used in URLs and route configuration.
+func (o WorkerScriptOutput) ScriptName() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.ScriptName }).(pulumi.StringOutput)
 }
 
-func (o WorkerScriptOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+func (o WorkerScriptOutput) StartupTimeMs() pulumi.IntOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.IntOutput { return v.StartupTimeMs }).(pulumi.IntOutput)
 }
 
-func (o WorkerScriptOutput) WebassemblyBindings() WorkerScriptWebassemblyBindingArrayOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScriptWebassemblyBindingArrayOutput { return v.WebassemblyBindings }).(WorkerScriptWebassemblyBindingArrayOutput)
+// List of Workers that will consume logs from the attached Worker.
+func (o WorkerScriptOutput) TailConsumers() WorkerScriptTailConsumerArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptTailConsumerArrayOutput { return v.TailConsumers }).(WorkerScriptTailConsumerArrayOutput)
+}
+
+// Usage model for the Worker invocations.
+// Available values: "standard".
+func (o WorkerScriptOutput) UsageModel() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.UsageModel }).(pulumi.StringOutput)
 }
 
 type WorkerScriptArrayOutput struct{ *pulumi.OutputState }

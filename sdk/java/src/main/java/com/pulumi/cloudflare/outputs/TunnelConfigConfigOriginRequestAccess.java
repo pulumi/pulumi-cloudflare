@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -14,40 +15,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TunnelConfigConfigOriginRequestAccess {
     /**
-     * @return Audience tags of the access rule.
+     * @return Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
      * 
      */
-    private @Nullable List<String> audTags;
+    private List<String> audTags;
     /**
-     * @return Whether the access rule is required.
+     * @return Deny traffic that has not fulfilled Access authorization.
      * 
      */
     private @Nullable Boolean required;
-    /**
-     * @return Name of the team to which the access rule applies.
-     * 
-     */
     private @Nullable String teamName;
 
     private TunnelConfigConfigOriginRequestAccess() {}
     /**
-     * @return Audience tags of the access rule.
+     * @return Access applications that are allowed to reach this hostname for this Tunnel. Audience tags can be identified in the dashboard or via the List Access policies API.
      * 
      */
     public List<String> audTags() {
-        return this.audTags == null ? List.of() : this.audTags;
+        return this.audTags;
     }
     /**
-     * @return Whether the access rule is required.
+     * @return Deny traffic that has not fulfilled Access authorization.
      * 
      */
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }
-    /**
-     * @return Name of the team to which the access rule applies.
-     * 
-     */
     public Optional<String> teamName() {
         return Optional.ofNullable(this.teamName);
     }
@@ -61,7 +54,7 @@ public final class TunnelConfigConfigOriginRequestAccess {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> audTags;
+        private List<String> audTags;
         private @Nullable Boolean required;
         private @Nullable String teamName;
         public Builder() {}
@@ -73,8 +66,10 @@ public final class TunnelConfigConfigOriginRequestAccess {
         }
 
         @CustomType.Setter
-        public Builder audTags(@Nullable List<String> audTags) {
-
+        public Builder audTags(List<String> audTags) {
+            if (audTags == null) {
+              throw new MissingRequiredPropertyException("TunnelConfigConfigOriginRequestAccess", "audTags");
+            }
             this.audTags = audTags;
             return this;
         }

@@ -1,5 +1,6 @@
 using Pulumi;
 using Cloudflare = Pulumi.Cloudflare;
+using Inputs = Pulumi.Cloudflare.Inputs;
 
 class MyStack : Stack
 {
@@ -10,11 +11,11 @@ class MyStack : Stack
 
         var zone = new Cloudflare.Zone("my-zone", new Cloudflare.ZoneArgs
         {
-            ZoneName = "cs-test-cloudflare-pulumi.com",
-            AccountId = accountId
+            Name = "cs-test-cloudflare-pulumi.com",
+            Account = new Inputs.ZoneAccountArgs { Id = accountId }
         });
 
-        var foobar = new Cloudflare.Record("foobar", new Cloudflare.RecordArgs
+        var foobar = new Cloudflare.DnsRecord("foobar", new Cloudflare.DnsRecordArgs
         {
             Name = "my-record-csharp",
             ZoneId = zone.Id,

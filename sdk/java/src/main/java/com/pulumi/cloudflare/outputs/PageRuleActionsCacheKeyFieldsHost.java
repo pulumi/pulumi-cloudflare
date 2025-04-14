@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PageRuleActionsCacheKeyFieldsHost {
-    /**
-     * @return `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-     * 
-     */
     private @Nullable Boolean resolved;
 
     private PageRuleActionsCacheKeyFieldsHost() {}
-    /**
-     * @return `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-     * 
-     */
     public Optional<Boolean> resolved() {
         return Optional.ofNullable(this.resolved);
     }

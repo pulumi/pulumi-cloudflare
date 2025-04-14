@@ -5,22 +5,28 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a resource to customize the pages your end users will see
- * when trying to reach applications behind Cloudflare Access.
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.AccessCustomPage("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     name: "example",
- *     type: "forbidden",
- *     customHtml: "<html><body><h1>Forbidden</h1></body></html>",
+ * const exampleZeroTrustAccessCustomPage = new cloudflare.ZeroTrustAccessCustomPage("example_zero_trust_access_custom_page", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     customHtml: "<html><body><h1>Access Denied</h1></body></html>",
+ *     name: "name",
+ *     type: "identity_denied",
+ *     appCount: 0,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/accessCustomPage:AccessCustomPage example '<account_id>/<custom_page_id>'
+ * ```
+ *
+ * @deprecated cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage
  */
 export class AccessCustomPage extends pulumi.CustomResource {
     /**
@@ -33,6 +39,7 @@ export class AccessCustomPage extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessCustomPageState, opts?: pulumi.CustomResourceOptions): AccessCustomPage {
+        pulumi.log.warn("AccessCustomPage is deprecated: cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage")
         return new AccessCustomPage(name, <any>state, { ...opts, id: id });
     }
 
@@ -51,29 +58,32 @@ export class AccessCustomPage extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
-    public readonly accountId!: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
-     * Number of apps to display on the custom page.
+     * Number of apps the custom page is assigned to.
      */
     public readonly appCount!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Custom HTML to display on the custom page.
+     * Custom page HTML.
      */
-    public readonly customHtml!: pulumi.Output<string | undefined>;
+    public readonly customHtml!: pulumi.Output<string>;
     /**
-     * Friendly name of the Access Custom Page configuration.
+     * Custom page name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+     * Custom page type.
+     * Available values: "identityDenied", "forbidden".
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      */
-    public readonly zoneId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly uid!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a AccessCustomPage resource with the given unique name, arguments, and options.
@@ -82,20 +92,31 @@ export class AccessCustomPage extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage */
     constructor(name: string, args: AccessCustomPageArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage */
     constructor(name: string, argsOrState?: AccessCustomPageArgs | AccessCustomPageState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("AccessCustomPage is deprecated: cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessCustomPageState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["appCount"] = state ? state.appCount : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["customHtml"] = state ? state.customHtml : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as AccessCustomPageArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.customHtml === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'customHtml'");
+            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -107,9 +128,13 @@ export class AccessCustomPage extends pulumi.CustomResource {
             resourceInputs["customHtml"] = args ? args.customHtml : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/accessCustomPage:AccessCustomPage" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AccessCustomPage.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -119,29 +144,32 @@ export class AccessCustomPage extends pulumi.CustomResource {
  */
 export interface AccessCustomPageState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Number of apps to display on the custom page.
+     * Number of apps the custom page is assigned to.
      */
     appCount?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<string>;
     /**
-     * Custom HTML to display on the custom page.
+     * Custom page HTML.
      */
     customHtml?: pulumi.Input<string>;
     /**
-     * Friendly name of the Access Custom Page configuration.
+     * Custom page name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+     * Custom page type.
+     * Available values: "identityDenied", "forbidden".
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
+     * UUID
      */
-    zoneId?: pulumi.Input<string>;
+    uid?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 /**
@@ -149,27 +177,24 @@ export interface AccessCustomPageState {
  */
 export interface AccessCustomPageArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
-    accountId?: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * Number of apps to display on the custom page.
+     * Number of apps the custom page is assigned to.
      */
     appCount?: pulumi.Input<number>;
     /**
-     * Custom HTML to display on the custom page.
+     * Custom page HTML.
      */
-    customHtml?: pulumi.Input<string>;
+    customHtml: pulumi.Input<string>;
     /**
-     * Friendly name of the Access Custom Page configuration.
+     * Custom page name.
      */
     name: pulumi.Input<string>;
     /**
-     * Type of Access custom page to create. Available values: `identityDenied`, `forbidden`.
+     * Custom page type.
+     * Available values: "identityDenied", "forbidden".
      */
     type: pulumi.Input<string>;
-    /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`. **Modifying this attribute will force creation of a new resource.**
-     */
-    zoneId?: pulumi.Input<string>;
 }

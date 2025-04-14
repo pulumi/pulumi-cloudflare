@@ -16,17 +16,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Configure how fresh the session needs to be to be considered valid.
         /// </summary>
-        public readonly string Duration;
+        public readonly string? Duration;
         /// <summary>
-        /// Enable session enforcement for this rule.
+        /// Set to true to enable session enforcement.
         /// </summary>
-        public readonly bool Enforce;
+        public readonly bool? Enforce;
 
         [OutputConstructor]
         private TeamsRuleRuleSettingsCheckSession(
-            string duration,
+            string? duration,
 
-            bool enforce)
+            bool? enforce)
         {
             Duration = duration;
             Enforce = enforce;

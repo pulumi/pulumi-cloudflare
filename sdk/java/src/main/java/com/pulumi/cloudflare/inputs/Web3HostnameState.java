@@ -15,17 +15,9 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     public static final Web3HostnameState Empty = new Web3HostnameState();
 
-    /**
-     * Creation time.
-     * 
-     */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
-    /**
-     * @return Creation time.
-     * 
-     */
     public Optional<Output<String>> createdOn() {
         return Optional.ofNullable(this.createdOn);
     }
@@ -60,17 +52,9 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dnslink);
     }
 
-    /**
-     * Last modification time.
-     * 
-     */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
-    /**
-     * @return Last modification time.
-     * 
-     */
     public Optional<Output<String>> modifiedOn() {
         return Optional.ofNullable(this.modifiedOn);
     }
@@ -92,6 +76,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     @Import(name="status")
@@ -99,6 +84,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Status of the hostname&#39;s activation.
+     * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -107,6 +93,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     @Import(name="target")
@@ -114,6 +101,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Target gateway of the hostname.
+     * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
     public Optional<Output<String>> target() {
@@ -121,14 +109,14 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -166,23 +154,11 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
             $ = new Web3HostnameState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param createdOn Creation time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdOn(@Nullable Output<String> createdOn) {
             $.createdOn = createdOn;
             return this;
         }
 
-        /**
-         * @param createdOn Creation time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdOn(String createdOn) {
             return createdOn(Output.of(createdOn));
         }
@@ -229,23 +205,11 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
             return dnslink(Output.of(dnslink));
         }
 
-        /**
-         * @param modifiedOn Last modification time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
             $.modifiedOn = modifiedOn;
             return this;
         }
 
-        /**
-         * @param modifiedOn Last modification time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder modifiedOn(String modifiedOn) {
             return modifiedOn(Output.of(modifiedOn));
         }
@@ -273,6 +237,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Status of the hostname&#39;s activation.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -284,6 +249,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status Status of the hostname&#39;s activation.
+         * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
          * 
          * @return builder
          * 
@@ -294,6 +260,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param target Target gateway of the hostname.
+         * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
          * 
          * @return builder
          * 
@@ -305,6 +272,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param target Target gateway of the hostname.
+         * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
          * 
          * @return builder
          * 
@@ -314,7 +282,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 
@@ -325,7 +293,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

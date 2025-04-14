@@ -14,14 +14,14 @@ public final class GetZoneCacheReservePlainArgs extends com.pulumi.resources.Inv
     public static final GetZoneCacheReservePlainArgs Empty = new GetZoneCacheReservePlainArgs();
 
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return The zone identifier to target for the resource.
+     * @return Identifier
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetZoneCacheReservePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource.
+         * @param zoneId Identifier
          * 
          * @return builder
          * 

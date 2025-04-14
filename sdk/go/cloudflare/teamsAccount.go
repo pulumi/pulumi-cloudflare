@@ -8,134 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Teams Account resource. The Teams Account
-// resource defines configuration for secure web gateway.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsAccount(ctx, "example", &cloudflare.TeamsAccountArgs{
-//				AccountId:                pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				TlsDecryptEnabled:        pulumi.Bool(true),
-//				ProtocolDetectionEnabled: pulumi.Bool(true),
-//				BlockPage: &cloudflare.TeamsAccountBlockPageArgs{
-//					FooterText:      pulumi.String("hello"),
-//					HeaderText:      pulumi.String("hello"),
-//					LogoPath:        pulumi.String("https://example.com/logo.jpg"),
-//					BackgroundColor: pulumi.String("#000000"),
-//				},
-//				BodyScanning: &cloudflare.TeamsAccountBodyScanningArgs{
-//					InspectionMode: pulumi.String("deep"),
-//				},
-//				Antivirus: &cloudflare.TeamsAccountAntivirusArgs{
-//					EnabledDownloadPhase: pulumi.Bool(true),
-//					EnabledUploadPhase:   pulumi.Bool(false),
-//					FailClosed:           pulumi.Bool(true),
-//					NotificationSettings: &cloudflare.TeamsAccountAntivirusNotificationSettingsArgs{
-//						Enabled:    pulumi.Bool(true),
-//						Message:    pulumi.String("you are blocked"),
-//						SupportUrl: pulumi.String("https://example.com/blocked"),
-//					},
-//				},
-//				Fips: &cloudflare.TeamsAccountFipsArgs{
-//					Tls: pulumi.Bool(true),
-//				},
-//				Proxy: &cloudflare.TeamsAccountProxyArgs{
-//					Tcp:            pulumi.Bool(true),
-//					Udp:            pulumi.Bool(true),
-//					RootCa:         pulumi.Bool(true),
-//					VirtualIp:      pulumi.Bool(false),
-//					DisableForTime: pulumi.Int(3600),
-//				},
-//				UrlBrowserIsolationEnabled: pulumi.Bool(true),
-//				Logging: &cloudflare.TeamsAccountLoggingArgs{
-//					RedactPii: pulumi.Bool(true),
-//					SettingsByRuleType: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs{
-//						Dns: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs{
-//							LogAll:    pulumi.Bool(false),
-//							LogBlocks: pulumi.Bool(true),
-//						},
-//						Http: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs{
-//							LogAll:    pulumi.Bool(true),
-//							LogBlocks: pulumi.Bool(true),
-//						},
-//						L4: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args{
-//							LogAll:    pulumi.Bool(false),
-//							LogBlocks: pulumi.Bool(true),
-//						},
-//					},
-//				},
-//				ExtendedEmailMatching: &cloudflare.TeamsAccountExtendedEmailMatchingArgs{
-//					Enabled: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
+// $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example '<account_id>'
 // ```
+//
+// Deprecated: cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings
 type TeamsAccount struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Whether to enable the activity log.
-	ActivityLogEnabled pulumi.BoolPtrOutput `pulumi:"activityLogEnabled"`
-	// Configuration block for antivirus traffic scanning.
-	Antivirus TeamsAccountAntivirusPtrOutput `pulumi:"antivirus"`
-	// Configuration for a custom block page.
-	BlockPage TeamsAccountBlockPagePtrOutput `pulumi:"blockPage"`
-	// Configuration for body scanning.
-	BodyScanning TeamsAccountBodyScanningPtrOutput `pulumi:"bodyScanning"`
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate TeamsAccountCertificatePtrOutput `pulumi:"certificate"`
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate TeamsAccountCustomCertificatePtrOutput `pulumi:"customCertificate"`
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingOutput `pulumi:"extendedEmailMatching"`
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    TeamsAccountFipsPtrOutput    `pulumi:"fips"`
-	Logging TeamsAccountLoggingPtrOutput `pulumi:"logging"`
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrOutput `pulumi:"nonIdentityBrowserIsolationEnabled"`
-	// Configuration for DLP Payload Logging.
-	PayloadLog TeamsAccountPayloadLogPtrOutput `pulumi:"payloadLog"`
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled pulumi.BoolPtrOutput `pulumi:"protocolDetectionEnabled"`
-	// Configuration block for specifying which protocols are proxied.
-	Proxy TeamsAccountProxyPtrOutput `pulumi:"proxy"`
-	// Configuration for SSH Session Logging.
-	SshSessionLog TeamsAccountSshSessionLogPtrOutput `pulumi:"sshSessionLog"`
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled pulumi.BoolPtrOutput `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled pulumi.BoolPtrOutput `pulumi:"urlBrowserIsolationEnabled"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Account settings
+	Settings  TeamsAccountSettingsOutput `pulumi:"settings"`
+	UpdatedAt pulumi.StringOutput        `pulumi:"updatedAt"`
 }
 
 // NewTeamsAccount registers a new resource with the given unique name, arguments, and options.
@@ -148,6 +41,12 @@ func NewTeamsAccount(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/teamsAccount:TeamsAccount"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TeamsAccount
 	err := ctx.RegisterResource("cloudflare:index/teamsAccount:TeamsAccount", name, args, &resource, opts...)
@@ -171,79 +70,19 @@ func GetTeamsAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsAccount resources.
 type teamsAccountState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Whether to enable the activity log.
-	ActivityLogEnabled *bool `pulumi:"activityLogEnabled"`
-	// Configuration block for antivirus traffic scanning.
-	Antivirus *TeamsAccountAntivirus `pulumi:"antivirus"`
-	// Configuration for a custom block page.
-	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
-	// Configuration for body scanning.
-	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate *TeamsAccountCertificate `pulumi:"certificate"`
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate *TeamsAccountCustomCertificate `pulumi:"customCertificate"`
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching *TeamsAccountExtendedEmailMatching `pulumi:"extendedEmailMatching"`
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    *TeamsAccountFips    `pulumi:"fips"`
-	Logging *TeamsAccountLogging `pulumi:"logging"`
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled *bool `pulumi:"nonIdentityBrowserIsolationEnabled"`
-	// Configuration for DLP Payload Logging.
-	PayloadLog *TeamsAccountPayloadLog `pulumi:"payloadLog"`
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled *bool `pulumi:"protocolDetectionEnabled"`
-	// Configuration block for specifying which protocols are proxied.
-	Proxy *TeamsAccountProxy `pulumi:"proxy"`
-	// Configuration for SSH Session Logging.
-	SshSessionLog *TeamsAccountSshSessionLog `pulumi:"sshSessionLog"`
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Account settings
+	Settings  *TeamsAccountSettings `pulumi:"settings"`
+	UpdatedAt *string               `pulumi:"updatedAt"`
 }
 
 type TeamsAccountState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Whether to enable the activity log.
-	ActivityLogEnabled pulumi.BoolPtrInput
-	// Configuration block for antivirus traffic scanning.
-	Antivirus TeamsAccountAntivirusPtrInput
-	// Configuration for a custom block page.
-	BlockPage TeamsAccountBlockPagePtrInput
-	// Configuration for body scanning.
-	BodyScanning TeamsAccountBodyScanningPtrInput
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate TeamsAccountCertificatePtrInput
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate TeamsAccountCustomCertificatePtrInput
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrInput
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    TeamsAccountFipsPtrInput
-	Logging TeamsAccountLoggingPtrInput
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrInput
-	// Configuration for DLP Payload Logging.
-	PayloadLog TeamsAccountPayloadLogPtrInput
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled pulumi.BoolPtrInput
-	// Configuration block for specifying which protocols are proxied.
-	Proxy TeamsAccountProxyPtrInput
-	// Configuration for SSH Session Logging.
-	SshSessionLog TeamsAccountSshSessionLogPtrInput
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled pulumi.BoolPtrInput
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled pulumi.BoolPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Account settings
+	Settings  TeamsAccountSettingsPtrInput
+	UpdatedAt pulumi.StringPtrInput
 }
 
 func (TeamsAccountState) ElementType() reflect.Type {
@@ -251,80 +90,16 @@ func (TeamsAccountState) ElementType() reflect.Type {
 }
 
 type teamsAccountArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// Whether to enable the activity log.
-	ActivityLogEnabled *bool `pulumi:"activityLogEnabled"`
-	// Configuration block for antivirus traffic scanning.
-	Antivirus *TeamsAccountAntivirus `pulumi:"antivirus"`
-	// Configuration for a custom block page.
-	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
-	// Configuration for body scanning.
-	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate *TeamsAccountCertificate `pulumi:"certificate"`
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate *TeamsAccountCustomCertificate `pulumi:"customCertificate"`
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching *TeamsAccountExtendedEmailMatching `pulumi:"extendedEmailMatching"`
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    *TeamsAccountFips    `pulumi:"fips"`
-	Logging *TeamsAccountLogging `pulumi:"logging"`
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled *bool `pulumi:"nonIdentityBrowserIsolationEnabled"`
-	// Configuration for DLP Payload Logging.
-	PayloadLog *TeamsAccountPayloadLog `pulumi:"payloadLog"`
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled *bool `pulumi:"protocolDetectionEnabled"`
-	// Configuration block for specifying which protocols are proxied.
-	Proxy *TeamsAccountProxy `pulumi:"proxy"`
-	// Configuration for SSH Session Logging.
-	SshSessionLog *TeamsAccountSshSessionLog `pulumi:"sshSessionLog"`
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
+	// Account settings
+	Settings *TeamsAccountSettings `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a TeamsAccount resource.
 type TeamsAccountArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// Whether to enable the activity log.
-	ActivityLogEnabled pulumi.BoolPtrInput
-	// Configuration block for antivirus traffic scanning.
-	Antivirus TeamsAccountAntivirusPtrInput
-	// Configuration for a custom block page.
-	BlockPage TeamsAccountBlockPagePtrInput
-	// Configuration for body scanning.
-	BodyScanning TeamsAccountBodyScanningPtrInput
-	// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-	Certificate TeamsAccountCertificatePtrInput
-	// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-	//
-	// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-	CustomCertificate TeamsAccountCustomCertificatePtrInput
-	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrInput
-	// Configure compliance with Federal Information Processing Standards.
-	Fips    TeamsAccountFipsPtrInput
-	Logging TeamsAccountLoggingPtrInput
-	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrInput
-	// Configuration for DLP Payload Logging.
-	PayloadLog TeamsAccountPayloadLogPtrInput
-	// Indicator that protocol detection is enabled.
-	ProtocolDetectionEnabled pulumi.BoolPtrInput
-	// Configuration block for specifying which protocols are proxied.
-	Proxy TeamsAccountProxyPtrInput
-	// Configuration for SSH Session Logging.
-	SshSessionLog TeamsAccountSshSessionLogPtrInput
-	// Indicator that decryption of TLS traffic is enabled.
-	TlsDecryptEnabled pulumi.BoolPtrInput
-	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-	UrlBrowserIsolationEnabled pulumi.BoolPtrInput
+	// Account settings
+	Settings TeamsAccountSettingsPtrInput
 }
 
 func (TeamsAccountArgs) ElementType() reflect.Type {
@@ -414,90 +189,21 @@ func (o TeamsAccountOutput) ToTeamsAccountOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o TeamsAccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsAccount) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Whether to enable the activity log.
-func (o TeamsAccountOutput) ActivityLogEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.ActivityLogEnabled }).(pulumi.BoolPtrOutput)
+func (o TeamsAccountOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsAccount) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Configuration block for antivirus traffic scanning.
-func (o TeamsAccountOutput) Antivirus() TeamsAccountAntivirusPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountAntivirusPtrOutput { return v.Antivirus }).(TeamsAccountAntivirusPtrOutput)
+// Account settings
+func (o TeamsAccountOutput) Settings() TeamsAccountSettingsOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountSettingsOutput { return v.Settings }).(TeamsAccountSettingsOutput)
 }
 
-// Configuration for a custom block page.
-func (o TeamsAccountOutput) BlockPage() TeamsAccountBlockPagePtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountBlockPagePtrOutput { return v.BlockPage }).(TeamsAccountBlockPagePtrOutput)
-}
-
-// Configuration for body scanning.
-func (o TeamsAccountOutput) BodyScanning() TeamsAccountBodyScanningPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountBodyScanningPtrOutput { return v.BodyScanning }).(TeamsAccountBodyScanningPtrOutput)
-}
-
-// Configuration for TLS interception certificate. This will be required starting Feb 2025.
-func (o TeamsAccountOutput) Certificate() TeamsAccountCertificatePtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountCertificatePtrOutput { return v.Certificate }).(TeamsAccountCertificatePtrOutput)
-}
-
-// Configuration for custom certificates / BYO-PKI. Conflicts with `certificate`.
-//
-// Deprecated: Use `certificate` instead. Continuing to use customCertificate may result in inconsistent configuration.
-func (o TeamsAccountOutput) CustomCertificate() TeamsAccountCustomCertificatePtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountCustomCertificatePtrOutput { return v.CustomCertificate }).(TeamsAccountCustomCertificatePtrOutput)
-}
-
-// Configuration for extended e-mail matching.
-func (o TeamsAccountOutput) ExtendedEmailMatching() TeamsAccountExtendedEmailMatchingOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountExtendedEmailMatchingOutput { return v.ExtendedEmailMatching }).(TeamsAccountExtendedEmailMatchingOutput)
-}
-
-// Configure compliance with Federal Information Processing Standards.
-func (o TeamsAccountOutput) Fips() TeamsAccountFipsPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountFipsPtrOutput { return v.Fips }).(TeamsAccountFipsPtrOutput)
-}
-
-func (o TeamsAccountOutput) Logging() TeamsAccountLoggingPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountLoggingPtrOutput { return v.Logging }).(TeamsAccountLoggingPtrOutput)
-}
-
-// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
-func (o TeamsAccountOutput) NonIdentityBrowserIsolationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.NonIdentityBrowserIsolationEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Configuration for DLP Payload Logging.
-func (o TeamsAccountOutput) PayloadLog() TeamsAccountPayloadLogPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountPayloadLogPtrOutput { return v.PayloadLog }).(TeamsAccountPayloadLogPtrOutput)
-}
-
-// Indicator that protocol detection is enabled.
-func (o TeamsAccountOutput) ProtocolDetectionEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.ProtocolDetectionEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Configuration block for specifying which protocols are proxied.
-func (o TeamsAccountOutput) Proxy() TeamsAccountProxyPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountProxyPtrOutput { return v.Proxy }).(TeamsAccountProxyPtrOutput)
-}
-
-// Configuration for SSH Session Logging.
-func (o TeamsAccountOutput) SshSessionLog() TeamsAccountSshSessionLogPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountSshSessionLogPtrOutput { return v.SshSessionLog }).(TeamsAccountSshSessionLogPtrOutput)
-}
-
-// Indicator that decryption of TLS traffic is enabled.
-func (o TeamsAccountOutput) TlsDecryptEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.TlsDecryptEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
-func (o TeamsAccountOutput) UrlBrowserIsolationEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.UrlBrowserIsolationEnabled }).(pulumi.BoolPtrOutput)
+func (o TeamsAccountOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsAccount) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
 type TeamsAccountArrayOutput struct{ *pulumi.OutputState }

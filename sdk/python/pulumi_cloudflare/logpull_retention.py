@@ -20,33 +20,22 @@ __all__ = ['LogpullRetentionArgs', 'LogpullRetention']
 @pulumi.input_type
 class LogpullRetentionArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[builtins.bool],
-                 zone_id: pulumi.Input[builtins.str]):
+                 zone_id: pulumi.Input[builtins.str],
+                 flag: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a LogpullRetention resource.
-        :param pulumi.Input[builtins.bool] enabled: Whether you wish to retain logs or not.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] flag: The log retention flag for Logpull API.
         """
-        pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[builtins.bool]:
-        """
-        Whether you wish to retain logs or not.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[builtins.bool]):
-        pulumi.set(self, "enabled", value)
+        if flag is not None:
+            pulumi.set(__self__, "flag", flag)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -54,39 +43,51 @@ class LogpullRetentionArgs:
     def zone_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter
+    def flag(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        The log retention flag for Logpull API.
+        """
+        return pulumi.get(self, "flag")
+
+    @flag.setter
+    def flag(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "flag", value)
+
 
 @pulumi.input_type
 class _LogpullRetentionState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 flag: Optional[pulumi.Input[builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogpullRetention resources.
-        :param pulumi.Input[builtins.bool] enabled: Whether you wish to retain logs or not.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.bool] flag: The log retention flag for Logpull API.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+        if flag is not None:
+            pulumi.set(__self__, "flag", flag)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+    def flag(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether you wish to retain logs or not.
+        The log retention flag for Logpull API.
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "flag")
 
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "enabled", value)
+    @flag.setter
+    def flag(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "flag", value)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 
@@ -100,33 +101,25 @@ class LogpullRetention(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 flag: Optional[pulumi.Input[builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.LogpullRetention("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            enabled=True)
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example <zone_id>
+        example_logpull_retention = cloudflare.LogpullRetention("example_logpull_retention",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            flag=True)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] enabled: Whether you wish to retain logs or not.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.bool] flag: The log retention flag for Logpull API.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
     @overload
@@ -135,23 +128,15 @@ class LogpullRetention(pulumi.CustomResource):
                  args: LogpullRetentionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
-
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.LogpullRetention("example",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            enabled=True)
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example <zone_id>
+        example_logpull_retention = cloudflare.LogpullRetention("example_logpull_retention",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            flag=True)
         ```
 
         :param str resource_name: The name of the resource.
@@ -169,7 +154,7 @@ class LogpullRetention(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 flag: Optional[pulumi.Input[builtins.bool]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -180,9 +165,7 @@ class LogpullRetention(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LogpullRetentionArgs.__new__(LogpullRetentionArgs)
 
-            if enabled is None and not opts.urn:
-                raise TypeError("Missing required property 'enabled'")
-            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["flag"] = flag
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
@@ -196,7 +179,7 @@ class LogpullRetention(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            flag: Optional[pulumi.Input[builtins.bool]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'LogpullRetention':
         """
         Get an existing LogpullRetention resource's state with the given name, id, and optional extra
@@ -205,30 +188,30 @@ class LogpullRetention(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] enabled: Whether you wish to retain logs or not.
-        :param pulumi.Input[builtins.str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[builtins.bool] flag: The log retention flag for Logpull API.
+        :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _LogpullRetentionState.__new__(_LogpullRetentionState)
 
-        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["flag"] = flag
         __props__.__dict__["zone_id"] = zone_id
         return LogpullRetention(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[builtins.bool]:
+    def flag(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Whether you wish to retain logs or not.
+        The log retention flag for Logpull API.
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "flag")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        Identifier
         """
         return pulumi.get(self, "zone_id")
 

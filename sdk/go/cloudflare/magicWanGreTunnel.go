@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource, that manages GRE tunnels for Magic Transit.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,25 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanGreTunnel(ctx, "example", &cloudflare.MagicWanGreTunnelArgs{
-//				AccountId:             pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:                  pulumi.String("GRE_1"),
-//				CustomerGreEndpoint:   pulumi.String("203.0.113.1"),
-//				CloudflareGreEndpoint: pulumi.String("203.0.113.2"),
-//				InterfaceAddress:      pulumi.String("192.0.2.0/31"),
-//				Description:           pulumi.String("Tunnel for ISP X"),
-//				Ttl:                   pulumi.Int(64),
-//				Mtu:                   pulumi.Int(1476),
-//				HealthCheckEnabled:    pulumi.Bool(true),
-//				HealthCheckTarget:     pulumi.String("203.0.113.1"),
-//				HealthCheckType:       pulumi.String("reply"),
+//			_, err := cloudflare.NewMagicWanGreTunnel(ctx, "example_magic_wan_gre_tunnel", &cloudflare.MagicWanGreTunnelArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //			})
 //			if err != nil {
 //				return err
@@ -49,35 +37,30 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example <account_id>/<tunnel_id>
-// ```
 type MagicWanGreTunnel struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Identifier
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
-	CloudflareGreEndpoint pulumi.StringOutput `pulumi:"cloudflareGreEndpoint"`
+	CloudflareGreEndpoint pulumi.StringPtrOutput `pulumi:"cloudflareGreEndpoint"`
 	// The IP address assigned to the customer side of the GRE tunnel.
-	CustomerGreEndpoint pulumi.StringOutput `pulumi:"customerGreEndpoint"`
-	// Description of the GRE tunnel intent.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies if ICMP tunnel health checks are enabled.
-	HealthCheckEnabled pulumi.BoolOutput `pulumi:"healthCheckEnabled"`
-	// The IP address of the customer endpoint that will receive tunnel health checks.
-	HealthCheckTarget pulumi.StringOutput `pulumi:"healthCheckTarget"`
-	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-	HealthCheckType pulumi.StringOutput `pulumi:"healthCheckType"`
-	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-	InterfaceAddress pulumi.StringOutput `pulumi:"interfaceAddress"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+	CustomerGreEndpoint pulumi.StringPtrOutput `pulumi:"customerGreEndpoint"`
+	// An optional description of the GRE tunnel.
+	Description pulumi.StringPtrOutput           `pulumi:"description"`
+	GreTunnel   MagicWanGreTunnelGreTunnelOutput `pulumi:"greTunnel"`
+	// Identifier
+	GreTunnelId pulumi.StringPtrOutput                `pulumi:"greTunnelId"`
+	GreTunnels  MagicWanGreTunnelGreTunnelArrayOutput `pulumi:"greTunnels"`
+	HealthCheck MagicWanGreTunnelHealthCheckOutput    `pulumi:"healthCheck"`
+	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+	InterfaceAddress  pulumi.StringPtrOutput                   `pulumi:"interfaceAddress"`
+	Modified          pulumi.BoolOutput                        `pulumi:"modified"`
+	ModifiedGreTunnel MagicWanGreTunnelModifiedGreTunnelOutput `pulumi:"modifiedGreTunnel"`
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu pulumi.IntOutput `pulumi:"mtu"`
-	// Name of the GRE tunnel.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
+	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
 }
@@ -89,18 +72,15 @@ func NewMagicWanGreTunnel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CloudflareGreEndpoint == nil {
-		return nil, errors.New("invalid value for required argument 'CloudflareGreEndpoint'")
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.CustomerGreEndpoint == nil {
-		return nil, errors.New("invalid value for required argument 'CustomerGreEndpoint'")
-	}
-	if args.InterfaceAddress == nil {
-		return nil, errors.New("invalid value for required argument 'InterfaceAddress'")
-	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/greTunnel:GreTunnel"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MagicWanGreTunnel
 	err := ctx.RegisterResource("cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel", name, args, &resource, opts...)
@@ -124,50 +104,52 @@ func GetMagicWanGreTunnel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MagicWanGreTunnel resources.
 type magicWanGreTunnelState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint *string `pulumi:"cloudflareGreEndpoint"`
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint *string `pulumi:"customerGreEndpoint"`
-	// Description of the GRE tunnel intent.
-	Description *string `pulumi:"description"`
-	// Specifies if ICMP tunnel health checks are enabled.
-	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
-	// The IP address of the customer endpoint that will receive tunnel health checks.
-	HealthCheckTarget *string `pulumi:"healthCheckTarget"`
-	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-	HealthCheckType *string `pulumi:"healthCheckType"`
-	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-	InterfaceAddress *string `pulumi:"interfaceAddress"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+	// An optional description of the GRE tunnel.
+	Description *string                     `pulumi:"description"`
+	GreTunnel   *MagicWanGreTunnelGreTunnel `pulumi:"greTunnel"`
+	// Identifier
+	GreTunnelId *string                       `pulumi:"greTunnelId"`
+	GreTunnels  []MagicWanGreTunnelGreTunnel  `pulumi:"greTunnels"`
+	HealthCheck *MagicWanGreTunnelHealthCheck `pulumi:"healthCheck"`
+	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+	InterfaceAddress  *string                             `pulumi:"interfaceAddress"`
+	Modified          *bool                               `pulumi:"modified"`
+	ModifiedGreTunnel *MagicWanGreTunnelModifiedGreTunnel `pulumi:"modifiedGreTunnel"`
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu *int `pulumi:"mtu"`
-	// Name of the GRE tunnel.
+	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
 	Name *string `pulumi:"name"`
 	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl *int `pulumi:"ttl"`
 }
 
 type MagicWanGreTunnelState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringPtrInput
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
 	CloudflareGreEndpoint pulumi.StringPtrInput
 	// The IP address assigned to the customer side of the GRE tunnel.
 	CustomerGreEndpoint pulumi.StringPtrInput
-	// Description of the GRE tunnel intent.
+	// An optional description of the GRE tunnel.
 	Description pulumi.StringPtrInput
-	// Specifies if ICMP tunnel health checks are enabled.
-	HealthCheckEnabled pulumi.BoolPtrInput
-	// The IP address of the customer endpoint that will receive tunnel health checks.
-	HealthCheckTarget pulumi.StringPtrInput
-	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-	HealthCheckType pulumi.StringPtrInput
-	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-	InterfaceAddress pulumi.StringPtrInput
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+	GreTunnel   MagicWanGreTunnelGreTunnelPtrInput
+	// Identifier
+	GreTunnelId pulumi.StringPtrInput
+	GreTunnels  MagicWanGreTunnelGreTunnelArrayInput
+	HealthCheck MagicWanGreTunnelHealthCheckPtrInput
+	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+	InterfaceAddress  pulumi.StringPtrInput
+	Modified          pulumi.BoolPtrInput
+	ModifiedGreTunnel MagicWanGreTunnelModifiedGreTunnelPtrInput
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu pulumi.IntPtrInput
-	// Name of the GRE tunnel.
+	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
 	Name pulumi.StringPtrInput
 	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl pulumi.IntPtrInput
@@ -178,52 +160,46 @@ func (MagicWanGreTunnelState) ElementType() reflect.Type {
 }
 
 type magicWanGreTunnelArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId *string `pulumi:"accountId"`
+	// Identifier
+	AccountId string `pulumi:"accountId"`
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
-	CloudflareGreEndpoint string `pulumi:"cloudflareGreEndpoint"`
+	CloudflareGreEndpoint *string `pulumi:"cloudflareGreEndpoint"`
 	// The IP address assigned to the customer side of the GRE tunnel.
-	CustomerGreEndpoint string `pulumi:"customerGreEndpoint"`
-	// Description of the GRE tunnel intent.
+	CustomerGreEndpoint *string `pulumi:"customerGreEndpoint"`
+	// An optional description of the GRE tunnel.
 	Description *string `pulumi:"description"`
-	// Specifies if ICMP tunnel health checks are enabled.
-	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
-	// The IP address of the customer endpoint that will receive tunnel health checks.
-	HealthCheckTarget *string `pulumi:"healthCheckTarget"`
-	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-	HealthCheckType *string `pulumi:"healthCheckType"`
-	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-	InterfaceAddress string `pulumi:"interfaceAddress"`
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+	// Identifier
+	GreTunnelId *string                       `pulumi:"greTunnelId"`
+	HealthCheck *MagicWanGreTunnelHealthCheck `pulumi:"healthCheck"`
+	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+	InterfaceAddress *string `pulumi:"interfaceAddress"`
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu *int `pulumi:"mtu"`
-	// Name of the GRE tunnel.
-	Name string `pulumi:"name"`
+	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
+	Name *string `pulumi:"name"`
 	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl *int `pulumi:"ttl"`
 }
 
 // The set of arguments for constructing a MagicWanGreTunnel resource.
 type MagicWanGreTunnelArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-	AccountId pulumi.StringPtrInput
+	// Identifier
+	AccountId pulumi.StringInput
 	// The IP address assigned to the Cloudflare side of the GRE tunnel.
-	CloudflareGreEndpoint pulumi.StringInput
+	CloudflareGreEndpoint pulumi.StringPtrInput
 	// The IP address assigned to the customer side of the GRE tunnel.
-	CustomerGreEndpoint pulumi.StringInput
-	// Description of the GRE tunnel intent.
+	CustomerGreEndpoint pulumi.StringPtrInput
+	// An optional description of the GRE tunnel.
 	Description pulumi.StringPtrInput
-	// Specifies if ICMP tunnel health checks are enabled.
-	HealthCheckEnabled pulumi.BoolPtrInput
-	// The IP address of the customer endpoint that will receive tunnel health checks.
-	HealthCheckTarget pulumi.StringPtrInput
-	// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-	HealthCheckType pulumi.StringPtrInput
-	// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-	InterfaceAddress pulumi.StringInput
-	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+	// Identifier
+	GreTunnelId pulumi.StringPtrInput
+	HealthCheck MagicWanGreTunnelHealthCheckPtrInput
+	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+	InterfaceAddress pulumi.StringPtrInput
+	// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 	Mtu pulumi.IntPtrInput
-	// Name of the GRE tunnel.
-	Name pulumi.StringInput
+	// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
+	Name pulumi.StringPtrInput
 	// Time To Live (TTL) in number of hops of the GRE tunnel.
 	Ttl pulumi.IntPtrInput
 }
@@ -315,54 +291,64 @@ func (o MagicWanGreTunnelOutput) ToMagicWanGreTunnelOutputWithContext(ctx contex
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-func (o MagicWanGreTunnelOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Identifier
+func (o MagicWanGreTunnelOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The IP address assigned to the Cloudflare side of the GRE tunnel.
-func (o MagicWanGreTunnelOutput) CloudflareGreEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.CloudflareGreEndpoint }).(pulumi.StringOutput)
+func (o MagicWanGreTunnelOutput) CloudflareGreEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.CloudflareGreEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // The IP address assigned to the customer side of the GRE tunnel.
-func (o MagicWanGreTunnelOutput) CustomerGreEndpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.CustomerGreEndpoint }).(pulumi.StringOutput)
+func (o MagicWanGreTunnelOutput) CustomerGreEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.CustomerGreEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Description of the GRE tunnel intent.
+// An optional description of the GRE tunnel.
 func (o MagicWanGreTunnelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies if ICMP tunnel health checks are enabled.
-func (o MagicWanGreTunnelOutput) HealthCheckEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.BoolOutput { return v.HealthCheckEnabled }).(pulumi.BoolOutput)
+func (o MagicWanGreTunnelOutput) GreTunnel() MagicWanGreTunnelGreTunnelOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelGreTunnelOutput { return v.GreTunnel }).(MagicWanGreTunnelGreTunnelOutput)
 }
 
-// The IP address of the customer endpoint that will receive tunnel health checks.
-func (o MagicWanGreTunnelOutput) HealthCheckTarget() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.HealthCheckTarget }).(pulumi.StringOutput)
+// Identifier
+func (o MagicWanGreTunnelOutput) GreTunnelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.GreTunnelId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ICMP echo type for the health check. Available values: `request`, `reply`.
-func (o MagicWanGreTunnelOutput) HealthCheckType() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
+func (o MagicWanGreTunnelOutput) GreTunnels() MagicWanGreTunnelGreTunnelArrayOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelGreTunnelArrayOutput { return v.GreTunnels }).(MagicWanGreTunnelGreTunnelArrayOutput)
 }
 
-// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
-func (o MagicWanGreTunnelOutput) InterfaceAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.InterfaceAddress }).(pulumi.StringOutput)
+func (o MagicWanGreTunnelOutput) HealthCheck() MagicWanGreTunnelHealthCheckOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelHealthCheckOutput { return v.HealthCheck }).(MagicWanGreTunnelHealthCheckOutput)
 }
 
-// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
+// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
+func (o MagicWanGreTunnelOutput) InterfaceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.InterfaceAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o MagicWanGreTunnelOutput) Modified() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.BoolOutput { return v.Modified }).(pulumi.BoolOutput)
+}
+
+func (o MagicWanGreTunnelOutput) ModifiedGreTunnel() MagicWanGreTunnelModifiedGreTunnelOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) MagicWanGreTunnelModifiedGreTunnelOutput { return v.ModifiedGreTunnel }).(MagicWanGreTunnelModifiedGreTunnelOutput)
+}
+
+// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
 func (o MagicWanGreTunnelOutput) Mtu() pulumi.IntOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
 }
 
-// Name of the GRE tunnel.
-func (o MagicWanGreTunnelOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
+func (o MagicWanGreTunnelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanGreTunnel) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Time To Live (TTL) in number of hops of the GRE tunnel.

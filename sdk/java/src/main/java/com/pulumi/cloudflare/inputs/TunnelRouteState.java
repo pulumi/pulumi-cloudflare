@@ -16,14 +16,14 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
     public static final TunnelRouteState Empty = new TunnelRouteState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Cloudflare account ID
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return Cloudflare account ID
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +31,14 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the tunnel route.
+     * Optional remark describing the route.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Description of the tunnel route.
+     * @return Optional remark describing the route.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -46,14 +46,44 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+     * Timestamp of when the resource was created.
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return Timestamp of when the resource was created.
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    @Import(name="deletedAt")
+    private @Nullable Output<String> deletedAt;
+
+    /**
+     * @return Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+     * 
+     */
+    public Optional<Output<String>> deletedAt() {
+        return Optional.ofNullable(this.deletedAt);
+    }
+
+    /**
+     * The private IPv4 or IPv6 range connected by the route, in CIDR notation.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+     * @return The private IPv4 or IPv6 range connected by the route, in CIDR notation.
      * 
      */
     public Optional<Output<String>> network() {
@@ -61,14 +91,14 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the tunnel that will service the tunnel route.
+     * UUID of the tunnel.
      * 
      */
     @Import(name="tunnelId")
     private @Nullable Output<String> tunnelId;
 
     /**
-     * @return The ID of the tunnel that will service the tunnel route.
+     * @return UUID of the tunnel.
      * 
      */
     public Optional<Output<String>> tunnelId() {
@@ -76,14 +106,14 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+     * UUID of the virtual network.
      * 
      */
     @Import(name="virtualNetworkId")
     private @Nullable Output<String> virtualNetworkId;
 
     /**
-     * @return The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+     * @return UUID of the virtual network.
      * 
      */
     public Optional<Output<String>> virtualNetworkId() {
@@ -95,6 +125,8 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
     private TunnelRouteState(TunnelRouteState $) {
         this.accountId = $.accountId;
         this.comment = $.comment;
+        this.createdAt = $.createdAt;
+        this.deletedAt = $.deletedAt;
         this.network = $.network;
         this.tunnelId = $.tunnelId;
         this.virtualNetworkId = $.virtualNetworkId;
@@ -119,7 +151,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -130,7 +162,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId Cloudflare account ID
          * 
          * @return builder
          * 
@@ -140,7 +172,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Description of the tunnel route.
+         * @param comment Optional remark describing the route.
          * 
          * @return builder
          * 
@@ -151,7 +183,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Description of the tunnel route.
+         * @param comment Optional remark describing the route.
          * 
          * @return builder
          * 
@@ -161,7 +193,49 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+         * @param createdAt Timestamp of when the resource was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt Timestamp of when the resource was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param deletedAt Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletedAt(@Nullable Output<String> deletedAt) {
+            $.deletedAt = deletedAt;
+            return this;
+        }
+
+        /**
+         * @param deletedAt Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletedAt(String deletedAt) {
+            return deletedAt(Output.of(deletedAt));
+        }
+
+        /**
+         * @param network The private IPv4 or IPv6 range connected by the route, in CIDR notation.
          * 
          * @return builder
          * 
@@ -172,7 +246,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network The IPv4 or IPv6 network that should use this tunnel route, in CIDR notation.
+         * @param network The private IPv4 or IPv6 range connected by the route, in CIDR notation.
          * 
          * @return builder
          * 
@@ -182,7 +256,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tunnelId The ID of the tunnel that will service the tunnel route.
+         * @param tunnelId UUID of the tunnel.
          * 
          * @return builder
          * 
@@ -193,7 +267,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tunnelId The ID of the tunnel that will service the tunnel route.
+         * @param tunnelId UUID of the tunnel.
          * 
          * @return builder
          * 
@@ -203,7 +277,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualNetworkId The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+         * @param virtualNetworkId UUID of the virtual network.
          * 
          * @return builder
          * 
@@ -214,7 +288,7 @@ public final class TunnelRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param virtualNetworkId The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
+         * @param virtualNetworkId UUID of the virtual network.
          * 
          * @return builder
          * 

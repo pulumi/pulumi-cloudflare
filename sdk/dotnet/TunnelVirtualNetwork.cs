@@ -10,11 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages Cloudflare tunnel virtual networks
-    /// for Zero Trust. Tunnel virtual networks are used for segregation of
-    /// Tunnel IP Routes via Virtualized Networks to handle overlapping
-    /// private IPs in your origins.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -25,11 +20,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Cloudflare.TunnelVirtualNetwork("example", new()
+    ///     var exampleZeroTrustTunnelCloudflaredVirtualNetwork = new Cloudflare.ZeroTrustTunnelCloudflaredVirtualNetwork("example_zero_trust_tunnel_cloudflared_virtual_network", new()
     ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "vnet-for-documentation",
-    ///         Comment = "New tunnel virtual network for documentation",
+    ///         AccountId = "699d98642c564d2e855e9661899b7252",
+    ///         Name = "us-east-1-vpc",
+    ///         Comment = "Staging VPC for data science",
+    ///         IsDefault = true,
     ///     });
     /// 
     /// });
@@ -38,32 +34,51 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example &lt;account_id&gt;/&lt;vnet_id&gt;
+    /// $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example '&lt;account_id&gt;/&lt;virtual_network_id&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork")]
     [CloudflareResourceType("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork")]
     public partial class TunnelVirtualNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the tunnel virtual network.
+        /// Optional remark describing the virtual network.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        /// Timestamp of when the resource was created.
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// </summary>
+        [Output("deletedAt")]
+        public Output<string> DeletedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// If `true`, this virtual network is the default for the account.
+        /// </summary>
+        [Output("isDefault")]
+        public Output<bool?> IsDefault { get; private set; } = null!;
+
+        /// <summary>
+        /// If `true`, this virtual network is the default for the account.
         /// </summary>
         [Output("isDefaultNetwork")]
         public Output<bool?> IsDefaultNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// A user-friendly name chosen when the virtual network is created.
+        /// A user-friendly name for the virtual network.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -91,6 +106,10 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -115,25 +134,31 @@ namespace Pulumi.Cloudflare
     public sealed class TunnelVirtualNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Description of the tunnel virtual network.
+        /// Optional remark describing the virtual network.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        /// If `true`, this virtual network is the default for the account.
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// If `true`, this virtual network is the default for the account.
         /// </summary>
         [Input("isDefaultNetwork")]
         public Input<bool>? IsDefaultNetwork { get; set; }
 
         /// <summary>
-        /// A user-friendly name chosen when the virtual network is created.
+        /// A user-friendly name for the virtual network.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -147,25 +172,43 @@ namespace Pulumi.Cloudflare
     public sealed class TunnelVirtualNetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// Cloudflare account ID
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Description of the tunnel virtual network.
+        /// Optional remark describing the virtual network.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
+        /// Timestamp of when the resource was created.
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
+        /// </summary>
+        [Input("deletedAt")]
+        public Input<string>? DeletedAt { get; set; }
+
+        /// <summary>
+        /// If `true`, this virtual network is the default for the account.
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// If `true`, this virtual network is the default for the account.
         /// </summary>
         [Input("isDefaultNetwork")]
         public Input<bool>? IsDefaultNetwork { get; set; }
 
         /// <summary>
-        /// A user-friendly name chosen when the virtual network is created.
+        /// A user-friendly name for the virtual network.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

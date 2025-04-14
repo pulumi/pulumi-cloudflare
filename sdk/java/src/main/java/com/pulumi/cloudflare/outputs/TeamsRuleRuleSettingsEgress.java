@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,9 +15,9 @@ public final class TeamsRuleRuleSettingsEgress {
      * @return The IPv4 address to be used for egress.
      * 
      */
-    private String ipv4;
+    private @Nullable String ipv4;
     /**
-     * @return The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egreass via Warp IPs.
+     * @return The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
      * 
      */
     private @Nullable String ipv4Fallback;
@@ -26,18 +25,18 @@ public final class TeamsRuleRuleSettingsEgress {
      * @return The IPv6 range to be used for egress.
      * 
      */
-    private String ipv6;
+    private @Nullable String ipv6;
 
     private TeamsRuleRuleSettingsEgress() {}
     /**
      * @return The IPv4 address to be used for egress.
      * 
      */
-    public String ipv4() {
-        return this.ipv4;
+    public Optional<String> ipv4() {
+        return Optional.ofNullable(this.ipv4);
     }
     /**
-     * @return The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egreass via Warp IPs.
+     * @return The fallback IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egress via WARP IPs.
      * 
      */
     public Optional<String> ipv4Fallback() {
@@ -47,8 +46,8 @@ public final class TeamsRuleRuleSettingsEgress {
      * @return The IPv6 range to be used for egress.
      * 
      */
-    public String ipv6() {
-        return this.ipv6;
+    public Optional<String> ipv6() {
+        return Optional.ofNullable(this.ipv6);
     }
 
     public static Builder builder() {
@@ -60,9 +59,9 @@ public final class TeamsRuleRuleSettingsEgress {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String ipv4;
+        private @Nullable String ipv4;
         private @Nullable String ipv4Fallback;
-        private String ipv6;
+        private @Nullable String ipv6;
         public Builder() {}
         public Builder(TeamsRuleRuleSettingsEgress defaults) {
     	      Objects.requireNonNull(defaults);
@@ -72,10 +71,8 @@ public final class TeamsRuleRuleSettingsEgress {
         }
 
         @CustomType.Setter
-        public Builder ipv4(String ipv4) {
-            if (ipv4 == null) {
-              throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsEgress", "ipv4");
-            }
+        public Builder ipv4(@Nullable String ipv4) {
+
             this.ipv4 = ipv4;
             return this;
         }
@@ -86,10 +83,8 @@ public final class TeamsRuleRuleSettingsEgress {
             return this;
         }
         @CustomType.Setter
-        public Builder ipv6(String ipv6) {
-            if (ipv6 == null) {
-              throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsEgress", "ipv6");
-            }
+        public Builder ipv6(@Nullable String ipv6) {
+
             this.ipv6 = ipv6;
             return this;
         }

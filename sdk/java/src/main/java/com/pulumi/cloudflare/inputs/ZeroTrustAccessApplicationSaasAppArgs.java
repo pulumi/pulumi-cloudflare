@@ -6,7 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppCustomAttributeArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppCustomClaimArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -22,14 +22,14 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     public static final ZeroTrustAccessApplicationSaasAppArgs Empty = new ZeroTrustAccessApplicationSaasAppArgs();
 
     /**
-     * The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     * The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
      * 
      */
     @Import(name="accessTokenLifetime")
     private @Nullable Output<String> accessTokenLifetime;
 
     /**
-     * @return The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     * @return The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
      * 
      */
     public Optional<Output<String>> accessTokenLifetime() {
@@ -37,14 +37,14 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * Allow PKCE flow without a client secret.
+     * If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
      * 
      */
     @Import(name="allowPkceWithoutClientSecret")
     private @Nullable Output<Boolean> allowPkceWithoutClientSecret;
 
     /**
-     * @return Allow PKCE flow without a client secret.
+     * @return If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
      * 
      */
     public Optional<Output<Boolean>> allowPkceWithoutClientSecret() {
@@ -52,14 +52,14 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * The URL where this applications tile redirects users.
+     * The URL where this applications tile redirects users
      * 
      */
     @Import(name="appLauncherUrl")
     private @Nullable Output<String> appLauncherUrl;
 
     /**
-     * @return The URL where this applications tile redirects users.
+     * @return The URL where this applications tile redirects users
      * 
      */
     public Optional<Output<String>> appLauncherUrl() {
@@ -67,14 +67,16 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * **Modifying this attribute will force creation of a new resource.**
+     * Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+     * Available values: &#34;saml&#34;, &#34;oidc&#34;.
      * 
      */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
     /**
-     * @return **Modifying this attribute will force creation of a new resource.**
+     * @return Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+     * Available values: &#34;saml&#34;, &#34;oidc&#34;.
      * 
      */
     public Optional<Output<String>> authType() {
@@ -82,14 +84,14 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * The application client id.
+     * The application client id
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return The application client id.
+     * @return The application client id
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -97,14 +99,14 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * The application client secret, only returned on initial apply.
+     * The application client secret, only returned on POST request.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return The application client secret, only returned on initial apply.
+     * @return The application client secret, only returned on POST request.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -126,45 +128,36 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         return Optional.ofNullable(this.consumerServiceUrl);
     }
 
-    /**
-     * Custom attribute mapped from IDPs.
-     * 
-     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
     @Import(name="customAttributes")
     private @Nullable Output<List<ZeroTrustAccessApplicationSaasAppCustomAttributeArgs>> customAttributes;
 
-    /**
-     * @return Custom attribute mapped from IDPs.
-     * 
-     */
     public Optional<Output<List<ZeroTrustAccessApplicationSaasAppCustomAttributeArgs>>> customAttributes() {
         return Optional.ofNullable(this.customAttributes);
     }
 
-    /**
-     * Custom claim mapped from IDPs.
-     * 
-     */
     @Import(name="customClaims")
     private @Nullable Output<List<ZeroTrustAccessApplicationSaasAppCustomClaimArgs>> customClaims;
 
-    /**
-     * @return Custom claim mapped from IDPs.
-     * 
-     */
     public Optional<Output<List<ZeroTrustAccessApplicationSaasAppCustomClaimArgs>>> customClaims() {
         return Optional.ofNullable(this.customClaims);
     }
 
     /**
-     * The relay state used if not provided by the identity provider.
+     * The URL that the user will be redirected to after a successful login for IDP initiated logins.
      * 
      */
     @Import(name="defaultRelayState")
     private @Nullable Output<String> defaultRelayState;
 
     /**
-     * @return The relay state used if not provided by the identity provider.
+     * @return The URL that the user will be redirected to after a successful login for IDP initiated logins.
      * 
      */
     public Optional<Output<String>> defaultRelayState() {
@@ -172,14 +165,14 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * The OIDC flows supported by this application.
+     * The OIDC flows supported by this application
      * 
      */
     @Import(name="grantTypes")
     private @Nullable Output<List<String>> grantTypes;
 
     /**
-     * @return The OIDC flows supported by this application.
+     * @return The OIDC flows supported by this application
      * 
      */
     public Optional<Output<List<String>>> grantTypes() {
@@ -187,44 +180,36 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
      * 
      */
     @Import(name="groupFilterRegex")
     private @Nullable Output<String> groupFilterRegex;
 
     /**
-     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
      * 
      */
     public Optional<Output<String>> groupFilterRegex() {
         return Optional.ofNullable(this.groupFilterRegex);
     }
 
-    /**
-     * Hybrid and Implicit Flow options.
-     * 
-     */
     @Import(name="hybridAndImplicitOptions")
     private @Nullable Output<ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs> hybridAndImplicitOptions;
 
-    /**
-     * @return Hybrid and Implicit Flow options.
-     * 
-     */
     public Optional<Output<ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs>> hybridAndImplicitOptions() {
         return Optional.ofNullable(this.hybridAndImplicitOptions);
     }
 
     /**
-     * The unique identifier for the SaaS application.
+     * The unique identifier for your SaaS application.
      * 
      */
     @Import(name="idpEntityId")
     private @Nullable Output<String> idpEntityId;
 
     /**
-     * @return The unique identifier for the SaaS application.
+     * @return The unique identifier for your SaaS application.
      * 
      */
     public Optional<Output<String>> idpEntityId() {
@@ -233,6 +218,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
     /**
      * The format of the name identifier sent to the SaaS application.
+     * Available values: &#34;id&#34;, &#34;email&#34;.
      * 
      */
     @Import(name="nameIdFormat")
@@ -240,6 +226,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
     /**
      * @return The format of the name identifier sent to the SaaS application.
+     * Available values: &#34;id&#34;, &#34;email&#34;.
      * 
      */
     public Optional<Output<String>> nameIdFormat() {
@@ -262,14 +249,14 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * The public certificate that will be used to verify identities.
+     * The Access public certificate that will be used to verify your identity.
      * 
      */
     @Import(name="publicKey")
     private @Nullable Output<String> publicKey;
 
     /**
-     * @return The public certificate that will be used to verify identities.
+     * @return The Access public certificate that will be used to verify your identity.
      * 
      */
     public Optional<Output<String>> publicKey() {
@@ -277,32 +264,24 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
+     * The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
      * 
      */
     @Import(name="redirectUris")
     private @Nullable Output<List<String>> redirectUris;
 
     /**
-     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
+     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
      * 
      */
     public Optional<Output<List<String>>> redirectUris() {
         return Optional.ofNullable(this.redirectUris);
     }
 
-    /**
-     * Refresh token grant options.
-     * 
-     */
     @Import(name="refreshTokenOptions")
-    private @Nullable Output<List<ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs>> refreshTokenOptions;
+    private @Nullable Output<ZeroTrustAccessApplicationSaasAppRefreshTokenOptionsArgs> refreshTokenOptions;
 
-    /**
-     * @return Refresh token grant options.
-     * 
-     */
-    public Optional<Output<List<ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs>>> refreshTokenOptions() {
+    public Optional<Output<ZeroTrustAccessApplicationSaasAppRefreshTokenOptionsArgs>> refreshTokenOptions() {
         return Optional.ofNullable(this.refreshTokenOptions);
     }
 
@@ -322,14 +301,14 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * Define the user information shared with access.
+     * Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Define the user information shared with access.
+     * @return Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -352,18 +331,25 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
     }
 
     /**
-     * The endpoint where the SaaS application will send login requests.
+     * The endpoint where your SaaS application will send login requests.
      * 
      */
     @Import(name="ssoEndpoint")
     private @Nullable Output<String> ssoEndpoint;
 
     /**
-     * @return The endpoint where the SaaS application will send login requests.
+     * @return The endpoint where your SaaS application will send login requests.
      * 
      */
     public Optional<Output<String>> ssoEndpoint() {
         return Optional.ofNullable(this.ssoEndpoint);
+    }
+
+    @Import(name="updatedAt")
+    private @Nullable Output<String> updatedAt;
+
+    public Optional<Output<String>> updatedAt() {
+        return Optional.ofNullable(this.updatedAt);
     }
 
     private ZeroTrustAccessApplicationSaasAppArgs() {}
@@ -376,6 +362,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.consumerServiceUrl = $.consumerServiceUrl;
+        this.createdAt = $.createdAt;
         this.customAttributes = $.customAttributes;
         this.customClaims = $.customClaims;
         this.defaultRelayState = $.defaultRelayState;
@@ -392,6 +379,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         this.scopes = $.scopes;
         this.spEntityId = $.spEntityId;
         this.ssoEndpoint = $.ssoEndpoint;
+        this.updatedAt = $.updatedAt;
     }
 
     public static Builder builder() {
@@ -413,7 +401,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accessTokenLifetime The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+         * @param accessTokenLifetime The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
          * 
          * @return builder
          * 
@@ -424,7 +412,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accessTokenLifetime The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+         * @param accessTokenLifetime The lifetime of the OIDC Access Token after creation. Valid units are m,h. Must be greater than or equal to 1m and less than or equal to 24h.
          * 
          * @return builder
          * 
@@ -434,7 +422,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param allowPkceWithoutClientSecret Allow PKCE flow without a client secret.
+         * @param allowPkceWithoutClientSecret If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
          * 
          * @return builder
          * 
@@ -445,7 +433,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param allowPkceWithoutClientSecret Allow PKCE flow without a client secret.
+         * @param allowPkceWithoutClientSecret If client secret should be required on the token endpoint when authorization*code*with_pkce grant is used.
          * 
          * @return builder
          * 
@@ -455,7 +443,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param appLauncherUrl The URL where this applications tile redirects users.
+         * @param appLauncherUrl The URL where this applications tile redirects users
          * 
          * @return builder
          * 
@@ -466,7 +454,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param appLauncherUrl The URL where this applications tile redirects users.
+         * @param appLauncherUrl The URL where this applications tile redirects users
          * 
          * @return builder
          * 
@@ -476,7 +464,8 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param authType **Modifying this attribute will force creation of a new resource.**
+         * @param authType Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+         * Available values: &#34;saml&#34;, &#34;oidc&#34;.
          * 
          * @return builder
          * 
@@ -487,7 +476,8 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param authType **Modifying this attribute will force creation of a new resource.**
+         * @param authType Optional identifier indicating the authentication protocol used for the saas app. Required for OIDC. Default if unset is &#34;saml&#34;
+         * Available values: &#34;saml&#34;, &#34;oidc&#34;.
          * 
          * @return builder
          * 
@@ -497,7 +487,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clientId The application client id.
+         * @param clientId The application client id
          * 
          * @return builder
          * 
@@ -508,7 +498,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clientId The application client id.
+         * @param clientId The application client id
          * 
          * @return builder
          * 
@@ -518,7 +508,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clientSecret The application client secret, only returned on initial apply.
+         * @param clientSecret The application client secret, only returned on POST request.
          * 
          * @return builder
          * 
@@ -529,7 +519,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param clientSecret The application client secret, only returned on initial apply.
+         * @param clientSecret The application client secret, only returned on POST request.
          * 
          * @return builder
          * 
@@ -559,70 +549,43 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
             return consumerServiceUrl(Output.of(consumerServiceUrl));
         }
 
-        /**
-         * @param customAttributes Custom attribute mapped from IDPs.
-         * 
-         * @return builder
-         * 
-         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
         public Builder customAttributes(@Nullable Output<List<ZeroTrustAccessApplicationSaasAppCustomAttributeArgs>> customAttributes) {
             $.customAttributes = customAttributes;
             return this;
         }
 
-        /**
-         * @param customAttributes Custom attribute mapped from IDPs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customAttributes(List<ZeroTrustAccessApplicationSaasAppCustomAttributeArgs> customAttributes) {
             return customAttributes(Output.of(customAttributes));
         }
 
-        /**
-         * @param customAttributes Custom attribute mapped from IDPs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customAttributes(ZeroTrustAccessApplicationSaasAppCustomAttributeArgs... customAttributes) {
             return customAttributes(List.of(customAttributes));
         }
 
-        /**
-         * @param customClaims Custom claim mapped from IDPs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customClaims(@Nullable Output<List<ZeroTrustAccessApplicationSaasAppCustomClaimArgs>> customClaims) {
             $.customClaims = customClaims;
             return this;
         }
 
-        /**
-         * @param customClaims Custom claim mapped from IDPs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customClaims(List<ZeroTrustAccessApplicationSaasAppCustomClaimArgs> customClaims) {
             return customClaims(Output.of(customClaims));
         }
 
-        /**
-         * @param customClaims Custom claim mapped from IDPs.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customClaims(ZeroTrustAccessApplicationSaasAppCustomClaimArgs... customClaims) {
             return customClaims(List.of(customClaims));
         }
 
         /**
-         * @param defaultRelayState The relay state used if not provided by the identity provider.
+         * @param defaultRelayState The URL that the user will be redirected to after a successful login for IDP initiated logins.
          * 
          * @return builder
          * 
@@ -633,7 +596,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param defaultRelayState The relay state used if not provided by the identity provider.
+         * @param defaultRelayState The URL that the user will be redirected to after a successful login for IDP initiated logins.
          * 
          * @return builder
          * 
@@ -643,7 +606,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param grantTypes The OIDC flows supported by this application.
+         * @param grantTypes The OIDC flows supported by this application
          * 
          * @return builder
          * 
@@ -654,7 +617,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param grantTypes The OIDC flows supported by this application.
+         * @param grantTypes The OIDC flows supported by this application
          * 
          * @return builder
          * 
@@ -664,7 +627,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param grantTypes The OIDC flows supported by this application.
+         * @param grantTypes The OIDC flows supported by this application
          * 
          * @return builder
          * 
@@ -674,7 +637,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
          * 
          * @return builder
          * 
@@ -685,7 +648,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
          * 
          * @return builder
          * 
@@ -694,29 +657,17 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
             return groupFilterRegex(Output.of(groupFilterRegex));
         }
 
-        /**
-         * @param hybridAndImplicitOptions Hybrid and Implicit Flow options.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hybridAndImplicitOptions(@Nullable Output<ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs> hybridAndImplicitOptions) {
             $.hybridAndImplicitOptions = hybridAndImplicitOptions;
             return this;
         }
 
-        /**
-         * @param hybridAndImplicitOptions Hybrid and Implicit Flow options.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hybridAndImplicitOptions(ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptionsArgs hybridAndImplicitOptions) {
             return hybridAndImplicitOptions(Output.of(hybridAndImplicitOptions));
         }
 
         /**
-         * @param idpEntityId The unique identifier for the SaaS application.
+         * @param idpEntityId The unique identifier for your SaaS application.
          * 
          * @return builder
          * 
@@ -727,7 +678,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param idpEntityId The unique identifier for the SaaS application.
+         * @param idpEntityId The unique identifier for your SaaS application.
          * 
          * @return builder
          * 
@@ -738,6 +689,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
         /**
          * @param nameIdFormat The format of the name identifier sent to the SaaS application.
+         * Available values: &#34;id&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -749,6 +701,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
 
         /**
          * @param nameIdFormat The format of the name identifier sent to the SaaS application.
+         * Available values: &#34;id&#34;, &#34;email&#34;.
          * 
          * @return builder
          * 
@@ -779,7 +732,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param publicKey The public certificate that will be used to verify identities.
+         * @param publicKey The Access public certificate that will be used to verify your identity.
          * 
          * @return builder
          * 
@@ -790,7 +743,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param publicKey The public certificate that will be used to verify identities.
+         * @param publicKey The Access public certificate that will be used to verify your identity.
          * 
          * @return builder
          * 
@@ -800,7 +753,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
          * 
          * @return builder
          * 
@@ -811,7 +764,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
          * 
          * @return builder
          * 
@@ -821,7 +774,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
          * 
          * @return builder
          * 
@@ -830,35 +783,13 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
             return redirectUris(List.of(redirectUris));
         }
 
-        /**
-         * @param refreshTokenOptions Refresh token grant options.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder refreshTokenOptions(@Nullable Output<List<ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs>> refreshTokenOptions) {
+        public Builder refreshTokenOptions(@Nullable Output<ZeroTrustAccessApplicationSaasAppRefreshTokenOptionsArgs> refreshTokenOptions) {
             $.refreshTokenOptions = refreshTokenOptions;
             return this;
         }
 
-        /**
-         * @param refreshTokenOptions Refresh token grant options.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder refreshTokenOptions(List<ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs> refreshTokenOptions) {
+        public Builder refreshTokenOptions(ZeroTrustAccessApplicationSaasAppRefreshTokenOptionsArgs refreshTokenOptions) {
             return refreshTokenOptions(Output.of(refreshTokenOptions));
-        }
-
-        /**
-         * @param refreshTokenOptions Refresh token grant options.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder refreshTokenOptions(ZeroTrustAccessApplicationSaasAppRefreshTokenOptionArgs... refreshTokenOptions) {
-            return refreshTokenOptions(List.of(refreshTokenOptions));
         }
 
         /**
@@ -883,7 +814,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param scopes Define the user information shared with access.
+         * @param scopes Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
          * 
          * @return builder
          * 
@@ -894,7 +825,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param scopes Define the user information shared with access.
+         * @param scopes Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
          * 
          * @return builder
          * 
@@ -904,7 +835,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param scopes Define the user information shared with access.
+         * @param scopes Define the user information shared with access, &#34;offline_access&#34; scope will be automatically enabled if refresh tokens are enabled
          * 
          * @return builder
          * 
@@ -935,7 +866,7 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ssoEndpoint The endpoint where the SaaS application will send login requests.
+         * @param ssoEndpoint The endpoint where your SaaS application will send login requests.
          * 
          * @return builder
          * 
@@ -946,13 +877,22 @@ public final class ZeroTrustAccessApplicationSaasAppArgs extends com.pulumi.reso
         }
 
         /**
-         * @param ssoEndpoint The endpoint where the SaaS application will send login requests.
+         * @param ssoEndpoint The endpoint where your SaaS application will send login requests.
          * 
          * @return builder
          * 
          */
         public Builder ssoEndpoint(String ssoEndpoint) {
             return ssoEndpoint(Output.of(ssoEndpoint));
+        }
+
+        public Builder updatedAt(@Nullable Output<String> updatedAt) {
+            $.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Builder updatedAt(String updatedAt) {
+            return updatedAt(Output.of(updatedAt));
         }
 
         public ZeroTrustAccessApplicationSaasAppArgs build() {

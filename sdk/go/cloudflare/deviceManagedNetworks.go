@@ -8,59 +8,31 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
-//
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDeviceManagedNetworks(ctx, "managed_networks", &cloudflare.DeviceManagedNetworksArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("managed-network-1"),
-//				Type:      pulumi.String("tls"),
-//				Config: &cloudflare.DeviceManagedNetworksConfigArgs{
-//					TlsSockaddr: pulumi.String("foobar:1234"),
-//					Sha256:      pulumi.String("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks example <account_id>/<device_managed_networks_id>
+// $ pulumi import cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks example '<account_id>/<network_id>'
 // ```
+//
+// Deprecated: cloudflare.index/devicemanagednetworks.DeviceManagedNetworks has been deprecated in favor of cloudflare.index/zerotrustdevicemanagednetworks.ZeroTrustDeviceManagedNetworks
 type DeviceManagedNetworks struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The configuration containing information for the WARP client to detect the managed network.
+	// The configuration object containing information for the WARP client to detect the managed network.
 	Config DeviceManagedNetworksConfigOutput `pulumi:"config"`
-	// The name of the Device Managed Network. Must be unique.
+	// The name of the device managed network. This name must be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of Device Managed Network. Available values: `tls`.
+	// API UUID.
+	NetworkId pulumi.StringOutput `pulumi:"networkId"`
+	// The type of device managed network.
+	// Available values: "tls".
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -83,6 +55,12 @@ func NewDeviceManagedNetworks(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DeviceManagedNetworks
 	err := ctx.RegisterResource("cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks", name, args, &resource, opts...)
@@ -106,24 +84,28 @@ func GetDeviceManagedNetworks(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeviceManagedNetworks resources.
 type deviceManagedNetworksState struct {
-	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The configuration containing information for the WARP client to detect the managed network.
+	// The configuration object containing information for the WARP client to detect the managed network.
 	Config *DeviceManagedNetworksConfig `pulumi:"config"`
-	// The name of the Device Managed Network. Must be unique.
+	// The name of the device managed network. This name must be unique.
 	Name *string `pulumi:"name"`
-	// The type of Device Managed Network. Available values: `tls`.
+	// API UUID.
+	NetworkId *string `pulumi:"networkId"`
+	// The type of device managed network.
+	// Available values: "tls".
 	Type *string `pulumi:"type"`
 }
 
 type DeviceManagedNetworksState struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The configuration containing information for the WARP client to detect the managed network.
+	// The configuration object containing information for the WARP client to detect the managed network.
 	Config DeviceManagedNetworksConfigPtrInput
-	// The name of the Device Managed Network. Must be unique.
+	// The name of the device managed network. This name must be unique.
 	Name pulumi.StringPtrInput
-	// The type of Device Managed Network. Available values: `tls`.
+	// API UUID.
+	NetworkId pulumi.StringPtrInput
+	// The type of device managed network.
+	// Available values: "tls".
 	Type pulumi.StringPtrInput
 }
 
@@ -132,25 +114,25 @@ func (DeviceManagedNetworksState) ElementType() reflect.Type {
 }
 
 type deviceManagedNetworksArgs struct {
-	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The configuration containing information for the WARP client to detect the managed network.
+	// The configuration object containing information for the WARP client to detect the managed network.
 	Config DeviceManagedNetworksConfig `pulumi:"config"`
-	// The name of the Device Managed Network. Must be unique.
+	// The name of the device managed network. This name must be unique.
 	Name string `pulumi:"name"`
-	// The type of Device Managed Network. Available values: `tls`.
+	// The type of device managed network.
+	// Available values: "tls".
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a DeviceManagedNetworks resource.
 type DeviceManagedNetworksArgs struct {
-	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The configuration containing information for the WARP client to detect the managed network.
+	// The configuration object containing information for the WARP client to detect the managed network.
 	Config DeviceManagedNetworksConfigInput
-	// The name of the Device Managed Network. Must be unique.
+	// The name of the device managed network. This name must be unique.
 	Name pulumi.StringInput
-	// The type of Device Managed Network. Available values: `tls`.
+	// The type of device managed network.
+	// Available values: "tls".
 	Type pulumi.StringInput
 }
 
@@ -241,22 +223,27 @@ func (o DeviceManagedNetworksOutput) ToDeviceManagedNetworksOutputWithContext(ct
 	return o
 }
 
-// The account identifier to target for the resource.
 func (o DeviceManagedNetworksOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceManagedNetworks) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The configuration containing information for the WARP client to detect the managed network.
+// The configuration object containing information for the WARP client to detect the managed network.
 func (o DeviceManagedNetworksOutput) Config() DeviceManagedNetworksConfigOutput {
 	return o.ApplyT(func(v *DeviceManagedNetworks) DeviceManagedNetworksConfigOutput { return v.Config }).(DeviceManagedNetworksConfigOutput)
 }
 
-// The name of the Device Managed Network. Must be unique.
+// The name of the device managed network. This name must be unique.
 func (o DeviceManagedNetworksOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceManagedNetworks) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of Device Managed Network. Available values: `tls`.
+// API UUID.
+func (o DeviceManagedNetworksOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceManagedNetworks) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The type of device managed network.
+// Available values: "tls".
 func (o DeviceManagedNetworksOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceManagedNetworks) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

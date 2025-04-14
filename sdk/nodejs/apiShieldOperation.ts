@@ -2,23 +2,29 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Api shield operation
- *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.ApiShieldOperation("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * const exampleApiShieldOperation = new cloudflare.ApiShieldOperation("example_api_shield_operation", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     endpoint: "/api/v1/users/{var1}",
+ *     host: "www.example.com",
  *     method: "GET",
- *     host: "api.example.com",
- *     endpoint: "/path",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/apiShieldOperation:ApiShieldOperation example '<zone_id>/<operation_id>'
  * ```
  */
 export class ApiShieldOperation extends pulumi.CustomResource {
@@ -50,19 +56,26 @@ export class ApiShieldOperation extends pulumi.CustomResource {
     }
 
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      */
     public readonly endpoint!: pulumi.Output<string>;
+    public /*out*/ readonly features!: pulumi.Output<outputs.ApiShieldOperationFeatures>;
     /**
-     * RFC3986-compliant host
+     * RFC3986-compliant host.
      */
     public readonly host!: pulumi.Output<string>;
+    public /*out*/ readonly lastUpdated!: pulumi.Output<string>;
     /**
-     * The HTTP method used to access the endpoint
+     * The HTTP method used to access the endpoint.
+     * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
     public readonly method!: pulumi.Output<string>;
     /**
-     * The zone identifier to target for the resource.
+     * UUID
+     */
+    public /*out*/ readonly operationId!: pulumi.Output<string>;
+    /**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -80,8 +93,11 @@ export class ApiShieldOperation extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ApiShieldOperationState | undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["features"] = state ? state.features : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["method"] = state ? state.method : undefined;
+            resourceInputs["operationId"] = state ? state.operationId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ApiShieldOperationArgs | undefined;
@@ -101,6 +117,9 @@ export class ApiShieldOperation extends pulumi.CustomResource {
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["method"] = args ? args.method : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["features"] = undefined /*out*/;
+            resourceInputs["lastUpdated"] = undefined /*out*/;
+            resourceInputs["operationId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiShieldOperation.__pulumiType, name, resourceInputs, opts);
@@ -112,19 +131,26 @@ export class ApiShieldOperation extends pulumi.CustomResource {
  */
 export interface ApiShieldOperationState {
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      */
     endpoint?: pulumi.Input<string>;
+    features?: pulumi.Input<inputs.ApiShieldOperationFeatures>;
     /**
-     * RFC3986-compliant host
+     * RFC3986-compliant host.
      */
     host?: pulumi.Input<string>;
+    lastUpdated?: pulumi.Input<string>;
     /**
-     * The HTTP method used to access the endpoint
+     * The HTTP method used to access the endpoint.
+     * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
     method?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * UUID
+     */
+    operationId?: pulumi.Input<string>;
+    /**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -134,19 +160,20 @@ export interface ApiShieldOperationState {
  */
 export interface ApiShieldOperationArgs {
     /**
-     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/)
+     * The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with {varN}, starting with {var1}, during insertion. This will further be Cloudflare-normalized upon insertion. See: https://developers.cloudflare.com/rules/normalization/how-it-works/.
      */
     endpoint: pulumi.Input<string>;
     /**
-     * RFC3986-compliant host
+     * RFC3986-compliant host.
      */
     host: pulumi.Input<string>;
     /**
-     * The HTTP method used to access the endpoint
+     * The HTTP method used to access the endpoint.
+     * Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
      */
     method: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource.
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }

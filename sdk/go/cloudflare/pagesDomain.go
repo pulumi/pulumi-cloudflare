@@ -8,15 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource for managing Cloudflare Pages domains.
-//
 // > A DNS record for the domain is not automatically created. You need to create
 //
-//	a `Record` resource for the domain you want to use.
+//	a `cloudflareRecord` resource for the domain you want to use.
 //
 // ## Example Usage
 //
@@ -25,17 +23,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewPagesDomain(ctx, "my-domain", &cloudflare.PagesDomainArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ProjectName: pulumi.String("my-example-project"),
-//				Domain:      pulumi.String("example.com"),
+//			_, err := cloudflare.NewPagesDomain(ctx, "example_pages_domain", &cloudflare.PagesDomainArgs{
+//				AccountId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				ProjectName: pulumi.String("this-is-my-project-01"),
+//				Name:        pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -49,19 +47,25 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/pagesDomain:PagesDomain example <account_id>/<project_name>/<domain-name>
+// $ pulumi import cloudflare:index/pagesDomain:PagesDomain example '<account_id>/<project_name>/<domain_name>'
 // ```
 type PagesDomain struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Custom domain. **Modifying this attribute will force creation of a new resource.**
-	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+	// Available values: "google", "letsEncrypt".
+	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
+	CreatedOn            pulumi.StringOutput `pulumi:"createdOn"`
+	DomainId             pulumi.StringOutput `pulumi:"domainId"`
+	Name                 pulumi.StringOutput `pulumi:"name"`
+	// Name of the project.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
-	// Status of the custom domain.
-	Status pulumi.StringOutput `pulumi:"status"`
+	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+	Status           pulumi.StringOutput               `pulumi:"status"`
+	ValidationData   PagesDomainValidationDataOutput   `pulumi:"validationData"`
+	VerificationData PagesDomainVerificationDataOutput `pulumi:"verificationData"`
+	ZoneTag          pulumi.StringOutput               `pulumi:"zoneTag"`
 }
 
 // NewPagesDomain registers a new resource with the given unique name, arguments, and options.
@@ -74,8 +78,8 @@ func NewPagesDomain(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.Domain == nil {
-		return nil, errors.New("invalid value for required argument 'Domain'")
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.ProjectName == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectName'")
@@ -103,25 +107,37 @@ func GetPagesDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PagesDomain resources.
 type pagesDomainState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId *string `pulumi:"accountId"`
-	// Custom domain. **Modifying this attribute will force creation of a new resource.**
-	Domain *string `pulumi:"domain"`
-	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+	// Available values: "google", "letsEncrypt".
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	CreatedOn            *string `pulumi:"createdOn"`
+	DomainId             *string `pulumi:"domainId"`
+	Name                 *string `pulumi:"name"`
+	// Name of the project.
 	ProjectName *string `pulumi:"projectName"`
-	// Status of the custom domain.
-	Status *string `pulumi:"status"`
+	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+	Status           *string                      `pulumi:"status"`
+	ValidationData   *PagesDomainValidationData   `pulumi:"validationData"`
+	VerificationData *PagesDomainVerificationData `pulumi:"verificationData"`
+	ZoneTag          *string                      `pulumi:"zoneTag"`
 }
 
 type PagesDomainState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringPtrInput
-	// Custom domain. **Modifying this attribute will force creation of a new resource.**
-	Domain pulumi.StringPtrInput
-	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+	// Available values: "google", "letsEncrypt".
+	CertificateAuthority pulumi.StringPtrInput
+	CreatedOn            pulumi.StringPtrInput
+	DomainId             pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
+	// Name of the project.
 	ProjectName pulumi.StringPtrInput
-	// Status of the custom domain.
-	Status pulumi.StringPtrInput
+	// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
+	Status           pulumi.StringPtrInput
+	ValidationData   PagesDomainValidationDataPtrInput
+	VerificationData PagesDomainVerificationDataPtrInput
+	ZoneTag          pulumi.StringPtrInput
 }
 
 func (PagesDomainState) ElementType() reflect.Type {
@@ -129,21 +145,19 @@ func (PagesDomainState) ElementType() reflect.Type {
 }
 
 type pagesDomainArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId string `pulumi:"accountId"`
-	// Custom domain. **Modifying this attribute will force creation of a new resource.**
-	Domain string `pulumi:"domain"`
-	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+	Name      string `pulumi:"name"`
+	// Name of the project.
 	ProjectName string `pulumi:"projectName"`
 }
 
 // The set of arguments for constructing a PagesDomain resource.
 type PagesDomainArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// Identifier
 	AccountId pulumi.StringInput
-	// Custom domain. **Modifying this attribute will force creation of a new resource.**
-	Domain pulumi.StringInput
-	// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+	Name      pulumi.StringInput
+	// Name of the project.
 	ProjectName pulumi.StringInput
 }
 
@@ -234,24 +248,48 @@ func (o PagesDomainOutput) ToPagesDomainOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// Identifier
 func (o PagesDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Custom domain. **Modifying this attribute will force creation of a new resource.**
-func (o PagesDomainOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+// Available values: "google", "letsEncrypt".
+func (o PagesDomainOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
 
-// Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
+func (o PagesDomainOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o PagesDomainOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+func (o PagesDomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the project.
 func (o PagesDomainOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// Status of the custom domain.
+// Available values: "initializing", "pending", "active", "deactivated", "blocked", "error".
 func (o PagesDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o PagesDomainOutput) ValidationData() PagesDomainValidationDataOutput {
+	return o.ApplyT(func(v *PagesDomain) PagesDomainValidationDataOutput { return v.ValidationData }).(PagesDomainValidationDataOutput)
+}
+
+func (o PagesDomainOutput) VerificationData() PagesDomainVerificationDataOutput {
+	return o.ApplyT(func(v *PagesDomain) PagesDomainVerificationDataOutput { return v.VerificationData }).(PagesDomainVerificationDataOutput)
+}
+
+func (o PagesDomainOutput) ZoneTag() pulumi.StringOutput {
+	return o.ApplyT(func(v *PagesDomain) pulumi.StringOutput { return v.ZoneTag }).(pulumi.StringOutput)
 }
 
 type PagesDomainArrayOutput struct{ *pulumi.OutputState }

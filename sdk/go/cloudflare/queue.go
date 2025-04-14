@@ -8,12 +8,10 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
+	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides the ability to manage Cloudflare Workers Queue features.
-//
 // ## Example Usage
 //
 // ```go
@@ -21,16 +19,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewQueue(ctx, "example", &cloudflare.QueueArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("my-queue"),
+//			_, err := cloudflare.NewQueue(ctx, "example_queue", &cloudflare.QueueArgs{
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				QueueName: pulumi.String("example-queue"),
 //			})
 //			if err != nil {
 //				return err
@@ -44,15 +42,22 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
+// $ pulumi import cloudflare:index/queue:Queue example '<account_id>/<queue_id>'
 // ```
 type Queue struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The name of the queue.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// A Resource identifier.
+	AccountId           pulumi.StringOutput          `pulumi:"accountId"`
+	Consumers           QueueConsumerTypeArrayOutput `pulumi:"consumers"`
+	ConsumersTotalCount pulumi.Float64Output         `pulumi:"consumersTotalCount"`
+	CreatedOn           pulumi.StringOutput          `pulumi:"createdOn"`
+	ModifiedOn          pulumi.StringOutput          `pulumi:"modifiedOn"`
+	Producers           QueueProducerArrayOutput     `pulumi:"producers"`
+	ProducersTotalCount pulumi.Float64Output         `pulumi:"producersTotalCount"`
+	QueueId             pulumi.StringOutput          `pulumi:"queueId"`
+	QueueName           pulumi.StringOutput          `pulumi:"queueName"`
+	Settings            QueueSettingsOutput          `pulumi:"settings"`
 }
 
 // NewQueue registers a new resource with the given unique name, arguments, and options.
@@ -65,8 +70,8 @@ func NewQueue(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
+	if args.QueueName == nil {
+		return nil, errors.New("invalid value for required argument 'QueueName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Queue
@@ -91,17 +96,31 @@ func GetQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Queue resources.
 type queueState struct {
-	// The account identifier to target for the resource.
-	AccountId *string `pulumi:"accountId"`
-	// The name of the queue.
-	Name *string `pulumi:"name"`
+	// A Resource identifier.
+	AccountId           *string             `pulumi:"accountId"`
+	Consumers           []QueueConsumerType `pulumi:"consumers"`
+	ConsumersTotalCount *float64            `pulumi:"consumersTotalCount"`
+	CreatedOn           *string             `pulumi:"createdOn"`
+	ModifiedOn          *string             `pulumi:"modifiedOn"`
+	Producers           []QueueProducer     `pulumi:"producers"`
+	ProducersTotalCount *float64            `pulumi:"producersTotalCount"`
+	QueueId             *string             `pulumi:"queueId"`
+	QueueName           *string             `pulumi:"queueName"`
+	Settings            *QueueSettings      `pulumi:"settings"`
 }
 
 type QueueState struct {
-	// The account identifier to target for the resource.
-	AccountId pulumi.StringPtrInput
-	// The name of the queue.
-	Name pulumi.StringPtrInput
+	// A Resource identifier.
+	AccountId           pulumi.StringPtrInput
+	Consumers           QueueConsumerTypeArrayInput
+	ConsumersTotalCount pulumi.Float64PtrInput
+	CreatedOn           pulumi.StringPtrInput
+	ModifiedOn          pulumi.StringPtrInput
+	Producers           QueueProducerArrayInput
+	ProducersTotalCount pulumi.Float64PtrInput
+	QueueId             pulumi.StringPtrInput
+	QueueName           pulumi.StringPtrInput
+	Settings            QueueSettingsPtrInput
 }
 
 func (QueueState) ElementType() reflect.Type {
@@ -109,18 +128,18 @@ func (QueueState) ElementType() reflect.Type {
 }
 
 type queueArgs struct {
-	// The account identifier to target for the resource.
-	AccountId string `pulumi:"accountId"`
-	// The name of the queue.
-	Name string `pulumi:"name"`
+	// A Resource identifier.
+	AccountId string         `pulumi:"accountId"`
+	QueueName string         `pulumi:"queueName"`
+	Settings  *QueueSettings `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a Queue resource.
 type QueueArgs struct {
-	// The account identifier to target for the resource.
+	// A Resource identifier.
 	AccountId pulumi.StringInput
-	// The name of the queue.
-	Name pulumi.StringInput
+	QueueName pulumi.StringInput
+	Settings  QueueSettingsPtrInput
 }
 
 func (QueueArgs) ElementType() reflect.Type {
@@ -210,14 +229,45 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 	return o
 }
 
-// The account identifier to target for the resource.
+// A Resource identifier.
 func (o QueueOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The name of the queue.
-func (o QueueOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o QueueOutput) Consumers() QueueConsumerTypeArrayOutput {
+	return o.ApplyT(func(v *Queue) QueueConsumerTypeArrayOutput { return v.Consumers }).(QueueConsumerTypeArrayOutput)
+}
+
+func (o QueueOutput) ConsumersTotalCount() pulumi.Float64Output {
+	return o.ApplyT(func(v *Queue) pulumi.Float64Output { return v.ConsumersTotalCount }).(pulumi.Float64Output)
+}
+
+func (o QueueOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+func (o QueueOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o QueueOutput) Producers() QueueProducerArrayOutput {
+	return o.ApplyT(func(v *Queue) QueueProducerArrayOutput { return v.Producers }).(QueueProducerArrayOutput)
+}
+
+func (o QueueOutput) ProducersTotalCount() pulumi.Float64Output {
+	return o.ApplyT(func(v *Queue) pulumi.Float64Output { return v.ProducersTotalCount }).(pulumi.Float64Output)
+}
+
+func (o QueueOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.QueueId }).(pulumi.StringOutput)
+}
+
+func (o QueueOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
+}
+
+func (o QueueOutput) Settings() QueueSettingsOutput {
+	return o.ApplyT(func(v *Queue) QueueSettingsOutput { return v.Settings }).(QueueSettingsOutput)
 }
 
 type QueueArrayOutput struct{ *pulumi.OutputState }

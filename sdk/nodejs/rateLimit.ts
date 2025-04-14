@@ -7,10 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare rate limit resource for a given zone. This can
- * be used to limit the traffic you receive zone-wide, or matching more
- * specific types of requests/responses.
- *
  * > `cloudflare.RateLimit` is in a deprecation phase until June 15th, 2025.
  *   During this time period, this resource is still
  *   fully supported but you are strongly advised to move to the
@@ -23,73 +19,46 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.RateLimit("example", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     threshold: 2000,
- *     period: 2,
+ * const exampleRateLimit = new cloudflare.RateLimit("example_rate_limit", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     action: {
+ *         mode: "simulate",
+ *         response: {
+ *             body: "<error>This request has been rate-limited.</error>",
+ *             contentType: "text/xml",
+ *         },
+ *         timeout: 86400,
+ *     },
  *     match: {
+ *         headers: [{
+ *             name: "Cf-Cache-Status",
+ *             op: "eq",
+ *             value: "HIT",
+ *         }],
  *         request: {
- *             urlPattern: `${cloudflareZone}/*`,
+ *             methods: [
+ *                 "GET",
+ *                 "POST",
+ *             ],
  *             schemes: [
  *                 "HTTP",
  *                 "HTTPS",
  *             ],
- *             methods: [
- *                 "GET",
- *                 "POST",
- *                 "PUT",
- *                 "DELETE",
- *                 "PATCH",
- *                 "HEAD",
- *             ],
+ *             url: "*.example.org/path*",
  *         },
  *         response: {
- *             statuses: [
- *                 200,
- *                 201,
- *                 202,
- *                 301,
- *                 429,
- *             ],
- *             originTraffic: false,
- *             headers: [
- *                 {
- *                     name: "Host",
- *                     op: "eq",
- *                     value: "localhost",
- *                 },
- *                 {
- *                     name: "X-Example",
- *                     op: "ne",
- *                     value: "my-example",
- *                 },
- *             ],
+ *             originTraffic: true,
  *         },
  *     },
- *     action: {
- *         mode: "simulate",
- *         timeout: 43200,
- *         response: {
- *             contentType: "text/plain",
- *             body: "custom response body",
- *         },
- *     },
- *     correlate: {
- *         by: "nat",
- *     },
- *     disabled: false,
- *     description: "example rate limit for a zone",
- *     bypassUrlPatterns: [
- *         "example.com/bypass1",
- *         "example.com/bypass2",
- *     ],
+ *     period: 900,
+ *     threshold: 60,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
+ * $ pulumi import cloudflare:index/rateLimit:RateLimit example '<zone_id>/<rate_limit_id>'
  * ```
  */
 export class RateLimit extends pulumi.CustomResource {
@@ -121,36 +90,35 @@ export class RateLimit extends pulumi.CustomResource {
     }
 
     /**
-     * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      */
     public readonly action!: pulumi.Output<outputs.RateLimitAction>;
-    public readonly bypassUrlPatterns!: pulumi.Output<string[] | undefined>;
     /**
-     * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+     * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
      */
-    public readonly correlate!: pulumi.Output<outputs.RateLimitCorrelate | undefined>;
+    public /*out*/ readonly bypasses!: pulumi.Output<outputs.RateLimitBypass[]>;
     /**
-     * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly description!: pulumi.Output<string>;
     /**
-     * Whether this ratelimit is currently disabled. Defaults to `false`.
+     * When true, indicates that the rate limit is currently disabled.
      */
-    public readonly disabled!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly disabled!: pulumi.Output<boolean>;
     /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+     * Determines which traffic the rate limit counts towards the threshold.
      */
     public readonly match!: pulumi.Output<outputs.RateLimitMatch>;
     /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+     * The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      */
     public readonly period!: pulumi.Output<number>;
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period.
+     * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      */
     public readonly threshold!: pulumi.Output<number>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -168,8 +136,7 @@ export class RateLimit extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RateLimitState | undefined;
             resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["bypassUrlPatterns"] = state ? state.bypassUrlPatterns : undefined;
-            resourceInputs["correlate"] = state ? state.correlate : undefined;
+            resourceInputs["bypasses"] = state ? state.bypasses : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["match"] = state ? state.match : undefined;
@@ -181,6 +148,9 @@ export class RateLimit extends pulumi.CustomResource {
             if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
+            if ((!args || args.match === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'match'");
+            }
             if ((!args || args.period === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
@@ -191,14 +161,13 @@ export class RateLimit extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["bypassUrlPatterns"] = args ? args.bypassUrlPatterns : undefined;
-            resourceInputs["correlate"] = args ? args.correlate : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["match"] = args ? args.match : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["threshold"] = args ? args.threshold : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["bypasses"] = undefined /*out*/;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["disabled"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RateLimit.__pulumiType, name, resourceInputs, opts);
@@ -210,36 +179,35 @@ export class RateLimit extends pulumi.CustomResource {
  */
 export interface RateLimitState {
     /**
-     * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      */
     action?: pulumi.Input<inputs.RateLimitAction>;
-    bypassUrlPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+     * Criteria specifying when the current rate limit should be bypassed. You can specify that the rate limit should not apply to one or more URLs.
      */
-    correlate?: pulumi.Input<inputs.RateLimitCorrelate>;
+    bypasses?: pulumi.Input<pulumi.Input<inputs.RateLimitBypass>[]>;
     /**
-     * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether this ratelimit is currently disabled. Defaults to `false`.
+     * When true, indicates that the rate limit is currently disabled.
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
+     * Determines which traffic the rate limit counts towards the threshold.
      */
     match?: pulumi.Input<inputs.RateLimitMatch>;
     /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+     * The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      */
     period?: pulumi.Input<number>;
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period.
+     * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      */
     threshold?: pulumi.Input<number>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -249,36 +217,23 @@ export interface RateLimitState {
  */
 export interface RateLimitArgs {
     /**
-     * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+     * The action to perform when the threshold of matched traffic within the configured period is exceeded.
      */
     action: pulumi.Input<inputs.RateLimitAction>;
-    bypassUrlPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+     * Determines which traffic the rate limit counts towards the threshold.
      */
-    correlate?: pulumi.Input<inputs.RateLimitCorrelate>;
+    match: pulumi.Input<inputs.RateLimitMatch>;
     /**
-     * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Whether this ratelimit is currently disabled. Defaults to `false`.
-     */
-    disabled?: pulumi.Input<boolean>;
-    /**
-     * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
-     */
-    match?: pulumi.Input<inputs.RateLimitMatch>;
-    /**
-     * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed.
+     * The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
      */
     period: pulumi.Input<number>;
     /**
-     * The threshold that triggers the rate limit mitigations, combine with period.
+     * The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
      */
     threshold: pulumi.Input<number>;
     /**
-     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * Identifier
      */
     zoneId: pulumi.Input<string>;
 }
