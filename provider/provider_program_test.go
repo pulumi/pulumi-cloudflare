@@ -18,6 +18,7 @@ import (
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optup"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
@@ -47,7 +48,7 @@ var schemaBytes []byte
 
 func providerFactory[T any](T) (pulumirpc.ResourceProviderServer, error) {
 	ctx := context.Background()
-	version.Version = "0.0.1"
+	version.Version = "6.0.0"
 	info := Provider()
 
 	sink := discardSink{}
@@ -90,4 +91,19 @@ func TestWorkerKVNamespaceUpgrade(t *testing.T) {
 func TestRecordUpgrade(t *testing.T) {
 	testUpgrade(
 		t, "test-programs/record/recordv5", optproviderupgrade.NewSourcePath("test-programs/record"))
+}
+
+func TestAccRecordGo(t *testing.T) {
+	rpFactory := providers.ResourceProviderFactory(providerFactory)
+	pt := pulumitest.NewPulumiTest(
+		t, "test-programs/recordgo",
+		opttest.GoModReplacement("github.com/pulumi/pulumi-cloudflare/sdk/v6", "..", "sdk"),
+		opttest.AttachProvider(providerName, rpFactory),
+	)
+	pt.SetConfig(t, "accountId", os.Getenv("CLOUDFLARE_ACCOUNT_ID"))
+
+	pt.Up(t)
+	// TODO[pulumi/pulumi-cloudflare#1120]: Dirty refresh on record
+	// pt.Refresh(t, optrefresh.ExpectNoChanges())
+	pt.Up(t, optup.ExpectNoChanges())
 }
