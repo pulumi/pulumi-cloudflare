@@ -1,0 +1,19 @@
+runtime: yaml
+name: page-rule
+config:
+  cloudflare-zone-id:
+    type: string
+  cloudflare-domain:
+    type: string
+resources:
+  pageRule:
+    type: cloudflare:PageRule
+    properties:
+      zoneId: ${cloudflare-zone-id}
+      target: "${cloudflare-domain}/1"
+      priority: 1
+      status: active
+      actions:
+        forwardingUrl:
+          url: "https://${cloudflare-domain}/2"
+          statusCode: 301
