@@ -59,19 +59,25 @@ func providerFactory[T any](T) (pulumirpc.ResourceProviderServer, error) {
 		})
 }
 
-func testUpgrade(
-	t *testing.T, dir1 string, opts ...optproviderupgrade.PreviewProviderUpgradeOpt,
-) auto.PreviewResult {
+func testProgram(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.PulumiTest {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without credentials")
 	}
 
-	// Provider factory allows the tests to run against an in-process provider.
 	rpFactory := providers.ResourceProviderFactory(providerFactory)
-	pt := pulumitest.NewPulumiTest(t, dir1,
-		opttest.AttachProvider(providerName, rpFactory))
+	opts = append(opts, opttest.AttachProvider(providerName, rpFactory))
+	pt := pulumitest.NewPulumiTest(t, dir, opts...)
 	pt.SetConfig(t, "cloudflare-account-id", os.Getenv("CLOUDFLARE_ACCOUNT_ID"))
 	pt.SetConfig(t, "cloudflare-zone-id", os.Getenv("CLOUDFLARE_ZONE_ID"))
+	pt.SetConfig(t, "cloudflare-domain", "pulumi-cloudflare-demo.com")
+
+	return pt
+}
+
+func testUpgrade(
+	t *testing.T, dir1 string, opts ...optproviderupgrade.PreviewProviderUpgradeOpt,
+) auto.PreviewResult {
+	pt := testProgram(t, dir1)
 	previewResult := providertest.PreviewProviderUpgrade(t, pt, providerName, defaultBaselineVersion, opts...)
 
 	assertpreview.HasNoReplacements(t, previewResult)
@@ -93,14 +99,9 @@ func TestRecordUpgrade(t *testing.T) {
 		t, "test-programs/record/recordv5", optproviderupgrade.NewSourcePath("test-programs/record"))
 }
 
-func testProgram(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.PulumiTest {
-	rpFactory := providers.ResourceProviderFactory(providerFactory)
-	opts = append(opts, opttest.AttachProvider(providerName, rpFactory))
-	pt := pulumitest.NewPulumiTest(t, dir, opts...)
-	pt.SetConfig(t, "cloudflare-account-id", os.Getenv("CLOUDFLARE_ACCOUNT_ID"))
-	pt.SetConfig(t, "cloudflare-zone-id", os.Getenv("CLOUDFLARE_ZONE_ID"))
-
-	return pt
+func TestPageRuleUpgrade(t *testing.T) {
+	testUpgrade(
+		t, "test-programs/page_rule/page_rulev5", optproviderupgrade.NewSourcePath("test-programs/page_rule"))
 }
 
 func TestAccRecordGo(t *testing.T) {
@@ -116,6 +117,5 @@ func TestWorkersRoute(t *testing.T) {
 	// TODO[pulumi/pulumi-cloudflare#1130]: Destroy does not work on this resource
 	t.Skip()
 	pt := testProgram(t, "test-programs/workers_route")
-	pt.SetConfig(t, "cloudflare-domain", "pulumi-cloudflare-demo.com")
 	pt.Up(t)
 }
