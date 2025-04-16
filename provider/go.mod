@@ -5,7 +5,7 @@ go 1.23.3
 require (
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
 	github.com/pulumi/providertest v0.2.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.1-0.20250411112232-65d5aaa8a76e
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.1-0.20250415223939-5dbe4a516710
 	github.com/pulumi/pulumi/sdk/v3 v3.162.0
 )
 
