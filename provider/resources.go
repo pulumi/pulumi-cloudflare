@@ -285,6 +285,20 @@ func Provider() info.Provider {
 				// cloudflare_managed_headers
 				Aliases: alias("cloudflare:index/managedHeaders:ManagedHeaders"),
 			},
+			"cloudflare_workers_route": {
+				TransformOutputs: func(_ context.Context, outputs resource.PropertyMap) (resource.PropertyMap, error) {
+					if _, ok := outputs["id"]; ok {
+						return outputs, nil
+					}
+					pattern, ok := outputs["pattern"]
+					if ok {
+						outputs["id"] = resource.NewStringProperty(pattern.StringValue())
+					} else {
+						outputs["id"] = resource.NewStringProperty("id")
+					}
+					return outputs, nil
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{

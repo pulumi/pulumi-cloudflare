@@ -93,17 +93,28 @@ func TestRecordUpgrade(t *testing.T) {
 		t, "test-programs/record/recordv5", optproviderupgrade.NewSourcePath("test-programs/record"))
 }
 
-func TestAccRecordGo(t *testing.T) {
+func testProgram(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.PulumiTest {
 	rpFactory := providers.ResourceProviderFactory(providerFactory)
-	pt := pulumitest.NewPulumiTest(
-		t, "test-programs/recordgo",
-		opttest.GoModReplacement("github.com/pulumi/pulumi-cloudflare/sdk/v6", "..", "sdk"),
-		opttest.AttachProvider(providerName, rpFactory),
-	)
-	pt.SetConfig(t, "accountId", os.Getenv("CLOUDFLARE_ACCOUNT_ID"))
+	opts = append(opts, opttest.AttachProvider(providerName, rpFactory))
+	pt := pulumitest.NewPulumiTest(t, dir, opts...)
+	pt.SetConfig(t, "cloudflare-account-id", os.Getenv("CLOUDFLARE_ACCOUNT_ID"))
+	pt.SetConfig(t, "cloudflare-zone-id", os.Getenv("CLOUDFLARE_ZONE_ID"))
 
+	return pt
+}
+
+func TestAccRecordGo(t *testing.T) {
+	pt := testProgram(t, "test-programs/recordgo",
+		opttest.GoModReplacement("github.com/pulumi/pulumi-cloudflare/sdk/v6", "..", "sdk"))
 	pt.Up(t)
 	// TODO[pulumi/pulumi-cloudflare#1120]: Dirty refresh on record
 	// pt.Refresh(t, optrefresh.ExpectNoChanges())
 	pt.Up(t, optup.ExpectNoChanges())
+}
+
+func TestWorkersRouteUpgrade(t *testing.T) {
+	// TODO[pulumi/pulumi-cloudflare#1130]: Destroy does not work on this resource
+	pt := testProgram(t, "test-programs/workers_route")
+	pt.SetConfig(t, "cloudflare-domain", "pulumi-cloudflare-demo.com")
+	pt.Up(t)
 }
