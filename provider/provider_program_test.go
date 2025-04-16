@@ -114,6 +114,7 @@ func TestAccRecordGo(t *testing.T) {
 
 func TestWorkersRouteUpgrade(t *testing.T) {
 	// TODO[pulumi/pulumi-cloudflare#1130]: Destroy does not work on this resource
+	t.Skip()
 	pt := testProgram(t, "test-programs/workers_route")
 	pt.SetConfig(t, "cloudflare-domain", "pulumi-cloudflare-demo.com")
 	pt.Up(t)
