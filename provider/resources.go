@@ -30,6 +30,7 @@ import (
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
@@ -273,9 +274,11 @@ func Provider() info.Provider {
 				// cloudflare_worker_script
 				Aliases: alias("cloudflare:index/workerScript:WorkerScript"),
 			},
-			"cloudflare_workers_secret": {
-				// cloudflare_worker_secret
-				Aliases: alias("cloudflare:index/workerSecret:WorkerSecret"),
+			"cloudflare_workers_for_platforms_script_secret": {
+				Aliases: alias(
+					"cloudflare:index/workersSecret:WorkersSecret",
+					"cloudflare:index/workerSecret:WorkerSecret",
+				),
 			},
 			"cloudflare_workers_for_platforms_dispatch_namespace": {
 				// cloudflare_workers_for_platforms_namespace
@@ -300,6 +303,7 @@ func Provider() info.Provider {
 				},
 			},
 		},
+		DataSources: map[string]*info.DataSource{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
@@ -338,8 +342,30 @@ func Provider() info.Provider {
 		EnableAccurateBridgePreview:    true,
 	}
 
+	prov.RenameDataSource("cloudflare_workers_for_platforms_script_secret",
+		tokens.ModuleMember("cloudflare:index/getWorkersSecret:getWorkersSecret"),
+		tokens.ModuleMember("cloudflare:index/getWorkersForPlatformsScriptSecret:getWorkersForPlatformsScriptSecret"),
+		"index",
+		"index",
+		nil,
+	)
+
+	prov.RenameResourceWithAlias("cloudflare_workers_for_platforms_script_secret",
+		tokens.Type("cloudflare:index/workersSecret:WorkersSecret"),
+		tokens.Type("cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret"),
+		"index",
+		"index",
+		&info.Resource{
+			Docs: &tfbridge.DocInfo{
+				Source: "workers_for_platforms_script_secret.md",
+			},
+		},
+	)
+
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
+
+	prov.MustApplyAutoAliases()
 
 	resourcesWithMistypedID := []string{
 		"cloudflare_email_security_trusted_domains",
@@ -427,8 +453,6 @@ func Provider() info.Provider {
 			}
 		}
 	}
-
-	prov.MustApplyAutoAliases()
 
 	return prov
 }
