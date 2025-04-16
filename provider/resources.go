@@ -273,10 +273,13 @@ func Provider() info.Provider {
 				// cloudflare_worker_script
 				Aliases: alias("cloudflare:index/workerScript:WorkerScript"),
 			},
-			"cloudflare_workers_secret": {
-				// cloudflare_worker_secret
-				Aliases: alias("cloudflare:index/workerSecret:WorkerSecret"),
+			"cloudflare_workers_for_platforms_script_secret": {
+				Aliases: alias("cloudflare:index/workersSecret:WorkersSecret", "cloudflare:index/workerSecret:WorkerSecret"),
 			},
+			// "cloudflare_workers_secret": {
+			// 	// cloudflare_worker_secret
+			// 	Aliases: alias("cloudflare:index/workerSecret:WorkerSecret"),
+			// },
 			"cloudflare_workers_for_platforms_dispatch_namespace": {
 				// cloudflare_workers_for_platforms_namespace
 				Aliases: alias("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"),
