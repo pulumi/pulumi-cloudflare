@@ -26,15 +26,15 @@ import (
 type ZeroTrustAccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Number of access applications currently using this policy.
 	AppCount pulumi.IntOutput `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
-	ApprovalRequired pulumi.BoolOutput   `pulumi:"approvalRequired"`
-	CreatedAt        pulumi.StringOutput `pulumi:"createdAt"`
+	ApprovalRequired pulumi.BoolPtrOutput `pulumi:"approvalRequired"`
+	CreatedAt        pulumi.StringOutput  `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringOutput `pulumi:"decision"`
@@ -43,13 +43,13 @@ type ZeroTrustAccessPolicy struct {
 	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes ZeroTrustAccessPolicyIncludeArrayOutput `pulumi:"includes"`
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
-	IsolationRequired pulumi.BoolOutput `pulumi:"isolationRequired"`
+	IsolationRequired pulumi.BoolPtrOutput `pulumi:"isolationRequired"`
 	// The name of the Access policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt pulumi.StringPtrOutput `pulumi:"purposeJustificationPrompt"`
 	// Require users to enter a justification when they log in to the application.
-	PurposeJustificationRequired pulumi.BoolOutput `pulumi:"purposeJustificationRequired"`
+	PurposeJustificationRequired pulumi.BoolPtrOutput `pulumi:"purposeJustificationRequired"`
 	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires ZeroTrustAccessPolicyRequireArrayOutput `pulumi:"requires"`
 	Reusable pulumi.BoolOutput                       `pulumi:"reusable"`
@@ -106,7 +106,7 @@ func GetZeroTrustAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessPolicy resources.
 type zeroTrustAccessPolicyState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Number of access applications currently using this policy.
 	AppCount *int `pulumi:"appCount"`
@@ -139,7 +139,7 @@ type zeroTrustAccessPolicyState struct {
 }
 
 type ZeroTrustAccessPolicyState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Number of access applications currently using this policy.
 	AppCount pulumi.IntPtrInput
@@ -176,7 +176,7 @@ func (ZeroTrustAccessPolicyState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessPolicyArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []ZeroTrustAccessPolicyApprovalGroup `pulumi:"approvalGroups"`
@@ -205,7 +205,7 @@ type zeroTrustAccessPolicyArgs struct {
 
 // The set of arguments for constructing a ZeroTrustAccessPolicy resource.
 type ZeroTrustAccessPolicyArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups ZeroTrustAccessPolicyApprovalGroupArrayInput
@@ -319,7 +319,7 @@ func (o ZeroTrustAccessPolicyOutput) ToZeroTrustAccessPolicyOutputWithContext(ct
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o ZeroTrustAccessPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -335,8 +335,8 @@ func (o ZeroTrustAccessPolicyOutput) ApprovalGroups() ZeroTrustAccessPolicyAppro
 }
 
 // Requires the user to request access from an administrator at the start of each session.
-func (o ZeroTrustAccessPolicyOutput) ApprovalRequired() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolOutput { return v.ApprovalRequired }).(pulumi.BoolOutput)
+func (o ZeroTrustAccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
 func (o ZeroTrustAccessPolicyOutput) CreatedAt() pulumi.StringOutput {
@@ -360,8 +360,8 @@ func (o ZeroTrustAccessPolicyOutput) Includes() ZeroTrustAccessPolicyIncludeArra
 }
 
 // Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
-func (o ZeroTrustAccessPolicyOutput) IsolationRequired() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolOutput { return v.IsolationRequired }).(pulumi.BoolOutput)
+func (o ZeroTrustAccessPolicyOutput) IsolationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolPtrOutput { return v.IsolationRequired }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the Access policy.
@@ -375,8 +375,8 @@ func (o ZeroTrustAccessPolicyOutput) PurposeJustificationPrompt() pulumi.StringP
 }
 
 // Require users to enter a justification when they log in to the application.
-func (o ZeroTrustAccessPolicyOutput) PurposeJustificationRequired() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolOutput { return v.PurposeJustificationRequired }).(pulumi.BoolOutput)
+func (o ZeroTrustAccessPolicyOutput) PurposeJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustAccessPolicy) pulumi.BoolPtrOutput { return v.PurposeJustificationRequired }).(pulumi.BoolPtrOutput)
 }
 
 // Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.

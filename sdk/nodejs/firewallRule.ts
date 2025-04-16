@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const exampleFirewallRule = new cloudflare.FirewallRule("example_firewall_rule", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     action: {
- *         mode: "simulate",
+ *         mode: "challenge",
  *         response: {
  *             body: "<error>This request has been rate-limited.</error>",
  *             contentType: "text/xml",

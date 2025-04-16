@@ -140,8 +140,8 @@ def get_account_members(account_id: Optional[builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_account_members = cloudflare.get_account_members(account_id="eb78d65290b24279ba6f44721b3ea3c4",
-        direction="asc",
-        order="user.first_name",
+        direction="desc",
+        order="status",
         status="accepted")
     ```
 
@@ -186,8 +186,8 @@ def get_account_members_output(account_id: Optional[pulumi.Input[builtins.str]] 
     import pulumi_cloudflare as cloudflare
 
     example_account_members = cloudflare.get_account_members(account_id="eb78d65290b24279ba6f44721b3ea3c4",
-        direction="asc",
-        order="user.first_name",
+        direction="desc",
+        order="status",
         status="accepted")
     ```
 

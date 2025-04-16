@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/accessPolicy:AccessPolicy")
 public class AccessPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -93,14 +93,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="approvalRequired", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> approvalRequired;
+    private Output</* @Nullable */ Boolean> approvalRequired;
 
     /**
      * @return Requires the user to request access from an administrator at the start of each session.
      * 
      */
-    public Output<Boolean> approvalRequired() {
-        return this.approvalRequired;
+    public Output<Optional<Boolean>> approvalRequired() {
+        return Codegen.optional(this.approvalRequired);
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
@@ -157,14 +157,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="isolationRequired", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> isolationRequired;
+    private Output</* @Nullable */ Boolean> isolationRequired;
 
     /**
      * @return Require this application to be served in an isolated browser for users matching this policy. &#39;Client Web Isolation&#39; must be on for the account in order to use this feature.
      * 
      */
-    public Output<Boolean> isolationRequired() {
-        return this.isolationRequired;
+    public Output<Optional<Boolean>> isolationRequired() {
+        return Codegen.optional(this.isolationRequired);
     }
     /**
      * The name of the Access policy.
@@ -199,14 +199,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="purposeJustificationRequired", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> purposeJustificationRequired;
+    private Output</* @Nullable */ Boolean> purposeJustificationRequired;
 
     /**
      * @return Require users to enter a justification when they log in to the application.
      * 
      */
-    public Output<Boolean> purposeJustificationRequired() {
-        return this.purposeJustificationRequired;
+    public Output<Optional<Boolean>> purposeJustificationRequired() {
+        return Codegen.optional(this.purposeJustificationRequired);
     }
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.

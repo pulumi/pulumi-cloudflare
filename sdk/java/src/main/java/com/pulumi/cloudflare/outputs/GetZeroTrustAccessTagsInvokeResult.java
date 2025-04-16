@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustAccessTagsInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -38,7 +38,7 @@ public final class GetZeroTrustAccessTagsInvokeResult {
 
     private GetZeroTrustAccessTagsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

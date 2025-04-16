@@ -109,6 +109,9 @@ class _EmailRoutingDnsState:
         if success is not None:
             pulumi.set(__self__, "success", success)
         if tag is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""tag is deprecated: This attribute is deprecated.""")
+        if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
@@ -236,6 +239,7 @@ class _EmailRoutingDnsState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
@@ -496,6 +500,7 @@ class EmailRoutingDns(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> pulumi.Output[builtins.str]:
         """
         Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

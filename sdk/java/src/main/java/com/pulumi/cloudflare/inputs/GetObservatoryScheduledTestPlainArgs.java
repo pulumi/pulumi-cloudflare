@@ -48,14 +48,14 @@ public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resou
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -112,7 +112,7 @@ public final class GetObservatoryScheduledTestPlainArgs extends com.pulumi.resou
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

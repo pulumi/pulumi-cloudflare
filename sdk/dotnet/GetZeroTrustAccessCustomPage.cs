@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessCustomPageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("customPageId")]
         public string? CustomPageId { get; set; }
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessCustomPageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("customPageId")]
         public Input<string>? CustomPageId { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustAccessCustomPageResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -140,11 +140,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CustomHtml;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string? CustomPageId;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Uid;
         public readonly string UpdatedAt;

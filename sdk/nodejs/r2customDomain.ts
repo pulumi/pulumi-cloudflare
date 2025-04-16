@@ -68,6 +68,10 @@ export class R2CustomDomain extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
+     * Jurisdiction of the bucket
+     */
+    public readonly jurisdiction!: pulumi.Output<string>;
+    /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: "1.0", "1.1", "1.2", "1.3".
      */
@@ -99,6 +103,7 @@ export class R2CustomDomain extends pulumi.CustomResource {
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
             resourceInputs["minTls"] = state ? state.minTls : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -124,6 +129,7 @@ export class R2CustomDomain extends pulumi.CustomResource {
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
             resourceInputs["minTls"] = args ? args.minTls : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["status"] = undefined /*out*/;
@@ -154,6 +160,10 @@ export interface R2CustomDomainState {
      * Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: "1.0", "1.1", "1.2", "1.3".
@@ -190,6 +200,10 @@ export interface R2CustomDomainArgs {
      * Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Jurisdiction of the bucket
+     */
+    jurisdiction?: pulumi.Input<string>;
     /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: "1.0", "1.1", "1.2", "1.3".

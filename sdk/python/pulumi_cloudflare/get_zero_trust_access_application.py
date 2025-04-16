@@ -29,7 +29,7 @@ class GetZeroTrustAccessApplicationResult:
     """
     A collection of values returned by getZeroTrustAccessApplication.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, allowed_idps=None, app_id=None, app_launcher_logo_url=None, app_launcher_visible=None, aud=None, auto_redirect_to_identity=None, bg_color=None, cors_headers=None, created_at=None, custom_deny_message=None, custom_deny_url=None, custom_non_identity_deny_url=None, custom_pages=None, destinations=None, domain=None, enable_binding_cookie=None, filter=None, footer_links=None, header_bg_color=None, http_only_cookie_attribute=None, id=None, landing_page_design=None, logo_url=None, name=None, options_preflight_bypass=None, path_cookie_attribute=None, policies=None, saas_app=None, same_site_cookie_attribute=None, scim_config=None, self_hosted_domains=None, service_auth401_redirect=None, session_duration=None, skip_app_launcher_login_page=None, skip_interstitial=None, tags=None, target_criterias=None, type=None, updated_at=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, allowed_idps=None, app_id=None, app_launcher_logo_url=None, app_launcher_visible=None, aud=None, auto_redirect_to_identity=None, bg_color=None, cors_headers=None, created_at=None, custom_deny_message=None, custom_deny_url=None, custom_non_identity_deny_url=None, custom_pages=None, destinations=None, domain=None, enable_binding_cookie=None, filter=None, footer_links=None, header_bg_color=None, http_only_cookie_attribute=None, id=None, landing_page_design=None, logo_url=None, name=None, options_preflight_bypass=None, path_cookie_attribute=None, policies=None, read_service_tokens_from_header=None, saas_app=None, same_site_cookie_attribute=None, scim_config=None, self_hosted_domains=None, service_auth401_redirect=None, session_duration=None, skip_app_launcher_login_page=None, skip_interstitial=None, tags=None, target_criterias=None, type=None, updated_at=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -117,6 +117,9 @@ class GetZeroTrustAccessApplicationResult:
         if policies and not isinstance(policies, list):
             raise TypeError("Expected argument 'policies' to be a list")
         pulumi.set(__self__, "policies", policies)
+        if read_service_tokens_from_header and not isinstance(read_service_tokens_from_header, str):
+            raise TypeError("Expected argument 'read_service_tokens_from_header' to be a str")
+        pulumi.set(__self__, "read_service_tokens_from_header", read_service_tokens_from_header)
         if saas_app and not isinstance(saas_app, dict):
             raise TypeError("Expected argument 'saas_app' to be a dict")
         pulumi.set(__self__, "saas_app", saas_app)
@@ -185,7 +188,7 @@ class GetZeroTrustAccessApplicationResult:
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "app_id")
 
@@ -328,7 +331,7 @@ class GetZeroTrustAccessApplicationResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -378,6 +381,20 @@ class GetZeroTrustAccessApplicationResult:
         return pulumi.get(self, "policies")
 
     @property
+    @pulumi.getter(name="readServiceTokensFromHeader")
+    def read_service_tokens_from_header(self) -> builtins.str:
+        """
+        Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        The header value will be interpreted as a json object similar to:
+        {
+        "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        }
+        """
+        return pulumi.get(self, "read_service_tokens_from_header")
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> 'outputs.GetZeroTrustAccessApplicationSaasAppResult':
         return pulumi.get(self, "saas_app")
@@ -400,6 +417,7 @@ class GetZeroTrustAccessApplicationResult:
 
     @property
     @pulumi.getter(name="selfHostedDomains")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def self_hosted_domains(self) -> Sequence[builtins.str]:
         """
         List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -508,6 +526,7 @@ class AwaitableGetZeroTrustAccessApplicationResult(GetZeroTrustAccessApplication
             options_preflight_bypass=self.options_preflight_bypass,
             path_cookie_attribute=self.path_cookie_attribute,
             policies=self.policies,
+            read_service_tokens_from_header=self.read_service_tokens_from_header,
             saas_app=self.saas_app,
             same_site_cookie_attribute=self.same_site_cookie_attribute,
             scim_config=self.scim_config,
@@ -542,7 +561,7 @@ def get_zero_trust_access_application(account_id: Optional[builtins.str] = None,
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str app_id: Identifier
+    :param builtins.str app_id: Identifier.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -583,6 +602,7 @@ def get_zero_trust_access_application(account_id: Optional[builtins.str] = None,
         options_preflight_bypass=pulumi.get(__ret__, 'options_preflight_bypass'),
         path_cookie_attribute=pulumi.get(__ret__, 'path_cookie_attribute'),
         policies=pulumi.get(__ret__, 'policies'),
+        read_service_tokens_from_header=pulumi.get(__ret__, 'read_service_tokens_from_header'),
         saas_app=pulumi.get(__ret__, 'saas_app'),
         same_site_cookie_attribute=pulumi.get(__ret__, 'same_site_cookie_attribute'),
         scim_config=pulumi.get(__ret__, 'scim_config'),
@@ -615,7 +635,7 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str app_id: Identifier
+    :param builtins.str app_id: Identifier.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -655,6 +675,7 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
         options_preflight_bypass=pulumi.get(__response__, 'options_preflight_bypass'),
         path_cookie_attribute=pulumi.get(__response__, 'path_cookie_attribute'),
         policies=pulumi.get(__response__, 'policies'),
+        read_service_tokens_from_header=pulumi.get(__response__, 'read_service_tokens_from_header'),
         saas_app=pulumi.get(__response__, 'saas_app'),
         same_site_cookie_attribute=pulumi.get(__response__, 'same_site_cookie_attribute'),
         scim_config=pulumi.get(__response__, 'scim_config'),

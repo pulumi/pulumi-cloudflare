@@ -18,14 +18,14 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
     public static final AccessCustomPageArgs Empty = new AccessCustomPageArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -123,7 +123,7 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class AccessCustomPageArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

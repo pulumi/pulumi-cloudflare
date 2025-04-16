@@ -33,12 +33,12 @@ export function getDnsRecord(args: GetDnsRecordArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetDnsRecordArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     dnsRecordId?: string;
     filter?: inputs.GetDnsRecordFilter;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -68,12 +68,12 @@ export interface GetDnsRecordResult {
      */
     readonly data: outputs.GetDnsRecordData;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly dnsRecordId?: string;
     readonly filter?: outputs.GetDnsRecordFilter;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -122,7 +122,7 @@ export interface GetDnsRecordResult {
      */
     readonly type: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -153,12 +153,12 @@ export function getDnsRecordOutput(args: GetDnsRecordOutputArgs, opts?: pulumi.I
  */
 export interface GetDnsRecordOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     dnsRecordId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetDnsRecordFilterArgs>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

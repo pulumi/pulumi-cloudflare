@@ -22,7 +22,7 @@ import (
 type WorkersDeployment struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId   pulumi.StringOutput                    `pulumi:"accountId"`
 	Annotations WorkersDeploymentAnnotationsOutput     `pulumi:"annotations"`
 	AuthorEmail pulumi.StringOutput                    `pulumi:"authorEmail"`
@@ -78,7 +78,7 @@ func GetWorkersDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersDeployment resources.
 type workersDeploymentState struct {
-	// Identifier
+	// Identifier.
 	AccountId   *string                       `pulumi:"accountId"`
 	Annotations *WorkersDeploymentAnnotations `pulumi:"annotations"`
 	AuthorEmail *string                       `pulumi:"authorEmail"`
@@ -93,7 +93,7 @@ type workersDeploymentState struct {
 }
 
 type WorkersDeploymentState struct {
-	// Identifier
+	// Identifier.
 	AccountId   pulumi.StringPtrInput
 	Annotations WorkersDeploymentAnnotationsPtrInput
 	AuthorEmail pulumi.StringPtrInput
@@ -112,7 +112,7 @@ func (WorkersDeploymentState) ElementType() reflect.Type {
 }
 
 type workersDeploymentArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId   string                        `pulumi:"accountId"`
 	Annotations *WorkersDeploymentAnnotations `pulumi:"annotations"`
 	// Name of the script.
@@ -124,7 +124,7 @@ type workersDeploymentArgs struct {
 
 // The set of arguments for constructing a WorkersDeployment resource.
 type WorkersDeploymentArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId   pulumi.StringInput
 	Annotations WorkersDeploymentAnnotationsPtrInput
 	// Name of the script.
@@ -221,7 +221,7 @@ func (o WorkersDeploymentOutput) ToWorkersDeploymentOutputWithContext(ctx contex
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkersDeploymentOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -17,14 +17,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     public static final ZeroTrustGatewaySettingsSettingsBlockPageArgs Empty = new ZeroTrustGatewaySettingsSettingsBlockPageArgs();
 
     /**
-     * Block page background color in #rrggbb format.
+     * If mode is customized*block*page: block page background color in #rrggbb format.
      * 
      */
     @Import(name="backgroundColor")
     private @Nullable Output<String> backgroundColor;
 
     /**
-     * @return Block page background color in #rrggbb format.
+     * @return If mode is customized*block*page: block page background color in #rrggbb format.
      * 
      */
     public Optional<Output<String>> backgroundColor() {
@@ -47,14 +47,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Block page footer text.
+     * If mode is customized*block*page: block page footer text.
      * 
      */
     @Import(name="footerText")
     private @Nullable Output<String> footerText;
 
     /**
-     * @return Block page footer text.
+     * @return If mode is customized*block*page: block page footer text.
      * 
      */
     public Optional<Output<String>> footerText() {
@@ -62,14 +62,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Block page header text.
+     * If mode is customized*block*page: block page header text.
      * 
      */
     @Import(name="headerText")
     private @Nullable Output<String> headerText;
 
     /**
-     * @return Block page header text.
+     * @return If mode is customized*block*page: block page header text.
      * 
      */
     public Optional<Output<String>> headerText() {
@@ -77,14 +77,29 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Full URL to the logo file.
+     * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     * 
+     */
+    @Import(name="includeContext")
+    private @Nullable Output<Boolean> includeContext;
+
+    /**
+     * @return If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     * 
+     */
+    public Optional<Output<Boolean>> includeContext() {
+        return Optional.ofNullable(this.includeContext);
+    }
+
+    /**
+     * If mode is customized*block*page: full URL to the logo file.
      * 
      */
     @Import(name="logoPath")
     private @Nullable Output<String> logoPath;
 
     /**
-     * @return Full URL to the logo file.
+     * @return If mode is customized*block*page: full URL to the logo file.
      * 
      */
     public Optional<Output<String>> logoPath() {
@@ -92,14 +107,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Admin email for users to contact.
+     * If mode is customized*block*page: admin email for users to contact.
      * 
      */
     @Import(name="mailtoAddress")
     private @Nullable Output<String> mailtoAddress;
 
     /**
-     * @return Admin email for users to contact.
+     * @return If mode is customized*block*page: admin email for users to contact.
      * 
      */
     public Optional<Output<String>> mailtoAddress() {
@@ -107,14 +122,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Subject line for emails created from block page.
+     * If mode is customized*block*page: subject line for emails created from block page.
      * 
      */
     @Import(name="mailtoSubject")
     private @Nullable Output<String> mailtoSubject;
 
     /**
-     * @return Subject line for emails created from block page.
+     * @return If mode is customized*block*page: subject line for emails created from block page.
      * 
      */
     public Optional<Output<String>> mailtoSubject() {
@@ -122,14 +137,31 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Block page title.
+     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+     * Available values: &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+     * Available values: &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
+     * If mode is customized*block*page: block page title.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Block page title.
+     * @return If mode is customized*block*page: block page title.
      * 
      */
     public Optional<Output<String>> name() {
@@ -137,18 +169,33 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
     }
 
     /**
-     * Suppress detailed info at the bottom of the block page.
+     * If mode is customized*block*page: suppress detailed info at the bottom of the block page.
      * 
      */
     @Import(name="suppressFooter")
     private @Nullable Output<Boolean> suppressFooter;
 
     /**
-     * @return Suppress detailed info at the bottom of the block page.
+     * @return If mode is customized*block*page: suppress detailed info at the bottom of the block page.
      * 
      */
     public Optional<Output<Boolean>> suppressFooter() {
         return Optional.ofNullable(this.suppressFooter);
+    }
+
+    /**
+     * If mode is redirect_uri: URI to which the user should be redirected.
+     * 
+     */
+    @Import(name="targetUri")
+    private @Nullable Output<String> targetUri;
+
+    /**
+     * @return If mode is redirect_uri: URI to which the user should be redirected.
+     * 
+     */
+    public Optional<Output<String>> targetUri() {
+        return Optional.ofNullable(this.targetUri);
     }
 
     private ZeroTrustGatewaySettingsSettingsBlockPageArgs() {}
@@ -158,11 +205,14 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         this.enabled = $.enabled;
         this.footerText = $.footerText;
         this.headerText = $.headerText;
+        this.includeContext = $.includeContext;
         this.logoPath = $.logoPath;
         this.mailtoAddress = $.mailtoAddress;
         this.mailtoSubject = $.mailtoSubject;
+        this.mode = $.mode;
         this.name = $.name;
         this.suppressFooter = $.suppressFooter;
+        this.targetUri = $.targetUri;
     }
 
     public static Builder builder() {
@@ -184,7 +234,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param backgroundColor Block page background color in #rrggbb format.
+         * @param backgroundColor If mode is customized*block*page: block page background color in #rrggbb format.
          * 
          * @return builder
          * 
@@ -195,7 +245,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param backgroundColor Block page background color in #rrggbb format.
+         * @param backgroundColor If mode is customized*block*page: block page background color in #rrggbb format.
          * 
          * @return builder
          * 
@@ -226,7 +276,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param footerText Block page footer text.
+         * @param footerText If mode is customized*block*page: block page footer text.
          * 
          * @return builder
          * 
@@ -237,7 +287,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param footerText Block page footer text.
+         * @param footerText If mode is customized*block*page: block page footer text.
          * 
          * @return builder
          * 
@@ -247,7 +297,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param headerText Block page header text.
+         * @param headerText If mode is customized*block*page: block page header text.
          * 
          * @return builder
          * 
@@ -258,7 +308,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param headerText Block page header text.
+         * @param headerText If mode is customized*block*page: block page header text.
          * 
          * @return builder
          * 
@@ -268,7 +318,28 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param logoPath Full URL to the logo file.
+         * @param includeContext If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeContext(@Nullable Output<Boolean> includeContext) {
+            $.includeContext = includeContext;
+            return this;
+        }
+
+        /**
+         * @param includeContext If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeContext(Boolean includeContext) {
+            return includeContext(Output.of(includeContext));
+        }
+
+        /**
+         * @param logoPath If mode is customized*block*page: full URL to the logo file.
          * 
          * @return builder
          * 
@@ -279,7 +350,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param logoPath Full URL to the logo file.
+         * @param logoPath If mode is customized*block*page: full URL to the logo file.
          * 
          * @return builder
          * 
@@ -289,7 +360,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mailtoAddress Admin email for users to contact.
+         * @param mailtoAddress If mode is customized*block*page: admin email for users to contact.
          * 
          * @return builder
          * 
@@ -300,7 +371,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mailtoAddress Admin email for users to contact.
+         * @param mailtoAddress If mode is customized*block*page: admin email for users to contact.
          * 
          * @return builder
          * 
@@ -310,7 +381,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mailtoSubject Subject line for emails created from block page.
+         * @param mailtoSubject If mode is customized*block*page: subject line for emails created from block page.
          * 
          * @return builder
          * 
@@ -321,7 +392,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param mailtoSubject Subject line for emails created from block page.
+         * @param mailtoSubject If mode is customized*block*page: subject line for emails created from block page.
          * 
          * @return builder
          * 
@@ -331,7 +402,30 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param name Block page title.
+         * @param mode Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+         * Available values: &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+         * Available values: &#34;customized*block*page&#34;, &#34;redirect_uri&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
+        }
+
+        /**
+         * @param name If mode is customized*block*page: block page title.
          * 
          * @return builder
          * 
@@ -342,7 +436,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param name Block page title.
+         * @param name If mode is customized*block*page: block page title.
          * 
          * @return builder
          * 
@@ -352,7 +446,7 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param suppressFooter Suppress detailed info at the bottom of the block page.
+         * @param suppressFooter If mode is customized*block*page: suppress detailed info at the bottom of the block page.
          * 
          * @return builder
          * 
@@ -363,13 +457,34 @@ public final class ZeroTrustGatewaySettingsSettingsBlockPageArgs extends com.pul
         }
 
         /**
-         * @param suppressFooter Suppress detailed info at the bottom of the block page.
+         * @param suppressFooter If mode is customized*block*page: suppress detailed info at the bottom of the block page.
          * 
          * @return builder
          * 
          */
         public Builder suppressFooter(Boolean suppressFooter) {
             return suppressFooter(Output.of(suppressFooter));
+        }
+
+        /**
+         * @param targetUri If mode is redirect_uri: URI to which the user should be redirected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetUri(@Nullable Output<String> targetUri) {
+            $.targetUri = targetUri;
+            return this;
+        }
+
+        /**
+         * @param targetUri If mode is redirect_uri: URI to which the user should be redirected.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetUri(String targetUri) {
+            return targetUri(Output.of(targetUri));
         }
 
         public ZeroTrustGatewaySettingsSettingsBlockPageArgs build() {

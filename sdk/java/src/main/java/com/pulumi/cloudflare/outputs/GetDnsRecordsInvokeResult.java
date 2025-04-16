@@ -80,7 +80,7 @@ public final class GetDnsRecordsInvokeResult {
      */
     private @Nullable String type;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -174,7 +174,7 @@ public final class GetDnsRecordsInvokeResult {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

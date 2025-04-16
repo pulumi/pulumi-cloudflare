@@ -63,7 +63,7 @@ class GetWorkersForPlatformsDispatchNamespaceResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -71,7 +71,7 @@ class GetWorkersForPlatformsDispatchNamespaceResult:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "created_by")
 
@@ -103,7 +103,7 @@ class GetWorkersForPlatformsDispatchNamespaceResult:
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "modified_by")
 
@@ -173,7 +173,7 @@ def get_workers_for_platforms_dispatch_namespace(account_id: Optional[builtins.s
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     """
     __args__ = dict()
@@ -208,7 +208,7 @@ def get_workers_for_platforms_dispatch_namespace_output(account_id: Optional[pul
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     """
     __args__ = dict()

@@ -27,6 +27,7 @@ class R2CustomDomainArgs:
                  domain: pulumi.Input[builtins.str],
                  enabled: pulumi.Input[builtins.bool],
                  zone_id: pulumi.Input[builtins.str],
+                 jurisdiction: Optional[pulumi.Input[builtins.str]] = None,
                  min_tls: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a R2CustomDomain resource.
@@ -35,6 +36,7 @@ class R2CustomDomainArgs:
         :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added
         :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain
+        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
         """
@@ -43,6 +45,8 @@ class R2CustomDomainArgs:
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if min_tls is not None:
             pulumi.set(__self__, "min_tls", min_tls)
 
@@ -107,6 +111,18 @@ class R2CustomDomainArgs:
         pulumi.set(self, "zone_id", value)
 
     @property
+    @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @property
     @pulumi.getter(name="minTls")
     def min_tls(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -127,6 +143,7 @@ class _R2CustomDomainState:
                  bucket_name: Optional[pulumi.Input[builtins.str]] = None,
                  domain: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 jurisdiction: Optional[pulumi.Input[builtins.str]] = None,
                  min_tls: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input['R2CustomDomainStatusArgs']] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -137,6 +154,7 @@ class _R2CustomDomainState:
         :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
         :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added
         :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
+        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
         :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain
@@ -150,6 +168,8 @@ class _R2CustomDomainState:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if jurisdiction is not None:
+            pulumi.set(__self__, "jurisdiction", jurisdiction)
         if min_tls is not None:
             pulumi.set(__self__, "min_tls", min_tls)
         if status is not None:
@@ -208,6 +228,18 @@ class _R2CustomDomainState:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter
+    def jurisdiction(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @jurisdiction.setter
+    def jurisdiction(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "jurisdiction", value)
+
+    @property
     @pulumi.getter(name="minTls")
     def min_tls(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -263,6 +295,7 @@ class R2CustomDomain(pulumi.CustomResource):
                  bucket_name: Optional[pulumi.Input[builtins.str]] = None,
                  domain: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 jurisdiction: Optional[pulumi.Input[builtins.str]] = None,
                  min_tls: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -288,6 +321,7 @@ class R2CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
         :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added
         :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
+        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
         :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain
@@ -333,6 +367,7 @@ class R2CustomDomain(pulumi.CustomResource):
                  bucket_name: Optional[pulumi.Input[builtins.str]] = None,
                  domain: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 jurisdiction: Optional[pulumi.Input[builtins.str]] = None,
                  min_tls: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -356,6 +391,7 @@ class R2CustomDomain(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["jurisdiction"] = jurisdiction
             __props__.__dict__["min_tls"] = min_tls
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -376,6 +412,7 @@ class R2CustomDomain(pulumi.CustomResource):
             bucket_name: Optional[pulumi.Input[builtins.str]] = None,
             domain: Optional[pulumi.Input[builtins.str]] = None,
             enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            jurisdiction: Optional[pulumi.Input[builtins.str]] = None,
             min_tls: Optional[pulumi.Input[builtins.str]] = None,
             status: Optional[pulumi.Input[Union['R2CustomDomainStatusArgs', 'R2CustomDomainStatusArgsDict']]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -391,6 +428,7 @@ class R2CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
         :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added
         :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
+        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
         :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain
@@ -404,6 +442,7 @@ class R2CustomDomain(pulumi.CustomResource):
         __props__.__dict__["bucket_name"] = bucket_name
         __props__.__dict__["domain"] = domain
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["jurisdiction"] = jurisdiction
         __props__.__dict__["min_tls"] = min_tls
         __props__.__dict__["status"] = status
         __props__.__dict__["zone_id"] = zone_id
@@ -441,6 +480,14 @@ class R2CustomDomain(pulumi.CustomResource):
         Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def jurisdiction(self) -> pulumi.Output[builtins.str]:
+        """
+        Jurisdiction of the bucket
+        """
+        return pulumi.get(self, "jurisdiction")
 
     @property
     @pulumi.getter(name="minTls")

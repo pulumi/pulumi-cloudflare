@@ -16,7 +16,7 @@ import (
 type StreamLiveInput struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time the live input was created.
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -84,7 +84,7 @@ func GetStreamLiveInput(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StreamLiveInput resources.
 type streamLiveInputState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The date and time the live input was created.
 	Created *string `pulumi:"created"`
@@ -120,7 +120,7 @@ type streamLiveInputState struct {
 }
 
 type StreamLiveInputState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The date and time the live input was created.
 	Created pulumi.StringPtrInput
@@ -160,7 +160,7 @@ func (StreamLiveInputState) ElementType() reflect.Type {
 }
 
 type streamLiveInputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Sets the creator ID asssociated with this live input.
 	DefaultCreator *string `pulumi:"defaultCreator"`
@@ -176,7 +176,7 @@ type streamLiveInputArgs struct {
 
 // The set of arguments for constructing a StreamLiveInput resource.
 type StreamLiveInputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Sets the creator ID asssociated with this live input.
 	DefaultCreator pulumi.StringPtrInput
@@ -277,7 +277,7 @@ func (o StreamLiveInputOutput) ToStreamLiveInputOutputWithContext(ctx context.Co
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o StreamLiveInputOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamLiveInput) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

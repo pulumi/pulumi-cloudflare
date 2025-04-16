@@ -107,6 +107,12 @@ public class EmailSecurityImpersonationRegistry extends com.pulumi.resources.Cus
     public Output<String> email() {
         return this.email;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="externalDirectoryNodeId", refs={String.class}, tree="[0]")
     private Output<String> externalDirectoryNodeId;
 

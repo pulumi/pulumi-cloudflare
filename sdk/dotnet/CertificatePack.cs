@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleCertificatePack = new Cloudflare.CertificatePack("example_certificate_pack", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         CertificateAuthority = "google",
+    ///         CertificateAuthority = "lets_encrypt",
     ///         Hosts = new[]
     ///         {
     ///             "example.com",

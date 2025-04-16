@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
     ///             Target = "ip",
     ///             Value = "198.51.100.4",
     ///         },
-    ///         Mode = "block",
+    ///         Mode = "challenge",
     ///     });
     /// 
     /// });

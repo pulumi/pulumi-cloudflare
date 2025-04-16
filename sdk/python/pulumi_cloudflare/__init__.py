@@ -297,6 +297,8 @@ from .get_workers_custom_domains import *
 from .get_workers_deployment import *
 from .get_workers_for_platforms_dispatch_namespace import *
 from .get_workers_for_platforms_dispatch_namespaces import *
+from .get_workers_for_platforms_script_secret import *
+from .get_workers_for_platforms_script_secrets import *
 from .get_workers_kv import *
 from .get_workers_kv_namespace import *
 from .get_workers_kv_namespaces import *
@@ -305,8 +307,6 @@ from .get_workers_routes import *
 from .get_workers_script import *
 from .get_workers_script_subdomain import *
 from .get_workers_scripts import *
-from .get_workers_secret import *
-from .get_workers_secrets import *
 from .get_zero_trust_access_application import *
 from .get_zero_trust_access_applications import *
 from .get_zero_trust_access_custom_page import *
@@ -477,18 +477,17 @@ from .web_analytics_site import *
 from .worker_cron_trigger import *
 from .worker_domain import *
 from .worker_script import *
-from .worker_secret import *
 from .workers_cron_trigger import *
 from .workers_custom_domain import *
 from .workers_deployment import *
 from .workers_for_platforms_dispatch_namespace import *
 from .workers_for_platforms_namespace import *
+from .workers_for_platforms_script_secret import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .workers_route import *
 from .workers_script import *
 from .workers_script_subdomain import *
-from .workers_secret import *
 from .zero_trust_access_application import *
 from .zero_trust_access_custom_page import *
 from .zero_trust_access_group import *
@@ -1849,14 +1848,6 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
-  "mod": "index/workerSecret",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/workerSecret:WorkerSecret": "WorkerSecret"
-  }
- },
- {
-  "pkg": "cloudflare",
   "mod": "index/workersCronTrigger",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1897,6 +1888,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/workersForPlatformsScriptSecret",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret": "WorkersForPlatformsScriptSecret"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/workersKv",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1933,14 +1932,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain": "WorkersScriptSubdomain"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/workersSecret",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/workersSecret:WorkersSecret": "WorkersSecret"
   }
  },
  {

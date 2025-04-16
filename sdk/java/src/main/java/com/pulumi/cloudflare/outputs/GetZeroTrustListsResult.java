@@ -3,10 +3,12 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustListsResultItem;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -22,6 +24,11 @@ public final class GetZeroTrustListsResult {
      * 
      */
     private String id;
+    /**
+     * @return The items in the list.
+     * 
+     */
+    private List<GetZeroTrustListsResultItem> items;
     /**
      * @return The number of items in the list.
      * 
@@ -57,6 +64,13 @@ public final class GetZeroTrustListsResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return The items in the list.
+     * 
+     */
+    public List<GetZeroTrustListsResultItem> items() {
+        return this.items;
     }
     /**
      * @return The number of items in the list.
@@ -96,6 +110,7 @@ public final class GetZeroTrustListsResult {
         private String createdAt;
         private String description;
         private String id;
+        private List<GetZeroTrustListsResultItem> items;
         private Double listCount;
         private String name;
         private String type;
@@ -106,6 +121,7 @@ public final class GetZeroTrustListsResult {
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.items = defaults.items;
     	      this.listCount = defaults.listCount;
     	      this.name = defaults.name;
     	      this.type = defaults.type;
@@ -135,6 +151,17 @@ public final class GetZeroTrustListsResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder items(List<GetZeroTrustListsResultItem> items) {
+            if (items == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustListsResult", "items");
+            }
+            this.items = items;
+            return this;
+        }
+        public Builder items(GetZeroTrustListsResultItem... items) {
+            return items(List.of(items));
         }
         @CustomType.Setter
         public Builder listCount(Double listCount) {
@@ -173,6 +200,7 @@ public final class GetZeroTrustListsResult {
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.items = items;
             _resultValue.listCount = listCount;
             _resultValue.name = name;
             _resultValue.type = type;

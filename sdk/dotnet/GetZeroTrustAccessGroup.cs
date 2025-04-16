@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetZeroTrustAccessGroupFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("groupId")]
         public string? GroupId { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetZeroTrustAccessGroupFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
@@ -158,11 +158,11 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessGroupExcludeResult> Excludes;
         public readonly Outputs.GetZeroTrustAccessGroupFilterResult? Filter;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string? GroupId;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>

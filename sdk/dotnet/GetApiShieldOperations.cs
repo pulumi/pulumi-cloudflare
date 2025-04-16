@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShieldOperations = Cloudflare.GetApiShieldOperations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Endpoint = "/api/v1",
         ///         Features = new[]
         ///         {
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShieldOperations = Cloudflare.GetApiShieldOperations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Endpoint = "/api/v1",
         ///         Features = new[]
         ///         {
@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare
         ///     var exampleApiShieldOperations = Cloudflare.GetApiShieldOperations.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Endpoint = "/api/v1",
         ///         Features = new[]
         ///         {

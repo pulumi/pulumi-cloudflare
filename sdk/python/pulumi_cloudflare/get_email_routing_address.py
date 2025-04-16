@@ -113,6 +113,7 @@ class GetEmailRoutingAddressResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> builtins.str:
         """
         Destination address tag. (Deprecated, replaced by destination address identifier)

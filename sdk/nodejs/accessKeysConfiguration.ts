@@ -55,7 +55,7 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -116,7 +116,7 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
  */
 export interface AccessKeysConfigurationState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -138,7 +138,7 @@ export interface AccessKeysConfigurationState {
  */
 export interface AccessKeysConfigurationArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -100,10 +100,6 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
      * 
      */
     private String name;
-    /**
-     * @return Device ID.
-     * 
-     */
     private String policyId;
     /**
      * @return The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
@@ -252,10 +248,6 @@ public final class GetZeroTrustDeviceCustomProfilesResult {
     public String name() {
         return this.name;
     }
-    /**
-     * @return Device ID.
-     * 
-     */
     public String policyId() {
         return this.policyId;
     }

@@ -284,17 +284,9 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Device ID.
-     * 
-     */
     @Import(name="policyId")
     private @Nullable Output<String> policyId;
 
-    /**
-     * @return Device ID.
-     * 
-     */
     public Optional<Output<String>> policyId() {
         return Optional.ofNullable(this.policyId);
     }
@@ -825,23 +817,11 @@ public final class ZeroTrustDeviceCustomProfileState extends com.pulumi.resource
             return name(Output.of(name));
         }
 
-        /**
-         * @param policyId Device ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(@Nullable Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
-        /**
-         * @param policyId Device ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
         }

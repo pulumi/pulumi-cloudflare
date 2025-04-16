@@ -21,13 +21,13 @@ import * as utilities from "./utilities";
  *     customerEndpoint: "203.0.113.1",
  *     description: "Tunnel for ISP X",
  *     healthCheck: {
- *         direction: "unidirectional",
+ *         direction: "bidirectional",
  *         enabled: true,
  *         rate: "low",
  *         target: {
  *             saved: "203.0.113.1",
  *         },
- *         type: "reply",
+ *         type: "request",
  *     },
  *     psk: "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
  *     replayProtection: false,

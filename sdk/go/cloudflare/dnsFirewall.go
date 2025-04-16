@@ -22,7 +22,7 @@ import (
 type DnsFirewall struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation DnsFirewallAttackMitigationOutput `pulumi:"attackMitigation"`
@@ -87,7 +87,7 @@ func GetDnsFirewall(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DnsFirewall resources.
 type dnsFirewallState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation *DnsFirewallAttackMitigation `pulumi:"attackMitigation"`
@@ -114,7 +114,7 @@ type dnsFirewallState struct {
 }
 
 type DnsFirewallState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Attack mitigation settings
 	AttackMitigation DnsFirewallAttackMitigationPtrInput
@@ -145,7 +145,7 @@ func (DnsFirewallState) ElementType() reflect.Type {
 }
 
 type dnsFirewallArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation *DnsFirewallAttackMitigation `pulumi:"attackMitigation"`
@@ -170,7 +170,7 @@ type dnsFirewallArgs struct {
 
 // The set of arguments for constructing a DnsFirewall resource.
 type DnsFirewallArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Attack mitigation settings
 	AttackMitigation DnsFirewallAttackMitigationPtrInput
@@ -280,7 +280,7 @@ func (o DnsFirewallOutput) ToDnsFirewallOutputWithContext(ctx context.Context) D
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o DnsFirewallOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsFirewall) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

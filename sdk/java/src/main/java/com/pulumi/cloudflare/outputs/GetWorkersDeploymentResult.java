@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersDeploymentResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -31,7 +31,7 @@ public final class GetWorkersDeploymentResult {
 
     private GetWorkersDeploymentResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

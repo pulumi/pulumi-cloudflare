@@ -41,14 +41,14 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="routeId")
     private @Nullable Output<String> routeId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> routeId() {
@@ -71,14 +71,14 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      * 
      */
     @Import(name="success")
     private @Nullable Output<Boolean> success;
 
     /**
-     * @return Whether the API call was successful
+     * @return Whether the API call was successful.
      * 
      */
     public Optional<Output<Boolean>> success() {
@@ -86,14 +86,14 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -166,7 +166,7 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeId Identifier
+         * @param routeId Identifier.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeId Identifier
+         * @param routeId Identifier.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param success Whether the API call was successful
+         * @param success Whether the API call was successful.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param success Whether the API call was successful
+         * @param success Whether the API call was successful.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -30,7 +30,7 @@ export function getWorkersScriptSubdomain(args: GetWorkersScriptSubdomainArgs, o
  */
 export interface GetWorkersScriptSubdomainArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -44,7 +44,7 @@ export interface GetWorkersScriptSubdomainArgs {
  */
 export interface GetWorkersScriptSubdomainResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -90,7 +90,7 @@ export function getWorkersScriptSubdomainOutput(args: GetWorkersScriptSubdomainO
  */
 export interface GetWorkersScriptSubdomainOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

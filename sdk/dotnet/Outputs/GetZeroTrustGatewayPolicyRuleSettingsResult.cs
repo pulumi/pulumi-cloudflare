@@ -94,6 +94,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsQuarantineResult Quarantine;
         /// <summary>
+        /// Settings that apply to redirect rules
+        /// </summary>
+        public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsRedirectResult Redirect;
+        /// <summary>
         /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
         /// </summary>
         public readonly Outputs.GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyResult ResolveDnsInternally;
@@ -148,6 +152,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.GetZeroTrustGatewayPolicyRuleSettingsQuarantineResult quarantine,
 
+            Outputs.GetZeroTrustGatewayPolicyRuleSettingsRedirectResult redirect,
+
             Outputs.GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyResult resolveDnsInternally,
 
             bool resolveDnsThroughCloudflare,
@@ -174,6 +180,7 @@ namespace Pulumi.Cloudflare.Outputs
             OverrideIps = overrideIps;
             PayloadLog = payloadLog;
             Quarantine = quarantine;
+            Redirect = redirect;
             ResolveDnsInternally = resolveDnsInternally;
             ResolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
             UntrustedCert = untrustedCert;

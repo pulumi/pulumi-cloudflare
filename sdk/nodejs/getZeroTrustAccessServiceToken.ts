@@ -41,7 +41,7 @@ export interface GetZeroTrustAccessServiceTokenArgs {
     accountId?: string;
     filter?: inputs.GetZeroTrustAccessServiceTokenFilter;
     /**
-     * UUID
+     * UUID.
      */
     serviceTokenId?: string;
     /**
@@ -70,7 +70,7 @@ export interface GetZeroTrustAccessServiceTokenResult {
     readonly expiresAt: string;
     readonly filter?: outputs.GetZeroTrustAccessServiceTokenFilter;
     /**
-     * UUID
+     * UUID.
      */
     readonly id: string;
     readonly lastSeenAt: string;
@@ -79,7 +79,7 @@ export interface GetZeroTrustAccessServiceTokenResult {
      */
     readonly name: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly serviceTokenId?: string;
     readonly updatedAt: string;
@@ -123,7 +123,7 @@ export interface GetZeroTrustAccessServiceTokenOutputArgs {
     accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustAccessServiceTokenFilterArgs>;
     /**
-     * UUID
+     * UUID.
      */
     serviceTokenId?: pulumi.Input<string>;
     /**

@@ -28,7 +28,7 @@ export function getLogpullRetention(args: GetLogpullRetentionArgs, opts?: pulumi
  */
 export interface GetLogpullRetentionArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -46,7 +46,7 @@ export interface GetLogpullRetentionResult {
      */
     readonly id: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -74,7 +74,7 @@ export function getLogpullRetentionOutput(args: GetLogpullRetentionOutputArgs, o
  */
 export interface GetLogpullRetentionOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

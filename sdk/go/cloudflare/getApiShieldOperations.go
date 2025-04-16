@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupApiShieldOperations(ctx, &cloudflare.LookupApiShieldOperationsArgs{
 //				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
-//				Direction: pulumi.StringRef("asc"),
+//				Direction: pulumi.StringRef("desc"),
 //				Endpoint:  pulumi.StringRef("/api/v1"),
 //				Features: []string{
 //					"thresholds",

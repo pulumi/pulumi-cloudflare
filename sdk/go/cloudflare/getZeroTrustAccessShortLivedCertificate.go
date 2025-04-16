@@ -52,7 +52,7 @@ func LookupZeroTrustAccessShortLivedCertificate(ctx *pulumi.Context, args *Looku
 type LookupZeroTrustAccessShortLivedCertificateArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// UUID
+	// UUID.
 	AppId string `pulumi:"appId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -62,7 +62,7 @@ type LookupZeroTrustAccessShortLivedCertificateArgs struct {
 type LookupZeroTrustAccessShortLivedCertificateResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// UUID
+	// UUID.
 	AppId string `pulumi:"appId"`
 	// The Application Audience (AUD) tag. Identifies the application associated with the CA.
 	Aud string `pulumi:"aud"`
@@ -87,7 +87,7 @@ func LookupZeroTrustAccessShortLivedCertificateOutput(ctx *pulumi.Context, args 
 type LookupZeroTrustAccessShortLivedCertificateOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// UUID
+	// UUID.
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -117,7 +117,7 @@ func (o LookupZeroTrustAccessShortLivedCertificateResultOutput) AccountId() pulu
 	return o.ApplyT(func(v LookupZeroTrustAccessShortLivedCertificateResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessShortLivedCertificateResultOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessShortLivedCertificateResult) string { return v.AppId }).(pulumi.StringOutput)
 }

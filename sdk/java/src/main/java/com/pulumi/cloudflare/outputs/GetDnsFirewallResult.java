@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDnsFirewallResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -32,7 +32,7 @@ public final class GetDnsFirewallResult {
      */
     private Boolean deprecateAnyRequests;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String dnsFirewallId;
@@ -43,7 +43,7 @@ public final class GetDnsFirewallResult {
      */
     private Boolean ecsFallback;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -86,7 +86,7 @@ public final class GetDnsFirewallResult {
 
     private GetDnsFirewallResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -107,7 +107,7 @@ public final class GetDnsFirewallResult {
         return this.deprecateAnyRequests;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> dnsFirewallId() {
@@ -124,7 +124,7 @@ public final class GetDnsFirewallResult {
         return this.ecsFallback;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

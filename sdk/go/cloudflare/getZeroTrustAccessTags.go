@@ -48,7 +48,7 @@ func LookupZeroTrustAccessTags(ctx *pulumi.Context, args *LookupZeroTrustAccessT
 
 // A collection of arguments for invoking getZeroTrustAccessTags.
 type LookupZeroTrustAccessTagsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -56,7 +56,7 @@ type LookupZeroTrustAccessTagsArgs struct {
 
 // A collection of values returned by getZeroTrustAccessTags.
 type LookupZeroTrustAccessTagsResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -77,7 +77,7 @@ func LookupZeroTrustAccessTagsOutput(ctx *pulumi.Context, args LookupZeroTrustAc
 
 // A collection of arguments for invoking getZeroTrustAccessTags.
 type LookupZeroTrustAccessTagsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -102,7 +102,7 @@ func (o LookupZeroTrustAccessTagsResultOutput) ToLookupZeroTrustAccessTagsResult
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustAccessTagsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessTagsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Action = new Cloudflare.Inputs.FirewallRuleActionArgs
     ///         {
-    ///             Mode = "simulate",
+    ///             Mode = "challenge",
     ///             Response = new Cloudflare.Inputs.FirewallRuleActionResponseArgs
     ///             {
     ///                 Body = "&lt;error&gt;This request has been rate-limited.&lt;/error&gt;",

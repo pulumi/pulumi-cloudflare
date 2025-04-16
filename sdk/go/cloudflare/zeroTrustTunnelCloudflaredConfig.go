@@ -22,7 +22,7 @@ import (
 type ZeroTrustTunnelCloudflaredConfig struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config    ZeroTrustTunnelCloudflaredConfigConfigOutput `pulumi:"config"`
@@ -78,7 +78,7 @@ func GetZeroTrustTunnelCloudflaredConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustTunnelCloudflaredConfig resources.
 type zeroTrustTunnelCloudflaredConfigState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config    *ZeroTrustTunnelCloudflaredConfigConfig `pulumi:"config"`
@@ -93,7 +93,7 @@ type zeroTrustTunnelCloudflaredConfigState struct {
 }
 
 type ZeroTrustTunnelCloudflaredConfigState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The tunnel configuration and ingress rules.
 	Config    ZeroTrustTunnelCloudflaredConfigConfigPtrInput
@@ -112,7 +112,7 @@ func (ZeroTrustTunnelCloudflaredConfigState) ElementType() reflect.Type {
 }
 
 type zeroTrustTunnelCloudflaredConfigArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config *ZeroTrustTunnelCloudflaredConfigConfig `pulumi:"config"`
@@ -125,7 +125,7 @@ type zeroTrustTunnelCloudflaredConfigArgs struct {
 
 // The set of arguments for constructing a ZeroTrustTunnelCloudflaredConfig resource.
 type ZeroTrustTunnelCloudflaredConfigArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The tunnel configuration and ingress rules.
 	Config ZeroTrustTunnelCloudflaredConfigConfigPtrInput
@@ -223,7 +223,7 @@ func (o ZeroTrustTunnelCloudflaredConfigOutput) ToZeroTrustTunnelCloudflaredConf
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o ZeroTrustTunnelCloudflaredConfigOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

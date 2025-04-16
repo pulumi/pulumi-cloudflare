@@ -35,7 +35,7 @@ class DnsFirewallArgs:
                  retries: Optional[pulumi.Input[builtins.float]] = None):
         """
         The set of arguments for constructing a DnsFirewall resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] name: DNS Firewall cluster name
         :param pulumi.Input['DnsFirewallAttackMitigationArgs'] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
@@ -70,7 +70,7 @@ class DnsFirewallArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -214,7 +214,7 @@ class _DnsFirewallState:
                  upstream_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DnsFirewall resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input['DnsFirewallAttackMitigationArgs'] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
         :param pulumi.Input[builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -257,7 +257,7 @@ class _DnsFirewallState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -432,7 +432,7 @@ class DnsFirewall(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
         :param pulumi.Input[builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -542,7 +542,7 @@ class DnsFirewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['DnsFirewallAttackMitigationArgs', 'DnsFirewallAttackMitigationArgsDict']] attack_mitigation: Attack mitigation settings
         :param pulumi.Input[builtins.bool] deprecate_any_requests: Whether to refuse to answer queries for the ANY type
         :param pulumi.Input[builtins.bool] ecs_fallback: Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
@@ -577,7 +577,7 @@ class DnsFirewall(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

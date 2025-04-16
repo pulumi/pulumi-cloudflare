@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustAccessTag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessTagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

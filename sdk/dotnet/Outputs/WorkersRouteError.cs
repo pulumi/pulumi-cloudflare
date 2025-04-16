@@ -14,16 +14,24 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkersRouteError
     {
         public readonly int? Code;
+        public readonly string? DocumentationUrl;
         public readonly string? Message;
+        public readonly Outputs.WorkersRouteErrorSource? Source;
 
         [OutputConstructor]
         private WorkersRouteError(
             int? code,
 
-            string? message)
+            string? documentationUrl,
+
+            string? message,
+
+            Outputs.WorkersRouteErrorSource? source)
         {
             Code = code;
+            DocumentationUrl = documentationUrl;
             Message = message;
+            Source = source;
         }
     }
 }

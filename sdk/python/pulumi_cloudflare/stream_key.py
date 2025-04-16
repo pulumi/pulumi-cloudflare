@@ -23,7 +23,7 @@ class StreamKeyArgs:
                  account_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a StreamKey resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
 
@@ -31,7 +31,7 @@ class StreamKeyArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -49,7 +49,7 @@ class _StreamKeyState:
                  pem: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamKey resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] created: The date and time a signing key was created.
         :param pulumi.Input[builtins.str] jwk: The signing key in JWK format.
         :param pulumi.Input[builtins.str] pem: The signing key in PEM format.
@@ -67,7 +67,7 @@ class _StreamKeyState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -137,7 +137,7 @@ class StreamKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         """
         ...
     @overload
@@ -215,7 +215,7 @@ class StreamKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] created: The date and time a signing key was created.
         :param pulumi.Input[builtins.str] jwk: The signing key in JWK format.
         :param pulumi.Input[builtins.str] pem: The signing key in PEM format.
@@ -234,7 +234,7 @@ class StreamKey(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

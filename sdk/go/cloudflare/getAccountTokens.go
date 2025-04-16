@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupAccountTokens(ctx, &cloudflare.LookupAccountTokensArgs{
 //				AccountId: "eb78d65290b24279ba6f44721b3ea3c4",
-//				Direction: pulumi.StringRef("asc"),
+//				Direction: pulumi.StringRef("desc"),
 //			}, nil)
 //			if err != nil {
 //				return err

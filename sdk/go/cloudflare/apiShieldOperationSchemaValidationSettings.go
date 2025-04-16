@@ -29,7 +29,7 @@ import (
 //			_, err := cloudflare.NewApiShieldOperationSchemaValidationSettings(ctx, "example_api_shield_operation_schema_validation_settings", &cloudflare.ApiShieldOperationSchemaValidationSettingsArgs{
 //				ZoneId:           pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				OperationId:      pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
-//				MitigationAction: pulumi.String("log"),
+//				MitigationAction: pulumi.String("block"),
 //			})
 //			if err != nil {
 //				return err

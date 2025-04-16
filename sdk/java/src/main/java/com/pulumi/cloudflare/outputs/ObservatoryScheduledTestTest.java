@@ -21,7 +21,7 @@ public final class ObservatoryScheduledTestTest {
      */
     private @Nullable ObservatoryScheduledTestTestDesktopReport desktopReport;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private @Nullable String id;
@@ -59,7 +59,7 @@ public final class ObservatoryScheduledTestTest {
         return Optional.ofNullable(this.desktopReport);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> id() {

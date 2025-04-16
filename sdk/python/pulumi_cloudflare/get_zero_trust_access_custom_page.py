@@ -63,7 +63,7 @@ class GetZeroTrustAccessCustomPageResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -92,7 +92,7 @@ class GetZeroTrustAccessCustomPageResult:
     @pulumi.getter(name="customPageId")
     def custom_page_id(self) -> Optional[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "custom_page_id")
 
@@ -100,7 +100,7 @@ class GetZeroTrustAccessCustomPageResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -125,7 +125,7 @@ class GetZeroTrustAccessCustomPageResult:
     @pulumi.getter
     def uid(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "uid")
 
@@ -168,8 +168,8 @@ def get_zero_trust_access_custom_page(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str custom_page_id: UUID
+    :param builtins.str account_id: Identifier.
+    :param builtins.str custom_page_id: UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -203,8 +203,8 @@ def get_zero_trust_access_custom_page_output(account_id: Optional[pulumi.Input[b
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str custom_page_id: UUID
+    :param builtins.str account_id: Identifier.
+    :param builtins.str custom_page_id: UUID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

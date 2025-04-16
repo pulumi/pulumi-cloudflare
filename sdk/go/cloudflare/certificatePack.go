@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewCertificatePack(ctx, "example_certificate_pack", &cloudflare.CertificatePackArgs{
 //				ZoneId:               pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				CertificateAuthority: pulumi.String("google"),
+//				CertificateAuthority: pulumi.String("lets_encrypt"),
 //				Hosts: pulumi.StringArray{
 //					pulumi.String("example.com"),
 //					pulumi.String("*.example.com"),

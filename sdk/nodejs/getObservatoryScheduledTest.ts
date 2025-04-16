@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * const exampleObservatoryScheduledTest = cloudflare.getObservatoryScheduledTest({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     url: "example.com",
- *     region: "asia-east1",
+ *     region: "us-central1",
  * });
  * ```
  */
@@ -41,7 +41,7 @@ export interface GetObservatoryScheduledTestArgs {
      */
     url: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -69,7 +69,7 @@ export interface GetObservatoryScheduledTestResult {
      */
     readonly url: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -83,7 +83,7 @@ export interface GetObservatoryScheduledTestResult {
  * const exampleObservatoryScheduledTest = cloudflare.getObservatoryScheduledTest({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     url: "example.com",
- *     region: "asia-east1",
+ *     region: "us-central1",
  * });
  * ```
  */
@@ -110,7 +110,7 @@ export interface GetObservatoryScheduledTestOutputArgs {
      */
     url: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

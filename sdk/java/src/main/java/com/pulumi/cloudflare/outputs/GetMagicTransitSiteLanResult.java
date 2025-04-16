@@ -53,7 +53,7 @@ public final class GetMagicTransitSiteLanResult {
      */
     private GetMagicTransitSiteLanStaticAddressing staticAddressing;
     /**
-     * @return VLAN port number.
+     * @return VLAN ID. Use zero for untagged.
      * 
      */
     private Integer vlanTag;
@@ -114,7 +114,7 @@ public final class GetMagicTransitSiteLanResult {
         return this.staticAddressing;
     }
     /**
-     * @return VLAN port number.
+     * @return VLAN ID. Use zero for untagged.
      * 
      */
     public Integer vlanTag() {

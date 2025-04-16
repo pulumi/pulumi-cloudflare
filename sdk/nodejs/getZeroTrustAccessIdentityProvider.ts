@@ -41,7 +41,7 @@ export interface GetZeroTrustAccessIdentityProviderArgs {
     accountId?: string;
     filter?: inputs.GetZeroTrustAccessIdentityProviderFilter;
     /**
-     * UUID
+     * UUID.
      */
     identityProviderId?: string;
     /**
@@ -64,11 +64,11 @@ export interface GetZeroTrustAccessIdentityProviderResult {
     readonly config: outputs.GetZeroTrustAccessIdentityProviderConfig;
     readonly filter?: outputs.GetZeroTrustAccessIdentityProviderFilter;
     /**
-     * UUID
+     * UUID.
      */
     readonly id: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly identityProviderId?: string;
     /**
@@ -124,7 +124,7 @@ export interface GetZeroTrustAccessIdentityProviderOutputArgs {
     accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustAccessIdentityProviderFilterArgs>;
     /**
-     * UUID
+     * UUID.
      */
     identityProviderId?: pulumi.Input<string>;
     /**

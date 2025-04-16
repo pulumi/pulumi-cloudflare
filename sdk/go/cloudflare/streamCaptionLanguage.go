@@ -42,7 +42,7 @@ import (
 type StreamCaptionLanguage struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The WebVTT file containing the caption or subtitle content.
 	File pulumi.StringPtrOutput `pulumi:"file"`
@@ -98,7 +98,7 @@ func GetStreamCaptionLanguage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StreamCaptionLanguage resources.
 type streamCaptionLanguageState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The WebVTT file containing the caption or subtitle content.
 	File *string `pulumi:"file"`
@@ -116,7 +116,7 @@ type streamCaptionLanguageState struct {
 }
 
 type StreamCaptionLanguageState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The WebVTT file containing the caption or subtitle content.
 	File pulumi.StringPtrInput
@@ -138,7 +138,7 @@ func (StreamCaptionLanguageState) ElementType() reflect.Type {
 }
 
 type streamCaptionLanguageArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The WebVTT file containing the caption or subtitle content.
 	File *string `pulumi:"file"`
@@ -150,7 +150,7 @@ type streamCaptionLanguageArgs struct {
 
 // The set of arguments for constructing a StreamCaptionLanguage resource.
 type StreamCaptionLanguageArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The WebVTT file containing the caption or subtitle content.
 	File pulumi.StringPtrInput
@@ -247,7 +247,7 @@ func (o StreamCaptionLanguageOutput) ToStreamCaptionLanguageOutputWithContext(ct
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o StreamCaptionLanguageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamCaptionLanguage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

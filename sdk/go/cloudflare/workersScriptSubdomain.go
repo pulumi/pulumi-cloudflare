@@ -43,7 +43,7 @@ import (
 type WorkersScriptSubdomain struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
@@ -92,7 +92,7 @@ func GetWorkersScriptSubdomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersScriptSubdomain resources.
 type workersScriptSubdomainState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled *bool `pulumi:"enabled"`
@@ -103,7 +103,7 @@ type workersScriptSubdomainState struct {
 }
 
 type WorkersScriptSubdomainState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled pulumi.BoolPtrInput
@@ -118,7 +118,7 @@ func (WorkersScriptSubdomainState) ElementType() reflect.Type {
 }
 
 type workersScriptSubdomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled bool `pulumi:"enabled"`
@@ -130,7 +130,7 @@ type workersScriptSubdomainArgs struct {
 
 // The set of arguments for constructing a WorkersScriptSubdomain resource.
 type WorkersScriptSubdomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Whether the Worker should be available on the workers.dev subdomain.
 	Enabled pulumi.BoolInput
@@ -227,7 +227,7 @@ func (o WorkersScriptSubdomainOutput) ToWorkersScriptSubdomainOutputWithContext(
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkersScriptSubdomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersScriptSubdomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

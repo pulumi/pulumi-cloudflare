@@ -68,7 +68,7 @@ export class Ruleset extends pulumi.CustomResource {
     /**
      * The list of rules in the ruleset.
      */
-    public readonly rules!: pulumi.Output<outputs.RulesetRule[]>;
+    public readonly rules!: pulumi.Output<outputs.RulesetRule[] | undefined>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */

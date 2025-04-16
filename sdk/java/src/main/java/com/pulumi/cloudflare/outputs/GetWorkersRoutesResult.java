@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersRoutesResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -24,7 +24,7 @@ public final class GetWorkersRoutesResult {
 
     private GetWorkersRoutesResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

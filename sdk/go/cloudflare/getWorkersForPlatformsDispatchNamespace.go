@@ -49,7 +49,7 @@ func LookupWorkersForPlatformsDispatchNamespace(ctx *pulumi.Context, args *Looku
 
 // A collection of arguments for invoking getWorkersForPlatformsDispatchNamespace.
 type LookupWorkersForPlatformsDispatchNamespaceArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace *string `pulumi:"dispatchNamespace"`
@@ -57,9 +57,9 @@ type LookupWorkersForPlatformsDispatchNamespaceArgs struct {
 
 // A collection of values returned by getWorkersForPlatformsDispatchNamespace.
 type LookupWorkersForPlatformsDispatchNamespaceResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	CreatedBy string `pulumi:"createdBy"`
 	// When the script was created.
 	CreatedOn string `pulumi:"createdOn"`
@@ -67,7 +67,7 @@ type LookupWorkersForPlatformsDispatchNamespaceResult struct {
 	DispatchNamespace *string `pulumi:"dispatchNamespace"`
 	// Name of the Workers for Platforms dispatch namespace.
 	Id string `pulumi:"id"`
-	// Identifier
+	// Identifier.
 	ModifiedBy string `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -90,7 +90,7 @@ func LookupWorkersForPlatformsDispatchNamespaceOutput(ctx *pulumi.Context, args 
 
 // A collection of arguments for invoking getWorkersForPlatformsDispatchNamespace.
 type LookupWorkersForPlatformsDispatchNamespaceOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace pulumi.StringPtrInput `pulumi:"dispatchNamespace"`
@@ -115,12 +115,12 @@ func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) ToLookupWorkersF
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
@@ -140,7 +140,7 @@ func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) Id() pulumi.Stri
 	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }

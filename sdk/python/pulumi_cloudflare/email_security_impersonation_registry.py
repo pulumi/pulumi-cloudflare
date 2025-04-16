@@ -104,6 +104,9 @@ class _EmailSecurityImpersonationRegistryState:
         if email is not None:
             pulumi.set(__self__, "email", email)
         if external_directory_node_id is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""external_directory_node_id is deprecated: This attribute is deprecated.""")
+        if external_directory_node_id is not None:
             pulumi.set(__self__, "external_directory_node_id", external_directory_node_id)
         if is_email_regex is not None:
             pulumi.set(__self__, "is_email_regex", is_email_regex)
@@ -173,6 +176,7 @@ class _EmailSecurityImpersonationRegistryState:
 
     @property
     @pulumi.getter(name="externalDirectoryNodeId")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def external_directory_node_id(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "external_directory_node_id")
 
@@ -406,6 +410,7 @@ class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalDirectoryNodeId")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def external_directory_node_id(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "external_directory_node_id")
 

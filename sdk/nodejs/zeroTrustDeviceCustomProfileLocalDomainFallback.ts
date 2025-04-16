@@ -53,9 +53,6 @@ export class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.Cust
      */
     public /*out*/ readonly dnsServers!: pulumi.Output<string[]>;
     public readonly domains!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain[]>;
-    /**
-     * Device ID.
-     */
     public readonly policyId!: pulumi.Output<string>;
     /**
      * The domain suffix to match when resolving locally.
@@ -120,9 +117,6 @@ export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackState {
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
     domains?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>[]>;
-    /**
-     * Device ID.
-     */
     policyId?: pulumi.Input<string>;
     /**
      * The domain suffix to match when resolving locally.
@@ -136,8 +130,5 @@ export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackState {
 export interface ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs {
     accountId: pulumi.Input<string>;
     domains: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>[]>;
-    /**
-     * Device ID.
-     */
     policyId: pulumi.Input<string>;
 }

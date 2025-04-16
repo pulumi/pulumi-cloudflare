@@ -58,6 +58,8 @@ import javax.annotation.Nullable;
  *             .shuffleAtEventStart(true)
  *             .suspended(true)
  *             .totalActiveUsers(200)
+ *             .turnstileAction("log")
+ *             .turnstileMode("off")
  *             .build());
  * 
  *     }
@@ -268,6 +270,38 @@ public class WaitingRoomEvent extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> totalActiveUsers() {
         return Codegen.optional(this.totalActiveUsers);
+    }
+    /**
+     * If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * 
+     */
+    @Export(name="turnstileAction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> turnstileAction;
+
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * 
+     */
+    public Output<Optional<String>> turnstileAction() {
+        return Codegen.optional(this.turnstileAction);
+    }
+    /**
+     * If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * 
+     */
+    @Export(name="turnstileMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> turnstileMode;
+
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * 
+     */
+    public Output<Optional<String>> turnstileMode() {
+        return Codegen.optional(this.turnstileMode);
     }
     @Export(name="waitingRoomId", refs={String.class}, tree="[0]")
     private Output<String> waitingRoomId;

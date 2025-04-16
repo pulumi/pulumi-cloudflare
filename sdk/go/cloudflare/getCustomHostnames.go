@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupCustomHostnames(ctx, &cloudflare.LookupCustomHostnamesArgs{
 //				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				Id:        pulumi.StringRef("0d89c70d-ad9f-4843-b99f-6cc0252067e9"),
-//				Direction: pulumi.StringRef("asc"),
+//				Direction: pulumi.StringRef("desc"),
 //				Hostname:  pulumi.StringRef("app.example.com"),
 //				Ssl:       pulumi.Float64Ref(0),
 //			}, nil)

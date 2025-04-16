@@ -32,14 +32,14 @@ public final class GetZeroTrustAccessShortLivedCertificateArgs extends com.pulum
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Output<String> appId() {
@@ -109,7 +109,7 @@ public final class GetZeroTrustAccessShortLivedCertificateArgs extends com.pulum
         }
 
         /**
-         * @param appId UUID
+         * @param appId UUID.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class GetZeroTrustAccessShortLivedCertificateArgs extends com.pulum
         }
 
         /**
-         * @param appId UUID
+         * @param appId UUID.
          * 
          * @return builder
          * 

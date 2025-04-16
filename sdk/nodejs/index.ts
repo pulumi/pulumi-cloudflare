@@ -1460,6 +1460,16 @@ export const getWorkersForPlatformsDispatchNamespaces: typeof import("./getWorke
 export const getWorkersForPlatformsDispatchNamespacesOutput: typeof import("./getWorkersForPlatformsDispatchNamespaces").getWorkersForPlatformsDispatchNamespacesOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersForPlatformsDispatchNamespaces","getWorkersForPlatformsDispatchNamespacesOutput"], () => require("./getWorkersForPlatformsDispatchNamespaces"));
 
+export { GetWorkersForPlatformsScriptSecretArgs, GetWorkersForPlatformsScriptSecretResult, GetWorkersForPlatformsScriptSecretOutputArgs } from "./getWorkersForPlatformsScriptSecret";
+export const getWorkersForPlatformsScriptSecret: typeof import("./getWorkersForPlatformsScriptSecret").getWorkersForPlatformsScriptSecret = null as any;
+export const getWorkersForPlatformsScriptSecretOutput: typeof import("./getWorkersForPlatformsScriptSecret").getWorkersForPlatformsScriptSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkersForPlatformsScriptSecret","getWorkersForPlatformsScriptSecretOutput"], () => require("./getWorkersForPlatformsScriptSecret"));
+
+export { GetWorkersForPlatformsScriptSecretsArgs, GetWorkersForPlatformsScriptSecretsResult, GetWorkersForPlatformsScriptSecretsOutputArgs } from "./getWorkersForPlatformsScriptSecrets";
+export const getWorkersForPlatformsScriptSecrets: typeof import("./getWorkersForPlatformsScriptSecrets").getWorkersForPlatformsScriptSecrets = null as any;
+export const getWorkersForPlatformsScriptSecretsOutput: typeof import("./getWorkersForPlatformsScriptSecrets").getWorkersForPlatformsScriptSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkersForPlatformsScriptSecrets","getWorkersForPlatformsScriptSecretsOutput"], () => require("./getWorkersForPlatformsScriptSecrets"));
+
 export { GetWorkersKvArgs, GetWorkersKvResult, GetWorkersKvOutputArgs } from "./getWorkersKv";
 export const getWorkersKv: typeof import("./getWorkersKv").getWorkersKv = null as any;
 export const getWorkersKvOutput: typeof import("./getWorkersKv").getWorkersKvOutput = null as any;
@@ -1499,16 +1509,6 @@ export { GetWorkersScriptsArgs, GetWorkersScriptsResult, GetWorkersScriptsOutput
 export const getWorkersScripts: typeof import("./getWorkersScripts").getWorkersScripts = null as any;
 export const getWorkersScriptsOutput: typeof import("./getWorkersScripts").getWorkersScriptsOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersScripts","getWorkersScriptsOutput"], () => require("./getWorkersScripts"));
-
-export { GetWorkersSecretArgs, GetWorkersSecretResult, GetWorkersSecretOutputArgs } from "./getWorkersSecret";
-export const getWorkersSecret: typeof import("./getWorkersSecret").getWorkersSecret = null as any;
-export const getWorkersSecretOutput: typeof import("./getWorkersSecret").getWorkersSecretOutput = null as any;
-utilities.lazyLoad(exports, ["getWorkersSecret","getWorkersSecretOutput"], () => require("./getWorkersSecret"));
-
-export { GetWorkersSecretsArgs, GetWorkersSecretsResult, GetWorkersSecretsOutputArgs } from "./getWorkersSecrets";
-export const getWorkersSecrets: typeof import("./getWorkersSecrets").getWorkersSecrets = null as any;
-export const getWorkersSecretsOutput: typeof import("./getWorkersSecrets").getWorkersSecretsOutput = null as any;
-utilities.lazyLoad(exports, ["getWorkersSecrets","getWorkersSecretsOutput"], () => require("./getWorkersSecrets"));
 
 export { GetZeroTrustAccessApplicationArgs, GetZeroTrustAccessApplicationResult, GetZeroTrustAccessApplicationOutputArgs } from "./getZeroTrustAccessApplication";
 export const getZeroTrustAccessApplication: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplication = null as any;
@@ -2360,11 +2360,6 @@ export type WorkerScript = import("./workerScript").WorkerScript;
 export const WorkerScript: typeof import("./workerScript").WorkerScript = null as any;
 utilities.lazyLoad(exports, ["WorkerScript"], () => require("./workerScript"));
 
-export { WorkerSecretArgs, WorkerSecretState } from "./workerSecret";
-export type WorkerSecret = import("./workerSecret").WorkerSecret;
-export const WorkerSecret: typeof import("./workerSecret").WorkerSecret = null as any;
-utilities.lazyLoad(exports, ["WorkerSecret"], () => require("./workerSecret"));
-
 export { WorkersCronTriggerArgs, WorkersCronTriggerState } from "./workersCronTrigger";
 export type WorkersCronTrigger = import("./workersCronTrigger").WorkersCronTrigger;
 export const WorkersCronTrigger: typeof import("./workersCronTrigger").WorkersCronTrigger = null as any;
@@ -2390,6 +2385,11 @@ export type WorkersForPlatformsNamespace = import("./workersForPlatformsNamespac
 export const WorkersForPlatformsNamespace: typeof import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace = null as any;
 utilities.lazyLoad(exports, ["WorkersForPlatformsNamespace"], () => require("./workersForPlatformsNamespace"));
 
+export { WorkersForPlatformsScriptSecretArgs, WorkersForPlatformsScriptSecretState } from "./workersForPlatformsScriptSecret";
+export type WorkersForPlatformsScriptSecret = import("./workersForPlatformsScriptSecret").WorkersForPlatformsScriptSecret;
+export const WorkersForPlatformsScriptSecret: typeof import("./workersForPlatformsScriptSecret").WorkersForPlatformsScriptSecret = null as any;
+utilities.lazyLoad(exports, ["WorkersForPlatformsScriptSecret"], () => require("./workersForPlatformsScriptSecret"));
+
 export { WorkersKvArgs, WorkersKvState } from "./workersKv";
 export type WorkersKv = import("./workersKv").WorkersKv;
 export const WorkersKv: typeof import("./workersKv").WorkersKv = null as any;
@@ -2414,11 +2414,6 @@ export { WorkersScriptSubdomainArgs, WorkersScriptSubdomainState } from "./worke
 export type WorkersScriptSubdomain = import("./workersScriptSubdomain").WorkersScriptSubdomain;
 export const WorkersScriptSubdomain: typeof import("./workersScriptSubdomain").WorkersScriptSubdomain = null as any;
 utilities.lazyLoad(exports, ["WorkersScriptSubdomain"], () => require("./workersScriptSubdomain"));
-
-export { WorkersSecretArgs, WorkersSecretState } from "./workersSecret";
-export type WorkersSecret = import("./workersSecret").WorkersSecret;
-export const WorkersSecret: typeof import("./workersSecret").WorkersSecret = null as any;
-utilities.lazyLoad(exports, ["WorkersSecret"], () => require("./workersSecret"));
 
 export { ZeroTrustAccessApplicationArgs, ZeroTrustAccessApplicationState } from "./zeroTrustAccessApplication";
 export type ZeroTrustAccessApplication = import("./zeroTrustAccessApplication").ZeroTrustAccessApplication;
@@ -3003,8 +2998,6 @@ const _module = {
                 return new WorkerDomain(name, <any>undefined, { urn })
             case "cloudflare:index/workerScript:WorkerScript":
                 return new WorkerScript(name, <any>undefined, { urn })
-            case "cloudflare:index/workerSecret:WorkerSecret":
-                return new WorkerSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
                 return new WorkersCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workersCustomDomain:WorkersCustomDomain":
@@ -3015,6 +3008,8 @@ const _module = {
                 return new WorkersForPlatformsDispatchNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
                 return new WorkersForPlatformsNamespace(name, <any>undefined, { urn })
+            case "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret":
+                return new WorkersForPlatformsScriptSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersKv:WorkersKv":
                 return new WorkersKv(name, <any>undefined, { urn })
             case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -3025,8 +3020,6 @@ const _module = {
                 return new WorkersScript(name, <any>undefined, { urn })
             case "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain":
                 return new WorkersScriptSubdomain(name, <any>undefined, { urn })
-            case "cloudflare:index/workersSecret:WorkersSecret":
-                return new WorkersSecret(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
                 return new ZeroTrustAccessApplication(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
@@ -3292,18 +3285,17 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsSite", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/workerSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCustomDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersDeployment", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsDispatchNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsNamespace", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsScriptSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScriptSubdomain", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/workersSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessCustomPage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessGroup", _module)

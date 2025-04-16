@@ -17,14 +17,14 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
     public static final WorkersForPlatformsNamespaceArgs Empty = new WorkersForPlatformsNamespaceArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -72,7 +72,7 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class WorkersForPlatformsNamespaceArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

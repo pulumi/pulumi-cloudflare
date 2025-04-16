@@ -45,6 +45,12 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// True if new beta namespace, with additional preview features.
+        /// </summary>
+        [Output("beta")]
+        public Output<bool> Beta { get; private set; } = null!;
+
+        /// <summary>
         /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         /// </summary>
         [Output("supportsUrlEncoding")]
@@ -127,6 +133,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// True if new beta namespace, with additional preview features.
+        /// </summary>
+        [Input("beta")]
+        public Input<bool>? Beta { get; set; }
 
         /// <summary>
         /// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".

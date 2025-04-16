@@ -49,7 +49,7 @@ export class StreamKey extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -104,7 +104,7 @@ export class StreamKey extends pulumi.CustomResource {
  */
 export interface StreamKeyState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -126,7 +126,7 @@ export interface StreamKeyState {
  */
 export interface StreamKeyArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
 }

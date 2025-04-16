@@ -77,7 +77,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "active", "disabled", "expired".
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// The token value.
@@ -173,13 +173,6 @@ namespace Pulumi.Cloudflare
             get => _policies ?? (_policies = new InputList<Inputs.AccountTokenPolicyArgs>());
             set => _policies = value;
         }
-
-        /// <summary>
-        /// Status of the token.
-        /// Available values: "active", "disabled", "expired".
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
 
         public AccountTokenArgs()
         {

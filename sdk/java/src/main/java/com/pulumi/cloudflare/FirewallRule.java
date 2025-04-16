@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         var exampleFirewallRule = new FirewallRule("exampleFirewallRule", FirewallRuleArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .action(FirewallRuleActionArgs.builder()
- *                 .mode("simulate")
+ *                 .mode("challenge")
  *                 .response(FirewallRuleActionResponseArgs.builder()
  *                     .body("<error>This request has been rate-limited.</error>")
  *                     .contentType("text/xml")

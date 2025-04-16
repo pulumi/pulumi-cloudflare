@@ -178,7 +178,7 @@ def get_api_shield_operations(direction: Optional[builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_api_shield_operations = cloudflare.get_api_shield_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        direction="asc",
+        direction="desc",
         endpoint="/api/v1",
         features=["thresholds"],
         hosts=["api.cloudflare.com"],
@@ -238,7 +238,7 @@ def get_api_shield_operations_output(direction: Optional[pulumi.Input[Optional[b
     import pulumi_cloudflare as cloudflare
 
     example_api_shield_operations = cloudflare.get_api_shield_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-        direction="asc",
+        direction="desc",
         endpoint="/api/v1",
         features=["thresholds"],
         hosts=["api.cloudflare.com"],

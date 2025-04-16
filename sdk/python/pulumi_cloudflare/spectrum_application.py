@@ -506,7 +506,7 @@ class SpectrumApplication(pulumi.CustomResource):
             ip_firewall=True,
             protocol="tcp/22",
             proxy_protocol="off",
-            tls="off",
+            tls="full",
             traffic_type="direct",
             argo_smart_routing=True,
             edge_ips={
@@ -571,7 +571,7 @@ class SpectrumApplication(pulumi.CustomResource):
             ip_firewall=True,
             protocol="tcp/22",
             proxy_protocol="off",
-            tls="off",
+            tls="full",
             traffic_type="direct",
             argo_smart_routing=True,
             edge_ips={

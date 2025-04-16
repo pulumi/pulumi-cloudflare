@@ -79,7 +79,7 @@ class GetDnsFirewallResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -103,7 +103,7 @@ class GetDnsFirewallResult:
     @pulumi.getter(name="dnsFirewallId")
     def dns_firewall_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "dns_firewall_id")
 
@@ -124,7 +124,7 @@ class GetDnsFirewallResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -228,8 +228,8 @@ def get_dns_firewall(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str dns_firewall_id: Identifier
+    :param builtins.str account_id: Identifier.
+    :param builtins.str dns_firewall_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -268,8 +268,8 @@ def get_dns_firewall_output(account_id: Optional[pulumi.Input[builtins.str]] = N
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str dns_firewall_id: Identifier
+    :param builtins.str account_id: Identifier.
+    :param builtins.str dns_firewall_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

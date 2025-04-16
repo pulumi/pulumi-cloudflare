@@ -20,7 +20,11 @@ public final class AccountSettings {
     /**
      * @return Specifies the default nameservers to be used for new zones added to this account.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private @Nullable String defaultNameservers;
     /**
      * @return Indicates whether membership in this account requires that
@@ -34,7 +38,11 @@ public final class AccountSettings {
      * 
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private @Nullable Boolean useAccountCustomNsByDefault;
 
     private AccountSettings() {}
@@ -48,7 +56,11 @@ public final class AccountSettings {
     /**
      * @return Specifies the default nameservers to be used for new zones added to this account.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<String> defaultNameservers() {
         return Optional.ofNullable(this.defaultNameservers);
     }
@@ -66,7 +78,11 @@ public final class AccountSettings {
      * 
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Boolean> useAccountCustomNsByDefault() {
         return Optional.ofNullable(this.useAccountCustomNsByDefault);
     }

@@ -78,6 +78,8 @@ export interface GetEmailRoutingRuleResult {
     readonly ruleIdentifier?: string;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly tag: string;
     /**

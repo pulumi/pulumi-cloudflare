@@ -38,7 +38,7 @@ import (
 //				PageUrl:   pulumi.StringRef("example.com/page,*/checkout,example.com/*,*checkout*"),
 //				Path:      pulumi.StringRef("/"),
 //				PerPage:   pulumi.Float64Ref(100),
-//				SameSite:  pulumi.StringRef("lax"),
+//				SameSite:  pulumi.StringRef("strict"),
 //				Secure:    pulumi.BoolRef(true),
 //				Type:      pulumi.StringRef("first_party"),
 //			}, nil)

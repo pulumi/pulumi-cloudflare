@@ -14,14 +14,14 @@ public final class GetWorkersScriptSubdomainPlainArgs extends com.pulumi.resourc
     public static final GetWorkersScriptSubdomainPlainArgs Empty = new GetWorkersScriptSubdomainPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -69,7 +69,7 @@ public final class GetWorkersScriptSubdomainPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

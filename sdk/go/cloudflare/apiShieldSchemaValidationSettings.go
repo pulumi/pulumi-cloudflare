@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewApiShieldSchemaValidationSettings(ctx, "example_api_shield_schema_validation_settings", &cloudflare.ApiShieldSchemaValidationSettingsArgs{
 //				ZoneId:                             pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				ValidationDefaultMitigationAction:  pulumi.String("none"),
+//				ValidationDefaultMitigationAction:  pulumi.String("block"),
 //				ValidationOverrideMitigationAction: pulumi.String("none"),
 //			})
 //			if err != nil {

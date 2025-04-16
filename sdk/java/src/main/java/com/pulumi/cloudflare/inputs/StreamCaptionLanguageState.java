@@ -17,14 +17,14 @@ public final class StreamCaptionLanguageState extends com.pulumi.resources.Resou
     public static final StreamCaptionLanguageState Empty = new StreamCaptionLanguageState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -154,7 +154,7 @@ public final class StreamCaptionLanguageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class StreamCaptionLanguageState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

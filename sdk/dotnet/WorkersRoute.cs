@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Pattern { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("routeId")]
         public Output<string?> RouteId { get; private set; } = null!;
@@ -55,13 +55,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> Script { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the API call was successful
+        /// Whether the API call was successful.
         /// </summary>
         [Output("success")]
         public Output<bool> Success { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("routeId")]
         public Input<string>? RouteId { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Script { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("routeId")]
         public Input<string>? RouteId { get; set; }
@@ -173,13 +173,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Script { get; set; }
 
         /// <summary>
-        /// Whether the API call was successful
+        /// Whether the API call was successful.
         /// </summary>
         [Input("success")]
         public Input<bool>? Success { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

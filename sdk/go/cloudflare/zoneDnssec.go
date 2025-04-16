@@ -81,7 +81,7 @@ type ZoneDnssec struct {
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
 	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -150,7 +150,7 @@ type zoneDnssecState struct {
 	PublicKey *string `pulumi:"publicKey"`
 	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -187,7 +187,7 @@ type ZoneDnssecState struct {
 	PublicKey pulumi.StringPtrInput
 	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -208,7 +208,7 @@ type zoneDnssecArgs struct {
 	DnssecPresigned *bool `pulumi:"dnssecPresigned"`
 	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -226,7 +226,7 @@ type ZoneDnssecArgs struct {
 	DnssecPresigned pulumi.BoolPtrInput
 	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -388,7 +388,7 @@ func (o ZoneDnssecOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ZoneDnssecOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

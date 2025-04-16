@@ -34,7 +34,9 @@ class WaitingRoomEventArgs:
                  session_duration: Optional[pulumi.Input[builtins.int]] = None,
                  shuffle_at_event_start: Optional[pulumi.Input[builtins.bool]] = None,
                  suspended: Optional[pulumi.Input[builtins.bool]] = None,
-                 total_active_users: Optional[pulumi.Input[builtins.int]] = None):
+                 total_active_users: Optional[pulumi.Input[builtins.int]] = None,
+                 turnstile_action: Optional[pulumi.Input[builtins.str]] = None,
+                 turnstile_mode: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WaitingRoomEvent resource.
         :param pulumi.Input[builtins.str] event_end_time: An ISO 8601 timestamp that marks the end of the event.
@@ -51,6 +53,10 @@ class WaitingRoomEventArgs:
         :param pulumi.Input[builtins.bool] shuffle_at_event_start: If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         :param pulumi.Input[builtins.bool] suspended: Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         :param pulumi.Input[builtins.int] total_active_users: If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        :param pulumi.Input[builtins.str] turnstile_action: If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+               Available values: "log", "infinite_queue".
+        :param pulumi.Input[builtins.str] turnstile_mode: If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+               Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
         """
         pulumi.set(__self__, "event_end_time", event_end_time)
         pulumi.set(__self__, "event_start_time", event_start_time)
@@ -77,6 +83,10 @@ class WaitingRoomEventArgs:
             pulumi.set(__self__, "suspended", suspended)
         if total_active_users is not None:
             pulumi.set(__self__, "total_active_users", total_active_users)
+        if turnstile_action is not None:
+            pulumi.set(__self__, "turnstile_action", turnstile_action)
+        if turnstile_mode is not None:
+            pulumi.set(__self__, "turnstile_mode", turnstile_mode)
 
     @property
     @pulumi.getter(name="eventEndTime")
@@ -255,6 +265,32 @@ class WaitingRoomEventArgs:
     def total_active_users(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "total_active_users", value)
 
+    @property
+    @pulumi.getter(name="turnstileAction")
+    def turnstile_action(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+        Available values: "log", "infinite_queue".
+        """
+        return pulumi.get(self, "turnstile_action")
+
+    @turnstile_action.setter
+    def turnstile_action(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "turnstile_action", value)
+
+    @property
+    @pulumi.getter(name="turnstileMode")
+    def turnstile_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+        Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        """
+        return pulumi.get(self, "turnstile_mode")
+
+    @turnstile_mode.setter
+    def turnstile_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "turnstile_mode", value)
+
 
 @pulumi.input_type
 class _WaitingRoomEventState:
@@ -274,6 +310,8 @@ class _WaitingRoomEventState:
                  shuffle_at_event_start: Optional[pulumi.Input[builtins.bool]] = None,
                  suspended: Optional[pulumi.Input[builtins.bool]] = None,
                  total_active_users: Optional[pulumi.Input[builtins.int]] = None,
+                 turnstile_action: Optional[pulumi.Input[builtins.str]] = None,
+                 turnstile_mode: Optional[pulumi.Input[builtins.str]] = None,
                  waiting_room_id: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -291,6 +329,10 @@ class _WaitingRoomEventState:
         :param pulumi.Input[builtins.bool] shuffle_at_event_start: If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         :param pulumi.Input[builtins.bool] suspended: Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         :param pulumi.Input[builtins.int] total_active_users: If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        :param pulumi.Input[builtins.str] turnstile_action: If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+               Available values: "log", "infinite_queue".
+        :param pulumi.Input[builtins.str] turnstile_mode: If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+               Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
         :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         if created_on is not None:
@@ -323,6 +365,10 @@ class _WaitingRoomEventState:
             pulumi.set(__self__, "suspended", suspended)
         if total_active_users is not None:
             pulumi.set(__self__, "total_active_users", total_active_users)
+        if turnstile_action is not None:
+            pulumi.set(__self__, "turnstile_action", turnstile_action)
+        if turnstile_mode is not None:
+            pulumi.set(__self__, "turnstile_mode", turnstile_mode)
         if waiting_room_id is not None:
             pulumi.set(__self__, "waiting_room_id", waiting_room_id)
         if zone_id is not None:
@@ -503,6 +549,32 @@ class _WaitingRoomEventState:
         pulumi.set(self, "total_active_users", value)
 
     @property
+    @pulumi.getter(name="turnstileAction")
+    def turnstile_action(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+        Available values: "log", "infinite_queue".
+        """
+        return pulumi.get(self, "turnstile_action")
+
+    @turnstile_action.setter
+    def turnstile_action(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "turnstile_action", value)
+
+    @property
+    @pulumi.getter(name="turnstileMode")
+    def turnstile_mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+        Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        """
+        return pulumi.get(self, "turnstile_mode")
+
+    @turnstile_mode.setter
+    def turnstile_mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "turnstile_mode", value)
+
+    @property
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "waiting_room_id")
@@ -542,6 +614,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  shuffle_at_event_start: Optional[pulumi.Input[builtins.bool]] = None,
                  suspended: Optional[pulumi.Input[builtins.bool]] = None,
                  total_active_users: Optional[pulumi.Input[builtins.int]] = None,
+                 turnstile_action: Optional[pulumi.Input[builtins.str]] = None,
+                 turnstile_mode: Optional[pulumi.Input[builtins.str]] = None,
                  waiting_room_id: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -567,7 +641,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
             session_duration=1,
             shuffle_at_event_start=True,
             suspended=True,
-            total_active_users=200)
+            total_active_users=200,
+            turnstile_action="log",
+            turnstile_mode="off")
         ```
 
         ## Import
@@ -591,6 +667,10 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] shuffle_at_event_start: If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         :param pulumi.Input[builtins.bool] suspended: Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         :param pulumi.Input[builtins.int] total_active_users: If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        :param pulumi.Input[builtins.str] turnstile_action: If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+               Available values: "log", "infinite_queue".
+        :param pulumi.Input[builtins.str] turnstile_mode: If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+               Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
         :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         ...
@@ -621,7 +701,9 @@ class WaitingRoomEvent(pulumi.CustomResource):
             session_duration=1,
             shuffle_at_event_start=True,
             suspended=True,
-            total_active_users=200)
+            total_active_users=200,
+            turnstile_action="log",
+            turnstile_mode="off")
         ```
 
         ## Import
@@ -658,6 +740,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  shuffle_at_event_start: Optional[pulumi.Input[builtins.bool]] = None,
                  suspended: Optional[pulumi.Input[builtins.bool]] = None,
                  total_active_users: Optional[pulumi.Input[builtins.int]] = None,
+                 turnstile_action: Optional[pulumi.Input[builtins.str]] = None,
+                 turnstile_mode: Optional[pulumi.Input[builtins.str]] = None,
                  waiting_room_id: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -688,6 +772,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
             __props__.__dict__["shuffle_at_event_start"] = shuffle_at_event_start
             __props__.__dict__["suspended"] = suspended
             __props__.__dict__["total_active_users"] = total_active_users
+            __props__.__dict__["turnstile_action"] = turnstile_action
+            __props__.__dict__["turnstile_mode"] = turnstile_mode
             if waiting_room_id is None and not opts.urn:
                 raise TypeError("Missing required property 'waiting_room_id'")
             __props__.__dict__["waiting_room_id"] = waiting_room_id
@@ -721,6 +807,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
             shuffle_at_event_start: Optional[pulumi.Input[builtins.bool]] = None,
             suspended: Optional[pulumi.Input[builtins.bool]] = None,
             total_active_users: Optional[pulumi.Input[builtins.int]] = None,
+            turnstile_action: Optional[pulumi.Input[builtins.str]] = None,
+            turnstile_mode: Optional[pulumi.Input[builtins.str]] = None,
             waiting_room_id: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'WaitingRoomEvent':
         """
@@ -743,6 +831,10 @@ class WaitingRoomEvent(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] shuffle_at_event_start: If enabled, users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. This is useful for situations when many users will join the event prequeue at the same time and you want to shuffle them to ensure fairness. Naturally, it makes the most sense to enable this feature when the `queueing_method` during the event respects ordering such as **fifo**, or else the shuffling may be unnecessary.
         :param pulumi.Input[builtins.bool] suspended: Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
         :param pulumi.Input[builtins.int] total_active_users: If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
+        :param pulumi.Input[builtins.str] turnstile_action: If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+               Available values: "log", "infinite_queue".
+        :param pulumi.Input[builtins.str] turnstile_mode: If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+               Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
         :param pulumi.Input[builtins.str] zone_id: Identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -764,6 +856,8 @@ class WaitingRoomEvent(pulumi.CustomResource):
         __props__.__dict__["shuffle_at_event_start"] = shuffle_at_event_start
         __props__.__dict__["suspended"] = suspended
         __props__.__dict__["total_active_users"] = total_active_users
+        __props__.__dict__["turnstile_action"] = turnstile_action
+        __props__.__dict__["turnstile_mode"] = turnstile_mode
         __props__.__dict__["waiting_room_id"] = waiting_room_id
         __props__.__dict__["zone_id"] = zone_id
         return WaitingRoomEvent(resource_name, opts=opts, __props__=__props__)
@@ -881,6 +975,24 @@ class WaitingRoomEvent(pulumi.CustomResource):
         If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
         """
         return pulumi.get(self, "total_active_users")
+
+    @property
+    @pulumi.getter(name="turnstileAction")
+    def turnstile_action(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+        Available values: "log", "infinite_queue".
+        """
+        return pulumi.get(self, "turnstile_action")
+
+    @property
+    @pulumi.getter(name="turnstileMode")
+    def turnstile_mode(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+        Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        """
+        return pulumi.get(self, "turnstile_mode")
 
     @property
     @pulumi.getter(name="waitingRoomId")

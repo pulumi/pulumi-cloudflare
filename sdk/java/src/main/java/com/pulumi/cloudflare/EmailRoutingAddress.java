@@ -118,7 +118,11 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 

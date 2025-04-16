@@ -98,7 +98,7 @@ def get_api_tokens(direction: Optional[builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_tokens = cloudflare.get_api_tokens(direction="asc")
+    example_api_tokens = cloudflare.get_api_tokens(direction="desc")
     ```
 
 
@@ -127,7 +127,7 @@ def get_api_tokens_output(direction: Optional[pulumi.Input[Optional[builtins.str
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_api_tokens = cloudflare.get_api_tokens(direction="asc")
+    example_api_tokens = cloudflare.get_api_tokens(direction="desc")
     ```
 
 

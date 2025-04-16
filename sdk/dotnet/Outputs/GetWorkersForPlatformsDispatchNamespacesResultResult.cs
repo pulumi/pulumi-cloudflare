@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersForPlatformsDispatchNamespacesResultResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ModifiedBy;
         /// <summary>

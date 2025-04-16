@@ -16,14 +16,14 @@ public final class GetZeroTrustAccessPolicyPlainArgs extends com.pulumi.resource
     public static final GetZeroTrustAccessPolicyPlainArgs Empty = new GetZeroTrustAccessPolicyPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -71,7 +71,7 @@ public final class GetZeroTrustAccessPolicyPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

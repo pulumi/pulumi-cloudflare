@@ -113,7 +113,7 @@ export interface GetDnsRecordsArgs {
      */
     type?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -172,7 +172,7 @@ export interface GetDnsRecordsResult {
      */
     readonly type?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -283,7 +283,7 @@ export interface GetDnsRecordsOutputArgs {
      */
     type?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

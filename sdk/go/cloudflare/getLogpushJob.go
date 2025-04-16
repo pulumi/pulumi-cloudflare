@@ -72,6 +72,8 @@ type LookupLogpushJobResult struct {
 	ErrorMessage string `pulumi:"errorMessage"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
+	//
+	// Deprecated: This attribute is deprecated.
 	Frequency string `pulumi:"frequency"`
 	// Unique id of the job.
 	Id int `pulumi:"id"`
@@ -85,6 +87,8 @@ type LookupLogpushJobResult struct {
 	// Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
 	LastError string `pulumi:"lastError"`
 	// This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+	//
+	// Deprecated: This attribute is deprecated.
 	LogpullOptions string `pulumi:"logpullOptions"`
 	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
 	MaxUploadBytes int `pulumi:"maxUploadBytes"`
@@ -165,6 +169,8 @@ func (o LookupLogpushJobResultOutput) ErrorMessage() pulumi.StringOutput {
 
 // This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 // Available values: "high", "low".
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupLogpushJobResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
@@ -196,6 +202,8 @@ func (o LookupLogpushJobResultOutput) LastError() pulumi.StringOutput {
 }
 
 // This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupLogpushJobResultOutput) LogpullOptions() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) string { return v.LogpullOptions }).(pulumi.StringOutput)
 }

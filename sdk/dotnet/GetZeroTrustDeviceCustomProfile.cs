@@ -87,9 +87,6 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Input("policyId")]
         public string? PolicyId { get; set; }
 
@@ -104,9 +101,6 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 
@@ -168,7 +162,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetZeroTrustDeviceCustomProfileFallbackDomainResult> FallbackDomains;
         public readonly string GatewayUniqueId;
         /// <summary>
-        /// Device ID.
+        /// The ID of this resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -191,9 +185,6 @@ namespace Pulumi.Cloudflare
         /// The name of the device settings profile.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         public readonly string PolicyId;
         /// <summary>
         /// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.

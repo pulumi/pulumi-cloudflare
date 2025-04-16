@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const exampleCustomHostnames = cloudflare.getCustomHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
- *     direction: "asc",
+ *     direction: "desc",
  *     hostname: "app.example.com",
  *     ssl: 0,
  * });
@@ -122,7 +122,7 @@ export interface GetCustomHostnamesResult {
  * const exampleCustomHostnames = cloudflare.getCustomHostnames({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     id: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
- *     direction: "asc",
+ *     direction: "desc",
  *     hostname: "app.example.com",
  *     ssl: 0,
  * });

@@ -78,6 +78,21 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Import(name="jurisdiction")
+    private @Nullable Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Optional<Output<String>> jurisdiction() {
+        return Optional.ofNullable(this.jurisdiction);
+    }
+
+    /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 
@@ -116,6 +131,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         this.bucketName = $.bucketName;
         this.domain = $.domain;
         this.enabled = $.enabled;
+        this.jurisdiction = $.jurisdiction;
         this.minTls = $.minTls;
         this.zoneId = $.zoneId;
     }
@@ -220,6 +236,27 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(@Nullable Output<String> jurisdiction) {
+            $.jurisdiction = jurisdiction;
+            return this;
+        }
+
+        /**
+         * @param jurisdiction Jurisdiction of the bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jurisdiction(String jurisdiction) {
+            return jurisdiction(Output.of(jurisdiction));
         }
 
         /**

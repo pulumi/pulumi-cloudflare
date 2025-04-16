@@ -38,14 +38,14 @@ public final class GetZeroTrustAccessIdentityProviderPlainArgs extends com.pulum
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="identityProviderId")
     private @Nullable String identityProviderId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> identityProviderId() {
@@ -111,7 +111,7 @@ public final class GetZeroTrustAccessIdentityProviderPlainArgs extends com.pulum
         }
 
         /**
-         * @param identityProviderId UUID
+         * @param identityProviderId UUID.
          * 
          * @return builder
          * 

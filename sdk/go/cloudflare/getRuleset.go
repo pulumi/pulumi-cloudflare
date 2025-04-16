@@ -69,8 +69,6 @@ type LookupRulesetResult struct {
 	// The kind of the ruleset.
 	// Available values: "managed", "custom", "root", "zone".
 	Kind string `pulumi:"kind"`
-	// The timestamp of when the ruleset was last modified.
-	LastUpdated string `pulumi:"lastUpdated"`
 	// The human-readable name of the ruleset.
 	Name string `pulumi:"name"`
 	// The phase of the ruleset.
@@ -141,11 +139,6 @@ func (o LookupRulesetResultOutput) Id() pulumi.StringOutput {
 // Available values: "managed", "custom", "root", "zone".
 func (o LookupRulesetResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRulesetResult) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// The timestamp of when the ruleset was last modified.
-func (o LookupRulesetResultOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRulesetResult) string { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the ruleset.

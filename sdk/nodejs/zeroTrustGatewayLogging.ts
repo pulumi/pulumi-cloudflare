@@ -17,9 +17,18 @@ import * as utilities from "./utilities";
  *     accountId: "699d98642c564d2e855e9661899b7252",
  *     redactPii: true,
  *     settingsByRuleType: {
- *         dns: {},
- *         http: {},
- *         l4: {},
+ *         dns: {
+ *             logAll: false,
+ *             logBlocks: true,
+ *         },
+ *         http: {
+ *             logAll: false,
+ *             logBlocks: true,
+ *         },
+ *         l4: {
+ *             logAll: false,
+ *             logBlocks: true,
+ *         },
  *     },
  * });
  * ```

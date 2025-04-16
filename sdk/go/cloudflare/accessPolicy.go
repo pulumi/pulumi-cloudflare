@@ -28,15 +28,15 @@ import (
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Number of access applications currently using this policy.
 	AppCount pulumi.IntOutput `pulumi:"appCount"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	// Requires the user to request access from an administrator at the start of each session.
-	ApprovalRequired pulumi.BoolOutput   `pulumi:"approvalRequired"`
-	CreatedAt        pulumi.StringOutput `pulumi:"createdAt"`
+	ApprovalRequired pulumi.BoolPtrOutput `pulumi:"approvalRequired"`
+	CreatedAt        pulumi.StringOutput  `pulumi:"createdAt"`
 	// The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
 	// Available values: "allow", "deny", "nonIdentity", "bypass".
 	Decision pulumi.StringOutput `pulumi:"decision"`
@@ -45,13 +45,13 @@ type AccessPolicy struct {
 	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes AccessPolicyIncludeArrayOutput `pulumi:"includes"`
 	// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
-	IsolationRequired pulumi.BoolOutput `pulumi:"isolationRequired"`
+	IsolationRequired pulumi.BoolPtrOutput `pulumi:"isolationRequired"`
 	// The name of the Access policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A custom message that will appear on the purpose justification screen.
 	PurposeJustificationPrompt pulumi.StringPtrOutput `pulumi:"purposeJustificationPrompt"`
 	// Require users to enter a justification when they log in to the application.
-	PurposeJustificationRequired pulumi.BoolOutput `pulumi:"purposeJustificationRequired"`
+	PurposeJustificationRequired pulumi.BoolPtrOutput `pulumi:"purposeJustificationRequired"`
 	// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
 	Reusable pulumi.BoolOutput              `pulumi:"reusable"`
@@ -108,7 +108,7 @@ func GetAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicy resources.
 type accessPolicyState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Number of access applications currently using this policy.
 	AppCount *int `pulumi:"appCount"`
@@ -141,7 +141,7 @@ type accessPolicyState struct {
 }
 
 type AccessPolicyState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Number of access applications currently using this policy.
 	AppCount pulumi.IntPtrInput
@@ -178,7 +178,7 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
@@ -207,7 +207,7 @@ type accessPolicyArgs struct {
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Administrators who can approve a temporary authentication request.
 	ApprovalGroups AccessPolicyApprovalGroupArrayInput
@@ -321,7 +321,7 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o AccessPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -337,8 +337,8 @@ func (o AccessPolicyOutput) ApprovalGroups() AccessPolicyApprovalGroupArrayOutpu
 }
 
 // Requires the user to request access from an administrator at the start of each session.
-func (o AccessPolicyOutput) ApprovalRequired() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolOutput { return v.ApprovalRequired }).(pulumi.BoolOutput)
+func (o AccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccessPolicyOutput) CreatedAt() pulumi.StringOutput {
@@ -362,8 +362,8 @@ func (o AccessPolicyOutput) Includes() AccessPolicyIncludeArrayOutput {
 }
 
 // Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
-func (o AccessPolicyOutput) IsolationRequired() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolOutput { return v.IsolationRequired }).(pulumi.BoolOutput)
+func (o AccessPolicyOutput) IsolationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.IsolationRequired }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the Access policy.
@@ -377,8 +377,8 @@ func (o AccessPolicyOutput) PurposeJustificationPrompt() pulumi.StringPtrOutput 
 }
 
 // Require users to enter a justification when they log in to the application.
-func (o AccessPolicyOutput) PurposeJustificationRequired() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolOutput { return v.PurposeJustificationRequired }).(pulumi.BoolOutput)
+func (o AccessPolicyOutput) PurposeJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.PurposeJustificationRequired }).(pulumi.BoolPtrOutput)
 }
 
 // Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.

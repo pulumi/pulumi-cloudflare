@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Url = "example.com",
-        ///         Region = "asia-east1",
+        ///         Region = "us-central1",
         ///     });
         /// 
         /// });
@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Url = "example.com",
-        ///         Region = "asia-east1",
+        ///         Region = "us-central1",
         ///     });
         /// 
         /// });
@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Url = "example.com",
-        ///         Region = "asia-east1",
+        ///         Region = "us-central1",
         ///     });
         /// 
         /// });
@@ -101,7 +101,7 @@ namespace Pulumi.Cloudflare
         public string Url { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Url;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

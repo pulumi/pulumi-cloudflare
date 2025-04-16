@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     public partial class WorkersDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersDeploymentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

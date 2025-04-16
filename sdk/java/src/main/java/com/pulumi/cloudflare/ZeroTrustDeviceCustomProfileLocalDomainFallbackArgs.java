@@ -30,17 +30,9 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs extends c
         return this.domains;
     }
 
-    /**
-     * Device ID.
-     * 
-     */
     @Import(name="policyId", required=true)
     private Output<String> policyId;
 
-    /**
-     * @return Device ID.
-     * 
-     */
     public Output<String> policyId() {
         return this.policyId;
     }
@@ -93,23 +85,11 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs extends c
             return domains(List.of(domains));
         }
 
-        /**
-         * @param policyId Device ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
-        /**
-         * @param policyId Device ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
         }

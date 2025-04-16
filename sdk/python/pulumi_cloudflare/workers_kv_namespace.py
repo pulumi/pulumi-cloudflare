@@ -59,16 +59,20 @@ class WorkersKvNamespaceArgs:
 class _WorkersKvNamespaceState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 beta: Optional[pulumi.Input[builtins.bool]] = None,
                  supports_url_encoding: Optional[pulumi.Input[builtins.bool]] = None,
                  title: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersKvNamespace resources.
         :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.bool] beta: True if new beta namespace, with additional preview features.
         :param pulumi.Input[builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[builtins.str] title: A human-readable string name for a Namespace.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if beta is not None:
+            pulumi.set(__self__, "beta", beta)
         if supports_url_encoding is not None:
             pulumi.set(__self__, "supports_url_encoding", supports_url_encoding)
         if title is not None:
@@ -85,6 +89,18 @@ class _WorkersKvNamespaceState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def beta(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        True if new beta namespace, with additional preview features.
+        """
+        return pulumi.get(self, "beta")
+
+    @beta.setter
+    def beta(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "beta", value)
 
     @property
     @pulumi.getter(name="supportsUrlEncoding")
@@ -198,6 +214,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
+            __props__.__dict__["beta"] = None
             __props__.__dict__["supports_url_encoding"] = None
         super(WorkersKvNamespace, __self__).__init__(
             'cloudflare:index/workersKvNamespace:WorkersKvNamespace',
@@ -210,6 +227,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            beta: Optional[pulumi.Input[builtins.bool]] = None,
             supports_url_encoding: Optional[pulumi.Input[builtins.bool]] = None,
             title: Optional[pulumi.Input[builtins.str]] = None) -> 'WorkersKvNamespace':
         """
@@ -220,6 +238,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.bool] beta: True if new beta namespace, with additional preview features.
         :param pulumi.Input[builtins.bool] supports_url_encoding: True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
         :param pulumi.Input[builtins.str] title: A human-readable string name for a Namespace.
         """
@@ -228,6 +247,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
         __props__ = _WorkersKvNamespaceState.__new__(_WorkersKvNamespaceState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["beta"] = beta
         __props__.__dict__["supports_url_encoding"] = supports_url_encoding
         __props__.__dict__["title"] = title
         return WorkersKvNamespace(resource_name, opts=opts, __props__=__props__)
@@ -239,6 +259,14 @@ class WorkersKvNamespace(pulumi.CustomResource):
         Identifier
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def beta(self) -> pulumi.Output[builtins.bool]:
+        """
+        True if new beta namespace, with additional preview features.
+        """
+        return pulumi.get(self, "beta")
 
     @property
     @pulumi.getter(name="supportsUrlEncoding")

@@ -53,6 +53,8 @@ type R2CustomDomain struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrOutput     `pulumi:"minTls"`
@@ -116,6 +118,8 @@ type r2customDomainState struct {
 	Domain *string `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls *string               `pulumi:"minTls"`
@@ -135,6 +139,8 @@ type R2CustomDomainState struct {
 	Domain pulumi.StringPtrInput
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolPtrInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrInput
@@ -158,6 +164,8 @@ type r2customDomainArgs struct {
 	Domain string `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled bool `pulumi:"enabled"`
+	// Jurisdiction of the bucket
+	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls *string `pulumi:"minTls"`
@@ -175,6 +183,8 @@ type R2CustomDomainArgs struct {
 	Domain pulumi.StringInput
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolInput
+	// Jurisdiction of the bucket
+	Jurisdiction pulumi.StringPtrInput
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrInput
@@ -287,6 +297,11 @@ func (o R2CustomDomainOutput) Domain() pulumi.StringOutput {
 // Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 func (o R2CustomDomainOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Jurisdiction of the bucket
+func (o R2CustomDomainOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.

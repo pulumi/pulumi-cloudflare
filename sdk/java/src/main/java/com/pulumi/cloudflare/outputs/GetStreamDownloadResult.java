@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetStreamDownloadResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -28,7 +28,7 @@ public final class GetStreamDownloadResult {
 
     private GetStreamDownloadResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

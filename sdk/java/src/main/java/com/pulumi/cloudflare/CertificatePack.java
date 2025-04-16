@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleCertificatePack = new CertificatePack("exampleCertificatePack", CertificatePackArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .certificateAuthority("google")
+ *             .certificateAuthority("lets_encrypt")
  *             .hosts(            
  *                 "example.com",
  *                 "*.example.com",

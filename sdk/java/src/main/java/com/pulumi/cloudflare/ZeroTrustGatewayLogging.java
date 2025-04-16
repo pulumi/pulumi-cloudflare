@@ -30,6 +30,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.ZeroTrustGatewayLogging;
  * import com.pulumi.cloudflare.ZeroTrustGatewayLoggingArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -47,12 +50,18 @@ import javax.annotation.Nullable;
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .redactPii(true)
  *             .settingsByRuleType(ZeroTrustGatewayLoggingSettingsByRuleTypeArgs.builder()
- *                 .dns(Map.ofEntries(
- *                 ))
- *                 .http(Map.ofEntries(
- *                 ))
- *                 .l4(Map.ofEntries(
- *                 ))
+ *                 .dns(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs.builder()
+ *                     .logAll(false)
+ *                     .logBlocks(true)
+ *                     .build())
+ *                 .http(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs.builder()
+ *                     .logAll(false)
+ *                     .logBlocks(true)
+ *                     .build())
+ *                 .l4(ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args.builder()
+ *                     .logAll(false)
+ *                     .logBlocks(true)
+ *                     .build())
  *                 .build())
  *             .build());
  * 

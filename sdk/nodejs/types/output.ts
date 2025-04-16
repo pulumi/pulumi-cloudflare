@@ -2773,6 +2773,8 @@ export interface AccountSettings {
     abuseContactEmail?: string;
     /**
      * Specifies the default nameservers to be used for new zones added to this account.
+     *
+     * @deprecated This attribute is deprecated.
      */
     defaultNameservers: string;
     /**
@@ -2785,6 +2787,8 @@ export interface AccountSettings {
      * nameservers by default.
      *
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+     *
+     * @deprecated This attribute is deprecated.
      */
     useAccountCustomNsByDefault: boolean;
 }
@@ -3747,6 +3751,8 @@ export interface DlpCustomProfileEntryPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: string;
 }
@@ -3804,6 +3810,8 @@ export interface DlpCustomProfileProfileEntryPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: string;
 }
@@ -3905,11 +3913,11 @@ export interface DnsRecordData {
     /**
      * Minutes of latitude.
      */
-    latMinutes: number;
+    latMinutes?: number;
     /**
      * Seconds of latitude.
      */
-    latSeconds: number;
+    latSeconds?: number;
     /**
      * Degrees of longitude.
      */
@@ -3922,11 +3930,11 @@ export interface DnsRecordData {
     /**
      * Minutes of longitude.
      */
-    longMinutes: number;
+    longMinutes?: number;
     /**
      * Seconds of longitude.
      */
-    longSeconds: number;
+    longSeconds?: number;
     /**
      * Matching Type.
      */
@@ -3942,11 +3950,11 @@ export interface DnsRecordData {
     /**
      * Horizontal precision of location.
      */
-    precisionHorz: number;
+    precisionHorz?: number;
     /**
      * Vertical precision of location.
      */
-    precisionVert: number;
+    precisionVert?: number;
     /**
      * Preference.
      */
@@ -3982,7 +3990,7 @@ export interface DnsRecordData {
     /**
      * Size of location in meters.
      */
-    size: number;
+    size?: number;
     /**
      * Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
      */
@@ -5227,6 +5235,8 @@ export interface GetAccountSettings {
     abuseContactEmail: string;
     /**
      * Specifies the default nameservers to be used for new zones added to this account.
+     *
+     * @deprecated This attribute is deprecated.
      */
     defaultNameservers: string;
     /**
@@ -5239,6 +5249,8 @@ export interface GetAccountSettings {
      * nameservers by default.
      *
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+     *
+     * @deprecated This attribute is deprecated.
      */
     useAccountCustomNsByDefault: boolean;
 }
@@ -5466,6 +5478,8 @@ export interface GetAccountsResultSettings {
     abuseContactEmail: string;
     /**
      * Specifies the default nameservers to be used for new zones added to this account.
+     *
+     * @deprecated This attribute is deprecated.
      */
     defaultNameservers: string;
     /**
@@ -5478,6 +5492,8 @@ export interface GetAccountsResultSettings {
      * nameservers by default.
      *
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+     *
+     * @deprecated This attribute is deprecated.
      */
     useAccountCustomNsByDefault: boolean;
 }
@@ -7075,7 +7091,7 @@ export interface GetDnsFirewallsResult {
      */
     ecsFallback: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     /**
@@ -7503,7 +7519,7 @@ export interface GetDnsRecordsResult {
      */
     data: outputs.GetDnsRecordsResultData;
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     /**
@@ -7827,6 +7843,8 @@ export interface GetEmailRoutingAddressesResult {
     modified: string;
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     tag: string;
     /**
@@ -8023,6 +8041,8 @@ export interface GetEmailRoutingRulesResult {
     priority: number;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     tag: string;
 }
@@ -8099,6 +8119,9 @@ export interface GetEmailSecurityImpersonationRegistriesResult {
     directoryId: number;
     directoryNodeId: number;
     email: string;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     externalDirectoryNodeId: string;
     id: number;
     isEmailRegex: boolean;
@@ -9721,7 +9744,7 @@ export interface GetLogpushDatasetJobOutputOptions {
      */
     recordSuffix: string;
     /**
-     * String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      */
     recordTemplate: string;
     /**
@@ -9774,7 +9797,7 @@ export interface GetLogpushJobOutputOptions {
      */
     recordSuffix: string;
     /**
-     * String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      */
     recordTemplate: string;
     /**
@@ -9808,6 +9831,8 @@ export interface GetLogpushJobsResult {
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
+     *
+     * @deprecated This attribute is deprecated.
      */
     frequency: string;
     /**
@@ -9829,6 +9854,8 @@ export interface GetLogpushJobsResult {
     lastError: string;
     /**
      * This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     *
+     * @deprecated This attribute is deprecated.
      */
     logpullOptions: string;
     /**
@@ -9892,7 +9919,7 @@ export interface GetLogpushJobsResultOutputOptions {
      */
     recordSuffix: string;
     /**
-     * String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      */
     recordTemplate: string;
     /**
@@ -10210,7 +10237,7 @@ export interface GetMagicTransitSiteLansResult {
      */
     staticAddressing: outputs.GetMagicTransitSiteLansResultStaticAddressing;
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      */
     vlanTag: number;
 }
@@ -10336,7 +10363,7 @@ export interface GetMagicTransitSiteWansResult {
      */
     staticAddressing: outputs.GetMagicTransitSiteWansResultStaticAddressing;
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      */
     vlanTag: number;
 }
@@ -12465,6 +12492,10 @@ export interface GetQueueSettings {
      */
     deliveryDelay: number;
     /**
+     * Indicates if message delivery to consumers is currently paused.
+     */
+    deliveryPaused: boolean;
+    /**
      * Number of seconds after which an unconsumed message will be delayed.
      */
     messageRetentionPeriod: number;
@@ -12548,6 +12579,10 @@ export interface GetQueuesResultSettings {
      * Number of seconds to delay delivery of all messages to consumers.
      */
     deliveryDelay: number;
+    /**
+     * Indicates if message delivery to consumers is currently paused.
+     */
+    deliveryPaused: boolean;
     /**
      * Number of seconds after which an unconsumed message will be delayed.
      */
@@ -13243,10 +13278,6 @@ export interface GetRulesetRule {
      */
     id: string;
     /**
-     * The timestamp of when the rule was last modified.
-     */
-    lastUpdated: string;
-    /**
      * An object configuring the rule's logging behavior.
      */
     logging: outputs.GetRulesetRuleLogging;
@@ -13258,10 +13289,6 @@ export interface GetRulesetRule {
      * The reference of the rule (the rule ID by default).
      */
     ref: string;
-    /**
-     * The version of the rule.
-     */
-    version: string;
 }
 
 export interface GetRulesetRuleActionParameters {
@@ -14010,10 +14037,6 @@ export interface GetRulesetsResult {
      */
     kind: string;
     /**
-     * The timestamp of when the ruleset was last modified.
-     */
-    lastUpdated: string;
-    /**
      * The human-readable name of the ruleset.
      */
     name: string;
@@ -14677,6 +14700,16 @@ export interface GetWaitingRoomEventsResult {
      * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
     totalActiveUsers: number;
+    /**
+     * If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+     * Available values: "log", "infiniteQueue".
+     */
+    turnstileAction: string;
+    /**
+     * If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+     * Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+     */
+    turnstileMode: string;
 }
 
 export interface GetWaitingRoomsResult {
@@ -15135,7 +15168,7 @@ export interface GetWorkersDeploymentDeploymentVersion {
 
 export interface GetWorkersForPlatformsDispatchNamespacesResult {
     /**
-     * Identifier
+     * Identifier.
      */
     createdBy: string;
     /**
@@ -15143,7 +15176,7 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
      */
     createdOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     modifiedBy: string;
     /**
@@ -15164,6 +15197,18 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
     scriptCount: number;
 }
 
+export interface GetWorkersForPlatformsScriptSecretsResult {
+    /**
+     * The name of this secret, this is what will be used to access it inside the Worker.
+     */
+    name: string;
+    /**
+     * The type of secret.
+     * Available values: "secretText".
+     */
+    type: string;
+}
+
 export interface GetWorkersKvNamespaceFilter {
     /**
      * Direction to order namespaces.
@@ -15178,6 +15223,10 @@ export interface GetWorkersKvNamespaceFilter {
 }
 
 export interface GetWorkersKvNamespacesResult {
+    /**
+     * True if new beta namespace, with additional preview features.
+     */
+    beta: boolean;
     /**
      * Namespace identifier tag.
      */
@@ -15194,7 +15243,7 @@ export interface GetWorkersKvNamespacesResult {
 
 export interface GetWorkersRoutesResult {
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     pattern: string;
@@ -15240,11 +15289,15 @@ export interface GetWorkersScriptsResult {
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "smart".
+     *
+     * @deprecated This attribute is deprecated.
      */
     placementMode: string;
     /**
      * Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+     *
+     * @deprecated This attribute is deprecated.
      */
     placementStatus: string;
     /**
@@ -15284,18 +15337,6 @@ export interface GetWorkersScriptsResultTailConsumer {
      * Name of Worker that is to be the consumer.
      */
     service: string;
-}
-
-export interface GetWorkersSecretsResult {
-    /**
-     * The name of this secret, this is what will be used to access it inside the Worker.
-     */
-    name: string;
-    /**
-     * The type of secret.
-     * Available values: "secretText".
-     */
-    type: string;
 }
 
 export interface GetZeroTrustAccessApplicationCorsHeaders {
@@ -16526,7 +16567,7 @@ export interface GetZeroTrustAccessApplicationsResult {
      */
     httpOnlyCookieAttribute: boolean;
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     /**
@@ -16550,6 +16591,16 @@ export interface GetZeroTrustAccessApplicationsResult {
      */
     pathCookieAttribute: boolean;
     policies: outputs.GetZeroTrustAccessApplicationsResultPolicy[];
+    /**
+     * Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+     * "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+     * }
+     */
+    readServiceTokensFromHeader: string;
     saasApp: outputs.GetZeroTrustAccessApplicationsResultSaasApp;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -16561,6 +16612,8 @@ export interface GetZeroTrustAccessApplicationsResult {
     scimConfig: outputs.GetZeroTrustAccessApplicationsResultScimConfig;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+     *
+     * @deprecated This attribute is deprecated.
      */
     selfHostedDomains: string[];
     /**
@@ -17744,7 +17797,7 @@ export interface GetZeroTrustAccessCustomPagesResult {
      */
     type: string;
     /**
-     * UUID
+     * UUID.
      */
     uid: string;
     updatedAt: string;
@@ -18620,7 +18673,7 @@ export interface GetZeroTrustAccessGroupsResult {
      */
     excludes: outputs.GetZeroTrustAccessGroupsResultExclude[];
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     /**
@@ -19659,7 +19712,7 @@ export interface GetZeroTrustAccessIdentityProvidersResult {
      */
     config: outputs.GetZeroTrustAccessIdentityProvidersResultConfig;
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     /**
@@ -21485,15 +21538,15 @@ export interface GetZeroTrustDeviceCustomProfileFallbackDomain {
 
 export interface GetZeroTrustDeviceCustomProfileInclude {
     /**
-     * The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      */
     address: string;
     /**
-     * A description of the split tunnel item, displayed in the client UI.
+     * A description of the Split Tunnel item, displayed in the client UI.
      */
     description: string;
     /**
-     * The domain name to include in the tunnel. If host is present, address must not be present.
+     * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      */
     host: string;
 }
@@ -21587,9 +21640,6 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      * The name of the device settings profile.
      */
     name: string;
-    /**
-     * Device ID.
-     */
     policyId: string;
     /**
      * The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
@@ -21647,15 +21697,15 @@ export interface GetZeroTrustDeviceCustomProfilesResultFallbackDomain {
 
 export interface GetZeroTrustDeviceCustomProfilesResultInclude {
     /**
-     * The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      */
     address: string;
     /**
-     * A description of the split tunnel item, displayed in the client UI.
+     * A description of the Split Tunnel item, displayed in the client UI.
      */
     description: string;
     /**
-     * The domain name to include in the tunnel. If host is present, address must not be present.
+     * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      */
     host: string;
 }
@@ -21714,15 +21764,15 @@ export interface GetZeroTrustDeviceDefaultProfileFallbackDomain {
 
 export interface GetZeroTrustDeviceDefaultProfileInclude {
     /**
-     * The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      */
     address: string;
     /**
-     * A description of the split tunnel item, displayed in the client UI.
+     * A description of the Split Tunnel item, displayed in the client UI.
      */
     description: string;
     /**
-     * The domain name to include in the tunnel. If host is present, address must not be present.
+     * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      */
     host: string;
 }
@@ -22388,6 +22438,8 @@ export interface GetZeroTrustDlpCustomProfileEntryPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation: string;
 }
@@ -22485,6 +22537,8 @@ export interface GetZeroTrustDlpEntriesResultPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation: string;
 }
@@ -22504,6 +22558,8 @@ export interface GetZeroTrustDlpEntryPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation: string;
 }
@@ -22558,6 +22614,8 @@ export interface GetZeroTrustDlpPredefinedProfileEntryPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation: string;
 }
@@ -22884,24 +22942,48 @@ export interface GetZeroTrustGatewayCertificatesResult {
 }
 
 export interface GetZeroTrustGatewayLoggingSettingsByRuleType {
+    dns: outputs.GetZeroTrustGatewayLoggingSettingsByRuleTypeDns;
+    http: outputs.GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp;
+    l4: outputs.GetZeroTrustGatewayLoggingSettingsByRuleTypeL4;
+}
+
+export interface GetZeroTrustGatewayLoggingSettingsByRuleTypeDns {
     /**
-     * Logging settings for DNS firewall.
+     * Log all requests to this service.
      */
-    dns: string;
+    logAll: boolean;
     /**
-     * Logging settings for HTTP/HTTPS firewall.
+     * Log only blocking requests to this service.
      */
-    http: string;
+    logBlocks: boolean;
+}
+
+export interface GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
     /**
-     * Logging settings for Network firewall.
+     * Log all requests to this service.
      */
-    l4: string;
+    logAll: boolean;
+    /**
+     * Log only blocking requests to this service.
+     */
+    logBlocks: boolean;
+}
+
+export interface GetZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
+    /**
+     * Log all requests to this service.
+     */
+    logAll: boolean;
+    /**
+     * Log only blocking requests to this service.
+     */
+    logBlocks: boolean;
 }
 
 export interface GetZeroTrustGatewayPoliciesResult {
     /**
      * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action: string;
     createdAt: string;
@@ -23062,6 +23144,10 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      * Settings that apply to quarantine rules
      */
     quarantine: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantine;
+    /**
+     * Settings that apply to redirect rules
+     */
+    redirect: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsRedirect;
     /**
      * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
      */
@@ -23250,6 +23336,21 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsQuarantine {
     fileTypes: string[];
 }
 
+export interface GetZeroTrustGatewayPoliciesResultRuleSettingsRedirect {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
+    /**
+     * If true, the path and query parameters from the original request will be appended to target_uri
+     */
+    preservePathAndQuery: boolean;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: string;
+}
+
 export interface GetZeroTrustGatewayPoliciesResultRuleSettingsResolveDnsInternally {
     /**
      * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
@@ -23402,6 +23503,10 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      * Settings that apply to quarantine rules
      */
     quarantine: outputs.GetZeroTrustGatewayPolicyRuleSettingsQuarantine;
+    /**
+     * Settings that apply to redirect rules
+     */
+    redirect: outputs.GetZeroTrustGatewayPolicyRuleSettingsRedirect;
     /**
      * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
      */
@@ -23590,6 +23695,21 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsQuarantine {
     fileTypes: string[];
 }
 
+export interface GetZeroTrustGatewayPolicyRuleSettingsRedirect {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
+    /**
+     * If true, the path and query parameters from the original request will be appended to target_uri
+     */
+    preservePathAndQuery: boolean;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: string;
+}
+
 export interface GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
     /**
      * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
@@ -23672,6 +23792,8 @@ export interface GetZeroTrustGatewaySettingsSettings {
     certificate: outputs.GetZeroTrustGatewaySettingsSettingsCertificate;
     /**
      * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     *
+     * @deprecated This attribute is deprecated.
      */
     customCertificate: outputs.GetZeroTrustGatewaySettingsSettingsCustomCertificate;
     /**
@@ -23739,7 +23861,7 @@ export interface GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetting
 
 export interface GetZeroTrustGatewaySettingsSettingsBlockPage {
     /**
-     * Block page background color in #rrggbb format.
+     * If mode is customized*block*page: block page background color in #rrggbb format.
      */
     backgroundColor: string;
     /**
@@ -23747,33 +23869,46 @@ export interface GetZeroTrustGatewaySettingsSettingsBlockPage {
      */
     enabled: boolean;
     /**
-     * Block page footer text.
+     * If mode is customized*block*page: block page footer text.
      */
     footerText: string;
     /**
-     * Block page header text.
+     * If mode is customized*block*page: block page header text.
      */
     headerText: string;
     /**
-     * Full URL to the logo file.
+     * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     */
+    includeContext: boolean;
+    /**
+     * If mode is customized*block*page: full URL to the logo file.
      */
     logoPath: string;
     /**
-     * Admin email for users to contact.
+     * If mode is customized*block*page: admin email for users to contact.
      */
     mailtoAddress: string;
     /**
-     * Subject line for emails created from block page.
+     * If mode is customized*block*page: subject line for emails created from block page.
      */
     mailtoSubject: string;
     /**
-     * Block page title.
+     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+     * Available values: "customized*block*page", "redirectUri".
+     */
+    mode: string;
+    /**
+     * If mode is customized*block*page: block page title.
      */
     name: string;
     /**
-     * Suppress detailed info at the bottom of the block page.
+     * If mode is customized*block*page: suppress detailed info at the bottom of the block page.
      */
     suppressFooter: boolean;
+    /**
+     * If mode is redirect_uri: URI to which the user should be redirected.
+     */
+    targetUri: string;
 }
 
 export interface GetZeroTrustGatewaySettingsSettingsBodyScanning {
@@ -23865,6 +24000,18 @@ export interface GetZeroTrustListFilter {
     type?: string;
 }
 
+export interface GetZeroTrustListItem {
+    createdAt: string;
+    /**
+     * The description of the list item, if present
+     */
+    description: string;
+    /**
+     * The value of the item in a list.
+     */
+    value: string;
+}
+
 export interface GetZeroTrustListsResult {
     createdAt: string;
     /**
@@ -23875,6 +24022,10 @@ export interface GetZeroTrustListsResult {
      * API Resource UUID tag.
      */
     id: string;
+    /**
+     * The items in the list.
+     */
+    items: outputs.GetZeroTrustListsResultItem[];
     /**
      * The number of items in the list.
      */
@@ -23889,6 +24040,18 @@ export interface GetZeroTrustListsResult {
      */
     type: string;
     updatedAt: string;
+}
+
+export interface GetZeroTrustListsResultItem {
+    createdAt: string;
+    /**
+     * The description of the list item, if present
+     */
+    description: string;
+    /**
+     * The value of the item in a list.
+     */
+    value: string;
 }
 
 export interface GetZeroTrustOrganizationCustomPages {
@@ -24774,7 +24937,7 @@ export interface GetZonesResult {
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
-     * Available values: "full", "partial", "secondary".
+     * Available values: "full", "partial", "secondary", "internal".
      */
     type: string;
     /**
@@ -25346,11 +25509,11 @@ export interface LogpushJobOutputOptions {
     /**
      * String to be prepended before each batch.
      */
-    batchPrefix: string;
+    batchPrefix?: string;
     /**
      * String to be appended after each batch.
      */
-    batchSuffix: string;
+    batchSuffix?: string;
     /**
      * If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`.
      */
@@ -25358,7 +25521,7 @@ export interface LogpushJobOutputOptions {
     /**
      * String to join fields. This field be ignored when `recordTemplate` is set.
      */
-    fieldDelimiter: string;
+    fieldDelimiter?: string;
     /**
      * List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in.
      */
@@ -25371,19 +25534,19 @@ export interface LogpushJobOutputOptions {
     /**
      * String to be inserted in-between the records as separator.
      */
-    recordDelimiter: string;
+    recordDelimiter?: string;
     /**
      * String to be prepended before each record.
      */
-    recordPrefix: string;
+    recordPrefix?: string;
     /**
      * String to be appended after each record.
      */
-    recordSuffix: string;
+    recordSuffix?: string;
     /**
-     * String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      */
-    recordTemplate: string;
+    recordTemplate?: string;
     /**
      * Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
      */
@@ -26386,7 +26549,7 @@ export interface ObservatoryScheduledTestTest {
      */
     desktopReport: outputs.ObservatoryScheduledTestTestDesktopReport;
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     /**
@@ -27492,6 +27655,10 @@ export interface QueueSettings {
      */
     deliveryDelay?: number;
     /**
+     * Indicates if message delivery to consumers is currently paused.
+     */
+    deliveryPaused?: boolean;
+    /**
      * Number of seconds after which an unconsumed message will be delayed.
      */
     messageRetentionPeriod?: number;
@@ -27898,11 +28065,11 @@ export interface RecordData {
     /**
      * Minutes of latitude.
      */
-    latMinutes: number;
+    latMinutes?: number;
     /**
      * Seconds of latitude.
      */
-    latSeconds: number;
+    latSeconds?: number;
     /**
      * Degrees of longitude.
      */
@@ -27915,11 +28082,11 @@ export interface RecordData {
     /**
      * Minutes of longitude.
      */
-    longMinutes: number;
+    longMinutes?: number;
     /**
      * Seconds of longitude.
      */
-    longSeconds: number;
+    longSeconds?: number;
     /**
      * Matching Type.
      */
@@ -27935,11 +28102,11 @@ export interface RecordData {
     /**
      * Horizontal precision of location.
      */
-    precisionHorz: number;
+    precisionHorz?: number;
     /**
      * Vertical precision of location.
      */
-    precisionVert: number;
+    precisionVert?: number;
     /**
      * Preference.
      */
@@ -27975,7 +28142,7 @@ export interface RecordData {
     /**
      * Size of location in meters.
      */
-    size: number;
+    size?: number;
     /**
      * Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
      */
@@ -28034,11 +28201,11 @@ export interface RulesetRule {
     /**
      * The parameters configuring the rule's action.
      */
-    actionParameters: outputs.RulesetRuleActionParameters;
+    actionParameters?: outputs.RulesetRuleActionParameters;
     /**
      * The categories of the rule.
      */
-    categories: string[];
+    categories?: string[];
     /**
      * An informative description of the rule.
      */
@@ -28050,7 +28217,7 @@ export interface RulesetRule {
     /**
      * Configure checks for exposed credentials.
      */
-    exposedCredentialCheck: outputs.RulesetRuleExposedCredentialCheck;
+    exposedCredentialCheck?: outputs.RulesetRuleExposedCredentialCheck;
     /**
      * The expression defining which traffic will match the rule.
      */
@@ -28062,11 +28229,11 @@ export interface RulesetRule {
     /**
      * An object configuring the rule's logging behavior.
      */
-    logging: outputs.RulesetRuleLogging;
+    logging?: outputs.RulesetRuleLogging;
     /**
      * An object configuring the rule's ratelimit behavior.
      */
-    ratelimit: outputs.RulesetRuleRatelimit;
+    ratelimit?: outputs.RulesetRuleRatelimit;
     /**
      * The reference of the rule (the rule ID by default).
      */
@@ -28081,7 +28248,7 @@ export interface RulesetRuleActionParameters {
     /**
      * Custom order for compression algorithms.
      */
-    algorithms: outputs.RulesetRuleActionParametersAlgorithm[];
+    algorithms?: outputs.RulesetRuleActionParametersAlgorithm[];
     /**
      * Turn on or off Automatic HTTPS Rewrites.
      */
@@ -28089,7 +28256,7 @@ export interface RulesetRuleActionParameters {
     /**
      * Select which file extensions to minify automatically.
      */
-    autominify: outputs.RulesetRuleActionParametersAutominify;
+    autominify?: outputs.RulesetRuleActionParametersAutominify;
     /**
      * Turn on or off Browser Integrity Check.
      */
@@ -28097,7 +28264,7 @@ export interface RulesetRuleActionParameters {
     /**
      * Specify how long client browsers should cache the response. Cloudflare cache purge will not purge content cached on client browsers, so high browser TTLs may lead to stale content.
      */
-    browserTtl: outputs.RulesetRuleActionParametersBrowserTtl;
+    browserTtl?: outputs.RulesetRuleActionParametersBrowserTtl;
     /**
      * Mark whether the request’s response from origin is eligible for caching. Caching itself will still depend on the cache-control header and your other caching configurations.
      */
@@ -28105,11 +28272,11 @@ export interface RulesetRuleActionParameters {
     /**
      * Define which components of the request are included or excluded from the cache key Cloudflare uses to store the response in cache.
      */
-    cacheKey: outputs.RulesetRuleActionParametersCacheKey;
+    cacheKey?: outputs.RulesetRuleActionParametersCacheKey;
     /**
      * Mark whether the request's response from origin is eligible for Cache Reserve (requires a Cache Reserve add-on plan).
      */
-    cacheReserve: outputs.RulesetRuleActionParametersCacheReserve;
+    cacheReserve?: outputs.RulesetRuleActionParametersCacheReserve;
     /**
      * Error response content.
      */
@@ -28122,7 +28289,7 @@ export interface RulesetRuleActionParameters {
     /**
      * The cookie fields to log.
      */
-    cookieFields: outputs.RulesetRuleActionParametersCookieField[];
+    cookieFields?: outputs.RulesetRuleActionParametersCookieField[];
     /**
      * Turn off all active Cloudflare Apps.
      */
@@ -28138,7 +28305,7 @@ export interface RulesetRuleActionParameters {
     /**
      * TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare edge network.
      */
-    edgeTtl: outputs.RulesetRuleActionParametersEdgeTtl;
+    edgeTtl?: outputs.RulesetRuleActionParametersEdgeTtl;
     /**
      * Turn on or off Email Obfuscation.
      */
@@ -28150,15 +28317,15 @@ export interface RulesetRuleActionParameters {
     /**
      * Serve a redirect based on a bulk list lookup.
      */
-    fromList: outputs.RulesetRuleActionParametersFromList;
+    fromList?: outputs.RulesetRuleActionParametersFromList;
     /**
      * Serve a redirect based on the request properties.
      */
-    fromValue: outputs.RulesetRuleActionParametersFromValue;
+    fromValue?: outputs.RulesetRuleActionParametersFromValue;
     /**
      * Map of request headers to modify.
      */
-    headers: {[key: string]: outputs.RulesetRuleActionParametersHeaders};
+    headers?: {[key: string]: outputs.RulesetRuleActionParametersHeaders};
     /**
      * Rewrite the HTTP Host header.
      */
@@ -28178,7 +28345,7 @@ export interface RulesetRuleActionParameters {
     /**
      * The configuration to use for matched data logging.
      */
-    matchedData: outputs.RulesetRuleActionParametersMatchedData;
+    matchedData?: outputs.RulesetRuleActionParametersMatchedData;
     /**
      * Turn on or off Mirage.
      */
@@ -28190,7 +28357,7 @@ export interface RulesetRuleActionParameters {
     /**
      * Override the IP/TCP destination.
      */
-    origin: outputs.RulesetRuleActionParametersOrigin;
+    origin?: outputs.RulesetRuleActionParametersOrigin;
     /**
      * When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
      */
@@ -28202,7 +28369,7 @@ export interface RulesetRuleActionParameters {
     /**
      * A set of overrides to apply to the target ruleset.
      */
-    overrides: outputs.RulesetRuleActionParametersOverrides;
+    overrides?: outputs.RulesetRuleActionParametersOverrides;
     /**
      * A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
      */
@@ -28219,7 +28386,7 @@ export interface RulesetRuleActionParameters {
     /**
      * The raw response fields to log.
      */
-    rawResponseFields: outputs.RulesetRuleActionParametersRawResponseField[];
+    rawResponseFields?: outputs.RulesetRuleActionParametersRawResponseField[];
     /**
      * Define a timeout value between two successive read operations to your origin server. Historically, the timeout value between two read options from Cloudflare to an origin server is 100 seconds. If you are attempting to reduce HTTP 524 errors because of timeouts from an origin server, try increasing this timeout value.
      */
@@ -28227,7 +28394,7 @@ export interface RulesetRuleActionParameters {
     /**
      * The raw request fields to log.
      */
-    requestFields: outputs.RulesetRuleActionParametersRequestField[];
+    requestFields?: outputs.RulesetRuleActionParametersRequestField[];
     /**
      * Specify whether or not Cloudflare should respect strong ETag (entity tag) headers. When off, Cloudflare converts strong ETag headers to weak ETag headers.
      */
@@ -28235,11 +28402,11 @@ export interface RulesetRuleActionParameters {
     /**
      * The response to show when the block is applied.
      */
-    response: outputs.RulesetRuleActionParametersResponse;
+    response?: outputs.RulesetRuleActionParametersResponse;
     /**
      * The transformed response fields to log.
      */
-    responseFields: outputs.RulesetRuleActionParametersResponseField[];
+    responseFields?: outputs.RulesetRuleActionParametersResponseField[];
     /**
      * Turn on or off Rocket Loader
      */
@@ -28265,7 +28432,7 @@ export interface RulesetRuleActionParameters {
     /**
      * Define if Cloudflare should serve stale content while getting the latest content from the origin. If on, Cloudflare will not serve stale content while getting the latest content from the origin.
      */
-    serveStale: outputs.RulesetRuleActionParametersServeStale;
+    serveStale?: outputs.RulesetRuleActionParametersServeStale;
     /**
      * Turn on or off Server Side Excludes.
      */
@@ -28273,7 +28440,7 @@ export interface RulesetRuleActionParameters {
     /**
      * Override the Server Name Indication (SNI).
      */
-    sni: outputs.RulesetRuleActionParametersSni;
+    sni?: outputs.RulesetRuleActionParametersSni;
     /**
      * Configure the SSL level.
      * Available values: "off", "flexible", "full", "strict", "originPull".
@@ -28290,11 +28457,11 @@ export interface RulesetRuleActionParameters {
     /**
      * The transformed request fields to log.
      */
-    transformedRequestFields: outputs.RulesetRuleActionParametersTransformedRequestField[];
+    transformedRequestFields?: outputs.RulesetRuleActionParametersTransformedRequestField[];
     /**
      * URI to rewrite the request to.
      */
-    uri: outputs.RulesetRuleActionParametersUri;
+    uri?: outputs.RulesetRuleActionParametersUri;
 }
 
 export interface RulesetRuleActionParametersAlgorithm {
@@ -28344,7 +28511,7 @@ export interface RulesetRuleActionParametersCacheKey {
     /**
      * Customize which components of the request are included or excluded from the cache key.
      */
-    customKey: outputs.RulesetRuleActionParametersCacheKeyCustomKey;
+    customKey?: outputs.RulesetRuleActionParametersCacheKeyCustomKey;
     /**
      * Treat requests with the same query parameters the same, regardless of the order those query parameters are in. A value of true ignores the query strings' order.
      */
@@ -28355,23 +28522,23 @@ export interface RulesetRuleActionParametersCacheKeyCustomKey {
     /**
      * The cookies to include in building the cache key.
      */
-    cookie: outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie;
+    cookie?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie;
     /**
      * The header names and values to include in building the cache key.
      */
-    header: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader;
+    header?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader;
     /**
      * Whether to use the original host or the resolved host in the cache key.
      */
-    host: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost;
+    host?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost;
     /**
      * Use the presence of parameters in the query string to build the cache key.
      */
-    queryString: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString;
+    queryString?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString;
     /**
      * Characteristics of the request user agent used in building the cache key.
      */
-    user: outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
+    user?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
@@ -28415,11 +28582,11 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
     /**
      * A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
      */
-    exclude: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude;
+    exclude?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude;
     /**
      * A list of query string parameters used to build the cache key.
      */
-    include: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude;
+    include?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude;
 }
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
@@ -28537,7 +28704,7 @@ export interface RulesetRuleActionParametersFromValue {
     /**
      * The URL to redirect the request to.
      */
-    targetUrl: outputs.RulesetRuleActionParametersFromValueTargetUrl;
+    targetUrl?: outputs.RulesetRuleActionParametersFromValueTargetUrl;
 }
 
 export interface RulesetRuleActionParametersFromValueTargetUrl {
@@ -28592,7 +28759,7 @@ export interface RulesetRuleActionParametersOverrides {
     /**
      * A list of category-level overrides. This option has the second-highest precedence after rule-level overrides.
      */
-    categories: outputs.RulesetRuleActionParametersOverridesCategory[];
+    categories?: outputs.RulesetRuleActionParametersOverridesCategory[];
     /**
      * Whether to enable execution of all rules. This option has lower precedence than rule and category overrides.
      */
@@ -28600,7 +28767,7 @@ export interface RulesetRuleActionParametersOverrides {
     /**
      * A list of rule-level overrides. This option has the highest precedence.
      */
-    rules: outputs.RulesetRuleActionParametersOverridesRule[];
+    rules?: outputs.RulesetRuleActionParametersOverridesRule[];
     /**
      * A sensitivity level to set for all rules. This option has lower precedence than rule and category overrides and is only applicable for DDoS phases.
      * Available values: "default", "medium", "low", "eoff".
@@ -28660,7 +28827,7 @@ export interface RulesetRuleActionParametersRawResponseField {
     /**
      * Whether to log duplicate values of the same header.
      */
-    preserveDuplicates: boolean;
+    preserveDuplicates?: boolean;
 }
 
 export interface RulesetRuleActionParametersRequestField {
@@ -28693,7 +28860,7 @@ export interface RulesetRuleActionParametersResponseField {
     /**
      * Whether to log duplicate values of the same header.
      */
-    preserveDuplicates: boolean;
+    preserveDuplicates?: boolean;
 }
 
 export interface RulesetRuleActionParametersServeStale {
@@ -28721,11 +28888,11 @@ export interface RulesetRuleActionParametersUri {
     /**
      * Path portion rewrite.
      */
-    path: outputs.RulesetRuleActionParametersUriPath;
+    path?: outputs.RulesetRuleActionParametersUriPath;
     /**
      * Query portion rewrite.
      */
-    query: outputs.RulesetRuleActionParametersUriQuery;
+    query?: outputs.RulesetRuleActionParametersUriQuery;
 }
 
 export interface RulesetRuleActionParametersUriPath {
@@ -29183,6 +29350,8 @@ export interface TeamsAccountSettings {
     certificate: outputs.TeamsAccountSettingsCertificate;
     /**
      * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     *
+     * @deprecated This attribute is deprecated.
      */
     customCertificate: outputs.TeamsAccountSettingsCustomCertificate;
     /**
@@ -29250,7 +29419,7 @@ export interface TeamsAccountSettingsAntivirusNotificationSettings {
 
 export interface TeamsAccountSettingsBlockPage {
     /**
-     * Block page background color in #rrggbb format.
+     * If mode is customized*block*page: block page background color in #rrggbb format.
      */
     backgroundColor?: string;
     /**
@@ -29258,33 +29427,46 @@ export interface TeamsAccountSettingsBlockPage {
      */
     enabled?: boolean;
     /**
-     * Block page footer text.
+     * If mode is customized*block*page: block page footer text.
      */
     footerText?: string;
     /**
-     * Block page header text.
+     * If mode is customized*block*page: block page header text.
      */
     headerText?: string;
     /**
-     * Full URL to the logo file.
+     * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     */
+    includeContext?: boolean;
+    /**
+     * If mode is customized*block*page: full URL to the logo file.
      */
     logoPath?: string;
     /**
-     * Admin email for users to contact.
+     * If mode is customized*block*page: admin email for users to contact.
      */
     mailtoAddress?: string;
     /**
-     * Subject line for emails created from block page.
+     * If mode is customized*block*page: subject line for emails created from block page.
      */
     mailtoSubject?: string;
     /**
-     * Block page title.
+     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+     * Available values: "customized*block*page", "redirectUri".
+     */
+    mode: string;
+    /**
+     * If mode is customized*block*page: block page title.
      */
     name?: string;
     /**
-     * Suppress detailed info at the bottom of the block page.
+     * If mode is customized*block*page: suppress detailed info at the bottom of the block page.
      */
     suppressFooter?: boolean;
+    /**
+     * If mode is redirect_uri: URI to which the user should be redirected.
+     */
+    targetUri?: string;
 }
 
 export interface TeamsAccountSettingsBodyScanning {
@@ -29557,6 +29739,10 @@ export interface TeamsRuleRuleSettings {
      */
     quarantine: outputs.TeamsRuleRuleSettingsQuarantine;
     /**
+     * Settings that apply to redirect rules
+     */
+    redirect: outputs.TeamsRuleRuleSettingsRedirect;
+    /**
      * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
      */
     resolveDnsInternally: outputs.TeamsRuleRuleSettingsResolveDnsInternally;
@@ -29742,6 +29928,21 @@ export interface TeamsRuleRuleSettingsQuarantine {
      * Types of files to sandbox.
      */
     fileTypes?: string[];
+}
+
+export interface TeamsRuleRuleSettingsRedirect {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: boolean;
+    /**
+     * If true, the path and query parameters from the original request will be appended to target_uri
+     */
+    preservePathAndQuery?: boolean;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: string;
 }
 
 export interface TeamsRuleRuleSettingsResolveDnsInternally {
@@ -30128,6 +30329,14 @@ export interface WorkerScriptAssets {
 
 export interface WorkerScriptAssetsConfig {
     /**
+     * The contents of a _headers file (used to attach custom headers on asset responses)
+     */
+    _headers?: string;
+    /**
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     */
+    _redirects?: string;
+    /**
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
      */
@@ -30143,6 +30352,8 @@ export interface WorkerScriptAssetsConfig {
     runWorkerFirst: boolean;
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+     *
+     * @deprecated This attribute is deprecated.
      */
     serveDirectly: boolean;
 }
@@ -30403,12 +30614,24 @@ export interface WorkersDeploymentVersion {
 
 export interface WorkersRouteError {
     code: number;
+    documentationUrl: string;
     message: string;
+    source: outputs.WorkersRouteErrorSource;
+}
+
+export interface WorkersRouteErrorSource {
+    pointer: string;
 }
 
 export interface WorkersRouteMessage {
     code: number;
+    documentationUrl: string;
     message: string;
+    source: outputs.WorkersRouteMessageSource;
+}
+
+export interface WorkersRouteMessageSource {
+    pointer: string;
 }
 
 export interface WorkersScriptAssets {
@@ -30423,6 +30646,14 @@ export interface WorkersScriptAssets {
 }
 
 export interface WorkersScriptAssetsConfig {
+    /**
+     * The contents of a _headers file (used to attach custom headers on asset responses)
+     */
+    _headers?: string;
+    /**
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     */
+    _redirects?: string;
     /**
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
@@ -30439,6 +30670,8 @@ export interface WorkersScriptAssetsConfig {
     runWorkerFirst: boolean;
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+     *
+     * @deprecated This attribute is deprecated.
      */
     serveDirectly: boolean;
 }
@@ -33249,11 +33482,11 @@ export interface ZeroTrustDeviceCustomProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      */
-    address: string;
+    address?: string;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description: string;
+    description?: string;
     /**
      * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
      */
@@ -33277,15 +33510,15 @@ export interface ZeroTrustDeviceCustomProfileFallbackDomain {
 
 export interface ZeroTrustDeviceCustomProfileInclude {
     /**
-     * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+     * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      */
-    address: string;
+    address?: string;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description: string;
+    description?: string;
     /**
-     * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+     * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      */
     host?: string;
 }
@@ -33331,11 +33564,11 @@ export interface ZeroTrustDeviceDefaultProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      */
-    address: string;
+    address?: string;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description: string;
+    description?: string;
     /**
      * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
      */
@@ -33359,15 +33592,15 @@ export interface ZeroTrustDeviceDefaultProfileFallbackDomain {
 
 export interface ZeroTrustDeviceDefaultProfileInclude {
     /**
-     * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+     * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      */
-    address: string;
+    address?: string;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description: string;
+    description?: string;
     /**
-     * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+     * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      */
     host?: string;
 }
@@ -33691,6 +33924,8 @@ export interface ZeroTrustDlpCustomProfileEntryPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: string;
 }
@@ -33748,6 +33983,8 @@ export interface ZeroTrustDlpCustomProfileProfileEntryPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: string;
 }
@@ -33846,6 +34083,8 @@ export interface ZeroTrustDlpEntryPattern {
     regex: string;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: string;
 }
@@ -33953,18 +34192,42 @@ export interface ZeroTrustDnsLocationNetwork {
 }
 
 export interface ZeroTrustGatewayLoggingSettingsByRuleType {
+    dns: outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDns;
+    http: outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttp;
+    l4: outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4;
+}
+
+export interface ZeroTrustGatewayLoggingSettingsByRuleTypeDns {
     /**
-     * Logging settings for DNS firewall.
+     * Log all requests to this service.
      */
-    dns?: string;
+    logAll?: boolean;
     /**
-     * Logging settings for HTTP/HTTPS firewall.
+     * Log only blocking requests to this service.
      */
-    http?: string;
+    logBlocks?: boolean;
+}
+
+export interface ZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
     /**
-     * Logging settings for Network firewall.
+     * Log all requests to this service.
      */
-    l4?: string;
+    logAll?: boolean;
+    /**
+     * Log only blocking requests to this service.
+     */
+    logBlocks?: boolean;
+}
+
+export interface ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
+    /**
+     * Log all requests to this service.
+     */
+    logAll?: boolean;
+    /**
+     * Log only blocking requests to this service.
+     */
+    logBlocks?: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyExpiration {
@@ -34064,6 +34327,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      * Settings that apply to quarantine rules
      */
     quarantine: outputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine;
+    /**
+     * Settings that apply to redirect rules
+     */
+    redirect: outputs.ZeroTrustGatewayPolicyRuleSettingsRedirect;
     /**
      * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
      */
@@ -34252,6 +34519,21 @@ export interface ZeroTrustGatewayPolicyRuleSettingsQuarantine {
     fileTypes?: string[];
 }
 
+export interface ZeroTrustGatewayPolicyRuleSettingsRedirect {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: boolean;
+    /**
+     * If true, the path and query parameters from the original request will be appended to target_uri
+     */
+    preservePathAndQuery?: boolean;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: string;
+}
+
 export interface ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
     /**
      * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
@@ -34334,6 +34616,8 @@ export interface ZeroTrustGatewaySettingsSettings {
     certificate: outputs.ZeroTrustGatewaySettingsSettingsCertificate;
     /**
      * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     *
+     * @deprecated This attribute is deprecated.
      */
     customCertificate: outputs.ZeroTrustGatewaySettingsSettingsCustomCertificate;
     /**
@@ -34401,7 +34685,7 @@ export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
 
 export interface ZeroTrustGatewaySettingsSettingsBlockPage {
     /**
-     * Block page background color in #rrggbb format.
+     * If mode is customized*block*page: block page background color in #rrggbb format.
      */
     backgroundColor?: string;
     /**
@@ -34409,33 +34693,46 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     enabled?: boolean;
     /**
-     * Block page footer text.
+     * If mode is customized*block*page: block page footer text.
      */
     footerText?: string;
     /**
-     * Block page header text.
+     * If mode is customized*block*page: block page header text.
      */
     headerText?: string;
     /**
-     * Full URL to the logo file.
+     * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     */
+    includeContext?: boolean;
+    /**
+     * If mode is customized*block*page: full URL to the logo file.
      */
     logoPath?: string;
     /**
-     * Admin email for users to contact.
+     * If mode is customized*block*page: admin email for users to contact.
      */
     mailtoAddress?: string;
     /**
-     * Subject line for emails created from block page.
+     * If mode is customized*block*page: subject line for emails created from block page.
      */
     mailtoSubject?: string;
     /**
-     * Block page title.
+     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+     * Available values: "customized*block*page", "redirectUri".
+     */
+    mode: string;
+    /**
+     * If mode is customized*block*page: block page title.
      */
     name?: string;
     /**
-     * Suppress detailed info at the bottom of the block page.
+     * If mode is customized*block*page: suppress detailed info at the bottom of the block page.
      */
     suppressFooter?: boolean;
+    /**
+     * If mode is redirect_uri: URI to which the user should be redirected.
+     */
+    targetUri?: string;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsBodyScanning {

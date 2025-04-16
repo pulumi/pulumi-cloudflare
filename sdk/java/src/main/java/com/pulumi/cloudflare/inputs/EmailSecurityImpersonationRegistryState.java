@@ -67,9 +67,21 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
         return Optional.ofNullable(this.email);
     }
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="externalDirectoryNodeId")
     private @Nullable Output<String> externalDirectoryNodeId;
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> externalDirectoryNodeId() {
         return Optional.ofNullable(this.externalDirectoryNodeId);
     }
@@ -202,11 +214,27 @@ public final class EmailSecurityImpersonationRegistryState extends com.pulumi.re
             return email(Output.of(email));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder externalDirectoryNodeId(@Nullable Output<String> externalDirectoryNodeId) {
             $.externalDirectoryNodeId = externalDirectoryNodeId;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder externalDirectoryNodeId(String externalDirectoryNodeId) {
             return externalDirectoryNodeId(Output.of(externalDirectoryNodeId));
         }

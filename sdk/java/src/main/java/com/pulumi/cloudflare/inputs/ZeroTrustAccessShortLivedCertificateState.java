@@ -31,14 +31,14 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -140,7 +140,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param appId UUID
+         * @param appId UUID.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class ZeroTrustAccessShortLivedCertificateState extends com.pulumi.
         }
 
         /**
-         * @param appId UUID
+         * @param appId UUID.
          * 
          * @return builder
          * 

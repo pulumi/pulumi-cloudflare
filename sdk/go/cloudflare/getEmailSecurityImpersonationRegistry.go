@@ -58,13 +58,14 @@ type LookupEmailSecurityImpersonationRegistryArgs struct {
 // A collection of values returned by getEmailSecurityImpersonationRegistry.
 type LookupEmailSecurityImpersonationRegistryResult struct {
 	// Account Identifier
-	AccountId               string                                       `pulumi:"accountId"`
-	Comments                string                                       `pulumi:"comments"`
-	CreatedAt               string                                       `pulumi:"createdAt"`
-	DirectoryId             int                                          `pulumi:"directoryId"`
-	DirectoryNodeId         int                                          `pulumi:"directoryNodeId"`
-	DisplayNameId           *int                                         `pulumi:"displayNameId"`
-	Email                   string                                       `pulumi:"email"`
+	AccountId       string `pulumi:"accountId"`
+	Comments        string `pulumi:"comments"`
+	CreatedAt       string `pulumi:"createdAt"`
+	DirectoryId     int    `pulumi:"directoryId"`
+	DirectoryNodeId int    `pulumi:"directoryNodeId"`
+	DisplayNameId   *int   `pulumi:"displayNameId"`
+	Email           string `pulumi:"email"`
+	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId string                                       `pulumi:"externalDirectoryNodeId"`
 	Filter                  *GetEmailSecurityImpersonationRegistryFilter `pulumi:"filter"`
 	// The ID of this resource.
@@ -140,6 +141,7 @@ func (o LookupEmailSecurityImpersonationRegistryResultOutput) Email() pulumi.Str
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// Deprecated: This attribute is deprecated.
 func (o LookupEmailSecurityImpersonationRegistryResultOutput) ExternalDirectoryNodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailSecurityImpersonationRegistryResult) string { return v.ExternalDirectoryNodeId }).(pulumi.StringOutput)
 }

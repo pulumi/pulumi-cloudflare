@@ -14,14 +14,14 @@ public final class GetWorkersDeploymentPlainArgs extends com.pulumi.resources.In
     public static final GetWorkersDeploymentPlainArgs Empty = new GetWorkersDeploymentPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -69,7 +69,7 @@ public final class GetWorkersDeploymentPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool HttpOnlyCookieAttribute;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -108,6 +108,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool PathCookieAttribute;
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationsResultPolicyResult> Policies;
+        /// <summary>
+        /// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        /// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        /// The header value will be interpreted as a json object similar to:
+        /// {
+        /// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        /// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        /// }
+        /// </summary>
+        public readonly string ReadServiceTokensFromHeader;
         public readonly Outputs.GetZeroTrustAccessApplicationsResultSaasAppResult SaasApp;
         /// <summary>
         /// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -202,6 +212,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.GetZeroTrustAccessApplicationsResultPolicyResult> policies,
 
+            string readServiceTokensFromHeader,
+
             Outputs.GetZeroTrustAccessApplicationsResultSaasAppResult saasApp,
 
             string sameSiteCookieAttribute,
@@ -252,6 +264,7 @@ namespace Pulumi.Cloudflare.Outputs
             OptionsPreflightBypass = optionsPreflightBypass;
             PathCookieAttribute = pathCookieAttribute;
             Policies = policies;
+            ReadServiceTokensFromHeader = readServiceTokensFromHeader;
             SaasApp = saasApp;
             SameSiteCookieAttribute = sameSiteCookieAttribute;
             ScimConfig = scimConfig;

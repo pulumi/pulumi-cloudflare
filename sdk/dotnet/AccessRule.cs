@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     ///             Target = "ip",
     ///             Value = "198.51.100.4",
     ///         },
-    ///         Mode = "block",
+    ///         Mode = "challenge",
     ///         ZoneId = "zone_id",
     ///         Notes = "This rule is enabled because of an event that occurred on date X.",
     ///     });

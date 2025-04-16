@@ -31,7 +31,7 @@ public final class GetWorkersRoutesInvokeResult {
      */
     private List<GetWorkersRoutesResult> results;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -59,7 +59,7 @@ public final class GetWorkersRoutesInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

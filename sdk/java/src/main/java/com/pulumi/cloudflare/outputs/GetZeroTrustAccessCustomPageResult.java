@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustAccessCustomPageResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -30,12 +30,12 @@ public final class GetZeroTrustAccessCustomPageResult {
      */
     private String customHtml;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private @Nullable String customPageId;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -51,7 +51,7 @@ public final class GetZeroTrustAccessCustomPageResult {
      */
     private String type;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String uid;
@@ -59,7 +59,7 @@ public final class GetZeroTrustAccessCustomPageResult {
 
     private GetZeroTrustAccessCustomPageResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -83,14 +83,14 @@ public final class GetZeroTrustAccessCustomPageResult {
         return this.customHtml;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> customPageId() {
         return Optional.ofNullable(this.customPageId);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {
@@ -112,7 +112,7 @@ public final class GetZeroTrustAccessCustomPageResult {
         return this.type;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String uid() {

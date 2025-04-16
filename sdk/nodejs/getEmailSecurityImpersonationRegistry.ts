@@ -54,6 +54,9 @@ export interface GetEmailSecurityImpersonationRegistryResult {
     readonly directoryNodeId: number;
     readonly displayNameId?: number;
     readonly email: string;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     readonly externalDirectoryNodeId: string;
     readonly filter?: outputs.GetEmailSecurityImpersonationRegistryFilter;
     /**

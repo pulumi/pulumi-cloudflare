@@ -49,7 +49,7 @@ import (
 type AccessTag struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The number of applications that have this tag
 	AppCount  pulumi.IntOutput    `pulumi:"appCount"`
@@ -101,7 +101,7 @@ func GetAccessTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessTag resources.
 type accessTagState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The number of applications that have this tag
 	AppCount  *int    `pulumi:"appCount"`
@@ -112,7 +112,7 @@ type accessTagState struct {
 }
 
 type AccessTagState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The number of applications that have this tag
 	AppCount  pulumi.IntPtrInput
@@ -127,7 +127,7 @@ func (AccessTagState) ElementType() reflect.Type {
 }
 
 type accessTagArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The name of the tag
 	Name string `pulumi:"name"`
@@ -135,7 +135,7 @@ type accessTagArgs struct {
 
 // The set of arguments for constructing a AccessTag resource.
 type AccessTagArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The name of the tag
 	Name pulumi.StringInput
@@ -228,7 +228,7 @@ func (o AccessTagOutput) ToAccessTagOutputWithContext(ctx context.Context) Acces
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o AccessTagOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessTag) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

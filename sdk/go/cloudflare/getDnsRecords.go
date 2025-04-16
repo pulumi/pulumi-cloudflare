@@ -103,7 +103,7 @@ type LookupDnsRecordsArgs struct {
 	// Record type.
 	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type *string `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -138,7 +138,7 @@ type LookupDnsRecordsResult struct {
 	// Record type.
 	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type *string `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -178,7 +178,7 @@ type LookupDnsRecordsOutputArgs struct {
 	// Record type.
 	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -272,7 +272,7 @@ func (o LookupDnsRecordsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupDnsRecordsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

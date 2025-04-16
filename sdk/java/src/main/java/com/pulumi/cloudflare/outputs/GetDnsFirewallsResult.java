@@ -31,7 +31,7 @@ public final class GetDnsFirewallsResult {
      */
     private Boolean ecsFallback;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -98,7 +98,7 @@ public final class GetDnsFirewallsResult {
         return this.ecsFallback;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

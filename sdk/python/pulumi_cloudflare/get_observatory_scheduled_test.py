@@ -82,7 +82,7 @@ class GetObservatoryScheduledTestResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -113,14 +113,14 @@ def get_observatory_scheduled_test(region: Optional[builtins.str] = None,
 
     example_observatory_scheduled_test = cloudflare.get_observatory_scheduled_test(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         url="example.com",
-        region="asia-east1")
+        region="us-central1")
     ```
 
 
     :param builtins.str region: A test region.
            Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
     :param builtins.str url: A URL.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -148,14 +148,14 @@ def get_observatory_scheduled_test_output(region: Optional[pulumi.Input[Optional
 
     example_observatory_scheduled_test = cloudflare.get_observatory_scheduled_test(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         url="example.com",
-        region="asia-east1")
+        region="us-central1")
     ```
 
 
     :param builtins.str region: A test region.
            Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
     :param builtins.str url: A URL.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['region'] = region

@@ -52,7 +52,7 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -110,7 +110,7 @@ export class ZeroTrustAccessTag extends pulumi.CustomResource {
  */
 export interface ZeroTrustAccessTagState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -130,7 +130,7 @@ export interface ZeroTrustAccessTagState {
  */
 export interface ZeroTrustAccessTagArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

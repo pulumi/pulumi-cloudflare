@@ -87,6 +87,18 @@ public final class GetWaitingRoomEventResult {
      * 
      */
     private Integer totalActiveUsers;
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * 
+     */
+    private String turnstileAction;
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * 
+     */
+    private String turnstileMode;
     private String waitingRoomId;
     /**
      * @return Identifier
@@ -202,6 +214,22 @@ public final class GetWaitingRoomEventResult {
     public Integer totalActiveUsers() {
         return this.totalActiveUsers;
     }
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * 
+     */
+    public String turnstileAction() {
+        return this.turnstileAction;
+    }
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * 
+     */
+    public String turnstileMode() {
+        return this.turnstileMode;
+    }
     public String waitingRoomId() {
         return this.waitingRoomId;
     }
@@ -239,6 +267,8 @@ public final class GetWaitingRoomEventResult {
         private Boolean shuffleAtEventStart;
         private Boolean suspended;
         private Integer totalActiveUsers;
+        private String turnstileAction;
+        private String turnstileMode;
         private String waitingRoomId;
         private String zoneId;
         public Builder() {}
@@ -261,6 +291,8 @@ public final class GetWaitingRoomEventResult {
     	      this.shuffleAtEventStart = defaults.shuffleAtEventStart;
     	      this.suspended = defaults.suspended;
     	      this.totalActiveUsers = defaults.totalActiveUsers;
+    	      this.turnstileAction = defaults.turnstileAction;
+    	      this.turnstileMode = defaults.turnstileMode;
     	      this.waitingRoomId = defaults.waitingRoomId;
     	      this.zoneId = defaults.zoneId;
         }
@@ -400,6 +432,22 @@ public final class GetWaitingRoomEventResult {
             return this;
         }
         @CustomType.Setter
+        public Builder turnstileAction(String turnstileAction) {
+            if (turnstileAction == null) {
+              throw new MissingRequiredPropertyException("GetWaitingRoomEventResult", "turnstileAction");
+            }
+            this.turnstileAction = turnstileAction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder turnstileMode(String turnstileMode) {
+            if (turnstileMode == null) {
+              throw new MissingRequiredPropertyException("GetWaitingRoomEventResult", "turnstileMode");
+            }
+            this.turnstileMode = turnstileMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder waitingRoomId(String waitingRoomId) {
             if (waitingRoomId == null) {
               throw new MissingRequiredPropertyException("GetWaitingRoomEventResult", "waitingRoomId");
@@ -434,6 +482,8 @@ public final class GetWaitingRoomEventResult {
             _resultValue.shuffleAtEventStart = shuffleAtEventStart;
             _resultValue.suspended = suspended;
             _resultValue.totalActiveUsers = totalActiveUsers;
+            _resultValue.turnstileAction = turnstileAction;
+            _resultValue.turnstileMode = turnstileMode;
             _resultValue.waitingRoomId = waitingRoomId;
             _resultValue.zoneId = zoneId;
             return _resultValue;

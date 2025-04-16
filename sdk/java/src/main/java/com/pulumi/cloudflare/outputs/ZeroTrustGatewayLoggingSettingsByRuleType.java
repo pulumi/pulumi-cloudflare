@@ -3,50 +3,28 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDns;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttp;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4;
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustGatewayLoggingSettingsByRuleType {
-    /**
-     * @return Logging settings for DNS firewall.
-     * 
-     */
-    private @Nullable String dns;
-    /**
-     * @return Logging settings for HTTP/HTTPS firewall.
-     * 
-     */
-    private @Nullable String http;
-    /**
-     * @return Logging settings for Network firewall.
-     * 
-     */
-    private @Nullable String l4;
+    private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeDns dns;
+    private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeHttp http;
+    private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4;
 
     private ZeroTrustGatewayLoggingSettingsByRuleType() {}
-    /**
-     * @return Logging settings for DNS firewall.
-     * 
-     */
-    public Optional<String> dns() {
+    public Optional<ZeroTrustGatewayLoggingSettingsByRuleTypeDns> dns() {
         return Optional.ofNullable(this.dns);
     }
-    /**
-     * @return Logging settings for HTTP/HTTPS firewall.
-     * 
-     */
-    public Optional<String> http() {
+    public Optional<ZeroTrustGatewayLoggingSettingsByRuleTypeHttp> http() {
         return Optional.ofNullable(this.http);
     }
-    /**
-     * @return Logging settings for Network firewall.
-     * 
-     */
-    public Optional<String> l4() {
+    public Optional<ZeroTrustGatewayLoggingSettingsByRuleTypeL4> l4() {
         return Optional.ofNullable(this.l4);
     }
 
@@ -59,9 +37,9 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleType {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String dns;
-        private @Nullable String http;
-        private @Nullable String l4;
+        private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeDns dns;
+        private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeHttp http;
+        private @Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4;
         public Builder() {}
         public Builder(ZeroTrustGatewayLoggingSettingsByRuleType defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,19 +49,19 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleType {
         }
 
         @CustomType.Setter
-        public Builder dns(@Nullable String dns) {
+        public Builder dns(@Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeDns dns) {
 
             this.dns = dns;
             return this;
         }
         @CustomType.Setter
-        public Builder http(@Nullable String http) {
+        public Builder http(@Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeHttp http) {
 
             this.http = http;
             return this;
         }
         @CustomType.Setter
-        public Builder l4(@Nullable String l4) {
+        public Builder l4(@Nullable ZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4) {
 
             this.l4 = l4;
             return this;

@@ -123,7 +123,7 @@ class GetMagicTransitSiteWanResult:
     @pulumi.getter(name="vlanTag")
     def vlan_tag(self) -> builtins.int:
         """
-        VLAN port number.
+        VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 

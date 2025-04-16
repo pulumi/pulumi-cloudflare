@@ -2773,6 +2773,8 @@ export interface AccountSettings {
     abuseContactEmail?: pulumi.Input<string>;
     /**
      * Specifies the default nameservers to be used for new zones added to this account.
+     *
+     * @deprecated This attribute is deprecated.
      */
     defaultNameservers?: pulumi.Input<string>;
     /**
@@ -2785,6 +2787,8 @@ export interface AccountSettings {
      * nameservers by default.
      *
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+     *
+     * @deprecated This attribute is deprecated.
      */
     useAccountCustomNsByDefault?: pulumi.Input<boolean>;
 }
@@ -3747,6 +3751,8 @@ export interface DlpCustomProfileEntryPattern {
     regex: pulumi.Input<string>;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
 }
@@ -3804,6 +3810,8 @@ export interface DlpCustomProfileProfileEntryPattern {
     regex: pulumi.Input<string>;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
 }
@@ -6777,7 +6785,7 @@ export interface LogpushJobOutputOptions {
      */
     recordSuffix?: pulumi.Input<string>;
     /**
-     * String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+     * String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
      */
     recordTemplate?: pulumi.Input<string>;
     /**
@@ -7782,7 +7790,7 @@ export interface ObservatoryScheduledTestTest {
      */
     desktopReport?: pulumi.Input<inputs.ObservatoryScheduledTestTestDesktopReport>;
     /**
-     * UUID
+     * UUID.
      */
     id?: pulumi.Input<string>;
     /**
@@ -8887,6 +8895,10 @@ export interface QueueSettings {
      * Number of seconds to delay delivery of all messages to consumers.
      */
     deliveryDelay?: pulumi.Input<number>;
+    /**
+     * Indicates if message delivery to consumers is currently paused.
+     */
+    deliveryPaused?: pulumi.Input<boolean>;
     /**
      * Number of seconds after which an unconsumed message will be delayed.
      */
@@ -10579,6 +10591,8 @@ export interface TeamsAccountSettings {
     certificate?: pulumi.Input<inputs.TeamsAccountSettingsCertificate>;
     /**
      * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     *
+     * @deprecated This attribute is deprecated.
      */
     customCertificate?: pulumi.Input<inputs.TeamsAccountSettingsCustomCertificate>;
     /**
@@ -10646,7 +10660,7 @@ export interface TeamsAccountSettingsAntivirusNotificationSettings {
 
 export interface TeamsAccountSettingsBlockPage {
     /**
-     * Block page background color in #rrggbb format.
+     * If mode is customized*block*page: block page background color in #rrggbb format.
      */
     backgroundColor?: pulumi.Input<string>;
     /**
@@ -10654,33 +10668,46 @@ export interface TeamsAccountSettingsBlockPage {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Block page footer text.
+     * If mode is customized*block*page: block page footer text.
      */
     footerText?: pulumi.Input<string>;
     /**
-     * Block page header text.
+     * If mode is customized*block*page: block page header text.
      */
     headerText?: pulumi.Input<string>;
     /**
-     * Full URL to the logo file.
+     * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     */
+    includeContext?: pulumi.Input<boolean>;
+    /**
+     * If mode is customized*block*page: full URL to the logo file.
      */
     logoPath?: pulumi.Input<string>;
     /**
-     * Admin email for users to contact.
+     * If mode is customized*block*page: admin email for users to contact.
      */
     mailtoAddress?: pulumi.Input<string>;
     /**
-     * Subject line for emails created from block page.
+     * If mode is customized*block*page: subject line for emails created from block page.
      */
     mailtoSubject?: pulumi.Input<string>;
     /**
-     * Block page title.
+     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+     * Available values: "customized*block*page", "redirectUri".
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * If mode is customized*block*page: block page title.
      */
     name?: pulumi.Input<string>;
     /**
-     * Suppress detailed info at the bottom of the block page.
+     * If mode is customized*block*page: suppress detailed info at the bottom of the block page.
      */
     suppressFooter?: pulumi.Input<boolean>;
+    /**
+     * If mode is redirect_uri: URI to which the user should be redirected.
+     */
+    targetUri?: pulumi.Input<string>;
 }
 
 export interface TeamsAccountSettingsBodyScanning {
@@ -10953,6 +10980,10 @@ export interface TeamsRuleRuleSettings {
      */
     quarantine?: pulumi.Input<inputs.TeamsRuleRuleSettingsQuarantine>;
     /**
+     * Settings that apply to redirect rules
+     */
+    redirect?: pulumi.Input<inputs.TeamsRuleRuleSettingsRedirect>;
+    /**
      * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
      */
     resolveDnsInternally?: pulumi.Input<inputs.TeamsRuleRuleSettingsResolveDnsInternally>;
@@ -11138,6 +11169,21 @@ export interface TeamsRuleRuleSettingsQuarantine {
      * Types of files to sandbox.
      */
     fileTypes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface TeamsRuleRuleSettingsRedirect {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: pulumi.Input<boolean>;
+    /**
+     * If true, the path and query parameters from the original request will be appended to target_uri
+     */
+    preservePathAndQuery?: pulumi.Input<boolean>;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsResolveDnsInternally {
@@ -11524,6 +11570,14 @@ export interface WorkerScriptAssets {
 
 export interface WorkerScriptAssetsConfig {
     /**
+     * The contents of a _headers file (used to attach custom headers on asset responses)
+     */
+    _headers?: pulumi.Input<string>;
+    /**
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     */
+    _redirects?: pulumi.Input<string>;
+    /**
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
      */
@@ -11539,6 +11593,8 @@ export interface WorkerScriptAssetsConfig {
     runWorkerFirst?: pulumi.Input<boolean>;
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+     *
+     * @deprecated This attribute is deprecated.
      */
     serveDirectly?: pulumi.Input<boolean>;
 }
@@ -11799,12 +11855,24 @@ export interface WorkersDeploymentVersion {
 
 export interface WorkersRouteError {
     code?: pulumi.Input<number>;
+    documentationUrl?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
+    source?: pulumi.Input<inputs.WorkersRouteErrorSource>;
+}
+
+export interface WorkersRouteErrorSource {
+    pointer?: pulumi.Input<string>;
 }
 
 export interface WorkersRouteMessage {
     code?: pulumi.Input<number>;
+    documentationUrl?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
+    source?: pulumi.Input<inputs.WorkersRouteMessageSource>;
+}
+
+export interface WorkersRouteMessageSource {
+    pointer?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptAssets {
@@ -11819,6 +11887,14 @@ export interface WorkersScriptAssets {
 }
 
 export interface WorkersScriptAssetsConfig {
+    /**
+     * The contents of a _headers file (used to attach custom headers on asset responses)
+     */
+    _headers?: pulumi.Input<string>;
+    /**
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     */
+    _redirects?: pulumi.Input<string>;
     /**
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
@@ -11835,6 +11911,8 @@ export interface WorkersScriptAssetsConfig {
     runWorkerFirst?: pulumi.Input<boolean>;
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
+     *
+     * @deprecated This attribute is deprecated.
      */
     serveDirectly?: pulumi.Input<boolean>;
 }
@@ -14645,11 +14723,11 @@ export interface ZeroTrustDeviceCustomProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      */
-    address: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
      */
@@ -14673,15 +14751,15 @@ export interface ZeroTrustDeviceCustomProfileFallbackDomain {
 
 export interface ZeroTrustDeviceCustomProfileInclude {
     /**
-     * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+     * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      */
-    address: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
-     * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+     * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      */
     host?: pulumi.Input<string>;
 }
@@ -14727,11 +14805,11 @@ export interface ZeroTrustDeviceDefaultProfileExclude {
     /**
      * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      */
-    address: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
      */
@@ -14755,15 +14833,15 @@ export interface ZeroTrustDeviceDefaultProfileFallbackDomain {
 
 export interface ZeroTrustDeviceDefaultProfileInclude {
     /**
-     * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+     * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      */
-    address: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
-     * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+     * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      */
     host?: pulumi.Input<string>;
 }
@@ -15087,6 +15165,8 @@ export interface ZeroTrustDlpCustomProfileEntryPattern {
     regex: pulumi.Input<string>;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
 }
@@ -15144,6 +15224,8 @@ export interface ZeroTrustDlpCustomProfileProfileEntryPattern {
     regex: pulumi.Input<string>;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
 }
@@ -15242,6 +15324,8 @@ export interface ZeroTrustDlpEntryPattern {
     regex: pulumi.Input<string>;
     /**
      * Available values: "luhn".
+     *
+     * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
 }
@@ -15349,18 +15433,42 @@ export interface ZeroTrustDnsLocationNetwork {
 }
 
 export interface ZeroTrustGatewayLoggingSettingsByRuleType {
+    dns?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDns>;
+    http?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttp>;
+    l4?: pulumi.Input<inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4>;
+}
+
+export interface ZeroTrustGatewayLoggingSettingsByRuleTypeDns {
     /**
-     * Logging settings for DNS firewall.
+     * Log all requests to this service.
      */
-    dns?: pulumi.Input<string>;
+    logAll?: pulumi.Input<boolean>;
     /**
-     * Logging settings for HTTP/HTTPS firewall.
+     * Log only blocking requests to this service.
      */
-    http?: pulumi.Input<string>;
+    logBlocks?: pulumi.Input<boolean>;
+}
+
+export interface ZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
     /**
-     * Logging settings for Network firewall.
+     * Log all requests to this service.
      */
-    l4?: pulumi.Input<string>;
+    logAll?: pulumi.Input<boolean>;
+    /**
+     * Log only blocking requests to this service.
+     */
+    logBlocks?: pulumi.Input<boolean>;
+}
+
+export interface ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
+    /**
+     * Log all requests to this service.
+     */
+    logAll?: pulumi.Input<boolean>;
+    /**
+     * Log only blocking requests to this service.
+     */
+    logBlocks?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewayPolicyExpiration {
@@ -15460,6 +15568,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      * Settings that apply to quarantine rules
      */
     quarantine?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine>;
+    /**
+     * Settings that apply to redirect rules
+     */
+    redirect?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsRedirect>;
     /**
      * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
      */
@@ -15648,6 +15760,21 @@ export interface ZeroTrustGatewayPolicyRuleSettingsQuarantine {
     fileTypes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ZeroTrustGatewayPolicyRuleSettingsRedirect {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: pulumi.Input<boolean>;
+    /**
+     * If true, the path and query parameters from the original request will be appended to target_uri
+     */
+    preservePathAndQuery?: pulumi.Input<boolean>;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: pulumi.Input<string>;
+}
+
 export interface ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
     /**
      * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
@@ -15730,6 +15857,8 @@ export interface ZeroTrustGatewaySettingsSettings {
     certificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsCertificate>;
     /**
      * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
+     *
+     * @deprecated This attribute is deprecated.
      */
     customCertificate?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsCustomCertificate>;
     /**
@@ -15797,7 +15926,7 @@ export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
 
 export interface ZeroTrustGatewaySettingsSettingsBlockPage {
     /**
-     * Block page background color in #rrggbb format.
+     * If mode is customized*block*page: block page background color in #rrggbb format.
      */
     backgroundColor?: pulumi.Input<string>;
     /**
@@ -15805,33 +15934,46 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Block page footer text.
+     * If mode is customized*block*page: block page footer text.
      */
     footerText?: pulumi.Input<string>;
     /**
-     * Block page header text.
+     * If mode is customized*block*page: block page header text.
      */
     headerText?: pulumi.Input<string>;
     /**
-     * Full URL to the logo file.
+     * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+     */
+    includeContext?: pulumi.Input<boolean>;
+    /**
+     * If mode is customized*block*page: full URL to the logo file.
      */
     logoPath?: pulumi.Input<string>;
     /**
-     * Admin email for users to contact.
+     * If mode is customized*block*page: admin email for users to contact.
      */
     mailtoAddress?: pulumi.Input<string>;
     /**
-     * Subject line for emails created from block page.
+     * If mode is customized*block*page: subject line for emails created from block page.
      */
     mailtoSubject?: pulumi.Input<string>;
     /**
-     * Block page title.
+     * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+     * Available values: "customized*block*page", "redirectUri".
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * If mode is customized*block*page: block page title.
      */
     name?: pulumi.Input<string>;
     /**
-     * Suppress detailed info at the bottom of the block page.
+     * If mode is customized*block*page: suppress detailed info at the bottom of the block page.
      */
     suppressFooter?: pulumi.Input<boolean>;
+    /**
+     * If mode is redirect_uri: URI to which the user should be redirected.
+     */
+    targetUri?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsBodyScanning {

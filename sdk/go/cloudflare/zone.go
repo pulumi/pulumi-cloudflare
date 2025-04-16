@@ -87,7 +87,7 @@ type Zone struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
-	// Available values: "full", "partial", "secondary".
+	// Available values: "full", "partial", "secondary", "internal".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
@@ -167,7 +167,7 @@ type zoneState struct {
 	Status *string `pulumi:"status"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
-	// Available values: "full", "partial", "secondary".
+	// Available values: "full", "partial", "secondary", "internal".
 	Type *string `pulumi:"type"`
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
@@ -212,7 +212,7 @@ type ZoneState struct {
 	Status pulumi.StringPtrInput
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
-	// Available values: "full", "partial", "secondary".
+	// Available values: "full", "partial", "secondary", "internal".
 	Type pulumi.StringPtrInput
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
@@ -231,7 +231,7 @@ type zoneArgs struct {
 	Name string `pulumi:"name"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
-	// Available values: "full", "partial", "secondary".
+	// Available values: "full", "partial", "secondary", "internal".
 	Type *string `pulumi:"type"`
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
@@ -245,7 +245,7 @@ type ZoneArgs struct {
 	Name pulumi.StringInput
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
-	// Available values: "full", "partial", "secondary".
+	// Available values: "full", "partial", "secondary", "internal".
 	Type pulumi.StringPtrInput
 	// An array of domains used for custom name servers. This is only
 	// available for Business and Enterprise plans.
@@ -416,7 +416,7 @@ func (o ZoneOutput) Status() pulumi.StringOutput {
 
 // A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 // typically a partner-hosted zone or a CNAME setup.
-// Available values: "full", "partial", "secondary".
+// Available values: "full", "partial", "secondary", "internal".
 func (o ZoneOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

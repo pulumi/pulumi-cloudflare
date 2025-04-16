@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///         CookieSuffix = "abcd",
     ///         CustomPageHtml = "{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}",
-    ///         DefaultTemplateLanguage = "en-US",
+    ///         DefaultTemplateLanguage = "es-ES",
     ///         Description = "Production - DO NOT MODIFY",
     ///         DisableSessionRenewal = false,
     ///         EnabledOriginCommands = new[]
@@ -53,7 +53,7 @@ namespace Pulumi.Cloudflare
     ///         Path = "/shop/checkout",
     ///         QueueAll = true,
     ///         QueueingMethod = "fifo",
-    ///         QueueingStatusCode = 200,
+    ///         QueueingStatusCode = 202,
     ///         SessionDuration = 1,
     ///         Suspended = true,
     ///         TurnstileAction = "log",

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const exampleCertificatePack = new cloudflare.CertificatePack("example_certificate_pack", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     certificateAuthority: "google",
+ *     certificateAuthority: "lets_encrypt",
  *     hosts: [
  *         "example.com",
  *         "*.example.com",

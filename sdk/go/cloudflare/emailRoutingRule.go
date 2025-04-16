@@ -33,6 +33,8 @@ type EmailRoutingRule struct {
 	// Priority of the routing rule.
 	Priority pulumi.Float64Output `pulumi:"priority"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -88,6 +90,8 @@ type emailRoutingRuleState struct {
 	// Priority of the routing rule.
 	Priority *float64 `pulumi:"priority"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag *string `pulumi:"tag"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -105,6 +109,8 @@ type EmailRoutingRuleState struct {
 	// Priority of the routing rule.
 	Priority pulumi.Float64PtrInput
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -258,6 +264,8 @@ func (o EmailRoutingRuleOutput) Priority() pulumi.Float64Output {
 }
 
 // Routing rule tag. (Deprecated, replaced by routing rule identifier)
+//
+// Deprecated: This attribute is deprecated.
 func (o EmailRoutingRuleOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }

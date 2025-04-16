@@ -43,7 +43,7 @@ type LogpullRetention struct {
 
 	// The log retention flag for Logpull API.
 	Flag pulumi.BoolPtrOutput `pulumi:"flag"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -82,14 +82,14 @@ func GetLogpullRetention(ctx *pulumi.Context,
 type logpullRetentionState struct {
 	// The log retention flag for Logpull API.
 	Flag *bool `pulumi:"flag"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type LogpullRetentionState struct {
 	// The log retention flag for Logpull API.
 	Flag pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -100,7 +100,7 @@ func (LogpullRetentionState) ElementType() reflect.Type {
 type logpullRetentionArgs struct {
 	// The log retention flag for Logpull API.
 	Flag *bool `pulumi:"flag"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -108,7 +108,7 @@ type logpullRetentionArgs struct {
 type LogpullRetentionArgs struct {
 	// The log retention flag for Logpull API.
 	Flag pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -204,7 +204,7 @@ func (o LogpullRetentionOutput) Flag() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LogpullRetention) pulumi.BoolPtrOutput { return v.Flag }).(pulumi.BoolPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LogpullRetentionOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpullRetention) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

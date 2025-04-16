@@ -41,7 +41,7 @@ export interface GetZeroTrustAccessGroupArgs {
     accountId?: string;
     filter?: inputs.GetZeroTrustAccessGroupFilter;
     /**
-     * UUID
+     * UUID.
      */
     groupId?: string;
     /**
@@ -65,11 +65,11 @@ export interface GetZeroTrustAccessGroupResult {
     readonly excludes: outputs.GetZeroTrustAccessGroupExclude[];
     readonly filter?: outputs.GetZeroTrustAccessGroupFilter;
     /**
-     * UUID
+     * UUID.
      */
     readonly groupId?: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly id: string;
     /**
@@ -129,7 +129,7 @@ export interface GetZeroTrustAccessGroupOutputArgs {
     accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustAccessGroupFilterArgs>;
     /**
-     * UUID
+     * UUID.
      */
     groupId?: pulumi.Input<string>;
     /**

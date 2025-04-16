@@ -49,10 +49,10 @@ func LookupDnsRecord(ctx *pulumi.Context, args *LookupDnsRecordArgs, opts ...pul
 
 // A collection of arguments for invoking getDnsRecord.
 type LookupDnsRecordArgs struct {
-	// Identifier
+	// Identifier.
 	DnsRecordId *string             `pulumi:"dnsRecordId"`
 	Filter      *GetDnsRecordFilter `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -68,10 +68,10 @@ type LookupDnsRecordResult struct {
 	CreatedOn string `pulumi:"createdOn"`
 	// Components of a CAA record.
 	Data GetDnsRecordData `pulumi:"data"`
-	// Identifier
+	// Identifier.
 	DnsRecordId *string             `pulumi:"dnsRecordId"`
 	Filter      *GetDnsRecordFilter `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Extra Cloudflare-specific information about the record.
 	Meta string `pulumi:"meta"`
@@ -96,7 +96,7 @@ type LookupDnsRecordResult struct {
 	// Record type.
 	// Available values: "A".
 	Type string `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -111,10 +111,10 @@ func LookupDnsRecordOutput(ctx *pulumi.Context, args LookupDnsRecordOutputArgs, 
 
 // A collection of arguments for invoking getDnsRecord.
 type LookupDnsRecordOutputArgs struct {
-	// Identifier
+	// Identifier.
 	DnsRecordId pulumi.StringPtrInput      `pulumi:"dnsRecordId"`
 	Filter      GetDnsRecordFilterPtrInput `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -162,7 +162,7 @@ func (o LookupDnsRecordResultOutput) Data() GetDnsRecordDataOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) GetDnsRecordData { return v.Data }).(GetDnsRecordDataOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupDnsRecordResultOutput) DnsRecordId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) *string { return v.DnsRecordId }).(pulumi.StringPtrOutput)
 }
@@ -171,7 +171,7 @@ func (o LookupDnsRecordResultOutput) Filter() GetDnsRecordFilterPtrOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) *GetDnsRecordFilter { return v.Filter }).(GetDnsRecordFilterPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupDnsRecordResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -232,7 +232,7 @@ func (o LookupDnsRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupDnsRecordResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

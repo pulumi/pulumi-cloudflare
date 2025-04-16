@@ -30,7 +30,7 @@ export function getWorkersForPlatformsDispatchNamespace(args: GetWorkersForPlatf
  */
 export interface GetWorkersForPlatformsDispatchNamespaceArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -44,11 +44,11 @@ export interface GetWorkersForPlatformsDispatchNamespaceArgs {
  */
 export interface GetWorkersForPlatformsDispatchNamespaceResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly createdBy: string;
     /**
@@ -64,7 +64,7 @@ export interface GetWorkersForPlatformsDispatchNamespaceResult {
      */
     readonly id: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly modifiedBy: string;
     /**
@@ -110,7 +110,7 @@ export function getWorkersForPlatformsDispatchNamespaceOutput(args: GetWorkersFo
  */
 export interface GetWorkersForPlatformsDispatchNamespaceOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -16,7 +16,11 @@ public final class ZeroTrustDlpCustomProfileEntryPattern {
     /**
      * @return Available values: &#34;luhn&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private @Nullable String validation;
 
     private ZeroTrustDlpCustomProfileEntryPattern() {}
@@ -26,7 +30,11 @@ public final class ZeroTrustDlpCustomProfileEntryPattern {
     /**
      * @return Available values: &#34;luhn&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<String> validation() {
         return Optional.ofNullable(this.validation);
     }

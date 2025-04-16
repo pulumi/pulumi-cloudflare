@@ -30,9 +30,6 @@ export function getZeroTrustDeviceCustomProfileLocalDomainFallback(args: GetZero
  */
 export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackArgs {
     accountId: string;
-    /**
-     * Device ID.
-     */
     policyId: string;
 }
 
@@ -53,9 +50,6 @@ export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Device ID.
-     */
     readonly policyId: string;
     /**
      * The domain suffix to match when resolving locally.
@@ -88,8 +82,5 @@ export function getZeroTrustDeviceCustomProfileLocalDomainFallbackOutput(args: G
  */
 export interface GetZeroTrustDeviceCustomProfileLocalDomainFallbackOutputArgs {
     accountId: pulumi.Input<string>;
-    /**
-     * Device ID.
-     */
     policyId: pulumi.Input<string>;
 }

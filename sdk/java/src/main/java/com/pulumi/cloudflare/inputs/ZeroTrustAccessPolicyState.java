@@ -23,14 +23,14 @@ public final class ZeroTrustAccessPolicyState extends com.pulumi.resources.Resou
     public static final ZeroTrustAccessPolicyState Empty = new ZeroTrustAccessPolicyState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -280,7 +280,7 @@ public final class ZeroTrustAccessPolicyState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class ZeroTrustAccessPolicyState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

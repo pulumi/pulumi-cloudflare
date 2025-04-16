@@ -32,7 +32,7 @@ export function getStreamLiveInput(args: GetStreamLiveInputArgs, opts?: pulumi.I
  */
 export interface GetStreamLiveInputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetStreamLiveInputArgs {
  */
 export interface GetStreamLiveInputResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -137,7 +137,7 @@ export function getStreamLiveInputOutput(args: GetStreamLiveInputOutputArgs, opt
  */
 export interface GetStreamLiveInputOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -11,13 +11,13 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersRouteResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
     private String pattern;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String routeId;
@@ -27,14 +27,14 @@ public final class GetWorkersRouteResult {
      */
     private String script;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
 
     private GetWorkersRouteResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -44,7 +44,7 @@ public final class GetWorkersRouteResult {
         return this.pattern;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String routeId() {
@@ -58,7 +58,7 @@ public final class GetWorkersRouteResult {
         return this.script;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

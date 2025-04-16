@@ -83,7 +83,7 @@ class GetZeroTrustAccessIdentityProviderResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -91,7 +91,7 @@ class GetZeroTrustAccessIdentityProviderResult:
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "identity_provider_id")
 
@@ -165,7 +165,7 @@ def get_zero_trust_access_identity_provider(account_id: Optional[builtins.str] =
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str identity_provider_id: UUID
+    :param builtins.str identity_provider_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -205,7 +205,7 @@ def get_zero_trust_access_identity_provider_output(account_id: Optional[pulumi.I
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str identity_provider_id: UUID
+    :param builtins.str identity_provider_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()

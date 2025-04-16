@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustTunnelCloudflaredConfigResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -47,7 +47,7 @@ public final class GetZeroTrustTunnelCloudflaredConfigResult {
 
     private GetZeroTrustTunnelCloudflaredConfigResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

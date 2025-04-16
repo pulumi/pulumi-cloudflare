@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ObservatoryScheduledTestTestDesktopReportGetArgs>? DesktopReport { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

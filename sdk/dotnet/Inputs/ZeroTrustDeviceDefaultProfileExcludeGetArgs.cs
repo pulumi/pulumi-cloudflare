@@ -15,14 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
         /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
+        [Input("address")]
+        public Input<string>? Address { get; set; }
 
         /// <summary>
         /// A description of the Split Tunnel item, displayed in the client UI.
         /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.

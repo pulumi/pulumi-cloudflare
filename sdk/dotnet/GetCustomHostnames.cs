@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Hostname = "app.example.com",
         ///         Ssl = 0,
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Hostname = "app.example.com",
         ///         Ssl = 0,
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Hostname = "app.example.com",
         ///         Ssl = 0,
         ///     });

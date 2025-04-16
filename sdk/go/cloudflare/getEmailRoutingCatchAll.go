@@ -65,6 +65,8 @@ type LookupEmailRoutingCatchAllResult struct {
 	// Routing rule name.
 	Name string `pulumi:"name"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag string `pulumi:"tag"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -130,6 +132,8 @@ func (o LookupEmailRoutingCatchAllResultOutput) Name() pulumi.StringOutput {
 }
 
 // Routing rule tag. (Deprecated, replaced by routing rule identifier)
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupEmailRoutingCatchAllResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingCatchAllResult) string { return v.Tag }).(pulumi.StringOutput)
 }

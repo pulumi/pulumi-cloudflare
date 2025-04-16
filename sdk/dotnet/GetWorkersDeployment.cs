@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersDeploymentArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersDeploymentInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersDeploymentResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         public readonly ImmutableArray<Outputs.GetWorkersDeploymentDeploymentResult> Deployments;

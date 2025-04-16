@@ -55,7 +55,7 @@ export class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -77,7 +77,7 @@ export class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * UUID
+     * UUID.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
@@ -138,7 +138,7 @@ export class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
  */
 export interface ZeroTrustAccessCustomPageState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -160,7 +160,7 @@ export interface ZeroTrustAccessCustomPageState {
      */
     type?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     uid?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -171,7 +171,7 @@ export interface ZeroTrustAccessCustomPageState {
  */
 export interface ZeroTrustAccessCustomPageArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

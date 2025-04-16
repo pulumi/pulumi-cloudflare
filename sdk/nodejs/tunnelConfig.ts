@@ -47,7 +47,7 @@ export class TunnelConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -118,7 +118,7 @@ export class TunnelConfig extends pulumi.CustomResource {
  */
 export interface TunnelConfigState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -146,7 +146,7 @@ export interface TunnelConfigState {
  */
 export interface TunnelConfigArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

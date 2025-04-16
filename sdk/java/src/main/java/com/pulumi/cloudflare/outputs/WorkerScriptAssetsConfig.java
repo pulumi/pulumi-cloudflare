@@ -13,6 +13,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerScriptAssetsConfig {
     /**
+     * @return The contents of a _headers file (used to attach custom headers on asset responses)
+     * 
+     */
+    private @Nullable String _headers;
+    /**
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * 
+     */
+    private @Nullable String _redirects;
+    /**
      * @return Determines the redirects and rewrites of requests for HTML content.
      * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
      * 
@@ -32,10 +42,28 @@ public final class WorkerScriptAssetsConfig {
     /**
      * @return When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private @Nullable Boolean serveDirectly;
 
     private WorkerScriptAssetsConfig() {}
+    /**
+     * @return The contents of a _headers file (used to attach custom headers on asset responses)
+     * 
+     */
+    public Optional<String> _headers() {
+        return Optional.ofNullable(this._headers);
+    }
+    /**
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * 
+     */
+    public Optional<String> _redirects() {
+        return Optional.ofNullable(this._redirects);
+    }
     /**
      * @return Determines the redirects and rewrites of requests for HTML content.
      * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
@@ -62,7 +90,11 @@ public final class WorkerScriptAssetsConfig {
     /**
      * @return When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Boolean> serveDirectly() {
         return Optional.ofNullable(this.serveDirectly);
     }
@@ -76,6 +108,8 @@ public final class WorkerScriptAssetsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String _headers;
+        private @Nullable String _redirects;
         private @Nullable String htmlHandling;
         private @Nullable String notFoundHandling;
         private @Nullable Boolean runWorkerFirst;
@@ -83,12 +117,26 @@ public final class WorkerScriptAssetsConfig {
         public Builder() {}
         public Builder(WorkerScriptAssetsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this._headers = defaults._headers;
+    	      this._redirects = defaults._redirects;
     	      this.htmlHandling = defaults.htmlHandling;
     	      this.notFoundHandling = defaults.notFoundHandling;
     	      this.runWorkerFirst = defaults.runWorkerFirst;
     	      this.serveDirectly = defaults.serveDirectly;
         }
 
+        @CustomType.Setter
+        public Builder _headers(@Nullable String _headers) {
+
+            this._headers = _headers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder _redirects(@Nullable String _redirects) {
+
+            this._redirects = _redirects;
+            return this;
+        }
         @CustomType.Setter
         public Builder htmlHandling(@Nullable String htmlHandling) {
 
@@ -115,6 +163,8 @@ public final class WorkerScriptAssetsConfig {
         }
         public WorkerScriptAssetsConfig build() {
             final var _resultValue = new WorkerScriptAssetsConfig();
+            _resultValue._headers = _headers;
+            _resultValue._redirects = _redirects;
             _resultValue.htmlHandling = htmlHandling;
             _resultValue.notFoundHandling = notFoundHandling;
             _resultValue.runWorkerFirst = runWorkerFirst;

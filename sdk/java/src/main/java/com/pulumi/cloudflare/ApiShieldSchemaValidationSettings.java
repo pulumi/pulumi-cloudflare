@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleApiShieldSchemaValidationSettings = new ApiShieldSchemaValidationSettings("exampleApiShieldSchemaValidationSettings", ApiShieldSchemaValidationSettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .validationDefaultMitigationAction("none")
+ *             .validationDefaultMitigationAction("block")
  *             .validationOverrideMitigationAction("none")
  *             .build());
  * 

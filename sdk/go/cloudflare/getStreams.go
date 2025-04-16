@@ -31,7 +31,7 @@ import (
 //				End:       pulumi.StringRef("2014-01-02T02:20:00Z"),
 //				Search:    pulumi.StringRef("puppy.mp4"),
 //				Start:     pulumi.StringRef("2014-01-02T02:20:00Z"),
-//				Status:    pulumi.StringRef("pendingupload"),
+//				Status:    pulumi.StringRef("inprogress"),
 //				Type:      pulumi.StringRef("live"),
 //			}, nil)
 //			if err != nil {

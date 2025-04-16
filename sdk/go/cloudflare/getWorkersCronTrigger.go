@@ -49,7 +49,7 @@ func LookupWorkersCronTrigger(ctx *pulumi.Context, args *LookupWorkersCronTrigge
 
 // A collection of arguments for invoking getWorkersCronTrigger.
 type LookupWorkersCronTriggerArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
@@ -57,7 +57,7 @@ type LookupWorkersCronTriggerArgs struct {
 
 // A collection of values returned by getWorkersCronTrigger.
 type LookupWorkersCronTriggerResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string                          `pulumi:"id"`
@@ -77,7 +77,7 @@ func LookupWorkersCronTriggerOutput(ctx *pulumi.Context, args LookupWorkersCronT
 
 // A collection of arguments for invoking getWorkersCronTrigger.
 type LookupWorkersCronTriggerOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
@@ -102,7 +102,7 @@ func (o LookupWorkersCronTriggerResultOutput) ToLookupWorkersCronTriggerResultOu
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersCronTriggerResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersCronTriggerResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

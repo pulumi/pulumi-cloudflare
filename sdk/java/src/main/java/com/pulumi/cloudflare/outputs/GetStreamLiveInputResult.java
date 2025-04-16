@@ -19,7 +19,7 @@ import java.util.Objects;
 @CustomType
 public final class GetStreamLiveInputResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -102,7 +102,7 @@ public final class GetStreamLiveInputResult {
 
     private GetStreamLiveInputResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

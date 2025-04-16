@@ -32,7 +32,7 @@ import (
 //				IncludePrefix: pulumi.StringRef("vpc1-"),
 //				IsDeleted:     pulumi.BoolRef(true),
 //				Name:          pulumi.StringRef("blog"),
-//				Status:        pulumi.StringRef("inactive"),
+//				Status:        pulumi.StringRef("healthy"),
 //				Uuid:          pulumi.StringRef("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
 //				WasActiveAt:   pulumi.StringRef("2009-11-10T23:00:00Z"),
 //				WasInactiveAt: pulumi.StringRef("2009-11-10T23:00:00Z"),

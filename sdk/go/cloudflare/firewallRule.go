@@ -36,7 +36,7 @@ import (
 //			_, err := cloudflare.NewFirewallRule(ctx, "example_firewall_rule", &cloudflare.FirewallRuleArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Action: &cloudflare.FirewallRuleActionArgs{
-//					Mode: pulumi.String("simulate"),
+//					Mode: pulumi.String("challenge"),
 //					Response: &cloudflare.FirewallRuleActionResponseArgs{
 //						Body:        pulumi.String("<error>This request has been rate-limited.</error>"),
 //						ContentType: pulumi.String("text/xml"),

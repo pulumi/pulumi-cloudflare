@@ -30,11 +30,11 @@ export function getZeroTrustAccessCustomPage(args: GetZeroTrustAccessCustomPageA
  */
 export interface GetZeroTrustAccessCustomPageArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
-     * UUID
+     * UUID.
      */
     customPageId?: string;
 }
@@ -44,7 +44,7 @@ export interface GetZeroTrustAccessCustomPageArgs {
  */
 export interface GetZeroTrustAccessCustomPageResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -57,11 +57,11 @@ export interface GetZeroTrustAccessCustomPageResult {
      */
     readonly customHtml: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly customPageId?: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly id: string;
     /**
@@ -74,7 +74,7 @@ export interface GetZeroTrustAccessCustomPageResult {
      */
     readonly type: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly uid: string;
     readonly updatedAt: string;
@@ -105,11 +105,11 @@ export function getZeroTrustAccessCustomPageOutput(args: GetZeroTrustAccessCusto
  */
 export interface GetZeroTrustAccessCustomPageOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     customPageId?: pulumi.Input<string>;
 }

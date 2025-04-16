@@ -19,6 +19,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? DeliveryDelay { get; set; }
 
         /// <summary>
+        /// Indicates if message delivery to consumers is currently paused.
+        /// </summary>
+        [Input("deliveryPaused")]
+        public Input<bool>? DeliveryPaused { get; set; }
+
+        /// <summary>
         /// Number of seconds after which an unconsumed message will be delayed.
         /// </summary>
         [Input("messageRetentionPeriod")]

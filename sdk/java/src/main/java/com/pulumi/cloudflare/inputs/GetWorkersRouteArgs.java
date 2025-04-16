@@ -15,14 +15,14 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetWorkersRouteArgs Empty = new GetWorkersRouteArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="routeId", required=true)
     private Output<String> routeId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> routeId() {
@@ -30,14 +30,14 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -70,7 +70,7 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param routeId Identifier
+         * @param routeId Identifier.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param routeId Identifier
+         * @param routeId Identifier.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetWorkersRouteArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -25,24 +25,23 @@ class MagicTransitSiteLanArgs:
                  account_id: pulumi.Input[builtins.str],
                  physport: pulumi.Input[builtins.int],
                  site_id: pulumi.Input[builtins.str],
-                 vlan_tag: pulumi.Input[builtins.int],
                  ha_link: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  nat: Optional[pulumi.Input['MagicTransitSiteLanNatArgs']] = None,
                  routed_subnets: Optional[pulumi.Input[Sequence[pulumi.Input['MagicTransitSiteLanRoutedSubnetArgs']]]] = None,
-                 static_addressing: Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']] = None):
+                 static_addressing: Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']] = None,
+                 vlan_tag: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a MagicTransitSiteLan resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.str] site_id: Identifier
-        :param pulumi.Input[builtins.int] vlan_tag: VLAN port number.
         :param pulumi.Input[builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         :param pulumi.Input['MagicTransitSiteLanStaticAddressingArgs'] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
+        :param pulumi.Input[builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "physport", physport)
         pulumi.set(__self__, "site_id", site_id)
-        pulumi.set(__self__, "vlan_tag", vlan_tag)
         if ha_link is not None:
             pulumi.set(__self__, "ha_link", ha_link)
         if name is not None:
@@ -53,6 +52,8 @@ class MagicTransitSiteLanArgs:
             pulumi.set(__self__, "routed_subnets", routed_subnets)
         if static_addressing is not None:
             pulumi.set(__self__, "static_addressing", static_addressing)
+        if vlan_tag is not None:
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
 
     @property
     @pulumi.getter(name="accountId")
@@ -86,18 +87,6 @@ class MagicTransitSiteLanArgs:
     @site_id.setter
     def site_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "site_id", value)
-
-    @property
-    @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> pulumi.Input[builtins.int]:
-        """
-        VLAN port number.
-        """
-        return pulumi.get(self, "vlan_tag")
-
-    @vlan_tag.setter
-    def vlan_tag(self, value: pulumi.Input[builtins.int]):
-        pulumi.set(self, "vlan_tag", value)
 
     @property
     @pulumi.getter(name="haLink")
@@ -150,6 +139,18 @@ class MagicTransitSiteLanArgs:
     def static_addressing(self, value: Optional[pulumi.Input['MagicTransitSiteLanStaticAddressingArgs']]):
         pulumi.set(self, "static_addressing", value)
 
+    @property
+    @pulumi.getter(name="vlanTag")
+    def vlan_tag(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        VLAN ID. Use zero for untagged.
+        """
+        return pulumi.get(self, "vlan_tag")
+
+    @vlan_tag.setter
+    def vlan_tag(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "vlan_tag", value)
+
 
 @pulumi.input_type
 class _MagicTransitSiteLanState:
@@ -169,7 +170,7 @@ class _MagicTransitSiteLanState:
         :param pulumi.Input[builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         :param pulumi.Input[builtins.str] site_id: Identifier
         :param pulumi.Input['MagicTransitSiteLanStaticAddressingArgs'] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
-        :param pulumi.Input[builtins.int] vlan_tag: VLAN port number.
+        :param pulumi.Input[builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -278,7 +279,7 @@ class _MagicTransitSiteLanState:
     @pulumi.getter(name="vlanTag")
     def vlan_tag(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        VLAN port number.
+        VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 
@@ -317,7 +318,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         :param pulumi.Input[builtins.str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
-        :param pulumi.Input[builtins.int] vlan_tag: VLAN port number.
+        :param pulumi.Input[builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         ...
     @overload
@@ -381,8 +382,6 @@ class MagicTransitSiteLan(pulumi.CustomResource):
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["static_addressing"] = static_addressing
-            if vlan_tag is None and not opts.urn:
-                raise TypeError("Missing required property 'vlan_tag'")
             __props__.__dict__["vlan_tag"] = vlan_tag
         super(MagicTransitSiteLan, __self__).__init__(
             'cloudflare:index/magicTransitSiteLan:MagicTransitSiteLan',
@@ -414,7 +413,7 @@ class MagicTransitSiteLan(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] ha_link: mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
         :param pulumi.Input[builtins.str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteLanStaticAddressingArgs', 'MagicTransitSiteLanStaticAddressingArgsDict']] static_addressing: If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
-        :param pulumi.Input[builtins.int] vlan_tag: VLAN port number.
+        :param pulumi.Input[builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -485,9 +484,9 @@ class MagicTransitSiteLan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> pulumi.Output[builtins.int]:
+    def vlan_tag(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        VLAN port number.
+        VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 

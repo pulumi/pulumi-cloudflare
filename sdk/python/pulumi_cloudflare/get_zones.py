@@ -143,9 +143,9 @@ def get_zones(account: Optional[Union['GetZonesAccountArgs', 'GetZonesAccountArg
             "id": "id",
             "name": "name",
         },
-        direction="asc",
+        direction="desc",
         name="name",
-        order="name",
+        order="status",
         status="initializing")
     ```
     """
@@ -189,9 +189,9 @@ def get_zones_output(account: Optional[pulumi.Input[Optional[Union['GetZonesAcco
             "id": "id",
             "name": "name",
         },
-        direction="asc",
+        direction="desc",
         name="name",
-        order="name",
+        order="status",
         status="initializing")
     ```
     """

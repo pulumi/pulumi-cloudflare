@@ -44,7 +44,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     public readonly annotations!: pulumi.Output<outputs.WorkersDeploymentAnnotations>;
@@ -118,7 +118,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
  */
 export interface WorkersDeploymentState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations>;
@@ -142,7 +142,7 @@ export interface WorkersDeploymentState {
  */
 export interface WorkersDeploymentArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     annotations?: pulumi.Input<inputs.WorkersDeploymentAnnotations>;

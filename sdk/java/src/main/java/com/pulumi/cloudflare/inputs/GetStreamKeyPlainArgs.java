@@ -14,14 +14,14 @@ public final class GetStreamKeyPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetStreamKeyPlainArgs Empty = new GetStreamKeyPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -53,7 +53,7 @@ public final class GetStreamKeyPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

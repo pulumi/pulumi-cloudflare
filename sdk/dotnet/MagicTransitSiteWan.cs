@@ -56,10 +56,10 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.MagicTransitSiteWanStaticAddressing> StaticAddressing { get; private set; } = null!;
 
         /// <summary>
-        /// VLAN port number.
+        /// VLAN ID. Use zero for untagged.
         /// </summary>
         [Output("vlanTag")]
-        public Output<int> VlanTag { get; private set; } = null!;
+        public Output<int?> VlanTag { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,10 +135,10 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.MagicTransitSiteWanStaticAddressingArgs>? StaticAddressing { get; set; }
 
         /// <summary>
-        /// VLAN port number.
+        /// VLAN ID. Use zero for untagged.
         /// </summary>
-        [Input("vlanTag", required: true)]
-        public Input<int> VlanTag { get; set; } = null!;
+        [Input("vlanTag")]
+        public Input<int>? VlanTag { get; set; }
 
         public MagicTransitSiteWanArgs()
         {
@@ -183,7 +183,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.MagicTransitSiteWanStaticAddressingGetArgs>? StaticAddressing { get; set; }
 
         /// <summary>
-        /// VLAN port number.
+        /// VLAN ID. Use zero for untagged.
         /// </summary>
         [Input("vlanTag")]
         public Input<int>? VlanTag { get; set; }

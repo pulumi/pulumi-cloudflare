@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool EcsFallback;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

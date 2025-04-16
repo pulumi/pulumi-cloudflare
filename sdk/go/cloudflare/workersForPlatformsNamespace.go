@@ -49,13 +49,13 @@ import (
 type WorkersForPlatformsNamespace struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// When the script was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Identifier
+	// Identifier.
 	ModifiedBy pulumi.StringOutput `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
@@ -108,13 +108,13 @@ func GetWorkersForPlatformsNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersForPlatformsNamespace resources.
 type workersForPlatformsNamespaceState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	CreatedBy *string `pulumi:"createdBy"`
 	// When the script was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Identifier
+	// Identifier.
 	ModifiedBy *string `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
@@ -129,13 +129,13 @@ type workersForPlatformsNamespaceState struct {
 }
 
 type WorkersForPlatformsNamespaceState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	CreatedBy pulumi.StringPtrInput
 	// When the script was created.
 	CreatedOn pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ModifiedBy pulumi.StringPtrInput
 	// When the script was last modified.
 	ModifiedOn pulumi.StringPtrInput
@@ -154,7 +154,7 @@ func (WorkersForPlatformsNamespaceState) ElementType() reflect.Type {
 }
 
 type workersForPlatformsNamespaceArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The name of the dispatch namespace
 	Name *string `pulumi:"name"`
@@ -162,7 +162,7 @@ type workersForPlatformsNamespaceArgs struct {
 
 // The set of arguments for constructing a WorkersForPlatformsNamespace resource.
 type WorkersForPlatformsNamespaceArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The name of the dispatch namespace
 	Name pulumi.StringPtrInput
@@ -255,12 +255,12 @@ func (o WorkersForPlatformsNamespaceOutput) ToWorkersForPlatformsNamespaceOutput
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkersForPlatformsNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WorkersForPlatformsNamespaceOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
@@ -270,7 +270,7 @@ func (o WorkersForPlatformsNamespaceOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WorkersForPlatformsNamespaceOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
 }

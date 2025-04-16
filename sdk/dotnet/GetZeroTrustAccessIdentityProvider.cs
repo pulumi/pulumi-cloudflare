@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetZeroTrustAccessIdentityProviderFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("identityProviderId")]
         public string? IdentityProviderId { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetZeroTrustAccessIdentityProviderFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
@@ -157,11 +157,11 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetZeroTrustAccessIdentityProviderConfigResult Config;
         public readonly Outputs.GetZeroTrustAccessIdentityProviderFilterResult? Filter;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string? IdentityProviderId;
         /// <summary>

@@ -53,7 +53,7 @@ type LookupZeroTrustAccessIdentityProviderArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string                                   `pulumi:"accountId"`
 	Filter    *GetZeroTrustAccessIdentityProviderFilter `pulumi:"filter"`
-	// UUID
+	// UUID.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -66,9 +66,9 @@ type LookupZeroTrustAccessIdentityProviderResult struct {
 	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 	Config GetZeroTrustAccessIdentityProviderConfig  `pulumi:"config"`
 	Filter *GetZeroTrustAccessIdentityProviderFilter `pulumi:"filter"`
-	// UUID
+	// UUID.
 	Id string `pulumi:"id"`
-	// UUID
+	// UUID.
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// The name of the identity provider, shown to users on the login page.
 	Name string `pulumi:"name"`
@@ -95,7 +95,7 @@ type LookupZeroTrustAccessIdentityProviderOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput                            `pulumi:"accountId"`
 	Filter    GetZeroTrustAccessIdentityProviderFilterPtrInput `pulumi:"filter"`
-	// UUID
+	// UUID.
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -138,12 +138,12 @@ func (o LookupZeroTrustAccessIdentityProviderResultOutput) Filter() GetZeroTrust
 	}).(GetZeroTrustAccessIdentityProviderFilterPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessIdentityProviderResultOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessIdentityProviderResult) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
 }

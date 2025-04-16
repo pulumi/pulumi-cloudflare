@@ -26,7 +26,7 @@ class StreamCaptionLanguageArgs:
                  file: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a StreamCaptionLanguage resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[builtins.str] language: The language tag in BCP 47 format.
         :param pulumi.Input[builtins.str] file: The WebVTT file containing the caption or subtitle content.
@@ -41,7 +41,7 @@ class StreamCaptionLanguageArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -98,7 +98,7 @@ class _StreamCaptionLanguageState:
                  status: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamCaptionLanguage resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] file: The WebVTT file containing the caption or subtitle content.
         :param pulumi.Input[builtins.bool] generated: Whether the caption was generated via AI.
         :param pulumi.Input[builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
@@ -126,7 +126,7 @@ class _StreamCaptionLanguageState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -233,7 +233,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] file: The WebVTT file containing the caption or subtitle content.
         :param pulumi.Input[builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
         :param pulumi.Input[builtins.str] language: The language tag in BCP 47 format.
@@ -322,7 +322,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] file: The WebVTT file containing the caption or subtitle content.
         :param pulumi.Input[builtins.bool] generated: Whether the caption was generated via AI.
         :param pulumi.Input[builtins.str] identifier: A Cloudflare-generated unique identifier for a media item.
@@ -348,7 +348,7 @@ class StreamCaptionLanguage(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

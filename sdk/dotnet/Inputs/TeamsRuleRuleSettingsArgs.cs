@@ -145,6 +145,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsRuleRuleSettingsQuarantineArgs>? Quarantine { get; set; }
 
         /// <summary>
+        /// Settings that apply to redirect rules
+        /// </summary>
+        [Input("redirect")]
+        public Input<Inputs.TeamsRuleRuleSettingsRedirectArgs>? Redirect { get; set; }
+
+        /// <summary>
         /// Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
         /// </summary>
         [Input("resolveDnsInternally")]

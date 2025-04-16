@@ -27,10 +27,6 @@ public final class GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult {
      * 
      */
     private String id;
-    /**
-     * @return Device ID.
-     * 
-     */
     private String policyId;
     /**
      * @return The domain suffix to match when resolving locally.
@@ -63,10 +59,6 @@ public final class GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Device ID.
-     * 
-     */
     public String policyId() {
         return this.policyId;
     }

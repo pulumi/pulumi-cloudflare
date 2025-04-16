@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * const exampleWeb3Hostname = new cloudflare.Web3Hostname("example_web3_hostname", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "gateway.example.com",
- *     target: "ethereum",
+ *     target: "ipfs",
  *     description: "This is my IPFS gateway.",
  *     dnslink: "/ipns/onboarding.ipfs.cloudflare.com",
  * });

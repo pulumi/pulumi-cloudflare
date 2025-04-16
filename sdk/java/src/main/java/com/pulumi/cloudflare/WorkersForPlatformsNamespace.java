@@ -68,28 +68,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace")
 public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> createdBy() {
@@ -110,14 +110,14 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
         return this.createdOn;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="modifiedBy", refs={String.class}, tree="[0]")
     private Output<String> modifiedBy;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> modifiedBy() {

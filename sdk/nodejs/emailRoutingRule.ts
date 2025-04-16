@@ -65,6 +65,8 @@ export class EmailRoutingRule extends pulumi.CustomResource {
     public readonly priority!: pulumi.Output<number>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
@@ -142,6 +144,8 @@ export interface EmailRoutingRuleState {
     priority?: pulumi.Input<number>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     tag?: pulumi.Input<string>;
     /**

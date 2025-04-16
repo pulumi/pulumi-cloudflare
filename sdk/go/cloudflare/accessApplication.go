@@ -73,12 +73,22 @@ type AccessApplication struct {
 	PathCookieAttribute pulumi.BoolOutput `pulumi:"pathCookieAttribute"`
 	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
 	Policies AccessApplicationPolicyArrayOutput `pulumi:"policies"`
-	SaasApp  AccessApplicationSaasAppOutput     `pulumi:"saasApp"`
+	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+	// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+	// The header value will be interpreted as a json object similar to:
+	// {
+	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+	// }
+	ReadServiceTokensFromHeader pulumi.StringPtrOutput         `pulumi:"readServiceTokensFromHeader"`
+	SaasApp                     AccessApplicationSaasAppOutput `pulumi:"saasApp"`
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigOutput `pulumi:"scimConfig"`
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	//
+	// Deprecated: This attribute is deprecated.
 	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
@@ -184,12 +194,22 @@ type accessApplicationState struct {
 	PathCookieAttribute *bool `pulumi:"pathCookieAttribute"`
 	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
 	Policies []AccessApplicationPolicy `pulumi:"policies"`
-	SaasApp  *AccessApplicationSaasApp `pulumi:"saasApp"`
+	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+	// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+	// The header value will be interpreted as a json object similar to:
+	// {
+	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+	// }
+	ReadServiceTokensFromHeader *string                   `pulumi:"readServiceTokensFromHeader"`
+	SaasApp                     *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	//
+	// Deprecated: This attribute is deprecated.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
@@ -260,12 +280,22 @@ type AccessApplicationState struct {
 	PathCookieAttribute pulumi.BoolPtrInput
 	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
 	Policies AccessApplicationPolicyArrayInput
-	SaasApp  AccessApplicationSaasAppPtrInput
+	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+	// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+	// The header value will be interpreted as a json object similar to:
+	// {
+	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+	// }
+	ReadServiceTokensFromHeader pulumi.StringPtrInput
+	SaasApp                     AccessApplicationSaasAppPtrInput
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringPtrInput
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrInput
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	//
+	// Deprecated: This attribute is deprecated.
 	SelfHostedDomains pulumi.StringArrayInput
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
@@ -337,12 +367,22 @@ type accessApplicationArgs struct {
 	PathCookieAttribute *bool `pulumi:"pathCookieAttribute"`
 	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
 	Policies []AccessApplicationPolicy `pulumi:"policies"`
-	SaasApp  *AccessApplicationSaasApp `pulumi:"saasApp"`
+	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+	// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+	// The header value will be interpreted as a json object similar to:
+	// {
+	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+	// }
+	ReadServiceTokensFromHeader *string                   `pulumi:"readServiceTokensFromHeader"`
+	SaasApp                     *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	//
+	// Deprecated: This attribute is deprecated.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
@@ -410,12 +450,22 @@ type AccessApplicationArgs struct {
 	PathCookieAttribute pulumi.BoolPtrInput
 	// The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
 	Policies AccessApplicationPolicyArrayInput
-	SaasApp  AccessApplicationSaasAppPtrInput
+	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+	// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+	// The header value will be interpreted as a json object similar to:
+	// {
+	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+	// }
+	ReadServiceTokensFromHeader pulumi.StringPtrInput
+	SaasApp                     AccessApplicationSaasAppPtrInput
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringPtrInput
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrInput
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	//
+	// Deprecated: This attribute is deprecated.
 	SelfHostedDomains pulumi.StringArrayInput
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
@@ -649,6 +699,17 @@ func (o AccessApplicationOutput) Policies() AccessApplicationPolicyArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) AccessApplicationPolicyArrayOutput { return v.Policies }).(AccessApplicationPolicyArrayOutput)
 }
 
+// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+// The header value will be interpreted as a json object similar to:
+// {
+// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+// }
+func (o AccessApplicationOutput) ReadServiceTokensFromHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.ReadServiceTokensFromHeader }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessApplicationOutput) SaasApp() AccessApplicationSaasAppOutput {
 	return o.ApplyT(func(v *AccessApplication) AccessApplicationSaasAppOutput { return v.SaasApp }).(AccessApplicationSaasAppOutput)
 }
@@ -664,6 +725,8 @@ func (o AccessApplicationOutput) ScimConfig() AccessApplicationScimConfigOutput 
 }
 
 // List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+//
+// Deprecated: This attribute is deprecated.
 func (o AccessApplicationOutput) SelfHostedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.SelfHostedDomains }).(pulumi.StringArrayOutput)
 }

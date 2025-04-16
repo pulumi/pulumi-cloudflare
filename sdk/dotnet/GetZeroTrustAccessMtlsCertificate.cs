@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("certificateId")]
         public string? CertificateId { get; set; }
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> AssociatedHostnames;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string? CertificateId;
         public readonly string CreatedAt;
@@ -160,7 +160,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>

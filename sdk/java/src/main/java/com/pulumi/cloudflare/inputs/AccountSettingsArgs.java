@@ -34,14 +34,22 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Specifies the default nameservers to be used for new zones added to this account.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="defaultNameservers")
     private @Nullable Output<String> defaultNameservers;
 
     /**
      * @return Specifies the default nameservers to be used for new zones added to this account.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> defaultNameservers() {
         return Optional.ofNullable(this.defaultNameservers);
     }
@@ -69,7 +77,11 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
      * 
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="useAccountCustomNsByDefault")
     private @Nullable Output<Boolean> useAccountCustomNsByDefault;
 
@@ -79,7 +91,11 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
      * 
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<Boolean>> useAccountCustomNsByDefault() {
         return Optional.ofNullable(this.useAccountCustomNsByDefault);
     }
@@ -137,7 +153,11 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder defaultNameservers(@Nullable Output<String> defaultNameservers) {
             $.defaultNameservers = defaultNameservers;
             return this;
@@ -148,7 +168,11 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder defaultNameservers(String defaultNameservers) {
             return defaultNameservers(Output.of(defaultNameservers));
         }
@@ -184,7 +208,11 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder useAccountCustomNsByDefault(@Nullable Output<Boolean> useAccountCustomNsByDefault) {
             $.useAccountCustomNsByDefault = useAccountCustomNsByDefault;
             return this;
@@ -198,7 +226,11 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder useAccountCustomNsByDefault(Boolean useAccountCustomNsByDefault) {
             return useAccountCustomNsByDefault(Output.of(useAccountCustomNsByDefault));
         }

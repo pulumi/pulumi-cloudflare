@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.ObservatoryScheduledTestTestDesktopReport? DesktopReport;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string? Id;
         /// <summary>

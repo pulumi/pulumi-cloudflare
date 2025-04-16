@@ -37,7 +37,7 @@ export interface GetZeroTrustAccessMtlsCertificateArgs {
      */
     accountId?: string;
     /**
-     * UUID
+     * UUID.
      */
     certificateId?: string;
     /**
@@ -59,7 +59,7 @@ export interface GetZeroTrustAccessMtlsCertificateResult {
      */
     readonly associatedHostnames: string[];
     /**
-     * UUID
+     * UUID.
      */
     readonly certificateId?: string;
     readonly createdAt: string;
@@ -69,7 +69,7 @@ export interface GetZeroTrustAccessMtlsCertificateResult {
      */
     readonly fingerprint: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly id: string;
     /**
@@ -115,7 +115,7 @@ export interface GetZeroTrustAccessMtlsCertificateOutputArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     certificateId?: pulumi.Input<string>;
     /**

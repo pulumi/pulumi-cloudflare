@@ -30,14 +30,14 @@ namespace Pulumi.Cloudflare
     ///         Description = "Tunnel for ISP X",
     ///         HealthCheck = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckArgs
     ///         {
-    ///             Direction = "unidirectional",
+    ///             Direction = "bidirectional",
     ///             Enabled = true,
     ///             Rate = "low",
     ///             Target = new Cloudflare.Inputs.MagicWanIpsecTunnelHealthCheckTargetArgs
     ///             {
     ///                 Saved = "203.0.113.1",
     ///             },
-    ///             Type = "reply",
+    ///             Type = "request",
     ///         },
     ///         Psk = "O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
     ///         ReplayProtection = false,

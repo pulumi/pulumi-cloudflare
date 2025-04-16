@@ -138,6 +138,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The items in the list.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustListItemResult> Items;
+        /// <summary>
         /// The number of items in the list.
         /// </summary>
         public readonly double ListCount;
@@ -168,6 +172,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            ImmutableArray<Outputs.GetZeroTrustListItemResult> items,
+
             double listCount,
 
             string? listId,
@@ -183,6 +189,7 @@ namespace Pulumi.Cloudflare
             Description = description;
             Filter = filter;
             Id = id;
+            Items = items;
             ListCount = listCount;
             ListId = listId;
             Name = name;

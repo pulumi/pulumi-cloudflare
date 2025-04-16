@@ -47,13 +47,13 @@ import (
 type WorkersForPlatformsDispatchNamespace struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// When the script was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// Identifier
+	// Identifier.
 	ModifiedBy pulumi.StringOutput `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
@@ -106,13 +106,13 @@ func GetWorkersForPlatformsDispatchNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersForPlatformsDispatchNamespace resources.
 type workersForPlatformsDispatchNamespaceState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	CreatedBy *string `pulumi:"createdBy"`
 	// When the script was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// Identifier
+	// Identifier.
 	ModifiedBy *string `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
@@ -127,13 +127,13 @@ type workersForPlatformsDispatchNamespaceState struct {
 }
 
 type WorkersForPlatformsDispatchNamespaceState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	CreatedBy pulumi.StringPtrInput
 	// When the script was created.
 	CreatedOn pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ModifiedBy pulumi.StringPtrInput
 	// When the script was last modified.
 	ModifiedOn pulumi.StringPtrInput
@@ -152,7 +152,7 @@ func (WorkersForPlatformsDispatchNamespaceState) ElementType() reflect.Type {
 }
 
 type workersForPlatformsDispatchNamespaceArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The name of the dispatch namespace
 	Name *string `pulumi:"name"`
@@ -160,7 +160,7 @@ type workersForPlatformsDispatchNamespaceArgs struct {
 
 // The set of arguments for constructing a WorkersForPlatformsDispatchNamespace resource.
 type WorkersForPlatformsDispatchNamespaceArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The name of the dispatch namespace
 	Name pulumi.StringPtrInput
@@ -253,12 +253,12 @@ func (o WorkersForPlatformsDispatchNamespaceOutput) ToWorkersForPlatformsDispatc
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkersForPlatformsDispatchNamespaceOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsDispatchNamespace) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WorkersForPlatformsDispatchNamespaceOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsDispatchNamespace) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
@@ -268,7 +268,7 @@ func (o WorkersForPlatformsDispatchNamespaceOutput) CreatedOn() pulumi.StringOut
 	return o.ApplyT(func(v *WorkersForPlatformsDispatchNamespace) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WorkersForPlatformsDispatchNamespaceOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsDispatchNamespace) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
 }

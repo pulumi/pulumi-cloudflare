@@ -27,7 +27,7 @@ class WorkerCronTriggerArgs:
                  script_name: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a WorkerCronTrigger resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -38,7 +38,7 @@ class WorkerCronTriggerArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -76,7 +76,7 @@ class _WorkerCronTriggerState:
                  script_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerCronTrigger resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
         """
         if account_id is not None:
@@ -90,7 +90,7 @@ class _WorkerCronTriggerState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -145,7 +145,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
         """
         ...
@@ -222,7 +222,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -238,7 +238,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

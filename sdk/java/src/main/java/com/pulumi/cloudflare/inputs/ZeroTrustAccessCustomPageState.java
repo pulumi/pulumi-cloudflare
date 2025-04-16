@@ -17,14 +17,14 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
     public static final ZeroTrustAccessCustomPageState Empty = new ZeroTrustAccessCustomPageState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -101,14 +101,14 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -154,7 +154,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param uid UUID
+         * @param uid UUID.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class ZeroTrustAccessCustomPageState extends com.pulumi.resources.R
         }
 
         /**
-         * @param uid UUID
+         * @param uid UUID.
          * 
          * @return builder
          * 

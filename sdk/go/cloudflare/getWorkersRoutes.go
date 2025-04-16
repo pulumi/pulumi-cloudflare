@@ -50,7 +50,7 @@ func LookupWorkersRoutes(ctx *pulumi.Context, args *LookupWorkersRoutesArgs, opt
 type LookupWorkersRoutesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupWorkersRoutesResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetWorkersRoutesResult `pulumi:"results"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupWorkersRoutesOutput(ctx *pulumi.Context, args LookupWorkersRoutesOutp
 type LookupWorkersRoutesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupWorkersRoutesResultOutput) Results() GetWorkersRoutesResultArrayOu
 	return o.ApplyT(func(v LookupWorkersRoutesResult) []GetWorkersRoutesResult { return v.Results }).(GetWorkersRoutesResultArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersRoutesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRoutesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

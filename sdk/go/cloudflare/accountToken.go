@@ -41,7 +41,7 @@ type AccountToken struct {
 	Policies AccountTokenPolicyArrayOutput `pulumi:"policies"`
 	// Status of the token.
 	// Available values: "active", "disabled", "expired".
-	Status pulumi.StringPtrOutput `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
 	// The token value.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
@@ -154,9 +154,6 @@ type accountTokenArgs struct {
 	NotBefore *string `pulumi:"notBefore"`
 	// List of access policies assigned to the token.
 	Policies []AccountTokenPolicy `pulumi:"policies"`
-	// Status of the token.
-	// Available values: "active", "disabled", "expired".
-	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a AccountToken resource.
@@ -172,9 +169,6 @@ type AccountTokenArgs struct {
 	NotBefore pulumi.StringPtrInput
 	// List of access policies assigned to the token.
 	Policies AccountTokenPolicyArrayInput
-	// Status of the token.
-	// Available values: "active", "disabled", "expired".
-	Status pulumi.StringPtrInput
 }
 
 func (AccountTokenArgs) ElementType() reflect.Type {
@@ -310,8 +304,8 @@ func (o AccountTokenOutput) Policies() AccountTokenPolicyArrayOutput {
 
 // Status of the token.
 // Available values: "active", "disabled", "expired".
-func (o AccountTokenOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountToken) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+func (o AccountTokenOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountToken) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // The token value.

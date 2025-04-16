@@ -38,7 +38,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -164,7 +164,7 @@ export class StreamLiveInput extends pulumi.CustomResource {
  */
 export interface StreamLiveInputState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -235,7 +235,7 @@ export interface StreamLiveInputState {
  */
 export interface StreamLiveInputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

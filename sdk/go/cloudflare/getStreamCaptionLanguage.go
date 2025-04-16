@@ -50,7 +50,7 @@ func LookupStreamCaptionLanguage(ctx *pulumi.Context, args *LookupStreamCaptionL
 
 // A collection of arguments for invoking getStreamCaptionLanguage.
 type LookupStreamCaptionLanguageArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
@@ -60,7 +60,7 @@ type LookupStreamCaptionLanguageArgs struct {
 
 // A collection of values returned by getStreamCaptionLanguage.
 type LookupStreamCaptionLanguageResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Whether the caption was generated via AI.
 	Generated bool `pulumi:"generated"`
@@ -88,7 +88,7 @@ func LookupStreamCaptionLanguageOutput(ctx *pulumi.Context, args LookupStreamCap
 
 // A collection of arguments for invoking getStreamCaptionLanguage.
 type LookupStreamCaptionLanguageOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
@@ -115,7 +115,7 @@ func (o LookupStreamCaptionLanguageResultOutput) ToLookupStreamCaptionLanguageRe
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupStreamCaptionLanguageResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamCaptionLanguageResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

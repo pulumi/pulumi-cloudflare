@@ -97,7 +97,7 @@ class GetZeroTrustAccessGroupResult:
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "group_id")
 
@@ -105,7 +105,7 @@ class GetZeroTrustAccessGroupResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -194,7 +194,7 @@ def get_zero_trust_access_group(account_id: Optional[builtins.str] = None,
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str group_id: UUID
+    :param builtins.str group_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -237,7 +237,7 @@ def get_zero_trust_access_group_output(account_id: Optional[pulumi.Input[Optiona
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str group_id: UUID
+    :param builtins.str group_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()

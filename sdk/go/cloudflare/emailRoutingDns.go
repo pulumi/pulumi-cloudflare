@@ -67,6 +67,8 @@ type EmailRoutingDns struct {
 	// Whether the API call was successful
 	Success pulumi.BoolOutput `pulumi:"success"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -128,6 +130,8 @@ type emailRoutingDnsState struct {
 	// Whether the API call was successful
 	Success *bool `pulumi:"success"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag *string `pulumi:"tag"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -154,6 +158,8 @@ type EmailRoutingDnsState struct {
 	// Whether the API call was successful
 	Success pulumi.BoolPtrInput
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -318,6 +324,8 @@ func (o EmailRoutingDnsOutput) Success() pulumi.BoolOutput {
 }
 
 // Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+//
+// Deprecated: This attribute is deprecated.
 func (o EmailRoutingDnsOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }

@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Diff = true,
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Endpoint = "/api/v1",
         ///         Hosts = new[]
         ///         {
@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         ///         {
         ///             "GET",
         ///         },
-        ///         Order = "host",
+        ///         Order = "method",
         ///         Origin = "ML",
         ///         State = "review",
         ///     });
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Diff = true,
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Endpoint = "/api/v1",
         ///         Hosts = new[]
         ///         {
@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         ///         {
         ///             "GET",
         ///         },
-        ///         Order = "host",
+        ///         Order = "method",
         ///         Origin = "ML",
         ///         State = "review",
         ///     });
@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         Diff = true,
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Endpoint = "/api/v1",
         ///         Hosts = new[]
         ///         {
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
         ///         {
         ///             "GET",
         ///         },
-        ///         Order = "host",
+        ///         Order = "method",
         ///         Origin = "ML",
         ///         State = "review",
         ///     });

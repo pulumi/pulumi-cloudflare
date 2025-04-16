@@ -12,6 +12,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsL4override
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsRedirectArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs;
 import com.pulumi.core.Output;
@@ -330,6 +331,21 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
     }
 
     /**
+     * Settings that apply to redirect rules
+     * 
+     */
+    @Import(name="redirect")
+    private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsRedirectArgs> redirect;
+
+    /**
+     * @return Settings that apply to redirect rules
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsRedirectArgs>> redirect() {
+        return Optional.ofNullable(this.redirect);
+    }
+
+    /**
      * Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
@@ -397,6 +413,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         this.overrideIps = $.overrideIps;
         this.payloadLog = $.payloadLog;
         this.quarantine = $.quarantine;
+        this.redirect = $.redirect;
         this.resolveDnsInternally = $.resolveDnsInternally;
         this.resolveDnsThroughCloudflare = $.resolveDnsThroughCloudflare;
         this.untrustedCert = $.untrustedCert;
@@ -848,6 +865,27 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
          */
         public Builder quarantine(ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs quarantine) {
             return quarantine(Output.of(quarantine));
+        }
+
+        /**
+         * @param redirect Settings that apply to redirect rules
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirect(@Nullable Output<ZeroTrustGatewayPolicyRuleSettingsRedirectArgs> redirect) {
+            $.redirect = redirect;
+            return this;
+        }
+
+        /**
+         * @param redirect Settings that apply to redirect rules
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirect(ZeroTrustGatewayPolicyRuleSettingsRedirectArgs redirect) {
+            return redirect(Output.of(redirect));
         }
 
         /**

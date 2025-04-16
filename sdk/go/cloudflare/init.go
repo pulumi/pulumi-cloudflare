@@ -345,8 +345,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkerDomain{}
 	case "cloudflare:index/workerScript:WorkerScript":
 		r = &WorkerScript{}
-	case "cloudflare:index/workerSecret:WorkerSecret":
-		r = &WorkerSecret{}
 	case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
 		r = &WorkersCronTrigger{}
 	case "cloudflare:index/workersCustomDomain:WorkersCustomDomain":
@@ -357,6 +355,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersForPlatformsDispatchNamespace{}
 	case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
 		r = &WorkersForPlatformsNamespace{}
+	case "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret":
+		r = &WorkersForPlatformsScriptSecret{}
 	case "cloudflare:index/workersKv:WorkersKv":
 		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -367,8 +367,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersScript{}
 	case "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain":
 		r = &WorkersScriptSubdomain{}
-	case "cloudflare:index/workersSecret:WorkersSecret":
-		r = &WorkersSecret{}
 	case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
 		r = &ZeroTrustAccessApplication{}
 	case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
@@ -1310,11 +1308,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-		"index/workerSecret",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
 		"index/workersCronTrigger",
 		&module{version},
 	)
@@ -1340,6 +1333,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/workersForPlatformsScriptSecret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/workersKv",
 		&module{version},
 	)
@@ -1361,11 +1359,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workersScriptSubdomain",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/workersSecret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

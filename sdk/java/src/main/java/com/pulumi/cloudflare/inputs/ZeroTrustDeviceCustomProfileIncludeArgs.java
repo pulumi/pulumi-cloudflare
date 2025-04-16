@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,44 +16,44 @@ public final class ZeroTrustDeviceCustomProfileIncludeArgs extends com.pulumi.re
     public static final ZeroTrustDeviceCustomProfileIncludeArgs Empty = new ZeroTrustDeviceCustomProfileIncludeArgs();
 
     /**
-     * The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+     * The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      * 
      */
-    @Import(name="address", required=true)
-    private Output<String> address;
+    @Import(name="address")
+    private @Nullable Output<String> address;
 
     /**
-     * @return The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+     * @return The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      * 
      */
-    public Output<String> address() {
-        return this.address;
+    public Optional<Output<String>> address() {
+        return Optional.ofNullable(this.address);
     }
 
     /**
      * A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
-    @Import(name="description", required=true)
-    private Output<String> description;
+    @Import(name="description")
+    private @Nullable Output<String> description;
 
     /**
      * @return A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
-     * The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+     * The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+     * @return The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      * 
      */
     public Optional<Output<String>> host() {
@@ -88,18 +87,18 @@ public final class ZeroTrustDeviceCustomProfileIncludeArgs extends com.pulumi.re
         }
 
         /**
-         * @param address The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+         * @param address The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
          * 
          * @return builder
          * 
          */
-        public Builder address(Output<String> address) {
+        public Builder address(@Nullable Output<String> address) {
             $.address = address;
             return this;
         }
 
         /**
-         * @param address The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+         * @param address The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
          * 
          * @return builder
          * 
@@ -114,7 +113,7 @@ public final class ZeroTrustDeviceCustomProfileIncludeArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder description(Output<String> description) {
+        public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
@@ -130,7 +129,7 @@ public final class ZeroTrustDeviceCustomProfileIncludeArgs extends com.pulumi.re
         }
 
         /**
-         * @param host The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+         * @param host The domain name to include in the tunnel. If `host` is present, `address` must not be present.
          * 
          * @return builder
          * 
@@ -141,7 +140,7 @@ public final class ZeroTrustDeviceCustomProfileIncludeArgs extends com.pulumi.re
         }
 
         /**
-         * @param host The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+         * @param host The domain name to include in the tunnel. If `host` is present, `address` must not be present.
          * 
          * @return builder
          * 
@@ -151,12 +150,6 @@ public final class ZeroTrustDeviceCustomProfileIncludeArgs extends com.pulumi.re
         }
 
         public ZeroTrustDeviceCustomProfileIncludeArgs build() {
-            if ($.address == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileIncludeArgs", "address");
-            }
-            if ($.description == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileIncludeArgs", "description");
-            }
             return $;
         }
     }

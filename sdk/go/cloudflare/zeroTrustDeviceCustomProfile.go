@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustDeviceCustomProfile(ctx, "example_zero_trust_device_custom_profile", &cloudflare.ZeroTrustDeviceCustomProfileArgs{
 //				AccountId:           pulumi.String("699d98642c564d2e855e9661899b7252"),
-//				Match:               pulumi.String("user.identity == \"test@cloudflare.com\""),
+//				Match:               pulumi.String("identity.email == \"test@cloudflare.com\""),
 //				Name:                pulumi.String("Allow Developers"),
 //				Precedence:          pulumi.Float64(100),
 //				AllowModeSwitch:     pulumi.Bool(true),
@@ -43,15 +43,13 @@ import (
 //					&cloudflare.ZeroTrustDeviceCustomProfileExcludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
 //						Description: pulumi.String("Exclude testing domains from the tunnel"),
-//						Host:        pulumi.String("*.example.com"),
 //					},
 //				},
 //				ExcludeOfficeIps: pulumi.Bool(true),
 //				Includes: cloudflare.ZeroTrustDeviceCustomProfileIncludeArray{
 //					&cloudflare.ZeroTrustDeviceCustomProfileIncludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
-//						Description: pulumi.String("Exclude testing domains from the tunnel"),
-//						Host:        pulumi.String("*.example.com"),
+//						Description: pulumi.String("Include testing domains in the tunnel"),
 //					},
 //				},
 //				LanAllowMinutes:            pulumi.Float64(30),
@@ -116,8 +114,7 @@ type ZeroTrustDeviceCustomProfile struct {
 	// The wirefilter expression to match devices.
 	Match pulumi.StringOutput `pulumi:"match"`
 	// The name of the device settings profile.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Device ID.
+	Name     pulumi.StringOutput `pulumi:"name"`
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence pulumi.Float64Output `pulumi:"precedence"`
@@ -218,8 +215,7 @@ type zeroTrustDeviceCustomProfileState struct {
 	// The wirefilter expression to match devices.
 	Match *string `pulumi:"match"`
 	// The name of the device settings profile.
-	Name *string `pulumi:"name"`
-	// Device ID.
+	Name     *string `pulumi:"name"`
 	PolicyId *string `pulumi:"policyId"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence *float64 `pulumi:"precedence"`
@@ -270,8 +266,7 @@ type ZeroTrustDeviceCustomProfileState struct {
 	// The wirefilter expression to match devices.
 	Match pulumi.StringPtrInput
 	// The name of the device settings profile.
-	Name pulumi.StringPtrInput
-	// Device ID.
+	Name     pulumi.StringPtrInput
 	PolicyId pulumi.StringPtrInput
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence pulumi.Float64PtrInput
@@ -567,7 +562,6 @@ func (o ZeroTrustDeviceCustomProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Device ID.
 func (o ZeroTrustDeviceCustomProfileOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }

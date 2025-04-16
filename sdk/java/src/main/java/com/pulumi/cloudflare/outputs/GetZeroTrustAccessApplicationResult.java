@@ -39,7 +39,7 @@ public final class GetZeroTrustAccessApplicationResult {
      */
     private List<String> allowedIdps;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String appId;
@@ -122,7 +122,7 @@ public final class GetZeroTrustAccessApplicationResult {
      */
     private Boolean httpOnlyCookieAttribute;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -152,6 +152,17 @@ public final class GetZeroTrustAccessApplicationResult {
      */
     private Boolean pathCookieAttribute;
     private List<GetZeroTrustAccessApplicationPolicy> policies;
+    /**
+     * @return Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+     * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+     * }
+     * 
+     */
+    private String readServiceTokensFromHeader;
     private GetZeroTrustAccessApplicationSaasApp saasApp;
     /**
      * @return Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -166,7 +177,11 @@ public final class GetZeroTrustAccessApplicationResult {
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private List<String> selfHostedDomains;
     /**
      * @return Returns a 401 status code when the request is blocked by a Service Auth policy.
@@ -229,7 +244,7 @@ public final class GetZeroTrustAccessApplicationResult {
         return this.allowedIdps;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> appId() {
@@ -350,7 +365,7 @@ public final class GetZeroTrustAccessApplicationResult {
         return this.httpOnlyCookieAttribute;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -394,6 +409,19 @@ public final class GetZeroTrustAccessApplicationResult {
     public List<GetZeroTrustAccessApplicationPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+     * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+     * }
+     * 
+     */
+    public String readServiceTokensFromHeader() {
+        return this.readServiceTokensFromHeader;
+    }
     public GetZeroTrustAccessApplicationSaasApp saasApp() {
         return this.saasApp;
     }
@@ -414,7 +442,11 @@ public final class GetZeroTrustAccessApplicationResult {
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public List<String> selfHostedDomains() {
         return this.selfHostedDomains;
     }
@@ -512,6 +544,7 @@ public final class GetZeroTrustAccessApplicationResult {
         private Boolean optionsPreflightBypass;
         private Boolean pathCookieAttribute;
         private List<GetZeroTrustAccessApplicationPolicy> policies;
+        private String readServiceTokensFromHeader;
         private GetZeroTrustAccessApplicationSaasApp saasApp;
         private String sameSiteCookieAttribute;
         private GetZeroTrustAccessApplicationScimConfig scimConfig;
@@ -557,6 +590,7 @@ public final class GetZeroTrustAccessApplicationResult {
     	      this.optionsPreflightBypass = defaults.optionsPreflightBypass;
     	      this.pathCookieAttribute = defaults.pathCookieAttribute;
     	      this.policies = defaults.policies;
+    	      this.readServiceTokensFromHeader = defaults.readServiceTokensFromHeader;
     	      this.saasApp = defaults.saasApp;
     	      this.sameSiteCookieAttribute = defaults.sameSiteCookieAttribute;
     	      this.scimConfig = defaults.scimConfig;
@@ -814,6 +848,14 @@ public final class GetZeroTrustAccessApplicationResult {
             return policies(List.of(policies));
         }
         @CustomType.Setter
+        public Builder readServiceTokensFromHeader(String readServiceTokensFromHeader) {
+            if (readServiceTokensFromHeader == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationResult", "readServiceTokensFromHeader");
+            }
+            this.readServiceTokensFromHeader = readServiceTokensFromHeader;
+            return this;
+        }
+        @CustomType.Setter
         public Builder saasApp(GetZeroTrustAccessApplicationSaasApp saasApp) {
             if (saasApp == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationResult", "saasApp");
@@ -955,6 +997,7 @@ public final class GetZeroTrustAccessApplicationResult {
             _resultValue.optionsPreflightBypass = optionsPreflightBypass;
             _resultValue.pathCookieAttribute = pathCookieAttribute;
             _resultValue.policies = policies;
+            _resultValue.readServiceTokensFromHeader = readServiceTokensFromHeader;
             _resultValue.saasApp = saasApp;
             _resultValue.sameSiteCookieAttribute = sameSiteCookieAttribute;
             _resultValue.scimConfig = scimConfig;

@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Uid;
         public readonly string UpdatedAt;

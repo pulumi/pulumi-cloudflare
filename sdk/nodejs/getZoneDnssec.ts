@@ -28,7 +28,7 @@ export function getZoneDnssec(args: GetZoneDnssecArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetZoneDnssecArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -73,7 +73,7 @@ export interface GetZoneDnssecResult {
     readonly publicKey: string;
     readonly status: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -101,7 +101,7 @@ export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi
  */
 export interface GetZoneDnssecOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

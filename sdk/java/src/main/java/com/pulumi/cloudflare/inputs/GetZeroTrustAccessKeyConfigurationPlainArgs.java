@@ -14,14 +14,14 @@ public final class GetZeroTrustAccessKeyConfigurationPlainArgs extends com.pulum
     public static final GetZeroTrustAccessKeyConfigurationPlainArgs Empty = new GetZeroTrustAccessKeyConfigurationPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -53,7 +53,7 @@ public final class GetZeroTrustAccessKeyConfigurationPlainArgs extends com.pulum
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

@@ -49,22 +49,22 @@ func LookupWorkersRoute(ctx *pulumi.Context, args *LookupWorkersRouteArgs, opts 
 
 // A collection of arguments for invoking getWorkersRoute.
 type LookupWorkersRouteArgs struct {
-	// Identifier
+	// Identifier.
 	RouteId string `pulumi:"routeId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWorkersRoute.
 type LookupWorkersRouteResult struct {
-	// Identifier
+	// Identifier.
 	Id      string `pulumi:"id"`
 	Pattern string `pulumi:"pattern"`
-	// Identifier
+	// Identifier.
 	RouteId string `pulumi:"routeId"`
 	// Name of the script, used in URLs and route configuration.
 	Script string `pulumi:"script"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,9 +79,9 @@ func LookupWorkersRouteOutput(ctx *pulumi.Context, args LookupWorkersRouteOutput
 
 // A collection of arguments for invoking getWorkersRoute.
 type LookupWorkersRouteOutputArgs struct {
-	// Identifier
+	// Identifier.
 	RouteId pulumi.StringInput `pulumi:"routeId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -104,7 +104,7 @@ func (o LookupWorkersRouteResultOutput) ToLookupWorkersRouteResultOutputWithCont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -113,7 +113,7 @@ func (o LookupWorkersRouteResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersRouteResultOutput) RouteId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.RouteId }).(pulumi.StringOutput)
 }
@@ -123,7 +123,7 @@ func (o LookupWorkersRouteResultOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.Script }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersRouteResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -26,7 +26,7 @@ type TeamsRule struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    pulumi.StringOutput `pulumi:"action"`
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Date of deletion, if any.
@@ -107,7 +107,7 @@ func GetTeamsRule(ctx *pulumi.Context,
 type teamsRuleState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    *string `pulumi:"action"`
 	CreatedAt *string `pulumi:"createdAt"`
 	// Date of deletion, if any.
@@ -144,7 +144,7 @@ type teamsRuleState struct {
 type TeamsRuleState struct {
 	AccountId pulumi.StringPtrInput
 	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    pulumi.StringPtrInput
 	CreatedAt pulumi.StringPtrInput
 	// Date of deletion, if any.
@@ -185,7 +185,7 @@ func (TeamsRuleState) ElementType() reflect.Type {
 type teamsRuleArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action string `pulumi:"action"`
 	// The description of the rule.
 	Description *string `pulumi:"description"`
@@ -217,7 +217,7 @@ type teamsRuleArgs struct {
 type TeamsRuleArgs struct {
 	AccountId pulumi.StringInput
 	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action pulumi.StringInput
 	// The description of the rule.
 	Description pulumi.StringPtrInput
@@ -337,7 +337,7 @@ func (o TeamsRuleOutput) AccountId() pulumi.StringOutput {
 }
 
 // The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 func (o TeamsRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }

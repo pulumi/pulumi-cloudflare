@@ -24,7 +24,7 @@ class AccessKeysConfigurationArgs:
                  key_rotation_interval_days: pulumi.Input[builtins.float]):
         """
         The set of arguments for constructing a AccessKeysConfiguration resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.float] key_rotation_interval_days: The number of days between key rotations.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -34,7 +34,7 @@ class AccessKeysConfigurationArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -64,7 +64,7 @@ class _AccessKeysConfigurationState:
                  last_key_rotation_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessKeysConfiguration resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.float] days_until_next_rotation: The number of days until the next key rotation.
         :param pulumi.Input[builtins.float] key_rotation_interval_days: The number of days between key rotations.
         :param pulumi.Input[builtins.str] last_key_rotation_at: The timestamp of the previous key rotation.
@@ -82,7 +82,7 @@ class _AccessKeysConfigurationState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -160,7 +160,7 @@ class AccessKeysConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.float] key_rotation_interval_days: The number of days between key rotations.
         """
         ...
@@ -245,7 +245,7 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.float] days_until_next_rotation: The number of days until the next key rotation.
         :param pulumi.Input[builtins.float] key_rotation_interval_days: The number of days between key rotations.
         :param pulumi.Input[builtins.str] last_key_rotation_at: The timestamp of the previous key rotation.
@@ -264,7 +264,7 @@ class AccessKeysConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

@@ -29,7 +29,7 @@ import (
 //			_, err := cloudflare.NewZeroTrustTunnelCloudflared(ctx, "example_zero_trust_tunnel_cloudflared", &cloudflare.ZeroTrustTunnelCloudflaredArgs{
 //				AccountId:    pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				Name:         pulumi.String("blog"),
-//				ConfigSrc:    pulumi.String("local"),
+//				ConfigSrc:    pulumi.String("cloudflare"),
 //				TunnelSecret: pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
 //			})
 //			if err != nil {

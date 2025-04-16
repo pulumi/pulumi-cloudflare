@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupApiShieldDiscoveryOperations(ctx, &cloudflare.LookupApiShieldDiscoveryOperationsArgs{
 //				ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
 //				Diff:      pulumi.BoolRef(true),
-//				Direction: pulumi.StringRef("asc"),
+//				Direction: pulumi.StringRef("desc"),
 //				Endpoint:  pulumi.StringRef("/api/v1"),
 //				Hosts: []string{
 //					"api.cloudflare.com",
@@ -36,7 +36,7 @@ import (
 //				Methods: []string{
 //					"GET",
 //				},
-//				Order:  pulumi.StringRef("host"),
+//				Order:  pulumi.StringRef("method"),
 //				Origin: pulumi.StringRef("ML"),
 //				State:  pulumi.StringRef("review"),
 //			}, nil)

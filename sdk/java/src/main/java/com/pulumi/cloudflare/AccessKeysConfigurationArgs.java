@@ -16,14 +16,14 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
     public static final AccessKeysConfigurationArgs Empty = new AccessKeysConfigurationArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -71,7 +71,7 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

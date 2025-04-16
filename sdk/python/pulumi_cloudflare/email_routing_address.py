@@ -82,6 +82,9 @@ class _EmailRoutingAddressState:
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
         if tag is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""tag is deprecated: This attribute is deprecated.""")
+        if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if verified is not None:
             pulumi.set(__self__, "verified", verified)
@@ -136,6 +139,7 @@ class _EmailRoutingAddressState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Destination address tag. (Deprecated, replaced by destination address identifier)
@@ -326,6 +330,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> pulumi.Output[builtins.str]:
         """
         Destination address tag. (Deprecated, replaced by destination address identifier)
