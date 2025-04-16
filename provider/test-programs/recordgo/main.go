@@ -9,7 +9,7 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		c := config.New(ctx, "")
-		accountId := c.Require("accountId")
+		accountId := c.Require("cloudflare-account-id")
 
 		zone, err := cloudflare.NewZone(ctx, "my-zone", &cloudflare.ZoneArgs{
 			Name:      pulumi.String("go-test-cloudflare-pulumi.com"),
