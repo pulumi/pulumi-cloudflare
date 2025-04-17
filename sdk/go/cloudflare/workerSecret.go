@@ -87,6 +87,12 @@ func NewWorkerSecret(ctx *pulumi.Context,
 	if args.ScriptName == nil {
 		return nil, errors.New("invalid value for required argument 'ScriptName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("cloudflare:index/workersSecret:WorkersSecret"),
+		},
+	})
+	opts = append(opts, aliases)
 	if args.Text != nil {
 		args.Text = pulumi.ToSecret(args.Text).(pulumi.StringPtrInput)
 	}

@@ -197,7 +197,7 @@ public class WorkersSecret extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/workerSecret:WorkerSecret").build())
+                Output.of(Alias.builder().type("cloudflare:index/workersSecret:WorkersSecret").build())
             ))
             .additionalSecretOutputs(List.of(
                 "text"

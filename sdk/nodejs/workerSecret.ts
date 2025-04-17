@@ -128,6 +128,8 @@ export class WorkerSecret extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workersSecret:WorkersSecret" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["text"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(WorkerSecret.__pulumiType, name, resourceInputs, opts);

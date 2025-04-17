@@ -103,10 +103,6 @@ namespace Pulumi.Cloudflare
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/workersSecret:WorkersSecret" },
-                },
                 AdditionalSecretOutputs =
                 {
                     "text",

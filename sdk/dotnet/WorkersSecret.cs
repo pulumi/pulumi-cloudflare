@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/workerSecret:WorkerSecret" },
+                    new global::Pulumi.Alias { Type = "cloudflare:index/workersSecret:WorkersSecret" },
                 },
                 AdditionalSecretOutputs =
                 {

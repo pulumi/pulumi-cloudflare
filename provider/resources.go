@@ -276,8 +276,8 @@ func Provider() info.Provider {
 			},
 			"cloudflare_workers_for_platforms_script_secret": {
 				Aliases: alias(
-					"cloudflare:index/workersSecret:WorkersSecret",
 					"cloudflare:index/workerSecret:WorkerSecret",
+					"cloudflare:index/workersSecret:WorkersSecret",
 				),
 			},
 			"cloudflare_workers_for_platforms_dispatch_namespace": {

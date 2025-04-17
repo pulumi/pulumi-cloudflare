@@ -347,7 +347,7 @@ class WorkersSecret(pulumi.CustomResource):
             __props__.__dict__["script_name"] = script_name
             __props__.__dict__["text"] = None if text is None else pulumi.Output.secret(text)
             __props__.__dict__["type"] = type
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workersSecret:WorkersSecret")])
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerSecret:WorkerSecret")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["text"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
