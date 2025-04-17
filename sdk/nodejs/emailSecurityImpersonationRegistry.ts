@@ -62,6 +62,9 @@ export class EmailSecurityImpersonationRegistry extends pulumi.CustomResource {
     public /*out*/ readonly directoryId!: pulumi.Output<number>;
     public /*out*/ readonly directoryNodeId!: pulumi.Output<number>;
     public readonly email!: pulumi.Output<string>;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     public /*out*/ readonly externalDirectoryNodeId!: pulumi.Output<string>;
     public readonly isEmailRegex!: pulumi.Output<boolean>;
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
@@ -136,6 +139,9 @@ export interface EmailSecurityImpersonationRegistryState {
     directoryId?: pulumi.Input<number>;
     directoryNodeId?: pulumi.Input<number>;
     email?: pulumi.Input<string>;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
     externalDirectoryNodeId?: pulumi.Input<string>;
     isEmailRegex?: pulumi.Input<boolean>;
     lastModified?: pulumi.Input<string>;

@@ -187,7 +187,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                 "target": "ip",
                 "value": "198.51.100.4",
             },
-            mode="block")
+            mode="challenge")
         ```
 
         :param str resource_name: The name of the resource.
@@ -217,7 +217,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                 "target": "ip",
                 "value": "198.51.100.4",
             },
-            mode="block")
+            mode="challenge")
         ```
 
         :param str resource_name: The name of the resource.

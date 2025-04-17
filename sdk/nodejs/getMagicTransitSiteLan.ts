@@ -80,7 +80,7 @@ export interface GetMagicTransitSiteLanResult {
      */
     readonly staticAddressing: outputs.GetMagicTransitSiteLanStaticAddressing;
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      */
     readonly vlanTag: number;
 }

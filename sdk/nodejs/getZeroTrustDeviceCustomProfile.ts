@@ -32,9 +32,6 @@ export function getZeroTrustDeviceCustomProfile(args: GetZeroTrustDeviceCustomPr
  */
 export interface GetZeroTrustDeviceCustomProfileArgs {
     accountId: string;
-    /**
-     * Device ID.
-     */
     policyId?: string;
 }
 
@@ -90,7 +87,7 @@ export interface GetZeroTrustDeviceCustomProfileResult {
     readonly fallbackDomains: outputs.GetZeroTrustDeviceCustomProfileFallbackDomain[];
     readonly gatewayUniqueId: string;
     /**
-     * Device ID.
+     * The ID of this resource.
      */
     readonly id: string;
     /**
@@ -113,9 +110,6 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      * The name of the device settings profile.
      */
     readonly name: string;
-    /**
-     * Device ID.
-     */
     readonly policyId: string;
     /**
      * The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
@@ -166,8 +160,5 @@ export function getZeroTrustDeviceCustomProfileOutput(args: GetZeroTrustDeviceCu
  */
 export interface GetZeroTrustDeviceCustomProfileOutputArgs {
     accountId: pulumi.Input<string>;
-    /**
-     * Device ID.
-     */
     policyId?: pulumi.Input<string>;
 }

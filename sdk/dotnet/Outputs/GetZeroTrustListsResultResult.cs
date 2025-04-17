@@ -23,6 +23,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The items in the list.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetZeroTrustListsResultItemResult> Items;
+        /// <summary>
         /// The number of items in the list.
         /// </summary>
         public readonly double ListCount;
@@ -45,6 +49,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string id,
 
+            ImmutableArray<Outputs.GetZeroTrustListsResultItemResult> items,
+
             double listCount,
 
             string name,
@@ -56,6 +62,7 @@ namespace Pulumi.Cloudflare.Outputs
             CreatedAt = createdAt;
             Description = description;
             Id = id;
+            Items = items;
             ListCount = listCount;
             Name = name;
             Type = type;

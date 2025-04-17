@@ -221,7 +221,7 @@ class GetZeroTrustDeviceCustomProfileResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Device ID.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 
@@ -268,9 +268,6 @@ class GetZeroTrustDeviceCustomProfileResult:
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> builtins.str:
-        """
-        Device ID.
-        """
         return pulumi.get(self, "policy_id")
 
     @property
@@ -373,9 +370,6 @@ def get_zero_trust_device_custom_profile(account_id: Optional[builtins.str] = No
     example_zero_trust_device_custom_profile = cloudflare.get_zero_trust_device_custom_profile(account_id="699d98642c564d2e855e9661899b7252",
         policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
-
-
-    :param builtins.str policy_id: Device ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -425,9 +419,6 @@ def get_zero_trust_device_custom_profile_output(account_id: Optional[pulumi.Inpu
     example_zero_trust_device_custom_profile = cloudflare.get_zero_trust_device_custom_profile(account_id="699d98642c564d2e855e9661899b7252",
         policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
-
-
-    :param builtins.str policy_id: Device ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

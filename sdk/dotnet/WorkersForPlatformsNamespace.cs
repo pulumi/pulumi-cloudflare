@@ -40,13 +40,13 @@ namespace Pulumi.Cloudflare
     public partial class WorkersForPlatformsNamespace : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("modifiedBy")]
         public Output<string> ModifiedBy { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersForPlatformsNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -164,13 +164,13 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersForPlatformsNamespaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("modifiedBy")]
         public Input<string>? ModifiedBy { get; set; }

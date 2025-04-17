@@ -170,11 +170,11 @@ def get_api_shield_discovery_operations(diff: Optional[builtins.bool] = None,
 
     example_api_shield_discovery_operations = cloudflare.get_api_shield_discovery_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         diff=True,
-        direction="asc",
+        direction="desc",
         endpoint="/api/v1",
         hosts=["api.cloudflare.com"],
         methods=["GET"],
-        order="host",
+        order="method",
         origin="ML",
         state="review")
     ```
@@ -226,11 +226,11 @@ def get_api_shield_discovery_operations_output(diff: Optional[pulumi.Input[Optio
 
     example_api_shield_discovery_operations = cloudflare.get_api_shield_discovery_operations(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
         diff=True,
-        direction="asc",
+        direction="desc",
         endpoint="/api/v1",
         hosts=["api.cloudflare.com"],
         methods=["GET"],
-        order="host",
+        order="method",
         origin="ML",
         state="review")
     ```

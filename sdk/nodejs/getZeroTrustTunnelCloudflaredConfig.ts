@@ -32,7 +32,7 @@ export function getZeroTrustTunnelCloudflaredConfig(args: GetZeroTrustTunnelClou
  */
 export interface GetZeroTrustTunnelCloudflaredConfigArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetZeroTrustTunnelCloudflaredConfigArgs {
  */
 export interface GetZeroTrustTunnelCloudflaredConfigResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -98,7 +98,7 @@ export function getZeroTrustTunnelCloudflaredConfigOutput(args: GetZeroTrustTunn
  */
 export interface GetZeroTrustTunnelCloudflaredConfigOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

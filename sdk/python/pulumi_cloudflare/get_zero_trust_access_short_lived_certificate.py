@@ -59,7 +59,7 @@ class GetZeroTrustAccessShortLivedCertificateResult:
     @pulumi.getter(name="appId")
     def app_id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "app_id")
 
@@ -128,7 +128,7 @@ def get_zero_trust_access_short_lived_certificate(account_id: Optional[builtins.
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str app_id: UUID
+    :param builtins.str app_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -163,7 +163,7 @@ def get_zero_trust_access_short_lived_certificate_output(account_id: Optional[pu
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str app_id: UUID
+    :param builtins.str app_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()

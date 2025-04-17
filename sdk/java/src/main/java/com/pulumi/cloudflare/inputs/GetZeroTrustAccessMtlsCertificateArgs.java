@@ -31,14 +31,14 @@ public final class GetZeroTrustAccessMtlsCertificateArgs extends com.pulumi.reso
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -108,7 +108,7 @@ public final class GetZeroTrustAccessMtlsCertificateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param certificateId UUID
+         * @param certificateId UUID.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class GetZeroTrustAccessMtlsCertificateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param certificateId UUID
+         * @param certificateId UUID.
          * 
          * @return builder
          * 

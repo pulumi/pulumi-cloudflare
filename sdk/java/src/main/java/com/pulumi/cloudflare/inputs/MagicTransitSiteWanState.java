@@ -101,14 +101,14 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      * 
      */
     @Import(name="vlanTag")
     private @Nullable Output<Integer> vlanTag;
 
     /**
-     * @return VLAN port number.
+     * @return VLAN ID. Use zero for untagged.
      * 
      */
     public Optional<Output<Integer>> vlanTag() {
@@ -260,7 +260,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vlanTag VLAN port number.
+         * @param vlanTag VLAN ID. Use zero for untagged.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class MagicTransitSiteWanState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vlanTag VLAN port number.
+         * @param vlanTag VLAN ID. Use zero for untagged.
          * 
          * @return builder
          * 

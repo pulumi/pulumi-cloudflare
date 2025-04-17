@@ -26,7 +26,7 @@ class ZoneDnssecArgs:
                  status: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneDnssec resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.bool] dnssec_multi_signer: If true, multi-signer DNSSEC is enabled on the zone, allowing multiple
                providers to serve a DNSSEC-signed zone at the same time.
                This is required for DNSKEY records (except those automatically
@@ -49,7 +49,7 @@ class ZoneDnssecArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -138,7 +138,7 @@ class _ZoneDnssecState:
         :param pulumi.Input[builtins.str] modified_on: When DNSSEC was last modified.
         :param pulumi.Input[builtins.str] public_key: Public key for DS record.
         :param pulumi.Input[builtins.str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -335,7 +335,7 @@ class _ZoneDnssecState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -385,7 +385,7 @@ class ZoneDnssec(pulumi.CustomResource):
                Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
                details.
         :param pulumi.Input[builtins.str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -507,7 +507,7 @@ class ZoneDnssec(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] modified_on: When DNSSEC was last modified.
         :param pulumi.Input[builtins.str] public_key: Public key for DS record.
         :param pulumi.Input[builtins.str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -643,7 +643,7 @@ class ZoneDnssec(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

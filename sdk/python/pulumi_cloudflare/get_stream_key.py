@@ -42,7 +42,7 @@ class GetStreamKeyResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -58,7 +58,7 @@ class GetStreamKeyResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -87,7 +87,7 @@ def get_stream_key(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -111,7 +111,7 @@ def get_stream_key_output(account_id: Optional[pulumi.Input[builtins.str]] = Non
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

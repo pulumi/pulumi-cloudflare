@@ -27,7 +27,7 @@ class AccessCustomPageArgs:
                  app_count: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a AccessCustomPage resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[builtins.str] name: Custom page name.
         :param pulumi.Input[builtins.str] type: Custom page type.
@@ -45,7 +45,7 @@ class AccessCustomPageArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -116,13 +116,13 @@ class _AccessCustomPageState:
                  updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessCustomPage resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.int] app_count: Number of apps the custom page is assigned to.
         :param pulumi.Input[builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[builtins.str] name: Custom page name.
         :param pulumi.Input[builtins.str] type: Custom page type.
                Available values: "identity_denied", "forbidden".
-        :param pulumi.Input[builtins.str] uid: UUID
+        :param pulumi.Input[builtins.str] uid: UUID.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -145,7 +145,7 @@ class _AccessCustomPageState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -215,7 +215,7 @@ class _AccessCustomPageState:
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "uid")
 
@@ -272,7 +272,7 @@ class AccessCustomPage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.int] app_count: Number of apps the custom page is assigned to.
         :param pulumi.Input[builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[builtins.str] name: Custom page name.
@@ -379,13 +379,13 @@ class AccessCustomPage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.int] app_count: Number of apps the custom page is assigned to.
         :param pulumi.Input[builtins.str] custom_html: Custom page HTML.
         :param pulumi.Input[builtins.str] name: Custom page name.
         :param pulumi.Input[builtins.str] type: Custom page type.
                Available values: "identity_denied", "forbidden".
-        :param pulumi.Input[builtins.str] uid: UUID
+        :param pulumi.Input[builtins.str] uid: UUID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -405,7 +405,7 @@ class AccessCustomPage(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -451,7 +451,7 @@ class AccessCustomPage(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "uid")
 

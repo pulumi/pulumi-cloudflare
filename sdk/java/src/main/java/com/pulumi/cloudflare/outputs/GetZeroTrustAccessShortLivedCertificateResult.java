@@ -18,7 +18,7 @@ public final class GetZeroTrustAccessShortLivedCertificateResult {
      */
     private @Nullable String accountId;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String appId;
@@ -52,7 +52,7 @@ public final class GetZeroTrustAccessShortLivedCertificateResult {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String appId() {

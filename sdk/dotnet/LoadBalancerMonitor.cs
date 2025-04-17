@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
     ///         ProbeZone = "example.com",
     ///         Retries = 0,
     ///         Timeout = 0,
-    ///         Type = "http",
+    ///         Type = "https",
     ///     });
     /// 
     /// });

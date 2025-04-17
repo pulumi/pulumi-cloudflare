@@ -654,7 +654,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             probe_zone="example.com",
             retries=0,
             timeout=0,
-            type="http")
+            type="https")
         ```
 
         ## Import
@@ -717,7 +717,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             probe_zone="example.com",
             retries=0,
             timeout=0,
-            type="http")
+            type="https")
         ```
 
         ## Import

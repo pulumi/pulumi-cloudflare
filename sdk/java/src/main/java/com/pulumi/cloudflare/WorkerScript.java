@@ -44,14 +44,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workerScript:WorkerScript")
 public class WorkerScript extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {

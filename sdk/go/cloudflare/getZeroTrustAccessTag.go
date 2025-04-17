@@ -49,7 +49,7 @@ func LookupZeroTrustAccessTag(ctx *pulumi.Context, args *LookupZeroTrustAccessTa
 
 // A collection of arguments for invoking getZeroTrustAccessTag.
 type LookupZeroTrustAccessTagArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The name of the tag
 	TagName *string `pulumi:"tagName"`
@@ -57,7 +57,7 @@ type LookupZeroTrustAccessTagArgs struct {
 
 // A collection of values returned by getZeroTrustAccessTag.
 type LookupZeroTrustAccessTagResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The number of applications that have this tag
 	AppCount  int    `pulumi:"appCount"`
@@ -82,7 +82,7 @@ func LookupZeroTrustAccessTagOutput(ctx *pulumi.Context, args LookupZeroTrustAcc
 
 // A collection of arguments for invoking getZeroTrustAccessTag.
 type LookupZeroTrustAccessTagOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The name of the tag
 	TagName pulumi.StringPtrInput `pulumi:"tagName"`
@@ -107,7 +107,7 @@ func (o LookupZeroTrustAccessTagResultOutput) ToLookupZeroTrustAccessTagResultOu
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustAccessTagResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessTagResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

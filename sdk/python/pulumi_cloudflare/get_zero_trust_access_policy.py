@@ -88,7 +88,7 @@ class GetZeroTrustAccessPolicyResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -262,7 +262,7 @@ def get_zero_trust_access_policy(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str policy_id: The UUID of the policy
     """
     __args__ = dict()
@@ -305,7 +305,7 @@ def get_zero_trust_access_policy_output(account_id: Optional[pulumi.Input[builti
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str policy_id: The UUID of the policy
     """
     __args__ = dict()

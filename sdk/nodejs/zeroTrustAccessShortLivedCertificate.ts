@@ -56,7 +56,7 @@ export class ZeroTrustAccessShortLivedCertificate extends pulumi.CustomResource 
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * UUID
+     * UUID.
      */
     public readonly appId!: pulumi.Output<string>;
     /**
@@ -117,7 +117,7 @@ export interface ZeroTrustAccessShortLivedCertificateState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     appId?: pulumi.Input<string>;
     /**
@@ -143,7 +143,7 @@ export interface ZeroTrustAccessShortLivedCertificateArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     appId: pulumi.Input<string>;
     /**

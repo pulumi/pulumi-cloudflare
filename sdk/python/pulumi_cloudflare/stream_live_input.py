@@ -30,7 +30,7 @@ class StreamLiveInputArgs:
                  recording: Optional[pulumi.Input['StreamLiveInputRecordingArgs']] = None):
         """
         The set of arguments for constructing a StreamLiveInput resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
         :param pulumi.Input[builtins.str] live_input_identifier: A unique identifier for a live input.
@@ -53,7 +53,7 @@ class StreamLiveInputArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -143,7 +143,7 @@ class _StreamLiveInputState:
                  web_rtc_playback: Optional[pulumi.Input['StreamLiveInputWebRtcPlaybackArgs']] = None):
         """
         Input properties used for looking up and filtering StreamLiveInput resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] created: The date and time the live input was created.
         :param pulumi.Input[builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
@@ -198,7 +198,7 @@ class _StreamLiveInputState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -405,7 +405,7 @@ class StreamLiveInput(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
         :param pulumi.Input[builtins.str] live_input_identifier: A unique identifier for a live input.
@@ -502,7 +502,7 @@ class StreamLiveInput(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] created: The date and time the live input was created.
         :param pulumi.Input[builtins.str] default_creator: Sets the creator ID asssociated with this live input.
         :param pulumi.Input[builtins.float] delete_recording_after_days: Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion.
@@ -546,7 +546,7 @@ class StreamLiveInput(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

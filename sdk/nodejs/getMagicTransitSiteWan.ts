@@ -79,7 +79,7 @@ export interface GetMagicTransitSiteWanResult {
      */
     readonly staticAddressing: outputs.GetMagicTransitSiteWanStaticAddressing;
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      */
     readonly vlanTag: number;
     /**

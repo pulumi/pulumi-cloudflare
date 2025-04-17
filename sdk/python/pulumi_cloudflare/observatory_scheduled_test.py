@@ -27,7 +27,7 @@ class ObservatoryScheduledTestArgs:
         """
         The set of arguments for constructing a ObservatoryScheduledTest resource.
         :param pulumi.Input[builtins.str] url: A URL.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "url", url)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -48,7 +48,7 @@ class ObservatoryScheduledTestArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -74,7 +74,7 @@ class _ObservatoryScheduledTestState:
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input['ObservatoryScheduledTestScheduleArgs'] schedule: The test schedule.
         :param pulumi.Input[builtins.str] url: A URL.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
@@ -152,7 +152,7 @@ class _ObservatoryScheduledTestState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -190,7 +190,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] url: A URL.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -281,7 +281,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
                Available values: "asia-east1", "asia-northeast1", "asia-northeast2", "asia-south1", "asia-southeast1", "australia-southeast1", "europe-north1", "europe-southwest1", "europe-west1", "europe-west2", "europe-west3", "europe-west4", "europe-west8", "europe-west9", "me-west1", "southamerica-east1", "us-central1", "us-east1", "us-east4", "us-south1", "us-west1".
         :param pulumi.Input[Union['ObservatoryScheduledTestScheduleArgs', 'ObservatoryScheduledTestScheduleArgsDict']] schedule: The test schedule.
         :param pulumi.Input[builtins.str] url: A URL.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -338,7 +338,7 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

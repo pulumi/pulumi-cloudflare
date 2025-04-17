@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Name = "gateway.example.com",
-    ///         Target = "ethereum",
+    ///         Target = "ipfs",
     ///         Description = "This is my IPFS gateway.",
     ///         Dnslink = "/ipns/onboarding.ipfs.cloudflare.com",
     ///     });

@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetZeroTrustAccessServiceTokenFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("serviceTokenId")]
         public string? ServiceTokenId { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetZeroTrustAccessServiceTokenFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("serviceTokenId")]
         public Input<string>? ServiceTokenId { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         public readonly string ExpiresAt;
         public readonly Outputs.GetZeroTrustAccessServiceTokenFilterResult? Filter;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         public readonly string LastSeenAt;
@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string? ServiceTokenId;
         public readonly string UpdatedAt;

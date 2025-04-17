@@ -20,14 +20,14 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
     public static final WorkersDeploymentState Empty = new WorkersDeploymentState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -139,7 +139,7 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class WorkersDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

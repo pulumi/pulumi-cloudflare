@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *         var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", ApiShieldOperationSchemaValidationSettingsArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .operationId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
- *             .mitigationAction("log")
+ *             .mitigationAction("block")
  *             .build());
  * 
  *     }

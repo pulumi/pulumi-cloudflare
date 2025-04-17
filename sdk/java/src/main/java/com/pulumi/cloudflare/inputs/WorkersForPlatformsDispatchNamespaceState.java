@@ -17,14 +17,14 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
     public static final WorkersForPlatformsDispatchNamespaceState Empty = new WorkersForPlatformsDispatchNamespaceState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +32,14 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -62,14 +62,14 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="modifiedBy")
     private @Nullable Output<String> modifiedBy;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> modifiedBy() {
@@ -184,7 +184,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param createdBy Identifier
+         * @param createdBy Identifier.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param createdBy Identifier
+         * @param createdBy Identifier.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param modifiedBy Identifier
+         * @param modifiedBy Identifier.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param modifiedBy Identifier
+         * @param modifiedBy Identifier.
          * 
          * @return builder
          * 

@@ -73,7 +73,7 @@ import * as utilities from "./utilities";
  *         label: "us",
  *     },
  *     policy: "(country: US) or (region: EU)",
- *     type: "legacy_custom",
+ *     type: "sni_custom",
  * });
  * ```
  *

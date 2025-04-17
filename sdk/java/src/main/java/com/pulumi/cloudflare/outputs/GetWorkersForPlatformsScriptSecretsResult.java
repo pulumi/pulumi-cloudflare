@@ -9,7 +9,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetWorkersSecretsResult {
+public final class GetWorkersForPlatformsScriptSecretsResult {
     /**
      * @return The name of this secret, this is what will be used to access it inside the Worker.
      * 
@@ -22,7 +22,7 @@ public final class GetWorkersSecretsResult {
      */
     private String type;
 
-    private GetWorkersSecretsResult() {}
+    private GetWorkersForPlatformsScriptSecretsResult() {}
     /**
      * @return The name of this secret, this is what will be used to access it inside the Worker.
      * 
@@ -43,7 +43,7 @@ public final class GetWorkersSecretsResult {
         return new Builder();
     }
 
-    public static Builder builder(GetWorkersSecretsResult defaults) {
+    public static Builder builder(GetWorkersForPlatformsScriptSecretsResult defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -51,7 +51,7 @@ public final class GetWorkersSecretsResult {
         private String name;
         private String type;
         public Builder() {}
-        public Builder(GetWorkersSecretsResult defaults) {
+        public Builder(GetWorkersForPlatformsScriptSecretsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.type = defaults.type;
@@ -60,7 +60,7 @@ public final class GetWorkersSecretsResult {
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
-              throw new MissingRequiredPropertyException("GetWorkersSecretsResult", "name");
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsResult", "name");
             }
             this.name = name;
             return this;
@@ -68,13 +68,13 @@ public final class GetWorkersSecretsResult {
         @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
-              throw new MissingRequiredPropertyException("GetWorkersSecretsResult", "type");
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsResult", "type");
             }
             this.type = type;
             return this;
         }
-        public GetWorkersSecretsResult build() {
-            final var _resultValue = new GetWorkersSecretsResult();
+        public GetWorkersForPlatformsScriptSecretsResult build() {
+            final var _resultValue = new GetWorkersForPlatformsScriptSecretsResult();
             _resultValue.name = name;
             _resultValue.type = type;
             return _resultValue;

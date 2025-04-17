@@ -49,7 +49,7 @@ func LookupZeroTrustAccessPolicy(ctx *pulumi.Context, args *LookupZeroTrustAcces
 
 // A collection of arguments for invoking getZeroTrustAccessPolicy.
 type LookupZeroTrustAccessPolicyArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The UUID of the policy
 	PolicyId *string `pulumi:"policyId"`
@@ -57,7 +57,7 @@ type LookupZeroTrustAccessPolicyArgs struct {
 
 // A collection of values returned by getZeroTrustAccessPolicy.
 type LookupZeroTrustAccessPolicyResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Number of access applications currently using this policy.
 	AppCount int `pulumi:"appCount"`
@@ -104,7 +104,7 @@ func LookupZeroTrustAccessPolicyOutput(ctx *pulumi.Context, args LookupZeroTrust
 
 // A collection of arguments for invoking getZeroTrustAccessPolicy.
 type LookupZeroTrustAccessPolicyOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The UUID of the policy
 	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
@@ -129,7 +129,7 @@ func (o LookupZeroTrustAccessPolicyResultOutput) ToLookupZeroTrustAccessPolicyRe
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustAccessPolicyResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessPolicyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

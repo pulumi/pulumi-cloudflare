@@ -14,14 +14,14 @@ public final class GetWorkersCronTriggerPlainArgs extends com.pulumi.resources.I
     public static final GetWorkersCronTriggerPlainArgs Empty = new GetWorkersCronTriggerPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -69,7 +69,7 @@ public final class GetWorkersCronTriggerPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

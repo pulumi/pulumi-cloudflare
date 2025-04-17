@@ -11,26 +11,25 @@ namespace Pulumi.Cloudflare.Outputs
 {
 
     [OutputType]
-    public sealed class GetWorkersSecretsResultResult
+    public sealed class ZeroTrustGatewayLoggingSettingsByRuleTypeL4
     {
         /// <summary>
-        /// The name of this secret, this is what will be used to access it inside the Worker.
+        /// Log all requests to this service.
         /// </summary>
-        public readonly string Name;
+        public readonly bool? LogAll;
         /// <summary>
-        /// The type of secret.
-        /// Available values: "secret_text".
+        /// Log only blocking requests to this service.
         /// </summary>
-        public readonly string Type;
+        public readonly bool? LogBlocks;
 
         [OutputConstructor]
-        private GetWorkersSecretsResultResult(
-            string name,
+        private ZeroTrustGatewayLoggingSettingsByRuleTypeL4(
+            bool? logAll,
 
-            string type)
+            bool? logBlocks)
         {
-            Name = name;
-            Type = type;
+            LogAll = logAll;
+            LogBlocks = logBlocks;
         }
     }
 }

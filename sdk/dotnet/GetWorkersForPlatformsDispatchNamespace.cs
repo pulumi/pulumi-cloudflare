@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersForPlatformsDispatchNamespaceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersForPlatformsDispatchNamespaceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -127,11 +127,11 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersForPlatformsDispatchNamespaceResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
@@ -147,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ModifiedBy;
         /// <summary>

@@ -48,7 +48,7 @@ func LookupDnsFirewalls(ctx *pulumi.Context, args *LookupDnsFirewallsArgs, opts 
 
 // A collection of arguments for invoking getDnsFirewalls.
 type LookupDnsFirewallsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -56,7 +56,7 @@ type LookupDnsFirewallsArgs struct {
 
 // A collection of values returned by getDnsFirewalls.
 type LookupDnsFirewallsResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -77,7 +77,7 @@ func LookupDnsFirewallsOutput(ctx *pulumi.Context, args LookupDnsFirewallsOutput
 
 // A collection of arguments for invoking getDnsFirewalls.
 type LookupDnsFirewallsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -102,7 +102,7 @@ func (o LookupDnsFirewallsResultOutput) ToLookupDnsFirewallsResultOutputWithCont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupDnsFirewallsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsFirewallsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

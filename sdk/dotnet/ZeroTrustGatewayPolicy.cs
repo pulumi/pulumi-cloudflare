@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -264,7 +264,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+        /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

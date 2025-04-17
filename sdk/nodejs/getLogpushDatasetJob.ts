@@ -78,6 +78,8 @@ export interface GetLogpushDatasetJobResult {
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly frequency: string;
     /**
@@ -99,6 +101,8 @@ export interface GetLogpushDatasetJobResult {
     readonly lastError: string;
     /**
      * This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly logpullOptions: string;
     /**

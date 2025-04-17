@@ -30,6 +30,8 @@ type KeylessCertificate struct {
 	// When the Keyless SSL was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Whether or not the Keyless SSL is on or off.
+	//
+	// Deprecated: This attribute is deprecated.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The keyless SSL name.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -97,6 +99,8 @@ type keylessCertificateState struct {
 	// When the Keyless SSL was created.
 	CreatedOn *string `pulumi:"createdOn"`
 	// Whether or not the Keyless SSL is on or off.
+	//
+	// Deprecated: This attribute is deprecated.
 	Enabled *bool `pulumi:"enabled"`
 	// The keyless SSL name.
 	Host *string `pulumi:"host"`
@@ -126,6 +130,8 @@ type KeylessCertificateState struct {
 	// When the Keyless SSL was created.
 	CreatedOn pulumi.StringPtrInput
 	// Whether or not the Keyless SSL is on or off.
+	//
+	// Deprecated: This attribute is deprecated.
 	Enabled pulumi.BoolPtrInput
 	// The keyless SSL name.
 	Host pulumi.StringPtrInput
@@ -157,6 +163,8 @@ type keylessCertificateArgs struct {
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate string `pulumi:"certificate"`
 	// Whether or not the Keyless SSL is on or off.
+	//
+	// Deprecated: This attribute is deprecated.
 	Enabled *bool `pulumi:"enabled"`
 	// The keyless SSL name.
 	Host string `pulumi:"host"`
@@ -178,6 +186,8 @@ type KeylessCertificateArgs struct {
 	// The zone's SSL certificate or SSL certificate and intermediate(s).
 	Certificate pulumi.StringInput
 	// Whether or not the Keyless SSL is on or off.
+	//
+	// Deprecated: This attribute is deprecated.
 	Enabled pulumi.BoolPtrInput
 	// The keyless SSL name.
 	Host pulumi.StringInput
@@ -295,6 +305,8 @@ func (o KeylessCertificateOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // Whether or not the Keyless SSL is on or off.
+//
+// Deprecated: This attribute is deprecated.
 func (o KeylessCertificateOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KeylessCertificate) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }

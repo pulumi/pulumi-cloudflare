@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetDnsRecordsResultDataResult Data;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

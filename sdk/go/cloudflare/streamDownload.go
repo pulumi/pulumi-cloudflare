@@ -41,7 +41,7 @@ import (
 type StreamDownload struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -83,14 +83,14 @@ func GetStreamDownload(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StreamDownload resources.
 type streamDownloadState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier *string `pulumi:"identifier"`
 }
 
 type StreamDownloadState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringPtrInput
@@ -101,7 +101,7 @@ func (StreamDownloadState) ElementType() reflect.Type {
 }
 
 type streamDownloadArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
@@ -109,7 +109,7 @@ type streamDownloadArgs struct {
 
 // The set of arguments for constructing a StreamDownload resource.
 type StreamDownloadArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput
@@ -202,7 +202,7 @@ func (o StreamDownloadOutput) ToStreamDownloadOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o StreamDownloadOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamDownload) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

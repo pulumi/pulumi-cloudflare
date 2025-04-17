@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkersScriptAssetsConfig
     {
         /// <summary>
+        /// The contents of a _headers file (used to attach custom headers on asset responses)
+        /// </summary>
+        public readonly string? _headers;
+        /// <summary>
+        /// The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        /// </summary>
+        public readonly string? _redirects;
+        /// <summary>
         /// Determines the redirects and rewrites of requests for HTML content.
         /// Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         /// </summary>
@@ -34,6 +42,10 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private WorkersScriptAssetsConfig(
+            string? _headers,
+
+            string? _redirects,
+
             string? htmlHandling,
 
             string? notFoundHandling,
@@ -42,6 +54,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? serveDirectly)
         {
+            this._headers = _headers;
+            this._redirects = _redirects;
             HtmlHandling = htmlHandling;
             NotFoundHandling = notFoundHandling;
             RunWorkerFirst = runWorkerFirst;

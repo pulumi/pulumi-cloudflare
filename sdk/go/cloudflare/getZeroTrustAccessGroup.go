@@ -53,7 +53,7 @@ type LookupZeroTrustAccessGroupArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string                        `pulumi:"accountId"`
 	Filter    *GetZeroTrustAccessGroupFilter `pulumi:"filter"`
-	// UUID
+	// UUID.
 	GroupId *string `pulumi:"groupId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -67,9 +67,9 @@ type LookupZeroTrustAccessGroupResult struct {
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes []GetZeroTrustAccessGroupExclude `pulumi:"excludes"`
 	Filter   *GetZeroTrustAccessGroupFilter   `pulumi:"filter"`
-	// UUID
+	// UUID.
 	GroupId *string `pulumi:"groupId"`
-	// UUID
+	// UUID.
 	Id string `pulumi:"id"`
 	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes []GetZeroTrustAccessGroupInclude `pulumi:"includes"`
@@ -98,7 +98,7 @@ type LookupZeroTrustAccessGroupOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput                 `pulumi:"accountId"`
 	Filter    GetZeroTrustAccessGroupFilterPtrInput `pulumi:"filter"`
-	// UUID
+	// UUID.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -141,12 +141,12 @@ func (o LookupZeroTrustAccessGroupResultOutput) Filter() GetZeroTrustAccessGroup
 	return o.ApplyT(func(v LookupZeroTrustAccessGroupResult) *GetZeroTrustAccessGroupFilter { return v.Filter }).(GetZeroTrustAccessGroupFilterPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessGroupResultOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessGroupResult) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

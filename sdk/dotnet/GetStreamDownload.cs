@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetStreamDownloadArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetStreamDownloadInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetStreamDownloadResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

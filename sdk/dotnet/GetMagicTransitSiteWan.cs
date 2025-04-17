@@ -169,7 +169,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetMagicTransitSiteWanStaticAddressingResult StaticAddressing;
         /// <summary>
-        /// VLAN port number.
+        /// VLAN ID. Use zero for untagged.
         /// </summary>
         public readonly int VlanTag;
         /// <summary>

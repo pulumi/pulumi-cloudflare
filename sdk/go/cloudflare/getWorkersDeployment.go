@@ -49,7 +49,7 @@ func LookupWorkersDeployment(ctx *pulumi.Context, args *LookupWorkersDeploymentA
 
 // A collection of arguments for invoking getWorkersDeployment.
 type LookupWorkersDeploymentArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the script.
 	ScriptName string `pulumi:"scriptName"`
@@ -57,7 +57,7 @@ type LookupWorkersDeploymentArgs struct {
 
 // A collection of values returned by getWorkersDeployment.
 type LookupWorkersDeploymentResult struct {
-	// Identifier
+	// Identifier.
 	AccountId   string                           `pulumi:"accountId"`
 	Deployments []GetWorkersDeploymentDeployment `pulumi:"deployments"`
 	// The provider-assigned unique ID for this managed resource.
@@ -77,7 +77,7 @@ func LookupWorkersDeploymentOutput(ctx *pulumi.Context, args LookupWorkersDeploy
 
 // A collection of arguments for invoking getWorkersDeployment.
 type LookupWorkersDeploymentOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the script.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
@@ -102,7 +102,7 @@ func (o LookupWorkersDeploymentResultOutput) ToLookupWorkersDeploymentResultOutp
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersDeploymentResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersDeploymentResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

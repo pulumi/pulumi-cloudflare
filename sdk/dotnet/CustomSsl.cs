@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     ///             Label = "us",
     ///         },
     ///         Policy = "(country: US) or (region: EU)",
-    ///         Type = "legacy_custom",
+    ///         Type = "sni_custom",
     ///     });
     /// 
     /// });

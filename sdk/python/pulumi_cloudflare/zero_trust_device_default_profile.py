@@ -593,13 +593,11 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             excludes=[{
                 "address": "192.0.2.0/24",
                 "description": "Exclude testing domains from the tunnel",
-                "host": "*.example.com",
             }],
             exclude_office_ips=True,
             includes=[{
                 "address": "192.0.2.0/24",
-                "description": "Exclude testing domains from the tunnel",
-                "host": "*.example.com",
+                "description": "Include testing domains in the tunnel",
             }],
             register_interface_ip_with_dns=True,
             service_mode_v2={
@@ -657,13 +655,11 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             excludes=[{
                 "address": "192.0.2.0/24",
                 "description": "Exclude testing domains from the tunnel",
-                "host": "*.example.com",
             }],
             exclude_office_ips=True,
             includes=[{
                 "address": "192.0.2.0/24",
-                "description": "Exclude testing domains from the tunnel",
-                "host": "*.example.com",
+                "description": "Include testing domains in the tunnel",
             }],
             register_interface_ip_with_dns=True,
             service_mode_v2={

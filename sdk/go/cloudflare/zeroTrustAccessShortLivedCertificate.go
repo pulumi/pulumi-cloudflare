@@ -49,7 +49,7 @@ type ZeroTrustAccessShortLivedCertificate struct {
 
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// UUID
+	// UUID.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The Application Audience (AUD) tag. Identifies the application associated with the CA.
 	Aud pulumi.StringOutput `pulumi:"aud"`
@@ -100,7 +100,7 @@ func GetZeroTrustAccessShortLivedCertificate(ctx *pulumi.Context,
 type zeroTrustAccessShortLivedCertificateState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// UUID
+	// UUID.
 	AppId *string `pulumi:"appId"`
 	// The Application Audience (AUD) tag. Identifies the application associated with the CA.
 	Aud *string `pulumi:"aud"`
@@ -113,7 +113,7 @@ type zeroTrustAccessShortLivedCertificateState struct {
 type ZeroTrustAccessShortLivedCertificateState struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// UUID
+	// UUID.
 	AppId pulumi.StringPtrInput
 	// The Application Audience (AUD) tag. Identifies the application associated with the CA.
 	Aud pulumi.StringPtrInput
@@ -130,7 +130,7 @@ func (ZeroTrustAccessShortLivedCertificateState) ElementType() reflect.Type {
 type zeroTrustAccessShortLivedCertificateArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// UUID
+	// UUID.
 	AppId string `pulumi:"appId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -140,7 +140,7 @@ type zeroTrustAccessShortLivedCertificateArgs struct {
 type ZeroTrustAccessShortLivedCertificateArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput
-	// UUID
+	// UUID.
 	AppId pulumi.StringInput
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput
@@ -238,7 +238,7 @@ func (o ZeroTrustAccessShortLivedCertificateOutput) AccountId() pulumi.StringPtr
 	return o.ApplyT(func(v *ZeroTrustAccessShortLivedCertificate) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o ZeroTrustAccessShortLivedCertificateOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessShortLivedCertificate) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
 }

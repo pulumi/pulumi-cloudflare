@@ -110,7 +110,7 @@ class GetZeroTrustAccessServiceTokenResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -131,7 +131,7 @@ class GetZeroTrustAccessServiceTokenResult:
     @pulumi.getter(name="serviceTokenId")
     def service_token_id(self) -> Optional[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "service_token_id")
 
@@ -188,7 +188,7 @@ def get_zero_trust_access_service_token(account_id: Optional[builtins.str] = Non
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str service_token_id: UUID
+    :param builtins.str service_token_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -231,7 +231,7 @@ def get_zero_trust_access_service_token_output(account_id: Optional[pulumi.Input
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str service_token_id: UUID
+    :param builtins.str service_token_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()

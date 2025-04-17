@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     ///         IpFirewall = true,
     ///         Protocol = "tcp/22",
     ///         ProxyProtocol = "off",
-    ///         Tls = "off",
+    ///         Tls = "full",
     ///         TrafficType = "direct",
     ///         ArgoSmartRouting = true,
     ///         EdgeIps = new Cloudflare.Inputs.SpectrumApplicationEdgeIpsArgs

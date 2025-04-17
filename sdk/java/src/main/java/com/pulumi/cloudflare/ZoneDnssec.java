@@ -259,14 +259,14 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.status);
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

@@ -30,7 +30,7 @@ export function getZeroTrustAccessTag(args: GetZeroTrustAccessTagArgs, opts?: pu
  */
 export interface GetZeroTrustAccessTagArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -44,7 +44,7 @@ export interface GetZeroTrustAccessTagArgs {
  */
 export interface GetZeroTrustAccessTagResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -92,7 +92,7 @@ export function getZeroTrustAccessTagOutput(args: GetZeroTrustAccessTagOutputArg
  */
 export interface GetZeroTrustAccessTagOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -54,14 +54,22 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
     /**
      * Whether or not the Keyless SSL is on or off.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Whether or not the Keyless SSL is on or off.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -221,7 +229,11 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
@@ -232,7 +244,11 @@ public final class KeylessCertificateArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

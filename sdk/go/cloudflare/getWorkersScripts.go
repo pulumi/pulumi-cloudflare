@@ -48,7 +48,7 @@ func LookupWorkersScripts(ctx *pulumi.Context, args *LookupWorkersScriptsArgs, o
 
 // A collection of arguments for invoking getWorkersScripts.
 type LookupWorkersScriptsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -56,7 +56,7 @@ type LookupWorkersScriptsArgs struct {
 
 // A collection of values returned by getWorkersScripts.
 type LookupWorkersScriptsResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -77,7 +77,7 @@ func LookupWorkersScriptsOutput(ctx *pulumi.Context, args LookupWorkersScriptsOu
 
 // A collection of arguments for invoking getWorkersScripts.
 type LookupWorkersScriptsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -102,7 +102,7 @@ func (o LookupWorkersScriptsResultOutput) ToLookupWorkersScriptsResultOutputWith
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersScriptsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -307,7 +307,7 @@ class CertificatePack(pulumi.CustomResource):
 
         example_certificate_pack = cloudflare.CertificatePack("example_certificate_pack",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            certificate_authority="google",
+            certificate_authority="lets_encrypt",
             hosts=[
                 "example.com",
                 "*.example.com",
@@ -358,7 +358,7 @@ class CertificatePack(pulumi.CustomResource):
 
         example_certificate_pack = cloudflare.CertificatePack("example_certificate_pack",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            certificate_authority="google",
+            certificate_authority="lets_encrypt",
             hosts=[
                 "example.com",
                 "*.example.com",

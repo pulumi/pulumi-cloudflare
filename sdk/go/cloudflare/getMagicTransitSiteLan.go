@@ -76,7 +76,7 @@ type LookupMagicTransitSiteLanResult struct {
 	SiteId string `pulumi:"siteId"`
 	// If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
 	StaticAddressing GetMagicTransitSiteLanStaticAddressing `pulumi:"staticAddressing"`
-	// VLAN port number.
+	// VLAN ID. Use zero for untagged.
 	VlanTag int `pulumi:"vlanTag"`
 }
 
@@ -166,7 +166,7 @@ func (o LookupMagicTransitSiteLanResultOutput) StaticAddressing() GetMagicTransi
 	}).(GetMagicTransitSiteLanStaticAddressingOutput)
 }
 
-// VLAN port number.
+// VLAN ID. Use zero for untagged.
 func (o LookupMagicTransitSiteLanResultOutput) VlanTag() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupMagicTransitSiteLanResult) int { return v.VlanTag }).(pulumi.IntOutput)
 }

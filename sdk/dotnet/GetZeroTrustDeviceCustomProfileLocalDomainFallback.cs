@@ -87,9 +87,6 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Input("policyId", required: true)]
         public string PolicyId { get; set; } = null!;
 
@@ -104,9 +101,6 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
 
@@ -133,9 +127,6 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         public readonly string PolicyId;
         /// <summary>
         /// The domain suffix to match when resolving locally.

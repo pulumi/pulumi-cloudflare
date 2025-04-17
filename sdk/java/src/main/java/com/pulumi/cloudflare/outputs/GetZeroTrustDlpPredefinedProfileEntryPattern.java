@@ -14,7 +14,11 @@ public final class GetZeroTrustDlpPredefinedProfileEntryPattern {
     /**
      * @return Available values: &#34;luhn&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private String validation;
 
     private GetZeroTrustDlpPredefinedProfileEntryPattern() {}
@@ -24,7 +28,11 @@ public final class GetZeroTrustDlpPredefinedProfileEntryPattern {
     /**
      * @return Available values: &#34;luhn&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public String validation() {
         return this.validation;
     }

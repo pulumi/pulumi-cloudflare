@@ -26,9 +26,21 @@ namespace Pulumi.Cloudflare
     ///         RedactPii = true,
     ///         SettingsByRuleType = new Cloudflare.Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeArgs
     ///         {
-    ///             Dns = null,
-    ///             Http = null,
-    ///             L4 = null,
+    ///             Dns = new Cloudflare.Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs
+    ///             {
+    ///                 LogAll = false,
+    ///                 LogBlocks = true,
+    ///             },
+    ///             Http = new Cloudflare.Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs
+    ///             {
+    ///                 LogAll = false,
+    ///                 LogBlocks = true,
+    ///             },
+    ///             L4 = new Cloudflare.Inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args
+    ///             {
+    ///                 LogAll = false,
+    ///                 LogBlocks = true,
+    ///             },
     ///         },
     ///     });
     /// 

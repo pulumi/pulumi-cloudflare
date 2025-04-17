@@ -27,11 +27,6 @@ public final class GetRulesetsResult {
      */
     private String kind;
     /**
-     * @return The timestamp of when the ruleset was last modified.
-     * 
-     */
-    private String lastUpdated;
-    /**
      * @return The human-readable name of the ruleset.
      * 
      */
@@ -67,13 +62,6 @@ public final class GetRulesetsResult {
         return this.kind;
     }
     /**
-     * @return The timestamp of when the ruleset was last modified.
-     * 
-     */
-    public String lastUpdated() {
-        return this.lastUpdated;
-    }
-    /**
      * @return The human-readable name of the ruleset.
      * 
      */
@@ -101,7 +89,6 @@ public final class GetRulesetsResult {
         private String description;
         private String id;
         private String kind;
-        private String lastUpdated;
         private String name;
         private String phase;
         public Builder() {}
@@ -110,7 +97,6 @@ public final class GetRulesetsResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.kind = defaults.kind;
-    	      this.lastUpdated = defaults.lastUpdated;
     	      this.name = defaults.name;
     	      this.phase = defaults.phase;
         }
@@ -140,14 +126,6 @@ public final class GetRulesetsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder lastUpdated(String lastUpdated) {
-            if (lastUpdated == null) {
-              throw new MissingRequiredPropertyException("GetRulesetsResult", "lastUpdated");
-            }
-            this.lastUpdated = lastUpdated;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetRulesetsResult", "name");
@@ -168,7 +146,6 @@ public final class GetRulesetsResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.kind = kind;
-            _resultValue.lastUpdated = lastUpdated;
             _resultValue.name = name;
             _resultValue.phase = phase;
             return _resultValue;

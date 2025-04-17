@@ -34,13 +34,13 @@ import (
 //				CustomerEndpoint:   pulumi.String("203.0.113.1"),
 //				Description:        pulumi.String("Tunnel for ISP X"),
 //				HealthCheck: &cloudflare.MagicWanIpsecTunnelHealthCheckArgs{
-//					Direction: pulumi.String("unidirectional"),
+//					Direction: pulumi.String("bidirectional"),
 //					Enabled:   pulumi.Bool(true),
 //					Rate:      pulumi.String("low"),
 //					Target: &cloudflare.MagicWanIpsecTunnelHealthCheckTargetArgs{
 //						Saved: pulumi.String("203.0.113.1"),
 //					},
-//					Type: pulumi.String("reply"),
+//					Type: pulumi.String("request"),
 //				},
 //				Psk:              pulumi.String("O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy"),
 //				ReplayProtection: pulumi.Bool(false),

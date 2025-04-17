@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccounts = cloudflare.getAccounts({
- *     direction: "asc",
+ *     direction: "desc",
  *     name: "example.com",
  * });
  * ```
@@ -82,7 +82,7 @@ export interface GetAccountsResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccounts = cloudflare.getAccounts({
- *     direction: "asc",
+ *     direction: "desc",
  *     name: "example.com",
  * });
  * ```

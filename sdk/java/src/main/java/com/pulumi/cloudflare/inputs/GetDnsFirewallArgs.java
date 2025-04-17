@@ -17,14 +17,14 @@ public final class GetDnsFirewallArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDnsFirewallArgs Empty = new GetDnsFirewallArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -32,14 +32,14 @@ public final class GetDnsFirewallArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="dnsFirewallId")
     private @Nullable Output<String> dnsFirewallId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> dnsFirewallId() {
@@ -72,7 +72,7 @@ public final class GetDnsFirewallArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetDnsFirewallArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetDnsFirewallArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dnsFirewallId Identifier
+         * @param dnsFirewallId Identifier.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetDnsFirewallArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param dnsFirewallId Identifier
+         * @param dnsFirewallId Identifier.
          * 
          * @return builder
          * 

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersForPlatformsDispatchNamespacesResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String createdBy;
@@ -22,7 +22,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
      */
     private String createdOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String modifiedBy;
@@ -49,7 +49,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
 
     private GetWorkersForPlatformsDispatchNamespacesResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String createdBy() {
@@ -63,7 +63,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesResult {
         return this.createdOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String modifiedBy() {

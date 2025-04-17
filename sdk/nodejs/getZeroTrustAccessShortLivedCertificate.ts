@@ -36,7 +36,7 @@ export interface GetZeroTrustAccessShortLivedCertificateArgs {
      */
     accountId?: string;
     /**
-     * UUID
+     * UUID.
      */
     appId: string;
     /**
@@ -54,7 +54,7 @@ export interface GetZeroTrustAccessShortLivedCertificateResult {
      */
     readonly accountId?: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly appId: string;
     /**
@@ -106,7 +106,7 @@ export interface GetZeroTrustAccessShortLivedCertificateOutputArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     appId: pulumi.Input<string>;
     /**

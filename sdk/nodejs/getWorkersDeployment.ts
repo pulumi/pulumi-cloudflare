@@ -32,7 +32,7 @@ export function getWorkersDeployment(args: GetWorkersDeploymentArgs, opts?: pulu
  */
 export interface GetWorkersDeploymentArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetWorkersDeploymentArgs {
  */
 export interface GetWorkersDeploymentResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     readonly deployments: outputs.GetWorkersDeploymentDeployment[];
@@ -85,7 +85,7 @@ export function getWorkersDeploymentOutput(args: GetWorkersDeploymentOutputArgs,
  */
 export interface GetWorkersDeploymentOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -16,14 +16,14 @@ public final class WorkersSecretState extends com.pulumi.resources.ResourceArgs 
     public static final WorkersSecretState Empty = new WorkersSecretState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -137,7 +137,7 @@ public final class WorkersSecretState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class WorkersSecretState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

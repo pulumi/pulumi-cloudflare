@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersCronTriggerResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -31,7 +31,7 @@ public final class GetWorkersCronTriggerResult {
 
     private GetWorkersCronTriggerResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

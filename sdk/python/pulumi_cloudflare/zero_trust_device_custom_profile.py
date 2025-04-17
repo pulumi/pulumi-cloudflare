@@ -415,7 +415,6 @@ class _ZeroTrustDeviceCustomProfileState:
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices.
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
-        :param pulumi.Input[builtins.str] policy_id: Device ID.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
@@ -699,9 +698,6 @@ class _ZeroTrustDeviceCustomProfileState:
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Device ID.
-        """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
@@ -824,7 +820,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
         example_zero_trust_device_custom_profile = cloudflare.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile",
             account_id="699d98642c564d2e855e9661899b7252",
-            match="user.identity == \\"test@cloudflare.com\\"",
+            match="identity.email == \\"test@cloudflare.com\\"",
             name="Allow Developers",
             precedence=100,
             allow_mode_switch=True,
@@ -838,13 +834,11 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             excludes=[{
                 "address": "192.0.2.0/24",
                 "description": "Exclude testing domains from the tunnel",
-                "host": "*.example.com",
             }],
             exclude_office_ips=True,
             includes=[{
                 "address": "192.0.2.0/24",
-                "description": "Exclude testing domains from the tunnel",
-                "host": "*.example.com",
+                "description": "Include testing domains in the tunnel",
             }],
             lan_allow_minutes=30,
             lan_allow_subnet_size=24,
@@ -902,7 +896,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
         example_zero_trust_device_custom_profile = cloudflare.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile",
             account_id="699d98642c564d2e855e9661899b7252",
-            match="user.identity == \\"test@cloudflare.com\\"",
+            match="identity.email == \\"test@cloudflare.com\\"",
             name="Allow Developers",
             precedence=100,
             allow_mode_switch=True,
@@ -916,13 +910,11 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             excludes=[{
                 "address": "192.0.2.0/24",
                 "description": "Exclude testing domains from the tunnel",
-                "host": "*.example.com",
             }],
             exclude_office_ips=True,
             includes=[{
                 "address": "192.0.2.0/24",
-                "description": "Exclude testing domains from the tunnel",
-                "host": "*.example.com",
+                "description": "Include testing domains in the tunnel",
             }],
             lan_allow_minutes=30,
             lan_allow_subnet_size=24,
@@ -1085,7 +1077,6 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices.
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
-        :param pulumi.Input[builtins.str] policy_id: Device ID.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
@@ -1271,9 +1262,6 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Output[builtins.str]:
-        """
-        Device ID.
-        """
         return pulumi.get(self, "policy_id")
 
     @property

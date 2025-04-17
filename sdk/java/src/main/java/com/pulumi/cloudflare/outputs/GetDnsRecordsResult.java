@@ -41,7 +41,7 @@ public final class GetDnsRecordsResult {
      */
     private GetDnsRecordsResultData data;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -139,7 +139,7 @@ public final class GetDnsRecordsResult {
         return this.data;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

@@ -16,11 +16,11 @@ import * as utilities from "./utilities";
  * const exampleApiShieldDiscoveryOperations = cloudflare.getApiShieldDiscoveryOperations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     diff: true,
- *     direction: "asc",
+ *     direction: "desc",
  *     endpoint: "/api/v1",
  *     hosts: ["api.cloudflare.com"],
  *     methods: ["GET"],
- *     order: "host",
+ *     order: "method",
  *     origin: "ML",
  *     state: "review",
  * });
@@ -88,11 +88,11 @@ export interface GetApiShieldDiscoveryOperationsResult {
  * const exampleApiShieldDiscoveryOperations = cloudflare.getApiShieldDiscoveryOperations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     diff: true,
- *     direction: "asc",
+ *     direction: "desc",
  *     endpoint: "/api/v1",
  *     hosts: ["api.cloudflare.com"],
  *     methods: ["GET"],
- *     order: "host",
+ *     order: "method",
  *     origin: "ML",
  *     state: "review",
  * });

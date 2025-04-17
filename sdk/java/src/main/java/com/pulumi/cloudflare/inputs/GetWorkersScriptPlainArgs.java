@@ -14,14 +14,14 @@ public final class GetWorkersScriptPlainArgs extends com.pulumi.resources.Invoke
     public static final GetWorkersScriptPlainArgs Empty = new GetWorkersScriptPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -69,7 +69,7 @@ public final class GetWorkersScriptPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

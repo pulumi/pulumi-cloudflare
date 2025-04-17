@@ -46,7 +46,7 @@ class GetWorkersScriptsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -101,7 +101,7 @@ def get_workers_scripts(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -129,7 +129,7 @@ def get_workers_scripts_output(account_id: Optional[pulumi.Input[builtins.str]] 
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

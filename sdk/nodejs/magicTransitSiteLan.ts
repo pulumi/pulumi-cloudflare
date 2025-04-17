@@ -64,9 +64,9 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
      */
     public readonly staticAddressing!: pulumi.Output<outputs.MagicTransitSiteLanStaticAddressing>;
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      */
-    public readonly vlanTag!: pulumi.Output<number>;
+    public readonly vlanTag!: pulumi.Output<number | undefined>;
 
     /**
      * Create a MagicTransitSiteLan resource with the given unique name, arguments, and options.
@@ -100,9 +100,6 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
             }
             if ((!args || args.siteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
-            }
-            if ((!args || args.vlanTag === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vlanTag'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["haLink"] = args ? args.haLink : undefined;
@@ -144,7 +141,7 @@ export interface MagicTransitSiteLanState {
      */
     staticAddressing?: pulumi.Input<inputs.MagicTransitSiteLanStaticAddressing>;
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      */
     vlanTag?: pulumi.Input<number>;
 }
@@ -174,7 +171,7 @@ export interface MagicTransitSiteLanArgs {
      */
     staticAddressing?: pulumi.Input<inputs.MagicTransitSiteLanStaticAddressing>;
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      */
-    vlanTag: pulumi.Input<number>;
+    vlanTag?: pulumi.Input<number>;
 }

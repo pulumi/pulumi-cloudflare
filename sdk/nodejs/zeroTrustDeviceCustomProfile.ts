@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleZeroTrustDeviceCustomProfile = new cloudflare.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile", {
  *     accountId: "699d98642c564d2e855e9661899b7252",
- *     match: "user.identity == \"test@cloudflare.com\"",
+ *     match: "identity.email == \"test@cloudflare.com\"",
  *     name: "Allow Developers",
  *     precedence: 100,
  *     allowModeSwitch: true,
@@ -29,13 +29,11 @@ import * as utilities from "./utilities";
  *     excludes: [{
  *         address: "192.0.2.0/24",
  *         description: "Exclude testing domains from the tunnel",
- *         host: "*.example.com",
  *     }],
  *     excludeOfficeIps: true,
  *     includes: [{
  *         address: "192.0.2.0/24",
- *         description: "Exclude testing domains from the tunnel",
- *         host: "*.example.com",
+ *         description: "Include testing domains in the tunnel",
  *     }],
  *     lanAllowMinutes: 30,
  *     lanAllowSubnetSize: 24,
@@ -151,9 +149,6 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
      * The name of the device settings profile.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Device ID.
-     */
     public /*out*/ readonly policyId!: pulumi.Output<string>;
     /**
      * The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
@@ -338,9 +333,6 @@ export interface ZeroTrustDeviceCustomProfileState {
      * The name of the device settings profile.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Device ID.
-     */
     policyId?: pulumi.Input<string>;
     /**
      * The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.

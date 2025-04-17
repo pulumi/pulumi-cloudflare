@@ -68,6 +68,8 @@ export interface GetEmailRoutingSettingsResult {
     readonly status: string;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly tag: string;
     /**

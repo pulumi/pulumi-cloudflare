@@ -17,14 +17,14 @@ public final class StreamCaptionLanguageArgs extends com.pulumi.resources.Resour
     public static final StreamCaptionLanguageArgs Empty = new StreamCaptionLanguageArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -104,7 +104,7 @@ public final class StreamCaptionLanguageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class StreamCaptionLanguageArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

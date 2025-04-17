@@ -47,7 +47,7 @@ import (
 type ZeroTrustAccessKeyConfiguration struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation pulumi.Float64Output `pulumi:"daysUntilNextRotation"`
@@ -99,7 +99,7 @@ func GetZeroTrustAccessKeyConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessKeyConfiguration resources.
 type zeroTrustAccessKeyConfigurationState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation *float64 `pulumi:"daysUntilNextRotation"`
@@ -110,7 +110,7 @@ type zeroTrustAccessKeyConfigurationState struct {
 }
 
 type ZeroTrustAccessKeyConfigurationState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation pulumi.Float64PtrInput
@@ -125,7 +125,7 @@ func (ZeroTrustAccessKeyConfigurationState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessKeyConfigurationArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The number of days between key rotations.
 	KeyRotationIntervalDays float64 `pulumi:"keyRotationIntervalDays"`
@@ -133,7 +133,7 @@ type zeroTrustAccessKeyConfigurationArgs struct {
 
 // The set of arguments for constructing a ZeroTrustAccessKeyConfiguration resource.
 type ZeroTrustAccessKeyConfigurationArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The number of days between key rotations.
 	KeyRotationIntervalDays pulumi.Float64Input
@@ -226,7 +226,7 @@ func (o ZeroTrustAccessKeyConfigurationOutput) ToZeroTrustAccessKeyConfiguration
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o ZeroTrustAccessKeyConfigurationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessKeyConfiguration) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

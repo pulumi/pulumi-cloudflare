@@ -29,7 +29,7 @@ import (
 //			_, err := cloudflare.NewWeb3Hostname(ctx, "example_web3_hostname", &cloudflare.Web3HostnameArgs{
 //				ZoneId:      pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Name:        pulumi.String("gateway.example.com"),
-//				Target:      pulumi.String("ethereum"),
+//				Target:      pulumi.String("ipfs"),
 //				Description: pulumi.String("This is my IPFS gateway."),
 //				Dnslink:     pulumi.String("/ipns/onboarding.ipfs.cloudflare.com"),
 //			})

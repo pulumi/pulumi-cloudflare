@@ -29,7 +29,7 @@ public final class GetZeroTrustAccessCustomPagesResult {
      */
     private String type;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String uid;
@@ -62,7 +62,7 @@ public final class GetZeroTrustAccessCustomPagesResult {
         return this.type;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String uid() {

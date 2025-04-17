@@ -58,7 +58,7 @@ export class AccessCustomPage extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -80,7 +80,7 @@ export class AccessCustomPage extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * UUID
+     * UUID.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
@@ -144,7 +144,7 @@ export class AccessCustomPage extends pulumi.CustomResource {
  */
 export interface AccessCustomPageState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface AccessCustomPageState {
      */
     type?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     uid?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -177,7 +177,7 @@ export interface AccessCustomPageState {
  */
 export interface AccessCustomPageArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

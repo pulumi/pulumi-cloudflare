@@ -159,10 +159,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// The timestamp of when the ruleset was last modified.
-        /// </summary>
-        public readonly string LastUpdated;
-        /// <summary>
         /// The human-readable name of the ruleset.
         /// </summary>
         public readonly string Name;
@@ -194,8 +190,6 @@ namespace Pulumi.Cloudflare
 
             string kind,
 
-            string lastUpdated,
-
             string name,
 
             string phase,
@@ -210,7 +204,6 @@ namespace Pulumi.Cloudflare
             Description = description;
             Id = id;
             Kind = kind;
-            LastUpdated = lastUpdated;
             Name = name;
             Phase = phase;
             Rules = rules;

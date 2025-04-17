@@ -48,7 +48,7 @@ class GetZeroTrustAccessKeyConfigurationResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -111,7 +111,7 @@ def get_zero_trust_access_key_configuration(account_id: Optional[builtins.str] =
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -137,7 +137,7 @@ def get_zero_trust_access_key_configuration_output(account_id: Optional[pulumi.I
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

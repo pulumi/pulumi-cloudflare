@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessGroupsResultExcludeResult> Excludes;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -36,7 +36,7 @@ class AccessPolicyArgs:
                  session_duration: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AccessPolicy resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
                Available values: "allow", "deny", "non_identity", "bypass".
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -75,7 +75,7 @@ class AccessPolicyArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -238,7 +238,7 @@ class _AccessPolicyState:
                  updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPolicy resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.int] app_count: Number of access applications currently using this policy.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
@@ -290,7 +290,7 @@ class _AccessPolicyState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -508,7 +508,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -636,7 +636,7 @@ class AccessPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.int] app_count: Number of access applications currently using this policy.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessPolicyApprovalGroupArgs', 'AccessPolicyApprovalGroupArgsDict']]]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
@@ -677,7 +677,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -699,7 +699,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="approvalRequired")
-    def approval_required(self) -> pulumi.Output[builtins.bool]:
+    def approval_required(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Requires the user to request access from an administrator at the start of each session.
         """
@@ -737,7 +737,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isolationRequired")
-    def isolation_required(self) -> pulumi.Output[builtins.bool]:
+    def isolation_required(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         """
@@ -761,7 +761,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="purposeJustificationRequired")
-    def purpose_justification_required(self) -> pulumi.Output[builtins.bool]:
+    def purpose_justification_required(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Require users to enter a justification when they log in to the application.
         """

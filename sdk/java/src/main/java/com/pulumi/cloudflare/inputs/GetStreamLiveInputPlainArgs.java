@@ -14,14 +14,14 @@ public final class GetStreamLiveInputPlainArgs extends com.pulumi.resources.Invo
     public static final GetStreamLiveInputPlainArgs Empty = new GetStreamLiveInputPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -69,7 +69,7 @@ public final class GetStreamLiveInputPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class GetWorkersForPlatformsDispatchNamespacesPlainArgs extends com
     public static final GetWorkersForPlatformsDispatchNamespacesPlainArgs Empty = new GetWorkersForPlatformsDispatchNamespacesPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -72,7 +72,7 @@ public final class GetWorkersForPlatformsDispatchNamespacesPlainArgs extends com
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

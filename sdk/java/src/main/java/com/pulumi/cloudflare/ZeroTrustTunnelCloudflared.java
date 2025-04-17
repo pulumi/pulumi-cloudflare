@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustTunnelCloudflared = new ZeroTrustTunnelCloudflared("exampleZeroTrustTunnelCloudflared", ZeroTrustTunnelCloudflaredArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
  *             .name("blog")
- *             .configSrc("local")
+ *             .configSrc("cloudflare")
  *             .tunnelSecret("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
  *             .build());
  * 

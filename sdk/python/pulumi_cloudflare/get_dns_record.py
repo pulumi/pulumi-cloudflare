@@ -135,7 +135,7 @@ class GetDnsRecordResult:
     @pulumi.getter(name="dnsRecordId")
     def dns_record_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "dns_record_id")
 
@@ -148,7 +148,7 @@ class GetDnsRecordResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -245,7 +245,7 @@ class GetDnsRecordResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -294,8 +294,8 @@ def get_dns_record(dns_record_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str dns_record_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str dns_record_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['dnsRecordId'] = dns_record_id
@@ -341,8 +341,8 @@ def get_dns_record_output(dns_record_id: Optional[pulumi.Input[Optional[builtins
     ```
 
 
-    :param builtins.str dns_record_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str dns_record_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['dnsRecordId'] = dns_record_id

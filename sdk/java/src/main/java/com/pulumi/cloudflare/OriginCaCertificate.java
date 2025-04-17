@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *                 "example.com",
  *                 "*.example.com")
  *             .requestType("origin-rsa")
- *             .requestedValidity(7.0)
+ *             .requestedValidity(5475.0)
  *             .build());
  * 
  *     }

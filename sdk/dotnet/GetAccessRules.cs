@@ -31,10 +31,10 @@ namespace Pulumi.Cloudflare
         ///             Target = "ip",
         ///             Value = "198.51.100.4",
         ///         },
-        ///         Direction = "asc",
-        ///         Mode = "block",
+        ///         Direction = "desc",
+        ///         Mode = "challenge",
         ///         Notes = "my note",
-        ///         Order = "configuration.target",
+        ///         Order = "mode",
         ///     });
         /// 
         /// });
@@ -63,10 +63,10 @@ namespace Pulumi.Cloudflare
         ///             Target = "ip",
         ///             Value = "198.51.100.4",
         ///         },
-        ///         Direction = "asc",
-        ///         Mode = "block",
+        ///         Direction = "desc",
+        ///         Mode = "challenge",
         ///         Notes = "my note",
-        ///         Order = "configuration.target",
+        ///         Order = "mode",
         ///     });
         /// 
         /// });
@@ -95,10 +95,10 @@ namespace Pulumi.Cloudflare
         ///             Target = "ip",
         ///             Value = "198.51.100.4",
         ///         },
-        ///         Direction = "asc",
-        ///         Mode = "block",
+        ///         Direction = "desc",
+        ///         Mode = "challenge",
         ///         Notes = "my note",
-        ///         Order = "configuration.target",
+        ///         Order = "mode",
         ///     });
         /// 
         /// });

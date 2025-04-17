@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     public partial class ZeroTrustAccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// Requires the user to request access from an administrator at the start of each session.
         /// </summary>
         [Output("approvalRequired")]
-        public Output<bool> ApprovalRequired { get; private set; } = null!;
+        public Output<bool?> ApprovalRequired { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.Cloudflare
         /// Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         /// </summary>
         [Output("isolationRequired")]
-        public Output<bool> IsolationRequired { get; private set; } = null!;
+        public Output<bool?> IsolationRequired { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Access policy.
@@ -92,7 +92,7 @@ namespace Pulumi.Cloudflare
         /// Require users to enter a justification when they log in to the application.
         /// </summary>
         [Output("purposeJustificationRequired")]
-        public Output<bool> PurposeJustificationRequired { get; private set; } = null!;
+        public Output<bool?> PurposeJustificationRequired { get; private set; } = null!;
 
         /// <summary>
         /// Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.Cloudflare
     public sealed class ZeroTrustAccessPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

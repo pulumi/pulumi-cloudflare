@@ -39,9 +39,6 @@ namespace Pulumi.Cloudflare
         [Output("domains")]
         public Output<ImmutableArray<Outputs.ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>> Domains { get; private set; } = null!;
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
 
@@ -112,9 +109,6 @@ namespace Pulumi.Cloudflare
             set => _domains = value;
         }
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
 
@@ -155,9 +149,6 @@ namespace Pulumi.Cloudflare
             set => _domains = value;
         }
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 

@@ -42,7 +42,7 @@ class GetStreamDownloadResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -89,7 +89,7 @@ def get_stream_download(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str identifier: A Cloudflare-generated unique identifier for a media item.
     """
     __args__ = dict()
@@ -117,7 +117,7 @@ def get_stream_download_output(account_id: Optional[pulumi.Input[builtins.str]] 
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str identifier: A Cloudflare-generated unique identifier for a media item.
     """
     __args__ = dict()

@@ -52,11 +52,11 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public /*out*/ readonly createdBy!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public /*out*/ readonly modifiedBy!: pulumi.Output<string>;
     /**
@@ -137,11 +137,11 @@ export class WorkersForPlatformsDispatchNamespace extends pulumi.CustomResource 
  */
 export interface WorkersForPlatformsDispatchNamespaceState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     createdBy?: pulumi.Input<string>;
     /**
@@ -149,7 +149,7 @@ export interface WorkersForPlatformsDispatchNamespaceState {
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     modifiedBy?: pulumi.Input<string>;
     /**
@@ -179,7 +179,7 @@ export interface WorkersForPlatformsDispatchNamespaceState {
  */
 export interface WorkersForPlatformsDispatchNamespaceArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

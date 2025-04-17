@@ -28,7 +28,7 @@ class WorkerSecretArgs:
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WorkerSecret resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[builtins.str] name: The name of this secret, this is what will be used to access it inside the Worker.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
@@ -49,7 +49,7 @@ class WorkerSecretArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -130,7 +130,7 @@ class _WorkerSecretState:
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerSecret resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[builtins.str] name: The name of this secret, this is what will be used to access it inside the Worker.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
@@ -155,7 +155,7 @@ class _WorkerSecretState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -249,7 +249,7 @@ class WorkerSecret(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_secret = cloudflare.WorkersSecret("example_workers_secret",
+        example_workers_for_platforms_script_secret = cloudflare.WorkersForPlatformsScriptSecret("example_workers_for_platforms_script_secret",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             dispatch_namespace="my-dispatch-namespace",
             script_name="this-is_my_script-01",
@@ -266,7 +266,7 @@ class WorkerSecret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[builtins.str] name: The name of this secret, this is what will be used to access it inside the Worker.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
@@ -287,7 +287,7 @@ class WorkerSecret(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_workers_secret = cloudflare.WorkersSecret("example_workers_secret",
+        example_workers_for_platforms_script_secret = cloudflare.WorkersForPlatformsScriptSecret("example_workers_for_platforms_script_secret",
             account_id="023e105f4ecef8ad9ca31a8372d0c353",
             dispatch_namespace="my-dispatch-namespace",
             script_name="this-is_my_script-01",
@@ -347,8 +347,6 @@ class WorkerSecret(pulumi.CustomResource):
             __props__.__dict__["script_name"] = script_name
             __props__.__dict__["text"] = None if text is None else pulumi.Output.secret(text)
             __props__.__dict__["type"] = type
-        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/workerSecret:WorkerSecret")])
-        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["text"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(WorkerSecret, __self__).__init__(
@@ -374,7 +372,7 @@ class WorkerSecret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[builtins.str] name: The name of this secret, this is what will be used to access it inside the Worker.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
@@ -398,7 +396,7 @@ class WorkerSecret(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

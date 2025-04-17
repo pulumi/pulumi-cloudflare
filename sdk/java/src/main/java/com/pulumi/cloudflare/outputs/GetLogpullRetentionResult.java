@@ -22,7 +22,7 @@ public final class GetLogpullRetentionResult {
      */
     private String id;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -43,7 +43,7 @@ public final class GetLogpullRetentionResult {
         return this.id;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

@@ -85,18 +85,18 @@ public final class MagicTransitSiteWanArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      * 
      */
-    @Import(name="vlanTag", required=true)
-    private Output<Integer> vlanTag;
+    @Import(name="vlanTag")
+    private @Nullable Output<Integer> vlanTag;
 
     /**
-     * @return VLAN port number.
+     * @return VLAN ID. Use zero for untagged.
      * 
      */
-    public Output<Integer> vlanTag() {
-        return this.vlanTag;
+    public Optional<Output<Integer>> vlanTag() {
+        return Optional.ofNullable(this.vlanTag);
     }
 
     private MagicTransitSiteWanArgs() {}
@@ -220,18 +220,18 @@ public final class MagicTransitSiteWanArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param vlanTag VLAN port number.
+         * @param vlanTag VLAN ID. Use zero for untagged.
          * 
          * @return builder
          * 
          */
-        public Builder vlanTag(Output<Integer> vlanTag) {
+        public Builder vlanTag(@Nullable Output<Integer> vlanTag) {
             $.vlanTag = vlanTag;
             return this;
         }
 
         /**
-         * @param vlanTag VLAN port number.
+         * @param vlanTag VLAN ID. Use zero for untagged.
          * 
          * @return builder
          * 
@@ -249,9 +249,6 @@ public final class MagicTransitSiteWanArgs extends com.pulumi.resources.Resource
             }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("MagicTransitSiteWanArgs", "siteId");
-            }
-            if ($.vlanTag == null) {
-                throw new MissingRequiredPropertyException("MagicTransitSiteWanArgs", "vlanTag");
             }
             return $;
         }

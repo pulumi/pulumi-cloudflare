@@ -47,7 +47,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -61,7 +61,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
      * Requires the user to request access from an administrator at the start of each session.
      */
-    public readonly approvalRequired!: pulumi.Output<boolean>;
+    public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -79,7 +79,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
-    public readonly isolationRequired!: pulumi.Output<boolean>;
+    public readonly isolationRequired!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Access policy.
      */
@@ -91,7 +91,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
      * Require users to enter a justification when they log in to the application.
      */
-    public readonly purposeJustificationRequired!: pulumi.Output<boolean>;
+    public readonly purposeJustificationRequired!: pulumi.Output<boolean | undefined>;
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
@@ -175,7 +175,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
  */
 export interface ZeroTrustAccessPolicyState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -237,7 +237,7 @@ export interface ZeroTrustAccessPolicyState {
  */
 export interface ZeroTrustAccessPolicyArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

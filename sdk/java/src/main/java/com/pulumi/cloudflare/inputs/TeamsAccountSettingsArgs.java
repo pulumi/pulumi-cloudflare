@@ -119,14 +119,22 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     /**
      * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="customCertificate")
     private @Nullable Output<TeamsAccountSettingsCustomCertificateArgs> customCertificate;
 
     /**
      * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<TeamsAccountSettingsCustomCertificateArgs>> customCertificate() {
         return Optional.ofNullable(this.customCertificate);
     }
@@ -372,7 +380,11 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder customCertificate(@Nullable Output<TeamsAccountSettingsCustomCertificateArgs> customCertificate) {
             $.customCertificate = customCertificate;
             return this;
@@ -383,7 +395,11 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder customCertificate(TeamsAccountSettingsCustomCertificateArgs customCertificate) {
             return customCertificate(Output.of(customCertificate));
         }

@@ -48,13 +48,13 @@ func LookupZeroTrustAccessKeyConfiguration(ctx *pulumi.Context, args *LookupZero
 
 // A collection of arguments for invoking getZeroTrustAccessKeyConfiguration.
 type LookupZeroTrustAccessKeyConfigurationArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getZeroTrustAccessKeyConfiguration.
 type LookupZeroTrustAccessKeyConfigurationResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation float64 `pulumi:"daysUntilNextRotation"`
@@ -77,7 +77,7 @@ func LookupZeroTrustAccessKeyConfigurationOutput(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getZeroTrustAccessKeyConfiguration.
 type LookupZeroTrustAccessKeyConfigurationOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -100,7 +100,7 @@ func (o LookupZeroTrustAccessKeyConfigurationResultOutput) ToLookupZeroTrustAcce
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustAccessKeyConfigurationResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessKeyConfigurationResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

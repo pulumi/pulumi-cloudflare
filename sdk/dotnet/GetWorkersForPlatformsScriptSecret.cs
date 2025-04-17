@@ -9,7 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
-    public static class GetWorkersSecrets
+    public static class GetWorkersForPlatformsScriptSecret
     {
         /// <summary>
         /// ## Example Usage
@@ -22,18 +22,19 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersSecrets = Cloudflare.GetWorkersSecrets.Invoke(new()
+        ///     var exampleWorkersForPlatformsScriptSecret = Cloudflare.GetWorkersForPlatformsScriptSecret.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
         ///         ScriptName = "this-is_my_script-01",
+        ///         SecretName = "mySecret",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetWorkersSecretsResult> InvokeAsync(GetWorkersSecretsArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersSecretsResult>("cloudflare:index/getWorkersSecrets:getWorkersSecrets", args ?? new GetWorkersSecretsArgs(), options.WithDefaults());
+        public static Task<GetWorkersForPlatformsScriptSecretResult> InvokeAsync(GetWorkersForPlatformsScriptSecretArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkersForPlatformsScriptSecretResult>("cloudflare:index/getWorkersForPlatformsScriptSecret:getWorkersForPlatformsScriptSecret", args ?? new GetWorkersForPlatformsScriptSecretArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
@@ -46,18 +47,19 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersSecrets = Cloudflare.GetWorkersSecrets.Invoke(new()
+        ///     var exampleWorkersForPlatformsScriptSecret = Cloudflare.GetWorkersForPlatformsScriptSecret.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
         ///         ScriptName = "this-is_my_script-01",
+        ///         SecretName = "mySecret",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersSecretsResult> Invoke(GetWorkersSecretsInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetWorkersSecretsResult>("cloudflare:index/getWorkersSecrets:getWorkersSecrets", args ?? new GetWorkersSecretsInvokeArgs(), options.WithDefaults());
+        public static Output<GetWorkersForPlatformsScriptSecretResult> Invoke(GetWorkersForPlatformsScriptSecretInvokeArgs args, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkersForPlatformsScriptSecretResult>("cloudflare:index/getWorkersForPlatformsScriptSecret:getWorkersForPlatformsScriptSecret", args ?? new GetWorkersForPlatformsScriptSecretInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
@@ -70,25 +72,26 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersSecrets = Cloudflare.GetWorkersSecrets.Invoke(new()
+        ///     var exampleWorkersForPlatformsScriptSecret = Cloudflare.GetWorkersForPlatformsScriptSecret.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
         ///         ScriptName = "this-is_my_script-01",
+        ///         SecretName = "mySecret",
         ///     });
         /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetWorkersSecretsResult> Invoke(GetWorkersSecretsInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetWorkersSecretsResult>("cloudflare:index/getWorkersSecrets:getWorkersSecrets", args ?? new GetWorkersSecretsInvokeArgs(), options.WithDefaults());
+        public static Output<GetWorkersForPlatformsScriptSecretResult> Invoke(GetWorkersForPlatformsScriptSecretInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkersForPlatformsScriptSecretResult>("cloudflare:index/getWorkersForPlatformsScriptSecret:getWorkersForPlatformsScriptSecret", args ?? new GetWorkersForPlatformsScriptSecretInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetWorkersSecretsArgs : global::Pulumi.InvokeArgs
+    public sealed class GetWorkersForPlatformsScriptSecretArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -100,27 +103,27 @@ namespace Pulumi.Cloudflare
         public string DispatchNamespace { get; set; } = null!;
 
         /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
-        [Input("maxItems")]
-        public int? MaxItems { get; set; }
-
-        /// <summary>
         /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Input("scriptName", required: true)]
         public string ScriptName { get; set; } = null!;
 
-        public GetWorkersSecretsArgs()
+        /// <summary>
+        /// A JavaScript variable name for the secret binding.
+        /// </summary>
+        [Input("secretName")]
+        public string? SecretName { get; set; }
+
+        public GetWorkersForPlatformsScriptSecretArgs()
         {
         }
-        public static new GetWorkersSecretsArgs Empty => new GetWorkersSecretsArgs();
+        public static new GetWorkersForPlatformsScriptSecretArgs Empty => new GetWorkersForPlatformsScriptSecretArgs();
     }
 
-    public sealed class GetWorkersSecretsInvokeArgs : global::Pulumi.InvokeArgs
+    public sealed class GetWorkersForPlatformsScriptSecretInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -132,29 +135,29 @@ namespace Pulumi.Cloudflare
         public Input<string> DispatchNamespace { get; set; } = null!;
 
         /// <summary>
-        /// Max items to fetch, default: 1000
-        /// </summary>
-        [Input("maxItems")]
-        public Input<int>? MaxItems { get; set; }
-
-        /// <summary>
         /// Name of the script, used in URLs and route configuration.
         /// </summary>
         [Input("scriptName", required: true)]
         public Input<string> ScriptName { get; set; } = null!;
 
-        public GetWorkersSecretsInvokeArgs()
+        /// <summary>
+        /// A JavaScript variable name for the secret binding.
+        /// </summary>
+        [Input("secretName")]
+        public Input<string>? SecretName { get; set; }
+
+        public GetWorkersForPlatformsScriptSecretInvokeArgs()
         {
         }
-        public static new GetWorkersSecretsInvokeArgs Empty => new GetWorkersSecretsInvokeArgs();
+        public static new GetWorkersForPlatformsScriptSecretInvokeArgs Empty => new GetWorkersForPlatformsScriptSecretInvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class GetWorkersSecretsResult
+    public sealed class GetWorkersForPlatformsScriptSecretResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -162,42 +165,50 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string DispatchNamespace;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// A JavaScript variable name for the secret binding.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Max items to fetch, default: 1000
+        /// The name of this secret, this is what will be used to access it inside the Worker.
         /// </summary>
-        public readonly int? MaxItems;
-        /// <summary>
-        /// The items returned by the data source
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetWorkersSecretsResultResult> Results;
+        public readonly string Name;
         /// <summary>
         /// Name of the script, used in URLs and route configuration.
         /// </summary>
         public readonly string ScriptName;
+        /// <summary>
+        /// A JavaScript variable name for the secret binding.
+        /// </summary>
+        public readonly string? SecretName;
+        /// <summary>
+        /// The type of secret.
+        /// Available values: "secret_text".
+        /// </summary>
+        public readonly string Type;
 
         [OutputConstructor]
-        private GetWorkersSecretsResult(
+        private GetWorkersForPlatformsScriptSecretResult(
             string accountId,
 
             string dispatchNamespace,
 
             string id,
 
-            int? maxItems,
+            string name,
 
-            ImmutableArray<Outputs.GetWorkersSecretsResultResult> results,
+            string scriptName,
 
-            string scriptName)
+            string? secretName,
+
+            string type)
         {
             AccountId = accountId;
             DispatchNamespace = dispatchNamespace;
             Id = id;
-            MaxItems = maxItems;
-            Results = results;
+            Name = name;
             ScriptName = scriptName;
+            SecretName = secretName;
+            Type = type;
         }
     }
 }

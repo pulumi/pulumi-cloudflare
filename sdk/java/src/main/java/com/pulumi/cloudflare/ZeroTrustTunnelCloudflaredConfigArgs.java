@@ -18,14 +18,14 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
     public static final ZeroTrustTunnelCloudflaredConfigArgs Empty = new ZeroTrustTunnelCloudflaredConfigArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -107,7 +107,7 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ZeroTrustTunnelCloudflaredConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

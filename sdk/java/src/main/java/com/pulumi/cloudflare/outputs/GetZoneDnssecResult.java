@@ -54,7 +54,7 @@ public final class GetZoneDnssecResult {
     private String publicKey;
     private String status;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -130,7 +130,7 @@ public final class GetZoneDnssecResult {
         return this.status;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

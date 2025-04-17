@@ -48,7 +48,7 @@ func LookupLogpullRetention(ctx *pulumi.Context, args *LookupLogpullRetentionArg
 
 // A collection of arguments for invoking getLogpullRetention.
 type LookupLogpullRetentionArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -58,7 +58,7 @@ type LookupLogpullRetentionResult struct {
 	Flag bool `pulumi:"flag"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -73,7 +73,7 @@ func LookupLogpullRetentionOutput(ctx *pulumi.Context, args LookupLogpullRetenti
 
 // A collection of arguments for invoking getLogpullRetention.
 type LookupLogpullRetentionOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -106,7 +106,7 @@ func (o LookupLogpullRetentionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpullRetentionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupLogpullRetentionResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpullRetentionResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -30,7 +30,7 @@ export function getStreamDownload(args: GetStreamDownloadArgs, opts?: pulumi.Inv
  */
 export interface GetStreamDownloadArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -44,7 +44,7 @@ export interface GetStreamDownloadArgs {
  */
 export interface GetStreamDownloadResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -82,7 +82,7 @@ export function getStreamDownloadOutput(args: GetStreamDownloadOutputArgs, opts?
  */
 export interface GetStreamDownloadOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

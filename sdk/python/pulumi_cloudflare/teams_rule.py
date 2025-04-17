@@ -38,7 +38,7 @@ class TeamsRuleArgs:
         """
         The set of arguments for constructing a TeamsRule resource.
         :param pulumi.Input[builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[builtins.str] name: The name of the rule.
         :param pulumi.Input[builtins.str] description: The description of the rule.
         :param pulumi.Input[builtins.str] device_posture: The wirefilter expression used for device posture check matching.
@@ -91,7 +91,7 @@ class TeamsRuleArgs:
     def action(self) -> pulumi.Input[builtins.str]:
         """
         The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
 
@@ -257,7 +257,7 @@ class _TeamsRuleState:
         """
         Input properties used for looking up and filtering TeamsRule resources.
         :param pulumi.Input[builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[builtins.str] deleted_at: Date of deletion, if any.
         :param pulumi.Input[builtins.str] description: The description of the rule.
         :param pulumi.Input[builtins.str] device_posture: The wirefilter expression used for device posture check matching.
@@ -323,7 +323,7 @@ class _TeamsRuleState:
     def action(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
 
@@ -544,7 +544,7 @@ class TeamsRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[builtins.str] description: The description of the rule.
         :param pulumi.Input[builtins.str] device_posture: The wirefilter expression used for device posture check matching.
         :param pulumi.Input[builtins.bool] enabled: True if the rule is enabled.
@@ -672,7 +672,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+               Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         :param pulumi.Input[builtins.str] deleted_at: Date of deletion, if any.
         :param pulumi.Input[builtins.str] description: The description of the rule.
         :param pulumi.Input[builtins.str] device_posture: The wirefilter expression used for device posture check matching.
@@ -722,7 +722,7 @@ class TeamsRule(pulumi.CustomResource):
     def action(self) -> pulumi.Output[builtins.str]:
         """
         The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
 

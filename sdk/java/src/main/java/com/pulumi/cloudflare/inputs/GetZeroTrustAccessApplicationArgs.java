@@ -32,14 +32,14 @@ public final class GetZeroTrustAccessApplicationArgs extends com.pulumi.resource
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="appId")
     private @Nullable Output<String> appId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> appId() {
@@ -117,7 +117,7 @@ public final class GetZeroTrustAccessApplicationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param appId Identifier
+         * @param appId Identifier.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class GetZeroTrustAccessApplicationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param appId Identifier
+         * @param appId Identifier.
          * 
          * @return builder
          * 

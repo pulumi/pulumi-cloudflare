@@ -17,16 +17,16 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
-    'GetWorkersSecretsResult',
-    'AwaitableGetWorkersSecretsResult',
-    'get_workers_secrets',
-    'get_workers_secrets_output',
+    'GetWorkersForPlatformsScriptSecretsResult',
+    'AwaitableGetWorkersForPlatformsScriptSecretsResult',
+    'get_workers_for_platforms_script_secrets',
+    'get_workers_for_platforms_script_secrets_output',
 ]
 
 @pulumi.output_type
-class GetWorkersSecretsResult:
+class GetWorkersForPlatformsScriptSecretsResult:
     """
-    A collection of values returned by getWorkersSecrets.
+    A collection of values returned by getWorkersForPlatformsScriptSecrets.
     """
     def __init__(__self__, account_id=None, dispatch_namespace=None, id=None, max_items=None, results=None, script_name=None):
         if account_id and not isinstance(account_id, str):
@@ -52,7 +52,7 @@ class GetWorkersSecretsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -82,7 +82,7 @@ class GetWorkersSecretsResult:
 
     @property
     @pulumi.getter
-    def results(self) -> Sequence['outputs.GetWorkersSecretsResultResult']:
+    def results(self) -> Sequence['outputs.GetWorkersForPlatformsScriptSecretsResultResult']:
         """
         The items returned by the data source
         """
@@ -97,12 +97,12 @@ class GetWorkersSecretsResult:
         return pulumi.get(self, "script_name")
 
 
-class AwaitableGetWorkersSecretsResult(GetWorkersSecretsResult):
+class AwaitableGetWorkersForPlatformsScriptSecretsResult(GetWorkersForPlatformsScriptSecretsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetWorkersSecretsResult(
+        return GetWorkersForPlatformsScriptSecretsResult(
             account_id=self.account_id,
             dispatch_namespace=self.dispatch_namespace,
             id=self.id,
@@ -111,11 +111,11 @@ class AwaitableGetWorkersSecretsResult(GetWorkersSecretsResult):
             script_name=self.script_name)
 
 
-def get_workers_secrets(account_id: Optional[builtins.str] = None,
-                        dispatch_namespace: Optional[builtins.str] = None,
-                        max_items: Optional[builtins.int] = None,
-                        script_name: Optional[builtins.str] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersSecretsResult:
+def get_workers_for_platforms_script_secrets(account_id: Optional[builtins.str] = None,
+                                             dispatch_namespace: Optional[builtins.str] = None,
+                                             max_items: Optional[builtins.int] = None,
+                                             script_name: Optional[builtins.str] = None,
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkersForPlatformsScriptSecretsResult:
     """
     ## Example Usage
 
@@ -123,13 +123,13 @@ def get_workers_secrets(account_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_secrets = cloudflare.get_workers_secrets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_for_platforms_script_secrets = cloudflare.get_workers_for_platforms_script_secrets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dispatch_namespace="my-dispatch-namespace",
         script_name="this-is_my_script-01")
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str script_name: Name of the script, used in URLs and route configuration.
@@ -140,20 +140,20 @@ def get_workers_secrets(account_id: Optional[builtins.str] = None,
     __args__['maxItems'] = max_items
     __args__['scriptName'] = script_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('cloudflare:index/getWorkersSecrets:getWorkersSecrets', __args__, opts=opts, typ=GetWorkersSecretsResult).value
+    __ret__ = pulumi.runtime.invoke('cloudflare:index/getWorkersForPlatformsScriptSecrets:getWorkersForPlatformsScriptSecrets', __args__, opts=opts, typ=GetWorkersForPlatformsScriptSecretsResult).value
 
-    return AwaitableGetWorkersSecretsResult(
+    return AwaitableGetWorkersForPlatformsScriptSecretsResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         dispatch_namespace=pulumi.get(__ret__, 'dispatch_namespace'),
         id=pulumi.get(__ret__, 'id'),
         max_items=pulumi.get(__ret__, 'max_items'),
         results=pulumi.get(__ret__, 'results'),
         script_name=pulumi.get(__ret__, 'script_name'))
-def get_workers_secrets_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
-                               dispatch_namespace: Optional[pulumi.Input[builtins.str]] = None,
-                               max_items: Optional[pulumi.Input[Optional[builtins.int]]] = None,
-                               script_name: Optional[pulumi.Input[builtins.str]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersSecretsResult]:
+def get_workers_for_platforms_script_secrets_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
+                                                    dispatch_namespace: Optional[pulumi.Input[builtins.str]] = None,
+                                                    max_items: Optional[pulumi.Input[Optional[builtins.int]]] = None,
+                                                    script_name: Optional[pulumi.Input[builtins.str]] = None,
+                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersForPlatformsScriptSecretsResult]:
     """
     ## Example Usage
 
@@ -161,13 +161,13 @@ def get_workers_secrets_output(account_id: Optional[pulumi.Input[builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_secrets = cloudflare.get_workers_secrets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_for_platforms_script_secrets = cloudflare.get_workers_for_platforms_script_secrets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dispatch_namespace="my-dispatch-namespace",
         script_name="this-is_my_script-01")
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str script_name: Name of the script, used in URLs and route configuration.
@@ -178,8 +178,8 @@ def get_workers_secrets_output(account_id: Optional[pulumi.Input[builtins.str]] 
     __args__['maxItems'] = max_items
     __args__['scriptName'] = script_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorkersSecrets:getWorkersSecrets', __args__, opts=opts, typ=GetWorkersSecretsResult)
-    return __ret__.apply(lambda __response__: GetWorkersSecretsResult(
+    __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorkersForPlatformsScriptSecrets:getWorkersForPlatformsScriptSecrets', __args__, opts=opts, typ=GetWorkersForPlatformsScriptSecretsResult)
+    return __ret__.apply(lambda __response__: GetWorkersForPlatformsScriptSecretsResult(
         account_id=pulumi.get(__response__, 'account_id'),
         dispatch_namespace=pulumi.get(__response__, 'dispatch_namespace'),
         id=pulumi.get(__response__, 'id'),

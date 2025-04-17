@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDeviceCustomProfilesResultInclude {
     /**
-     * @return The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     * @return The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      * 
      */
     private String address;
     /**
-     * @return A description of the split tunnel item, displayed in the client UI.
+     * @return A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
     private String description;
     /**
-     * @return The domain name to include in the tunnel. If host is present, address must not be present.
+     * @return The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      * 
      */
     private String host;
 
     private GetZeroTrustDeviceCustomProfilesResultInclude() {}
     /**
-     * @return The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+     * @return The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
      * 
      */
     public String address() {
         return this.address;
     }
     /**
-     * @return A description of the split tunnel item, displayed in the client UI.
+     * @return A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return The domain name to include in the tunnel. If host is present, address must not be present.
+     * @return The domain name to include in the tunnel. If `host` is present, `address` must not be present.
      * 
      */
     public String host() {

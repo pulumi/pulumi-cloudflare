@@ -31,7 +31,7 @@ export function getDnsFirewalls(args: GetDnsFirewallsArgs, opts?: pulumi.InvokeO
  */
 export interface GetDnsFirewallsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetDnsFirewallsArgs {
  */
 export interface GetDnsFirewallsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -86,7 +86,7 @@ export function getDnsFirewallsOutput(args: GetDnsFirewallsOutputArgs, opts?: pu
  */
 export interface GetDnsFirewallsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

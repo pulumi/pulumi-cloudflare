@@ -77,7 +77,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     private List<GetZeroTrustDeviceCustomProfileFallbackDomain> fallbackDomains;
     private String gatewayUniqueId;
     /**
-     * @return Device ID.
+     * @return The ID of this resource.
      * 
      */
     private String id;
@@ -106,10 +106,6 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      * 
      */
     private String name;
-    /**
-     * @return Device ID.
-     * 
-     */
     private String policyId;
     /**
      * @return The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
@@ -227,7 +223,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         return this.gatewayUniqueId;
     }
     /**
-     * @return Device ID.
+     * @return The ID of this resource.
      * 
      */
     public String id() {
@@ -268,10 +264,6 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     public String name() {
         return this.name;
     }
-    /**
-     * @return Device ID.
-     * 
-     */
     public String policyId() {
         return this.policyId;
     }

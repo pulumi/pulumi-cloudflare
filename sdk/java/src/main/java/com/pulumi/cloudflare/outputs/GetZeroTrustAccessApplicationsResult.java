@@ -108,7 +108,7 @@ public final class GetZeroTrustAccessApplicationsResult {
      */
     private Boolean httpOnlyCookieAttribute;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -138,6 +138,17 @@ public final class GetZeroTrustAccessApplicationsResult {
      */
     private Boolean pathCookieAttribute;
     private List<GetZeroTrustAccessApplicationsResultPolicy> policies;
+    /**
+     * @return Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+     * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+     * }
+     * 
+     */
+    private String readServiceTokensFromHeader;
     private GetZeroTrustAccessApplicationsResultSaasApp saasApp;
     /**
      * @return Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -152,7 +163,11 @@ public final class GetZeroTrustAccessApplicationsResult {
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private List<String> selfHostedDomains;
     /**
      * @return Returns a 401 status code when the request is blocked by a Service Auth policy.
@@ -314,7 +329,7 @@ public final class GetZeroTrustAccessApplicationsResult {
         return this.httpOnlyCookieAttribute;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {
@@ -358,6 +373,19 @@ public final class GetZeroTrustAccessApplicationsResult {
     public List<GetZeroTrustAccessApplicationsResultPolicy> policies() {
         return this.policies;
     }
+    /**
+     * @return Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+     * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+     * }
+     * 
+     */
+    public String readServiceTokensFromHeader() {
+        return this.readServiceTokensFromHeader;
+    }
     public GetZeroTrustAccessApplicationsResultSaasApp saasApp() {
         return this.saasApp;
     }
@@ -378,7 +406,11 @@ public final class GetZeroTrustAccessApplicationsResult {
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public List<String> selfHostedDomains() {
         return this.selfHostedDomains;
     }
@@ -466,6 +498,7 @@ public final class GetZeroTrustAccessApplicationsResult {
         private Boolean optionsPreflightBypass;
         private Boolean pathCookieAttribute;
         private List<GetZeroTrustAccessApplicationsResultPolicy> policies;
+        private String readServiceTokensFromHeader;
         private GetZeroTrustAccessApplicationsResultSaasApp saasApp;
         private String sameSiteCookieAttribute;
         private GetZeroTrustAccessApplicationsResultScimConfig scimConfig;
@@ -507,6 +540,7 @@ public final class GetZeroTrustAccessApplicationsResult {
     	      this.optionsPreflightBypass = defaults.optionsPreflightBypass;
     	      this.pathCookieAttribute = defaults.pathCookieAttribute;
     	      this.policies = defaults.policies;
+    	      this.readServiceTokensFromHeader = defaults.readServiceTokensFromHeader;
     	      this.saasApp = defaults.saasApp;
     	      this.sameSiteCookieAttribute = defaults.sameSiteCookieAttribute;
     	      this.scimConfig = defaults.scimConfig;
@@ -745,6 +779,14 @@ public final class GetZeroTrustAccessApplicationsResult {
             return policies(List.of(policies));
         }
         @CustomType.Setter
+        public Builder readServiceTokensFromHeader(String readServiceTokensFromHeader) {
+            if (readServiceTokensFromHeader == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResult", "readServiceTokensFromHeader");
+            }
+            this.readServiceTokensFromHeader = readServiceTokensFromHeader;
+            return this;
+        }
+        @CustomType.Setter
         public Builder saasApp(GetZeroTrustAccessApplicationsResultSaasApp saasApp) {
             if (saasApp == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationsResult", "saasApp");
@@ -877,6 +919,7 @@ public final class GetZeroTrustAccessApplicationsResult {
             _resultValue.optionsPreflightBypass = optionsPreflightBypass;
             _resultValue.pathCookieAttribute = pathCookieAttribute;
             _resultValue.policies = policies;
+            _resultValue.readServiceTokensFromHeader = readServiceTokensFromHeader;
             _resultValue.saasApp = saasApp;
             _resultValue.sameSiteCookieAttribute = sameSiteCookieAttribute;
             _resultValue.scimConfig = scimConfig;

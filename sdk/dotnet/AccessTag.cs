@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
     public partial class AccessTag : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessTagState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

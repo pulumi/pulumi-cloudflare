@@ -180,14 +180,14 @@ public final class GetDnsRecordsPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -344,7 +344,7 @@ public final class GetDnsRecordsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -13,16 +13,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersSecrets = cloudflare.getWorkersSecrets({
+ * const exampleWorkersForPlatformsScriptSecrets = cloudflare.getWorkersForPlatformsScriptSecrets({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dispatchNamespace: "my-dispatch-namespace",
  *     scriptName: "this-is_my_script-01",
  * });
  * ```
  */
-export function getWorkersSecrets(args: GetWorkersSecretsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersSecretsResult> {
+export function getWorkersForPlatformsScriptSecrets(args: GetWorkersForPlatformsScriptSecretsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersForPlatformsScriptSecretsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("cloudflare:index/getWorkersSecrets:getWorkersSecrets", {
+    return pulumi.runtime.invoke("cloudflare:index/getWorkersForPlatformsScriptSecrets:getWorkersForPlatformsScriptSecrets", {
         "accountId": args.accountId,
         "dispatchNamespace": args.dispatchNamespace,
         "maxItems": args.maxItems,
@@ -31,11 +31,11 @@ export function getWorkersSecrets(args: GetWorkersSecretsArgs, opts?: pulumi.Inv
 }
 
 /**
- * A collection of arguments for invoking getWorkersSecrets.
+ * A collection of arguments for invoking getWorkersForPlatformsScriptSecrets.
  */
-export interface GetWorkersSecretsArgs {
+export interface GetWorkersForPlatformsScriptSecretsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -53,11 +53,11 @@ export interface GetWorkersSecretsArgs {
 }
 
 /**
- * A collection of values returned by getWorkersSecrets.
+ * A collection of values returned by getWorkersForPlatformsScriptSecrets.
  */
-export interface GetWorkersSecretsResult {
+export interface GetWorkersForPlatformsScriptSecretsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -75,7 +75,7 @@ export interface GetWorkersSecretsResult {
     /**
      * The items returned by the data source
      */
-    readonly results: outputs.GetWorkersSecretsResult[];
+    readonly results: outputs.GetWorkersForPlatformsScriptSecretsResult[];
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -88,16 +88,16 @@ export interface GetWorkersSecretsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersSecrets = cloudflare.getWorkersSecrets({
+ * const exampleWorkersForPlatformsScriptSecrets = cloudflare.getWorkersForPlatformsScriptSecrets({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dispatchNamespace: "my-dispatch-namespace",
  *     scriptName: "this-is_my_script-01",
  * });
  * ```
  */
-export function getWorkersSecretsOutput(args: GetWorkersSecretsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersSecretsResult> {
+export function getWorkersForPlatformsScriptSecretsOutput(args: GetWorkersForPlatformsScriptSecretsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersForPlatformsScriptSecretsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersSecrets:getWorkersSecrets", {
+    return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersForPlatformsScriptSecrets:getWorkersForPlatformsScriptSecrets", {
         "accountId": args.accountId,
         "dispatchNamespace": args.dispatchNamespace,
         "maxItems": args.maxItems,
@@ -106,11 +106,11 @@ export function getWorkersSecretsOutput(args: GetWorkersSecretsOutputArgs, opts?
 }
 
 /**
- * A collection of arguments for invoking getWorkersSecrets.
+ * A collection of arguments for invoking getWorkersForPlatformsScriptSecrets.
  */
-export interface GetWorkersSecretsOutputArgs {
+export interface GetWorkersForPlatformsScriptSecretsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

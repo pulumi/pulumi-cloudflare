@@ -88,7 +88,7 @@ import (
 //					Label: pulumi.String("us"),
 //				},
 //				Policy: pulumi.String("(country: US) or (region: EU)"),
-//				Type:   pulumi.String("legacy_custom"),
+//				Type:   pulumi.String("sni_custom"),
 //			})
 //			if err != nil {
 //				return err

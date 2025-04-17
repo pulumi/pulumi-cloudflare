@@ -1460,6 +1460,16 @@ export const getWorkersForPlatformsDispatchNamespaces: typeof import("./getWorke
 export const getWorkersForPlatformsDispatchNamespacesOutput: typeof import("./getWorkersForPlatformsDispatchNamespaces").getWorkersForPlatformsDispatchNamespacesOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersForPlatformsDispatchNamespaces","getWorkersForPlatformsDispatchNamespacesOutput"], () => require("./getWorkersForPlatformsDispatchNamespaces"));
 
+export { GetWorkersForPlatformsScriptSecretArgs, GetWorkersForPlatformsScriptSecretResult, GetWorkersForPlatformsScriptSecretOutputArgs } from "./getWorkersForPlatformsScriptSecret";
+export const getWorkersForPlatformsScriptSecret: typeof import("./getWorkersForPlatformsScriptSecret").getWorkersForPlatformsScriptSecret = null as any;
+export const getWorkersForPlatformsScriptSecretOutput: typeof import("./getWorkersForPlatformsScriptSecret").getWorkersForPlatformsScriptSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkersForPlatformsScriptSecret","getWorkersForPlatformsScriptSecretOutput"], () => require("./getWorkersForPlatformsScriptSecret"));
+
+export { GetWorkersForPlatformsScriptSecretsArgs, GetWorkersForPlatformsScriptSecretsResult, GetWorkersForPlatformsScriptSecretsOutputArgs } from "./getWorkersForPlatformsScriptSecrets";
+export const getWorkersForPlatformsScriptSecrets: typeof import("./getWorkersForPlatformsScriptSecrets").getWorkersForPlatformsScriptSecrets = null as any;
+export const getWorkersForPlatformsScriptSecretsOutput: typeof import("./getWorkersForPlatformsScriptSecrets").getWorkersForPlatformsScriptSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkersForPlatformsScriptSecrets","getWorkersForPlatformsScriptSecretsOutput"], () => require("./getWorkersForPlatformsScriptSecrets"));
+
 export { GetWorkersKvArgs, GetWorkersKvResult, GetWorkersKvOutputArgs } from "./getWorkersKv";
 export const getWorkersKv: typeof import("./getWorkersKv").getWorkersKv = null as any;
 export const getWorkersKvOutput: typeof import("./getWorkersKv").getWorkersKvOutput = null as any;
@@ -1504,11 +1514,6 @@ export { GetWorkersSecretArgs, GetWorkersSecretResult, GetWorkersSecretOutputArg
 export const getWorkersSecret: typeof import("./getWorkersSecret").getWorkersSecret = null as any;
 export const getWorkersSecretOutput: typeof import("./getWorkersSecret").getWorkersSecretOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersSecret","getWorkersSecretOutput"], () => require("./getWorkersSecret"));
-
-export { GetWorkersSecretsArgs, GetWorkersSecretsResult, GetWorkersSecretsOutputArgs } from "./getWorkersSecrets";
-export const getWorkersSecrets: typeof import("./getWorkersSecrets").getWorkersSecrets = null as any;
-export const getWorkersSecretsOutput: typeof import("./getWorkersSecrets").getWorkersSecretsOutput = null as any;
-utilities.lazyLoad(exports, ["getWorkersSecrets","getWorkersSecretsOutput"], () => require("./getWorkersSecrets"));
 
 export { GetZeroTrustAccessApplicationArgs, GetZeroTrustAccessApplicationResult, GetZeroTrustAccessApplicationOutputArgs } from "./getZeroTrustAccessApplication";
 export const getZeroTrustAccessApplication: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplication = null as any;
@@ -2390,6 +2395,11 @@ export type WorkersForPlatformsNamespace = import("./workersForPlatformsNamespac
 export const WorkersForPlatformsNamespace: typeof import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace = null as any;
 utilities.lazyLoad(exports, ["WorkersForPlatformsNamespace"], () => require("./workersForPlatformsNamespace"));
 
+export { WorkersForPlatformsScriptSecretArgs, WorkersForPlatformsScriptSecretState } from "./workersForPlatformsScriptSecret";
+export type WorkersForPlatformsScriptSecret = import("./workersForPlatformsScriptSecret").WorkersForPlatformsScriptSecret;
+export const WorkersForPlatformsScriptSecret: typeof import("./workersForPlatformsScriptSecret").WorkersForPlatformsScriptSecret = null as any;
+utilities.lazyLoad(exports, ["WorkersForPlatformsScriptSecret"], () => require("./workersForPlatformsScriptSecret"));
+
 export { WorkersKvArgs, WorkersKvState } from "./workersKv";
 export type WorkersKv = import("./workersKv").WorkersKv;
 export const WorkersKv: typeof import("./workersKv").WorkersKv = null as any;
@@ -3015,6 +3025,8 @@ const _module = {
                 return new WorkersForPlatformsDispatchNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
                 return new WorkersForPlatformsNamespace(name, <any>undefined, { urn })
+            case "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret":
+                return new WorkersForPlatformsScriptSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersKv:WorkersKv":
                 return new WorkersKv(name, <any>undefined, { urn })
             case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -3298,6 +3310,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workersCustomDomain",
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersDeployment", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsDispatchNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsNamespace", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsScriptSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _module)

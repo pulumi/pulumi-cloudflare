@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -13,22 +12,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GetWorkersSecretsArgs extends com.pulumi.resources.InvokeArgs {
+public final class GetWorkersForPlatformsScriptSecretsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
-    public static final GetWorkersSecretsArgs Empty = new GetWorkersSecretsArgs();
+    public static final GetWorkersForPlatformsScriptSecretsPlainArgs Empty = new GetWorkersForPlatformsScriptSecretsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountId() {
+    public String accountId() {
         return this.accountId;
     }
 
@@ -37,13 +36,13 @@ public final class GetWorkersSecretsArgs extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="dispatchNamespace", required=true)
-    private Output<String> dispatchNamespace;
+    private String dispatchNamespace;
 
     /**
      * @return Name of the Workers for Platforms dispatch namespace.
      * 
      */
-    public Output<String> dispatchNamespace() {
+    public String dispatchNamespace() {
         return this.dispatchNamespace;
     }
 
@@ -52,13 +51,13 @@ public final class GetWorkersSecretsArgs extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="maxItems")
-    private @Nullable Output<Integer> maxItems;
+    private @Nullable Integer maxItems;
 
     /**
      * @return Max items to fetch, default: 1000
      * 
      */
-    public Optional<Output<Integer>> maxItems() {
+    public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
     }
 
@@ -67,19 +66,19 @@ public final class GetWorkersSecretsArgs extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="scriptName", required=true)
-    private Output<String> scriptName;
+    private String scriptName;
 
     /**
      * @return Name of the script, used in URLs and route configuration.
      * 
      */
-    public Output<String> scriptName() {
+    public String scriptName() {
         return this.scriptName;
     }
 
-    private GetWorkersSecretsArgs() {}
+    private GetWorkersForPlatformsScriptSecretsPlainArgs() {}
 
-    private GetWorkersSecretsArgs(GetWorkersSecretsArgs $) {
+    private GetWorkersForPlatformsScriptSecretsPlainArgs(GetWorkersForPlatformsScriptSecretsPlainArgs $) {
         this.accountId = $.accountId;
         this.dispatchNamespace = $.dispatchNamespace;
         this.maxItems = $.maxItems;
@@ -89,50 +88,29 @@ public final class GetWorkersSecretsArgs extends com.pulumi.resources.InvokeArgs
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetWorkersSecretsArgs defaults) {
+    public static Builder builder(GetWorkersForPlatformsScriptSecretsPlainArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetWorkersSecretsArgs $;
+        private GetWorkersForPlatformsScriptSecretsPlainArgs $;
 
         public Builder() {
-            $ = new GetWorkersSecretsArgs();
+            $ = new GetWorkersForPlatformsScriptSecretsPlainArgs();
         }
 
-        public Builder(GetWorkersSecretsArgs defaults) {
-            $ = new GetWorkersSecretsArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accountId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(Output<String> accountId) {
-            $.accountId = accountId;
-            return this;
+        public Builder(GetWorkersForPlatformsScriptSecretsPlainArgs defaults) {
+            $ = new GetWorkersForPlatformsScriptSecretsPlainArgs(Objects.requireNonNull(defaults));
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
         public Builder accountId(String accountId) {
-            return accountId(Output.of(accountId));
-        }
-
-        /**
-         * @param dispatchNamespace Name of the Workers for Platforms dispatch namespace.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dispatchNamespace(Output<String> dispatchNamespace) {
-            $.dispatchNamespace = dispatchNamespace;
+            $.accountId = accountId;
             return this;
         }
 
@@ -143,17 +121,7 @@ public final class GetWorkersSecretsArgs extends com.pulumi.resources.InvokeArgs
          * 
          */
         public Builder dispatchNamespace(String dispatchNamespace) {
-            return dispatchNamespace(Output.of(dispatchNamespace));
-        }
-
-        /**
-         * @param maxItems Max items to fetch, default: 1000
-         * 
-         * @return builder
-         * 
-         */
-        public Builder maxItems(@Nullable Output<Integer> maxItems) {
-            $.maxItems = maxItems;
+            $.dispatchNamespace = dispatchNamespace;
             return this;
         }
 
@@ -163,18 +131,8 @@ public final class GetWorkersSecretsArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder maxItems(Integer maxItems) {
-            return maxItems(Output.of(maxItems));
-        }
-
-        /**
-         * @param scriptName Name of the script, used in URLs and route configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder scriptName(Output<String> scriptName) {
-            $.scriptName = scriptName;
+        public Builder maxItems(@Nullable Integer maxItems) {
+            $.maxItems = maxItems;
             return this;
         }
 
@@ -185,18 +143,19 @@ public final class GetWorkersSecretsArgs extends com.pulumi.resources.InvokeArgs
          * 
          */
         public Builder scriptName(String scriptName) {
-            return scriptName(Output.of(scriptName));
+            $.scriptName = scriptName;
+            return this;
         }
 
-        public GetWorkersSecretsArgs build() {
+        public GetWorkersForPlatformsScriptSecretsPlainArgs build() {
             if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("GetWorkersSecretsArgs", "accountId");
+                throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsPlainArgs", "accountId");
             }
             if ($.dispatchNamespace == null) {
-                throw new MissingRequiredPropertyException("GetWorkersSecretsArgs", "dispatchNamespace");
+                throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsPlainArgs", "dispatchNamespace");
             }
             if ($.scriptName == null) {
-                throw new MissingRequiredPropertyException("GetWorkersSecretsArgs", "scriptName");
+                throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsPlainArgs", "scriptName");
             }
             return $;
         }

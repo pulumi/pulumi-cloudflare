@@ -3,7 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
-import com.pulumi.cloudflare.outputs.GetWorkersSecretsResult;
+import com.pulumi.cloudflare.outputs.GetWorkersForPlatformsScriptSecretsResult;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -14,9 +14,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GetWorkersSecretsInvokeResult {
+public final class GetWorkersForPlatformsScriptSecretsInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -39,16 +39,16 @@ public final class GetWorkersSecretsInvokeResult {
      * @return The items returned by the data source
      * 
      */
-    private List<GetWorkersSecretsResult> results;
+    private List<GetWorkersForPlatformsScriptSecretsResult> results;
     /**
      * @return Name of the script, used in URLs and route configuration.
      * 
      */
     private String scriptName;
 
-    private GetWorkersSecretsInvokeResult() {}
+    private GetWorkersForPlatformsScriptSecretsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -79,7 +79,7 @@ public final class GetWorkersSecretsInvokeResult {
      * @return The items returned by the data source
      * 
      */
-    public List<GetWorkersSecretsResult> results() {
+    public List<GetWorkersForPlatformsScriptSecretsResult> results() {
         return this.results;
     }
     /**
@@ -94,7 +94,7 @@ public final class GetWorkersSecretsInvokeResult {
         return new Builder();
     }
 
-    public static Builder builder(GetWorkersSecretsInvokeResult defaults) {
+    public static Builder builder(GetWorkersForPlatformsScriptSecretsInvokeResult defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -103,10 +103,10 @@ public final class GetWorkersSecretsInvokeResult {
         private String dispatchNamespace;
         private String id;
         private @Nullable Integer maxItems;
-        private List<GetWorkersSecretsResult> results;
+        private List<GetWorkersForPlatformsScriptSecretsResult> results;
         private String scriptName;
         public Builder() {}
-        public Builder(GetWorkersSecretsInvokeResult defaults) {
+        public Builder(GetWorkersForPlatformsScriptSecretsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.dispatchNamespace = defaults.dispatchNamespace;
@@ -119,7 +119,7 @@ public final class GetWorkersSecretsInvokeResult {
         @CustomType.Setter
         public Builder accountId(String accountId) {
             if (accountId == null) {
-              throw new MissingRequiredPropertyException("GetWorkersSecretsInvokeResult", "accountId");
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsInvokeResult", "accountId");
             }
             this.accountId = accountId;
             return this;
@@ -127,7 +127,7 @@ public final class GetWorkersSecretsInvokeResult {
         @CustomType.Setter
         public Builder dispatchNamespace(String dispatchNamespace) {
             if (dispatchNamespace == null) {
-              throw new MissingRequiredPropertyException("GetWorkersSecretsInvokeResult", "dispatchNamespace");
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsInvokeResult", "dispatchNamespace");
             }
             this.dispatchNamespace = dispatchNamespace;
             return this;
@@ -135,7 +135,7 @@ public final class GetWorkersSecretsInvokeResult {
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
-              throw new MissingRequiredPropertyException("GetWorkersSecretsInvokeResult", "id");
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsInvokeResult", "id");
             }
             this.id = id;
             return this;
@@ -147,26 +147,26 @@ public final class GetWorkersSecretsInvokeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder results(List<GetWorkersSecretsResult> results) {
+        public Builder results(List<GetWorkersForPlatformsScriptSecretsResult> results) {
             if (results == null) {
-              throw new MissingRequiredPropertyException("GetWorkersSecretsInvokeResult", "results");
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsInvokeResult", "results");
             }
             this.results = results;
             return this;
         }
-        public Builder results(GetWorkersSecretsResult... results) {
+        public Builder results(GetWorkersForPlatformsScriptSecretsResult... results) {
             return results(List.of(results));
         }
         @CustomType.Setter
         public Builder scriptName(String scriptName) {
             if (scriptName == null) {
-              throw new MissingRequiredPropertyException("GetWorkersSecretsInvokeResult", "scriptName");
+              throw new MissingRequiredPropertyException("GetWorkersForPlatformsScriptSecretsInvokeResult", "scriptName");
             }
             this.scriptName = scriptName;
             return this;
         }
-        public GetWorkersSecretsInvokeResult build() {
-            final var _resultValue = new GetWorkersSecretsInvokeResult();
+        public GetWorkersForPlatformsScriptSecretsInvokeResult build() {
+            final var _resultValue = new GetWorkersForPlatformsScriptSecretsInvokeResult();
             _resultValue.accountId = accountId;
             _resultValue.dispatchNamespace = dispatchNamespace;
             _resultValue.id = id;

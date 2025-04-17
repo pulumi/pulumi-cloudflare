@@ -54,7 +54,11 @@ public final class GetZeroTrustGatewaySettingsSettings {
     /**
      * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private GetZeroTrustGatewaySettingsSettingsCustomCertificate customCertificate;
     /**
      * @return Extended e-mail matching settings.
@@ -128,7 +132,11 @@ public final class GetZeroTrustGatewaySettingsSettings {
     /**
      * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public GetZeroTrustGatewaySettingsSettingsCustomCertificate customCertificate() {
         return this.customCertificate;
     }

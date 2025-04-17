@@ -49,7 +49,7 @@ func LookupZeroTrustTunnelCloudflaredConfig(ctx *pulumi.Context, args *LookupZer
 
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredConfig.
 type LookupZeroTrustTunnelCloudflaredConfigArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// UUID of the tunnel.
 	TunnelId string `pulumi:"tunnelId"`
@@ -57,7 +57,7 @@ type LookupZeroTrustTunnelCloudflaredConfigArgs struct {
 
 // A collection of values returned by getZeroTrustTunnelCloudflaredConfig.
 type LookupZeroTrustTunnelCloudflaredConfigResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config    GetZeroTrustTunnelCloudflaredConfigConfig `pulumi:"config"`
@@ -84,7 +84,7 @@ func LookupZeroTrustTunnelCloudflaredConfigOutput(ctx *pulumi.Context, args Look
 
 // A collection of arguments for invoking getZeroTrustTunnelCloudflaredConfig.
 type LookupZeroTrustTunnelCloudflaredConfigOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// UUID of the tunnel.
 	TunnelId pulumi.StringInput `pulumi:"tunnelId"`
@@ -109,7 +109,7 @@ func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) ToLookupZeroTrustTun
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustTunnelCloudflaredConfigResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredConfigResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

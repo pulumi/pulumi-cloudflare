@@ -27,12 +27,12 @@ public final class GetZeroTrustAccessIdentityProviderResult {
     private GetZeroTrustAccessIdentityProviderConfig config;
     private @Nullable GetZeroTrustAccessIdentityProviderFilter filter;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private @Nullable String identityProviderId;
@@ -77,14 +77,14 @@ public final class GetZeroTrustAccessIdentityProviderResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> identityProviderId() {

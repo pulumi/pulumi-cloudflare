@@ -40,7 +40,7 @@ export interface GetZeroTrustAccessApplicationArgs {
      */
     accountId?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     appId?: string;
     filter?: inputs.GetZeroTrustAccessApplicationFilter;
@@ -67,7 +67,7 @@ export interface GetZeroTrustAccessApplicationResult {
      */
     readonly allowedIdps: string[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly appId?: string;
     /**
@@ -134,7 +134,7 @@ export interface GetZeroTrustAccessApplicationResult {
      */
     readonly httpOnlyCookieAttribute: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -158,6 +158,16 @@ export interface GetZeroTrustAccessApplicationResult {
      */
     readonly pathCookieAttribute: boolean;
     readonly policies: outputs.GetZeroTrustAccessApplicationPolicy[];
+    /**
+     * Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+     * "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+     * }
+     */
+    readonly readServiceTokensFromHeader: string;
     readonly saasApp: outputs.GetZeroTrustAccessApplicationSaasApp;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -169,6 +179,8 @@ export interface GetZeroTrustAccessApplicationResult {
     readonly scimConfig: outputs.GetZeroTrustAccessApplicationScimConfig;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly selfHostedDomains: string[];
     /**
@@ -236,7 +248,7 @@ export interface GetZeroTrustAccessApplicationOutputArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     appId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetZeroTrustAccessApplicationFilterArgs>;

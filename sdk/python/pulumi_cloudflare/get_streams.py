@@ -207,7 +207,7 @@ def get_streams(account_id: Optional[builtins.str] = None,
         end="2014-01-02T02:20:00Z",
         search="puppy.mp4",
         start="2014-01-02T02:20:00Z",
-        status="pendingupload",
+        status="inprogress",
         type="live")
     ```
 
@@ -274,7 +274,7 @@ def get_streams_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
         end="2014-01-02T02:20:00Z",
         search="puppy.mp4",
         start="2014-01-02T02:20:00Z",
-        status="pendingupload",
+        status="inprogress",
         type="live")
     ```
 

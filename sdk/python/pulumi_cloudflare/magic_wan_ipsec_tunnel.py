@@ -422,13 +422,13 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             customer_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
             health_check={
-                "direction": "unidirectional",
+                "direction": "bidirectional",
                 "enabled": True,
                 "rate": "low",
                 "target": {
                     "saved": "203.0.113.1",
                 },
-                "type": "reply",
+                "type": "request",
             },
             psk="O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
             replay_protection=False)
@@ -467,13 +467,13 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             customer_endpoint="203.0.113.1",
             description="Tunnel for ISP X",
             health_check={
-                "direction": "unidirectional",
+                "direction": "bidirectional",
                 "enabled": True,
                 "rate": "low",
                 "target": {
                     "saved": "203.0.113.1",
                 },
-                "type": "reply",
+                "type": "request",
             },
             psk="O3bwKSjnaoCxDoUxjcq4Rk8ZKkezQUiy",
             replay_protection=False)

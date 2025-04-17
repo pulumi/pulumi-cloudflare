@@ -46,6 +46,7 @@ class ZeroTrustAccessApplicationArgs:
                  options_preflight_bypass: Optional[pulumi.Input[builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]] = None,
+                 read_service_tokens_from_header: Optional[pulumi.Input[builtins.str]] = None,
                  saas_app: Optional[pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[builtins.str]] = None,
                  scim_config: Optional[pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs']] = None,
@@ -83,6 +84,13 @@ class ZeroTrustAccessApplicationArgs:
         :param pulumi.Input[builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[builtins.str] read_service_tokens_from_header: Allows matching Access Service Tokens passed HTTP in a single header with this name.
+               This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+               The header value will be interpreted as a json object similar to:
+               {
+               "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+               "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+               }
         :param pulumi.Input[builtins.str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         :param pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -142,12 +150,17 @@ class ZeroTrustAccessApplicationArgs:
             pulumi.set(__self__, "path_cookie_attribute", path_cookie_attribute)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
+        if read_service_tokens_from_header is not None:
+            pulumi.set(__self__, "read_service_tokens_from_header", read_service_tokens_from_header)
         if saas_app is not None:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if scim_config is not None:
             pulumi.set(__self__, "scim_config", scim_config)
+        if self_hosted_domains is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""self_hosted_domains is deprecated: This attribute is deprecated.""")
         if self_hosted_domains is not None:
             pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
@@ -453,6 +466,24 @@ class ZeroTrustAccessApplicationArgs:
         pulumi.set(self, "policies", value)
 
     @property
+    @pulumi.getter(name="readServiceTokensFromHeader")
+    def read_service_tokens_from_header(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        The header value will be interpreted as a json object similar to:
+        {
+        "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        }
+        """
+        return pulumi.get(self, "read_service_tokens_from_header")
+
+    @read_service_tokens_from_header.setter
+    def read_service_tokens_from_header(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "read_service_tokens_from_header", value)
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs']]:
         return pulumi.get(self, "saas_app")
@@ -487,6 +518,7 @@ class ZeroTrustAccessApplicationArgs:
 
     @property
     @pulumi.getter(name="selfHostedDomains")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -620,6 +652,7 @@ class _ZeroTrustAccessApplicationState:
                  options_preflight_bypass: Optional[pulumi.Input[builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]]] = None,
+                 read_service_tokens_from_header: Optional[pulumi.Input[builtins.str]] = None,
                  saas_app: Optional[pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[builtins.str]] = None,
                  scim_config: Optional[pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs']] = None,
@@ -659,6 +692,13 @@ class _ZeroTrustAccessApplicationState:
         :param pulumi.Input[builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessApplicationPolicyArgs']]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[builtins.str] read_service_tokens_from_header: Allows matching Access Service Tokens passed HTTP in a single header with this name.
+               This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+               The header value will be interpreted as a json object similar to:
+               {
+               "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+               "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+               }
         :param pulumi.Input[builtins.str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         :param pulumi.Input['ZeroTrustAccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -722,12 +762,17 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "path_cookie_attribute", path_cookie_attribute)
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
+        if read_service_tokens_from_header is not None:
+            pulumi.set(__self__, "read_service_tokens_from_header", read_service_tokens_from_header)
         if saas_app is not None:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if scim_config is not None:
             pulumi.set(__self__, "scim_config", scim_config)
+        if self_hosted_domains is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""self_hosted_domains is deprecated: This attribute is deprecated.""")
         if self_hosted_domains is not None:
             pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
@@ -1056,6 +1101,24 @@ class _ZeroTrustAccessApplicationState:
         pulumi.set(self, "policies", value)
 
     @property
+    @pulumi.getter(name="readServiceTokensFromHeader")
+    def read_service_tokens_from_header(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        The header value will be interpreted as a json object similar to:
+        {
+        "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        }
+        """
+        return pulumi.get(self, "read_service_tokens_from_header")
+
+    @read_service_tokens_from_header.setter
+    def read_service_tokens_from_header(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "read_service_tokens_from_header", value)
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> Optional[pulumi.Input['ZeroTrustAccessApplicationSaasAppArgs']]:
         return pulumi.get(self, "saas_app")
@@ -1090,6 +1153,7 @@ class _ZeroTrustAccessApplicationState:
 
     @property
     @pulumi.getter(name="selfHostedDomains")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
         List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -1232,6 +1296,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  options_preflight_bypass: Optional[pulumi.Input[builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
+                 read_service_tokens_from_header: Optional[pulumi.Input[builtins.str]] = None,
                  saas_app: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[builtins.str]] = None,
                  scim_config: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']]] = None,
@@ -1279,6 +1344,13 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[builtins.str] read_service_tokens_from_header: Allows matching Access Service Tokens passed HTTP in a single header with this name.
+               This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+               The header value will be interpreted as a json object similar to:
+               {
+               "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+               "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+               }
         :param pulumi.Input[builtins.str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -1344,6 +1416,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  options_preflight_bypass: Optional[pulumi.Input[builtins.bool]] = None,
                  path_cookie_attribute: Optional[pulumi.Input[builtins.bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
+                 read_service_tokens_from_header: Optional[pulumi.Input[builtins.str]] = None,
                  saas_app: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[builtins.str]] = None,
                  scim_config: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']]] = None,
@@ -1389,6 +1462,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
             __props__.__dict__["path_cookie_attribute"] = path_cookie_attribute
             __props__.__dict__["policies"] = policies
+            __props__.__dict__["read_service_tokens_from_header"] = read_service_tokens_from_header
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
             __props__.__dict__["scim_config"] = scim_config
@@ -1442,6 +1516,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             options_preflight_bypass: Optional[pulumi.Input[builtins.bool]] = None,
             path_cookie_attribute: Optional[pulumi.Input[builtins.bool]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]]] = None,
+            read_service_tokens_from_header: Optional[pulumi.Input[builtins.str]] = None,
             saas_app: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationSaasAppArgs', 'ZeroTrustAccessApplicationSaasAppArgsDict']]] = None,
             same_site_cookie_attribute: Optional[pulumi.Input[builtins.str]] = None,
             scim_config: Optional[pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']]] = None,
@@ -1486,6 +1561,13 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set.
         :param pulumi.Input[builtins.bool] path_cookie_attribute: Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustAccessApplicationPolicyArgs', 'ZeroTrustAccessApplicationPolicyArgsDict']]]] policies: The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
+        :param pulumi.Input[builtins.str] read_service_tokens_from_header: Allows matching Access Service Tokens passed HTTP in a single header with this name.
+               This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+               The header value will be interpreted as a json object similar to:
+               {
+               "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+               "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+               }
         :param pulumi.Input[builtins.str] same_site_cookie_attribute: Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
         :param pulumi.Input[Union['ZeroTrustAccessApplicationScimConfigArgs', 'ZeroTrustAccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -1527,6 +1609,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
         __props__.__dict__["path_cookie_attribute"] = path_cookie_attribute
         __props__.__dict__["policies"] = policies
+        __props__.__dict__["read_service_tokens_from_header"] = read_service_tokens_from_header
         __props__.__dict__["saas_app"] = saas_app
         __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
         __props__.__dict__["scim_config"] = scim_config
@@ -1745,6 +1828,20 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "policies")
 
     @property
+    @pulumi.getter(name="readServiceTokensFromHeader")
+    def read_service_tokens_from_header(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        The header value will be interpreted as a json object similar to:
+        {
+        "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        }
+        """
+        return pulumi.get(self, "read_service_tokens_from_header")
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> pulumi.Output['outputs.ZeroTrustAccessApplicationSaasApp']:
         return pulumi.get(self, "saas_app")
@@ -1767,6 +1864,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selfHostedDomains")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def self_hosted_domains(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
         List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.

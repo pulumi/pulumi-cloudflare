@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetStreamKeyResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -21,14 +21,14 @@ public final class GetStreamKeyResult {
      */
     private String created;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
 
     private GetStreamKeyResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -42,7 +42,7 @@ public final class GetStreamKeyResult {
         return this.created;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

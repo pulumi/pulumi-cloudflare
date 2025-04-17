@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("appId")]
         public string? AppId { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> AllowedIdps;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? AppId;
         /// <summary>
@@ -227,7 +227,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool HttpOnlyCookieAttribute;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -251,6 +251,16 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool PathCookieAttribute;
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationPolicyResult> Policies;
+        /// <summary>
+        /// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        /// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        /// The header value will be interpreted as a json object similar to:
+        /// {
+        /// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        /// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        /// }
+        /// </summary>
+        public readonly string ReadServiceTokensFromHeader;
         public readonly Outputs.GetZeroTrustAccessApplicationSaasAppResult SaasApp;
         /// <summary>
         /// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -355,6 +365,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<Outputs.GetZeroTrustAccessApplicationPolicyResult> policies,
 
+            string readServiceTokensFromHeader,
+
             Outputs.GetZeroTrustAccessApplicationSaasAppResult saasApp,
 
             string sameSiteCookieAttribute,
@@ -410,6 +422,7 @@ namespace Pulumi.Cloudflare
             OptionsPreflightBypass = optionsPreflightBypass;
             PathCookieAttribute = pathCookieAttribute;
             Policies = policies;
+            ReadServiceTokensFromHeader = readServiceTokensFromHeader;
             SaasApp = saasApp;
             SameSiteCookieAttribute = sameSiteCookieAttribute;
             ScimConfig = scimConfig;

@@ -265,7 +265,7 @@ class RateLimit(pulumi.CustomResource):
         example_rate_limit = cloudflare.RateLimit("example_rate_limit",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action={
-                "mode": "simulate",
+                "mode": "challenge",
                 "response": {
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
@@ -275,7 +275,7 @@ class RateLimit(pulumi.CustomResource):
             match={
                 "headers": [{
                     "name": "Cf-Cache-Status",
-                    "op": "eq",
+                    "op": "ne",
                     "value": "HIT",
                 }],
                 "request": {
@@ -333,7 +333,7 @@ class RateLimit(pulumi.CustomResource):
         example_rate_limit = cloudflare.RateLimit("example_rate_limit",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action={
-                "mode": "simulate",
+                "mode": "challenge",
                 "response": {
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
@@ -343,7 +343,7 @@ class RateLimit(pulumi.CustomResource):
             match={
                 "headers": [{
                     "name": "Cf-Cache-Status",
-                    "op": "eq",
+                    "op": "ne",
                     "value": "HIT",
                 }],
                 "request": {

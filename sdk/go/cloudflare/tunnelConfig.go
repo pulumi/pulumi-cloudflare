@@ -24,7 +24,7 @@ import (
 type TunnelConfig struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config    TunnelConfigConfigOutput `pulumi:"config"`
@@ -80,7 +80,7 @@ func GetTunnelConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TunnelConfig resources.
 type tunnelConfigState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config    *TunnelConfigConfig `pulumi:"config"`
@@ -95,7 +95,7 @@ type tunnelConfigState struct {
 }
 
 type TunnelConfigState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The tunnel configuration and ingress rules.
 	Config    TunnelConfigConfigPtrInput
@@ -114,7 +114,7 @@ func (TunnelConfigState) ElementType() reflect.Type {
 }
 
 type tunnelConfigArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The tunnel configuration and ingress rules.
 	Config *TunnelConfigConfig `pulumi:"config"`
@@ -127,7 +127,7 @@ type tunnelConfigArgs struct {
 
 // The set of arguments for constructing a TunnelConfig resource.
 type TunnelConfigArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The tunnel configuration and ingress rules.
 	Config TunnelConfigConfigPtrInput
@@ -225,7 +225,7 @@ func (o TunnelConfigOutput) ToTunnelConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o TunnelConfigOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

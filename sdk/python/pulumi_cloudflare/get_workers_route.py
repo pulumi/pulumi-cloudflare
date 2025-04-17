@@ -48,7 +48,7 @@ class GetWorkersRouteResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -61,7 +61,7 @@ class GetWorkersRouteResult:
     @pulumi.getter(name="routeId")
     def route_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "route_id")
 
@@ -77,7 +77,7 @@ class GetWorkersRouteResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -110,8 +110,8 @@ def get_workers_route(route_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str route_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str route_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['routeId'] = route_id
@@ -140,8 +140,8 @@ def get_workers_route_output(route_id: Optional[pulumi.Input[builtins.str]] = No
     ```
 
 
-    :param builtins.str route_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str route_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['routeId'] = route_id

@@ -69,6 +69,8 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
     public /*out*/ readonly modified!: pulumi.Output<string>;
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
@@ -137,6 +139,8 @@ export interface EmailRoutingAddressState {
     modified?: pulumi.Input<string>;
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     tag?: pulumi.Input<string>;
     /**

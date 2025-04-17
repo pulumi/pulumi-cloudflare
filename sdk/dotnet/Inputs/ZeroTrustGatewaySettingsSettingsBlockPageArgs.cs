@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZeroTrustGatewaySettingsSettingsBlockPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Block page background color in #rrggbb format.
+        /// If mode is customized*block*page: block page background color in #rrggbb format.
         /// </summary>
         [Input("backgroundColor")]
         public Input<string>? BackgroundColor { get; set; }
@@ -25,46 +25,65 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Block page footer text.
+        /// If mode is customized*block*page: block page footer text.
         /// </summary>
         [Input("footerText")]
         public Input<string>? FooterText { get; set; }
 
         /// <summary>
-        /// Block page header text.
+        /// If mode is customized*block*page: block page header text.
         /// </summary>
         [Input("headerText")]
         public Input<string>? HeaderText { get; set; }
 
         /// <summary>
-        /// Full URL to the logo file.
+        /// If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        /// </summary>
+        [Input("includeContext")]
+        public Input<bool>? IncludeContext { get; set; }
+
+        /// <summary>
+        /// If mode is customized*block*page: full URL to the logo file.
         /// </summary>
         [Input("logoPath")]
         public Input<string>? LogoPath { get; set; }
 
         /// <summary>
-        /// Admin email for users to contact.
+        /// If mode is customized*block*page: admin email for users to contact.
         /// </summary>
         [Input("mailtoAddress")]
         public Input<string>? MailtoAddress { get; set; }
 
         /// <summary>
-        /// Subject line for emails created from block page.
+        /// If mode is customized*block*page: subject line for emails created from block page.
         /// </summary>
         [Input("mailtoSubject")]
         public Input<string>? MailtoSubject { get; set; }
 
         /// <summary>
-        /// Block page title.
+        /// Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+        /// Available values: "customized*block*page", "redirect_uri".
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// If mode is customized*block*page: block page title.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Suppress detailed info at the bottom of the block page.
+        /// If mode is customized*block*page: suppress detailed info at the bottom of the block page.
         /// </summary>
         [Input("suppressFooter")]
         public Input<bool>? SuppressFooter { get; set; }
+
+        /// <summary>
+        /// If mode is redirect_uri: URI to which the user should be redirected.
+        /// </summary>
+        [Input("targetUri")]
+        public Input<string>? TargetUri { get; set; }
 
         public ZeroTrustGatewaySettingsSettingsBlockPageArgs()
         {

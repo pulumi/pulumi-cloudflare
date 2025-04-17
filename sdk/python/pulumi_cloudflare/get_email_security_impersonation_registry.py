@@ -113,6 +113,7 @@ class GetEmailSecurityImpersonationRegistryResult:
 
     @property
     @pulumi.getter(name="externalDirectoryNodeId")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def external_directory_node_id(self) -> builtins.str:
         return pulumi.get(self, "external_directory_node_id")
 

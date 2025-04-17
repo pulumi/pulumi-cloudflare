@@ -3,49 +3,27 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayLoggingSettingsByRuleTypeDns;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayLoggingSettingsByRuleTypeL4;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustGatewayLoggingSettingsByRuleType {
-    /**
-     * @return Logging settings for DNS firewall.
-     * 
-     */
-    private String dns;
-    /**
-     * @return Logging settings for HTTP/HTTPS firewall.
-     * 
-     */
-    private String http;
-    /**
-     * @return Logging settings for Network firewall.
-     * 
-     */
-    private String l4;
+    private GetZeroTrustGatewayLoggingSettingsByRuleTypeDns dns;
+    private GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp http;
+    private GetZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4;
 
     private GetZeroTrustGatewayLoggingSettingsByRuleType() {}
-    /**
-     * @return Logging settings for DNS firewall.
-     * 
-     */
-    public String dns() {
+    public GetZeroTrustGatewayLoggingSettingsByRuleTypeDns dns() {
         return this.dns;
     }
-    /**
-     * @return Logging settings for HTTP/HTTPS firewall.
-     * 
-     */
-    public String http() {
+    public GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp http() {
         return this.http;
     }
-    /**
-     * @return Logging settings for Network firewall.
-     * 
-     */
-    public String l4() {
+    public GetZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4() {
         return this.l4;
     }
 
@@ -58,9 +36,9 @@ public final class GetZeroTrustGatewayLoggingSettingsByRuleType {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String dns;
-        private String http;
-        private String l4;
+        private GetZeroTrustGatewayLoggingSettingsByRuleTypeDns dns;
+        private GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp http;
+        private GetZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4;
         public Builder() {}
         public Builder(GetZeroTrustGatewayLoggingSettingsByRuleType defaults) {
     	      Objects.requireNonNull(defaults);
@@ -70,7 +48,7 @@ public final class GetZeroTrustGatewayLoggingSettingsByRuleType {
         }
 
         @CustomType.Setter
-        public Builder dns(String dns) {
+        public Builder dns(GetZeroTrustGatewayLoggingSettingsByRuleTypeDns dns) {
             if (dns == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayLoggingSettingsByRuleType", "dns");
             }
@@ -78,7 +56,7 @@ public final class GetZeroTrustGatewayLoggingSettingsByRuleType {
             return this;
         }
         @CustomType.Setter
-        public Builder http(String http) {
+        public Builder http(GetZeroTrustGatewayLoggingSettingsByRuleTypeHttp http) {
             if (http == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayLoggingSettingsByRuleType", "http");
             }
@@ -86,7 +64,7 @@ public final class GetZeroTrustGatewayLoggingSettingsByRuleType {
             return this;
         }
         @CustomType.Setter
-        public Builder l4(String l4) {
+        public Builder l4(GetZeroTrustGatewayLoggingSettingsByRuleTypeL4 l4) {
             if (l4 == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayLoggingSettingsByRuleType", "l4");
             }

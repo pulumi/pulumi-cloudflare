@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetMagicTransitSiteWansResultStaticAddressingResult StaticAddressing;
         /// <summary>
-        /// VLAN port number.
+        /// VLAN ID. Use zero for untagged.
         /// </summary>
         public readonly int VlanTag;
 

@@ -48,17 +48,17 @@ func LookupStreamKey(ctx *pulumi.Context, args *LookupStreamKeyArgs, opts ...pul
 
 // A collection of arguments for invoking getStreamKey.
 type LookupStreamKeyArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getStreamKey.
 type LookupStreamKeyResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The date and time a signing key was created.
 	Created string `pulumi:"created"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 }
 
@@ -73,7 +73,7 @@ func LookupStreamKeyOutput(ctx *pulumi.Context, args LookupStreamKeyOutputArgs, 
 
 // A collection of arguments for invoking getStreamKey.
 type LookupStreamKeyOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -96,7 +96,7 @@ func (o LookupStreamKeyResultOutput) ToLookupStreamKeyResultOutputWithContext(ct
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupStreamKeyResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -106,7 +106,7 @@ func (o LookupStreamKeyResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupStreamKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }

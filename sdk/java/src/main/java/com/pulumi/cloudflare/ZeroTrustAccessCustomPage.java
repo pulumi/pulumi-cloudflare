@@ -67,14 +67,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage")
 public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -145,14 +145,14 @@ public class ZeroTrustAccessCustomPage extends com.pulumi.resources.CustomResour
         return this.type;
     }
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Output<String> uid() {

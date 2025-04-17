@@ -39,7 +39,7 @@ class DnsRecordArgs:
         :param pulumi.Input[builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[builtins.str] type: Record type.
                Available values: "A".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[builtins.str] content: A valid IPv4 address.
         :param pulumi.Input['DnsRecordDataArgs'] data: Components of a CAA record.
@@ -108,7 +108,7 @@ class DnsRecordArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -240,7 +240,7 @@ class _DnsRecordState:
         :param pulumi.Input[builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[builtins.str] type: Record type.
                Available values: "A".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -474,7 +474,7 @@ class _DnsRecordState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -522,7 +522,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[builtins.str] type: Record type.
                Available values: "A".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -652,7 +652,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[builtins.str] type: Record type.
                Available values: "A".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -810,7 +810,7 @@ class DnsRecord(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

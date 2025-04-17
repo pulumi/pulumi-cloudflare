@@ -37447,6 +37447,8 @@ type AccountSettings struct {
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail *string `pulumi:"abuseContactEmail"`
 	// Specifies the default nameservers to be used for new zones added to this account.
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultNameservers *string `pulumi:"defaultNameservers"`
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
@@ -37455,6 +37457,8 @@ type AccountSettings struct {
 	// nameservers by default.
 	//
 	// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+	//
+	// Deprecated: This attribute is deprecated.
 	UseAccountCustomNsByDefault *bool `pulumi:"useAccountCustomNsByDefault"`
 }
 
@@ -37473,6 +37477,8 @@ type AccountSettingsArgs struct {
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail pulumi.StringPtrInput `pulumi:"abuseContactEmail"`
 	// Specifies the default nameservers to be used for new zones added to this account.
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultNameservers pulumi.StringPtrInput `pulumi:"defaultNameservers"`
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
@@ -37481,6 +37487,8 @@ type AccountSettingsArgs struct {
 	// nameservers by default.
 	//
 	// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+	//
+	// Deprecated: This attribute is deprecated.
 	UseAccountCustomNsByDefault pulumi.BoolPtrInput `pulumi:"useAccountCustomNsByDefault"`
 }
 
@@ -37567,6 +37575,8 @@ func (o AccountSettingsOutput) AbuseContactEmail() pulumi.StringPtrOutput {
 }
 
 // Specifies the default nameservers to be used for new zones added to this account.
+//
+// Deprecated: This attribute is deprecated.
 func (o AccountSettingsOutput) DefaultNameservers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountSettings) *string { return v.DefaultNameservers }).(pulumi.StringPtrOutput)
 }
@@ -37581,6 +37591,8 @@ func (o AccountSettingsOutput) EnforceTwofactor() pulumi.BoolPtrOutput {
 // nameservers by default.
 //
 // Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+//
+// Deprecated: This attribute is deprecated.
 func (o AccountSettingsOutput) UseAccountCustomNsByDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccountSettings) *bool { return v.UseAccountCustomNsByDefault }).(pulumi.BoolPtrOutput)
 }
@@ -37620,6 +37632,8 @@ func (o AccountSettingsPtrOutput) AbuseContactEmail() pulumi.StringPtrOutput {
 }
 
 // Specifies the default nameservers to be used for new zones added to this account.
+//
+// Deprecated: This attribute is deprecated.
 func (o AccountSettingsPtrOutput) DefaultNameservers() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountSettings) *string {
 		if v == nil {
@@ -37644,6 +37658,8 @@ func (o AccountSettingsPtrOutput) EnforceTwofactor() pulumi.BoolPtrOutput {
 // nameservers by default.
 //
 // Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+//
+// Deprecated: This attribute is deprecated.
 func (o AccountSettingsPtrOutput) UseAccountCustomNsByDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccountSettings) *bool {
 		if v == nil {
@@ -47372,6 +47388,8 @@ func (o DlpCustomProfileEntryArrayOutput) Index(i pulumi.IntInput) DlpCustomProf
 type DlpCustomProfileEntryPattern struct {
 	Regex string `pulumi:"regex"`
 	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
 	Validation *string `pulumi:"validation"`
 }
 
@@ -47389,6 +47407,8 @@ type DlpCustomProfileEntryPatternInput interface {
 type DlpCustomProfileEntryPatternArgs struct {
 	Regex pulumi.StringInput `pulumi:"regex"`
 	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
 	Validation pulumi.StringPtrInput `pulumi:"validation"`
 }
 
@@ -47474,6 +47494,8 @@ func (o DlpCustomProfileEntryPatternOutput) Regex() pulumi.StringOutput {
 }
 
 // Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
 func (o DlpCustomProfileEntryPatternOutput) Validation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DlpCustomProfileEntryPattern) *string { return v.Validation }).(pulumi.StringPtrOutput)
 }
@@ -47512,6 +47534,8 @@ func (o DlpCustomProfileEntryPatternPtrOutput) Regex() pulumi.StringPtrOutput {
 }
 
 // Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
 func (o DlpCustomProfileEntryPatternPtrOutput) Validation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DlpCustomProfileEntryPattern) *string {
 		if v == nil {
@@ -48085,6 +48109,8 @@ func (o DlpCustomProfileProfileEntryArrayOutput) Index(i pulumi.IntInput) DlpCus
 type DlpCustomProfileProfileEntryPattern struct {
 	Regex string `pulumi:"regex"`
 	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
 	Validation *string `pulumi:"validation"`
 }
 
@@ -48102,6 +48128,8 @@ type DlpCustomProfileProfileEntryPatternInput interface {
 type DlpCustomProfileProfileEntryPatternArgs struct {
 	Regex pulumi.StringInput `pulumi:"regex"`
 	// Available values: "luhn".
+	//
+	// Deprecated: This attribute is deprecated.
 	Validation pulumi.StringPtrInput `pulumi:"validation"`
 }
 
@@ -48187,6 +48215,8 @@ func (o DlpCustomProfileProfileEntryPatternOutput) Regex() pulumi.StringOutput {
 }
 
 // Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
 func (o DlpCustomProfileProfileEntryPatternOutput) Validation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DlpCustomProfileProfileEntryPattern) *string { return v.Validation }).(pulumi.StringPtrOutput)
 }
@@ -48225,6 +48255,8 @@ func (o DlpCustomProfileProfileEntryPatternPtrOutput) Regex() pulumi.StringPtrOu
 }
 
 // Available values: "luhn".
+//
+// Deprecated: This attribute is deprecated.
 func (o DlpCustomProfileProfileEntryPatternPtrOutput) Validation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DlpCustomProfileProfileEntryPattern) *string {
 		if v == nil {
@@ -57386,7 +57418,7 @@ type LogpushJobOutputOptions struct {
 	RecordPrefix *string `pulumi:"recordPrefix"`
 	// String to be appended after each record.
 	RecordSuffix *string `pulumi:"recordSuffix"`
-	// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate *string `pulumi:"recordTemplate"`
 	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate *float64 `pulumi:"sampleRate"`
@@ -57426,7 +57458,7 @@ type LogpushJobOutputOptionsArgs struct {
 	RecordPrefix pulumi.StringPtrInput `pulumi:"recordPrefix"`
 	// String to be appended after each record.
 	RecordSuffix pulumi.StringPtrInput `pulumi:"recordSuffix"`
-	// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate pulumi.StringPtrInput `pulumi:"recordTemplate"`
 	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate pulumi.Float64PtrInput `pulumi:"sampleRate"`
@@ -57558,7 +57590,7 @@ func (o LogpushJobOutputOptionsOutput) RecordSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordSuffix }).(pulumi.StringPtrOutput)
 }
 
-// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 func (o LogpushJobOutputOptionsOutput) RecordTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordTemplate }).(pulumi.StringPtrOutput)
 }
@@ -57689,7 +57721,7 @@ func (o LogpushJobOutputOptionsPtrOutput) RecordSuffix() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 func (o LogpushJobOutputOptionsPtrOutput) RecordTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
 		if v == nil {
@@ -66823,7 +66855,7 @@ type ObservatoryScheduledTestTest struct {
 	Date *string `pulumi:"date"`
 	// The Lighthouse report.
 	DesktopReport *ObservatoryScheduledTestTestDesktopReport `pulumi:"desktopReport"`
-	// UUID
+	// UUID.
 	Id *string `pulumi:"id"`
 	// The Lighthouse report.
 	MobileReport *ObservatoryScheduledTestTestMobileReport `pulumi:"mobileReport"`
@@ -66851,7 +66883,7 @@ type ObservatoryScheduledTestTestArgs struct {
 	Date pulumi.StringPtrInput `pulumi:"date"`
 	// The Lighthouse report.
 	DesktopReport ObservatoryScheduledTestTestDesktopReportPtrInput `pulumi:"desktopReport"`
-	// UUID
+	// UUID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The Lighthouse report.
 	MobileReport ObservatoryScheduledTestTestMobileReportPtrInput `pulumi:"mobileReport"`
@@ -66952,7 +66984,7 @@ func (o ObservatoryScheduledTestTestOutput) DesktopReport() ObservatoryScheduled
 	}).(ObservatoryScheduledTestTestDesktopReportPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o ObservatoryScheduledTestTestOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObservatoryScheduledTestTest) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -67021,7 +67053,7 @@ func (o ObservatoryScheduledTestTestPtrOutput) DesktopReport() ObservatorySchedu
 	}).(ObservatoryScheduledTestTestDesktopReportPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o ObservatoryScheduledTestTestPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTestTest) *string {
 		if v == nil {
@@ -79145,6 +79177,8 @@ func (o QueueProducerArrayOutput) Index(i pulumi.IntInput) QueueProducerOutput {
 type QueueSettings struct {
 	// Number of seconds to delay delivery of all messages to consumers.
 	DeliveryDelay *float64 `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused *bool `pulumi:"deliveryPaused"`
 	// Number of seconds after which an unconsumed message will be delayed.
 	MessageRetentionPeriod *float64 `pulumi:"messageRetentionPeriod"`
 }
@@ -79163,6 +79197,8 @@ type QueueSettingsInput interface {
 type QueueSettingsArgs struct {
 	// Number of seconds to delay delivery of all messages to consumers.
 	DeliveryDelay pulumi.Float64PtrInput `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused pulumi.BoolPtrInput `pulumi:"deliveryPaused"`
 	// Number of seconds after which an unconsumed message will be delayed.
 	MessageRetentionPeriod pulumi.Float64PtrInput `pulumi:"messageRetentionPeriod"`
 }
@@ -79249,6 +79285,11 @@ func (o QueueSettingsOutput) DeliveryDelay() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v QueueSettings) *float64 { return v.DeliveryDelay }).(pulumi.Float64PtrOutput)
 }
 
+// Indicates if message delivery to consumers is currently paused.
+func (o QueueSettingsOutput) DeliveryPaused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v QueueSettings) *bool { return v.DeliveryPaused }).(pulumi.BoolPtrOutput)
+}
+
 // Number of seconds after which an unconsumed message will be delayed.
 func (o QueueSettingsOutput) MessageRetentionPeriod() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v QueueSettings) *float64 { return v.MessageRetentionPeriod }).(pulumi.Float64PtrOutput)
@@ -79286,6 +79327,16 @@ func (o QueueSettingsPtrOutput) DeliveryDelay() pulumi.Float64PtrOutput {
 		}
 		return v.DeliveryDelay
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Indicates if message delivery to consumers is currently paused.
+func (o QueueSettingsPtrOutput) DeliveryPaused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QueueSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryPaused
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Number of seconds after which an unconsumed message will be delayed.

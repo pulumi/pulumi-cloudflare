@@ -27,7 +27,7 @@ class GetWaitingRoomEventResult:
     """
     A collection of values returned by getWaitingRoomEvent.
     """
-    def __init__(__self__, created_on=None, custom_page_html=None, description=None, disable_session_renewal=None, event_end_time=None, event_id=None, event_start_time=None, id=None, modified_on=None, name=None, new_users_per_minute=None, prequeue_start_time=None, queueing_method=None, session_duration=None, shuffle_at_event_start=None, suspended=None, total_active_users=None, waiting_room_id=None, zone_id=None):
+    def __init__(__self__, created_on=None, custom_page_html=None, description=None, disable_session_renewal=None, event_end_time=None, event_id=None, event_start_time=None, id=None, modified_on=None, name=None, new_users_per_minute=None, prequeue_start_time=None, queueing_method=None, session_duration=None, shuffle_at_event_start=None, suspended=None, total_active_users=None, turnstile_action=None, turnstile_mode=None, waiting_room_id=None, zone_id=None):
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
@@ -79,6 +79,12 @@ class GetWaitingRoomEventResult:
         if total_active_users and not isinstance(total_active_users, int):
             raise TypeError("Expected argument 'total_active_users' to be a int")
         pulumi.set(__self__, "total_active_users", total_active_users)
+        if turnstile_action and not isinstance(turnstile_action, str):
+            raise TypeError("Expected argument 'turnstile_action' to be a str")
+        pulumi.set(__self__, "turnstile_action", turnstile_action)
+        if turnstile_mode and not isinstance(turnstile_mode, str):
+            raise TypeError("Expected argument 'turnstile_mode' to be a str")
+        pulumi.set(__self__, "turnstile_mode", turnstile_mode)
         if waiting_room_id and not isinstance(waiting_room_id, str):
             raise TypeError("Expected argument 'waiting_room_id' to be a str")
         pulumi.set(__self__, "waiting_room_id", waiting_room_id)
@@ -214,6 +220,24 @@ class GetWaitingRoomEventResult:
         return pulumi.get(self, "total_active_users")
 
     @property
+    @pulumi.getter(name="turnstileAction")
+    def turnstile_action(self) -> builtins.str:
+        """
+        If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+        Available values: "log", "infinite_queue".
+        """
+        return pulumi.get(self, "turnstile_action")
+
+    @property
+    @pulumi.getter(name="turnstileMode")
+    def turnstile_mode(self) -> builtins.str:
+        """
+        If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+        Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        """
+        return pulumi.get(self, "turnstile_mode")
+
+    @property
     @pulumi.getter(name="waitingRoomId")
     def waiting_room_id(self) -> builtins.str:
         return pulumi.get(self, "waiting_room_id")
@@ -250,6 +274,8 @@ class AwaitableGetWaitingRoomEventResult(GetWaitingRoomEventResult):
             shuffle_at_event_start=self.shuffle_at_event_start,
             suspended=self.suspended,
             total_active_users=self.total_active_users,
+            turnstile_action=self.turnstile_action,
+            turnstile_mode=self.turnstile_mode,
             waiting_room_id=self.waiting_room_id,
             zone_id=self.zone_id)
 
@@ -298,6 +324,8 @@ def get_waiting_room_event(event_id: Optional[builtins.str] = None,
         shuffle_at_event_start=pulumi.get(__ret__, 'shuffle_at_event_start'),
         suspended=pulumi.get(__ret__, 'suspended'),
         total_active_users=pulumi.get(__ret__, 'total_active_users'),
+        turnstile_action=pulumi.get(__ret__, 'turnstile_action'),
+        turnstile_mode=pulumi.get(__ret__, 'turnstile_mode'),
         waiting_room_id=pulumi.get(__ret__, 'waiting_room_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_waiting_room_event_output(event_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
@@ -343,5 +371,7 @@ def get_waiting_room_event_output(event_id: Optional[pulumi.Input[Optional[built
         shuffle_at_event_start=pulumi.get(__response__, 'shuffle_at_event_start'),
         suspended=pulumi.get(__response__, 'suspended'),
         total_active_users=pulumi.get(__response__, 'total_active_users'),
+        turnstile_action=pulumi.get(__response__, 'turnstile_action'),
+        turnstile_mode=pulumi.get(__response__, 'turnstile_mode'),
         waiting_room_id=pulumi.get(__response__, 'waiting_room_id'),
         zone_id=pulumi.get(__response__, 'zone_id')))

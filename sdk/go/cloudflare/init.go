@@ -357,6 +357,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersForPlatformsDispatchNamespace{}
 	case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
 		r = &WorkersForPlatformsNamespace{}
+	case "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret":
+		r = &WorkersForPlatformsScriptSecret{}
 	case "cloudflare:index/workersKv:WorkersKv":
 		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -1336,6 +1338,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workersForPlatformsNamespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workersForPlatformsScriptSecret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

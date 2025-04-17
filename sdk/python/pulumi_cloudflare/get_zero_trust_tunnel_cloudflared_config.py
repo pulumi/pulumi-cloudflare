@@ -55,7 +55,7 @@ class GetZeroTrustTunnelCloudflaredConfigResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -136,7 +136,7 @@ def get_zero_trust_tunnel_cloudflared_config(account_id: Optional[builtins.str] 
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str tunnel_id: UUID of the tunnel.
     """
     __args__ = dict()
@@ -168,7 +168,7 @@ def get_zero_trust_tunnel_cloudflared_config_output(account_id: Optional[pulumi.
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str tunnel_id: UUID of the tunnel.
     """
     __args__ = dict()

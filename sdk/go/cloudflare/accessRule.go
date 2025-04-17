@@ -31,7 +31,7 @@ import (
 //					Target: pulumi.String("ip"),
 //					Value:  pulumi.String("198.51.100.4"),
 //				},
-//				Mode:   pulumi.String("block"),
+//				Mode:   pulumi.String("challenge"),
 //				ZoneId: pulumi.String("zone_id"),
 //				Notes:  pulumi.String("This rule is enabled because of an event that occurred on date X."),
 //			})

@@ -52,7 +52,7 @@ export class WorkersRoute extends pulumi.CustomResource {
     public /*out*/ readonly messages!: pulumi.Output<outputs.WorkersRouteMessage[]>;
     public readonly pattern!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly routeId!: pulumi.Output<string | undefined>;
     /**
@@ -60,11 +60,11 @@ export class WorkersRoute extends pulumi.CustomResource {
      */
     public readonly script!: pulumi.Output<string | undefined>;
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      */
     public /*out*/ readonly success!: pulumi.Output<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -117,7 +117,7 @@ export interface WorkersRouteState {
     messages?: pulumi.Input<pulumi.Input<inputs.WorkersRouteMessage>[]>;
     pattern?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     routeId?: pulumi.Input<string>;
     /**
@@ -125,11 +125,11 @@ export interface WorkersRouteState {
      */
     script?: pulumi.Input<string>;
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      */
     success?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -140,7 +140,7 @@ export interface WorkersRouteState {
 export interface WorkersRouteArgs {
     pattern: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     routeId?: pulumi.Input<string>;
     /**
@@ -148,7 +148,7 @@ export interface WorkersRouteArgs {
      */
     script?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetDnsRecordArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("dnsRecordId")]
         public string? DnsRecordId { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetDnsRecordFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetDnsRecordInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("dnsRecordId")]
         public Input<string>? DnsRecordId { get; set; }
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetDnsRecordFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -153,12 +153,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetDnsRecordDataResult Data;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? DnsRecordId;
         public readonly Outputs.GetDnsRecordFilterResult? Filter;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -207,7 +207,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

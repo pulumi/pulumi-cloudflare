@@ -49,7 +49,7 @@ func LookupWorkersScriptSubdomain(ctx *pulumi.Context, args *LookupWorkersScript
 
 // A collection of arguments for invoking getWorkersScriptSubdomain.
 type LookupWorkersScriptSubdomainArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
@@ -57,7 +57,7 @@ type LookupWorkersScriptSubdomainArgs struct {
 
 // A collection of values returned by getWorkersScriptSubdomain.
 type LookupWorkersScriptSubdomainResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Whether the Worker is available on the workers.dev subdomain.
 	Enabled bool `pulumi:"enabled"`
@@ -80,7 +80,7 @@ func LookupWorkersScriptSubdomainOutput(ctx *pulumi.Context, args LookupWorkersS
 
 // A collection of arguments for invoking getWorkersScriptSubdomain.
 type LookupWorkersScriptSubdomainOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
@@ -105,7 +105,7 @@ func (o LookupWorkersScriptSubdomainResultOutput) ToLookupWorkersScriptSubdomain
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersScriptSubdomainResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptSubdomainResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

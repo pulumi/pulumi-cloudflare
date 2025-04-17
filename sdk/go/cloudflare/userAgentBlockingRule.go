@@ -32,7 +32,7 @@ import (
 //					Target: pulumi.String("ip"),
 //					Value:  pulumi.String("198.51.100.4"),
 //				},
-//				Mode: pulumi.String("block"),
+//				Mode: pulumi.String("challenge"),
 //			})
 //			if err != nil {
 //				return err

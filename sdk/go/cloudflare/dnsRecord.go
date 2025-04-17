@@ -55,7 +55,7 @@ type DnsRecord struct {
 	// Record type.
 	// Available values: "A".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -140,7 +140,7 @@ type dnsRecordState struct {
 	// Record type.
 	// Available values: "A".
 	Type *string `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -178,7 +178,7 @@ type DnsRecordState struct {
 	// Record type.
 	// Available values: "A".
 	Type pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -208,7 +208,7 @@ type dnsRecordArgs struct {
 	// Record type.
 	// Available values: "A".
 	Type string `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -235,7 +235,7 @@ type DnsRecordArgs struct {
 	// Record type.
 	// Available values: "A".
 	Type pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -407,7 +407,7 @@ func (o DnsRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o DnsRecordOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsRecord) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

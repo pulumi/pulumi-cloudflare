@@ -27,7 +27,6 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs:
                  policy_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ZeroTrustDeviceCustomProfileLocalDomainFallback resource.
-        :param pulumi.Input[builtins.str] policy_id: Device ID.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domains", domains)
@@ -54,9 +53,6 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallbackArgs:
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Input[builtins.str]:
-        """
-        Device ID.
-        """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
@@ -77,7 +73,6 @@ class _ZeroTrustDeviceCustomProfileLocalDomainFallbackState:
         Input properties used for looking up and filtering ZeroTrustDeviceCustomProfileLocalDomainFallback resources.
         :param pulumi.Input[builtins.str] description: A description of the fallback domain, displayed in the client UI.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: A list of IP addresses to handle domain resolution.
-        :param pulumi.Input[builtins.str] policy_id: Device ID.
         :param pulumi.Input[builtins.str] suffix: The domain suffix to match when resolving locally.
         """
         if account_id is not None:
@@ -138,9 +133,6 @@ class _ZeroTrustDeviceCustomProfileLocalDomainFallbackState:
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Device ID.
-        """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
@@ -180,7 +172,6 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] policy_id: Device ID.
         """
         ...
     @overload
@@ -263,7 +254,6 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] description: A description of the fallback domain, displayed in the client UI.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] dns_servers: A list of IP addresses to handle domain resolution.
-        :param pulumi.Input[builtins.str] policy_id: Device ID.
         :param pulumi.Input[builtins.str] suffix: The domain suffix to match when resolving locally.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -307,9 +297,6 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback(pulumi.CustomResource):
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> pulumi.Output[builtins.str]:
-        """
-        Device ID.
-        """
         return pulumi.get(self, "policy_id")
 
     @property

@@ -98,14 +98,22 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
      * @return Routing rule tag. (Deprecated, replaced by routing rule identifier)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> tag() {
         return Optional.ofNullable(this.tag);
     }
@@ -285,7 +293,11 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder tag(@Nullable Output<String> tag) {
             $.tag = tag;
             return this;
@@ -296,7 +308,11 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder tag(String tag) {
             return tag(Output.of(tag));
         }

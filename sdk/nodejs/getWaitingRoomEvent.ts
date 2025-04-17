@@ -102,6 +102,16 @@ export interface GetWaitingRoomEventResult {
      * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
     readonly totalActiveUsers: number;
+    /**
+     * If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+     * Available values: "log", "infiniteQueue".
+     */
+    readonly turnstileAction: string;
+    /**
+     * If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+     * Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+     */
+    readonly turnstileMode: string;
     readonly waitingRoomId: string;
     /**
      * Identifier

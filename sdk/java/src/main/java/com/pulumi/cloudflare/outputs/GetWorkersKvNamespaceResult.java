@@ -19,6 +19,11 @@ public final class GetWorkersKvNamespaceResult {
      * 
      */
     private String accountId;
+    /**
+     * @return True if new beta namespace, with additional preview features.
+     * 
+     */
+    private Boolean beta;
     private @Nullable GetWorkersKvNamespaceFilter filter;
     /**
      * @return Namespace identifier tag.
@@ -48,6 +53,13 @@ public final class GetWorkersKvNamespaceResult {
      */
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return True if new beta namespace, with additional preview features.
+     * 
+     */
+    public Boolean beta() {
+        return this.beta;
     }
     public Optional<GetWorkersKvNamespaceFilter> filter() {
         return Optional.ofNullable(this.filter);
@@ -91,6 +103,7 @@ public final class GetWorkersKvNamespaceResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private Boolean beta;
         private @Nullable GetWorkersKvNamespaceFilter filter;
         private String id;
         private @Nullable String namespaceId;
@@ -100,6 +113,7 @@ public final class GetWorkersKvNamespaceResult {
         public Builder(GetWorkersKvNamespaceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.beta = defaults.beta;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.namespaceId = defaults.namespaceId;
@@ -113,6 +127,14 @@ public final class GetWorkersKvNamespaceResult {
               throw new MissingRequiredPropertyException("GetWorkersKvNamespaceResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder beta(Boolean beta) {
+            if (beta == null) {
+              throw new MissingRequiredPropertyException("GetWorkersKvNamespaceResult", "beta");
+            }
+            this.beta = beta;
             return this;
         }
         @CustomType.Setter
@@ -154,6 +176,7 @@ public final class GetWorkersKvNamespaceResult {
         public GetWorkersKvNamespaceResult build() {
             final var _resultValue = new GetWorkersKvNamespaceResult();
             _resultValue.accountId = accountId;
+            _resultValue.beta = beta;
             _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.namespaceId = namespaceId;

@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     pageUrl: "example.com/page,*&#47;checkout,example.com/*,*checkout*",
  *     path: "/",
  *     perPage: 100,
- *     sameSite: "lax",
+ *     sameSite: "strict",
  *     secure: true,
  *     type: "first_party",
  * });
@@ -156,7 +156,7 @@ export interface GetPageShieldCookiesListResult {
  *     pageUrl: "example.com/page,*&#47;checkout,example.com/*,*checkout*",
  *     path: "/",
  *     perPage: 100,
- *     sameSite: "lax",
+ *     sameSite: "strict",
  *     secure: true,
  *     type: "first_party",
  * });

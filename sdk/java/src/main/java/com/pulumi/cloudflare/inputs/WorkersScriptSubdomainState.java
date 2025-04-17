@@ -17,14 +17,14 @@ public final class WorkersScriptSubdomainState extends com.pulumi.resources.Reso
     public static final WorkersScriptSubdomainState Empty = new WorkersScriptSubdomainState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -104,7 +104,7 @@ public final class WorkersScriptSubdomainState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class WorkersScriptSubdomainState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

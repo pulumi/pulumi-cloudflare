@@ -49,7 +49,7 @@ func LookupStreamLiveInput(ctx *pulumi.Context, args *LookupStreamLiveInputArgs,
 
 // A collection of arguments for invoking getStreamLiveInput.
 type LookupStreamLiveInputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier string `pulumi:"liveInputIdentifier"`
@@ -57,7 +57,7 @@ type LookupStreamLiveInputArgs struct {
 
 // A collection of values returned by getStreamLiveInput.
 type LookupStreamLiveInputResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The date and time the live input was created.
 	Created string `pulumi:"created"`
@@ -103,7 +103,7 @@ func LookupStreamLiveInputOutput(ctx *pulumi.Context, args LookupStreamLiveInput
 
 // A collection of arguments for invoking getStreamLiveInput.
 type LookupStreamLiveInputOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A unique identifier for a live input.
 	LiveInputIdentifier pulumi.StringInput `pulumi:"liveInputIdentifier"`
@@ -128,7 +128,7 @@ func (o LookupStreamLiveInputResultOutput) ToLookupStreamLiveInputResultOutputWi
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupStreamLiveInputResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamLiveInputResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

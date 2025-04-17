@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkersForPlatformsDispatchNamespaceResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String createdBy;
@@ -39,7 +39,7 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
      */
     private String id;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String modifiedBy;
@@ -66,14 +66,14 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
 
     private GetWorkersForPlatformsDispatchNamespaceResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String createdBy() {
@@ -101,7 +101,7 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
         return this.id;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String modifiedBy() {

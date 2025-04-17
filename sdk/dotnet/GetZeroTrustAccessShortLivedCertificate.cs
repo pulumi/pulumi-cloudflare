@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? AccountId;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string AppId;
         /// <summary>

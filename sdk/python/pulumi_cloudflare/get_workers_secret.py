@@ -22,6 +22,8 @@ __all__ = [
     'get_workers_secret_output',
 ]
 
+warnings.warn("""cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersSecretResult:
     """
@@ -54,7 +56,7 @@ class GetWorkersSecretResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -135,18 +137,19 @@ def get_workers_secret(account_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_secret = cloudflare.get_workers_secret(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_for_platforms_script_secret = cloudflare.get_workers_for_platforms_script_secret(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dispatch_namespace="my-dispatch-namespace",
         script_name="this-is_my_script-01",
         secret_name="mySecret")
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     :param builtins.str script_name: Name of the script, used in URLs and route configuration.
     :param builtins.str secret_name: A JavaScript variable name for the secret binding.
     """
+    pulumi.log.warn("""get_workers_secret is deprecated: cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dispatchNamespace'] = dispatch_namespace
@@ -175,18 +178,19 @@ def get_workers_secret_output(account_id: Optional[pulumi.Input[builtins.str]] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_secret = cloudflare.get_workers_secret(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_for_platforms_script_secret = cloudflare.get_workers_for_platforms_script_secret(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dispatch_namespace="my-dispatch-namespace",
         script_name="this-is_my_script-01",
         secret_name="mySecret")
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     :param builtins.str script_name: Name of the script, used in URLs and route configuration.
     :param builtins.str secret_name: A JavaScript variable name for the secret binding.
     """
+    pulumi.log.warn("""get_workers_secret is deprecated: cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dispatchNamespace'] = dispatch_namespace

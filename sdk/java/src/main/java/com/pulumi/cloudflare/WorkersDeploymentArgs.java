@@ -20,14 +20,14 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
     public static final WorkersDeploymentArgs Empty = new WorkersDeploymentArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -107,7 +107,7 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class WorkersDeploymentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

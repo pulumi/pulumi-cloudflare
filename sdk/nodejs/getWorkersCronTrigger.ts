@@ -32,7 +32,7 @@ export function getWorkersCronTrigger(args: GetWorkersCronTriggerArgs, opts?: pu
  */
 export interface GetWorkersCronTriggerArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetWorkersCronTriggerArgs {
  */
 export interface GetWorkersCronTriggerResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -85,7 +85,7 @@ export function getWorkersCronTriggerOutput(args: GetWorkersCronTriggerOutputArg
  */
 export interface GetWorkersCronTriggerOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

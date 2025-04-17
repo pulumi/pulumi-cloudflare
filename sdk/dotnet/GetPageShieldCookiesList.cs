@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         ///         PageUrl = "example.com/page,*/checkout,example.com/*,*checkout*",
         ///         Path = "/",
         ///         PerPage = 100,
-        ///         SameSite = "lax",
+        ///         SameSite = "strict",
         ///         Secure = true,
         ///         Type = "first_party",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         ///         PageUrl = "example.com/page,*/checkout,example.com/*,*checkout*",
         ///         Path = "/",
         ///         PerPage = 100,
-        ///         SameSite = "lax",
+        ///         SameSite = "strict",
         ///         Secure = true,
         ///         Type = "first_party",
         ///     });
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
         ///         PageUrl = "example.com/page,*/checkout,example.com/*,*checkout*",
         ///         Path = "/",
         ///         PerPage = 100,
-        ///         SameSite = "lax",
+        ///         SameSite = "strict",
         ///         Secure = true,
         ///         Type = "first_party",
         ///     });

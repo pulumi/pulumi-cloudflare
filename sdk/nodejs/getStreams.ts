@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     end: "2014-01-02T02:20:00Z",
  *     search: "puppy.mp4",
  *     start: "2014-01-02T02:20:00Z",
- *     status: "pendingupload",
+ *     status: "inprogress",
  *     type: "live",
  * });
  * ```
@@ -154,7 +154,7 @@ export interface GetStreamsResult {
  *     end: "2014-01-02T02:20:00Z",
  *     search: "puppy.mp4",
  *     start: "2014-01-02T02:20:00Z",
- *     status: "pendingupload",
+ *     status: "inprogress",
  *     type: "live",
  * });
  * ```

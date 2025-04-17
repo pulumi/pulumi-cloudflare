@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustAccessKeyConfigurationResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -39,7 +39,7 @@ public final class GetZeroTrustAccessKeyConfigurationResult {
 
     private GetZeroTrustAccessKeyConfigurationResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

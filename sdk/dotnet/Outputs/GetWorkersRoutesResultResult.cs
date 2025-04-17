@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersRoutesResultResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         public readonly string Pattern;

@@ -31,7 +31,7 @@ export function getZeroTrustAccessCustomPages(args: GetZeroTrustAccessCustomPage
  */
 export interface GetZeroTrustAccessCustomPagesArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetZeroTrustAccessCustomPagesArgs {
  */
 export interface GetZeroTrustAccessCustomPagesResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -86,7 +86,7 @@ export function getZeroTrustAccessCustomPagesOutput(args: GetZeroTrustAccessCust
  */
 export interface GetZeroTrustAccessCustomPagesOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -74,6 +74,8 @@ export interface GetEmailRoutingAddressResult {
     readonly modified: string;
     /**
      * Destination address tag. (Deprecated, replaced by destination address identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     readonly tag: string;
     /**

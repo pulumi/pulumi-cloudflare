@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetDnsFirewallArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("dnsFirewallId")]
         public string? DnsFirewallId { get; set; }
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetDnsFirewallInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("dnsFirewallId")]
         public Input<string>? DnsFirewallId { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetDnsFirewallResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool DeprecateAnyRequests;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? DnsFirewallId;
         public readonly ImmutableArray<string> DnsFirewallIps;
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool EcsFallback;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

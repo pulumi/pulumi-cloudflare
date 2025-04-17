@@ -26,14 +26,22 @@ public final class ZeroTrustDlpCustomProfileEntryPatternArgs extends com.pulumi.
     /**
      * Available values: &#34;luhn&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="validation")
     private @Nullable Output<String> validation;
 
     /**
      * @return Available values: &#34;luhn&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> validation() {
         return Optional.ofNullable(this.validation);
     }
@@ -77,7 +85,11 @@ public final class ZeroTrustDlpCustomProfileEntryPatternArgs extends com.pulumi.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder validation(@Nullable Output<String> validation) {
             $.validation = validation;
             return this;
@@ -88,7 +100,11 @@ public final class ZeroTrustDlpCustomProfileEntryPatternArgs extends com.pulumi.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder validation(String validation) {
             return validation(Output.of(validation));
         }

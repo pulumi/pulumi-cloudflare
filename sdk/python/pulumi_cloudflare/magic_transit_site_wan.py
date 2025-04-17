@@ -25,27 +25,28 @@ class MagicTransitSiteWanArgs:
                  account_id: pulumi.Input[builtins.str],
                  physport: pulumi.Input[builtins.int],
                  site_id: pulumi.Input[builtins.str],
-                 vlan_tag: pulumi.Input[builtins.int],
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
-                 static_addressing: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']] = None):
+                 static_addressing: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']] = None,
+                 vlan_tag: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a MagicTransitSiteWan resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.str] site_id: Identifier
-        :param pulumi.Input[builtins.int] vlan_tag: VLAN port number.
         :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
+        :param pulumi.Input[builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "physport", physport)
         pulumi.set(__self__, "site_id", site_id)
-        pulumi.set(__self__, "vlan_tag", vlan_tag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if static_addressing is not None:
             pulumi.set(__self__, "static_addressing", static_addressing)
+        if vlan_tag is not None:
+            pulumi.set(__self__, "vlan_tag", vlan_tag)
 
     @property
     @pulumi.getter(name="accountId")
@@ -81,18 +82,6 @@ class MagicTransitSiteWanArgs:
         pulumi.set(self, "site_id", value)
 
     @property
-    @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> pulumi.Input[builtins.int]:
-        """
-        VLAN port number.
-        """
-        return pulumi.get(self, "vlan_tag")
-
-    @vlan_tag.setter
-    def vlan_tag(self, value: pulumi.Input[builtins.int]):
-        pulumi.set(self, "vlan_tag", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "name")
@@ -122,6 +111,18 @@ class MagicTransitSiteWanArgs:
     def static_addressing(self, value: Optional[pulumi.Input['MagicTransitSiteWanStaticAddressingArgs']]):
         pulumi.set(self, "static_addressing", value)
 
+    @property
+    @pulumi.getter(name="vlanTag")
+    def vlan_tag(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        VLAN ID. Use zero for untagged.
+        """
+        return pulumi.get(self, "vlan_tag")
+
+    @vlan_tag.setter
+    def vlan_tag(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "vlan_tag", value)
+
 
 @pulumi.input_type
 class _MagicTransitSiteWanState:
@@ -141,7 +142,7 @@ class _MagicTransitSiteWanState:
                Available values: "low", "mid", "high".
         :param pulumi.Input[builtins.str] site_id: Identifier
         :param pulumi.Input['MagicTransitSiteWanStaticAddressingArgs'] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
-        :param pulumi.Input[builtins.int] vlan_tag: VLAN port number.
+        :param pulumi.Input[builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -240,7 +241,7 @@ class _MagicTransitSiteWanState:
     @pulumi.getter(name="vlanTag")
     def vlan_tag(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        VLAN port number.
+        VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 
@@ -276,7 +277,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
-        :param pulumi.Input[builtins.int] vlan_tag: VLAN port number.
+        :param pulumi.Input[builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         ...
     @overload
@@ -336,8 +337,6 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["static_addressing"] = static_addressing
-            if vlan_tag is None and not opts.urn:
-                raise TypeError("Missing required property 'vlan_tag'")
             __props__.__dict__["vlan_tag"] = vlan_tag
             __props__.__dict__["health_check_rate"] = None
         super(MagicTransitSiteWan, __self__).__init__(
@@ -370,7 +369,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
                Available values: "low", "mid", "high".
         :param pulumi.Input[builtins.str] site_id: Identifier
         :param pulumi.Input[Union['MagicTransitSiteWanStaticAddressingArgs', 'MagicTransitSiteWanStaticAddressingArgsDict']] static_addressing: (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
-        :param pulumi.Input[builtins.int] vlan_tag: VLAN port number.
+        :param pulumi.Input[builtins.int] vlan_tag: VLAN ID. Use zero for untagged.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -436,9 +435,9 @@ class MagicTransitSiteWan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vlanTag")
-    def vlan_tag(self) -> pulumi.Output[builtins.int]:
+    def vlan_tag(self) -> pulumi.Output[Optional[builtins.int]]:
         """
-        VLAN port number.
+        VLAN ID. Use zero for untagged.
         """
         return pulumi.get(self, "vlan_tag")
 

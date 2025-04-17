@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersSecret = new Cloudflare.WorkersSecret("example_workers_secret", new()
+    ///     var exampleWorkersForPlatformsScriptSecret = new Cloudflare.WorkersForPlatformsScriptSecret("example_workers_for_platforms_script_secret", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         DispatchNamespace = "my-dispatch-namespace",
@@ -39,11 +39,12 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/workersSecret:WorkersSecret example '&lt;account_id&gt;/&lt;dispatch_namespace&gt;/&lt;script_name&gt;/&lt;secret_name&gt;'
     /// ```
     /// </summary>
+    [Obsolete(@"cloudflare.index/workerssecret.WorkersSecret has been deprecated in favor of cloudflare.index/workersforplatformsscriptsecret.WorkersForPlatformsScriptSecret")]
     [CloudflareResourceType("cloudflare:index/workersSecret:WorkersSecret")]
     public partial class WorkersSecret : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -134,7 +135,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersSecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -189,7 +190,7 @@ namespace Pulumi.Cloudflare
     public sealed class WorkersSecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

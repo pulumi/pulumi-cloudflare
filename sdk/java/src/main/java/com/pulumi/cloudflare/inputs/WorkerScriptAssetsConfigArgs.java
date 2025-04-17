@@ -17,6 +17,36 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
     public static final WorkerScriptAssetsConfigArgs Empty = new WorkerScriptAssetsConfigArgs();
 
     /**
+     * The contents of a _headers file (used to attach custom headers on asset responses)
+     * 
+     */
+    @Import(name="_headers")
+    private @Nullable Output<String> _headers;
+
+    /**
+     * @return The contents of a _headers file (used to attach custom headers on asset responses)
+     * 
+     */
+    public Optional<Output<String>> _headers() {
+        return Optional.ofNullable(this._headers);
+    }
+
+    /**
+     * The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * 
+     */
+    @Import(name="_redirects")
+    private @Nullable Output<String> _redirects;
+
+    /**
+     * @return The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+     * 
+     */
+    public Optional<Output<String>> _redirects() {
+        return Optional.ofNullable(this._redirects);
+    }
+
+    /**
      * Determines the redirects and rewrites of requests for HTML content.
      * Available values: &#34;auto-trailing-slash&#34;, &#34;force-trailing-slash&#34;, &#34;drop-trailing-slash&#34;, &#34;none&#34;.
      * 
@@ -68,14 +98,22 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
     /**
      * When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="serveDirectly")
     private @Nullable Output<Boolean> serveDirectly;
 
     /**
      * @return When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<Boolean>> serveDirectly() {
         return Optional.ofNullable(this.serveDirectly);
     }
@@ -83,6 +121,8 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
     private WorkerScriptAssetsConfigArgs() {}
 
     private WorkerScriptAssetsConfigArgs(WorkerScriptAssetsConfigArgs $) {
+        this._headers = $._headers;
+        this._redirects = $._redirects;
         this.htmlHandling = $.htmlHandling;
         this.notFoundHandling = $.notFoundHandling;
         this.runWorkerFirst = $.runWorkerFirst;
@@ -105,6 +145,48 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
 
         public Builder(WorkerScriptAssetsConfigArgs defaults) {
             $ = new WorkerScriptAssetsConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param _headers The contents of a _headers file (used to attach custom headers on asset responses)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder _headers(@Nullable Output<String> _headers) {
+            $._headers = _headers;
+            return this;
+        }
+
+        /**
+         * @param _headers The contents of a _headers file (used to attach custom headers on asset responses)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder _headers(String _headers) {
+            return _headers(Output.of(_headers));
+        }
+
+        /**
+         * @param _redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder _redirects(@Nullable Output<String> _redirects) {
+            $._redirects = _redirects;
+            return this;
+        }
+
+        /**
+         * @param _redirects The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder _redirects(String _redirects) {
+            return _redirects(Output.of(_redirects));
         }
 
         /**
@@ -179,7 +261,11 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder serveDirectly(@Nullable Output<Boolean> serveDirectly) {
             $.serveDirectly = serveDirectly;
             return this;
@@ -190,7 +276,11 @@ public final class WorkerScriptAssetsConfigArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder serveDirectly(Boolean serveDirectly) {
             return serveDirectly(Output.of(serveDirectly));
         }

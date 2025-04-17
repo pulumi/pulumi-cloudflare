@@ -61,6 +61,12 @@ namespace Pulumi.Cloudflare
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Output("jurisdiction")]
+        public Output<string> Jurisdiction { get; private set; } = null!;
+
+        /// <summary>
         /// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
         /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
@@ -153,6 +159,12 @@ namespace Pulumi.Cloudflare
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
+
+        /// <summary>
         /// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
         /// Available values: "1.0", "1.1", "1.2", "1.3".
         /// </summary>
@@ -196,6 +208,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Jurisdiction of the bucket
+        /// </summary>
+        [Input("jurisdiction")]
+        public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
         /// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.

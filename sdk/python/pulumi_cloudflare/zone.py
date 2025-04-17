@@ -31,7 +31,7 @@ class ZoneArgs:
         :param pulumi.Input[builtins.str] name: The domain name
         :param pulumi.Input[builtins.str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
                typically a partner-hosted zone or a CNAME setup.
-               Available values: "full", "partial", "secondary".
+               Available values: "full", "partial", "secondary", "internal".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
                available for Business and Enterprise plans.
         """
@@ -69,7 +69,7 @@ class ZoneArgs:
         """
         A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         typically a partner-hosted zone or a CNAME setup.
-        Available values: "full", "partial", "secondary".
+        Available values: "full", "partial", "secondary", "internal".
         """
         return pulumi.get(self, "type")
 
@@ -134,7 +134,7 @@ class _ZoneState:
                Available values: "initializing", "pending", "active", "moved".
         :param pulumi.Input[builtins.str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
                typically a partner-hosted zone or a CNAME setup.
-               Available values: "full", "partial", "secondary".
+               Available values: "full", "partial", "secondary", "internal".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
                available for Business and Enterprise plans.
         :param pulumi.Input[builtins.str] verification_key: Verification key for partial zone setup.
@@ -351,7 +351,7 @@ class _ZoneState:
         """
         A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         typically a partner-hosted zone or a CNAME setup.
-        Available values: "full", "partial", "secondary".
+        Available values: "full", "partial", "secondary", "internal".
         """
         return pulumi.get(self, "type")
 
@@ -423,7 +423,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The domain name
         :param pulumi.Input[builtins.str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
                typically a partner-hosted zone or a CNAME setup.
-               Available values: "full", "partial", "secondary".
+               Available values: "full", "partial", "secondary", "internal".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
                available for Business and Enterprise plans.
         """
@@ -560,7 +560,7 @@ class Zone(pulumi.CustomResource):
                Available values: "initializing", "pending", "active", "moved".
         :param pulumi.Input[builtins.str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
                typically a partner-hosted zone or a CNAME setup.
-               Available values: "full", "partial", "secondary".
+               Available values: "full", "partial", "secondary", "internal".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vanity_name_servers: An array of domains used for custom name servers. This is only
                available for Business and Enterprise plans.
         :param pulumi.Input[builtins.str] verification_key: Verification key for partial zone setup.
@@ -709,7 +709,7 @@ class Zone(pulumi.CustomResource):
         """
         A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         typically a partner-hosted zone or a CNAME setup.
-        Available values: "full", "partial", "secondary".
+        Available values: "full", "partial", "secondary", "internal".
         """
         return pulumi.get(self, "type")
 

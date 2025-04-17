@@ -297,6 +297,8 @@ from .get_workers_custom_domains import *
 from .get_workers_deployment import *
 from .get_workers_for_platforms_dispatch_namespace import *
 from .get_workers_for_platforms_dispatch_namespaces import *
+from .get_workers_for_platforms_script_secret import *
+from .get_workers_for_platforms_script_secrets import *
 from .get_workers_kv import *
 from .get_workers_kv_namespace import *
 from .get_workers_kv_namespaces import *
@@ -306,7 +308,6 @@ from .get_workers_script import *
 from .get_workers_script_subdomain import *
 from .get_workers_scripts import *
 from .get_workers_secret import *
-from .get_workers_secrets import *
 from .get_zero_trust_access_application import *
 from .get_zero_trust_access_applications import *
 from .get_zero_trust_access_custom_page import *
@@ -483,6 +484,7 @@ from .workers_custom_domain import *
 from .workers_deployment import *
 from .workers_for_platforms_dispatch_namespace import *
 from .workers_for_platforms_namespace import *
+from .workers_for_platforms_script_secret import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .workers_route import *
@@ -1893,6 +1895,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace": "WorkersForPlatformsNamespace"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workersForPlatformsScriptSecret",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret": "WorkersForPlatformsScriptSecret"
   }
  },
  {

@@ -79,7 +79,7 @@ class GetZeroTrustAccessMtlsCertificateResult:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -105,7 +105,7 @@ class GetZeroTrustAccessMtlsCertificateResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -167,7 +167,7 @@ def get_zero_trust_access_mtls_certificate(account_id: Optional[builtins.str] = 
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str certificate_id: UUID
+    :param builtins.str certificate_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -206,7 +206,7 @@ def get_zero_trust_access_mtls_certificate_output(account_id: Optional[pulumi.In
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str certificate_id: UUID
+    :param builtins.str certificate_id: UUID.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()

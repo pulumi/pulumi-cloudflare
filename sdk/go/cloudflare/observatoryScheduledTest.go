@@ -58,7 +58,7 @@ type ObservatoryScheduledTest struct {
 	Test     ObservatoryScheduledTestTestOutput     `pulumi:"test"`
 	// A URL.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -109,7 +109,7 @@ type observatoryScheduledTestState struct {
 	Test     *ObservatoryScheduledTestTest     `pulumi:"test"`
 	// A URL.
 	Url *string `pulumi:"url"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -125,7 +125,7 @@ type ObservatoryScheduledTestState struct {
 	Test     ObservatoryScheduledTestTestPtrInput
 	// A URL.
 	Url pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -136,7 +136,7 @@ func (ObservatoryScheduledTestState) ElementType() reflect.Type {
 type observatoryScheduledTestArgs struct {
 	// A URL.
 	Url string `pulumi:"url"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -144,7 +144,7 @@ type observatoryScheduledTestArgs struct {
 type ObservatoryScheduledTestArgs struct {
 	// A URL.
 	Url pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -261,7 +261,7 @@ func (o ObservatoryScheduledTestOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ObservatoryScheduledTestOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservatoryScheduledTest) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

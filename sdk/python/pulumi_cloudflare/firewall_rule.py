@@ -221,7 +221,7 @@ class FirewallRule(pulumi.CustomResource):
         example_firewall_rule = cloudflare.FirewallRule("example_firewall_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action={
-                "mode": "simulate",
+                "mode": "challenge",
                 "response": {
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",
@@ -269,7 +269,7 @@ class FirewallRule(pulumi.CustomResource):
         example_firewall_rule = cloudflare.FirewallRule("example_firewall_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             action={
-                "mode": "simulate",
+                "mode": "challenge",
                 "response": {
                     "body": "<error>This request has been rate-limited.</error>",
                     "content_type": "text/xml",

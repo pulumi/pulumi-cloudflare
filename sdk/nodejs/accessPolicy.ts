@@ -50,7 +50,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Requires the user to request access from an administrator at the start of each session.
      */
-    public readonly approvalRequired!: pulumi.Output<boolean>;
+    public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
@@ -82,7 +82,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
      */
-    public readonly isolationRequired!: pulumi.Output<boolean>;
+    public readonly isolationRequired!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Access policy.
      */
@@ -94,7 +94,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Require users to enter a justification when they log in to the application.
      */
-    public readonly purposeJustificationRequired!: pulumi.Output<boolean>;
+    public readonly purposeJustificationRequired!: pulumi.Output<boolean | undefined>;
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
@@ -181,7 +181,7 @@ export class AccessPolicy extends pulumi.CustomResource {
  */
 export interface AccessPolicyState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -243,7 +243,7 @@ export interface AccessPolicyState {
  */
 export interface AccessPolicyArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

@@ -48,6 +48,9 @@ class KeylessCertificateArgs:
         if bundle_method is not None:
             pulumi.set(__self__, "bundle_method", bundle_method)
         if enabled is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""enabled is deprecated: This attribute is deprecated.""")
+        if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -107,6 +110,7 @@ class KeylessCertificateArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether or not the Keyless SSL is on or off.
@@ -193,6 +197,9 @@ class _KeylessCertificateState:
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if enabled is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""enabled is deprecated: This attribute is deprecated.""")
+        if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if host is not None:
             pulumi.set(__self__, "host", host)
@@ -250,6 +257,7 @@ class _KeylessCertificateState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Whether or not the Keyless SSL is on or off.
@@ -547,6 +555,7 @@ class KeylessCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         Whether or not the Keyless SSL is on or off.

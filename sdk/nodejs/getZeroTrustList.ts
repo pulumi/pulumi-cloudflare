@@ -56,6 +56,10 @@ export interface GetZeroTrustListResult {
      */
     readonly id: string;
     /**
+     * The items in the list.
+     */
+    readonly items: outputs.GetZeroTrustListItem[];
+    /**
      * The number of items in the list.
      */
     readonly listCount: number;

@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *         "*.example.com",
  *     ],
  *     requestType: "origin-rsa",
- *     requestedValidity: 7,
+ *     requestedValidity: 5475,
  * });
  * ```
  *

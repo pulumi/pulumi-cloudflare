@@ -12,6 +12,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsL4over
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsPayloadLog;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsQuarantine;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsRedirect;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
 import com.pulumi.core.annotations.CustomType;
@@ -124,6 +125,11 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
      * 
      */
     private GetZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine;
+    /**
+     * @return Settings that apply to redirect rules
+     * 
+     */
+    private GetZeroTrustGatewayPolicyRuleSettingsRedirect redirect;
     /**
      * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
@@ -282,6 +288,13 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
         return this.quarantine;
     }
     /**
+     * @return Settings that apply to redirect rules
+     * 
+     */
+    public GetZeroTrustGatewayPolicyRuleSettingsRedirect redirect() {
+        return this.redirect;
+    }
+    /**
      * @return Configure to forward the query to the internal DNS service, passing the specified &#39;view*id&#39; as input. Cannot be set when &#39;dns*resolvers&#39; are specified or &#39;resolve*dns*through*cloudflare&#39; is set. Only valid when a rule&#39;s action is set to &#39;resolve&#39;.
      * 
      */
@@ -332,6 +345,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
         private List<String> overrideIps;
         private GetZeroTrustGatewayPolicyRuleSettingsPayloadLog payloadLog;
         private GetZeroTrustGatewayPolicyRuleSettingsQuarantine quarantine;
+        private GetZeroTrustGatewayPolicyRuleSettingsRedirect redirect;
         private GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally;
         private Boolean resolveDnsThroughCloudflare;
         private GetZeroTrustGatewayPolicyRuleSettingsUntrustedCert untrustedCert;
@@ -358,6 +372,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
     	      this.overrideIps = defaults.overrideIps;
     	      this.payloadLog = defaults.payloadLog;
     	      this.quarantine = defaults.quarantine;
+    	      this.redirect = defaults.redirect;
     	      this.resolveDnsInternally = defaults.resolveDnsInternally;
     	      this.resolveDnsThroughCloudflare = defaults.resolveDnsThroughCloudflare;
     	      this.untrustedCert = defaults.untrustedCert;
@@ -527,6 +542,14 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder redirect(GetZeroTrustGatewayPolicyRuleSettingsRedirect redirect) {
+            if (redirect == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyRuleSettings", "redirect");
+            }
+            this.redirect = redirect;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resolveDnsInternally(GetZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally resolveDnsInternally) {
             if (resolveDnsInternally == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyRuleSettings", "resolveDnsInternally");
@@ -572,6 +595,7 @@ public final class GetZeroTrustGatewayPolicyRuleSettings {
             _resultValue.overrideIps = overrideIps;
             _resultValue.payloadLog = payloadLog;
             _resultValue.quarantine = quarantine;
+            _resultValue.redirect = redirect;
             _resultValue.resolveDnsInternally = resolveDnsInternally;
             _resultValue.resolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
             _resultValue.untrustedCert = untrustedCert;

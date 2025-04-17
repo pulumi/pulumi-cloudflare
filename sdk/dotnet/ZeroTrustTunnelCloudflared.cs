@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
     ///         Name = "blog",
-    ///         ConfigSrc = "local",
+    ///         ConfigSrc = "cloudflare",
     ///         TunnelSecret = "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
     ///     });
     /// 

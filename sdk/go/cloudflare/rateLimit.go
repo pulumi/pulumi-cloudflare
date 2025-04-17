@@ -36,7 +36,7 @@ import (
 //			_, err := cloudflare.NewRateLimit(ctx, "example_rate_limit", &cloudflare.RateLimitArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Action: &cloudflare.RateLimitActionArgs{
-//					Mode: pulumi.String("simulate"),
+//					Mode: pulumi.String("challenge"),
 //					Response: &cloudflare.RateLimitActionResponseArgs{
 //						Body:        pulumi.String("<error>This request has been rate-limited.</error>"),
 //						ContentType: pulumi.String("text/xml"),
@@ -47,7 +47,7 @@ import (
 //					Headers: cloudflare.RateLimitMatchHeaderArray{
 //						&cloudflare.RateLimitMatchHeaderArgs{
 //							Name:  pulumi.String("Cf-Cache-Status"),
-//							Op:    pulumi.String("eq"),
+//							Op:    pulumi.String("ne"),
 //							Value: pulumi.String("HIT"),
 //						},
 //					},

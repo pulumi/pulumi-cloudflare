@@ -192,7 +192,11 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 

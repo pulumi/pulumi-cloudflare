@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,21 @@ public final class QueueSettingsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if message delivery to consumers is currently paused.
+     * 
+     */
+    @Import(name="deliveryPaused")
+    private @Nullable Output<Boolean> deliveryPaused;
+
+    /**
+     * @return Indicates if message delivery to consumers is currently paused.
+     * 
+     */
+    public Optional<Output<Boolean>> deliveryPaused() {
+        return Optional.ofNullable(this.deliveryPaused);
+    }
+
+    /**
      * Number of seconds after which an unconsumed message will be delayed.
      * 
      */
@@ -49,6 +65,7 @@ public final class QueueSettingsArgs extends com.pulumi.resources.ResourceArgs {
 
     private QueueSettingsArgs(QueueSettingsArgs $) {
         this.deliveryDelay = $.deliveryDelay;
+        this.deliveryPaused = $.deliveryPaused;
         this.messageRetentionPeriod = $.messageRetentionPeriod;
     }
 
@@ -89,6 +106,27 @@ public final class QueueSettingsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deliveryDelay(Double deliveryDelay) {
             return deliveryDelay(Output.of(deliveryDelay));
+        }
+
+        /**
+         * @param deliveryPaused Indicates if message delivery to consumers is currently paused.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deliveryPaused(@Nullable Output<Boolean> deliveryPaused) {
+            $.deliveryPaused = deliveryPaused;
+            return this;
+        }
+
+        /**
+         * @param deliveryPaused Indicates if message delivery to consumers is currently paused.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deliveryPaused(Boolean deliveryPaused) {
+            return deliveryPaused(Output.of(deliveryPaused));
         }
 
         /**

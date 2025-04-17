@@ -44,7 +44,7 @@ import (
 //				},
 //				CookieSuffix:            pulumi.String("abcd"),
 //				CustomPageHtml:          pulumi.String("{{#waitTimeKnown}} {{waitTime}} mins {{/waitTimeKnown}} {{^waitTimeKnown}} Queue all enabled {{/waitTimeKnown}}"),
-//				DefaultTemplateLanguage: pulumi.String("en-US"),
+//				DefaultTemplateLanguage: pulumi.String("es-ES"),
 //				Description:             pulumi.String("Production - DO NOT MODIFY"),
 //				DisableSessionRenewal:   pulumi.Bool(false),
 //				EnabledOriginCommands: pulumi.StringArray{
@@ -54,7 +54,7 @@ import (
 //				Path:                pulumi.String("/shop/checkout"),
 //				QueueAll:            pulumi.Bool(true),
 //				QueueingMethod:      pulumi.String("fifo"),
-//				QueueingStatusCode:  pulumi.Int(200),
+//				QueueingStatusCode:  pulumi.Int(202),
 //				SessionDuration:     pulumi.Int(1),
 //				Suspended:           pulumi.Bool(true),
 //				TurnstileAction:     pulumi.String("log"),

@@ -49,26 +49,26 @@ func LookupDnsFirewall(ctx *pulumi.Context, args *LookupDnsFirewallArgs, opts ..
 
 // A collection of arguments for invoking getDnsFirewall.
 type LookupDnsFirewallArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	DnsFirewallId *string `pulumi:"dnsFirewallId"`
 }
 
 // A collection of values returned by getDnsFirewall.
 type LookupDnsFirewallResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Attack mitigation settings
 	AttackMitigation GetDnsFirewallAttackMitigation `pulumi:"attackMitigation"`
 	// Whether to refuse to answer queries for the ANY type
 	DeprecateAnyRequests bool `pulumi:"deprecateAnyRequests"`
-	// Identifier
+	// Identifier.
 	DnsFirewallId  *string  `pulumi:"dnsFirewallId"`
 	DnsFirewallIps []string `pulumi:"dnsFirewallIps"`
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback bool `pulumi:"ecsFallback"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
 	MaximumCacheTtl float64 `pulumi:"maximumCacheTtl"`
@@ -98,9 +98,9 @@ func LookupDnsFirewallOutput(ctx *pulumi.Context, args LookupDnsFirewallOutputAr
 
 // A collection of arguments for invoking getDnsFirewall.
 type LookupDnsFirewallOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	DnsFirewallId pulumi.StringPtrInput `pulumi:"dnsFirewallId"`
 }
 
@@ -123,7 +123,7 @@ func (o LookupDnsFirewallResultOutput) ToLookupDnsFirewallResultOutputWithContex
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupDnsFirewallResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsFirewallResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -138,7 +138,7 @@ func (o LookupDnsFirewallResultOutput) DeprecateAnyRequests() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupDnsFirewallResult) bool { return v.DeprecateAnyRequests }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupDnsFirewallResultOutput) DnsFirewallId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDnsFirewallResult) *string { return v.DnsFirewallId }).(pulumi.StringPtrOutput)
 }
@@ -152,7 +152,7 @@ func (o LookupDnsFirewallResultOutput) EcsFallback() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDnsFirewallResult) bool { return v.EcsFallback }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupDnsFirewallResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsFirewallResult) string { return v.Id }).(pulumi.StringOutput)
 }

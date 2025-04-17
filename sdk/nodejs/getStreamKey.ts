@@ -28,7 +28,7 @@ export function getStreamKey(args: GetStreamKeyArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetStreamKeyArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
 }
@@ -38,7 +38,7 @@ export interface GetStreamKeyArgs {
  */
 export interface GetStreamKeyResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -46,7 +46,7 @@ export interface GetStreamKeyResult {
      */
     readonly created: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
 }
@@ -74,7 +74,7 @@ export function getStreamKeyOutput(args: GetStreamKeyOutputArgs, opts?: pulumi.I
  */
 export interface GetStreamKeyOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
 }

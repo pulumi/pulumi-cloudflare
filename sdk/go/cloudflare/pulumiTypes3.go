@@ -13,6 +13,545 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude struct {
+	// Determines whether to include all query string parameters in the cache key.
+	All   bool     `pulumi:"all"`
+	Lists []string `pulumi:"lists"`
+}
+
+// GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput` via:
+//
+//	GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs{...}
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs struct {
+	// Determines whether to include all query string parameters in the cache key.
+	All   pulumi.BoolInput        `pulumi:"all"`
+	Lists pulumi.StringArrayInput `pulumi:"lists"`
+}
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
+	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
+	return o
+}
+
+// Determines whether to include all query string parameters in the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) All() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude) bool { return v.All }).(pulumi.BoolOutput)
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) Lists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude) []string { return v.Lists }).(pulumi.StringArrayOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyUser struct {
+	// Use the user agent's device type in the cache key.
+	DeviceType bool `pulumi:"deviceType"`
+	// Use the user agents's country in the cache key.
+	Geo bool `pulumi:"geo"`
+	// Use the user agent's language in the cache key.
+	Lang bool `pulumi:"lang"`
+}
+
+// GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput` via:
+//
+//	GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs{...}
+type GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs struct {
+	// Use the user agent's device type in the cache key.
+	DeviceType pulumi.BoolInput `pulumi:"deviceType"`
+	// Use the user agents's country in the cache key.
+	Geo pulumi.BoolInput `pulumi:"geo"`
+	// Use the user agent's language in the cache key.
+	Lang pulumi.BoolInput `pulumi:"lang"`
+}
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyUser)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
+	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyUser)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
+	return o
+}
+
+// Use the user agent's device type in the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) DeviceType() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyUser) bool { return v.DeviceType }).(pulumi.BoolOutput)
+}
+
+// Use the user agents's country in the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) Geo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyUser) bool { return v.Geo }).(pulumi.BoolOutput)
+}
+
+// Use the user agent's language in the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) Lang() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyUser) bool { return v.Lang }).(pulumi.BoolOutput)
+}
+
+type GetRulesetRuleActionParametersCacheReserve struct {
+	// Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+	Eligible bool `pulumi:"eligible"`
+	// The minimum file size eligible for store in cache reserve.
+	MinimumFileSize int `pulumi:"minimumFileSize"`
+}
+
+// GetRulesetRuleActionParametersCacheReserveInput is an input type that accepts GetRulesetRuleActionParametersCacheReserveArgs and GetRulesetRuleActionParametersCacheReserveOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheReserveInput` via:
+//
+//	GetRulesetRuleActionParametersCacheReserveArgs{...}
+type GetRulesetRuleActionParametersCacheReserveInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheReserveOutput() GetRulesetRuleActionParametersCacheReserveOutput
+	ToGetRulesetRuleActionParametersCacheReserveOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheReserveOutput
+}
+
+type GetRulesetRuleActionParametersCacheReserveArgs struct {
+	// Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+	Eligible pulumi.BoolInput `pulumi:"eligible"`
+	// The minimum file size eligible for store in cache reserve.
+	MinimumFileSize pulumi.IntInput `pulumi:"minimumFileSize"`
+}
+
+func (GetRulesetRuleActionParametersCacheReserveArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheReserveArgs) ToGetRulesetRuleActionParametersCacheReserveOutput() GetRulesetRuleActionParametersCacheReserveOutput {
+	return i.ToGetRulesetRuleActionParametersCacheReserveOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheReserveArgs) ToGetRulesetRuleActionParametersCacheReserveOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheReserveOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheReserveOutput)
+}
+
+type GetRulesetRuleActionParametersCacheReserveOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheReserveOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheReserve)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheReserveOutput) ToGetRulesetRuleActionParametersCacheReserveOutput() GetRulesetRuleActionParametersCacheReserveOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheReserveOutput) ToGetRulesetRuleActionParametersCacheReserveOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheReserveOutput {
+	return o
+}
+
+// Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
+func (o GetRulesetRuleActionParametersCacheReserveOutput) Eligible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheReserve) bool { return v.Eligible }).(pulumi.BoolOutput)
+}
+
+// The minimum file size eligible for store in cache reserve.
+func (o GetRulesetRuleActionParametersCacheReserveOutput) MinimumFileSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheReserve) int { return v.MinimumFileSize }).(pulumi.IntOutput)
+}
+
+type GetRulesetRuleActionParametersCookieField struct {
+	// The name of the field.
+	Name string `pulumi:"name"`
+}
+
+// GetRulesetRuleActionParametersCookieFieldInput is an input type that accepts GetRulesetRuleActionParametersCookieFieldArgs and GetRulesetRuleActionParametersCookieFieldOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCookieFieldInput` via:
+//
+//	GetRulesetRuleActionParametersCookieFieldArgs{...}
+type GetRulesetRuleActionParametersCookieFieldInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCookieFieldOutput() GetRulesetRuleActionParametersCookieFieldOutput
+	ToGetRulesetRuleActionParametersCookieFieldOutputWithContext(context.Context) GetRulesetRuleActionParametersCookieFieldOutput
+}
+
+type GetRulesetRuleActionParametersCookieFieldArgs struct {
+	// The name of the field.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRulesetRuleActionParametersCookieFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCookieField)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCookieFieldArgs) ToGetRulesetRuleActionParametersCookieFieldOutput() GetRulesetRuleActionParametersCookieFieldOutput {
+	return i.ToGetRulesetRuleActionParametersCookieFieldOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCookieFieldArgs) ToGetRulesetRuleActionParametersCookieFieldOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCookieFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCookieFieldOutput)
+}
+
+// GetRulesetRuleActionParametersCookieFieldArrayInput is an input type that accepts GetRulesetRuleActionParametersCookieFieldArray and GetRulesetRuleActionParametersCookieFieldArrayOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCookieFieldArrayInput` via:
+//
+//	GetRulesetRuleActionParametersCookieFieldArray{ GetRulesetRuleActionParametersCookieFieldArgs{...} }
+type GetRulesetRuleActionParametersCookieFieldArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCookieFieldArrayOutput() GetRulesetRuleActionParametersCookieFieldArrayOutput
+	ToGetRulesetRuleActionParametersCookieFieldArrayOutputWithContext(context.Context) GetRulesetRuleActionParametersCookieFieldArrayOutput
+}
+
+type GetRulesetRuleActionParametersCookieFieldArray []GetRulesetRuleActionParametersCookieFieldInput
+
+func (GetRulesetRuleActionParametersCookieFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesetRuleActionParametersCookieField)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCookieFieldArray) ToGetRulesetRuleActionParametersCookieFieldArrayOutput() GetRulesetRuleActionParametersCookieFieldArrayOutput {
+	return i.ToGetRulesetRuleActionParametersCookieFieldArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCookieFieldArray) ToGetRulesetRuleActionParametersCookieFieldArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCookieFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCookieFieldArrayOutput)
+}
+
+type GetRulesetRuleActionParametersCookieFieldOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCookieFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCookieField)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCookieFieldOutput) ToGetRulesetRuleActionParametersCookieFieldOutput() GetRulesetRuleActionParametersCookieFieldOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCookieFieldOutput) ToGetRulesetRuleActionParametersCookieFieldOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCookieFieldOutput {
+	return o
+}
+
+// The name of the field.
+func (o GetRulesetRuleActionParametersCookieFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCookieField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRulesetRuleActionParametersCookieFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCookieFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesetRuleActionParametersCookieField)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCookieFieldArrayOutput) ToGetRulesetRuleActionParametersCookieFieldArrayOutput() GetRulesetRuleActionParametersCookieFieldArrayOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCookieFieldArrayOutput) ToGetRulesetRuleActionParametersCookieFieldArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCookieFieldArrayOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCookieFieldArrayOutput) Index(i pulumi.IntInput) GetRulesetRuleActionParametersCookieFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesetRuleActionParametersCookieField {
+		return vs[0].([]GetRulesetRuleActionParametersCookieField)[vs[1].(int)]
+	}).(GetRulesetRuleActionParametersCookieFieldOutput)
+}
+
+type GetRulesetRuleActionParametersEdgeTtl struct {
+	// The TTL (in seconds) if you choose overrideOrigin mode.
+	Default int `pulumi:"default"`
+	// edge ttl options
+	// Available values: "respect*origin", "bypass*by*default", "override*origin".
+	Mode string `pulumi:"mode"`
+	// List of single status codes, or status code ranges to apply the selected mode
+	StatusCodeTtls []GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl `pulumi:"statusCodeTtls"`
+}
+
+// GetRulesetRuleActionParametersEdgeTtlInput is an input type that accepts GetRulesetRuleActionParametersEdgeTtlArgs and GetRulesetRuleActionParametersEdgeTtlOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersEdgeTtlInput` via:
+//
+//	GetRulesetRuleActionParametersEdgeTtlArgs{...}
+type GetRulesetRuleActionParametersEdgeTtlInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersEdgeTtlOutput() GetRulesetRuleActionParametersEdgeTtlOutput
+	ToGetRulesetRuleActionParametersEdgeTtlOutputWithContext(context.Context) GetRulesetRuleActionParametersEdgeTtlOutput
+}
+
+type GetRulesetRuleActionParametersEdgeTtlArgs struct {
+	// The TTL (in seconds) if you choose overrideOrigin mode.
+	Default pulumi.IntInput `pulumi:"default"`
+	// edge ttl options
+	// Available values: "respect*origin", "bypass*by*default", "override*origin".
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// List of single status codes, or status code ranges to apply the selected mode
+	StatusCodeTtls GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput `pulumi:"statusCodeTtls"`
+}
+
+func (GetRulesetRuleActionParametersEdgeTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtl)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersEdgeTtlArgs) ToGetRulesetRuleActionParametersEdgeTtlOutput() GetRulesetRuleActionParametersEdgeTtlOutput {
+	return i.ToGetRulesetRuleActionParametersEdgeTtlOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersEdgeTtlArgs) ToGetRulesetRuleActionParametersEdgeTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersEdgeTtlOutput)
+}
+
+type GetRulesetRuleActionParametersEdgeTtlOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersEdgeTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtl)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlOutput) ToGetRulesetRuleActionParametersEdgeTtlOutput() GetRulesetRuleActionParametersEdgeTtlOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlOutput) ToGetRulesetRuleActionParametersEdgeTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlOutput {
+	return o
+}
+
+// The TTL (in seconds) if you choose overrideOrigin mode.
+func (o GetRulesetRuleActionParametersEdgeTtlOutput) Default() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtl) int { return v.Default }).(pulumi.IntOutput)
+}
+
+// edge ttl options
+// Available values: "respect*origin", "bypass*by*default", "override*origin".
+func (o GetRulesetRuleActionParametersEdgeTtlOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtl) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// List of single status codes, or status code ranges to apply the selected mode
+func (o GetRulesetRuleActionParametersEdgeTtlOutput) StatusCodeTtls() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtl) []GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+		return v.StatusCodeTtls
+	}).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput)
+}
+
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl struct {
+	// The range of status codes used to apply the selected mode.
+	StatusCodeRange GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange `pulumi:"statusCodeRange"`
+	// Set the ttl for responses with this specific status code
+	StatusCodeValue int `pulumi:"statusCodeValue"`
+	// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
+	Value int `pulumi:"value"`
+}
+
+// GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput is an input type that accepts GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs and GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput` via:
+//
+//	GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...}
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput
+	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput
+}
+
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs struct {
+	// The range of status codes used to apply the selected mode.
+	StatusCodeRange GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput `pulumi:"statusCodeRange"`
+	// Set the ttl for responses with this specific status code
+	StatusCodeValue pulumi.IntInput `pulumi:"statusCodeValue"`
+	// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
+	return i.ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput)
+}
+
+// GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput is an input type that accepts GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray and GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput` via:
+//
+//	GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{ GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...} }
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput
+	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput
+}
+
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray []GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput
+
+func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
+	return i.ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput)
+}
+
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
+	return o
+}
+
+// The range of status codes used to apply the selected mode.
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) StatusCodeRange() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+		return v.StatusCodeRange
+	}).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
+}
+
+// Set the ttl for responses with this specific status code
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) StatusCodeValue() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl) int { return v.StatusCodeValue }).(pulumi.IntOutput)
+}
+
+// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl) int { return v.Value }).(pulumi.IntOutput)
+}
+
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) Index(i pulumi.IntInput) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+		return vs[0].([]GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)[vs[1].(int)]
+	}).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput)
+}
+
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange struct {
+	// response status code lower bound
+	From int `pulumi:"from"`
+	// response status code upper bound
+	To int `pulumi:"to"`
+}
+
+// GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput is an input type that accepts GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs and GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput` via:
+//
+//	GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...}
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput
+	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput
+}
+
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs struct {
+	// response status code lower bound
+	From pulumi.IntInput `pulumi:"from"`
+	// response status code upper bound
+	To pulumi.IntInput `pulumi:"to"`
+}
+
+func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+	return i.ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
+}
+
+type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
+	return o
+}
+
+// response status code lower bound
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) From() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange) int { return v.From }).(pulumi.IntOutput)
+}
+
+// response status code upper bound
+func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) To() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange) int { return v.To }).(pulumi.IntOutput)
+}
+
 type GetRulesetRuleActionParametersFromList struct {
 	// Expression that evaluates to the list lookup key.
 	Key string `pulumi:"key"`
@@ -1798,8 +2337,6 @@ type GetRulesetsResult struct {
 	// The kind of the ruleset.
 	// Available values: "managed", "custom", "root", "zone".
 	Kind string `pulumi:"kind"`
-	// The timestamp of when the ruleset was last modified.
-	LastUpdated string `pulumi:"lastUpdated"`
 	// The human-readable name of the ruleset.
 	Name string `pulumi:"name"`
 	// The phase of the ruleset.
@@ -1826,8 +2363,6 @@ type GetRulesetsResultArgs struct {
 	// The kind of the ruleset.
 	// Available values: "managed", "custom", "root", "zone".
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// The timestamp of when the ruleset was last modified.
-	LastUpdated pulumi.StringInput `pulumi:"lastUpdated"`
 	// The human-readable name of the ruleset.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The phase of the ruleset.
@@ -1900,11 +2435,6 @@ func (o GetRulesetsResultOutput) Id() pulumi.StringOutput {
 // Available values: "managed", "custom", "root", "zone".
 func (o GetRulesetsResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesetsResult) string { return v.Kind }).(pulumi.StringOutput)
-}
-
-// The timestamp of when the ruleset was last modified.
-func (o GetRulesetsResultOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetsResult) string { return v.LastUpdated }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the ruleset.
@@ -4862,6 +5392,12 @@ type GetWaitingRoomEventsResult struct {
 	Suspended bool `pulumi:"suspended"`
 	// If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
 	TotalActiveUsers int `pulumi:"totalActiveUsers"`
+	// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+	// Available values: "log", "infiniteQueue".
+	TurnstileAction string `pulumi:"turnstileAction"`
+	// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+	TurnstileMode string `pulumi:"turnstileMode"`
 }
 
 // GetWaitingRoomEventsResultInput is an input type that accepts GetWaitingRoomEventsResultArgs and GetWaitingRoomEventsResultOutput values.
@@ -4905,6 +5441,12 @@ type GetWaitingRoomEventsResultArgs struct {
 	Suspended pulumi.BoolInput `pulumi:"suspended"`
 	// If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
 	TotalActiveUsers pulumi.IntInput `pulumi:"totalActiveUsers"`
+	// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+	// Available values: "log", "infiniteQueue".
+	TurnstileAction pulumi.StringInput `pulumi:"turnstileAction"`
+	// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+	TurnstileMode pulumi.StringInput `pulumi:"turnstileMode"`
 }
 
 func (GetWaitingRoomEventsResultArgs) ElementType() reflect.Type {
@@ -5033,6 +5575,18 @@ func (o GetWaitingRoomEventsResultOutput) Suspended() pulumi.BoolOutput {
 // If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
 func (o GetWaitingRoomEventsResultOutput) TotalActiveUsers() pulumi.IntOutput {
 	return o.ApplyT(func(v GetWaitingRoomEventsResult) int { return v.TotalActiveUsers }).(pulumi.IntOutput)
+}
+
+// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+// Available values: "log", "infiniteQueue".
+func (o GetWaitingRoomEventsResultOutput) TurnstileAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWaitingRoomEventsResult) string { return v.TurnstileAction }).(pulumi.StringOutput)
+}
+
+// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+func (o GetWaitingRoomEventsResultOutput) TurnstileMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWaitingRoomEventsResult) string { return v.TurnstileMode }).(pulumi.StringOutput)
 }
 
 type GetWaitingRoomEventsResultArrayOutput struct{ *pulumi.OutputState }
@@ -7491,11 +8045,11 @@ func (o GetWorkersDeploymentDeploymentVersionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetWorkersForPlatformsDispatchNamespacesResult struct {
-	// Identifier
+	// Identifier.
 	CreatedBy string `pulumi:"createdBy"`
 	// When the script was created.
 	CreatedOn string `pulumi:"createdOn"`
-	// Identifier
+	// Identifier.
 	ModifiedBy string `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -7519,11 +8073,11 @@ type GetWorkersForPlatformsDispatchNamespacesResultInput interface {
 }
 
 type GetWorkersForPlatformsDispatchNamespacesResultArgs struct {
-	// Identifier
+	// Identifier.
 	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
 	// When the script was created.
 	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
-	// Identifier
+	// Identifier.
 	ModifiedBy pulumi.StringInput `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
@@ -7586,7 +8140,7 @@ func (o GetWorkersForPlatformsDispatchNamespacesResultOutput) ToGetWorkersForPla
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o GetWorkersForPlatformsDispatchNamespacesResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersForPlatformsDispatchNamespacesResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
@@ -7596,7 +8150,7 @@ func (o GetWorkersForPlatformsDispatchNamespacesResultOutput) CreatedOn() pulumi
 	return o.ApplyT(func(v GetWorkersForPlatformsDispatchNamespacesResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o GetWorkersForPlatformsDispatchNamespacesResultOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersForPlatformsDispatchNamespacesResult) string { return v.ModifiedBy }).(pulumi.StringOutput)
 }
@@ -7639,6 +8193,115 @@ func (o GetWorkersForPlatformsDispatchNamespacesResultArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersForPlatformsDispatchNamespacesResult {
 		return vs[0].([]GetWorkersForPlatformsDispatchNamespacesResult)[vs[1].(int)]
 	}).(GetWorkersForPlatformsDispatchNamespacesResultOutput)
+}
+
+type GetWorkersForPlatformsScriptSecretsResult struct {
+	// The name of this secret, this is what will be used to access it inside the Worker.
+	Name string `pulumi:"name"`
+	// The type of secret.
+	// Available values: "secretText".
+	Type string `pulumi:"type"`
+}
+
+// GetWorkersForPlatformsScriptSecretsResultInput is an input type that accepts GetWorkersForPlatformsScriptSecretsResultArgs and GetWorkersForPlatformsScriptSecretsResultOutput values.
+// You can construct a concrete instance of `GetWorkersForPlatformsScriptSecretsResultInput` via:
+//
+//	GetWorkersForPlatformsScriptSecretsResultArgs{...}
+type GetWorkersForPlatformsScriptSecretsResultInput interface {
+	pulumi.Input
+
+	ToGetWorkersForPlatformsScriptSecretsResultOutput() GetWorkersForPlatformsScriptSecretsResultOutput
+	ToGetWorkersForPlatformsScriptSecretsResultOutputWithContext(context.Context) GetWorkersForPlatformsScriptSecretsResultOutput
+}
+
+type GetWorkersForPlatformsScriptSecretsResultArgs struct {
+	// The name of this secret, this is what will be used to access it inside the Worker.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The type of secret.
+	// Available values: "secretText".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetWorkersForPlatformsScriptSecretsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkersForPlatformsScriptSecretsResult)(nil)).Elem()
+}
+
+func (i GetWorkersForPlatformsScriptSecretsResultArgs) ToGetWorkersForPlatformsScriptSecretsResultOutput() GetWorkersForPlatformsScriptSecretsResultOutput {
+	return i.ToGetWorkersForPlatformsScriptSecretsResultOutputWithContext(context.Background())
+}
+
+func (i GetWorkersForPlatformsScriptSecretsResultArgs) ToGetWorkersForPlatformsScriptSecretsResultOutputWithContext(ctx context.Context) GetWorkersForPlatformsScriptSecretsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersForPlatformsScriptSecretsResultOutput)
+}
+
+// GetWorkersForPlatformsScriptSecretsResultArrayInput is an input type that accepts GetWorkersForPlatformsScriptSecretsResultArray and GetWorkersForPlatformsScriptSecretsResultArrayOutput values.
+// You can construct a concrete instance of `GetWorkersForPlatformsScriptSecretsResultArrayInput` via:
+//
+//	GetWorkersForPlatformsScriptSecretsResultArray{ GetWorkersForPlatformsScriptSecretsResultArgs{...} }
+type GetWorkersForPlatformsScriptSecretsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkersForPlatformsScriptSecretsResultArrayOutput() GetWorkersForPlatformsScriptSecretsResultArrayOutput
+	ToGetWorkersForPlatformsScriptSecretsResultArrayOutputWithContext(context.Context) GetWorkersForPlatformsScriptSecretsResultArrayOutput
+}
+
+type GetWorkersForPlatformsScriptSecretsResultArray []GetWorkersForPlatformsScriptSecretsResultInput
+
+func (GetWorkersForPlatformsScriptSecretsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkersForPlatformsScriptSecretsResult)(nil)).Elem()
+}
+
+func (i GetWorkersForPlatformsScriptSecretsResultArray) ToGetWorkersForPlatformsScriptSecretsResultArrayOutput() GetWorkersForPlatformsScriptSecretsResultArrayOutput {
+	return i.ToGetWorkersForPlatformsScriptSecretsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkersForPlatformsScriptSecretsResultArray) ToGetWorkersForPlatformsScriptSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersForPlatformsScriptSecretsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersForPlatformsScriptSecretsResultArrayOutput)
+}
+
+type GetWorkersForPlatformsScriptSecretsResultOutput struct{ *pulumi.OutputState }
+
+func (GetWorkersForPlatformsScriptSecretsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkersForPlatformsScriptSecretsResult)(nil)).Elem()
+}
+
+func (o GetWorkersForPlatformsScriptSecretsResultOutput) ToGetWorkersForPlatformsScriptSecretsResultOutput() GetWorkersForPlatformsScriptSecretsResultOutput {
+	return o
+}
+
+func (o GetWorkersForPlatformsScriptSecretsResultOutput) ToGetWorkersForPlatformsScriptSecretsResultOutputWithContext(ctx context.Context) GetWorkersForPlatformsScriptSecretsResultOutput {
+	return o
+}
+
+// The name of this secret, this is what will be used to access it inside the Worker.
+func (o GetWorkersForPlatformsScriptSecretsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkersForPlatformsScriptSecretsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of secret.
+// Available values: "secretText".
+func (o GetWorkersForPlatformsScriptSecretsResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkersForPlatformsScriptSecretsResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetWorkersForPlatformsScriptSecretsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkersForPlatformsScriptSecretsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkersForPlatformsScriptSecretsResult)(nil)).Elem()
+}
+
+func (o GetWorkersForPlatformsScriptSecretsResultArrayOutput) ToGetWorkersForPlatformsScriptSecretsResultArrayOutput() GetWorkersForPlatformsScriptSecretsResultArrayOutput {
+	return o
+}
+
+func (o GetWorkersForPlatformsScriptSecretsResultArrayOutput) ToGetWorkersForPlatformsScriptSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersForPlatformsScriptSecretsResultArrayOutput {
+	return o
+}
+
+func (o GetWorkersForPlatformsScriptSecretsResultArrayOutput) Index(i pulumi.IntInput) GetWorkersForPlatformsScriptSecretsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersForPlatformsScriptSecretsResult {
+		return vs[0].([]GetWorkersForPlatformsScriptSecretsResult)[vs[1].(int)]
+	}).(GetWorkersForPlatformsScriptSecretsResultOutput)
 }
 
 type GetWorkersKvNamespaceFilter struct {
@@ -7806,6 +8469,8 @@ func (o GetWorkersKvNamespaceFilterPtrOutput) Order() pulumi.StringPtrOutput {
 }
 
 type GetWorkersKvNamespacesResult struct {
+	// True if new beta namespace, with additional preview features.
+	Beta bool `pulumi:"beta"`
 	// Namespace identifier tag.
 	Id string `pulumi:"id"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -7826,6 +8491,8 @@ type GetWorkersKvNamespacesResultInput interface {
 }
 
 type GetWorkersKvNamespacesResultArgs struct {
+	// True if new beta namespace, with additional preview features.
+	Beta pulumi.BoolInput `pulumi:"beta"`
 	// Namespace identifier tag.
 	Id pulumi.StringInput `pulumi:"id"`
 	// True if keys written on the URL will be URL-decoded before storing. For example, if set to "true", a key written on the URL as "%3F" will be stored as "?".
@@ -7885,6 +8552,11 @@ func (o GetWorkersKvNamespacesResultOutput) ToGetWorkersKvNamespacesResultOutput
 	return o
 }
 
+// True if new beta namespace, with additional preview features.
+func (o GetWorkersKvNamespacesResultOutput) Beta() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWorkersKvNamespacesResult) bool { return v.Beta }).(pulumi.BoolOutput)
+}
+
 // Namespace identifier tag.
 func (o GetWorkersKvNamespacesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersKvNamespacesResult) string { return v.Id }).(pulumi.StringOutput)
@@ -7921,7 +8593,7 @@ func (o GetWorkersKvNamespacesResultArrayOutput) Index(i pulumi.IntInput) GetWor
 }
 
 type GetWorkersRoutesResult struct {
-	// Identifier
+	// Identifier.
 	Id      string `pulumi:"id"`
 	Pattern string `pulumi:"pattern"`
 	// Name of the script, used in URLs and route configuration.
@@ -7940,7 +8612,7 @@ type GetWorkersRoutesResultInput interface {
 }
 
 type GetWorkersRoutesResultArgs struct {
-	// Identifier
+	// Identifier.
 	Id      pulumi.StringInput `pulumi:"id"`
 	Pattern pulumi.StringInput `pulumi:"pattern"`
 	// Name of the script, used in URLs and route configuration.
@@ -7998,7 +8670,7 @@ func (o GetWorkersRoutesResultOutput) ToGetWorkersRoutesResultOutputWithContext(
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o GetWorkersRoutesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersRoutesResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -8051,9 +8723,13 @@ type GetWorkersScriptsResult struct {
 	Placement GetWorkersScriptsResultPlacement `pulumi:"placement"`
 	// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 	// Available values: "smart".
+	//
+	// Deprecated: This attribute is deprecated.
 	PlacementMode string `pulumi:"placementMode"`
 	// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 	// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+	//
+	// Deprecated: This attribute is deprecated.
 	PlacementStatus string `pulumi:"placementStatus"`
 	// List of Workers that will consume logs from the attached Worker.
 	TailConsumers []GetWorkersScriptsResultTailConsumer `pulumi:"tailConsumers"`
@@ -8092,9 +8768,13 @@ type GetWorkersScriptsResultArgs struct {
 	Placement GetWorkersScriptsResultPlacementInput `pulumi:"placement"`
 	// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 	// Available values: "smart".
+	//
+	// Deprecated: This attribute is deprecated.
 	PlacementMode pulumi.StringInput `pulumi:"placementMode"`
 	// Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 	// Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+	//
+	// Deprecated: This attribute is deprecated.
 	PlacementStatus pulumi.StringInput `pulumi:"placementStatus"`
 	// List of Workers that will consume logs from the attached Worker.
 	TailConsumers GetWorkersScriptsResultTailConsumerArrayInput `pulumi:"tailConsumers"`
@@ -8196,12 +8876,16 @@ func (o GetWorkersScriptsResultOutput) Placement() GetWorkersScriptsResultPlacem
 
 // Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 // Available values: "smart".
+//
+// Deprecated: This attribute is deprecated.
 func (o GetWorkersScriptsResultOutput) PlacementMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersScriptsResult) string { return v.PlacementMode }).(pulumi.StringOutput)
 }
 
 // Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 // Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
+//
+// Deprecated: This attribute is deprecated.
 func (o GetWorkersScriptsResultOutput) PlacementStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersScriptsResult) string { return v.PlacementStatus }).(pulumi.StringOutput)
 }
@@ -8417,115 +9101,6 @@ func (o GetWorkersScriptsResultTailConsumerArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersScriptsResultTailConsumer {
 		return vs[0].([]GetWorkersScriptsResultTailConsumer)[vs[1].(int)]
 	}).(GetWorkersScriptsResultTailConsumerOutput)
-}
-
-type GetWorkersSecretsResult struct {
-	// The name of this secret, this is what will be used to access it inside the Worker.
-	Name string `pulumi:"name"`
-	// The type of secret.
-	// Available values: "secretText".
-	Type string `pulumi:"type"`
-}
-
-// GetWorkersSecretsResultInput is an input type that accepts GetWorkersSecretsResultArgs and GetWorkersSecretsResultOutput values.
-// You can construct a concrete instance of `GetWorkersSecretsResultInput` via:
-//
-//	GetWorkersSecretsResultArgs{...}
-type GetWorkersSecretsResultInput interface {
-	pulumi.Input
-
-	ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput
-	ToGetWorkersSecretsResultOutputWithContext(context.Context) GetWorkersSecretsResultOutput
-}
-
-type GetWorkersSecretsResultArgs struct {
-	// The name of this secret, this is what will be used to access it inside the Worker.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The type of secret.
-	// Available values: "secretText".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetWorkersSecretsResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkersSecretsResult)(nil)).Elem()
-}
-
-func (i GetWorkersSecretsResultArgs) ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput {
-	return i.ToGetWorkersSecretsResultOutputWithContext(context.Background())
-}
-
-func (i GetWorkersSecretsResultArgs) ToGetWorkersSecretsResultOutputWithContext(ctx context.Context) GetWorkersSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersSecretsResultOutput)
-}
-
-// GetWorkersSecretsResultArrayInput is an input type that accepts GetWorkersSecretsResultArray and GetWorkersSecretsResultArrayOutput values.
-// You can construct a concrete instance of `GetWorkersSecretsResultArrayInput` via:
-//
-//	GetWorkersSecretsResultArray{ GetWorkersSecretsResultArgs{...} }
-type GetWorkersSecretsResultArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput
-	ToGetWorkersSecretsResultArrayOutputWithContext(context.Context) GetWorkersSecretsResultArrayOutput
-}
-
-type GetWorkersSecretsResultArray []GetWorkersSecretsResultInput
-
-func (GetWorkersSecretsResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkersSecretsResult)(nil)).Elem()
-}
-
-func (i GetWorkersSecretsResultArray) ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput {
-	return i.ToGetWorkersSecretsResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkersSecretsResultArray) ToGetWorkersSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersSecretsResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersSecretsResultArrayOutput)
-}
-
-type GetWorkersSecretsResultOutput struct{ *pulumi.OutputState }
-
-func (GetWorkersSecretsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkersSecretsResult)(nil)).Elem()
-}
-
-func (o GetWorkersSecretsResultOutput) ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput {
-	return o
-}
-
-func (o GetWorkersSecretsResultOutput) ToGetWorkersSecretsResultOutputWithContext(ctx context.Context) GetWorkersSecretsResultOutput {
-	return o
-}
-
-// The name of this secret, this is what will be used to access it inside the Worker.
-func (o GetWorkersSecretsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkersSecretsResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The type of secret.
-// Available values: "secretText".
-func (o GetWorkersSecretsResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkersSecretsResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetWorkersSecretsResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkersSecretsResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkersSecretsResult)(nil)).Elem()
-}
-
-func (o GetWorkersSecretsResultArrayOutput) ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput {
-	return o
-}
-
-func (o GetWorkersSecretsResultArrayOutput) ToGetWorkersSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersSecretsResultArrayOutput {
-	return o
-}
-
-func (o GetWorkersSecretsResultArrayOutput) Index(i pulumi.IntInput) GetWorkersSecretsResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersSecretsResult {
-		return vs[0].([]GetWorkersSecretsResult)[vs[1].(int)]
-	}).(GetWorkersSecretsResultOutput)
 }
 
 type GetZeroTrustAccessApplicationCorsHeaders struct {
@@ -15563,7 +16138,7 @@ type GetZeroTrustAccessApplicationsResult struct {
 	HeaderBgColor string `pulumi:"headerBgColor"`
 	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
 	HttpOnlyCookieAttribute bool `pulumi:"httpOnlyCookieAttribute"`
-	// UUID
+	// UUID.
 	Id string `pulumi:"id"`
 	// The design of the App Launcher landing page shown to users when they log in.
 	LandingPageDesign GetZeroTrustAccessApplicationsResultLandingPageDesign `pulumi:"landingPageDesign"`
@@ -15576,12 +16151,22 @@ type GetZeroTrustAccessApplicationsResult struct {
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
 	PathCookieAttribute bool                                         `pulumi:"pathCookieAttribute"`
 	Policies            []GetZeroTrustAccessApplicationsResultPolicy `pulumi:"policies"`
-	SaasApp             GetZeroTrustAccessApplicationsResultSaasApp  `pulumi:"saasApp"`
+	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+	// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+	// The header value will be interpreted as a json object similar to:
+	// {
+	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+	// }
+	ReadServiceTokensFromHeader string                                      `pulumi:"readServiceTokensFromHeader"`
+	SaasApp                     GetZeroTrustAccessApplicationsResultSaasApp `pulumi:"saasApp"`
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute string `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig GetZeroTrustAccessApplicationsResultScimConfig `pulumi:"scimConfig"`
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	//
+	// Deprecated: This attribute is deprecated.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect bool `pulumi:"serviceAuth401Redirect"`
@@ -15647,7 +16232,7 @@ type GetZeroTrustAccessApplicationsResultArgs struct {
 	HeaderBgColor pulumi.StringInput `pulumi:"headerBgColor"`
 	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
 	HttpOnlyCookieAttribute pulumi.BoolInput `pulumi:"httpOnlyCookieAttribute"`
-	// UUID
+	// UUID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The design of the App Launcher landing page shown to users when they log in.
 	LandingPageDesign GetZeroTrustAccessApplicationsResultLandingPageDesignInput `pulumi:"landingPageDesign"`
@@ -15660,12 +16245,22 @@ type GetZeroTrustAccessApplicationsResultArgs struct {
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
 	PathCookieAttribute pulumi.BoolInput                                     `pulumi:"pathCookieAttribute"`
 	Policies            GetZeroTrustAccessApplicationsResultPolicyArrayInput `pulumi:"policies"`
-	SaasApp             GetZeroTrustAccessApplicationsResultSaasAppInput     `pulumi:"saasApp"`
+	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+	// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+	// The header value will be interpreted as a json object similar to:
+	// {
+	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+	// }
+	ReadServiceTokensFromHeader pulumi.StringInput                               `pulumi:"readServiceTokensFromHeader"`
+	SaasApp                     GetZeroTrustAccessApplicationsResultSaasAppInput `pulumi:"saasApp"`
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringInput `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig GetZeroTrustAccessApplicationsResultScimConfigInput `pulumi:"scimConfig"`
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	//
+	// Deprecated: This attribute is deprecated.
 	SelfHostedDomains pulumi.StringArrayInput `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolInput `pulumi:"serviceAuth401Redirect"`
@@ -15833,7 +16428,7 @@ func (o GetZeroTrustAccessApplicationsResultOutput) HttpOnlyCookieAttribute() pu
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) bool { return v.HttpOnlyCookieAttribute }).(pulumi.BoolOutput)
 }
 
-// UUID
+// UUID.
 func (o GetZeroTrustAccessApplicationsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -15871,6 +16466,17 @@ func (o GetZeroTrustAccessApplicationsResultOutput) Policies() GetZeroTrustAcces
 	}).(GetZeroTrustAccessApplicationsResultPolicyArrayOutput)
 }
 
+// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+// The header value will be interpreted as a json object similar to:
+// {
+// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+// }
+func (o GetZeroTrustAccessApplicationsResultOutput) ReadServiceTokensFromHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) string { return v.ReadServiceTokensFromHeader }).(pulumi.StringOutput)
+}
+
 func (o GetZeroTrustAccessApplicationsResultOutput) SaasApp() GetZeroTrustAccessApplicationsResultSaasAppOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) GetZeroTrustAccessApplicationsResultSaasApp {
 		return v.SaasApp
@@ -15890,6 +16496,8 @@ func (o GetZeroTrustAccessApplicationsResultOutput) ScimConfig() GetZeroTrustAcc
 }
 
 // List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+//
+// Deprecated: This attribute is deprecated.
 func (o GetZeroTrustAccessApplicationsResultOutput) SelfHostedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) []string { return v.SelfHostedDomains }).(pulumi.StringArrayOutput)
 }
@@ -22787,7 +23395,7 @@ type GetZeroTrustAccessCustomPagesResult struct {
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type string `pulumi:"type"`
-	// UUID
+	// UUID.
 	Uid       string `pulumi:"uid"`
 	UpdatedAt string `pulumi:"updatedAt"`
 }
@@ -22812,7 +23420,7 @@ type GetZeroTrustAccessCustomPagesResultArgs struct {
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringInput `pulumi:"type"`
-	// UUID
+	// UUID.
 	Uid       pulumi.StringInput `pulumi:"uid"`
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 }
@@ -22888,7 +23496,7 @@ func (o GetZeroTrustAccessCustomPagesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessCustomPagesResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o GetZeroTrustAccessCustomPagesResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessCustomPagesResult) string { return v.Uid }).(pulumi.StringOutput)
 }
@@ -28861,7 +29469,7 @@ type GetZeroTrustAccessGroupsResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes []GetZeroTrustAccessGroupsResultExclude `pulumi:"excludes"`
-	// UUID
+	// UUID.
 	Id string `pulumi:"id"`
 	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes []GetZeroTrustAccessGroupsResultInclude `pulumi:"includes"`
@@ -28889,7 +29497,7 @@ type GetZeroTrustAccessGroupsResultArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
 	Excludes GetZeroTrustAccessGroupsResultExcludeArrayInput `pulumi:"excludes"`
-	// UUID
+	// UUID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
 	Includes GetZeroTrustAccessGroupsResultIncludeArrayInput `pulumi:"includes"`
@@ -28962,7 +29570,7 @@ func (o GetZeroTrustAccessGroupsResultOutput) Excludes() GetZeroTrustAccessGroup
 	return o.ApplyT(func(v GetZeroTrustAccessGroupsResult) []GetZeroTrustAccessGroupsResultExclude { return v.Excludes }).(GetZeroTrustAccessGroupsResultExcludeArrayOutput)
 }
 
-// UUID
+// UUID.
 func (o GetZeroTrustAccessGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -35536,7 +36144,7 @@ func (o GetZeroTrustAccessIdentityProviderScimConfigOutput) UserDeprovision() pu
 type GetZeroTrustAccessIdentityProvidersResult struct {
 	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 	Config GetZeroTrustAccessIdentityProvidersResultConfig `pulumi:"config"`
-	// UUID
+	// UUID.
 	Id string `pulumi:"id"`
 	// The name of the identity provider, shown to users on the login page.
 	Name string `pulumi:"name"`
@@ -35561,7 +36169,7 @@ type GetZeroTrustAccessIdentityProvidersResultInput interface {
 type GetZeroTrustAccessIdentityProvidersResultArgs struct {
 	// The configuration parameters for the identity provider. To view the required parameters for a specific provider, refer to our [developer documentation](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/).
 	Config GetZeroTrustAccessIdentityProvidersResultConfigInput `pulumi:"config"`
-	// UUID
+	// UUID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the identity provider, shown to users on the login page.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -35630,7 +36238,7 @@ func (o GetZeroTrustAccessIdentityProvidersResultOutput) Config() GetZeroTrustAc
 	}).(GetZeroTrustAccessIdentityProvidersResultConfigOutput)
 }
 
-// UUID
+// UUID.
 func (o GetZeroTrustAccessIdentityProvidersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessIdentityProvidersResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -39633,353 +40241,16 @@ func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) IdentityProviderId
 	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustAccessPoliciesResultIncludeCertificate struct {
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeCertificateInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeCertificateArgs and GetZeroTrustAccessPoliciesResultIncludeCertificateOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeCertificateInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeCertificateArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeCertificateInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeCertificateOutput() GetZeroTrustAccessPoliciesResultIncludeCertificateOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeCertificateOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeCertificateOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeCertificateArgs struct {
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeCertificate)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeCertificateArgs) ToGetZeroTrustAccessPoliciesResultIncludeCertificateOutput() GetZeroTrustAccessPoliciesResultIncludeCertificateOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeCertificateOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeCertificateArgs) ToGetZeroTrustAccessPoliciesResultIncludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeCertificateOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeCertificateOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeCertificate)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeCertificateOutput) ToGetZeroTrustAccessPoliciesResultIncludeCertificateOutput() GetZeroTrustAccessPoliciesResultIncludeCertificateOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeCertificateOutput) ToGetZeroTrustAccessPoliciesResultIncludeCertificateOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeCertificateOutput {
-	return o
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeCommonName struct {
-	// The common name to match.
-	CommonName string `pulumi:"commonName"`
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeCommonNameInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeCommonNameArgs and GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeCommonNameInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeCommonNameArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeCommonNameInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeCommonNameOutput() GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeCommonNameOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeCommonNameArgs struct {
-	// The common name to match.
-	CommonName pulumi.StringInput `pulumi:"commonName"`
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeCommonNameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeCommonName)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeCommonNameArgs) ToGetZeroTrustAccessPoliciesResultIncludeCommonNameOutput() GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeCommonNameOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeCommonNameArgs) ToGetZeroTrustAccessPoliciesResultIncludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeCommonName)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput) ToGetZeroTrustAccessPoliciesResultIncludeCommonNameOutput() GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput) ToGetZeroTrustAccessPoliciesResultIncludeCommonNameOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput {
-	return o
-}
-
-// The common name to match.
-func (o GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput) CommonName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeCommonName) string { return v.CommonName }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeDevicePosture struct {
-	// The ID of a device posture integration.
-	IntegrationUid string `pulumi:"integrationUid"`
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeDevicePostureInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeDevicePostureArgs and GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeDevicePostureInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeDevicePostureArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeDevicePostureInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput() GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeDevicePostureOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeDevicePostureArgs struct {
-	// The ID of a device posture integration.
-	IntegrationUid pulumi.StringInput `pulumi:"integrationUid"`
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeDevicePostureArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeDevicePosture)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeDevicePostureArgs) ToGetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput() GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeDevicePostureOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeDevicePostureArgs) ToGetZeroTrustAccessPoliciesResultIncludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeDevicePosture)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput) ToGetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput() GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput) ToGetZeroTrustAccessPoliciesResultIncludeDevicePostureOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput {
-	return o
-}
-
-// The ID of a device posture integration.
-func (o GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput) IntegrationUid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeDevicePosture) string { return v.IntegrationUid }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmail struct {
-	// The email of the user.
-	Email string `pulumi:"email"`
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeEmailInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeEmailArgs and GetZeroTrustAccessPoliciesResultIncludeEmailOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeEmailInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeEmailArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeEmailInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeEmailOutput() GetZeroTrustAccessPoliciesResultIncludeEmailOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeEmailOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmailArgs struct {
-	// The email of the user.
-	Email pulumi.StringInput `pulumi:"email"`
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeEmailArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmail)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeEmailArgs) ToGetZeroTrustAccessPoliciesResultIncludeEmailOutput() GetZeroTrustAccessPoliciesResultIncludeEmailOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeEmailOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeEmailArgs) ToGetZeroTrustAccessPoliciesResultIncludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeEmailOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmailOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeEmailOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmail)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailOutput) ToGetZeroTrustAccessPoliciesResultIncludeEmailOutput() GetZeroTrustAccessPoliciesResultIncludeEmailOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailOutput) ToGetZeroTrustAccessPoliciesResultIncludeEmailOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailOutput {
-	return o
-}
-
-// The email of the user.
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailOutput) Email() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeEmail) string { return v.Email }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmailDomain struct {
-	// The email domain to match.
-	Domain string `pulumi:"domain"`
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeEmailDomainInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeEmailDomainArgs and GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeEmailDomainInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeEmailDomainArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeEmailDomainInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput() GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeEmailDomainOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmailDomainArgs struct {
-	// The email domain to match.
-	Domain pulumi.StringInput `pulumi:"domain"`
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeEmailDomainArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmailDomain)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeEmailDomainArgs) ToGetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput() GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeEmailDomainOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeEmailDomainArgs) ToGetZeroTrustAccessPoliciesResultIncludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmailDomain)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput) ToGetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput() GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput) ToGetZeroTrustAccessPoliciesResultIncludeEmailDomainOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput {
-	return o
-}
-
-// The email domain to match.
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeEmailDomain) string { return v.Domain }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmailList struct {
-	// The ID of a previously created email list.
-	Id string `pulumi:"id"`
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeEmailListInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeEmailListArgs and GetZeroTrustAccessPoliciesResultIncludeEmailListOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeEmailListInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeEmailListArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeEmailListInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeEmailListOutput() GetZeroTrustAccessPoliciesResultIncludeEmailListOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeEmailListOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailListOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmailListArgs struct {
-	// The ID of a previously created email list.
-	Id pulumi.StringInput `pulumi:"id"`
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeEmailListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmailList)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeEmailListArgs) ToGetZeroTrustAccessPoliciesResultIncludeEmailListOutput() GetZeroTrustAccessPoliciesResultIncludeEmailListOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeEmailListOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeEmailListArgs) ToGetZeroTrustAccessPoliciesResultIncludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeEmailListOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEmailListOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeEmailListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmailList)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailListOutput) ToGetZeroTrustAccessPoliciesResultIncludeEmailListOutput() GetZeroTrustAccessPoliciesResultIncludeEmailListOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailListOutput) ToGetZeroTrustAccessPoliciesResultIncludeEmailListOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeEmailListOutput {
-	return o
-}
-
-// The ID of a previously created email list.
-func (o GetZeroTrustAccessPoliciesResultIncludeEmailListOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeEmailList) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEveryone struct {
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeEveryoneInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeEveryoneArgs and GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeEveryoneInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeEveryoneArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeEveryoneInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeEveryoneOutput() GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeEveryoneOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEveryoneArgs struct {
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeEveryoneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEveryone)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeEveryoneArgs) ToGetZeroTrustAccessPoliciesResultIncludeEveryoneOutput() GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeEveryoneOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeEveryoneArgs) ToGetZeroTrustAccessPoliciesResultIncludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEveryone)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput) ToGetZeroTrustAccessPoliciesResultIncludeEveryoneOutput() GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput) ToGetZeroTrustAccessPoliciesResultIncludeEveryoneOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput {
-	return o
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheReserveInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheReserveArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCookieFieldInput)(nil)).Elem(), GetRulesetRuleActionParametersCookieFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCookieFieldArrayInput)(nil)).Elem(), GetRulesetRuleActionParametersCookieFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlInput)(nil)).Elem(), GetRulesetRuleActionParametersEdgeTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput)(nil)).Elem(), GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput)(nil)).Elem(), GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput)(nil)).Elem(), GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersFromListInput)(nil)).Elem(), GetRulesetRuleActionParametersFromListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersFromValueInput)(nil)).Elem(), GetRulesetRuleActionParametersFromValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersFromValueTargetUrlInput)(nil)).Elem(), GetRulesetRuleActionParametersFromValueTargetUrlArgs{})
@@ -40081,6 +40352,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersDeploymentDeploymentVersionArrayInput)(nil)).Elem(), GetWorkersDeploymentDeploymentVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersForPlatformsDispatchNamespacesResultInput)(nil)).Elem(), GetWorkersForPlatformsDispatchNamespacesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersForPlatformsDispatchNamespacesResultArrayInput)(nil)).Elem(), GetWorkersForPlatformsDispatchNamespacesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersForPlatformsScriptSecretsResultInput)(nil)).Elem(), GetWorkersForPlatformsScriptSecretsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersForPlatformsScriptSecretsResultArrayInput)(nil)).Elem(), GetWorkersForPlatformsScriptSecretsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersKvNamespaceFilterInput)(nil)).Elem(), GetWorkersKvNamespaceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersKvNamespaceFilterPtrInput)(nil)).Elem(), GetWorkersKvNamespaceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersKvNamespacesResultInput)(nil)).Elem(), GetWorkersKvNamespacesResultArgs{})
@@ -40092,8 +40365,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultPlacementInput)(nil)).Elem(), GetWorkersScriptsResultPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerArrayInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersSecretsResultInput)(nil)).Elem(), GetWorkersSecretsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersSecretsResultArrayInput)(nil)).Elem(), GetWorkersSecretsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationCorsHeadersInput)(nil)).Elem(), GetZeroTrustAccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationDestinationInput)(nil)).Elem(), GetZeroTrustAccessApplicationDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationDestinationArrayInput)(nil)).Elem(), GetZeroTrustAccessApplicationDestinationArray{})
@@ -40558,13 +40829,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAuthContextInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAuthContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAuthMethodInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAzureAdInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeCertificateInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeCommonNameInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeCommonNameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeDevicePostureInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeDevicePostureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmailInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeEmailArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmailDomainInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeEmailDomainArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEmailListInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeEmailListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeEveryoneInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeEveryoneArgs{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheReserveOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCookieFieldOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCookieFieldArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersEdgeTtlOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersFromListOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersFromValueOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersFromValueTargetUrlOutput{})
@@ -40666,6 +40939,8 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkersDeploymentDeploymentVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkersForPlatformsDispatchNamespacesResultOutput{})
 	pulumi.RegisterOutputType(GetWorkersForPlatformsDispatchNamespacesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkersForPlatformsScriptSecretsResultOutput{})
+	pulumi.RegisterOutputType(GetWorkersForPlatformsScriptSecretsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkersKvNamespaceFilterOutput{})
 	pulumi.RegisterOutputType(GetWorkersKvNamespaceFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetWorkersKvNamespacesResultOutput{})
@@ -40677,8 +40952,6 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkersScriptsResultPlacementOutput{})
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerOutput{})
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkersSecretsResultOutput{})
-	pulumi.RegisterOutputType(GetWorkersSecretsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationDestinationOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationDestinationArrayOutput{})
@@ -41143,11 +41416,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAuthContextOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeCertificateOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeEmailOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeEmailDomainOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeEmailListOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeEveryoneOutput{})
 }

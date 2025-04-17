@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersSecret;
- * import com.pulumi.cloudflare.WorkersSecretArgs;
+ * import com.pulumi.cloudflare.WorkersForPlatformsScriptSecret;
+ * import com.pulumi.cloudflare.WorkersForPlatformsScriptSecretArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersSecret = new WorkersSecret("exampleWorkersSecret", WorkersSecretArgs.builder()
+ *         var exampleWorkersForPlatformsScriptSecret = new WorkersForPlatformsScriptSecret("exampleWorkersForPlatformsScriptSecret", WorkersForPlatformsScriptSecretArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .dispatchNamespace("my-dispatch-namespace")
  *             .scriptName("this-is_my_script-01")
@@ -71,14 +71,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/workerSecret:WorkerSecret")
 public class WorkerSecret extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -197,7 +197,7 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/workerSecret:WorkerSecret").build())
+                Output.of(Alias.builder().type("cloudflare:index/workersSecret:WorkersSecret").build())
             ))
             .additionalSecretOutputs(List.of(
                 "text"

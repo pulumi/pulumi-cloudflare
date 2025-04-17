@@ -28,7 +28,7 @@ class TunnelConfigArgs:
                  source: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a TunnelConfig resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] tunnel_id: UUID of the tunnel.
         :param pulumi.Input['TunnelConfigConfigArgs'] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
@@ -45,7 +45,7 @@ class TunnelConfigArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -102,7 +102,7 @@ class _TunnelConfigState:
                  version: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering TunnelConfig resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input['TunnelConfigConfigArgs'] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
@@ -126,7 +126,7 @@ class _TunnelConfigState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -219,7 +219,7 @@ class TunnelConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
@@ -304,7 +304,7 @@ class TunnelConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['TunnelConfigConfigArgs', 'TunnelConfigConfigArgsDict']] config: The tunnel configuration and ingress rules.
         :param pulumi.Input[builtins.str] source: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel's configuration on the Zero Trust dashboard.
                Available values: "local", "cloudflare".
@@ -327,7 +327,7 @@ class TunnelConfig(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

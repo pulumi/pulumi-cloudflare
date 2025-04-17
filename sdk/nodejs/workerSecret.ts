@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersSecret = new cloudflare.WorkersSecret("example_workers_secret", {
+ * const exampleWorkersForPlatformsScriptSecret = new cloudflare.WorkersForPlatformsScriptSecret("example_workers_for_platforms_script_secret", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dispatchNamespace: "my-dispatch-namespace",
  *     scriptName: "this-is_my_script-01",
@@ -59,7 +59,7 @@ export class WorkerSecret extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -128,8 +128,6 @@ export class WorkerSecret extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerSecret:WorkerSecret" }] };
-        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["text"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(WorkerSecret.__pulumiType, name, resourceInputs, opts);
@@ -141,7 +139,7 @@ export class WorkerSecret extends pulumi.CustomResource {
  */
 export interface WorkerSecretState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -172,7 +170,7 @@ export interface WorkerSecretState {
  */
 export interface WorkerSecretArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

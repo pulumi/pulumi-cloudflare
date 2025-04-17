@@ -50,7 +50,7 @@ import (
 //				ProbeZone: pulumi.String("example.com"),
 //				Retries:   pulumi.Int(0),
 //				Timeout:   pulumi.Int(0),
-//				Type:      pulumi.String("http"),
+//				Type:      pulumi.String("https"),
 //			})
 //			if err != nil {
 //				return err

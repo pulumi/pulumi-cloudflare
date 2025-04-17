@@ -80,6 +80,18 @@ public final class GetWaitingRoomEventsResult {
      * 
      */
     private Integer totalActiveUsers;
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * 
+     */
+    private String turnstileAction;
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * 
+     */
+    private String turnstileMode;
 
     private GetWaitingRoomEventsResult() {}
     public String createdOn() {
@@ -182,6 +194,22 @@ public final class GetWaitingRoomEventsResult {
     public Integer totalActiveUsers() {
         return this.totalActiveUsers;
     }
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * 
+     */
+    public String turnstileAction() {
+        return this.turnstileAction;
+    }
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * 
+     */
+    public String turnstileMode() {
+        return this.turnstileMode;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -208,6 +236,8 @@ public final class GetWaitingRoomEventsResult {
         private Boolean shuffleAtEventStart;
         private Boolean suspended;
         private Integer totalActiveUsers;
+        private String turnstileAction;
+        private String turnstileMode;
         public Builder() {}
         public Builder(GetWaitingRoomEventsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -227,6 +257,8 @@ public final class GetWaitingRoomEventsResult {
     	      this.shuffleAtEventStart = defaults.shuffleAtEventStart;
     	      this.suspended = defaults.suspended;
     	      this.totalActiveUsers = defaults.totalActiveUsers;
+    	      this.turnstileAction = defaults.turnstileAction;
+    	      this.turnstileMode = defaults.turnstileMode;
         }
 
         @CustomType.Setter
@@ -357,6 +389,22 @@ public final class GetWaitingRoomEventsResult {
             this.totalActiveUsers = totalActiveUsers;
             return this;
         }
+        @CustomType.Setter
+        public Builder turnstileAction(String turnstileAction) {
+            if (turnstileAction == null) {
+              throw new MissingRequiredPropertyException("GetWaitingRoomEventsResult", "turnstileAction");
+            }
+            this.turnstileAction = turnstileAction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder turnstileMode(String turnstileMode) {
+            if (turnstileMode == null) {
+              throw new MissingRequiredPropertyException("GetWaitingRoomEventsResult", "turnstileMode");
+            }
+            this.turnstileMode = turnstileMode;
+            return this;
+        }
         public GetWaitingRoomEventsResult build() {
             final var _resultValue = new GetWaitingRoomEventsResult();
             _resultValue.createdOn = createdOn;
@@ -375,6 +423,8 @@ public final class GetWaitingRoomEventsResult {
             _resultValue.shuffleAtEventStart = shuffleAtEventStart;
             _resultValue.suspended = suspended;
             _resultValue.totalActiveUsers = totalActiveUsers;
+            _resultValue.turnstileAction = turnstileAction;
+            _resultValue.turnstileMode = turnstileMode;
             return _resultValue;
         }
     }

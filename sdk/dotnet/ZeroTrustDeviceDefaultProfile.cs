@@ -35,7 +35,6 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 Address = "192.0.2.0/24",
     ///                 Description = "Exclude testing domains from the tunnel",
-    ///                 Host = "*.example.com",
     ///             },
     ///         },
     ///         ExcludeOfficeIps = true,
@@ -44,8 +43,7 @@ namespace Pulumi.Cloudflare
     ///             new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileIncludeArgs
     ///             {
     ///                 Address = "192.0.2.0/24",
-    ///                 Description = "Exclude testing domains from the tunnel",
-    ///                 Host = "*.example.com",
+    ///                 Description = "Include testing domains in the tunnel",
     ///             },
     ///         },
     ///         RegisterInterfaceIpWithDns = true,

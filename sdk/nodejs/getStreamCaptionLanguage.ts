@@ -32,7 +32,7 @@ export function getStreamCaptionLanguage(args: GetStreamCaptionLanguageArgs, opt
  */
 export interface GetStreamCaptionLanguageArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -50,7 +50,7 @@ export interface GetStreamCaptionLanguageArgs {
  */
 export interface GetStreamCaptionLanguageResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -107,7 +107,7 @@ export function getStreamCaptionLanguageOutput(args: GetStreamCaptionLanguageOut
  */
 export interface GetStreamCaptionLanguageOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

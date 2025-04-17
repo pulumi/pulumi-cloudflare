@@ -197,10 +197,10 @@ def get_access_rules(account_id: Optional[builtins.str] = None,
             "target": "ip",
             "value": "198.51.100.4",
         },
-        direction="asc",
-        mode="block",
+        direction="desc",
+        mode="challenge",
         notes="my note",
-        order="configuration.target")
+        order="mode")
     ```
 
 
@@ -266,10 +266,10 @@ def get_access_rules_output(account_id: Optional[pulumi.Input[Optional[builtins.
             "target": "ip",
             "value": "198.51.100.4",
         },
-        direction="asc",
-        mode="block",
+        direction="desc",
+        mode="challenge",
         notes="my note",
-        order="configuration.target")
+        order="mode")
     ```
 
 

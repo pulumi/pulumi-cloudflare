@@ -23,17 +23,9 @@ public final class GetZeroTrustDeviceCustomProfileArgs extends com.pulumi.resour
         return this.accountId;
     }
 
-    /**
-     * Device ID.
-     * 
-     */
     @Import(name="policyId")
     private @Nullable Output<String> policyId;
 
-    /**
-     * @return Device ID.
-     * 
-     */
     public Optional<Output<String>> policyId() {
         return Optional.ofNullable(this.policyId);
     }
@@ -72,23 +64,11 @@ public final class GetZeroTrustDeviceCustomProfileArgs extends com.pulumi.resour
             return accountId(Output.of(accountId));
         }
 
-        /**
-         * @param policyId Device ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(@Nullable Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
-        /**
-         * @param policyId Device ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
         }

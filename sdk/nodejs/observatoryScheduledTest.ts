@@ -73,7 +73,7 @@ export class ObservatoryScheduledTest extends pulumi.CustomResource {
      */
     public readonly url!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -140,7 +140,7 @@ export interface ObservatoryScheduledTestState {
      */
     url?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -154,7 +154,7 @@ export interface ObservatoryScheduledTestArgs {
      */
     url: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

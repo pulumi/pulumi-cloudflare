@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersSecret = cloudflare.getWorkersSecret({
+ * const exampleWorkersForPlatformsScriptSecret = cloudflare.getWorkersForPlatformsScriptSecret({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dispatchNamespace: "my-dispatch-namespace",
  *     scriptName: "this-is_my_script-01",
@@ -19,7 +19,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
+/** @deprecated cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret */
 export function getWorkersSecret(args: GetWorkersSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkersSecretResult> {
+    pulumi.log.warn("getWorkersSecret is deprecated: cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getWorkersSecret:getWorkersSecret", {
         "accountId": args.accountId,
@@ -34,7 +36,7 @@ export function getWorkersSecret(args: GetWorkersSecretArgs, opts?: pulumi.Invok
  */
 export interface GetWorkersSecretArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -56,7 +58,7 @@ export interface GetWorkersSecretArgs {
  */
 export interface GetWorkersSecretResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -92,7 +94,7 @@ export interface GetWorkersSecretResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersSecret = cloudflare.getWorkersSecret({
+ * const exampleWorkersForPlatformsScriptSecret = cloudflare.getWorkersForPlatformsScriptSecret({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dispatchNamespace: "my-dispatch-namespace",
  *     scriptName: "this-is_my_script-01",
@@ -100,7 +102,9 @@ export interface GetWorkersSecretResult {
  * });
  * ```
  */
+/** @deprecated cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret */
 export function getWorkersSecretOutput(args: GetWorkersSecretOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkersSecretResult> {
+    pulumi.log.warn("getWorkersSecret is deprecated: cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getWorkersSecret:getWorkersSecret", {
         "accountId": args.accountId,
@@ -115,7 +119,7 @@ export function getWorkersSecretOutput(args: GetWorkersSecretOutputArgs, opts?: 
  */
 export interface GetWorkersSecretOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

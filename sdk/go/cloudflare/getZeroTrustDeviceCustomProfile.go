@@ -49,9 +49,8 @@ func LookupZeroTrustDeviceCustomProfile(ctx *pulumi.Context, args *LookupZeroTru
 
 // A collection of arguments for invoking getZeroTrustDeviceCustomProfile.
 type LookupZeroTrustDeviceCustomProfileArgs struct {
-	AccountId string `pulumi:"accountId"`
-	// Device ID.
-	PolicyId *string `pulumi:"policyId"`
+	AccountId string  `pulumi:"accountId"`
+	PolicyId  *string `pulumi:"policyId"`
 }
 
 // A collection of values returned by getZeroTrustDeviceCustomProfile.
@@ -81,7 +80,7 @@ type LookupZeroTrustDeviceCustomProfileResult struct {
 	Excludes        []GetZeroTrustDeviceCustomProfileExclude        `pulumi:"excludes"`
 	FallbackDomains []GetZeroTrustDeviceCustomProfileFallbackDomain `pulumi:"fallbackDomains"`
 	GatewayUniqueId string                                          `pulumi:"gatewayUniqueId"`
-	// Device ID.
+	// The ID of this resource.
 	Id string `pulumi:"id"`
 	// List of routes included in the WARP client's tunnel.
 	Includes []GetZeroTrustDeviceCustomProfileInclude `pulumi:"includes"`
@@ -92,8 +91,7 @@ type LookupZeroTrustDeviceCustomProfileResult struct {
 	// The wirefilter expression to match devices.
 	Match string `pulumi:"match"`
 	// The name of the device settings profile.
-	Name string `pulumi:"name"`
-	// Device ID.
+	Name     string `pulumi:"name"`
 	PolicyId string `pulumi:"policyId"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence float64 `pulumi:"precedence"`
@@ -120,9 +118,8 @@ func LookupZeroTrustDeviceCustomProfileOutput(ctx *pulumi.Context, args LookupZe
 
 // A collection of arguments for invoking getZeroTrustDeviceCustomProfile.
 type LookupZeroTrustDeviceCustomProfileOutputArgs struct {
-	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Device ID.
-	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	AccountId pulumi.StringInput    `pulumi:"accountId"`
+	PolicyId  pulumi.StringPtrInput `pulumi:"policyId"`
 }
 
 func (LookupZeroTrustDeviceCustomProfileOutputArgs) ElementType() reflect.Type {
@@ -215,7 +212,7 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) GatewayUniqueId() pulumi
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) string { return v.GatewayUniqueId }).(pulumi.StringOutput)
 }
 
-// Device ID.
+// The ID of this resource.
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -247,7 +244,6 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) Name() pulumi.StringOutp
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Device ID.
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) string { return v.PolicyId }).(pulumi.StringOutput)
 }

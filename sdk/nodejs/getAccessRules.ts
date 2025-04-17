@@ -20,10 +20,10 @@ import * as utilities from "./utilities";
  *         target: "ip",
  *         value: "198.51.100.4",
  *     },
- *     direction: "asc",
- *     mode: "block",
+ *     direction: "desc",
+ *     mode: "challenge",
  *     notes: "my note",
- *     order: "configuration.target",
+ *     order: "mode",
  * });
  * ```
  */
@@ -152,10 +152,10 @@ export interface GetAccessRulesResult {
  *         target: "ip",
  *         value: "198.51.100.4",
  *     },
- *     direction: "asc",
- *     mode: "block",
+ *     direction: "desc",
+ *     mode: "challenge",
  *     notes: "my note",
- *     order: "configuration.target",
+ *     order: "mode",
  * });
  * ```
  */

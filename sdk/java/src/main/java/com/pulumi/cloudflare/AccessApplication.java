@@ -389,6 +389,32 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
     public Output<List<AccessApplicationPolicy>> policies() {
         return this.policies;
     }
+    /**
+     * Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+     * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+     * }
+     * 
+     */
+    @Export(name="readServiceTokensFromHeader", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> readServiceTokensFromHeader;
+
+    /**
+     * @return Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+     * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+     * }
+     * 
+     */
+    public Output<Optional<String>> readServiceTokensFromHeader() {
+        return Codegen.optional(this.readServiceTokensFromHeader);
+    }
     @Export(name="saasApp", refs={AccessApplicationSaasApp.class}, tree="[0]")
     private Output<AccessApplicationSaasApp> saasApp;
 
@@ -426,7 +452,11 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> selfHostedDomains;
 
