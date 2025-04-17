@@ -308,6 +308,7 @@ from .get_workers_script import *
 from .get_workers_script_subdomain import *
 from .get_workers_scripts import *
 from .get_workers_secret import *
+from .get_workers_secrets import *
 from .get_zero_trust_access_application import *
 from .get_zero_trust_access_applications import *
 from .get_zero_trust_access_custom_page import *
@@ -478,7 +479,6 @@ from .web_analytics_site import *
 from .worker_cron_trigger import *
 from .worker_domain import *
 from .worker_script import *
-from .worker_secret import *
 from .workers_cron_trigger import *
 from .workers_custom_domain import *
 from .workers_deployment import *
@@ -1847,14 +1847,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workerScript:WorkerScript": "WorkerScript"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/workerSecret",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/workerSecret:WorkerSecret": "WorkerSecret"
   }
  },
  {

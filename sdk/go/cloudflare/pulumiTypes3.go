@@ -9103,6 +9103,115 @@ func (o GetWorkersScriptsResultTailConsumerArrayOutput) Index(i pulumi.IntInput)
 	}).(GetWorkersScriptsResultTailConsumerOutput)
 }
 
+type GetWorkersSecretsResult struct {
+	// The name of this secret, this is what will be used to access it inside the Worker.
+	Name string `pulumi:"name"`
+	// The type of secret.
+	// Available values: "secretText".
+	Type string `pulumi:"type"`
+}
+
+// GetWorkersSecretsResultInput is an input type that accepts GetWorkersSecretsResultArgs and GetWorkersSecretsResultOutput values.
+// You can construct a concrete instance of `GetWorkersSecretsResultInput` via:
+//
+//	GetWorkersSecretsResultArgs{...}
+type GetWorkersSecretsResultInput interface {
+	pulumi.Input
+
+	ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput
+	ToGetWorkersSecretsResultOutputWithContext(context.Context) GetWorkersSecretsResultOutput
+}
+
+type GetWorkersSecretsResultArgs struct {
+	// The name of this secret, this is what will be used to access it inside the Worker.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The type of secret.
+	// Available values: "secretText".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetWorkersSecretsResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkersSecretsResult)(nil)).Elem()
+}
+
+func (i GetWorkersSecretsResultArgs) ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput {
+	return i.ToGetWorkersSecretsResultOutputWithContext(context.Background())
+}
+
+func (i GetWorkersSecretsResultArgs) ToGetWorkersSecretsResultOutputWithContext(ctx context.Context) GetWorkersSecretsResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersSecretsResultOutput)
+}
+
+// GetWorkersSecretsResultArrayInput is an input type that accepts GetWorkersSecretsResultArray and GetWorkersSecretsResultArrayOutput values.
+// You can construct a concrete instance of `GetWorkersSecretsResultArrayInput` via:
+//
+//	GetWorkersSecretsResultArray{ GetWorkersSecretsResultArgs{...} }
+type GetWorkersSecretsResultArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput
+	ToGetWorkersSecretsResultArrayOutputWithContext(context.Context) GetWorkersSecretsResultArrayOutput
+}
+
+type GetWorkersSecretsResultArray []GetWorkersSecretsResultInput
+
+func (GetWorkersSecretsResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkersSecretsResult)(nil)).Elem()
+}
+
+func (i GetWorkersSecretsResultArray) ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput {
+	return i.ToGetWorkersSecretsResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkersSecretsResultArray) ToGetWorkersSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersSecretsResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersSecretsResultArrayOutput)
+}
+
+type GetWorkersSecretsResultOutput struct{ *pulumi.OutputState }
+
+func (GetWorkersSecretsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkersSecretsResult)(nil)).Elem()
+}
+
+func (o GetWorkersSecretsResultOutput) ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput {
+	return o
+}
+
+func (o GetWorkersSecretsResultOutput) ToGetWorkersSecretsResultOutputWithContext(ctx context.Context) GetWorkersSecretsResultOutput {
+	return o
+}
+
+// The name of this secret, this is what will be used to access it inside the Worker.
+func (o GetWorkersSecretsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkersSecretsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of secret.
+// Available values: "secretText".
+func (o GetWorkersSecretsResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkersSecretsResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetWorkersSecretsResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkersSecretsResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkersSecretsResult)(nil)).Elem()
+}
+
+func (o GetWorkersSecretsResultArrayOutput) ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput {
+	return o
+}
+
+func (o GetWorkersSecretsResultArrayOutput) ToGetWorkersSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersSecretsResultArrayOutput {
+	return o
+}
+
+func (o GetWorkersSecretsResultArrayOutput) Index(i pulumi.IntInput) GetWorkersSecretsResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersSecretsResult {
+		return vs[0].([]GetWorkersSecretsResult)[vs[1].(int)]
+	}).(GetWorkersSecretsResultOutput)
+}
+
 type GetZeroTrustAccessApplicationCorsHeaders struct {
 	// Allows all HTTP request headers.
 	AllowAllHeaders bool `pulumi:"allowAllHeaders"`
@@ -40180,67 +40289,6 @@ func (o GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput) AuthMethod() pu
 	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeAuthMethod) string { return v.AuthMethod }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustAccessPoliciesResultIncludeAzureAd struct {
-	// The ID of an Azure group.
-	Id string `pulumi:"id"`
-	// The ID of your Azure identity provider.
-	IdentityProviderId string `pulumi:"identityProviderId"`
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeAzureAdInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs and GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeAzureAdInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeAzureAdInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutput() GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs struct {
-	// The ID of an Azure group.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of your Azure identity provider.
-	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAzureAd)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs) ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutput() GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs) ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAzureAd)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutput() GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput {
-	return o
-}
-
-// The ID of an Azure group.
-func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeAzureAd) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The ID of your Azure identity provider.
-func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) IdentityProviderId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
@@ -40365,6 +40413,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultPlacementInput)(nil)).Elem(), GetWorkersScriptsResultPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerArrayInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersSecretsResultInput)(nil)).Elem(), GetWorkersSecretsResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersSecretsResultArrayInput)(nil)).Elem(), GetWorkersSecretsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationCorsHeadersInput)(nil)).Elem(), GetZeroTrustAccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationDestinationInput)(nil)).Elem(), GetZeroTrustAccessApplicationDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationDestinationArrayInput)(nil)).Elem(), GetZeroTrustAccessApplicationDestinationArray{})
@@ -40828,7 +40878,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAnyValidServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAnyValidServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAuthContextInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAuthContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAuthMethodInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAzureAdInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheReserveOutput{})
@@ -40952,6 +41001,8 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkersScriptsResultPlacementOutput{})
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerOutput{})
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkersSecretsResultOutput{})
+	pulumi.RegisterOutputType(GetWorkersSecretsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationDestinationOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationDestinationArrayOutput{})
@@ -41415,5 +41466,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAnyValidServiceTokenOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAuthContextOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput{})
 }

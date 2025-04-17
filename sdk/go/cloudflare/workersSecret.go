@@ -89,7 +89,7 @@ func NewWorkersSecret(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("cloudflare:index/workerSecret:WorkerSecret"),
+			Type: pulumi.String("cloudflare:index/workersSecret:WorkersSecret"),
 		},
 	})
 	opts = append(opts, aliases)

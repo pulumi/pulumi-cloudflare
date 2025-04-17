@@ -13,6 +13,67 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetZeroTrustAccessPoliciesResultIncludeAzureAd struct {
+	// The ID of an Azure group.
+	Id string `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// GetZeroTrustAccessPoliciesResultIncludeAzureAdInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs and GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput values.
+// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeAzureAdInput` via:
+//
+//	GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs{...}
+type GetZeroTrustAccessPoliciesResultIncludeAzureAdInput interface {
+	pulumi.Input
+
+	ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutput() GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput
+	ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput
+}
+
+type GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs struct {
+	// The ID of an Azure group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The ID of your Azure identity provider.
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAzureAd)(nil)).Elem()
+}
+
+func (i GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs) ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutput() GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput {
+	return i.ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutputWithContext(context.Background())
+}
+
+func (i GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs) ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput)
+}
+
+type GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput struct{ *pulumi.OutputState }
+
+func (GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAzureAd)(nil)).Elem()
+}
+
+func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutput() GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput {
+	return o
+}
+
+func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) ToGetZeroTrustAccessPoliciesResultIncludeAzureAdOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput {
+	return o
+}
+
+// The ID of an Azure group.
+func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeAzureAd) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of your Azure identity provider.
+func (o GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeAzureAd) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
 type GetZeroTrustAccessPoliciesResultIncludeCertificate struct {
 }
 
@@ -25901,6 +25962,7 @@ func (o GetZonesResultOwnerOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAzureAdInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAzureAdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeCertificateInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeCommonNameInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeCommonNameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeDevicePostureInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeDevicePostureArgs{})
@@ -26263,6 +26325,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultAccountInput)(nil)).Elem(), GetZonesResultAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultMetaInput)(nil)).Elem(), GetZonesResultMetaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesResultOwnerInput)(nil)).Elem(), GetZonesResultOwnerArgs{})
+	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAzureAdOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeCertificateOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeCommonNameOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeDevicePostureOutput{})

@@ -15339,6 +15339,18 @@ export interface GetWorkersScriptsResultTailConsumer {
     service: string;
 }
 
+export interface GetWorkersSecretsResult {
+    /**
+     * The name of this secret, this is what will be used to access it inside the Worker.
+     */
+    name: string;
+    /**
+     * The type of secret.
+     * Available values: "secretText".
+     */
+    type: string;
+}
+
 export interface GetZeroTrustAccessApplicationCorsHeaders {
     /**
      * Allows all HTTP request headers.

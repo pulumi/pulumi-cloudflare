@@ -1754,23 +1754,7 @@
                 "current": "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret",
                 "past": [
                     {
-                        "name": "cloudflare:index/workerSecret:WorkerSecret",
-                        "inCodegen": true,
-                        "majorVersion": 6
-                    },
-                    {
                         "name": "cloudflare:index/workersSecret:WorkersSecret",
-                        "inCodegen": true,
-                        "majorVersion": 6
-                    }
-                ],
-                "majorVersion": 6
-            },
-            "cloudflare_workers_for_platforms_script_secret_legacy": {
-                "current": "cloudflare:index/workersSecret:WorkersSecret",
-                "past": [
-                    {
-                        "name": "cloudflare:index/workerSecret:WorkerSecret",
                         "inCodegen": true,
                         "majorVersion": 6
                     }
@@ -5995,6 +5979,15 @@
                     }
                 }
             },
+            "cloudflare_workers_for_platforms_script_secrets_legacy": {
+                "current": "cloudflare:index/getWorkersSecrets:getWorkersSecrets",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_workers_kv": {
                 "current": "cloudflare:index/getWorkersKv:getWorkersKv",
                 "majorVersion": 6
@@ -7355,13 +7348,7 @@
             },
             "cloudflare_workers_for_platforms_script_secret": {
                 "aliases": [
-                    "cloudflare:index/workerSecret:WorkerSecret",
                     "cloudflare:index/workersSecret:WorkersSecret"
-                ]
-            },
-            "cloudflare_workers_for_platforms_script_secret_legacy": {
-                "aliases": [
-                    "cloudflare:index/workerSecret:WorkerSecret"
                 ]
             },
             "cloudflare_workers_script": {

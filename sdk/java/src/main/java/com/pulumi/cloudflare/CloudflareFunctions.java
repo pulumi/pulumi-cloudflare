@@ -464,6 +464,8 @@ import com.pulumi.cloudflare.inputs.GetWorkersScriptsArgs;
 import com.pulumi.cloudflare.inputs.GetWorkersScriptsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetWorkersSecretArgs;
 import com.pulumi.cloudflare.inputs.GetWorkersSecretPlainArgs;
+import com.pulumi.cloudflare.inputs.GetWorkersSecretsArgs;
+import com.pulumi.cloudflare.inputs.GetWorkersSecretsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustAccessApplicationsArgs;
@@ -851,6 +853,7 @@ import com.pulumi.cloudflare.outputs.GetWorkersScriptResult;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptSubdomainResult;
 import com.pulumi.cloudflare.outputs.GetWorkersScriptsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetWorkersSecretResult;
+import com.pulumi.cloudflare.outputs.GetWorkersSecretsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessApplicationsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustAccessCustomPageResult;
@@ -49866,6 +49869,236 @@ public final class CloudflareFunctions {
     @Deprecated /* cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret */
     public static CompletableFuture<GetWorkersSecretResult> getWorkersSecretPlain(GetWorkersSecretPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getWorkersSecret:getWorkersSecret", TypeShape.of(GetWorkersSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkersForPlatformsScriptSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkersForPlatformsScriptSecrets = CloudflareFunctions.getWorkersForPlatformsScriptSecrets(GetWorkersForPlatformsScriptSecretsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .dispatchNamespace("my-dispatch-namespace")
+     *             .scriptName("this-is_my_script-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets
+     * 
+     */
+    @Deprecated /* cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets */
+    public static Output<GetWorkersSecretsInvokeResult> getWorkersSecrets(GetWorkersSecretsArgs args) {
+        return getWorkersSecrets(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkersForPlatformsScriptSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkersForPlatformsScriptSecrets = CloudflareFunctions.getWorkersForPlatformsScriptSecrets(GetWorkersForPlatformsScriptSecretsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .dispatchNamespace("my-dispatch-namespace")
+     *             .scriptName("this-is_my_script-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets
+     * 
+     */
+    @Deprecated /* cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets */
+    public static CompletableFuture<GetWorkersSecretsInvokeResult> getWorkersSecretsPlain(GetWorkersSecretsPlainArgs args) {
+        return getWorkersSecretsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkersForPlatformsScriptSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkersForPlatformsScriptSecrets = CloudflareFunctions.getWorkersForPlatformsScriptSecrets(GetWorkersForPlatformsScriptSecretsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .dispatchNamespace("my-dispatch-namespace")
+     *             .scriptName("this-is_my_script-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets
+     * 
+     */
+    @Deprecated /* cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets */
+    public static Output<GetWorkersSecretsInvokeResult> getWorkersSecrets(GetWorkersSecretsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getWorkersSecrets:getWorkersSecrets", TypeShape.of(GetWorkersSecretsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkersForPlatformsScriptSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkersForPlatformsScriptSecrets = CloudflareFunctions.getWorkersForPlatformsScriptSecrets(GetWorkersForPlatformsScriptSecretsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .dispatchNamespace("my-dispatch-namespace")
+     *             .scriptName("this-is_my_script-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets
+     * 
+     */
+    @Deprecated /* cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets */
+    public static Output<GetWorkersSecretsInvokeResult> getWorkersSecrets(GetWorkersSecretsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getWorkersSecrets:getWorkersSecrets", TypeShape.of(GetWorkersSecretsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetWorkersForPlatformsScriptSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleWorkersForPlatformsScriptSecrets = CloudflareFunctions.getWorkersForPlatformsScriptSecrets(GetWorkersForPlatformsScriptSecretsArgs.builder()
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .dispatchNamespace("my-dispatch-namespace")
+     *             .scriptName("this-is_my_script-01")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets
+     * 
+     */
+    @Deprecated /* cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets */
+    public static CompletableFuture<GetWorkersSecretsInvokeResult> getWorkersSecretsPlain(GetWorkersSecretsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getWorkersSecrets:getWorkersSecrets", TypeShape.of(GetWorkersSecretsInvokeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

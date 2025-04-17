@@ -276,7 +276,6 @@ func Provider() info.Provider {
 			},
 			"cloudflare_workers_for_platforms_script_secret": {
 				Aliases: alias(
-					"cloudflare:index/workerSecret:WorkerSecret",
 					"cloudflare:index/workersSecret:WorkersSecret",
 				),
 			},
@@ -349,17 +348,12 @@ func Provider() info.Provider {
 		"index",
 		nil,
 	)
-
-	prov.RenameResourceWithAlias("cloudflare_workers_for_platforms_script_secret",
-		tokens.Type("cloudflare:index/workersSecret:WorkersSecret"),
-		tokens.Type("cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret"),
+	prov.RenameDataSource("cloudflare_workers_for_platforms_script_secrets",
+		tokens.ModuleMember("cloudflare:index/getWorkersSecrets:getWorkersSecrets"),
+		tokens.ModuleMember("cloudflare:index/getWorkersForPlatformsScriptSecrets:getWorkersForPlatformsScriptSecrets"),
 		"index",
 		"index",
-		&info.Resource{
-			Docs: &tfbridge.DocInfo{
-				Source: "workers_for_platforms_script_secret.md",
-			},
-		},
+		nil,
 	)
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,

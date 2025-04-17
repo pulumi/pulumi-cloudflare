@@ -1515,6 +1515,11 @@ export const getWorkersSecret: typeof import("./getWorkersSecret").getWorkersSec
 export const getWorkersSecretOutput: typeof import("./getWorkersSecret").getWorkersSecretOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersSecret","getWorkersSecretOutput"], () => require("./getWorkersSecret"));
 
+export { GetWorkersSecretsArgs, GetWorkersSecretsResult, GetWorkersSecretsOutputArgs } from "./getWorkersSecrets";
+export const getWorkersSecrets: typeof import("./getWorkersSecrets").getWorkersSecrets = null as any;
+export const getWorkersSecretsOutput: typeof import("./getWorkersSecrets").getWorkersSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkersSecrets","getWorkersSecretsOutput"], () => require("./getWorkersSecrets"));
+
 export { GetZeroTrustAccessApplicationArgs, GetZeroTrustAccessApplicationResult, GetZeroTrustAccessApplicationOutputArgs } from "./getZeroTrustAccessApplication";
 export const getZeroTrustAccessApplication: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplication = null as any;
 export const getZeroTrustAccessApplicationOutput: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplicationOutput = null as any;
@@ -2365,11 +2370,6 @@ export type WorkerScript = import("./workerScript").WorkerScript;
 export const WorkerScript: typeof import("./workerScript").WorkerScript = null as any;
 utilities.lazyLoad(exports, ["WorkerScript"], () => require("./workerScript"));
 
-export { WorkerSecretArgs, WorkerSecretState } from "./workerSecret";
-export type WorkerSecret = import("./workerSecret").WorkerSecret;
-export const WorkerSecret: typeof import("./workerSecret").WorkerSecret = null as any;
-utilities.lazyLoad(exports, ["WorkerSecret"], () => require("./workerSecret"));
-
 export { WorkersCronTriggerArgs, WorkersCronTriggerState } from "./workersCronTrigger";
 export type WorkersCronTrigger = import("./workersCronTrigger").WorkersCronTrigger;
 export const WorkersCronTrigger: typeof import("./workersCronTrigger").WorkersCronTrigger = null as any;
@@ -3013,8 +3013,6 @@ const _module = {
                 return new WorkerDomain(name, <any>undefined, { urn })
             case "cloudflare:index/workerScript:WorkerScript":
                 return new WorkerScript(name, <any>undefined, { urn })
-            case "cloudflare:index/workerSecret:WorkerSecret":
-                return new WorkerSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
                 return new WorkersCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workersCustomDomain:WorkersCustomDomain":
@@ -3304,7 +3302,6 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsSite", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/workerSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCustomDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersDeployment", _module)
