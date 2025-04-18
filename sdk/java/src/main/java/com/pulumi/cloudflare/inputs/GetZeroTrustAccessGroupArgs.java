@@ -39,14 +39,14 @@ public final class GetZeroTrustAccessGroupArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> groupId() {
@@ -126,7 +126,7 @@ public final class GetZeroTrustAccessGroupArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param groupId UUID
+         * @param groupId UUID.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GetZeroTrustAccessGroupArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param groupId UUID
+         * @param groupId UUID.
          * 
          * @return builder
          * 

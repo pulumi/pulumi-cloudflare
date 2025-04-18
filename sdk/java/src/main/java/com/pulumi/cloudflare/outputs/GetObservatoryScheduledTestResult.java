@@ -33,7 +33,7 @@ public final class GetObservatoryScheduledTestResult {
      */
     private String url;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -70,7 +70,7 @@ public final class GetObservatoryScheduledTestResult {
         return this.url;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

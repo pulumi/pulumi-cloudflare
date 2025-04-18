@@ -107,7 +107,11 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="frequency", refs={String.class}, tree="[0]")
     private Output<String> frequency;
 
@@ -166,7 +170,11 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
     /**
      * This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="logpullOptions", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logpullOptions;
 

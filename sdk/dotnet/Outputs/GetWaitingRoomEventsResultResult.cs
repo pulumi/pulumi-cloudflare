@@ -68,6 +68,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// If set, the event will override the waiting room's `total_active_users` property while it is active. If null, the event will inherit it. This can only be set if the event's `new_users_per_minute` property is also set.
         /// </summary>
         public readonly int TotalActiveUsers;
+        /// <summary>
+        /// If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+        /// Available values: "log", "infinite_queue".
+        /// </summary>
+        public readonly string TurnstileAction;
+        /// <summary>
+        /// If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+        /// Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        /// </summary>
+        public readonly string TurnstileMode;
 
         [OutputConstructor]
         private GetWaitingRoomEventsResultResult(
@@ -101,7 +111,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool suspended,
 
-            int totalActiveUsers)
+            int totalActiveUsers,
+
+            string turnstileAction,
+
+            string turnstileMode)
         {
             CreatedOn = createdOn;
             CustomPageHtml = customPageHtml;
@@ -119,6 +133,8 @@ namespace Pulumi.Cloudflare.Outputs
             ShuffleAtEventStart = shuffleAtEventStart;
             Suspended = suspended;
             TotalActiveUsers = totalActiveUsers;
+            TurnstileAction = turnstileAction;
+            TurnstileMode = turnstileMode;
         }
     }
 }

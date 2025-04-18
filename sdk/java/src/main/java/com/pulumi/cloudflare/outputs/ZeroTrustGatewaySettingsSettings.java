@@ -55,7 +55,11 @@ public final class ZeroTrustGatewaySettingsSettings {
     /**
      * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private @Nullable ZeroTrustGatewaySettingsSettingsCustomCertificate customCertificate;
     /**
      * @return Extended e-mail matching settings.
@@ -129,7 +133,11 @@ public final class ZeroTrustGatewaySettingsSettings {
     /**
      * @return Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<ZeroTrustGatewaySettingsSettingsCustomCertificate> customCertificate() {
         return Optional.ofNullable(this.customCertificate);
     }

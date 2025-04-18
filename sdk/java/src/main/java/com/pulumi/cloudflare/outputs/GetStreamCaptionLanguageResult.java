@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetStreamCaptionLanguageResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -50,7 +50,7 @@ public final class GetStreamCaptionLanguageResult {
 
     private GetStreamCaptionLanguageResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

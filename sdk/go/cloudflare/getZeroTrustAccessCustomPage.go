@@ -49,31 +49,31 @@ func LookupZeroTrustAccessCustomPage(ctx *pulumi.Context, args *LookupZeroTrustA
 
 // A collection of arguments for invoking getZeroTrustAccessCustomPage.
 type LookupZeroTrustAccessCustomPageArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// UUID
+	// UUID.
 	CustomPageId *string `pulumi:"customPageId"`
 }
 
 // A collection of values returned by getZeroTrustAccessCustomPage.
 type LookupZeroTrustAccessCustomPageResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Number of apps the custom page is assigned to.
 	AppCount  int    `pulumi:"appCount"`
 	CreatedAt string `pulumi:"createdAt"`
 	// Custom page HTML.
 	CustomHtml string `pulumi:"customHtml"`
-	// UUID
+	// UUID.
 	CustomPageId *string `pulumi:"customPageId"`
-	// UUID
+	// UUID.
 	Id string `pulumi:"id"`
 	// Custom page name.
 	Name string `pulumi:"name"`
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type string `pulumi:"type"`
-	// UUID
+	// UUID.
 	Uid       string `pulumi:"uid"`
 	UpdatedAt string `pulumi:"updatedAt"`
 }
@@ -89,9 +89,9 @@ func LookupZeroTrustAccessCustomPageOutput(ctx *pulumi.Context, args LookupZeroT
 
 // A collection of arguments for invoking getZeroTrustAccessCustomPage.
 type LookupZeroTrustAccessCustomPageOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// UUID
+	// UUID.
 	CustomPageId pulumi.StringPtrInput `pulumi:"customPageId"`
 }
 
@@ -114,7 +114,7 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) ToLookupZeroTrustAccessCust
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustAccessCustomPageResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -133,12 +133,12 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) CustomHtml() pulumi.StringO
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.CustomHtml }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessCustomPageResultOutput) CustomPageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) *string { return v.CustomPageId }).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessCustomPageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -154,7 +154,7 @@ func (o LookupZeroTrustAccessCustomPageResultOutput) Type() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessCustomPageResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessCustomPageResult) string { return v.Uid }).(pulumi.StringOutput)
 }

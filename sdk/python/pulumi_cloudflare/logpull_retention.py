@@ -24,7 +24,7 @@ class LogpullRetentionArgs:
                  flag: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a LogpullRetention resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.bool] flag: The log retention flag for Logpull API.
         """
         pulumi.set(__self__, "zone_id", zone_id)
@@ -35,7 +35,7 @@ class LogpullRetentionArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -64,7 +64,7 @@ class _LogpullRetentionState:
         """
         Input properties used for looking up and filtering LogpullRetention resources.
         :param pulumi.Input[builtins.bool] flag: The log retention flag for Logpull API.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if flag is not None:
             pulumi.set(__self__, "flag", flag)
@@ -87,7 +87,7 @@ class _LogpullRetentionState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -119,7 +119,7 @@ class LogpullRetention(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] flag: The log retention flag for Logpull API.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -189,7 +189,7 @@ class LogpullRetention(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] flag: The log retention flag for Logpull API.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -211,7 +211,7 @@ class LogpullRetention(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

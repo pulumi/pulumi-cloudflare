@@ -56,6 +56,8 @@ type EmailRoutingAddress struct {
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified pulumi.StringOutput `pulumi:"verified"`
@@ -106,6 +108,8 @@ type emailRoutingAddressState struct {
 	// The date and time the destination address was last modified.
 	Modified *string `pulumi:"modified"`
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag *string `pulumi:"tag"`
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified *string `pulumi:"verified"`
@@ -121,6 +125,8 @@ type EmailRoutingAddressState struct {
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringPtrInput
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringPtrInput
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified pulumi.StringPtrInput
@@ -253,6 +259,8 @@ func (o EmailRoutingAddressOutput) Modified() pulumi.StringOutput {
 }
 
 // Destination address tag. (Deprecated, replaced by destination address identifier)
+//
+// Deprecated: This attribute is deprecated.
 func (o EmailRoutingAddressOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }

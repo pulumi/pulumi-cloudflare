@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDeviceCustomProfileIncludeResult
     {
         /// <summary>
-        /// The address in CIDR format to include in the tunnel. If address is present, host must not be present.
+        /// The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// A description of the split tunnel item, displayed in the client UI.
+        /// A description of the Split Tunnel item, displayed in the client UI.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The domain name to include in the tunnel. If host is present, address must not be present.
+        /// The domain name to include in the tunnel. If `host` is present, `address` must not be present.
         /// </summary>
         public readonly string Host;
 

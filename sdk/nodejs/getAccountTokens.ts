@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleAccountTokens = cloudflare.getAccountTokens({
  *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
- *     direction: "asc",
+ *     direction: "desc",
  * });
  * ```
  */
@@ -82,7 +82,7 @@ export interface GetAccountTokensResult {
  *
  * const exampleAccountTokens = cloudflare.getAccountTokens({
  *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
- *     direction: "asc",
+ *     direction: "desc",
  * });
  * ```
  */

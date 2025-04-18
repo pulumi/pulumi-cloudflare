@@ -48,10 +48,10 @@ import javax.annotation.Nullable;
  *                 "203.0.113.1",
  *                 "cloudflare.com",
  *                 "blog.example.com")
- *             .mode("non-interactive")
+ *             .mode("invisible")
  *             .name("blog.cloudflare.com login form")
  *             .botFightMode(false)
- *             .clearanceLevel("no_clearance")
+ *             .clearanceLevel("interactive")
  *             .ephemeralId(false)
  *             .offlabel(false)
  *             .region("world")

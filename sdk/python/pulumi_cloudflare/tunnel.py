@@ -354,7 +354,7 @@ class Tunnel(pulumi.CustomResource):
         example_zero_trust_tunnel_cloudflared = cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared",
             account_id="699d98642c564d2e855e9661899b7252",
             name="blog",
-            config_src="local",
+            config_src="cloudflare",
             tunnel_secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
         ```
 
@@ -388,7 +388,7 @@ class Tunnel(pulumi.CustomResource):
         example_zero_trust_tunnel_cloudflared = cloudflare.ZeroTrustTunnelCloudflared("example_zero_trust_tunnel_cloudflared",
             account_id="699d98642c564d2e855e9661899b7252",
             name="blog",
-            config_src="local",
+            config_src="cloudflare",
             tunnel_secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
         ```
 

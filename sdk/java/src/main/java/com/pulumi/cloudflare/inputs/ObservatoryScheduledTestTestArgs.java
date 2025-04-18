@@ -41,14 +41,14 @@ public final class ObservatoryScheduledTestTestArgs extends com.pulumi.resources
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> id() {
@@ -178,7 +178,7 @@ public final class ObservatoryScheduledTestTestArgs extends com.pulumi.resources
         }
 
         /**
-         * @param id UUID
+         * @param id UUID.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ObservatoryScheduledTestTestArgs extends com.pulumi.resources
         }
 
         /**
-         * @param id UUID
+         * @param id UUID.
          * 
          * @return builder
          * 

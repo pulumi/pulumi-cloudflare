@@ -111,7 +111,7 @@ def get_accounts(direction: Optional[builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_accounts = cloudflare.get_accounts(direction="asc",
+    example_accounts = cloudflare.get_accounts(direction="desc",
         name="example.com")
     ```
 
@@ -145,7 +145,7 @@ def get_accounts_output(direction: Optional[pulumi.Input[Optional[builtins.str]]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_accounts = cloudflare.get_accounts(direction="asc",
+    example_accounts = cloudflare.get_accounts(direction="desc",
         name="example.com")
     ```
 

@@ -14,14 +14,14 @@ public final class GetLogpullRetentionPlainArgs extends com.pulumi.resources.Inv
     public static final GetLogpullRetentionPlainArgs Empty = new GetLogpullRetentionPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetLogpullRetentionPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

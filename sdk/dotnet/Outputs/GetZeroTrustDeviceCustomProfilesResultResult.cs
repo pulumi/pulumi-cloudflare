@@ -79,9 +79,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// The name of the device settings profile.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         public readonly string PolicyId;
         /// <summary>
         /// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.

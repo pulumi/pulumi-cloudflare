@@ -30,9 +30,9 @@ import (
 //					Id:   pulumi.StringRef("id"),
 //					Name: pulumi.StringRef("name"),
 //				},
-//				Direction: pulumi.StringRef("asc"),
+//				Direction: pulumi.StringRef("desc"),
 //				Name:      pulumi.StringRef("name"),
-//				Order:     pulumi.StringRef("name"),
+//				Order:     pulumi.StringRef("status"),
 //				Status:    pulumi.StringRef("initializing"),
 //			}, nil)
 //			if err != nil {

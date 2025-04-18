@@ -32,10 +32,10 @@ import (
 //					Target: pulumi.StringRef("ip"),
 //					Value:  pulumi.StringRef("198.51.100.4"),
 //				},
-//				Direction: pulumi.StringRef("asc"),
-//				Mode:      pulumi.StringRef("block"),
+//				Direction: pulumi.StringRef("desc"),
+//				Mode:      pulumi.StringRef("challenge"),
 //				Notes:     pulumi.StringRef("my note"),
-//				Order:     pulumi.StringRef("configuration.target"),
+//				Order:     pulumi.StringRef("mode"),
 //			}, nil)
 //			if err != nil {
 //				return err

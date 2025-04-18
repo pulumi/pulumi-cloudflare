@@ -19,7 +19,11 @@ public final class GetAccountSettings {
     /**
      * @return Specifies the default nameservers to be used for new zones added to this account.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private String defaultNameservers;
     /**
      * @return Indicates whether membership in this account requires that
@@ -33,7 +37,11 @@ public final class GetAccountSettings {
      * 
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private Boolean useAccountCustomNsByDefault;
 
     private GetAccountSettings() {}
@@ -47,7 +55,11 @@ public final class GetAccountSettings {
     /**
      * @return Specifies the default nameservers to be used for new zones added to this account.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public String defaultNameservers() {
         return this.defaultNameservers;
     }
@@ -65,7 +77,11 @@ public final class GetAccountSettings {
      * 
      * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Boolean useAccountCustomNsByDefault() {
         return this.useAccountCustomNsByDefault;
     }

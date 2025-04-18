@@ -44,7 +44,7 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export class ZeroTrustTunnelCloudflaredConfig extends pulumi.CustomResource {
  */
 export interface ZeroTrustTunnelCloudflaredConfigState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -140,7 +140,7 @@ export interface ZeroTrustTunnelCloudflaredConfigState {
  */
 export interface ZeroTrustTunnelCloudflaredConfigArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

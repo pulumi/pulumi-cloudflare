@@ -70,10 +70,6 @@ export interface GetRulesetResult {
      */
     readonly kind: string;
     /**
-     * The timestamp of when the ruleset was last modified.
-     */
-    readonly lastUpdated: string;
-    /**
      * The human-readable name of the ruleset.
      */
     readonly name: string;

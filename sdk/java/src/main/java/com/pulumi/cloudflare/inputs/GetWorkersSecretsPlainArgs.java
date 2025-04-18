@@ -17,14 +17,14 @@ public final class GetWorkersSecretsPlainArgs extends com.pulumi.resources.Invok
     public static final GetWorkersSecretsPlainArgs Empty = new GetWorkersSecretsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -104,7 +104,7 @@ public final class GetWorkersSecretsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

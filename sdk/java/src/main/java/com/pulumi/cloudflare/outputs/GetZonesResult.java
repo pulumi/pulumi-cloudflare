@@ -100,7 +100,7 @@ public final class GetZonesResult {
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
-     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;, &#34;internal&#34;.
      * 
      */
     private String type;
@@ -230,7 +230,7 @@ public final class GetZonesResult {
     /**
      * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
-     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;.
+     * Available values: &#34;full&#34;, &#34;partial&#34;, &#34;secondary&#34;, &#34;internal&#34;.
      * 
      */
     public String type() {

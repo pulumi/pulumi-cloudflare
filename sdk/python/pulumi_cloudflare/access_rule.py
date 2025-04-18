@@ -284,7 +284,7 @@ class AccessRule(pulumi.CustomResource):
                 "target": "ip",
                 "value": "198.51.100.4",
             },
-            mode="block",
+            mode="challenge",
             zone_id="zone_id",
             notes="This rule is enabled because of an event that occurred on date X.")
         ```
@@ -322,7 +322,7 @@ class AccessRule(pulumi.CustomResource):
                 "target": "ip",
                 "value": "198.51.100.4",
             },
-            mode="block",
+            mode="challenge",
             zone_id="zone_id",
             notes="This rule is enabled because of an event that occurred on date X.")
         ```

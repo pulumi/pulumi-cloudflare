@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDnsFirewallsInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -38,7 +38,7 @@ public final class GetDnsFirewallsInvokeResult {
 
     private GetDnsFirewallsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

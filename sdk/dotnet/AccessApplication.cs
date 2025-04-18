@@ -172,6 +172,18 @@ namespace Pulumi.Cloudflare
         [Output("policies")]
         public Output<ImmutableArray<Outputs.AccessApplicationPolicy>> Policies { get; private set; } = null!;
 
+        /// <summary>
+        /// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        /// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        /// The header value will be interpreted as a json object similar to:
+        /// {
+        /// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        /// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        /// }
+        /// </summary>
+        [Output("readServiceTokensFromHeader")]
+        public Output<string?> ReadServiceTokensFromHeader { get; private set; } = null!;
+
         [Output("saasApp")]
         public Output<Outputs.AccessApplicationSaasApp> SaasApp { get; private set; } = null!;
 
@@ -462,6 +474,18 @@ namespace Pulumi.Cloudflare
             set => _policies = value;
         }
 
+        /// <summary>
+        /// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        /// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        /// The header value will be interpreted as a json object similar to:
+        /// {
+        /// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        /// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        /// }
+        /// </summary>
+        [Input("readServiceTokensFromHeader")]
+        public Input<string>? ReadServiceTokensFromHeader { get; set; }
+
         [Input("saasApp")]
         public Input<Inputs.AccessApplicationSaasAppArgs>? SaasApp { get; set; }
 
@@ -483,6 +507,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         /// </summary>
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<string> SelfHostedDomains
         {
             get => _selfHostedDomains ?? (_selfHostedDomains = new InputList<string>());
@@ -733,6 +758,18 @@ namespace Pulumi.Cloudflare
             set => _policies = value;
         }
 
+        /// <summary>
+        /// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+        /// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+        /// The header value will be interpreted as a json object similar to:
+        /// {
+        /// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+        /// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+        /// }
+        /// </summary>
+        [Input("readServiceTokensFromHeader")]
+        public Input<string>? ReadServiceTokensFromHeader { get; set; }
+
         [Input("saasApp")]
         public Input<Inputs.AccessApplicationSaasAppGetArgs>? SaasApp { get; set; }
 
@@ -754,6 +791,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         /// </summary>
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<string> SelfHostedDomains
         {
             get => _selfHostedDomains ?? (_selfHostedDomains = new InputList<string>());

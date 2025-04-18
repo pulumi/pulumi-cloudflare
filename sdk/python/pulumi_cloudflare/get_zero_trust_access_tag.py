@@ -54,7 +54,7 @@ class GetZeroTrustAccessTagResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -131,7 +131,7 @@ def get_zero_trust_access_tag(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str tag_name: The name of the tag
     """
     __args__ = dict()
@@ -163,7 +163,7 @@ def get_zero_trust_access_tag_output(account_id: Optional[pulumi.Input[builtins.
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str tag_name: The name of the tag
     """
     __args__ = dict()

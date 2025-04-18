@@ -24,7 +24,7 @@ import (
 type WorkerScript struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Configuration for assets within a Worker
 	Assets WorkerScriptAssetsPtrOutput `pulumi:"assets"`
@@ -117,7 +117,7 @@ func GetWorkerScript(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerScript resources.
 type workerScriptState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Configuration for assets within a Worker
 	Assets *WorkerScriptAssets `pulumi:"assets"`
@@ -166,7 +166,7 @@ type workerScriptState struct {
 }
 
 type WorkerScriptState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Configuration for assets within a Worker
 	Assets WorkerScriptAssetsPtrInput
@@ -219,7 +219,7 @@ func (WorkerScriptState) ElementType() reflect.Type {
 }
 
 type workerScriptArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Configuration for assets within a Worker
 	Assets *WorkerScriptAssets `pulumi:"assets"`
@@ -258,7 +258,7 @@ type workerScriptArgs struct {
 
 // The set of arguments for constructing a WorkerScript resource.
 type WorkerScriptArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Configuration for assets within a Worker
 	Assets WorkerScriptAssetsPtrInput
@@ -382,7 +382,7 @@ func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkerScriptOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -399,6 +399,33 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.policies);
     }
 
+    /**
+     * Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+     * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+     * }
+     * 
+     */
+    @Import(name="readServiceTokensFromHeader")
+    private @Nullable Output<String> readServiceTokensFromHeader;
+
+    /**
+     * @return Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+     * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+     * }
+     * 
+     */
+    public Optional<Output<String>> readServiceTokensFromHeader() {
+        return Optional.ofNullable(this.readServiceTokensFromHeader);
+    }
+
     @Import(name="saasApp")
     private @Nullable Output<AccessApplicationSaasAppArgs> saasApp;
 
@@ -439,14 +466,22 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="selfHostedDomains")
     private @Nullable Output<List<String>> selfHostedDomains;
 
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<List<String>>> selfHostedDomains() {
         return Optional.ofNullable(this.selfHostedDomains);
     }
@@ -599,6 +634,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.optionsPreflightBypass = $.optionsPreflightBypass;
         this.pathCookieAttribute = $.pathCookieAttribute;
         this.policies = $.policies;
+        this.readServiceTokensFromHeader = $.readServiceTokensFromHeader;
         this.saasApp = $.saasApp;
         this.sameSiteCookieAttribute = $.sameSiteCookieAttribute;
         this.scimConfig = $.scimConfig;
@@ -1204,6 +1240,39 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
             return policies(List.of(policies));
         }
 
+        /**
+         * @param readServiceTokensFromHeader Allows matching Access Service Tokens passed HTTP in a single header with this name.
+         * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+         * The header value will be interpreted as a json object similar to:
+         * {
+         * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+         * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+         * }
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readServiceTokensFromHeader(@Nullable Output<String> readServiceTokensFromHeader) {
+            $.readServiceTokensFromHeader = readServiceTokensFromHeader;
+            return this;
+        }
+
+        /**
+         * @param readServiceTokensFromHeader Allows matching Access Service Tokens passed HTTP in a single header with this name.
+         * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+         * The header value will be interpreted as a json object similar to:
+         * {
+         * &#34;cf-access-client-id&#34;: &#34;88bf3b6d86161464f6509f7219099e57.access.example.com&#34;,
+         * &#34;cf-access-client-secret&#34;: &#34;bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5&#34;
+         * }
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readServiceTokensFromHeader(String readServiceTokensFromHeader) {
+            return readServiceTokensFromHeader(Output.of(readServiceTokensFromHeader));
+        }
+
         public Builder saasApp(@Nullable Output<AccessApplicationSaasAppArgs> saasApp) {
             $.saasApp = saasApp;
             return this;
@@ -1260,7 +1329,11 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder selfHostedDomains(@Nullable Output<List<String>> selfHostedDomains) {
             $.selfHostedDomains = selfHostedDomains;
             return this;
@@ -1271,7 +1344,11 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder selfHostedDomains(List<String> selfHostedDomains) {
             return selfHostedDomains(Output.of(selfHostedDomains));
         }
@@ -1281,7 +1358,11 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder selfHostedDomains(String... selfHostedDomains) {
             return selfHostedDomains(List.of(selfHostedDomains));
         }

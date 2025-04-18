@@ -23,6 +23,8 @@ __all__ = [
     'get_workers_secrets_output',
 ]
 
+warnings.warn("""cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets""", DeprecationWarning)
+
 @pulumi.output_type
 class GetWorkersSecretsResult:
     """
@@ -52,7 +54,7 @@ class GetWorkersSecretsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -123,17 +125,18 @@ def get_workers_secrets(account_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_secrets = cloudflare.get_workers_secrets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_for_platforms_script_secrets = cloudflare.get_workers_for_platforms_script_secrets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dispatch_namespace="my-dispatch-namespace",
         script_name="this-is_my_script-01")
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str script_name: Name of the script, used in URLs and route configuration.
     """
+    pulumi.log.warn("""get_workers_secrets is deprecated: cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dispatchNamespace'] = dispatch_namespace
@@ -161,17 +164,18 @@ def get_workers_secrets_output(account_id: Optional[pulumi.Input[builtins.str]] 
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_workers_secrets = cloudflare.get_workers_secrets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+    example_workers_for_platforms_script_secrets = cloudflare.get_workers_for_platforms_script_secrets(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         dispatch_namespace="my-dispatch-namespace",
         script_name="this-is_my_script-01")
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str script_name: Name of the script, used in URLs and route configuration.
     """
+    pulumi.log.warn("""get_workers_secrets is deprecated: cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets""")
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['dispatchNamespace'] = dispatch_namespace

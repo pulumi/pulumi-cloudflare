@@ -61,6 +61,8 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string | undefined>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
@@ -132,6 +134,8 @@ export interface EmailRoutingCatchAllState {
     name?: pulumi.Input<string>;
     /**
      * Routing rule tag. (Deprecated, replaced by routing rule identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     tag?: pulumi.Input<string>;
     /**

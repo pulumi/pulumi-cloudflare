@@ -49,7 +49,7 @@ func LookupStreamDownload(ctx *pulumi.Context, args *LookupStreamDownloadArgs, o
 
 // A collection of arguments for invoking getStreamDownload.
 type LookupStreamDownloadArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier string `pulumi:"identifier"`
@@ -57,7 +57,7 @@ type LookupStreamDownloadArgs struct {
 
 // A collection of values returned by getStreamDownload.
 type LookupStreamDownloadResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -76,7 +76,7 @@ func LookupStreamDownloadOutput(ctx *pulumi.Context, args LookupStreamDownloadOu
 
 // A collection of arguments for invoking getStreamDownload.
 type LookupStreamDownloadOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// A Cloudflare-generated unique identifier for a media item.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
@@ -101,7 +101,7 @@ func (o LookupStreamDownloadResultOutput) ToLookupStreamDownloadResultOutputWith
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupStreamDownloadResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStreamDownloadResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

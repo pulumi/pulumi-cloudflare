@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleApiTokens = cloudflare.getApiTokens({
- *     direction: "asc",
+ *     direction: "desc",
  * });
  * ```
  */
@@ -72,7 +72,7 @@ export interface GetApiTokensResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleApiTokens = cloudflare.getApiTokens({
- *     direction: "asc",
+ *     direction: "desc",
  * });
  * ```
  */

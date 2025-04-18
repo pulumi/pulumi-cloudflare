@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersScriptsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersScriptsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersScriptsResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

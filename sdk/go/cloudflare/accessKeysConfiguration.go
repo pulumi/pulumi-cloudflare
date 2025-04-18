@@ -49,7 +49,7 @@ import (
 type AccessKeysConfiguration struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation pulumi.Float64Output `pulumi:"daysUntilNextRotation"`
@@ -101,7 +101,7 @@ func GetAccessKeysConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessKeysConfiguration resources.
 type accessKeysConfigurationState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation *float64 `pulumi:"daysUntilNextRotation"`
@@ -112,7 +112,7 @@ type accessKeysConfigurationState struct {
 }
 
 type AccessKeysConfigurationState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The number of days until the next key rotation.
 	DaysUntilNextRotation pulumi.Float64PtrInput
@@ -127,7 +127,7 @@ func (AccessKeysConfigurationState) ElementType() reflect.Type {
 }
 
 type accessKeysConfigurationArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The number of days between key rotations.
 	KeyRotationIntervalDays float64 `pulumi:"keyRotationIntervalDays"`
@@ -135,7 +135,7 @@ type accessKeysConfigurationArgs struct {
 
 // The set of arguments for constructing a AccessKeysConfiguration resource.
 type AccessKeysConfigurationArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The number of days between key rotations.
 	KeyRotationIntervalDays pulumi.Float64Input
@@ -228,7 +228,7 @@ func (o AccessKeysConfigurationOutput) ToAccessKeysConfigurationOutputWithContex
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o AccessKeysConfigurationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -46,7 +46,7 @@ export class StreamDownload extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -90,7 +90,7 @@ export class StreamDownload extends pulumi.CustomResource {
  */
 export interface StreamDownloadState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -104,7 +104,7 @@ export interface StreamDownloadState {
  */
 export interface StreamDownloadArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

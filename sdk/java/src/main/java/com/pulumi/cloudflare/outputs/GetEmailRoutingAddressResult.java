@@ -47,7 +47,11 @@ public final class GetEmailRoutingAddressResult {
     /**
      * @return Destination address tag. (Deprecated, replaced by destination address identifier)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private String tag;
     /**
      * @return The date and time the destination address has been verified. Null means not verified yet.
@@ -104,7 +108,11 @@ public final class GetEmailRoutingAddressResult {
     /**
      * @return Destination address tag. (Deprecated, replaced by destination address identifier)
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public String tag() {
         return this.tag;
     }

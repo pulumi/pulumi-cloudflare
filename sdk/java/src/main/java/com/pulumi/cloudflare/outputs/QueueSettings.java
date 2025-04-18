@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ public final class QueueSettings {
      */
     private @Nullable Double deliveryDelay;
     /**
+     * @return Indicates if message delivery to consumers is currently paused.
+     * 
+     */
+    private @Nullable Boolean deliveryPaused;
+    /**
      * @return Number of seconds after which an unconsumed message will be delayed.
      * 
      */
@@ -29,6 +35,13 @@ public final class QueueSettings {
      */
     public Optional<Double> deliveryDelay() {
         return Optional.ofNullable(this.deliveryDelay);
+    }
+    /**
+     * @return Indicates if message delivery to consumers is currently paused.
+     * 
+     */
+    public Optional<Boolean> deliveryPaused() {
+        return Optional.ofNullable(this.deliveryPaused);
     }
     /**
      * @return Number of seconds after which an unconsumed message will be delayed.
@@ -48,11 +61,13 @@ public final class QueueSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Double deliveryDelay;
+        private @Nullable Boolean deliveryPaused;
         private @Nullable Double messageRetentionPeriod;
         public Builder() {}
         public Builder(QueueSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deliveryDelay = defaults.deliveryDelay;
+    	      this.deliveryPaused = defaults.deliveryPaused;
     	      this.messageRetentionPeriod = defaults.messageRetentionPeriod;
         }
 
@@ -60,6 +75,12 @@ public final class QueueSettings {
         public Builder deliveryDelay(@Nullable Double deliveryDelay) {
 
             this.deliveryDelay = deliveryDelay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deliveryPaused(@Nullable Boolean deliveryPaused) {
+
+            this.deliveryPaused = deliveryPaused;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +92,7 @@ public final class QueueSettings {
         public QueueSettings build() {
             final var _resultValue = new QueueSettings();
             _resultValue.deliveryDelay = deliveryDelay;
+            _resultValue.deliveryPaused = deliveryPaused;
             _resultValue.messageRetentionPeriod = messageRetentionPeriod;
             return _resultValue;
         }

@@ -29,10 +29,13 @@ class GetWorkersKvNamespaceResult:
     """
     A collection of values returned by getWorkersKvNamespace.
     """
-    def __init__(__self__, account_id=None, filter=None, id=None, namespace_id=None, supports_url_encoding=None, title=None):
+    def __init__(__self__, account_id=None, beta=None, filter=None, id=None, namespace_id=None, supports_url_encoding=None, title=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if beta and not isinstance(beta, bool):
+            raise TypeError("Expected argument 'beta' to be a bool")
+        pulumi.set(__self__, "beta", beta)
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
         pulumi.set(__self__, "filter", filter)
@@ -56,6 +59,14 @@ class GetWorkersKvNamespaceResult:
         Identifier
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def beta(self) -> builtins.bool:
+        """
+        True if new beta namespace, with additional preview features.
+        """
+        return pulumi.get(self, "beta")
 
     @property
     @pulumi.getter
@@ -102,6 +113,7 @@ class AwaitableGetWorkersKvNamespaceResult(GetWorkersKvNamespaceResult):
             yield self
         return GetWorkersKvNamespaceResult(
             account_id=self.account_id,
+            beta=self.beta,
             filter=self.filter,
             id=self.id,
             namespace_id=self.namespace_id,
@@ -137,6 +149,7 @@ def get_workers_kv_namespace(account_id: Optional[builtins.str] = None,
 
     return AwaitableGetWorkersKvNamespaceResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        beta=pulumi.get(__ret__, 'beta'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
@@ -169,6 +182,7 @@ def get_workers_kv_namespace_output(account_id: Optional[pulumi.Input[builtins.s
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getWorkersKvNamespace:getWorkersKvNamespace', __args__, opts=opts, typ=GetWorkersKvNamespaceResult)
     return __ret__.apply(lambda __response__: GetWorkersKvNamespaceResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        beta=pulumi.get(__response__, 'beta'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         namespace_id=pulumi.get(__response__, 'namespace_id'),

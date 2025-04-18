@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * const exampleApiShieldSchemaValidationSettings = new cloudflare.ApiShieldSchemaValidationSettings("example_api_shield_schema_validation_settings", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     validationDefaultMitigationAction: "none",
+ *     validationDefaultMitigationAction: "block",
  *     validationOverrideMitigationAction: "none",
  * });
  * ```

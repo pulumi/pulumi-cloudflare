@@ -50,7 +50,7 @@ export class LogpullRetention extends pulumi.CustomResource {
      */
     public readonly flag!: pulumi.Output<boolean | undefined>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -91,7 +91,7 @@ export interface LogpullRetentionState {
      */
     flag?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -105,7 +105,7 @@ export interface LogpullRetentionArgs {
      */
     flag?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

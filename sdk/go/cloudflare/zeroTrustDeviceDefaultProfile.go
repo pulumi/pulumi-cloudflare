@@ -38,15 +38,13 @@ import (
 //					&cloudflare.ZeroTrustDeviceDefaultProfileExcludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
 //						Description: pulumi.String("Exclude testing domains from the tunnel"),
-//						Host:        pulumi.String("*.example.com"),
 //					},
 //				},
 //				ExcludeOfficeIps: pulumi.Bool(true),
 //				Includes: cloudflare.ZeroTrustDeviceDefaultProfileIncludeArray{
 //					&cloudflare.ZeroTrustDeviceDefaultProfileIncludeArgs{
 //						Address:     pulumi.String("192.0.2.0/24"),
-//						Description: pulumi.String("Exclude testing domains from the tunnel"),
-//						Host:        pulumi.String("*.example.com"),
+//						Description: pulumi.String("Include testing domains in the tunnel"),
 //					},
 //				},
 //				RegisterInterfaceIpWithDns: pulumi.Bool(true),

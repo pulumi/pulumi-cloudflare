@@ -89,14 +89,14 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -230,7 +230,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ObservatoryScheduledTestState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

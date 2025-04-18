@@ -185,7 +185,7 @@ class GetDnsRecordsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -281,7 +281,7 @@ def get_dns_records(comment: Optional[Union['GetDnsRecordsCommentArgs', 'GetDnsR
            Available values: "any", "all".
     :param builtins.str type: Record type.
            Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['comment'] = comment
@@ -384,7 +384,7 @@ def get_dns_records_output(comment: Optional[pulumi.Input[Optional[Union['GetDns
            Available values: "any", "all".
     :param builtins.str type: Record type.
            Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['comment'] = comment

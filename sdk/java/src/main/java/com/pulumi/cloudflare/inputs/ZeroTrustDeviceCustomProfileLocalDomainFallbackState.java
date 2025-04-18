@@ -61,17 +61,9 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
         return Optional.ofNullable(this.domains);
     }
 
-    /**
-     * Device ID.
-     * 
-     */
     @Import(name="policyId")
     private @Nullable Output<String> policyId;
 
-    /**
-     * @return Device ID.
-     * 
-     */
     public Optional<Output<String>> policyId() {
         return Optional.ofNullable(this.policyId);
     }
@@ -194,23 +186,11 @@ public final class ZeroTrustDeviceCustomProfileLocalDomainFallbackState extends 
             return domains(List.of(domains));
         }
 
-        /**
-         * @param policyId Device ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(@Nullable Output<String> policyId) {
             $.policyId = policyId;
             return this;
         }
 
-        /**
-         * @param policyId Device ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder policyId(String policyId) {
             return policyId(Output.of(policyId));
         }

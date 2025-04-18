@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
     ///         {
-    ///             Mode = "simulate",
+    ///             Mode = "challenge",
     ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
     ///             {
     ///                 Body = "&lt;error&gt;This request has been rate-limited.&lt;/error&gt;",
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     ///                 new Cloudflare.Inputs.RateLimitMatchHeaderArgs
     ///                 {
     ///                     Name = "Cf-Cache-Status",
-    ///                     Op = "eq",
+    ///                     Op = "ne",
     ///                     Value = "HIT",
     ///                 },
     ///             },

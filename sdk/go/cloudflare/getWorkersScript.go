@@ -49,7 +49,7 @@ func LookupWorkersScript(ctx *pulumi.Context, args *LookupWorkersScriptArgs, opt
 
 // A collection of arguments for invoking getWorkersScript.
 type LookupWorkersScriptArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName string `pulumi:"scriptName"`
@@ -57,7 +57,7 @@ type LookupWorkersScriptArgs struct {
 
 // A collection of values returned by getWorkersScript.
 type LookupWorkersScriptResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -76,7 +76,7 @@ func LookupWorkersScriptOutput(ctx *pulumi.Context, args LookupWorkersScriptOutp
 
 // A collection of arguments for invoking getWorkersScript.
 type LookupWorkersScriptOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName pulumi.StringInput `pulumi:"scriptName"`
@@ -101,7 +101,7 @@ func (o LookupWorkersScriptResultOutput) ToLookupWorkersScriptResultOutputWithCo
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersScriptResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersScriptResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWorkersSecret = new Cloudflare.WorkersSecret("example_workers_secret", new()
+    ///     var exampleWorkersForPlatformsScriptSecret = new Cloudflare.WorkersForPlatformsScriptSecret("example_workers_for_platforms_script_secret", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         DispatchNamespace = "my-dispatch-namespace",
@@ -36,15 +36,14 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/workerSecret:WorkerSecret example '&lt;account_id&gt;/&lt;dispatch_namespace&gt;/&lt;script_name&gt;/&lt;secret_name&gt;'
+    /// $ pulumi import cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret example '&lt;account_id&gt;/&lt;dispatch_namespace&gt;/&lt;script_name&gt;/&lt;secret_name&gt;'
     /// ```
     /// </summary>
-    [Obsolete(@"cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret")]
-    [CloudflareResourceType("cloudflare:index/workerSecret:WorkerSecret")]
-    public partial class WorkerSecret : global::Pulumi.CustomResource
+    [CloudflareResourceType("cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret")]
+    public partial class WorkersForPlatformsScriptSecret : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -82,19 +81,19 @@ namespace Pulumi.Cloudflare
 
 
         /// <summary>
-        /// Create a WorkerSecret resource with the given unique name, arguments, and options.
+        /// Create a WorkersForPlatformsScriptSecret resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public WorkerSecret(string name, WorkerSecretArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/workerSecret:WorkerSecret", name, args ?? new WorkerSecretArgs(), MakeResourceOptions(options, ""))
+        public WorkersForPlatformsScriptSecret(string name, WorkersForPlatformsScriptSecretArgs args, CustomResourceOptions? options = null)
+            : base("cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret", name, args ?? new WorkersForPlatformsScriptSecretArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private WorkerSecret(string name, Input<string> id, WorkerSecretState? state = null, CustomResourceOptions? options = null)
-            : base("cloudflare:index/workerSecret:WorkerSecret", name, state, MakeResourceOptions(options, id))
+        private WorkersForPlatformsScriptSecret(string name, Input<string> id, WorkersForPlatformsScriptSecretState? state = null, CustomResourceOptions? options = null)
+            : base("cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -105,7 +104,7 @@ namespace Pulumi.Cloudflare
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "cloudflare:index/workerSecret:WorkerSecret" },
+                    new global::Pulumi.Alias { Type = "cloudflare:index/workersSecret:WorkersSecret" },
                 },
                 AdditionalSecretOutputs =
                 {
@@ -118,7 +117,7 @@ namespace Pulumi.Cloudflare
             return merged;
         }
         /// <summary>
-        /// Get an existing WorkerSecret resource's state with the given name, ID, and optional extra
+        /// Get an existing WorkersForPlatformsScriptSecret resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -126,16 +125,16 @@ namespace Pulumi.Cloudflare
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static WorkerSecret Get(string name, Input<string> id, WorkerSecretState? state = null, CustomResourceOptions? options = null)
+        public static WorkersForPlatformsScriptSecret Get(string name, Input<string> id, WorkersForPlatformsScriptSecretState? state = null, CustomResourceOptions? options = null)
         {
-            return new WorkerSecret(name, id, state, options);
+            return new WorkersForPlatformsScriptSecret(name, id, state, options);
         }
     }
 
-    public sealed class WorkerSecretArgs : global::Pulumi.ResourceArgs
+    public sealed class WorkersForPlatformsScriptSecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -181,16 +180,16 @@ namespace Pulumi.Cloudflare
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        public WorkerSecretArgs()
+        public WorkersForPlatformsScriptSecretArgs()
         {
         }
-        public static new WorkerSecretArgs Empty => new WorkerSecretArgs();
+        public static new WorkersForPlatformsScriptSecretArgs Empty => new WorkersForPlatformsScriptSecretArgs();
     }
 
-    public sealed class WorkerSecretState : global::Pulumi.ResourceArgs
+    public sealed class WorkersForPlatformsScriptSecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -236,9 +235,9 @@ namespace Pulumi.Cloudflare
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        public WorkerSecretState()
+        public WorkersForPlatformsScriptSecretState()
         {
         }
-        public static new WorkerSecretState Empty => new WorkerSecretState();
+        public static new WorkersForPlatformsScriptSecretState Empty => new WorkersForPlatformsScriptSecretState();
     }
 }

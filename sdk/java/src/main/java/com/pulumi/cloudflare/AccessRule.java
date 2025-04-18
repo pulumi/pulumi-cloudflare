@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *                 .target("ip")
  *                 .value("198.51.100.4")
  *                 .build())
- *             .mode("block")
+ *             .mode("challenge")
  *             .zoneId("zone_id")
  *             .notes("This rule is enabled because of an event that occurred on date X.")
  *             .build());

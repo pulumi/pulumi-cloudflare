@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkersSecret(ctx, "example_workers_secret", &cloudflare.WorkersSecretArgs{
+//			_, err := cloudflare.NewWorkersForPlatformsScriptSecret(ctx, "example_workers_for_platforms_script_secret", &cloudflare.WorkersForPlatformsScriptSecretArgs{
 //				AccountId:         pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DispatchNamespace: pulumi.String("my-dispatch-namespace"),
 //				ScriptName:        pulumi.String("this-is_my_script-01"),
@@ -48,10 +48,12 @@ import (
 // ```sh
 // $ pulumi import cloudflare:index/workersSecret:WorkersSecret example '<account_id>/<dispatch_namespace>/<script_name>/<secret_name>'
 // ```
+//
+// Deprecated: cloudflare.index/workerssecret.WorkersSecret has been deprecated in favor of cloudflare.index/workersforplatformsscriptsecret.WorkersForPlatformsScriptSecret
 type WorkersSecret struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace pulumi.StringOutput `pulumi:"dispatchNamespace"`
@@ -87,7 +89,7 @@ func NewWorkersSecret(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("cloudflare:index/workerSecret:WorkerSecret"),
+			Type: pulumi.String("cloudflare:index/workersSecret:WorkersSecret"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -121,7 +123,7 @@ func GetWorkersSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersSecret resources.
 type workersSecretState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace *string `pulumi:"dispatchNamespace"`
@@ -137,7 +139,7 @@ type workersSecretState struct {
 }
 
 type WorkersSecretState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace pulumi.StringPtrInput
@@ -157,7 +159,7 @@ func (WorkersSecretState) ElementType() reflect.Type {
 }
 
 type workersSecretArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace string `pulumi:"dispatchNamespace"`
@@ -174,7 +176,7 @@ type workersSecretArgs struct {
 
 // The set of arguments for constructing a WorkersSecret resource.
 type WorkersSecretArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace pulumi.StringInput
@@ -276,7 +278,7 @@ func (o WorkersSecretOutput) ToWorkersSecretOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkersSecretOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersSecret) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

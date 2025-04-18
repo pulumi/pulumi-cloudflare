@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleApiTokens = Cloudflare.GetApiTokens.Invoke(new()
         ///     {
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///     });
         /// 
         /// });
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleApiTokens = Cloudflare.GetApiTokens.Invoke(new()
         ///     {
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleApiTokens = Cloudflare.GetApiTokens.Invoke(new()
         ///     {
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///     });
         /// 
         /// });

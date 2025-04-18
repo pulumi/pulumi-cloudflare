@@ -17,14 +17,14 @@ public final class GetZeroTrustAccessCustomPageArgs extends com.pulumi.resources
     public static final GetZeroTrustAccessCustomPageArgs Empty = new GetZeroTrustAccessCustomPageArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -32,14 +32,14 @@ public final class GetZeroTrustAccessCustomPageArgs extends com.pulumi.resources
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="customPageId")
     private @Nullable Output<String> customPageId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> customPageId() {
@@ -72,7 +72,7 @@ public final class GetZeroTrustAccessCustomPageArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetZeroTrustAccessCustomPageArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetZeroTrustAccessCustomPageArgs extends com.pulumi.resources
         }
 
         /**
-         * @param customPageId UUID
+         * @param customPageId UUID.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetZeroTrustAccessCustomPageArgs extends com.pulumi.resources
         }
 
         /**
-         * @param customPageId UUID
+         * @param customPageId UUID.
          * 
          * @return builder
          * 

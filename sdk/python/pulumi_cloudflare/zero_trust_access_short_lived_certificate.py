@@ -25,7 +25,7 @@ class ZeroTrustAccessShortLivedCertificateArgs:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustAccessShortLivedCertificate resource.
-        :param pulumi.Input[builtins.str] app_id: UUID
+        :param pulumi.Input[builtins.str] app_id: UUID.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
@@ -39,7 +39,7 @@ class ZeroTrustAccessShortLivedCertificateArgs:
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Input[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "app_id")
 
@@ -83,7 +83,7 @@ class _ZeroTrustAccessShortLivedCertificateState:
         """
         Input properties used for looking up and filtering ZeroTrustAccessShortLivedCertificate resources.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[builtins.str] app_id: UUID
+        :param pulumi.Input[builtins.str] app_id: UUID.
         :param pulumi.Input[builtins.str] aud: The Application Audience (AUD) tag. Identifies the application associated with the CA.
         :param pulumi.Input[builtins.str] public_key: The public key to add to your SSH server configuration.
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -115,7 +115,7 @@ class _ZeroTrustAccessShortLivedCertificateState:
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "app_id")
 
@@ -190,7 +190,7 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[builtins.str] app_id: UUID
+        :param pulumi.Input[builtins.str] app_id: UUID.
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
@@ -276,7 +276,7 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-        :param pulumi.Input[builtins.str] app_id: UUID
+        :param pulumi.Input[builtins.str] app_id: UUID.
         :param pulumi.Input[builtins.str] aud: The Application Audience (AUD) tag. Identifies the application associated with the CA.
         :param pulumi.Input[builtins.str] public_key: The public key to add to your SSH server configuration.
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -304,7 +304,7 @@ class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "app_id")
 

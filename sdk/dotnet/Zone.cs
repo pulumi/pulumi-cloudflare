@@ -134,7 +134,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         /// typically a partner-hosted zone or a CNAME setup.
-        /// Available values: "full", "partial", "secondary".
+        /// Available values: "full", "partial", "secondary", "internal".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         /// typically a partner-hosted zone or a CNAME setup.
-        /// Available values: "full", "partial", "secondary".
+        /// Available values: "full", "partial", "secondary", "internal".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -338,7 +338,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         /// typically a partner-hosted zone or a CNAME setup.
-        /// Available values: "full", "partial", "secondary".
+        /// Available values: "full", "partial", "secondary", "internal".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

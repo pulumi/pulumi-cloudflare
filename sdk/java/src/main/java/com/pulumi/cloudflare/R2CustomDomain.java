@@ -117,6 +117,20 @@ public class R2CustomDomain extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
+     * Jurisdiction of the bucket
+     * 
+     */
+    @Export(name="jurisdiction", refs={String.class}, tree="[0]")
+    private Output<String> jurisdiction;
+
+    /**
+     * @return Jurisdiction of the bucket
+     * 
+     */
+    public Output<String> jurisdiction() {
+        return this.jurisdiction;
+    }
+    /**
      * Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
      * Available values: &#34;1.0&#34;, &#34;1.1&#34;, &#34;1.2&#34;, &#34;1.3&#34;.
      * 

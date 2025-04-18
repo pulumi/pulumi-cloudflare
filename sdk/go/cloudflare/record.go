@@ -57,7 +57,7 @@ type Record struct {
 	// Record type.
 	// Available values: "A".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -142,7 +142,7 @@ type recordState struct {
 	// Record type.
 	// Available values: "A".
 	Type *string `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -180,7 +180,7 @@ type RecordState struct {
 	// Record type.
 	// Available values: "A".
 	Type pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -210,7 +210,7 @@ type recordArgs struct {
 	// Record type.
 	// Available values: "A".
 	Type string `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -237,7 +237,7 @@ type RecordArgs struct {
 	// Record type.
 	// Available values: "A".
 	Type pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -409,7 +409,7 @@ func (o RecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o RecordOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

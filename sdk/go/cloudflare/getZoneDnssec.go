@@ -48,7 +48,7 @@ func LookupZoneDnssec(ctx *pulumi.Context, args *LookupZoneDnssecArgs, opts ...p
 
 // A collection of arguments for invoking getZoneDnssec.
 type LookupZoneDnssecArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -77,7 +77,7 @@ type LookupZoneDnssecResult struct {
 	ModifiedOn string  `pulumi:"modifiedOn"`
 	PublicKey  string  `pulumi:"publicKey"`
 	Status     string  `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -92,7 +92,7 @@ func LookupZoneDnssecOutput(ctx *pulumi.Context, args LookupZoneDnssecOutputArgs
 
 // A collection of arguments for invoking getZoneDnssec.
 type LookupZoneDnssecOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -180,7 +180,7 @@ func (o LookupZoneDnssecResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupZoneDnssecResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

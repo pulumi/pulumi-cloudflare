@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleApiShieldOperations = cloudflare.getApiShieldOperations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     direction: "asc",
+ *     direction: "desc",
  *     endpoint: "/api/v1",
  *     features: ["thresholds"],
  *     hosts: ["api.cloudflare.com"],
@@ -134,7 +134,7 @@ export interface GetApiShieldOperationsResult {
  *
  * const exampleApiShieldOperations = cloudflare.getApiShieldOperations({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     direction: "asc",
+ *     direction: "desc",
  *     endpoint: "/api/v1",
  *     features: ["thresholds"],
  *     hosts: ["api.cloudflare.com"],

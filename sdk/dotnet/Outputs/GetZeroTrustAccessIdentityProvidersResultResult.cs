@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetZeroTrustAccessIdentityProvidersResultConfigResult Config;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>

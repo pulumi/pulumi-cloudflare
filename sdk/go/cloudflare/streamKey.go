@@ -46,7 +46,7 @@ import (
 type StreamKey struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time a signing key was created.
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -94,7 +94,7 @@ func GetStreamKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StreamKey resources.
 type streamKeyState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The date and time a signing key was created.
 	Created *string `pulumi:"created"`
@@ -105,7 +105,7 @@ type streamKeyState struct {
 }
 
 type StreamKeyState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The date and time a signing key was created.
 	Created pulumi.StringPtrInput
@@ -120,13 +120,13 @@ func (StreamKeyState) ElementType() reflect.Type {
 }
 
 type streamKeyArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 }
 
 // The set of arguments for constructing a StreamKey resource.
 type StreamKeyArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 }
 
@@ -217,7 +217,7 @@ func (o StreamKeyOutput) ToStreamKeyOutputWithContext(ctx context.Context) Strea
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o StreamKeyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StreamKey) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -24,7 +24,7 @@ class WorkersForPlatformsNamespaceArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersForPlatformsNamespace resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] name: The name of the dispatch namespace
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -35,7 +35,7 @@ class WorkersForPlatformsNamespaceArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -70,10 +70,10 @@ class _WorkersForPlatformsNamespaceState:
                  script_count: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering WorkersForPlatformsNamespace resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
-        :param pulumi.Input[builtins.str] created_by: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[builtins.str] created_by: Identifier.
         :param pulumi.Input[builtins.str] created_on: When the script was created.
-        :param pulumi.Input[builtins.str] modified_by: Identifier
+        :param pulumi.Input[builtins.str] modified_by: Identifier.
         :param pulumi.Input[builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[builtins.str] name: The name of the dispatch namespace
         :param pulumi.Input[builtins.str] namespace_id: API Resource UUID tag.
@@ -103,7 +103,7 @@ class _WorkersForPlatformsNamespaceState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -115,7 +115,7 @@ class _WorkersForPlatformsNamespaceState:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "created_by")
 
@@ -139,7 +139,7 @@ class _WorkersForPlatformsNamespaceState:
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "modified_by")
 
@@ -241,7 +241,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] name: The name of the dispatch namespace
         """
         ...
@@ -334,10 +334,10 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
-        :param pulumi.Input[builtins.str] created_by: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[builtins.str] created_by: Identifier.
         :param pulumi.Input[builtins.str] created_on: When the script was created.
-        :param pulumi.Input[builtins.str] modified_by: Identifier
+        :param pulumi.Input[builtins.str] modified_by: Identifier.
         :param pulumi.Input[builtins.str] modified_on: When the script was last modified.
         :param pulumi.Input[builtins.str] name: The name of the dispatch namespace
         :param pulumi.Input[builtins.str] namespace_id: API Resource UUID tag.
@@ -363,7 +363,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -371,7 +371,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
     @pulumi.getter(name="createdBy")
     def created_by(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "created_by")
 
@@ -387,7 +387,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
     @pulumi.getter(name="modifiedBy")
     def modified_by(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "modified_by")
 

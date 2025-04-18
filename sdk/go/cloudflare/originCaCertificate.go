@@ -51,7 +51,7 @@ import (
 //					pulumi.String("*.example.com"),
 //				},
 //				RequestType:       pulumi.String("origin-rsa"),
-//				RequestedValidity: pulumi.Float64(7),
+//				RequestedValidity: pulumi.Float64(5475),
 //			})
 //			if err != nil {
 //				return err

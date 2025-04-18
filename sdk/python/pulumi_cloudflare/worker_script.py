@@ -41,7 +41,7 @@ class WorkerScriptArgs:
                  usage_model: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WorkerScript resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] content: Module or Service Worker contents of the Worker.
         :param pulumi.Input[builtins.str] script_name: Name of the script, used in URLs and route configuration.
         :param pulumi.Input['WorkerScriptAssetsArgs'] assets: Configuration for assets within a Worker
@@ -96,7 +96,7 @@ class WorkerScriptArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -326,7 +326,7 @@ class _WorkerScriptState:
                  usage_model: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkerScript resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input['WorkerScriptAssetsArgs'] assets: Configuration for assets within a Worker
         :param pulumi.Input[Sequence[pulumi.Input['WorkerScriptBindingArgs']]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -401,7 +401,7 @@ class _WorkerScriptState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -711,7 +711,7 @@ class WorkerScript(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']] assets: Configuration for assets within a Worker
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -858,7 +858,7 @@ class WorkerScript(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[Union['WorkerScriptAssetsArgs', 'WorkerScriptAssetsArgsDict']] assets: Configuration for assets within a Worker
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkerScriptBindingArgs', 'WorkerScriptBindingArgsDict']]]] bindings: List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         :param pulumi.Input[builtins.str] body_part: Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -915,7 +915,7 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

@@ -37,6 +37,8 @@ namespace Pulumi.Cloudflare
     ///         ShuffleAtEventStart = true,
     ///         Suspended = true,
     ///         TotalActiveUsers = 200,
+    ///         TurnstileAction = "log",
+    ///         TurnstileMode = "off",
     ///     });
     /// 
     /// });
@@ -134,6 +136,20 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("totalActiveUsers")]
         public Output<int?> TotalActiveUsers { get; private set; } = null!;
+
+        /// <summary>
+        /// If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+        /// Available values: "log", "infinite_queue".
+        /// </summary>
+        [Output("turnstileAction")]
+        public Output<string?> TurnstileAction { get; private set; } = null!;
+
+        /// <summary>
+        /// If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+        /// Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        /// </summary>
+        [Output("turnstileMode")]
+        public Output<string?> TurnstileMode { get; private set; } = null!;
 
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
@@ -268,6 +284,20 @@ namespace Pulumi.Cloudflare
         [Input("totalActiveUsers")]
         public Input<int>? TotalActiveUsers { get; set; }
 
+        /// <summary>
+        /// If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+        /// Available values: "log", "infinite_queue".
+        /// </summary>
+        [Input("turnstileAction")]
+        public Input<string>? TurnstileAction { get; set; }
+
+        /// <summary>
+        /// If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+        /// Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        /// </summary>
+        [Input("turnstileMode")]
+        public Input<string>? TurnstileMode { get; set; }
+
         [Input("waitingRoomId", required: true)]
         public Input<string> WaitingRoomId { get; set; } = null!;
 
@@ -368,6 +398,20 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("totalActiveUsers")]
         public Input<int>? TotalActiveUsers { get; set; }
+
+        /// <summary>
+        /// If set, the event will override the waiting room's `turnstile_action` property while it is active. If null, the event will inherit it.
+        /// Available values: "log", "infinite_queue".
+        /// </summary>
+        [Input("turnstileAction")]
+        public Input<string>? TurnstileAction { get; set; }
+
+        /// <summary>
+        /// If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
+        /// Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
+        /// </summary>
+        [Input("turnstileMode")]
+        public Input<string>? TurnstileMode { get; set; }
 
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }

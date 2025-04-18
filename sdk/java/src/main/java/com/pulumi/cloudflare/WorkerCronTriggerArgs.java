@@ -17,14 +17,14 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
     public static final WorkerCronTriggerArgs Empty = new WorkerCronTriggerArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -80,7 +80,7 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

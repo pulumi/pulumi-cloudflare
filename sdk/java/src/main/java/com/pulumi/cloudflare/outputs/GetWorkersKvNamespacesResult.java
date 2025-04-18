@@ -12,6 +12,11 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersKvNamespacesResult {
     /**
+     * @return True if new beta namespace, with additional preview features.
+     * 
+     */
+    private Boolean beta;
+    /**
      * @return Namespace identifier tag.
      * 
      */
@@ -28,6 +33,13 @@ public final class GetWorkersKvNamespacesResult {
     private String title;
 
     private GetWorkersKvNamespacesResult() {}
+    /**
+     * @return True if new beta namespace, with additional preview features.
+     * 
+     */
+    public Boolean beta() {
+        return this.beta;
+    }
     /**
      * @return Namespace identifier tag.
      * 
@@ -59,17 +71,27 @@ public final class GetWorkersKvNamespacesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean beta;
         private String id;
         private Boolean supportsUrlEncoding;
         private String title;
         public Builder() {}
         public Builder(GetWorkersKvNamespacesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.beta = defaults.beta;
     	      this.id = defaults.id;
     	      this.supportsUrlEncoding = defaults.supportsUrlEncoding;
     	      this.title = defaults.title;
         }
 
+        @CustomType.Setter
+        public Builder beta(Boolean beta) {
+            if (beta == null) {
+              throw new MissingRequiredPropertyException("GetWorkersKvNamespacesResult", "beta");
+            }
+            this.beta = beta;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -96,6 +118,7 @@ public final class GetWorkersKvNamespacesResult {
         }
         public GetWorkersKvNamespacesResult build() {
             final var _resultValue = new GetWorkersKvNamespacesResult();
+            _resultValue.beta = beta;
             _resultValue.id = id;
             _resultValue.supportsUrlEncoding = supportsUrlEncoding;
             _resultValue.title = title;

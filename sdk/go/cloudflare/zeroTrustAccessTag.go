@@ -47,7 +47,7 @@ import (
 type ZeroTrustAccessTag struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The number of applications that have this tag
 	AppCount  pulumi.IntOutput    `pulumi:"appCount"`
@@ -99,7 +99,7 @@ func GetZeroTrustAccessTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessTag resources.
 type zeroTrustAccessTagState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The number of applications that have this tag
 	AppCount  *int    `pulumi:"appCount"`
@@ -110,7 +110,7 @@ type zeroTrustAccessTagState struct {
 }
 
 type ZeroTrustAccessTagState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The number of applications that have this tag
 	AppCount  pulumi.IntPtrInput
@@ -125,7 +125,7 @@ func (ZeroTrustAccessTagState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessTagArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The name of the tag
 	Name string `pulumi:"name"`
@@ -133,7 +133,7 @@ type zeroTrustAccessTagArgs struct {
 
 // The set of arguments for constructing a ZeroTrustAccessTag resource.
 type ZeroTrustAccessTagArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The name of the tag
 	Name pulumi.StringInput
@@ -226,7 +226,7 @@ func (o ZeroTrustAccessTagOutput) ToZeroTrustAccessTagOutputWithContext(ctx cont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o ZeroTrustAccessTagOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessTag) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

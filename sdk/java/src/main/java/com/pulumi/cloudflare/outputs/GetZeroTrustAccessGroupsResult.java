@@ -22,7 +22,7 @@ public final class GetZeroTrustAccessGroupsResult {
      */
     private List<GetZeroTrustAccessGroupsResultExclude> excludes;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -60,7 +60,7 @@ public final class GetZeroTrustAccessGroupsResult {
         return this.excludes;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {

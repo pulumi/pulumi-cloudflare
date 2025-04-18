@@ -30,11 +30,11 @@ export function getWorkersRoute(args: GetWorkersRouteArgs, opts?: pulumi.InvokeO
  */
 export interface GetWorkersRouteArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     routeId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -44,12 +44,12 @@ export interface GetWorkersRouteArgs {
  */
 export interface GetWorkersRouteResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     readonly pattern: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly routeId: string;
     /**
@@ -57,7 +57,7 @@ export interface GetWorkersRouteResult {
      */
     readonly script: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -87,11 +87,11 @@ export function getWorkersRouteOutput(args: GetWorkersRouteOutputArgs, opts?: pu
  */
 export interface GetWorkersRouteOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     routeId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

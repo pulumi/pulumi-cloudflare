@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * const exampleApiShieldOperationSchemaValidationSettings = new cloudflare.ApiShieldOperationSchemaValidationSettings("example_api_shield_operation_schema_validation_settings", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     operationId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
- *     mitigationAction: "log",
+ *     mitigationAction: "block",
  * });
  * ```
  *

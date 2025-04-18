@@ -44,13 +44,13 @@ public final class GetDnsRecordResult {
      */
     private GetDnsRecordData data;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String dnsRecordId;
     private @Nullable GetDnsRecordFilter filter;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -111,7 +111,7 @@ public final class GetDnsRecordResult {
      */
     private String type;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -153,7 +153,7 @@ public final class GetDnsRecordResult {
         return this.data;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> dnsRecordId() {
@@ -163,7 +163,7 @@ public final class GetDnsRecordResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -248,7 +248,7 @@ public final class GetDnsRecordResult {
         return this.type;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

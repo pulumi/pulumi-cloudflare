@@ -115,6 +115,7 @@ class GetEmailRoutingSettingsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> builtins.str:
         """
         Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)

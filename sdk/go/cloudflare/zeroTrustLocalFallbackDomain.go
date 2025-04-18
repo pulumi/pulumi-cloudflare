@@ -30,8 +30,7 @@ type ZeroTrustLocalFallbackDomain struct {
 	// A list of IP addresses to handle domain resolution.
 	DnsServers pulumi.StringArrayOutput                      `pulumi:"dnsServers"`
 	Domains    ZeroTrustLocalFallbackDomainDomainArrayOutput `pulumi:"domains"`
-	// Device ID.
-	PolicyId pulumi.StringOutput `pulumi:"policyId"`
+	PolicyId   pulumi.StringOutput                           `pulumi:"policyId"`
 	// The domain suffix to match when resolving locally.
 	Suffix pulumi.StringOutput `pulumi:"suffix"`
 }
@@ -90,8 +89,7 @@ type zeroTrustLocalFallbackDomainState struct {
 	// A list of IP addresses to handle domain resolution.
 	DnsServers []string                             `pulumi:"dnsServers"`
 	Domains    []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`
-	// Device ID.
-	PolicyId *string `pulumi:"policyId"`
+	PolicyId   *string                              `pulumi:"policyId"`
 	// The domain suffix to match when resolving locally.
 	Suffix *string `pulumi:"suffix"`
 }
@@ -103,8 +101,7 @@ type ZeroTrustLocalFallbackDomainState struct {
 	// A list of IP addresses to handle domain resolution.
 	DnsServers pulumi.StringArrayInput
 	Domains    ZeroTrustLocalFallbackDomainDomainArrayInput
-	// Device ID.
-	PolicyId pulumi.StringPtrInput
+	PolicyId   pulumi.StringPtrInput
 	// The domain suffix to match when resolving locally.
 	Suffix pulumi.StringPtrInput
 }
@@ -116,16 +113,14 @@ func (ZeroTrustLocalFallbackDomainState) ElementType() reflect.Type {
 type zeroTrustLocalFallbackDomainArgs struct {
 	AccountId string                               `pulumi:"accountId"`
 	Domains   []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`
-	// Device ID.
-	PolicyId string `pulumi:"policyId"`
+	PolicyId  string                               `pulumi:"policyId"`
 }
 
 // The set of arguments for constructing a ZeroTrustLocalFallbackDomain resource.
 type ZeroTrustLocalFallbackDomainArgs struct {
 	AccountId pulumi.StringInput
 	Domains   ZeroTrustLocalFallbackDomainDomainArrayInput
-	// Device ID.
-	PolicyId pulumi.StringInput
+	PolicyId  pulumi.StringInput
 }
 
 func (ZeroTrustLocalFallbackDomainArgs) ElementType() reflect.Type {
@@ -233,7 +228,6 @@ func (o ZeroTrustLocalFallbackDomainOutput) Domains() ZeroTrustLocalFallbackDoma
 	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) ZeroTrustLocalFallbackDomainDomainArrayOutput { return v.Domains }).(ZeroTrustLocalFallbackDomainDomainArrayOutput)
 }
 
-// Device ID.
 func (o ZeroTrustLocalFallbackDomainOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
 }

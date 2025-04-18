@@ -1460,6 +1460,16 @@ export const getWorkersForPlatformsDispatchNamespaces: typeof import("./getWorke
 export const getWorkersForPlatformsDispatchNamespacesOutput: typeof import("./getWorkersForPlatformsDispatchNamespaces").getWorkersForPlatformsDispatchNamespacesOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersForPlatformsDispatchNamespaces","getWorkersForPlatformsDispatchNamespacesOutput"], () => require("./getWorkersForPlatformsDispatchNamespaces"));
 
+export { GetWorkersForPlatformsScriptSecretArgs, GetWorkersForPlatformsScriptSecretResult, GetWorkersForPlatformsScriptSecretOutputArgs } from "./getWorkersForPlatformsScriptSecret";
+export const getWorkersForPlatformsScriptSecret: typeof import("./getWorkersForPlatformsScriptSecret").getWorkersForPlatformsScriptSecret = null as any;
+export const getWorkersForPlatformsScriptSecretOutput: typeof import("./getWorkersForPlatformsScriptSecret").getWorkersForPlatformsScriptSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkersForPlatformsScriptSecret","getWorkersForPlatformsScriptSecretOutput"], () => require("./getWorkersForPlatformsScriptSecret"));
+
+export { GetWorkersForPlatformsScriptSecretsArgs, GetWorkersForPlatformsScriptSecretsResult, GetWorkersForPlatformsScriptSecretsOutputArgs } from "./getWorkersForPlatformsScriptSecrets";
+export const getWorkersForPlatformsScriptSecrets: typeof import("./getWorkersForPlatformsScriptSecrets").getWorkersForPlatformsScriptSecrets = null as any;
+export const getWorkersForPlatformsScriptSecretsOutput: typeof import("./getWorkersForPlatformsScriptSecrets").getWorkersForPlatformsScriptSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkersForPlatformsScriptSecrets","getWorkersForPlatformsScriptSecretsOutput"], () => require("./getWorkersForPlatformsScriptSecrets"));
+
 export { GetWorkersKvArgs, GetWorkersKvResult, GetWorkersKvOutputArgs } from "./getWorkersKv";
 export const getWorkersKv: typeof import("./getWorkersKv").getWorkersKv = null as any;
 export const getWorkersKvOutput: typeof import("./getWorkersKv").getWorkersKvOutput = null as any;
@@ -2360,11 +2370,6 @@ export type WorkerScript = import("./workerScript").WorkerScript;
 export const WorkerScript: typeof import("./workerScript").WorkerScript = null as any;
 utilities.lazyLoad(exports, ["WorkerScript"], () => require("./workerScript"));
 
-export { WorkerSecretArgs, WorkerSecretState } from "./workerSecret";
-export type WorkerSecret = import("./workerSecret").WorkerSecret;
-export const WorkerSecret: typeof import("./workerSecret").WorkerSecret = null as any;
-utilities.lazyLoad(exports, ["WorkerSecret"], () => require("./workerSecret"));
-
 export { WorkersCronTriggerArgs, WorkersCronTriggerState } from "./workersCronTrigger";
 export type WorkersCronTrigger = import("./workersCronTrigger").WorkersCronTrigger;
 export const WorkersCronTrigger: typeof import("./workersCronTrigger").WorkersCronTrigger = null as any;
@@ -2389,6 +2394,11 @@ export { WorkersForPlatformsNamespaceArgs, WorkersForPlatformsNamespaceState } f
 export type WorkersForPlatformsNamespace = import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace;
 export const WorkersForPlatformsNamespace: typeof import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace = null as any;
 utilities.lazyLoad(exports, ["WorkersForPlatformsNamespace"], () => require("./workersForPlatformsNamespace"));
+
+export { WorkersForPlatformsScriptSecretArgs, WorkersForPlatformsScriptSecretState } from "./workersForPlatformsScriptSecret";
+export type WorkersForPlatformsScriptSecret = import("./workersForPlatformsScriptSecret").WorkersForPlatformsScriptSecret;
+export const WorkersForPlatformsScriptSecret: typeof import("./workersForPlatformsScriptSecret").WorkersForPlatformsScriptSecret = null as any;
+utilities.lazyLoad(exports, ["WorkersForPlatformsScriptSecret"], () => require("./workersForPlatformsScriptSecret"));
 
 export { WorkersKvArgs, WorkersKvState } from "./workersKv";
 export type WorkersKv = import("./workersKv").WorkersKv;
@@ -3003,8 +3013,6 @@ const _module = {
                 return new WorkerDomain(name, <any>undefined, { urn })
             case "cloudflare:index/workerScript:WorkerScript":
                 return new WorkerScript(name, <any>undefined, { urn })
-            case "cloudflare:index/workerSecret:WorkerSecret":
-                return new WorkerSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersCronTrigger:WorkersCronTrigger":
                 return new WorkersCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workersCustomDomain:WorkersCustomDomain":
@@ -3015,6 +3023,8 @@ const _module = {
                 return new WorkersForPlatformsDispatchNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
                 return new WorkersForPlatformsNamespace(name, <any>undefined, { urn })
+            case "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret":
+                return new WorkersForPlatformsScriptSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersKv:WorkersKv":
                 return new WorkersKv(name, <any>undefined, { urn })
             case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -3292,12 +3302,12 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsSite", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/workerSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersCustomDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersDeployment", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsDispatchNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsNamespace", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsScriptSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _module)

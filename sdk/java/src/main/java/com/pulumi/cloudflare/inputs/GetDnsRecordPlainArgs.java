@@ -17,14 +17,14 @@ public final class GetDnsRecordPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetDnsRecordPlainArgs Empty = new GetDnsRecordPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="dnsRecordId")
     private @Nullable String dnsRecordId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> dnsRecordId() {
@@ -39,14 +39,14 @@ public final class GetDnsRecordPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -80,7 +80,7 @@ public final class GetDnsRecordPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param dnsRecordId Identifier
+         * @param dnsRecordId Identifier.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GetDnsRecordPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class GetZeroTrustAccessCustomPagePlainArgs extends com.pulumi.reso
     public static final GetZeroTrustAccessCustomPagePlainArgs Empty = new GetZeroTrustAccessCustomPagePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -31,14 +31,14 @@ public final class GetZeroTrustAccessCustomPagePlainArgs extends com.pulumi.reso
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="customPageId")
     private @Nullable String customPageId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> customPageId() {
@@ -71,7 +71,7 @@ public final class GetZeroTrustAccessCustomPagePlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetZeroTrustAccessCustomPagePlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param customPageId UUID
+         * @param customPageId UUID.
          * 
          * @return builder
          * 

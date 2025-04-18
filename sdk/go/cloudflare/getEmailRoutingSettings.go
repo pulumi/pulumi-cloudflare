@@ -70,6 +70,8 @@ type LookupEmailRoutingSettingsResult struct {
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status string `pulumi:"status"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag string `pulumi:"tag"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
@@ -146,6 +148,8 @@ func (o LookupEmailRoutingSettingsResultOutput) Status() pulumi.StringOutput {
 }
 
 // Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupEmailRoutingSettingsResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingSettingsResult) string { return v.Tag }).(pulumi.StringOutput)
 }

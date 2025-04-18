@@ -29,9 +29,9 @@ namespace Pulumi.Cloudflare
         ///             Id = "id",
         ///             Name = "name",
         ///         },
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Name = "name",
-        ///         Order = "name",
+        ///         Order = "status",
         ///         Status = "initializing",
         ///     });
         /// 
@@ -59,9 +59,9 @@ namespace Pulumi.Cloudflare
         ///             Id = "id",
         ///             Name = "name",
         ///         },
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Name = "name",
-        ///         Order = "name",
+        ///         Order = "status",
         ///         Status = "initializing",
         ///     });
         /// 
@@ -89,9 +89,9 @@ namespace Pulumi.Cloudflare
         ///             Id = "id",
         ///             Name = "name",
         ///         },
-        ///         Direction = "asc",
+        ///         Direction = "desc",
         ///         Name = "name",
-        ///         Order = "name",
+        ///         Order = "status",
         ///         Status = "initializing",
         ///     });
         /// 

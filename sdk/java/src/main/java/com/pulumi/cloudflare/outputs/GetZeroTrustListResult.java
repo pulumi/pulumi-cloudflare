@@ -4,10 +4,12 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustListFilter;
+import com.pulumi.cloudflare.outputs.GetZeroTrustListItem;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -27,6 +29,11 @@ public final class GetZeroTrustListResult {
      * 
      */
     private String id;
+    /**
+     * @return The items in the list.
+     * 
+     */
+    private List<GetZeroTrustListItem> items;
     /**
      * @return The number of items in the list.
      * 
@@ -75,6 +82,13 @@ public final class GetZeroTrustListResult {
         return this.id;
     }
     /**
+     * @return The items in the list.
+     * 
+     */
+    public List<GetZeroTrustListItem> items() {
+        return this.items;
+    }
+    /**
      * @return The number of items in the list.
      * 
      */
@@ -121,6 +135,7 @@ public final class GetZeroTrustListResult {
         private String description;
         private @Nullable GetZeroTrustListFilter filter;
         private String id;
+        private List<GetZeroTrustListItem> items;
         private Double listCount;
         private @Nullable String listId;
         private String name;
@@ -134,6 +149,7 @@ public final class GetZeroTrustListResult {
     	      this.description = defaults.description;
     	      this.filter = defaults.filter;
     	      this.id = defaults.id;
+    	      this.items = defaults.items;
     	      this.listCount = defaults.listCount;
     	      this.listId = defaults.listId;
     	      this.name = defaults.name;
@@ -180,6 +196,17 @@ public final class GetZeroTrustListResult {
             return this;
         }
         @CustomType.Setter
+        public Builder items(List<GetZeroTrustListItem> items) {
+            if (items == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustListResult", "items");
+            }
+            this.items = items;
+            return this;
+        }
+        public Builder items(GetZeroTrustListItem... items) {
+            return items(List.of(items));
+        }
+        @CustomType.Setter
         public Builder listCount(Double listCount) {
             if (listCount == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustListResult", "listCount");
@@ -224,6 +251,7 @@ public final class GetZeroTrustListResult {
             _resultValue.description = description;
             _resultValue.filter = filter;
             _resultValue.id = id;
+            _resultValue.items = items;
             _resultValue.listCount = listCount;
             _resultValue.listId = listId;
             _resultValue.name = name;

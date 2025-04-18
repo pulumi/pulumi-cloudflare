@@ -4,8 +4,8 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.Utilities;
-import com.pulumi.cloudflare.WorkerSecretArgs;
-import com.pulumi.cloudflare.inputs.WorkerSecretState;
+import com.pulumi.cloudflare.WorkersForPlatformsScriptSecretArgs;
+import com.pulumi.cloudflare.inputs.WorkersForPlatformsScriptSecretState;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersSecret;
- * import com.pulumi.cloudflare.WorkersSecretArgs;
+ * import com.pulumi.cloudflare.WorkersForPlatformsScriptSecret;
+ * import com.pulumi.cloudflare.WorkersForPlatformsScriptSecretArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersSecret = new WorkersSecret("exampleWorkersSecret", WorkersSecretArgs.builder()
+ *         var exampleWorkersForPlatformsScriptSecret = new WorkersForPlatformsScriptSecret("exampleWorkersForPlatformsScriptSecret", WorkersForPlatformsScriptSecretArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .dispatchNamespace("my-dispatch-namespace")
  *             .scriptName("this-is_my_script-01")
@@ -60,25 +60,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/workerSecret:WorkerSecret example &#39;&lt;account_id&gt;/&lt;dispatch_namespace&gt;/&lt;script_name&gt;/&lt;secret_name&gt;&#39;
+ * $ pulumi import cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret example &#39;&lt;account_id&gt;/&lt;dispatch_namespace&gt;/&lt;script_name&gt;/&lt;secret_name&gt;&#39;
  * ```
  * 
- * @deprecated
- * cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret
- * 
  */
-@Deprecated /* cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret */
-@ResourceType(type="cloudflare:index/workerSecret:WorkerSecret")
-public class WorkerSecret extends com.pulumi.resources.CustomResource {
+@ResourceType(type="cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret")
+public class WorkersForPlatformsScriptSecret extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -161,15 +157,15 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkerSecret(java.lang.String name) {
-        this(name, WorkerSecretArgs.Empty);
+    public WorkersForPlatformsScriptSecret(java.lang.String name) {
+        this(name, WorkersForPlatformsScriptSecretArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkerSecret(java.lang.String name, WorkerSecretArgs args) {
+    public WorkersForPlatformsScriptSecret(java.lang.String name, WorkersForPlatformsScriptSecretArgs args) {
         this(name, args, null);
     }
     /**
@@ -178,26 +174,26 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkerSecret(java.lang.String name, WorkerSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerSecret:WorkerSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public WorkersForPlatformsScriptSecret(java.lang.String name, WorkersForPlatformsScriptSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkerSecret(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerSecret:WorkerSecret", name, state, makeResourceOptions(options, id), false);
+    private WorkersForPlatformsScriptSecret(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersForPlatformsScriptSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static WorkerSecretArgs makeArgs(WorkerSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static WorkersForPlatformsScriptSecretArgs makeArgs(WorkersForPlatformsScriptSecretArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
-        return args == null ? WorkerSecretArgs.Empty : args;
+        return args == null ? WorkersForPlatformsScriptSecretArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/workerSecret:WorkerSecret").build())
+                Output.of(Alias.builder().type("cloudflare:index/workersSecret:WorkersSecret").build())
             ))
             .additionalSecretOutputs(List.of(
                 "text"
@@ -215,7 +211,7 @@ public class WorkerSecret extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkerSecret get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new WorkerSecret(name, id, state, options);
+    public static WorkersForPlatformsScriptSecret get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersForPlatformsScriptSecretState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new WorkersForPlatformsScriptSecret(name, id, state, options);
     }
 }

@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *                 .target("ip")
  *                 .value("198.51.100.4")
  *                 .build())
- *             .mode("block")
+ *             .mode("challenge")
  *             .build());
  * 
  *     }

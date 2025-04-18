@@ -38,14 +38,14 @@ public final class GetZeroTrustAccessServiceTokenPlainArgs extends com.pulumi.re
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="serviceTokenId")
     private @Nullable String serviceTokenId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> serviceTokenId() {
@@ -111,7 +111,7 @@ public final class GetZeroTrustAccessServiceTokenPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param serviceTokenId UUID
+         * @param serviceTokenId UUID.
          * 
          * @return builder
          * 

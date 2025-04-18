@@ -126,6 +126,7 @@ class GetLogpushJobResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def frequency(self) -> builtins.str:
         """
         This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
@@ -176,6 +177,7 @@ class GetLogpushJobResult:
 
     @property
     @pulumi.getter(name="logpullOptions")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def logpull_options(self) -> builtins.str:
         """
         This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.

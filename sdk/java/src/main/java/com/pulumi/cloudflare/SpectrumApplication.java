@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .ipFirewall(true)
  *             .protocol("tcp/22")
  *             .proxyProtocol("off")
- *             .tls("off")
+ *             .tls("full")
  *             .trafficType("direct")
  *             .argoSmartRouting(true)
  *             .edgeIps(SpectrumApplicationEdgeIpsArgs.builder()

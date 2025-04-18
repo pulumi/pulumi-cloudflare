@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsAccountSettingsBlockPage
     {
         /// <summary>
-        /// Block page background color in #rrggbb format.
+        /// If mode is customized*block*page: block page background color in #rrggbb format.
         /// </summary>
         public readonly string? BackgroundColor;
         /// <summary>
@@ -22,33 +22,46 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Block page footer text.
+        /// If mode is customized*block*page: block page footer text.
         /// </summary>
         public readonly string? FooterText;
         /// <summary>
-        /// Block page header text.
+        /// If mode is customized*block*page: block page header text.
         /// </summary>
         public readonly string? HeaderText;
         /// <summary>
-        /// Full URL to the logo file.
+        /// If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        /// </summary>
+        public readonly bool? IncludeContext;
+        /// <summary>
+        /// If mode is customized*block*page: full URL to the logo file.
         /// </summary>
         public readonly string? LogoPath;
         /// <summary>
-        /// Admin email for users to contact.
+        /// If mode is customized*block*page: admin email for users to contact.
         /// </summary>
         public readonly string? MailtoAddress;
         /// <summary>
-        /// Subject line for emails created from block page.
+        /// If mode is customized*block*page: subject line for emails created from block page.
         /// </summary>
         public readonly string? MailtoSubject;
         /// <summary>
-        /// Block page title.
+        /// Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+        /// Available values: "customized*block*page", "redirect_uri".
+        /// </summary>
+        public readonly string? Mode;
+        /// <summary>
+        /// If mode is customized*block*page: block page title.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Suppress detailed info at the bottom of the block page.
+        /// If mode is customized*block*page: suppress detailed info at the bottom of the block page.
         /// </summary>
         public readonly bool? SuppressFooter;
+        /// <summary>
+        /// If mode is redirect_uri: URI to which the user should be redirected.
+        /// </summary>
+        public readonly string? TargetUri;
 
         [OutputConstructor]
         private TeamsAccountSettingsBlockPage(
@@ -60,25 +73,34 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? headerText,
 
+            bool? includeContext,
+
             string? logoPath,
 
             string? mailtoAddress,
 
             string? mailtoSubject,
 
+            string? mode,
+
             string? name,
 
-            bool? suppressFooter)
+            bool? suppressFooter,
+
+            string? targetUri)
         {
             BackgroundColor = backgroundColor;
             Enabled = enabled;
             FooterText = footerText;
             HeaderText = headerText;
+            IncludeContext = includeContext;
             LogoPath = logoPath;
             MailtoAddress = mailtoAddress;
             MailtoSubject = mailtoSubject;
+            Mode = mode;
             Name = name;
             SuppressFooter = suppressFooter;
+            TargetUri = targetUri;
         }
     }
 }

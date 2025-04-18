@@ -15,14 +15,14 @@ public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceA
     public static final ZeroTrustAccessTagArgs Empty = new ZeroTrustAccessTagArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -70,7 +70,7 @@ public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ZeroTrustAccessTagArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

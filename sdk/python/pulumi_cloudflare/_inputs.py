@@ -1222,6 +1222,8 @@ __all__ = [
     'TeamsRuleRuleSettingsPayloadLogArgsDict',
     'TeamsRuleRuleSettingsQuarantineArgs',
     'TeamsRuleRuleSettingsQuarantineArgsDict',
+    'TeamsRuleRuleSettingsRedirectArgs',
+    'TeamsRuleRuleSettingsRedirectArgsDict',
     'TeamsRuleRuleSettingsResolveDnsInternallyArgs',
     'TeamsRuleRuleSettingsResolveDnsInternallyArgsDict',
     'TeamsRuleRuleSettingsUntrustedCertArgs',
@@ -1300,8 +1302,12 @@ __all__ = [
     'WorkersDeploymentVersionArgsDict',
     'WorkersRouteErrorArgs',
     'WorkersRouteErrorArgsDict',
+    'WorkersRouteErrorSourceArgs',
+    'WorkersRouteErrorSourceArgsDict',
     'WorkersRouteMessageArgs',
     'WorkersRouteMessageArgsDict',
+    'WorkersRouteMessageSourceArgs',
+    'WorkersRouteMessageSourceArgsDict',
     'WorkersScriptAssetsArgs',
     'WorkersScriptAssetsArgsDict',
     'WorkersScriptAssetsConfigArgs',
@@ -1898,6 +1904,12 @@ __all__ = [
     'ZeroTrustDnsLocationNetworkArgsDict',
     'ZeroTrustGatewayLoggingSettingsByRuleTypeArgs',
     'ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict',
+    'ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs',
+    'ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgsDict',
+    'ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs',
+    'ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgsDict',
+    'ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args',
+    'ZeroTrustGatewayLoggingSettingsByRuleTypeL4ArgsDict',
     'ZeroTrustGatewayPolicyExpirationArgs',
     'ZeroTrustGatewayPolicyExpirationArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsArgs',
@@ -1924,6 +1936,8 @@ __all__ = [
     'ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs',
     'ZeroTrustGatewayPolicyRuleSettingsQuarantineArgsDict',
+    'ZeroTrustGatewayPolicyRuleSettingsRedirectArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsRedirectArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs',
     'ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs',
@@ -16423,9 +16437,15 @@ class AccountSettingsArgs:
         if abuse_contact_email is not None:
             pulumi.set(__self__, "abuse_contact_email", abuse_contact_email)
         if default_nameservers is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""default_nameservers is deprecated: This attribute is deprecated.""")
+        if default_nameservers is not None:
             pulumi.set(__self__, "default_nameservers", default_nameservers)
         if enforce_twofactor is not None:
             pulumi.set(__self__, "enforce_twofactor", enforce_twofactor)
+        if use_account_custom_ns_by_default is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""use_account_custom_ns_by_default is deprecated: This attribute is deprecated.""")
         if use_account_custom_ns_by_default is not None:
             pulumi.set(__self__, "use_account_custom_ns_by_default", use_account_custom_ns_by_default)
 
@@ -16443,6 +16463,7 @@ class AccountSettingsArgs:
 
     @property
     @pulumi.getter(name="defaultNameservers")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def default_nameservers(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Specifies the default nameservers to be used for new zones added to this account.
@@ -16468,6 +16489,7 @@ class AccountSettingsArgs:
 
     @property
     @pulumi.getter(name="useAccountCustomNsByDefault")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def use_account_custom_ns_by_default(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         Indicates whether new zones should use the account-level custom
@@ -21257,6 +21279,9 @@ class DlpCustomProfileEntryPatternArgs:
         """
         pulumi.set(__self__, "regex", regex)
         if validation is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""validation is deprecated: This attribute is deprecated.""")
+        if validation is not None:
             pulumi.set(__self__, "validation", validation)
 
     @property
@@ -21270,6 +21295,7 @@ class DlpCustomProfileEntryPatternArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def validation(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Available values: "luhn".
@@ -21597,6 +21623,9 @@ class DlpCustomProfileProfileEntryPatternArgs:
         """
         pulumi.set(__self__, "regex", regex)
         if validation is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""validation is deprecated: This attribute is deprecated.""")
+        if validation is not None:
             pulumi.set(__self__, "validation", validation)
 
     @property
@@ -21610,6 +21639,7 @@ class DlpCustomProfileProfileEntryPatternArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def validation(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Available values: "luhn".
@@ -26315,7 +26345,7 @@ if not MYPY:
         """
         record_template: NotRequired[pulumi.Input[builtins.str]]
         """
-        String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+        String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
         """
         sample_rate: NotRequired[pulumi.Input[builtins.float]]
         """
@@ -26355,7 +26385,7 @@ class LogpushJobOutputOptionsArgs:
         :param pulumi.Input[builtins.str] record_delimiter: String to be inserted in-between the records as separator.
         :param pulumi.Input[builtins.str] record_prefix: String to be prepended before each record.
         :param pulumi.Input[builtins.str] record_suffix: String to be appended after each record.
-        :param pulumi.Input[builtins.str] record_template: String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+        :param pulumi.Input[builtins.str] record_template: String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
         :param pulumi.Input[builtins.float] sample_rate: Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sample_interval` of the data.
         :param pulumi.Input[builtins.str] timestamp_format: String to specify the format for timestamps, such as `unixnano`, `unix`, or `rfc3339`.
                Available values: "unixnano", "unix", "rfc3339".
@@ -26498,7 +26528,7 @@ class LogpushJobOutputOptionsArgs:
     @pulumi.getter(name="recordTemplate")
     def record_template(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+        String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `field_names` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
         """
         return pulumi.get(self, "record_template")
 
@@ -31368,7 +31398,7 @@ if not MYPY:
         """
         id: NotRequired[pulumi.Input[builtins.str]]
         """
-        UUID
+        UUID.
         """
         mobile_report: NotRequired[pulumi.Input['ObservatoryScheduledTestTestMobileReportArgsDict']]
         """
@@ -31402,7 +31432,7 @@ class ObservatoryScheduledTestTestArgs:
                  url: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input['ObservatoryScheduledTestTestDesktopReportArgs'] desktop_report: The Lighthouse report.
-        :param pulumi.Input[builtins.str] id: UUID
+        :param pulumi.Input[builtins.str] id: UUID.
         :param pulumi.Input['ObservatoryScheduledTestTestMobileReportArgs'] mobile_report: The Lighthouse report.
         :param pulumi.Input['ObservatoryScheduledTestTestRegionArgs'] region: A test region with a label.
         :param pulumi.Input[builtins.str] schedule_frequency: The frequency of the test.
@@ -31449,7 +31479,7 @@ class ObservatoryScheduledTestTestArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -37483,6 +37513,10 @@ if not MYPY:
         """
         Number of seconds to delay delivery of all messages to consumers.
         """
+        delivery_paused: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Indicates if message delivery to consumers is currently paused.
+        """
         message_retention_period: NotRequired[pulumi.Input[builtins.float]]
         """
         Number of seconds after which an unconsumed message will be delayed.
@@ -37494,13 +37528,17 @@ elif False:
 class QueueSettingsArgs:
     def __init__(__self__, *,
                  delivery_delay: Optional[pulumi.Input[builtins.float]] = None,
+                 delivery_paused: Optional[pulumi.Input[builtins.bool]] = None,
                  message_retention_period: Optional[pulumi.Input[builtins.float]] = None):
         """
         :param pulumi.Input[builtins.float] delivery_delay: Number of seconds to delay delivery of all messages to consumers.
+        :param pulumi.Input[builtins.bool] delivery_paused: Indicates if message delivery to consumers is currently paused.
         :param pulumi.Input[builtins.float] message_retention_period: Number of seconds after which an unconsumed message will be delayed.
         """
         if delivery_delay is not None:
             pulumi.set(__self__, "delivery_delay", delivery_delay)
+        if delivery_paused is not None:
+            pulumi.set(__self__, "delivery_paused", delivery_paused)
         if message_retention_period is not None:
             pulumi.set(__self__, "message_retention_period", message_retention_period)
 
@@ -37515,6 +37553,18 @@ class QueueSettingsArgs:
     @delivery_delay.setter
     def delivery_delay(self, value: Optional[pulumi.Input[builtins.float]]):
         pulumi.set(self, "delivery_delay", value)
+
+    @property
+    @pulumi.getter(name="deliveryPaused")
+    def delivery_paused(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates if message delivery to consumers is currently paused.
+        """
+        return pulumi.get(self, "delivery_paused")
+
+    @delivery_paused.setter
+    def delivery_paused(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "delivery_paused", value)
 
     @property
     @pulumi.getter(name="messageRetentionPeriod")
@@ -45667,6 +45717,9 @@ class TeamsAccountSettingsArgs:
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if custom_certificate is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""custom_certificate is deprecated: This attribute is deprecated.""")
+        if custom_certificate is not None:
             pulumi.set(__self__, "custom_certificate", custom_certificate)
         if extended_email_matching is not None:
             pulumi.set(__self__, "extended_email_matching", extended_email_matching)
@@ -45753,6 +45806,7 @@ class TeamsAccountSettingsArgs:
 
     @property
     @pulumi.getter(name="customCertificate")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def custom_certificate(self) -> Optional[pulumi.Input['TeamsAccountSettingsCustomCertificateArgs']]:
         """
         Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
@@ -46024,7 +46078,7 @@ if not MYPY:
     class TeamsAccountSettingsBlockPageArgsDict(TypedDict):
         background_color: NotRequired[pulumi.Input[builtins.str]]
         """
-        Block page background color in #rrggbb format.
+        If mode is customized*block*page: block page background color in #rrggbb format.
         """
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -46032,31 +46086,44 @@ if not MYPY:
         """
         footer_text: NotRequired[pulumi.Input[builtins.str]]
         """
-        Block page footer text.
+        If mode is customized*block*page: block page footer text.
         """
         header_text: NotRequired[pulumi.Input[builtins.str]]
         """
-        Block page header text.
+        If mode is customized*block*page: block page header text.
+        """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
         """
         logo_path: NotRequired[pulumi.Input[builtins.str]]
         """
-        Full URL to the logo file.
+        If mode is customized*block*page: full URL to the logo file.
         """
         mailto_address: NotRequired[pulumi.Input[builtins.str]]
         """
-        Admin email for users to contact.
+        If mode is customized*block*page: admin email for users to contact.
         """
         mailto_subject: NotRequired[pulumi.Input[builtins.str]]
         """
-        Subject line for emails created from block page.
+        If mode is customized*block*page: subject line for emails created from block page.
+        """
+        mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+        Available values: "customized*block*page", "redirect_uri".
         """
         name: NotRequired[pulumi.Input[builtins.str]]
         """
-        Block page title.
+        If mode is customized*block*page: block page title.
         """
         suppress_footer: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Suppress detailed info at the bottom of the block page.
+        If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        """
+        target_uri: NotRequired[pulumi.Input[builtins.str]]
+        """
+        If mode is redirect_uri: URI to which the user should be redirected.
         """
 elif False:
     TeamsAccountSettingsBlockPageArgsDict: TypeAlias = Mapping[str, Any]
@@ -46068,21 +46135,28 @@ class TeamsAccountSettingsBlockPageArgs:
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  footer_text: Optional[pulumi.Input[builtins.str]] = None,
                  header_text: Optional[pulumi.Input[builtins.str]] = None,
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None,
                  logo_path: Optional[pulumi.Input[builtins.str]] = None,
                  mailto_address: Optional[pulumi.Input[builtins.str]] = None,
                  mailto_subject: Optional[pulumi.Input[builtins.str]] = None,
+                 mode: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 suppress_footer: Optional[pulumi.Input[builtins.bool]] = None):
+                 suppress_footer: Optional[pulumi.Input[builtins.bool]] = None,
+                 target_uri: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] background_color: Block page background color in #rrggbb format.
+        :param pulumi.Input[builtins.str] background_color: If mode is customized*block*page: block page background color in #rrggbb format.
         :param pulumi.Input[builtins.bool] enabled: Enable only cipher suites and TLS versions compliant with FIPS 140-2.
-        :param pulumi.Input[builtins.str] footer_text: Block page footer text.
-        :param pulumi.Input[builtins.str] header_text: Block page header text.
-        :param pulumi.Input[builtins.str] logo_path: Full URL to the logo file.
-        :param pulumi.Input[builtins.str] mailto_address: Admin email for users to contact.
-        :param pulumi.Input[builtins.str] mailto_subject: Subject line for emails created from block page.
-        :param pulumi.Input[builtins.str] name: Block page title.
-        :param pulumi.Input[builtins.bool] suppress_footer: Suppress detailed info at the bottom of the block page.
+        :param pulumi.Input[builtins.str] footer_text: If mode is customized*block*page: block page footer text.
+        :param pulumi.Input[builtins.str] header_text: If mode is customized*block*page: block page header text.
+        :param pulumi.Input[builtins.bool] include_context: If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        :param pulumi.Input[builtins.str] logo_path: If mode is customized*block*page: full URL to the logo file.
+        :param pulumi.Input[builtins.str] mailto_address: If mode is customized*block*page: admin email for users to contact.
+        :param pulumi.Input[builtins.str] mailto_subject: If mode is customized*block*page: subject line for emails created from block page.
+        :param pulumi.Input[builtins.str] mode: Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+               Available values: "customized*block*page", "redirect_uri".
+        :param pulumi.Input[builtins.str] name: If mode is customized*block*page: block page title.
+        :param pulumi.Input[builtins.bool] suppress_footer: If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        :param pulumi.Input[builtins.str] target_uri: If mode is redirect_uri: URI to which the user should be redirected.
         """
         if background_color is not None:
             pulumi.set(__self__, "background_color", background_color)
@@ -46092,22 +46166,28 @@ class TeamsAccountSettingsBlockPageArgs:
             pulumi.set(__self__, "footer_text", footer_text)
         if header_text is not None:
             pulumi.set(__self__, "header_text", header_text)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
         if logo_path is not None:
             pulumi.set(__self__, "logo_path", logo_path)
         if mailto_address is not None:
             pulumi.set(__self__, "mailto_address", mailto_address)
         if mailto_subject is not None:
             pulumi.set(__self__, "mailto_subject", mailto_subject)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if suppress_footer is not None:
             pulumi.set(__self__, "suppress_footer", suppress_footer)
+        if target_uri is not None:
+            pulumi.set(__self__, "target_uri", target_uri)
 
     @property
     @pulumi.getter(name="backgroundColor")
     def background_color(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Block page background color in #rrggbb format.
+        If mode is customized*block*page: block page background color in #rrggbb format.
         """
         return pulumi.get(self, "background_color")
 
@@ -46131,7 +46211,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="footerText")
     def footer_text(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Block page footer text.
+        If mode is customized*block*page: block page footer text.
         """
         return pulumi.get(self, "footer_text")
 
@@ -46143,7 +46223,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="headerText")
     def header_text(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Block page header text.
+        If mode is customized*block*page: block page header text.
         """
         return pulumi.get(self, "header_text")
 
@@ -46152,10 +46232,22 @@ class TeamsAccountSettingsBlockPageArgs:
         pulumi.set(self, "header_text", value)
 
     @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
+
+    @property
     @pulumi.getter(name="logoPath")
     def logo_path(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Full URL to the logo file.
+        If mode is customized*block*page: full URL to the logo file.
         """
         return pulumi.get(self, "logo_path")
 
@@ -46167,7 +46259,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="mailtoAddress")
     def mailto_address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Admin email for users to contact.
+        If mode is customized*block*page: admin email for users to contact.
         """
         return pulumi.get(self, "mailto_address")
 
@@ -46179,7 +46271,7 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="mailtoSubject")
     def mailto_subject(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Subject line for emails created from block page.
+        If mode is customized*block*page: subject line for emails created from block page.
         """
         return pulumi.get(self, "mailto_subject")
 
@@ -46189,9 +46281,22 @@ class TeamsAccountSettingsBlockPageArgs:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+        Available values: "customized*block*page", "redirect_uri".
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Block page title.
+        If mode is customized*block*page: block page title.
         """
         return pulumi.get(self, "name")
 
@@ -46203,13 +46308,25 @@ class TeamsAccountSettingsBlockPageArgs:
     @pulumi.getter(name="suppressFooter")
     def suppress_footer(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Suppress detailed info at the bottom of the block page.
+        If mode is customized*block*page: suppress detailed info at the bottom of the block page.
         """
         return pulumi.get(self, "suppress_footer")
 
     @suppress_footer.setter
     def suppress_footer(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "suppress_footer", value)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If mode is redirect_uri: URI to which the user should be redirected.
+        """
+        return pulumi.get(self, "target_uri")
+
+    @target_uri.setter
+    def target_uri(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "target_uri", value)
 
 
 if not MYPY:
@@ -47209,6 +47326,10 @@ if not MYPY:
         """
         Settings that apply to quarantine rules
         """
+        redirect: NotRequired[pulumi.Input['TeamsRuleRuleSettingsRedirectArgsDict']]
+        """
+        Settings that apply to redirect rules
+        """
         resolve_dns_internally: NotRequired[pulumi.Input['TeamsRuleRuleSettingsResolveDnsInternallyArgsDict']]
         """
         Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
@@ -47247,6 +47368,7 @@ class TeamsRuleRuleSettingsArgs:
                  override_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  payload_log: Optional[pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs']] = None,
                  quarantine: Optional[pulumi.Input['TeamsRuleRuleSettingsQuarantineArgs']] = None,
+                 redirect: Optional[pulumi.Input['TeamsRuleRuleSettingsRedirectArgs']] = None,
                  resolve_dns_internally: Optional[pulumi.Input['TeamsRuleRuleSettingsResolveDnsInternallyArgs']] = None,
                  resolve_dns_through_cloudflare: Optional[pulumi.Input[builtins.bool]] = None,
                  untrusted_cert: Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']] = None):
@@ -47271,6 +47393,7 @@ class TeamsRuleRuleSettingsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] override_ips: Override matching DNS queries with an IP or set of IPs.
         :param pulumi.Input['TeamsRuleRuleSettingsPayloadLogArgs'] payload_log: Configure DLP payload logging.
         :param pulumi.Input['TeamsRuleRuleSettingsQuarantineArgs'] quarantine: Settings that apply to quarantine rules
+        :param pulumi.Input['TeamsRuleRuleSettingsRedirectArgs'] redirect: Settings that apply to redirect rules
         :param pulumi.Input['TeamsRuleRuleSettingsResolveDnsInternallyArgs'] resolve_dns_internally: Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
         :param pulumi.Input[builtins.bool] resolve_dns_through_cloudflare: Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
         :param pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs'] untrusted_cert: Configure behavior when an upstream cert is invalid or an SSL error occurs.
@@ -47315,6 +47438,8 @@ class TeamsRuleRuleSettingsArgs:
             pulumi.set(__self__, "payload_log", payload_log)
         if quarantine is not None:
             pulumi.set(__self__, "quarantine", quarantine)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
         if resolve_dns_internally is not None:
             pulumi.set(__self__, "resolve_dns_internally", resolve_dns_internally)
         if resolve_dns_through_cloudflare is not None:
@@ -47561,6 +47686,18 @@ class TeamsRuleRuleSettingsArgs:
     @quarantine.setter
     def quarantine(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsQuarantineArgs']]):
         pulumi.set(self, "quarantine", value)
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsRedirectArgs']]:
+        """
+        Settings that apply to redirect rules
+        """
+        return pulumi.get(self, "redirect")
+
+    @redirect.setter
+    def redirect(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsRedirectArgs']]):
+        pulumi.set(self, "redirect", value)
 
     @property
     @pulumi.getter(name="resolveDnsInternally")
@@ -48432,6 +48569,77 @@ class TeamsRuleRuleSettingsQuarantineArgs:
     @file_types.setter
     def file_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "file_types", value)
+
+
+if not MYPY:
+    class TeamsRuleRuleSettingsRedirectArgsDict(TypedDict):
+        target_uri: pulumi.Input[builtins.str]
+        """
+        URI to which the user will be redirected
+        """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, context information will be passed as query parameters
+        """
+        preserve_path_and_query: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, the path and query parameters from the original request will be appended to target_uri
+        """
+elif False:
+    TeamsRuleRuleSettingsRedirectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsRedirectArgs:
+    def __init__(__self__, *,
+                 target_uri: pulumi.Input[builtins.str],
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None,
+                 preserve_path_and_query: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] target_uri: URI to which the user will be redirected
+        :param pulumi.Input[builtins.bool] include_context: If true, context information will be passed as query parameters
+        :param pulumi.Input[builtins.bool] preserve_path_and_query: If true, the path and query parameters from the original request will be appended to target_uri
+        """
+        pulumi.set(__self__, "target_uri", target_uri)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
+        if preserve_path_and_query is not None:
+            pulumi.set(__self__, "preserve_path_and_query", preserve_path_and_query)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> pulumi.Input[builtins.str]:
+        """
+        URI to which the user will be redirected
+        """
+        return pulumi.get(self, "target_uri")
+
+    @target_uri.setter
+    def target_uri(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "target_uri", value)
+
+    @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, context information will be passed as query parameters
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
+
+    @property
+    @pulumi.getter(name="preservePathAndQuery")
+    def preserve_path_and_query(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, the path and query parameters from the original request will be appended to target_uri
+        """
+        return pulumi.get(self, "preserve_path_and_query")
+
+    @preserve_path_and_query.setter
+    def preserve_path_and_query(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "preserve_path_and_query", value)
 
 
 if not MYPY:
@@ -50323,6 +50531,14 @@ class WorkerScriptAssetsArgs:
 
 if not MYPY:
     class WorkerScriptAssetsConfigArgsDict(TypedDict):
+        _headers: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The contents of a _headers file (used to attach custom headers on asset responses)
+        """
+        _redirects: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        """
         html_handling: NotRequired[pulumi.Input[builtins.str]]
         """
         Determines the redirects and rewrites of requests for HTML content.
@@ -50347,11 +50563,15 @@ elif False:
 @pulumi.input_type
 class WorkerScriptAssetsConfigArgs:
     def __init__(__self__, *,
+                 _headers: Optional[pulumi.Input[builtins.str]] = None,
+                 _redirects: Optional[pulumi.Input[builtins.str]] = None,
                  html_handling: Optional[pulumi.Input[builtins.str]] = None,
                  not_found_handling: Optional[pulumi.Input[builtins.str]] = None,
                  run_worker_first: Optional[pulumi.Input[builtins.bool]] = None,
                  serve_directly: Optional[pulumi.Input[builtins.bool]] = None):
         """
+        :param pulumi.Input[builtins.str] _headers: The contents of a _headers file (used to attach custom headers on asset responses)
+        :param pulumi.Input[builtins.str] _redirects: The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
         :param pulumi.Input[builtins.str] html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         :param pulumi.Input[builtins.str] not_found_handling: Determines the response when a request does not match a static asset, and there is no Worker script.
@@ -50359,6 +50579,10 @@ class WorkerScriptAssetsConfigArgs:
         :param pulumi.Input[builtins.bool] run_worker_first: When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
         :param pulumi.Input[builtins.bool] serve_directly: When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
         """
+        if _headers is not None:
+            pulumi.set(__self__, "_headers", _headers)
+        if _redirects is not None:
+            pulumi.set(__self__, "_redirects", _redirects)
         if html_handling is not None:
             pulumi.set(__self__, "html_handling", html_handling)
         if not_found_handling is not None:
@@ -50366,7 +50590,34 @@ class WorkerScriptAssetsConfigArgs:
         if run_worker_first is not None:
             pulumi.set(__self__, "run_worker_first", run_worker_first)
         if serve_directly is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""serve_directly is deprecated: This attribute is deprecated.""")
+        if serve_directly is not None:
             pulumi.set(__self__, "serve_directly", serve_directly)
+
+    @property
+    @pulumi.getter
+    def _headers(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The contents of a _headers file (used to attach custom headers on asset responses)
+        """
+        return pulumi.get(self, "_headers")
+
+    @_headers.setter
+    def _headers(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "_headers", value)
+
+    @property
+    @pulumi.getter
+    def _redirects(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        """
+        return pulumi.get(self, "_redirects")
+
+    @_redirects.setter
+    def _redirects(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "_redirects", value)
 
     @property
     @pulumi.getter(name="htmlHandling")
@@ -50408,6 +50659,7 @@ class WorkerScriptAssetsConfigArgs:
 
     @property
     @pulumi.getter(name="serveDirectly")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def serve_directly(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
@@ -51779,7 +52031,9 @@ class WorkersDeploymentVersionArgs:
 if not MYPY:
     class WorkersRouteErrorArgsDict(TypedDict):
         code: NotRequired[pulumi.Input[builtins.int]]
+        documentation_url: NotRequired[pulumi.Input[builtins.str]]
         message: NotRequired[pulumi.Input[builtins.str]]
+        source: NotRequired[pulumi.Input['WorkersRouteErrorSourceArgsDict']]
 elif False:
     WorkersRouteErrorArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -51787,11 +52041,17 @@ elif False:
 class WorkersRouteErrorArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[builtins.int]] = None,
-                 message: Optional[pulumi.Input[builtins.str]] = None):
+                 documentation_url: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input['WorkersRouteErrorSourceArgs']] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if documentation_url is not None:
+            pulumi.set(__self__, "documentation_url", documentation_url)
         if message is not None:
             pulumi.set(__self__, "message", message)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -51803,6 +52063,15 @@ class WorkersRouteErrorArgs:
         pulumi.set(self, "code", value)
 
     @property
+    @pulumi.getter(name="documentationUrl")
+    def documentation_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "documentation_url")
+
+    @documentation_url.setter
+    def documentation_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "documentation_url", value)
+
+    @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "message")
@@ -51811,11 +52080,45 @@ class WorkersRouteErrorArgs:
     def message(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "message", value)
 
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['WorkersRouteErrorSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['WorkersRouteErrorSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class WorkersRouteErrorSourceArgsDict(TypedDict):
+        pointer: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    WorkersRouteErrorSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkersRouteErrorSourceArgs:
+    def __init__(__self__, *,
+                 pointer: Optional[pulumi.Input[builtins.str]] = None):
+        if pointer is not None:
+            pulumi.set(__self__, "pointer", pointer)
+
+    @property
+    @pulumi.getter
+    def pointer(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "pointer")
+
+    @pointer.setter
+    def pointer(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pointer", value)
+
 
 if not MYPY:
     class WorkersRouteMessageArgsDict(TypedDict):
         code: NotRequired[pulumi.Input[builtins.int]]
+        documentation_url: NotRequired[pulumi.Input[builtins.str]]
         message: NotRequired[pulumi.Input[builtins.str]]
+        source: NotRequired[pulumi.Input['WorkersRouteMessageSourceArgsDict']]
 elif False:
     WorkersRouteMessageArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -51823,11 +52126,17 @@ elif False:
 class WorkersRouteMessageArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[builtins.int]] = None,
-                 message: Optional[pulumi.Input[builtins.str]] = None):
+                 documentation_url: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input['WorkersRouteMessageSourceArgs']] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if documentation_url is not None:
+            pulumi.set(__self__, "documentation_url", documentation_url)
         if message is not None:
             pulumi.set(__self__, "message", message)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -51839,6 +52148,15 @@ class WorkersRouteMessageArgs:
         pulumi.set(self, "code", value)
 
     @property
+    @pulumi.getter(name="documentationUrl")
+    def documentation_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "documentation_url")
+
+    @documentation_url.setter
+    def documentation_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "documentation_url", value)
+
+    @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "message")
@@ -51846,6 +52164,38 @@ class WorkersRouteMessageArgs:
     @message.setter
     def message(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['WorkersRouteMessageSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['WorkersRouteMessageSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class WorkersRouteMessageSourceArgsDict(TypedDict):
+        pointer: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    WorkersRouteMessageSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkersRouteMessageSourceArgs:
+    def __init__(__self__, *,
+                 pointer: Optional[pulumi.Input[builtins.str]] = None):
+        if pointer is not None:
+            pulumi.set(__self__, "pointer", pointer)
+
+    @property
+    @pulumi.getter
+    def pointer(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "pointer")
+
+    @pointer.setter
+    def pointer(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pointer", value)
 
 
 if not MYPY:
@@ -51902,6 +52252,14 @@ class WorkersScriptAssetsArgs:
 
 if not MYPY:
     class WorkersScriptAssetsConfigArgsDict(TypedDict):
+        _headers: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The contents of a _headers file (used to attach custom headers on asset responses)
+        """
+        _redirects: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        """
         html_handling: NotRequired[pulumi.Input[builtins.str]]
         """
         Determines the redirects and rewrites of requests for HTML content.
@@ -51926,11 +52284,15 @@ elif False:
 @pulumi.input_type
 class WorkersScriptAssetsConfigArgs:
     def __init__(__self__, *,
+                 _headers: Optional[pulumi.Input[builtins.str]] = None,
+                 _redirects: Optional[pulumi.Input[builtins.str]] = None,
                  html_handling: Optional[pulumi.Input[builtins.str]] = None,
                  not_found_handling: Optional[pulumi.Input[builtins.str]] = None,
                  run_worker_first: Optional[pulumi.Input[builtins.bool]] = None,
                  serve_directly: Optional[pulumi.Input[builtins.bool]] = None):
         """
+        :param pulumi.Input[builtins.str] _headers: The contents of a _headers file (used to attach custom headers on asset responses)
+        :param pulumi.Input[builtins.str] _redirects: The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
         :param pulumi.Input[builtins.str] html_handling: Determines the redirects and rewrites of requests for HTML content.
                Available values: "auto-trailing-slash", "force-trailing-slash", "drop-trailing-slash", "none".
         :param pulumi.Input[builtins.str] not_found_handling: Determines the response when a request does not match a static asset, and there is no Worker script.
@@ -51938,6 +52300,10 @@ class WorkersScriptAssetsConfigArgs:
         :param pulumi.Input[builtins.bool] run_worker_first: When true, requests will always invoke the Worker script. Otherwise, attempt to serve an asset matching the request, falling back to the Worker script.
         :param pulumi.Input[builtins.bool] serve_directly: When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
         """
+        if _headers is not None:
+            pulumi.set(__self__, "_headers", _headers)
+        if _redirects is not None:
+            pulumi.set(__self__, "_redirects", _redirects)
         if html_handling is not None:
             pulumi.set(__self__, "html_handling", html_handling)
         if not_found_handling is not None:
@@ -51945,7 +52311,34 @@ class WorkersScriptAssetsConfigArgs:
         if run_worker_first is not None:
             pulumi.set(__self__, "run_worker_first", run_worker_first)
         if serve_directly is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""serve_directly is deprecated: This attribute is deprecated.""")
+        if serve_directly is not None:
             pulumi.set(__self__, "serve_directly", serve_directly)
+
+    @property
+    @pulumi.getter
+    def _headers(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The contents of a _headers file (used to attach custom headers on asset responses)
+        """
+        return pulumi.get(self, "_headers")
+
+    @_headers.setter
+    def _headers(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "_headers", value)
+
+    @property
+    @pulumi.getter
+    def _redirects(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The contents of a _redirects file (used to apply redirects or proxy paths ahead of asset serving)
+        """
+        return pulumi.get(self, "_redirects")
+
+    @_redirects.setter
+    def _redirects(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "_redirects", value)
 
     @property
     @pulumi.getter(name="htmlHandling")
@@ -51987,6 +52380,7 @@ class WorkersScriptAssetsConfigArgs:
 
     @property
     @pulumi.getter(name="serveDirectly")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def serve_directly(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         When true and the incoming request matches an asset, that will be served instead of invoking the Worker script. When false, requests will always invoke the Worker script.
@@ -66555,11 +66949,11 @@ class ZeroTrustAccessPolicyRequireServiceTokenArgs:
 
 if not MYPY:
     class ZeroTrustDeviceCustomProfileExcludeArgsDict(TypedDict):
-        address: pulumi.Input[builtins.str]
+        address: NotRequired[pulumi.Input[builtins.str]]
         """
         The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
         """
-        description: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
         """
         A description of the Split Tunnel item, displayed in the client UI.
         """
@@ -66573,41 +66967,43 @@ elif False:
 @pulumi.input_type
 class ZeroTrustDeviceCustomProfileExcludeArgs:
     def __init__(__self__, *,
-                 address: pulumi.Input[builtins.str],
-                 description: pulumi.Input[builtins.str],
+                 address: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] address: The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
         :param pulumi.Input[builtins.str] description: A description of the Split Tunnel item, displayed in the client UI.
         :param pulumi.Input[builtins.str] host: The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "description", description)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if host is not None:
             pulumi.set(__self__, "host", host)
 
     @property
     @pulumi.getter
-    def address(self) -> pulumi.Input[builtins.str]:
+    def address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: pulumi.Input[builtins.str]):
+    def address(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "address", value)
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Input[builtins.str]:
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A description of the Split Tunnel item, displayed in the client UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: pulumi.Input[builtins.str]):
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
 
     @property
@@ -66697,17 +67093,17 @@ class ZeroTrustDeviceCustomProfileFallbackDomainArgs:
 
 if not MYPY:
     class ZeroTrustDeviceCustomProfileIncludeArgsDict(TypedDict):
-        address: pulumi.Input[builtins.str]
+        address: NotRequired[pulumi.Input[builtins.str]]
         """
-        The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+        The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
         """
-        description: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
         """
         A description of the Split Tunnel item, displayed in the client UI.
         """
         host: NotRequired[pulumi.Input[builtins.str]]
         """
-        The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+        The domain name to include in the tunnel. If `host` is present, `address` must not be present.
         """
 elif False:
     ZeroTrustDeviceCustomProfileIncludeArgsDict: TypeAlias = Mapping[str, Any]
@@ -66715,48 +67111,50 @@ elif False:
 @pulumi.input_type
 class ZeroTrustDeviceCustomProfileIncludeArgs:
     def __init__(__self__, *,
-                 address: pulumi.Input[builtins.str],
-                 description: pulumi.Input[builtins.str],
+                 address: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] address: The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+        :param pulumi.Input[builtins.str] address: The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
         :param pulumi.Input[builtins.str] description: A description of the Split Tunnel item, displayed in the client UI.
-        :param pulumi.Input[builtins.str] host: The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+        :param pulumi.Input[builtins.str] host: The domain name to include in the tunnel. If `host` is present, `address` must not be present.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "description", description)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if host is not None:
             pulumi.set(__self__, "host", host)
 
     @property
     @pulumi.getter
-    def address(self) -> pulumi.Input[builtins.str]:
+    def address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+        The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: pulumi.Input[builtins.str]):
+    def address(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "address", value)
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Input[builtins.str]:
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A description of the Split Tunnel item, displayed in the client UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: pulumi.Input[builtins.str]):
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+        The domain name to include in the tunnel. If `host` is present, `address` must not be present.
         """
         return pulumi.get(self, "host")
 
@@ -66942,11 +67340,11 @@ class ZeroTrustDeviceCustomProfileTargetTestArgs:
 
 if not MYPY:
     class ZeroTrustDeviceDefaultProfileExcludeArgsDict(TypedDict):
-        address: pulumi.Input[builtins.str]
+        address: NotRequired[pulumi.Input[builtins.str]]
         """
         The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
         """
-        description: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
         """
         A description of the Split Tunnel item, displayed in the client UI.
         """
@@ -66960,41 +67358,43 @@ elif False:
 @pulumi.input_type
 class ZeroTrustDeviceDefaultProfileExcludeArgs:
     def __init__(__self__, *,
-                 address: pulumi.Input[builtins.str],
-                 description: pulumi.Input[builtins.str],
+                 address: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] address: The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
         :param pulumi.Input[builtins.str] description: A description of the Split Tunnel item, displayed in the client UI.
         :param pulumi.Input[builtins.str] host: The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "description", description)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if host is not None:
             pulumi.set(__self__, "host", host)
 
     @property
     @pulumi.getter
-    def address(self) -> pulumi.Input[builtins.str]:
+    def address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: pulumi.Input[builtins.str]):
+    def address(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "address", value)
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Input[builtins.str]:
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A description of the Split Tunnel item, displayed in the client UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: pulumi.Input[builtins.str]):
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
 
     @property
@@ -67084,17 +67484,17 @@ class ZeroTrustDeviceDefaultProfileFallbackDomainArgs:
 
 if not MYPY:
     class ZeroTrustDeviceDefaultProfileIncludeArgsDict(TypedDict):
-        address: pulumi.Input[builtins.str]
+        address: NotRequired[pulumi.Input[builtins.str]]
         """
-        The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+        The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
         """
-        description: pulumi.Input[builtins.str]
+        description: NotRequired[pulumi.Input[builtins.str]]
         """
         A description of the Split Tunnel item, displayed in the client UI.
         """
         host: NotRequired[pulumi.Input[builtins.str]]
         """
-        The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+        The domain name to include in the tunnel. If `host` is present, `address` must not be present.
         """
 elif False:
     ZeroTrustDeviceDefaultProfileIncludeArgsDict: TypeAlias = Mapping[str, Any]
@@ -67102,48 +67502,50 @@ elif False:
 @pulumi.input_type
 class ZeroTrustDeviceDefaultProfileIncludeArgs:
     def __init__(__self__, *,
-                 address: pulumi.Input[builtins.str],
-                 description: pulumi.Input[builtins.str],
+                 address: Optional[pulumi.Input[builtins.str]] = None,
+                 description: Optional[pulumi.Input[builtins.str]] = None,
                  host: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] address: The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+        :param pulumi.Input[builtins.str] address: The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
         :param pulumi.Input[builtins.str] description: A description of the Split Tunnel item, displayed in the client UI.
-        :param pulumi.Input[builtins.str] host: The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+        :param pulumi.Input[builtins.str] host: The domain name to include in the tunnel. If `host` is present, `address` must not be present.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "description", description)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if host is not None:
             pulumi.set(__self__, "host", host)
 
     @property
     @pulumi.getter
-    def address(self) -> pulumi.Input[builtins.str]:
+    def address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
+        The address in CIDR format to include in the tunnel. If `address` is present, `host` must not be present.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: pulumi.Input[builtins.str]):
+    def address(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "address", value)
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Input[builtins.str]:
+    def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         A description of the Split Tunnel item, displayed in the client UI.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: pulumi.Input[builtins.str]):
+    def description(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
+        The domain name to include in the tunnel. If `host` is present, `address` must not be present.
         """
         return pulumi.get(self, "host")
 
@@ -68722,6 +69124,9 @@ class ZeroTrustDlpCustomProfileEntryPatternArgs:
         """
         pulumi.set(__self__, "regex", regex)
         if validation is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""validation is deprecated: This attribute is deprecated.""")
+        if validation is not None:
             pulumi.set(__self__, "validation", validation)
 
     @property
@@ -68735,6 +69140,7 @@ class ZeroTrustDlpCustomProfileEntryPatternArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def validation(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Available values: "luhn".
@@ -69062,6 +69468,9 @@ class ZeroTrustDlpCustomProfileProfileEntryPatternArgs:
         """
         pulumi.set(__self__, "regex", regex)
         if validation is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""validation is deprecated: This attribute is deprecated.""")
+        if validation is not None:
             pulumi.set(__self__, "validation", validation)
 
     @property
@@ -69075,6 +69484,7 @@ class ZeroTrustDlpCustomProfileProfileEntryPatternArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def validation(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Available values: "luhn".
@@ -69702,6 +70112,9 @@ class ZeroTrustDlpEntryPatternArgs:
         """
         pulumi.set(__self__, "regex", regex)
         if validation is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""validation is deprecated: This attribute is deprecated.""")
+        if validation is not None:
             pulumi.set(__self__, "validation", validation)
 
     @property
@@ -69715,6 +70128,7 @@ class ZeroTrustDlpEntryPatternArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def validation(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Available values: "luhn".
@@ -70237,32 +70651,18 @@ class ZeroTrustDnsLocationNetworkArgs:
 
 if not MYPY:
     class ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict(TypedDict):
-        dns: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Logging settings for DNS firewall.
-        """
-        http: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Logging settings for HTTP/HTTPS firewall.
-        """
-        l4: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Logging settings for Network firewall.
-        """
+        dns: NotRequired[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgsDict']]
+        http: NotRequired[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgsDict']]
+        l4: NotRequired[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeL4ArgsDict']]
 elif False:
     ZeroTrustGatewayLoggingSettingsByRuleTypeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ZeroTrustGatewayLoggingSettingsByRuleTypeArgs:
     def __init__(__self__, *,
-                 dns: Optional[pulumi.Input[builtins.str]] = None,
-                 http: Optional[pulumi.Input[builtins.str]] = None,
-                 l4: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        :param pulumi.Input[builtins.str] dns: Logging settings for DNS firewall.
-        :param pulumi.Input[builtins.str] http: Logging settings for HTTP/HTTPS firewall.
-        :param pulumi.Input[builtins.str] l4: Logging settings for Network firewall.
-        """
+                 dns: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs']] = None,
+                 http: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs']] = None,
+                 l4: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args']] = None):
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
         if http is not None:
@@ -70272,39 +70672,186 @@ class ZeroTrustGatewayLoggingSettingsByRuleTypeArgs:
 
     @property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Logging settings for DNS firewall.
-        """
+    def dns(self) -> Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs']]:
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input[builtins.str]]):
+    def dns(self, value: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs']]):
         pulumi.set(self, "dns", value)
 
     @property
     @pulumi.getter
-    def http(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Logging settings for HTTP/HTTPS firewall.
-        """
+    def http(self) -> Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs']]:
         return pulumi.get(self, "http")
 
     @http.setter
-    def http(self, value: Optional[pulumi.Input[builtins.str]]):
+    def http(self, value: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs']]):
         pulumi.set(self, "http", value)
 
     @property
     @pulumi.getter
-    def l4(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Logging settings for Network firewall.
-        """
+    def l4(self) -> Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args']]:
         return pulumi.get(self, "l4")
 
     @l4.setter
-    def l4(self, value: Optional[pulumi.Input[builtins.str]]):
+    def l4(self, value: Optional[pulumi.Input['ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args']]):
         pulumi.set(self, "l4", value)
+
+
+if not MYPY:
+    class ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgsDict(TypedDict):
+        log_all: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Log all requests to this service.
+        """
+        log_blocks: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Log only blocking requests to this service.
+        """
+elif False:
+    ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs:
+    def __init__(__self__, *,
+                 log_all: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_blocks: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] log_all: Log all requests to this service.
+        :param pulumi.Input[builtins.bool] log_blocks: Log only blocking requests to this service.
+        """
+        if log_all is not None:
+            pulumi.set(__self__, "log_all", log_all)
+        if log_blocks is not None:
+            pulumi.set(__self__, "log_blocks", log_blocks)
+
+    @property
+    @pulumi.getter(name="logAll")
+    def log_all(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Log all requests to this service.
+        """
+        return pulumi.get(self, "log_all")
+
+    @log_all.setter
+    def log_all(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_all", value)
+
+    @property
+    @pulumi.getter(name="logBlocks")
+    def log_blocks(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Log only blocking requests to this service.
+        """
+        return pulumi.get(self, "log_blocks")
+
+    @log_blocks.setter
+    def log_blocks(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_blocks", value)
+
+
+if not MYPY:
+    class ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgsDict(TypedDict):
+        log_all: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Log all requests to this service.
+        """
+        log_blocks: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Log only blocking requests to this service.
+        """
+elif False:
+    ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs:
+    def __init__(__self__, *,
+                 log_all: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_blocks: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] log_all: Log all requests to this service.
+        :param pulumi.Input[builtins.bool] log_blocks: Log only blocking requests to this service.
+        """
+        if log_all is not None:
+            pulumi.set(__self__, "log_all", log_all)
+        if log_blocks is not None:
+            pulumi.set(__self__, "log_blocks", log_blocks)
+
+    @property
+    @pulumi.getter(name="logAll")
+    def log_all(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Log all requests to this service.
+        """
+        return pulumi.get(self, "log_all")
+
+    @log_all.setter
+    def log_all(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_all", value)
+
+    @property
+    @pulumi.getter(name="logBlocks")
+    def log_blocks(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Log only blocking requests to this service.
+        """
+        return pulumi.get(self, "log_blocks")
+
+    @log_blocks.setter
+    def log_blocks(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_blocks", value)
+
+
+if not MYPY:
+    class ZeroTrustGatewayLoggingSettingsByRuleTypeL4ArgsDict(TypedDict):
+        log_all: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Log all requests to this service.
+        """
+        log_blocks: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Log only blocking requests to this service.
+        """
+elif False:
+    ZeroTrustGatewayLoggingSettingsByRuleTypeL4ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args:
+    def __init__(__self__, *,
+                 log_all: Optional[pulumi.Input[builtins.bool]] = None,
+                 log_blocks: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] log_all: Log all requests to this service.
+        :param pulumi.Input[builtins.bool] log_blocks: Log only blocking requests to this service.
+        """
+        if log_all is not None:
+            pulumi.set(__self__, "log_all", log_all)
+        if log_blocks is not None:
+            pulumi.set(__self__, "log_blocks", log_blocks)
+
+    @property
+    @pulumi.getter(name="logAll")
+    def log_all(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Log all requests to this service.
+        """
+        return pulumi.get(self, "log_all")
+
+    @log_all.setter
+    def log_all(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_all", value)
+
+    @property
+    @pulumi.getter(name="logBlocks")
+    def log_blocks(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Log only blocking requests to this service.
+        """
+        return pulumi.get(self, "log_blocks")
+
+    @log_blocks.setter
+    def log_blocks(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "log_blocks", value)
 
 
 if not MYPY:
@@ -70463,6 +71010,10 @@ if not MYPY:
         """
         Settings that apply to quarantine rules
         """
+        redirect: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsRedirectArgsDict']]
+        """
+        Settings that apply to redirect rules
+        """
         resolve_dns_internally: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgsDict']]
         """
         Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
@@ -70501,6 +71052,7 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
                  override_ips: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  payload_log: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs']] = None,
                  quarantine: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs']] = None,
+                 redirect: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsRedirectArgs']] = None,
                  resolve_dns_internally: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs']] = None,
                  resolve_dns_through_cloudflare: Optional[pulumi.Input[builtins.bool]] = None,
                  untrusted_cert: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs']] = None):
@@ -70525,6 +71077,7 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] override_ips: Override matching DNS queries with an IP or set of IPs.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsPayloadLogArgs'] payload_log: Configure DLP payload logging.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs'] quarantine: Settings that apply to quarantine rules
+        :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsRedirectArgs'] redirect: Settings that apply to redirect rules
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgs'] resolve_dns_internally: Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
         :param pulumi.Input[builtins.bool] resolve_dns_through_cloudflare: Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsUntrustedCertArgs'] untrusted_cert: Configure behavior when an upstream cert is invalid or an SSL error occurs.
@@ -70569,6 +71122,8 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
             pulumi.set(__self__, "payload_log", payload_log)
         if quarantine is not None:
             pulumi.set(__self__, "quarantine", quarantine)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
         if resolve_dns_internally is not None:
             pulumi.set(__self__, "resolve_dns_internally", resolve_dns_internally)
         if resolve_dns_through_cloudflare is not None:
@@ -70815,6 +71370,18 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
     @quarantine.setter
     def quarantine(self, value: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs']]):
         pulumi.set(self, "quarantine", value)
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsRedirectArgs']]:
+        """
+        Settings that apply to redirect rules
+        """
+        return pulumi.get(self, "redirect")
+
+    @redirect.setter
+    def redirect(self, value: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsRedirectArgs']]):
+        pulumi.set(self, "redirect", value)
 
     @property
     @pulumi.getter(name="resolveDnsInternally")
@@ -71689,6 +72256,77 @@ class ZeroTrustGatewayPolicyRuleSettingsQuarantineArgs:
 
 
 if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsRedirectArgsDict(TypedDict):
+        target_uri: pulumi.Input[builtins.str]
+        """
+        URI to which the user will be redirected
+        """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, context information will be passed as query parameters
+        """
+        preserve_path_and_query: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, the path and query parameters from the original request will be appended to target_uri
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsRedirectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustGatewayPolicyRuleSettingsRedirectArgs:
+    def __init__(__self__, *,
+                 target_uri: pulumi.Input[builtins.str],
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None,
+                 preserve_path_and_query: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] target_uri: URI to which the user will be redirected
+        :param pulumi.Input[builtins.bool] include_context: If true, context information will be passed as query parameters
+        :param pulumi.Input[builtins.bool] preserve_path_and_query: If true, the path and query parameters from the original request will be appended to target_uri
+        """
+        pulumi.set(__self__, "target_uri", target_uri)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
+        if preserve_path_and_query is not None:
+            pulumi.set(__self__, "preserve_path_and_query", preserve_path_and_query)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> pulumi.Input[builtins.str]:
+        """
+        URI to which the user will be redirected
+        """
+        return pulumi.get(self, "target_uri")
+
+    @target_uri.setter
+    def target_uri(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "target_uri", value)
+
+    @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, context information will be passed as query parameters
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
+
+    @property
+    @pulumi.getter(name="preservePathAndQuery")
+    def preserve_path_and_query(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, the path and query parameters from the original request will be appended to target_uri
+        """
+        return pulumi.get(self, "preserve_path_and_query")
+
+    @preserve_path_and_query.setter
+    def preserve_path_and_query(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "preserve_path_and_query", value)
+
+
+if not MYPY:
     class ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternallyArgsDict(TypedDict):
         fallback: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -72045,6 +72683,9 @@ class ZeroTrustGatewaySettingsSettingsArgs:
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if custom_certificate is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""custom_certificate is deprecated: This attribute is deprecated.""")
+        if custom_certificate is not None:
             pulumi.set(__self__, "custom_certificate", custom_certificate)
         if extended_email_matching is not None:
             pulumi.set(__self__, "extended_email_matching", extended_email_matching)
@@ -72131,6 +72772,7 @@ class ZeroTrustGatewaySettingsSettingsArgs:
 
     @property
     @pulumi.getter(name="customCertificate")
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def custom_certificate(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsCustomCertificateArgs']]:
         """
         Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
@@ -72402,7 +73044,7 @@ if not MYPY:
     class ZeroTrustGatewaySettingsSettingsBlockPageArgsDict(TypedDict):
         background_color: NotRequired[pulumi.Input[builtins.str]]
         """
-        Block page background color in #rrggbb format.
+        If mode is customized*block*page: block page background color in #rrggbb format.
         """
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -72410,31 +73052,44 @@ if not MYPY:
         """
         footer_text: NotRequired[pulumi.Input[builtins.str]]
         """
-        Block page footer text.
+        If mode is customized*block*page: block page footer text.
         """
         header_text: NotRequired[pulumi.Input[builtins.str]]
         """
-        Block page header text.
+        If mode is customized*block*page: block page header text.
+        """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
         """
         logo_path: NotRequired[pulumi.Input[builtins.str]]
         """
-        Full URL to the logo file.
+        If mode is customized*block*page: full URL to the logo file.
         """
         mailto_address: NotRequired[pulumi.Input[builtins.str]]
         """
-        Admin email for users to contact.
+        If mode is customized*block*page: admin email for users to contact.
         """
         mailto_subject: NotRequired[pulumi.Input[builtins.str]]
         """
-        Subject line for emails created from block page.
+        If mode is customized*block*page: subject line for emails created from block page.
+        """
+        mode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+        Available values: "customized*block*page", "redirect_uri".
         """
         name: NotRequired[pulumi.Input[builtins.str]]
         """
-        Block page title.
+        If mode is customized*block*page: block page title.
         """
         suppress_footer: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Suppress detailed info at the bottom of the block page.
+        If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        """
+        target_uri: NotRequired[pulumi.Input[builtins.str]]
+        """
+        If mode is redirect_uri: URI to which the user should be redirected.
         """
 elif False:
     ZeroTrustGatewaySettingsSettingsBlockPageArgsDict: TypeAlias = Mapping[str, Any]
@@ -72446,21 +73101,28 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  footer_text: Optional[pulumi.Input[builtins.str]] = None,
                  header_text: Optional[pulumi.Input[builtins.str]] = None,
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None,
                  logo_path: Optional[pulumi.Input[builtins.str]] = None,
                  mailto_address: Optional[pulumi.Input[builtins.str]] = None,
                  mailto_subject: Optional[pulumi.Input[builtins.str]] = None,
+                 mode: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
-                 suppress_footer: Optional[pulumi.Input[builtins.bool]] = None):
+                 suppress_footer: Optional[pulumi.Input[builtins.bool]] = None,
+                 target_uri: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] background_color: Block page background color in #rrggbb format.
+        :param pulumi.Input[builtins.str] background_color: If mode is customized*block*page: block page background color in #rrggbb format.
         :param pulumi.Input[builtins.bool] enabled: Enable only cipher suites and TLS versions compliant with FIPS 140-2.
-        :param pulumi.Input[builtins.str] footer_text: Block page footer text.
-        :param pulumi.Input[builtins.str] header_text: Block page header text.
-        :param pulumi.Input[builtins.str] logo_path: Full URL to the logo file.
-        :param pulumi.Input[builtins.str] mailto_address: Admin email for users to contact.
-        :param pulumi.Input[builtins.str] mailto_subject: Subject line for emails created from block page.
-        :param pulumi.Input[builtins.str] name: Block page title.
-        :param pulumi.Input[builtins.bool] suppress_footer: Suppress detailed info at the bottom of the block page.
+        :param pulumi.Input[builtins.str] footer_text: If mode is customized*block*page: block page footer text.
+        :param pulumi.Input[builtins.str] header_text: If mode is customized*block*page: block page header text.
+        :param pulumi.Input[builtins.bool] include_context: If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        :param pulumi.Input[builtins.str] logo_path: If mode is customized*block*page: full URL to the logo file.
+        :param pulumi.Input[builtins.str] mailto_address: If mode is customized*block*page: admin email for users to contact.
+        :param pulumi.Input[builtins.str] mailto_subject: If mode is customized*block*page: subject line for emails created from block page.
+        :param pulumi.Input[builtins.str] mode: Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+               Available values: "customized*block*page", "redirect_uri".
+        :param pulumi.Input[builtins.str] name: If mode is customized*block*page: block page title.
+        :param pulumi.Input[builtins.bool] suppress_footer: If mode is customized*block*page: suppress detailed info at the bottom of the block page.
+        :param pulumi.Input[builtins.str] target_uri: If mode is redirect_uri: URI to which the user should be redirected.
         """
         if background_color is not None:
             pulumi.set(__self__, "background_color", background_color)
@@ -72470,22 +73132,28 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
             pulumi.set(__self__, "footer_text", footer_text)
         if header_text is not None:
             pulumi.set(__self__, "header_text", header_text)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
         if logo_path is not None:
             pulumi.set(__self__, "logo_path", logo_path)
         if mailto_address is not None:
             pulumi.set(__self__, "mailto_address", mailto_address)
         if mailto_subject is not None:
             pulumi.set(__self__, "mailto_subject", mailto_subject)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if suppress_footer is not None:
             pulumi.set(__self__, "suppress_footer", suppress_footer)
+        if target_uri is not None:
+            pulumi.set(__self__, "target_uri", target_uri)
 
     @property
     @pulumi.getter(name="backgroundColor")
     def background_color(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Block page background color in #rrggbb format.
+        If mode is customized*block*page: block page background color in #rrggbb format.
         """
         return pulumi.get(self, "background_color")
 
@@ -72509,7 +73177,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="footerText")
     def footer_text(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Block page footer text.
+        If mode is customized*block*page: block page footer text.
         """
         return pulumi.get(self, "footer_text")
 
@@ -72521,7 +73189,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="headerText")
     def header_text(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Block page header text.
+        If mode is customized*block*page: block page header text.
         """
         return pulumi.get(self, "header_text")
 
@@ -72530,10 +73198,22 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
         pulumi.set(self, "header_text", value)
 
     @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
+
+    @property
     @pulumi.getter(name="logoPath")
     def logo_path(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Full URL to the logo file.
+        If mode is customized*block*page: full URL to the logo file.
         """
         return pulumi.get(self, "logo_path")
 
@@ -72545,7 +73225,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="mailtoAddress")
     def mailto_address(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Admin email for users to contact.
+        If mode is customized*block*page: admin email for users to contact.
         """
         return pulumi.get(self, "mailto_address")
 
@@ -72557,7 +73237,7 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="mailtoSubject")
     def mailto_subject(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Subject line for emails created from block page.
+        If mode is customized*block*page: subject line for emails created from block page.
         """
         return pulumi.get(self, "mailto_subject")
 
@@ -72567,9 +73247,22 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
+        Available values: "customized*block*page", "redirect_uri".
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Block page title.
+        If mode is customized*block*page: block page title.
         """
         return pulumi.get(self, "name")
 
@@ -72581,13 +73274,25 @@ class ZeroTrustGatewaySettingsSettingsBlockPageArgs:
     @pulumi.getter(name="suppressFooter")
     def suppress_footer(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Suppress detailed info at the bottom of the block page.
+        If mode is customized*block*page: suppress detailed info at the bottom of the block page.
         """
         return pulumi.get(self, "suppress_footer")
 
     @suppress_footer.setter
     def suppress_footer(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "suppress_footer", value)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        If mode is redirect_uri: URI to which the user should be redirected.
+        """
+        return pulumi.get(self, "target_uri")
+
+    @target_uri.setter
+    def target_uri(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "target_uri", value)
 
 
 if not MYPY:

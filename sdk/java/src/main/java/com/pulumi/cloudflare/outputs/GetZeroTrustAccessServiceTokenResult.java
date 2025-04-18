@@ -32,7 +32,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
     private String expiresAt;
     private @Nullable GetZeroTrustAccessServiceTokenFilter filter;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -43,7 +43,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
      */
     private String name;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private @Nullable String serviceTokenId;
@@ -86,7 +86,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {
@@ -103,7 +103,7 @@ public final class GetZeroTrustAccessServiceTokenResult {
         return this.name;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> serviceTokenId() {

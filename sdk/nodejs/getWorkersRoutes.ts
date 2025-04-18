@@ -35,7 +35,7 @@ export interface GetWorkersRoutesArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetWorkersRoutesResult {
      */
     readonly results: outputs.GetWorkersRoutesResult[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetWorkersRoutesOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

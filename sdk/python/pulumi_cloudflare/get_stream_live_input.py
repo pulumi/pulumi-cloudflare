@@ -82,7 +82,7 @@ class GetStreamLiveInputResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -247,7 +247,7 @@ def get_stream_live_input(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str live_input_identifier: A unique identifier for a live input.
     """
     __args__ = dict()
@@ -288,7 +288,7 @@ def get_stream_live_input_output(account_id: Optional[pulumi.Input[builtins.str]
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str live_input_identifier: A unique identifier for a live input.
     """
     __args__ = dict()

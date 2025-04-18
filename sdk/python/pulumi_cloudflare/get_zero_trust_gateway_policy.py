@@ -97,7 +97,7 @@ class GetZeroTrustGatewayPolicyResult:
     def action(self) -> builtins.str:
         """
         The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine".
+        Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4_override", "egress", "resolve", "quarantine", "redirect".
         """
         return pulumi.get(self, "action")
 

@@ -53,7 +53,7 @@ type LookupZeroTrustAccessServiceTokenArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string                               `pulumi:"accountId"`
 	Filter    *GetZeroTrustAccessServiceTokenFilter `pulumi:"filter"`
-	// UUID
+	// UUID.
 	ServiceTokenId *string `pulumi:"serviceTokenId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -70,12 +70,12 @@ type LookupZeroTrustAccessServiceTokenResult struct {
 	Duration  string                                `pulumi:"duration"`
 	ExpiresAt string                                `pulumi:"expiresAt"`
 	Filter    *GetZeroTrustAccessServiceTokenFilter `pulumi:"filter"`
-	// UUID
+	// UUID.
 	Id         string `pulumi:"id"`
 	LastSeenAt string `pulumi:"lastSeenAt"`
 	// The name of the service token.
 	Name string `pulumi:"name"`
-	// UUID
+	// UUID.
 	ServiceTokenId *string `pulumi:"serviceTokenId"`
 	UpdatedAt      string  `pulumi:"updatedAt"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -96,7 +96,7 @@ type LookupZeroTrustAccessServiceTokenOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput                        `pulumi:"accountId"`
 	Filter    GetZeroTrustAccessServiceTokenFilterPtrInput `pulumi:"filter"`
-	// UUID
+	// UUID.
 	ServiceTokenId pulumi.StringPtrInput `pulumi:"serviceTokenId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -148,7 +148,7 @@ func (o LookupZeroTrustAccessServiceTokenResultOutput) Filter() GetZeroTrustAcce
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) *GetZeroTrustAccessServiceTokenFilter { return v.Filter }).(GetZeroTrustAccessServiceTokenFilterPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessServiceTokenResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -162,7 +162,7 @@ func (o LookupZeroTrustAccessServiceTokenResultOutput) Name() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupZeroTrustAccessServiceTokenResultOutput) ServiceTokenId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessServiceTokenResult) *string { return v.ServiceTokenId }).(pulumi.StringPtrOutput)
 }

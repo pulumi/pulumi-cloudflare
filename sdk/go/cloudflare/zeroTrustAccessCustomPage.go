@@ -50,7 +50,7 @@ import (
 type ZeroTrustAccessCustomPage struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Number of apps the custom page is assigned to.
 	AppCount  pulumi.IntPtrOutput `pulumi:"appCount"`
@@ -62,7 +62,7 @@ type ZeroTrustAccessCustomPage struct {
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// UUID
+	// UUID.
 	Uid       pulumi.StringOutput `pulumi:"uid"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -115,7 +115,7 @@ func GetZeroTrustAccessCustomPage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustAccessCustomPage resources.
 type zeroTrustAccessCustomPageState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Number of apps the custom page is assigned to.
 	AppCount  *int    `pulumi:"appCount"`
@@ -127,13 +127,13 @@ type zeroTrustAccessCustomPageState struct {
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type *string `pulumi:"type"`
-	// UUID
+	// UUID.
 	Uid       *string `pulumi:"uid"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type ZeroTrustAccessCustomPageState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Number of apps the custom page is assigned to.
 	AppCount  pulumi.IntPtrInput
@@ -145,7 +145,7 @@ type ZeroTrustAccessCustomPageState struct {
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringPtrInput
-	// UUID
+	// UUID.
 	Uid       pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -155,7 +155,7 @@ func (ZeroTrustAccessCustomPageState) ElementType() reflect.Type {
 }
 
 type zeroTrustAccessCustomPageArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Number of apps the custom page is assigned to.
 	AppCount *int `pulumi:"appCount"`
@@ -170,7 +170,7 @@ type zeroTrustAccessCustomPageArgs struct {
 
 // The set of arguments for constructing a ZeroTrustAccessCustomPage resource.
 type ZeroTrustAccessCustomPageArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Number of apps the custom page is assigned to.
 	AppCount pulumi.IntPtrInput
@@ -270,7 +270,7 @@ func (o ZeroTrustAccessCustomPageOutput) ToZeroTrustAccessCustomPageOutputWithCo
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o ZeroTrustAccessCustomPageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -300,7 +300,7 @@ func (o ZeroTrustAccessCustomPageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o ZeroTrustAccessCustomPageOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustAccessCustomPage) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

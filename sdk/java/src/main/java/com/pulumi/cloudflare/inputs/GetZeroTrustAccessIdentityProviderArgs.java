@@ -39,14 +39,14 @@ public final class GetZeroTrustAccessIdentityProviderArgs extends com.pulumi.res
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> identityProviderId() {
@@ -126,7 +126,7 @@ public final class GetZeroTrustAccessIdentityProviderArgs extends com.pulumi.res
         }
 
         /**
-         * @param identityProviderId UUID
+         * @param identityProviderId UUID.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class GetZeroTrustAccessIdentityProviderArgs extends com.pulumi.res
         }
 
         /**
-         * @param identityProviderId UUID
+         * @param identityProviderId UUID.
          * 
          * @return builder
          * 

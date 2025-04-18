@@ -44,7 +44,7 @@ export class DnsFirewall extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -151,7 +151,7 @@ export class DnsFirewall extends pulumi.CustomResource {
  */
 export interface DnsFirewallState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -203,7 +203,7 @@ export interface DnsFirewallState {
  */
 export interface DnsFirewallArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

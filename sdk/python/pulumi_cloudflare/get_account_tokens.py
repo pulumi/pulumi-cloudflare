@@ -112,7 +112,7 @@ def get_account_tokens(account_id: Optional[builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_account_tokens = cloudflare.get_account_tokens(account_id="eb78d65290b24279ba6f44721b3ea3c4",
-        direction="asc")
+        direction="desc")
     ```
 
 
@@ -146,7 +146,7 @@ def get_account_tokens_output(account_id: Optional[pulumi.Input[builtins.str]] =
     import pulumi_cloudflare as cloudflare
 
     example_account_tokens = cloudflare.get_account_tokens(account_id="eb78d65290b24279ba6f44721b3ea3c4",
-        direction="asc")
+        direction="desc")
     ```
 
 

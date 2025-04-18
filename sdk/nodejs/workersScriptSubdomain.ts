@@ -48,7 +48,7 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -107,7 +107,7 @@ export class WorkersScriptSubdomain extends pulumi.CustomResource {
  */
 export interface WorkersScriptSubdomainState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -129,7 +129,7 @@ export interface WorkersScriptSubdomainState {
  */
 export interface WorkersScriptSubdomainArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

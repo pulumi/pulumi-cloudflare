@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersRouteArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("routeId", required: true)]
         public string RouteId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersRouteInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("routeId", required: true)]
         public Input<string> RouteId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -127,12 +127,12 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersRouteResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         public readonly string Pattern;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string RouteId;
         /// <summary>
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Script;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

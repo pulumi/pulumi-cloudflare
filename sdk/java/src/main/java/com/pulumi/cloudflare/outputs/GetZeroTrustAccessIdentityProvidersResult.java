@@ -18,7 +18,7 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
      */
     private GetZeroTrustAccessIdentityProvidersResultConfig config;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -48,7 +48,7 @@ public final class GetZeroTrustAccessIdentityProvidersResult {
         return this.config;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {

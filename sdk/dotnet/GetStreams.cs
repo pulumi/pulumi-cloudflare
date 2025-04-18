@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare
         ///         End = "2014-01-02T02:20:00Z",
         ///         Search = "puppy.mp4",
         ///         Start = "2014-01-02T02:20:00Z",
-        ///         Status = "pendingupload",
+        ///         Status = "inprogress",
         ///         Type = "live",
         ///     });
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
         ///         End = "2014-01-02T02:20:00Z",
         ///         Search = "puppy.mp4",
         ///         Start = "2014-01-02T02:20:00Z",
-        ///         Status = "pendingupload",
+        ///         Status = "inprogress",
         ///         Type = "live",
         ///     });
         /// 
@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
         ///         End = "2014-01-02T02:20:00Z",
         ///         Search = "puppy.mp4",
         ///         Start = "2014-01-02T02:20:00Z",
-        ///         Status = "pendingupload",
+        ///         Status = "inprogress",
         ///         Type = "live",
         ///     });
         /// 

@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  *
  * const exampleAccountMembers = cloudflare.getAccountMembers({
  *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
- *     direction: "asc",
- *     order: "user.first_name",
+ *     direction: "desc",
+ *     order: "status",
  *     status: "accepted",
  * });
  * ```
@@ -106,8 +106,8 @@ export interface GetAccountMembersResult {
  *
  * const exampleAccountMembers = cloudflare.getAccountMembers({
  *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
- *     direction: "asc",
- *     order: "user.first_name",
+ *     direction: "desc",
+ *     order: "status",
  *     status: "accepted",
  * });
  * ```

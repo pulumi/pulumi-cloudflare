@@ -77,14 +77,14 @@ public class ZeroTrustAccessShortLivedCertificate extends com.pulumi.resources.C
         return Codegen.optional(this.accountId);
     }
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Output<String> appId() {

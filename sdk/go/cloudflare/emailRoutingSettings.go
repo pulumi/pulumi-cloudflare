@@ -60,6 +60,8 @@ type EmailRoutingSettings struct {
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -112,6 +114,8 @@ type emailRoutingSettingsState struct {
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status *string `pulumi:"status"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag *string `pulumi:"tag"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
@@ -132,6 +136,8 @@ type EmailRoutingSettingsState struct {
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringPtrInput
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
@@ -271,6 +277,8 @@ func (o EmailRoutingSettingsOutput) Status() pulumi.StringOutput {
 }
 
 // Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+//
+// Deprecated: This attribute is deprecated.
 func (o EmailRoutingSettingsOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }

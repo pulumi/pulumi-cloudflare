@@ -47,7 +47,7 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     public readonly schedules!: pulumi.Output<outputs.WorkerCronTriggerSchedule[]>;
@@ -102,7 +102,7 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
  */
 export interface WorkerCronTriggerState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     schedules?: pulumi.Input<pulumi.Input<inputs.WorkerCronTriggerSchedule>[]>;
@@ -117,7 +117,7 @@ export interface WorkerCronTriggerState {
  */
 export interface WorkerCronTriggerArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     schedules: pulumi.Input<pulumi.Input<inputs.WorkerCronTriggerSchedule>[]>;

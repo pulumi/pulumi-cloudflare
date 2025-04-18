@@ -110,14 +110,14 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rules", refs={List.class,RulesetRule.class}, tree="[0,1]")
-    private Output<List<RulesetRule>> rules;
+    private Output</* @Nullable */ List<RulesetRule>> rules;
 
     /**
      * @return The list of rules in the ruleset.
      * 
      */
-    public Output<List<RulesetRule>> rules() {
-        return this.rules;
+    public Output<Optional<List<RulesetRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

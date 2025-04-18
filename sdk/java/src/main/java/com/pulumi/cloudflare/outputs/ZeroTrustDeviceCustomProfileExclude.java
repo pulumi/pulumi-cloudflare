@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,12 +15,12 @@ public final class ZeroTrustDeviceCustomProfileExclude {
      * @return The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      * 
      */
-    private String address;
+    private @Nullable String address;
     /**
      * @return A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
-    private String description;
+    private @Nullable String description;
     /**
      * @return The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
      * 
@@ -33,15 +32,15 @@ public final class ZeroTrustDeviceCustomProfileExclude {
      * @return The address in CIDR format to exclude from the tunnel. If `address` is present, `host` must not be present.
      * 
      */
-    public String address() {
-        return this.address;
+    public Optional<String> address() {
+        return Optional.ofNullable(this.address);
     }
     /**
      * @return A description of the Split Tunnel item, displayed in the client UI.
      * 
      */
-    public String description() {
-        return this.description;
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
     /**
      * @return The domain name to exclude from the tunnel. If `host` is present, `address` must not be present.
@@ -60,8 +59,8 @@ public final class ZeroTrustDeviceCustomProfileExclude {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String address;
-        private String description;
+        private @Nullable String address;
+        private @Nullable String description;
         private @Nullable String host;
         public Builder() {}
         public Builder(ZeroTrustDeviceCustomProfileExclude defaults) {
@@ -72,18 +71,14 @@ public final class ZeroTrustDeviceCustomProfileExclude {
         }
 
         @CustomType.Setter
-        public Builder address(String address) {
-            if (address == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileExclude", "address");
-            }
+        public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }
         @CustomType.Setter
-        public Builder description(String description) {
-            if (description == null) {
-              throw new MissingRequiredPropertyException("ZeroTrustDeviceCustomProfileExclude", "description");
-            }
+        public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }

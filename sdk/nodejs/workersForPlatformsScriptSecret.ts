@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWorkersSecret = new cloudflare.WorkersSecret("example_workers_secret", {
+ * const exampleWorkersForPlatformsScriptSecret = new cloudflare.WorkersForPlatformsScriptSecret("example_workers_for_platforms_script_secret", {
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dispatchNamespace: "my-dispatch-namespace",
  *     scriptName: "this-is_my_script-01",
@@ -24,14 +24,12 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/workerSecret:WorkerSecret example '<account_id>/<dispatch_namespace>/<script_name>/<secret_name>'
+ * $ pulumi import cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret example '<account_id>/<dispatch_namespace>/<script_name>/<secret_name>'
  * ```
- *
- * @deprecated cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret
  */
-export class WorkerSecret extends pulumi.CustomResource {
+export class WorkersForPlatformsScriptSecret extends pulumi.CustomResource {
     /**
-     * Get an existing WorkerSecret resource's state with the given name, ID, and optional extra
+     * Get an existing WorkersForPlatformsScriptSecret resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -39,27 +37,26 @@ export class WorkerSecret extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkerSecretState, opts?: pulumi.CustomResourceOptions): WorkerSecret {
-        pulumi.log.warn("WorkerSecret is deprecated: cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret")
-        return new WorkerSecret(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: WorkersForPlatformsScriptSecretState, opts?: pulumi.CustomResourceOptions): WorkersForPlatformsScriptSecret {
+        return new WorkersForPlatformsScriptSecret(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'cloudflare:index/workerSecret:WorkerSecret';
+    public static readonly __pulumiType = 'cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret';
 
     /**
-     * Returns true if the given object is an instance of WorkerSecret.  This is designed to work even
+     * Returns true if the given object is an instance of WorkersForPlatformsScriptSecret.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is WorkerSecret {
+    public static isInstance(obj: any): obj is WorkersForPlatformsScriptSecret {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === WorkerSecret.__pulumiType;
+        return obj['__pulumiType'] === WorkersForPlatformsScriptSecret.__pulumiType;
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -85,21 +82,18 @@ export class WorkerSecret extends pulumi.CustomResource {
     public readonly type!: pulumi.Output<string | undefined>;
 
     /**
-     * Create a WorkerSecret resource with the given unique name, arguments, and options.
+     * Create a WorkersForPlatformsScriptSecret resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret */
-    constructor(name: string, args: WorkerSecretArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret */
-    constructor(name: string, argsOrState?: WorkerSecretArgs | WorkerSecretState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("WorkerSecret is deprecated: cloudflare.index/workersecret.WorkerSecret has been deprecated in favor of cloudflare.index/workerssecret.WorkersSecret")
+    constructor(name: string, args: WorkersForPlatformsScriptSecretArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: WorkersForPlatformsScriptSecretArgs | WorkersForPlatformsScriptSecretState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as WorkerSecretState | undefined;
+            const state = argsOrState as WorkersForPlatformsScriptSecretState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["dispatchNamespace"] = state ? state.dispatchNamespace : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -107,7 +101,7 @@ export class WorkerSecret extends pulumi.CustomResource {
             resourceInputs["text"] = state ? state.text : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
-            const args = argsOrState as WorkerSecretArgs | undefined;
+            const args = argsOrState as WorkersForPlatformsScriptSecretArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
@@ -128,20 +122,20 @@ export class WorkerSecret extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "cloudflare:index/workerSecret:WorkerSecret" }] };
+        const aliasOpts = { aliases: [{ type: "cloudflare:index/workersSecret:WorkersSecret" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["text"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(WorkerSecret.__pulumiType, name, resourceInputs, opts);
+        super(WorkersForPlatformsScriptSecret.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering WorkerSecret resources.
+ * Input properties used for looking up and filtering WorkersForPlatformsScriptSecret resources.
  */
-export interface WorkerSecretState {
+export interface WorkersForPlatformsScriptSecretState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -168,11 +162,11 @@ export interface WorkerSecretState {
 }
 
 /**
- * The set of arguments for constructing a WorkerSecret resource.
+ * The set of arguments for constructing a WorkersForPlatformsScriptSecret resource.
  */
-export interface WorkerSecretArgs {
+export interface WorkersForPlatformsScriptSecretArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

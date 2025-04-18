@@ -28,7 +28,7 @@ export function getZeroTrustAccessKeyConfiguration(args: GetZeroTrustAccessKeyCo
  */
 export interface GetZeroTrustAccessKeyConfigurationArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
 }
@@ -38,7 +38,7 @@ export interface GetZeroTrustAccessKeyConfigurationArgs {
  */
 export interface GetZeroTrustAccessKeyConfigurationResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -82,7 +82,7 @@ export function getZeroTrustAccessKeyConfigurationOutput(args: GetZeroTrustAcces
  */
 export interface GetZeroTrustAccessKeyConfigurationOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
 }

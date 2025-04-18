@@ -83,7 +83,11 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="frequency")
     private @Nullable Output<String> frequency;
 
@@ -91,7 +95,11 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
      * @return This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> frequency() {
         return Optional.ofNullable(this.frequency);
     }
@@ -116,14 +124,22 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="logpullOptions")
     private @Nullable Output<String> logpullOptions;
 
     /**
      * @return This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<String>> logpullOptions() {
         return Optional.ofNullable(this.logpullOptions);
     }
@@ -360,7 +376,11 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder frequency(@Nullable Output<String> frequency) {
             $.frequency = frequency;
             return this;
@@ -372,7 +392,11 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder frequency(String frequency) {
             return frequency(Output.of(frequency));
         }
@@ -405,7 +429,11 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder logpullOptions(@Nullable Output<String> logpullOptions) {
             $.logpullOptions = logpullOptions;
             return this;
@@ -416,7 +444,11 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
          */
+        @Deprecated /* This attribute is deprecated. */
         public Builder logpullOptions(String logpullOptions) {
             return logpullOptions(Output.of(logpullOptions));
         }

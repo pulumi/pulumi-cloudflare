@@ -28,7 +28,7 @@ import (
 //			_, err := cloudflare.LookupObservatoryScheduledTest(ctx, &cloudflare.LookupObservatoryScheduledTestArgs{
 //				ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				Url:    "example.com",
-//				Region: pulumi.StringRef("asia-east1"),
+//				Region: pulumi.StringRef("us-central1"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -55,7 +55,7 @@ type LookupObservatoryScheduledTestArgs struct {
 	Region *string `pulumi:"region"`
 	// A URL.
 	Url string `pulumi:"url"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -71,7 +71,7 @@ type LookupObservatoryScheduledTestResult struct {
 	Region string `pulumi:"region"`
 	// A URL.
 	Url string `pulumi:"url"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -91,7 +91,7 @@ type LookupObservatoryScheduledTestOutputArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// A URL.
 	Url pulumi.StringInput `pulumi:"url"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -136,7 +136,7 @@ func (o LookupObservatoryScheduledTestResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservatoryScheduledTestResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupObservatoryScheduledTestResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservatoryScheduledTestResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [Obsolete(@"cloudflare.getWorkersSecret has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecret")]
     public static class GetWorkersSecret
     {
         /// <summary>
@@ -22,7 +23,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersSecret = Cloudflare.GetWorkersSecret.Invoke(new()
+        ///     var exampleWorkersForPlatformsScriptSecret = Cloudflare.GetWorkersForPlatformsScriptSecret.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
@@ -47,7 +48,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersSecret = Cloudflare.GetWorkersSecret.Invoke(new()
+        ///     var exampleWorkersForPlatformsScriptSecret = Cloudflare.GetWorkersForPlatformsScriptSecret.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
@@ -72,7 +73,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleWorkersSecret = Cloudflare.GetWorkersSecret.Invoke(new()
+        ///     var exampleWorkersForPlatformsScriptSecret = Cloudflare.GetWorkersForPlatformsScriptSecret.Invoke(new()
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         DispatchNamespace = "my-dispatch-namespace",
@@ -91,7 +92,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersSecretArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -123,7 +124,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersSecretInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -157,7 +158,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWorkersSecretResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

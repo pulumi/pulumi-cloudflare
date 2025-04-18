@@ -31,7 +31,7 @@ export function getWorkersScripts(args: GetWorkersScriptsArgs, opts?: pulumi.Inv
  */
 export interface GetWorkersScriptsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetWorkersScriptsArgs {
  */
 export interface GetWorkersScriptsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -86,7 +86,7 @@ export function getWorkersScriptsOutput(args: GetWorkersScriptsOutputArgs, opts?
  */
 export interface GetWorkersScriptsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

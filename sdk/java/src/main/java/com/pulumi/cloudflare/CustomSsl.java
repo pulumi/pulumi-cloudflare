@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *                 .label("us")
  *                 .build())
  *             .policy("(country: US) or (region: EU)")
- *             .type("legacy_custom")
+ *             .type("sni_custom")
  *             .build());
  * 
  *     }

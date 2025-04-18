@@ -75,6 +75,8 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
@@ -153,6 +155,8 @@ export interface EmailRoutingSettingsState {
     status?: pulumi.Input<string>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     tag?: pulumi.Input<string>;
     /**

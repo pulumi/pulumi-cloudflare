@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     public partial class DnsFirewall : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
     public sealed class DnsFirewallArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.Cloudflare
     public sealed class DnsFirewallState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

@@ -15,14 +15,14 @@ public final class StreamKeyArgs extends com.pulumi.resources.ResourceArgs {
     public static final StreamKeyArgs Empty = new StreamKeyArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -54,7 +54,7 @@ public final class StreamKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class StreamKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

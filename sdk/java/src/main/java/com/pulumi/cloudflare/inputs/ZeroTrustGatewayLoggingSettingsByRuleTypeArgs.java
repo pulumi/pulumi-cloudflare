@@ -3,9 +3,11 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,48 +17,24 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeArgs extends com.pul
 
     public static final ZeroTrustGatewayLoggingSettingsByRuleTypeArgs Empty = new ZeroTrustGatewayLoggingSettingsByRuleTypeArgs();
 
-    /**
-     * Logging settings for DNS firewall.
-     * 
-     */
     @Import(name="dns")
-    private @Nullable Output<String> dns;
+    private @Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs> dns;
 
-    /**
-     * @return Logging settings for DNS firewall.
-     * 
-     */
-    public Optional<Output<String>> dns() {
+    public Optional<Output<ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs>> dns() {
         return Optional.ofNullable(this.dns);
     }
 
-    /**
-     * Logging settings for HTTP/HTTPS firewall.
-     * 
-     */
     @Import(name="http")
-    private @Nullable Output<String> http;
+    private @Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs> http;
 
-    /**
-     * @return Logging settings for HTTP/HTTPS firewall.
-     * 
-     */
-    public Optional<Output<String>> http() {
+    public Optional<Output<ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs>> http() {
         return Optional.ofNullable(this.http);
     }
 
-    /**
-     * Logging settings for Network firewall.
-     * 
-     */
     @Import(name="l4")
-    private @Nullable Output<String> l4;
+    private @Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args> l4;
 
-    /**
-     * @return Logging settings for Network firewall.
-     * 
-     */
-    public Optional<Output<String>> l4() {
+    public Optional<Output<ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args>> l4() {
         return Optional.ofNullable(this.l4);
     }
 
@@ -86,66 +64,30 @@ public final class ZeroTrustGatewayLoggingSettingsByRuleTypeArgs extends com.pul
             $ = new ZeroTrustGatewayLoggingSettingsByRuleTypeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param dns Logging settings for DNS firewall.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dns(@Nullable Output<String> dns) {
+        public Builder dns(@Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs> dns) {
             $.dns = dns;
             return this;
         }
 
-        /**
-         * @param dns Logging settings for DNS firewall.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dns(String dns) {
+        public Builder dns(ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs dns) {
             return dns(Output.of(dns));
         }
 
-        /**
-         * @param http Logging settings for HTTP/HTTPS firewall.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder http(@Nullable Output<String> http) {
+        public Builder http(@Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs> http) {
             $.http = http;
             return this;
         }
 
-        /**
-         * @param http Logging settings for HTTP/HTTPS firewall.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder http(String http) {
+        public Builder http(ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs http) {
             return http(Output.of(http));
         }
 
-        /**
-         * @param l4 Logging settings for Network firewall.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder l4(@Nullable Output<String> l4) {
+        public Builder l4(@Nullable Output<ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args> l4) {
             $.l4 = l4;
             return this;
         }
 
-        /**
-         * @param l4 Logging settings for Network firewall.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder l4(String l4) {
+        public Builder l4(ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args l4) {
             return l4(Output.of(l4));
         }
 

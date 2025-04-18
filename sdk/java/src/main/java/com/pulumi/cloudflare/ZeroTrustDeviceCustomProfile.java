@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var exampleZeroTrustDeviceCustomProfile = new ZeroTrustDeviceCustomProfile("exampleZeroTrustDeviceCustomProfile", ZeroTrustDeviceCustomProfileArgs.builder()
  *             .accountId("699d98642c564d2e855e9661899b7252")
- *             .match("user.identity == \"test}{@literal @}{@code cloudflare.com\"")
+ *             .match("identity.email == \"test}{@literal @}{@code cloudflare.com\"")
  *             .name("Allow Developers")
  *             .precedence(100.0)
  *             .allowModeSwitch(true)
@@ -68,13 +68,11 @@ import javax.annotation.Nullable;
  *             .excludes(ZeroTrustDeviceCustomProfileExcludeArgs.builder()
  *                 .address("192.0.2.0/24")
  *                 .description("Exclude testing domains from the tunnel")
- *                 .host("*.example.com")
  *                 .build())
  *             .excludeOfficeIps(true)
  *             .includes(ZeroTrustDeviceCustomProfileIncludeArgs.builder()
  *                 .address("192.0.2.0/24")
- *                 .description("Exclude testing domains from the tunnel")
- *                 .host("*.example.com")
+ *                 .description("Include testing domains in the tunnel")
  *                 .build())
  *             .lanAllowMinutes(30.0)
  *             .lanAllowSubnetSize(24.0)
@@ -345,17 +343,9 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Device ID.
-     * 
-     */
     @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
-    /**
-     * @return Device ID.
-     * 
-     */
     public Output<String> policyId() {
         return this.policyId;
     }

@@ -14,14 +14,14 @@ public final class GetStreamCaptionLanguagePlainArgs extends com.pulumi.resource
     public static final GetStreamCaptionLanguagePlainArgs Empty = new GetStreamCaptionLanguagePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -85,7 +85,7 @@ public final class GetStreamCaptionLanguagePlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

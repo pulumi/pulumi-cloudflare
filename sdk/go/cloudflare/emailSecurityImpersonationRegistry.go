@@ -50,12 +50,13 @@ type EmailSecurityImpersonationRegistry struct {
 	pulumi.CustomResourceState
 
 	// Account Identifier
-	AccountId               pulumi.StringOutput `pulumi:"accountId"`
-	Comments                pulumi.StringOutput `pulumi:"comments"`
-	CreatedAt               pulumi.StringOutput `pulumi:"createdAt"`
-	DirectoryId             pulumi.IntOutput    `pulumi:"directoryId"`
-	DirectoryNodeId         pulumi.IntOutput    `pulumi:"directoryNodeId"`
-	Email                   pulumi.StringOutput `pulumi:"email"`
+	AccountId       pulumi.StringOutput `pulumi:"accountId"`
+	Comments        pulumi.StringOutput `pulumi:"comments"`
+	CreatedAt       pulumi.StringOutput `pulumi:"createdAt"`
+	DirectoryId     pulumi.IntOutput    `pulumi:"directoryId"`
+	DirectoryNodeId pulumi.IntOutput    `pulumi:"directoryNodeId"`
+	Email           pulumi.StringOutput `pulumi:"email"`
+	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId pulumi.StringOutput `pulumi:"externalDirectoryNodeId"`
 	IsEmailRegex            pulumi.BoolOutput   `pulumi:"isEmailRegex"`
 	LastModified            pulumi.StringOutput `pulumi:"lastModified"`
@@ -106,12 +107,13 @@ func GetEmailSecurityImpersonationRegistry(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EmailSecurityImpersonationRegistry resources.
 type emailSecurityImpersonationRegistryState struct {
 	// Account Identifier
-	AccountId               *string `pulumi:"accountId"`
-	Comments                *string `pulumi:"comments"`
-	CreatedAt               *string `pulumi:"createdAt"`
-	DirectoryId             *int    `pulumi:"directoryId"`
-	DirectoryNodeId         *int    `pulumi:"directoryNodeId"`
-	Email                   *string `pulumi:"email"`
+	AccountId       *string `pulumi:"accountId"`
+	Comments        *string `pulumi:"comments"`
+	CreatedAt       *string `pulumi:"createdAt"`
+	DirectoryId     *int    `pulumi:"directoryId"`
+	DirectoryNodeId *int    `pulumi:"directoryNodeId"`
+	Email           *string `pulumi:"email"`
+	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId *string `pulumi:"externalDirectoryNodeId"`
 	IsEmailRegex            *bool   `pulumi:"isEmailRegex"`
 	LastModified            *string `pulumi:"lastModified"`
@@ -121,12 +123,13 @@ type emailSecurityImpersonationRegistryState struct {
 
 type EmailSecurityImpersonationRegistryState struct {
 	// Account Identifier
-	AccountId               pulumi.StringPtrInput
-	Comments                pulumi.StringPtrInput
-	CreatedAt               pulumi.StringPtrInput
-	DirectoryId             pulumi.IntPtrInput
-	DirectoryNodeId         pulumi.IntPtrInput
-	Email                   pulumi.StringPtrInput
+	AccountId       pulumi.StringPtrInput
+	Comments        pulumi.StringPtrInput
+	CreatedAt       pulumi.StringPtrInput
+	DirectoryId     pulumi.IntPtrInput
+	DirectoryNodeId pulumi.IntPtrInput
+	Email           pulumi.StringPtrInput
+	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId pulumi.StringPtrInput
 	IsEmailRegex            pulumi.BoolPtrInput
 	LastModified            pulumi.StringPtrInput
@@ -267,6 +270,7 @@ func (o EmailSecurityImpersonationRegistryOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityImpersonationRegistry) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
+// Deprecated: This attribute is deprecated.
 func (o EmailSecurityImpersonationRegistryOutput) ExternalDirectoryNodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailSecurityImpersonationRegistry) pulumi.StringOutput { return v.ExternalDirectoryNodeId }).(pulumi.StringOutput)
 }

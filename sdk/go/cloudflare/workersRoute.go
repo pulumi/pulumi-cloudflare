@@ -45,13 +45,13 @@ type WorkersRoute struct {
 	Errors   WorkersRouteErrorArrayOutput   `pulumi:"errors"`
 	Messages WorkersRouteMessageArrayOutput `pulumi:"messages"`
 	Pattern  pulumi.StringOutput            `pulumi:"pattern"`
-	// Identifier
+	// Identifier.
 	RouteId pulumi.StringPtrOutput `pulumi:"routeId"`
 	// Name of the script, used in URLs and route configuration.
 	Script pulumi.StringPtrOutput `pulumi:"script"`
-	// Whether the API call was successful
+	// Whether the API call was successful.
 	Success pulumi.BoolOutput `pulumi:"success"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -94,13 +94,13 @@ type workersRouteState struct {
 	Errors   []WorkersRouteError   `pulumi:"errors"`
 	Messages []WorkersRouteMessage `pulumi:"messages"`
 	Pattern  *string               `pulumi:"pattern"`
-	// Identifier
+	// Identifier.
 	RouteId *string `pulumi:"routeId"`
 	// Name of the script, used in URLs and route configuration.
 	Script *string `pulumi:"script"`
-	// Whether the API call was successful
+	// Whether the API call was successful.
 	Success *bool `pulumi:"success"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -108,13 +108,13 @@ type WorkersRouteState struct {
 	Errors   WorkersRouteErrorArrayInput
 	Messages WorkersRouteMessageArrayInput
 	Pattern  pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	RouteId pulumi.StringPtrInput
 	// Name of the script, used in URLs and route configuration.
 	Script pulumi.StringPtrInput
-	// Whether the API call was successful
+	// Whether the API call was successful.
 	Success pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -124,22 +124,22 @@ func (WorkersRouteState) ElementType() reflect.Type {
 
 type workersRouteArgs struct {
 	Pattern string `pulumi:"pattern"`
-	// Identifier
+	// Identifier.
 	RouteId *string `pulumi:"routeId"`
 	// Name of the script, used in URLs and route configuration.
 	Script *string `pulumi:"script"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WorkersRoute resource.
 type WorkersRouteArgs struct {
 	Pattern pulumi.StringInput
-	// Identifier
+	// Identifier.
 	RouteId pulumi.StringPtrInput
 	// Name of the script, used in URLs and route configuration.
 	Script pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -242,7 +242,7 @@ func (o WorkersRouteOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersRoute) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WorkersRouteOutput) RouteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersRoute) pulumi.StringPtrOutput { return v.RouteId }).(pulumi.StringPtrOutput)
 }
@@ -252,12 +252,12 @@ func (o WorkersRouteOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersRoute) pulumi.StringPtrOutput { return v.Script }).(pulumi.StringPtrOutput)
 }
 
-// Whether the API call was successful
+// Whether the API call was successful.
 func (o WorkersRouteOutput) Success() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkersRoute) pulumi.BoolOutput { return v.Success }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WorkersRouteOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersRoute) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

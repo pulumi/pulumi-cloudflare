@@ -88,6 +88,8 @@ export class EmailRoutingDns extends pulumi.CustomResource {
     public /*out*/ readonly success!: pulumi.Output<boolean>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
@@ -187,6 +189,8 @@ export interface EmailRoutingDnsState {
     success?: pulumi.Input<boolean>;
     /**
      * Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
+     *
+     * @deprecated This attribute is deprecated.
      */
     tag?: pulumi.Input<string>;
     /**

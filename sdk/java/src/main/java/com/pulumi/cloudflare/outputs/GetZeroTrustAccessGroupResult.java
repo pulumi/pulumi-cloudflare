@@ -31,12 +31,12 @@ public final class GetZeroTrustAccessGroupResult {
     private List<GetZeroTrustAccessGroupExclude> excludes;
     private @Nullable GetZeroTrustAccessGroupFilter filter;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private @Nullable String groupId;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -89,14 +89,14 @@ public final class GetZeroTrustAccessGroupResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> groupId() {
         return Optional.ofNullable(this.groupId);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {

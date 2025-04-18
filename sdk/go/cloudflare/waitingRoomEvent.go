@@ -42,6 +42,8 @@ import (
 //				ShuffleAtEventStart:   pulumi.Bool(true),
 //				Suspended:             pulumi.Bool(true),
 //				TotalActiveUsers:      pulumi.Int(200),
+//				TurnstileAction:       pulumi.String("log"),
+//				TurnstileMode:         pulumi.String("off"),
 //			})
 //			if err != nil {
 //				return err
@@ -88,7 +90,13 @@ type WaitingRoomEvent struct {
 	Suspended pulumi.BoolOutput `pulumi:"suspended"`
 	// If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
 	TotalActiveUsers pulumi.IntPtrOutput `pulumi:"totalActiveUsers"`
-	WaitingRoomId    pulumi.StringOutput `pulumi:"waitingRoomId"`
+	// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+	// Available values: "log", "infiniteQueue".
+	TurnstileAction pulumi.StringPtrOutput `pulumi:"turnstileAction"`
+	// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+	TurnstileMode pulumi.StringPtrOutput `pulumi:"turnstileMode"`
+	WaitingRoomId pulumi.StringOutput    `pulumi:"waitingRoomId"`
 	// Identifier
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -165,8 +173,14 @@ type waitingRoomEventState struct {
 	// Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
 	Suspended *bool `pulumi:"suspended"`
 	// If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
-	TotalActiveUsers *int    `pulumi:"totalActiveUsers"`
-	WaitingRoomId    *string `pulumi:"waitingRoomId"`
+	TotalActiveUsers *int `pulumi:"totalActiveUsers"`
+	// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+	// Available values: "log", "infiniteQueue".
+	TurnstileAction *string `pulumi:"turnstileAction"`
+	// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+	TurnstileMode *string `pulumi:"turnstileMode"`
+	WaitingRoomId *string `pulumi:"waitingRoomId"`
 	// Identifier
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -200,7 +214,13 @@ type WaitingRoomEventState struct {
 	Suspended pulumi.BoolPtrInput
 	// If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
 	TotalActiveUsers pulumi.IntPtrInput
-	WaitingRoomId    pulumi.StringPtrInput
+	// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+	// Available values: "log", "infiniteQueue".
+	TurnstileAction pulumi.StringPtrInput
+	// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+	TurnstileMode pulumi.StringPtrInput
+	WaitingRoomId pulumi.StringPtrInput
 	// Identifier
 	ZoneId pulumi.StringPtrInput
 }
@@ -235,8 +255,14 @@ type waitingRoomEventArgs struct {
 	// Suspends or allows an event. If set to `true`, the event is ignored and traffic will be handled based on the waiting room configuration.
 	Suspended *bool `pulumi:"suspended"`
 	// If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
-	TotalActiveUsers *int   `pulumi:"totalActiveUsers"`
-	WaitingRoomId    string `pulumi:"waitingRoomId"`
+	TotalActiveUsers *int `pulumi:"totalActiveUsers"`
+	// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+	// Available values: "log", "infiniteQueue".
+	TurnstileAction *string `pulumi:"turnstileAction"`
+	// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+	TurnstileMode *string `pulumi:"turnstileMode"`
+	WaitingRoomId string  `pulumi:"waitingRoomId"`
 	// Identifier
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -269,7 +295,13 @@ type WaitingRoomEventArgs struct {
 	Suspended pulumi.BoolPtrInput
 	// If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
 	TotalActiveUsers pulumi.IntPtrInput
-	WaitingRoomId    pulumi.StringInput
+	// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+	// Available values: "log", "infiniteQueue".
+	TurnstileAction pulumi.StringPtrInput
+	// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+	TurnstileMode pulumi.StringPtrInput
+	WaitingRoomId pulumi.StringInput
 	// Identifier
 	ZoneId pulumi.StringInput
 }
@@ -432,6 +464,18 @@ func (o WaitingRoomEventOutput) Suspended() pulumi.BoolOutput {
 // If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
 func (o WaitingRoomEventOutput) TotalActiveUsers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.IntPtrOutput { return v.TotalActiveUsers }).(pulumi.IntPtrOutput)
+}
+
+// If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+// Available values: "log", "infiniteQueue".
+func (o WaitingRoomEventOutput) TurnstileAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.TurnstileAction }).(pulumi.StringPtrOutput)
+}
+
+// If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+func (o WaitingRoomEventOutput) TurnstileMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.TurnstileMode }).(pulumi.StringPtrOutput)
 }
 
 func (o WaitingRoomEventOutput) WaitingRoomId() pulumi.StringOutput {

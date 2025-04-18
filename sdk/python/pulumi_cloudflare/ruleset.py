@@ -448,7 +448,7 @@ class Ruleset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Sequence['outputs.RulesetRule']]:
+    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.RulesetRule']]]:
         """
         The list of rules in the ruleset.
         """

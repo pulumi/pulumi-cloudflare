@@ -47,7 +47,7 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -125,7 +125,7 @@ export class StreamCaptionLanguage extends pulumi.CustomResource {
  */
 export interface StreamCaptionLanguageState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -160,7 +160,7 @@ export interface StreamCaptionLanguageState {
  */
 export interface StreamCaptionLanguageArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

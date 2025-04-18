@@ -30,9 +30,18 @@ import (
 //				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
 //				RedactPii: pulumi.Bool(true),
 //				SettingsByRuleType: &cloudflare.ZeroTrustGatewayLoggingSettingsByRuleTypeArgs{
-//					Dns:  pulumi.String{},
-//					Http: pulumi.String{},
-//					L4:   pulumi.String{},
+//					Dns: &cloudflare.ZeroTrustGatewayLoggingSettingsByRuleTypeDnsArgs{
+//						LogAll:    pulumi.Bool(false),
+//						LogBlocks: pulumi.Bool(true),
+//					},
+//					Http: &cloudflare.ZeroTrustGatewayLoggingSettingsByRuleTypeHttpArgs{
+//						LogAll:    pulumi.Bool(false),
+//						LogBlocks: pulumi.Bool(true),
+//					},
+//					L4: &cloudflare.ZeroTrustGatewayLoggingSettingsByRuleTypeL4Args{
+//						LogAll:    pulumi.Bool(false),
+//						LogBlocks: pulumi.Bool(true),
+//					},
 //				},
 //			})
 //			if err != nil {

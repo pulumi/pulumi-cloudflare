@@ -141,6 +141,16 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
     public readonly policies!: pulumi.Output<outputs.ZeroTrustAccessApplicationPolicy[]>;
+    /**
+     * Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+     * "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+     * }
+     */
+    public readonly readServiceTokensFromHeader!: pulumi.Output<string | undefined>;
     public readonly saasApp!: pulumi.Output<outputs.ZeroTrustAccessApplicationSaasApp>;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -152,6 +162,8 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     public readonly scimConfig!: pulumi.Output<outputs.ZeroTrustAccessApplicationScimConfig>;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+     *
+     * @deprecated This attribute is deprecated.
      */
     public readonly selfHostedDomains!: pulumi.Output<string[] | undefined>;
     /**
@@ -224,6 +236,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["optionsPreflightBypass"] = state ? state.optionsPreflightBypass : undefined;
             resourceInputs["pathCookieAttribute"] = state ? state.pathCookieAttribute : undefined;
             resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["readServiceTokensFromHeader"] = state ? state.readServiceTokensFromHeader : undefined;
             resourceInputs["saasApp"] = state ? state.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
             resourceInputs["scimConfig"] = state ? state.scimConfig : undefined;
@@ -263,6 +276,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             resourceInputs["optionsPreflightBypass"] = args ? args.optionsPreflightBypass : undefined;
             resourceInputs["pathCookieAttribute"] = args ? args.pathCookieAttribute : undefined;
             resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["readServiceTokensFromHeader"] = args ? args.readServiceTokensFromHeader : undefined;
             resourceInputs["saasApp"] = args ? args.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
             resourceInputs["scimConfig"] = args ? args.scimConfig : undefined;
@@ -388,6 +402,16 @@ export interface ZeroTrustAccessApplicationState {
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationPolicy>[]>;
+    /**
+     * Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+     * "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+     * }
+     */
+    readServiceTokensFromHeader?: pulumi.Input<string>;
     saasApp?: pulumi.Input<inputs.ZeroTrustAccessApplicationSaasApp>;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -399,6 +423,8 @@ export interface ZeroTrustAccessApplicationState {
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationScimConfig>;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+     *
+     * @deprecated This attribute is deprecated.
      */
     selfHostedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -530,6 +556,16 @@ export interface ZeroTrustAccessApplicationArgs {
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationPolicy>[]>;
+    /**
+     * Allows matching Access Service Tokens passed HTTP in a single header with this name.
+     * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+     * The header value will be interpreted as a json object similar to:
+     * {
+     * "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+     * "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+     * }
+     */
+    readServiceTokensFromHeader?: pulumi.Input<string>;
     saasApp?: pulumi.Input<inputs.ZeroTrustAccessApplicationSaasApp>;
     /**
      * Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
@@ -541,6 +577,8 @@ export interface ZeroTrustAccessApplicationArgs {
     scimConfig?: pulumi.Input<inputs.ZeroTrustAccessApplicationScimConfig>;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+     *
+     * @deprecated This attribute is deprecated.
      */
     selfHostedDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**

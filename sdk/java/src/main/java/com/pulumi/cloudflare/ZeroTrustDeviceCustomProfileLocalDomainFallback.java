@@ -71,17 +71,9 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
     public Output<List<ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>> domains() {
         return this.domains;
     }
-    /**
-     * Device ID.
-     * 
-     */
     @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
-    /**
-     * @return Device ID.
-     * 
-     */
     public Output<String> policyId() {
         return this.policyId;
     }

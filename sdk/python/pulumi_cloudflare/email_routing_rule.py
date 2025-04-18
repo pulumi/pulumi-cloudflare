@@ -151,6 +151,9 @@ class _EmailRoutingRuleState:
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if tag is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""tag is deprecated: This attribute is deprecated.""")
+        if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
@@ -217,6 +220,7 @@ class _EmailRoutingRuleState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Routing rule tag. (Deprecated, replaced by routing rule identifier)
@@ -415,6 +419,7 @@ class EmailRoutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
     def tag(self) -> pulumi.Output[builtins.str]:
         """
         Routing rule tag. (Deprecated, replaced by routing rule identifier)

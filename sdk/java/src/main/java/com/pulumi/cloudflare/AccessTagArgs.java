@@ -15,14 +15,14 @@ public final class AccessTagArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessTagArgs Empty = new AccessTagArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -70,7 +70,7 @@ public final class AccessTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class AccessTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

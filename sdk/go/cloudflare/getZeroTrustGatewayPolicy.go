@@ -58,7 +58,7 @@ type LookupZeroTrustGatewayPolicyArgs struct {
 type LookupZeroTrustGatewayPolicyResult struct {
 	AccountId string `pulumi:"accountId"`
 	// The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+	// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 	Action    string `pulumi:"action"`
 	CreatedAt string `pulumi:"createdAt"`
 	// Date of deletion, if any.
@@ -126,7 +126,7 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) AccountId() pulumi.StringOutpu
 }
 
 // The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
 func (o LookupZeroTrustGatewayPolicyResultOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.Action }).(pulumi.StringOutput)
 }

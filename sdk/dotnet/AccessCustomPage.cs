@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare
     public partial class AccessCustomPage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessCustomPageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessCustomPageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -209,7 +209,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

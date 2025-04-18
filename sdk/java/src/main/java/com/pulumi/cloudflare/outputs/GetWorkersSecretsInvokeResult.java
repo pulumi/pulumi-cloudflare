@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkersSecretsInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -48,7 +48,7 @@ public final class GetWorkersSecretsInvokeResult {
 
     private GetWorkersSecretsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

@@ -18,9 +18,9 @@ import * as utilities from "./utilities";
  *         id: "id",
  *         name: "name",
  *     },
- *     direction: "asc",
+ *     direction: "desc",
  *     name: "name",
- *     order: "name",
+ *     order: "status",
  *     status: "initializing",
  * });
  * ```
@@ -81,9 +81,9 @@ export interface GetZonesResult {
  *         id: "id",
  *         name: "name",
  *     },
- *     direction: "asc",
+ *     direction: "desc",
  *     name: "name",
- *     order: "name",
+ *     order: "status",
  *     status: "initializing",
  * });
  * ```

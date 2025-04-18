@@ -25,7 +25,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupWorkersSecrets(ctx, &cloudflare.LookupWorkersSecretsArgs{
+//			_, err := cloudflare.LookupWorkersForPlatformsScriptSecrets(ctx, &cloudflare.LookupWorkersForPlatformsScriptSecretsArgs{
 //				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
 //				DispatchNamespace: "my-dispatch-namespace",
 //				ScriptName:        "this-is_my_script-01",
@@ -38,6 +38,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: cloudflare.getWorkersSecrets has been deprecated in favor of cloudflare.getWorkersForPlatformsScriptSecrets
 func LookupWorkersSecrets(ctx *pulumi.Context, args *LookupWorkersSecretsArgs, opts ...pulumi.InvokeOption) (*LookupWorkersSecretsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkersSecretsResult
@@ -50,7 +52,7 @@ func LookupWorkersSecrets(ctx *pulumi.Context, args *LookupWorkersSecretsArgs, o
 
 // A collection of arguments for invoking getWorkersSecrets.
 type LookupWorkersSecretsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace string `pulumi:"dispatchNamespace"`
@@ -62,7 +64,7 @@ type LookupWorkersSecretsArgs struct {
 
 // A collection of values returned by getWorkersSecrets.
 type LookupWorkersSecretsResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace string `pulumi:"dispatchNamespace"`
@@ -87,7 +89,7 @@ func LookupWorkersSecretsOutput(ctx *pulumi.Context, args LookupWorkersSecretsOu
 
 // A collection of arguments for invoking getWorkersSecrets.
 type LookupWorkersSecretsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	DispatchNamespace pulumi.StringInput `pulumi:"dispatchNamespace"`
@@ -116,7 +118,7 @@ func (o LookupWorkersSecretsResultOutput) ToLookupWorkersSecretsResultOutputWith
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWorkersSecretsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersSecretsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -27,8 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.WorkersSecret;
- * import com.pulumi.cloudflare.WorkersSecretArgs;
+ * import com.pulumi.cloudflare.WorkersForPlatformsScriptSecret;
+ * import com.pulumi.cloudflare.WorkersForPlatformsScriptSecretArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWorkersSecret = new WorkersSecret("exampleWorkersSecret", WorkersSecretArgs.builder()
+ *         var exampleWorkersForPlatformsScriptSecret = new WorkersForPlatformsScriptSecret("exampleWorkersForPlatformsScriptSecret", WorkersForPlatformsScriptSecretArgs.builder()
  *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .dispatchNamespace("my-dispatch-namespace")
  *             .scriptName("this-is_my_script-01")
@@ -63,18 +63,22 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/workersSecret:WorkersSecret example &#39;&lt;account_id&gt;/&lt;dispatch_namespace&gt;/&lt;script_name&gt;/&lt;secret_name&gt;&#39;
  * ```
  * 
+ * @deprecated
+ * cloudflare.index/workerssecret.WorkersSecret has been deprecated in favor of cloudflare.index/workersforplatformsscriptsecret.WorkersForPlatformsScriptSecret
+ * 
  */
+@Deprecated /* cloudflare.index/workerssecret.WorkersSecret has been deprecated in favor of cloudflare.index/workersforplatformsscriptsecret.WorkersForPlatformsScriptSecret */
 @ResourceType(type="cloudflare:index/workersSecret:WorkersSecret")
 public class WorkersSecret extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -193,7 +197,7 @@ public class WorkersSecret extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .aliases(List.of(
-                Output.of(Alias.builder().type("cloudflare:index/workerSecret:WorkerSecret").build())
+                Output.of(Alias.builder().type("cloudflare:index/workersSecret:WorkersSecret").build())
             ))
             .additionalSecretOutputs(List.of(
                 "text"

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersScriptResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -28,7 +28,7 @@ public final class GetWorkersScriptResult {
 
     private GetWorkersScriptResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

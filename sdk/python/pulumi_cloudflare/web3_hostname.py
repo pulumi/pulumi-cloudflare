@@ -257,7 +257,7 @@ class Web3Hostname(pulumi.CustomResource):
         example_web3_hostname = cloudflare.Web3Hostname("example_web3_hostname",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="gateway.example.com",
-            target="ethereum",
+            target="ipfs",
             description="This is my IPFS gateway.",
             dnslink="/ipns/onboarding.ipfs.cloudflare.com")
         ```
@@ -293,7 +293,7 @@ class Web3Hostname(pulumi.CustomResource):
         example_web3_hostname = cloudflare.Web3Hostname("example_web3_hostname",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             name="gateway.example.com",
-            target="ethereum",
+            target="ipfs",
             description="This is my IPFS gateway.",
             dnslink="/ipns/onboarding.ipfs.cloudflare.com")
         ```

@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetStreamCaptionLanguageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetStreamCaptionLanguageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetStreamCaptionLanguageResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

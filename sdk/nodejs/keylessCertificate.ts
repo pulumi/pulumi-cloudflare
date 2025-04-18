@@ -58,6 +58,8 @@ export class KeylessCertificate extends pulumi.CustomResource {
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * Whether or not the Keyless SSL is on or off.
+     *
+     * @deprecated This attribute is deprecated.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -167,6 +169,8 @@ export interface KeylessCertificateState {
     createdOn?: pulumi.Input<string>;
     /**
      * Whether or not the Keyless SSL is on or off.
+     *
+     * @deprecated This attribute is deprecated.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -219,6 +223,8 @@ export interface KeylessCertificateArgs {
     certificate: pulumi.Input<string>;
     /**
      * Whether or not the Keyless SSL is on or off.
+     *
+     * @deprecated This attribute is deprecated.
      */
     enabled?: pulumi.Input<boolean>;
     /**

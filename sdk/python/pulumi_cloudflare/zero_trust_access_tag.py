@@ -24,7 +24,7 @@ class ZeroTrustAccessTagArgs:
                  name: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ZeroTrustAccessTag resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] name: The name of the tag
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -34,7 +34,7 @@ class ZeroTrustAccessTagArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -65,7 +65,7 @@ class _ZeroTrustAccessTagState:
                  updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustAccessTag resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.int] app_count: The number of applications that have this tag
         :param pulumi.Input[builtins.str] name: The name of the tag
         """
@@ -84,7 +84,7 @@ class _ZeroTrustAccessTagState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -163,7 +163,7 @@ class ZeroTrustAccessTag(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] name: The name of the tag
         """
         ...
@@ -249,7 +249,7 @@ class ZeroTrustAccessTag(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.int] app_count: The number of applications that have this tag
         :param pulumi.Input[builtins.str] name: The name of the tag
         """
@@ -268,7 +268,7 @@ class ZeroTrustAccessTag(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

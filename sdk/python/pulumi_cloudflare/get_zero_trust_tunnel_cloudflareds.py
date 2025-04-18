@@ -209,7 +209,7 @@ def get_zero_trust_tunnel_cloudflareds(account_id: Optional[builtins.str] = None
         include_prefix="vpc1-",
         is_deleted=True,
         name="blog",
-        status="inactive",
+        status="healthy",
         uuid="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         was_active_at="2009-11-10T23:00:00Z",
         was_inactive_at="2009-11-10T23:00:00Z")
@@ -279,7 +279,7 @@ def get_zero_trust_tunnel_cloudflareds_output(account_id: Optional[pulumi.Input[
         include_prefix="vpc1-",
         is_deleted=True,
         name="blog",
-        status="inactive",
+        status="healthy",
         uuid="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
         was_active_at="2009-11-10T23:00:00Z",
         was_inactive_at="2009-11-10T23:00:00Z")

@@ -15,14 +15,14 @@ public final class GetStreamLiveInputArgs extends com.pulumi.resources.InvokeArg
     public static final GetStreamLiveInputArgs Empty = new GetStreamLiveInputArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -70,7 +70,7 @@ public final class GetStreamLiveInputArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetStreamLiveInputArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

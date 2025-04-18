@@ -29,7 +29,7 @@ class GetZeroTrustListResult:
     """
     A collection of values returned by getZeroTrustList.
     """
-    def __init__(__self__, account_id=None, created_at=None, description=None, filter=None, id=None, list_count=None, list_id=None, name=None, type=None, updated_at=None):
+    def __init__(__self__, account_id=None, created_at=None, description=None, filter=None, id=None, items=None, list_count=None, list_id=None, name=None, type=None, updated_at=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -45,6 +45,9 @@ class GetZeroTrustListResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if items and not isinstance(items, list):
+            raise TypeError("Expected argument 'items' to be a list")
+        pulumi.set(__self__, "items", items)
         if list_count and not isinstance(list_count, float):
             raise TypeError("Expected argument 'list_count' to be a float")
         pulumi.set(__self__, "list_count", list_count)
@@ -91,6 +94,14 @@ class GetZeroTrustListResult:
         API Resource UUID tag.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def items(self) -> Sequence['outputs.GetZeroTrustListItemResult']:
+        """
+        The items in the list.
+        """
+        return pulumi.get(self, "items")
 
     @property
     @pulumi.getter(name="listCount")
@@ -142,6 +153,7 @@ class AwaitableGetZeroTrustListResult(GetZeroTrustListResult):
             description=self.description,
             filter=self.filter,
             id=self.id,
+            items=self.items,
             list_count=self.list_count,
             list_id=self.list_id,
             name=self.name,
@@ -180,6 +192,7 @@ def get_zero_trust_list(account_id: Optional[builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
+        items=pulumi.get(__ret__, 'items'),
         list_count=pulumi.get(__ret__, 'list_count'),
         list_id=pulumi.get(__ret__, 'list_id'),
         name=pulumi.get(__ret__, 'name'),
@@ -215,6 +228,7 @@ def get_zero_trust_list_output(account_id: Optional[pulumi.Input[builtins.str]] 
         description=pulumi.get(__response__, 'description'),
         filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
+        items=pulumi.get(__response__, 'items'),
         list_count=pulumi.get(__response__, 'list_count'),
         list_id=pulumi.get(__response__, 'list_id'),
         name=pulumi.get(__response__, 'name'),

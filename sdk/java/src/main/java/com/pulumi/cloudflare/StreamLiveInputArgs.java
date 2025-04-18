@@ -19,14 +19,14 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
     public static final StreamLiveInputArgs Empty = new StreamLiveInputArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -138,7 +138,7 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class StreamLiveInputArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

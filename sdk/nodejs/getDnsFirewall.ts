@@ -32,11 +32,11 @@ export function getDnsFirewall(args: GetDnsFirewallArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetDnsFirewallArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     dnsFirewallId?: string;
 }
@@ -46,7 +46,7 @@ export interface GetDnsFirewallArgs {
  */
 export interface GetDnsFirewallResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -58,7 +58,7 @@ export interface GetDnsFirewallResult {
      */
     readonly deprecateAnyRequests: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly dnsFirewallId?: string;
     readonly dnsFirewallIps: string[];
@@ -67,7 +67,7 @@ export interface GetDnsFirewallResult {
      */
     readonly ecsFallback: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -126,11 +126,11 @@ export function getDnsFirewallOutput(args: GetDnsFirewallOutputArgs, opts?: pulu
  */
 export interface GetDnsFirewallOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     dnsFirewallId?: pulumi.Input<string>;
 }

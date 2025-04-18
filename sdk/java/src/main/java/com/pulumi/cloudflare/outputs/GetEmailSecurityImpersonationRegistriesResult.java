@@ -17,6 +17,12 @@ public final class GetEmailSecurityImpersonationRegistriesResult {
     private Integer directoryId;
     private Integer directoryNodeId;
     private String email;
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     private String externalDirectoryNodeId;
     private Integer id;
     private Boolean isEmailRegex;
@@ -40,6 +46,12 @@ public final class GetEmailSecurityImpersonationRegistriesResult {
     public String email() {
         return this.email;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public String externalDirectoryNodeId() {
         return this.externalDirectoryNodeId;
     }

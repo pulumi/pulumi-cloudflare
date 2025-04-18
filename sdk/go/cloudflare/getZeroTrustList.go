@@ -64,6 +64,8 @@ type LookupZeroTrustListResult struct {
 	Filter      *GetZeroTrustListFilter `pulumi:"filter"`
 	// API Resource UUID tag.
 	Id string `pulumi:"id"`
+	// The items in the list.
+	Items []GetZeroTrustListItem `pulumi:"items"`
 	// The number of items in the list.
 	ListCount float64 `pulumi:"listCount"`
 	// API Resource UUID tag.
@@ -132,6 +134,11 @@ func (o LookupZeroTrustListResultOutput) Filter() GetZeroTrustListFilterPtrOutpu
 // API Resource UUID tag.
 func (o LookupZeroTrustListResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustListResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The items in the list.
+func (o LookupZeroTrustListResultOutput) Items() GetZeroTrustListItemArrayOutput {
+	return o.ApplyT(func(v LookupZeroTrustListResult) []GetZeroTrustListItem { return v.Items }).(GetZeroTrustListItemArrayOutput)
 }
 
 // The number of items in the list.

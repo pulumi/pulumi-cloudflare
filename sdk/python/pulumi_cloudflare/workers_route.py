@@ -28,8 +28,8 @@ class WorkersRouteArgs:
                  script: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersRoute resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
-        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
+        :param pulumi.Input[builtins.str] route_id: Identifier.
         :param pulumi.Input[builtins.str] script: Name of the script, used in URLs and route configuration.
         """
         pulumi.set(__self__, "pattern", pattern)
@@ -52,7 +52,7 @@ class WorkersRouteArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -64,7 +64,7 @@ class WorkersRouteArgs:
     @pulumi.getter(name="routeId")
     def route_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "route_id")
 
@@ -97,10 +97,10 @@ class _WorkersRouteState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkersRoute resources.
-        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] route_id: Identifier.
         :param pulumi.Input[builtins.str] script: Name of the script, used in URLs and route configuration.
-        :param pulumi.Input[builtins.bool] success: Whether the API call was successful
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] success: Whether the API call was successful.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
@@ -148,7 +148,7 @@ class _WorkersRouteState:
     @pulumi.getter(name="routeId")
     def route_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "route_id")
 
@@ -172,7 +172,7 @@ class _WorkersRouteState:
     @pulumi.getter
     def success(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether the API call was successful
+        Whether the API call was successful.
         """
         return pulumi.get(self, "success")
 
@@ -184,7 +184,7 @@ class _WorkersRouteState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -218,9 +218,9 @@ class WorkersRoute(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] route_id: Identifier.
         :param pulumi.Input[builtins.str] script: Name of the script, used in URLs and route configuration.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -304,10 +304,10 @@ class WorkersRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] route_id: Identifier.
         :param pulumi.Input[builtins.str] script: Name of the script, used in URLs and route configuration.
-        :param pulumi.Input[builtins.bool] success: Whether the API call was successful
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] success: Whether the API call was successful.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -341,7 +341,7 @@ class WorkersRoute(pulumi.CustomResource):
     @pulumi.getter(name="routeId")
     def route_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "route_id")
 
@@ -357,7 +357,7 @@ class WorkersRoute(pulumi.CustomResource):
     @pulumi.getter
     def success(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether the API call was successful
+        Whether the API call was successful.
         """
         return pulumi.get(self, "success")
 
@@ -365,7 +365,7 @@ class WorkersRoute(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

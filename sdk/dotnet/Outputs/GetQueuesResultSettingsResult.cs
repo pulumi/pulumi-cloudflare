@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double DeliveryDelay;
         /// <summary>
+        /// Indicates if message delivery to consumers is currently paused.
+        /// </summary>
+        public readonly bool DeliveryPaused;
+        /// <summary>
         /// Number of seconds after which an unconsumed message will be delayed.
         /// </summary>
         public readonly double MessageRetentionPeriod;
@@ -26,9 +30,12 @@ namespace Pulumi.Cloudflare.Outputs
         private GetQueuesResultSettingsResult(
             double deliveryDelay,
 
+            bool deliveryPaused,
+
             double messageRetentionPeriod)
         {
             DeliveryDelay = deliveryDelay;
+            DeliveryPaused = deliveryPaused;
             MessageRetentionPeriod = messageRetentionPeriod;
         }
     }

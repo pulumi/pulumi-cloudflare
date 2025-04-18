@@ -156,15 +156,15 @@ public class AccountToken extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> status;
+    private Output<String> status;
 
     /**
      * @return Status of the token.
      * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
      * 
      */
-    public Output<Optional<String>> status() {
-        return Codegen.optional(this.status);
+    public Output<String> status() {
+        return this.status;
     }
     /**
      * The token value.

@@ -24,7 +24,7 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
      */
     private List<String> associatedHostnames;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private @Nullable String certificateId;
@@ -36,7 +36,7 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
      */
     private String fingerprint;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -68,7 +68,7 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
         return this.associatedHostnames;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> certificateId() {
@@ -88,7 +88,7 @@ public final class GetZeroTrustAccessMtlsCertificateResult {
         return this.fingerprint;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {

@@ -66,6 +66,8 @@ export class LogpushJob extends pulumi.CustomResource {
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
+     *
+     * @deprecated This attribute is deprecated.
      */
     public readonly frequency!: pulumi.Output<string>;
     /**
@@ -83,6 +85,8 @@ export class LogpushJob extends pulumi.CustomResource {
     public /*out*/ readonly lastError!: pulumi.Output<string>;
     /**
      * This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     *
+     * @deprecated This attribute is deprecated.
      */
     public readonly logpullOptions!: pulumi.Output<string | undefined>;
     /**
@@ -201,6 +205,8 @@ export interface LogpushJobState {
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
+     *
+     * @deprecated This attribute is deprecated.
      */
     frequency?: pulumi.Input<string>;
     /**
@@ -218,6 +224,8 @@ export interface LogpushJobState {
     lastError?: pulumi.Input<string>;
     /**
      * This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     *
+     * @deprecated This attribute is deprecated.
      */
     logpullOptions?: pulumi.Input<string>;
     /**
@@ -273,6 +281,8 @@ export interface LogpushJobArgs {
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
+     *
+     * @deprecated This attribute is deprecated.
      */
     frequency?: pulumi.Input<string>;
     /**
@@ -282,6 +292,8 @@ export interface LogpushJobArgs {
     kind?: pulumi.Input<string>;
     /**
      * This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+     *
+     * @deprecated This attribute is deprecated.
      */
     logpullOptions?: pulumi.Input<string>;
     /**

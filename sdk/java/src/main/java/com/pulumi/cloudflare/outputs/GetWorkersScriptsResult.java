@@ -58,13 +58,21 @@ public final class GetWorkersScriptsResult {
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;smart&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private String placementMode;
     /**
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     private String placementStatus;
     /**
      * @return List of Workers that will consume logs from the attached Worker.
@@ -139,7 +147,11 @@ public final class GetWorkersScriptsResult {
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;smart&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public String placementMode() {
         return this.placementMode;
     }
@@ -147,7 +159,11 @@ public final class GetWorkersScriptsResult {
      * @return Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;SUCCESS&#34;, &#34;UNSUPPORTED*APPLICATION&#34;, &#34;INSUFFICIENT*INVOCATIONS&#34;.
      * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
      */
+    @Deprecated /* This attribute is deprecated. */
     public String placementStatus() {
         return this.placementStatus;
     }

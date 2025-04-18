@@ -35,7 +35,7 @@ import (
 //				IpFirewall:       pulumi.Bool(true),
 //				Protocol:         pulumi.String("tcp/22"),
 //				ProxyProtocol:    pulumi.String("off"),
-//				Tls:              pulumi.String("off"),
+//				Tls:              pulumi.String("full"),
 //				TrafficType:      pulumi.String("direct"),
 //				ArgoSmartRouting: pulumi.Bool(true),
 //				EdgeIps: &cloudflare.SpectrumApplicationEdgeIpsArgs{

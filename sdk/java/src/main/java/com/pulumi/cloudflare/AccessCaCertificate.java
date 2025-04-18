@@ -81,14 +81,14 @@ public class AccessCaCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Output<String> appId() {

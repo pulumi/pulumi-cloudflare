@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -15,6 +16,11 @@ public final class GetQueuesResultSettings {
      * 
      */
     private Double deliveryDelay;
+    /**
+     * @return Indicates if message delivery to consumers is currently paused.
+     * 
+     */
+    private Boolean deliveryPaused;
     /**
      * @return Number of seconds after which an unconsumed message will be delayed.
      * 
@@ -28,6 +34,13 @@ public final class GetQueuesResultSettings {
      */
     public Double deliveryDelay() {
         return this.deliveryDelay;
+    }
+    /**
+     * @return Indicates if message delivery to consumers is currently paused.
+     * 
+     */
+    public Boolean deliveryPaused() {
+        return this.deliveryPaused;
     }
     /**
      * @return Number of seconds after which an unconsumed message will be delayed.
@@ -47,11 +60,13 @@ public final class GetQueuesResultSettings {
     @CustomType.Builder
     public static final class Builder {
         private Double deliveryDelay;
+        private Boolean deliveryPaused;
         private Double messageRetentionPeriod;
         public Builder() {}
         public Builder(GetQueuesResultSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deliveryDelay = defaults.deliveryDelay;
+    	      this.deliveryPaused = defaults.deliveryPaused;
     	      this.messageRetentionPeriod = defaults.messageRetentionPeriod;
         }
 
@@ -61,6 +76,14 @@ public final class GetQueuesResultSettings {
               throw new MissingRequiredPropertyException("GetQueuesResultSettings", "deliveryDelay");
             }
             this.deliveryDelay = deliveryDelay;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deliveryPaused(Boolean deliveryPaused) {
+            if (deliveryPaused == null) {
+              throw new MissingRequiredPropertyException("GetQueuesResultSettings", "deliveryPaused");
+            }
+            this.deliveryPaused = deliveryPaused;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +97,7 @@ public final class GetQueuesResultSettings {
         public GetQueuesResultSettings build() {
             final var _resultValue = new GetQueuesResultSettings();
             _resultValue.deliveryDelay = deliveryDelay;
+            _resultValue.deliveryPaused = deliveryPaused;
             _resultValue.messageRetentionPeriod = messageRetentionPeriod;
             return _resultValue;
         }

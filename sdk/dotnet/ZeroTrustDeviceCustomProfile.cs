@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleZeroTrustDeviceCustomProfile = new Cloudflare.ZeroTrustDeviceCustomProfile("example_zero_trust_device_custom_profile", new()
     ///     {
     ///         AccountId = "699d98642c564d2e855e9661899b7252",
-    ///         Match = "user.identity == \"test@cloudflare.com\"",
+    ///         Match = "identity.email == \"test@cloudflare.com\"",
     ///         Name = "Allow Developers",
     ///         Precedence = 100,
     ///         AllowModeSwitch = true,
@@ -40,7 +40,6 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 Address = "192.0.2.0/24",
     ///                 Description = "Exclude testing domains from the tunnel",
-    ///                 Host = "*.example.com",
     ///             },
     ///         },
     ///         ExcludeOfficeIps = true,
@@ -49,8 +48,7 @@ namespace Pulumi.Cloudflare
     ///             new Cloudflare.Inputs.ZeroTrustDeviceCustomProfileIncludeArgs
     ///             {
     ///                 Address = "192.0.2.0/24",
-    ///                 Description = "Exclude testing domains from the tunnel",
-    ///                 Host = "*.example.com",
+    ///                 Description = "Include testing domains in the tunnel",
     ///             },
     ///         },
     ///         LanAllowMinutes = 30,
@@ -183,9 +181,6 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
 
@@ -544,9 +539,6 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Device ID.
-        /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }
 

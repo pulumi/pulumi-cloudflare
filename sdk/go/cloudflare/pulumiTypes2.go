@@ -13,6 +13,946 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetAccessRuleConfiguration struct {
+	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+	// Available values: "ip".
+	Target string `pulumi:"target"`
+	// The IP address to match. This address will be compared to the IP address of incoming requests.
+	Value string `pulumi:"value"`
+}
+
+// GetAccessRuleConfigurationInput is an input type that accepts GetAccessRuleConfigurationArgs and GetAccessRuleConfigurationOutput values.
+// You can construct a concrete instance of `GetAccessRuleConfigurationInput` via:
+//
+//	GetAccessRuleConfigurationArgs{...}
+type GetAccessRuleConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleConfigurationOutput() GetAccessRuleConfigurationOutput
+	ToGetAccessRuleConfigurationOutputWithContext(context.Context) GetAccessRuleConfigurationOutput
+}
+
+type GetAccessRuleConfigurationArgs struct {
+	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+	// Available values: "ip".
+	Target pulumi.StringInput `pulumi:"target"`
+	// The IP address to match. This address will be compared to the IP address of incoming requests.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAccessRuleConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleConfiguration)(nil)).Elem()
+}
+
+func (i GetAccessRuleConfigurationArgs) ToGetAccessRuleConfigurationOutput() GetAccessRuleConfigurationOutput {
+	return i.ToGetAccessRuleConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleConfigurationArgs) ToGetAccessRuleConfigurationOutputWithContext(ctx context.Context) GetAccessRuleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleConfigurationOutput)
+}
+
+type GetAccessRuleConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessRuleConfigurationOutput) ToGetAccessRuleConfigurationOutput() GetAccessRuleConfigurationOutput {
+	return o
+}
+
+func (o GetAccessRuleConfigurationOutput) ToGetAccessRuleConfigurationOutputWithContext(ctx context.Context) GetAccessRuleConfigurationOutput {
+	return o
+}
+
+// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+// Available values: "ip".
+func (o GetAccessRuleConfigurationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleConfiguration) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The IP address to match. This address will be compared to the IP address of incoming requests.
+func (o GetAccessRuleConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAccessRuleFilter struct {
+	Configuration *GetAccessRuleFilterConfiguration `pulumi:"configuration"`
+	// The direction used to sort returned rules.
+	// Available values: "asc", "desc".
+	Direction *string `pulumi:"direction"`
+	// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+	// Available values: "any", "all".
+	Match string `pulumi:"match"`
+	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+	Mode *string `pulumi:"mode"`
+	// The string to search for in the notes of existing IP Access rules.
+	// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
+	Notes *string `pulumi:"notes"`
+	// The field used to sort returned rules.
+	// Available values: "configuration.target", "configuration.value", "mode".
+	Order *string `pulumi:"order"`
+}
+
+// GetAccessRuleFilterInput is an input type that accepts GetAccessRuleFilterArgs and GetAccessRuleFilterOutput values.
+// You can construct a concrete instance of `GetAccessRuleFilterInput` via:
+//
+//	GetAccessRuleFilterArgs{...}
+type GetAccessRuleFilterInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleFilterOutput() GetAccessRuleFilterOutput
+	ToGetAccessRuleFilterOutputWithContext(context.Context) GetAccessRuleFilterOutput
+}
+
+type GetAccessRuleFilterArgs struct {
+	Configuration GetAccessRuleFilterConfigurationPtrInput `pulumi:"configuration"`
+	// The direction used to sort returned rules.
+	// Available values: "asc", "desc".
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+	// Available values: "any", "all".
+	Match pulumi.StringInput `pulumi:"match"`
+	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The string to search for in the notes of existing IP Access rules.
+	// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
+	Notes pulumi.StringPtrInput `pulumi:"notes"`
+	// The field used to sort returned rules.
+	// Available values: "configuration.target", "configuration.value", "mode".
+	Order pulumi.StringPtrInput `pulumi:"order"`
+}
+
+func (GetAccessRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleFilter)(nil)).Elem()
+}
+
+func (i GetAccessRuleFilterArgs) ToGetAccessRuleFilterOutput() GetAccessRuleFilterOutput {
+	return i.ToGetAccessRuleFilterOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleFilterArgs) ToGetAccessRuleFilterOutputWithContext(ctx context.Context) GetAccessRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterOutput)
+}
+
+func (i GetAccessRuleFilterArgs) ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput {
+	return i.ToGetAccessRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleFilterArgs) ToGetAccessRuleFilterPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterOutput).ToGetAccessRuleFilterPtrOutputWithContext(ctx)
+}
+
+// GetAccessRuleFilterPtrInput is an input type that accepts GetAccessRuleFilterArgs, GetAccessRuleFilterPtr and GetAccessRuleFilterPtrOutput values.
+// You can construct a concrete instance of `GetAccessRuleFilterPtrInput` via:
+//
+//	        GetAccessRuleFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAccessRuleFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput
+	ToGetAccessRuleFilterPtrOutputWithContext(context.Context) GetAccessRuleFilterPtrOutput
+}
+
+type getAccessRuleFilterPtrType GetAccessRuleFilterArgs
+
+func GetAccessRuleFilterPtr(v *GetAccessRuleFilterArgs) GetAccessRuleFilterPtrInput {
+	return (*getAccessRuleFilterPtrType)(v)
+}
+
+func (*getAccessRuleFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAccessRuleFilter)(nil)).Elem()
+}
+
+func (i *getAccessRuleFilterPtrType) ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput {
+	return i.ToGetAccessRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getAccessRuleFilterPtrType) ToGetAccessRuleFilterPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterPtrOutput)
+}
+
+type GetAccessRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleFilter)(nil)).Elem()
+}
+
+func (o GetAccessRuleFilterOutput) ToGetAccessRuleFilterOutput() GetAccessRuleFilterOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterOutput) ToGetAccessRuleFilterOutputWithContext(ctx context.Context) GetAccessRuleFilterOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterOutput) ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput {
+	return o.ToGetAccessRuleFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetAccessRuleFilterOutput) ToGetAccessRuleFilterPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccessRuleFilter) *GetAccessRuleFilter {
+		return &v
+	}).(GetAccessRuleFilterPtrOutput)
+}
+
+func (o GetAccessRuleFilterOutput) Configuration() GetAccessRuleFilterConfigurationPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *GetAccessRuleFilterConfiguration { return v.Configuration }).(GetAccessRuleFilterConfigurationPtrOutput)
+}
+
+// The direction used to sort returned rules.
+// Available values: "asc", "desc".
+func (o GetAccessRuleFilterOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+// Available values: "any", "all".
+func (o GetAccessRuleFilterOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) string { return v.Match }).(pulumi.StringOutput)
+}
+
+// The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+func (o GetAccessRuleFilterOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The string to search for in the notes of existing IP Access rules.
+// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
+func (o GetAccessRuleFilterOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *string { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+// The field used to sort returned rules.
+// Available values: "configuration.target", "configuration.value", "mode".
+func (o GetAccessRuleFilterOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilter) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+type GetAccessRuleFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAccessRuleFilter)(nil)).Elem()
+}
+
+func (o GetAccessRuleFilterPtrOutput) ToGetAccessRuleFilterPtrOutput() GetAccessRuleFilterPtrOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterPtrOutput) ToGetAccessRuleFilterPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterPtrOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterPtrOutput) Elem() GetAccessRuleFilterOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) GetAccessRuleFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetAccessRuleFilter
+		return ret
+	}).(GetAccessRuleFilterOutput)
+}
+
+func (o GetAccessRuleFilterPtrOutput) Configuration() GetAccessRuleFilterConfigurationPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *GetAccessRuleFilterConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.Configuration
+	}).(GetAccessRuleFilterConfigurationPtrOutput)
+}
+
+// The direction used to sort returned rules.
+// Available values: "asc", "desc".
+func (o GetAccessRuleFilterPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+// Available values: "any", "all".
+func (o GetAccessRuleFilterPtrOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Match
+	}).(pulumi.StringPtrOutput)
+}
+
+// The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+func (o GetAccessRuleFilterPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The string to search for in the notes of existing IP Access rules.
+// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
+func (o GetAccessRuleFilterPtrOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Notes
+	}).(pulumi.StringPtrOutput)
+}
+
+// The field used to sort returned rules.
+// Available values: "configuration.target", "configuration.value", "mode".
+func (o GetAccessRuleFilterPtrOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAccessRuleFilterConfiguration struct {
+	// The target to search in existing rules.
+	// Available values: "ip", "ipRange", "asn", "country".
+	Target *string `pulumi:"target"`
+	// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+	// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
+	Value *string `pulumi:"value"`
+}
+
+// GetAccessRuleFilterConfigurationInput is an input type that accepts GetAccessRuleFilterConfigurationArgs and GetAccessRuleFilterConfigurationOutput values.
+// You can construct a concrete instance of `GetAccessRuleFilterConfigurationInput` via:
+//
+//	GetAccessRuleFilterConfigurationArgs{...}
+type GetAccessRuleFilterConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleFilterConfigurationOutput() GetAccessRuleFilterConfigurationOutput
+	ToGetAccessRuleFilterConfigurationOutputWithContext(context.Context) GetAccessRuleFilterConfigurationOutput
+}
+
+type GetAccessRuleFilterConfigurationArgs struct {
+	// The target to search in existing rules.
+	// Available values: "ip", "ipRange", "asn", "country".
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+	// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetAccessRuleFilterConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleFilterConfiguration)(nil)).Elem()
+}
+
+func (i GetAccessRuleFilterConfigurationArgs) ToGetAccessRuleFilterConfigurationOutput() GetAccessRuleFilterConfigurationOutput {
+	return i.ToGetAccessRuleFilterConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleFilterConfigurationArgs) ToGetAccessRuleFilterConfigurationOutputWithContext(ctx context.Context) GetAccessRuleFilterConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterConfigurationOutput)
+}
+
+func (i GetAccessRuleFilterConfigurationArgs) ToGetAccessRuleFilterConfigurationPtrOutput() GetAccessRuleFilterConfigurationPtrOutput {
+	return i.ToGetAccessRuleFilterConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleFilterConfigurationArgs) ToGetAccessRuleFilterConfigurationPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterConfigurationOutput).ToGetAccessRuleFilterConfigurationPtrOutputWithContext(ctx)
+}
+
+// GetAccessRuleFilterConfigurationPtrInput is an input type that accepts GetAccessRuleFilterConfigurationArgs, GetAccessRuleFilterConfigurationPtr and GetAccessRuleFilterConfigurationPtrOutput values.
+// You can construct a concrete instance of `GetAccessRuleFilterConfigurationPtrInput` via:
+//
+//	        GetAccessRuleFilterConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAccessRuleFilterConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleFilterConfigurationPtrOutput() GetAccessRuleFilterConfigurationPtrOutput
+	ToGetAccessRuleFilterConfigurationPtrOutputWithContext(context.Context) GetAccessRuleFilterConfigurationPtrOutput
+}
+
+type getAccessRuleFilterConfigurationPtrType GetAccessRuleFilterConfigurationArgs
+
+func GetAccessRuleFilterConfigurationPtr(v *GetAccessRuleFilterConfigurationArgs) GetAccessRuleFilterConfigurationPtrInput {
+	return (*getAccessRuleFilterConfigurationPtrType)(v)
+}
+
+func (*getAccessRuleFilterConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAccessRuleFilterConfiguration)(nil)).Elem()
+}
+
+func (i *getAccessRuleFilterConfigurationPtrType) ToGetAccessRuleFilterConfigurationPtrOutput() GetAccessRuleFilterConfigurationPtrOutput {
+	return i.ToGetAccessRuleFilterConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *getAccessRuleFilterConfigurationPtrType) ToGetAccessRuleFilterConfigurationPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleFilterConfigurationPtrOutput)
+}
+
+type GetAccessRuleFilterConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleFilterConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleFilterConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessRuleFilterConfigurationOutput) ToGetAccessRuleFilterConfigurationOutput() GetAccessRuleFilterConfigurationOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterConfigurationOutput) ToGetAccessRuleFilterConfigurationOutputWithContext(ctx context.Context) GetAccessRuleFilterConfigurationOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterConfigurationOutput) ToGetAccessRuleFilterConfigurationPtrOutput() GetAccessRuleFilterConfigurationPtrOutput {
+	return o.ToGetAccessRuleFilterConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GetAccessRuleFilterConfigurationOutput) ToGetAccessRuleFilterConfigurationPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccessRuleFilterConfiguration) *GetAccessRuleFilterConfiguration {
+		return &v
+	}).(GetAccessRuleFilterConfigurationPtrOutput)
+}
+
+// The target to search in existing rules.
+// Available values: "ip", "ipRange", "asn", "country".
+func (o GetAccessRuleFilterConfigurationOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilterConfiguration) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
+func (o GetAccessRuleFilterConfigurationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRuleFilterConfiguration) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAccessRuleFilterConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleFilterConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAccessRuleFilterConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessRuleFilterConfigurationPtrOutput) ToGetAccessRuleFilterConfigurationPtrOutput() GetAccessRuleFilterConfigurationPtrOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterConfigurationPtrOutput) ToGetAccessRuleFilterConfigurationPtrOutputWithContext(ctx context.Context) GetAccessRuleFilterConfigurationPtrOutput {
+	return o
+}
+
+func (o GetAccessRuleFilterConfigurationPtrOutput) Elem() GetAccessRuleFilterConfigurationOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilterConfiguration) GetAccessRuleFilterConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GetAccessRuleFilterConfiguration
+		return ret
+	}).(GetAccessRuleFilterConfigurationOutput)
+}
+
+// The target to search in existing rules.
+// Available values: "ip", "ipRange", "asn", "country".
+func (o GetAccessRuleFilterConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilterConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
+func (o GetAccessRuleFilterConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRuleFilterConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAccessRuleScope struct {
+	// The contact email address of the user.
+	Email string `pulumi:"email"`
+	// Identifier
+	Id string `pulumi:"id"`
+	// The scope of the rule.
+	// Available values: "user", "organization".
+	Type string `pulumi:"type"`
+}
+
+// GetAccessRuleScopeInput is an input type that accepts GetAccessRuleScopeArgs and GetAccessRuleScopeOutput values.
+// You can construct a concrete instance of `GetAccessRuleScopeInput` via:
+//
+//	GetAccessRuleScopeArgs{...}
+type GetAccessRuleScopeInput interface {
+	pulumi.Input
+
+	ToGetAccessRuleScopeOutput() GetAccessRuleScopeOutput
+	ToGetAccessRuleScopeOutputWithContext(context.Context) GetAccessRuleScopeOutput
+}
+
+type GetAccessRuleScopeArgs struct {
+	// The contact email address of the user.
+	Email pulumi.StringInput `pulumi:"email"`
+	// Identifier
+	Id pulumi.StringInput `pulumi:"id"`
+	// The scope of the rule.
+	// Available values: "user", "organization".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAccessRuleScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleScope)(nil)).Elem()
+}
+
+func (i GetAccessRuleScopeArgs) ToGetAccessRuleScopeOutput() GetAccessRuleScopeOutput {
+	return i.ToGetAccessRuleScopeOutputWithContext(context.Background())
+}
+
+func (i GetAccessRuleScopeArgs) ToGetAccessRuleScopeOutputWithContext(ctx context.Context) GetAccessRuleScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRuleScopeOutput)
+}
+
+type GetAccessRuleScopeOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRuleScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRuleScope)(nil)).Elem()
+}
+
+func (o GetAccessRuleScopeOutput) ToGetAccessRuleScopeOutput() GetAccessRuleScopeOutput {
+	return o
+}
+
+func (o GetAccessRuleScopeOutput) ToGetAccessRuleScopeOutputWithContext(ctx context.Context) GetAccessRuleScopeOutput {
+	return o
+}
+
+// The contact email address of the user.
+func (o GetAccessRuleScopeOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleScope) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Identifier
+func (o GetAccessRuleScopeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleScope) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The scope of the rule.
+// Available values: "user", "organization".
+func (o GetAccessRuleScopeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRuleScope) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAccessRulesConfiguration struct {
+	// The target to search in existing rules.
+	// Available values: "ip", "ipRange", "asn", "country".
+	Target *string `pulumi:"target"`
+	// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+	// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
+	Value *string `pulumi:"value"`
+}
+
+// GetAccessRulesConfigurationInput is an input type that accepts GetAccessRulesConfigurationArgs and GetAccessRulesConfigurationOutput values.
+// You can construct a concrete instance of `GetAccessRulesConfigurationInput` via:
+//
+//	GetAccessRulesConfigurationArgs{...}
+type GetAccessRulesConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAccessRulesConfigurationOutput() GetAccessRulesConfigurationOutput
+	ToGetAccessRulesConfigurationOutputWithContext(context.Context) GetAccessRulesConfigurationOutput
+}
+
+type GetAccessRulesConfigurationArgs struct {
+	// The target to search in existing rules.
+	// Available values: "ip", "ipRange", "asn", "country".
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+	// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetAccessRulesConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesConfiguration)(nil)).Elem()
+}
+
+func (i GetAccessRulesConfigurationArgs) ToGetAccessRulesConfigurationOutput() GetAccessRulesConfigurationOutput {
+	return i.ToGetAccessRulesConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAccessRulesConfigurationArgs) ToGetAccessRulesConfigurationOutputWithContext(ctx context.Context) GetAccessRulesConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesConfigurationOutput)
+}
+
+func (i GetAccessRulesConfigurationArgs) ToGetAccessRulesConfigurationPtrOutput() GetAccessRulesConfigurationPtrOutput {
+	return i.ToGetAccessRulesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i GetAccessRulesConfigurationArgs) ToGetAccessRulesConfigurationPtrOutputWithContext(ctx context.Context) GetAccessRulesConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesConfigurationOutput).ToGetAccessRulesConfigurationPtrOutputWithContext(ctx)
+}
+
+// GetAccessRulesConfigurationPtrInput is an input type that accepts GetAccessRulesConfigurationArgs, GetAccessRulesConfigurationPtr and GetAccessRulesConfigurationPtrOutput values.
+// You can construct a concrete instance of `GetAccessRulesConfigurationPtrInput` via:
+//
+//	        GetAccessRulesConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAccessRulesConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToGetAccessRulesConfigurationPtrOutput() GetAccessRulesConfigurationPtrOutput
+	ToGetAccessRulesConfigurationPtrOutputWithContext(context.Context) GetAccessRulesConfigurationPtrOutput
+}
+
+type getAccessRulesConfigurationPtrType GetAccessRulesConfigurationArgs
+
+func GetAccessRulesConfigurationPtr(v *GetAccessRulesConfigurationArgs) GetAccessRulesConfigurationPtrInput {
+	return (*getAccessRulesConfigurationPtrType)(v)
+}
+
+func (*getAccessRulesConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAccessRulesConfiguration)(nil)).Elem()
+}
+
+func (i *getAccessRulesConfigurationPtrType) ToGetAccessRulesConfigurationPtrOutput() GetAccessRulesConfigurationPtrOutput {
+	return i.ToGetAccessRulesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *getAccessRulesConfigurationPtrType) ToGetAccessRulesConfigurationPtrOutputWithContext(ctx context.Context) GetAccessRulesConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesConfigurationPtrOutput)
+}
+
+type GetAccessRulesConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessRulesConfigurationOutput) ToGetAccessRulesConfigurationOutput() GetAccessRulesConfigurationOutput {
+	return o
+}
+
+func (o GetAccessRulesConfigurationOutput) ToGetAccessRulesConfigurationOutputWithContext(ctx context.Context) GetAccessRulesConfigurationOutput {
+	return o
+}
+
+func (o GetAccessRulesConfigurationOutput) ToGetAccessRulesConfigurationPtrOutput() GetAccessRulesConfigurationPtrOutput {
+	return o.ToGetAccessRulesConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o GetAccessRulesConfigurationOutput) ToGetAccessRulesConfigurationPtrOutputWithContext(ctx context.Context) GetAccessRulesConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAccessRulesConfiguration) *GetAccessRulesConfiguration {
+		return &v
+	}).(GetAccessRulesConfigurationPtrOutput)
+}
+
+// The target to search in existing rules.
+// Available values: "ip", "ipRange", "asn", "country".
+func (o GetAccessRulesConfigurationOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRulesConfiguration) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
+func (o GetAccessRulesConfigurationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccessRulesConfiguration) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetAccessRulesConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAccessRulesConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessRulesConfigurationPtrOutput) ToGetAccessRulesConfigurationPtrOutput() GetAccessRulesConfigurationPtrOutput {
+	return o
+}
+
+func (o GetAccessRulesConfigurationPtrOutput) ToGetAccessRulesConfigurationPtrOutputWithContext(ctx context.Context) GetAccessRulesConfigurationPtrOutput {
+	return o
+}
+
+func (o GetAccessRulesConfigurationPtrOutput) Elem() GetAccessRulesConfigurationOutput {
+	return o.ApplyT(func(v *GetAccessRulesConfiguration) GetAccessRulesConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret GetAccessRulesConfiguration
+		return ret
+	}).(GetAccessRulesConfigurationOutput)
+}
+
+// The target to search in existing rules.
+// Available values: "ip", "ipRange", "asn", "country".
+func (o GetAccessRulesConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRulesConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
+func (o GetAccessRulesConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAccessRulesConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetAccessRulesResult struct {
+	// The available actions that a rule can apply to a matched request.
+	AllowedModes []string `pulumi:"allowedModes"`
+	// The rule configuration.
+	Configuration GetAccessRulesResultConfiguration `pulumi:"configuration"`
+	// The timestamp of when the rule was created.
+	CreatedOn string `pulumi:"createdOn"`
+	// The unique identifier of the IP Access rule.
+	Id string `pulumi:"id"`
+	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+	Mode string `pulumi:"mode"`
+	// The timestamp of when the rule was last modified.
+	ModifiedOn string `pulumi:"modifiedOn"`
+	// An informative summary of the rule, typically used as a reminder or explanation.
+	Notes string `pulumi:"notes"`
+	// All zones owned by the user will have the rule applied.
+	Scope GetAccessRulesResultScope `pulumi:"scope"`
+}
+
+// GetAccessRulesResultInput is an input type that accepts GetAccessRulesResultArgs and GetAccessRulesResultOutput values.
+// You can construct a concrete instance of `GetAccessRulesResultInput` via:
+//
+//	GetAccessRulesResultArgs{...}
+type GetAccessRulesResultInput interface {
+	pulumi.Input
+
+	ToGetAccessRulesResultOutput() GetAccessRulesResultOutput
+	ToGetAccessRulesResultOutputWithContext(context.Context) GetAccessRulesResultOutput
+}
+
+type GetAccessRulesResultArgs struct {
+	// The available actions that a rule can apply to a matched request.
+	AllowedModes pulumi.StringArrayInput `pulumi:"allowedModes"`
+	// The rule configuration.
+	Configuration GetAccessRulesResultConfigurationInput `pulumi:"configuration"`
+	// The timestamp of when the rule was created.
+	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
+	// The unique identifier of the IP Access rule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The action to apply to a matched request.
+	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The timestamp of when the rule was last modified.
+	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
+	// An informative summary of the rule, typically used as a reminder or explanation.
+	Notes pulumi.StringInput `pulumi:"notes"`
+	// All zones owned by the user will have the rule applied.
+	Scope GetAccessRulesResultScopeInput `pulumi:"scope"`
+}
+
+func (GetAccessRulesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesResult)(nil)).Elem()
+}
+
+func (i GetAccessRulesResultArgs) ToGetAccessRulesResultOutput() GetAccessRulesResultOutput {
+	return i.ToGetAccessRulesResultOutputWithContext(context.Background())
+}
+
+func (i GetAccessRulesResultArgs) ToGetAccessRulesResultOutputWithContext(ctx context.Context) GetAccessRulesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesResultOutput)
+}
+
+// GetAccessRulesResultArrayInput is an input type that accepts GetAccessRulesResultArray and GetAccessRulesResultArrayOutput values.
+// You can construct a concrete instance of `GetAccessRulesResultArrayInput` via:
+//
+//	GetAccessRulesResultArray{ GetAccessRulesResultArgs{...} }
+type GetAccessRulesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetAccessRulesResultArrayOutput() GetAccessRulesResultArrayOutput
+	ToGetAccessRulesResultArrayOutputWithContext(context.Context) GetAccessRulesResultArrayOutput
+}
+
+type GetAccessRulesResultArray []GetAccessRulesResultInput
+
+func (GetAccessRulesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessRulesResult)(nil)).Elem()
+}
+
+func (i GetAccessRulesResultArray) ToGetAccessRulesResultArrayOutput() GetAccessRulesResultArrayOutput {
+	return i.ToGetAccessRulesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccessRulesResultArray) ToGetAccessRulesResultArrayOutputWithContext(ctx context.Context) GetAccessRulesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesResultArrayOutput)
+}
+
+type GetAccessRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesResult)(nil)).Elem()
+}
+
+func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutput() GetAccessRulesResultOutput {
+	return o
+}
+
+func (o GetAccessRulesResultOutput) ToGetAccessRulesResultOutputWithContext(ctx context.Context) GetAccessRulesResultOutput {
+	return o
+}
+
+// The available actions that a rule can apply to a matched request.
+func (o GetAccessRulesResultOutput) AllowedModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) []string { return v.AllowedModes }).(pulumi.StringArrayOutput)
+}
+
+// The rule configuration.
+func (o GetAccessRulesResultOutput) Configuration() GetAccessRulesResultConfigurationOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) GetAccessRulesResultConfiguration { return v.Configuration }).(GetAccessRulesResultConfigurationOutput)
+}
+
+// The timestamp of when the rule was created.
+func (o GetAccessRulesResultOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the IP Access rule.
+func (o GetAccessRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The action to apply to a matched request.
+// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
+func (o GetAccessRulesResultOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The timestamp of when the rule was last modified.
+func (o GetAccessRulesResultOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// An informative summary of the rule, typically used as a reminder or explanation.
+func (o GetAccessRulesResultOutput) Notes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) string { return v.Notes }).(pulumi.StringOutput)
+}
+
+// All zones owned by the user will have the rule applied.
+func (o GetAccessRulesResultOutput) Scope() GetAccessRulesResultScopeOutput {
+	return o.ApplyT(func(v GetAccessRulesResult) GetAccessRulesResultScope { return v.Scope }).(GetAccessRulesResultScopeOutput)
+}
+
+type GetAccessRulesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccessRulesResult)(nil)).Elem()
+}
+
+func (o GetAccessRulesResultArrayOutput) ToGetAccessRulesResultArrayOutput() GetAccessRulesResultArrayOutput {
+	return o
+}
+
+func (o GetAccessRulesResultArrayOutput) ToGetAccessRulesResultArrayOutputWithContext(ctx context.Context) GetAccessRulesResultArrayOutput {
+	return o
+}
+
+func (o GetAccessRulesResultArrayOutput) Index(i pulumi.IntInput) GetAccessRulesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccessRulesResult {
+		return vs[0].([]GetAccessRulesResult)[vs[1].(int)]
+	}).(GetAccessRulesResultOutput)
+}
+
+type GetAccessRulesResultConfiguration struct {
+	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+	// Available values: "ip".
+	Target string `pulumi:"target"`
+	// The IP address to match. This address will be compared to the IP address of incoming requests.
+	Value string `pulumi:"value"`
+}
+
+// GetAccessRulesResultConfigurationInput is an input type that accepts GetAccessRulesResultConfigurationArgs and GetAccessRulesResultConfigurationOutput values.
+// You can construct a concrete instance of `GetAccessRulesResultConfigurationInput` via:
+//
+//	GetAccessRulesResultConfigurationArgs{...}
+type GetAccessRulesResultConfigurationInput interface {
+	pulumi.Input
+
+	ToGetAccessRulesResultConfigurationOutput() GetAccessRulesResultConfigurationOutput
+	ToGetAccessRulesResultConfigurationOutputWithContext(context.Context) GetAccessRulesResultConfigurationOutput
+}
+
+type GetAccessRulesResultConfigurationArgs struct {
+	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+	// Available values: "ip".
+	Target pulumi.StringInput `pulumi:"target"`
+	// The IP address to match. This address will be compared to the IP address of incoming requests.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAccessRulesResultConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesResultConfiguration)(nil)).Elem()
+}
+
+func (i GetAccessRulesResultConfigurationArgs) ToGetAccessRulesResultConfigurationOutput() GetAccessRulesResultConfigurationOutput {
+	return i.ToGetAccessRulesResultConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetAccessRulesResultConfigurationArgs) ToGetAccessRulesResultConfigurationOutputWithContext(ctx context.Context) GetAccessRulesResultConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccessRulesResultConfigurationOutput)
+}
+
+type GetAccessRulesResultConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetAccessRulesResultConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccessRulesResultConfiguration)(nil)).Elem()
+}
+
+func (o GetAccessRulesResultConfigurationOutput) ToGetAccessRulesResultConfigurationOutput() GetAccessRulesResultConfigurationOutput {
+	return o
+}
+
+func (o GetAccessRulesResultConfigurationOutput) ToGetAccessRulesResultConfigurationOutputWithContext(ctx context.Context) GetAccessRulesResultConfigurationOutput {
+	return o
+}
+
+// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
+// Available values: "ip".
+func (o GetAccessRulesResultConfigurationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResultConfiguration) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// The IP address to match. This address will be compared to the IP address of incoming requests.
+func (o GetAccessRulesResultConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccessRulesResultConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
 type GetAccessRulesResultScope struct {
 	// The contact email address of the user.
 	Email string `pulumi:"email"`
@@ -7061,6 +8001,8 @@ type GetAccountSettings struct {
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail string `pulumi:"abuseContactEmail"`
 	// Specifies the default nameservers to be used for new zones added to this account.
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultNameservers string `pulumi:"defaultNameservers"`
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
@@ -7069,6 +8011,8 @@ type GetAccountSettings struct {
 	// nameservers by default.
 	//
 	// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+	//
+	// Deprecated: This attribute is deprecated.
 	UseAccountCustomNsByDefault bool `pulumi:"useAccountCustomNsByDefault"`
 }
 
@@ -7087,6 +8031,8 @@ type GetAccountSettingsArgs struct {
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail pulumi.StringInput `pulumi:"abuseContactEmail"`
 	// Specifies the default nameservers to be used for new zones added to this account.
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultNameservers pulumi.StringInput `pulumi:"defaultNameservers"`
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
@@ -7095,6 +8041,8 @@ type GetAccountSettingsArgs struct {
 	// nameservers by default.
 	//
 	// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+	//
+	// Deprecated: This attribute is deprecated.
 	UseAccountCustomNsByDefault pulumi.BoolInput `pulumi:"useAccountCustomNsByDefault"`
 }
 
@@ -7130,6 +8078,8 @@ func (o GetAccountSettingsOutput) AbuseContactEmail() pulumi.StringOutput {
 }
 
 // Specifies the default nameservers to be used for new zones added to this account.
+//
+// Deprecated: This attribute is deprecated.
 func (o GetAccountSettingsOutput) DefaultNameservers() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountSettings) string { return v.DefaultNameservers }).(pulumi.StringOutput)
 }
@@ -7144,6 +8094,8 @@ func (o GetAccountSettingsOutput) EnforceTwofactor() pulumi.BoolOutput {
 // nameservers by default.
 //
 // Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+//
+// Deprecated: This attribute is deprecated.
 func (o GetAccountSettingsOutput) UseAccountCustomNsByDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAccountSettings) bool { return v.UseAccountCustomNsByDefault }).(pulumi.BoolOutput)
 }
@@ -8528,6 +9480,8 @@ type GetAccountsResultSettings struct {
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail string `pulumi:"abuseContactEmail"`
 	// Specifies the default nameservers to be used for new zones added to this account.
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultNameservers string `pulumi:"defaultNameservers"`
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
@@ -8536,6 +9490,8 @@ type GetAccountsResultSettings struct {
 	// nameservers by default.
 	//
 	// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+	//
+	// Deprecated: This attribute is deprecated.
 	UseAccountCustomNsByDefault bool `pulumi:"useAccountCustomNsByDefault"`
 }
 
@@ -8554,6 +9510,8 @@ type GetAccountsResultSettingsArgs struct {
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail pulumi.StringInput `pulumi:"abuseContactEmail"`
 	// Specifies the default nameservers to be used for new zones added to this account.
+	//
+	// Deprecated: This attribute is deprecated.
 	DefaultNameservers pulumi.StringInput `pulumi:"defaultNameservers"`
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
@@ -8562,6 +9520,8 @@ type GetAccountsResultSettingsArgs struct {
 	// nameservers by default.
 	//
 	// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+	//
+	// Deprecated: This attribute is deprecated.
 	UseAccountCustomNsByDefault pulumi.BoolInput `pulumi:"useAccountCustomNsByDefault"`
 }
 
@@ -8597,6 +9557,8 @@ func (o GetAccountsResultSettingsOutput) AbuseContactEmail() pulumi.StringOutput
 }
 
 // Specifies the default nameservers to be used for new zones added to this account.
+//
+// Deprecated: This attribute is deprecated.
 func (o GetAccountsResultSettingsOutput) DefaultNameservers() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsResultSettings) string { return v.DefaultNameservers }).(pulumi.StringOutput)
 }
@@ -8611,6 +9573,8 @@ func (o GetAccountsResultSettingsOutput) EnforceTwofactor() pulumi.BoolOutput {
 // nameservers by default.
 //
 // Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
+//
+// Deprecated: This attribute is deprecated.
 func (o GetAccountsResultSettingsOutput) UseAccountCustomNsByDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAccountsResultSettings) bool { return v.UseAccountCustomNsByDefault }).(pulumi.BoolOutput)
 }
@@ -17414,7 +18378,7 @@ type GetDnsFirewallsResult struct {
 	DnsFirewallIps       []string `pulumi:"dnsFirewallIps"`
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback bool `pulumi:"ecsFallback"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
 	MaximumCacheTtl float64 `pulumi:"maximumCacheTtl"`
@@ -17452,7 +18416,7 @@ type GetDnsFirewallsResultArgs struct {
 	DnsFirewallIps       pulumi.StringArrayInput `pulumi:"dnsFirewallIps"`
 	// Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent
 	EcsFallback pulumi.BoolInput `pulumi:"ecsFallback"`
-	// Identifier
+	// Identifier.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Maximum DNS cache TTL This setting sets an upper bound on DNS TTLs for purposes of caching between DNS Firewall and the upstream servers. Higher TTLs will be decreased to the maximum defined here for caching purposes.
 	MaximumCacheTtl pulumi.Float64Input `pulumi:"maximumCacheTtl"`
@@ -17541,7 +18505,7 @@ func (o GetDnsFirewallsResultOutput) EcsFallback() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDnsFirewallsResult) bool { return v.EcsFallback }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o GetDnsFirewallsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsFirewallsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -19923,7 +20887,7 @@ type GetDnsRecordsResult struct {
 	CreatedOn string `pulumi:"createdOn"`
 	// Components of a CAA record.
 	Data GetDnsRecordsResultData `pulumi:"data"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Extra Cloudflare-specific information about the record.
 	Meta string `pulumi:"meta"`
@@ -19972,7 +20936,7 @@ type GetDnsRecordsResultArgs struct {
 	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
 	// Components of a CAA record.
 	Data GetDnsRecordsResultDataInput `pulumi:"data"`
-	// Identifier
+	// Identifier.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Extra Cloudflare-specific information about the record.
 	Meta pulumi.StringInput `pulumi:"meta"`
@@ -20075,7 +21039,7 @@ func (o GetDnsRecordsResultOutput) Data() GetDnsRecordsResultDataOutput {
 	return o.ApplyT(func(v GetDnsRecordsResult) GetDnsRecordsResultData { return v.Data }).(GetDnsRecordsResultDataOutput)
 }
 
-// Identifier
+// Identifier.
 func (o GetDnsRecordsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDnsRecordsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -21373,6 +22337,8 @@ type GetEmailRoutingAddressesResult struct {
 	// The date and time the destination address was last modified.
 	Modified string `pulumi:"modified"`
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag string `pulumi:"tag"`
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified string `pulumi:"verified"`
@@ -21399,6 +22365,8 @@ type GetEmailRoutingAddressesResultArgs struct {
 	// The date and time the destination address was last modified.
 	Modified pulumi.StringInput `pulumi:"modified"`
 	// Destination address tag. (Deprecated, replaced by destination address identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringInput `pulumi:"tag"`
 	// The date and time the destination address has been verified. Null means not verified yet.
 	Verified pulumi.StringInput `pulumi:"verified"`
@@ -21476,6 +22444,8 @@ func (o GetEmailRoutingAddressesResultOutput) Modified() pulumi.StringOutput {
 }
 
 // Destination address tag. (Deprecated, replaced by destination address identifier)
+//
+// Deprecated: This attribute is deprecated.
 func (o GetEmailRoutingAddressesResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEmailRoutingAddressesResult) string { return v.Tag }).(pulumi.StringOutput)
 }
@@ -22801,6 +23771,8 @@ type GetEmailRoutingRulesResult struct {
 	// Priority of the routing rule.
 	Priority float64 `pulumi:"priority"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag string `pulumi:"tag"`
 }
 
@@ -22829,6 +23801,8 @@ type GetEmailRoutingRulesResultArgs struct {
 	// Priority of the routing rule.
 	Priority pulumi.Float64Input `pulumi:"priority"`
 	// Routing rule tag. (Deprecated, replaced by routing rule identifier)
+	//
+	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringInput `pulumi:"tag"`
 }
 
@@ -22914,6 +23888,8 @@ func (o GetEmailRoutingRulesResultOutput) Priority() pulumi.Float64Output {
 }
 
 // Routing rule tag. (Deprecated, replaced by routing rule identifier)
+//
+// Deprecated: This attribute is deprecated.
 func (o GetEmailRoutingRulesResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEmailRoutingRulesResult) string { return v.Tag }).(pulumi.StringOutput)
 }
@@ -23516,11 +24492,12 @@ func (o GetEmailSecurityBlockSendersResultArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetEmailSecurityImpersonationRegistriesResult struct {
-	Comments                string `pulumi:"comments"`
-	CreatedAt               string `pulumi:"createdAt"`
-	DirectoryId             int    `pulumi:"directoryId"`
-	DirectoryNodeId         int    `pulumi:"directoryNodeId"`
-	Email                   string `pulumi:"email"`
+	Comments        string `pulumi:"comments"`
+	CreatedAt       string `pulumi:"createdAt"`
+	DirectoryId     int    `pulumi:"directoryId"`
+	DirectoryNodeId int    `pulumi:"directoryNodeId"`
+	Email           string `pulumi:"email"`
+	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId string `pulumi:"externalDirectoryNodeId"`
 	Id                      int    `pulumi:"id"`
 	IsEmailRegex            bool   `pulumi:"isEmailRegex"`
@@ -23541,11 +24518,12 @@ type GetEmailSecurityImpersonationRegistriesResultInput interface {
 }
 
 type GetEmailSecurityImpersonationRegistriesResultArgs struct {
-	Comments                pulumi.StringInput `pulumi:"comments"`
-	CreatedAt               pulumi.StringInput `pulumi:"createdAt"`
-	DirectoryId             pulumi.IntInput    `pulumi:"directoryId"`
-	DirectoryNodeId         pulumi.IntInput    `pulumi:"directoryNodeId"`
-	Email                   pulumi.StringInput `pulumi:"email"`
+	Comments        pulumi.StringInput `pulumi:"comments"`
+	CreatedAt       pulumi.StringInput `pulumi:"createdAt"`
+	DirectoryId     pulumi.IntInput    `pulumi:"directoryId"`
+	DirectoryNodeId pulumi.IntInput    `pulumi:"directoryNodeId"`
+	Email           pulumi.StringInput `pulumi:"email"`
+	// Deprecated: This attribute is deprecated.
 	ExternalDirectoryNodeId pulumi.StringInput `pulumi:"externalDirectoryNodeId"`
 	Id                      pulumi.IntInput    `pulumi:"id"`
 	IsEmailRegex            pulumi.BoolInput   `pulumi:"isEmailRegex"`
@@ -23625,6 +24603,7 @@ func (o GetEmailSecurityImpersonationRegistriesResultOutput) Email() pulumi.Stri
 	return o.ApplyT(func(v GetEmailSecurityImpersonationRegistriesResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// Deprecated: This attribute is deprecated.
 func (o GetEmailSecurityImpersonationRegistriesResultOutput) ExternalDirectoryNodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEmailSecurityImpersonationRegistriesResult) string { return v.ExternalDirectoryNodeId }).(pulumi.StringOutput)
 }
@@ -31281,7 +32260,7 @@ type GetLogpushDatasetJobOutputOptions struct {
 	RecordPrefix string `pulumi:"recordPrefix"`
 	// String to be appended after each record.
 	RecordSuffix string `pulumi:"recordSuffix"`
-	// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate string `pulumi:"recordTemplate"`
 	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate float64 `pulumi:"sampleRate"`
@@ -31321,7 +32300,7 @@ type GetLogpushDatasetJobOutputOptionsArgs struct {
 	RecordPrefix pulumi.StringInput `pulumi:"recordPrefix"`
 	// String to be appended after each record.
 	RecordSuffix pulumi.StringInput `pulumi:"recordSuffix"`
-	// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate pulumi.StringInput `pulumi:"recordTemplate"`
 	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate pulumi.Float64Input `pulumi:"sampleRate"`
@@ -31402,7 +32381,7 @@ func (o GetLogpushDatasetJobOutputOptionsOutput) RecordSuffix() pulumi.StringOut
 	return o.ApplyT(func(v GetLogpushDatasetJobOutputOptions) string { return v.RecordSuffix }).(pulumi.StringOutput)
 }
 
-// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 func (o GetLogpushDatasetJobOutputOptionsOutput) RecordTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushDatasetJobOutputOptions) string { return v.RecordTemplate }).(pulumi.StringOutput)
 }
@@ -31438,7 +32417,7 @@ type GetLogpushJobOutputOptions struct {
 	RecordPrefix string `pulumi:"recordPrefix"`
 	// String to be appended after each record.
 	RecordSuffix string `pulumi:"recordSuffix"`
-	// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate string `pulumi:"recordTemplate"`
 	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate float64 `pulumi:"sampleRate"`
@@ -31478,7 +32457,7 @@ type GetLogpushJobOutputOptionsArgs struct {
 	RecordPrefix pulumi.StringInput `pulumi:"recordPrefix"`
 	// String to be appended after each record.
 	RecordSuffix pulumi.StringInput `pulumi:"recordSuffix"`
-	// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate pulumi.StringInput `pulumi:"recordTemplate"`
 	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate pulumi.Float64Input `pulumi:"sampleRate"`
@@ -31559,7 +32538,7 @@ func (o GetLogpushJobOutputOptionsOutput) RecordSuffix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobOutputOptions) string { return v.RecordSuffix }).(pulumi.StringOutput)
 }
 
-// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 func (o GetLogpushJobOutputOptionsOutput) RecordTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobOutputOptions) string { return v.RecordTemplate }).(pulumi.StringOutput)
 }
@@ -31586,6 +32565,8 @@ type GetLogpushJobsResult struct {
 	ErrorMessage string `pulumi:"errorMessage"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
+	//
+	// Deprecated: This attribute is deprecated.
 	Frequency string `pulumi:"frequency"`
 	// Unique id of the job.
 	Id int `pulumi:"id"`
@@ -31597,6 +32578,8 @@ type GetLogpushJobsResult struct {
 	// Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
 	LastError string `pulumi:"lastError"`
 	// This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+	//
+	// Deprecated: This attribute is deprecated.
 	LogpullOptions string `pulumi:"logpullOptions"`
 	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
 	MaxUploadBytes int `pulumi:"maxUploadBytes"`
@@ -31632,6 +32615,8 @@ type GetLogpushJobsResultArgs struct {
 	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
+	//
+	// Deprecated: This attribute is deprecated.
 	Frequency pulumi.StringInput `pulumi:"frequency"`
 	// Unique id of the job.
 	Id pulumi.IntInput `pulumi:"id"`
@@ -31643,6 +32628,8 @@ type GetLogpushJobsResultArgs struct {
 	// Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
 	LastError pulumi.StringInput `pulumi:"lastError"`
 	// This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+	//
+	// Deprecated: This attribute is deprecated.
 	LogpullOptions pulumi.StringInput `pulumi:"logpullOptions"`
 	// The maximum uncompressed file size of a batch of logs. This setting value must be between `5 MB` and `1 GB`, or `0` to disable it. Note that you cannot set a minimum file size; this means that log files may be much smaller than this batch size. This parameter is not available for jobs with `edge` as its kind.
 	MaxUploadBytes pulumi.IntInput `pulumi:"maxUploadBytes"`
@@ -31729,6 +32716,8 @@ func (o GetLogpushJobsResultOutput) ErrorMessage() pulumi.StringOutput {
 
 // This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 // Available values: "high", "low".
+//
+// Deprecated: This attribute is deprecated.
 func (o GetLogpushJobsResultOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.Frequency }).(pulumi.StringOutput)
 }
@@ -31755,6 +32744,8 @@ func (o GetLogpushJobsResultOutput) LastError() pulumi.StringOutput {
 }
 
 // This field is deprecated. Use `outputOptions` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately.
+//
+// Deprecated: This attribute is deprecated.
 func (o GetLogpushJobsResultOutput) LogpullOptions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResult) string { return v.LogpullOptions }).(pulumi.StringOutput)
 }
@@ -31824,7 +32815,7 @@ type GetLogpushJobsResultOutputOptions struct {
 	RecordPrefix string `pulumi:"recordPrefix"`
 	// String to be appended after each record.
 	RecordSuffix string `pulumi:"recordSuffix"`
-	// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate string `pulumi:"recordTemplate"`
 	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate float64 `pulumi:"sampleRate"`
@@ -31864,7 +32855,7 @@ type GetLogpushJobsResultOutputOptionsArgs struct {
 	RecordPrefix pulumi.StringInput `pulumi:"recordPrefix"`
 	// String to be appended after each record.
 	RecordSuffix pulumi.StringInput `pulumi:"recordSuffix"`
-	// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+	// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 	RecordTemplate pulumi.StringInput `pulumi:"recordTemplate"`
 	// Floating number to specify sampling rate. Sampling is applied on top of filtering, and regardless of the current `sampleInterval` of the data.
 	SampleRate pulumi.Float64Input `pulumi:"sampleRate"`
@@ -31945,7 +32936,7 @@ func (o GetLogpushJobsResultOutputOptionsOutput) RecordSuffix() pulumi.StringOut
 	return o.ApplyT(func(v GetLogpushJobsResultOutputOptions) string { return v.RecordSuffix }).(pulumi.StringOutput)
 }
 
-// String to use as template for each record instead of the default comma-separated list. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
+// String to use as template for each record instead of the default json key value mapping. All fields used in the template must be present in `fieldNames` as well, otherwise they will end up as null. Format as a Go `text/template` without any standard functions, like conditionals, loops, sub-templates, etc.
 func (o GetLogpushJobsResultOutputOptionsOutput) RecordTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLogpushJobsResultOutputOptions) string { return v.RecordTemplate }).(pulumi.StringOutput)
 }
@@ -33625,7 +34616,7 @@ type GetMagicTransitSiteLansResult struct {
 	SiteId string `pulumi:"siteId"`
 	// If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
 	StaticAddressing GetMagicTransitSiteLansResultStaticAddressing `pulumi:"staticAddressing"`
-	// VLAN port number.
+	// VLAN ID. Use zero for untagged.
 	VlanTag int `pulumi:"vlanTag"`
 }
 
@@ -33653,7 +34644,7 @@ type GetMagicTransitSiteLansResultArgs struct {
 	SiteId pulumi.StringInput `pulumi:"siteId"`
 	// If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
 	StaticAddressing GetMagicTransitSiteLansResultStaticAddressingInput `pulumi:"staticAddressing"`
-	// VLAN port number.
+	// VLAN ID. Use zero for untagged.
 	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
 }
 
@@ -33748,7 +34739,7 @@ func (o GetMagicTransitSiteLansResultOutput) StaticAddressing() GetMagicTransitS
 	}).(GetMagicTransitSiteLansResultStaticAddressingOutput)
 }
 
-// VLAN port number.
+// VLAN ID. Use zero for untagged.
 func (o GetMagicTransitSiteLansResultOutput) VlanTag() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMagicTransitSiteLansResult) int { return v.VlanTag }).(pulumi.IntOutput)
 }
@@ -34361,7 +35352,7 @@ type GetMagicTransitSiteWansResult struct {
 	SiteId string `pulumi:"siteId"`
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
 	StaticAddressing GetMagicTransitSiteWansResultStaticAddressing `pulumi:"staticAddressing"`
-	// VLAN port number.
+	// VLAN ID. Use zero for untagged.
 	VlanTag int `pulumi:"vlanTag"`
 }
 
@@ -34390,7 +35381,7 @@ type GetMagicTransitSiteWansResultArgs struct {
 	SiteId pulumi.StringInput `pulumi:"siteId"`
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
 	StaticAddressing GetMagicTransitSiteWansResultStaticAddressingInput `pulumi:"staticAddressing"`
-	// VLAN port number.
+	// VLAN ID. Use zero for untagged.
 	VlanTag pulumi.IntInput `pulumi:"vlanTag"`
 }
 
@@ -34481,7 +35472,7 @@ func (o GetMagicTransitSiteWansResultOutput) StaticAddressing() GetMagicTransitS
 	}).(GetMagicTransitSiteWansResultStaticAddressingOutput)
 }
 
-// VLAN port number.
+// VLAN ID. Use zero for untagged.
 func (o GetMagicTransitSiteWansResultOutput) VlanTag() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMagicTransitSiteWansResult) int { return v.VlanTag }).(pulumi.IntOutput)
 }
@@ -46110,6 +47101,8 @@ func (o GetQueueProducerArrayOutput) Index(i pulumi.IntInput) GetQueueProducerOu
 type GetQueueSettings struct {
 	// Number of seconds to delay delivery of all messages to consumers.
 	DeliveryDelay float64 `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused bool `pulumi:"deliveryPaused"`
 	// Number of seconds after which an unconsumed message will be delayed.
 	MessageRetentionPeriod float64 `pulumi:"messageRetentionPeriod"`
 }
@@ -46128,6 +47121,8 @@ type GetQueueSettingsInput interface {
 type GetQueueSettingsArgs struct {
 	// Number of seconds to delay delivery of all messages to consumers.
 	DeliveryDelay pulumi.Float64Input `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused pulumi.BoolInput `pulumi:"deliveryPaused"`
 	// Number of seconds after which an unconsumed message will be delayed.
 	MessageRetentionPeriod pulumi.Float64Input `pulumi:"messageRetentionPeriod"`
 }
@@ -46161,6 +47156,11 @@ func (o GetQueueSettingsOutput) ToGetQueueSettingsOutputWithContext(ctx context.
 // Number of seconds to delay delivery of all messages to consumers.
 func (o GetQueueSettingsOutput) DeliveryDelay() pulumi.Float64Output {
 	return o.ApplyT(func(v GetQueueSettings) float64 { return v.DeliveryDelay }).(pulumi.Float64Output)
+}
+
+// Indicates if message delivery to consumers is currently paused.
+func (o GetQueueSettingsOutput) DeliveryPaused() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetQueueSettings) bool { return v.DeliveryPaused }).(pulumi.BoolOutput)
 }
 
 // Number of seconds after which an unconsumed message will be delayed.
@@ -46664,6 +47664,8 @@ func (o GetQueuesResultProducerArrayOutput) Index(i pulumi.IntInput) GetQueuesRe
 type GetQueuesResultSettings struct {
 	// Number of seconds to delay delivery of all messages to consumers.
 	DeliveryDelay float64 `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused bool `pulumi:"deliveryPaused"`
 	// Number of seconds after which an unconsumed message will be delayed.
 	MessageRetentionPeriod float64 `pulumi:"messageRetentionPeriod"`
 }
@@ -46682,6 +47684,8 @@ type GetQueuesResultSettingsInput interface {
 type GetQueuesResultSettingsArgs struct {
 	// Number of seconds to delay delivery of all messages to consumers.
 	DeliveryDelay pulumi.Float64Input `pulumi:"deliveryDelay"`
+	// Indicates if message delivery to consumers is currently paused.
+	DeliveryPaused pulumi.BoolInput `pulumi:"deliveryPaused"`
 	// Number of seconds after which an unconsumed message will be delayed.
 	MessageRetentionPeriod pulumi.Float64Input `pulumi:"messageRetentionPeriod"`
 }
@@ -46715,6 +47719,11 @@ func (o GetQueuesResultSettingsOutput) ToGetQueuesResultSettingsOutputWithContex
 // Number of seconds to delay delivery of all messages to consumers.
 func (o GetQueuesResultSettingsOutput) DeliveryDelay() pulumi.Float64Output {
 	return o.ApplyT(func(v GetQueuesResultSettings) float64 { return v.DeliveryDelay }).(pulumi.Float64Output)
+}
+
+// Indicates if message delivery to consumers is currently paused.
+func (o GetQueuesResultSettingsOutput) DeliveryPaused() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetQueuesResultSettings) bool { return v.DeliveryPaused }).(pulumi.BoolOutput)
 }
 
 // Number of seconds after which an unconsumed message will be delayed.
@@ -50679,16 +51688,12 @@ type GetRulesetRule struct {
 	Expression string `pulumi:"expression"`
 	// The unique ID of the rule.
 	Id string `pulumi:"id"`
-	// The timestamp of when the rule was last modified.
-	LastUpdated string `pulumi:"lastUpdated"`
 	// An object configuring the rule's logging behavior.
 	Logging GetRulesetRuleLogging `pulumi:"logging"`
 	// An object configuring the rule's ratelimit behavior.
 	Ratelimit GetRulesetRuleRatelimit `pulumi:"ratelimit"`
 	// The reference of the rule (the rule ID by default).
 	Ref string `pulumi:"ref"`
-	// The version of the rule.
-	Version string `pulumi:"version"`
 }
 
 // GetRulesetRuleInput is an input type that accepts GetRulesetRuleArgs and GetRulesetRuleOutput values.
@@ -50720,16 +51725,12 @@ type GetRulesetRuleArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// The unique ID of the rule.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The timestamp of when the rule was last modified.
-	LastUpdated pulumi.StringInput `pulumi:"lastUpdated"`
 	// An object configuring the rule's logging behavior.
 	Logging GetRulesetRuleLoggingInput `pulumi:"logging"`
 	// An object configuring the rule's ratelimit behavior.
 	Ratelimit GetRulesetRuleRatelimitInput `pulumi:"ratelimit"`
 	// The reference of the rule (the rule ID by default).
 	Ref pulumi.StringInput `pulumi:"ref"`
-	// The version of the rule.
-	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetRulesetRuleArgs) ElementType() reflect.Type {
@@ -50824,11 +51825,6 @@ func (o GetRulesetRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesetRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The timestamp of when the rule was last modified.
-func (o GetRulesetRuleOutput) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRule) string { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
 // An object configuring the rule's logging behavior.
 func (o GetRulesetRuleOutput) Logging() GetRulesetRuleLoggingOutput {
 	return o.ApplyT(func(v GetRulesetRule) GetRulesetRuleLogging { return v.Logging }).(GetRulesetRuleLoggingOutput)
@@ -50842,11 +51838,6 @@ func (o GetRulesetRuleOutput) Ratelimit() GetRulesetRuleRatelimitOutput {
 // The reference of the rule (the rule ID by default).
 func (o GetRulesetRuleOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesetRule) string { return v.Ref }).(pulumi.StringOutput)
-}
-
-// The version of the rule.
-func (o GetRulesetRuleOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRule) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GetRulesetRuleArrayOutput struct{ *pulumi.OutputState }
@@ -52155,546 +53146,18 @@ func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput)
 	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude) []string { return v.Lists }).(pulumi.StringArrayOutput)
 }
 
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude struct {
-	// Determines whether to include all query string parameters in the cache key.
-	All   bool     `pulumi:"all"`
-	Lists []string `pulumi:"lists"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs struct {
-	// Determines whether to include all query string parameters in the cache key.
-	All   pulumi.BoolInput        `pulumi:"all"`
-	Lists pulumi.StringArrayInput `pulumi:"lists"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
-	return o
-}
-
-// Determines whether to include all query string parameters in the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) All() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude) bool { return v.All }).(pulumi.BoolOutput)
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput) Lists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude) []string { return v.Lists }).(pulumi.StringArrayOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyUser struct {
-	// Use the user agent's device type in the cache key.
-	DeviceType bool `pulumi:"deviceType"`
-	// Use the user agents's country in the cache key.
-	Geo bool `pulumi:"geo"`
-	// Use the user agent's language in the cache key.
-	Lang bool `pulumi:"lang"`
-}
-
-// GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput` via:
-//
-//	GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs{...}
-type GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput
-	ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs struct {
-	// Use the user agent's device type in the cache key.
-	DeviceType pulumi.BoolInput `pulumi:"deviceType"`
-	// Use the user agents's country in the cache key.
-	Geo pulumi.BoolInput `pulumi:"geo"`
-	// Use the user agent's language in the cache key.
-	Lang pulumi.BoolInput `pulumi:"lang"`
-}
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyUser)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
-	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput)
-}
-
-type GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyUser)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyUserOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput {
-	return o
-}
-
-// Use the user agent's device type in the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) DeviceType() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyUser) bool { return v.DeviceType }).(pulumi.BoolOutput)
-}
-
-// Use the user agents's country in the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) Geo() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyUser) bool { return v.Geo }).(pulumi.BoolOutput)
-}
-
-// Use the user agent's language in the cache key.
-func (o GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput) Lang() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyUser) bool { return v.Lang }).(pulumi.BoolOutput)
-}
-
-type GetRulesetRuleActionParametersCacheReserve struct {
-	// Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
-	Eligible bool `pulumi:"eligible"`
-	// The minimum file size eligible for store in cache reserve.
-	MinimumFileSize int `pulumi:"minimumFileSize"`
-}
-
-// GetRulesetRuleActionParametersCacheReserveInput is an input type that accepts GetRulesetRuleActionParametersCacheReserveArgs and GetRulesetRuleActionParametersCacheReserveOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheReserveInput` via:
-//
-//	GetRulesetRuleActionParametersCacheReserveArgs{...}
-type GetRulesetRuleActionParametersCacheReserveInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCacheReserveOutput() GetRulesetRuleActionParametersCacheReserveOutput
-	ToGetRulesetRuleActionParametersCacheReserveOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheReserveOutput
-}
-
-type GetRulesetRuleActionParametersCacheReserveArgs struct {
-	// Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
-	Eligible pulumi.BoolInput `pulumi:"eligible"`
-	// The minimum file size eligible for store in cache reserve.
-	MinimumFileSize pulumi.IntInput `pulumi:"minimumFileSize"`
-}
-
-func (GetRulesetRuleActionParametersCacheReserveArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheReserve)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCacheReserveArgs) ToGetRulesetRuleActionParametersCacheReserveOutput() GetRulesetRuleActionParametersCacheReserveOutput {
-	return i.ToGetRulesetRuleActionParametersCacheReserveOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCacheReserveArgs) ToGetRulesetRuleActionParametersCacheReserveOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheReserveOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheReserveOutput)
-}
-
-type GetRulesetRuleActionParametersCacheReserveOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCacheReserveOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheReserve)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCacheReserveOutput) ToGetRulesetRuleActionParametersCacheReserveOutput() GetRulesetRuleActionParametersCacheReserveOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCacheReserveOutput) ToGetRulesetRuleActionParametersCacheReserveOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheReserveOutput {
-	return o
-}
-
-// Determines whether cache reserve is enabled. If this is true and a request meets eligibility criteria, Cloudflare will write the resource to cache reserve.
-func (o GetRulesetRuleActionParametersCacheReserveOutput) Eligible() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheReserve) bool { return v.Eligible }).(pulumi.BoolOutput)
-}
-
-// The minimum file size eligible for store in cache reserve.
-func (o GetRulesetRuleActionParametersCacheReserveOutput) MinimumFileSize() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheReserve) int { return v.MinimumFileSize }).(pulumi.IntOutput)
-}
-
-type GetRulesetRuleActionParametersCookieField struct {
-	// The name of the field.
-	Name string `pulumi:"name"`
-}
-
-// GetRulesetRuleActionParametersCookieFieldInput is an input type that accepts GetRulesetRuleActionParametersCookieFieldArgs and GetRulesetRuleActionParametersCookieFieldOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCookieFieldInput` via:
-//
-//	GetRulesetRuleActionParametersCookieFieldArgs{...}
-type GetRulesetRuleActionParametersCookieFieldInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCookieFieldOutput() GetRulesetRuleActionParametersCookieFieldOutput
-	ToGetRulesetRuleActionParametersCookieFieldOutputWithContext(context.Context) GetRulesetRuleActionParametersCookieFieldOutput
-}
-
-type GetRulesetRuleActionParametersCookieFieldArgs struct {
-	// The name of the field.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetRulesetRuleActionParametersCookieFieldArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCookieField)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCookieFieldArgs) ToGetRulesetRuleActionParametersCookieFieldOutput() GetRulesetRuleActionParametersCookieFieldOutput {
-	return i.ToGetRulesetRuleActionParametersCookieFieldOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCookieFieldArgs) ToGetRulesetRuleActionParametersCookieFieldOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCookieFieldOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCookieFieldOutput)
-}
-
-// GetRulesetRuleActionParametersCookieFieldArrayInput is an input type that accepts GetRulesetRuleActionParametersCookieFieldArray and GetRulesetRuleActionParametersCookieFieldArrayOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersCookieFieldArrayInput` via:
-//
-//	GetRulesetRuleActionParametersCookieFieldArray{ GetRulesetRuleActionParametersCookieFieldArgs{...} }
-type GetRulesetRuleActionParametersCookieFieldArrayInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersCookieFieldArrayOutput() GetRulesetRuleActionParametersCookieFieldArrayOutput
-	ToGetRulesetRuleActionParametersCookieFieldArrayOutputWithContext(context.Context) GetRulesetRuleActionParametersCookieFieldArrayOutput
-}
-
-type GetRulesetRuleActionParametersCookieFieldArray []GetRulesetRuleActionParametersCookieFieldInput
-
-func (GetRulesetRuleActionParametersCookieFieldArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesetRuleActionParametersCookieField)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersCookieFieldArray) ToGetRulesetRuleActionParametersCookieFieldArrayOutput() GetRulesetRuleActionParametersCookieFieldArrayOutput {
-	return i.ToGetRulesetRuleActionParametersCookieFieldArrayOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersCookieFieldArray) ToGetRulesetRuleActionParametersCookieFieldArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCookieFieldArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCookieFieldArrayOutput)
-}
-
-type GetRulesetRuleActionParametersCookieFieldOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCookieFieldOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersCookieField)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCookieFieldOutput) ToGetRulesetRuleActionParametersCookieFieldOutput() GetRulesetRuleActionParametersCookieFieldOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCookieFieldOutput) ToGetRulesetRuleActionParametersCookieFieldOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCookieFieldOutput {
-	return o
-}
-
-// The name of the field.
-func (o GetRulesetRuleActionParametersCookieFieldOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersCookieField) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetRulesetRuleActionParametersCookieFieldArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersCookieFieldArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesetRuleActionParametersCookieField)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersCookieFieldArrayOutput) ToGetRulesetRuleActionParametersCookieFieldArrayOutput() GetRulesetRuleActionParametersCookieFieldArrayOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCookieFieldArrayOutput) ToGetRulesetRuleActionParametersCookieFieldArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCookieFieldArrayOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersCookieFieldArrayOutput) Index(i pulumi.IntInput) GetRulesetRuleActionParametersCookieFieldOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesetRuleActionParametersCookieField {
-		return vs[0].([]GetRulesetRuleActionParametersCookieField)[vs[1].(int)]
-	}).(GetRulesetRuleActionParametersCookieFieldOutput)
-}
-
-type GetRulesetRuleActionParametersEdgeTtl struct {
-	// The TTL (in seconds) if you choose overrideOrigin mode.
-	Default int `pulumi:"default"`
-	// edge ttl options
-	// Available values: "respect*origin", "bypass*by*default", "override*origin".
-	Mode string `pulumi:"mode"`
-	// List of single status codes, or status code ranges to apply the selected mode
-	StatusCodeTtls []GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl `pulumi:"statusCodeTtls"`
-}
-
-// GetRulesetRuleActionParametersEdgeTtlInput is an input type that accepts GetRulesetRuleActionParametersEdgeTtlArgs and GetRulesetRuleActionParametersEdgeTtlOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersEdgeTtlInput` via:
-//
-//	GetRulesetRuleActionParametersEdgeTtlArgs{...}
-type GetRulesetRuleActionParametersEdgeTtlInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersEdgeTtlOutput() GetRulesetRuleActionParametersEdgeTtlOutput
-	ToGetRulesetRuleActionParametersEdgeTtlOutputWithContext(context.Context) GetRulesetRuleActionParametersEdgeTtlOutput
-}
-
-type GetRulesetRuleActionParametersEdgeTtlArgs struct {
-	// The TTL (in seconds) if you choose overrideOrigin mode.
-	Default pulumi.IntInput `pulumi:"default"`
-	// edge ttl options
-	// Available values: "respect*origin", "bypass*by*default", "override*origin".
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// List of single status codes, or status code ranges to apply the selected mode
-	StatusCodeTtls GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput `pulumi:"statusCodeTtls"`
-}
-
-func (GetRulesetRuleActionParametersEdgeTtlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtl)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersEdgeTtlArgs) ToGetRulesetRuleActionParametersEdgeTtlOutput() GetRulesetRuleActionParametersEdgeTtlOutput {
-	return i.ToGetRulesetRuleActionParametersEdgeTtlOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersEdgeTtlArgs) ToGetRulesetRuleActionParametersEdgeTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersEdgeTtlOutput)
-}
-
-type GetRulesetRuleActionParametersEdgeTtlOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersEdgeTtlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtl)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlOutput) ToGetRulesetRuleActionParametersEdgeTtlOutput() GetRulesetRuleActionParametersEdgeTtlOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlOutput) ToGetRulesetRuleActionParametersEdgeTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlOutput {
-	return o
-}
-
-// The TTL (in seconds) if you choose overrideOrigin mode.
-func (o GetRulesetRuleActionParametersEdgeTtlOutput) Default() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtl) int { return v.Default }).(pulumi.IntOutput)
-}
-
-// edge ttl options
-// Available values: "respect*origin", "bypass*by*default", "override*origin".
-func (o GetRulesetRuleActionParametersEdgeTtlOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtl) string { return v.Mode }).(pulumi.StringOutput)
-}
-
-// List of single status codes, or status code ranges to apply the selected mode
-func (o GetRulesetRuleActionParametersEdgeTtlOutput) StatusCodeTtls() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtl) []GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
-		return v.StatusCodeTtls
-	}).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput)
-}
-
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl struct {
-	// The range of status codes used to apply the selected mode.
-	StatusCodeRange GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange `pulumi:"statusCodeRange"`
-	// Set the ttl for responses with this specific status code
-	StatusCodeValue int `pulumi:"statusCodeValue"`
-	// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
-	Value int `pulumi:"value"`
-}
-
-// GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput is an input type that accepts GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs and GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput` via:
-//
-//	GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...}
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput
-	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput
-}
-
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs struct {
-	// The range of status codes used to apply the selected mode.
-	StatusCodeRange GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput `pulumi:"statusCodeRange"`
-	// Set the ttl for responses with this specific status code
-	StatusCodeValue pulumi.IntInput `pulumi:"statusCodeValue"`
-	// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
-	Value pulumi.IntInput `pulumi:"value"`
-}
-
-func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
-	return i.ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput)
-}
-
-// GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput is an input type that accepts GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray and GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput` via:
-//
-//	GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{ GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{...} }
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput
-	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput
-}
-
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray []GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput
-
-func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return i.ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput)
-}
-
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
-	return o
-}
-
-// The range of status codes used to apply the selected mode.
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) StatusCodeRange() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
-		return v.StatusCodeRange
-	}).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
-}
-
-// Set the ttl for responses with this specific status code
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) StatusCodeValue() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl) int { return v.StatusCodeValue }).(pulumi.IntOutput)
-}
-
-// Time to cache a response (in seconds). A value of 0 is equivalent to setting the Cache-Control header with the value "no-cache". A value of -1 is equivalent to setting Cache-Control header with the value of "no-store".
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput) Value() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl) int { return v.Value }).(pulumi.IntOutput)
-}
-
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput) Index(i pulumi.IntInput) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
-		return vs[0].([]GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl)[vs[1].(int)]
-	}).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput)
-}
-
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange struct {
-	// response status code lower bound
-	From int `pulumi:"from"`
-	// response status code upper bound
-	To int `pulumi:"to"`
-}
-
-// GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput is an input type that accepts GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs and GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput values.
-// You can construct a concrete instance of `GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput` via:
-//
-//	GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{...}
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput interface {
-	pulumi.Input
-
-	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput
-	ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput
-}
-
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs struct {
-	// response status code lower bound
-	From pulumi.IntInput `pulumi:"from"`
-	// response status code upper bound
-	To pulumi.IntInput `pulumi:"to"`
-}
-
-func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
-}
-
-func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
-	return i.ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(context.Background())
-}
-
-func (i GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput)
-}
-
-type GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput struct{ *pulumi.OutputState }
-
-func (GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange)(nil)).Elem()
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput() GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
-	return o
-}
-
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) ToGetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput {
-	return o
-}
-
-// response status code lower bound
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) From() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange) int { return v.From }).(pulumi.IntOutput)
-}
-
-// response status code upper bound
-func (o GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput) To() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange) int { return v.To }).(pulumi.IntOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleConfigurationInput)(nil)).Elem(), GetAccessRuleConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleFilterInput)(nil)).Elem(), GetAccessRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleFilterPtrInput)(nil)).Elem(), GetAccessRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleFilterConfigurationInput)(nil)).Elem(), GetAccessRuleFilterConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleFilterConfigurationPtrInput)(nil)).Elem(), GetAccessRuleFilterConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRuleScopeInput)(nil)).Elem(), GetAccessRuleScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesConfigurationInput)(nil)).Elem(), GetAccessRulesConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesConfigurationPtrInput)(nil)).Elem(), GetAccessRulesConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesResultInput)(nil)).Elem(), GetAccessRulesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesResultArrayInput)(nil)).Elem(), GetAccessRulesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesResultConfigurationInput)(nil)).Elem(), GetAccessRulesResultConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesResultScopeInput)(nil)).Elem(), GetAccessRulesResultScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountApiTokenPermissionGroupsListResultInput)(nil)).Elem(), GetAccountApiTokenPermissionGroupsListResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountApiTokenPermissionGroupsListResultArrayInput)(nil)).Elem(), GetAccountApiTokenPermissionGroupsListResultArray{})
@@ -53392,15 +53855,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheReserveInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheReserveArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCookieFieldInput)(nil)).Elem(), GetRulesetRuleActionParametersCookieFieldArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCookieFieldArrayInput)(nil)).Elem(), GetRulesetRuleActionParametersCookieFieldArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlInput)(nil)).Elem(), GetRulesetRuleActionParametersEdgeTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlInput)(nil)).Elem(), GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayInput)(nil)).Elem(), GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeInput)(nil)).Elem(), GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs{})
+	pulumi.RegisterOutputType(GetAccessRuleConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAccessRuleFilterOutput{})
+	pulumi.RegisterOutputType(GetAccessRuleFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetAccessRuleFilterConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAccessRuleFilterConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetAccessRuleScopeOutput{})
+	pulumi.RegisterOutputType(GetAccessRulesConfigurationOutput{})
+	pulumi.RegisterOutputType(GetAccessRulesConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(GetAccessRulesResultOutput{})
+	pulumi.RegisterOutputType(GetAccessRulesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetAccessRulesResultConfigurationOutput{})
 	pulumi.RegisterOutputType(GetAccessRulesResultScopeOutput{})
 	pulumi.RegisterOutputType(GetAccountApiTokenPermissionGroupsListResultOutput{})
 	pulumi.RegisterOutputType(GetAccountApiTokenPermissionGroupsListResultArrayOutput{})
@@ -54098,13 +54563,4 @@ func init() {
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheReserveOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCookieFieldOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCookieFieldArrayOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersEdgeTtlOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlArrayOutput{})
-	pulumi.RegisterOutputType(GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeOutput{})
 }

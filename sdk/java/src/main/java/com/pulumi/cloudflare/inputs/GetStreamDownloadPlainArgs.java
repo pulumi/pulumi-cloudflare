@@ -14,14 +14,14 @@ public final class GetStreamDownloadPlainArgs extends com.pulumi.resources.Invok
     public static final GetStreamDownloadPlainArgs Empty = new GetStreamDownloadPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -69,7 +69,7 @@ public final class GetStreamDownloadPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

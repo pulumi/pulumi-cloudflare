@@ -46,7 +46,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string>;
     /**
      * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     public readonly action!: pulumi.Output<string>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -179,7 +179,7 @@ export interface ZeroTrustGatewayPolicyState {
     accountId?: pulumi.Input<string>;
     /**
      * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
@@ -247,7 +247,7 @@ export interface ZeroTrustGatewayPolicyArgs {
     accountId: pulumi.Input<string>;
     /**
      * The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
-     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine".
+     * Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
      */
     action: pulumi.Input<string>;
     /**

@@ -31,14 +31,14 @@ public final class GetZeroTrustAccessShortLivedCertificatePlainArgs extends com.
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="appId", required=true)
     private String appId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String appId() {
@@ -98,7 +98,7 @@ public final class GetZeroTrustAccessShortLivedCertificatePlainArgs extends com.
         }
 
         /**
-         * @param appId UUID
+         * @param appId UUID.
          * 
          * @return builder
          * 

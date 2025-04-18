@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkersRouteMessageSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -23,6 +24,13 @@ public final class WorkersRouteMessageArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.code);
     }
 
+    @Import(name="documentationUrl")
+    private @Nullable Output<String> documentationUrl;
+
+    public Optional<Output<String>> documentationUrl() {
+        return Optional.ofNullable(this.documentationUrl);
+    }
+
     @Import(name="message")
     private @Nullable Output<String> message;
 
@@ -30,11 +38,20 @@ public final class WorkersRouteMessageArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.message);
     }
 
+    @Import(name="source")
+    private @Nullable Output<WorkersRouteMessageSourceArgs> source;
+
+    public Optional<Output<WorkersRouteMessageSourceArgs>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     private WorkersRouteMessageArgs() {}
 
     private WorkersRouteMessageArgs(WorkersRouteMessageArgs $) {
         this.code = $.code;
+        this.documentationUrl = $.documentationUrl;
         this.message = $.message;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -64,6 +81,15 @@ public final class WorkersRouteMessageArgs extends com.pulumi.resources.Resource
             return code(Output.of(code));
         }
 
+        public Builder documentationUrl(@Nullable Output<String> documentationUrl) {
+            $.documentationUrl = documentationUrl;
+            return this;
+        }
+
+        public Builder documentationUrl(String documentationUrl) {
+            return documentationUrl(Output.of(documentationUrl));
+        }
+
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
@@ -71,6 +97,15 @@ public final class WorkersRouteMessageArgs extends com.pulumi.resources.Resource
 
         public Builder message(String message) {
             return message(Output.of(message));
+        }
+
+        public Builder source(@Nullable Output<WorkersRouteMessageSourceArgs> source) {
+            $.source = source;
+            return this;
+        }
+
+        public Builder source(WorkersRouteMessageSourceArgs source) {
+            return source(Output.of(source));
         }
 
         public WorkersRouteMessageArgs build() {

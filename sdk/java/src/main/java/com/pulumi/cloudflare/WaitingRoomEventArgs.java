@@ -213,6 +213,40 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.totalActiveUsers);
     }
 
+    /**
+     * If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * 
+     */
+    @Import(name="turnstileAction")
+    private @Nullable Output<String> turnstileAction;
+
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+     * 
+     */
+    public Optional<Output<String>> turnstileAction() {
+        return Optional.ofNullable(this.turnstileAction);
+    }
+
+    /**
+     * If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * 
+     */
+    @Import(name="turnstileMode")
+    private @Nullable Output<String> turnstileMode;
+
+    /**
+     * @return If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+     * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+     * 
+     */
+    public Optional<Output<String>> turnstileMode() {
+        return Optional.ofNullable(this.turnstileMode);
+    }
+
     @Import(name="waitingRoomId", required=true)
     private Output<String> waitingRoomId;
 
@@ -251,6 +285,8 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
         this.shuffleAtEventStart = $.shuffleAtEventStart;
         this.suspended = $.suspended;
         this.totalActiveUsers = $.totalActiveUsers;
+        this.turnstileAction = $.turnstileAction;
+        this.turnstileMode = $.turnstileMode;
         this.waitingRoomId = $.waitingRoomId;
         this.zoneId = $.zoneId;
     }
@@ -544,6 +580,52 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder totalActiveUsers(Integer totalActiveUsers) {
             return totalActiveUsers(Output.of(totalActiveUsers));
+        }
+
+        /**
+         * @param turnstileAction If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+         * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turnstileAction(@Nullable Output<String> turnstileAction) {
+            $.turnstileAction = turnstileAction;
+            return this;
+        }
+
+        /**
+         * @param turnstileAction If set, the event will override the waiting room&#39;s `turnstile_action` property while it is active. If null, the event will inherit it.
+         * Available values: &#34;log&#34;, &#34;infinite_queue&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turnstileAction(String turnstileAction) {
+            return turnstileAction(Output.of(turnstileAction));
+        }
+
+        /**
+         * @param turnstileMode If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+         * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turnstileMode(@Nullable Output<String> turnstileMode) {
+            $.turnstileMode = turnstileMode;
+            return this;
+        }
+
+        /**
+         * @param turnstileMode If set, the event will override the waiting room&#39;s `turnstile_mode` property while it is active. If null, the event will inherit it.
+         * Available values: &#34;off&#34;, &#34;invisible&#34;, &#34;visible*non*interactive&#34;, &#34;visible_managed&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turnstileMode(String turnstileMode) {
+            return turnstileMode(Output.of(turnstileMode));
         }
 
         public Builder waitingRoomId(Output<String> waitingRoomId) {

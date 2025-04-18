@@ -116,18 +116,18 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
         return this.staticAddressing;
     }
     /**
-     * VLAN port number.
+     * VLAN ID. Use zero for untagged.
      * 
      */
     @Export(name="vlanTag", refs={Integer.class}, tree="[0]")
-    private Output<Integer> vlanTag;
+    private Output</* @Nullable */ Integer> vlanTag;
 
     /**
-     * @return VLAN port number.
+     * @return VLAN ID. Use zero for untagged.
      * 
      */
-    public Output<Integer> vlanTag() {
-        return this.vlanTag;
+    public Output<Optional<Integer>> vlanTag() {
+        return Codegen.optional(this.vlanTag);
     }
 
     /**

@@ -169,7 +169,7 @@ class GetZoneDnssecResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -210,7 +210,7 @@ def get_zone_dnssec(zone_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -246,7 +246,7 @@ def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[builtins.str]] = None,
     ```
 
 
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id

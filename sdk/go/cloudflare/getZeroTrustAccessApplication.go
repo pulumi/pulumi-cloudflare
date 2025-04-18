@@ -52,7 +52,7 @@ func LookupZeroTrustAccessApplication(ctx *pulumi.Context, args *LookupZeroTrust
 type LookupZeroTrustAccessApplicationArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	AppId  *string                              `pulumi:"appId"`
 	Filter *GetZeroTrustAccessApplicationFilter `pulumi:"filter"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -67,7 +67,7 @@ type LookupZeroTrustAccessApplicationResult struct {
 	AllowAuthenticateViaWarp bool `pulumi:"allowAuthenticateViaWarp"`
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps []string `pulumi:"allowedIdps"`
-	// Identifier
+	// Identifier.
 	AppId *string `pulumi:"appId"`
 	// The image URL of the logo shown in the App Launcher header.
 	AppLauncherLogoUrl string `pulumi:"appLauncherLogoUrl"`
@@ -102,7 +102,7 @@ type LookupZeroTrustAccessApplicationResult struct {
 	HeaderBgColor string `pulumi:"headerBgColor"`
 	// Enables the HttpOnly cookie attribute, which increases security against XSS attacks.
 	HttpOnlyCookieAttribute bool `pulumi:"httpOnlyCookieAttribute"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The design of the App Launcher landing page shown to users when they log in.
 	LandingPageDesign GetZeroTrustAccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
@@ -115,12 +115,22 @@ type LookupZeroTrustAccessApplicationResult struct {
 	// Enables cookie paths to scope an application's JWT to the application path. If disabled, the JWT will scope to the hostname by default
 	PathCookieAttribute bool                                  `pulumi:"pathCookieAttribute"`
 	Policies            []GetZeroTrustAccessApplicationPolicy `pulumi:"policies"`
-	SaasApp             GetZeroTrustAccessApplicationSaasApp  `pulumi:"saasApp"`
+	// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+	// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+	// The header value will be interpreted as a json object similar to:
+	// {
+	// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+	// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+	// }
+	ReadServiceTokensFromHeader string                               `pulumi:"readServiceTokensFromHeader"`
+	SaasApp                     GetZeroTrustAccessApplicationSaasApp `pulumi:"saasApp"`
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute string `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig GetZeroTrustAccessApplicationScimConfig `pulumi:"scimConfig"`
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+	//
+	// Deprecated: This attribute is deprecated.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect bool `pulumi:"serviceAuth401Redirect"`
@@ -153,7 +163,7 @@ func LookupZeroTrustAccessApplicationOutput(ctx *pulumi.Context, args LookupZero
 type LookupZeroTrustAccessApplicationOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	AppId  pulumi.StringPtrInput                       `pulumi:"appId"`
 	Filter GetZeroTrustAccessApplicationFilterPtrInput `pulumi:"filter"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -194,7 +204,7 @@ func (o LookupZeroTrustAccessApplicationResultOutput) AllowedIdps() pulumi.Strin
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []string { return v.AllowedIdps }).(pulumi.StringArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustAccessApplicationResultOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) *string { return v.AppId }).(pulumi.StringPtrOutput)
 }
@@ -292,7 +302,7 @@ func (o LookupZeroTrustAccessApplicationResultOutput) HttpOnlyCookieAttribute() 
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.HttpOnlyCookieAttribute }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupZeroTrustAccessApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -330,6 +340,17 @@ func (o LookupZeroTrustAccessApplicationResultOutput) Policies() GetZeroTrustAcc
 	}).(GetZeroTrustAccessApplicationPolicyArrayOutput)
 }
 
+// Allows matching Access Service Tokens passed HTTP in a single header with this name.
+// This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
+// The header value will be interpreted as a json object similar to:
+// {
+// "cf-access-client-id": "88bf3b6d86161464f6509f7219099e57.access.example.com",
+// "cf-access-client-secret": "bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5"
+// }
+func (o LookupZeroTrustAccessApplicationResultOutput) ReadServiceTokensFromHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.ReadServiceTokensFromHeader }).(pulumi.StringOutput)
+}
+
 func (o LookupZeroTrustAccessApplicationResultOutput) SaasApp() GetZeroTrustAccessApplicationSaasAppOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) GetZeroTrustAccessApplicationSaasApp { return v.SaasApp }).(GetZeroTrustAccessApplicationSaasAppOutput)
 }
@@ -347,6 +368,8 @@ func (o LookupZeroTrustAccessApplicationResultOutput) ScimConfig() GetZeroTrustA
 }
 
 // List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
+//
+// Deprecated: This attribute is deprecated.
 func (o LookupZeroTrustAccessApplicationResultOutput) SelfHostedDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) []string { return v.SelfHostedDomains }).(pulumi.StringArrayOutput)
 }

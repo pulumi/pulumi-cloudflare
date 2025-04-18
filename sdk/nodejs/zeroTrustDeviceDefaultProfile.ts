@@ -24,13 +24,11 @@ import * as utilities from "./utilities";
  *     excludes: [{
  *         address: "192.0.2.0/24",
  *         description: "Exclude testing domains from the tunnel",
- *         host: "*.example.com",
  *     }],
  *     excludeOfficeIps: true,
  *     includes: [{
  *         address: "192.0.2.0/24",
- *         description: "Exclude testing domains from the tunnel",
- *         host: "*.example.com",
+ *         description: "Include testing domains in the tunnel",
  *     }],
  *     registerInterfaceIpWithDns: true,
  *     serviceModeV2: {

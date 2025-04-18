@@ -52,7 +52,7 @@ import (
 type AccessCustomPage struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Number of apps the custom page is assigned to.
 	AppCount  pulumi.IntPtrOutput `pulumi:"appCount"`
@@ -64,7 +64,7 @@ type AccessCustomPage struct {
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// UUID
+	// UUID.
 	Uid       pulumi.StringOutput `pulumi:"uid"`
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
@@ -117,7 +117,7 @@ func GetAccessCustomPage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessCustomPage resources.
 type accessCustomPageState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Number of apps the custom page is assigned to.
 	AppCount  *int    `pulumi:"appCount"`
@@ -129,13 +129,13 @@ type accessCustomPageState struct {
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type *string `pulumi:"type"`
-	// UUID
+	// UUID.
 	Uid       *string `pulumi:"uid"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type AccessCustomPageState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Number of apps the custom page is assigned to.
 	AppCount  pulumi.IntPtrInput
@@ -147,7 +147,7 @@ type AccessCustomPageState struct {
 	// Custom page type.
 	// Available values: "identityDenied", "forbidden".
 	Type pulumi.StringPtrInput
-	// UUID
+	// UUID.
 	Uid       pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 }
@@ -157,7 +157,7 @@ func (AccessCustomPageState) ElementType() reflect.Type {
 }
 
 type accessCustomPageArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Number of apps the custom page is assigned to.
 	AppCount *int `pulumi:"appCount"`
@@ -172,7 +172,7 @@ type accessCustomPageArgs struct {
 
 // The set of arguments for constructing a AccessCustomPage resource.
 type AccessCustomPageArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Number of apps the custom page is assigned to.
 	AppCount pulumi.IntPtrInput
@@ -272,7 +272,7 @@ func (o AccessCustomPageOutput) ToAccessCustomPageOutputWithContext(ctx context.
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o AccessCustomPageOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -302,7 +302,7 @@ func (o AccessCustomPageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o AccessCustomPageOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessCustomPage) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

@@ -101,23 +101,6 @@ public final class AccountTokenArgs extends com.pulumi.resources.ResourceArgs {
         return this.policies;
     }
 
-    /**
-     * Status of the token.
-     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
-     * 
-     */
-    @Import(name="status")
-    private @Nullable Output<String> status;
-
-    /**
-     * @return Status of the token.
-     * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
-     * 
-     */
-    public Optional<Output<String>> status() {
-        return Optional.ofNullable(this.status);
-    }
-
     private AccountTokenArgs() {}
 
     private AccountTokenArgs(AccountTokenArgs $) {
@@ -127,7 +110,6 @@ public final class AccountTokenArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notBefore = $.notBefore;
         this.policies = $.policies;
-        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -270,29 +252,6 @@ public final class AccountTokenArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder policies(AccountTokenPolicyArgs... policies) {
             return policies(List.of(policies));
-        }
-
-        /**
-         * @param status Status of the token.
-         * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder status(@Nullable Output<String> status) {
-            $.status = status;
-            return this;
-        }
-
-        /**
-         * @param status Status of the token.
-         * Available values: &#34;active&#34;, &#34;disabled&#34;, &#34;expired&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder status(String status) {
-            return status(Output.of(status));
         }
 
         public AccountTokenArgs build() {

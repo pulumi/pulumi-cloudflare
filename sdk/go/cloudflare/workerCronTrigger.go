@@ -24,7 +24,7 @@ import (
 type WorkerCronTrigger struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput                  `pulumi:"accountId"`
 	Schedules WorkerCronTriggerScheduleArrayOutput `pulumi:"schedules"`
 	// Name of the script, used in URLs and route configuration.
@@ -76,7 +76,7 @@ func GetWorkerCronTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerCronTrigger resources.
 type workerCronTriggerState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string                     `pulumi:"accountId"`
 	Schedules []WorkerCronTriggerSchedule `pulumi:"schedules"`
 	// Name of the script, used in URLs and route configuration.
@@ -84,7 +84,7 @@ type workerCronTriggerState struct {
 }
 
 type WorkerCronTriggerState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	Schedules WorkerCronTriggerScheduleArrayInput
 	// Name of the script, used in URLs and route configuration.
@@ -96,7 +96,7 @@ func (WorkerCronTriggerState) ElementType() reflect.Type {
 }
 
 type workerCronTriggerArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string                      `pulumi:"accountId"`
 	Schedules []WorkerCronTriggerSchedule `pulumi:"schedules"`
 	// Name of the script, used in URLs and route configuration.
@@ -105,7 +105,7 @@ type workerCronTriggerArgs struct {
 
 // The set of arguments for constructing a WorkerCronTrigger resource.
 type WorkerCronTriggerArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	Schedules WorkerCronTriggerScheduleArrayInput
 	// Name of the script, used in URLs and route configuration.
@@ -199,7 +199,7 @@ func (o WorkerCronTriggerOutput) ToWorkerCronTriggerOutputWithContext(ctx contex
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WorkerCronTriggerOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerCronTrigger) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

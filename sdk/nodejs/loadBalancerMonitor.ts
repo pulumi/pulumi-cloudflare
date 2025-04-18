@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *     probeZone: "example.com",
  *     retries: 0,
  *     timeout: 0,
- *     type: "http",
+ *     type: "https",
  * });
  * ```
  *

@@ -27,6 +27,8 @@ import * as utilities from "./utilities";
  *     shuffleAtEventStart: true,
  *     suspended: true,
  *     totalActiveUsers: 200,
+ *     turnstileAction: "log",
+ *     turnstileMode: "off",
  * });
  * ```
  *
@@ -118,6 +120,16 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
     public readonly totalActiveUsers!: pulumi.Output<number | undefined>;
+    /**
+     * If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+     * Available values: "log", "infiniteQueue".
+     */
+    public readonly turnstileAction!: pulumi.Output<string | undefined>;
+    /**
+     * If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+     * Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+     */
+    public readonly turnstileMode!: pulumi.Output<string | undefined>;
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
      * Identifier
@@ -152,6 +164,8 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
             resourceInputs["shuffleAtEventStart"] = state ? state.shuffleAtEventStart : undefined;
             resourceInputs["suspended"] = state ? state.suspended : undefined;
             resourceInputs["totalActiveUsers"] = state ? state.totalActiveUsers : undefined;
+            resourceInputs["turnstileAction"] = state ? state.turnstileAction : undefined;
+            resourceInputs["turnstileMode"] = state ? state.turnstileMode : undefined;
             resourceInputs["waitingRoomId"] = state ? state.waitingRoomId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -184,6 +198,8 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
             resourceInputs["shuffleAtEventStart"] = args ? args.shuffleAtEventStart : undefined;
             resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["totalActiveUsers"] = args ? args.totalActiveUsers : undefined;
+            resourceInputs["turnstileAction"] = args ? args.turnstileAction : undefined;
+            resourceInputs["turnstileMode"] = args ? args.turnstileMode : undefined;
             resourceInputs["waitingRoomId"] = args ? args.waitingRoomId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
@@ -252,6 +268,16 @@ export interface WaitingRoomEventState {
      * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
     totalActiveUsers?: pulumi.Input<number>;
+    /**
+     * If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+     * Available values: "log", "infiniteQueue".
+     */
+    turnstileAction?: pulumi.Input<string>;
+    /**
+     * If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+     * Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+     */
+    turnstileMode?: pulumi.Input<string>;
     waitingRoomId?: pulumi.Input<string>;
     /**
      * Identifier
@@ -315,6 +341,16 @@ export interface WaitingRoomEventArgs {
      * If set, the event will override the waiting room's `totalActiveUsers` property while it is active. If null, the event will inherit it. This can only be set if the event's `newUsersPerMinute` property is also set.
      */
     totalActiveUsers?: pulumi.Input<number>;
+    /**
+     * If set, the event will override the waiting room's `turnstileAction` property while it is active. If null, the event will inherit it.
+     * Available values: "log", "infiniteQueue".
+     */
+    turnstileAction?: pulumi.Input<string>;
+    /**
+     * If set, the event will override the waiting room's `turnstileMode` property while it is active. If null, the event will inherit it.
+     * Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
+     */
+    turnstileMode?: pulumi.Input<string>;
     waitingRoomId: pulumi.Input<string>;
     /**
      * Identifier
