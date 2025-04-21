@@ -10,7 +10,7 @@ const zone = new cloudflare.Zone("my-zone", {
 });
 
 new cloudflare.Record("my-record", {
-    name: "my-record-ts",
+    name: zone.name.apply(name => `my-record-ts.${name}`),
     zoneId: zone.id,
     type: "A",
     content: "192.168.0.11",

@@ -11,7 +11,7 @@ zone = cloudflare.Zone(
 
 record = cloudflare.DnsRecord(
     "my-record-py",
-    name="my-record-py",
+    name=zone.name.apply(lambda name: f"my-record-py.{name}"),
     zone_id=zone.id,
     type="A",
     content="192.168.0.11",
