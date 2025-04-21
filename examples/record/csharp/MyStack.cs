@@ -17,7 +17,7 @@ class MyStack : Stack
 
         var foobar = new Cloudflare.DnsRecord("foobar", new Cloudflare.DnsRecordArgs
         {
-            Name = "my-record-csharp",
+            Name = zone.Name.Apply(name => $"my-record-csharp.{name}"),
             ZoneId = zone.Id,
             Content = "162.168.0.14",
             Type = "A",

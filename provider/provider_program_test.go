@@ -18,6 +18,7 @@ import (
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optrefresh"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optup"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -108,8 +109,7 @@ func TestAccRecordGo(t *testing.T) {
 	pt := testProgram(t, "test-programs/recordgo",
 		opttest.GoModReplacement("github.com/pulumi/pulumi-cloudflare/sdk/v6", "..", "sdk"))
 	pt.Up(t)
-	// TODO[pulumi/pulumi-cloudflare#1120]: Dirty refresh on record
-	// pt.Refresh(t, optrefresh.ExpectNoChanges())
+	pt.Refresh(t, optrefresh.ExpectNoChanges(), optrefresh.Diff())
 	pt.Up(t, optup.ExpectNoChanges())
 }
 

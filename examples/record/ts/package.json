@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "dependencies": {
     "@pulumi/pulumi": "^3.0.0",
-    "@pulumi/cloudflare": "^5.0.0"
+    "@pulumi/cloudflare": "^6.0.0"
   }
 }

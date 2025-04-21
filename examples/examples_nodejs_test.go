@@ -15,7 +15,6 @@ func TestAccRecordTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir:                  filepath.Join(getCwd(t), "record", "ts"),
-			ExpectRefreshChanges: true,
 		})
 
 	integration.ProgramTest(t, &test)
