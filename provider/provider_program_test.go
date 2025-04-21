@@ -119,3 +119,8 @@ func TestWorkersRoute(t *testing.T) {
 	pt := testProgram(t, "test-programs/workers_route")
 	pt.Up(t)
 }
+
+func TestZoneSettings(t *testing.T) {
+	pt := testProgram(t, "test-programs/zonesettings")
+	pt.Up(t)
+}
