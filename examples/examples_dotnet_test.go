@@ -15,7 +15,6 @@ func TestAccRecordCSharp(t *testing.T) {
 	test := getCsharpBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir:                  filepath.Join(getCwd(t), "record", "csharp"),
-			ExpectRefreshChanges: true,
 		})
 
 	integration.ProgramTest(t, &test)
