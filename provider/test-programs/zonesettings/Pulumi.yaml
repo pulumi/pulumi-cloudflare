@@ -1,0 +1,12 @@
+runtime: yaml
+name: zone-settings
+config:
+  cloudflare-zone-id:
+    type: string
+resources:
+  ssl-settings:
+    type: cloudflare:ZoneSetting
+    properties:
+      zoneId: ${cloudflare-zone-id}
+      settingId: ssl
+      value: strict

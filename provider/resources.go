@@ -301,6 +301,9 @@ func Provider() info.Provider {
 					return outputs, nil
 				},
 			},
+			"cloudflare_zone_setting": {
+				ComputeID: delegateID("settingId"),
+			},
 		},
 		DataSources: map[string]*info.DataSource{},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -370,7 +373,6 @@ func Provider() info.Provider {
 		"cloudflare_logpush_job",
 		"cloudflare_magic_network_monitoring_rule",
 		"cloudflare_image_variant",
-		"cloudflare_zone_setting",
 		"cloudflare_turnstile_widget",
 	}
 
