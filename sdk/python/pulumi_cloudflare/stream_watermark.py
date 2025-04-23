@@ -384,6 +384,9 @@ class _StreamWatermarkState:
 
 
 class StreamWatermark(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/streamWatermark:StreamWatermark"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

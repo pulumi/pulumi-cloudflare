@@ -135,6 +135,9 @@ class _ZoneSubscriptionState:
 
 
 class ZoneSubscription(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zoneSubscription:ZoneSubscription"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

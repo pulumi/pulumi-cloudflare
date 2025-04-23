@@ -216,6 +216,9 @@ class _R2BucketState:
 
 
 class R2Bucket(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/r2Bucket:R2Bucket"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

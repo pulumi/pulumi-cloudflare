@@ -143,6 +143,9 @@ class _RegionalHostnameState:
 
 
 class RegionalHostname(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/regionalHostname:RegionalHostname"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

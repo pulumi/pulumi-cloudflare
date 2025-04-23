@@ -265,6 +265,9 @@ class _RulesetState:
 
 
 class Ruleset(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/ruleset:Ruleset"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

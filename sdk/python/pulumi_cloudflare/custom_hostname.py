@@ -307,6 +307,9 @@ class _CustomHostnameState:
 
 
 class CustomHostname(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/customHostname:CustomHostname"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

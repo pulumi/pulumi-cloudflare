@@ -403,6 +403,9 @@ class _CustomSslState:
 
 
 class CustomSsl(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/customSsl:CustomSsl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

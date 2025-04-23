@@ -96,6 +96,9 @@ class _AuthenticatedOriginPullsSettingsState:
 
 
 class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/authenticatedOriginPullsSettings:AuthenticatedOriginPullsSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

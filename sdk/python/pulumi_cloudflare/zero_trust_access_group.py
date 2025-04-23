@@ -282,6 +282,9 @@ class _ZeroTrustAccessGroupState:
 
 
 class ZeroTrustAccessGroup(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

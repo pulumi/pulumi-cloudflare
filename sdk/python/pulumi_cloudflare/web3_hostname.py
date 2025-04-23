@@ -237,6 +237,9 @@ class _Web3HostnameState:
 
 
 class Web3Hostname(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/web3Hostname:Web3Hostname"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -154,6 +154,9 @@ class _R2BucketLifecycleState:
 
 
 class R2BucketLifecycle(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/r2BucketLifecycle:R2BucketLifecycle"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

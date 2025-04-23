@@ -229,6 +229,9 @@ class _ZeroTrustListState:
 
 
 class ZeroTrustList(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustList:ZeroTrustList"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

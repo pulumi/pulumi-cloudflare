@@ -784,6 +784,9 @@ class _ZeroTrustDeviceCustomProfileState:
 
 
 class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

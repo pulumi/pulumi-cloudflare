@@ -119,6 +119,9 @@ class _DnsZoneTransfersAclState:
 
 
 class DnsZoneTransfersAcl(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/dnsZoneTransfersAcl:DnsZoneTransfersAcl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

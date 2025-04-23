@@ -275,6 +275,9 @@ class _AddressMapState:
 
 
 class AddressMap(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/addressMap:AddressMap"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

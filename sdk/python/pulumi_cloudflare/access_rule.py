@@ -262,6 +262,9 @@ class _AccessRuleState:
 
 
 class AccessRule(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/accessRule:AccessRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

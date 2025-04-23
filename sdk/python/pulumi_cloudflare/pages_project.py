@@ -286,6 +286,9 @@ class _PagesProjectState:
 
 
 class PagesProject(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/pagesProject:PagesProject"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

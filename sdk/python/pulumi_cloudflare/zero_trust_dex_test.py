@@ -287,6 +287,9 @@ class _ZeroTrustDexTestState:
 
 
 class ZeroTrustDexTest(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -129,6 +129,9 @@ class _ManagedTransformsState:
 
 
 class ManagedTransforms(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/managedTransforms:ManagedTransforms"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

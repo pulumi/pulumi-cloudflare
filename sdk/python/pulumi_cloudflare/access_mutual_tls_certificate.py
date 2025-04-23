@@ -249,6 +249,9 @@ warnings.warn("""cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCert
 class AccessMutualTlsCertificate(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accessmutualtlscertificate.AccessMutualTlsCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessmtlscertificate.ZeroTrustAccessMtlsCertificate""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

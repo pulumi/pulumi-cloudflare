@@ -126,6 +126,9 @@ warnings.warn("""cloudflare.index/workercrontrigger.WorkerCronTrigger has been d
 class WorkerCronTrigger(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/workercrontrigger.WorkerCronTrigger has been deprecated in favor of cloudflare.index/workerscrontrigger.WorkersCronTrigger""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/workerCronTrigger:WorkerCronTrigger"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -229,6 +229,9 @@ class _PageRuleState:
 
 
 class PageRule(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/pageRule:PageRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

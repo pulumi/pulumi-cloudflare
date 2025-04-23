@@ -1155,6 +1155,9 @@ class _WaitingRoomState:
 
 
 class WaitingRoom(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/waitingRoom:WaitingRoom"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

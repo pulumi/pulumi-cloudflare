@@ -392,6 +392,9 @@ class _MagicWanIpsecTunnelState:
 
 
 class MagicWanIpsecTunnel(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

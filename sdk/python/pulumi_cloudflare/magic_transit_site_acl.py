@@ -295,6 +295,9 @@ class _MagicTransitSiteAclState:
 
 
 class MagicTransitSiteAcl(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/magicTransitSiteAcl:MagicTransitSiteAcl"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

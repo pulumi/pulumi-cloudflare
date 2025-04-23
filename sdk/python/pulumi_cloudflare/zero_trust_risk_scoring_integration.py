@@ -235,6 +235,9 @@ class _ZeroTrustRiskScoringIntegrationState:
 
 
 class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
