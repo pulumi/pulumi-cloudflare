@@ -4,9 +4,9 @@ go 1.23.3
 
 require (
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
-	github.com/pulumi/providertest v0.2.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.1-0.20250416142950-9ff35dbdae81
-	github.com/pulumi/pulumi/sdk/v3 v3.162.0
+	github.com/pulumi/providertest v0.3.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.106.1-0.20250424184649-6b65634cd288
+	github.com/pulumi/pulumi/sdk/v3 v3.163.0
 )
 
 replace github.com/cloudflare/terraform-provider-cloudflare => ../upstream
@@ -144,7 +144,7 @@ require (
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v1.8.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.15.1 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.162.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.163.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.13.1 // indirect
