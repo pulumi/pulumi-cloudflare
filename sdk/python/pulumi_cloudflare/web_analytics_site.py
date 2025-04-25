@@ -315,6 +315,9 @@ class _WebAnalyticsSiteState:
 
 
 class WebAnalyticsSite(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/webAnalyticsSite:WebAnalyticsSite"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -249,6 +249,9 @@ class _AccountSubscriptionState:
 
 
 class AccountSubscription(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/accountSubscription:AccountSubscription"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

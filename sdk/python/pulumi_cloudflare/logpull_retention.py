@@ -97,6 +97,9 @@ class _LogpullRetentionState:
 
 
 class LogpullRetention(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/logpullRetention:LogpullRetention"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

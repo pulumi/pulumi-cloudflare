@@ -207,6 +207,9 @@ class _WaitingRoomRulesState:
 
 
 class WaitingRoomRules(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/waitingRoomRules:WaitingRoomRules"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

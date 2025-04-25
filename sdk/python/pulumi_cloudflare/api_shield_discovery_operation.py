@@ -132,6 +132,9 @@ class _ApiShieldDiscoveryOperationState:
 
 
 class ApiShieldDiscoveryOperation(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

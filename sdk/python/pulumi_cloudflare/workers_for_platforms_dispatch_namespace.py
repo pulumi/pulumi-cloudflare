@@ -209,6 +209,9 @@ class _WorkersForPlatformsDispatchNamespaceState:
 
 
 class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

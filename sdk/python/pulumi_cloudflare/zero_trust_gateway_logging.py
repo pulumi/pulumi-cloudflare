@@ -123,6 +123,9 @@ class _ZeroTrustGatewayLoggingState:
 
 
 class ZeroTrustGatewayLogging(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

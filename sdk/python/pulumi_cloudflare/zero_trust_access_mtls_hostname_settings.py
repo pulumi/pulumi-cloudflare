@@ -171,6 +171,9 @@ class _ZeroTrustAccessMtlsHostnameSettingsState:
 
 
 class ZeroTrustAccessMtlsHostnameSettings(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

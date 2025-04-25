@@ -1273,6 +1273,9 @@ warnings.warn("""cloudflare.index/accessapplication.AccessApplication has been d
 class AccessApplication(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accessapplication.AccessApplication has been deprecated in favor of cloudflare.index/zerotrustaccessapplication.ZeroTrustAccessApplication""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/accessApplication:AccessApplication"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

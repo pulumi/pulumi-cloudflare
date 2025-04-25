@@ -226,6 +226,9 @@ class _StreamAudioTrackState:
 
 
 class StreamAudioTrack(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/streamAudioTrack:StreamAudioTrack"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

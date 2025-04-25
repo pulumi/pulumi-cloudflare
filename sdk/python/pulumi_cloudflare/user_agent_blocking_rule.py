@@ -165,6 +165,9 @@ class _UserAgentBlockingRuleState:
 
 
 class UserAgentBlockingRule(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

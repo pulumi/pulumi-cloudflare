@@ -164,6 +164,9 @@ warnings.warn("""cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been
 class TeamsProxyEndpoint(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/teamsproxyendpoint.TeamsProxyEndpoint has been deprecated in favor of cloudflare.index/zerotrustgatewayproxyendpoint.ZeroTrustGatewayProxyEndpoint""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

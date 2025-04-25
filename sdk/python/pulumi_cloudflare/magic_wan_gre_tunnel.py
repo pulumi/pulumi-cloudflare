@@ -395,6 +395,9 @@ class _MagicWanGreTunnelState:
 
 
 class MagicWanGreTunnel(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

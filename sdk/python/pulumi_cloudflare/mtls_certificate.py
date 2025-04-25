@@ -287,6 +287,9 @@ class _MtlsCertificateState:
 
 
 class MtlsCertificate(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/mtlsCertificate:MtlsCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -343,6 +343,9 @@ class _CloudforceOneRequestPriorityState:
 
 
 class CloudforceOneRequestPriority(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

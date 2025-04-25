@@ -204,6 +204,9 @@ class _ApiShieldOperationState:
 
 
 class ApiShieldOperation(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/apiShieldOperation:ApiShieldOperation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -199,6 +199,9 @@ warnings.warn("""cloudflare.index/tunnelconfig.TunnelConfig has been deprecated 
 class TunnelConfig(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/tunnelconfig.TunnelConfig has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredconfig.ZeroTrustTunnelCloudflaredConfig""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/tunnelConfig:TunnelConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

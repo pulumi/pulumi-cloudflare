@@ -193,6 +193,9 @@ class _ZoneLockdownState:
 
 
 class ZoneLockdown(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zoneLockdown:ZoneLockdown"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

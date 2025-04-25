@@ -165,6 +165,9 @@ class _LogpushOwnershipChallengeState:
 
 
 class LogpushOwnershipChallenge(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

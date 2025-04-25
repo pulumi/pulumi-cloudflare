@@ -286,6 +286,9 @@ class _CertificatePackState:
 
 
 class CertificatePack(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/certificatePack:CertificatePack"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

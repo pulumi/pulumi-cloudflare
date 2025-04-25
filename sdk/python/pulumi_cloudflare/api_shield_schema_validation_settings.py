@@ -136,6 +136,9 @@ class _ApiShieldSchemaValidationSettingsState:
 
 
 class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

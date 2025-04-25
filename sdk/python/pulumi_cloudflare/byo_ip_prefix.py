@@ -294,6 +294,9 @@ class _ByoIpPrefixState:
 
 
 class ByoIpPrefix(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/byoIpPrefix:ByoIpPrefix"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
