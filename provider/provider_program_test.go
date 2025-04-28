@@ -105,6 +105,11 @@ func TestPageRuleUpgrade(t *testing.T) {
 		t, "test-programs/page_rule/page_rulev5", optproviderupgrade.NewSourcePath("test-programs/page_rule"))
 }
 
+func TestAccessPolicyUpgrade(t *testing.T) {
+	testUpgrade(
+		t, "test-programs/access_policy/access_policyv5", optproviderupgrade.NewSourcePath("test-programs/access_policy"))
+}
+
 func TestAccRecordGo(t *testing.T) {
 	pt := testProgram(t, "test-programs/recordgo",
 		opttest.GoModReplacement("github.com/pulumi/pulumi-cloudflare/sdk/v6", "..", "sdk"))

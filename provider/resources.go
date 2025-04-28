@@ -159,6 +159,49 @@ func Provider() info.Provider {
 			},
 			"cloudflare_zero_trust_access_policy": {
 				Aliases: alias("cloudflare:index/accessPolicy:AccessPolicy"),
+				TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+					// This migrates bool schema properties to empty objects.
+					// e.g. `schema.TypeBool` -> `schema.SingleNestedAttribute` with an empty `Attributes` map
+					migrateBoolToObject := func(newVal resource.PropertyMap, key resource.PropertyKey) {
+						if v, ok := newVal[key]; ok && v.IsBool() {
+							if v.BoolValue() {
+								newVal[key] = resource.NewObjectProperty(resource.PropertyMap{})
+							} else {
+								delete(newVal, key)
+							}
+						}
+					}
+
+					// This migrates string schema properties to objects with a single string key.
+					// e.g. `schema.TypeString` -> `schema.SingleNestedAttribute` with a single `string` key
+					migrateStringToObject := func(newVal resource.PropertyMap, key resource.PropertyKey) {
+						if v, ok := newVal[key]; ok && v.IsString() {
+							newVal[key] = resource.NewObjectProperty(resource.PropertyMap{
+								key: resource.NewStringProperty(v.StringValue()),
+							})
+						}
+					}
+
+					if includes, ok := state["includes"]; ok && includes.IsArray() && includes.ArrayValue() != nil {
+						newArr := []resource.PropertyValue{}
+						for _, include := range includes.ArrayValue() {
+							if include.IsObject() && include.ObjectValue() != nil {
+								newVal := include.ObjectValue()
+
+								migrateBoolToObject(newVal, "certificate")
+								migrateBoolToObject(newVal, "everyone")
+								migrateBoolToObject(newVal, "anyValidServiceToken")
+
+								migrateStringToObject(newVal, "authMethod")
+								migrateStringToObject(newVal, "commonName")
+
+								newArr = append(newArr, resource.NewObjectProperty(newVal))
+							}
+						}
+						state["includes"] = resource.NewArrayProperty(newArr)
+					}
+					return state, nil
+				},
 			},
 			"cloudflare_zero_trust_access_service_token": {
 				Aliases: alias("cloudflare:index/accessServiceToken:AccessServiceToken"),
