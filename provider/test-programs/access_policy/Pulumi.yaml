@@ -1,0 +1,21 @@
+name: access_policy
+runtime: yaml
+config:
+  cloudflare-account-id:
+    type: string
+resources:
+  token:
+    type: cloudflare:index:AccessServiceToken
+    properties:
+      accountId: ${cloudflare-account-id}
+      name: test-token
+      duration: forever
+  policy:
+    type: cloudflare:index:AccessPolicy
+    properties:
+      accountId: ${cloudflare-account-id}
+      name: test-policy
+      decision: non_identity
+      includes:
+        - serviceToken:
+            tokenId: ${token.id}
