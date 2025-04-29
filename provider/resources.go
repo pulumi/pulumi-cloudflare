@@ -29,10 +29,8 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
@@ -517,6 +515,20 @@ var skipGettingStartedSection = info.DocsEdit{
 	},
 }
 
+var resourcesWhichNeedSchemaVersionReset = []string{
+	"cloudflare_access_rule",
+	"cloudflare_cloud_connector_rules",
+	"cloudflare_custom_ssl",
+	"cloudflare_email_routing_address",
+	"cloudflare_email_routing_rule",
+	"cloudflare_list_item",
+	"cloudflare_load_balancer",
+	"cloudflare_dns_record",
+	"cloudflare_regional_hostname",
+	"cloudflare_ruleset",
+	"cloudflare_snippet_rules",
+}
+
 // resetMigratedResourcesSchemaVersion resets the schema version of resources that were migrated
 // from the legacy provider. Note that we currently have no facility to detect the migration itself,
 // so we reset the schema version of these resources unconditionally.
@@ -525,45 +537,10 @@ var skipGettingStartedSection = info.DocsEdit{
 //
 // Once we have Pulumi state migratations, we should fix this properly with a state migration.
 func resetMigratedResourcesSchemaVersion(prov *info.Provider) {
-	resourcesWhichNeedSchemaVersionReset := []string{
-		"cloudflare_access_rule",
-		"cloudflare_cloud_connector_rules",
-		"cloudflare_custom_ssl",
-		"cloudflare_email_routing_address",
-		"cloudflare_email_routing_rule",
-		"cloudflare_list_item",
-		"cloudflare_load_balancer",
-		"cloudflare_dns_record",
-		"cloudflare_regional_hostname",
-		"cloudflare_ruleset",
-		"cloudflare_snippet_rules",
-	}
-
-	foundMap := make(map[string]bool, len(resourcesWhichNeedSchemaVersionReset))
 	for _, resName := range resourcesWhichNeedSchemaVersionReset {
-		foundMap[resName] = false
-	}
-
-	prov.P.ResourcesMap().Range(func(key string, value shim.Resource) bool {
-		errMsg := fmt.Sprintf(
-			"schema version is not 0 for %s. This resource might need an explicit migration since we are resetting its"+
-				" schema version. See https://github.com/pulumi/pulumi-cloudflare/issues/1156 for more details.",
-			key,
-		)
-		contract.Assertf(value.SchemaVersion() == 0, errMsg)
-		foundMap[key] = true
-		return true
-	})
-
-	for resName, found := range foundMap {
-		msg := fmt.Sprintf("Did not find resource %s in the provider for schema version resetting."+
-			" If the resource was renamed with an alias, then the reset needs to be applied to the new resource.",
-			resName,
-		)
-		contract.Assertf(found, msg)
-	}
-
-	for _, resName := range resourcesWhichNeedSchemaVersionReset {
+		if prov.Resources[resName] == nil {
+			continue
+		}
 		existingPreStateUpgradeHook := prov.Resources[resName].PreStateUpgradeHook
 
 		newPreStateUpgradeHook := func(
