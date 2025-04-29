@@ -405,6 +405,9 @@ class _DnsFirewallState:
 
 
 class DnsFirewall(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/dnsFirewall:DnsFirewall"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

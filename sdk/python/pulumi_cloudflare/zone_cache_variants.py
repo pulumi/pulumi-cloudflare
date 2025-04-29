@@ -130,6 +130,9 @@ class _ZoneCacheVariantsState:
 
 
 class ZoneCacheVariants(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zoneCacheVariants:ZoneCacheVariants"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

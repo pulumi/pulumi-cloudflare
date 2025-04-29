@@ -164,6 +164,9 @@ class _EmailRoutingAddressState:
 
 
 class EmailRoutingAddress(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/emailRoutingAddress:EmailRoutingAddress"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

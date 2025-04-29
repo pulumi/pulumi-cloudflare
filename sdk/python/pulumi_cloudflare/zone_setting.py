@@ -177,6 +177,9 @@ class _ZoneSettingState:
 
 
 class ZoneSetting(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zoneSetting:ZoneSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -292,6 +292,9 @@ warnings.warn("""cloudflare.index/devicedextest.DeviceDexTest has been deprecate
 class DeviceDexTest(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/devicedextest.DeviceDexTest has been deprecated in favor of cloudflare.index/zerotrustdextest.ZeroTrustDexTest""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/deviceDexTest:DeviceDexTest"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

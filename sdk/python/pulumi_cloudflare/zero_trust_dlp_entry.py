@@ -243,6 +243,9 @@ class _ZeroTrustDlpEntryState:
 
 
 class ZeroTrustDlpEntry(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustDlpEntry:ZeroTrustDlpEntry"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

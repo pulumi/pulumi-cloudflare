@@ -224,6 +224,9 @@ class _PageShieldPolicyState:
 
 
 class PageShieldPolicy(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/pageShieldPolicy:PageShieldPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -192,6 +192,9 @@ warnings.warn("""cloudflare.index/devicepostureintegration.DevicePostureIntegrat
 class DevicePostureIntegration(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/devicepostureintegration.DevicePostureIntegration has been deprecated in favor of cloudflare.index/zerotrustdevicepostureintegration.ZeroTrustDevicePostureIntegration""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/devicePostureIntegration:DevicePostureIntegration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

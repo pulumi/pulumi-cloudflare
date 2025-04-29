@@ -161,6 +161,9 @@ class _ZeroTrustAccessShortLivedCertificateState:
 
 
 class ZeroTrustAccessShortLivedCertificate(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustAccessShortLivedCertificate:ZeroTrustAccessShortLivedCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

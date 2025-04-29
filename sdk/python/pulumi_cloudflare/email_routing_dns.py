@@ -264,6 +264,9 @@ class _EmailRoutingDnsState:
 
 
 class EmailRoutingDns(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/emailRoutingDns:EmailRoutingDns"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

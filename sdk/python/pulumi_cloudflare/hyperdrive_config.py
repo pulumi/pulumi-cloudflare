@@ -169,6 +169,9 @@ class _HyperdriveConfigState:
 
 
 class HyperdriveConfig(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/hyperdriveConfig:HyperdriveConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

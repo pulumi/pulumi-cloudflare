@@ -130,6 +130,9 @@ class _ZeroTrustDeviceDefaultProfileLocalDomainFallbackState:
 
 
 class ZeroTrustDeviceDefaultProfileLocalDomainFallback(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -97,6 +97,9 @@ class _LeakedCredentialCheckState:
 
 
 class LeakedCredentialCheck(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

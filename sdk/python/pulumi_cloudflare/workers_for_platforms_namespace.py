@@ -214,6 +214,9 @@ warnings.warn("""cloudflare.index/workersforplatformsnamespace.WorkersForPlatfor
 class WorkersForPlatformsNamespace(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/workersforplatformsnamespace.WorkersForPlatformsNamespace has been deprecated in favor of cloudflare.index/workersforplatformsdispatchnamespace.WorkersForPlatformsDispatchNamespace""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

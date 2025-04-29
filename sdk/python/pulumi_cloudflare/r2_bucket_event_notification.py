@@ -210,6 +210,9 @@ class _R2BucketEventNotificationState:
 
 
 class R2BucketEventNotification(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/r2BucketEventNotification:R2BucketEventNotification"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

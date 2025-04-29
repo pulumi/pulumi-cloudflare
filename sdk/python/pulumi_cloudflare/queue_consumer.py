@@ -270,6 +270,9 @@ class _QueueConsumerState:
 
 
 class QueueConsumer(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/queueConsumer:QueueConsumer"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

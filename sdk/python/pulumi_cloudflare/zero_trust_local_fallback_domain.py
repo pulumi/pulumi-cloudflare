@@ -158,6 +158,9 @@ warnings.warn("""cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFal
 class ZeroTrustLocalFallbackDomain(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/zerotrustlocalfallbackdomain.ZeroTrustLocalFallbackDomain has been deprecated in favor of cloudflare.index/zerotrustdevicecustomprofilelocaldomainfallback.ZeroTrustDeviceCustomProfileLocalDomainFallback""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/zeroTrustLocalFallbackDomain:ZeroTrustLocalFallbackDomain"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

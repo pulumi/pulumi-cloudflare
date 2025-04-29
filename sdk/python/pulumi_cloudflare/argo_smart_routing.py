@@ -100,6 +100,9 @@ class _ArgoSmartRoutingState:
 
 
 class ArgoSmartRouting(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/argoSmartRouting:ArgoSmartRouting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

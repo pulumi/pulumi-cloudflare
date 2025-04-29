@@ -332,6 +332,9 @@ class _MagicNetworkMonitoringRuleState:
 
 
 class MagicNetworkMonitoringRule(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -245,6 +245,9 @@ class _EmailRoutingRuleState:
 
 
 class EmailRoutingRule(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/emailRoutingRule:EmailRoutingRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

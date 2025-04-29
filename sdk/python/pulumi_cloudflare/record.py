@@ -489,6 +489,9 @@ warnings.warn("""cloudflare.index/record.Record has been deprecated in favor of 
 class Record(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/record.Record has been deprecated in favor of cloudflare.index/dnsrecord.DnsRecord""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/record:Record"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -227,6 +227,9 @@ class _ListState:
 
 
 class List(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/list:List"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

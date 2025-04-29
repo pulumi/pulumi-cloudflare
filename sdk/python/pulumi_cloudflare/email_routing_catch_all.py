@@ -213,6 +213,9 @@ class _EmailRoutingCatchAllState:
 
 
 class EmailRoutingCatchAll(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -216,6 +216,9 @@ class _DnsZoneTransfersPeerState:
 
 
 class DnsZoneTransfersPeer(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

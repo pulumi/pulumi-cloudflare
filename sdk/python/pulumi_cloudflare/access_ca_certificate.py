@@ -166,6 +166,9 @@ warnings.warn("""cloudflare.index/accesscacertificate.AccessCaCertificate has be
 class AccessCaCertificate(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accesscacertificate.AccessCaCertificate has been deprecated in favor of cloudflare.index/zerotrustaccessshortlivedcertificate.ZeroTrustAccessShortLivedCertificate""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/accessCaCertificate:AccessCaCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

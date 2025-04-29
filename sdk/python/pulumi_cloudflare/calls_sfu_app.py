@@ -193,6 +193,9 @@ class _CallsSfuAppState:
 
 
 class CallsSfuApp(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/callsSfuApp:CallsSfuApp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

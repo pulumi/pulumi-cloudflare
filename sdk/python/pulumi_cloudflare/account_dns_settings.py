@@ -91,6 +91,9 @@ class _AccountDnsSettingsState:
 
 
 class AccountDnsSettings(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/accountDnsSettings:AccountDnsSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
