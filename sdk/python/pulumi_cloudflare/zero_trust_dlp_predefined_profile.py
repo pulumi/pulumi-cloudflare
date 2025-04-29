@@ -329,6 +329,9 @@ class _ZeroTrustDlpPredefinedProfileState:
 
 
 class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

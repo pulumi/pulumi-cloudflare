@@ -121,6 +121,9 @@ class _WorkersCronTriggerState:
 
 
 class WorkersCronTrigger(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/workersCronTrigger:WorkersCronTrigger"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

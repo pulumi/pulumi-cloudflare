@@ -241,6 +241,9 @@ class _ZeroTrustAccessServiceTokenState:
 
 
 class ZeroTrustAccessServiceToken(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustAccessServiceToken:ZeroTrustAccessServiceToken"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -307,6 +307,9 @@ class _ListItemState:
 
 
 class ListItem(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/listItem:ListItem"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -234,6 +234,9 @@ class _ZeroTrustAccessCustomPageState:
 
 
 class ZeroTrustAccessCustomPage(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

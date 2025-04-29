@@ -87,6 +87,9 @@ warnings.warn("""cloudflare.index/riskbehavior.RiskBehavior has been deprecated 
 class RiskBehavior(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/riskbehavior.RiskBehavior has been deprecated in favor of cloudflare.index/zerotrustriskbehavior.ZeroTrustRiskBehavior""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/riskBehavior:RiskBehavior"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

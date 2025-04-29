@@ -405,8 +405,6 @@ func Provider() info.Provider {
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
 
-	prov.MustApplyAutoAliases()
-
 	resourcesWithMistypedID := []string{
 		"cloudflare_email_security_trusted_domains",
 		"cloudflare_cloudforce_one_request_message",
@@ -493,6 +491,10 @@ func Provider() info.Provider {
 		}
 	}
 
+	resetMigratedResourcesSchemaVersion(&prov)
+
+	prov.MustApplyAutoAliases()
+
 	return prov
 }
 
@@ -511,4 +513,57 @@ var skipGettingStartedSection = info.DocsEdit{
 			return headerText == "Getting Started"
 		})
 	},
+}
+
+var resourcesWhichNeedSchemaVersionReset = []string{
+	"cloudflare_access_rule",
+	"cloudflare_cloud_connector_rules",
+	"cloudflare_custom_ssl",
+	"cloudflare_email_routing_address",
+	"cloudflare_email_routing_rule",
+	"cloudflare_list_item",
+	"cloudflare_load_balancer",
+	"cloudflare_dns_record",
+	"cloudflare_regional_hostname",
+	"cloudflare_ruleset",
+	"cloudflare_snippet_rules",
+}
+
+// resetMigratedResourcesSchemaVersion resets the schema version of resources that were migrated
+// from the legacy provider. Note that we currently have no facility to detect the migration itself,
+// so we reset the schema version of these resources unconditionally.
+// This will break any new schema migrations added to the resources, so we also check that no such
+// migrations are present.
+//
+// Once we have Pulumi state migratations, we should fix this properly with a state migration.
+func resetMigratedResourcesSchemaVersion(prov *info.Provider) {
+	for _, resName := range resourcesWhichNeedSchemaVersionReset {
+		if prov.Resources[resName] == nil {
+			continue
+		}
+		existingPreStateUpgradeHook := prov.Resources[resName].PreStateUpgradeHook
+
+		newPreStateUpgradeHook := func(
+			args tfbridge.PreStateUpgradeHookArgs,
+		) (int64, resource.PropertyMap, error) {
+			if existingPreStateUpgradeHook != nil {
+				return existingPreStateUpgradeHook(args)
+			}
+			return 0, args.PriorState, nil
+		}
+
+		prov.Resources[resName].PreStateUpgradeHook = func(
+			args tfbridge.PreStateUpgradeHookArgs,
+		) (int64, resource.PropertyMap, error) {
+			if existingPreStateUpgradeHook != nil {
+				version, state, err := existingPreStateUpgradeHook(args)
+				if err != nil {
+					return 0, nil, err
+				}
+				args.PriorState = state
+				args.PriorStateSchemaVersion = version
+			}
+			return newPreStateUpgradeHook(args)
+		}
+	}
 }

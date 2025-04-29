@@ -210,6 +210,9 @@ class _AccountMemberState:
 
 
 class AccountMember(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/accountMember:AccountMember"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

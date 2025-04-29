@@ -150,6 +150,9 @@ class _TotalTlsState:
 
 
 class TotalTls(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/totalTls:TotalTls"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

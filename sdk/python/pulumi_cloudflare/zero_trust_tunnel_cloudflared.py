@@ -330,6 +330,9 @@ class _ZeroTrustTunnelCloudflaredState:
 
 
 class ZeroTrustTunnelCloudflared(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustTunnelCloudflared:ZeroTrustTunnelCloudflared"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

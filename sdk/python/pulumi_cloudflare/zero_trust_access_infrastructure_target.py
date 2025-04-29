@@ -173,6 +173,9 @@ class _ZeroTrustAccessInfrastructureTargetState:
 
 
 class ZeroTrustAccessInfrastructureTarget(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustAccessInfrastructureTarget:ZeroTrustAccessInfrastructureTarget"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

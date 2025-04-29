@@ -133,6 +133,9 @@ class _RegionalTieredCacheState:
 
 
 class RegionalTieredCache(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/regionalTieredCache:RegionalTieredCache"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

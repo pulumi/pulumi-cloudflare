@@ -555,6 +555,9 @@ class _LogpushJobState:
 
 
 class LogpushJob(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/logpushJob:LogpushJob"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

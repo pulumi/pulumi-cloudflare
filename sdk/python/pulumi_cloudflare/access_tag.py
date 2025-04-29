@@ -141,6 +141,9 @@ warnings.warn("""cloudflare.index/accesstag.AccessTag has been deprecated in fav
 class AccessTag(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/accessTag:AccessTag"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

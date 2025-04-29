@@ -326,6 +326,9 @@ class _ZeroTrustDlpDatasetState:
 
 
 class ZeroTrustDlpDataset(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

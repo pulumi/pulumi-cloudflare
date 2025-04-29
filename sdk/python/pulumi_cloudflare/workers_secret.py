@@ -231,6 +231,9 @@ warnings.warn("""cloudflare.index/workerssecret.WorkersSecret has been deprecate
 class WorkersSecret(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/workerssecret.WorkersSecret has been deprecated in favor of cloudflare.index/workersforplatformsscriptsecret.WorkersForPlatformsScriptSecret""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/workersSecret:WorkersSecret"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

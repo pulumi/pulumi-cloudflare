@@ -194,6 +194,9 @@ class _WorkersRouteState:
 
 
 class WorkersRoute(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/workersRoute:WorkersRoute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

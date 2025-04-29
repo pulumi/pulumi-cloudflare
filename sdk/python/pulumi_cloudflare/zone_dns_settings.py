@@ -359,6 +359,9 @@ class _ZoneDnsSettingsState:
 
 
 class ZoneDnsSettings(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zoneDnsSettings:ZoneDnsSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -287,6 +287,9 @@ warnings.warn("""cloudflare.index/accessgroup.AccessGroup has been deprecated in
 class AccessGroup(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accessgroup.AccessGroup has been deprecated in favor of cloudflare.index/zerotrustaccessgroup.ZeroTrustAccessGroup""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/accessGroup:AccessGroup"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

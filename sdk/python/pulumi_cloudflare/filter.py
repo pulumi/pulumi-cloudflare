@@ -144,6 +144,9 @@ class _FilterState:
 
 
 class Filter(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/filter:Filter"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

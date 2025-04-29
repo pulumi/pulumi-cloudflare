@@ -250,6 +250,9 @@ class _MagicTransitConnectorState:
 
 
 class MagicTransitConnector(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/magicTransitConnector:MagicTransitConnector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

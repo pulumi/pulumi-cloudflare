@@ -210,6 +210,9 @@ class _HostnameTlsSettingState:
 
 
 class HostnameTlsSetting(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/hostnameTlsSetting:HostnameTlsSetting"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

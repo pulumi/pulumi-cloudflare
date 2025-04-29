@@ -359,6 +359,9 @@ warnings.warn("""cloudflare.index/teamslocation.TeamsLocation has been deprecate
 class TeamsLocation(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/teamsLocation:TeamsLocation"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -287,6 +287,9 @@ class _R2CustomDomainState:
 
 
 class R2CustomDomain(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/r2CustomDomain:R2CustomDomain"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
