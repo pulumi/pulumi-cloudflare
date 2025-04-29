@@ -96,6 +96,9 @@ class _StreamWebhookState:
 
 
 class StreamWebhook(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/streamWebhook:StreamWebhook"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

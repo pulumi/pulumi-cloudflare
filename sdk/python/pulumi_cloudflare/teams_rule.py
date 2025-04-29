@@ -514,6 +514,9 @@ warnings.warn("""cloudflare.index/teamsrule.TeamsRule has been deprecated in fav
 class TeamsRule(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/teamsRule:TeamsRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

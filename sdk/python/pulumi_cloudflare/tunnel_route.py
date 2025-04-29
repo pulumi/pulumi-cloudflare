@@ -228,6 +228,9 @@ warnings.warn("""cloudflare.index/tunnelroute.TunnelRoute has been deprecated in
 class TunnelRoute(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/tunnelroute.TunnelRoute has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredroute.ZeroTrustTunnelCloudflaredRoute""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/tunnelRoute:TunnelRoute"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

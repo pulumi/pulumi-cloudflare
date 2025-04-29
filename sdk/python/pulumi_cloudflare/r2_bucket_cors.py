@@ -154,6 +154,9 @@ class _R2BucketCorsState:
 
 
 class R2BucketCors(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/r2BucketCors:R2BucketCors"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

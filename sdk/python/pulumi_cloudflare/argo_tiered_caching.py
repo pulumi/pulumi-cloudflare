@@ -132,6 +132,9 @@ class _ArgoTieredCachingState:
 
 
 class ArgoTieredCaching(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/argoTieredCaching:ArgoTieredCaching"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

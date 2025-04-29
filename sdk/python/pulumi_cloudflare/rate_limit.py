@@ -239,6 +239,9 @@ class _RateLimitState:
 
 
 class RateLimit(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/rateLimit:RateLimit"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

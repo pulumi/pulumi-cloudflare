@@ -192,6 +192,9 @@ class _CloudforceOneRequestMessageState:
 
 
 class CloudforceOneRequestMessage(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

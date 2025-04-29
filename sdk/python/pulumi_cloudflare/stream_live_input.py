@@ -389,6 +389,9 @@ class _StreamLiveInputState:
 
 
 class StreamLiveInput(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/streamLiveInput:StreamLiveInput"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

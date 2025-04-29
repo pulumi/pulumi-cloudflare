@@ -133,6 +133,9 @@ warnings.warn("""cloudflare.index/accesskeysconfiguration.AccessKeysConfiguratio
 class AccessKeysConfiguration(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accesskeysconfiguration.AccessKeysConfiguration has been deprecated in favor of cloudflare.index/zerotrustaccesskeyconfiguration.ZeroTrustAccessKeyConfiguration""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

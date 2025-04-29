@@ -479,6 +479,9 @@ class _BotManagementState:
 
 
 class BotManagement(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/botManagement:BotManagement"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

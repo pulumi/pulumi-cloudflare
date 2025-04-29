@@ -134,6 +134,9 @@ warnings.warn("""cloudflare.index/managedheaders.ManagedHeaders has been depreca
 class ManagedHeaders(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/managedheaders.ManagedHeaders has been deprecated in favor of cloudflare.index/managedtransforms.ManagedTransforms""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/managedHeaders:ManagedHeaders"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

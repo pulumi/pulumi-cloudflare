@@ -120,6 +120,9 @@ warnings.warn("""cloudflare.index/teamsaccount.TeamsAccount has been deprecated 
 class TeamsAccount(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/teamsaccount.TeamsAccount has been deprecated in favor of cloudflare.index/zerotrustgatewaysettings.ZeroTrustGatewaySettings""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/teamsAccount:TeamsAccount"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

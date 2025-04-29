@@ -539,6 +539,9 @@ class _HealthcheckState:
 
 
 class Healthcheck(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/healthcheck:Healthcheck"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

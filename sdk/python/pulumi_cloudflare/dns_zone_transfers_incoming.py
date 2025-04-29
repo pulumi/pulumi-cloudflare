@@ -218,6 +218,9 @@ class _DnsZoneTransfersIncomingState:
 
 
 class DnsZoneTransfersIncoming(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/dnsZoneTransfersIncoming:DnsZoneTransfersIncoming"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

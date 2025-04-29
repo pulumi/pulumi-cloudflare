@@ -222,6 +222,9 @@ class _EmailSecurityImpersonationRegistryState:
 
 
 class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

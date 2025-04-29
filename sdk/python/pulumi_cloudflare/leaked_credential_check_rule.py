@@ -129,6 +129,9 @@ class _LeakedCredentialCheckRuleState:
 
 
 class LeakedCredentialCheckRule(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

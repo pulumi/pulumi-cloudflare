@@ -136,6 +136,9 @@ class _ZeroTrustAccessTagState:
 
 
 class ZeroTrustAccessTag(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

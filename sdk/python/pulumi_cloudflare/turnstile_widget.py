@@ -402,6 +402,9 @@ class _TurnstileWidgetState:
 
 
 class TurnstileWidget(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/turnstileWidget:TurnstileWidget"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -151,6 +151,9 @@ class _SnippetRulesState:
 
 
 class SnippetRules(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/snippetRules:SnippetRules"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

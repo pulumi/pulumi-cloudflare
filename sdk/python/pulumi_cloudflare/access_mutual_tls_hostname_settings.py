@@ -176,6 +176,9 @@ warnings.warn("""cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTl
 class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accessmutualtlshostnamesettings.AccessMutualTlsHostnameSettings has been deprecated in favor of cloudflare.index/zerotrustaccessmtlshostnamesettings.ZeroTrustAccessMtlsHostnameSettings""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

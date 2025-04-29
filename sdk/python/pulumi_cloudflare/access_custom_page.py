@@ -239,6 +239,9 @@ warnings.warn("""cloudflare.index/accesscustompage.AccessCustomPage has been dep
 class AccessCustomPage(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accesscustompage.AccessCustomPage has been deprecated in favor of cloudflare.index/zerotrustaccesscustompage.ZeroTrustAccessCustomPage""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/accessCustomPage:AccessCustomPage"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

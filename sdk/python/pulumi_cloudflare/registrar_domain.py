@@ -192,6 +192,9 @@ class _RegistrarDomainState:
 
 
 class RegistrarDomain(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/registrarDomain:RegistrarDomain"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

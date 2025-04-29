@@ -210,6 +210,9 @@ warnings.warn("""cloudflare.index/workerdomain.WorkerDomain has been deprecated 
 class WorkerDomain(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/workerdomain.WorkerDomain has been deprecated in favor of cloudflare.index/workerscustomdomain.WorkersCustomDomain""", DeprecationWarning)
 
+
+    pulumi_type = "cloudflare:index/workerDomain:WorkerDomain"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

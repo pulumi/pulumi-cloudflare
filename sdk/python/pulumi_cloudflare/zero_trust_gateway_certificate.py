@@ -253,6 +253,9 @@ class _ZeroTrustGatewayCertificateState:
 
 
 class ZeroTrustGatewayCertificate(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

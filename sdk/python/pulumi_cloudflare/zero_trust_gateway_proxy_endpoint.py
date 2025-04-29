@@ -159,6 +159,9 @@ class _ZeroTrustGatewayProxyEndpointState:
 
 
 class ZeroTrustGatewayProxyEndpoint(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

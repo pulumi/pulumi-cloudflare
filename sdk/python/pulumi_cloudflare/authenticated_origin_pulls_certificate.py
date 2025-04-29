@@ -241,6 +241,9 @@ class _AuthenticatedOriginPullsCertificateState:
 
 
 class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

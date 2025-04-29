@@ -154,6 +154,9 @@ class _R2BucketLockState:
 
 
 class R2BucketLock(pulumi.CustomResource):
+
+    pulumi_type = "cloudflare:index/r2BucketLock:R2BucketLock"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
