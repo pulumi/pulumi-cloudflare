@@ -111,6 +111,49 @@ func Provider() info.Provider {
 					return resource.ID(state["enabled"].String() + "_" + state["zoneId"].String()), nil
 				},
 			},
+
+			"cloudflare_ruleset": {
+				Tok: "cloudflare:index/ruleset:Ruleset",
+				PreStateUpgradeHook: func(
+					args info.PreStateUpgradeHookArgs,
+				) (int64, resource.PropertyMap, error) {
+					if args.PriorStateSchemaVersion == 1 {
+						updateRule := func(r resource.PropertyValue) resource.PropertyValue {
+							if !r.IsObject() {
+								return r
+							}
+							ruleCopy := r.ObjectValue().Copy()
+							ap, ok := ruleCopy["actionParameters"]
+							if !ok || !ap.IsObject() {
+								return r
+							}
+							apCopy := ap.ObjectValue().Copy()
+							headers, ok := apCopy["headers"]
+							if !ok || !headers.IsArray() {
+								return r
+							}
+							if len(headers.ArrayValue()) == 0 {
+								delete(apCopy, "headers")
+								ruleCopy["actionParameters"] = resource.NewObjectProperty(apCopy)
+								return resource.NewObjectProperty(ruleCopy)
+							}
+							return r
+						}
+						s := args.PriorState
+						copy := s.Copy()
+						if rules, ok := s["rules"]; ok && rules.IsArray() {
+							updatedRules := []resource.PropertyValue{}
+							for _, rule := range rules.ArrayValue() {
+								updatedRules = append(updatedRules, updateRule(rule))
+							}
+							copy["rules"] = resource.NewArrayProperty(updatedRules)
+						}
+						return 0, copy, nil
+					}
+					return 0, args.PriorState, nil
+				},
+			},
+
 			"cloudflare_zone": {
 				TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
 					if zone, ok := state["zone"]; ok {
@@ -525,7 +568,6 @@ var resourcesWhichNeedSchemaVersionReset = []string{
 	"cloudflare_load_balancer",
 	"cloudflare_dns_record",
 	"cloudflare_regional_hostname",
-	"cloudflare_ruleset",
 	"cloudflare_snippet_rules",
 }
 
