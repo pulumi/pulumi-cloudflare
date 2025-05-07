@@ -135,10 +135,8 @@ class _ApiShieldSchemaValidationSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings")
 class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -222,10 +222,8 @@ class _ZeroTrustTunnelCloudflaredRouteState:
         pulumi.set(self, "virtual_network_id", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute")
 class ZeroTrustTunnelCloudflaredRoute(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustTunnelCloudflaredRoute:ZeroTrustTunnelCloudflaredRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

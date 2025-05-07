@@ -672,10 +672,8 @@ class _WorkersScriptState:
         pulumi.set(self, "usage_model", value)
 
 
+@pulumi.type_token("cloudflare:index/workersScript:WorkersScript")
 class WorkersScript(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/workersScript:WorkersScript"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

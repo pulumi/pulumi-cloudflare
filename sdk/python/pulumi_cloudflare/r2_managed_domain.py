@@ -190,10 +190,8 @@ class _R2ManagedDomainState:
         pulumi.set(self, "jurisdiction", value)
 
 
+@pulumi.type_token("cloudflare:index/r2ManagedDomain:R2ManagedDomain")
 class R2ManagedDomain(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/r2ManagedDomain:R2ManagedDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

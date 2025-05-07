@@ -474,11 +474,9 @@ class _AccessPolicyState:
 warnings.warn("""cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/accessPolicy:AccessPolicy")
 class AccessPolicy(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accesspolicy.AccessPolicy has been deprecated in favor of cloudflare.index/zerotrustaccesspolicy.ZeroTrustAccessPolicy""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/accessPolicy:AccessPolicy"
 
     @overload
     def __init__(__self__,

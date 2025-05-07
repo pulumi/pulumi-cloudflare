@@ -186,10 +186,8 @@ class _ZeroTrustDevicePostureIntegrationState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration")
 class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustDevicePostureIntegration:ZeroTrustDevicePostureIntegration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

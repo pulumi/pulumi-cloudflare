@@ -394,10 +394,8 @@ class _MagicWanGreTunnelState:
         pulumi.set(self, "ttl", value)
 
 
+@pulumi.type_token("cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel")
 class MagicWanGreTunnel(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

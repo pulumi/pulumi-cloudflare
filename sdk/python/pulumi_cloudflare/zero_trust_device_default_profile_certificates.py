@@ -87,10 +87,8 @@ class _ZeroTrustDeviceDefaultProfileCertificatesState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates")
 class ZeroTrustDeviceDefaultProfileCertificates(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

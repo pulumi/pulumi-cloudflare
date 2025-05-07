@@ -536,10 +536,8 @@ class _LoadBalancerPoolState:
         pulumi.set(self, "origins", value)
 
 
+@pulumi.type_token("cloudflare:index/loadBalancerPool:LoadBalancerPool")
 class LoadBalancerPool(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/loadBalancerPool:LoadBalancerPool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

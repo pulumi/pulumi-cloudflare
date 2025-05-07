@@ -127,10 +127,8 @@ class _WorkersKvNamespaceState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("cloudflare:index/workersKvNamespace:WorkersKvNamespace")
 class WorkersKvNamespace(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/workersKvNamespace:WorkersKvNamespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -161,10 +161,8 @@ class _CustomHostnameFallbackOriginState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")
 class CustomHostnameFallbackOrigin(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

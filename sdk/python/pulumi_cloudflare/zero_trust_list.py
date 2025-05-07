@@ -228,10 +228,8 @@ class _ZeroTrustListState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustList:ZeroTrustList")
 class ZeroTrustList(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustList:ZeroTrustList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

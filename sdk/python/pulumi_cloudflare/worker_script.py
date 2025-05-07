@@ -675,11 +675,9 @@ class _WorkerScriptState:
 warnings.warn("""cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/workerScript:WorkerScript")
 class WorkerScript(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/workerscript.WorkerScript has been deprecated in favor of cloudflare.index/workersscript.WorkersScript""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/workerScript:WorkerScript"
 
     @overload
     def __init__(__self__,

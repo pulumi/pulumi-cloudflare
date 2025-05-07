@@ -223,10 +223,8 @@ class _WorkersDeploymentState:
         pulumi.set(self, "versions", value)
 
 
+@pulumi.type_token("cloudflare:index/workersDeployment:WorkersDeployment")
 class WorkersDeployment(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/workersDeployment:WorkersDeployment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

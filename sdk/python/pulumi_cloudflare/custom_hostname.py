@@ -306,10 +306,8 @@ class _CustomHostnameState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/customHostname:CustomHostname")
 class CustomHostname(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/customHostname:CustomHostname"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -134,10 +134,8 @@ class _ZoneSubscriptionState:
         pulumi.set(self, "rate_plan", value)
 
 
+@pulumi.type_token("cloudflare:index/zoneSubscription:ZoneSubscription")
 class ZoneSubscription(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zoneSubscription:ZoneSubscription"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

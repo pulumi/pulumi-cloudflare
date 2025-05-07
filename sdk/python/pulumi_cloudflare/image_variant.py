@@ -141,10 +141,8 @@ class _ImageVariantState:
         pulumi.set(self, "variant", value)
 
 
+@pulumi.type_token("cloudflare:index/imageVariant:ImageVariant")
 class ImageVariant(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/imageVariant:ImageVariant"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

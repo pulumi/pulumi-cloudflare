@@ -511,11 +511,9 @@ class _TeamsRuleState:
 warnings.warn("""cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/teamsRule:TeamsRule")
 class TeamsRule(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/teamsrule.TeamsRule has been deprecated in favor of cloudflare.index/zerotrustgatewaypolicy.ZeroTrustGatewayPolicy""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/teamsRule:TeamsRule"
 
     @overload
     def __init__(__self__,

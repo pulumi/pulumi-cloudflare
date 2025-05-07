@@ -454,11 +454,9 @@ class _AccessOrganizationState:
 warnings.warn("""cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/accessOrganization:AccessOrganization")
 class AccessOrganization(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accessorganization.AccessOrganization has been deprecated in favor of cloudflare.index/zerotrustorganization.ZeroTrustOrganization""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/accessOrganization:AccessOrganization"
 
     @overload
     def __init__(__self__,

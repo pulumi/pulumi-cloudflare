@@ -238,10 +238,8 @@ class _RateLimitState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/rateLimit:RateLimit")
 class RateLimit(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/rateLimit:RateLimit"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -276,10 +276,8 @@ class _ApiShieldSchemaState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/apiShieldSchema:ApiShieldSchema")
 class ApiShieldSchema(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/apiShieldSchema:ApiShieldSchema"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

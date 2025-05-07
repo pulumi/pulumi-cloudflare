@@ -783,10 +783,8 @@ class _ZeroTrustDeviceCustomProfileState:
         pulumi.set(self, "tunnel_protocol", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile")
 class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustDeviceCustomProfile:ZeroTrustDeviceCustomProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

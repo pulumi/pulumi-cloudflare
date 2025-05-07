@@ -81,10 +81,8 @@ class _ZeroTrustRiskBehaviorState:
         pulumi.set(self, "behaviors", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior")
 class ZeroTrustRiskBehavior(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

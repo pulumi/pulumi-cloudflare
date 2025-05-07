@@ -285,10 +285,8 @@ class _PagesProjectState:
         pulumi.set(self, "subdomain", value)
 
 
+@pulumi.type_token("cloudflare:index/pagesProject:PagesProject")
 class PagesProject(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/pagesProject:PagesProject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

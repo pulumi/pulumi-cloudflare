@@ -264,10 +264,8 @@ class _RulesetState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/ruleset:Ruleset")
 class Ruleset(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/ruleset:Ruleset"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

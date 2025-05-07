@@ -2095,10 +2095,8 @@ export type PagesProject = import("./pagesProject").PagesProject;
 export const PagesProject: typeof import("./pagesProject").PagesProject = null as any;
 utilities.lazyLoad(exports, ["PagesProject"], () => require("./pagesProject"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { QueueArgs, QueueState } from "./queue";
 export type Queue = import("./queue").Queue;

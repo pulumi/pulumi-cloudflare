@@ -252,10 +252,8 @@ class _ZeroTrustGatewayCertificateState:
         pulumi.set(self, "validity_period_days", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate")
 class ZeroTrustGatewayCertificate(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustGatewayCertificate:ZeroTrustGatewayCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

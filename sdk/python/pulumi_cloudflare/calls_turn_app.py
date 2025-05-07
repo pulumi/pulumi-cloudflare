@@ -192,10 +192,8 @@ class _CallsTurnAppState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("cloudflare:index/callsTurnApp:CallsTurnApp")
 class CallsTurnApp(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/callsTurnApp:CallsTurnApp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

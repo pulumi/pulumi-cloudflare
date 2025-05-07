@@ -134,10 +134,8 @@ class _UrlNormalizationSettingsState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings")
 class UrlNormalizationSettings(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -212,10 +212,8 @@ class _PagesDomainState:
         pulumi.set(self, "zone_tag", value)
 
 
+@pulumi.type_token("cloudflare:index/pagesDomain:PagesDomain")
 class PagesDomain(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/pagesDomain:PagesDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

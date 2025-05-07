@@ -135,10 +135,8 @@ class _ZeroTrustAccessTagState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag")
 class ZeroTrustAccessTag(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustAccessTag:ZeroTrustAccessTag"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

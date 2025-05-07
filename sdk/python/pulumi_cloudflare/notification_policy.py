@@ -315,10 +315,8 @@ class _NotificationPolicyState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("cloudflare:index/notificationPolicy:NotificationPolicy")
 class NotificationPolicy(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/notificationPolicy:NotificationPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

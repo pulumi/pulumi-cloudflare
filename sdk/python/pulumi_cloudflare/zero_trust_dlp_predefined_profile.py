@@ -328,10 +328,8 @@ class _ZeroTrustDlpPredefinedProfileState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile")
 class ZeroTrustDlpPredefinedProfile(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

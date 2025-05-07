@@ -142,10 +142,8 @@ class _RegionalHostnameState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/regionalHostname:RegionalHostname")
 class RegionalHostname(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/regionalHostname:RegionalHostname"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

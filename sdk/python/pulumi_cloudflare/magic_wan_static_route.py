@@ -362,10 +362,8 @@ class _MagicWanStaticRouteState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute")
 class MagicWanStaticRoute(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
