@@ -153,10 +153,8 @@ class _R2BucketLifecycleState:
         pulumi.set(self, "rules", value)
 
 
+@pulumi.type_token("cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")
 class R2BucketLifecycle(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/r2BucketLifecycle:R2BucketLifecycle"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

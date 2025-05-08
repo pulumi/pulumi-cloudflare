@@ -225,10 +225,8 @@ class _WorkersForPlatformsScriptSecretState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret")
 class WorkersForPlatformsScriptSecret(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

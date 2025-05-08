@@ -261,10 +261,8 @@ class _AccessRuleState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/accessRule:AccessRule")
 class AccessRule(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/accessRule:AccessRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

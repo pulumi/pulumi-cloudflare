@@ -286,10 +286,8 @@ class _ZeroTrustDexTestState:
         pulumi.set(self, "test_id", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest")
 class ZeroTrustDexTest(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

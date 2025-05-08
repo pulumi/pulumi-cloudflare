@@ -1267,10 +1267,8 @@ class _ZeroTrustAccessApplicationState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication")
 class ZeroTrustAccessApplication(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

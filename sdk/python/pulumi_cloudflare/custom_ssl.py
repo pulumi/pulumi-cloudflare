@@ -402,10 +402,8 @@ class _CustomSslState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/customSsl:CustomSsl")
 class CustomSsl(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/customSsl:CustomSsl"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

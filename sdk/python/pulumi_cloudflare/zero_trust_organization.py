@@ -451,10 +451,8 @@ class _ZeroTrustOrganizationState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization")
 class ZeroTrustOrganization(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustOrganization:ZeroTrustOrganization"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

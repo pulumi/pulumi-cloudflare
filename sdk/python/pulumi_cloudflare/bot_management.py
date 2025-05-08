@@ -478,10 +478,8 @@ class _BotManagementState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/botManagement:BotManagement")
 class BotManagement(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/botManagement:BotManagement"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

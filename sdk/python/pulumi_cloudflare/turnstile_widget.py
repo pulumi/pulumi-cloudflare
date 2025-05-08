@@ -401,10 +401,8 @@ class _TurnstileWidgetState:
         pulumi.set(self, "sitekey", value)
 
 
+@pulumi.type_token("cloudflare:index/turnstileWidget:TurnstileWidget")
 class TurnstileWidget(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/turnstileWidget:TurnstileWidget"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

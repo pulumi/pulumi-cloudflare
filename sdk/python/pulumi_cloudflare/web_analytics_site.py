@@ -314,10 +314,8 @@ class _WebAnalyticsSiteState:
         pulumi.set(self, "zone_tag", value)
 
 
+@pulumi.type_token("cloudflare:index/webAnalyticsSite:WebAnalyticsSite")
 class WebAnalyticsSite(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/webAnalyticsSite:WebAnalyticsSite"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

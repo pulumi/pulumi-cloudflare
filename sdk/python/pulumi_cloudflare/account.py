@@ -181,10 +181,8 @@ class _AccountState:
         pulumi.set(self, "unit", value)
 
 
+@pulumi.type_token("cloudflare:index/account:Account")
 class Account(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/account:Account"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -225,10 +225,8 @@ class _StreamAudioTrackState:
         pulumi.set(self, "uid", value)
 
 
+@pulumi.type_token("cloudflare:index/streamAudioTrack:StreamAudioTrack")
 class StreamAudioTrack(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/streamAudioTrack:StreamAudioTrack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

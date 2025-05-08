@@ -163,10 +163,8 @@ class _EmailRoutingAddressState:
         pulumi.set(self, "verified", value)
 
 
+@pulumi.type_token("cloudflare:index/emailRoutingAddress:EmailRoutingAddress")
 class EmailRoutingAddress(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/emailRoutingAddress:EmailRoutingAddress"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

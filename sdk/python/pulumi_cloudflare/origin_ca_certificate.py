@@ -201,10 +201,8 @@ class _OriginCaCertificateState:
         pulumi.set(self, "requested_validity", value)
 
 
+@pulumi.type_token("cloudflare:index/originCaCertificate:OriginCaCertificate")
 class OriginCaCertificate(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/originCaCertificate:OriginCaCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

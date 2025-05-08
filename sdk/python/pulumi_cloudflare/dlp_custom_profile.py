@@ -397,11 +397,9 @@ class _DlpCustomProfileState:
 warnings.warn("""cloudflare.index/dlpcustomprofile.DlpCustomProfile has been deprecated in favor of cloudflare.index/zerotrustdlpcustomprofile.ZeroTrustDlpCustomProfile""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/dlpCustomProfile:DlpCustomProfile")
 class DlpCustomProfile(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/dlpcustomprofile.DlpCustomProfile has been deprecated in favor of cloudflare.index/zerotrustdlpcustomprofile.ZeroTrustDlpCustomProfile""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/dlpCustomProfile:DlpCustomProfile"
 
     @overload
     def __init__(__self__,

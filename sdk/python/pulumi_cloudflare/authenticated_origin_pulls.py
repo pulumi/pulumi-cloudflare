@@ -349,10 +349,8 @@ class _AuthenticatedOriginPullsState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")
 class AuthenticatedOriginPulls(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -112,10 +112,8 @@ class _StreamKeyState:
         pulumi.set(self, "pem", value)
 
 
+@pulumi.type_token("cloudflare:index/streamKey:StreamKey")
 class StreamKey(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/streamKey:StreamKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

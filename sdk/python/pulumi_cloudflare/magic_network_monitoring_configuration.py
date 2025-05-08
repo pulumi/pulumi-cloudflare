@@ -169,10 +169,8 @@ class _MagicNetworkMonitoringConfigurationState:
         pulumi.set(self, "warp_devices", value)
 
 
+@pulumi.type_token("cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration")
 class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/magicNetworkMonitoringConfiguration:MagicNetworkMonitoringConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

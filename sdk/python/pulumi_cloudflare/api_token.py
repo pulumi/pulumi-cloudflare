@@ -285,10 +285,8 @@ class _ApiTokenState:
         pulumi.set(self, "value", value)
 
 
+@pulumi.type_token("cloudflare:index/apiToken:ApiToken")
 class ApiToken(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/apiToken:ApiToken"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

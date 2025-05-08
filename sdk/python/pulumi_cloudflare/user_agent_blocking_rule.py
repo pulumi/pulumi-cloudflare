@@ -164,10 +164,8 @@ class _UserAgentBlockingRuleState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")
 class UserAgentBlockingRule(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

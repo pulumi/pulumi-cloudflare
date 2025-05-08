@@ -248,10 +248,8 @@ class _AccountSubscriptionState:
         pulumi.set(self, "subscription_identifier", value)
 
 
+@pulumi.type_token("cloudflare:index/accountSubscription:AccountSubscription")
 class AccountSubscription(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/accountSubscription:AccountSubscription"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

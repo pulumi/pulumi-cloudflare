@@ -554,10 +554,8 @@ class _LogpushJobState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/logpushJob:LogpushJob")
 class LogpushJob(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/logpushJob:LogpushJob"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

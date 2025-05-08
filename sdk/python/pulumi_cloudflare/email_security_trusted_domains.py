@@ -262,10 +262,8 @@ class _EmailSecurityTrustedDomainsState:
         pulumi.set(self, "pattern", value)
 
 
+@pulumi.type_token("cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains")
 class EmailSecurityTrustedDomains(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/emailSecurityTrustedDomains:EmailSecurityTrustedDomains"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

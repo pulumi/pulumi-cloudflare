@@ -250,10 +250,8 @@ class _MagicTransitSiteWanState:
         pulumi.set(self, "vlan_tag", value)
 
 
+@pulumi.type_token("cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan")
 class MagicTransitSiteWan(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/magicTransitSiteWan:MagicTransitSiteWan"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

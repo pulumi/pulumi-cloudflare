@@ -193,10 +193,8 @@ class _WorkersRouteState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/workersRoute:WorkersRoute")
 class WorkersRoute(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/workersRoute:WorkersRoute"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

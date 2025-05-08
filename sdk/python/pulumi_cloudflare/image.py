@@ -256,10 +256,8 @@ class _ImageState:
         pulumi.set(self, "variants", value)
 
 
+@pulumi.type_token("cloudflare:index/image:Image")
 class Image(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/image:Image"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

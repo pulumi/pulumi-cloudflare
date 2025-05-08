@@ -253,10 +253,8 @@ class _CloudforceOneRequestAssetState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")
 class CloudforceOneRequestAsset(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

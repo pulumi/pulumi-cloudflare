@@ -208,10 +208,8 @@ class _StreamCaptionLanguageState:
         pulumi.set(self, "status", value)
 
 
+@pulumi.type_token("cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage")
 class StreamCaptionLanguage(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/streamCaptionLanguage:StreamCaptionLanguage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

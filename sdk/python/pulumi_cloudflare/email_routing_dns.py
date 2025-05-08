@@ -263,10 +263,8 @@ class _EmailRoutingDnsState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/emailRoutingDns:EmailRoutingDns")
 class EmailRoutingDns(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/emailRoutingDns:EmailRoutingDns"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -356,11 +356,9 @@ class _TeamsLocationState:
 warnings.warn("""cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/teamsLocation:TeamsLocation")
 class TeamsLocation(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/teamslocation.TeamsLocation has been deprecated in favor of cloudflare.index/zerotrustdnslocation.ZeroTrustDnsLocation""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/teamsLocation:TeamsLocation"
 
     @overload
     def __init__(__self__,

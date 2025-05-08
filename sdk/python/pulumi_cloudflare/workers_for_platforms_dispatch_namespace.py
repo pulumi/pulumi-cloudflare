@@ -208,10 +208,8 @@ class _WorkersForPlatformsDispatchNamespaceState:
         pulumi.set(self, "script_count", value)
 
 
+@pulumi.type_token("cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace")
 class WorkersForPlatformsDispatchNamespace(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/workersForPlatformsDispatchNamespace:WorkersForPlatformsDispatchNamespace"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

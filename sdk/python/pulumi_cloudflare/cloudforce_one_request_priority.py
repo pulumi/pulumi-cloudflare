@@ -342,10 +342,8 @@ class _CloudforceOneRequestPriorityState:
         pulumi.set(self, "updated", value)
 
 
+@pulumi.type_token("cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority")
 class CloudforceOneRequestPriority(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -331,10 +331,8 @@ class _MagicNetworkMonitoringRuleState:
         pulumi.set(self, "zscore_target", value)
 
 
+@pulumi.type_token("cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule")
 class MagicNetworkMonitoringRule(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/magicNetworkMonitoringRule:MagicNetworkMonitoringRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

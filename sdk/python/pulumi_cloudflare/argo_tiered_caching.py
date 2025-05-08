@@ -131,10 +131,8 @@ class _ArgoTieredCachingState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/argoTieredCaching:ArgoTieredCaching")
 class ArgoTieredCaching(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/argoTieredCaching:ArgoTieredCaching"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

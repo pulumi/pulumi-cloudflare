@@ -226,10 +226,8 @@ class _ListState:
         pulumi.set(self, "num_referencing_filters", value)
 
 
+@pulumi.type_token("cloudflare:index/list:List")
 class List(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/list:List"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

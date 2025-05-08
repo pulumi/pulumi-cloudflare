@@ -221,10 +221,8 @@ class _EmailSecurityImpersonationRegistryState:
         pulumi.set(self, "provenance", value)
 
 
+@pulumi.type_token("cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry")
 class EmailSecurityImpersonationRegistry(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/emailSecurityImpersonationRegistry:EmailSecurityImpersonationRegistry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
