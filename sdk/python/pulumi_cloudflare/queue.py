@@ -197,10 +197,8 @@ class _QueueState:
         pulumi.set(self, "settings", value)
 
 
+@pulumi.type_token("cloudflare:index/queue:Queue")
 class Queue(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/queue:Queue"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

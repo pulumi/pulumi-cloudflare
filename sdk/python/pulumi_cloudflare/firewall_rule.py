@@ -196,10 +196,8 @@ class _FirewallRuleState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/firewallRule:FirewallRule")
 class FirewallRule(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/firewallRule:FirewallRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

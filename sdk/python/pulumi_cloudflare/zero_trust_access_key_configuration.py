@@ -127,10 +127,8 @@ class _ZeroTrustAccessKeyConfigurationState:
         pulumi.set(self, "last_key_rotation_at", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration")
 class ZeroTrustAccessKeyConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

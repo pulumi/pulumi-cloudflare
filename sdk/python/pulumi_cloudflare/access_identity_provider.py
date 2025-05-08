@@ -231,11 +231,9 @@ class _AccessIdentityProviderState:
 warnings.warn("""cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/accessIdentityProvider:AccessIdentityProvider")
 class AccessIdentityProvider(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accessidentityprovider.AccessIdentityProvider has been deprecated in favor of cloudflare.index/zerotrustaccessidentityprovider.ZeroTrustAccessIdentityProvider""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/accessIdentityProvider:AccessIdentityProvider"
 
     @overload
     def __init__(__self__,

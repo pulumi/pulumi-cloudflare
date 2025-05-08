@@ -346,10 +346,8 @@ class _CloudforceOneRequestState:
         pulumi.set(self, "updated", value)
 
 
+@pulumi.type_token("cloudflare:index/cloudforceOneRequest:CloudforceOneRequest")
 class CloudforceOneRequest(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/cloudforceOneRequest:CloudforceOneRequest"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

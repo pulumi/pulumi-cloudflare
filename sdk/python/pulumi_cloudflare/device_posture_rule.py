@@ -287,11 +287,9 @@ class _DevicePostureRuleState:
 warnings.warn("""cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/devicePostureRule:DevicePostureRule")
 class DevicePostureRule(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/deviceposturerule.DevicePostureRule has been deprecated in favor of cloudflare.index/zerotrustdeviceposturerule.ZeroTrustDevicePostureRule""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/devicePostureRule:DevicePostureRule"
 
     @overload
     def __init__(__self__,

@@ -508,10 +508,8 @@ class _ZeroTrustGatewayPolicyState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy")
 class ZeroTrustGatewayPolicy(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

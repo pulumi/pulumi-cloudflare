@@ -249,10 +249,8 @@ class _MagicTransitSiteState:
         pulumi.set(self, "secondary_connector_id", value)
 
 
+@pulumi.type_token("cloudflare:index/magicTransitSite:MagicTransitSite")
 class MagicTransitSite(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/magicTransitSite:MagicTransitSite"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

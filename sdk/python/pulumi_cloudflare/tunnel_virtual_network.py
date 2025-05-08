@@ -226,11 +226,9 @@ class _TunnelVirtualNetworkState:
 warnings.warn("""cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork")
 class TunnelVirtualNetwork(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/tunnelvirtualnetwork.TunnelVirtualNetwork has been deprecated in favor of cloudflare.index/zerotrusttunnelcloudflaredvirtualnetwork.ZeroTrustTunnelCloudflaredVirtualNetwork""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork"
 
     @overload
     def __init__(__self__,

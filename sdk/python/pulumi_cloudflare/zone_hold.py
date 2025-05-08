@@ -168,10 +168,8 @@ class _ZoneHoldState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/zoneHold:ZoneHold")
 class ZoneHold(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zoneHold:ZoneHold"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

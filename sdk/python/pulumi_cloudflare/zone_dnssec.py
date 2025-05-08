@@ -344,10 +344,8 @@ class _ZoneDnssecState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/zoneDnssec:ZoneDnssec")
 class ZoneDnssec(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zoneDnssec:ZoneDnssec"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

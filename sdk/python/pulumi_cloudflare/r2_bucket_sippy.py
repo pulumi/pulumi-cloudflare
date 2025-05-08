@@ -209,10 +209,8 @@ class _R2BucketSippyState:
         pulumi.set(self, "source", value)
 
 
+@pulumi.type_token("cloudflare:index/r2BucketSippy:R2BucketSippy")
 class R2BucketSippy(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/r2BucketSippy:R2BucketSippy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

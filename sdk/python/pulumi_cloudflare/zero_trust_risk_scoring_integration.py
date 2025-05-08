@@ -234,10 +234,8 @@ class _ZeroTrustRiskScoringIntegrationState:
         pulumi.set(self, "well_known_url", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration")
 class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

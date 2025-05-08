@@ -249,10 +249,8 @@ class _MagicTransitConnectorState:
         pulumi.set(self, "timezone", value)
 
 
+@pulumi.type_token("cloudflare:index/magicTransitConnector:MagicTransitConnector")
 class MagicTransitConnector(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/magicTransitConnector:MagicTransitConnector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

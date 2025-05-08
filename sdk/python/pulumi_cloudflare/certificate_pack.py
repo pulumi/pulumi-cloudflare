@@ -285,10 +285,8 @@ class _CertificatePackState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/certificatePack:CertificatePack")
 class CertificatePack(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/certificatePack:CertificatePack"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

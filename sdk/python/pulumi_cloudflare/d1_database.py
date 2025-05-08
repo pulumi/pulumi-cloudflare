@@ -203,10 +203,8 @@ class _D1DatabaseState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("cloudflare:index/d1Database:D1Database")
 class D1Database(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/d1Database:D1Database"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

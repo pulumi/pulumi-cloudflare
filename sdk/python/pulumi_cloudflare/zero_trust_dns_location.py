@@ -353,10 +353,8 @@ class _ZeroTrustDnsLocationState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation")
 class ZeroTrustDnsLocation(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

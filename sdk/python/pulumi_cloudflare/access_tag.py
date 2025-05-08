@@ -138,11 +138,9 @@ class _AccessTagState:
 warnings.warn("""cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/accessTag:AccessTag")
 class AccessTag(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/accesstag.AccessTag has been deprecated in favor of cloudflare.index/zerotrustaccesstag.ZeroTrustAccessTag""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/accessTag:AccessTag"
 
     @overload
     def __init__(__self__,

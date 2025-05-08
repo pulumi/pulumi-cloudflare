@@ -366,10 +366,8 @@ class _KeylessCertificateState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/keylessCertificate:KeylessCertificate")
 class KeylessCertificate(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/keylessCertificate:KeylessCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

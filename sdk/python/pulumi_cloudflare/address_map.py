@@ -274,10 +274,8 @@ class _AddressMapState:
         pulumi.set(self, "modified_at", value)
 
 
+@pulumi.type_token("cloudflare:index/addressMap:AddressMap")
 class AddressMap(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/addressMap:AddressMap"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

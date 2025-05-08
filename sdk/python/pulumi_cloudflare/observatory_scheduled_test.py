@@ -161,10 +161,8 @@ class _ObservatoryScheduledTestState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest")
 class ObservatoryScheduledTest(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

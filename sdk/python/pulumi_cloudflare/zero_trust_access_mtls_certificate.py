@@ -243,10 +243,8 @@ class _ZeroTrustAccessMtlsCertificateState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate")
 class ZeroTrustAccessMtlsCertificate(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/zeroTrustAccessMtlsCertificate:ZeroTrustAccessMtlsCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

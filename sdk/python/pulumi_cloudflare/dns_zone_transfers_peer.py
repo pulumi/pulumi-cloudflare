@@ -215,10 +215,8 @@ class _DnsZoneTransfersPeerState:
         pulumi.set(self, "tsig_id", value)
 
 
+@pulumi.type_token("cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer")
 class DnsZoneTransfersPeer(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/dnsZoneTransfersPeer:DnsZoneTransfersPeer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

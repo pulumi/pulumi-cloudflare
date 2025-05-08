@@ -224,10 +224,8 @@ class _NotificationPolicyWebhooksState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks")
 class NotificationPolicyWebhooks(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

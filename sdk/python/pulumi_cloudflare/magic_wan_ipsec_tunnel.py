@@ -391,10 +391,8 @@ class _MagicWanIpsecTunnelState:
         pulumi.set(self, "replay_protection", value)
 
 
+@pulumi.type_token("cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel")
 class MagicWanIpsecTunnel(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

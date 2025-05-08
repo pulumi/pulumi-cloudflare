@@ -128,10 +128,8 @@ class _LeakedCredentialCheckRuleState:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.type_token("cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")
 class LeakedCredentialCheckRule(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

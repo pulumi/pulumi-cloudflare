@@ -286,10 +286,8 @@ class _MtlsCertificateState:
         pulumi.set(self, "uploaded_on", value)
 
 
+@pulumi.type_token("cloudflare:index/mtlsCertificate:MtlsCertificate")
 class MtlsCertificate(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/mtlsCertificate:MtlsCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

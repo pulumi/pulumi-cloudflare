@@ -189,10 +189,8 @@ class _EmailSecurityBlockSenderState:
         pulumi.set(self, "pattern_type", value)
 
 
+@pulumi.type_token("cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender")
 class EmailSecurityBlockSender(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/emailSecurityBlockSender:EmailSecurityBlockSender"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

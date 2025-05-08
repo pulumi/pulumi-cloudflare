@@ -231,10 +231,8 @@ class _WebAnalyticsRuleState:
         pulumi.set(self, "ruleset_id", value)
 
 
+@pulumi.type_token("cloudflare:index/webAnalyticsRule:WebAnalyticsRule")
 class WebAnalyticsRule(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/webAnalyticsRule:WebAnalyticsRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

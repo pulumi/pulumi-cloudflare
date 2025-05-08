@@ -158,10 +158,8 @@ class _AccountDnsSettingsInternalViewState:
         pulumi.set(self, "zones", value)
 
 
+@pulumi.type_token("cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView")
 class AccountDnsSettingsInternalView(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/accountDnsSettingsInternalView:AccountDnsSettingsInternalView"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

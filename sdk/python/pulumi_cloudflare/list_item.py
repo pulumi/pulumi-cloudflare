@@ -306,10 +306,8 @@ class _ListItemState:
         pulumi.set(self, "redirect", value)
 
 
+@pulumi.type_token("cloudflare:index/listItem:ListItem")
 class ListItem(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/listItem:ListItem"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

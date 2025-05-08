@@ -120,10 +120,8 @@ class _WorkersCronTriggerState:
         pulumi.set(self, "script_name", value)
 
 
+@pulumi.type_token("cloudflare:index/workersCronTrigger:WorkersCronTrigger")
 class WorkersCronTrigger(pulumi.CustomResource):
-
-    pulumi_type = "cloudflare:index/workersCronTrigger:WorkersCronTrigger"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

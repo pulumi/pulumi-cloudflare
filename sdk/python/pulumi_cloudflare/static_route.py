@@ -365,11 +365,9 @@ class _StaticRouteState:
 warnings.warn("""cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute""", DeprecationWarning)
 
 
+@pulumi.type_token("cloudflare:index/staticRoute:StaticRoute")
 class StaticRoute(pulumi.CustomResource):
     warnings.warn("""cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute""", DeprecationWarning)
-
-
-    pulumi_type = "cloudflare:index/staticRoute:StaticRoute"
 
     @overload
     def __init__(__self__,
