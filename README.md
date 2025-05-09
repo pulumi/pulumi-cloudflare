@@ -48,18 +48,11 @@ To use from .NET, install using `dotnet add package`:
 
 The following configuration points are available:
 
-- `cloudflare:apiBasePath` - (Optional) Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH` environment variable.
-- `cloudflare:apiClientLogging` - (Optional) Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
-- `cloudflare:apiHostname` - (Optional) Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME` environment variable.
 - `cloudflare:apiKey` - (Optional) The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable. API keys are now considered legacy by Cloudflare, API tokens should be used instead. Must provide only one of `cloudflare:apiKey`, `cloudflare:apiToken`, `cloudflare:apiUserServiceKey`.
-- `cloudflare:apiKey` - (Optional) The Cloudflare API key. May be set via the `CLOUDFLARE_API_KEY` environment variable. 
 - `cloudflare:apiToken` - (Optional) The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable. Must provide only one of `cloudflare:apiKey`, `cloudflare:apiToken`, `cloudflare:apiUserServiceKey`.
 - `cloudflare:apiUserServiceKey` - (Optional) A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable. Must provide only one of `cloudflare:apiKey`, `cloudflare:apiToken`, `cloudflare:apiUserServiceKey`.
+- `cloudflare:baseUrl` (String) Value to override the default HTTP client base URL. Alternatively, can be configured using the `CLOUDFLARE_BASE_URL` environment variable.
 - `cloudflare:email` - (Optional) A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment variable. Required when using `cloudflare:apiKey`. Conflicts with `cloudflare:apiToken`.
-- `cloudflare:maxBackoff` - (Optional) Maximum backoff period in seconds after failed API calls. Default: `30`. May be set via the `CLOUDFLARE_MAX_BACKOFF` environment variable.
-- `cloudflare:minBackoff` - (Optional) Minimum backoff period in seconds after failed API calls. Default: `1`. May be set via the `CLOUDFLARE_MIN_BACKOFF` environment variable.
-- `cloudflare:retries` - (Optional) Maximum number of retries to perform when an API request fails. Default: `3`. May be set via the `CLOUDFLARE_RETRIES` environment variable.
-- `cloudflare:rps` - (Optional) RPS limit to apply when making calls to the API. Default: `4`. May be set via the `CLOUDFLARE_RPS` environment variable.
 - `cloudflare:userAgentOperatorSuffix` - (Optional) A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely identifying your traffic. **Setting this value will remove the Pulumi version from the HTTP User Agent string and may have unintended consequences.** Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX` environment variable.
 
 ## Reference
