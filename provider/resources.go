@@ -30,7 +30,6 @@ import (
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
@@ -252,9 +251,6 @@ func Provider() info.Provider {
 			"cloudflare_zero_trust_access_tag": {
 				Aliases: alias("cloudflare:index/accessTag:AccessTag"),
 			},
-			"cloudflare_zero_trust_dex_test": {
-				Aliases: alias("cloudflare:index/deviceDexTest:DeviceDexTest"),
-			},
 			"cloudflare_zero_trust_device_managed_networks": {
 				Aliases: alias("cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks"),
 			},
@@ -360,11 +356,6 @@ func Provider() info.Provider {
 				// cloudflare_worker_script
 				Aliases: alias("cloudflare:index/workerScript:WorkerScript"),
 			},
-			"cloudflare_workers_for_platforms_script_secret": {
-				Aliases: alias(
-					"cloudflare:index/workersSecret:WorkersSecret",
-				),
-			},
 			"cloudflare_workers_for_platforms_dispatch_namespace": {
 				// cloudflare_workers_for_platforms_namespace
 				Aliases: alias("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace"),
@@ -429,21 +420,6 @@ func Provider() info.Provider {
 		EnableZeroDefaultSchemaVersion: true,
 		EnableAccurateBridgePreview:    true,
 	}
-
-	prov.RenameDataSource("cloudflare_workers_for_platforms_script_secret",
-		tokens.ModuleMember("cloudflare:index/getWorkersSecret:getWorkersSecret"),
-		tokens.ModuleMember("cloudflare:index/getWorkersForPlatformsScriptSecret:getWorkersForPlatformsScriptSecret"),
-		"index",
-		"index",
-		nil,
-	)
-	prov.RenameDataSource("cloudflare_workers_for_platforms_script_secrets",
-		tokens.ModuleMember("cloudflare:index/getWorkersSecrets:getWorkersSecrets"),
-		tokens.ModuleMember("cloudflare:index/getWorkersForPlatformsScriptSecrets:getWorkersForPlatformsScriptSecrets"),
-		"index",
-		"index",
-		nil,
-	)
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
