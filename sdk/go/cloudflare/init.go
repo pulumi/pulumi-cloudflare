@@ -117,8 +117,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomSsl{}
 	case "cloudflare:index/d1Database:D1Database":
 		r = &D1Database{}
-	case "cloudflare:index/deviceDexTest:DeviceDexTest":
-		r = &DeviceDexTest{}
 	case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
 		r = &DeviceManagedNetworks{}
 	case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
@@ -355,8 +353,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersForPlatformsDispatchNamespace{}
 	case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
 		r = &WorkersForPlatformsNamespace{}
-	case "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret":
-		r = &WorkersForPlatformsScriptSecret{}
 	case "cloudflare:index/workersKv:WorkersKv":
 		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -367,8 +363,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersScript{}
 	case "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain":
 		r = &WorkersScriptSubdomain{}
-	case "cloudflare:index/workersSecret:WorkersSecret":
-		r = &WorkersSecret{}
 	case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
 		r = &ZeroTrustAccessApplication{}
 	case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
@@ -409,8 +403,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDevicePostureIntegration{}
 	case "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule":
 		r = &ZeroTrustDevicePostureRule{}
-	case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
-		r = &ZeroTrustDexTest{}
 	case "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile":
 		r = &ZeroTrustDlpCustomProfile{}
 	case "cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset":
@@ -736,11 +728,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/d1Database",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/deviceDexTest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1335,11 +1322,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-		"index/workersForPlatformsScriptSecret",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
 		"index/workersKv",
 		&module{version},
 	)
@@ -1361,11 +1343,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workersScriptSubdomain",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/workersSecret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -1466,11 +1443,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustDevicePostureRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
-		"index/zeroTrustDexTest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

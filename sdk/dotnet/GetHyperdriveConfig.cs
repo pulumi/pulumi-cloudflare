@@ -147,6 +147,7 @@ namespace Pulumi.Cloudflare
         /// When the Hyperdrive configuration was last modified.
         /// </summary>
         public readonly string ModifiedOn;
+        public readonly Outputs.GetHyperdriveConfigMtlsResult Mtls;
         public readonly string Name;
         public readonly Outputs.GetHyperdriveConfigOriginResult Origin;
 
@@ -164,6 +165,8 @@ namespace Pulumi.Cloudflare
 
             string modifiedOn,
 
+            Outputs.GetHyperdriveConfigMtlsResult mtls,
+
             string name,
 
             Outputs.GetHyperdriveConfigOriginResult origin)
@@ -174,6 +177,7 @@ namespace Pulumi.Cloudflare
             HyperdriveId = hyperdriveId;
             Id = id;
             ModifiedOn = modifiedOn;
+            Mtls = mtls;
             Name = name;
             Origin = origin;
         }

@@ -19,13 +19,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The scope of the rule.
+        /// Defines the scope of the rule.
         /// Available values: "user", "organization".
         /// </summary>
         [Input("type")]

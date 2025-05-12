@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetTotalTlsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetTotalTlsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly int ValidityPeriod;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

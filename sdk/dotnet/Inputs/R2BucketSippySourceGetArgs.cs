@@ -13,28 +13,34 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class R2BucketSippySourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+        /// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         [Input("accessKeyId")]
         public Input<string>? AccessKeyId { get; set; }
 
         /// <summary>
-        /// Name of the AWS S3 bucket
+        /// Name of the AWS S3 bucket.
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Client email of an IAM credential (ideally scoped to a single GCS bucket)
+        /// Client email of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         [Input("clientEmail")]
         public Input<string>? ClientEmail { get; set; }
+
+        /// <summary>
+        /// Available values: "aws".
+        /// </summary>
+        [Input("cloudProvider")]
+        public Input<string>? CloudProvider { get; set; }
 
         [Input("privateKey")]
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+        /// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -47,13 +53,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Available values: "aws".
-        /// </summary>
-        [Input("provider")]
-        public Input<string>? Provider { get; set; }
-
-        /// <summary>
-        /// Name of the AWS availability zone
+        /// Name of the AWS availability zone.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _secretAccessKey;
 
         /// <summary>
-        /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+        /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         public Input<string>? SecretAccessKey
         {

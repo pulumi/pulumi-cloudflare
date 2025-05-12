@@ -13,31 +13,31 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class R2BucketLifecycleRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Transition to abort ongoing multipart uploads
+        /// Transition to abort ongoing multipart uploads.
         /// </summary>
         [Input("abortMultipartUploadsTransition")]
         public Input<Inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs>? AbortMultipartUploadsTransition { get; set; }
 
         /// <summary>
-        /// Conditions that apply to all transitions of this rule
+        /// Conditions that apply to all transitions of this rule.
         /// </summary>
         [Input("conditions", required: true)]
         public Input<Inputs.R2BucketLifecycleRuleConditionsArgs> Conditions { get; set; } = null!;
 
         /// <summary>
-        /// Transition to delete objects
+        /// Transition to delete objects.
         /// </summary>
         [Input("deleteObjectsTransition")]
         public Input<Inputs.R2BucketLifecycleRuleDeleteObjectsTransitionArgs>? DeleteObjectsTransition { get; set; }
 
         /// <summary>
-        /// Whether or not this rule is in effect
+        /// Whether or not this rule is in effect.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier for this rule
+        /// Unique identifier for this rule.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.R2BucketLifecycleRuleStorageClassTransitionArgs>? _storageClassTransitions;
 
         /// <summary>
-        /// Transitions to change the storage class of objects
+        /// Transitions to change the storage class of objects.
         /// </summary>
         public InputList<Inputs.R2BucketLifecycleRuleStorageClassTransitionArgs> StorageClassTransitions
         {

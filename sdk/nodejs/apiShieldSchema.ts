@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const exampleApiShieldSchema = new cloudflare.ApiShieldSchema("example_api_shield_schema", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     file: "file.txt",
+ *     file: null,
  *     kind: "openapi_v3",
  *     name: "petstore schema",
  *     validationEnabled: "true",
@@ -77,7 +77,7 @@ export class ApiShieldSchema extends pulumi.CustomResource {
      */
     public readonly validationEnabled!: pulumi.Output<string | undefined>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -162,7 +162,7 @@ export interface ApiShieldSchemaState {
      */
     validationEnabled?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -191,7 +191,7 @@ export interface ApiShieldSchemaArgs {
      */
     validationEnabled?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

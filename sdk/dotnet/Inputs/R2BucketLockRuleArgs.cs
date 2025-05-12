@@ -13,25 +13,25 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class R2BucketLockRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Condition to apply a lock rule to an object for how long in seconds
+        /// Condition to apply a lock rule to an object for how long in seconds.
         /// </summary>
         [Input("condition", required: true)]
         public Input<Inputs.R2BucketLockRuleConditionArgs> Condition { get; set; } = null!;
 
         /// <summary>
-        /// Whether or not this rule is in effect
+        /// Whether or not this rule is in effect.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier for this rule
+        /// Unique identifier for this rule.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        /// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }

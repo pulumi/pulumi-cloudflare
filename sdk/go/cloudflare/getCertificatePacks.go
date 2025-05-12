@@ -54,7 +54,7 @@ type LookupCertificatePacksArgs struct {
 	// Include Certificate Packs of all statuses, not just active ones.
 	// Available values: "all".
 	Status *string `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -69,7 +69,7 @@ type LookupCertificatePacksResult struct {
 	// Include Certificate Packs of all statuses, not just active ones.
 	// Available values: "all".
 	Status *string `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -89,7 +89,7 @@ type LookupCertificatePacksOutputArgs struct {
 	// Include Certificate Packs of all statuses, not just active ones.
 	// Available values: "all".
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -133,7 +133,7 @@ func (o LookupCertificatePacksResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificatePacksResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCertificatePacksResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificatePacksResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

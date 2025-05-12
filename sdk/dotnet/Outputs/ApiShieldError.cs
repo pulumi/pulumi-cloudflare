@@ -14,16 +14,24 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ApiShieldError
     {
         public readonly int? Code;
+        public readonly string? DocumentationUrl;
         public readonly string? Message;
+        public readonly Outputs.ApiShieldErrorSource? Source;
 
         [OutputConstructor]
         private ApiShieldError(
             int? code,
 
-            string? message)
+            string? documentationUrl,
+
+            string? message,
+
+            Outputs.ApiShieldErrorSource? source)
         {
             Code = code;
+            DocumentationUrl = documentationUrl;
             Message = message;
+            Source = source;
         }
     }
 }

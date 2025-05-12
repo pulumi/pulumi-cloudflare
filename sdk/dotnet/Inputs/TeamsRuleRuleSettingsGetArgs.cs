@@ -43,6 +43,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsRuleRuleSettingsBisoAdminControlsGetArgs>? BisoAdminControls { get; set; }
 
         /// <summary>
+        /// Custom block page settings. If missing/null, blocking will use the the account settings.
+        /// </summary>
+        [Input("blockPage")]
+        public Input<Inputs.TeamsRuleRuleSettingsBlockPageGetArgs>? BlockPage { get; set; }
+
+        /// <summary>
         /// Enable the custom block page.
         /// </summary>
         [Input("blockPageEnabled")]

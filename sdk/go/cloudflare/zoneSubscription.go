@@ -22,7 +22,7 @@ type ZoneSubscription struct {
 	// Subscription identifier tag.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// The rate plan applied to the subscription.
-	RatePlan ZoneSubscriptionRatePlanOutput `pulumi:"ratePlan"`
+	RatePlan ZoneSubscriptionRatePlanPtrOutput `pulumi:"ratePlan"`
 }
 
 // NewZoneSubscription registers a new resource with the given unique name, arguments, and options.
@@ -201,8 +201,8 @@ func (o ZoneSubscriptionOutput) Identifier() pulumi.StringOutput {
 }
 
 // The rate plan applied to the subscription.
-func (o ZoneSubscriptionOutput) RatePlan() ZoneSubscriptionRatePlanOutput {
-	return o.ApplyT(func(v *ZoneSubscription) ZoneSubscriptionRatePlanOutput { return v.RatePlan }).(ZoneSubscriptionRatePlanOutput)
+func (o ZoneSubscriptionOutput) RatePlan() ZoneSubscriptionRatePlanPtrOutput {
+	return o.ApplyT(func(v *ZoneSubscription) ZoneSubscriptionRatePlanPtrOutput { return v.RatePlan }).(ZoneSubscriptionRatePlanPtrOutput)
 }
 
 type ZoneSubscriptionArrayOutput struct{ *pulumi.OutputState }

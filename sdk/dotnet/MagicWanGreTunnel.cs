@@ -23,9 +23,33 @@ namespace Pulumi.Cloudflare
     ///     var exampleMagicWanGreTunnel = new Cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", new()
     ///     {
     ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         CloudflareGreEndpoint = "203.0.113.1",
+    ///         CustomerGreEndpoint = "203.0.113.1",
+    ///         InterfaceAddress = "192.0.2.0/31",
+    ///         Name = "GRE_1",
+    ///         Description = "Tunnel for ISP X",
+    ///         HealthCheck = new Cloudflare.Inputs.MagicWanGreTunnelHealthCheckArgs
+    ///         {
+    ///             Direction = "bidirectional",
+    ///             Enabled = true,
+    ///             Rate = "low",
+    ///             Target = new Cloudflare.Inputs.MagicWanGreTunnelHealthCheckTargetArgs
+    ///             {
+    ///                 Saved = "203.0.113.1",
+    ///             },
+    ///             Type = "request",
+    ///         },
+    ///         Mtu = 0,
+    ///         Ttl = 0,
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example '&lt;account_id&gt;/&lt;gre_tunnel_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel")]
@@ -41,13 +65,19 @@ namespace Pulumi.Cloudflare
         /// The IP address assigned to the Cloudflare side of the GRE tunnel.
         /// </summary>
         [Output("cloudflareGreEndpoint")]
-        public Output<string?> CloudflareGreEndpoint { get; private set; } = null!;
+        public Output<string> CloudflareGreEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The date and time the tunnel was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
         /// The IP address assigned to the customer side of the GRE tunnel.
         /// </summary>
         [Output("customerGreEndpoint")]
-        public Output<string?> CustomerGreEndpoint { get; private set; } = null!;
+        public Output<string> CustomerGreEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of the GRE tunnel.
@@ -58,15 +88,6 @@ namespace Pulumi.Cloudflare
         [Output("greTunnel")]
         public Output<Outputs.MagicWanGreTunnelGreTunnel> GreTunnel { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Output("greTunnelId")]
-        public Output<string?> GreTunnelId { get; private set; } = null!;
-
-        [Output("greTunnels")]
-        public Output<ImmutableArray<Outputs.MagicWanGreTunnelGreTunnel>> GreTunnels { get; private set; } = null!;
-
         [Output("healthCheck")]
         public Output<Outputs.MagicWanGreTunnelHealthCheck> HealthCheck { get; private set; } = null!;
 
@@ -74,13 +95,19 @@ namespace Pulumi.Cloudflare
         /// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         /// </summary>
         [Output("interfaceAddress")]
-        public Output<string?> InterfaceAddress { get; private set; } = null!;
+        public Output<string> InterfaceAddress { get; private set; } = null!;
 
         [Output("modified")]
         public Output<bool> Modified { get; private set; } = null!;
 
         [Output("modifiedGreTunnel")]
         public Output<Outputs.MagicWanGreTunnelModifiedGreTunnel> ModifiedGreTunnel { get; private set; } = null!;
+
+        /// <summary>
+        /// The date and time the tunnel was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
         /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -92,7 +119,7 @@ namespace Pulumi.Cloudflare
         /// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// Time To Live (TTL) in number of hops of the GRE tunnel.
@@ -159,14 +186,14 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The IP address assigned to the Cloudflare side of the GRE tunnel.
         /// </summary>
-        [Input("cloudflareGreEndpoint")]
-        public Input<string>? CloudflareGreEndpoint { get; set; }
+        [Input("cloudflareGreEndpoint", required: true)]
+        public Input<string> CloudflareGreEndpoint { get; set; } = null!;
 
         /// <summary>
         /// The IP address assigned to the customer side of the GRE tunnel.
         /// </summary>
-        [Input("customerGreEndpoint")]
-        public Input<string>? CustomerGreEndpoint { get; set; }
+        [Input("customerGreEndpoint", required: true)]
+        public Input<string> CustomerGreEndpoint { get; set; } = null!;
 
         /// <summary>
         /// An optional description of the GRE tunnel.
@@ -174,20 +201,14 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("greTunnelId")]
-        public Input<string>? GreTunnelId { get; set; }
-
         [Input("healthCheck")]
         public Input<Inputs.MagicWanGreTunnelHealthCheckArgs>? HealthCheck { get; set; }
 
         /// <summary>
         /// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         /// </summary>
-        [Input("interfaceAddress")]
-        public Input<string>? InterfaceAddress { get; set; }
+        [Input("interfaceAddress", required: true)]
+        public Input<string> InterfaceAddress { get; set; } = null!;
 
         /// <summary>
         /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -198,8 +219,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Time To Live (TTL) in number of hops of the GRE tunnel.
@@ -228,6 +249,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? CloudflareGreEndpoint { get; set; }
 
         /// <summary>
+        /// The date and time the tunnel was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
         /// The IP address assigned to the customer side of the GRE tunnel.
         /// </summary>
         [Input("customerGreEndpoint")]
@@ -241,20 +268,6 @@ namespace Pulumi.Cloudflare
 
         [Input("greTunnel")]
         public Input<Inputs.MagicWanGreTunnelGreTunnelGetArgs>? GreTunnel { get; set; }
-
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("greTunnelId")]
-        public Input<string>? GreTunnelId { get; set; }
-
-        [Input("greTunnels")]
-        private InputList<Inputs.MagicWanGreTunnelGreTunnelGetArgs>? _greTunnels;
-        public InputList<Inputs.MagicWanGreTunnelGreTunnelGetArgs> GreTunnels
-        {
-            get => _greTunnels ?? (_greTunnels = new InputList<Inputs.MagicWanGreTunnelGreTunnelGetArgs>());
-            set => _greTunnels = value;
-        }
 
         [Input("healthCheck")]
         public Input<Inputs.MagicWanGreTunnelHealthCheckGetArgs>? HealthCheck { get; set; }
@@ -270,6 +283,12 @@ namespace Pulumi.Cloudflare
 
         [Input("modifiedGreTunnel")]
         public Input<Inputs.MagicWanGreTunnelModifiedGreTunnelGetArgs>? ModifiedGreTunnel { get; set; }
+
+        /// <summary>
+        /// The date and time the tunnel was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
         /// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.

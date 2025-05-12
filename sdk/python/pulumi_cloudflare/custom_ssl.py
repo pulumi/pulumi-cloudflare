@@ -33,7 +33,7 @@ class CustomSslArgs:
         The set of arguments for constructing a CustomSsl resource.
         :param pulumi.Input[builtins.str] certificate: The zone's SSL certificate or certificate and the intermediate(s).
         :param pulumi.Input[builtins.str] private_key: The zone's private key.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input['CustomSslGeoRestrictionsArgs'] geo_restrictions: Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
@@ -81,7 +81,7 @@ class CustomSslArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -177,7 +177,7 @@ class _CustomSslState:
         :param pulumi.Input[builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
                Available values: "legacy*custom", "sni_custom".
         :param pulumi.Input[builtins.str] uploaded_on: When the certificate was uploaded to Cloudflare.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if bundle_method is not None:
             pulumi.set(__self__, "bundle_method", bundle_method)
@@ -393,7 +393,7 @@ class _CustomSslState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -502,7 +502,7 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] private_key: The zone's private key.
         :param pulumi.Input[builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
                Available values: "legacy*custom", "sni_custom".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -690,7 +690,7 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] type: The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
                Available values: "legacy*custom", "sni_custom".
         :param pulumi.Input[builtins.str] uploaded_on: When the certificate was uploaded to Cloudflare.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -741,7 +741,7 @@ class CustomSsl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="geoRestrictions")
-    def geo_restrictions(self) -> pulumi.Output['outputs.CustomSslGeoRestrictions']:
+    def geo_restrictions(self) -> pulumi.Output[Optional['outputs.CustomSslGeoRestrictions']]:
         """
         Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         """
@@ -835,7 +835,7 @@ class CustomSsl(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

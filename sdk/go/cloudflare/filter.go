@@ -62,7 +62,7 @@ type Filter struct {
 	Paused pulumi.BoolOutput `pulumi:"paused"`
 	// A short reference tag. Allows you to select related filters.
 	Ref pulumi.StringOutput `pulumi:"ref"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -110,7 +110,7 @@ type filterState struct {
 	Paused *bool `pulumi:"paused"`
 	// A short reference tag. Allows you to select related filters.
 	Ref *string `pulumi:"ref"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -123,7 +123,7 @@ type FilterState struct {
 	Paused pulumi.BoolPtrInput
 	// A short reference tag. Allows you to select related filters.
 	Ref pulumi.StringPtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -134,7 +134,7 @@ func (FilterState) ElementType() reflect.Type {
 type filterArgs struct {
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression string `pulumi:"expression"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -142,7 +142,7 @@ type filterArgs struct {
 type FilterArgs struct {
 	// The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/).
 	Expression pulumi.StringInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -253,7 +253,7 @@ func (o FilterOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o FilterOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

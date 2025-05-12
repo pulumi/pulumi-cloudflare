@@ -52,7 +52,7 @@ type LookupEmailRoutingRuleArgs struct {
 	Filter *GetEmailRoutingRuleFilter `pulumi:"filter"`
 	// Routing rule identifier.
 	RuleIdentifier *string `pulumi:"ruleIdentifier"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -77,7 +77,7 @@ type LookupEmailRoutingRuleResult struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag string `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -95,7 +95,7 @@ type LookupEmailRoutingRuleOutputArgs struct {
 	Filter GetEmailRoutingRuleFilterPtrInput `pulumi:"filter"`
 	// Routing rule identifier.
 	RuleIdentifier pulumi.StringPtrInput `pulumi:"ruleIdentifier"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -164,7 +164,7 @@ func (o LookupEmailRoutingRuleResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingRuleResult) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupEmailRoutingRuleResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingRuleResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

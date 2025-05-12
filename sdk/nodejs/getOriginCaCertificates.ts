@@ -15,13 +15,17 @@ import * as utilities from "./utilities";
  *
  * const exampleOriginCaCertificates = cloudflare.getOriginCaCertificates({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     limit: 10,
+ *     offset: 10,
  * });
  * ```
  */
 export function getOriginCaCertificates(args: GetOriginCaCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getOriginCaCertificates:getOriginCaCertificates", {
+        "limit": args.limit,
         "maxItems": args.maxItems,
+        "offset": args.offset,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -31,11 +35,19 @@ export function getOriginCaCertificates(args: GetOriginCaCertificatesArgs, opts?
  */
 export interface GetOriginCaCertificatesArgs {
     /**
+     * Limit to the number of records returned.
+     */
+    limit?: number;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Offset the results
+     */
+    offset?: number;
+    /**
+     * Identifier.
      */
     zoneId: string;
 }
@@ -49,15 +61,23 @@ export interface GetOriginCaCertificatesResult {
      */
     readonly id: string;
     /**
+     * Limit to the number of records returned.
+     */
+    readonly limit?: number;
+    /**
      * Max items to fetch, default: 1000
      */
     readonly maxItems?: number;
+    /**
+     * Offset the results
+     */
+    readonly offset?: number;
     /**
      * The items returned by the data source
      */
     readonly results: outputs.GetOriginCaCertificatesResult[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -70,13 +90,17 @@ export interface GetOriginCaCertificatesResult {
  *
  * const exampleOriginCaCertificates = cloudflare.getOriginCaCertificates({
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     limit: 10,
+ *     offset: 10,
  * });
  * ```
  */
 export function getOriginCaCertificatesOutput(args: GetOriginCaCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOriginCaCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getOriginCaCertificates:getOriginCaCertificates", {
+        "limit": args.limit,
         "maxItems": args.maxItems,
+        "offset": args.offset,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -86,11 +110,19 @@ export function getOriginCaCertificatesOutput(args: GetOriginCaCertificatesOutpu
  */
 export interface GetOriginCaCertificatesOutputArgs {
     /**
+     * Limit to the number of records returned.
+     */
+    limit?: pulumi.Input<number>;
+    /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Offset the results
+     */
+    offset?: pulumi.Input<number>;
+    /**
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

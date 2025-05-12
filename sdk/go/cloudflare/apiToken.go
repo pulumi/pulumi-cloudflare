@@ -22,7 +22,7 @@ import (
 type ApiToken struct {
 	pulumi.CustomResourceState
 
-	Condition ApiTokenConditionOutput `pulumi:"condition"`
+	Condition ApiTokenConditionPtrOutput `pulumi:"condition"`
 	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn pulumi.StringPtrOutput `pulumi:"expiresOn"`
 	// The time on which the token was created.
@@ -251,8 +251,8 @@ func (o ApiTokenOutput) ToApiTokenOutputWithContext(ctx context.Context) ApiToke
 	return o
 }
 
-func (o ApiTokenOutput) Condition() ApiTokenConditionOutput {
-	return o.ApplyT(func(v *ApiToken) ApiTokenConditionOutput { return v.Condition }).(ApiTokenConditionOutput)
+func (o ApiTokenOutput) Condition() ApiTokenConditionPtrOutput {
+	return o.ApplyT(func(v *ApiToken) ApiTokenConditionPtrOutput { return v.Condition }).(ApiTokenConditionPtrOutput)
 }
 
 // The expiration time on or after which the JWT MUST NOT be accepted for processing.

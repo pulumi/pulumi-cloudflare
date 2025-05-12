@@ -111,7 +111,7 @@ type ZeroTrustDeviceCustomProfile struct {
 	LanAllowMinutes pulumi.Float64PtrOutput `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrOutput `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices.
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
 	Match pulumi.StringOutput `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     pulumi.StringOutput `pulumi:"name"`
@@ -119,8 +119,8 @@ type ZeroTrustDeviceCustomProfile struct {
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence pulumi.Float64Output `pulumi:"precedence"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
-	RegisterInterfaceIpWithDns pulumi.BoolPtrOutput                            `pulumi:"registerInterfaceIpWithDns"`
-	ServiceModeV2              ZeroTrustDeviceCustomProfileServiceModeV2Output `pulumi:"serviceModeV2"`
+	RegisterInterfaceIpWithDns pulumi.BoolPtrOutput                               `pulumi:"registerInterfaceIpWithDns"`
+	ServiceModeV2              ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -212,7 +212,7 @@ type zeroTrustDeviceCustomProfileState struct {
 	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices.
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
 	Match *string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     *string `pulumi:"name"`
@@ -263,7 +263,7 @@ type ZeroTrustDeviceCustomProfileState struct {
 	LanAllowMinutes pulumi.Float64PtrInput
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
-	// The wirefilter expression to match devices.
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
 	Match pulumi.StringPtrInput
 	// The name of the device settings profile.
 	Name     pulumi.StringPtrInput
@@ -314,7 +314,7 @@ type zeroTrustDeviceCustomProfileArgs struct {
 	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices.
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
 	Match string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name string `pulumi:"name"`
@@ -360,7 +360,7 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	LanAllowMinutes pulumi.Float64PtrInput
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
-	// The wirefilter expression to match devices.
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
 	Match pulumi.StringInput
 	// The name of the device settings profile.
 	Name pulumi.StringInput
@@ -552,7 +552,7 @@ func (o ZeroTrustDeviceCustomProfileOutput) LanAllowSubnetSize() pulumi.Float64P
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64PtrOutput { return v.LanAllowSubnetSize }).(pulumi.Float64PtrOutput)
 }
 
-// The wirefilter expression to match devices.
+// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
 func (o ZeroTrustDeviceCustomProfileOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.Match }).(pulumi.StringOutput)
 }
@@ -576,10 +576,10 @@ func (o ZeroTrustDeviceCustomProfileOutput) RegisterInterfaceIpWithDns() pulumi.
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolPtrOutput)
 }
 
-func (o ZeroTrustDeviceCustomProfileOutput) ServiceModeV2() ZeroTrustDeviceCustomProfileServiceModeV2Output {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) ZeroTrustDeviceCustomProfileServiceModeV2Output {
+func (o ZeroTrustDeviceCustomProfileOutput) ServiceModeV2() ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput {
 		return v.ServiceModeV2
-	}).(ZeroTrustDeviceCustomProfileServiceModeV2Output)
+	}).(ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput)
 }
 
 // The URL to launch when the Send Feedback button is clicked.

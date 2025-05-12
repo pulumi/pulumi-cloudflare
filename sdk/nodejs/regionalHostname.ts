@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     hostname: "foo.example.com",
  *     regionKey: "ca",
+ *     routing: "routing",
  * });
  * ```
  *
@@ -65,7 +66,11 @@ export class RegionalHostname extends pulumi.CustomResource {
      */
     public readonly regionKey!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Configure which routing method to use for the regional hostname
+     */
+    public readonly routing!: pulumi.Output<string | undefined>;
+    /**
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -85,6 +90,7 @@ export class RegionalHostname extends pulumi.CustomResource {
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["regionKey"] = state ? state.regionKey : undefined;
+            resourceInputs["routing"] = state ? state.routing : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RegionalHostnameArgs | undefined;
@@ -99,6 +105,7 @@ export class RegionalHostname extends pulumi.CustomResource {
             }
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["regionKey"] = args ? args.regionKey : undefined;
+            resourceInputs["routing"] = args ? args.routing : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
         }
@@ -124,7 +131,11 @@ export interface RegionalHostnameState {
      */
     regionKey?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Configure which routing method to use for the regional hostname
+     */
+    routing?: pulumi.Input<string>;
+    /**
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -142,7 +153,11 @@ export interface RegionalHostnameArgs {
      */
     regionKey: pulumi.Input<string>;
     /**
-     * Identifier
+     * Configure which routing method to use for the regional hostname
+     */
+    routing?: pulumi.Input<string>;
+    /**
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

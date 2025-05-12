@@ -169,7 +169,7 @@ class GetZoneLockdownsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -237,7 +237,7 @@ def get_zone_lockdowns(created_on: Optional[builtins.str] = None,
     :param builtins.str modified_on: The timestamp of when the rule was last modified.
     :param builtins.float priority: The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
     :param builtins.str uri_search: A single URI to search for in the list of URLs of existing rules.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['createdOn'] = created_on
@@ -310,7 +310,7 @@ def get_zone_lockdowns_output(created_on: Optional[pulumi.Input[Optional[builtin
     :param builtins.str modified_on: The timestamp of when the rule was last modified.
     :param builtins.float priority: The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
     :param builtins.str uri_search: A single URI to search for in the list of URLs of existing rules.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['createdOn'] = created_on

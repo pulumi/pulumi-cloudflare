@@ -55,11 +55,14 @@ class GetWorkersRouteResult:
     @property
     @pulumi.getter
     def pattern(self) -> builtins.str:
+        """
+        Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+        """
         return pulumi.get(self, "pattern")
 
     @property
     @pulumi.getter(name="routeId")
-    def route_id(self) -> builtins.str:
+    def route_id(self) -> Optional[builtins.str]:
         """
         Identifier.
         """
@@ -69,7 +72,7 @@ class GetWorkersRouteResult:
     @pulumi.getter
     def script(self) -> builtins.str:
         """
-        Name of the script, used in URLs and route configuration.
+        Name of the script to run if the route matches.
         """
         return pulumi.get(self, "script")
 
@@ -125,7 +128,7 @@ def get_workers_route(route_id: Optional[builtins.str] = None,
         route_id=pulumi.get(__ret__, 'route_id'),
         script=pulumi.get(__ret__, 'script'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_workers_route_output(route_id: Optional[pulumi.Input[builtins.str]] = None,
+def get_workers_route_output(route_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              zone_id: Optional[pulumi.Input[builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkersRouteResult]:
     """

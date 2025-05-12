@@ -50,7 +50,7 @@ import (
 type MtlsCertificate struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolOutput `pulumi:"ca"`
@@ -120,7 +120,7 @@ func GetMtlsCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MtlsCertificate resources.
 type mtlsCertificateState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca *bool `pulumi:"ca"`
@@ -145,7 +145,7 @@ type mtlsCertificateState struct {
 }
 
 type MtlsCertificateState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolPtrInput
@@ -174,7 +174,7 @@ func (MtlsCertificateState) ElementType() reflect.Type {
 }
 
 type mtlsCertificateArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca bool `pulumi:"ca"`
@@ -188,7 +188,7 @@ type mtlsCertificateArgs struct {
 
 // The set of arguments for constructing a MtlsCertificate resource.
 type MtlsCertificateArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca pulumi.BoolInput
@@ -287,7 +287,7 @@ func (o MtlsCertificateOutput) ToMtlsCertificateOutputWithContext(ctx context.Co
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o MtlsCertificateOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

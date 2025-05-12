@@ -63,6 +63,7 @@ type LookupLogpushJobResult struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string `pulumi:"accountId"`
 	// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+	// Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
 	DestinationConf string `pulumi:"destinationConf"`
@@ -148,6 +149,7 @@ func (o LookupLogpushJobResultOutput) AccountId() pulumi.StringPtrOutput {
 }
 
 // Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+// Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
 func (o LookupLogpushJobResultOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogpushJobResult) string { return v.Dataset }).(pulumi.StringOutput)
 }

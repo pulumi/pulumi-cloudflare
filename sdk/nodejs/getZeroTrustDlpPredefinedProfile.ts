@@ -54,25 +54,25 @@ export interface GetZeroTrustDlpPredefinedProfileResult {
      */
     readonly contextAwareness: outputs.GetZeroTrustDlpPredefinedProfileContextAwareness;
     /**
-     * When the profile was created
+     * When the profile was created.
      */
     readonly createdAt: string;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     readonly description: string;
     readonly entries: outputs.GetZeroTrustDlpPredefinedProfileEntry[];
     /**
-     * The id of the profile (uuid)
+     * The id of the profile (uuid).
      */
     readonly id: string;
     /**
-     * The name of the profile
+     * The name of the profile.
      */
     readonly name: string;
     readonly ocrEnabled: boolean;
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      */
     readonly openAccess: boolean;
     readonly profileId: string;
@@ -81,7 +81,7 @@ export interface GetZeroTrustDlpPredefinedProfileResult {
      */
     readonly type: string;
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      */
     readonly updatedAt: string;
 }

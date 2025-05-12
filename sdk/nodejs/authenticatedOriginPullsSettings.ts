@@ -50,7 +50,7 @@ export class AuthenticatedOriginPullsSettings extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -94,7 +94,7 @@ export interface AuthenticatedOriginPullsSettingsState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -108,7 +108,7 @@ export interface AuthenticatedOriginPullsSettingsArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

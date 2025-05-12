@@ -31,11 +31,11 @@ class R2CustomDomainArgs:
                  min_tls: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a R2CustomDomain resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
-        :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain
+        :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
@@ -54,7 +54,7 @@ class R2CustomDomainArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -66,7 +66,7 @@ class R2CustomDomainArgs:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -78,7 +78,7 @@ class R2CustomDomainArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the custom domain to be added
+        Name of the custom domain to be added.
         """
         return pulumi.get(self, "domain")
 
@@ -102,7 +102,7 @@ class R2CustomDomainArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Zone ID of the custom domain
+        Zone ID of the custom domain.
         """
         return pulumi.get(self, "zone_id")
 
@@ -150,15 +150,15 @@ class _R2CustomDomainState:
                  zone_name: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering R2CustomDomain resources.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
-        :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain
-        :param pulumi.Input[builtins.str] zone_name: Zone that the custom domain resides in
+        :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain.
+        :param pulumi.Input[builtins.str] zone_name: Zone that the custom domain resides in.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -183,7 +183,7 @@ class _R2CustomDomainState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -195,7 +195,7 @@ class _R2CustomDomainState:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -207,7 +207,7 @@ class _R2CustomDomainState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the custom domain to be added
+        Name of the custom domain to be added.
         """
         return pulumi.get(self, "domain")
 
@@ -265,7 +265,7 @@ class _R2CustomDomainState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Zone ID of the custom domain
+        Zone ID of the custom domain.
         """
         return pulumi.get(self, "zone_id")
 
@@ -277,7 +277,7 @@ class _R2CustomDomainState:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Zone that the custom domain resides in
+        Zone that the custom domain resides in.
         """
         return pulumi.get(self, "zone_name")
 
@@ -318,14 +318,14 @@ class R2CustomDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
-        :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain
+        :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain.
         """
         ...
     @overload
@@ -425,15 +425,15 @@ class R2CustomDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[builtins.str] domain: Name of the custom domain to be added.
         :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         :param pulumi.Input[builtins.str] min_tls: Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
                Available values: "1.0", "1.1", "1.2", "1.3".
-        :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain
-        :param pulumi.Input[builtins.str] zone_name: Zone that the custom domain resides in
+        :param pulumi.Input[builtins.str] zone_id: Zone ID of the custom domain.
+        :param pulumi.Input[builtins.str] zone_name: Zone that the custom domain resides in.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -454,7 +454,7 @@ class R2CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -462,7 +462,7 @@ class R2CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -470,7 +470,7 @@ class R2CustomDomain(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the custom domain to be added
+        Name of the custom domain to be added.
         """
         return pulumi.get(self, "domain")
 
@@ -508,7 +508,7 @@ class R2CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Zone ID of the custom domain
+        Zone ID of the custom domain.
         """
         return pulumi.get(self, "zone_id")
 
@@ -516,7 +516,7 @@ class R2CustomDomain(pulumi.CustomResource):
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Output[builtins.str]:
         """
-        Zone that the custom domain resides in
+        Zone that the custom domain resides in.
         """
         return pulumi.get(self, "zone_name")
 

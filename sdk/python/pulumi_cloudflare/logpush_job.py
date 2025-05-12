@@ -41,6 +41,7 @@ class LogpushJobArgs:
         :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+               Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
@@ -118,6 +119,7 @@ class LogpushJobArgs:
     def dataset(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         """
         return pulumi.get(self, "dataset")
 
@@ -286,6 +288,7 @@ class _LogpushJobState:
         Input properties used for looking up and filtering LogpushJob resources.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+               Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[builtins.str] error_message: If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
@@ -362,6 +365,7 @@ class _LogpushJobState:
     def dataset(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         """
         return pulumi.get(self, "dataset")
 
@@ -588,6 +592,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+               Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
@@ -713,6 +718,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+               Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[builtins.str] error_message: If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
@@ -764,9 +770,10 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dataset(self) -> pulumi.Output[Optional[builtins.str]]:
+    def dataset(self) -> pulumi.Output[builtins.str]:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         """
         return pulumi.get(self, "dataset")
 

@@ -28,10 +28,13 @@ class GetZeroTrustDlpEntryResult:
     """
     A collection of values returned by getZeroTrustDlpEntry.
     """
-    def __init__(__self__, account_id=None, confidence=None, created_at=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, secret=None, type=None, updated_at=None, word_list=None):
+    def __init__(__self__, account_id=None, case_sensitive=None, confidence=None, created_at=None, enabled=None, entry_id=None, id=None, name=None, pattern=None, profile_id=None, secret=None, type=None, updated_at=None, word_list=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if case_sensitive and not isinstance(case_sensitive, bool):
+            raise TypeError("Expected argument 'case_sensitive' to be a bool")
+        pulumi.set(__self__, "case_sensitive", case_sensitive)
         if confidence and not isinstance(confidence, dict):
             raise TypeError("Expected argument 'confidence' to be a dict")
         pulumi.set(__self__, "confidence", confidence)
@@ -73,6 +76,16 @@ class GetZeroTrustDlpEntryResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> builtins.bool:
+        """
+        Only applies to custom word lists.
+        Determines if the words should be matched in a case-sensitive manner
+        Cannot be set to false if secret is true
+        """
+        return pulumi.get(self, "case_sensitive")
 
     @property
     @pulumi.getter
@@ -148,6 +161,7 @@ class AwaitableGetZeroTrustDlpEntryResult(GetZeroTrustDlpEntryResult):
             yield self
         return GetZeroTrustDlpEntryResult(
             account_id=self.account_id,
+            case_sensitive=self.case_sensitive,
             confidence=self.confidence,
             created_at=self.created_at,
             enabled=self.enabled,
@@ -184,6 +198,7 @@ def get_zero_trust_dlp_entry(account_id: Optional[builtins.str] = None,
 
     return AwaitableGetZeroTrustDlpEntryResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        case_sensitive=pulumi.get(__ret__, 'case_sensitive'),
         confidence=pulumi.get(__ret__, 'confidence'),
         created_at=pulumi.get(__ret__, 'created_at'),
         enabled=pulumi.get(__ret__, 'enabled'),
@@ -217,6 +232,7 @@ def get_zero_trust_dlp_entry_output(account_id: Optional[pulumi.Input[builtins.s
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDlpEntry:getZeroTrustDlpEntry', __args__, opts=opts, typ=GetZeroTrustDlpEntryResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDlpEntryResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        case_sensitive=pulumi.get(__response__, 'case_sensitive'),
         confidence=pulumi.get(__response__, 'confidence'),
         created_at=pulumi.get(__response__, 'created_at'),
         enabled=pulumi.get(__response__, 'enabled'),

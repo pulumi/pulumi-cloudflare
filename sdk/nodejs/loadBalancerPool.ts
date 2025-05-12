@@ -55,7 +55,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * A human-readable description of the pool.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
      */
@@ -96,7 +96,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
-    public readonly notificationEmail!: pulumi.Output<string | undefined>;
+    public readonly notificationEmail!: pulumi.Output<string>;
     /**
      * Filter pool and origin health notifications by resource type or health status. Use null to reset.
      */

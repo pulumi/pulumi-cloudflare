@@ -56,30 +56,30 @@ export class Web3Hostname extends pulumi.CustomResource {
 
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * An optional description of the hostname.
+     * Specify an optional description of the hostname.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * DNSLink value used if the target is ipfs.
+     * Specify the DNSLink value used if the target is ipfs.
      */
     public readonly dnslink!: pulumi.Output<string | undefined>;
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The hostname that will point to the target gateway via CNAME.
+     * Specify the hostname that points to the target gateway via CNAME.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Status of the hostname's activation.
+     * Specifies the status of the hostname's activation.
      * Available values: "active", "pending", "deleting", "error".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Target gateway of the hostname.
+     * Specify the target gateway of the hostname.
      * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     public readonly target!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -135,30 +135,30 @@ export class Web3Hostname extends pulumi.CustomResource {
 export interface Web3HostnameState {
     createdOn?: pulumi.Input<string>;
     /**
-     * An optional description of the hostname.
+     * Specify an optional description of the hostname.
      */
     description?: pulumi.Input<string>;
     /**
-     * DNSLink value used if the target is ipfs.
+     * Specify the DNSLink value used if the target is ipfs.
      */
     dnslink?: pulumi.Input<string>;
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The hostname that will point to the target gateway via CNAME.
+     * Specify the hostname that points to the target gateway via CNAME.
      */
     name?: pulumi.Input<string>;
     /**
-     * Status of the hostname's activation.
+     * Specifies the status of the hostname's activation.
      * Available values: "active", "pending", "deleting", "error".
      */
     status?: pulumi.Input<string>;
     /**
-     * Target gateway of the hostname.
+     * Specify the target gateway of the hostname.
      * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     target?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -168,24 +168,24 @@ export interface Web3HostnameState {
  */
 export interface Web3HostnameArgs {
     /**
-     * An optional description of the hostname.
+     * Specify an optional description of the hostname.
      */
     description?: pulumi.Input<string>;
     /**
-     * DNSLink value used if the target is ipfs.
+     * Specify the DNSLink value used if the target is ipfs.
      */
     dnslink?: pulumi.Input<string>;
     /**
-     * The hostname that will point to the target gateway via CNAME.
+     * Specify the hostname that points to the target gateway via CNAME.
      */
     name: pulumi.Input<string>;
     /**
-     * Target gateway of the hostname.
+     * Specify the target gateway of the hostname.
      * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     target: pulumi.Input<string>;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     zoneId: pulumi.Input<string>;
 }

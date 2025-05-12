@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const exampleZeroTrustDlpDataset = new cloudflare.ZeroTrustDlpDataset("example_zero_trust_dlp_dataset", {
  *     accountId: "account_id",
  *     name: "name",
+ *     caseSensitive: true,
  *     description: "description",
  *     encodingVersion: 0,
  *     secret: true,
@@ -51,12 +52,18 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if `secret` is true or undefined
+     */
+    public readonly caseSensitive!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly columns!: pulumi.Output<outputs.ZeroTrustDlpDatasetColumn[]>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public /*out*/ readonly dataset!: pulumi.Output<outputs.ZeroTrustDlpDatasetDataset>;
     public readonly datasetId!: pulumi.Output<string | undefined>;
     /**
-     * The description of the dataset
+     * The description of the dataset.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -99,6 +106,7 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpDatasetState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["caseSensitive"] = state ? state.caseSensitive : undefined;
             resourceInputs["columns"] = state ? state.columns : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["dataset"] = state ? state.dataset : undefined;
@@ -122,6 +130,7 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["caseSensitive"] = args ? args.caseSensitive : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encodingVersion"] = args ? args.encodingVersion : undefined;
@@ -147,12 +156,18 @@ export class ZeroTrustDlpDataset extends pulumi.CustomResource {
  */
 export interface ZeroTrustDlpDatasetState {
     accountId?: pulumi.Input<string>;
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if `secret` is true or undefined
+     */
+    caseSensitive?: pulumi.Input<boolean>;
     columns?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpDatasetColumn>[]>;
     createdAt?: pulumi.Input<string>;
     dataset?: pulumi.Input<inputs.ZeroTrustDlpDatasetDataset>;
     datasetId?: pulumi.Input<string>;
     /**
-     * The description of the dataset
+     * The description of the dataset.
      */
     description?: pulumi.Input<string>;
     /**
@@ -187,9 +202,15 @@ export interface ZeroTrustDlpDatasetState {
  */
 export interface ZeroTrustDlpDatasetArgs {
     accountId: pulumi.Input<string>;
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if `secret` is true or undefined
+     */
+    caseSensitive?: pulumi.Input<boolean>;
     datasetId?: pulumi.Input<string>;
     /**
-     * The description of the dataset
+     * The description of the dataset.
      */
     description?: pulumi.Input<string>;
     /**

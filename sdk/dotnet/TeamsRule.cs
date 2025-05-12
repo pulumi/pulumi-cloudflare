@@ -45,19 +45,19 @@ namespace Pulumi.Cloudflare
         /// The description of the rule.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The wirefilter expression used for device posture check matching.
         /// </summary>
         [Output("devicePosture")]
-        public Output<string?> DevicePosture { get; private set; } = null!;
+        public Output<string> DevicePosture { get; private set; } = null!;
 
         /// <summary>
         /// True if the rule is enabled.
         /// </summary>
         [Output("enabled")]
-        public Output<bool?> Enabled { get; private set; } = null!;
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// The expiration time stamp and default duration of a DNS policy. Takes
@@ -76,7 +76,7 @@ namespace Pulumi.Cloudflare
         /// The wirefilter expression used for identity matching.
         /// </summary>
         [Output("identity")]
-        public Output<string?> Identity { get; private set; } = null!;
+        public Output<string> Identity { get; private set; } = null!;
 
         /// <summary>
         /// The name of the rule.
@@ -101,13 +101,13 @@ namespace Pulumi.Cloudflare
         /// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         /// </summary>
         [Output("schedule")]
-        public Output<Outputs.TeamsRuleSchedule> Schedule { get; private set; } = null!;
+        public Output<Outputs.TeamsRuleSchedule?> Schedule { get; private set; } = null!;
 
         /// <summary>
         /// The wirefilter expression used for traffic matching.
         /// </summary>
         [Output("traffic")]
-        public Output<string?> Traffic { get; private set; } = null!;
+        public Output<string> Traffic { get; private set; } = null!;
 
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;

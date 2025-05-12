@@ -56,7 +56,7 @@ type TotalTls struct {
 	// The validity period in days for the certificates ordered via Total TLS.
 	// Available values: 90.
 	ValidityPeriod pulumi.IntOutput `pulumi:"validityPeriod"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -104,7 +104,7 @@ type totalTlsState struct {
 	// The validity period in days for the certificates ordered via Total TLS.
 	// Available values: 90.
 	ValidityPeriod *int `pulumi:"validityPeriod"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ type TotalTlsState struct {
 	// The validity period in days for the certificates ordered via Total TLS.
 	// Available values: 90.
 	ValidityPeriod pulumi.IntPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -131,7 +131,7 @@ type totalTlsArgs struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled bool `pulumi:"enabled"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -142,7 +142,7 @@ type TotalTlsArgs struct {
 	CertificateAuthority pulumi.StringPtrInput
 	// If enabled, Total TLS will order a hostname specific TLS certificate for any proxied A, AAAA, or CNAME record in your zone.
 	Enabled pulumi.BoolInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -250,7 +250,7 @@ func (o TotalTlsOutput) ValidityPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *TotalTls) pulumi.IntOutput { return v.ValidityPeriod }).(pulumi.IntOutput)
 }
 
-// Identifier
+// Identifier.
 func (o TotalTlsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TotalTls) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

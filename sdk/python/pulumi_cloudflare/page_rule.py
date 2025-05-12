@@ -29,7 +29,7 @@ class PageRuleArgs:
                  status: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a PageRule resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.int] priority: The priority of the rule, used to define which Page Rule is processed
                over another. A higher number indicates a higher priority. For example,
                if you have a catch-all Page Rule (rule A: `/images/*`) but want a more
@@ -68,7 +68,7 @@ class PageRuleArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -127,7 +127,7 @@ class _PageRuleState:
                specify a higher priority for rule B so it overrides rule A.
         :param pulumi.Input[builtins.str] status: The status of the Page Rule.
                Available values: "active", "disabled".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -219,7 +219,7 @@ class _PageRuleState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -258,7 +258,7 @@ class PageRule(pulumi.CustomResource):
                specify a higher priority for rule B so it overrides rule A.
         :param pulumi.Input[builtins.str] status: The status of the Page Rule.
                Available values: "active", "disabled".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -350,7 +350,7 @@ class PageRule(pulumi.CustomResource):
                specify a higher priority for rule B so it overrides rule A.
         :param pulumi.Input[builtins.str] status: The status of the Page Rule.
                Available values: "active", "disabled".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -416,7 +416,7 @@ class PageRule(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

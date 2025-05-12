@@ -112,7 +112,7 @@ class GetFilterResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -150,7 +150,7 @@ def get_filter(filter: Optional[Union['GetFilterFilterArgs', 'GetFilterFilterArg
 
 
     :param builtins.str filter_id: The unique identifier of the filter.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -185,7 +185,7 @@ def get_filter_output(filter: Optional[pulumi.Input[Optional[Union['GetFilterFil
 
 
     :param builtins.str filter_id: The unique identifier of the filter.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['filter'] = filter

@@ -34,7 +34,7 @@ export interface GetRegionalHostnameArgs {
      */
     hostname?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -60,7 +60,11 @@ export interface GetRegionalHostnameResult {
      */
     readonly regionKey: string;
     /**
-     * Identifier
+     * Configure which routing method to use for the regional hostname
+     */
+    readonly routing: string;
+    /**
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -94,7 +98,7 @@ export interface GetRegionalHostnameOutputArgs {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

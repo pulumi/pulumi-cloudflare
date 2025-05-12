@@ -459,7 +459,7 @@ class DevicePostureRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def input(self) -> pulumi.Output['outputs.DevicePostureRuleInput']:
+    def input(self) -> pulumi.Output[Optional['outputs.DevicePostureRuleInput']]:
         """
         The value to be checked against.
         """
@@ -467,7 +467,7 @@ class DevicePostureRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def matches(self) -> pulumi.Output[Sequence['outputs.DevicePostureRuleMatch']]:
+    def matches(self) -> pulumi.Output[Optional[Sequence['outputs.DevicePostureRuleMatch']]]:
         """
         The conditions that the client must match to run the rule.
         """

@@ -49,9 +49,9 @@ func LookupPageRule(ctx *pulumi.Context, args *LookupPageRuleArgs, opts ...pulum
 
 // A collection of arguments for invoking getPageRule.
 type LookupPageRuleArgs struct {
-	// Identifier
+	// Identifier.
 	PageruleId string `pulumi:"pageruleId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -59,11 +59,11 @@ type LookupPageRuleArgs struct {
 type LookupPageRuleResult struct {
 	// The timestamp of when the Page Rule was created.
 	CreatedOn string `pulumi:"createdOn"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The timestamp of when the Page Rule was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// Identifier
+	// Identifier.
 	PageruleId string `pulumi:"pageruleId"`
 	// The priority of the rule, used to define which Page Rule is processed
 	// over another. A higher number indicates a higher priority. For example,
@@ -74,7 +74,7 @@ type LookupPageRuleResult struct {
 	// The status of the Page Rule.
 	// Available values: "active", "disabled".
 	Status string `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -89,9 +89,9 @@ func LookupPageRuleOutput(ctx *pulumi.Context, args LookupPageRuleOutputArgs, op
 
 // A collection of arguments for invoking getPageRule.
 type LookupPageRuleOutputArgs struct {
-	// Identifier
+	// Identifier.
 	PageruleId pulumi.StringInput `pulumi:"pageruleId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -119,7 +119,7 @@ func (o LookupPageRuleResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageRuleResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupPageRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -129,7 +129,7 @@ func (o LookupPageRuleResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageRuleResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupPageRuleResultOutput) PageruleId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageRuleResult) string { return v.PageruleId }).(pulumi.StringOutput)
 }
@@ -149,7 +149,7 @@ func (o LookupPageRuleResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageRuleResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupPageRuleResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageRuleResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

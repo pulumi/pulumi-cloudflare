@@ -29,11 +29,11 @@ class R2BucketSippyArgs:
                  source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
         """
         The set of arguments for constructing a R2BucketSippy resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input['R2BucketSippySourceArgs'] source: AWS S3 bucket to copy objects from
+        :param pulumi.Input['R2BucketSippySourceArgs'] source: AWS S3 bucket to copy objects from.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -48,7 +48,7 @@ class R2BucketSippyArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -60,7 +60,7 @@ class R2BucketSippyArgs:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -72,7 +72,7 @@ class R2BucketSippyArgs:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input['R2BucketSippyDestinationArgs']]:
         """
-        R2 bucket to copy objects to
+        R2 bucket to copy objects to.
         """
         return pulumi.get(self, "destination")
 
@@ -96,7 +96,7 @@ class R2BucketSippyArgs:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['R2BucketSippySourceArgs']]:
         """
-        AWS S3 bucket to copy objects from
+        AWS S3 bucket to copy objects from.
         """
         return pulumi.get(self, "source")
 
@@ -116,12 +116,12 @@ class _R2BucketSippyState:
                  source: Optional[pulumi.Input['R2BucketSippySourceArgs']] = None):
         """
         Input properties used for looking up and filtering R2BucketSippy resources.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to
-        :param pulumi.Input[builtins.bool] enabled: State of Sippy for this bucket
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input['R2BucketSippyDestinationArgs'] destination: R2 bucket to copy objects to.
+        :param pulumi.Input[builtins.bool] enabled: State of Sippy for this bucket.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input['R2BucketSippySourceArgs'] source: AWS S3 bucket to copy objects from
+        :param pulumi.Input['R2BucketSippySourceArgs'] source: AWS S3 bucket to copy objects from.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -140,7 +140,7 @@ class _R2BucketSippyState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -152,7 +152,7 @@ class _R2BucketSippyState:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -164,7 +164,7 @@ class _R2BucketSippyState:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input['R2BucketSippyDestinationArgs']]:
         """
-        R2 bucket to copy objects to
+        R2 bucket to copy objects to.
         """
         return pulumi.get(self, "destination")
 
@@ -176,7 +176,7 @@ class _R2BucketSippyState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        State of Sippy for this bucket
+        State of Sippy for this bucket.
         """
         return pulumi.get(self, "enabled")
 
@@ -200,7 +200,7 @@ class _R2BucketSippyState:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['R2BucketSippySourceArgs']]:
         """
-        AWS S3 bucket to copy objects from
+        AWS S3 bucket to copy objects from.
         """
         return pulumi.get(self, "source")
 
@@ -226,11 +226,11 @@ class R2BucketSippy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']] destination: R2 bucket to copy objects to
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']] destination: R2 bucket to copy objects to.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']] source: AWS S3 bucket to copy objects from
+        :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']] source: AWS S3 bucket to copy objects from.
         """
         ...
     @overload
@@ -303,12 +303,12 @@ class R2BucketSippy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']] destination: R2 bucket to copy objects to
-        :param pulumi.Input[builtins.bool] enabled: State of Sippy for this bucket
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[Union['R2BucketSippyDestinationArgs', 'R2BucketSippyDestinationArgsDict']] destination: R2 bucket to copy objects to.
+        :param pulumi.Input[builtins.bool] enabled: State of Sippy for this bucket.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']] source: AWS S3 bucket to copy objects from
+        :param pulumi.Input[Union['R2BucketSippySourceArgs', 'R2BucketSippySourceArgsDict']] source: AWS S3 bucket to copy objects from.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -326,7 +326,7 @@ class R2BucketSippy(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -334,15 +334,15 @@ class R2BucketSippy(pulumi.CustomResource):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
     @property
     @pulumi.getter
-    def destination(self) -> pulumi.Output['outputs.R2BucketSippyDestination']:
+    def destination(self) -> pulumi.Output[Optional['outputs.R2BucketSippyDestination']]:
         """
-        R2 bucket to copy objects to
+        R2 bucket to copy objects to.
         """
         return pulumi.get(self, "destination")
 
@@ -350,7 +350,7 @@ class R2BucketSippy(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[builtins.bool]:
         """
-        State of Sippy for this bucket
+        State of Sippy for this bucket.
         """
         return pulumi.get(self, "enabled")
 
@@ -364,9 +364,9 @@ class R2BucketSippy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Output['outputs.R2BucketSippySource']:
+    def source(self) -> pulumi.Output[Optional['outputs.R2BucketSippySource']]:
         """
-        AWS S3 bucket to copy objects from
+        AWS S3 bucket to copy objects from.
         """
         return pulumi.get(self, "source")
 

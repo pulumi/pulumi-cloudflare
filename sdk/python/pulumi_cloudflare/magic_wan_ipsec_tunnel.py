@@ -29,7 +29,6 @@ class MagicWanIpsecTunnelArgs:
                  customer_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanIpsecTunnelHealthCheckArgs']] = None,
-                 ipsec_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
                  psk: Optional[pulumi.Input[builtins.str]] = None,
                  replay_protection: Optional[pulumi.Input[builtins.bool]] = None):
         """
@@ -40,7 +39,6 @@ class MagicWanIpsecTunnelArgs:
         :param pulumi.Input[builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[builtins.str] description: An optional description forthe IPsec tunnel.
-        :param pulumi.Input[builtins.str] ipsec_tunnel_id: Identifier
         :param pulumi.Input[builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
         :param pulumi.Input[builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         """
@@ -54,8 +52,6 @@ class MagicWanIpsecTunnelArgs:
             pulumi.set(__self__, "description", description)
         if health_check is not None:
             pulumi.set(__self__, "health_check", health_check)
-        if ipsec_tunnel_id is not None:
-            pulumi.set(__self__, "ipsec_tunnel_id", ipsec_tunnel_id)
         if psk is not None:
             pulumi.set(__self__, "psk", psk)
         if replay_protection is not None:
@@ -143,18 +139,6 @@ class MagicWanIpsecTunnelArgs:
         pulumi.set(self, "health_check", value)
 
     @property
-    @pulumi.getter(name="ipsecTunnelId")
-    def ipsec_tunnel_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "ipsec_tunnel_id")
-
-    @ipsec_tunnel_id.setter
-    def ipsec_tunnel_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "ipsec_tunnel_id", value)
-
-    @property
     @pulumi.getter
     def psk(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -183,35 +167,44 @@ class MagicWanIpsecTunnelArgs:
 class _MagicWanIpsecTunnelState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 allow_null_cipher: Optional[pulumi.Input[builtins.bool]] = None,
                  cloudflare_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+                 created_on: Optional[pulumi.Input[builtins.str]] = None,
                  customer_endpoint: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  health_check: Optional[pulumi.Input['MagicWanIpsecTunnelHealthCheckArgs']] = None,
                  interface_address: Optional[pulumi.Input[builtins.str]] = None,
                  ipsec_tunnel: Optional[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelArgs']] = None,
-                 ipsec_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
-                 ipsec_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelArgs']]]] = None,
                  modified: Optional[pulumi.Input[builtins.bool]] = None,
                  modified_ipsec_tunnel: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelArgs']] = None,
+                 modified_on: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  psk: Optional[pulumi.Input[builtins.str]] = None,
+                 psk_metadata: Optional[pulumi.Input['MagicWanIpsecTunnelPskMetadataArgs']] = None,
                  replay_protection: Optional[pulumi.Input[builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MagicWanIpsecTunnel resources.
         :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.bool] allow_null_cipher: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
         :param pulumi.Input[builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
+        :param pulumi.Input[builtins.str] created_on: The date and time the tunnel was created.
         :param pulumi.Input[builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[builtins.str] description: An optional description forthe IPsec tunnel.
         :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        :param pulumi.Input[builtins.str] ipsec_tunnel_id: Identifier
+        :param pulumi.Input[builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
+        :param pulumi.Input['MagicWanIpsecTunnelPskMetadataArgs'] psk_metadata: The PSK metadata that includes when the PSK was generated.
         :param pulumi.Input[builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if allow_null_cipher is not None:
+            pulumi.set(__self__, "allow_null_cipher", allow_null_cipher)
         if cloudflare_endpoint is not None:
             pulumi.set(__self__, "cloudflare_endpoint", cloudflare_endpoint)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
         if customer_endpoint is not None:
             pulumi.set(__self__, "customer_endpoint", customer_endpoint)
         if description is not None:
@@ -222,18 +215,18 @@ class _MagicWanIpsecTunnelState:
             pulumi.set(__self__, "interface_address", interface_address)
         if ipsec_tunnel is not None:
             pulumi.set(__self__, "ipsec_tunnel", ipsec_tunnel)
-        if ipsec_tunnel_id is not None:
-            pulumi.set(__self__, "ipsec_tunnel_id", ipsec_tunnel_id)
-        if ipsec_tunnels is not None:
-            pulumi.set(__self__, "ipsec_tunnels", ipsec_tunnels)
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
         if modified_ipsec_tunnel is not None:
             pulumi.set(__self__, "modified_ipsec_tunnel", modified_ipsec_tunnel)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if psk is not None:
             pulumi.set(__self__, "psk", psk)
+        if psk_metadata is not None:
+            pulumi.set(__self__, "psk_metadata", psk_metadata)
         if replay_protection is not None:
             pulumi.set(__self__, "replay_protection", replay_protection)
 
@@ -250,6 +243,18 @@ class _MagicWanIpsecTunnelState:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="allowNullCipher")
+    def allow_null_cipher(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        """
+        return pulumi.get(self, "allow_null_cipher")
+
+    @allow_null_cipher.setter
+    def allow_null_cipher(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_null_cipher", value)
+
+    @property
     @pulumi.getter(name="cloudflareEndpoint")
     def cloudflare_endpoint(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -260,6 +265,18 @@ class _MagicWanIpsecTunnelState:
     @cloudflare_endpoint.setter
     def cloudflare_endpoint(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "cloudflare_endpoint", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The date and time the tunnel was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_on", value)
 
     @property
     @pulumi.getter(name="customerEndpoint")
@@ -316,27 +333,6 @@ class _MagicWanIpsecTunnelState:
         pulumi.set(self, "ipsec_tunnel", value)
 
     @property
-    @pulumi.getter(name="ipsecTunnelId")
-    def ipsec_tunnel_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "ipsec_tunnel_id")
-
-    @ipsec_tunnel_id.setter
-    def ipsec_tunnel_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "ipsec_tunnel_id", value)
-
-    @property
-    @pulumi.getter(name="ipsecTunnels")
-    def ipsec_tunnels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelArgs']]]]:
-        return pulumi.get(self, "ipsec_tunnels")
-
-    @ipsec_tunnels.setter
-    def ipsec_tunnels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelArgs']]]]):
-        pulumi.set(self, "ipsec_tunnels", value)
-
-    @property
     @pulumi.getter
     def modified(self) -> Optional[pulumi.Input[builtins.bool]]:
         return pulumi.get(self, "modified")
@@ -353,6 +349,18 @@ class _MagicWanIpsecTunnelState:
     @modified_ipsec_tunnel.setter
     def modified_ipsec_tunnel(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelArgs']]):
         pulumi.set(self, "modified_ipsec_tunnel", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The date and time the tunnel was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modified_on", value)
 
     @property
     @pulumi.getter
@@ -379,6 +387,18 @@ class _MagicWanIpsecTunnelState:
         pulumi.set(self, "psk", value)
 
     @property
+    @pulumi.getter(name="pskMetadata")
+    def psk_metadata(self) -> Optional[pulumi.Input['MagicWanIpsecTunnelPskMetadataArgs']]:
+        """
+        The PSK metadata that includes when the PSK was generated.
+        """
+        return pulumi.get(self, "psk_metadata")
+
+    @psk_metadata.setter
+    def psk_metadata(self, value: Optional[pulumi.Input['MagicWanIpsecTunnelPskMetadataArgs']]):
+        pulumi.set(self, "psk_metadata", value)
+
+    @property
     @pulumi.getter(name="replayProtection")
     def replay_protection(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
@@ -403,7 +423,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
                  interface_address: Optional[pulumi.Input[builtins.str]] = None,
-                 ipsec_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  psk: Optional[pulumi.Input[builtins.str]] = None,
                  replay_protection: Optional[pulumi.Input[builtins.bool]] = None,
@@ -435,6 +454,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             replay_protection=False)
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '<account_id>/<ipsec_tunnel_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
@@ -442,7 +467,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[builtins.str] description: An optional description forthe IPsec tunnel.
         :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        :param pulumi.Input[builtins.str] ipsec_tunnel_id: Identifier
         :param pulumi.Input[builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
         :param pulumi.Input[builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
@@ -480,6 +504,12 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             replay_protection=False)
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '<account_id>/<ipsec_tunnel_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param MagicWanIpsecTunnelArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -501,7 +531,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
                  interface_address: Optional[pulumi.Input[builtins.str]] = None,
-                 ipsec_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  psk: Optional[pulumi.Input[builtins.str]] = None,
                  replay_protection: Optional[pulumi.Input[builtins.bool]] = None,
@@ -526,16 +555,18 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             if interface_address is None and not opts.urn:
                 raise TypeError("Missing required property 'interface_address'")
             __props__.__dict__["interface_address"] = interface_address
-            __props__.__dict__["ipsec_tunnel_id"] = ipsec_tunnel_id
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["psk"] = psk
             __props__.__dict__["replay_protection"] = replay_protection
+            __props__.__dict__["allow_null_cipher"] = None
+            __props__.__dict__["created_on"] = None
             __props__.__dict__["ipsec_tunnel"] = None
-            __props__.__dict__["ipsec_tunnels"] = None
             __props__.__dict__["modified"] = None
             __props__.__dict__["modified_ipsec_tunnel"] = None
+            __props__.__dict__["modified_on"] = None
+            __props__.__dict__["psk_metadata"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/ipsecTunnel:IpsecTunnel")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(MagicWanIpsecTunnel, __self__).__init__(
@@ -549,18 +580,20 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            allow_null_cipher: Optional[pulumi.Input[builtins.bool]] = None,
             cloudflare_endpoint: Optional[pulumi.Input[builtins.str]] = None,
+            created_on: Optional[pulumi.Input[builtins.str]] = None,
             customer_endpoint: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             health_check: Optional[pulumi.Input[Union['MagicWanIpsecTunnelHealthCheckArgs', 'MagicWanIpsecTunnelHealthCheckArgsDict']]] = None,
             interface_address: Optional[pulumi.Input[builtins.str]] = None,
             ipsec_tunnel: Optional[pulumi.Input[Union['MagicWanIpsecTunnelIpsecTunnelArgs', 'MagicWanIpsecTunnelIpsecTunnelArgsDict']]] = None,
-            ipsec_tunnel_id: Optional[pulumi.Input[builtins.str]] = None,
-            ipsec_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicWanIpsecTunnelIpsecTunnelArgs', 'MagicWanIpsecTunnelIpsecTunnelArgsDict']]]]] = None,
             modified: Optional[pulumi.Input[builtins.bool]] = None,
             modified_ipsec_tunnel: Optional[pulumi.Input[Union['MagicWanIpsecTunnelModifiedIpsecTunnelArgs', 'MagicWanIpsecTunnelModifiedIpsecTunnelArgsDict']]] = None,
+            modified_on: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             psk: Optional[pulumi.Input[builtins.str]] = None,
+            psk_metadata: Optional[pulumi.Input[Union['MagicWanIpsecTunnelPskMetadataArgs', 'MagicWanIpsecTunnelPskMetadataArgsDict']]] = None,
             replay_protection: Optional[pulumi.Input[builtins.bool]] = None) -> 'MagicWanIpsecTunnel':
         """
         Get an existing MagicWanIpsecTunnel resource's state with the given name, id, and optional extra
@@ -570,13 +603,16 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.bool] allow_null_cipher: When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
         :param pulumi.Input[builtins.str] cloudflare_endpoint: The IP address assigned to the Cloudflare side of the IPsec tunnel.
+        :param pulumi.Input[builtins.str] created_on: The date and time the tunnel was created.
         :param pulumi.Input[builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[builtins.str] description: An optional description forthe IPsec tunnel.
         :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-        :param pulumi.Input[builtins.str] ipsec_tunnel_id: Identifier
+        :param pulumi.Input[builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         :param pulumi.Input[builtins.str] psk: A randomly generated or provided string for use in the IPsec tunnel.
+        :param pulumi.Input[Union['MagicWanIpsecTunnelPskMetadataArgs', 'MagicWanIpsecTunnelPskMetadataArgsDict']] psk_metadata: The PSK metadata that includes when the PSK was generated.
         :param pulumi.Input[builtins.bool] replay_protection: If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -584,18 +620,20 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         __props__ = _MagicWanIpsecTunnelState.__new__(_MagicWanIpsecTunnelState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["allow_null_cipher"] = allow_null_cipher
         __props__.__dict__["cloudflare_endpoint"] = cloudflare_endpoint
+        __props__.__dict__["created_on"] = created_on
         __props__.__dict__["customer_endpoint"] = customer_endpoint
         __props__.__dict__["description"] = description
         __props__.__dict__["health_check"] = health_check
         __props__.__dict__["interface_address"] = interface_address
         __props__.__dict__["ipsec_tunnel"] = ipsec_tunnel
-        __props__.__dict__["ipsec_tunnel_id"] = ipsec_tunnel_id
-        __props__.__dict__["ipsec_tunnels"] = ipsec_tunnels
         __props__.__dict__["modified"] = modified
         __props__.__dict__["modified_ipsec_tunnel"] = modified_ipsec_tunnel
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["name"] = name
         __props__.__dict__["psk"] = psk
+        __props__.__dict__["psk_metadata"] = psk_metadata
         __props__.__dict__["replay_protection"] = replay_protection
         return MagicWanIpsecTunnel(resource_name, opts=opts, __props__=__props__)
 
@@ -608,12 +646,28 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="allowNullCipher")
+    def allow_null_cipher(self) -> pulumi.Output[builtins.bool]:
+        """
+        When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        """
+        return pulumi.get(self, "allow_null_cipher")
+
+    @property
     @pulumi.getter(name="cloudflareEndpoint")
     def cloudflare_endpoint(self) -> pulumi.Output[builtins.str]:
         """
         The IP address assigned to the Cloudflare side of the IPsec tunnel.
         """
         return pulumi.get(self, "cloudflare_endpoint")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[builtins.str]:
+        """
+        The date and time the tunnel was created.
+        """
+        return pulumi.get(self, "created_on")
 
     @property
     @pulumi.getter(name="customerEndpoint")
@@ -650,19 +704,6 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         return pulumi.get(self, "ipsec_tunnel")
 
     @property
-    @pulumi.getter(name="ipsecTunnelId")
-    def ipsec_tunnel_id(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "ipsec_tunnel_id")
-
-    @property
-    @pulumi.getter(name="ipsecTunnels")
-    def ipsec_tunnels(self) -> pulumi.Output[Sequence['outputs.MagicWanIpsecTunnelIpsecTunnel']]:
-        return pulumi.get(self, "ipsec_tunnels")
-
-    @property
     @pulumi.getter
     def modified(self) -> pulumi.Output[builtins.bool]:
         return pulumi.get(self, "modified")
@@ -671,6 +712,14 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
     @pulumi.getter(name="modifiedIpsecTunnel")
     def modified_ipsec_tunnel(self) -> pulumi.Output['outputs.MagicWanIpsecTunnelModifiedIpsecTunnel']:
         return pulumi.get(self, "modified_ipsec_tunnel")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[builtins.str]:
+        """
+        The date and time the tunnel was last modified.
+        """
+        return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
@@ -687,6 +736,14 @@ class MagicWanIpsecTunnel(pulumi.CustomResource):
         A randomly generated or provided string for use in the IPsec tunnel.
         """
         return pulumi.get(self, "psk")
+
+    @property
+    @pulumi.getter(name="pskMetadata")
+    def psk_metadata(self) -> pulumi.Output['outputs.MagicWanIpsecTunnelPskMetadata']:
+        """
+        The PSK metadata that includes when the PSK was generated.
+        """
+        return pulumi.get(self, "psk_metadata")
 
     @property
     @pulumi.getter(name="replayProtection")

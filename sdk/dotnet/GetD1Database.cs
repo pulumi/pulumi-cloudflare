@@ -159,6 +159,10 @@ namespace Pulumi.Cloudflare
         public readonly string Name;
         public readonly double NumTables;
         /// <summary>
+        /// Configuration for D1 read replication.
+        /// </summary>
+        public readonly Outputs.GetD1DatabaseReadReplicationResult ReadReplication;
+        /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
         public readonly string Uuid;
@@ -182,6 +186,8 @@ namespace Pulumi.Cloudflare
 
             double numTables,
 
+            Outputs.GetD1DatabaseReadReplicationResult readReplication,
+
             string uuid,
 
             string version)
@@ -194,6 +200,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             Name = name;
             NumTables = numTables;
+            ReadReplication = readReplication;
             Uuid = uuid;
             Version = version;
         }

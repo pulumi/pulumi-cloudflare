@@ -13,6 +13,181 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRulesetRuleActionParametersCacheKeyCustomKeyHost struct {
+	// Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+	Resolved bool `pulumi:"resolved"`
+}
+
+// GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput` via:
+//
+//	GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs{...}
+type GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs struct {
+	// Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+	Resolved pulumi.BoolInput `pulumi:"resolved"`
+}
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHost)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
+	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHost)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyHostOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput {
+	return o
+}
+
+// Use the resolved host in the cache key. A value of true will use the resolved host, while a value or false will use the original host.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput) Resolved() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyHost) bool { return v.Resolved }).(pulumi.BoolOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString struct {
+	// A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+	Exclude GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude `pulumi:"exclude"`
+	// A list of query string parameters used to build the cache key.
+	Include GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude `pulumi:"include"`
+}
+
+// GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput` via:
+//
+//	GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{...}
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs struct {
+	// A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+	Exclude GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput `pulumi:"exclude"`
+	// A list of query string parameters used to build the cache key.
+	Include GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput `pulumi:"include"`
+}
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
+	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput {
+	return o
+}
+
+// A list of query string parameters NOT used to build the cache key. All parameters present in the request but missing in this list will be used to build the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) Exclude() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude {
+		return v.Exclude
+	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput)
+}
+
+// A list of query string parameters used to build the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput) Include() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryString) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude {
+		return v.Include
+	}).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude struct {
+	// Determines whether to exclude all query string parameters from the cache key.
+	All   bool     `pulumi:"all"`
+	Lists []string `pulumi:"lists"`
+}
+
+// GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput is an input type that accepts GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs and GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput values.
+// You can construct a concrete instance of `GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput` via:
+//
+//	GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs{...}
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput interface {
+	pulumi.Input
+
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput
+	ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutputWithContext(context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs struct {
+	// Determines whether to exclude all query string parameters from the cache key.
+	All   pulumi.BoolInput        `pulumi:"all"`
+	Lists pulumi.StringArrayInput `pulumi:"lists"`
+}
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude)(nil)).Elem()
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
+	return i.ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutputWithContext(context.Background())
+}
+
+func (i GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput)
+}
+
+type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput struct{ *pulumi.OutputState }
+
+func (GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude)(nil)).Elem()
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput() GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
+	return o
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) ToGetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutputWithContext(ctx context.Context) GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput {
+	return o
+}
+
+// Determines whether to exclude all query string parameters from the cache key.
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) All() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude) bool { return v.All }).(pulumi.BoolOutput)
+}
+
+func (o GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput) Lists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExclude) []string { return v.Lists }).(pulumi.StringArrayOutput)
+}
+
 type GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInclude struct {
 	// Determines whether to include all query string parameters in the cache key.
 	All   bool     `pulumi:"all"`
@@ -6412,19 +6587,19 @@ func (o GetWaitingRoomsResultCookieAttributesOutput) Secure() pulumi.StringOutpu
 
 type GetWeb3HostnamesResult struct {
 	CreatedOn string `pulumi:"createdOn"`
-	// An optional description of the hostname.
+	// Specify an optional description of the hostname.
 	Description string `pulumi:"description"`
-	// DNSLink value used if the target is ipfs.
+	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink string `pulumi:"dnslink"`
-	// Identifier
+	// Specify the identifier of the hostname.
 	Id         string `pulumi:"id"`
 	ModifiedOn string `pulumi:"modifiedOn"`
-	// The hostname that will point to the target gateway via CNAME.
+	// Specify the hostname that points to the target gateway via CNAME.
 	Name string `pulumi:"name"`
-	// Status of the hostname's activation.
+	// Specifies the status of the hostname's activation.
 	// Available values: "active", "pending", "deleting", "error".
 	Status string `pulumi:"status"`
-	// Target gateway of the hostname.
+	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target string `pulumi:"target"`
 }
@@ -6442,19 +6617,19 @@ type GetWeb3HostnamesResultInput interface {
 
 type GetWeb3HostnamesResultArgs struct {
 	CreatedOn pulumi.StringInput `pulumi:"createdOn"`
-	// An optional description of the hostname.
+	// Specify an optional description of the hostname.
 	Description pulumi.StringInput `pulumi:"description"`
-	// DNSLink value used if the target is ipfs.
+	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink pulumi.StringInput `pulumi:"dnslink"`
-	// Identifier
+	// Specify the identifier of the hostname.
 	Id         pulumi.StringInput `pulumi:"id"`
 	ModifiedOn pulumi.StringInput `pulumi:"modifiedOn"`
-	// The hostname that will point to the target gateway via CNAME.
+	// Specify the hostname that points to the target gateway via CNAME.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Status of the hostname's activation.
+	// Specifies the status of the hostname's activation.
 	// Available values: "active", "pending", "deleting", "error".
 	Status pulumi.StringInput `pulumi:"status"`
-	// Target gateway of the hostname.
+	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringInput `pulumi:"target"`
 }
@@ -6514,17 +6689,17 @@ func (o GetWeb3HostnamesResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWeb3HostnamesResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// An optional description of the hostname.
+// Specify an optional description of the hostname.
 func (o GetWeb3HostnamesResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWeb3HostnamesResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// DNSLink value used if the target is ipfs.
+// Specify the DNSLink value used if the target is ipfs.
 func (o GetWeb3HostnamesResultOutput) Dnslink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWeb3HostnamesResult) string { return v.Dnslink }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Specify the identifier of the hostname.
 func (o GetWeb3HostnamesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWeb3HostnamesResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -6533,18 +6708,18 @@ func (o GetWeb3HostnamesResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWeb3HostnamesResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The hostname that will point to the target gateway via CNAME.
+// Specify the hostname that points to the target gateway via CNAME.
 func (o GetWeb3HostnamesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWeb3HostnamesResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Status of the hostname's activation.
+// Specifies the status of the hostname's activation.
 // Available values: "active", "pending", "deleting", "error".
 func (o GetWeb3HostnamesResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWeb3HostnamesResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Target gateway of the hostname.
+// Specify the target gateway of the hostname.
 // Available values: "ethereum", "ipfs", "ipfs*universal*path".
 func (o GetWeb3HostnamesResultOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWeb3HostnamesResult) string { return v.Target }).(pulumi.StringOutput)
@@ -8195,115 +8370,6 @@ func (o GetWorkersForPlatformsDispatchNamespacesResultArrayOutput) Index(i pulum
 	}).(GetWorkersForPlatformsDispatchNamespacesResultOutput)
 }
 
-type GetWorkersForPlatformsScriptSecretsResult struct {
-	// The name of this secret, this is what will be used to access it inside the Worker.
-	Name string `pulumi:"name"`
-	// The type of secret.
-	// Available values: "secretText".
-	Type string `pulumi:"type"`
-}
-
-// GetWorkersForPlatformsScriptSecretsResultInput is an input type that accepts GetWorkersForPlatformsScriptSecretsResultArgs and GetWorkersForPlatformsScriptSecretsResultOutput values.
-// You can construct a concrete instance of `GetWorkersForPlatformsScriptSecretsResultInput` via:
-//
-//	GetWorkersForPlatformsScriptSecretsResultArgs{...}
-type GetWorkersForPlatformsScriptSecretsResultInput interface {
-	pulumi.Input
-
-	ToGetWorkersForPlatformsScriptSecretsResultOutput() GetWorkersForPlatformsScriptSecretsResultOutput
-	ToGetWorkersForPlatformsScriptSecretsResultOutputWithContext(context.Context) GetWorkersForPlatformsScriptSecretsResultOutput
-}
-
-type GetWorkersForPlatformsScriptSecretsResultArgs struct {
-	// The name of this secret, this is what will be used to access it inside the Worker.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The type of secret.
-	// Available values: "secretText".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetWorkersForPlatformsScriptSecretsResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkersForPlatformsScriptSecretsResult)(nil)).Elem()
-}
-
-func (i GetWorkersForPlatformsScriptSecretsResultArgs) ToGetWorkersForPlatformsScriptSecretsResultOutput() GetWorkersForPlatformsScriptSecretsResultOutput {
-	return i.ToGetWorkersForPlatformsScriptSecretsResultOutputWithContext(context.Background())
-}
-
-func (i GetWorkersForPlatformsScriptSecretsResultArgs) ToGetWorkersForPlatformsScriptSecretsResultOutputWithContext(ctx context.Context) GetWorkersForPlatformsScriptSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersForPlatformsScriptSecretsResultOutput)
-}
-
-// GetWorkersForPlatformsScriptSecretsResultArrayInput is an input type that accepts GetWorkersForPlatformsScriptSecretsResultArray and GetWorkersForPlatformsScriptSecretsResultArrayOutput values.
-// You can construct a concrete instance of `GetWorkersForPlatformsScriptSecretsResultArrayInput` via:
-//
-//	GetWorkersForPlatformsScriptSecretsResultArray{ GetWorkersForPlatformsScriptSecretsResultArgs{...} }
-type GetWorkersForPlatformsScriptSecretsResultArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkersForPlatformsScriptSecretsResultArrayOutput() GetWorkersForPlatformsScriptSecretsResultArrayOutput
-	ToGetWorkersForPlatformsScriptSecretsResultArrayOutputWithContext(context.Context) GetWorkersForPlatformsScriptSecretsResultArrayOutput
-}
-
-type GetWorkersForPlatformsScriptSecretsResultArray []GetWorkersForPlatformsScriptSecretsResultInput
-
-func (GetWorkersForPlatformsScriptSecretsResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkersForPlatformsScriptSecretsResult)(nil)).Elem()
-}
-
-func (i GetWorkersForPlatformsScriptSecretsResultArray) ToGetWorkersForPlatformsScriptSecretsResultArrayOutput() GetWorkersForPlatformsScriptSecretsResultArrayOutput {
-	return i.ToGetWorkersForPlatformsScriptSecretsResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkersForPlatformsScriptSecretsResultArray) ToGetWorkersForPlatformsScriptSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersForPlatformsScriptSecretsResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersForPlatformsScriptSecretsResultArrayOutput)
-}
-
-type GetWorkersForPlatformsScriptSecretsResultOutput struct{ *pulumi.OutputState }
-
-func (GetWorkersForPlatformsScriptSecretsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkersForPlatformsScriptSecretsResult)(nil)).Elem()
-}
-
-func (o GetWorkersForPlatformsScriptSecretsResultOutput) ToGetWorkersForPlatformsScriptSecretsResultOutput() GetWorkersForPlatformsScriptSecretsResultOutput {
-	return o
-}
-
-func (o GetWorkersForPlatformsScriptSecretsResultOutput) ToGetWorkersForPlatformsScriptSecretsResultOutputWithContext(ctx context.Context) GetWorkersForPlatformsScriptSecretsResultOutput {
-	return o
-}
-
-// The name of this secret, this is what will be used to access it inside the Worker.
-func (o GetWorkersForPlatformsScriptSecretsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkersForPlatformsScriptSecretsResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The type of secret.
-// Available values: "secretText".
-func (o GetWorkersForPlatformsScriptSecretsResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkersForPlatformsScriptSecretsResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetWorkersForPlatformsScriptSecretsResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkersForPlatformsScriptSecretsResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkersForPlatformsScriptSecretsResult)(nil)).Elem()
-}
-
-func (o GetWorkersForPlatformsScriptSecretsResultArrayOutput) ToGetWorkersForPlatformsScriptSecretsResultArrayOutput() GetWorkersForPlatformsScriptSecretsResultArrayOutput {
-	return o
-}
-
-func (o GetWorkersForPlatformsScriptSecretsResultArrayOutput) ToGetWorkersForPlatformsScriptSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersForPlatformsScriptSecretsResultArrayOutput {
-	return o
-}
-
-func (o GetWorkersForPlatformsScriptSecretsResultArrayOutput) Index(i pulumi.IntInput) GetWorkersForPlatformsScriptSecretsResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersForPlatformsScriptSecretsResult {
-		return vs[0].([]GetWorkersForPlatformsScriptSecretsResult)[vs[1].(int)]
-	}).(GetWorkersForPlatformsScriptSecretsResultOutput)
-}
-
 type GetWorkersKvNamespaceFilter struct {
 	// Direction to order namespaces.
 	// Available values: "asc", "desc".
@@ -8594,9 +8660,10 @@ func (o GetWorkersKvNamespacesResultArrayOutput) Index(i pulumi.IntInput) GetWor
 
 type GetWorkersRoutesResult struct {
 	// Identifier.
-	Id      string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern string `pulumi:"pattern"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script to run if the route matches.
 	Script string `pulumi:"script"`
 }
 
@@ -8613,9 +8680,10 @@ type GetWorkersRoutesResultInput interface {
 
 type GetWorkersRoutesResultArgs struct {
 	// Identifier.
-	Id      pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern pulumi.StringInput `pulumi:"pattern"`
-	// Name of the script, used in URLs and route configuration.
+	// Name of the script to run if the route matches.
 	Script pulumi.StringInput `pulumi:"script"`
 }
 
@@ -8675,11 +8743,12 @@ func (o GetWorkersRoutesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersRoutesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 func (o GetWorkersRoutesResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersRoutesResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script to run if the route matches.
 func (o GetWorkersRoutesResultOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkersRoutesResult) string { return v.Script }).(pulumi.StringOutput)
 }
@@ -8922,6 +8991,8 @@ func (o GetWorkersScriptsResultArrayOutput) Index(i pulumi.IntInput) GetWorkersS
 }
 
 type GetWorkersScriptsResultPlacement struct {
+	// The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	LastAnalyzedAt string `pulumi:"lastAnalyzedAt"`
 	// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 	// Available values: "smart".
 	Mode string `pulumi:"mode"`
@@ -8942,6 +9013,8 @@ type GetWorkersScriptsResultPlacementInput interface {
 }
 
 type GetWorkersScriptsResultPlacementArgs struct {
+	// The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+	LastAnalyzedAt pulumi.StringInput `pulumi:"lastAnalyzedAt"`
 	// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
 	// Available values: "smart".
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -8974,6 +9047,11 @@ func (o GetWorkersScriptsResultPlacementOutput) ToGetWorkersScriptsResultPlaceme
 
 func (o GetWorkersScriptsResultPlacementOutput) ToGetWorkersScriptsResultPlacementOutputWithContext(ctx context.Context) GetWorkersScriptsResultPlacementOutput {
 	return o
+}
+
+// The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+func (o GetWorkersScriptsResultPlacementOutput) LastAnalyzedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkersScriptsResultPlacement) string { return v.LastAnalyzedAt }).(pulumi.StringOutput)
 }
 
 // Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -9101,115 +9179,6 @@ func (o GetWorkersScriptsResultTailConsumerArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersScriptsResultTailConsumer {
 		return vs[0].([]GetWorkersScriptsResultTailConsumer)[vs[1].(int)]
 	}).(GetWorkersScriptsResultTailConsumerOutput)
-}
-
-type GetWorkersSecretsResult struct {
-	// The name of this secret, this is what will be used to access it inside the Worker.
-	Name string `pulumi:"name"`
-	// The type of secret.
-	// Available values: "secretText".
-	Type string `pulumi:"type"`
-}
-
-// GetWorkersSecretsResultInput is an input type that accepts GetWorkersSecretsResultArgs and GetWorkersSecretsResultOutput values.
-// You can construct a concrete instance of `GetWorkersSecretsResultInput` via:
-//
-//	GetWorkersSecretsResultArgs{...}
-type GetWorkersSecretsResultInput interface {
-	pulumi.Input
-
-	ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput
-	ToGetWorkersSecretsResultOutputWithContext(context.Context) GetWorkersSecretsResultOutput
-}
-
-type GetWorkersSecretsResultArgs struct {
-	// The name of this secret, this is what will be used to access it inside the Worker.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The type of secret.
-	// Available values: "secretText".
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetWorkersSecretsResultArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkersSecretsResult)(nil)).Elem()
-}
-
-func (i GetWorkersSecretsResultArgs) ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput {
-	return i.ToGetWorkersSecretsResultOutputWithContext(context.Background())
-}
-
-func (i GetWorkersSecretsResultArgs) ToGetWorkersSecretsResultOutputWithContext(ctx context.Context) GetWorkersSecretsResultOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersSecretsResultOutput)
-}
-
-// GetWorkersSecretsResultArrayInput is an input type that accepts GetWorkersSecretsResultArray and GetWorkersSecretsResultArrayOutput values.
-// You can construct a concrete instance of `GetWorkersSecretsResultArrayInput` via:
-//
-//	GetWorkersSecretsResultArray{ GetWorkersSecretsResultArgs{...} }
-type GetWorkersSecretsResultArrayInput interface {
-	pulumi.Input
-
-	ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput
-	ToGetWorkersSecretsResultArrayOutputWithContext(context.Context) GetWorkersSecretsResultArrayOutput
-}
-
-type GetWorkersSecretsResultArray []GetWorkersSecretsResultInput
-
-func (GetWorkersSecretsResultArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkersSecretsResult)(nil)).Elem()
-}
-
-func (i GetWorkersSecretsResultArray) ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput {
-	return i.ToGetWorkersSecretsResultArrayOutputWithContext(context.Background())
-}
-
-func (i GetWorkersSecretsResultArray) ToGetWorkersSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersSecretsResultArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetWorkersSecretsResultArrayOutput)
-}
-
-type GetWorkersSecretsResultOutput struct{ *pulumi.OutputState }
-
-func (GetWorkersSecretsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetWorkersSecretsResult)(nil)).Elem()
-}
-
-func (o GetWorkersSecretsResultOutput) ToGetWorkersSecretsResultOutput() GetWorkersSecretsResultOutput {
-	return o
-}
-
-func (o GetWorkersSecretsResultOutput) ToGetWorkersSecretsResultOutputWithContext(ctx context.Context) GetWorkersSecretsResultOutput {
-	return o
-}
-
-// The name of this secret, this is what will be used to access it inside the Worker.
-func (o GetWorkersSecretsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkersSecretsResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The type of secret.
-// Available values: "secretText".
-func (o GetWorkersSecretsResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetWorkersSecretsResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetWorkersSecretsResultArrayOutput struct{ *pulumi.OutputState }
-
-func (GetWorkersSecretsResultArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetWorkersSecretsResult)(nil)).Elem()
-}
-
-func (o GetWorkersSecretsResultArrayOutput) ToGetWorkersSecretsResultArrayOutput() GetWorkersSecretsResultArrayOutput {
-	return o
-}
-
-func (o GetWorkersSecretsResultArrayOutput) ToGetWorkersSecretsResultArrayOutputWithContext(ctx context.Context) GetWorkersSecretsResultArrayOutput {
-	return o
-}
-
-func (o GetWorkersSecretsResultArrayOutput) Index(i pulumi.IntInput) GetWorkersSecretsResultOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkersSecretsResult {
-		return vs[0].([]GetWorkersSecretsResult)[vs[1].(int)]
-	}).(GetWorkersSecretsResultOutput)
 }
 
 type GetZeroTrustAccessApplicationCorsHeaders struct {
@@ -16213,6 +16182,8 @@ func (o GetZeroTrustAccessApplicationTargetCriteriaArrayOutput) Index(i pulumi.I
 type GetZeroTrustAccessApplicationsResult struct {
 	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp bool `pulumi:"allowAuthenticateViaWarp"`
+	// Enables loading application content in an iFrame.
+	AllowIframe bool `pulumi:"allowIframe"`
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps []string `pulumi:"allowedIdps"`
 	// The image URL of the logo shown in the App Launcher header.
@@ -16307,6 +16278,8 @@ type GetZeroTrustAccessApplicationsResultInput interface {
 type GetZeroTrustAccessApplicationsResultArgs struct {
 	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp pulumi.BoolInput `pulumi:"allowAuthenticateViaWarp"`
+	// Enables loading application content in an iFrame.
+	AllowIframe pulumi.BoolInput `pulumi:"allowIframe"`
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps pulumi.StringArrayInput `pulumi:"allowedIdps"`
 	// The image URL of the logo shown in the App Launcher header.
@@ -16441,6 +16414,11 @@ func (o GetZeroTrustAccessApplicationsResultOutput) ToGetZeroTrustAccessApplicat
 // When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 func (o GetZeroTrustAccessApplicationsResultOutput) AllowAuthenticateViaWarp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) bool { return v.AllowAuthenticateViaWarp }).(pulumi.BoolOutput)
+}
+
+// Enables loading application content in an iFrame.
+func (o GetZeroTrustAccessApplicationsResultOutput) AllowIframe() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZeroTrustAccessApplicationsResult) bool { return v.AllowIframe }).(pulumi.BoolOutput)
 }
 
 // The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
@@ -40237,59 +40215,10 @@ func (o GetZeroTrustAccessPoliciesResultIncludeAuthContextOutput) IdentityProvid
 	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
 }
 
-type GetZeroTrustAccessPoliciesResultIncludeAuthMethod struct {
-	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-	AuthMethod string `pulumi:"authMethod"`
-}
-
-// GetZeroTrustAccessPoliciesResultIncludeAuthMethodInput is an input type that accepts GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs and GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput values.
-// You can construct a concrete instance of `GetZeroTrustAccessPoliciesResultIncludeAuthMethodInput` via:
-//
-//	GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs{...}
-type GetZeroTrustAccessPoliciesResultIncludeAuthMethodInput interface {
-	pulumi.Input
-
-	ToGetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput() GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput
-	ToGetZeroTrustAccessPoliciesResultIncludeAuthMethodOutputWithContext(context.Context) GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs struct {
-	// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-	AuthMethod pulumi.StringInput `pulumi:"authMethod"`
-}
-
-func (GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAuthMethod)(nil)).Elem()
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs) ToGetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput() GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput {
-	return i.ToGetZeroTrustAccessPoliciesResultIncludeAuthMethodOutputWithContext(context.Background())
-}
-
-func (i GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs) ToGetZeroTrustAccessPoliciesResultIncludeAuthMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput)
-}
-
-type GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput struct{ *pulumi.OutputState }
-
-func (GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAuthMethod)(nil)).Elem()
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput) ToGetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput() GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput {
-	return o
-}
-
-func (o GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput) ToGetZeroTrustAccessPoliciesResultIncludeAuthMethodOutputWithContext(ctx context.Context) GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput {
-	return o
-}
-
-// The type of authentication method https://datatracker.ietf.org/doc/html/rfc8176#section-2.
-func (o GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput) AuthMethod() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZeroTrustAccessPoliciesResultIncludeAuthMethod) string { return v.AuthMethod }).(pulumi.StringOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyHostInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheKeyCustomKeyUserInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheKeyCustomKeyUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRulesetRuleActionParametersCacheReserveInput)(nil)).Elem(), GetRulesetRuleActionParametersCacheReserveArgs{})
@@ -40400,8 +40329,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersDeploymentDeploymentVersionArrayInput)(nil)).Elem(), GetWorkersDeploymentDeploymentVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersForPlatformsDispatchNamespacesResultInput)(nil)).Elem(), GetWorkersForPlatformsDispatchNamespacesResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersForPlatformsDispatchNamespacesResultArrayInput)(nil)).Elem(), GetWorkersForPlatformsDispatchNamespacesResultArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersForPlatformsScriptSecretsResultInput)(nil)).Elem(), GetWorkersForPlatformsScriptSecretsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersForPlatformsScriptSecretsResultArrayInput)(nil)).Elem(), GetWorkersForPlatformsScriptSecretsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersKvNamespaceFilterInput)(nil)).Elem(), GetWorkersKvNamespaceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersKvNamespaceFilterPtrInput)(nil)).Elem(), GetWorkersKvNamespaceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersKvNamespacesResultInput)(nil)).Elem(), GetWorkersKvNamespacesResultArgs{})
@@ -40413,8 +40340,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultPlacementInput)(nil)).Elem(), GetWorkersScriptsResultPlacementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersScriptsResultTailConsumerArrayInput)(nil)).Elem(), GetWorkersScriptsResultTailConsumerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersSecretsResultInput)(nil)).Elem(), GetWorkersSecretsResultArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkersSecretsResultArrayInput)(nil)).Elem(), GetWorkersSecretsResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationCorsHeadersInput)(nil)).Elem(), GetZeroTrustAccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationDestinationInput)(nil)).Elem(), GetZeroTrustAccessApplicationDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessApplicationDestinationArrayInput)(nil)).Elem(), GetZeroTrustAccessApplicationDestinationArray{})
@@ -40877,7 +40802,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeArrayInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAnyValidServiceTokenInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAnyValidServiceTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAuthContextInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAuthContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetZeroTrustAccessPoliciesResultIncludeAuthMethodInput)(nil)).Elem(), GetZeroTrustAccessPoliciesResultIncludeAuthMethodArgs{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyHostOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringOutput{})
+	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringExcludeOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyQueryStringIncludeOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheKeyCustomKeyUserOutput{})
 	pulumi.RegisterOutputType(GetRulesetRuleActionParametersCacheReserveOutput{})
@@ -40988,8 +40915,6 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkersDeploymentDeploymentVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkersForPlatformsDispatchNamespacesResultOutput{})
 	pulumi.RegisterOutputType(GetWorkersForPlatformsDispatchNamespacesResultArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkersForPlatformsScriptSecretsResultOutput{})
-	pulumi.RegisterOutputType(GetWorkersForPlatformsScriptSecretsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkersKvNamespaceFilterOutput{})
 	pulumi.RegisterOutputType(GetWorkersKvNamespaceFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetWorkersKvNamespacesResultOutput{})
@@ -41001,8 +40926,6 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkersScriptsResultPlacementOutput{})
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerOutput{})
 	pulumi.RegisterOutputType(GetWorkersScriptsResultTailConsumerArrayOutput{})
-	pulumi.RegisterOutputType(GetWorkersSecretsResultOutput{})
-	pulumi.RegisterOutputType(GetWorkersSecretsResultArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationDestinationOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessApplicationDestinationArrayOutput{})
@@ -41465,5 +41388,4 @@ func init() {
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeArrayOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAnyValidServiceTokenOutput{})
 	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAuthContextOutput{})
-	pulumi.RegisterOutputType(GetZeroTrustAccessPoliciesResultIncludeAuthMethodOutput{})
 }

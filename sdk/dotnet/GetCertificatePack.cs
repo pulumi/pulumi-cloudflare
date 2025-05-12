@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetCertificatePackArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("certificatePackId", required: true)]
         public string CertificatePackId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetCertificatePackInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("certificatePackId", required: true)]
         public Input<string> CertificatePackId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCertificatePackResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string CertificatePackId;
         /// <summary>
@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

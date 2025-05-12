@@ -77,7 +77,7 @@ type LookupZoneLockdownsArgs struct {
 	Priority *float64 `pulumi:"priority"`
 	// A single URI to search for in the list of URLs of existing rules.
 	UriSearch *string `pulumi:"uriSearch"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -107,7 +107,7 @@ type LookupZoneLockdownsResult struct {
 	Results []GetZoneLockdownsResult `pulumi:"results"`
 	// A single URI to search for in the list of URLs of existing rules.
 	UriSearch *string `pulumi:"uriSearch"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -142,7 +142,7 @@ type LookupZoneLockdownsOutputArgs struct {
 	Priority pulumi.Float64PtrInput `pulumi:"priority"`
 	// A single URI to search for in the list of URLs of existing rules.
 	UriSearch pulumi.StringPtrInput `pulumi:"uriSearch"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -225,7 +225,7 @@ func (o LookupZoneLockdownsResultOutput) UriSearch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupZoneLockdownsResult) *string { return v.UriSearch }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupZoneLockdownsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneLockdownsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

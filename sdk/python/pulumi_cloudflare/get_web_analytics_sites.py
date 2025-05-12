@@ -49,7 +49,7 @@ class GetWebAnalyticsSitesResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -116,7 +116,7 @@ def get_web_analytics_sites(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str order_by: The property used to sort the list of results.
            Available values: "host", "created".
@@ -150,7 +150,7 @@ def get_web_analytics_sites_output(account_id: Optional[pulumi.Input[builtins.st
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str order_by: The property used to sort the list of results.
            Available values: "host", "created".

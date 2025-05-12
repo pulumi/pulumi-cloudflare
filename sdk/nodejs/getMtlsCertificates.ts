@@ -31,7 +31,7 @@ export function getMtlsCertificates(args: GetMtlsCertificatesArgs, opts?: pulumi
  */
 export interface GetMtlsCertificatesArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetMtlsCertificatesArgs {
  */
 export interface GetMtlsCertificatesResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -86,7 +86,7 @@ export function getMtlsCertificatesOutput(args: GetMtlsCertificatesOutputArgs, o
  */
 export interface GetMtlsCertificatesOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

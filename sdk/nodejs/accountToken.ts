@@ -47,7 +47,7 @@ export class AccountToken extends pulumi.CustomResource {
      * Account identifier tag.
      */
     public readonly accountId!: pulumi.Output<string>;
-    public readonly condition!: pulumi.Output<outputs.AccountTokenCondition>;
+    public readonly condition!: pulumi.Output<outputs.AccountTokenCondition | undefined>;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */

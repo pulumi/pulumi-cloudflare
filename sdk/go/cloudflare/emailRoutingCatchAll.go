@@ -34,7 +34,7 @@ type EmailRoutingCatchAll struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -89,7 +89,7 @@ type emailRoutingCatchAllState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag *string `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -106,7 +106,7 @@ type EmailRoutingCatchAllState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -123,7 +123,7 @@ type emailRoutingCatchAllArgs struct {
 	Matchers []EmailRoutingCatchAllMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name *string `pulumi:"name"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -137,7 +137,7 @@ type EmailRoutingCatchAllArgs struct {
 	Matchers EmailRoutingCatchAllMatcherArrayInput
 	// Routing rule name.
 	Name pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -255,7 +255,7 @@ func (o EmailRoutingCatchAllOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o EmailRoutingCatchAllOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingCatchAll) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

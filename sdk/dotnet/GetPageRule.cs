@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetPageRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("pageruleId", required: true)]
         public string PageruleId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetPageRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("pageruleId", required: true)]
         public Input<string> PageruleId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string PageruleId;
         /// <summary>
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

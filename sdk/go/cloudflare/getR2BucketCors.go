@@ -49,17 +49,17 @@ func LookupR2BucketCors(ctx *pulumi.Context, args *LookupR2BucketCorsArgs, opts 
 
 // A collection of arguments for invoking getR2BucketCors.
 type LookupR2BucketCorsArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 }
 
 // A collection of values returned by getR2BucketCors.
 type LookupR2BucketCorsResult struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id    string                `pulumi:"id"`
@@ -77,9 +77,9 @@ func LookupR2BucketCorsOutput(ctx *pulumi.Context, args LookupR2BucketCorsOutput
 
 // A collection of arguments for invoking getR2BucketCors.
 type LookupR2BucketCorsOutputArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
@@ -102,12 +102,12 @@ func (o LookupR2BucketCorsResultOutput) ToLookupR2BucketCorsResultOutputWithCont
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o LookupR2BucketCorsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketCorsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o LookupR2BucketCorsResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketCorsResult) string { return v.BucketName }).(pulumi.StringOutput)
 }

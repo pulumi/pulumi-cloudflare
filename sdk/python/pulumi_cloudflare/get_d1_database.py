@@ -29,7 +29,7 @@ class GetD1DatabaseResult:
     """
     A collection of values returned by getD1Database.
     """
-    def __init__(__self__, account_id=None, created_at=None, database_id=None, file_size=None, filter=None, id=None, name=None, num_tables=None, uuid=None, version=None):
+    def __init__(__self__, account_id=None, created_at=None, database_id=None, file_size=None, filter=None, id=None, name=None, num_tables=None, read_replication=None, uuid=None, version=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -54,6 +54,9 @@ class GetD1DatabaseResult:
         if num_tables and not isinstance(num_tables, float):
             raise TypeError("Expected argument 'num_tables' to be a float")
         pulumi.set(__self__, "num_tables", num_tables)
+        if read_replication and not isinstance(read_replication, dict):
+            raise TypeError("Expected argument 'read_replication' to be a dict")
+        pulumi.set(__self__, "read_replication", read_replication)
         if uuid and not isinstance(uuid, str):
             raise TypeError("Expected argument 'uuid' to be a str")
         pulumi.set(__self__, "uuid", uuid)
@@ -120,6 +123,14 @@ class GetD1DatabaseResult:
         return pulumi.get(self, "num_tables")
 
     @property
+    @pulumi.getter(name="readReplication")
+    def read_replication(self) -> 'outputs.GetD1DatabaseReadReplicationResult':
+        """
+        Configuration for D1 read replication.
+        """
+        return pulumi.get(self, "read_replication")
+
+    @property
     @pulumi.getter
     def uuid(self) -> builtins.str:
         """
@@ -147,6 +158,7 @@ class AwaitableGetD1DatabaseResult(GetD1DatabaseResult):
             id=self.id,
             name=self.name,
             num_tables=self.num_tables,
+            read_replication=self.read_replication,
             uuid=self.uuid,
             version=self.version)
 
@@ -186,6 +198,7 @@ def get_d1_database(account_id: Optional[builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         num_tables=pulumi.get(__ret__, 'num_tables'),
+        read_replication=pulumi.get(__ret__, 'read_replication'),
         uuid=pulumi.get(__ret__, 'uuid'),
         version=pulumi.get(__ret__, 'version'))
 def get_d1_database_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -222,5 +235,6 @@ def get_d1_database_output(account_id: Optional[pulumi.Input[builtins.str]] = No
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         num_tables=pulumi.get(__response__, 'num_tables'),
+        read_replication=pulumi.get(__response__, 'read_replication'),
         uuid=pulumi.get(__response__, 'uuid'),
         version=pulumi.get(__response__, 'version')))

@@ -76,7 +76,7 @@ type LookupApiShieldOperationsArgs struct {
 	// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
 	// Available values: "method", "host", "endpoint", "thresholds.$key".
 	Order *string `pulumi:"order"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -102,7 +102,7 @@ type LookupApiShieldOperationsResult struct {
 	Order *string `pulumi:"order"`
 	// The items returned by the data source
 	Results []GetApiShieldOperationsResult `pulumi:"results"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -133,7 +133,7 @@ type LookupApiShieldOperationsOutputArgs struct {
 	// Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
 	// Available values: "method", "host", "endpoint", "thresholds.$key".
 	Order pulumi.StringPtrInput `pulumi:"order"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -203,7 +203,7 @@ func (o LookupApiShieldOperationsResultOutput) Results() GetApiShieldOperationsR
 	return o.ApplyT(func(v LookupApiShieldOperationsResult) []GetApiShieldOperationsResult { return v.Results }).(GetApiShieldOperationsResultArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupApiShieldOperationsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

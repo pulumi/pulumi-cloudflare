@@ -28,7 +28,7 @@ export function getBotnetFeedConfigAsn(args: GetBotnetFeedConfigAsnArgs, opts?: 
  */
 export interface GetBotnetFeedConfigAsnArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
 }
@@ -38,7 +38,7 @@ export interface GetBotnetFeedConfigAsnArgs {
  */
 export interface GetBotnetFeedConfigAsnResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     readonly asn: number;
@@ -71,7 +71,7 @@ export function getBotnetFeedConfigAsnOutput(args: GetBotnetFeedConfigAsnOutputA
  */
 export interface GetBotnetFeedConfigAsnOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
 }

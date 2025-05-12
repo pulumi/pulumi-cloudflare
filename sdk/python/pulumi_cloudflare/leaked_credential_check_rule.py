@@ -25,9 +25,9 @@ class LeakedCredentialCheckRuleArgs:
                  username: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a LeakedCredentialCheckRule resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
-        :param pulumi.Input[builtins.str] password: The ruleset expression to use in matching the password in a request
-        :param pulumi.Input[builtins.str] username: The ruleset expression to use in matching the username in a request
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
+        :param pulumi.Input[builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
+        :param pulumi.Input[builtins.str] username: Defines the ruleset expression to use in matching the username in a request.
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if password is not None:
@@ -39,7 +39,7 @@ class LeakedCredentialCheckRuleArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -51,7 +51,7 @@ class LeakedCredentialCheckRuleArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ruleset expression to use in matching the password in a request
+        Defines ehe ruleset expression to use in matching the password in a request.
         """
         return pulumi.get(self, "password")
 
@@ -63,7 +63,7 @@ class LeakedCredentialCheckRuleArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ruleset expression to use in matching the username in a request
+        Defines the ruleset expression to use in matching the username in a request.
         """
         return pulumi.get(self, "username")
 
@@ -80,9 +80,9 @@ class _LeakedCredentialCheckRuleState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering LeakedCredentialCheckRule resources.
-        :param pulumi.Input[builtins.str] password: The ruleset expression to use in matching the password in a request
-        :param pulumi.Input[builtins.str] username: The ruleset expression to use in matching the username in a request
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
+        :param pulumi.Input[builtins.str] username: Defines the ruleset expression to use in matching the username in a request.
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -95,7 +95,7 @@ class _LeakedCredentialCheckRuleState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ruleset expression to use in matching the password in a request
+        Defines ehe ruleset expression to use in matching the password in a request.
         """
         return pulumi.get(self, "password")
 
@@ -107,7 +107,7 @@ class _LeakedCredentialCheckRuleState:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The ruleset expression to use in matching the username in a request
+        Defines the ruleset expression to use in matching the username in a request.
         """
         return pulumi.get(self, "username")
 
@@ -119,7 +119,7 @@ class _LeakedCredentialCheckRuleState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -153,9 +153,9 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] password: The ruleset expression to use in matching the password in a request
-        :param pulumi.Input[builtins.str] username: The ruleset expression to use in matching the username in a request
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
+        :param pulumi.Input[builtins.str] username: Defines the ruleset expression to use in matching the username in a request.
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         ...
     @overload
@@ -228,9 +228,9 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] password: The ruleset expression to use in matching the password in a request
-        :param pulumi.Input[builtins.str] username: The ruleset expression to use in matching the username in a request
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] password: Defines ehe ruleset expression to use in matching the password in a request.
+        :param pulumi.Input[builtins.str] username: Defines the ruleset expression to use in matching the username in a request.
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -245,7 +245,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The ruleset expression to use in matching the password in a request
+        Defines ehe ruleset expression to use in matching the password in a request.
         """
         return pulumi.get(self, "password")
 
@@ -253,7 +253,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The ruleset expression to use in matching the username in a request
+        Defines the ruleset expression to use in matching the username in a request.
         """
         return pulumi.get(self, "username")
 
@@ -261,7 +261,7 @@ class LeakedCredentialCheckRule(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 

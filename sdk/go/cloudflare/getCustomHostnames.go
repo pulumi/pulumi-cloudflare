@@ -67,7 +67,7 @@ type LookupCustomHostnamesArgs struct {
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
 	Ssl *float64 `pulumi:"ssl"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -90,7 +90,7 @@ type LookupCustomHostnamesResult struct {
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
 	Ssl *float64 `pulumi:"ssl"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -120,7 +120,7 @@ type LookupCustomHostnamesOutputArgs struct {
 	// Whether to filter hostnames based on if they have SSL enabled.
 	// Available values: 0, 1.
 	Ssl pulumi.Float64PtrInput `pulumi:"ssl"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -181,7 +181,7 @@ func (o LookupCustomHostnamesResultOutput) Ssl() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupCustomHostnamesResult) *float64 { return v.Ssl }).(pulumi.Float64PtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomHostnamesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnamesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

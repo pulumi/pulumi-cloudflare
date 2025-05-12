@@ -74,23 +74,23 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      */
-    public readonly contextAwareness!: pulumi.Output<outputs.ZeroTrustDlpPredefinedProfileContextAwareness>;
+    public readonly contextAwareness!: pulumi.Output<outputs.ZeroTrustDlpPredefinedProfileContextAwareness | undefined>;
     /**
-     * When the profile was created
+     * When the profile was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     public /*out*/ readonly description!: pulumi.Output<string>;
     public readonly entries!: pulumi.Output<outputs.ZeroTrustDlpPredefinedProfileEntry[]>;
     /**
-     * The name of the profile
+     * The name of the profile.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly ocrEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      */
     public /*out*/ readonly openAccess!: pulumi.Output<boolean>;
     public readonly profileId!: pulumi.Output<string>;
@@ -99,7 +99,7 @@ export class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -176,21 +176,21 @@ export interface ZeroTrustDlpPredefinedProfileState {
      */
     contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpPredefinedProfileContextAwareness>;
     /**
-     * When the profile was created
+     * When the profile was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: pulumi.Input<string>;
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpPredefinedProfileEntry>[]>;
     /**
-     * The name of the profile
+     * The name of the profile.
      */
     name?: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      */
     openAccess?: pulumi.Input<boolean>;
     profileId?: pulumi.Input<string>;
@@ -199,7 +199,7 @@ export interface ZeroTrustDlpPredefinedProfileState {
      */
     type?: pulumi.Input<string>;
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      */
     updatedAt?: pulumi.Input<string>;
 }

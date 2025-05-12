@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// If true, context information will be passed as query parameters
+        /// </summary>
+        public readonly bool IncludeContext;
+        /// <summary>
         /// Customize the message shown in the notification.
         /// </summary>
         public readonly string Msg;
@@ -30,11 +34,14 @@ namespace Pulumi.Cloudflare.Outputs
         private GetZeroTrustGatewayPolicyRuleSettingsNotificationSettingsResult(
             bool enabled,
 
+            bool includeContext,
+
             string msg,
 
             string supportUrl)
         {
             Enabled = enabled;
+            IncludeContext = includeContext;
             Msg = msg;
             SupportUrl = supportUrl;
         }

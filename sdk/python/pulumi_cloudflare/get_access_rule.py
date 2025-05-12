@@ -108,7 +108,7 @@ class GetAccessRuleResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Unique identifier for a rule
+        Unique identifier for a rule.
         """
         return pulumi.get(self, "id")
 
@@ -141,7 +141,7 @@ class GetAccessRuleResult:
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[builtins.str]:
         """
-        Unique identifier for a rule
+        Unique identifier for a rule.
         """
         return pulumi.get(self, "rule_id")
 
@@ -201,7 +201,7 @@ def get_access_rule(account_id: Optional[builtins.str] = None,
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str rule_id: Unique identifier for a rule
+    :param builtins.str rule_id: Unique identifier for a rule.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -244,7 +244,7 @@ def get_access_rule_output(account_id: Optional[pulumi.Input[Optional[builtins.s
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str rule_id: Unique identifier for a rule
+    :param builtins.str rule_id: Unique identifier for a rule.
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()

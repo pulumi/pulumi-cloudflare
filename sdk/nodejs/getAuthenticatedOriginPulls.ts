@@ -34,7 +34,7 @@ export interface GetAuthenticatedOriginPullsArgs {
      */
     hostname: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -44,7 +44,7 @@ export interface GetAuthenticatedOriginPullsArgs {
  */
 export interface GetAuthenticatedOriginPullsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly certId: string;
     /**
@@ -106,7 +106,7 @@ export interface GetAuthenticatedOriginPullsResult {
      */
     readonly updatedAt: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -140,7 +140,7 @@ export interface GetAuthenticatedOriginPullsOutputArgs {
      */
     hostname: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWebAnalyticsSiteArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetWebAnalyticsSiteFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("siteId")]
         public string? SiteId { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWebAnalyticsSiteInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetWebAnalyticsSiteFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWebAnalyticsSiteResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
         public readonly string Created;
         public readonly Outputs.GetWebAnalyticsSiteFilterResult? Filter;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
         public readonly ImmutableArray<Outputs.GetWebAnalyticsSiteRuleResult> Rules;
         public readonly Outputs.GetWebAnalyticsSiteRulesetResult Ruleset;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? SiteId;
         /// <summary>

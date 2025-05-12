@@ -32,11 +32,11 @@ export function getR2BucketLock(args: GetR2BucketLockArgs, opts?: pulumi.InvokeO
  */
 export interface GetR2BucketLockArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: string;
 }
@@ -46,11 +46,11 @@ export interface GetR2BucketLockArgs {
  */
 export interface GetR2BucketLockResult {
     /**
-     * Account ID
+     * Account ID.
      */
     readonly accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     readonly bucketName: string;
     /**
@@ -85,11 +85,11 @@ export function getR2BucketLockOutput(args: GetR2BucketLockOutputArgs, opts?: pu
  */
 export interface GetR2BucketLockOutputArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
 }

@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Origin { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

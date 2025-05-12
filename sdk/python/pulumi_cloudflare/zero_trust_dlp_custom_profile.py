@@ -37,7 +37,7 @@ class ZeroTrustDlpCustomProfileArgs:
         The set of arguments for constructing a ZeroTrustDlpCustomProfile resource.
         :param pulumi.Input[builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input['ZeroTrustDlpCustomProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
-        :param pulumi.Input[builtins.str] description: The description of the profile
+        :param pulumi.Input[builtins.str] description: The description of the profile.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -117,7 +117,7 @@ class ZeroTrustDlpCustomProfileArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the profile
+        The description of the profile.
         """
         return pulumi.get(self, "description")
 
@@ -196,12 +196,12 @@ class _ZeroTrustDlpCustomProfileState:
         Input properties used for looking up and filtering ZeroTrustDlpCustomProfile resources.
         :param pulumi.Input[builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input['ZeroTrustDlpCustomProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
-        :param pulumi.Input[builtins.str] created_at: When the profile was created
-        :param pulumi.Input[builtins.str] description: The description of the profile
-        :param pulumi.Input[builtins.bool] open_access: Whether this profile can be accessed by anyone
+        :param pulumi.Input[builtins.str] created_at: When the profile was created.
+        :param pulumi.Input[builtins.str] description: The description of the profile.
+        :param pulumi.Input[builtins.bool] open_access: Whether this profile can be accessed by anyone.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         :param pulumi.Input[builtins.str] type: Available values: "custom".
-        :param pulumi.Input[builtins.str] updated_at: When the profile was lasted updated
+        :param pulumi.Input[builtins.str] updated_at: When the profile was lasted updated.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -289,7 +289,7 @@ class _ZeroTrustDlpCustomProfileState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        When the profile was created
+        When the profile was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -301,7 +301,7 @@ class _ZeroTrustDlpCustomProfileState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the profile
+        The description of the profile.
         """
         return pulumi.get(self, "description")
 
@@ -340,7 +340,7 @@ class _ZeroTrustDlpCustomProfileState:
     @pulumi.getter(name="openAccess")
     def open_access(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether this profile can be accessed by anyone
+        Whether this profile can be accessed by anyone.
         """
         return pulumi.get(self, "open_access")
 
@@ -385,7 +385,7 @@ class _ZeroTrustDlpCustomProfileState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        When the profile was lasted updated
+        When the profile was lasted updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -425,7 +425,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[Union['ZeroTrustDlpCustomProfileContextAwarenessArgs', 'ZeroTrustDlpCustomProfileContextAwarenessArgsDict']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
-        :param pulumi.Input[builtins.str] description: The description of the profile
+        :param pulumi.Input[builtins.str] description: The description of the profile.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileSharedEntryArgs', 'ZeroTrustDlpCustomProfileSharedEntryArgsDict']]]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
         ...
@@ -531,12 +531,12 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[Union['ZeroTrustDlpCustomProfileContextAwarenessArgs', 'ZeroTrustDlpCustomProfileContextAwarenessArgsDict']] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
-        :param pulumi.Input[builtins.str] created_at: When the profile was created
-        :param pulumi.Input[builtins.str] description: The description of the profile
-        :param pulumi.Input[builtins.bool] open_access: Whether this profile can be accessed by anyone
+        :param pulumi.Input[builtins.str] created_at: When the profile was created.
+        :param pulumi.Input[builtins.str] description: The description of the profile.
+        :param pulumi.Input[builtins.bool] open_access: Whether this profile can be accessed by anyone.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileSharedEntryArgs', 'ZeroTrustDlpCustomProfileSharedEntryArgsDict']]]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         :param pulumi.Input[builtins.str] type: Available values: "custom".
-        :param pulumi.Input[builtins.str] updated_at: When the profile was lasted updated
+        :param pulumi.Input[builtins.str] updated_at: When the profile was lasted updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -584,7 +584,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contextAwareness")
-    def context_awareness(self) -> pulumi.Output['outputs.ZeroTrustDlpCustomProfileContextAwareness']:
+    def context_awareness(self) -> pulumi.Output[Optional['outputs.ZeroTrustDlpCustomProfileContextAwareness']]:
         """
         Scan the context of predefined entries to only return matches surrounded by keywords.
         """
@@ -594,7 +594,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[builtins.str]:
         """
-        When the profile was created
+        When the profile was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -602,13 +602,13 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The description of the profile
+        The description of the profile.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def entries(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDlpCustomProfileEntry']]:
+    def entries(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDlpCustomProfileEntry']]]:
         return pulumi.get(self, "entries")
 
     @property
@@ -625,7 +625,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
     @pulumi.getter(name="openAccess")
     def open_access(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether this profile can be accessed by anyone
+        Whether this profile can be accessed by anyone.
         """
         return pulumi.get(self, "open_access")
 
@@ -636,7 +636,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sharedEntries")
-    def shared_entries(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDlpCustomProfileSharedEntry']]:
+    def shared_entries(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDlpCustomProfileSharedEntry']]]:
         """
         Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
@@ -654,7 +654,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[builtins.str]:
         """
-        When the profile was lasted updated
+        When the profile was lasted updated.
         """
         return pulumi.get(self, "updated_at")
 

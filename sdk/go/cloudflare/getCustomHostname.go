@@ -49,10 +49,10 @@ func LookupCustomHostname(ctx *pulumi.Context, args *LookupCustomHostnameArgs, o
 
 // A collection of arguments for invoking getCustomHostname.
 type LookupCustomHostnameArgs struct {
-	// Identifier
+	// Identifier.
 	CustomHostnameId *string                  `pulumi:"customHostnameId"`
 	Filter           *GetCustomHostnameFilter `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -60,7 +60,7 @@ type LookupCustomHostnameArgs struct {
 type LookupCustomHostnameResult struct {
 	// This is the time the hostname was created.
 	CreatedAt string `pulumi:"createdAt"`
-	// Identifier
+	// Identifier.
 	CustomHostnameId *string `pulumi:"customHostnameId"`
 	// Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
 	CustomMetadata map[string]string `pulumi:"customMetadata"`
@@ -71,7 +71,7 @@ type LookupCustomHostnameResult struct {
 	Filter          *GetCustomHostnameFilter `pulumi:"filter"`
 	// The custom hostname that will point to your hostname via CNAME.
 	Hostname string `pulumi:"hostname"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// This is a record which can be placed to activate a hostname.
 	OwnershipVerification GetCustomHostnameOwnershipVerification `pulumi:"ownershipVerification"`
@@ -83,7 +83,7 @@ type LookupCustomHostnameResult struct {
 	Status string `pulumi:"status"`
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors []string `pulumi:"verificationErrors"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -98,10 +98,10 @@ func LookupCustomHostnameOutput(ctx *pulumi.Context, args LookupCustomHostnameOu
 
 // A collection of arguments for invoking getCustomHostname.
 type LookupCustomHostnameOutputArgs struct {
-	// Identifier
+	// Identifier.
 	CustomHostnameId pulumi.StringPtrInput           `pulumi:"customHostnameId"`
 	Filter           GetCustomHostnameFilterPtrInput `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -129,7 +129,7 @@ func (o LookupCustomHostnameResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomHostnameResultOutput) CustomHostnameId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) *string { return v.CustomHostnameId }).(pulumi.StringPtrOutput)
 }
@@ -158,7 +158,7 @@ func (o LookupCustomHostnameResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomHostnameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -192,7 +192,7 @@ func (o LookupCustomHostnameResultOutput) VerificationErrors() pulumi.StringArra
 	return o.ApplyT(func(v LookupCustomHostnameResult) []string { return v.VerificationErrors }).(pulumi.StringArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomHostnameResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

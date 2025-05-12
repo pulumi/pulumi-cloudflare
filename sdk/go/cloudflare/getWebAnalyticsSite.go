@@ -49,27 +49,27 @@ func LookupWebAnalyticsSite(ctx *pulumi.Context, args *LookupWebAnalyticsSiteArg
 
 // A collection of arguments for invoking getWebAnalyticsSite.
 type LookupWebAnalyticsSiteArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string                     `pulumi:"accountId"`
 	Filter    *GetWebAnalyticsSiteFilter `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	SiteId *string `pulumi:"siteId"`
 }
 
 // A collection of values returned by getWebAnalyticsSite.
 type LookupWebAnalyticsSiteResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall bool                       `pulumi:"autoInstall"`
 	Created     string                     `pulumi:"created"`
 	Filter      *GetWebAnalyticsSiteFilter `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// A list of rules.
 	Rules   []GetWebAnalyticsSiteRule  `pulumi:"rules"`
 	Ruleset GetWebAnalyticsSiteRuleset `pulumi:"ruleset"`
-	// Identifier
+	// Identifier.
 	SiteId *string `pulumi:"siteId"`
 	// The Web Analytics site identifier.
 	SiteTag string `pulumi:"siteTag"`
@@ -90,10 +90,10 @@ func LookupWebAnalyticsSiteOutput(ctx *pulumi.Context, args LookupWebAnalyticsSi
 
 // A collection of arguments for invoking getWebAnalyticsSite.
 type LookupWebAnalyticsSiteOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput                `pulumi:"accountId"`
 	Filter    GetWebAnalyticsSiteFilterPtrInput `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
 }
 
@@ -116,7 +116,7 @@ func (o LookupWebAnalyticsSiteResultOutput) ToLookupWebAnalyticsSiteResultOutput
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupWebAnalyticsSiteResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAnalyticsSiteResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -134,7 +134,7 @@ func (o LookupWebAnalyticsSiteResultOutput) Filter() GetWebAnalyticsSiteFilterPt
 	return o.ApplyT(func(v LookupWebAnalyticsSiteResult) *GetWebAnalyticsSiteFilter { return v.Filter }).(GetWebAnalyticsSiteFilterPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWebAnalyticsSiteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAnalyticsSiteResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -148,7 +148,7 @@ func (o LookupWebAnalyticsSiteResultOutput) Ruleset() GetWebAnalyticsSiteRuleset
 	return o.ApplyT(func(v LookupWebAnalyticsSiteResult) GetWebAnalyticsSiteRuleset { return v.Ruleset }).(GetWebAnalyticsSiteRulesetOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWebAnalyticsSiteResultOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAnalyticsSiteResult) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDevicePostureRuleMatchResult
     {
         /// <summary>
-        /// Available values: "windows", "mac", "linux", "android", "ios".
+        /// Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
         /// </summary>
         public readonly string Platform;
 

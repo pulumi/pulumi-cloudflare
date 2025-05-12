@@ -13,7 +13,31 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleMagicWanGreTunnel = new cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", {accountId: "023e105f4ecef8ad9ca31a8372d0c353"});
+ * const exampleMagicWanGreTunnel = new cloudflare.MagicWanGreTunnel("example_magic_wan_gre_tunnel", {
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     cloudflareGreEndpoint: "203.0.113.1",
+ *     customerGreEndpoint: "203.0.113.1",
+ *     interfaceAddress: "192.0.2.0/31",
+ *     name: "GRE_1",
+ *     description: "Tunnel for ISP X",
+ *     healthCheck: {
+ *         direction: "bidirectional",
+ *         enabled: true,
+ *         rate: "low",
+ *         target: {
+ *             saved: "203.0.113.1",
+ *         },
+ *         type: "request",
+ *     },
+ *     mtu: 0,
+ *     ttl: 0,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/magicWanGreTunnel:MagicWanGreTunnel example '<account_id>/<gre_tunnel_id>'
  * ```
  */
 export class MagicWanGreTunnel extends pulumi.CustomResource {
@@ -51,28 +75,31 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */
-    public readonly cloudflareGreEndpoint!: pulumi.Output<string | undefined>;
+    public readonly cloudflareGreEndpoint!: pulumi.Output<string>;
+    /**
+     * The date and time the tunnel was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * The IP address assigned to the customer side of the GRE tunnel.
      */
-    public readonly customerGreEndpoint!: pulumi.Output<string | undefined>;
+    public readonly customerGreEndpoint!: pulumi.Output<string>;
     /**
      * An optional description of the GRE tunnel.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly greTunnel!: pulumi.Output<outputs.MagicWanGreTunnelGreTunnel>;
-    /**
-     * Identifier
-     */
-    public readonly greTunnelId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly greTunnels!: pulumi.Output<outputs.MagicWanGreTunnelGreTunnel[]>;
     public readonly healthCheck!: pulumi.Output<outputs.MagicWanGreTunnelHealthCheck>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
-    public readonly interfaceAddress!: pulumi.Output<string | undefined>;
+    public readonly interfaceAddress!: pulumi.Output<string>;
     public /*out*/ readonly modified!: pulumi.Output<boolean>;
     public /*out*/ readonly modifiedGreTunnel!: pulumi.Output<outputs.MagicWanGreTunnelModifiedGreTunnel>;
+    /**
+     * The date and time the tunnel was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      */
@@ -80,7 +107,7 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
     /**
      * The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Time To Live (TTL) in number of hops of the GRE tunnel.
      */
@@ -101,15 +128,15 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
             const state = argsOrState as MagicWanGreTunnelState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["cloudflareGreEndpoint"] = state ? state.cloudflareGreEndpoint : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["customerGreEndpoint"] = state ? state.customerGreEndpoint : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["greTunnel"] = state ? state.greTunnel : undefined;
-            resourceInputs["greTunnelId"] = state ? state.greTunnelId : undefined;
-            resourceInputs["greTunnels"] = state ? state.greTunnels : undefined;
             resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = state ? state.interfaceAddress : undefined;
             resourceInputs["modified"] = state ? state.modified : undefined;
             resourceInputs["modifiedGreTunnel"] = state ? state.modifiedGreTunnel : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
@@ -118,20 +145,32 @@ export class MagicWanGreTunnel extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.cloudflareGreEndpoint === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'cloudflareGreEndpoint'");
+            }
+            if ((!args || args.customerGreEndpoint === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'customerGreEndpoint'");
+            }
+            if ((!args || args.interfaceAddress === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'interfaceAddress'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["cloudflareGreEndpoint"] = args ? args.cloudflareGreEndpoint : undefined;
             resourceInputs["customerGreEndpoint"] = args ? args.customerGreEndpoint : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["greTunnelId"] = args ? args.greTunnelId : undefined;
             resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = args ? args.interfaceAddress : undefined;
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["greTunnel"] = undefined /*out*/;
-            resourceInputs["greTunnels"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["modifiedGreTunnel"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/greTunnel:GreTunnel" }] };
@@ -153,6 +192,10 @@ export interface MagicWanGreTunnelState {
      */
     cloudflareGreEndpoint?: pulumi.Input<string>;
     /**
+     * The date and time the tunnel was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
      * The IP address assigned to the customer side of the GRE tunnel.
      */
     customerGreEndpoint?: pulumi.Input<string>;
@@ -161,11 +204,6 @@ export interface MagicWanGreTunnelState {
      */
     description?: pulumi.Input<string>;
     greTunnel?: pulumi.Input<inputs.MagicWanGreTunnelGreTunnel>;
-    /**
-     * Identifier
-     */
-    greTunnelId?: pulumi.Input<string>;
-    greTunnels?: pulumi.Input<pulumi.Input<inputs.MagicWanGreTunnelGreTunnel>[]>;
     healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelHealthCheck>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
@@ -173,6 +211,10 @@ export interface MagicWanGreTunnelState {
     interfaceAddress?: pulumi.Input<string>;
     modified?: pulumi.Input<boolean>;
     modifiedGreTunnel?: pulumi.Input<inputs.MagicWanGreTunnelModifiedGreTunnel>;
+    /**
+     * The date and time the tunnel was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      */
@@ -198,24 +240,20 @@ export interface MagicWanGreTunnelArgs {
     /**
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      */
-    cloudflareGreEndpoint?: pulumi.Input<string>;
+    cloudflareGreEndpoint: pulumi.Input<string>;
     /**
      * The IP address assigned to the customer side of the GRE tunnel.
      */
-    customerGreEndpoint?: pulumi.Input<string>;
+    customerGreEndpoint: pulumi.Input<string>;
     /**
      * An optional description of the GRE tunnel.
      */
     description?: pulumi.Input<string>;
-    /**
-     * Identifier
-     */
-    greTunnelId?: pulumi.Input<string>;
     healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelHealthCheck>;
     /**
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
-    interfaceAddress?: pulumi.Input<string>;
+    interfaceAddress: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
      */
@@ -223,7 +261,7 @@ export interface MagicWanGreTunnelArgs {
     /**
      * The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Time To Live (TTL) in number of hops of the GRE tunnel.
      */

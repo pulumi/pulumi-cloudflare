@@ -66,11 +66,11 @@ export interface GetZeroTrustRiskScoringIntegrationResult {
      */
     readonly referenceId: string;
     /**
-     * The base URL for the tenant. E.g. "https://tenant.okta.com"
+     * The base URL for the tenant. E.g. "https://tenant.okta.com".
      */
     readonly tenantUrl: string;
     /**
-     * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+     * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      */
     readonly wellKnownUrl: string;
 }

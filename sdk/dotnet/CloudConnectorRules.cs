@@ -11,40 +11,46 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleCloudConnectorRules = new Cloudflare.CloudConnectorRules("example_cloud_connector_rules", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.CloudConnectorRulesRuleArgs
+    ///             {
+    ///                 Id = "95c365e17e1b46599cd99e5b231fac4e",
+    ///                 Description = "Rule description",
+    ///                 Enabled = true,
+    ///                 Expression = "http.cookie eq \"a=b\"",
+    ///                 Parameters = new Cloudflare.Inputs.CloudConnectorRulesRuleParametersArgs
+    ///                 {
+    ///                     Host = "examplebucket.s3.eu-north-1.amazonaws.com",
+    ///                 },
+    ///                 Provider = "aws_s3",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudConnectorRules:CloudConnectorRules")]
     public partial class CloudConnectorRules : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Cloud Provider type
-        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
-        /// </summary>
-        [Output("cloudProvider")]
-        public Output<string> CloudProvider { get; private set; } = null!;
-
-        [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
-
-        [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
-
-        [Output("expression")]
-        public Output<string> Expression { get; private set; } = null!;
-
-        /// <summary>
-        /// Parameters of Cloud Connector Rule
-        /// </summary>
-        [Output("parameters")]
-        public Output<Outputs.CloudConnectorRulesParameters> Parameters { get; private set; } = null!;
-
-        /// <summary>
-        /// List of Cloud Connector rules
-        /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.CloudConnectorRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -97,10 +103,6 @@ namespace Pulumi.Cloudflare
     {
         [Input("rules")]
         private InputList<Inputs.CloudConnectorRulesRuleArgs>? _rules;
-
-        /// <summary>
-        /// List of Cloud Connector rules
-        /// </summary>
         public InputList<Inputs.CloudConnectorRulesRuleArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.CloudConnectorRulesRuleArgs>());
@@ -108,7 +110,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -121,34 +123,8 @@ namespace Pulumi.Cloudflare
 
     public sealed class CloudConnectorRulesState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Cloud Provider type
-        /// Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
-        /// </summary>
-        [Input("cloudProvider")]
-        public Input<string>? CloudProvider { get; set; }
-
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        [Input("expression")]
-        public Input<string>? Expression { get; set; }
-
-        /// <summary>
-        /// Parameters of Cloud Connector Rule
-        /// </summary>
-        [Input("parameters")]
-        public Input<Inputs.CloudConnectorRulesParametersGetArgs>? Parameters { get; set; }
-
         [Input("rules")]
         private InputList<Inputs.CloudConnectorRulesRuleGetArgs>? _rules;
-
-        /// <summary>
-        /// List of Cloud Connector rules
-        /// </summary>
         public InputList<Inputs.CloudConnectorRulesRuleGetArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.CloudConnectorRulesRuleGetArgs>());
@@ -156,7 +132,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

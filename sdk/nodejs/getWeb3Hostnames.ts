@@ -35,7 +35,7 @@ export interface GetWeb3HostnamesArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetWeb3HostnamesResult {
      */
     readonly results: outputs.GetWeb3HostnamesResult[];
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetWeb3HostnamesOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     zoneId: pulumi.Input<string>;
 }

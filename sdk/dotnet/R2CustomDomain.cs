@@ -37,19 +37,19 @@ namespace Pulumi.Cloudflare
     public partial class R2CustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the custom domain to be added
+        /// Name of the custom domain to be added.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -77,13 +77,13 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.R2CustomDomainStatus> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Zone ID of the custom domain
+        /// Zone ID of the custom domain.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// Zone that the custom domain resides in
+        /// Zone that the custom domain resides in.
         /// </summary>
         [Output("zoneName")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -135,19 +135,19 @@ namespace Pulumi.Cloudflare
     public sealed class R2CustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the custom domain to be added
+        /// Name of the custom domain to be added.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? MinTls { get; set; }
 
         /// <summary>
-        /// Zone ID of the custom domain
+        /// Zone ID of the custom domain.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -186,19 +186,19 @@ namespace Pulumi.Cloudflare
     public sealed class R2CustomDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
         /// <summary>
-        /// Name of the custom domain to be added
+        /// Name of the custom domain to be added.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -226,13 +226,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.R2CustomDomainStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// Zone ID of the custom domain
+        /// Zone ID of the custom domain.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
         /// <summary>
-        /// Zone that the custom domain resides in
+        /// Zone that the custom domain resides in.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

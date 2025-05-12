@@ -52,7 +52,7 @@ type LookupZoneLockdownArgs struct {
 	Filter *GetZoneLockdownFilter `pulumi:"filter"`
 	// The unique identifier of the Zone Lockdown rule.
 	LockDownsId *string `pulumi:"lockDownsId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -75,7 +75,7 @@ type LookupZoneLockdownResult struct {
 	Paused bool `pulumi:"paused"`
 	// The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -93,7 +93,7 @@ type LookupZoneLockdownOutputArgs struct {
 	Filter GetZoneLockdownFilterPtrInput `pulumi:"filter"`
 	// The unique identifier of the Zone Lockdown rule.
 	LockDownsId pulumi.StringPtrInput `pulumi:"lockDownsId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -160,7 +160,7 @@ func (o LookupZoneLockdownResultOutput) Urls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupZoneLockdownResult) []string { return v.Urls }).(pulumi.StringArrayOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupZoneLockdownResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneLockdownResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

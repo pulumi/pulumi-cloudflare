@@ -30,11 +30,11 @@ export function getCertificatePack(args: GetCertificatePackArgs, opts?: pulumi.I
  */
 export interface GetCertificatePackArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     certificatePackId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -44,7 +44,7 @@ export interface GetCertificatePackArgs {
  */
 export interface GetCertificatePackResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly certificatePackId: string;
     /**
@@ -52,7 +52,7 @@ export interface GetCertificatePackResult {
      */
     readonly id: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -82,11 +82,11 @@ export function getCertificatePackOutput(args: GetCertificatePackOutputArgs, opt
  */
 export interface GetCertificatePackOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     certificatePackId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

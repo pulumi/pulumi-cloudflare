@@ -57,9 +57,9 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly autoRedirectToIdentity!: pulumi.Output<boolean>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly customPages!: pulumi.Output<outputs.AccessOrganizationCustomPages>;
+    public readonly customPages!: pulumi.Output<outputs.AccessOrganizationCustomPages | undefined>;
     public readonly isUiReadOnly!: pulumi.Output<boolean | undefined>;
-    public readonly loginDesign!: pulumi.Output<outputs.AccessOrganizationLoginDesign>;
+    public readonly loginDesign!: pulumi.Output<outputs.AccessOrganizationLoginDesign | undefined>;
     /**
      * The name of your Zero Trust organization.
      */

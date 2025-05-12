@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+        /// </summary>
+        public readonly int Port;
+        /// <summary>
         /// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
         /// </summary>
         public readonly string VirtualNetworkId;
@@ -54,6 +58,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string name,
 
+            int port,
+
             string virtualNetworkId,
 
             double weight)
@@ -63,6 +69,7 @@ namespace Pulumi.Cloudflare.Outputs
             Enabled = enabled;
             Header = header;
             Name = name;
+            Port = port;
             VirtualNetworkId = virtualNetworkId;
             Weight = weight;
         }

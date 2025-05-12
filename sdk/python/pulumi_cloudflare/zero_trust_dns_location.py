@@ -599,7 +599,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientDefault")
-    def client_default(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def client_default(self) -> pulumi.Output[builtins.bool]:
         """
         True if the location is the default location.
         """
@@ -636,7 +636,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ecsSupport")
-    def ecs_support(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def ecs_support(self) -> pulumi.Output[builtins.bool]:
         """
         True if the location needs to resolve EDNS queries.
         """
@@ -644,7 +644,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def endpoints(self) -> pulumi.Output['outputs.ZeroTrustDnsLocationEndpoints']:
+    def endpoints(self) -> pulumi.Output[Optional['outputs.ZeroTrustDnsLocationEndpoints']]:
         """
         The destination endpoints configured for this location. When updating a location, if this field is absent or set with null, the endpoints configuration remains unchanged.
         """
@@ -684,7 +684,7 @@ class ZeroTrustDnsLocation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def networks(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDnsLocationNetwork']]:
+    def networks(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDnsLocationNetwork']]]:
         """
         A list of network ranges that requests from this location would originate from. A non-empty list is only effective if the ipv4 endpoint is enabled for this location.
         """

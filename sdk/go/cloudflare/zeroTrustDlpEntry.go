@@ -53,14 +53,18 @@ import (
 type ZeroTrustDlpEntry struct {
 	pulumi.CustomResourceState
 
-	AccountId  pulumi.StringOutput               `pulumi:"accountId"`
-	Confidence ZeroTrustDlpEntryConfidenceOutput `pulumi:"confidence"`
-	CreatedAt  pulumi.StringOutput               `pulumi:"createdAt"`
-	Enabled    pulumi.BoolOutput                 `pulumi:"enabled"`
-	Name       pulumi.StringOutput               `pulumi:"name"`
-	Pattern    ZeroTrustDlpEntryPatternOutput    `pulumi:"pattern"`
-	ProfileId  pulumi.StringOutput               `pulumi:"profileId"`
-	Secret     pulumi.BoolOutput                 `pulumi:"secret"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolOutput                 `pulumi:"caseSensitive"`
+	Confidence    ZeroTrustDlpEntryConfidenceOutput `pulumi:"confidence"`
+	CreatedAt     pulumi.StringOutput               `pulumi:"createdAt"`
+	Enabled       pulumi.BoolOutput                 `pulumi:"enabled"`
+	Name          pulumi.StringOutput               `pulumi:"name"`
+	Pattern       ZeroTrustDlpEntryPatternOutput    `pulumi:"pattern"`
+	ProfileId     pulumi.StringOutput               `pulumi:"profileId"`
+	Secret        pulumi.BoolOutput                 `pulumi:"secret"`
 	// Available values: "custom".
 	Type      pulumi.StringPtrOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
@@ -112,14 +116,18 @@ func GetZeroTrustDlpEntry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDlpEntry resources.
 type zeroTrustDlpEntryState struct {
-	AccountId  *string                      `pulumi:"accountId"`
-	Confidence *ZeroTrustDlpEntryConfidence `pulumi:"confidence"`
-	CreatedAt  *string                      `pulumi:"createdAt"`
-	Enabled    *bool                        `pulumi:"enabled"`
-	Name       *string                      `pulumi:"name"`
-	Pattern    *ZeroTrustDlpEntryPattern    `pulumi:"pattern"`
-	ProfileId  *string                      `pulumi:"profileId"`
-	Secret     *bool                        `pulumi:"secret"`
+	AccountId *string `pulumi:"accountId"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive *bool                        `pulumi:"caseSensitive"`
+	Confidence    *ZeroTrustDlpEntryConfidence `pulumi:"confidence"`
+	CreatedAt     *string                      `pulumi:"createdAt"`
+	Enabled       *bool                        `pulumi:"enabled"`
+	Name          *string                      `pulumi:"name"`
+	Pattern       *ZeroTrustDlpEntryPattern    `pulumi:"pattern"`
+	ProfileId     *string                      `pulumi:"profileId"`
+	Secret        *bool                        `pulumi:"secret"`
 	// Available values: "custom".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -127,14 +135,18 @@ type zeroTrustDlpEntryState struct {
 }
 
 type ZeroTrustDlpEntryState struct {
-	AccountId  pulumi.StringPtrInput
-	Confidence ZeroTrustDlpEntryConfidencePtrInput
-	CreatedAt  pulumi.StringPtrInput
-	Enabled    pulumi.BoolPtrInput
-	Name       pulumi.StringPtrInput
-	Pattern    ZeroTrustDlpEntryPatternPtrInput
-	ProfileId  pulumi.StringPtrInput
-	Secret     pulumi.BoolPtrInput
+	AccountId pulumi.StringPtrInput
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive pulumi.BoolPtrInput
+	Confidence    ZeroTrustDlpEntryConfidencePtrInput
+	CreatedAt     pulumi.StringPtrInput
+	Enabled       pulumi.BoolPtrInput
+	Name          pulumi.StringPtrInput
+	Pattern       ZeroTrustDlpEntryPatternPtrInput
+	ProfileId     pulumi.StringPtrInput
+	Secret        pulumi.BoolPtrInput
 	// Available values: "custom".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
@@ -255,6 +267,13 @@ func (o ZeroTrustDlpEntryOutput) ToZeroTrustDlpEntryOutputWithContext(ctx contex
 
 func (o ZeroTrustDlpEntryOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o ZeroTrustDlpEntryOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.BoolOutput { return v.CaseSensitive }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustDlpEntryOutput) Confidence() ZeroTrustDlpEntryConfidenceOutput {

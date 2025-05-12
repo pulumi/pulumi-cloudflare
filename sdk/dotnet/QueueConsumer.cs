@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> ScriptName { get; private set; } = null!;
 
         [Output("settings")]
-        public Output<Outputs.QueueConsumerSettings> Settings { get; private set; } = null!;
+        public Output<Outputs.QueueConsumerSettings?> Settings { get; private set; } = null!;
 
         /// <summary>
         /// Available values: "worker".

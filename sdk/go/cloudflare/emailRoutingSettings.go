@@ -63,7 +63,7 @@ type EmailRoutingSettings struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ type emailRoutingSettingsState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag *string `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -139,7 +139,7 @@ type EmailRoutingSettingsState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -148,13 +148,13 @@ func (EmailRoutingSettingsState) ElementType() reflect.Type {
 }
 
 type emailRoutingSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a EmailRoutingSettings resource.
 type EmailRoutingSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -283,7 +283,7 @@ func (o EmailRoutingSettingsOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o EmailRoutingSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

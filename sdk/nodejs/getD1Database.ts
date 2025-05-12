@@ -74,6 +74,10 @@ export interface GetD1DatabaseResult {
     readonly name: string;
     readonly numTables: number;
     /**
+     * Configuration for D1 read replication.
+     */
+    readonly readReplication: outputs.GetD1DatabaseReadReplication;
+    /**
      * D1 database identifier (UUID).
      */
     readonly uuid: string;

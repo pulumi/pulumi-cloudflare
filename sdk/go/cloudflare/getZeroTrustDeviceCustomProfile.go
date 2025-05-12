@@ -88,7 +88,7 @@ type LookupZeroTrustDeviceCustomProfileResult struct {
 	LanAllowMinutes float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize float64 `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices.
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
 	Match string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     string `pulumi:"name"`
@@ -234,7 +234,7 @@ func (o LookupZeroTrustDeviceCustomProfileResultOutput) LanAllowSubnetSize() pul
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) float64 { return v.LanAllowSubnetSize }).(pulumi.Float64Output)
 }
 
-// The wirefilter expression to match devices.
+// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
 func (o LookupZeroTrustDeviceCustomProfileResultOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceCustomProfileResult) string { return v.Match }).(pulumi.StringOutput)
 }

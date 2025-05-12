@@ -94,7 +94,7 @@ class GetCustomSslsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -135,7 +135,7 @@ def get_custom_ssls(match: Optional[builtins.str] = None,
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str status: Status of the zone's custom SSL.
            Available values: "active", "expired", "deleted", "pending", "initializing".
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['match'] = match
@@ -174,7 +174,7 @@ def get_custom_ssls_output(match: Optional[pulumi.Input[Optional[builtins.str]]]
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str status: Status of the zone's custom SSL.
            Available values: "active", "expired", "deleted", "pending", "initializing".
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['match'] = match

@@ -48,7 +48,7 @@ func LookupMtlsCertificates(ctx *pulumi.Context, args *LookupMtlsCertificatesArg
 
 // A collection of arguments for invoking getMtlsCertificates.
 type LookupMtlsCertificatesArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
@@ -56,7 +56,7 @@ type LookupMtlsCertificatesArgs struct {
 
 // A collection of values returned by getMtlsCertificates.
 type LookupMtlsCertificatesResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -77,7 +77,7 @@ func LookupMtlsCertificatesOutput(ctx *pulumi.Context, args LookupMtlsCertificat
 
 // A collection of arguments for invoking getMtlsCertificates.
 type LookupMtlsCertificatesOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
@@ -102,7 +102,7 @@ func (o LookupMtlsCertificatesResultOutput) ToLookupMtlsCertificatesResultOutput
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupMtlsCertificatesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMtlsCertificatesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

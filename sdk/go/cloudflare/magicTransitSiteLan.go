@@ -27,13 +27,13 @@ type MagicTransitSiteLan struct {
 	// mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link.
 	HaLink        pulumi.BoolPtrOutput                       `pulumi:"haLink"`
 	Name          pulumi.StringPtrOutput                     `pulumi:"name"`
-	Nat           MagicTransitSiteLanNatOutput               `pulumi:"nat"`
+	Nat           MagicTransitSiteLanNatPtrOutput            `pulumi:"nat"`
 	Physport      pulumi.IntOutput                           `pulumi:"physport"`
 	RoutedSubnets MagicTransitSiteLanRoutedSubnetArrayOutput `pulumi:"routedSubnets"`
 	// Identifier
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
-	StaticAddressing MagicTransitSiteLanStaticAddressingOutput `pulumi:"staticAddressing"`
+	StaticAddressing MagicTransitSiteLanStaticAddressingPtrOutput `pulumi:"staticAddressing"`
 	// VLAN ID. Use zero for untagged.
 	VlanTag pulumi.IntPtrOutput `pulumi:"vlanTag"`
 }
@@ -250,8 +250,8 @@ func (o MagicTransitSiteLanOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicTransitSiteLan) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o MagicTransitSiteLanOutput) Nat() MagicTransitSiteLanNatOutput {
-	return o.ApplyT(func(v *MagicTransitSiteLan) MagicTransitSiteLanNatOutput { return v.Nat }).(MagicTransitSiteLanNatOutput)
+func (o MagicTransitSiteLanOutput) Nat() MagicTransitSiteLanNatPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSiteLan) MagicTransitSiteLanNatPtrOutput { return v.Nat }).(MagicTransitSiteLanNatPtrOutput)
 }
 
 func (o MagicTransitSiteLanOutput) Physport() pulumi.IntOutput {
@@ -268,8 +268,8 @@ func (o MagicTransitSiteLanOutput) SiteId() pulumi.StringOutput {
 }
 
 // If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
-func (o MagicTransitSiteLanOutput) StaticAddressing() MagicTransitSiteLanStaticAddressingOutput {
-	return o.ApplyT(func(v *MagicTransitSiteLan) MagicTransitSiteLanStaticAddressingOutput { return v.StaticAddressing }).(MagicTransitSiteLanStaticAddressingOutput)
+func (o MagicTransitSiteLanOutput) StaticAddressing() MagicTransitSiteLanStaticAddressingPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSiteLan) MagicTransitSiteLanStaticAddressingPtrOutput { return v.StaticAddressing }).(MagicTransitSiteLanStaticAddressingPtrOutput)
 }
 
 // VLAN ID. Use zero for untagged.

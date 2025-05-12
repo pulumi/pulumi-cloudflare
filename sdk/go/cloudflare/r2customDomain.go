@@ -45,11 +45,11 @@ import (
 type R2CustomDomain struct {
 	pulumi.CustomResourceState
 
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
-	// Name of the custom domain to be added
+	// Name of the custom domain to be added.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
@@ -59,9 +59,9 @@ type R2CustomDomain struct {
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrOutput     `pulumi:"minTls"`
 	Status R2CustomDomainStatusOutput `pulumi:"status"`
-	// Zone ID of the custom domain
+	// Zone ID of the custom domain.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
-	// Zone that the custom domain resides in
+	// Zone that the custom domain resides in.
 	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
 }
 
@@ -110,11 +110,11 @@ func GetR2CustomDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2CustomDomain resources.
 type r2customDomainState struct {
-	// Account ID
+	// Account ID.
 	AccountId *string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
-	// Name of the custom domain to be added
+	// Name of the custom domain to be added.
 	Domain *string `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -124,18 +124,18 @@ type r2customDomainState struct {
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls *string               `pulumi:"minTls"`
 	Status *R2CustomDomainStatus `pulumi:"status"`
-	// Zone ID of the custom domain
+	// Zone ID of the custom domain.
 	ZoneId *string `pulumi:"zoneId"`
-	// Zone that the custom domain resides in
+	// Zone that the custom domain resides in.
 	ZoneName *string `pulumi:"zoneName"`
 }
 
 type R2CustomDomainState struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringPtrInput
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
-	// Name of the custom domain to be added
+	// Name of the custom domain to be added.
 	Domain pulumi.StringPtrInput
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolPtrInput
@@ -145,9 +145,9 @@ type R2CustomDomainState struct {
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrInput
 	Status R2CustomDomainStatusPtrInput
-	// Zone ID of the custom domain
+	// Zone ID of the custom domain.
 	ZoneId pulumi.StringPtrInput
-	// Zone that the custom domain resides in
+	// Zone that the custom domain resides in.
 	ZoneName pulumi.StringPtrInput
 }
 
@@ -156,11 +156,11 @@ func (R2CustomDomainState) ElementType() reflect.Type {
 }
 
 type r2customDomainArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// Name of the custom domain to be added
+	// Name of the custom domain to be added.
 	Domain string `pulumi:"domain"`
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -169,17 +169,17 @@ type r2customDomainArgs struct {
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls *string `pulumi:"minTls"`
-	// Zone ID of the custom domain
+	// Zone ID of the custom domain.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a R2CustomDomain resource.
 type R2CustomDomainArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput
-	// Name of the custom domain to be added
+	// Name of the custom domain to be added.
 	Domain pulumi.StringInput
 	// Whether to enable public bucket access at the custom domain. If undefined, the domain will be enabled.
 	Enabled pulumi.BoolInput
@@ -188,7 +188,7 @@ type R2CustomDomainArgs struct {
 	// Minimum TLS Version the custom domain will accept for incoming connections. If not set, defaults to 1.0.
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls pulumi.StringPtrInput
-	// Zone ID of the custom domain
+	// Zone ID of the custom domain.
 	ZoneId pulumi.StringInput
 }
 
@@ -279,17 +279,17 @@ func (o R2CustomDomainOutput) ToR2CustomDomainOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o R2CustomDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o R2CustomDomainOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Name of the custom domain to be added
+// Name of the custom domain to be added.
 func (o R2CustomDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
@@ -314,12 +314,12 @@ func (o R2CustomDomainOutput) Status() R2CustomDomainStatusOutput {
 	return o.ApplyT(func(v *R2CustomDomain) R2CustomDomainStatusOutput { return v.Status }).(R2CustomDomainStatusOutput)
 }
 
-// Zone ID of the custom domain
+// Zone ID of the custom domain.
 func (o R2CustomDomainOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-// Zone that the custom domain resides in
+// Zone that the custom domain resides in.
 func (o R2CustomDomainOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2CustomDomain) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
 }

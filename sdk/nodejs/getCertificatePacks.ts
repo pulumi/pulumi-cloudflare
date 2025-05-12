@@ -42,7 +42,7 @@ export interface GetCertificatePacksArgs {
      */
     status?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -69,7 +69,7 @@ export interface GetCertificatePacksResult {
      */
     readonly status?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -109,7 +109,7 @@ export interface GetCertificatePacksOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class EmailRoutingDnsResultInfo
     {
         /// <summary>
-        /// Total number of results for the requested service
+        /// Total number of results for the requested service.
         /// </summary>
         public readonly double? Count;
         /// <summary>
-        /// Current page within paginated list of results
+        /// Current page within paginated list of results.
         /// </summary>
         public readonly double? Page;
         /// <summary>
-        /// Number of results per page of results
+        /// Number of results per page of results.
         /// </summary>
         public readonly double? PerPage;
         /// <summary>
-        /// Total results available without any search parameters
+        /// Total results available without any search parameters.
         /// </summary>
         public readonly double? TotalCount;
 

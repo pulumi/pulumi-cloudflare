@@ -63,7 +63,7 @@ class GetListResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -102,7 +102,7 @@ class GetListResult:
 
     @property
     @pulumi.getter(name="listId")
-    def list_id(self) -> Optional[builtins.str]:
+    def list_id(self) -> builtins.str:
         """
         The unique ID of the list.
         """
@@ -174,7 +174,7 @@ def get_list(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Defines an identifier.
     :param builtins.str list_id: The unique ID of the list.
     """
     __args__ = dict()
@@ -195,7 +195,7 @@ def get_list(account_id: Optional[builtins.str] = None,
         num_items=pulumi.get(__ret__, 'num_items'),
         num_referencing_filters=pulumi.get(__ret__, 'num_referencing_filters'))
 def get_list_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
-                    list_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                    list_id: Optional[pulumi.Input[builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListResult]:
     """
     ## Example Usage
@@ -209,7 +209,7 @@ def get_list_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Defines an identifier.
     :param builtins.str list_id: The unique ID of the list.
     """
     __args__ = dict()

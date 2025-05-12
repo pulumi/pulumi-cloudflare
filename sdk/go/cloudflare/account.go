@@ -60,7 +60,7 @@ type Account struct {
 	// Available values: "standard", "enterprise".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
-	Unit AccountUnitOutput `pulumi:"unit"`
+	Unit AccountUnitPtrOutput `pulumi:"unit"`
 }
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
@@ -264,8 +264,8 @@ func (o AccountOutput) Type() pulumi.StringOutput {
 }
 
 // information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
-func (o AccountOutput) Unit() AccountUnitOutput {
-	return o.ApplyT(func(v *Account) AccountUnitOutput { return v.Unit }).(AccountUnitOutput)
+func (o AccountOutput) Unit() AccountUnitPtrOutput {
+	return o.ApplyT(func(v *Account) AccountUnitPtrOutput { return v.Unit }).(AccountUnitPtrOutput)
 }
 
 type AccountArrayOutput struct{ *pulumi.OutputState }

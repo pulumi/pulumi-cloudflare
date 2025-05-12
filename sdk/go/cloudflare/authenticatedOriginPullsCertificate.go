@@ -97,7 +97,7 @@ type AuthenticatedOriginPullsCertificate struct {
 
 	// The zone's leaf certificate.
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	// Identifier
+	// Identifier.
 	CertificateId pulumi.StringOutput `pulumi:"certificateId"`
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
@@ -114,7 +114,7 @@ type AuthenticatedOriginPullsCertificate struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// This is the time the certificate was uploaded.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -166,7 +166,7 @@ func GetAuthenticatedOriginPullsCertificate(ctx *pulumi.Context,
 type authenticatedOriginPullsCertificateState struct {
 	// The zone's leaf certificate.
 	Certificate *string `pulumi:"certificate"`
-	// Identifier
+	// Identifier.
 	CertificateId *string `pulumi:"certificateId"`
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled *bool `pulumi:"enabled"`
@@ -183,14 +183,14 @@ type authenticatedOriginPullsCertificateState struct {
 	Status *string `pulumi:"status"`
 	// This is the time the certificate was uploaded.
 	UploadedOn *string `pulumi:"uploadedOn"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AuthenticatedOriginPullsCertificateState struct {
 	// The zone's leaf certificate.
 	Certificate pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	CertificateId pulumi.StringPtrInput
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled pulumi.BoolPtrInput
@@ -207,7 +207,7 @@ type AuthenticatedOriginPullsCertificateState struct {
 	Status pulumi.StringPtrInput
 	// This is the time the certificate was uploaded.
 	UploadedOn pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -220,7 +220,7 @@ type authenticatedOriginPullsCertificateArgs struct {
 	Certificate string `pulumi:"certificate"`
 	// The zone's private key.
 	PrivateKey string `pulumi:"privateKey"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -230,7 +230,7 @@ type AuthenticatedOriginPullsCertificateArgs struct {
 	Certificate pulumi.StringInput
 	// The zone's private key.
 	PrivateKey pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -326,7 +326,7 @@ func (o AuthenticatedOriginPullsCertificateOutput) Certificate() pulumi.StringOu
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o AuthenticatedOriginPullsCertificateOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.CertificateId }).(pulumi.StringOutput)
 }
@@ -367,7 +367,7 @@ func (o AuthenticatedOriginPullsCertificateOutput) UploadedOn() pulumi.StringOut
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o AuthenticatedOriginPullsCertificateOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

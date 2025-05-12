@@ -47,7 +47,7 @@ import (
 type EmailRoutingAddress struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -99,7 +99,7 @@ func GetEmailRoutingAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailRoutingAddress resources.
 type emailRoutingAddressState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created *string `pulumi:"created"`
@@ -116,7 +116,7 @@ type emailRoutingAddressState struct {
 }
 
 type EmailRoutingAddressState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// The date and time the destination address has been created.
 	Created pulumi.StringPtrInput
@@ -137,7 +137,7 @@ func (EmailRoutingAddressState) ElementType() reflect.Type {
 }
 
 type emailRoutingAddressArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The contact email address of the user.
 	Email string `pulumi:"email"`
@@ -145,7 +145,7 @@ type emailRoutingAddressArgs struct {
 
 // The set of arguments for constructing a EmailRoutingAddress resource.
 type EmailRoutingAddressArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The contact email address of the user.
 	Email pulumi.StringInput
@@ -238,7 +238,7 @@ func (o EmailRoutingAddressOutput) ToEmailRoutingAddressOutputWithContext(ctx co
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o EmailRoutingAddressOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

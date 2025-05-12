@@ -51,7 +51,7 @@ func LookupRegionalHostname(ctx *pulumi.Context, args *LookupRegionalHostnameArg
 type LookupRegionalHostnameArgs struct {
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname *string `pulumi:"hostname"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -65,7 +65,9 @@ type LookupRegionalHostnameResult struct {
 	Id string `pulumi:"id"`
 	// Identifying key for the region
 	RegionKey string `pulumi:"regionKey"`
-	// Identifier
+	// Configure which routing method to use for the regional hostname
+	Routing string `pulumi:"routing"`
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -82,7 +84,7 @@ func LookupRegionalHostnameOutput(ctx *pulumi.Context, args LookupRegionalHostna
 type LookupRegionalHostnameOutputArgs struct {
 	// DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -125,7 +127,12 @@ func (o LookupRegionalHostnameResultOutput) RegionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalHostnameResult) string { return v.RegionKey }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Configure which routing method to use for the regional hostname
+func (o LookupRegionalHostnameResultOutput) Routing() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionalHostnameResult) string { return v.Routing }).(pulumi.StringOutput)
+}
+
+// Identifier.
 func (o LookupRegionalHostnameResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalHostnameResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

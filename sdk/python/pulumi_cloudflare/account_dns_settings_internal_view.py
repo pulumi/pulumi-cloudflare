@@ -25,7 +25,7 @@ class AccountDnsSettingsInternalViewArgs:
                  zones: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
         """
         The set of arguments for constructing a AccountDnsSettingsInternalView resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] name: The name of the view.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: The list of zones linked to this view.
         """
@@ -37,7 +37,7 @@ class AccountDnsSettingsInternalViewArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -80,7 +80,7 @@ class _AccountDnsSettingsInternalViewState:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AccountDnsSettingsInternalView resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] created_time: When the view was created.
         :param pulumi.Input[builtins.str] modified_time: When the view was last modified.
         :param pulumi.Input[builtins.str] name: The name of the view.
@@ -101,7 +101,7 @@ class _AccountDnsSettingsInternalViewState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -189,7 +189,7 @@ class AccountDnsSettingsInternalView(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] name: The name of the view.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] zones: The list of zones linked to this view.
         """
@@ -278,7 +278,7 @@ class AccountDnsSettingsInternalView(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] created_time: When the view was created.
         :param pulumi.Input[builtins.str] modified_time: When the view was last modified.
         :param pulumi.Input[builtins.str] name: The name of the view.
@@ -299,7 +299,7 @@ class AccountDnsSettingsInternalView(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

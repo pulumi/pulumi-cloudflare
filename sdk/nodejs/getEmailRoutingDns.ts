@@ -36,7 +36,7 @@ export interface GetEmailRoutingDnsArgs {
      */
     subdomain?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -58,11 +58,11 @@ export interface GetEmailRoutingDnsResult {
      */
     readonly subdomain?: string;
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      */
     readonly success: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -96,7 +96,7 @@ export interface GetEmailRoutingDnsOutputArgs {
      */
     subdomain?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

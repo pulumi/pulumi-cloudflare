@@ -138,7 +138,7 @@ class GetApiShieldOperationsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -196,7 +196,7 @@ def get_api_shield_operations(direction: Optional[builtins.str] = None,
     :param Sequence[builtins.str] methods: Filter results to only include the specified HTTP methods.
     :param builtins.str order: Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
            Available values: "method", "host", "endpoint", "thresholds.$key".
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['direction'] = direction
@@ -256,7 +256,7 @@ def get_api_shield_operations_output(direction: Optional[pulumi.Input[Optional[b
     :param Sequence[builtins.str] methods: Filter results to only include the specified HTTP methods.
     :param builtins.str order: Field to order by. When requesting a feature, the feature keys are available for ordering as well, e.g., `thresholds.suggested_threshold`.
            Available values: "method", "host", "endpoint", "thresholds.$key".
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['direction'] = direction

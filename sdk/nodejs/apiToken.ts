@@ -43,7 +43,7 @@ export class ApiToken extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApiToken.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.ApiTokenCondition>;
+    public readonly condition!: pulumi.Output<outputs.ApiTokenCondition | undefined>;
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.
      */

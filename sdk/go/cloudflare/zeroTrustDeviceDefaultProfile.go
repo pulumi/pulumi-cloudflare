@@ -47,6 +47,8 @@ import (
 //						Description: pulumi.String("Include testing domains in the tunnel"),
 //					},
 //				},
+//				LanAllowMinutes:            pulumi.Float64(30),
+//				LanAllowSubnetSize:         pulumi.Float64(24),
 //				RegisterInterfaceIpWithDns: pulumi.Bool(true),
 //				ServiceModeV2: &cloudflare.ZeroTrustDeviceDefaultProfileServiceModeV2Args{
 //					Mode: pulumi.String("proxy"),
@@ -98,9 +100,13 @@ type ZeroTrustDeviceDefaultProfile struct {
 	GatewayUniqueId pulumi.StringOutput                                    `pulumi:"gatewayUniqueId"`
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes ZeroTrustDeviceDefaultProfileIncludeArrayOutput `pulumi:"includes"`
+	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+	LanAllowMinutes pulumi.Float64PtrOutput `pulumi:"lanAllowMinutes"`
+	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+	LanAllowSubnetSize pulumi.Float64PtrOutput `pulumi:"lanAllowSubnetSize"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
-	RegisterInterfaceIpWithDns pulumi.BoolPtrOutput                             `pulumi:"registerInterfaceIpWithDns"`
-	ServiceModeV2              ZeroTrustDeviceDefaultProfileServiceModeV2Output `pulumi:"serviceModeV2"`
+	RegisterInterfaceIpWithDns pulumi.BoolPtrOutput                                `pulumi:"registerInterfaceIpWithDns"`
+	ServiceModeV2              ZeroTrustDeviceDefaultProfileServiceModeV2PtrOutput `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -176,6 +182,10 @@ type zeroTrustDeviceDefaultProfileState struct {
 	GatewayUniqueId *string                                       `pulumi:"gatewayUniqueId"`
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes []ZeroTrustDeviceDefaultProfileInclude `pulumi:"includes"`
+	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
+	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns *bool                                       `pulumi:"registerInterfaceIpWithDns"`
 	ServiceModeV2              *ZeroTrustDeviceDefaultProfileServiceModeV2 `pulumi:"serviceModeV2"`
@@ -213,6 +223,10 @@ type ZeroTrustDeviceDefaultProfileState struct {
 	GatewayUniqueId pulumi.StringPtrInput
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes ZeroTrustDeviceDefaultProfileIncludeArrayInput
+	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+	LanAllowMinutes pulumi.Float64PtrInput
+	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+	LanAllowSubnetSize pulumi.Float64PtrInput
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
 	ServiceModeV2              ZeroTrustDeviceDefaultProfileServiceModeV2PtrInput
@@ -248,6 +262,10 @@ type zeroTrustDeviceDefaultProfileArgs struct {
 	Excludes []ZeroTrustDeviceDefaultProfileExclude `pulumi:"excludes"`
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes []ZeroTrustDeviceDefaultProfileInclude `pulumi:"includes"`
+	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
+	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns *bool                                       `pulumi:"registerInterfaceIpWithDns"`
 	ServiceModeV2              *ZeroTrustDeviceDefaultProfileServiceModeV2 `pulumi:"serviceModeV2"`
@@ -280,6 +298,10 @@ type ZeroTrustDeviceDefaultProfileArgs struct {
 	Excludes ZeroTrustDeviceDefaultProfileExcludeArrayInput
 	// List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Includes ZeroTrustDeviceDefaultProfileIncludeArrayInput
+	// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+	LanAllowMinutes pulumi.Float64PtrInput
+	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+	LanAllowSubnetSize pulumi.Float64PtrInput
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
 	ServiceModeV2              ZeroTrustDeviceDefaultProfileServiceModeV2PtrInput
@@ -451,15 +473,25 @@ func (o ZeroTrustDeviceDefaultProfileOutput) Includes() ZeroTrustDeviceDefaultPr
 	}).(ZeroTrustDeviceDefaultProfileIncludeArrayOutput)
 }
 
+// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+func (o ZeroTrustDeviceDefaultProfileOutput) LanAllowMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.Float64PtrOutput { return v.LanAllowMinutes }).(pulumi.Float64PtrOutput)
+}
+
+// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+func (o ZeroTrustDeviceDefaultProfileOutput) LanAllowSubnetSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.Float64PtrOutput { return v.LanAllowSubnetSize }).(pulumi.Float64PtrOutput)
+}
+
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 func (o ZeroTrustDeviceDefaultProfileOutput) RegisterInterfaceIpWithDns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) pulumi.BoolPtrOutput { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolPtrOutput)
 }
 
-func (o ZeroTrustDeviceDefaultProfileOutput) ServiceModeV2() ZeroTrustDeviceDefaultProfileServiceModeV2Output {
-	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) ZeroTrustDeviceDefaultProfileServiceModeV2Output {
+func (o ZeroTrustDeviceDefaultProfileOutput) ServiceModeV2() ZeroTrustDeviceDefaultProfileServiceModeV2PtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceDefaultProfile) ZeroTrustDeviceDefaultProfileServiceModeV2PtrOutput {
 		return v.ServiceModeV2
-	}).(ZeroTrustDeviceDefaultProfileServiceModeV2Output)
+	}).(ZeroTrustDeviceDefaultProfileServiceModeV2PtrOutput)
 }
 
 // The URL to launch when the Send Feedback button is clicked.

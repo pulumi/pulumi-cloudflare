@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        [Input("values", required: true)]
+        [Input("values")]
         private InputList<string>? _values;
         public InputList<string> Values
         {

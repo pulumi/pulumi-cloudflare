@@ -49,10 +49,10 @@ func LookupCustomSsl(ctx *pulumi.Context, args *LookupCustomSslArgs, opts ...pul
 
 // A collection of arguments for invoking getCustomSsl.
 type LookupCustomSslArgs struct {
-	// Identifier
+	// Identifier.
 	CustomCertificateId *string             `pulumi:"customCertificateId"`
 	Filter              *GetCustomSslFilter `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -61,7 +61,7 @@ type LookupCustomSslResult struct {
 	// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
 	// Available values: "ubiquitous", "optimal", "force".
 	BundleMethod string `pulumi:"bundleMethod"`
-	// Identifier
+	// Identifier.
 	CustomCertificateId *string `pulumi:"customCertificateId"`
 	// When the certificate from the authority expires.
 	ExpiresOn string              `pulumi:"expiresOn"`
@@ -69,7 +69,7 @@ type LookupCustomSslResult struct {
 	// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
 	GeoRestrictions GetCustomSslGeoRestrictions `pulumi:"geoRestrictions"`
 	Hosts           []string                    `pulumi:"hosts"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The certificate authority that issued the certificate.
 	Issuer        string                    `pulumi:"issuer"`
@@ -87,7 +87,7 @@ type LookupCustomSslResult struct {
 	Status string `pulumi:"status"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn string `pulumi:"uploadedOn"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -102,10 +102,10 @@ func LookupCustomSslOutput(ctx *pulumi.Context, args LookupCustomSslOutputArgs, 
 
 // A collection of arguments for invoking getCustomSsl.
 type LookupCustomSslOutputArgs struct {
-	// Identifier
+	// Identifier.
 	CustomCertificateId pulumi.StringPtrInput      `pulumi:"customCertificateId"`
 	Filter              GetCustomSslFilterPtrInput `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -134,7 +134,7 @@ func (o LookupCustomSslResultOutput) BundleMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.BundleMethod }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomSslResultOutput) CustomCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) *string { return v.CustomCertificateId }).(pulumi.StringPtrOutput)
 }
@@ -157,7 +157,7 @@ func (o LookupCustomSslResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomSslResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -202,7 +202,7 @@ func (o LookupCustomSslResultOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomSslResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

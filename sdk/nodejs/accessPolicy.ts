@@ -60,7 +60,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Administrators who can approve a temporary authentication request.
      */
-    public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[]>;
+    public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
     /**
      * Requires the user to request access from an administrator at the start of each session.
      */
@@ -74,7 +74,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[]>;
+    public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
@@ -98,7 +98,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[]>;
+    public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     public /*out*/ readonly reusable!: pulumi.Output<boolean>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.

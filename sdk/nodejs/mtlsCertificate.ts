@@ -61,7 +61,7 @@ export class MtlsCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -164,7 +164,7 @@ export class MtlsCertificate extends pulumi.CustomResource {
  */
 export interface MtlsCertificateState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -214,7 +214,7 @@ export interface MtlsCertificateState {
  */
 export interface MtlsCertificateArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

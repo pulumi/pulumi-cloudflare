@@ -87,10 +87,10 @@ namespace Pulumi.Cloudflare
         /// Configuration for using Keyless SSL through a Cloudflare Tunnel
         /// </summary>
         [Output("tunnel")]
-        public Output<Outputs.KeylessCertificateTunnel> Tunnel { get; private set; } = null!;
+        public Output<Outputs.KeylessCertificateTunnel?> Tunnel { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.KeylessCertificateTunnelArgs>? Tunnel { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -273,7 +273,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.KeylessCertificateTunnelGetArgs>? Tunnel { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

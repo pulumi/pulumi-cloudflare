@@ -48,7 +48,7 @@ func LookupTotalTls(ctx *pulumi.Context, args *LookupTotalTlsArgs, opts ...pulum
 
 // A collection of arguments for invoking getTotalTls.
 type LookupTotalTlsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -64,7 +64,7 @@ type LookupTotalTlsResult struct {
 	// The validity period in days for the certificates ordered via Total TLS.
 	// Available values: 90.
 	ValidityPeriod int `pulumi:"validityPeriod"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupTotalTlsOutput(ctx *pulumi.Context, args LookupTotalTlsOutputArgs, op
 
 // A collection of arguments for invoking getTotalTls.
 type LookupTotalTlsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -124,7 +124,7 @@ func (o LookupTotalTlsResultOutput) ValidityPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupTotalTlsResult) int { return v.ValidityPeriod }).(pulumi.IntOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupTotalTlsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTotalTlsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

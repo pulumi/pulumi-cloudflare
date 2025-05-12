@@ -34,7 +34,7 @@ export interface GetFirewallRuleArgs {
      */
     ruleId?: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -74,7 +74,7 @@ export interface GetFirewallRuleResult {
      */
     readonly ruleId?: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -108,7 +108,7 @@ export interface GetFirewallRuleOutputArgs {
      */
     ruleId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

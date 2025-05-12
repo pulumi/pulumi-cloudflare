@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare
         /// Settings for this internal zone.
         /// </summary>
         [Output("internalDns")]
-        public Output<Outputs.ZoneDnsSettingsInternalDns> InternalDns { get; private set; } = null!;
+        public Output<Outputs.ZoneDnsSettingsInternalDns?> InternalDns { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare
         /// Settings determining the nameservers through which the zone should be available.
         /// </summary>
         [Output("nameservers")]
-        public Output<Outputs.ZoneDnsSettingsNameservers> Nameservers { get; private set; } = null!;
+        public Output<Outputs.ZoneDnsSettingsNameservers?> Nameservers { get; private set; } = null!;
 
         /// <summary>
         /// The time to live (TTL) of the zone's nameserver (NS) records.
@@ -61,10 +61,10 @@ namespace Pulumi.Cloudflare
         /// Components of the zone's SOA record.
         /// </summary>
         [Output("soa")]
-        public Output<Outputs.ZoneDnsSettingsSoa> Soa { get; private set; } = null!;
+        public Output<Outputs.ZoneDnsSettingsSoa?> Soa { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZoneDnsSettingsSoaArgs>? Soa { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZoneDnsSettingsSoaGetArgs>? Soa { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

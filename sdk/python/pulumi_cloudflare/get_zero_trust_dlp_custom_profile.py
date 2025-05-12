@@ -113,7 +113,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> builtins.str:
         """
-        When the profile was created
+        When the profile was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -121,7 +121,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter
     def description(self) -> builtins.str:
         """
-        The description of the profile
+        The description of the profile.
         """
         return pulumi.get(self, "description")
 
@@ -134,7 +134,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        The id of the profile (uuid)
+        The id of the profile (uuid).
         """
         return pulumi.get(self, "id")
 
@@ -142,7 +142,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        The name of the profile
+        The name of the profile.
         """
         return pulumi.get(self, "name")
 
@@ -155,7 +155,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter(name="openAccess")
     def open_access(self) -> builtins.bool:
         """
-        Whether this profile can be accessed by anyone
+        Whether this profile can be accessed by anyone.
         """
         return pulumi.get(self, "open_access")
 
@@ -176,7 +176,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> builtins.str:
         """
-        When the profile was lasted updated
+        When the profile was lasted updated.
         """
         return pulumi.get(self, "updated_at")
 

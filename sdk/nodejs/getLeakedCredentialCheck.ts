@@ -28,7 +28,7 @@ export function getLeakedCredentialCheck(args: GetLeakedCredentialCheckArgs, opt
  */
 export interface GetLeakedCredentialCheckArgs {
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -38,7 +38,7 @@ export interface GetLeakedCredentialCheckArgs {
  */
 export interface GetLeakedCredentialCheckResult {
     /**
-     * Whether or not Leaked Credential Checks are enabled
+     * Determines whether or not Leaked Credential Checks are enabled.
      */
     readonly enabled: boolean;
     /**
@@ -46,7 +46,7 @@ export interface GetLeakedCredentialCheckResult {
      */
     readonly id: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -74,7 +74,7 @@ export function getLeakedCredentialCheckOutput(args: GetLeakedCredentialCheckOut
  */
 export interface GetLeakedCredentialCheckOutputArgs {
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

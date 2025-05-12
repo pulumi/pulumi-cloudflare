@@ -15,8 +15,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("code")]
         public Input<int>? Code { get; set; }
 
+        [Input("documentationUrl")]
+        public Input<string>? DocumentationUrl { get; set; }
+
         [Input("message")]
         public Input<string>? Message { get; set; }
+
+        [Input("source")]
+        public Input<Inputs.ApiShieldErrorSourceArgs>? Source { get; set; }
 
         public ApiShieldErrorArgs()
         {

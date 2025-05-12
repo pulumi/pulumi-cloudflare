@@ -79,7 +79,7 @@ type FirewallRule struct {
 	Products pulumi.StringArrayOutput `pulumi:"products"`
 	// A short reference tag. Allows you to select related firewall rules.
 	Ref pulumi.StringOutput `pulumi:"ref"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -134,7 +134,7 @@ type firewallRuleState struct {
 	Products []string `pulumi:"products"`
 	// A short reference tag. Allows you to select related firewall rules.
 	Ref *string `pulumi:"ref"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -151,7 +151,7 @@ type FirewallRuleState struct {
 	Products pulumi.StringArrayInput
 	// A short reference tag. Allows you to select related firewall rules.
 	Ref pulumi.StringPtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -163,7 +163,7 @@ type firewallRuleArgs struct {
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action FirewallRuleAction `pulumi:"action"`
 	Filter FirewallRuleFilter `pulumi:"filter"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -172,7 +172,7 @@ type FirewallRuleArgs struct {
 	// The action to perform when the threshold of matched traffic within the configured period is exceeded.
 	Action FirewallRuleActionInput
 	Filter FirewallRuleFilterInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -296,7 +296,7 @@ func (o FirewallRuleOutput) Ref() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Ref }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o FirewallRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

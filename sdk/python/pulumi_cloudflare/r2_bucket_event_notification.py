@@ -29,11 +29,11 @@ class R2BucketEventNotificationArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]]] = None):
         """
         The set of arguments for constructing a R2BucketEventNotification resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[builtins.str] queue_id: Queue ID
-        :param pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]] rules: Array of rules to drive notifications
+        :param pulumi.Input[builtins.str] queue_id: Queue ID.
+        :param pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]] rules: Array of rules to drive notifications.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -48,7 +48,7 @@ class R2BucketEventNotificationArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -60,7 +60,7 @@ class R2BucketEventNotificationArgs:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -84,7 +84,7 @@ class R2BucketEventNotificationArgs:
     @pulumi.getter(name="queueId")
     def queue_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Queue ID
+        Queue ID.
         """
         return pulumi.get(self, "queue_id")
 
@@ -96,7 +96,7 @@ class R2BucketEventNotificationArgs:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]]]:
         """
-        Array of rules to drive notifications
+        Array of rules to drive notifications.
         """
         return pulumi.get(self, "rules")
 
@@ -116,12 +116,12 @@ class _R2BucketEventNotificationState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering R2BucketEventNotification resources.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[builtins.str] queue_id: Queue ID
+        :param pulumi.Input[builtins.str] queue_id: Queue ID.
         :param pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationQueueArgs']]] queues: List of queues associated with the bucket.
-        :param pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]] rules: Array of rules to drive notifications
+        :param pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]] rules: Array of rules to drive notifications.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -140,7 +140,7 @@ class _R2BucketEventNotificationState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -152,7 +152,7 @@ class _R2BucketEventNotificationState:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -176,7 +176,7 @@ class _R2BucketEventNotificationState:
     @pulumi.getter(name="queueId")
     def queue_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Queue ID
+        Queue ID.
         """
         return pulumi.get(self, "queue_id")
 
@@ -200,7 +200,7 @@ class _R2BucketEventNotificationState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationRuleArgs']]]]:
         """
-        Array of rules to drive notifications
+        Array of rules to drive notifications.
         """
         return pulumi.get(self, "rules")
 
@@ -245,11 +245,11 @@ class R2BucketEventNotification(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[builtins.str] queue_id: Queue ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]] rules: Array of rules to drive notifications
+        :param pulumi.Input[builtins.str] queue_id: Queue ID.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]] rules: Array of rules to drive notifications.
         """
         ...
     @overload
@@ -341,12 +341,12 @@ class R2BucketEventNotification(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[builtins.str] queue_id: Queue ID
+        :param pulumi.Input[builtins.str] queue_id: Queue ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationQueueArgs', 'R2BucketEventNotificationQueueArgsDict']]]] queues: List of queues associated with the bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]] rules: Array of rules to drive notifications
+        :param pulumi.Input[Sequence[pulumi.Input[Union['R2BucketEventNotificationRuleArgs', 'R2BucketEventNotificationRuleArgsDict']]]] rules: Array of rules to drive notifications.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,7 +364,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -372,7 +372,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -388,7 +388,7 @@ class R2BucketEventNotification(pulumi.CustomResource):
     @pulumi.getter(name="queueId")
     def queue_id(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Queue ID
+        Queue ID.
         """
         return pulumi.get(self, "queue_id")
 
@@ -402,9 +402,9 @@ class R2BucketEventNotification(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Sequence['outputs.R2BucketEventNotificationRule']]:
+    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.R2BucketEventNotificationRule']]]:
         """
-        Array of rules to drive notifications
+        Array of rules to drive notifications.
         """
         return pulumi.get(self, "rules")
 

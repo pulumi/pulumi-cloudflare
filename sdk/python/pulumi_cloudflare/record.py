@@ -718,7 +718,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def data(self) -> pulumi.Output['outputs.RecordData']:
+    def data(self) -> pulumi.Output[Optional['outputs.RecordData']]:
         """
         Components of a CAA record.
         """

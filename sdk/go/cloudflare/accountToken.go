@@ -23,8 +23,8 @@ type AccountToken struct {
 	pulumi.CustomResourceState
 
 	// Account identifier tag.
-	AccountId pulumi.StringOutput         `pulumi:"accountId"`
-	Condition AccountTokenConditionOutput `pulumi:"condition"`
+	AccountId pulumi.StringOutput            `pulumi:"accountId"`
+	Condition AccountTokenConditionPtrOutput `pulumi:"condition"`
 	// The expiration time on or after which the JWT MUST NOT be accepted for processing.
 	ExpiresOn pulumi.StringPtrOutput `pulumi:"expiresOn"`
 	// The time on which the token was created.
@@ -263,8 +263,8 @@ func (o AccountTokenOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountToken) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o AccountTokenOutput) Condition() AccountTokenConditionOutput {
-	return o.ApplyT(func(v *AccountToken) AccountTokenConditionOutput { return v.Condition }).(AccountTokenConditionOutput)
+func (o AccountTokenOutput) Condition() AccountTokenConditionPtrOutput {
+	return o.ApplyT(func(v *AccountToken) AccountTokenConditionPtrOutput { return v.Condition }).(AccountTokenConditionPtrOutput)
 }
 
 // The expiration time on or after which the JWT MUST NOT be accepted for processing.

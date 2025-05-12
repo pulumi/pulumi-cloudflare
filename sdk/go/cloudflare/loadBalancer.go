@@ -30,7 +30,7 @@ type LoadBalancer struct {
 	// A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when regionPools are not configured for a given region.
 	DefaultPools pulumi.StringArrayOutput `pulumi:"defaultPools"`
 	// Object description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Whether to enable (the default) this load balancer.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The pool ID to use when all other pools are detected as unhealthy.
@@ -393,8 +393,8 @@ func (o LoadBalancerOutput) DefaultPools() pulumi.StringArrayOutput {
 }
 
 // Object description.
-func (o LoadBalancerOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o LoadBalancerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Whether to enable (the default) this load balancer.

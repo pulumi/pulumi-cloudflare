@@ -122,7 +122,7 @@ class GetFirewallRuleResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -160,7 +160,7 @@ def get_firewall_rule(rule_id: Optional[builtins.str] = None,
 
 
     :param builtins.str rule_id: The unique identifier of the firewall rule.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['ruleId'] = rule_id
@@ -194,7 +194,7 @@ def get_firewall_rule_output(rule_id: Optional[pulumi.Input[Optional[builtins.st
 
 
     :param builtins.str rule_id: The unique identifier of the firewall rule.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['ruleId'] = rule_id

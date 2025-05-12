@@ -245,11 +245,6 @@ export type D1Database = import("./d1database").D1Database;
 export const D1Database: typeof import("./d1database").D1Database = null as any;
 utilities.lazyLoad(exports, ["D1Database"], () => require("./d1database"));
 
-export { DeviceDexTestArgs, DeviceDexTestState } from "./deviceDexTest";
-export type DeviceDexTest = import("./deviceDexTest").DeviceDexTest;
-export const DeviceDexTest: typeof import("./deviceDexTest").DeviceDexTest = null as any;
-utilities.lazyLoad(exports, ["DeviceDexTest"], () => require("./deviceDexTest"));
-
 export { DeviceManagedNetworksArgs, DeviceManagedNetworksState } from "./deviceManagedNetworks";
 export type DeviceManagedNetworks = import("./deviceManagedNetworks").DeviceManagedNetworks;
 export const DeviceManagedNetworks: typeof import("./deviceManagedNetworks").DeviceManagedNetworks = null as any;
@@ -900,16 +895,6 @@ export const getListItem: typeof import("./getListItem").getListItem = null as a
 export const getListItemOutput: typeof import("./getListItem").getListItemOutput = null as any;
 utilities.lazyLoad(exports, ["getListItem","getListItemOutput"], () => require("./getListItem"));
 
-export { GetListItemsArgs, GetListItemsResult, GetListItemsOutputArgs } from "./getListItems";
-export const getListItems: typeof import("./getListItems").getListItems = null as any;
-export const getListItemsOutput: typeof import("./getListItems").getListItemsOutput = null as any;
-utilities.lazyLoad(exports, ["getListItems","getListItemsOutput"], () => require("./getListItems"));
-
-export { GetListsArgs, GetListsResult, GetListsOutputArgs } from "./getLists";
-export const getLists: typeof import("./getLists").getLists = null as any;
-export const getListsOutput: typeof import("./getLists").getListsOutput = null as any;
-utilities.lazyLoad(exports, ["getLists","getListsOutput"], () => require("./getLists"));
-
 export { GetLoadBalancerArgs, GetLoadBalancerResult, GetLoadBalancerOutputArgs } from "./getLoadBalancer";
 export const getLoadBalancer: typeof import("./getLoadBalancer").getLoadBalancer = null as any;
 export const getLoadBalancerOutput: typeof import("./getLoadBalancer").getLoadBalancerOutput = null as any;
@@ -1460,16 +1445,6 @@ export const getWorkersForPlatformsDispatchNamespaces: typeof import("./getWorke
 export const getWorkersForPlatformsDispatchNamespacesOutput: typeof import("./getWorkersForPlatformsDispatchNamespaces").getWorkersForPlatformsDispatchNamespacesOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersForPlatformsDispatchNamespaces","getWorkersForPlatformsDispatchNamespacesOutput"], () => require("./getWorkersForPlatformsDispatchNamespaces"));
 
-export { GetWorkersForPlatformsScriptSecretArgs, GetWorkersForPlatformsScriptSecretResult, GetWorkersForPlatformsScriptSecretOutputArgs } from "./getWorkersForPlatformsScriptSecret";
-export const getWorkersForPlatformsScriptSecret: typeof import("./getWorkersForPlatformsScriptSecret").getWorkersForPlatformsScriptSecret = null as any;
-export const getWorkersForPlatformsScriptSecretOutput: typeof import("./getWorkersForPlatformsScriptSecret").getWorkersForPlatformsScriptSecretOutput = null as any;
-utilities.lazyLoad(exports, ["getWorkersForPlatformsScriptSecret","getWorkersForPlatformsScriptSecretOutput"], () => require("./getWorkersForPlatformsScriptSecret"));
-
-export { GetWorkersForPlatformsScriptSecretsArgs, GetWorkersForPlatformsScriptSecretsResult, GetWorkersForPlatformsScriptSecretsOutputArgs } from "./getWorkersForPlatformsScriptSecrets";
-export const getWorkersForPlatformsScriptSecrets: typeof import("./getWorkersForPlatformsScriptSecrets").getWorkersForPlatformsScriptSecrets = null as any;
-export const getWorkersForPlatformsScriptSecretsOutput: typeof import("./getWorkersForPlatformsScriptSecrets").getWorkersForPlatformsScriptSecretsOutput = null as any;
-utilities.lazyLoad(exports, ["getWorkersForPlatformsScriptSecrets","getWorkersForPlatformsScriptSecretsOutput"], () => require("./getWorkersForPlatformsScriptSecrets"));
-
 export { GetWorkersKvArgs, GetWorkersKvResult, GetWorkersKvOutputArgs } from "./getWorkersKv";
 export const getWorkersKv: typeof import("./getWorkersKv").getWorkersKv = null as any;
 export const getWorkersKvOutput: typeof import("./getWorkersKv").getWorkersKvOutput = null as any;
@@ -1509,16 +1484,6 @@ export { GetWorkersScriptsArgs, GetWorkersScriptsResult, GetWorkersScriptsOutput
 export const getWorkersScripts: typeof import("./getWorkersScripts").getWorkersScripts = null as any;
 export const getWorkersScriptsOutput: typeof import("./getWorkersScripts").getWorkersScriptsOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkersScripts","getWorkersScriptsOutput"], () => require("./getWorkersScripts"));
-
-export { GetWorkersSecretArgs, GetWorkersSecretResult, GetWorkersSecretOutputArgs } from "./getWorkersSecret";
-export const getWorkersSecret: typeof import("./getWorkersSecret").getWorkersSecret = null as any;
-export const getWorkersSecretOutput: typeof import("./getWorkersSecret").getWorkersSecretOutput = null as any;
-utilities.lazyLoad(exports, ["getWorkersSecret","getWorkersSecretOutput"], () => require("./getWorkersSecret"));
-
-export { GetWorkersSecretsArgs, GetWorkersSecretsResult, GetWorkersSecretsOutputArgs } from "./getWorkersSecrets";
-export const getWorkersSecrets: typeof import("./getWorkersSecrets").getWorkersSecrets = null as any;
-export const getWorkersSecretsOutput: typeof import("./getWorkersSecrets").getWorkersSecretsOutput = null as any;
-utilities.lazyLoad(exports, ["getWorkersSecrets","getWorkersSecretsOutput"], () => require("./getWorkersSecrets"));
 
 export { GetZeroTrustAccessApplicationArgs, GetZeroTrustAccessApplicationResult, GetZeroTrustAccessApplicationOutputArgs } from "./getZeroTrustAccessApplication";
 export const getZeroTrustAccessApplication: typeof import("./getZeroTrustAccessApplication").getZeroTrustAccessApplication = null as any;
@@ -1689,16 +1654,6 @@ export { GetZeroTrustDevicePostureRulesArgs, GetZeroTrustDevicePostureRulesResul
 export const getZeroTrustDevicePostureRules: typeof import("./getZeroTrustDevicePostureRules").getZeroTrustDevicePostureRules = null as any;
 export const getZeroTrustDevicePostureRulesOutput: typeof import("./getZeroTrustDevicePostureRules").getZeroTrustDevicePostureRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDevicePostureRules","getZeroTrustDevicePostureRulesOutput"], () => require("./getZeroTrustDevicePostureRules"));
-
-export { GetZeroTrustDexTestArgs, GetZeroTrustDexTestResult, GetZeroTrustDexTestOutputArgs } from "./getZeroTrustDexTest";
-export const getZeroTrustDexTest: typeof import("./getZeroTrustDexTest").getZeroTrustDexTest = null as any;
-export const getZeroTrustDexTestOutput: typeof import("./getZeroTrustDexTest").getZeroTrustDexTestOutput = null as any;
-utilities.lazyLoad(exports, ["getZeroTrustDexTest","getZeroTrustDexTestOutput"], () => require("./getZeroTrustDexTest"));
-
-export { GetZeroTrustDexTestsArgs, GetZeroTrustDexTestsResult, GetZeroTrustDexTestsOutputArgs } from "./getZeroTrustDexTests";
-export const getZeroTrustDexTests: typeof import("./getZeroTrustDexTests").getZeroTrustDexTests = null as any;
-export const getZeroTrustDexTestsOutput: typeof import("./getZeroTrustDexTests").getZeroTrustDexTestsOutput = null as any;
-utilities.lazyLoad(exports, ["getZeroTrustDexTests","getZeroTrustDexTestsOutput"], () => require("./getZeroTrustDexTests"));
 
 export { GetZeroTrustDlpCustomProfileArgs, GetZeroTrustDlpCustomProfileResult, GetZeroTrustDlpCustomProfileOutputArgs } from "./getZeroTrustDlpCustomProfile";
 export const getZeroTrustDlpCustomProfile: typeof import("./getZeroTrustDlpCustomProfile").getZeroTrustDlpCustomProfile = null as any;
@@ -2393,11 +2348,6 @@ export type WorkersForPlatformsNamespace = import("./workersForPlatformsNamespac
 export const WorkersForPlatformsNamespace: typeof import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace = null as any;
 utilities.lazyLoad(exports, ["WorkersForPlatformsNamespace"], () => require("./workersForPlatformsNamespace"));
 
-export { WorkersForPlatformsScriptSecretArgs, WorkersForPlatformsScriptSecretState } from "./workersForPlatformsScriptSecret";
-export type WorkersForPlatformsScriptSecret = import("./workersForPlatformsScriptSecret").WorkersForPlatformsScriptSecret;
-export const WorkersForPlatformsScriptSecret: typeof import("./workersForPlatformsScriptSecret").WorkersForPlatformsScriptSecret = null as any;
-utilities.lazyLoad(exports, ["WorkersForPlatformsScriptSecret"], () => require("./workersForPlatformsScriptSecret"));
-
 export { WorkersKvArgs, WorkersKvState } from "./workersKv";
 export type WorkersKv = import("./workersKv").WorkersKv;
 export const WorkersKv: typeof import("./workersKv").WorkersKv = null as any;
@@ -2422,11 +2372,6 @@ export { WorkersScriptSubdomainArgs, WorkersScriptSubdomainState } from "./worke
 export type WorkersScriptSubdomain = import("./workersScriptSubdomain").WorkersScriptSubdomain;
 export const WorkersScriptSubdomain: typeof import("./workersScriptSubdomain").WorkersScriptSubdomain = null as any;
 utilities.lazyLoad(exports, ["WorkersScriptSubdomain"], () => require("./workersScriptSubdomain"));
-
-export { WorkersSecretArgs, WorkersSecretState } from "./workersSecret";
-export type WorkersSecret = import("./workersSecret").WorkersSecret;
-export const WorkersSecret: typeof import("./workersSecret").WorkersSecret = null as any;
-utilities.lazyLoad(exports, ["WorkersSecret"], () => require("./workersSecret"));
 
 export { ZeroTrustAccessApplicationArgs, ZeroTrustAccessApplicationState } from "./zeroTrustAccessApplication";
 export type ZeroTrustAccessApplication = import("./zeroTrustAccessApplication").ZeroTrustAccessApplication;
@@ -2527,11 +2472,6 @@ export { ZeroTrustDevicePostureRuleArgs, ZeroTrustDevicePostureRuleState } from 
 export type ZeroTrustDevicePostureRule = import("./zeroTrustDevicePostureRule").ZeroTrustDevicePostureRule;
 export const ZeroTrustDevicePostureRule: typeof import("./zeroTrustDevicePostureRule").ZeroTrustDevicePostureRule = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustDevicePostureRule"], () => require("./zeroTrustDevicePostureRule"));
-
-export { ZeroTrustDexTestArgs, ZeroTrustDexTestState } from "./zeroTrustDexTest";
-export type ZeroTrustDexTest = import("./zeroTrustDexTest").ZeroTrustDexTest;
-export const ZeroTrustDexTest: typeof import("./zeroTrustDexTest").ZeroTrustDexTest = null as any;
-utilities.lazyLoad(exports, ["ZeroTrustDexTest"], () => require("./zeroTrustDexTest"));
 
 export { ZeroTrustDlpCustomProfileArgs, ZeroTrustDlpCustomProfileState } from "./zeroTrustDlpCustomProfile";
 export type ZeroTrustDlpCustomProfile = import("./zeroTrustDlpCustomProfile").ZeroTrustDlpCustomProfile;
@@ -2783,8 +2723,6 @@ const _module = {
                 return new CustomSsl(name, <any>undefined, { urn })
             case "cloudflare:index/d1Database:D1Database":
                 return new D1Database(name, <any>undefined, { urn })
-            case "cloudflare:index/deviceDexTest:DeviceDexTest":
-                return new DeviceDexTest(name, <any>undefined, { urn })
             case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
                 return new DeviceManagedNetworks(name, <any>undefined, { urn })
             case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
@@ -3021,8 +2959,6 @@ const _module = {
                 return new WorkersForPlatformsDispatchNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
                 return new WorkersForPlatformsNamespace(name, <any>undefined, { urn })
-            case "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret":
-                return new WorkersForPlatformsScriptSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersKv:WorkersKv":
                 return new WorkersKv(name, <any>undefined, { urn })
             case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -3033,8 +2969,6 @@ const _module = {
                 return new WorkersScript(name, <any>undefined, { urn })
             case "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain":
                 return new WorkersScriptSubdomain(name, <any>undefined, { urn })
-            case "cloudflare:index/workersSecret:WorkersSecret":
-                return new WorkersSecret(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustAccessApplication:ZeroTrustAccessApplication":
                 return new ZeroTrustAccessApplication(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage":
@@ -3075,8 +3009,6 @@ const _module = {
                 return new ZeroTrustDevicePostureIntegration(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule":
                 return new ZeroTrustDevicePostureRule(name, <any>undefined, { urn })
-            case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
-                return new ZeroTrustDexTest(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile":
                 return new ZeroTrustDlpCustomProfile(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset":
@@ -3186,7 +3118,6 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbac
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/d1Database", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/deviceDexTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/deviceManagedNetworks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureRule", _module)
@@ -3305,13 +3236,11 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workersCustomDomain",
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersDeployment", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsDispatchNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsNamespace", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsScriptSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersScriptSubdomain", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/workersSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessCustomPage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustAccessGroup", _module)
@@ -3332,7 +3261,6 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceDefaul
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceManagedNetworks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureRule", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDexTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpCustomProfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpDataset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpEntry", _module)

@@ -94,7 +94,7 @@ class GetKeylessCertificateResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -102,7 +102,7 @@ class GetKeylessCertificateResult:
     @pulumi.getter(name="keylessCertificateId")
     def keyless_certificate_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "keyless_certificate_id")
 
@@ -159,7 +159,7 @@ class GetKeylessCertificateResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -199,8 +199,8 @@ def get_keyless_certificate(keyless_certificate_id: Optional[builtins.str] = Non
     ```
 
 
-    :param builtins.str keyless_certificate_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str keyless_certificate_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['keylessCertificateId'] = keyless_certificate_id
@@ -236,8 +236,8 @@ def get_keyless_certificate_output(keyless_certificate_id: Optional[pulumi.Input
     ```
 
 
-    :param builtins.str keyless_certificate_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str keyless_certificate_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['keylessCertificateId'] = keyless_certificate_id

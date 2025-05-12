@@ -19,6 +19,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// If true, context information will be passed as query parameters
+        /// </summary>
+        [Input("includeContext")]
+        public Input<bool>? IncludeContext { get; set; }
+
+        /// <summary>
         /// Customize the message shown in the notification.
         /// </summary>
         [Input("msg")]

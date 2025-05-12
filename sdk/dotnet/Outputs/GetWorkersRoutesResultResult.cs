@@ -17,9 +17,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// Identifier.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+        /// </summary>
         public readonly string Pattern;
         /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script to run if the route matches.
         /// </summary>
         public readonly string Script;
 

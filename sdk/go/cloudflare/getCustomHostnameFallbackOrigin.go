@@ -48,7 +48,7 @@ func LookupCustomHostnameFallbackOrigin(ctx *pulumi.Context, args *LookupCustomH
 
 // A collection of arguments for invoking getCustomHostnameFallbackOrigin.
 type LookupCustomHostnameFallbackOriginArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -67,7 +67,7 @@ type LookupCustomHostnameFallbackOriginResult struct {
 	Status string `pulumi:"status"`
 	// This is the time the fallback origin was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -82,7 +82,7 @@ func LookupCustomHostnameFallbackOriginOutput(ctx *pulumi.Context, args LookupCu
 
 // A collection of arguments for invoking getCustomHostnameFallbackOrigin.
 type LookupCustomHostnameFallbackOriginOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -136,7 +136,7 @@ func (o LookupCustomHostnameFallbackOriginResultOutput) UpdatedAt() pulumi.Strin
 	return o.ApplyT(func(v LookupCustomHostnameFallbackOriginResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomHostnameFallbackOriginResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomHostnameFallbackOriginResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

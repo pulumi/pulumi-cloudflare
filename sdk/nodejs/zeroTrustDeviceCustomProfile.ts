@@ -126,13 +126,13 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
     /**
      * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    public readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileExclude[]>;
+    public readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileExclude[] | undefined>;
     public /*out*/ readonly fallbackDomains!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileFallbackDomain[]>;
     public /*out*/ readonly gatewayUniqueId!: pulumi.Output<string>;
     /**
      * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    public readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileInclude[]>;
+    public readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileInclude[] | undefined>;
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
      */
@@ -142,7 +142,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
      */
     public readonly lanAllowSubnetSize!: pulumi.Output<number | undefined>;
     /**
-     * The wirefilter expression to match devices.
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
      */
     public readonly match!: pulumi.Output<string>;
     /**
@@ -158,7 +158,7 @@ export class ZeroTrustDeviceCustomProfile extends pulumi.CustomResource {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     public readonly registerInterfaceIpWithDns!: pulumi.Output<boolean | undefined>;
-    public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileServiceModeV2>;
+    public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceCustomProfileServiceModeV2 | undefined>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
      */
@@ -326,7 +326,7 @@ export interface ZeroTrustDeviceCustomProfileState {
      */
     lanAllowSubnetSize?: pulumi.Input<number>;
     /**
-     * The wirefilter expression to match devices.
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
      */
     match?: pulumi.Input<string>;
     /**
@@ -416,7 +416,7 @@ export interface ZeroTrustDeviceCustomProfileArgs {
      */
     lanAllowSubnetSize?: pulumi.Input<number>;
     /**
-     * The wirefilter expression to match devices.
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
      */
     match: pulumi.Input<string>;
     /**

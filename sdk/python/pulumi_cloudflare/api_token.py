@@ -433,7 +433,7 @@ class ApiToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output['outputs.ApiTokenCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.ApiTokenCondition']]:
         return pulumi.get(self, "condition")
 
     @property

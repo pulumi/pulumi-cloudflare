@@ -30,7 +30,7 @@ export function getZoneDnsSettings(args: GetZoneDnsSettingsArgs, opts?: pulumi.I
  */
 export interface GetZoneDnsSettingsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -76,7 +76,7 @@ export interface GetZoneDnsSettingsResult {
      */
     readonly soa: outputs.GetZoneDnsSettingsSoa;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
     /**
@@ -109,7 +109,7 @@ export function getZoneDnsSettingsOutput(args: GetZoneDnsSettingsOutputArgs, opt
  */
 export interface GetZoneDnsSettingsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

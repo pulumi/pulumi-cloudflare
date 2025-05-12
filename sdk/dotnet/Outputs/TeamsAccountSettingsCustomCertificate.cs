@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Enable use of custom certificate authority for signing Gateway traffic.
         /// </summary>
-        public readonly bool Enabled;
+        public readonly bool? Enabled;
         /// <summary>
         /// UUID of certificate (ID from MTLS certificate store).
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         private TeamsAccountSettingsCustomCertificate(
             string? bindingStatus,
 
-            bool enabled,
+            bool? enabled,
 
             string? id,
 

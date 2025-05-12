@@ -32,7 +32,7 @@ class ApiShieldOperationArgs:
         :param pulumi.Input[builtins.str] host: RFC3986-compliant host.
         :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint.
                Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "host", host)
@@ -80,7 +80,7 @@ class ApiShieldOperationArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -105,8 +105,8 @@ class _ApiShieldOperationState:
         :param pulumi.Input[builtins.str] host: RFC3986-compliant host.
         :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint.
                Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
-        :param pulumi.Input[builtins.str] operation_id: UUID
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] operation_id: UUID.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
@@ -182,7 +182,7 @@ class _ApiShieldOperationState:
     @pulumi.getter(name="operationId")
     def operation_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -194,7 +194,7 @@ class _ApiShieldOperationState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -240,7 +240,7 @@ class ApiShieldOperation(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] host: RFC3986-compliant host.
         :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint.
                Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -339,8 +339,8 @@ class ApiShieldOperation(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] host: RFC3986-compliant host.
         :param pulumi.Input[builtins.str] method: The HTTP method used to access the endpoint.
                Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
-        :param pulumi.Input[builtins.str] operation_id: UUID
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] operation_id: UUID.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -394,7 +394,7 @@ class ApiShieldOperation(pulumi.CustomResource):
     @pulumi.getter(name="operationId")
     def operation_id(self) -> pulumi.Output[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -402,7 +402,7 @@ class ApiShieldOperation(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

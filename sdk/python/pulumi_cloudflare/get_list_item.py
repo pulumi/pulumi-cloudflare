@@ -28,10 +28,10 @@ class GetListItemResult:
     """
     A collection of values returned by getListItem.
     """
-    def __init__(__self__, account_identifier=None, asn=None, comment=None, created_on=None, hostname=None, id=None, ip=None, item_id=None, list_id=None, modified_on=None, redirect=None):
-        if account_identifier and not isinstance(account_identifier, str):
-            raise TypeError("Expected argument 'account_identifier' to be a str")
-        pulumi.set(__self__, "account_identifier", account_identifier)
+    def __init__(__self__, account_id=None, asn=None, comment=None, created_on=None, hostname=None, id=None, ip=None, item_id=None, list_id=None, modified_on=None, redirect=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
         if asn and not isinstance(asn, int):
             raise TypeError("Expected argument 'asn' to be a int")
         pulumi.set(__self__, "asn", asn)
@@ -64,18 +64,18 @@ class GetListItemResult:
         pulumi.set(__self__, "redirect", redirect)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> builtins.str:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def asn(self) -> builtins.int:
         """
-        A non-negative 32 bit integer
+        Defines a non-negative 32 bit integer.
         """
         return pulumi.get(self, "asn")
 
@@ -83,7 +83,7 @@ class GetListItemResult:
     @pulumi.getter
     def comment(self) -> builtins.str:
         """
-        An informative summary of the list item.
+        Defines an informative summary of the list item.
         """
         return pulumi.get(self, "comment")
 
@@ -123,7 +123,7 @@ class GetListItemResult:
     @pulumi.getter(name="itemId")
     def item_id(self) -> builtins.str:
         """
-        The unique ID of the item in the List.
+        Defines the unique ID of the item in the List.
         """
         return pulumi.get(self, "item_id")
 
@@ -158,7 +158,7 @@ class AwaitableGetListItemResult(GetListItemResult):
         if False:
             yield self
         return GetListItemResult(
-            account_identifier=self.account_identifier,
+            account_id=self.account_id,
             asn=self.asn,
             comment=self.comment,
             created_on=self.created_on,
@@ -171,7 +171,7 @@ class AwaitableGetListItemResult(GetListItemResult):
             redirect=self.redirect)
 
 
-def get_list_item(account_identifier: Optional[builtins.str] = None,
+def get_list_item(account_id: Optional[builtins.str] = None,
                   item_id: Optional[builtins.str] = None,
                   list_id: Optional[builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListItemResult:
@@ -182,25 +182,25 @@ def get_list_item(account_identifier: Optional[builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_list_item = cloudflare.get_list_item(account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
+    example_list_item = cloudflare.get_list_item(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
         item_id="34b12448945f11eaa1b71c4d701ab86e")
     ```
 
 
-    :param builtins.str account_identifier: Identifier
-    :param builtins.str item_id: The unique ID of the item in the List.
+    :param builtins.str account_id: Defines an identifier.
+    :param builtins.str item_id: Defines the unique ID of the item in the List.
     :param builtins.str list_id: The unique ID of the list.
     """
     __args__ = dict()
-    __args__['accountIdentifier'] = account_identifier
+    __args__['accountId'] = account_id
     __args__['itemId'] = item_id
     __args__['listId'] = list_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getListItem:getListItem', __args__, opts=opts, typ=GetListItemResult).value
 
     return AwaitableGetListItemResult(
-        account_identifier=pulumi.get(__ret__, 'account_identifier'),
+        account_id=pulumi.get(__ret__, 'account_id'),
         asn=pulumi.get(__ret__, 'asn'),
         comment=pulumi.get(__ret__, 'comment'),
         created_on=pulumi.get(__ret__, 'created_on'),
@@ -211,7 +211,7 @@ def get_list_item(account_identifier: Optional[builtins.str] = None,
         list_id=pulumi.get(__ret__, 'list_id'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
         redirect=pulumi.get(__ret__, 'redirect'))
-def get_list_item_output(account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+def get_list_item_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
                          item_id: Optional[pulumi.Input[builtins.str]] = None,
                          list_id: Optional[pulumi.Input[builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListItemResult]:
@@ -222,24 +222,24 @@ def get_list_item_output(account_identifier: Optional[pulumi.Input[builtins.str]
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_list_item = cloudflare.get_list_item(account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
+    example_list_item = cloudflare.get_list_item(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
         item_id="34b12448945f11eaa1b71c4d701ab86e")
     ```
 
 
-    :param builtins.str account_identifier: Identifier
-    :param builtins.str item_id: The unique ID of the item in the List.
+    :param builtins.str account_id: Defines an identifier.
+    :param builtins.str item_id: Defines the unique ID of the item in the List.
     :param builtins.str list_id: The unique ID of the list.
     """
     __args__ = dict()
-    __args__['accountIdentifier'] = account_identifier
+    __args__['accountId'] = account_id
     __args__['itemId'] = item_id
     __args__['listId'] = list_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getListItem:getListItem', __args__, opts=opts, typ=GetListItemResult)
     return __ret__.apply(lambda __response__: GetListItemResult(
-        account_identifier=pulumi.get(__response__, 'account_identifier'),
+        account_id=pulumi.get(__response__, 'account_id'),
         asn=pulumi.get(__response__, 'asn'),
         comment=pulumi.get(__response__, 'comment'),
         created_on=pulumi.get(__response__, 'created_on'),

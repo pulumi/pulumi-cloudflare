@@ -52,7 +52,7 @@ type LookupHostnameTlsSettingArgs struct {
 	// The TLS Setting name.
 	// Available values: "ciphers", "min*tls*version", "http2".
 	SettingId string `pulumi:"settingId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -73,7 +73,7 @@ type LookupHostnameTlsSettingResult struct {
 	UpdatedAt string `pulumi:"updatedAt"`
 	// The tls setting value.
 	Value float64 `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -91,7 +91,7 @@ type LookupHostnameTlsSettingOutputArgs struct {
 	// The TLS Setting name.
 	// Available values: "ciphers", "min*tls*version", "http2".
 	SettingId pulumi.StringInput `pulumi:"settingId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -150,7 +150,7 @@ func (o LookupHostnameTlsSettingResultOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupHostnameTlsSettingResult) float64 { return v.Value }).(pulumi.Float64Output)
 }
 
-// Identifier
+// Identifier.
 func (o LookupHostnameTlsSettingResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostnameTlsSettingResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

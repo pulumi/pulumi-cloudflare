@@ -47,7 +47,7 @@ import (
 type WebAnalyticsRule struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput    `pulumi:"accountId"`
 	Created   pulumi.StringOutput    `pulumi:"created"`
 	Host      pulumi.StringPtrOutput `pulumi:"host"`
@@ -97,7 +97,7 @@ func GetWebAnalyticsRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebAnalyticsRule resources.
 type webAnalyticsRuleState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	Created   *string `pulumi:"created"`
 	Host      *string `pulumi:"host"`
@@ -112,7 +112,7 @@ type webAnalyticsRuleState struct {
 }
 
 type WebAnalyticsRuleState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	Created   pulumi.StringPtrInput
 	Host      pulumi.StringPtrInput
@@ -131,7 +131,7 @@ func (WebAnalyticsRuleState) ElementType() reflect.Type {
 }
 
 type webAnalyticsRuleArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string  `pulumi:"accountId"`
 	Host      *string `pulumi:"host"`
 	// Whether the rule includes or excludes traffic from being measured.
@@ -145,7 +145,7 @@ type webAnalyticsRuleArgs struct {
 
 // The set of arguments for constructing a WebAnalyticsRule resource.
 type WebAnalyticsRuleArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	Host      pulumi.StringPtrInput
 	// Whether the rule includes or excludes traffic from being measured.
@@ -244,7 +244,7 @@ func (o WebAnalyticsRuleOutput) ToWebAnalyticsRuleOutputWithContext(ctx context.
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WebAnalyticsRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

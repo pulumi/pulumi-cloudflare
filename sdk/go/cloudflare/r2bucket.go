@@ -49,16 +49,16 @@ import (
 type R2Bucket struct {
 	pulumi.CustomResourceState
 
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Creation timestamp
+	// Creation timestamp.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
-	// Location of the bucket
+	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Name of the bucket
+	// Name of the bucket.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
@@ -101,16 +101,16 @@ func GetR2Bucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2Bucket resources.
 type r2bucketState struct {
-	// Account ID
+	// Account ID.
 	AccountId *string `pulumi:"accountId"`
-	// Creation timestamp
+	// Creation timestamp.
 	CreationDate *string `pulumi:"creationDate"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
-	// Location of the bucket
+	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location *string `pulumi:"location"`
-	// Name of the bucket
+	// Name of the bucket.
 	Name *string `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
@@ -118,16 +118,16 @@ type r2bucketState struct {
 }
 
 type R2BucketState struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringPtrInput
-	// Creation timestamp
+	// Creation timestamp.
 	CreationDate pulumi.StringPtrInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
-	// Location of the bucket
+	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location pulumi.StringPtrInput
-	// Name of the bucket
+	// Name of the bucket.
 	Name pulumi.StringPtrInput
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
@@ -139,14 +139,14 @@ func (R2BucketState) ElementType() reflect.Type {
 }
 
 type r2bucketArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
-	// Location of the bucket
+	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location *string `pulumi:"location"`
-	// Name of the bucket
+	// Name of the bucket.
 	Name string `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
@@ -155,14 +155,14 @@ type r2bucketArgs struct {
 
 // The set of arguments for constructing a R2Bucket resource.
 type R2BucketArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
-	// Location of the bucket
+	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location pulumi.StringPtrInput
-	// Name of the bucket
+	// Name of the bucket.
 	Name pulumi.StringInput
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
@@ -256,12 +256,12 @@ func (o R2BucketOutput) ToR2BucketOutputWithContext(ctx context.Context) R2Bucke
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o R2BucketOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Creation timestamp
+// Creation timestamp.
 func (o R2BucketOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.CreationDate }).(pulumi.StringOutput)
 }
@@ -271,13 +271,13 @@ func (o R2BucketOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
-// Location of the bucket
+// Location of the bucket.
 // Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 func (o R2BucketOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o R2BucketOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

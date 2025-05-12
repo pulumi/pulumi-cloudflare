@@ -103,7 +103,7 @@ class GetUserAgentBlockingRulesResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -147,7 +147,7 @@ def get_user_agent_blocking_rules(description: Optional[builtins.str] = None,
     :param builtins.str description_search: A string to search for in the description of existing rules.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str ua_search: A string to search for in the user agent values of existing rules.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -190,7 +190,7 @@ def get_user_agent_blocking_rules_output(description: Optional[pulumi.Input[Opti
     :param builtins.str description_search: A string to search for in the description of existing rules.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str ua_search: A string to search for in the user agent values of existing rules.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['description'] = description

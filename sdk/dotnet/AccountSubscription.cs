@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// The rate plan applied to the subscription.
         /// </summary>
         [Output("ratePlan")]
-        public Output<Outputs.AccountSubscriptionRatePlan> RatePlan { get; private set; } = null!;
+        public Output<Outputs.AccountSubscriptionRatePlan?> RatePlan { get; private set; } = null!;
 
         /// <summary>
         /// The state that the subscription is in.

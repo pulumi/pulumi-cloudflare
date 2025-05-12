@@ -62,7 +62,7 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * Components of a CAA record.
      */
-    public readonly data!: pulumi.Output<outputs.DnsRecordData>;
+    public readonly data!: pulumi.Output<outputs.DnsRecordData | undefined>;
     /**
      * Extra Cloudflare-specific information about the record.
      */

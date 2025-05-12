@@ -54,7 +54,7 @@ class GetR2BucketResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -62,7 +62,7 @@ class GetR2BucketResult:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> builtins.str:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -70,7 +70,7 @@ class GetR2BucketResult:
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> builtins.str:
         """
-        Creation timestamp
+        Creation timestamp.
         """
         return pulumi.get(self, "creation_date")
 
@@ -86,7 +86,7 @@ class GetR2BucketResult:
     @pulumi.getter
     def location(self) -> builtins.str:
         """
-        Location of the bucket
+        Location of the bucket.
         Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         """
         return pulumi.get(self, "location")
@@ -95,7 +95,7 @@ class GetR2BucketResult:
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "name")
 
@@ -139,8 +139,8 @@ def get_r2_bucket(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Account ID
-    :param builtins.str bucket_name: Name of the bucket
+    :param builtins.str account_id: Account ID.
+    :param builtins.str bucket_name: Name of the bucket.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -171,8 +171,8 @@ def get_r2_bucket_output(account_id: Optional[pulumi.Input[builtins.str]] = None
     ```
 
 
-    :param builtins.str account_id: Account ID
-    :param builtins.str bucket_name: Name of the bucket
+    :param builtins.str account_id: Account ID.
+    :param builtins.str bucket_name: Name of the bucket.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

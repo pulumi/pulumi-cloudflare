@@ -360,7 +360,7 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def unit(self) -> pulumi.Output['outputs.AccountUnit']:
+    def unit(self) -> pulumi.Output[Optional['outputs.AccountUnit']]:
         """
         information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         """

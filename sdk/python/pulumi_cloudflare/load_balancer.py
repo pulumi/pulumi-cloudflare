@@ -967,7 +967,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[builtins.str]]:
+    def description(self) -> pulumi.Output[builtins.str]:
         """
         Object description.
         """
@@ -1012,7 +1012,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def networks(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def networks(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         List of networks where Load Balancer or Pool is enabled.
         """

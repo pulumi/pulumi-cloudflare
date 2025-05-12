@@ -33,7 +33,7 @@ class RateLimitArgs:
         :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         :param pulumi.Input[builtins.float] threshold: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "match", match)
@@ -93,7 +93,7 @@ class RateLimitArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -122,7 +122,7 @@ class _RateLimitState:
         :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         :param pulumi.Input[builtins.float] threshold: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -229,7 +229,7 @@ class _RateLimitState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -310,7 +310,7 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         :param pulumi.Input[builtins.float] threshold: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         ...
     @overload
@@ -451,7 +451,7 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[Union['RateLimitMatchArgs', 'RateLimitMatchArgsDict']] match: Determines which traffic the rate limit counts towards the threshold.
         :param pulumi.Input[builtins.float] period: The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
         :param pulumi.Input[builtins.float] threshold: The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -527,7 +527,7 @@ class RateLimit(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 

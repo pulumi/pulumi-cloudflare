@@ -83,7 +83,7 @@ type BotManagement struct {
 	SuppressSessionScore pulumi.BoolOutput `pulumi:"suppressSessionScore"`
 	// A read-only field that indicates whether the zone currently is running the latest ML model.
 	UsingLatestModel pulumi.BoolOutput `pulumi:"usingLatestModel"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -153,7 +153,7 @@ type botManagementState struct {
 	SuppressSessionScore *bool `pulumi:"suppressSessionScore"`
 	// A read-only field that indicates whether the zone currently is running the latest ML model.
 	UsingLatestModel *bool `pulumi:"usingLatestModel"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -191,7 +191,7 @@ type BotManagementState struct {
 	SuppressSessionScore pulumi.BoolPtrInput
 	// A read-only field that indicates whether the zone currently is running the latest ML model.
 	UsingLatestModel pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -229,7 +229,7 @@ type botManagementArgs struct {
 	SbfmVerifiedBots *string `pulumi:"sbfmVerifiedBots"`
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 	SuppressSessionScore *bool `pulumi:"suppressSessionScore"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -264,7 +264,7 @@ type BotManagementArgs struct {
 	SbfmVerifiedBots pulumi.StringPtrInput
 	// Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
 	SuppressSessionScore pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -427,7 +427,7 @@ func (o BotManagementOutput) UsingLatestModel() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.BoolOutput { return v.UsingLatestModel }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o BotManagementOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BotManagement) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

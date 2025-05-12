@@ -59,7 +59,7 @@ export interface GetFirewallRulesArgs {
      */
     paused?: boolean;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -93,7 +93,7 @@ export interface GetFirewallRulesResult {
      */
     readonly results: outputs.GetFirewallRulesResult[];
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -150,7 +150,7 @@ export interface GetFirewallRulesOutputArgs {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

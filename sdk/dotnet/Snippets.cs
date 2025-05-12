@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Files { get; private set; } = null!;
 
         [Output("metadata")]
-        public Output<Outputs.SnippetsMetadata> Metadata { get; private set; } = null!;
+        public Output<Outputs.SnippetsMetadata?> Metadata { get; private set; } = null!;
 
         /// <summary>
         /// Modification time of the snippet

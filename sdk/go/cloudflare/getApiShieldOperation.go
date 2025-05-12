@@ -27,9 +27,9 @@ type LookupApiShieldOperationArgs struct {
 	// Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
 	Feature []string                     `pulumi:"feature"`
 	Filter  *GetApiShieldOperationFilter `pulumi:"filter"`
-	// UUID
+	// UUID.
 	OperationId *string `pulumi:"operationId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -43,15 +43,15 @@ type LookupApiShieldOperationResult struct {
 	Filter   *GetApiShieldOperationFilter  `pulumi:"filter"`
 	// RFC3986-compliant host.
 	Host string `pulumi:"host"`
-	// UUID
+	// UUID.
 	Id          string `pulumi:"id"`
 	LastUpdated string `pulumi:"lastUpdated"`
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method string `pulumi:"method"`
-	// UUID
+	// UUID.
 	OperationId string `pulumi:"operationId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -69,9 +69,9 @@ type LookupApiShieldOperationOutputArgs struct {
 	// Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
 	Feature pulumi.StringArrayInput             `pulumi:"feature"`
 	Filter  GetApiShieldOperationFilterPtrInput `pulumi:"filter"`
-	// UUID
+	// UUID.
 	OperationId pulumi.StringPtrInput `pulumi:"operationId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupApiShieldOperationResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationResult) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupApiShieldOperationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -132,12 +132,12 @@ func (o LookupApiShieldOperationResultOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationResult) string { return v.Method }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o LookupApiShieldOperationResultOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationResult) string { return v.OperationId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupApiShieldOperationResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldOperationResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

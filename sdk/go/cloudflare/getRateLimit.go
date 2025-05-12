@@ -49,9 +49,9 @@ func LookupRateLimit(ctx *pulumi.Context, args *LookupRateLimitArgs, opts ...pul
 
 // A collection of arguments for invoking getRateLimit.
 type LookupRateLimitArgs struct {
-	// The unique identifier of the rate limit.
+	// Defines the unique identifier of the rate limit.
 	RateLimitId *string `pulumi:"rateLimitId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -65,17 +65,17 @@ type LookupRateLimitResult struct {
 	Description string `pulumi:"description"`
 	// When true, indicates that the rate limit is currently disabled.
 	Disabled bool `pulumi:"disabled"`
-	// The unique identifier of the rate limit.
+	// Defines the unique identifier of the rate limit.
 	Id string `pulumi:"id"`
 	// Determines which traffic the rate limit counts towards the threshold.
 	Match GetRateLimitMatch `pulumi:"match"`
 	// The time in seconds (an integer value) to count matching traffic. If the count exceeds the configured threshold within this period, Cloudflare will perform the configured action.
 	Period float64 `pulumi:"period"`
-	// The unique identifier of the rate limit.
+	// Defines the unique identifier of the rate limit.
 	RateLimitId *string `pulumi:"rateLimitId"`
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold float64 `pulumi:"threshold"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -90,9 +90,9 @@ func LookupRateLimitOutput(ctx *pulumi.Context, args LookupRateLimitOutputArgs, 
 
 // A collection of arguments for invoking getRateLimit.
 type LookupRateLimitOutputArgs struct {
-	// The unique identifier of the rate limit.
+	// Defines the unique identifier of the rate limit.
 	RateLimitId pulumi.StringPtrInput `pulumi:"rateLimitId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -135,7 +135,7 @@ func (o LookupRateLimitResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRateLimitResult) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// The unique identifier of the rate limit.
+// Defines the unique identifier of the rate limit.
 func (o LookupRateLimitResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRateLimitResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -150,7 +150,7 @@ func (o LookupRateLimitResultOutput) Period() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupRateLimitResult) float64 { return v.Period }).(pulumi.Float64Output)
 }
 
-// The unique identifier of the rate limit.
+// Defines the unique identifier of the rate limit.
 func (o LookupRateLimitResultOutput) RateLimitId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRateLimitResult) *string { return v.RateLimitId }).(pulumi.StringPtrOutput)
 }
@@ -160,7 +160,7 @@ func (o LookupRateLimitResultOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupRateLimitResult) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupRateLimitResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRateLimitResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

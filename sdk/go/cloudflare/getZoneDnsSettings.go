@@ -48,7 +48,7 @@ func LookupZoneDnsSettings(ctx *pulumi.Context, args *LookupZoneDnsSettingsArgs,
 
 // A collection of arguments for invoking getZoneDnsSettings.
 type LookupZoneDnsSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -72,7 +72,7 @@ type LookupZoneDnsSettingsResult struct {
 	SecondaryOverrides bool `pulumi:"secondaryOverrides"`
 	// Components of the zone's SOA record.
 	Soa GetZoneDnsSettingsSoa `pulumi:"soa"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn*only", "dns*only".
@@ -90,7 +90,7 @@ func LookupZoneDnsSettingsOutput(ctx *pulumi.Context, args LookupZoneDnsSettings
 
 // A collection of arguments for invoking getZoneDnsSettings.
 type LookupZoneDnsSettingsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -158,7 +158,7 @@ func (o LookupZoneDnsSettingsResultOutput) Soa() GetZoneDnsSettingsSoaOutput {
 	return o.ApplyT(func(v LookupZoneDnsSettingsResult) GetZoneDnsSettingsSoa { return v.Soa }).(GetZoneDnsSettingsSoaOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupZoneDnsSettingsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnsSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

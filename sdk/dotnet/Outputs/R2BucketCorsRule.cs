@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExposeHeaders;
         /// <summary>
-        /// Identifier for this rule
+        /// Identifier for this rule.
         /// </summary>
         public readonly string? Id;
         /// <summary>

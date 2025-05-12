@@ -26,7 +26,8 @@ class PagesProjectArgs:
                  name: pulumi.Input[builtins.str],
                  build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
                  deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
-                 production_branch: Optional[pulumi.Input[builtins.str]] = None):
+                 production_branch: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None):
         """
         The set of arguments for constructing a PagesProject resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
@@ -43,6 +44,8 @@ class PagesProjectArgs:
             pulumi.set(__self__, "deployment_configs", deployment_configs)
         if production_branch is not None:
             pulumi.set(__self__, "production_branch", production_branch)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter(name="accountId")
@@ -103,6 +106,15 @@ class PagesProjectArgs:
     @production_branch.setter
     def production_branch(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "production_branch", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['PagesProjectSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['PagesProjectSourceArgs']]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
@@ -296,6 +308,7 @@ class PagesProject(pulumi.CustomResource):
                  deployment_configs: Optional[pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  production_branch: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
                  __props__=None):
         """
         > If you are using a `source` block configuration, you must first have a
@@ -357,6 +370,7 @@ class PagesProject(pulumi.CustomResource):
                  deployment_configs: Optional[pulumi.Input[Union['PagesProjectDeploymentConfigsArgs', 'PagesProjectDeploymentConfigsArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  production_branch: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input[Union['PagesProjectSourceArgs', 'PagesProjectSourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -375,11 +389,11 @@ class PagesProject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["production_branch"] = production_branch
+            __props__.__dict__["source"] = source
             __props__.__dict__["canonical_deployment"] = None
             __props__.__dict__["created_on"] = None
             __props__.__dict__["domains"] = None
             __props__.__dict__["latest_deployment"] = None
-            __props__.__dict__["source"] = None
             __props__.__dict__["subdomain"] = None
         super(PagesProject, __self__).__init__(
             'cloudflare:index/pagesProject:PagesProject',
@@ -447,7 +461,7 @@ class PagesProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="buildConfig")
-    def build_config(self) -> pulumi.Output['outputs.PagesProjectBuildConfig']:
+    def build_config(self) -> pulumi.Output[Optional['outputs.PagesProjectBuildConfig']]:
         """
         Configs for the project build process.
         """
@@ -471,7 +485,7 @@ class PagesProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deploymentConfigs")
-    def deployment_configs(self) -> pulumi.Output['outputs.PagesProjectDeploymentConfigs']:
+    def deployment_configs(self) -> pulumi.Output[Optional['outputs.PagesProjectDeploymentConfigs']]:
         """
         Configs for deployments in a project.
         """
@@ -511,7 +525,7 @@ class PagesProject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def source(self) -> pulumi.Output['outputs.PagesProjectSource']:
+    def source(self) -> pulumi.Output[Optional['outputs.PagesProjectSource']]:
         return pulumi.get(self, "source")
 
     @property

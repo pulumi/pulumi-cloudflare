@@ -70,7 +70,7 @@ class GetContentScanningExpressionsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -102,7 +102,7 @@ def get_content_scanning_expressions(max_items: Optional[builtins.int] = None,
 
 
     :param builtins.int max_items: Max items to fetch, default: 1000
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items
@@ -130,7 +130,7 @@ def get_content_scanning_expressions_output(max_items: Optional[pulumi.Input[Opt
 
 
     :param builtins.int max_items: Max items to fetch, default: 1000
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items

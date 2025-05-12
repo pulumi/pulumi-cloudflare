@@ -81,7 +81,7 @@ class GetEmailRoutingRulesResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -117,7 +117,7 @@ def get_email_routing_rules(enabled: Optional[builtins.bool] = None,
 
     :param builtins.bool enabled: Filter by enabled routing rules.
     :param builtins.int max_items: Max items to fetch, default: 1000
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['enabled'] = enabled
@@ -150,7 +150,7 @@ def get_email_routing_rules_output(enabled: Optional[pulumi.Input[Optional[built
 
     :param builtins.bool enabled: Filter by enabled routing rules.
     :param builtins.int max_items: Max items to fetch, default: 1000
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['enabled'] = enabled

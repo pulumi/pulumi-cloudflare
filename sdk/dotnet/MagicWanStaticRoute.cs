@@ -12,20 +12,10 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
+    /// ## Import
     /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleMagicWanStaticRoute = new Cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///     });
-    /// 
-    /// });
+    /// ```sh
+    /// $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example '&lt;account_id&gt;/&lt;route_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute")]
@@ -38,6 +28,12 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// When the route was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
+
+        /// <summary>
         /// An optional human provided description of the static route.
         /// </summary>
         [Output("description")]
@@ -46,6 +42,12 @@ namespace Pulumi.Cloudflare
         [Output("modified")]
         public Output<bool> Modified { get; private set; } = null!;
 
+        /// <summary>
+        /// When the route was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
+
         [Output("modifiedRoute")]
         public Output<Outputs.MagicWanStaticRouteModifiedRoute> ModifiedRoute { get; private set; } = null!;
 
@@ -53,37 +55,28 @@ namespace Pulumi.Cloudflare
         /// The next-hop IP Address for the static route.
         /// </summary>
         [Output("nexthop")]
-        public Output<string?> Nexthop { get; private set; } = null!;
+        public Output<string> Nexthop { get; private set; } = null!;
 
         /// <summary>
         /// IP Prefix in Classless Inter-Domain Routing format.
         /// </summary>
         [Output("prefix")]
-        public Output<string?> Prefix { get; private set; } = null!;
+        public Output<string> Prefix { get; private set; } = null!;
 
         /// <summary>
         /// Priority of the static route.
         /// </summary>
         [Output("priority")]
-        public Output<int?> Priority { get; private set; } = null!;
+        public Output<int> Priority { get; private set; } = null!;
 
         [Output("route")]
         public Output<Outputs.MagicWanStaticRouteRoute> Route { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
-        /// </summary>
-        [Output("routeId")]
-        public Output<string?> RouteId { get; private set; } = null!;
-
-        [Output("routes")]
-        public Output<ImmutableArray<Outputs.MagicWanStaticRouteRoute>> Routes { get; private set; } = null!;
-
-        /// <summary>
         /// Used only for ECMP routes.
         /// </summary>
         [Output("scope")]
-        public Output<Outputs.MagicWanStaticRouteScope> Scope { get; private set; } = null!;
+        public Output<Outputs.MagicWanStaticRouteScope?> Scope { get; private set; } = null!;
 
         /// <summary>
         /// Optional weight of the ECMP scope - if provided.
@@ -156,37 +149,23 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The next-hop IP Address for the static route.
         /// </summary>
-        [Input("nexthop")]
-        public Input<string>? Nexthop { get; set; }
+        [Input("nexthop", required: true)]
+        public Input<string> Nexthop { get; set; } = null!;
 
         /// <summary>
         /// IP Prefix in Classless Inter-Domain Routing format.
         /// </summary>
-        [Input("prefix")]
-        public Input<string>? Prefix { get; set; }
+        [Input("prefix", required: true)]
+        public Input<string> Prefix { get; set; } = null!;
 
         /// <summary>
         /// Priority of the static route.
         /// </summary>
-        [Input("priority")]
-        public Input<int>? Priority { get; set; }
+        [Input("priority", required: true)]
+        public Input<int> Priority { get; set; } = null!;
 
         [Input("route")]
         public Input<Inputs.MagicWanStaticRouteRouteArgs>? Route { get; set; }
-
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("routeId")]
-        public Input<string>? RouteId { get; set; }
-
-        [Input("routes")]
-        private InputList<Inputs.MagicWanStaticRouteRouteArgs>? _routes;
-        public InputList<Inputs.MagicWanStaticRouteRouteArgs> Routes
-        {
-            get => _routes ?? (_routes = new InputList<Inputs.MagicWanStaticRouteRouteArgs>());
-            set => _routes = value;
-        }
 
         /// <summary>
         /// Used only for ECMP routes.
@@ -215,6 +194,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// When the route was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
+        /// <summary>
         /// An optional human provided description of the static route.
         /// </summary>
         [Input("description")]
@@ -222,6 +207,12 @@ namespace Pulumi.Cloudflare
 
         [Input("modified")]
         public Input<bool>? Modified { get; set; }
+
+        /// <summary>
+        /// When the route was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
 
         [Input("modifiedRoute")]
         public Input<Inputs.MagicWanStaticRouteModifiedRouteGetArgs>? ModifiedRoute { get; set; }
@@ -246,20 +237,6 @@ namespace Pulumi.Cloudflare
 
         [Input("route")]
         public Input<Inputs.MagicWanStaticRouteRouteGetArgs>? Route { get; set; }
-
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("routeId")]
-        public Input<string>? RouteId { get; set; }
-
-        [Input("routes")]
-        private InputList<Inputs.MagicWanStaticRouteRouteGetArgs>? _routes;
-        public InputList<Inputs.MagicWanStaticRouteRouteGetArgs> Routes
-        {
-            get => _routes ?? (_routes = new InputList<Inputs.MagicWanStaticRouteRouteGetArgs>());
-            set => _routes = value;
-        }
 
         /// <summary>
         /// Used only for ECMP routes.

@@ -75,13 +75,13 @@ namespace Pulumi.Cloudflare
         public Output<string?> ReferenceId { get; private set; } = null!;
 
         /// <summary>
-        /// The base url of the tenant, e.g. "https://tenant.okta.com"
+        /// The base url of the tenant, e.g. "https://tenant.okta.com".
         /// </summary>
         [Output("tenantUrl")]
         public Output<string> TenantUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+        /// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
         /// </summary>
         [Output("wellKnownUrl")]
         public Output<string> WellKnownUrl { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ReferenceId { get; set; }
 
         /// <summary>
-        /// The base url of the tenant, e.g. "https://tenant.okta.com"
+        /// The base url of the tenant, e.g. "https://tenant.okta.com".
         /// </summary>
         [Input("tenantUrl", required: true)]
         public Input<string> TenantUrl { get; set; } = null!;
@@ -203,13 +203,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? ReferenceId { get; set; }
 
         /// <summary>
-        /// The base url of the tenant, e.g. "https://tenant.okta.com"
+        /// The base url of the tenant, e.g. "https://tenant.okta.com".
         /// </summary>
         [Input("tenantUrl")]
         public Input<string>? TenantUrl { get; set; }
 
         /// <summary>
-        /// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+        /// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
         /// </summary>
         [Input("wellKnownUrl")]
         public Input<string>? WellKnownUrl { get; set; }

@@ -23,42 +23,33 @@ namespace Pulumi.Cloudflare
     ///     var exampleWorkersRoute = new Cloudflare.WorkersRoute("example_workers_route", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Pattern = "example.net/*",
-    ///         Script = "this-is_my_script-01",
+    ///         Pattern = "example.com/*",
+    ///         Script = "my-workers-script",
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/workersRoute:WorkersRoute example '&lt;zone_id&gt;/&lt;route_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workersRoute:WorkersRoute")]
     public partial class WorkersRoute : global::Pulumi.CustomResource
     {
-        [Output("errors")]
-        public Output<ImmutableArray<Outputs.WorkersRouteError>> Errors { get; private set; } = null!;
-
-        [Output("messages")]
-        public Output<ImmutableArray<Outputs.WorkersRouteMessage>> Messages { get; private set; } = null!;
-
+        /// <summary>
+        /// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+        /// </summary>
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier.
-        /// </summary>
-        [Output("routeId")]
-        public Output<string?> RouteId { get; private set; } = null!;
-
-        /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script to run if the route matches.
         /// </summary>
         [Output("script")]
-        public Output<string?> Script { get; private set; } = null!;
-
-        /// <summary>
-        /// Whether the API call was successful.
-        /// </summary>
-        [Output("success")]
-        public Output<bool> Success { get; private set; } = null!;
+        public Output<string> Script { get; private set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -112,20 +103,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkersRouteArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+        /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
         /// <summary>
-        /// Identifier.
+        /// Name of the script to run if the route matches.
         /// </summary>
-        [Input("routeId")]
-        public Input<string>? RouteId { get; set; }
-
-        /// <summary>
-        /// Name of the script, used in URLs and route configuration.
-        /// </summary>
-        [Input("script")]
-        public Input<string>? Script { get; set; }
+        [Input("script", required: true)]
+        public Input<string> Script { get; set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -141,42 +129,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkersRouteState : global::Pulumi.ResourceArgs
     {
-        [Input("errors")]
-        private InputList<Inputs.WorkersRouteErrorGetArgs>? _errors;
-        public InputList<Inputs.WorkersRouteErrorGetArgs> Errors
-        {
-            get => _errors ?? (_errors = new InputList<Inputs.WorkersRouteErrorGetArgs>());
-            set => _errors = value;
-        }
-
-        [Input("messages")]
-        private InputList<Inputs.WorkersRouteMessageGetArgs>? _messages;
-        public InputList<Inputs.WorkersRouteMessageGetArgs> Messages
-        {
-            get => _messages ?? (_messages = new InputList<Inputs.WorkersRouteMessageGetArgs>());
-            set => _messages = value;
-        }
-
+        /// <summary>
+        /// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+        /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
         /// <summary>
-        /// Identifier.
-        /// </summary>
-        [Input("routeId")]
-        public Input<string>? RouteId { get; set; }
-
-        /// <summary>
-        /// Name of the script, used in URLs and route configuration.
+        /// Name of the script to run if the route matches.
         /// </summary>
         [Input("script")]
         public Input<string>? Script { get; set; }
-
-        /// <summary>
-        /// Whether the API call was successful.
-        /// </summary>
-        [Input("success")]
-        public Input<bool>? Success { get; set; }
 
         /// <summary>
         /// Identifier.

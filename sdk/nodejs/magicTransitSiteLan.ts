@@ -52,9 +52,9 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
      */
     public readonly haLink!: pulumi.Output<boolean | undefined>;
     public readonly name!: pulumi.Output<string | undefined>;
-    public readonly nat!: pulumi.Output<outputs.MagicTransitSiteLanNat>;
+    public readonly nat!: pulumi.Output<outputs.MagicTransitSiteLanNat | undefined>;
     public readonly physport!: pulumi.Output<number>;
-    public readonly routedSubnets!: pulumi.Output<outputs.MagicTransitSiteLanRoutedSubnet[]>;
+    public readonly routedSubnets!: pulumi.Output<outputs.MagicTransitSiteLanRoutedSubnet[] | undefined>;
     /**
      * Identifier
      */
@@ -62,7 +62,7 @@ export class MagicTransitSiteLan extends pulumi.CustomResource {
     /**
      * If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
      */
-    public readonly staticAddressing!: pulumi.Output<outputs.MagicTransitSiteLanStaticAddressing>;
+    public readonly staticAddressing!: pulumi.Output<outputs.MagicTransitSiteLanStaticAddressing | undefined>;
     /**
      * VLAN ID. Use zero for untagged.
      */

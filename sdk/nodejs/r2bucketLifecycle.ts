@@ -38,18 +38,18 @@ export class R2BucketLifecycle extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID
+     * Account ID.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     public readonly bucketName!: pulumi.Output<string>;
     /**
      * Jurisdiction of the bucket
      */
     public readonly jurisdiction!: pulumi.Output<string>;
-    public readonly rules!: pulumi.Output<outputs.R2BucketLifecycleRule[]>;
+    public readonly rules!: pulumi.Output<outputs.R2BucketLifecycleRule[] | undefined>;
 
     /**
      * Create a R2BucketLifecycle resource with the given unique name, arguments, and options.
@@ -91,11 +91,11 @@ export class R2BucketLifecycle extends pulumi.CustomResource {
  */
 export interface R2BucketLifecycleState {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     /**
@@ -110,11 +110,11 @@ export interface R2BucketLifecycleState {
  */
 export interface R2BucketLifecycleArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
     /**

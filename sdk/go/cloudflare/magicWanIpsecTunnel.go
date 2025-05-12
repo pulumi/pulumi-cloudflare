@@ -53,30 +53,41 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '<account_id>/<ipsec_tunnel_id>'
+// ```
 type MagicWanIpsecTunnel struct {
 	pulumi.CustomResourceState
 
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+	AllowNullCipher pulumi.BoolOutput `pulumi:"allowNullCipher"`
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint pulumi.StringOutput `pulumi:"cloudflareEndpoint"`
+	// The date and time the tunnel was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint pulumi.StringPtrOutput `pulumi:"customerEndpoint"`
 	// An optional description forthe IPsec tunnel.
 	Description pulumi.StringPtrOutput               `pulumi:"description"`
 	HealthCheck MagicWanIpsecTunnelHealthCheckOutput `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress pulumi.StringOutput                  `pulumi:"interfaceAddress"`
-	IpsecTunnel      MagicWanIpsecTunnelIpsecTunnelOutput `pulumi:"ipsecTunnel"`
-	// Identifier
-	IpsecTunnelId       pulumi.StringPtrOutput                       `pulumi:"ipsecTunnelId"`
-	IpsecTunnels        MagicWanIpsecTunnelIpsecTunnelArrayOutput    `pulumi:"ipsecTunnels"`
+	InterfaceAddress    pulumi.StringOutput                          `pulumi:"interfaceAddress"`
+	IpsecTunnel         MagicWanIpsecTunnelIpsecTunnelOutput         `pulumi:"ipsecTunnel"`
 	Modified            pulumi.BoolOutput                            `pulumi:"modified"`
 	ModifiedIpsecTunnel MagicWanIpsecTunnelModifiedIpsecTunnelOutput `pulumi:"modifiedIpsecTunnel"`
+	// The date and time the tunnel was last modified.
+	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A randomly generated or provided string for use in the IPsec tunnel.
 	Psk pulumi.StringPtrOutput `pulumi:"psk"`
+	// The PSK metadata that includes when the PSK was generated.
+	PskMetadata MagicWanIpsecTunnelPskMetadataOutput `pulumi:"pskMetadata"`
 	// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
 	ReplayProtection pulumi.BoolOutput `pulumi:"replayProtection"`
 }
@@ -131,25 +142,30 @@ func GetMagicWanIpsecTunnel(ctx *pulumi.Context,
 type magicWanIpsecTunnelState struct {
 	// Identifier
 	AccountId *string `pulumi:"accountId"`
+	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+	AllowNullCipher *bool `pulumi:"allowNullCipher"`
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint *string `pulumi:"cloudflareEndpoint"`
+	// The date and time the tunnel was created.
+	CreatedOn *string `pulumi:"createdOn"`
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint *string `pulumi:"customerEndpoint"`
 	// An optional description forthe IPsec tunnel.
 	Description *string                         `pulumi:"description"`
 	HealthCheck *MagicWanIpsecTunnelHealthCheck `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress *string                         `pulumi:"interfaceAddress"`
-	IpsecTunnel      *MagicWanIpsecTunnelIpsecTunnel `pulumi:"ipsecTunnel"`
-	// Identifier
-	IpsecTunnelId       *string                                 `pulumi:"ipsecTunnelId"`
-	IpsecTunnels        []MagicWanIpsecTunnelIpsecTunnel        `pulumi:"ipsecTunnels"`
+	InterfaceAddress    *string                                 `pulumi:"interfaceAddress"`
+	IpsecTunnel         *MagicWanIpsecTunnelIpsecTunnel         `pulumi:"ipsecTunnel"`
 	Modified            *bool                                   `pulumi:"modified"`
 	ModifiedIpsecTunnel *MagicWanIpsecTunnelModifiedIpsecTunnel `pulumi:"modifiedIpsecTunnel"`
+	// The date and time the tunnel was last modified.
+	ModifiedOn *string `pulumi:"modifiedOn"`
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
 	Name *string `pulumi:"name"`
 	// A randomly generated or provided string for use in the IPsec tunnel.
 	Psk *string `pulumi:"psk"`
+	// The PSK metadata that includes when the PSK was generated.
+	PskMetadata *MagicWanIpsecTunnelPskMetadata `pulumi:"pskMetadata"`
 	// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
 	ReplayProtection *bool `pulumi:"replayProtection"`
 }
@@ -157,25 +173,30 @@ type magicWanIpsecTunnelState struct {
 type MagicWanIpsecTunnelState struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput
+	// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+	AllowNullCipher pulumi.BoolPtrInput
 	// The IP address assigned to the Cloudflare side of the IPsec tunnel.
 	CloudflareEndpoint pulumi.StringPtrInput
+	// The date and time the tunnel was created.
+	CreatedOn pulumi.StringPtrInput
 	// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
 	CustomerEndpoint pulumi.StringPtrInput
 	// An optional description forthe IPsec tunnel.
 	Description pulumi.StringPtrInput
 	HealthCheck MagicWanIpsecTunnelHealthCheckPtrInput
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
-	InterfaceAddress pulumi.StringPtrInput
-	IpsecTunnel      MagicWanIpsecTunnelIpsecTunnelPtrInput
-	// Identifier
-	IpsecTunnelId       pulumi.StringPtrInput
-	IpsecTunnels        MagicWanIpsecTunnelIpsecTunnelArrayInput
+	InterfaceAddress    pulumi.StringPtrInput
+	IpsecTunnel         MagicWanIpsecTunnelIpsecTunnelPtrInput
 	Modified            pulumi.BoolPtrInput
 	ModifiedIpsecTunnel MagicWanIpsecTunnelModifiedIpsecTunnelPtrInput
+	// The date and time the tunnel was last modified.
+	ModifiedOn pulumi.StringPtrInput
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
 	Name pulumi.StringPtrInput
 	// A randomly generated or provided string for use in the IPsec tunnel.
 	Psk pulumi.StringPtrInput
+	// The PSK metadata that includes when the PSK was generated.
+	PskMetadata MagicWanIpsecTunnelPskMetadataPtrInput
 	// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
 	ReplayProtection pulumi.BoolPtrInput
 }
@@ -196,8 +217,6 @@ type magicWanIpsecTunnelArgs struct {
 	HealthCheck *MagicWanIpsecTunnelHealthCheck `pulumi:"healthCheck"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress string `pulumi:"interfaceAddress"`
-	// Identifier
-	IpsecTunnelId *string `pulumi:"ipsecTunnelId"`
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
 	Name string `pulumi:"name"`
 	// A randomly generated or provided string for use in the IPsec tunnel.
@@ -219,8 +238,6 @@ type MagicWanIpsecTunnelArgs struct {
 	HealthCheck MagicWanIpsecTunnelHealthCheckPtrInput
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringInput
-	// Identifier
-	IpsecTunnelId pulumi.StringPtrInput
 	// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
 	Name pulumi.StringInput
 	// A randomly generated or provided string for use in the IPsec tunnel.
@@ -321,9 +338,19 @@ func (o MagicWanIpsecTunnelOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+func (o MagicWanIpsecTunnelOutput) AllowNullCipher() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.BoolOutput { return v.AllowNullCipher }).(pulumi.BoolOutput)
+}
+
 // The IP address assigned to the Cloudflare side of the IPsec tunnel.
 func (o MagicWanIpsecTunnelOutput) CloudflareEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.CloudflareEndpoint }).(pulumi.StringOutput)
+}
+
+// The date and time the tunnel was created.
+func (o MagicWanIpsecTunnelOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
 // The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -349,15 +376,6 @@ func (o MagicWanIpsecTunnelOutput) IpsecTunnel() MagicWanIpsecTunnelIpsecTunnelO
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) MagicWanIpsecTunnelIpsecTunnelOutput { return v.IpsecTunnel }).(MagicWanIpsecTunnelIpsecTunnelOutput)
 }
 
-// Identifier
-func (o MagicWanIpsecTunnelOutput) IpsecTunnelId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringPtrOutput { return v.IpsecTunnelId }).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanIpsecTunnelOutput) IpsecTunnels() MagicWanIpsecTunnelIpsecTunnelArrayOutput {
-	return o.ApplyT(func(v *MagicWanIpsecTunnel) MagicWanIpsecTunnelIpsecTunnelArrayOutput { return v.IpsecTunnels }).(MagicWanIpsecTunnelIpsecTunnelArrayOutput)
-}
-
 func (o MagicWanIpsecTunnelOutput) Modified() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.BoolOutput { return v.Modified }).(pulumi.BoolOutput)
 }
@@ -368,6 +386,11 @@ func (o MagicWanIpsecTunnelOutput) ModifiedIpsecTunnel() MagicWanIpsecTunnelModi
 	}).(MagicWanIpsecTunnelModifiedIpsecTunnelOutput)
 }
 
+// The date and time the tunnel was last modified.
+func (o MagicWanIpsecTunnelOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
 // The name of the IPsec tunnel. The name cannot share a name with other tunnels.
 func (o MagicWanIpsecTunnelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -376,6 +399,11 @@ func (o MagicWanIpsecTunnelOutput) Name() pulumi.StringOutput {
 // A randomly generated or provided string for use in the IPsec tunnel.
 func (o MagicWanIpsecTunnelOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnel) pulumi.StringPtrOutput { return v.Psk }).(pulumi.StringPtrOutput)
+}
+
+// The PSK metadata that includes when the PSK was generated.
+func (o MagicWanIpsecTunnelOutput) PskMetadata() MagicWanIpsecTunnelPskMetadataOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnel) MagicWanIpsecTunnelPskMetadataOutput { return v.PskMetadata }).(MagicWanIpsecTunnelPskMetadataOutput)
 }
 
 // If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.

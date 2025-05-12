@@ -67,7 +67,7 @@ export class PageRule extends pulumi.CustomResource {
     public readonly status!: pulumi.Output<string>;
     public readonly target!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -143,7 +143,7 @@ export interface PageRuleState {
     status?: pulumi.Input<string>;
     target?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -168,7 +168,7 @@ export interface PageRuleArgs {
     status?: pulumi.Input<string>;
     target: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

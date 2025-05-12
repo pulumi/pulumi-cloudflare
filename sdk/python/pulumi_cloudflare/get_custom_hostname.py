@@ -85,7 +85,7 @@ class GetCustomHostnameResult:
     @pulumi.getter(name="customHostnameId")
     def custom_hostname_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "custom_hostname_id")
 
@@ -130,7 +130,7 @@ class GetCustomHostnameResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -176,7 +176,7 @@ class GetCustomHostnameResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -219,8 +219,8 @@ def get_custom_hostname(custom_hostname_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str custom_hostname_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str custom_hostname_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['customHostnameId'] = custom_hostname_id
@@ -260,8 +260,8 @@ def get_custom_hostname_output(custom_hostname_id: Optional[pulumi.Input[Optiona
     ```
 
 
-    :param builtins.str custom_hostname_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str custom_hostname_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['customHostnameId'] = custom_hostname_id

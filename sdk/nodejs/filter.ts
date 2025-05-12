@@ -74,7 +74,7 @@ export class Filter extends pulumi.CustomResource {
      */
     public /*out*/ readonly ref!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -136,7 +136,7 @@ export interface FilterState {
      */
     ref?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -150,7 +150,7 @@ export interface FilterArgs {
      */
     expression: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

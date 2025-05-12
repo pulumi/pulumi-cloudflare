@@ -49,17 +49,17 @@ func LookupR2BucketLifecycle(ctx *pulumi.Context, args *LookupR2BucketLifecycleA
 
 // A collection of arguments for invoking getR2BucketLifecycle.
 type LookupR2BucketLifecycleArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 }
 
 // A collection of values returned by getR2BucketLifecycle.
 type LookupR2BucketLifecycleResult struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id    string                     `pulumi:"id"`
@@ -77,9 +77,9 @@ func LookupR2BucketLifecycleOutput(ctx *pulumi.Context, args LookupR2BucketLifec
 
 // A collection of arguments for invoking getR2BucketLifecycle.
 type LookupR2BucketLifecycleOutputArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
@@ -102,12 +102,12 @@ func (o LookupR2BucketLifecycleResultOutput) ToLookupR2BucketLifecycleResultOutp
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o LookupR2BucketLifecycleResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketLifecycleResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o LookupR2BucketLifecycleResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketLifecycleResult) string { return v.BucketName }).(pulumi.StringOutput)
 }

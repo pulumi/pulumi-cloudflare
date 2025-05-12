@@ -253,7 +253,7 @@ class GetZeroTrustDeviceCustomProfileResult:
     @pulumi.getter
     def match(self) -> builtins.str:
         """
-        The wirefilter expression to match devices.
+        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         """
         return pulumi.get(self, "match")
 

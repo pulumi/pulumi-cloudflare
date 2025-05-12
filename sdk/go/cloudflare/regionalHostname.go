@@ -30,6 +30,7 @@ import (
 //				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Hostname:  pulumi.String("foo.example.com"),
 //				RegionKey: pulumi.String("ca"),
+//				Routing:   pulumi.String("routing"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,7 +55,9 @@ type RegionalHostname struct {
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Identifying key for the region
 	RegionKey pulumi.StringOutput `pulumi:"regionKey"`
-	// Identifier
+	// Configure which routing method to use for the regional hostname
+	Routing pulumi.StringPtrOutput `pulumi:"routing"`
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -103,7 +106,9 @@ type regionalHostnameState struct {
 	Hostname *string `pulumi:"hostname"`
 	// Identifying key for the region
 	RegionKey *string `pulumi:"regionKey"`
-	// Identifier
+	// Configure which routing method to use for the regional hostname
+	Routing *string `pulumi:"routing"`
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -114,7 +119,9 @@ type RegionalHostnameState struct {
 	Hostname pulumi.StringPtrInput
 	// Identifying key for the region
 	RegionKey pulumi.StringPtrInput
-	// Identifier
+	// Configure which routing method to use for the regional hostname
+	Routing pulumi.StringPtrInput
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -127,7 +134,9 @@ type regionalHostnameArgs struct {
 	Hostname string `pulumi:"hostname"`
 	// Identifying key for the region
 	RegionKey string `pulumi:"regionKey"`
-	// Identifier
+	// Configure which routing method to use for the regional hostname
+	Routing *string `pulumi:"routing"`
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -137,7 +146,9 @@ type RegionalHostnameArgs struct {
 	Hostname pulumi.StringInput
 	// Identifying key for the region
 	RegionKey pulumi.StringInput
-	// Identifier
+	// Configure which routing method to use for the regional hostname
+	Routing pulumi.StringPtrInput
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -243,7 +254,12 @@ func (o RegionalHostnameOutput) RegionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalHostname) pulumi.StringOutput { return v.RegionKey }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Configure which routing method to use for the regional hostname
+func (o RegionalHostnameOutput) Routing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalHostname) pulumi.StringPtrOutput { return v.Routing }).(pulumi.StringPtrOutput)
+}
+
+// Identifier.
 func (o RegionalHostnameOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

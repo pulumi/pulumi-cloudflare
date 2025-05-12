@@ -435,7 +435,7 @@ class EmailSecurityTrustedDomains(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bodies(self) -> pulumi.Output[Sequence['outputs.EmailSecurityTrustedDomainsBody']]:
+    def bodies(self) -> pulumi.Output[Optional[Sequence['outputs.EmailSecurityTrustedDomainsBody']]]:
         return pulumi.get(self, "bodies")
 
     @property

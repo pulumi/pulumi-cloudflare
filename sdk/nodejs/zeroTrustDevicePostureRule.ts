@@ -55,11 +55,11 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
     /**
      * The value to be checked against.
      */
-    public readonly input!: pulumi.Output<outputs.ZeroTrustDevicePostureRuleInput>;
+    public readonly input!: pulumi.Output<outputs.ZeroTrustDevicePostureRuleInput | undefined>;
     /**
      * The conditions that the client must match to run the rule.
      */
-    public readonly matches!: pulumi.Output<outputs.ZeroTrustDevicePostureRuleMatch[]>;
+    public readonly matches!: pulumi.Output<outputs.ZeroTrustDevicePostureRuleMatch[] | undefined>;
     /**
      * The name of the device posture rule.
      */

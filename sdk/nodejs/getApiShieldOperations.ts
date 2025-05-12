@@ -73,7 +73,7 @@ export interface GetApiShieldOperationsArgs {
      */
     order?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -121,7 +121,7 @@ export interface GetApiShieldOperationsResult {
      */
     readonly results: outputs.GetApiShieldOperationsResult[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -192,7 +192,7 @@ export interface GetApiShieldOperationsOutputArgs {
      */
     order?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

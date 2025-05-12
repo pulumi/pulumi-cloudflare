@@ -42,7 +42,7 @@ class GetLeakedCredentialCheckResult:
     @pulumi.getter
     def enabled(self) -> builtins.bool:
         """
-        Whether or not Leaked Credential Checks are enabled
+        Determines whether or not Leaked Credential Checks are enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -58,7 +58,7 @@ class GetLeakedCredentialCheckResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -87,7 +87,7 @@ def get_leaked_credential_check(zone_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -111,7 +111,7 @@ def get_leaked_credential_check_output(zone_id: Optional[pulumi.Input[builtins.s
     ```
 
 
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id

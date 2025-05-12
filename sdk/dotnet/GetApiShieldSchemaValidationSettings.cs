@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetApiShieldSchemaValidationSettingsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetApiShieldSchemaValidationSettingsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Cloudflare
         public readonly string ValidationDefaultMitigationAction;
         public readonly string ValidationOverrideMitigationAction;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

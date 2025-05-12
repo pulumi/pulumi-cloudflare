@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("annotations")]
-        public Output<Outputs.WorkersDeploymentAnnotations> Annotations { get; private set; } = null!;
+        public Output<Outputs.WorkersDeploymentAnnotations?> Annotations { get; private set; } = null!;
 
         [Output("authorEmail")]
         public Output<string> AuthorEmail { get; private set; } = null!;

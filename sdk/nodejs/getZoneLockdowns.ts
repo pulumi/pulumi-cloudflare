@@ -89,7 +89,7 @@ export interface GetZoneLockdownsArgs {
      */
     uriSearch?: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -147,7 +147,7 @@ export interface GetZoneLockdownsResult {
      */
     readonly uriSearch?: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -234,7 +234,7 @@ export interface GetZoneLockdownsOutputArgs {
      */
     uriSearch?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

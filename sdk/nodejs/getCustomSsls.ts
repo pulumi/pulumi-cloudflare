@@ -48,7 +48,7 @@ export interface GetCustomSslsArgs {
      */
     status?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -80,7 +80,7 @@ export interface GetCustomSslsResult {
      */
     readonly status?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -126,7 +126,7 @@ export interface GetCustomSslsOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

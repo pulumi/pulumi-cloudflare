@@ -34,7 +34,7 @@ export interface GetUserAgentBlockingRuleArgs {
      */
     uaRuleId: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -52,7 +52,7 @@ export interface GetUserAgentBlockingRuleResult {
      */
     readonly uaRuleId: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -86,7 +86,7 @@ export interface GetUserAgentBlockingRuleOutputArgs {
      */
     uaRuleId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -32,11 +32,11 @@ export function getR2BucketCors(args: GetR2BucketCorsArgs, opts?: pulumi.InvokeO
  */
 export interface GetR2BucketCorsArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: string;
 }
@@ -46,11 +46,11 @@ export interface GetR2BucketCorsArgs {
  */
 export interface GetR2BucketCorsResult {
     /**
-     * Account ID
+     * Account ID.
      */
     readonly accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     readonly bucketName: string;
     /**
@@ -85,11 +85,11 @@ export function getR2BucketCorsOutput(args: GetR2BucketCorsOutputArgs, opts?: pu
  */
 export interface GetR2BucketCorsOutputArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
 }

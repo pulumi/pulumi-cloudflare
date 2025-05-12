@@ -51,7 +51,7 @@ func LookupFirewallRule(ctx *pulumi.Context, args *LookupFirewallRuleArgs, opts 
 type LookupFirewallRuleArgs struct {
 	// The unique identifier of the firewall rule.
 	RuleId *string `pulumi:"ruleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -73,7 +73,7 @@ type LookupFirewallRuleResult struct {
 	Ref string `pulumi:"ref"`
 	// The unique identifier of the firewall rule.
 	RuleId *string `pulumi:"ruleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -90,7 +90,7 @@ func LookupFirewallRuleOutput(ctx *pulumi.Context, args LookupFirewallRuleOutput
 type LookupFirewallRuleOutputArgs struct {
 	// The unique identifier of the firewall rule.
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -153,7 +153,7 @@ func (o LookupFirewallRuleResultOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupFirewallRuleResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRuleResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

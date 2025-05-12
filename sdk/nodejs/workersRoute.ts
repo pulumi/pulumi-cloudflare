@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,9 +13,15 @@ import * as utilities from "./utilities";
  *
  * const exampleWorkersRoute = new cloudflare.WorkersRoute("example_workers_route", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
- *     pattern: "example.net/*",
- *     script: "this-is_my_script-01",
+ *     pattern: "example.com/*",
+ *     script: "my-workers-script",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/workersRoute:WorkersRoute example '<zone_id>/<route_id>'
  * ```
  */
 export class WorkersRoute extends pulumi.CustomResource {
@@ -48,21 +52,14 @@ export class WorkersRoute extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkersRoute.__pulumiType;
     }
 
-    public /*out*/ readonly errors!: pulumi.Output<outputs.WorkersRouteError[]>;
-    public /*out*/ readonly messages!: pulumi.Output<outputs.WorkersRouteMessage[]>;
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     */
     public readonly pattern!: pulumi.Output<string>;
     /**
-     * Identifier.
+     * Name of the script to run if the route matches.
      */
-    public readonly routeId!: pulumi.Output<string | undefined>;
-    /**
-     * Name of the script, used in URLs and route configuration.
-     */
-    public readonly script!: pulumi.Output<string | undefined>;
-    /**
-     * Whether the API call was successful.
-     */
-    public /*out*/ readonly success!: pulumi.Output<boolean>;
+    public readonly script!: pulumi.Output<string>;
     /**
      * Identifier.
      */
@@ -81,28 +78,23 @@ export class WorkersRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersRouteState | undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["messages"] = state ? state.messages : undefined;
             resourceInputs["pattern"] = state ? state.pattern : undefined;
-            resourceInputs["routeId"] = state ? state.routeId : undefined;
             resourceInputs["script"] = state ? state.script : undefined;
-            resourceInputs["success"] = state ? state.success : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WorkersRouteArgs | undefined;
             if ((!args || args.pattern === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pattern'");
             }
+            if ((!args || args.script === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'script'");
+            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["pattern"] = args ? args.pattern : undefined;
-            resourceInputs["routeId"] = args ? args.routeId : undefined;
             resourceInputs["script"] = args ? args.script : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["errors"] = undefined /*out*/;
-            resourceInputs["messages"] = undefined /*out*/;
-            resourceInputs["success"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(WorkersRoute.__pulumiType, name, resourceInputs, opts);
@@ -113,21 +105,14 @@ export class WorkersRoute extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkersRoute resources.
  */
 export interface WorkersRouteState {
-    errors?: pulumi.Input<pulumi.Input<inputs.WorkersRouteError>[]>;
-    messages?: pulumi.Input<pulumi.Input<inputs.WorkersRouteMessage>[]>;
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     */
     pattern?: pulumi.Input<string>;
     /**
-     * Identifier.
-     */
-    routeId?: pulumi.Input<string>;
-    /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script to run if the route matches.
      */
     script?: pulumi.Input<string>;
-    /**
-     * Whether the API call was successful.
-     */
-    success?: pulumi.Input<boolean>;
     /**
      * Identifier.
      */
@@ -138,15 +123,14 @@ export interface WorkersRouteState {
  * The set of arguments for constructing a WorkersRoute resource.
  */
 export interface WorkersRouteArgs {
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     */
     pattern: pulumi.Input<string>;
     /**
-     * Identifier.
+     * Name of the script to run if the route matches.
      */
-    routeId?: pulumi.Input<string>;
-    /**
-     * Name of the script, used in URLs and route configuration.
-     */
-    script?: pulumi.Input<string>;
+    script: pulumi.Input<string>;
     /**
      * Identifier.
      */

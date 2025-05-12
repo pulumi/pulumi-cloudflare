@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Method;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string OperationId;
 

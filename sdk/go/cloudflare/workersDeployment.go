@@ -24,7 +24,7 @@ type WorkersDeployment struct {
 
 	// Identifier.
 	AccountId   pulumi.StringOutput                    `pulumi:"accountId"`
-	Annotations WorkersDeploymentAnnotationsOutput     `pulumi:"annotations"`
+	Annotations WorkersDeploymentAnnotationsPtrOutput  `pulumi:"annotations"`
 	AuthorEmail pulumi.StringOutput                    `pulumi:"authorEmail"`
 	CreatedOn   pulumi.StringOutput                    `pulumi:"createdOn"`
 	Deployments WorkersDeploymentDeploymentArrayOutput `pulumi:"deployments"`
@@ -226,8 +226,8 @@ func (o WorkersDeploymentOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersDeployment) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o WorkersDeploymentOutput) Annotations() WorkersDeploymentAnnotationsOutput {
-	return o.ApplyT(func(v *WorkersDeployment) WorkersDeploymentAnnotationsOutput { return v.Annotations }).(WorkersDeploymentAnnotationsOutput)
+func (o WorkersDeploymentOutput) Annotations() WorkersDeploymentAnnotationsPtrOutput {
+	return o.ApplyT(func(v *WorkersDeployment) WorkersDeploymentAnnotationsPtrOutput { return v.Annotations }).(WorkersDeploymentAnnotationsPtrOutput)
 }
 
 func (o WorkersDeploymentOutput) AuthorEmail() pulumi.StringOutput {

@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDlpPredefinedProfileEntryConfidenceResult
     {
         /// <summary>
-        /// Indicates whether this entry has AI remote service validation
+        /// Indicates whether this entry has AI remote service validation.
         /// </summary>
         public readonly bool AiContextAvailable;
         /// <summary>
-        /// Indicates whether this entry has any form of validation that is not an AI remote service
+        /// Indicates whether this entry has any form of validation that is not an AI remote service.
         /// </summary>
         public readonly bool Available;
 

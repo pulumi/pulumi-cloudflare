@@ -43,7 +43,7 @@ export class SnippetRules extends pulumi.CustomResource {
     /**
      * List of snippet rules
      */
-    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[]>;
+    public readonly rules!: pulumi.Output<outputs.SnippetRulesRule[] | undefined>;
     /**
      * Snippet identifying name
      */

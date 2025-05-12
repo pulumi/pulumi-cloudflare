@@ -9,11 +9,10 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
+ * ## Import
  *
- * const exampleMagicWanStaticRoute = new cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", {accountId: "023e105f4ecef8ad9ca31a8372d0c353"});
+ * ```sh
+ * $ pulumi import cloudflare:index/staticRoute:StaticRoute example '<account_id>/<route_id>'
  * ```
  *
  * @deprecated cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute
@@ -52,33 +51,36 @@ export class StaticRoute extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * When the route was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
+    /**
      * An optional human provided description of the static route.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public /*out*/ readonly modified!: pulumi.Output<boolean>;
+    /**
+     * When the route was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     public /*out*/ readonly modifiedRoute!: pulumi.Output<outputs.StaticRouteModifiedRoute>;
     /**
      * The next-hop IP Address for the static route.
      */
-    public readonly nexthop!: pulumi.Output<string | undefined>;
+    public readonly nexthop!: pulumi.Output<string>;
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      */
-    public readonly prefix!: pulumi.Output<string | undefined>;
+    public readonly prefix!: pulumi.Output<string>;
     /**
      * Priority of the static route.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    public readonly priority!: pulumi.Output<number>;
     public readonly route!: pulumi.Output<outputs.StaticRouteRoute>;
-    /**
-     * Identifier
-     */
-    public readonly routeId!: pulumi.Output<string | undefined>;
-    public readonly routes!: pulumi.Output<outputs.StaticRouteRoute[]>;
     /**
      * Used only for ECMP routes.
      */
-    public readonly scope!: pulumi.Output<outputs.StaticRouteScope>;
+    public readonly scope!: pulumi.Output<outputs.StaticRouteScope | undefined>;
     /**
      * Optional weight of the ECMP scope - if provided.
      */
@@ -101,15 +103,15 @@ export class StaticRoute extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as StaticRouteState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["modified"] = state ? state.modified : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["modifiedRoute"] = state ? state.modifiedRoute : undefined;
             resourceInputs["nexthop"] = state ? state.nexthop : undefined;
             resourceInputs["prefix"] = state ? state.prefix : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["route"] = state ? state.route : undefined;
-            resourceInputs["routeId"] = state ? state.routeId : undefined;
-            resourceInputs["routes"] = state ? state.routes : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
@@ -117,17 +119,26 @@ export class StaticRoute extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
+            if ((!args || args.nexthop === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'nexthop'");
+            }
+            if ((!args || args.prefix === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'prefix'");
+            }
+            if ((!args || args.priority === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'priority'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["nexthop"] = args ? args.nexthop : undefined;
             resourceInputs["prefix"] = args ? args.prefix : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["route"] = args ? args.route : undefined;
-            resourceInputs["routeId"] = args ? args.routeId : undefined;
-            resourceInputs["routes"] = args ? args.routes : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
             resourceInputs["modifiedRoute"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -146,10 +157,18 @@ export interface StaticRouteState {
      */
     accountId?: pulumi.Input<string>;
     /**
+     * When the route was created.
+     */
+    createdOn?: pulumi.Input<string>;
+    /**
      * An optional human provided description of the static route.
      */
     description?: pulumi.Input<string>;
     modified?: pulumi.Input<boolean>;
+    /**
+     * When the route was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
     modifiedRoute?: pulumi.Input<inputs.StaticRouteModifiedRoute>;
     /**
      * The next-hop IP Address for the static route.
@@ -164,11 +183,6 @@ export interface StaticRouteState {
      */
     priority?: pulumi.Input<number>;
     route?: pulumi.Input<inputs.StaticRouteRoute>;
-    /**
-     * Identifier
-     */
-    routeId?: pulumi.Input<string>;
-    routes?: pulumi.Input<pulumi.Input<inputs.StaticRouteRoute>[]>;
     /**
      * Used only for ECMP routes.
      */
@@ -194,21 +208,16 @@ export interface StaticRouteArgs {
     /**
      * The next-hop IP Address for the static route.
      */
-    nexthop?: pulumi.Input<string>;
+    nexthop: pulumi.Input<string>;
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      */
-    prefix?: pulumi.Input<string>;
+    prefix: pulumi.Input<string>;
     /**
      * Priority of the static route.
      */
-    priority?: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     route?: pulumi.Input<inputs.StaticRouteRoute>;
-    /**
-     * Identifier
-     */
-    routeId?: pulumi.Input<string>;
-    routes?: pulumi.Input<pulumi.Input<inputs.StaticRouteRoute>[]>;
     /**
      * Used only for ECMP routes.
      */

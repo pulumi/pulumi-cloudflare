@@ -127,7 +127,7 @@ export class CustomSsl extends pulumi.CustomResource {
     /**
      * Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
      */
-    public readonly geoRestrictions!: pulumi.Output<outputs.CustomSslGeoRestrictions>;
+    public readonly geoRestrictions!: pulumi.Output<outputs.CustomSslGeoRestrictions | undefined>;
     public /*out*/ readonly hosts!: pulumi.Output<string[]>;
     /**
      * The certificate authority that issued the certificate.
@@ -169,7 +169,7 @@ export class CustomSsl extends pulumi.CustomResource {
      */
     public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -299,7 +299,7 @@ export interface CustomSslState {
      */
     uploadedOn?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -335,7 +335,7 @@ export interface CustomSslArgs {
      */
     type?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -34,6 +34,7 @@ export interface GetZeroTrustDeviceDefaultProfileCertificatesArgs {
  * A collection of values returned by getZeroTrustDeviceDefaultProfileCertificates.
  */
 export interface GetZeroTrustDeviceDefaultProfileCertificatesResult {
+    readonly enabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

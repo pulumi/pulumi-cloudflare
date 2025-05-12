@@ -70,21 +70,21 @@ type DlpPredefinedProfile struct {
 	AllowedMatchCount   pulumi.IntPtrOutput    `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringPtrOutput `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
-	ContextAwareness DlpPredefinedProfileContextAwarenessOutput `pulumi:"contextAwareness"`
-	// When the profile was created
+	ContextAwareness DlpPredefinedProfileContextAwarenessPtrOutput `pulumi:"contextAwareness"`
+	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The description of the profile
+	// The description of the profile.
 	Description pulumi.StringOutput                  `pulumi:"description"`
 	Entries     DlpPredefinedProfileEntryArrayOutput `pulumi:"entries"`
-	// The name of the profile
+	// The name of the profile.
 	Name       pulumi.StringOutput  `pulumi:"name"`
 	OcrEnabled pulumi.BoolPtrOutput `pulumi:"ocrEnabled"`
-	// Whether this profile can be accessed by anyone
+	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolOutput   `pulumi:"openAccess"`
 	ProfileId  pulumi.StringOutput `pulumi:"profileId"`
 	// Available values: "custom".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// When the profile was lasted updated
+	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -139,20 +139,20 @@ type dlpPredefinedProfileState struct {
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness *DlpPredefinedProfileContextAwareness `pulumi:"contextAwareness"`
-	// When the profile was created
+	// When the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The description of the profile
+	// The description of the profile.
 	Description *string                     `pulumi:"description"`
 	Entries     []DlpPredefinedProfileEntry `pulumi:"entries"`
-	// The name of the profile
+	// The name of the profile.
 	Name       *string `pulumi:"name"`
 	OcrEnabled *bool   `pulumi:"ocrEnabled"`
-	// Whether this profile can be accessed by anyone
+	// Whether this profile can be accessed by anyone.
 	OpenAccess *bool   `pulumi:"openAccess"`
 	ProfileId  *string `pulumi:"profileId"`
 	// Available values: "custom".
 	Type *string `pulumi:"type"`
-	// When the profile was lasted updated
+	// When the profile was lasted updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -163,20 +163,20 @@ type DlpPredefinedProfileState struct {
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness DlpPredefinedProfileContextAwarenessPtrInput
-	// When the profile was created
+	// When the profile was created.
 	CreatedAt pulumi.StringPtrInput
-	// The description of the profile
+	// The description of the profile.
 	Description pulumi.StringPtrInput
 	Entries     DlpPredefinedProfileEntryArrayInput
-	// The name of the profile
+	// The name of the profile.
 	Name       pulumi.StringPtrInput
 	OcrEnabled pulumi.BoolPtrInput
-	// Whether this profile can be accessed by anyone
+	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
 	ProfileId  pulumi.StringPtrInput
 	// Available values: "custom".
 	Type pulumi.StringPtrInput
-	// When the profile was lasted updated
+	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -313,16 +313,16 @@ func (o DlpPredefinedProfileOutput) ConfidenceThreshold() pulumi.StringPtrOutput
 }
 
 // Scan the context of predefined entries to only return matches surrounded by keywords.
-func (o DlpPredefinedProfileOutput) ContextAwareness() DlpPredefinedProfileContextAwarenessOutput {
-	return o.ApplyT(func(v *DlpPredefinedProfile) DlpPredefinedProfileContextAwarenessOutput { return v.ContextAwareness }).(DlpPredefinedProfileContextAwarenessOutput)
+func (o DlpPredefinedProfileOutput) ContextAwareness() DlpPredefinedProfileContextAwarenessPtrOutput {
+	return o.ApplyT(func(v *DlpPredefinedProfile) DlpPredefinedProfileContextAwarenessPtrOutput { return v.ContextAwareness }).(DlpPredefinedProfileContextAwarenessPtrOutput)
 }
 
-// When the profile was created
+// When the profile was created.
 func (o DlpPredefinedProfileOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The description of the profile
+// The description of the profile.
 func (o DlpPredefinedProfileOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -331,7 +331,7 @@ func (o DlpPredefinedProfileOutput) Entries() DlpPredefinedProfileEntryArrayOutp
 	return o.ApplyT(func(v *DlpPredefinedProfile) DlpPredefinedProfileEntryArrayOutput { return v.Entries }).(DlpPredefinedProfileEntryArrayOutput)
 }
 
-// The name of the profile
+// The name of the profile.
 func (o DlpPredefinedProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -340,7 +340,7 @@ func (o DlpPredefinedProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.BoolPtrOutput { return v.OcrEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this profile can be accessed by anyone
+// Whether this profile can be accessed by anyone.
 func (o DlpPredefinedProfileOutput) OpenAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.BoolOutput { return v.OpenAccess }).(pulumi.BoolOutput)
 }
@@ -354,7 +354,7 @@ func (o DlpPredefinedProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// When the profile was lasted updated
+// When the profile was lasted updated.
 func (o DlpPredefinedProfileOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

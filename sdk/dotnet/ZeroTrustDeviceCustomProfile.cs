@@ -170,7 +170,7 @@ namespace Pulumi.Cloudflare
         public Output<double?> LanAllowSubnetSize { get; private set; } = null!;
 
         /// <summary>
-        /// The wirefilter expression to match devices.
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         /// </summary>
         [Output("match")]
         public Output<string> Match { get; private set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> RegisterInterfaceIpWithDns { get; private set; } = null!;
 
         [Output("serviceModeV2")]
-        public Output<Outputs.ZeroTrustDeviceCustomProfileServiceModeV2> ServiceModeV2 { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustDeviceCustomProfileServiceModeV2?> ServiceModeV2 { get; private set; } = null!;
 
         /// <summary>
         /// The URL to launch when the Send Feedback button is clicked.
@@ -365,7 +365,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? LanAllowSubnetSize { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to match devices.
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         /// </summary>
         [Input("match", required: true)]
         public Input<string> Match { get; set; } = null!;
@@ -528,7 +528,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? LanAllowSubnetSize { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to match devices.
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }

@@ -28,7 +28,7 @@ class GetHyperdriveConfigResult:
     """
     A collection of values returned by getHyperdriveConfig.
     """
-    def __init__(__self__, account_id=None, caching=None, created_on=None, hyperdrive_id=None, id=None, modified_on=None, name=None, origin=None):
+    def __init__(__self__, account_id=None, caching=None, created_on=None, hyperdrive_id=None, id=None, modified_on=None, mtls=None, name=None, origin=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -47,6 +47,9 @@ class GetHyperdriveConfigResult:
         if modified_on and not isinstance(modified_on, str):
             raise TypeError("Expected argument 'modified_on' to be a str")
         pulumi.set(__self__, "modified_on", modified_on)
+        if mtls and not isinstance(mtls, dict):
+            raise TypeError("Expected argument 'mtls' to be a dict")
+        pulumi.set(__self__, "mtls", mtls)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -101,6 +104,11 @@ class GetHyperdriveConfigResult:
 
     @property
     @pulumi.getter
+    def mtls(self) -> 'outputs.GetHyperdriveConfigMtlsResult':
+        return pulumi.get(self, "mtls")
+
+    @property
+    @pulumi.getter
     def name(self) -> builtins.str:
         return pulumi.get(self, "name")
 
@@ -122,6 +130,7 @@ class AwaitableGetHyperdriveConfigResult(GetHyperdriveConfigResult):
             hyperdrive_id=self.hyperdrive_id,
             id=self.id,
             modified_on=self.modified_on,
+            mtls=self.mtls,
             name=self.name,
             origin=self.origin)
 
@@ -157,6 +166,7 @@ def get_hyperdrive_config(account_id: Optional[builtins.str] = None,
         hyperdrive_id=pulumi.get(__ret__, 'hyperdrive_id'),
         id=pulumi.get(__ret__, 'id'),
         modified_on=pulumi.get(__ret__, 'modified_on'),
+        mtls=pulumi.get(__ret__, 'mtls'),
         name=pulumi.get(__ret__, 'name'),
         origin=pulumi.get(__ret__, 'origin'))
 def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -189,5 +199,6 @@ def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[builtins.str]
         hyperdrive_id=pulumi.get(__response__, 'hyperdrive_id'),
         id=pulumi.get(__response__, 'id'),
         modified_on=pulumi.get(__response__, 'modified_on'),
+        mtls=pulumi.get(__response__, 'mtls'),
         name=pulumi.get(__response__, 'name'),
         origin=pulumi.get(__response__, 'origin')))

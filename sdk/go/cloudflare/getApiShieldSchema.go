@@ -53,7 +53,7 @@ type LookupApiShieldSchemaArgs struct {
 	// Omit the source-files of schemas and only retrieve their meta-data.
 	OmitSource *bool  `pulumi:"omitSource"`
 	SchemaId   string `pulumi:"schemaId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -74,7 +74,7 @@ type LookupApiShieldSchemaResult struct {
 	Source string `pulumi:"source"`
 	// Flag whether schema is enabled for validation.
 	ValidationEnabled bool `pulumi:"validationEnabled"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -92,7 +92,7 @@ type LookupApiShieldSchemaOutputArgs struct {
 	// Omit the source-files of schemas and only retrieve their meta-data.
 	OmitSource pulumi.BoolPtrInput `pulumi:"omitSource"`
 	SchemaId   pulumi.StringInput  `pulumi:"schemaId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -154,7 +154,7 @@ func (o LookupApiShieldSchemaResultOutput) ValidationEnabled() pulumi.BoolOutput
 	return o.ApplyT(func(v LookupApiShieldSchemaResult) bool { return v.ValidationEnabled }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupApiShieldSchemaResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldSchemaResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -50,7 +50,7 @@ func LookupWeb3Hostnames(ctx *pulumi.Context, args *LookupWeb3HostnamesArgs, opt
 type LookupWeb3HostnamesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Specify the identifier of the hostname.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupWeb3HostnamesResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetWeb3HostnamesResult `pulumi:"results"`
-	// Identifier
+	// Specify the identifier of the hostname.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupWeb3HostnamesOutput(ctx *pulumi.Context, args LookupWeb3HostnamesOutp
 type LookupWeb3HostnamesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Specify the identifier of the hostname.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupWeb3HostnamesResultOutput) Results() GetWeb3HostnamesResultArrayOu
 	return o.ApplyT(func(v LookupWeb3HostnamesResult) []GetWeb3HostnamesResult { return v.Results }).(GetWeb3HostnamesResultArrayOutput)
 }
 
-// Identifier
+// Specify the identifier of the hostname.
 func (o LookupWeb3HostnamesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWeb3HostnamesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetR2BucketEventNotificationQueueResult
     {
         /// <summary>
-        /// Queue ID
+        /// Queue ID.
         /// </summary>
         public readonly string QueueId;
         /// <summary>
-        /// Name of the queue
+        /// Name of the queue.
         /// </summary>
         public readonly string QueueName;
         public readonly ImmutableArray<Outputs.GetR2BucketEventNotificationQueueRuleResult> Rules;

@@ -49,17 +49,17 @@ func LookupR2BucketEventNotification(ctx *pulumi.Context, args *LookupR2BucketEv
 
 // A collection of arguments for invoking getR2BucketEventNotification.
 type LookupR2BucketEventNotificationArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 }
 
 // A collection of values returned by getR2BucketEventNotification.
 type LookupR2BucketEventNotificationResult struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -78,9 +78,9 @@ func LookupR2BucketEventNotificationOutput(ctx *pulumi.Context, args LookupR2Buc
 
 // A collection of arguments for invoking getR2BucketEventNotification.
 type LookupR2BucketEventNotificationOutputArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
@@ -103,12 +103,12 @@ func (o LookupR2BucketEventNotificationResultOutput) ToLookupR2BucketEventNotifi
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o LookupR2BucketEventNotificationResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o LookupR2BucketEventNotificationResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.BucketName }).(pulumi.StringOutput)
 }

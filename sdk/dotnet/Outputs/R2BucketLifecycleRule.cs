@@ -14,27 +14,27 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class R2BucketLifecycleRule
     {
         /// <summary>
-        /// Transition to abort ongoing multipart uploads
+        /// Transition to abort ongoing multipart uploads.
         /// </summary>
         public readonly Outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransition? AbortMultipartUploadsTransition;
         /// <summary>
-        /// Conditions that apply to all transitions of this rule
+        /// Conditions that apply to all transitions of this rule.
         /// </summary>
         public readonly Outputs.R2BucketLifecycleRuleConditions Conditions;
         /// <summary>
-        /// Transition to delete objects
+        /// Transition to delete objects.
         /// </summary>
         public readonly Outputs.R2BucketLifecycleRuleDeleteObjectsTransition? DeleteObjectsTransition;
         /// <summary>
-        /// Whether or not this rule is in effect
+        /// Whether or not this rule is in effect.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Unique identifier for this rule
+        /// Unique identifier for this rule.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Transitions to change the storage class of objects
+        /// Transitions to change the storage class of objects.
         /// </summary>
         public readonly ImmutableArray<Outputs.R2BucketLifecycleRuleStorageClassTransition> StorageClassTransitions;
 

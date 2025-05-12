@@ -42,11 +42,11 @@ import (
 type LeakedCredentialCheckRule struct {
 	pulumi.CustomResourceState
 
-	// The ruleset expression to use in matching the password in a request
+	// Defines ehe ruleset expression to use in matching the password in a request.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// The ruleset expression to use in matching the username in a request
+	// Defines the ruleset expression to use in matching the username in a request.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -83,20 +83,20 @@ func GetLeakedCredentialCheckRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LeakedCredentialCheckRule resources.
 type leakedCredentialCheckRuleState struct {
-	// The ruleset expression to use in matching the password in a request
+	// Defines ehe ruleset expression to use in matching the password in a request.
 	Password *string `pulumi:"password"`
-	// The ruleset expression to use in matching the username in a request
+	// Defines the ruleset expression to use in matching the username in a request.
 	Username *string `pulumi:"username"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type LeakedCredentialCheckRuleState struct {
-	// The ruleset expression to use in matching the password in a request
+	// Defines ehe ruleset expression to use in matching the password in a request.
 	Password pulumi.StringPtrInput
-	// The ruleset expression to use in matching the username in a request
+	// Defines the ruleset expression to use in matching the username in a request.
 	Username pulumi.StringPtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -105,21 +105,21 @@ func (LeakedCredentialCheckRuleState) ElementType() reflect.Type {
 }
 
 type leakedCredentialCheckRuleArgs struct {
-	// The ruleset expression to use in matching the password in a request
+	// Defines ehe ruleset expression to use in matching the password in a request.
 	Password *string `pulumi:"password"`
-	// The ruleset expression to use in matching the username in a request
+	// Defines the ruleset expression to use in matching the username in a request.
 	Username *string `pulumi:"username"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a LeakedCredentialCheckRule resource.
 type LeakedCredentialCheckRuleArgs struct {
-	// The ruleset expression to use in matching the password in a request
+	// Defines ehe ruleset expression to use in matching the password in a request.
 	Password pulumi.StringPtrInput
-	// The ruleset expression to use in matching the username in a request
+	// Defines the ruleset expression to use in matching the username in a request.
 	Username pulumi.StringPtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -210,17 +210,17 @@ func (o LeakedCredentialCheckRuleOutput) ToLeakedCredentialCheckRuleOutputWithCo
 	return o
 }
 
-// The ruleset expression to use in matching the password in a request
+// Defines ehe ruleset expression to use in matching the password in a request.
 func (o LeakedCredentialCheckRuleOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LeakedCredentialCheckRule) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The ruleset expression to use in matching the username in a request
+// Defines the ruleset expression to use in matching the username in a request.
 func (o LeakedCredentialCheckRuleOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LeakedCredentialCheckRule) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LeakedCredentialCheckRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LeakedCredentialCheckRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

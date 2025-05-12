@@ -50,7 +50,7 @@ func LookupContentScanningExpressions(ctx *pulumi.Context, args *LookupContentSc
 type LookupContentScanningExpressionsArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupContentScanningExpressionsResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetContentScanningExpressionsResult `pulumi:"results"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupContentScanningExpressionsOutput(ctx *pulumi.Context, args LookupCont
 type LookupContentScanningExpressionsOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupContentScanningExpressionsResultOutput) Results() GetContentScanni
 	return o.ApplyT(func(v LookupContentScanningExpressionsResult) []GetContentScanningExpressionsResult { return v.Results }).(GetContentScanningExpressionsResultArrayOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupContentScanningExpressionsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContentScanningExpressionsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -76,11 +76,11 @@ export class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
      */
     public readonly referenceId!: pulumi.Output<string | undefined>;
     /**
-     * The base url of the tenant, e.g. "https://tenant.okta.com"
+     * The base url of the tenant, e.g. "https://tenant.okta.com".
      */
     public readonly tenantUrl!: pulumi.Output<string>;
     /**
-     * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+     * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      */
     public /*out*/ readonly wellKnownUrl!: pulumi.Output<string>;
 
@@ -157,11 +157,11 @@ export interface ZeroTrustRiskScoringIntegrationState {
      */
     referenceId?: pulumi.Input<string>;
     /**
-     * The base url of the tenant, e.g. "https://tenant.okta.com"
+     * The base url of the tenant, e.g. "https://tenant.okta.com".
      */
     tenantUrl?: pulumi.Input<string>;
     /**
-     * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+     * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      */
     wellKnownUrl?: pulumi.Input<string>;
 }
@@ -185,7 +185,7 @@ export interface ZeroTrustRiskScoringIntegrationArgs {
      */
     referenceId?: pulumi.Input<string>;
     /**
-     * The base url of the tenant, e.g. "https://tenant.okta.com"
+     * The base url of the tenant, e.g. "https://tenant.okta.com".
      */
     tenantUrl: pulumi.Input<string>;
 }

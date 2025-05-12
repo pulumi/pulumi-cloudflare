@@ -58,7 +58,7 @@ class GetUserAgentBlockingRuleResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -90,7 +90,7 @@ def get_user_agent_blocking_rule(ua_rule_id: Optional[builtins.str] = None,
 
 
     :param builtins.str ua_rule_id: The unique identifier of the User Agent Blocking rule.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['uaRuleId'] = ua_rule_id
@@ -118,7 +118,7 @@ def get_user_agent_blocking_rule_output(ua_rule_id: Optional[pulumi.Input[builti
 
 
     :param builtins.str ua_rule_id: The unique identifier of the User Agent Blocking rule.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['uaRuleId'] = ua_rule_id

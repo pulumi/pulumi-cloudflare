@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         /// Location of site in latitude and longitude.
         /// </summary>
         [Output("location")]
-        public Output<Outputs.MagicTransitSiteLocation> Location { get; private set; } = null!;
+        public Output<Outputs.MagicTransitSiteLocation?> Location { get; private set; } = null!;
 
         /// <summary>
         /// The name of the site.

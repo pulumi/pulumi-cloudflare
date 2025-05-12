@@ -100,7 +100,7 @@ type RateLimit struct {
 	Period pulumi.Float64Output `pulumi:"period"`
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold pulumi.Float64Output `pulumi:"threshold"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -163,7 +163,7 @@ type rateLimitState struct {
 	Period *float64 `pulumi:"period"`
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold *float64 `pulumi:"threshold"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -182,7 +182,7 @@ type RateLimitState struct {
 	Period pulumi.Float64PtrInput
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold pulumi.Float64PtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -199,7 +199,7 @@ type rateLimitArgs struct {
 	Period float64 `pulumi:"period"`
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold float64 `pulumi:"threshold"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -213,7 +213,7 @@ type RateLimitArgs struct {
 	Period pulumi.Float64Input
 	// The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period.
 	Threshold pulumi.Float64Input
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -339,7 +339,7 @@ func (o RateLimitOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v *RateLimit) pulumi.Float64Output { return v.Threshold }).(pulumi.Float64Output)
 }
 
-// Identifier
+// Defines an identifier.
 func (o RateLimitOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RateLimit) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

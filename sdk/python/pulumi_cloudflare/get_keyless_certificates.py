@@ -70,7 +70,7 @@ class GetKeylessCertificatesResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -102,7 +102,7 @@ def get_keyless_certificates(max_items: Optional[builtins.int] = None,
 
 
     :param builtins.int max_items: Max items to fetch, default: 1000
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items
@@ -130,7 +130,7 @@ def get_keyless_certificates_output(max_items: Optional[pulumi.Input[Optional[bu
 
 
     :param builtins.int max_items: Max items to fetch, default: 1000
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items

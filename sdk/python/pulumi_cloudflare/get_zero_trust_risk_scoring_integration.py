@@ -123,7 +123,7 @@ class GetZeroTrustRiskScoringIntegrationResult:
     @pulumi.getter(name="tenantUrl")
     def tenant_url(self) -> builtins.str:
         """
-        The base URL for the tenant. E.g. "https://tenant.okta.com"
+        The base URL for the tenant. E.g. "https://tenant.okta.com".
         """
         return pulumi.get(self, "tenant_url")
 
@@ -131,7 +131,7 @@ class GetZeroTrustRiskScoringIntegrationResult:
     @pulumi.getter(name="wellKnownUrl")
     def well_known_url(self) -> builtins.str:
         """
-        The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+        The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
         """
         return pulumi.get(self, "well_known_url")
 

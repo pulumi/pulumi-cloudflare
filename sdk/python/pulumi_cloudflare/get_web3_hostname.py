@@ -68,7 +68,7 @@ class GetWeb3HostnameResult:
     @pulumi.getter
     def description(self) -> builtins.str:
         """
-        An optional description of the hostname.
+        Specify an optional description of the hostname.
         """
         return pulumi.get(self, "description")
 
@@ -76,7 +76,7 @@ class GetWeb3HostnameResult:
     @pulumi.getter
     def dnslink(self) -> builtins.str:
         """
-        DNSLink value used if the target is ipfs.
+        Specify the DNSLink value used if the target is ipfs.
         """
         return pulumi.get(self, "dnslink")
 
@@ -84,7 +84,7 @@ class GetWeb3HostnameResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Specify the identifier of the hostname.
         """
         return pulumi.get(self, "id")
 
@@ -92,7 +92,7 @@ class GetWeb3HostnameResult:
     @pulumi.getter
     def identifier(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Specify the identifier of the hostname.
         """
         return pulumi.get(self, "identifier")
 
@@ -105,7 +105,7 @@ class GetWeb3HostnameResult:
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        The hostname that will point to the target gateway via CNAME.
+        Specify the hostname that points to the target gateway via CNAME.
         """
         return pulumi.get(self, "name")
 
@@ -113,7 +113,7 @@ class GetWeb3HostnameResult:
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        Status of the hostname's activation.
+        Specifies the status of the hostname's activation.
         Available values: "active", "pending", "deleting", "error".
         """
         return pulumi.get(self, "status")
@@ -122,7 +122,7 @@ class GetWeb3HostnameResult:
     @pulumi.getter
     def target(self) -> builtins.str:
         """
-        Target gateway of the hostname.
+        Specify the target gateway of the hostname.
         Available values: "ethereum", "ipfs", "ipfs*universal*path".
         """
         return pulumi.get(self, "target")
@@ -131,7 +131,7 @@ class GetWeb3HostnameResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Specify the identifier of the hostname.
         """
         return pulumi.get(self, "zone_id")
 
@@ -169,8 +169,8 @@ def get_web3_hostname(identifier: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str identifier: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str identifier: Specify the identifier of the hostname.
+    :param builtins.str zone_id: Specify the identifier of the hostname.
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -204,8 +204,8 @@ def get_web3_hostname_output(identifier: Optional[pulumi.Input[Optional[builtins
     ```
 
 
-    :param builtins.str identifier: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str identifier: Specify the identifier of the hostname.
+    :param builtins.str zone_id: Specify the identifier of the hostname.
     """
     __args__ = dict()
     __args__['identifier'] = identifier

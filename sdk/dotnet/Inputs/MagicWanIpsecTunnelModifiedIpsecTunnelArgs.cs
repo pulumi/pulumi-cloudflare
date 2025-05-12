@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgs>? HealthCheck { get; set; }
 
         /// <summary>
-        /// Tunnel identifier tag.
+        /// Identifier
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

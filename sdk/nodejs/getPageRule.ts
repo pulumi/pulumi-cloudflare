@@ -30,11 +30,11 @@ export function getPageRule(args: GetPageRuleArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetPageRuleArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     pageruleId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -48,7 +48,7 @@ export interface GetPageRuleResult {
      */
     readonly createdOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -56,7 +56,7 @@ export interface GetPageRuleResult {
      */
     readonly modifiedOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly pageruleId: string;
     /**
@@ -73,7 +73,7 @@ export interface GetPageRuleResult {
      */
     readonly status: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -103,11 +103,11 @@ export function getPageRuleOutput(args: GetPageRuleOutputArgs, opts?: pulumi.Inv
  */
 export interface GetPageRuleOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     pageruleId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

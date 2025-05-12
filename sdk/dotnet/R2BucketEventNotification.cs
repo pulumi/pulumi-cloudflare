@@ -48,13 +48,13 @@ namespace Pulumi.Cloudflare
     public partial class R2BucketEventNotification : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Jurisdiction { get; private set; } = null!;
 
         /// <summary>
-        /// Queue ID
+        /// Queue ID.
         /// </summary>
         [Output("queueId")]
         public Output<string?> QueueId { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.R2BucketEventNotificationQueue>> Queues { get; private set; } = null!;
 
         /// <summary>
-        /// Array of rules to drive notifications
+        /// Array of rules to drive notifications.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.R2BucketEventNotificationRule>> Rules { get; private set; } = null!;
@@ -130,13 +130,13 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketEventNotificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// Queue ID
+        /// Queue ID.
         /// </summary>
         [Input("queueId")]
         public Input<string>? QueueId { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.R2BucketEventNotificationRuleArgs>? _rules;
 
         /// <summary>
-        /// Array of rules to drive notifications
+        /// Array of rules to drive notifications.
         /// </summary>
         public InputList<Inputs.R2BucketEventNotificationRuleArgs> Rules
         {
@@ -174,13 +174,13 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketEventNotificationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// Queue ID
+        /// Queue ID.
         /// </summary>
         [Input("queueId")]
         public Input<string>? QueueId { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.R2BucketEventNotificationRuleGetArgs>? _rules;
 
         /// <summary>
-        /// Array of rules to drive notifications
+        /// Array of rules to drive notifications.
         /// </summary>
         public InputList<Inputs.R2BucketEventNotificationRuleGetArgs> Rules
         {

@@ -15,17 +15,17 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// ID of a Cloudflare API token.
-        /// This is the value labelled "Access Key ID" when creating an API
+        /// This is the value labelled "Access Key ID" when creating an API.
         /// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
         /// </summary>
         public readonly string? AccessKeyId;
         /// <summary>
         /// Available values: "r2".
         /// </summary>
-        public readonly string? Provider;
+        public readonly string? CloudProvider;
         /// <summary>
         /// Value of a Cloudflare API token.
-        /// This is the value labelled "Secret Access Key" when creating an API
+        /// This is the value labelled "Secret Access Key" when creating an API.
         /// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
         /// 
         /// Sippy will use this token when writing objects to R2, so it is
@@ -37,12 +37,12 @@ namespace Pulumi.Cloudflare.Outputs
         private R2BucketSippyDestination(
             string? accessKeyId,
 
-            string? provider,
+            string? cloudProvider,
 
             string? secretAccessKey)
         {
             AccessKeyId = accessKeyId;
-            Provider = provider;
+            CloudProvider = cloudProvider;
             SecretAccessKey = secretAccessKey;
         }
     }

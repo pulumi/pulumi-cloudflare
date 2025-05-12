@@ -22,11 +22,11 @@ type ZeroTrustOrganization struct {
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringPtrOutput `pulumi:"authDomain"`
 	// When set to `true`, users skip the identity provider selection step during login.
-	AutoRedirectToIdentity pulumi.BoolOutput                      `pulumi:"autoRedirectToIdentity"`
-	CreatedAt              pulumi.StringOutput                    `pulumi:"createdAt"`
-	CustomPages            ZeroTrustOrganizationCustomPagesOutput `pulumi:"customPages"`
-	IsUiReadOnly           pulumi.BoolPtrOutput                   `pulumi:"isUiReadOnly"`
-	LoginDesign            ZeroTrustOrganizationLoginDesignOutput `pulumi:"loginDesign"`
+	AutoRedirectToIdentity pulumi.BoolOutput                         `pulumi:"autoRedirectToIdentity"`
+	CreatedAt              pulumi.StringOutput                       `pulumi:"createdAt"`
+	CustomPages            ZeroTrustOrganizationCustomPagesPtrOutput `pulumi:"customPages"`
+	IsUiReadOnly           pulumi.BoolPtrOutput                      `pulumi:"isUiReadOnly"`
+	LoginDesign            ZeroTrustOrganizationLoginDesignPtrOutput `pulumi:"loginDesign"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// The amount of time that tokens issued for applications will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
@@ -301,16 +301,16 @@ func (o ZeroTrustOrganizationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustOrganization) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-func (o ZeroTrustOrganizationOutput) CustomPages() ZeroTrustOrganizationCustomPagesOutput {
-	return o.ApplyT(func(v *ZeroTrustOrganization) ZeroTrustOrganizationCustomPagesOutput { return v.CustomPages }).(ZeroTrustOrganizationCustomPagesOutput)
+func (o ZeroTrustOrganizationOutput) CustomPages() ZeroTrustOrganizationCustomPagesPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustOrganization) ZeroTrustOrganizationCustomPagesPtrOutput { return v.CustomPages }).(ZeroTrustOrganizationCustomPagesPtrOutput)
 }
 
 func (o ZeroTrustOrganizationOutput) IsUiReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustOrganization) pulumi.BoolPtrOutput { return v.IsUiReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-func (o ZeroTrustOrganizationOutput) LoginDesign() ZeroTrustOrganizationLoginDesignOutput {
-	return o.ApplyT(func(v *ZeroTrustOrganization) ZeroTrustOrganizationLoginDesignOutput { return v.LoginDesign }).(ZeroTrustOrganizationLoginDesignOutput)
+func (o ZeroTrustOrganizationOutput) LoginDesign() ZeroTrustOrganizationLoginDesignPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustOrganization) ZeroTrustOrganizationLoginDesignPtrOutput { return v.LoginDesign }).(ZeroTrustOrganizationLoginDesignPtrOutput)
 }
 
 // The name of your Zero Trust organization.

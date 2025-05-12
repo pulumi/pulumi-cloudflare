@@ -29,11 +29,11 @@ export interface GetApiShieldOperationArgs {
     feature?: string[];
     filter?: inputs.GetApiShieldOperationFilter;
     /**
-     * UUID
+     * UUID.
      */
     operationId?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetApiShieldOperationResult {
      */
     readonly host: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly id: string;
     readonly lastUpdated: string;
@@ -67,11 +67,11 @@ export interface GetApiShieldOperationResult {
      */
     readonly method: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly operationId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -98,11 +98,11 @@ export interface GetApiShieldOperationOutputArgs {
     feature?: pulumi.Input<pulumi.Input<string>[]>;
     filter?: pulumi.Input<inputs.GetApiShieldOperationFilterArgs>;
     /**
-     * UUID
+     * UUID.
      */
     operationId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

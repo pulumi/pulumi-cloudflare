@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetCustomSslsResultGeoRestrictionsResult GeoRestrictions;
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string UploadedOn;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

@@ -28,7 +28,7 @@ export function getAuthenticatedOriginPullsSettings(args: GetAuthenticatedOrigin
  */
 export interface GetAuthenticatedOriginPullsSettingsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -46,7 +46,7 @@ export interface GetAuthenticatedOriginPullsSettingsResult {
      */
     readonly id: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -74,7 +74,7 @@ export function getAuthenticatedOriginPullsSettingsOutput(args: GetAuthenticated
  */
 export interface GetAuthenticatedOriginPullsSettingsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

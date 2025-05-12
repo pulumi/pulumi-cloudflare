@@ -50,7 +50,7 @@ namespace Pulumi.Cloudflare
         /// Components of a CAA record.
         /// </summary>
         [Output("data")]
-        public Output<Outputs.RecordData> Data { get; private set; } = null!;
+        public Output<Outputs.RecordData?> Data { get; private set; } = null!;
 
         /// <summary>
         /// Extra Cloudflare-specific information about the record.

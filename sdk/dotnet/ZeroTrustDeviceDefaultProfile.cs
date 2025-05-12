@@ -46,6 +46,8 @@ namespace Pulumi.Cloudflare
     ///                 Description = "Include testing domains in the tunnel",
     ///             },
     ///         },
+    ///         LanAllowMinutes = 30,
+    ///         LanAllowSubnetSize = 24,
     ///         RegisterInterfaceIpWithDns = true,
     ///         ServiceModeV2 = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args
     ///         {
@@ -145,13 +147,25 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ZeroTrustDeviceDefaultProfileInclude>> Includes { get; private set; } = null!;
 
         /// <summary>
+        /// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+        /// </summary>
+        [Output("lanAllowMinutes")]
+        public Output<double?> LanAllowMinutes { get; private set; } = null!;
+
+        /// <summary>
+        /// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+        /// </summary>
+        [Output("lanAllowSubnetSize")]
+        public Output<double?> LanAllowSubnetSize { get; private set; } = null!;
+
+        /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         [Output("registerInterfaceIpWithDns")]
         public Output<bool?> RegisterInterfaceIpWithDns { get; private set; } = null!;
 
         [Output("serviceModeV2")]
-        public Output<Outputs.ZeroTrustDeviceDefaultProfileServiceModeV2> ServiceModeV2 { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustDeviceDefaultProfileServiceModeV2?> ServiceModeV2 { get; private set; } = null!;
 
         /// <summary>
         /// The URL to launch when the Send Feedback button is clicked.
@@ -292,6 +306,18 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+        /// </summary>
+        [Input("lanAllowMinutes")]
+        public Input<double>? LanAllowMinutes { get; set; }
+
+        /// <summary>
+        /// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+        /// </summary>
+        [Input("lanAllowSubnetSize")]
+        public Input<double>? LanAllowSubnetSize { get; set; }
+
+        /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         [Input("registerInterfaceIpWithDns")]
@@ -417,6 +443,18 @@ namespace Pulumi.Cloudflare
             get => _includes ?? (_includes = new InputList<Inputs.ZeroTrustDeviceDefaultProfileIncludeGetArgs>());
             set => _includes = value;
         }
+
+        /// <summary>
+        /// The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+        /// </summary>
+        [Input("lanAllowMinutes")]
+        public Input<double>? LanAllowMinutes { get; set; }
+
+        /// <summary>
+        /// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+        /// </summary>
+        [Input("lanAllowSubnetSize")]
+        public Input<double>? LanAllowSubnetSize { get; set; }
 
         /// <summary>
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.

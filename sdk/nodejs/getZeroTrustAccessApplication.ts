@@ -63,6 +63,10 @@ export interface GetZeroTrustAccessApplicationResult {
      */
     readonly allowAuthenticateViaWarp: boolean;
     /**
+     * Enables loading application content in an iFrame.
+     */
+    readonly allowIframe: boolean;
+    /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      */
     readonly allowedIdps: string[];

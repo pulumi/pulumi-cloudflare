@@ -57,7 +57,7 @@ type ZeroTrustGatewayLogging struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
-	RedactPii pulumi.BoolPtrOutput `pulumi:"redactPii"`
+	RedactPii pulumi.BoolOutput `pulumi:"redactPii"`
 	// Logging settings by rule type.
 	SettingsByRuleType ZeroTrustGatewayLoggingSettingsByRuleTypeOutput `pulumi:"settingsByRuleType"`
 }
@@ -223,8 +223,8 @@ func (o ZeroTrustGatewayLoggingOutput) AccountId() pulumi.StringOutput {
 }
 
 // Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
-func (o ZeroTrustGatewayLoggingOutput) RedactPii() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayLogging) pulumi.BoolPtrOutput { return v.RedactPii }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustGatewayLoggingOutput) RedactPii() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayLogging) pulumi.BoolOutput { return v.RedactPii }).(pulumi.BoolOutput)
 }
 
 // Logging settings by rule type.

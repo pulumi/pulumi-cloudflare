@@ -42,15 +42,15 @@ import (
 type R2ManagedDomain struct {
 	pulumi.CustomResourceState
 
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Bucket ID
+	// Bucket ID.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
-	// Domain name of the bucket's r2.dev domain
+	// Domain name of the bucket's r2.dev domain.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// Whether to enable public bucket access at the r2.dev domain
+	// Whether to enable public bucket access at the r2.dev domain.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
@@ -95,30 +95,30 @@ func GetR2ManagedDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2ManagedDomain resources.
 type r2managedDomainState struct {
-	// Account ID
+	// Account ID.
 	AccountId *string `pulumi:"accountId"`
-	// Bucket ID
+	// Bucket ID.
 	BucketId *string `pulumi:"bucketId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
-	// Domain name of the bucket's r2.dev domain
+	// Domain name of the bucket's r2.dev domain.
 	Domain *string `pulumi:"domain"`
-	// Whether to enable public bucket access at the r2.dev domain
+	// Whether to enable public bucket access at the r2.dev domain.
 	Enabled *bool `pulumi:"enabled"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
 }
 
 type R2ManagedDomainState struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringPtrInput
-	// Bucket ID
+	// Bucket ID.
 	BucketId pulumi.StringPtrInput
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
-	// Domain name of the bucket's r2.dev domain
+	// Domain name of the bucket's r2.dev domain.
 	Domain pulumi.StringPtrInput
-	// Whether to enable public bucket access at the r2.dev domain
+	// Whether to enable public bucket access at the r2.dev domain.
 	Enabled pulumi.BoolPtrInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
@@ -129,11 +129,11 @@ func (R2ManagedDomainState) ElementType() reflect.Type {
 }
 
 type r2managedDomainArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// Whether to enable public bucket access at the r2.dev domain
+	// Whether to enable public bucket access at the r2.dev domain.
 	Enabled bool `pulumi:"enabled"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
@@ -141,11 +141,11 @@ type r2managedDomainArgs struct {
 
 // The set of arguments for constructing a R2ManagedDomain resource.
 type R2ManagedDomainArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput
-	// Whether to enable public bucket access at the r2.dev domain
+	// Whether to enable public bucket access at the r2.dev domain.
 	Enabled pulumi.BoolInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
@@ -238,27 +238,27 @@ func (o R2ManagedDomainOutput) ToR2ManagedDomainOutputWithContext(ctx context.Co
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o R2ManagedDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2ManagedDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Bucket ID
+// Bucket ID.
 func (o R2ManagedDomainOutput) BucketId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2ManagedDomain) pulumi.StringOutput { return v.BucketId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o R2ManagedDomainOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2ManagedDomain) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Domain name of the bucket's r2.dev domain
+// Domain name of the bucket's r2.dev domain.
 func (o R2ManagedDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2ManagedDomain) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Whether to enable public bucket access at the r2.dev domain
+// Whether to enable public bucket access at the r2.dev domain.
 func (o R2ManagedDomainOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *R2ManagedDomain) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }

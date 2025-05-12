@@ -13,14 +13,14 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class R2CustomDomainStatusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Ownership status of the domain
+        /// Ownership status of the domain.
         /// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
         /// </summary>
         [Input("ownership")]
         public Input<string>? Ownership { get; set; }
 
         /// <summary>
-        /// SSL certificate status
+        /// SSL certificate status.
         /// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
         /// </summary>
         [Input("ssl")]

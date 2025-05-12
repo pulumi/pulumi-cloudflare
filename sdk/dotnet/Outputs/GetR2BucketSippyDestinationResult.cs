@@ -15,12 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// ID of the Cloudflare API token used when writing objects to this
-        /// bucket
+        /// bucket.
         /// </summary>
         public readonly string AccessKeyId;
         public readonly string Account;
         /// <summary>
-        /// Name of the bucket on the provider
+        /// Name of the bucket on the provider.
         /// </summary>
         public readonly string Bucket;
         /// <summary>

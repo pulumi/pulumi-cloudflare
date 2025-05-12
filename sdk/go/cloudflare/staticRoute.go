@@ -14,28 +14,10 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
+// ## Import
 //
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanStaticRoute(ctx, "example_magic_wan_static_route", &cloudflare.MagicWanStaticRouteArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// ```sh
+// $ pulumi import cloudflare:index/staticRoute:StaticRoute example '<account_id>/<route_id>'
 // ```
 //
 // Deprecated: cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute
@@ -44,22 +26,23 @@ type StaticRoute struct {
 
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// When the route was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// An optional human provided description of the static route.
-	Description   pulumi.StringPtrOutput         `pulumi:"description"`
-	Modified      pulumi.BoolOutput              `pulumi:"modified"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Modified    pulumi.BoolOutput      `pulumi:"modified"`
+	// When the route was last modified.
+	ModifiedOn    pulumi.StringOutput            `pulumi:"modifiedOn"`
 	ModifiedRoute StaticRouteModifiedRouteOutput `pulumi:"modifiedRoute"`
 	// The next-hop IP Address for the static route.
-	Nexthop pulumi.StringPtrOutput `pulumi:"nexthop"`
+	Nexthop pulumi.StringOutput `pulumi:"nexthop"`
 	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix pulumi.StringPtrOutput `pulumi:"prefix"`
+	Prefix pulumi.StringOutput `pulumi:"prefix"`
 	// Priority of the static route.
-	Priority pulumi.IntPtrOutput    `pulumi:"priority"`
+	Priority pulumi.IntOutput       `pulumi:"priority"`
 	Route    StaticRouteRouteOutput `pulumi:"route"`
-	// Identifier
-	RouteId pulumi.StringPtrOutput      `pulumi:"routeId"`
-	Routes  StaticRouteRouteArrayOutput `pulumi:"routes"`
 	// Used only for ECMP routes.
-	Scope StaticRouteScopeOutput `pulumi:"scope"`
+	Scope StaticRouteScopePtrOutput `pulumi:"scope"`
 	// Optional weight of the ECMP scope - if provided.
 	Weight pulumi.IntPtrOutput `pulumi:"weight"`
 }
@@ -73,6 +56,15 @@ func NewStaticRoute(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Nexthop == nil {
+		return nil, errors.New("invalid value for required argument 'Nexthop'")
+	}
+	if args.Prefix == nil {
+		return nil, errors.New("invalid value for required argument 'Prefix'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -105,9 +97,13 @@ func GetStaticRoute(ctx *pulumi.Context,
 type staticRouteState struct {
 	// Identifier
 	AccountId *string `pulumi:"accountId"`
+	// When the route was created.
+	CreatedOn *string `pulumi:"createdOn"`
 	// An optional human provided description of the static route.
-	Description   *string                   `pulumi:"description"`
-	Modified      *bool                     `pulumi:"modified"`
+	Description *string `pulumi:"description"`
+	Modified    *bool   `pulumi:"modified"`
+	// When the route was last modified.
+	ModifiedOn    *string                   `pulumi:"modifiedOn"`
 	ModifiedRoute *StaticRouteModifiedRoute `pulumi:"modifiedRoute"`
 	// The next-hop IP Address for the static route.
 	Nexthop *string `pulumi:"nexthop"`
@@ -116,9 +112,6 @@ type staticRouteState struct {
 	// Priority of the static route.
 	Priority *int              `pulumi:"priority"`
 	Route    *StaticRouteRoute `pulumi:"route"`
-	// Identifier
-	RouteId *string            `pulumi:"routeId"`
-	Routes  []StaticRouteRoute `pulumi:"routes"`
 	// Used only for ECMP routes.
 	Scope *StaticRouteScope `pulumi:"scope"`
 	// Optional weight of the ECMP scope - if provided.
@@ -128,9 +121,13 @@ type staticRouteState struct {
 type StaticRouteState struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput
+	// When the route was created.
+	CreatedOn pulumi.StringPtrInput
 	// An optional human provided description of the static route.
-	Description   pulumi.StringPtrInput
-	Modified      pulumi.BoolPtrInput
+	Description pulumi.StringPtrInput
+	Modified    pulumi.BoolPtrInput
+	// When the route was last modified.
+	ModifiedOn    pulumi.StringPtrInput
 	ModifiedRoute StaticRouteModifiedRoutePtrInput
 	// The next-hop IP Address for the static route.
 	Nexthop pulumi.StringPtrInput
@@ -139,9 +136,6 @@ type StaticRouteState struct {
 	// Priority of the static route.
 	Priority pulumi.IntPtrInput
 	Route    StaticRouteRoutePtrInput
-	// Identifier
-	RouteId pulumi.StringPtrInput
-	Routes  StaticRouteRouteArrayInput
 	// Used only for ECMP routes.
 	Scope StaticRouteScopePtrInput
 	// Optional weight of the ECMP scope - if provided.
@@ -158,15 +152,12 @@ type staticRouteArgs struct {
 	// An optional human provided description of the static route.
 	Description *string `pulumi:"description"`
 	// The next-hop IP Address for the static route.
-	Nexthop *string `pulumi:"nexthop"`
+	Nexthop string `pulumi:"nexthop"`
 	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix *string `pulumi:"prefix"`
+	Prefix string `pulumi:"prefix"`
 	// Priority of the static route.
-	Priority *int              `pulumi:"priority"`
+	Priority int               `pulumi:"priority"`
 	Route    *StaticRouteRoute `pulumi:"route"`
-	// Identifier
-	RouteId *string            `pulumi:"routeId"`
-	Routes  []StaticRouteRoute `pulumi:"routes"`
 	// Used only for ECMP routes.
 	Scope *StaticRouteScope `pulumi:"scope"`
 	// Optional weight of the ECMP scope - if provided.
@@ -180,15 +171,12 @@ type StaticRouteArgs struct {
 	// An optional human provided description of the static route.
 	Description pulumi.StringPtrInput
 	// The next-hop IP Address for the static route.
-	Nexthop pulumi.StringPtrInput
+	Nexthop pulumi.StringInput
 	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix pulumi.StringPtrInput
+	Prefix pulumi.StringInput
 	// Priority of the static route.
-	Priority pulumi.IntPtrInput
+	Priority pulumi.IntInput
 	Route    StaticRouteRoutePtrInput
-	// Identifier
-	RouteId pulumi.StringPtrInput
-	Routes  StaticRouteRouteArrayInput
 	// Used only for ECMP routes.
 	Scope StaticRouteScopePtrInput
 	// Optional weight of the ECMP scope - if provided.
@@ -287,6 +275,11 @@ func (o StaticRouteOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// When the route was created.
+func (o StaticRouteOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
 // An optional human provided description of the static route.
 func (o StaticRouteOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -296,41 +289,37 @@ func (o StaticRouteOutput) Modified() pulumi.BoolOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.BoolOutput { return v.Modified }).(pulumi.BoolOutput)
 }
 
+// When the route was last modified.
+func (o StaticRouteOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
 func (o StaticRouteOutput) ModifiedRoute() StaticRouteModifiedRouteOutput {
 	return o.ApplyT(func(v *StaticRoute) StaticRouteModifiedRouteOutput { return v.ModifiedRoute }).(StaticRouteModifiedRouteOutput)
 }
 
 // The next-hop IP Address for the static route.
-func (o StaticRouteOutput) Nexthop() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StaticRoute) pulumi.StringPtrOutput { return v.Nexthop }).(pulumi.StringPtrOutput)
+func (o StaticRouteOutput) Nexthop() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.Nexthop }).(pulumi.StringOutput)
 }
 
 // IP Prefix in Classless Inter-Domain Routing format.
-func (o StaticRouteOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StaticRoute) pulumi.StringPtrOutput { return v.Prefix }).(pulumi.StringPtrOutput)
+func (o StaticRouteOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.Prefix }).(pulumi.StringOutput)
 }
 
 // Priority of the static route.
-func (o StaticRouteOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *StaticRoute) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+func (o StaticRouteOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
 func (o StaticRouteOutput) Route() StaticRouteRouteOutput {
 	return o.ApplyT(func(v *StaticRoute) StaticRouteRouteOutput { return v.Route }).(StaticRouteRouteOutput)
 }
 
-// Identifier
-func (o StaticRouteOutput) RouteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StaticRoute) pulumi.StringPtrOutput { return v.RouteId }).(pulumi.StringPtrOutput)
-}
-
-func (o StaticRouteOutput) Routes() StaticRouteRouteArrayOutput {
-	return o.ApplyT(func(v *StaticRoute) StaticRouteRouteArrayOutput { return v.Routes }).(StaticRouteRouteArrayOutput)
-}
-
 // Used only for ECMP routes.
-func (o StaticRouteOutput) Scope() StaticRouteScopeOutput {
-	return o.ApplyT(func(v *StaticRoute) StaticRouteScopeOutput { return v.Scope }).(StaticRouteScopeOutput)
+func (o StaticRouteOutput) Scope() StaticRouteScopePtrOutput {
+	return o.ApplyT(func(v *StaticRoute) StaticRouteScopePtrOutput { return v.Scope }).(StaticRouteScopePtrOutput)
 }
 
 // Optional weight of the ECMP scope - if provided.

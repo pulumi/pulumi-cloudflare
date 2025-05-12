@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class R2BucketLifecycleRuleConditionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        /// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         /// </summary>
         [Input("prefix", required: true)]
         public Input<string> Prefix { get; set; } = null!;

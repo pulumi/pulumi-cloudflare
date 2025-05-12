@@ -2613,11 +2613,11 @@ export interface AccessRuleScope {
      */
     email?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     id?: pulumi.Input<string>;
     /**
-     * The scope of the rule.
+     * Defines the scope of the rule.
      * Available values: "user", "organization".
      */
     type?: pulumi.Input<string>;
@@ -2921,12 +2921,24 @@ export interface ApiShieldAuthIdCharacteristic {
 
 export interface ApiShieldError {
     code?: pulumi.Input<number>;
+    documentationUrl?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
+    source?: pulumi.Input<inputs.ApiShieldErrorSource>;
+}
+
+export interface ApiShieldErrorSource {
+    pointer?: pulumi.Input<string>;
 }
 
 export interface ApiShieldMessage {
     code?: pulumi.Input<number>;
+    documentationUrl?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
+    source?: pulumi.Input<inputs.ApiShieldMessageSource>;
+}
+
+export interface ApiShieldMessageSource {
+    pointer?: pulumi.Input<string>;
 }
 
 export interface ApiShieldOperationFeatures {
@@ -3047,7 +3059,7 @@ export interface ApiShieldOperationFeaturesSchemaInfo {
 export interface ApiShieldOperationFeaturesSchemaInfoActiveSchema {
     createdAt?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     id?: pulumi.Input<string>;
     /**
@@ -3108,7 +3120,7 @@ export interface ApiShieldSchemaSchema {
      */
     name?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     schemaId?: pulumi.Input<string>;
     /**
@@ -3247,19 +3259,7 @@ export interface BotManagementStaleZoneConfiguration {
     suppressSessionScore?: pulumi.Input<boolean>;
 }
 
-export interface CloudConnectorRulesParameters {
-    /**
-     * Host to perform Cloud Connection to
-     */
-    host?: pulumi.Input<string>;
-}
-
 export interface CloudConnectorRulesRule {
-    /**
-     * Cloud Provider type
-     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-     */
-    cloudProvider?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     expression?: pulumi.Input<string>;
@@ -3268,6 +3268,11 @@ export interface CloudConnectorRulesRule {
      * Parameters of Cloud Connector Rule
      */
     parameters?: pulumi.Input<inputs.CloudConnectorRulesRuleParameters>;
+    /**
+     * Cloud Provider type
+     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+     */
+    provider?: pulumi.Input<string>;
 }
 
 export interface CloudConnectorRulesRuleParameters {
@@ -3279,7 +3284,7 @@ export interface CloudConnectorRulesRuleParameters {
 
 export interface ContentScanningExpressionBody {
     /**
-     * Ruleset expression to use in matching content objects
+     * Defines the ruleset expression to use in matching content objects.
      */
     payload: pulumi.Input<string>;
 }
@@ -3458,34 +3463,12 @@ export interface CustomSslKeylessServerTunnel {
     vnetId?: pulumi.Input<string>;
 }
 
-export interface DeviceDexTestData {
+export interface D1DatabaseReadReplication {
     /**
-     * The desired endpoint to test.
+     * The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+     * Available values: "auto", "disabled".
      */
-    host?: pulumi.Input<string>;
-    /**
-     * The type of test.
-     */
-    kind?: pulumi.Input<string>;
-    /**
-     * The HTTP request method type.
-     */
-    method?: pulumi.Input<string>;
-}
-
-export interface DeviceDexTestTargetPolicy {
-    /**
-     * Whether the profile is the account default
-     */
-    default?: pulumi.Input<boolean>;
-    /**
-     * The id of the device settings profile
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The name of the device settings profile
-     */
-    name?: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
 }
 
 export interface DeviceManagedNetworksConfig {
@@ -3717,7 +3700,7 @@ export interface DevicePostureRuleInputLocations {
 
 export interface DevicePostureRuleMatch {
     /**
-     * Available values: "windows", "mac", "linux", "android", "ios".
+     * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform?: pulumi.Input<string>;
 }
@@ -3769,7 +3752,7 @@ export interface DlpCustomProfileProfile {
      */
     contextAwareness?: pulumi.Input<inputs.DlpCustomProfileProfileContextAwareness>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: pulumi.Input<string>;
     entries: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileProfileEntry>[]>;
@@ -4051,12 +4034,24 @@ export interface EmailRoutingCatchAllMatcher {
 
 export interface EmailRoutingDnsError {
     code?: pulumi.Input<number>;
+    documentationUrl?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
+    source?: pulumi.Input<inputs.EmailRoutingDnsErrorSource>;
+}
+
+export interface EmailRoutingDnsErrorSource {
+    pointer?: pulumi.Input<string>;
 }
 
 export interface EmailRoutingDnsMessage {
     code?: pulumi.Input<number>;
+    documentationUrl?: pulumi.Input<string>;
     message?: pulumi.Input<string>;
+    source?: pulumi.Input<inputs.EmailRoutingDnsMessageSource>;
+}
+
+export interface EmailRoutingDnsMessageSource {
+    pointer?: pulumi.Input<string>;
 }
 
 export interface EmailRoutingDnsResult {
@@ -4119,19 +4114,19 @@ export interface EmailRoutingDnsResultErrorMissing {
 
 export interface EmailRoutingDnsResultInfo {
     /**
-     * Total number of results for the requested service
+     * Total number of results for the requested service.
      */
     count?: pulumi.Input<number>;
     /**
-     * Current page within paginated list of results
+     * Current page within paginated list of results.
      */
     page?: pulumi.Input<number>;
     /**
-     * Number of results per page of results
+     * Number of results per page of results.
      */
     perPage?: pulumi.Input<number>;
     /**
-     * Total results available without any search parameters
+     * Total results available without any search parameters.
      */
     totalCount?: pulumi.Input<number>;
 }
@@ -4166,7 +4161,7 @@ export interface EmailRoutingRuleAction {
      * Available values: "drop", "forward", "worker".
      */
     type: pulumi.Input<string>;
-    values: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface EmailRoutingRuleMatcher {
@@ -4174,7 +4169,7 @@ export interface EmailRoutingRuleMatcher {
      * Field for type matcher.
      * Available values: "to".
      */
-    field: pulumi.Input<string>;
+    field?: pulumi.Input<string>;
     /**
      * Type of matcher.
      * Available values: "literal".
@@ -4183,7 +4178,7 @@ export interface EmailRoutingRuleMatcher {
     /**
      * Value for matcher.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface EmailSecurityTrustedDomainsBody {
@@ -4258,12 +4253,12 @@ export interface FirewallRuleFilter {
 export interface GetAccessRuleFilter {
     configuration?: inputs.GetAccessRuleFilterConfiguration;
     /**
-     * The direction used to sort returned rules.
+     * Defines the direction used to sort returned rules.
      * Available values: "asc", "desc".
      */
     direction?: string;
     /**
-     * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: "any", "all".
      */
     match?: string;
@@ -4273,12 +4268,12 @@ export interface GetAccessRuleFilter {
      */
     mode?: string;
     /**
-     * The string to search for in the notes of existing IP Access rules.
+     * Defines the string to search for in the notes of existing IP Access rules.
      * Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
      */
     notes?: string;
     /**
-     * The field used to sort returned rules.
+     * Defines the field used to sort returned rules.
      * Available values: "configuration.target", "configuration.value", "mode".
      */
     order?: string;
@@ -4287,12 +4282,12 @@ export interface GetAccessRuleFilter {
 export interface GetAccessRuleFilterArgs {
     configuration?: pulumi.Input<inputs.GetAccessRuleFilterConfigurationArgs>;
     /**
-     * The direction used to sort returned rules.
+     * Defines the direction used to sort returned rules.
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
-     * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: "any", "all".
      */
     match?: pulumi.Input<string>;
@@ -4302,12 +4297,12 @@ export interface GetAccessRuleFilterArgs {
      */
     mode?: pulumi.Input<string>;
     /**
-     * The string to search for in the notes of existing IP Access rules.
+     * Defines the string to search for in the notes of existing IP Access rules.
      * Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
      */
     notes?: pulumi.Input<string>;
     /**
-     * The field used to sort returned rules.
+     * Defines the field used to sort returned rules.
      * Available values: "configuration.target", "configuration.value", "mode".
      */
     order?: pulumi.Input<string>;
@@ -4315,12 +4310,12 @@ export interface GetAccessRuleFilterArgs {
 
 export interface GetAccessRuleFilterConfiguration {
     /**
-     * The target to search in existing rules.
+     * Defines the target to search in existing rules.
      * Available values: "ip", "ipRange", "asn", "country".
      */
     target?: string;
     /**
-     * The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
      * Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
      */
     value?: string;
@@ -4328,12 +4323,12 @@ export interface GetAccessRuleFilterConfiguration {
 
 export interface GetAccessRuleFilterConfigurationArgs {
     /**
-     * The target to search in existing rules.
+     * Defines the target to search in existing rules.
      * Available values: "ip", "ipRange", "asn", "country".
      */
     target?: pulumi.Input<string>;
     /**
-     * The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
      * Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
      */
     value?: pulumi.Input<string>;
@@ -4341,12 +4336,12 @@ export interface GetAccessRuleFilterConfigurationArgs {
 
 export interface GetAccessRulesConfiguration {
     /**
-     * The target to search in existing rules.
+     * Defines the target to search in existing rules.
      * Available values: "ip", "ipRange", "asn", "country".
      */
     target?: string;
     /**
-     * The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
      * Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
      */
     value?: string;
@@ -4354,12 +4349,12 @@ export interface GetAccessRulesConfiguration {
 
 export interface GetAccessRulesConfigurationArgs {
     /**
-     * The target to search in existing rules.
+     * Defines the target to search in existing rules.
      * Available values: "ip", "ipRange", "asn", "country".
      */
     target?: pulumi.Input<string>;
     /**
-     * The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
      * Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
      */
     value?: pulumi.Input<string>;
@@ -5439,14 +5434,30 @@ export interface GetMagicTransitSiteFilterArgs {
 
 export interface GetOriginCaCertificateFilter {
     /**
-     * Identifier
+     * Limit to the number of records returned.
+     */
+    limit?: number;
+    /**
+     * Offset the results
+     */
+    offset?: number;
+    /**
+     * Identifier.
      */
     zoneId: string;
 }
 
 export interface GetOriginCaCertificateFilterArgs {
     /**
-     * Identifier
+     * Limit to the number of records returned.
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Offset the results
+     */
+    offset?: pulumi.Input<number>;
+    /**
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }
@@ -6045,7 +6056,7 @@ export interface GetZoneFilter {
     name?: string;
     /**
      * Field to order zones by.
-     * Available values: "name", "status", "account.id", "account.name".
+     * Available values: "name", "status", "account.id", "account.name", "plan.id".
      */
     order?: string;
     /**
@@ -6081,7 +6092,7 @@ export interface GetZoneFilterArgs {
     name?: pulumi.Input<string>;
     /**
      * Field to order zones by.
-     * Available values: "name", "status", "account.id", "account.name".
+     * Available values: "name", "status", "account.id", "account.name", "plan.id".
      */
     order?: pulumi.Input<string>;
     /**
@@ -6308,6 +6319,21 @@ export interface HyperdriveConfigCaching {
     staleWhileRevalidate?: pulumi.Input<number>;
 }
 
+export interface HyperdriveConfigMtls {
+    /**
+     * CA certificate ID
+     */
+    caCertificateId?: pulumi.Input<string>;
+    /**
+     * mTLS certificate ID
+     */
+    mtlsCertificateId?: pulumi.Input<string>;
+    /**
+     * SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+     */
+    sslmode?: pulumi.Input<string>;
+}
+
 export interface HyperdriveConfigOrigin {
     /**
      * The Client ID of the Access token to use when connecting to the origin database.
@@ -6335,7 +6361,7 @@ export interface HyperdriveConfigOrigin {
     port?: pulumi.Input<number>;
     /**
      * Specifies the URL scheme used to connect to your origin database.
-     * Available values: "postgres", "postgresql".
+     * Available values: "postgres", "postgresql", "mysql".
      */
     scheme: pulumi.Input<string>;
     /**
@@ -6519,6 +6545,10 @@ export interface LoadBalancerPoolOrigin {
      * A human-identifiable name for the origin.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     */
+    port?: pulumi.Input<number>;
     /**
      * The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      */
@@ -6980,7 +7010,7 @@ export interface MagicWanGreTunnelGreTunnel {
     description?: pulumi.Input<string>;
     healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelGreTunnelHealthCheck>;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id?: pulumi.Input<string>;
     /**
@@ -7098,7 +7128,7 @@ export interface MagicWanGreTunnelModifiedGreTunnel {
     description?: pulumi.Input<string>;
     healthCheck?: pulumi.Input<inputs.MagicWanGreTunnelModifiedGreTunnelHealthCheck>;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id?: pulumi.Input<string>;
     /**
@@ -7220,7 +7250,7 @@ export interface MagicWanIpsecTunnelIpsecTunnel {
     description?: pulumi.Input<string>;
     healthCheck?: pulumi.Input<inputs.MagicWanIpsecTunnelIpsecTunnelHealthCheck>;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id?: pulumi.Input<string>;
     /**
@@ -7312,7 +7342,7 @@ export interface MagicWanIpsecTunnelModifiedIpsecTunnel {
     description?: pulumi.Input<string>;
     healthCheck?: pulumi.Input<inputs.MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck>;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id?: pulumi.Input<string>;
     /**
@@ -7375,6 +7405,13 @@ export interface MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget {
 }
 
 export interface MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata {
+    /**
+     * The date and time the tunnel was last modified.
+     */
+    lastGeneratedOn?: pulumi.Input<string>;
+}
+
+export interface MagicWanIpsecTunnelPskMetadata {
     /**
      * The date and time the tunnel was last modified.
      */
@@ -8915,7 +8952,7 @@ export interface R2BucketCorsRule {
      */
     exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifier for this rule
+     * Identifier for this rule.
      */
     id?: pulumi.Input<string>;
     /**
@@ -8941,11 +8978,11 @@ export interface R2BucketCorsRuleAllowed {
 
 export interface R2BucketEventNotificationQueue {
     /**
-     * Queue ID
+     * Queue ID.
      */
     queueId?: pulumi.Input<string>;
     /**
-     * Name of the queue
+     * Name of the queue.
      */
     queueName?: pulumi.Input<string>;
     rules?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationQueueRule>[]>;
@@ -8953,80 +8990,80 @@ export interface R2BucketEventNotificationQueue {
 
 export interface R2BucketEventNotificationQueueRule {
     /**
-     * Array of R2 object actions that will trigger notifications
+     * Array of R2 object actions that will trigger notifications.
      */
     actions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Timestamp when the rule was created
+     * Timestamp when the rule was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * A description that can be used to identify the event notification rule after creation
+     * A description that can be used to identify the event notification rule after creation.
      */
     description?: pulumi.Input<string>;
     /**
-     * Notifications will be sent only for objects with this prefix
+     * Notifications will be sent only for objects with this prefix.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * Rule ID
+     * Rule ID.
      */
     ruleId?: pulumi.Input<string>;
     /**
-     * Notifications will be sent only for objects with this suffix
+     * Notifications will be sent only for objects with this suffix.
      */
     suffix?: pulumi.Input<string>;
 }
 
 export interface R2BucketEventNotificationRule {
     /**
-     * Array of R2 object actions that will trigger notifications
+     * Array of R2 object actions that will trigger notifications.
      */
     actions: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A description that can be used to identify the event notification rule after creation
+     * A description that can be used to identify the event notification rule after creation.
      */
     description?: pulumi.Input<string>;
     /**
-     * Notifications will be sent only for objects with this prefix
+     * Notifications will be sent only for objects with this prefix.
      */
     prefix?: pulumi.Input<string>;
     /**
-     * Notifications will be sent only for objects with this suffix
+     * Notifications will be sent only for objects with this suffix.
      */
     suffix?: pulumi.Input<string>;
 }
 
 export interface R2BucketLifecycleRule {
     /**
-     * Transition to abort ongoing multipart uploads
+     * Transition to abort ongoing multipart uploads.
      */
     abortMultipartUploadsTransition?: pulumi.Input<inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransition>;
     /**
-     * Conditions that apply to all transitions of this rule
+     * Conditions that apply to all transitions of this rule.
      */
     conditions: pulumi.Input<inputs.R2BucketLifecycleRuleConditions>;
     /**
-     * Transition to delete objects
+     * Transition to delete objects.
      */
     deleteObjectsTransition?: pulumi.Input<inputs.R2BucketLifecycleRuleDeleteObjectsTransition>;
     /**
-     * Whether or not this rule is in effect
+     * Whether or not this rule is in effect.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Unique identifier for this rule
+     * Unique identifier for this rule.
      */
     id: pulumi.Input<string>;
     /**
-     * Transitions to change the storage class of objects
+     * Transitions to change the storage class of objects.
      */
     storageClassTransitions?: pulumi.Input<pulumi.Input<inputs.R2BucketLifecycleRuleStorageClassTransition>[]>;
 }
 
 export interface R2BucketLifecycleRuleAbortMultipartUploadsTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
     condition?: pulumi.Input<inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition>;
 }
@@ -9041,14 +9078,14 @@ export interface R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
 
 export interface R2BucketLifecycleRuleConditions {
     /**
-     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      */
     prefix: pulumi.Input<string>;
 }
 
 export interface R2BucketLifecycleRuleDeleteObjectsTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
     condition?: pulumi.Input<inputs.R2BucketLifecycleRuleDeleteObjectsTransitionCondition>;
 }
@@ -9064,7 +9101,7 @@ export interface R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
 
 export interface R2BucketLifecycleRuleStorageClassTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
     condition: pulumi.Input<inputs.R2BucketLifecycleRuleStorageClassTransitionCondition>;
     /**
@@ -9084,19 +9121,19 @@ export interface R2BucketLifecycleRuleStorageClassTransitionCondition {
 
 export interface R2BucketLockRule {
     /**
-     * Condition to apply a lock rule to an object for how long in seconds
+     * Condition to apply a lock rule to an object for how long in seconds.
      */
     condition: pulumi.Input<inputs.R2BucketLockRuleCondition>;
     /**
-     * Whether or not this rule is in effect
+     * Whether or not this rule is in effect.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Unique identifier for this rule
+     * Unique identifier for this rule.
      */
     id: pulumi.Input<string>;
     /**
-     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      */
     prefix?: pulumi.Input<string>;
 }
@@ -9113,17 +9150,17 @@ export interface R2BucketLockRuleCondition {
 export interface R2BucketSippyDestination {
     /**
      * ID of a Cloudflare API token.
-     * This is the value labelled "Access Key ID" when creating an API
+     * This is the value labelled "Access Key ID" when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      */
     accessKeyId?: pulumi.Input<string>;
     /**
      * Available values: "r2".
      */
-    provider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string>;
     /**
      * Value of a Cloudflare API token.
-     * This is the value labelled "Secret Access Key" when creating an API
+     * This is the value labelled "Secret Access Key" when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      *
      * Sippy will use this token when writing objects to R2, so it is
@@ -9134,43 +9171,43 @@ export interface R2BucketSippyDestination {
 
 export interface R2BucketSippySource {
     /**
-     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      */
     accessKeyId?: pulumi.Input<string>;
     /**
-     * Name of the AWS S3 bucket
+     * Name of the AWS S3 bucket.
      */
     bucket?: pulumi.Input<string>;
     /**
-     * Client email of an IAM credential (ideally scoped to a single GCS bucket)
+     * Client email of an IAM credential (ideally scoped to a single GCS bucket).
      */
     clientEmail?: pulumi.Input<string>;
     /**
-     * Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+     * Available values: "aws".
+     */
+    cloudProvider?: pulumi.Input<string>;
+    /**
+     * Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * Available values: "aws".
-     */
-    provider?: pulumi.Input<string>;
-    /**
-     * Name of the AWS availability zone
+     * Name of the AWS availability zone.
      */
     region?: pulumi.Input<string>;
     /**
-     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      */
     secretAccessKey?: pulumi.Input<string>;
 }
 
 export interface R2CustomDomainStatus {
     /**
-     * Ownership status of the domain
+     * Ownership status of the domain.
      * Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
      */
     ownership?: pulumi.Input<string>;
     /**
-     * SSL certificate status
+     * SSL certificate status.
      * Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
      */
     ssl?: pulumi.Input<string>;
@@ -9612,7 +9649,7 @@ export interface RulesetRuleActionParameters {
      */
     overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     /**
-     * A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+     * A list of phases to skip the execution of. This option is incompatible with the rulesets options.
      */
     phases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -9657,7 +9694,7 @@ export interface RulesetRuleActionParameters {
      */
     rules?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
      * Available values: "current".
      */
     ruleset?: pulumi.Input<string>;
@@ -9708,7 +9745,7 @@ export interface RulesetRuleActionParameters {
 export interface RulesetRuleActionParametersAlgorithm {
     /**
      * Name of compression algorithm to enable.
-     * Available values: "none", "auto", "default", "gzip", "brotli".
+     * Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
      */
     name?: pulumi.Input<string>;
 }
@@ -10604,6 +10641,10 @@ export interface TeamsAccountSettings {
      */
     fips?: pulumi.Input<inputs.TeamsAccountSettingsFips>;
     /**
+     * Setting to enable host selector in egress policies.
+     */
+    hostSelector?: pulumi.Input<inputs.TeamsAccountSettingsHostSelector>;
+    /**
      * Protocol Detection settings.
      */
     protocolDetection?: pulumi.Input<inputs.TeamsAccountSettingsProtocolDetection>;
@@ -10648,6 +10689,10 @@ export interface TeamsAccountSettingsAntivirusNotificationSettings {
      * Set notification on
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: pulumi.Input<boolean>;
     /**
      * Customize the message shown in the notification.
      */
@@ -10743,7 +10788,7 @@ export interface TeamsAccountSettingsCustomCertificate {
     /**
      * Enable use of custom certificate authority for signing Gateway traffic.
      */
-    enabled: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * UUID of certificate (ID from MTLS certificate store).
      */
@@ -10763,6 +10808,13 @@ export interface TeamsAccountSettingsFips {
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
     tls?: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountSettingsHostSelector {
+    /**
+     * Enable filtering via hosts for egress policies.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsAccountSettingsProtocolDetection {
@@ -10916,6 +10968,10 @@ export interface TeamsRuleRuleSettings {
      */
     bisoAdminControls?: pulumi.Input<inputs.TeamsRuleRuleSettingsBisoAdminControls>;
     /**
+     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     */
+    blockPage?: pulumi.Input<inputs.TeamsRuleRuleSettingsBlockPage>;
+    /**
      * Enable the custom block page.
      */
     blockPageEnabled?: pulumi.Input<boolean>;
@@ -11062,6 +11118,17 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
     version?: pulumi.Input<string>;
 }
 
+export interface TeamsRuleRuleSettingsBlockPage {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: pulumi.Input<boolean>;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: pulumi.Input<string>;
+}
+
 export interface TeamsRuleRuleSettingsCheckSession {
     /**
      * Configure how fresh the session needs to be to be considered valid.
@@ -11147,6 +11214,10 @@ export interface TeamsRuleRuleSettingsNotificationSettings {
      * Set notification on
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: pulumi.Input<boolean>;
     /**
      * Customize the message shown in the notification.
      */
@@ -11601,6 +11672,10 @@ export interface WorkerScriptAssetsConfig {
 
 export interface WorkerScriptBinding {
     /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     */
+    algorithm?: pulumi.Input<string>;
+    /**
      * R2 bucket to bind to.
      */
     bucketName?: pulumi.Input<string>;
@@ -11621,6 +11696,11 @@ export interface WorkerScriptBinding {
      */
     environment?: pulumi.Input<string>;
     /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: "raw", "pkcs8", "spki", "jwk".
+     */
+    format?: pulumi.Input<string>;
+    /**
      * Identifier of the D1 database to bind to.
      */
     id?: pulumi.Input<string>;
@@ -11632,6 +11712,14 @@ export interface WorkerScriptBinding {
      * JSON data to use.
      */
     json?: pulumi.Input<string>;
+    /**
+     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     */
+    keyBase64?: pulumi.Input<string>;
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     */
+    keyJwk?: pulumi.Input<string>;
     /**
      * A JavaScript variable name for the binding.
      */
@@ -11649,6 +11737,10 @@ export interface WorkerScriptBinding {
      */
     outbound?: pulumi.Input<inputs.WorkerScriptBindingOutbound>;
     /**
+     * Name of the Pipeline to bind to.
+     */
+    pipeline?: pulumi.Input<string>;
+    /**
      * Name of the Queue to bind to.
      */
     queueName?: pulumi.Input<string>;
@@ -11657,18 +11749,30 @@ export interface WorkerScriptBinding {
      */
     scriptName?: pulumi.Input<string>;
     /**
+     * Name of the secret in the store.
+     */
+    secretName?: pulumi.Input<string>;
+    /**
      * Name of Worker to bind to.
      */
     service?: pulumi.Input<string>;
+    /**
+     * ID of the store containing the secret.
+     */
+    storeId?: pulumi.Input<string>;
     /**
      * The text value to use.
      */
     text?: pulumi.Input<string>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+     * Available values: "ai".
      */
     type: pulumi.Input<string>;
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     */
+    usages?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface WorkerScriptBindingOutbound {
@@ -11786,6 +11890,10 @@ export interface WorkerScriptObservability {
 
 export interface WorkerScriptPlacement {
     /**
+     * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     */
+    lastAnalyzedAt?: pulumi.Input<string>;
+    /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "smart".
      */
@@ -11853,28 +11961,6 @@ export interface WorkersDeploymentVersion {
     versionId: pulumi.Input<string>;
 }
 
-export interface WorkersRouteError {
-    code?: pulumi.Input<number>;
-    documentationUrl?: pulumi.Input<string>;
-    message?: pulumi.Input<string>;
-    source?: pulumi.Input<inputs.WorkersRouteErrorSource>;
-}
-
-export interface WorkersRouteErrorSource {
-    pointer?: pulumi.Input<string>;
-}
-
-export interface WorkersRouteMessage {
-    code?: pulumi.Input<number>;
-    documentationUrl?: pulumi.Input<string>;
-    message?: pulumi.Input<string>;
-    source?: pulumi.Input<inputs.WorkersRouteMessageSource>;
-}
-
-export interface WorkersRouteMessageSource {
-    pointer?: pulumi.Input<string>;
-}
-
 export interface WorkersScriptAssets {
     /**
      * Configuration for assets within a Worker.
@@ -11919,6 +12005,10 @@ export interface WorkersScriptAssetsConfig {
 
 export interface WorkersScriptBinding {
     /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     */
+    algorithm?: pulumi.Input<string>;
+    /**
      * R2 bucket to bind to.
      */
     bucketName?: pulumi.Input<string>;
@@ -11939,6 +12029,11 @@ export interface WorkersScriptBinding {
      */
     environment?: pulumi.Input<string>;
     /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: "raw", "pkcs8", "spki", "jwk".
+     */
+    format?: pulumi.Input<string>;
+    /**
      * Identifier of the D1 database to bind to.
      */
     id?: pulumi.Input<string>;
@@ -11950,6 +12045,14 @@ export interface WorkersScriptBinding {
      * JSON data to use.
      */
     json?: pulumi.Input<string>;
+    /**
+     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     */
+    keyBase64?: pulumi.Input<string>;
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     */
+    keyJwk?: pulumi.Input<string>;
     /**
      * A JavaScript variable name for the binding.
      */
@@ -11967,6 +12070,10 @@ export interface WorkersScriptBinding {
      */
     outbound?: pulumi.Input<inputs.WorkersScriptBindingOutbound>;
     /**
+     * Name of the Pipeline to bind to.
+     */
+    pipeline?: pulumi.Input<string>;
+    /**
      * Name of the Queue to bind to.
      */
     queueName?: pulumi.Input<string>;
@@ -11975,18 +12082,30 @@ export interface WorkersScriptBinding {
      */
     scriptName?: pulumi.Input<string>;
     /**
+     * Name of the secret in the store.
+     */
+    secretName?: pulumi.Input<string>;
+    /**
      * Name of Worker to bind to.
      */
     service?: pulumi.Input<string>;
+    /**
+     * ID of the store containing the secret.
+     */
+    storeId?: pulumi.Input<string>;
     /**
      * The text value to use.
      */
     text?: pulumi.Input<string>;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+     * Available values: "ai".
      */
     type: pulumi.Input<string>;
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     */
+    usages?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface WorkersScriptBindingOutbound {
@@ -12103,6 +12222,10 @@ export interface WorkersScriptObservability {
 }
 
 export interface WorkersScriptPlacement {
+    /**
+     * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     */
+    lastAnalyzedAt?: pulumi.Input<string>;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "smart".
@@ -15101,39 +15224,9 @@ export interface ZeroTrustDevicePostureRuleInputLocations {
 
 export interface ZeroTrustDevicePostureRuleMatch {
     /**
-     * Available values: "windows", "mac", "linux", "android", "ios".
+     * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform?: pulumi.Input<string>;
-}
-
-export interface ZeroTrustDexTestData {
-    /**
-     * The desired endpoint to test.
-     */
-    host?: pulumi.Input<string>;
-    /**
-     * The type of test.
-     */
-    kind?: pulumi.Input<string>;
-    /**
-     * The HTTP request method type.
-     */
-    method?: pulumi.Input<string>;
-}
-
-export interface ZeroTrustDexTestTargetPolicy {
-    /**
-     * Whether the profile is the account default
-     */
-    default?: pulumi.Input<boolean>;
-    /**
-     * The id of the device settings profile
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The name of the device settings profile
-     */
-    name?: pulumi.Input<string>;
 }
 
 export interface ZeroTrustDlpCustomProfileContextAwareness {
@@ -15183,7 +15276,7 @@ export interface ZeroTrustDlpCustomProfileProfile {
      */
     contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfileContextAwareness>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: pulumi.Input<string>;
     entries: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfileEntry>[]>;
@@ -15259,10 +15352,11 @@ export interface ZeroTrustDlpDatasetColumn {
 }
 
 export interface ZeroTrustDlpDatasetDataset {
+    caseSensitive?: pulumi.Input<boolean>;
     columns?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpDatasetDatasetColumn>[]>;
     createdAt?: pulumi.Input<string>;
     /**
-     * The description of the dataset
+     * The description of the dataset.
      */
     description?: pulumi.Input<string>;
     encodingVersion?: pulumi.Input<number>;
@@ -15311,11 +15405,11 @@ export interface ZeroTrustDlpDatasetUpload {
 
 export interface ZeroTrustDlpEntryConfidence {
     /**
-     * Indicates whether this entry has AI remote service validation
+     * Indicates whether this entry has AI remote service validation.
      */
     aiContextAvailable?: pulumi.Input<boolean>;
     /**
-     * Indicates whether this entry has any form of validation that is not an AI remote service
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
      */
     available?: pulumi.Input<boolean>;
 }
@@ -15505,6 +15599,10 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     bisoAdminControls?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls>;
     /**
+     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     */
+    blockPage?: pulumi.Input<inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage>;
+    /**
      * Enable the custom block page.
      */
     blockPageEnabled?: pulumi.Input<boolean>;
@@ -15651,6 +15749,17 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     version?: pulumi.Input<string>;
 }
 
+export interface ZeroTrustGatewayPolicyRuleSettingsBlockPage {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: pulumi.Input<boolean>;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: pulumi.Input<string>;
+}
+
 export interface ZeroTrustGatewayPolicyRuleSettingsCheckSession {
     /**
      * Configure how fresh the session needs to be to be considered valid.
@@ -15736,6 +15845,10 @@ export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
      * Set notification on
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: pulumi.Input<boolean>;
     /**
      * Customize the message shown in the notification.
      */
@@ -15870,6 +15983,10 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     fips?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsFips>;
     /**
+     * Setting to enable host selector in egress policies.
+     */
+    hostSelector?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsHostSelector>;
+    /**
      * Protocol Detection settings.
      */
     protocolDetection?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsProtocolDetection>;
@@ -15914,6 +16031,10 @@ export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
      * Set notification on
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: pulumi.Input<boolean>;
     /**
      * Customize the message shown in the notification.
      */
@@ -16009,7 +16130,7 @@ export interface ZeroTrustGatewaySettingsSettingsCustomCertificate {
     /**
      * Enable use of custom certificate authority for signing Gateway traffic.
      */
-    enabled: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * UUID of certificate (ID from MTLS certificate store).
      */
@@ -16029,6 +16150,13 @@ export interface ZeroTrustGatewaySettingsSettingsFips {
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
     tls?: pulumi.Input<boolean>;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsHostSelector {
+    /**
+     * Enable filtering via hosts for egress policies.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsProtocolDetection {

@@ -43,7 +43,7 @@ type CustomHostname struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors pulumi.StringArrayOutput `pulumi:"verificationErrors"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -107,7 +107,7 @@ type customHostnameState struct {
 	Status *string `pulumi:"status"`
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors []string `pulumi:"verificationErrors"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -133,7 +133,7 @@ type CustomHostnameState struct {
 	Status pulumi.StringPtrInput
 	// These are errors that were encountered while trying to activate a hostname.
 	VerificationErrors pulumi.StringArrayInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -152,7 +152,7 @@ type customHostnameArgs struct {
 	Hostname string `pulumi:"hostname"`
 	// SSL properties used when creating the custom hostname.
 	Ssl CustomHostnameSsl `pulumi:"ssl"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -168,7 +168,7 @@ type CustomHostnameArgs struct {
 	Hostname pulumi.StringInput
 	// SSL properties used when creating the custom hostname.
 	Ssl CustomHostnameSslInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -312,7 +312,7 @@ func (o CustomHostnameOutput) VerificationErrors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringArrayOutput { return v.VerificationErrors }).(pulumi.StringArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o CustomHostnameOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

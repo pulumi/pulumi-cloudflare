@@ -41,13 +41,13 @@ namespace Pulumi.Cloudflare
     public partial class R2Bucket : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Creation timestamp
+        /// Creation timestamp.
         /// </summary>
         [Output("creationDate")]
         public Output<string> CreationDate { get; private set; } = null!;
@@ -59,14 +59,14 @@ namespace Pulumi.Cloudflare
         public Output<string> Jurisdiction { get; private set; } = null!;
 
         /// <summary>
-        /// Location of the bucket
+        /// Location of the bucket.
         /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -137,14 +137,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// Location of the bucket
+        /// Location of the bucket.
         /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -165,13 +165,13 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Creation timestamp
+        /// Creation timestamp.
         /// </summary>
         [Input("creationDate")]
         public Input<string>? CreationDate { get; set; }
@@ -183,14 +183,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// Location of the bucket
+        /// Location of the bucket.
         /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

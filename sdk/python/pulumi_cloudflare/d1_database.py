@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['D1DatabaseArgs', 'D1Database']
 
@@ -22,18 +24,22 @@ class D1DatabaseArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
                  name: pulumi.Input[builtins.str],
-                 primary_location_hint: Optional[pulumi.Input[builtins.str]] = None):
+                 primary_location_hint: Optional[pulumi.Input[builtins.str]] = None,
+                 read_replication: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']] = None):
         """
         The set of arguments for constructing a D1Database resource.
         :param pulumi.Input[builtins.str] account_id: Account identifier tag.
         :param pulumi.Input[builtins.str] name: D1 database name.
         :param pulumi.Input[builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
+        :param pulumi.Input['D1DatabaseReadReplicationArgs'] read_replication: Configuration for D1 read replication.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         if primary_location_hint is not None:
             pulumi.set(__self__, "primary_location_hint", primary_location_hint)
+        if read_replication is not None:
+            pulumi.set(__self__, "read_replication", read_replication)
 
     @property
     @pulumi.getter(name="accountId")
@@ -72,6 +78,18 @@ class D1DatabaseArgs:
     def primary_location_hint(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "primary_location_hint", value)
 
+    @property
+    @pulumi.getter(name="readReplication")
+    def read_replication(self) -> Optional[pulumi.Input['D1DatabaseReadReplicationArgs']]:
+        """
+        Configuration for D1 read replication.
+        """
+        return pulumi.get(self, "read_replication")
+
+    @read_replication.setter
+    def read_replication(self, value: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']]):
+        pulumi.set(self, "read_replication", value)
+
 
 @pulumi.input_type
 class _D1DatabaseState:
@@ -82,6 +100,7 @@ class _D1DatabaseState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  num_tables: Optional[pulumi.Input[builtins.float]] = None,
                  primary_location_hint: Optional[pulumi.Input[builtins.str]] = None,
+                 read_replication: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']] = None,
                  uuid: Optional[pulumi.Input[builtins.str]] = None,
                  version: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -92,6 +111,7 @@ class _D1DatabaseState:
         :param pulumi.Input[builtins.str] name: D1 database name.
         :param pulumi.Input[builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
+        :param pulumi.Input['D1DatabaseReadReplicationArgs'] read_replication: Configuration for D1 read replication.
         :param pulumi.Input[builtins.str] uuid: D1 database identifier (UUID).
         """
         if account_id is not None:
@@ -106,6 +126,8 @@ class _D1DatabaseState:
             pulumi.set(__self__, "num_tables", num_tables)
         if primary_location_hint is not None:
             pulumi.set(__self__, "primary_location_hint", primary_location_hint)
+        if read_replication is not None:
+            pulumi.set(__self__, "read_replication", read_replication)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
         if version is not None:
@@ -182,6 +204,18 @@ class _D1DatabaseState:
         pulumi.set(self, "primary_location_hint", value)
 
     @property
+    @pulumi.getter(name="readReplication")
+    def read_replication(self) -> Optional[pulumi.Input['D1DatabaseReadReplicationArgs']]:
+        """
+        Configuration for D1 read replication.
+        """
+        return pulumi.get(self, "read_replication")
+
+    @read_replication.setter
+    def read_replication(self, value: Optional[pulumi.Input['D1DatabaseReadReplicationArgs']]):
+        pulumi.set(self, "read_replication", value)
+
+    @property
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -212,6 +246,7 @@ class D1Database(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  primary_location_hint: Optional[pulumi.Input[builtins.str]] = None,
+                 read_replication: Optional[pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
                  __props__=None):
         """
         !> When a D1 Database is replaced all the data is lost. Please ensure you have a
@@ -241,6 +276,7 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: D1 database name.
         :param pulumi.Input[builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
+        :param pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']] read_replication: Configuration for D1 read replication.
         """
         ...
     @overload
@@ -288,6 +324,7 @@ class D1Database(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  primary_location_hint: Optional[pulumi.Input[builtins.str]] = None,
+                 read_replication: Optional[pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,6 +341,7 @@ class D1Database(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["primary_location_hint"] = primary_location_hint
+            __props__.__dict__["read_replication"] = read_replication
             __props__.__dict__["created_at"] = None
             __props__.__dict__["file_size"] = None
             __props__.__dict__["num_tables"] = None
@@ -325,6 +363,7 @@ class D1Database(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             num_tables: Optional[pulumi.Input[builtins.float]] = None,
             primary_location_hint: Optional[pulumi.Input[builtins.str]] = None,
+            read_replication: Optional[pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']]] = None,
             uuid: Optional[pulumi.Input[builtins.str]] = None,
             version: Optional[pulumi.Input[builtins.str]] = None) -> 'D1Database':
         """
@@ -340,6 +379,7 @@ class D1Database(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: D1 database name.
         :param pulumi.Input[builtins.str] primary_location_hint: Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
                Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
+        :param pulumi.Input[Union['D1DatabaseReadReplicationArgs', 'D1DatabaseReadReplicationArgsDict']] read_replication: Configuration for D1 read replication.
         :param pulumi.Input[builtins.str] uuid: D1 database identifier (UUID).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -352,6 +392,7 @@ class D1Database(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["num_tables"] = num_tables
         __props__.__dict__["primary_location_hint"] = primary_location_hint
+        __props__.__dict__["read_replication"] = read_replication
         __props__.__dict__["uuid"] = uuid
         __props__.__dict__["version"] = version
         return D1Database(resource_name, opts=opts, __props__=__props__)
@@ -401,6 +442,14 @@ class D1Database(pulumi.CustomResource):
         Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
         """
         return pulumi.get(self, "primary_location_hint")
+
+    @property
+    @pulumi.getter(name="readReplication")
+    def read_replication(self) -> pulumi.Output[Optional['outputs.D1DatabaseReadReplication']]:
+        """
+        Configuration for D1 read replication.
+        """
+        return pulumi.get(self, "read_replication")
 
     @property
     @pulumi.getter

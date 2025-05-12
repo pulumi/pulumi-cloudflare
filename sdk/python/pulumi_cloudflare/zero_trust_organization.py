@@ -653,7 +653,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customPages")
-    def custom_pages(self) -> pulumi.Output['outputs.ZeroTrustOrganizationCustomPages']:
+    def custom_pages(self) -> pulumi.Output[Optional['outputs.ZeroTrustOrganizationCustomPages']]:
         return pulumi.get(self, "custom_pages")
 
     @property
@@ -663,7 +663,7 @@ class ZeroTrustOrganization(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loginDesign")
-    def login_design(self) -> pulumi.Output['outputs.ZeroTrustOrganizationLoginDesign']:
+    def login_design(self) -> pulumi.Output[Optional['outputs.ZeroTrustOrganizationLoginDesign']]:
         return pulumi.get(self, "login_design")
 
     @property

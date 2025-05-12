@@ -46,7 +46,7 @@ class ZeroTrustDeviceCustomProfileArgs:
                  tunnel_protocol: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceCustomProfile resource.
-        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices.
+        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
@@ -121,7 +121,7 @@ class ZeroTrustDeviceCustomProfileArgs:
     @pulumi.getter
     def match(self) -> pulumi.Input[builtins.str]:
         """
-        The wirefilter expression to match devices.
+        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         """
         return pulumi.get(self, "match")
 
@@ -413,7 +413,7 @@ class _ZeroTrustDeviceCustomProfileState:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
-        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices.
+        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
@@ -675,7 +675,7 @@ class _ZeroTrustDeviceCustomProfileState:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The wirefilter expression to match devices.
+        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         """
         return pulumi.get(self, "match")
 
@@ -874,7 +874,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
-        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices.
+        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
@@ -1076,7 +1076,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
-        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices.
+        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
@@ -1204,7 +1204,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def excludes(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceCustomProfileExclude']]:
+    def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDeviceCustomProfileExclude']]]:
         """
         List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         """
@@ -1222,7 +1222,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def includes(self) -> pulumi.Output[Sequence['outputs.ZeroTrustDeviceCustomProfileInclude']]:
+    def includes(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustDeviceCustomProfileInclude']]]:
         """
         List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         """
@@ -1248,7 +1248,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
     @pulumi.getter
     def match(self) -> pulumi.Output[builtins.str]:
         """
-        The wirefilter expression to match devices.
+        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
         """
         return pulumi.get(self, "match")
 
@@ -1283,7 +1283,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceModeV2")
-    def service_mode_v2(self) -> pulumi.Output['outputs.ZeroTrustDeviceCustomProfileServiceModeV2']:
+    def service_mode_v2(self) -> pulumi.Output[Optional['outputs.ZeroTrustDeviceCustomProfileServiceModeV2']]:
         return pulumi.get(self, "service_mode_v2")
 
     @property

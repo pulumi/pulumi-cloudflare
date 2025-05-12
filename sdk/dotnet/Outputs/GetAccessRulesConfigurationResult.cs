@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAccessRulesConfigurationResult
     {
         /// <summary>
-        /// The target to search in existing rules.
+        /// Defines the target to search in existing rules.
         /// Available values: "ip", "ip_range", "asn", "country".
         /// </summary>
         public readonly string? Target;
         /// <summary>
-        /// The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+        /// Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
         /// Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
         /// </summary>
         public readonly string? Value;

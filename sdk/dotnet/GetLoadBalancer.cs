@@ -84,18 +84,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetLoadBalancerArgs : global::Pulumi.InvokeArgs
     {
-        [Input("countryPools")]
-        private Dictionary<string, ImmutableArray<string>>? _countryPools;
-
-        /// <summary>
-        /// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-        /// </summary>
-        public Dictionary<string, ImmutableArray<string>> CountryPools
-        {
-            get => _countryPools ?? (_countryPools = new Dictionary<string, ImmutableArray<string>>());
-            set => _countryPools = value;
-        }
-
         [Input("loadBalancerId")]
         public string? LoadBalancerId { get; set; }
 
@@ -123,24 +111,6 @@ namespace Pulumi.Cloudflare
             set => _regionPools = value;
         }
 
-        /// <summary>
-        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
-        /// </summary>
-        [Input("sessionAffinityTtl")]
-        public double? SessionAffinityTtl { get; set; }
-
-        /// <summary>
-        /// Steering Policy for this load balancer.
-        /// </summary>
-        [Input("steeringPolicy")]
-        public string? SteeringPolicy { get; set; }
-
-        /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-        /// </summary>
-        [Input("ttl")]
-        public double? Ttl { get; set; }
-
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
 
@@ -152,18 +122,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetLoadBalancerInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("countryPools")]
-        private InputMap<ImmutableArray<string>>? _countryPools;
-
-        /// <summary>
-        /// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-        /// </summary>
-        public InputMap<ImmutableArray<string>> CountryPools
-        {
-            get => _countryPools ?? (_countryPools = new InputMap<ImmutableArray<string>>());
-            set => _countryPools = value;
-        }
-
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }
 
@@ -190,24 +148,6 @@ namespace Pulumi.Cloudflare
             get => _regionPools ?? (_regionPools = new InputMap<ImmutableArray<string>>());
             set => _regionPools = value;
         }
-
-        /// <summary>
-        /// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
-        /// </summary>
-        [Input("sessionAffinityTtl")]
-        public Input<double>? SessionAffinityTtl { get; set; }
-
-        /// <summary>
-        /// Steering Policy for this load balancer.
-        /// </summary>
-        [Input("steeringPolicy")]
-        public Input<string>? SteeringPolicy { get; set; }
-
-        /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-        /// </summary>
-        [Input("ttl")]
-        public Input<double>? Ttl { get; set; }
 
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -306,7 +246,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double Ttl;
         public readonly string ZoneId;
-        public readonly string ZoneName;
 
         [OutputConstructor]
         private GetLoadBalancerResult(
@@ -356,9 +295,7 @@ namespace Pulumi.Cloudflare
 
             double ttl,
 
-            string zoneId,
-
-            string zoneName)
+            string zoneId)
         {
             AdaptiveRouting = adaptiveRouting;
             CountryPools = countryPools;
@@ -384,7 +321,6 @@ namespace Pulumi.Cloudflare
             SteeringPolicy = steeringPolicy;
             Ttl = ttl;
             ZoneId = zoneId;
-            ZoneName = zoneName;
         }
     }
 }

@@ -26,7 +26,7 @@ class ContentScanningExpressionArgs:
                  zone_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ContentScanningExpression resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         pulumi.set(__self__, "bodies", bodies)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -44,7 +44,7 @@ class ContentScanningExpressionArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -61,8 +61,8 @@ class _ContentScanningExpressionState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContentScanningExpression resources.
-        :param pulumi.Input[builtins.str] payload: Ruleset expression to use in matching content objects
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] payload: Defines the ruleset expression to use in matching content objects.
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         if bodies is not None:
             pulumi.set(__self__, "bodies", bodies)
@@ -84,7 +84,7 @@ class _ContentScanningExpressionState:
     @pulumi.getter
     def payload(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Ruleset expression to use in matching content objects
+        Defines the ruleset expression to use in matching content objects.
         """
         return pulumi.get(self, "payload")
 
@@ -96,7 +96,7 @@ class _ContentScanningExpressionState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -130,7 +130,7 @@ class ContentScanningExpression(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         ...
     @overload
@@ -205,8 +205,8 @@ class ContentScanningExpression(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] payload: Ruleset expression to use in matching content objects
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] payload: Defines the ruleset expression to use in matching content objects.
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -226,7 +226,7 @@ class ContentScanningExpression(pulumi.CustomResource):
     @pulumi.getter
     def payload(self) -> pulumi.Output[builtins.str]:
         """
-        Ruleset expression to use in matching content objects
+        Defines the ruleset expression to use in matching content objects.
         """
         return pulumi.get(self, "payload")
 
@@ -234,7 +234,7 @@ class ContentScanningExpression(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 

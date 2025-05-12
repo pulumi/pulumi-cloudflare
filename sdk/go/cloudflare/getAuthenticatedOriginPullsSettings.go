@@ -48,7 +48,7 @@ func LookupAuthenticatedOriginPullsSettings(ctx *pulumi.Context, args *LookupAut
 
 // A collection of arguments for invoking getAuthenticatedOriginPullsSettings.
 type LookupAuthenticatedOriginPullsSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -58,7 +58,7 @@ type LookupAuthenticatedOriginPullsSettingsResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -73,7 +73,7 @@ func LookupAuthenticatedOriginPullsSettingsOutput(ctx *pulumi.Context, args Look
 
 // A collection of arguments for invoking getAuthenticatedOriginPullsSettings.
 type LookupAuthenticatedOriginPullsSettingsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -106,7 +106,7 @@ func (o LookupAuthenticatedOriginPullsSettingsResultOutput) Id() pulumi.StringOu
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupAuthenticatedOriginPullsSettingsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

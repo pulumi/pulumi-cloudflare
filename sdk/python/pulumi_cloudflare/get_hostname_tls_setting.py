@@ -114,7 +114,7 @@ class GetHostnameTlsSettingResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -152,7 +152,7 @@ def get_hostname_tls_setting(setting_id: Optional[builtins.str] = None,
 
     :param builtins.str setting_id: The TLS Setting name.
            Available values: "ciphers", "min*tls*version", "http2".
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['settingId'] = setting_id
@@ -186,7 +186,7 @@ def get_hostname_tls_setting_output(setting_id: Optional[pulumi.Input[builtins.s
 
     :param builtins.str setting_id: The TLS Setting name.
            Available values: "ciphers", "min*tls*version", "http2".
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['settingId'] = setting_id

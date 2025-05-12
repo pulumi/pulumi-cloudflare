@@ -94,7 +94,7 @@ class GetEmailRoutingDnsResult:
     @pulumi.getter
     def success(self) -> builtins.bool:
         """
-        Whether the API call was successful
+        Whether the API call was successful.
         """
         return pulumi.get(self, "success")
 
@@ -102,7 +102,7 @@ class GetEmailRoutingDnsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -139,7 +139,7 @@ def get_email_routing_dns(subdomain: Optional[builtins.str] = None,
 
 
     :param builtins.str subdomain: Domain of your zone.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['subdomain'] = subdomain
@@ -172,7 +172,7 @@ def get_email_routing_dns_output(subdomain: Optional[pulumi.Input[Optional[built
 
 
     :param builtins.str subdomain: Domain of your zone.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['subdomain'] = subdomain

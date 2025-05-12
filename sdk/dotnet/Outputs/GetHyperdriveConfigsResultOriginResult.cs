@@ -39,7 +39,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int Port;
         /// <summary>
         /// Specifies the URL scheme used to connect to your origin database.
-        /// Available values: "postgres", "postgresql".
+        /// Available values: "postgres", "postgresql", "mysql".
         /// </summary>
         public readonly string Scheme;
         /// <summary>

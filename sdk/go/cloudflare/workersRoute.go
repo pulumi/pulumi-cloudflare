@@ -28,8 +28,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewWorkersRoute(ctx, "example_workers_route", &cloudflare.WorkersRouteArgs{
 //				ZoneId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Pattern: pulumi.String("example.net/*"),
-//				Script:  pulumi.String("this-is_my_script-01"),
+//				Pattern: pulumi.String("example.com/*"),
+//				Script:  pulumi.String("my-workers-script"),
 //			})
 //			if err != nil {
 //				return err
@@ -39,18 +39,19 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/workersRoute:WorkersRoute example '<zone_id>/<route_id>'
+// ```
 type WorkersRoute struct {
 	pulumi.CustomResourceState
 
-	Errors   WorkersRouteErrorArrayOutput   `pulumi:"errors"`
-	Messages WorkersRouteMessageArrayOutput `pulumi:"messages"`
-	Pattern  pulumi.StringOutput            `pulumi:"pattern"`
-	// Identifier.
-	RouteId pulumi.StringPtrOutput `pulumi:"routeId"`
-	// Name of the script, used in URLs and route configuration.
-	Script pulumi.StringPtrOutput `pulumi:"script"`
-	// Whether the API call was successful.
-	Success pulumi.BoolOutput `pulumi:"success"`
+	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+	Pattern pulumi.StringOutput `pulumi:"pattern"`
+	// Name of the script to run if the route matches.
+	Script pulumi.StringOutput `pulumi:"script"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -64,6 +65,9 @@ func NewWorkersRoute(ctx *pulumi.Context,
 
 	if args.Pattern == nil {
 		return nil, errors.New("invalid value for required argument 'Pattern'")
+	}
+	if args.Script == nil {
+		return nil, errors.New("invalid value for required argument 'Script'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -91,29 +95,19 @@ func GetWorkersRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkersRoute resources.
 type workersRouteState struct {
-	Errors   []WorkersRouteError   `pulumi:"errors"`
-	Messages []WorkersRouteMessage `pulumi:"messages"`
-	Pattern  *string               `pulumi:"pattern"`
-	// Identifier.
-	RouteId *string `pulumi:"routeId"`
-	// Name of the script, used in URLs and route configuration.
+	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+	Pattern *string `pulumi:"pattern"`
+	// Name of the script to run if the route matches.
 	Script *string `pulumi:"script"`
-	// Whether the API call was successful.
-	Success *bool `pulumi:"success"`
 	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type WorkersRouteState struct {
-	Errors   WorkersRouteErrorArrayInput
-	Messages WorkersRouteMessageArrayInput
-	Pattern  pulumi.StringPtrInput
-	// Identifier.
-	RouteId pulumi.StringPtrInput
-	// Name of the script, used in URLs and route configuration.
+	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+	Pattern pulumi.StringPtrInput
+	// Name of the script to run if the route matches.
 	Script pulumi.StringPtrInput
-	// Whether the API call was successful.
-	Success pulumi.BoolPtrInput
 	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -123,22 +117,20 @@ func (WorkersRouteState) ElementType() reflect.Type {
 }
 
 type workersRouteArgs struct {
+	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern string `pulumi:"pattern"`
-	// Identifier.
-	RouteId *string `pulumi:"routeId"`
-	// Name of the script, used in URLs and route configuration.
-	Script *string `pulumi:"script"`
+	// Name of the script to run if the route matches.
+	Script string `pulumi:"script"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WorkersRoute resource.
 type WorkersRouteArgs struct {
+	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern pulumi.StringInput
-	// Identifier.
-	RouteId pulumi.StringPtrInput
-	// Name of the script, used in URLs and route configuration.
-	Script pulumi.StringPtrInput
+	// Name of the script to run if the route matches.
+	Script pulumi.StringInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -230,31 +222,14 @@ func (o WorkersRouteOutput) ToWorkersRouteOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o WorkersRouteOutput) Errors() WorkersRouteErrorArrayOutput {
-	return o.ApplyT(func(v *WorkersRoute) WorkersRouteErrorArrayOutput { return v.Errors }).(WorkersRouteErrorArrayOutput)
-}
-
-func (o WorkersRouteOutput) Messages() WorkersRouteMessageArrayOutput {
-	return o.ApplyT(func(v *WorkersRoute) WorkersRouteMessageArrayOutput { return v.Messages }).(WorkersRouteMessageArrayOutput)
-}
-
+// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 func (o WorkersRouteOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersRoute) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Identifier.
-func (o WorkersRouteOutput) RouteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersRoute) pulumi.StringPtrOutput { return v.RouteId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the script, used in URLs and route configuration.
-func (o WorkersRouteOutput) Script() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersRoute) pulumi.StringPtrOutput { return v.Script }).(pulumi.StringPtrOutput)
-}
-
-// Whether the API call was successful.
-func (o WorkersRouteOutput) Success() pulumi.BoolOutput {
-	return o.ApplyT(func(v *WorkersRoute) pulumi.BoolOutput { return v.Success }).(pulumi.BoolOutput)
+// Name of the script to run if the route matches.
+func (o WorkersRouteOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersRoute) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
 }
 
 // Identifier.

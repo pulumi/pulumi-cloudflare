@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
         /// Configs for the project build process.
         /// </summary>
         [Output("buildConfig")]
-        public Output<Outputs.PagesProjectBuildConfig> BuildConfig { get; private set; } = null!;
+        public Output<Outputs.PagesProjectBuildConfig?> BuildConfig { get; private set; } = null!;
 
         /// <summary>
         /// Most recent deployment to the repo.
@@ -53,7 +53,7 @@ namespace Pulumi.Cloudflare
         /// Configs for deployments in a project.
         /// </summary>
         [Output("deploymentConfigs")]
-        public Output<Outputs.PagesProjectDeploymentConfigs> DeploymentConfigs { get; private set; } = null!;
+        public Output<Outputs.PagesProjectDeploymentConfigs?> DeploymentConfigs { get; private set; } = null!;
 
         /// <summary>
         /// A list of associated custom domains for the project.
@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> ProductionBranch { get; private set; } = null!;
 
         [Output("source")]
-        public Output<Outputs.PagesProjectSource> Source { get; private set; } = null!;
+        public Output<Outputs.PagesProjectSource?> Source { get; private set; } = null!;
 
         /// <summary>
         /// The Cloudflare subdomain associated with the project.
@@ -163,6 +163,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("productionBranch")]
         public Input<string>? ProductionBranch { get; set; }
+
+        [Input("source")]
+        public Input<Inputs.PagesProjectSourceArgs>? Source { get; set; }
 
         public PagesProjectArgs()
         {

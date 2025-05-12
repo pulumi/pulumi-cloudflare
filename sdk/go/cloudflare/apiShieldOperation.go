@@ -58,9 +58,9 @@ type ApiShieldOperation struct {
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method pulumi.StringOutput `pulumi:"method"`
-	// UUID
+	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -115,9 +115,9 @@ type apiShieldOperationState struct {
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method *string `pulumi:"method"`
-	// UUID
+	// UUID.
 	OperationId *string `pulumi:"operationId"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -131,9 +131,9 @@ type ApiShieldOperationState struct {
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method pulumi.StringPtrInput
-	// UUID
+	// UUID.
 	OperationId pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -149,7 +149,7 @@ type apiShieldOperationArgs struct {
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method string `pulumi:"method"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -162,7 +162,7 @@ type ApiShieldOperationArgs struct {
 	// The HTTP method used to access the endpoint.
 	// Available values: "GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "CONNECT", "PATCH", "TRACE".
 	Method pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -277,12 +277,12 @@ func (o ApiShieldOperationOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.Method }).(pulumi.StringOutput)
 }
 
-// UUID
+// UUID.
 func (o ApiShieldOperationOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ApiShieldOperationOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperation) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

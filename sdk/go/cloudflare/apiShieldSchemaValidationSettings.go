@@ -54,7 +54,7 @@ type ApiShieldSchemaValidationSettings struct {
 	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
 	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction pulumi.StringPtrOutput `pulumi:"validationOverrideMitigationAction"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -100,7 +100,7 @@ type apiShieldSchemaValidationSettingsState struct {
 	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
 	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -111,7 +111,7 @@ type ApiShieldSchemaValidationSettingsState struct {
 	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
 	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -126,7 +126,7 @@ type apiShieldSchemaValidationSettingsArgs struct {
 	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
 	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction *string `pulumi:"validationOverrideMitigationAction"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -138,7 +138,7 @@ type ApiShieldSchemaValidationSettingsArgs struct {
 	// validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
 	// special value `disableOverride` or `null` Available values: "none", "disableOverride".
 	ValidationOverrideMitigationAction pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -245,7 +245,7 @@ func (o ApiShieldSchemaValidationSettingsOutput) ValidationOverrideMitigationAct
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ApiShieldSchemaValidationSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldSchemaValidationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -61,7 +61,7 @@ export class EmailSecurityTrustedDomains extends pulumi.CustomResource {
      * Account Identifier
      */
     public readonly accountId!: pulumi.Output<string>;
-    public readonly bodies!: pulumi.Output<outputs.EmailSecurityTrustedDomainsBody[]>;
+    public readonly bodies!: pulumi.Output<outputs.EmailSecurityTrustedDomainsBody[] | undefined>;
     public readonly comments!: pulumi.Output<string | undefined>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**

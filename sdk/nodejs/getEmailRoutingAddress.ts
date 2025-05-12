@@ -33,7 +33,7 @@ export function getEmailRoutingAddress(args: GetEmailRoutingAddressArgs, opts?: 
  */
 export interface GetEmailRoutingAddressArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -48,7 +48,7 @@ export interface GetEmailRoutingAddressArgs {
  */
 export interface GetEmailRoutingAddressResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -110,7 +110,7 @@ export function getEmailRoutingAddressOutput(args: GetEmailRoutingAddressOutputA
  */
 export interface GetEmailRoutingAddressOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

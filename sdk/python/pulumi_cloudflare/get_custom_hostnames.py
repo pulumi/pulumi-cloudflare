@@ -117,7 +117,7 @@ class GetCustomHostnamesResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -170,7 +170,7 @@ def get_custom_hostnames(direction: Optional[builtins.str] = None,
            Available values: "ssl", "ssl_status".
     :param builtins.float ssl: Whether to filter hostnames based on if they have SSL enabled.
            Available values: 0, 1.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['direction'] = direction
@@ -224,7 +224,7 @@ def get_custom_hostnames_output(direction: Optional[pulumi.Input[Optional[builti
            Available values: "ssl", "ssl_status".
     :param builtins.float ssl: Whether to filter hostnames based on if they have SSL enabled.
            Available values: 0, 1.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['direction'] = direction

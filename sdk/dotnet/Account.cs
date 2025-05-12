@@ -71,7 +71,7 @@ namespace Pulumi.Cloudflare
         /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
         /// </summary>
         [Output("unit")]
-        public Output<Outputs.AccountUnit> Unit { get; private set; } = null!;
+        public Output<Outputs.AccountUnit?> Unit { get; private set; } = null!;
 
 
         /// <summary>

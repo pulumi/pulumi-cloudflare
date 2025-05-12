@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetMtlsCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("mtlsCertificateId")]
         public string? MtlsCertificateId { get; set; }
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetMtlsCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("mtlsCertificateId")]
         public Input<string>? MtlsCertificateId { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetMtlsCertificateResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string ExpiresOn;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Issuer;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? MtlsCertificateId;
         /// <summary>

@@ -35,7 +35,7 @@ export interface GetLeakedCredentialCheckRulesArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetLeakedCredentialCheckRulesResult {
      */
     readonly results: outputs.GetLeakedCredentialCheckRulesResult[];
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetLeakedCredentialCheckRulesOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

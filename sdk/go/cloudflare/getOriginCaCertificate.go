@@ -48,7 +48,7 @@ func LookupOriginCaCertificate(ctx *pulumi.Context, args *LookupOriginCaCertific
 
 // A collection of arguments for invoking getOriginCaCertificate.
 type LookupOriginCaCertificateArgs struct {
-	// Identifier
+	// Identifier.
 	CertificateId *string                       `pulumi:"certificateId"`
 	Filter        *GetOriginCaCertificateFilter `pulumi:"filter"`
 }
@@ -57,7 +57,7 @@ type LookupOriginCaCertificateArgs struct {
 type LookupOriginCaCertificateResult struct {
 	// The Origin CA certificate. Will be newline-encoded.
 	Certificate string `pulumi:"certificate"`
-	// Identifier
+	// Identifier.
 	CertificateId *string `pulumi:"certificateId"`
 	// The Certificate Signing Request (CSR). Must be newline-encoded.
 	Csr string `pulumi:"csr"`
@@ -66,7 +66,7 @@ type LookupOriginCaCertificateResult struct {
 	Filter    *GetOriginCaCertificateFilter `pulumi:"filter"`
 	// Array of hostnames or wildcard names (e.g., *.example.com) bound to the certificate.
 	Hostnames []string `pulumi:"hostnames"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// Signature type desired on certificate ("origin-rsa" (rsa), "origin-ecc" (ecdsa), or "keyless-certificate" (for Keyless SSL servers).
 	// Available values: "origin-rsa", "origin-ecc", "keyless-certificate".
@@ -87,7 +87,7 @@ func LookupOriginCaCertificateOutput(ctx *pulumi.Context, args LookupOriginCaCer
 
 // A collection of arguments for invoking getOriginCaCertificate.
 type LookupOriginCaCertificateOutputArgs struct {
-	// Identifier
+	// Identifier.
 	CertificateId pulumi.StringPtrInput                `pulumi:"certificateId"`
 	Filter        GetOriginCaCertificateFilterPtrInput `pulumi:"filter"`
 }
@@ -116,7 +116,7 @@ func (o LookupOriginCaCertificateResultOutput) Certificate() pulumi.StringOutput
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupOriginCaCertificateResultOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
@@ -140,7 +140,7 @@ func (o LookupOriginCaCertificateResultOutput) Hostnames() pulumi.StringArrayOut
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupOriginCaCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOriginCaCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }

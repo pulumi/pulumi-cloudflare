@@ -50,23 +50,23 @@ func LookupR2CustomDomain(ctx *pulumi.Context, args *LookupR2CustomDomainArgs, o
 
 // A collection of arguments for invoking getR2CustomDomain.
 type LookupR2CustomDomainArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// Name of the custom domain
+	// Name of the custom domain.
 	Domain string `pulumi:"domain"`
 }
 
 // A collection of values returned by getR2CustomDomain.
 type LookupR2CustomDomainResult struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// Name of the custom domain
+	// Name of the custom domain.
 	Domain string `pulumi:"domain"`
-	// Whether this bucket is publicly accessible at the specified custom domain
+	// Whether this bucket is publicly accessible at the specified custom domain.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -74,9 +74,9 @@ type LookupR2CustomDomainResult struct {
 	// Available values: "1.0", "1.1", "1.2", "1.3".
 	MinTls string                  `pulumi:"minTls"`
 	Status GetR2CustomDomainStatus `pulumi:"status"`
-	// Zone ID of the custom domain resides in
+	// Zone ID of the custom domain resides in.
 	ZoneId string `pulumi:"zoneId"`
-	// Zone that the custom domain resides in
+	// Zone that the custom domain resides in.
 	ZoneName string `pulumi:"zoneName"`
 }
 
@@ -91,11 +91,11 @@ func LookupR2CustomDomainOutput(ctx *pulumi.Context, args LookupR2CustomDomainOu
 
 // A collection of arguments for invoking getR2CustomDomain.
 type LookupR2CustomDomainOutputArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// Name of the custom domain
+	// Name of the custom domain.
 	Domain pulumi.StringInput `pulumi:"domain"`
 }
 
@@ -118,22 +118,22 @@ func (o LookupR2CustomDomainResultOutput) ToLookupR2CustomDomainResultOutputWith
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o LookupR2CustomDomainResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o LookupR2CustomDomainResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Name of the custom domain
+// Name of the custom domain.
 func (o LookupR2CustomDomainResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// Whether this bucket is publicly accessible at the specified custom domain
+// Whether this bucket is publicly accessible at the specified custom domain.
 func (o LookupR2CustomDomainResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -153,12 +153,12 @@ func (o LookupR2CustomDomainResultOutput) Status() GetR2CustomDomainStatusOutput
 	return o.ApplyT(func(v LookupR2CustomDomainResult) GetR2CustomDomainStatus { return v.Status }).(GetR2CustomDomainStatusOutput)
 }
 
-// Zone ID of the custom domain resides in
+// Zone ID of the custom domain resides in.
 func (o LookupR2CustomDomainResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-// Zone that the custom domain resides in
+// Zone that the custom domain resides in.
 func (o LookupR2CustomDomainResultOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2CustomDomainResult) string { return v.ZoneName }).(pulumi.StringOutput)
 }

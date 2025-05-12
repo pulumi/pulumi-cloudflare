@@ -40,11 +40,12 @@ export interface GetZeroTrustDlpDatasetArgs {
  */
 export interface GetZeroTrustDlpDatasetResult {
     readonly accountId: string;
+    readonly caseSensitive: boolean;
     readonly columns: outputs.GetZeroTrustDlpDatasetColumn[];
     readonly createdAt: string;
     readonly datasetId: string;
     /**
-     * The description of the dataset
+     * The description of the dataset.
      */
     readonly description: string;
     readonly encodingVersion: number;

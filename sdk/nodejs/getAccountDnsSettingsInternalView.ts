@@ -33,12 +33,12 @@ export function getAccountDnsSettingsInternalView(args: GetAccountDnsSettingsInt
  */
 export interface GetAccountDnsSettingsInternalViewArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     filter?: inputs.GetAccountDnsSettingsInternalViewFilter;
     /**
-     * Identifier
+     * Identifier.
      */
     viewId?: string;
 }
@@ -48,7 +48,7 @@ export interface GetAccountDnsSettingsInternalViewArgs {
  */
 export interface GetAccountDnsSettingsInternalViewResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -57,7 +57,7 @@ export interface GetAccountDnsSettingsInternalViewResult {
     readonly createdTime: string;
     readonly filter?: outputs.GetAccountDnsSettingsInternalViewFilter;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -69,7 +69,7 @@ export interface GetAccountDnsSettingsInternalViewResult {
      */
     readonly name: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly viewId?: string;
     /**
@@ -104,12 +104,12 @@ export function getAccountDnsSettingsInternalViewOutput(args: GetAccountDnsSetti
  */
 export interface GetAccountDnsSettingsInternalViewOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetAccountDnsSettingsInternalViewFilterArgs>;
     /**
-     * Identifier
+     * Identifier.
      */
     viewId?: pulumi.Input<string>;
 }

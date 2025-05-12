@@ -115,8 +115,8 @@ type CustomSsl struct {
 	// When the certificate from the authority expires.
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
 	// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
-	GeoRestrictions CustomSslGeoRestrictionsOutput `pulumi:"geoRestrictions"`
-	Hosts           pulumi.StringArrayOutput       `pulumi:"hosts"`
+	GeoRestrictions CustomSslGeoRestrictionsPtrOutput `pulumi:"geoRestrictions"`
+	Hosts           pulumi.StringArrayOutput          `pulumi:"hosts"`
 	// The certificate authority that issued the certificate.
 	Issuer        pulumi.StringOutput          `pulumi:"issuer"`
 	KeylessServer CustomSslKeylessServerOutput `pulumi:"keylessServer"`
@@ -138,7 +138,7 @@ type CustomSsl struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -219,7 +219,7 @@ type customSslState struct {
 	Type *string `pulumi:"type"`
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn *string `pulumi:"uploadedOn"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -255,7 +255,7 @@ type CustomSslState struct {
 	Type pulumi.StringPtrInput
 	// When the certificate was uploaded to Cloudflare.
 	UploadedOn pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -278,7 +278,7 @@ type customSslArgs struct {
 	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
 	// Available values: "legacy*custom", "sniCustom".
 	Type *string `pulumi:"type"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -298,7 +298,7 @@ type CustomSslArgs struct {
 	// The type 'legacy*custom' enables support for legacy clients which do not include SNI in the TLS handshake.
 	// Available values: "legacy*custom", "sniCustom".
 	Type pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -406,8 +406,8 @@ func (o CustomSslOutput) ExpiresOn() pulumi.StringOutput {
 }
 
 // Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
-func (o CustomSslOutput) GeoRestrictions() CustomSslGeoRestrictionsOutput {
-	return o.ApplyT(func(v *CustomSsl) CustomSslGeoRestrictionsOutput { return v.GeoRestrictions }).(CustomSslGeoRestrictionsOutput)
+func (o CustomSslOutput) GeoRestrictions() CustomSslGeoRestrictionsPtrOutput {
+	return o.ApplyT(func(v *CustomSsl) CustomSslGeoRestrictionsPtrOutput { return v.GeoRestrictions }).(CustomSslGeoRestrictionsPtrOutput)
 }
 
 func (o CustomSslOutput) Hosts() pulumi.StringArrayOutput {
@@ -465,7 +465,7 @@ func (o CustomSslOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o CustomSslOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

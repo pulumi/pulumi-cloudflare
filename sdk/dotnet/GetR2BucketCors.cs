@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketCorsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketCorsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
@@ -127,11 +127,11 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketCorsResult
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         public readonly string BucketName;
         /// <summary>

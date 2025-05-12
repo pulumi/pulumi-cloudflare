@@ -28,7 +28,7 @@ export function getTotalTls(args: GetTotalTlsArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetTotalTlsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -56,7 +56,7 @@ export interface GetTotalTlsResult {
      */
     readonly validityPeriod: number;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -84,7 +84,7 @@ export function getTotalTlsOutput(args: GetTotalTlsOutputArgs, opts?: pulumi.Inv
  */
 export interface GetTotalTlsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

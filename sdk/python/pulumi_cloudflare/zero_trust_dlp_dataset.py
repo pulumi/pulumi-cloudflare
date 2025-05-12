@@ -24,19 +24,25 @@ class ZeroTrustDlpDatasetArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
                  name: pulumi.Input[builtins.str],
+                 case_sensitive: Optional[pulumi.Input[builtins.bool]] = None,
                  dataset_id: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  encoding_version: Optional[pulumi.Input[builtins.int]] = None,
                  secret: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpDataset resource.
-        :param pulumi.Input[builtins.str] description: The description of the dataset
+        :param pulumi.Input[builtins.bool] case_sensitive: Only applies to custom word lists.
+               Determines if the words should be matched in a case-sensitive manner
+               Cannot be set to false if `secret` is true or undefined
+        :param pulumi.Input[builtins.str] description: The description of the dataset.
         :param pulumi.Input[builtins.int] encoding_version: Dataset encoding version
         :param pulumi.Input[builtins.bool] secret: Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
                response has no secret and the dataset is uploaded in plaintext.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
+        if case_sensitive is not None:
+            pulumi.set(__self__, "case_sensitive", case_sensitive)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
         if description is not None:
@@ -65,6 +71,20 @@ class ZeroTrustDlpDatasetArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Only applies to custom word lists.
+        Determines if the words should be matched in a case-sensitive manner
+        Cannot be set to false if `secret` is true or undefined
+        """
+        return pulumi.get(self, "case_sensitive")
+
+    @case_sensitive.setter
+    def case_sensitive(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "case_sensitive", value)
+
+    @property
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "dataset_id")
@@ -77,7 +97,7 @@ class ZeroTrustDlpDatasetArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the dataset
+        The description of the dataset.
         """
         return pulumi.get(self, "description")
 
@@ -115,6 +135,7 @@ class ZeroTrustDlpDatasetArgs:
 class _ZeroTrustDlpDatasetState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 case_sensitive: Optional[pulumi.Input[builtins.bool]] = None,
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetColumnArgs']]]] = None,
                  created_at: Optional[pulumi.Input[builtins.str]] = None,
                  dataset: Optional[pulumi.Input['ZeroTrustDlpDatasetDatasetArgs']] = None,
@@ -131,7 +152,10 @@ class _ZeroTrustDlpDatasetState:
                  version: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpDataset resources.
-        :param pulumi.Input[builtins.str] description: The description of the dataset
+        :param pulumi.Input[builtins.bool] case_sensitive: Only applies to custom word lists.
+               Determines if the words should be matched in a case-sensitive manner
+               Cannot be set to false if `secret` is true or undefined
+        :param pulumi.Input[builtins.str] description: The description of the dataset.
         :param pulumi.Input[builtins.int] encoding_version: Dataset encoding version
         :param pulumi.Input[builtins.bool] secret: Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
                response has no secret and the dataset is uploaded in plaintext.
@@ -141,6 +165,8 @@ class _ZeroTrustDlpDatasetState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if case_sensitive is not None:
+            pulumi.set(__self__, "case_sensitive", case_sensitive)
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
         if created_at is not None:
@@ -178,6 +204,20 @@ class _ZeroTrustDlpDatasetState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Only applies to custom word lists.
+        Determines if the words should be matched in a case-sensitive manner
+        Cannot be set to false if `secret` is true or undefined
+        """
+        return pulumi.get(self, "case_sensitive")
+
+    @case_sensitive.setter
+    def case_sensitive(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "case_sensitive", value)
 
     @property
     @pulumi.getter
@@ -219,7 +259,7 @@ class _ZeroTrustDlpDatasetState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the dataset
+        The description of the dataset.
         """
         return pulumi.get(self, "description")
 
@@ -332,6 +372,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 case_sensitive: Optional[pulumi.Input[builtins.bool]] = None,
                  dataset_id: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  encoding_version: Optional[pulumi.Input[builtins.int]] = None,
@@ -348,6 +389,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         example_zero_trust_dlp_dataset = cloudflare.ZeroTrustDlpDataset("example_zero_trust_dlp_dataset",
             account_id="account_id",
             name="name",
+            case_sensitive=True,
             description="description",
             encoding_version=0,
             secret=True)
@@ -355,7 +397,10 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: The description of the dataset
+        :param pulumi.Input[builtins.bool] case_sensitive: Only applies to custom word lists.
+               Determines if the words should be matched in a case-sensitive manner
+               Cannot be set to false if `secret` is true or undefined
+        :param pulumi.Input[builtins.str] description: The description of the dataset.
         :param pulumi.Input[builtins.int] encoding_version: Dataset encoding version
         :param pulumi.Input[builtins.bool] secret: Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
                response has no secret and the dataset is uploaded in plaintext.
@@ -376,6 +421,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         example_zero_trust_dlp_dataset = cloudflare.ZeroTrustDlpDataset("example_zero_trust_dlp_dataset",
             account_id="account_id",
             name="name",
+            case_sensitive=True,
             description="description",
             encoding_version=0,
             secret=True)
@@ -397,6 +443,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 case_sensitive: Optional[pulumi.Input[builtins.bool]] = None,
                  dataset_id: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  encoding_version: Optional[pulumi.Input[builtins.int]] = None,
@@ -414,6 +461,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["case_sensitive"] = case_sensitive
             __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["description"] = description
             __props__.__dict__["encoding_version"] = encoding_version
@@ -441,6 +489,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            case_sensitive: Optional[pulumi.Input[builtins.bool]] = None,
             columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpDatasetColumnArgs', 'ZeroTrustDlpDatasetColumnArgsDict']]]]] = None,
             created_at: Optional[pulumi.Input[builtins.str]] = None,
             dataset: Optional[pulumi.Input[Union['ZeroTrustDlpDatasetDatasetArgs', 'ZeroTrustDlpDatasetDatasetArgsDict']]] = None,
@@ -462,7 +511,10 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: The description of the dataset
+        :param pulumi.Input[builtins.bool] case_sensitive: Only applies to custom word lists.
+               Determines if the words should be matched in a case-sensitive manner
+               Cannot be set to false if `secret` is true or undefined
+        :param pulumi.Input[builtins.str] description: The description of the dataset.
         :param pulumi.Input[builtins.int] encoding_version: Dataset encoding version
         :param pulumi.Input[builtins.bool] secret: Generate a secret dataset. If true, the response will include a secret to use with the EDM encoder. If false, the
                response has no secret and the dataset is uploaded in plaintext.
@@ -475,6 +527,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
         __props__ = _ZeroTrustDlpDatasetState.__new__(_ZeroTrustDlpDatasetState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["case_sensitive"] = case_sensitive
         __props__.__dict__["columns"] = columns
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["dataset"] = dataset
@@ -495,6 +548,16 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Only applies to custom word lists.
+        Determines if the words should be matched in a case-sensitive manner
+        Cannot be set to false if `secret` is true or undefined
+        """
+        return pulumi.get(self, "case_sensitive")
 
     @property
     @pulumi.getter
@@ -520,7 +583,7 @@ class ZeroTrustDlpDataset(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The description of the dataset
+        The description of the dataset.
         """
         return pulumi.get(self, "description")
 

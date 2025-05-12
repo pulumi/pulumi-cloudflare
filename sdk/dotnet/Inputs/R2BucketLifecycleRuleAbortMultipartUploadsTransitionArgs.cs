@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        /// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         /// </summary>
         [Input("condition")]
         public Input<Inputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs>? Condition { get; set; }

@@ -46,11 +46,11 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
     }
 
     /**
-     * Whether or not Leaked Credential Checks are enabled
+     * Determines whether or not Leaked Credential Checks are enabled.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -87,11 +87,11 @@ export class LeakedCredentialCheck extends pulumi.CustomResource {
  */
 export interface LeakedCredentialCheckState {
     /**
-     * Whether or not Leaked Credential Checks are enabled
+     * Determines whether or not Leaked Credential Checks are enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -101,11 +101,11 @@ export interface LeakedCredentialCheckState {
  */
 export interface LeakedCredentialCheckArgs {
     /**
-     * Whether or not Leaked Credential Checks are enabled
+     * Determines whether or not Leaked Credential Checks are enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

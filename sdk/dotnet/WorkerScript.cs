@@ -116,7 +116,7 @@ namespace Pulumi.Cloudflare
         /// Migrations to apply for Durable Objects associated with this Worker.
         /// </summary>
         [Output("migrations")]
-        public Output<Outputs.WorkerScriptMigrations> Migrations { get; private set; } = null!;
+        public Output<Outputs.WorkerScriptMigrations?> Migrations { get; private set; } = null!;
 
         /// <summary>
         /// When the script was last modified.
@@ -128,13 +128,13 @@ namespace Pulumi.Cloudflare
         /// Observability settings for the Worker.
         /// </summary>
         [Output("observability")]
-        public Output<Outputs.WorkerScriptObservability> Observability { get; private set; } = null!;
+        public Output<Outputs.WorkerScriptObservability?> Observability { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
         [Output("placement")]
-        public Output<Outputs.WorkerScriptPlacement> Placement { get; private set; } = null!;
+        public Output<Outputs.WorkerScriptPlacement?> Placement { get; private set; } = null!;
 
         /// <summary>
         /// Name of the script, used in URLs and route configuration.

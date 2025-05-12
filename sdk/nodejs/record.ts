@@ -65,7 +65,7 @@ export class Record extends pulumi.CustomResource {
     /**
      * Components of a CAA record.
      */
-    public readonly data!: pulumi.Output<outputs.RecordData>;
+    public readonly data!: pulumi.Output<outputs.RecordData | undefined>;
     /**
      * Extra Cloudflare-specific information about the record.
      */

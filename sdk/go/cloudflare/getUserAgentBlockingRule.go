@@ -51,7 +51,7 @@ func LookupUserAgentBlockingRule(ctx *pulumi.Context, args *LookupUserAgentBlock
 type LookupUserAgentBlockingRuleArgs struct {
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId string `pulumi:"uaRuleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -61,7 +61,7 @@ type LookupUserAgentBlockingRuleResult struct {
 	Id string `pulumi:"id"`
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId string `pulumi:"uaRuleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -78,7 +78,7 @@ func LookupUserAgentBlockingRuleOutput(ctx *pulumi.Context, args LookupUserAgent
 type LookupUserAgentBlockingRuleOutputArgs struct {
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId pulumi.StringInput `pulumi:"uaRuleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -111,7 +111,7 @@ func (o LookupUserAgentBlockingRuleResultOutput) UaRuleId() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupUserAgentBlockingRuleResult) string { return v.UaRuleId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupUserAgentBlockingRuleResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAgentBlockingRuleResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

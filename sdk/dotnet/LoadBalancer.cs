@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// Object description.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable (the default) this load balancer.

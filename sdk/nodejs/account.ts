@@ -76,7 +76,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      */
-    public readonly unit!: pulumi.Output<outputs.AccountUnit>;
+    public readonly unit!: pulumi.Output<outputs.AccountUnit | undefined>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.

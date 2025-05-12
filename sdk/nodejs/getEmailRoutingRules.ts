@@ -41,7 +41,7 @@ export interface GetEmailRoutingRulesArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -67,7 +67,7 @@ export interface GetEmailRoutingRulesResult {
      */
     readonly results: outputs.GetEmailRoutingRulesResult[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -106,7 +106,7 @@ export interface GetEmailRoutingRulesOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

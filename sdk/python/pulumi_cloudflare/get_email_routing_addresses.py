@@ -52,7 +52,7 @@ class GetEmailRoutingAddressesResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -128,7 +128,7 @@ def get_email_routing_addresses(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str direction: Sorts results in an ascending or descending order.
            Available values: "asc", "desc".
     :param builtins.int max_items: Max items to fetch, default: 1000
@@ -165,7 +165,7 @@ def get_email_routing_addresses_output(account_id: Optional[pulumi.Input[builtin
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str direction: Sorts results in an ascending or descending order.
            Available values: "asc", "desc".
     :param builtins.int max_items: Max items to fetch, default: 1000

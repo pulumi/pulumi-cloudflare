@@ -61,9 +61,9 @@ type ZeroTrustRiskScoringIntegration struct {
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId pulumi.StringPtrOutput `pulumi:"referenceId"`
-	// The base url of the tenant, e.g. "https://tenant.okta.com"
+	// The base url of the tenant, e.g. "https://tenant.okta.com".
 	TenantUrl pulumi.StringOutput `pulumi:"tenantUrl"`
-	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
 	WellKnownUrl pulumi.StringOutput `pulumi:"wellKnownUrl"`
 }
 
@@ -118,9 +118,9 @@ type zeroTrustRiskScoringIntegrationState struct {
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId *string `pulumi:"referenceId"`
-	// The base url of the tenant, e.g. "https://tenant.okta.com"
+	// The base url of the tenant, e.g. "https://tenant.okta.com".
 	TenantUrl *string `pulumi:"tenantUrl"`
-	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
 	WellKnownUrl *string `pulumi:"wellKnownUrl"`
 }
 
@@ -137,9 +137,9 @@ type ZeroTrustRiskScoringIntegrationState struct {
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId pulumi.StringPtrInput
-	// The base url of the tenant, e.g. "https://tenant.okta.com"
+	// The base url of the tenant, e.g. "https://tenant.okta.com".
 	TenantUrl pulumi.StringPtrInput
-	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
 	WellKnownUrl pulumi.StringPtrInput
 }
 
@@ -156,7 +156,7 @@ type zeroTrustRiskScoringIntegrationArgs struct {
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId *string `pulumi:"referenceId"`
-	// The base url of the tenant, e.g. "https://tenant.okta.com"
+	// The base url of the tenant, e.g. "https://tenant.okta.com".
 	TenantUrl string `pulumi:"tenantUrl"`
 }
 
@@ -170,7 +170,7 @@ type ZeroTrustRiskScoringIntegrationArgs struct {
 	// A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
 	// https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
 	ReferenceId pulumi.StringPtrInput
-	// The base url of the tenant, e.g. "https://tenant.okta.com"
+	// The base url of the tenant, e.g. "https://tenant.okta.com".
 	TenantUrl pulumi.StringInput
 }
 
@@ -291,12 +291,12 @@ func (o ZeroTrustRiskScoringIntegrationOutput) ReferenceId() pulumi.StringPtrOut
 	return o.ApplyT(func(v *ZeroTrustRiskScoringIntegration) pulumi.StringPtrOutput { return v.ReferenceId }).(pulumi.StringPtrOutput)
 }
 
-// The base url of the tenant, e.g. "https://tenant.okta.com"
+// The base url of the tenant, e.g. "https://tenant.okta.com".
 func (o ZeroTrustRiskScoringIntegrationOutput) TenantUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoringIntegration) pulumi.StringOutput { return v.TenantUrl }).(pulumi.StringOutput)
 }
 
-// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
 func (o ZeroTrustRiskScoringIntegrationOutput) WellKnownUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustRiskScoringIntegration) pulumi.StringOutput { return v.WellKnownUrl }).(pulumi.StringOutput)
 }

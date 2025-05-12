@@ -45,13 +45,13 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// An optional description of the hostname.
+        /// Specify an optional description of the hostname.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// DNSLink value used if the target is ipfs.
+        /// Specify the DNSLink value used if the target is ipfs.
         /// </summary>
         [Output("dnslink")]
         public Output<string?> Dnslink { get; private set; } = null!;
@@ -60,27 +60,27 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The hostname that will point to the target gateway via CNAME.
+        /// Specify the hostname that points to the target gateway via CNAME.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Status of the hostname's activation.
+        /// Specifies the status of the hostname's activation.
         /// Available values: "active", "pending", "deleting", "error".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Target gateway of the hostname.
+        /// Specify the target gateway of the hostname.
         /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -132,32 +132,32 @@ namespace Pulumi.Cloudflare
     public sealed class Web3HostnameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An optional description of the hostname.
+        /// Specify an optional description of the hostname.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// DNSLink value used if the target is ipfs.
+        /// Specify the DNSLink value used if the target is ipfs.
         /// </summary>
         [Input("dnslink")]
         public Input<string>? Dnslink { get; set; }
 
         /// <summary>
-        /// The hostname that will point to the target gateway via CNAME.
+        /// Specify the hostname that points to the target gateway via CNAME.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Target gateway of the hostname.
+        /// Specify the target gateway of the hostname.
         /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -174,13 +174,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// An optional description of the hostname.
+        /// Specify an optional description of the hostname.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// DNSLink value used if the target is ipfs.
+        /// Specify the DNSLink value used if the target is ipfs.
         /// </summary>
         [Input("dnslink")]
         public Input<string>? Dnslink { get; set; }
@@ -189,27 +189,27 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The hostname that will point to the target gateway via CNAME.
+        /// Specify the hostname that points to the target gateway via CNAME.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Status of the hostname's activation.
+        /// Specifies the status of the hostname's activation.
         /// Available values: "active", "pending", "deleting", "error".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Target gateway of the hostname.
+        /// Specify the target gateway of the hostname.
         /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

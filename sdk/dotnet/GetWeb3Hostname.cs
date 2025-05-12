@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetWeb3HostnameArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         [Input("identifier")]
         public string? Identifier { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetWeb3HostnameInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -128,38 +128,38 @@ namespace Pulumi.Cloudflare
     {
         public readonly string CreatedOn;
         /// <summary>
-        /// An optional description of the hostname.
+        /// Specify an optional description of the hostname.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// DNSLink value used if the target is ipfs.
+        /// Specify the DNSLink value used if the target is ipfs.
         /// </summary>
         public readonly string Dnslink;
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         public readonly string? Identifier;
         public readonly string ModifiedOn;
         /// <summary>
-        /// The hostname that will point to the target gateway via CNAME.
+        /// Specify the hostname that points to the target gateway via CNAME.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Status of the hostname's activation.
+        /// Specifies the status of the hostname's activation.
         /// Available values: "active", "pending", "deleting", "error".
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Target gateway of the hostname.
+        /// Specify the target gateway of the hostname.
         /// Available values: "ethereum", "ipfs", "ipfs*universal*path".
         /// </summary>
         public readonly string Target;
         /// <summary>
-        /// Identifier
+        /// Specify the identifier of the hostname.
         /// </summary>
         public readonly string ZoneId;
 

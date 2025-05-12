@@ -53,13 +53,13 @@ type WorkersScript struct {
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrOutput `pulumi:"mainModule"`
 	// Migrations to apply for Durable Objects associated with this Worker.
-	Migrations WorkersScriptMigrationsOutput `pulumi:"migrations"`
+	Migrations WorkersScriptMigrationsPtrOutput `pulumi:"migrations"`
 	// When the script was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Observability settings for the Worker.
-	Observability WorkersScriptObservabilityOutput `pulumi:"observability"`
+	Observability WorkersScriptObservabilityPtrOutput `pulumi:"observability"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-	Placement WorkersScriptPlacementOutput `pulumi:"placement"`
+	Placement WorkersScriptPlacementPtrOutput `pulumi:"placement"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName    pulumi.StringOutput `pulumi:"scriptName"`
 	StartupTimeMs pulumi.IntOutput    `pulumi:"startupTimeMs"`
@@ -456,8 +456,8 @@ func (o WorkersScriptOutput) MainModule() pulumi.StringPtrOutput {
 }
 
 // Migrations to apply for Durable Objects associated with this Worker.
-func (o WorkersScriptOutput) Migrations() WorkersScriptMigrationsOutput {
-	return o.ApplyT(func(v *WorkersScript) WorkersScriptMigrationsOutput { return v.Migrations }).(WorkersScriptMigrationsOutput)
+func (o WorkersScriptOutput) Migrations() WorkersScriptMigrationsPtrOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptMigrationsPtrOutput { return v.Migrations }).(WorkersScriptMigrationsPtrOutput)
 }
 
 // When the script was last modified.
@@ -466,13 +466,13 @@ func (o WorkersScriptOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // Observability settings for the Worker.
-func (o WorkersScriptOutput) Observability() WorkersScriptObservabilityOutput {
-	return o.ApplyT(func(v *WorkersScript) WorkersScriptObservabilityOutput { return v.Observability }).(WorkersScriptObservabilityOutput)
+func (o WorkersScriptOutput) Observability() WorkersScriptObservabilityPtrOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptObservabilityPtrOutput { return v.Observability }).(WorkersScriptObservabilityPtrOutput)
 }
 
 // Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-func (o WorkersScriptOutput) Placement() WorkersScriptPlacementOutput {
-	return o.ApplyT(func(v *WorkersScript) WorkersScriptPlacementOutput { return v.Placement }).(WorkersScriptPlacementOutput)
+func (o WorkersScriptOutput) Placement() WorkersScriptPlacementPtrOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptPlacementPtrOutput { return v.Placement }).(WorkersScriptPlacementPtrOutput)
 }
 
 // Name of the script, used in URLs and route configuration.

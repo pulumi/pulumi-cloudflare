@@ -28,10 +28,13 @@ class GetZeroTrustDlpDatasetResult:
     """
     A collection of values returned by getZeroTrustDlpDataset.
     """
-    def __init__(__self__, account_id=None, columns=None, created_at=None, dataset_id=None, description=None, encoding_version=None, id=None, name=None, num_cells=None, secret=None, status=None, updated_at=None, uploads=None):
+    def __init__(__self__, account_id=None, case_sensitive=None, columns=None, created_at=None, dataset_id=None, description=None, encoding_version=None, id=None, name=None, num_cells=None, secret=None, status=None, updated_at=None, uploads=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if case_sensitive and not isinstance(case_sensitive, bool):
+            raise TypeError("Expected argument 'case_sensitive' to be a bool")
+        pulumi.set(__self__, "case_sensitive", case_sensitive)
         if columns and not isinstance(columns, list):
             raise TypeError("Expected argument 'columns' to be a list")
         pulumi.set(__self__, "columns", columns)
@@ -75,6 +78,11 @@ class GetZeroTrustDlpDatasetResult:
         return pulumi.get(self, "account_id")
 
     @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> builtins.bool:
+        return pulumi.get(self, "case_sensitive")
+
+    @property
     @pulumi.getter
     def columns(self) -> Sequence['outputs.GetZeroTrustDlpDatasetColumnResult']:
         return pulumi.get(self, "columns")
@@ -93,7 +101,7 @@ class GetZeroTrustDlpDatasetResult:
     @pulumi.getter
     def description(self) -> builtins.str:
         """
-        The description of the dataset
+        The description of the dataset.
         """
         return pulumi.get(self, "description")
 
@@ -154,6 +162,7 @@ class AwaitableGetZeroTrustDlpDatasetResult(GetZeroTrustDlpDatasetResult):
             yield self
         return GetZeroTrustDlpDatasetResult(
             account_id=self.account_id,
+            case_sensitive=self.case_sensitive,
             columns=self.columns,
             created_at=self.created_at,
             dataset_id=self.dataset_id,
@@ -190,6 +199,7 @@ def get_zero_trust_dlp_dataset(account_id: Optional[builtins.str] = None,
 
     return AwaitableGetZeroTrustDlpDatasetResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        case_sensitive=pulumi.get(__ret__, 'case_sensitive'),
         columns=pulumi.get(__ret__, 'columns'),
         created_at=pulumi.get(__ret__, 'created_at'),
         dataset_id=pulumi.get(__ret__, 'dataset_id'),
@@ -223,6 +233,7 @@ def get_zero_trust_dlp_dataset_output(account_id: Optional[pulumi.Input[builtins
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getZeroTrustDlpDataset:getZeroTrustDlpDataset', __args__, opts=opts, typ=GetZeroTrustDlpDatasetResult)
     return __ret__.apply(lambda __response__: GetZeroTrustDlpDatasetResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        case_sensitive=pulumi.get(__response__, 'case_sensitive'),
         columns=pulumi.get(__response__, 'columns'),
         created_at=pulumi.get(__response__, 'created_at'),
         dataset_id=pulumi.get(__response__, 'dataset_id'),

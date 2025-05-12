@@ -28,7 +28,7 @@ class FirewallRuleArgs:
         """
         The set of arguments for constructing a FirewallRule resource.
         :param pulumi.Input['FirewallRuleActionArgs'] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "filter", filter)
@@ -59,7 +59,7 @@ class FirewallRuleArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -86,7 +86,7 @@ class _FirewallRuleState:
         :param pulumi.Input[builtins.bool] paused: When true, indicates that the firewall rule is currently paused.
         :param pulumi.Input[builtins.float] priority: The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
         :param pulumi.Input[builtins.str] ref: A short reference tag. Allows you to select related firewall rules.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -187,7 +187,7 @@ class _FirewallRuleState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -246,7 +246,7 @@ class FirewallRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FirewallRuleActionArgs', 'FirewallRuleActionArgsDict']] action: The action to perform when the threshold of matched traffic within the configured period is exceeded.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         ...
     @overload
@@ -362,7 +362,7 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] paused: When true, indicates that the firewall rule is currently paused.
         :param pulumi.Input[builtins.float] priority: The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority.
         :param pulumi.Input[builtins.str] ref: A short reference tag. Allows you to select related firewall rules.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -432,7 +432,7 @@ class FirewallRule(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 

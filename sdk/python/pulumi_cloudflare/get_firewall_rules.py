@@ -103,7 +103,7 @@ class GetFirewallRulesResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -150,7 +150,7 @@ def get_firewall_rules(action: Optional[builtins.str] = None,
     :param builtins.str id: The unique identifier of the firewall rule.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.bool paused: When true, indicates that the firewall rule is currently paused.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['action'] = action
@@ -197,7 +197,7 @@ def get_firewall_rules_output(action: Optional[pulumi.Input[Optional[builtins.st
     :param builtins.str id: The unique identifier of the firewall rule.
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.bool paused: When true, indicates that the firewall rule is currently paused.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['action'] = action

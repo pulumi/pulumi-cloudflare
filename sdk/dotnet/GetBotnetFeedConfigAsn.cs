@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetBotnetFeedConfigAsnArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetBotnetFeedConfigAsnInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetBotnetFeedConfigAsnResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         public readonly int Asn;

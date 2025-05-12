@@ -49,7 +49,7 @@ import (
 type WebAnalyticsSite struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrOutput `pulumi:"autoInstall"`
@@ -106,7 +106,7 @@ func GetWebAnalyticsSite(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebAnalyticsSite resources.
 type webAnalyticsSiteState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall *bool   `pulumi:"autoInstall"`
@@ -131,7 +131,7 @@ type webAnalyticsSiteState struct {
 }
 
 type WebAnalyticsSiteState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrInput
@@ -160,7 +160,7 @@ func (WebAnalyticsSiteState) ElementType() reflect.Type {
 }
 
 type webAnalyticsSiteArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall *bool `pulumi:"autoInstall"`
@@ -176,7 +176,7 @@ type webAnalyticsSiteArgs struct {
 
 // The set of arguments for constructing a WebAnalyticsSite resource.
 type WebAnalyticsSiteArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
 	AutoInstall pulumi.BoolPtrInput
@@ -277,7 +277,7 @@ func (o WebAnalyticsSiteOutput) ToWebAnalyticsSiteOutputWithContext(ctx context.
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o WebAnalyticsSiteOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAnalyticsSite) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

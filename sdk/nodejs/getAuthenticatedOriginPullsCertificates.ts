@@ -35,7 +35,7 @@ export interface GetAuthenticatedOriginPullsCertificatesArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetAuthenticatedOriginPullsCertificatesResult {
      */
     readonly results: outputs.GetAuthenticatedOriginPullsCertificatesResult[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetAuthenticatedOriginPullsCertificatesOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

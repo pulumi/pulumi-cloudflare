@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Identifier for this rule
+        /// Identifier for this rule.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

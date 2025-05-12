@@ -27,7 +27,7 @@ class EmailRoutingDnsArgs:
         """
         The set of arguments for constructing a EmailRoutingDns resource.
         :param pulumi.Input[builtins.str] name: Domain of your zone.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -48,7 +48,7 @@ class EmailRoutingDnsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -82,9 +82,9 @@ class _EmailRoutingDnsState:
         :param pulumi.Input[builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
-        :param pulumi.Input[builtins.bool] success: Whether the API call was successful
+        :param pulumi.Input[builtins.bool] success: Whether the API call was successful.
         :param pulumi.Input[builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if created is not None:
             pulumi.set(__self__, "created", created)
@@ -229,7 +229,7 @@ class _EmailRoutingDnsState:
     @pulumi.getter
     def success(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether the API call was successful
+        Whether the API call was successful.
         """
         return pulumi.get(self, "success")
 
@@ -254,7 +254,7 @@ class _EmailRoutingDnsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -293,7 +293,7 @@ class EmailRoutingDns(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] name: Domain of your zone.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -399,9 +399,9 @@ class EmailRoutingDns(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         :param pulumi.Input[builtins.str] status: Show the state of your account, and the type or configuration error.
                Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
-        :param pulumi.Input[builtins.bool] success: Whether the API call was successful
+        :param pulumi.Input[builtins.bool] success: Whether the API call was successful.
         :param pulumi.Input[builtins.str] tag: Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -495,7 +495,7 @@ class EmailRoutingDns(pulumi.CustomResource):
     @pulumi.getter
     def success(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether the API call was successful
+        Whether the API call was successful.
         """
         return pulumi.get(self, "success")
 
@@ -512,7 +512,7 @@ class EmailRoutingDns(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

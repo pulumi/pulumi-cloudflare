@@ -28,7 +28,7 @@ export function getEmailRoutingSettings(args: GetEmailRoutingSettingsArgs, opts?
  */
 export interface GetEmailRoutingSettingsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -73,7 +73,7 @@ export interface GetEmailRoutingSettingsResult {
      */
     readonly tag: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -101,7 +101,7 @@ export function getEmailRoutingSettingsOutput(args: GetEmailRoutingSettingsOutpu
  */
 export interface GetEmailRoutingSettingsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

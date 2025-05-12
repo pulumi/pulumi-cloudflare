@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         public readonly string LastUpdated;

@@ -35,7 +35,7 @@ export interface GetRateLimitsArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetRateLimitsResult {
      */
     readonly results: outputs.GetRateLimitsResult[];
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetRateLimitsOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

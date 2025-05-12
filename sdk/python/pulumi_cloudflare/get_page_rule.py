@@ -62,7 +62,7 @@ class GetPageRuleResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -78,7 +78,7 @@ class GetPageRuleResult:
     @pulumi.getter(name="pageruleId")
     def pagerule_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "pagerule_id")
 
@@ -107,7 +107,7 @@ class GetPageRuleResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -142,8 +142,8 @@ def get_page_rule(pagerule_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str pagerule_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str pagerule_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['pageruleId'] = pagerule_id
@@ -174,8 +174,8 @@ def get_page_rule_output(pagerule_id: Optional[pulumi.Input[builtins.str]] = Non
     ```
 
 
-    :param builtins.str pagerule_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str pagerule_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['pageruleId'] = pagerule_id

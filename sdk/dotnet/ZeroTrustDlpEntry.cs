@@ -48,6 +48,14 @@ namespace Pulumi.Cloudflare
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Only applies to custom word lists.
+        /// Determines if the words should be matched in a case-sensitive manner
+        /// Cannot be set to false if secret is true
+        /// </summary>
+        [Output("caseSensitive")]
+        public Output<bool> CaseSensitive { get; private set; } = null!;
+
         [Output("confidence")]
         public Output<Outputs.ZeroTrustDlpEntryConfidence> Confidence { get; private set; } = null!;
 
@@ -158,6 +166,14 @@ namespace Pulumi.Cloudflare
     {
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Only applies to custom word lists.
+        /// Determines if the words should be matched in a case-sensitive manner
+        /// Cannot be set to false if secret is true
+        /// </summary>
+        [Input("caseSensitive")]
+        public Input<bool>? CaseSensitive { get; set; }
 
         [Input("confidence")]
         public Input<Inputs.ZeroTrustDlpEntryConfidenceGetArgs>? Confidence { get; set; }

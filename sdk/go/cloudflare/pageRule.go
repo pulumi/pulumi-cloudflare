@@ -37,7 +37,7 @@ type PageRule struct {
 	// Available values: "active", "disabled".
 	Status pulumi.StringOutput `pulumi:"status"`
 	Target pulumi.StringOutput `pulumi:"target"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -95,7 +95,7 @@ type pageRuleState struct {
 	// Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
 	Target *string `pulumi:"target"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -115,7 +115,7 @@ type PageRuleState struct {
 	// Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
 	Target pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -135,7 +135,7 @@ type pageRuleArgs struct {
 	// Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
 	Target string  `pulumi:"target"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -152,7 +152,7 @@ type PageRuleArgs struct {
 	// Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
 	Target pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -276,7 +276,7 @@ func (o PageRuleOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o PageRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

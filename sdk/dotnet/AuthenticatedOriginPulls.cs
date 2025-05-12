@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare
     public partial class AuthenticatedOriginPulls : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("certId")]
         public Output<string> CertId { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         public Output<string> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.Cloudflare
     public sealed class AuthenticatedOriginPullsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("certId")]
         public Input<string>? CertId { get; set; }
@@ -305,7 +305,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

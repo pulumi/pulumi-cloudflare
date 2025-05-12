@@ -28,7 +28,7 @@ class ZeroTrustRiskScoringIntegrationArgs:
         """
         The set of arguments for constructing a ZeroTrustRiskScoringIntegration resource.
         :param pulumi.Input[builtins.str] integration_type: Available values: "Okta".
-        :param pulumi.Input[builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com"
+        :param pulumi.Input[builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com".
         :param pulumi.Input[builtins.bool] active: Whether this integration is enabled. If disabled, no risk changes will be exported to the third-party.
         :param pulumi.Input[builtins.str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
                https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
@@ -66,7 +66,7 @@ class ZeroTrustRiskScoringIntegrationArgs:
     @pulumi.getter(name="tenantUrl")
     def tenant_url(self) -> pulumi.Input[builtins.str]:
         """
-        The base url of the tenant, e.g. "https://tenant.okta.com"
+        The base url of the tenant, e.g. "https://tenant.okta.com".
         """
         return pulumi.get(self, "tenant_url")
 
@@ -119,8 +119,8 @@ class _ZeroTrustRiskScoringIntegrationState:
         :param pulumi.Input[builtins.str] integration_type: Available values: "Okta".
         :param pulumi.Input[builtins.str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
                https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
-        :param pulumi.Input[builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com"
-        :param pulumi.Input[builtins.str] well_known_url: The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+        :param pulumi.Input[builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com".
+        :param pulumi.Input[builtins.str] well_known_url: The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -213,7 +213,7 @@ class _ZeroTrustRiskScoringIntegrationState:
     @pulumi.getter(name="tenantUrl")
     def tenant_url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The base url of the tenant, e.g. "https://tenant.okta.com"
+        The base url of the tenant, e.g. "https://tenant.okta.com".
         """
         return pulumi.get(self, "tenant_url")
 
@@ -225,7 +225,7 @@ class _ZeroTrustRiskScoringIntegrationState:
     @pulumi.getter(name="wellKnownUrl")
     def well_known_url(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+        The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
         """
         return pulumi.get(self, "well_known_url")
 
@@ -272,7 +272,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] integration_type: Available values: "Okta".
         :param pulumi.Input[builtins.str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
                https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
-        :param pulumi.Input[builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com"
+        :param pulumi.Input[builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com".
         """
         ...
     @overload
@@ -374,8 +374,8 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] integration_type: Available values: "Okta".
         :param pulumi.Input[builtins.str] reference_id: A reference id that can be supplied by the client. Currently this should be set to the Access-Okta IDP ID (a UUIDv4).
                https://developers.cloudflare.com/api/operations/access-identity-providers-get-an-access-identity-provider
-        :param pulumi.Input[builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com"
-        :param pulumi.Input[builtins.str] well_known_url: The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+        :param pulumi.Input[builtins.str] tenant_url: The base url of the tenant, e.g. "https://tenant.okta.com".
+        :param pulumi.Input[builtins.str] well_known_url: The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -441,7 +441,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
     @pulumi.getter(name="tenantUrl")
     def tenant_url(self) -> pulumi.Output[builtins.str]:
         """
-        The base url of the tenant, e.g. "https://tenant.okta.com"
+        The base url of the tenant, e.g. "https://tenant.okta.com".
         """
         return pulumi.get(self, "tenant_url")
 
@@ -449,7 +449,7 @@ class ZeroTrustRiskScoringIntegration(pulumi.CustomResource):
     @pulumi.getter(name="wellKnownUrl")
     def well_known_url(self) -> pulumi.Output[builtins.str]:
         """
-        The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+        The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
         """
         return pulumi.get(self, "well_known_url")
 

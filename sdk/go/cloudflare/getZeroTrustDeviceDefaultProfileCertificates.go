@@ -53,6 +53,7 @@ type LookupZeroTrustDeviceDefaultProfileCertificatesArgs struct {
 
 // A collection of values returned by getZeroTrustDeviceDefaultProfileCertificates.
 type LookupZeroTrustDeviceDefaultProfileCertificatesResult struct {
+	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string `pulumi:"id"`
 	ZoneId string `pulumi:"zoneId"`
@@ -89,6 +90,10 @@ func (o LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput) ToLookupZer
 
 func (o LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput) ToLookupZeroTrustDeviceDefaultProfileCertificatesResultOutputWithContext(ctx context.Context) LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput {
 	return o
+}
+
+func (o LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileCertificatesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

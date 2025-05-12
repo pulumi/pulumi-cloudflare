@@ -32,7 +32,7 @@ export interface GetWorkersRouteArgs {
     /**
      * Identifier.
      */
-    routeId: string;
+    routeId?: string;
     /**
      * Identifier.
      */
@@ -47,13 +47,16 @@ export interface GetWorkersRouteResult {
      * Identifier.
      */
     readonly id: string;
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     */
     readonly pattern: string;
     /**
      * Identifier.
      */
-    readonly routeId: string;
+    readonly routeId?: string;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script to run if the route matches.
      */
     readonly script: string;
     /**
@@ -89,7 +92,7 @@ export interface GetWorkersRouteOutputArgs {
     /**
      * Identifier.
      */
-    routeId: pulumi.Input<string>;
+    routeId?: pulumi.Input<string>;
     /**
      * Identifier.
      */

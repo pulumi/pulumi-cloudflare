@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class R2BucketLockRule
     {
         /// <summary>
-        /// Condition to apply a lock rule to an object for how long in seconds
+        /// Condition to apply a lock rule to an object for how long in seconds.
         /// </summary>
         public readonly Outputs.R2BucketLockRuleCondition Condition;
         /// <summary>
-        /// Whether or not this rule is in effect
+        /// Whether or not this rule is in effect.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Unique identifier for this rule
+        /// Unique identifier for this rule.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        /// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         /// </summary>
         public readonly string? Prefix;
 

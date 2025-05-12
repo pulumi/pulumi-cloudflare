@@ -28,7 +28,7 @@ class WebAnalyticsRuleArgs:
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         The set of arguments for constructing a WebAnalyticsRule resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] ruleset_id: The Web Analytics ruleset identifier.
         :param pulumi.Input[builtins.bool] inclusive: Whether the rule includes or excludes traffic from being measured.
         :param pulumi.Input[builtins.bool] is_paused: Whether the rule is paused or not.
@@ -48,7 +48,7 @@ class WebAnalyticsRuleArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -124,7 +124,7 @@ class _WebAnalyticsRuleState:
                  ruleset_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebAnalyticsRule resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] inclusive: Whether the rule includes or excludes traffic from being measured.
         :param pulumi.Input[builtins.bool] is_paused: Whether the rule is paused or not.
         :param pulumi.Input[builtins.str] ruleset_id: The Web Analytics ruleset identifier.
@@ -150,7 +150,7 @@ class _WebAnalyticsRuleState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -262,7 +262,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] inclusive: Whether the rule includes or excludes traffic from being measured.
         :param pulumi.Input[builtins.bool] is_paused: Whether the rule is paused or not.
         :param pulumi.Input[builtins.str] ruleset_id: The Web Analytics ruleset identifier.
@@ -356,7 +356,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] inclusive: Whether the rule includes or excludes traffic from being measured.
         :param pulumi.Input[builtins.bool] is_paused: Whether the rule is paused or not.
         :param pulumi.Input[builtins.str] ruleset_id: The Web Analytics ruleset identifier.
@@ -379,7 +379,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

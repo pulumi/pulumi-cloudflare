@@ -52,7 +52,7 @@ class GetR2BucketSippyResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -60,7 +60,7 @@ class GetR2BucketSippyResult:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> builtins.str:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -68,7 +68,7 @@ class GetR2BucketSippyResult:
     @pulumi.getter
     def destination(self) -> 'outputs.GetR2BucketSippyDestinationResult':
         """
-        Details about the configured destination bucket
+        Details about the configured destination bucket.
         """
         return pulumi.get(self, "destination")
 
@@ -76,7 +76,7 @@ class GetR2BucketSippyResult:
     @pulumi.getter
     def enabled(self) -> builtins.bool:
         """
-        State of Sippy for this bucket
+        State of Sippy for this bucket.
         """
         return pulumi.get(self, "enabled")
 
@@ -92,7 +92,7 @@ class GetR2BucketSippyResult:
     @pulumi.getter
     def source(self) -> 'outputs.GetR2BucketSippySourceResult':
         """
-        Details about the configured source bucket
+        Details about the configured source bucket.
         """
         return pulumi.get(self, "source")
 
@@ -126,8 +126,8 @@ def get_r2_bucket_sippy(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Account ID
-    :param builtins.str bucket_name: Name of the bucket
+    :param builtins.str account_id: Account ID.
+    :param builtins.str bucket_name: Name of the bucket.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -157,8 +157,8 @@ def get_r2_bucket_sippy_output(account_id: Optional[pulumi.Input[builtins.str]] 
     ```
 
 
-    :param builtins.str account_id: Account ID
-    :param builtins.str bucket_name: Name of the bucket
+    :param builtins.str account_id: Account ID.
+    :param builtins.str bucket_name: Name of the bucket.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

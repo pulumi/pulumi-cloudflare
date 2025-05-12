@@ -27,7 +27,7 @@ class MtlsCertificateArgs:
                  private_key: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a MtlsCertificate resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
         :param pulumi.Input[builtins.str] certificates: The uploaded root CA certificate.
         :param pulumi.Input[builtins.str] name: Optional unique name for the certificate. Only used for human readability.
@@ -45,7 +45,7 @@ class MtlsCertificateArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -118,7 +118,7 @@ class _MtlsCertificateState:
                  uploaded_on: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering MtlsCertificate resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
         :param pulumi.Input[builtins.str] certificates: The uploaded root CA certificate.
         :param pulumi.Input[builtins.str] expires_on: When the certificate expires.
@@ -157,7 +157,7 @@ class _MtlsCertificateState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -327,7 +327,7 @@ class MtlsCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
         :param pulumi.Input[builtins.str] certificates: The uploaded root CA certificate.
         :param pulumi.Input[builtins.str] name: Optional unique name for the certificate. Only used for human readability.
@@ -442,7 +442,7 @@ class MtlsCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
         :param pulumi.Input[builtins.str] certificates: The uploaded root CA certificate.
         :param pulumi.Input[builtins.str] expires_on: When the certificate expires.
@@ -475,7 +475,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

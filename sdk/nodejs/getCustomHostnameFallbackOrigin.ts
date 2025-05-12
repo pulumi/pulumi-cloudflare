@@ -28,7 +28,7 @@ export function getCustomHostnameFallbackOrigin(args: GetCustomHostnameFallbackO
  */
 export interface GetCustomHostnameFallbackOriginArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -63,7 +63,7 @@ export interface GetCustomHostnameFallbackOriginResult {
      */
     readonly updatedAt: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -91,7 +91,7 @@ export function getCustomHostnameFallbackOriginOutput(args: GetCustomHostnameFal
  */
 export interface GetCustomHostnameFallbackOriginOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

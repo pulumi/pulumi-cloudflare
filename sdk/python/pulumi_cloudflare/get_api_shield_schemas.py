@@ -92,7 +92,7 @@ class GetApiShieldSchemasResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -131,7 +131,7 @@ def get_api_shield_schemas(max_items: Optional[builtins.int] = None,
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.bool omit_source: Omit the source-files of schemas and only retrieve their meta-data.
     :param builtins.bool validation_enabled: Flag whether schema is enabled for validation.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items
@@ -168,7 +168,7 @@ def get_api_shield_schemas_output(max_items: Optional[pulumi.Input[Optional[buil
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.bool omit_source: Omit the source-files of schemas and only retrieve their meta-data.
     :param builtins.bool validation_enabled: Flag whether schema is enabled for validation.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['maxItems'] = max_items

@@ -32,11 +32,11 @@ export function getR2BucketEventNotification(args: GetR2BucketEventNotificationA
  */
 export interface GetR2BucketEventNotificationArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: string;
 }
@@ -46,11 +46,11 @@ export interface GetR2BucketEventNotificationArgs {
  */
 export interface GetR2BucketEventNotificationResult {
     /**
-     * Account ID
+     * Account ID.
      */
     readonly accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     readonly bucketName: string;
     /**
@@ -88,11 +88,11 @@ export function getR2BucketEventNotificationOutput(args: GetR2BucketEventNotific
  */
 export interface GetR2BucketEventNotificationOutputArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
 }

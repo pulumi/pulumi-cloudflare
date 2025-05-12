@@ -30,7 +30,7 @@ type DevicePostureRule struct {
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// The value to be checked against.
-	Input DevicePostureRuleInputTypeOutput `pulumi:"input"`
+	Input DevicePostureRuleInputTypePtrOutput `pulumi:"input"`
 	// The conditions that the client must match to run the rule.
 	Matches DevicePostureRuleMatchArrayOutput `pulumi:"matches"`
 	// The name of the device posture rule.
@@ -269,8 +269,8 @@ func (o DevicePostureRuleOutput) Expiration() pulumi.StringPtrOutput {
 }
 
 // The value to be checked against.
-func (o DevicePostureRuleOutput) Input() DevicePostureRuleInputTypeOutput {
-	return o.ApplyT(func(v *DevicePostureRule) DevicePostureRuleInputTypeOutput { return v.Input }).(DevicePostureRuleInputTypeOutput)
+func (o DevicePostureRuleOutput) Input() DevicePostureRuleInputTypePtrOutput {
+	return o.ApplyT(func(v *DevicePostureRule) DevicePostureRuleInputTypePtrOutput { return v.Input }).(DevicePostureRuleInputTypePtrOutput)
 }
 
 // The conditions that the client must match to run the rule.

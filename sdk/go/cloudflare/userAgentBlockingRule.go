@@ -52,7 +52,7 @@ type UserAgentBlockingRule struct {
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId pulumi.StringPtrOutput `pulumi:"uaRuleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -102,7 +102,7 @@ type userAgentBlockingRuleState struct {
 	Mode *string `pulumi:"mode"`
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId *string `pulumi:"uaRuleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -114,7 +114,7 @@ type UserAgentBlockingRuleState struct {
 	Mode pulumi.StringPtrInput
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId pulumi.StringPtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -130,7 +130,7 @@ type userAgentBlockingRuleArgs struct {
 	Mode string `pulumi:"mode"`
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId *string `pulumi:"uaRuleId"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -143,7 +143,7 @@ type UserAgentBlockingRuleArgs struct {
 	Mode pulumi.StringInput
 	// The unique identifier of the User Agent Blocking rule.
 	UaRuleId pulumi.StringPtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -250,7 +250,7 @@ func (o UserAgentBlockingRuleOutput) UaRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringPtrOutput { return v.UaRuleId }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o UserAgentBlockingRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

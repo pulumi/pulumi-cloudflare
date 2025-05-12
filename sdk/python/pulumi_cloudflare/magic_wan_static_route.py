@@ -23,41 +23,31 @@ __all__ = ['MagicWanStaticRouteArgs', 'MagicWanStaticRoute']
 class MagicWanStaticRouteArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
+                 nexthop: pulumi.Input[builtins.str],
+                 prefix: pulumi.Input[builtins.str],
+                 priority: pulumi.Input[builtins.int],
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 nexthop: Optional[pulumi.Input[builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[builtins.str]] = None,
-                 priority: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input['MagicWanStaticRouteRouteArgs']] = None,
-                 route_id: Optional[pulumi.Input[builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]] = None,
                  scope: Optional[pulumi.Input['MagicWanStaticRouteScopeArgs']] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a MagicWanStaticRoute resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
-        :param pulumi.Input[builtins.str] description: An optional human provided description of the static route.
         :param pulumi.Input[builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
         :param pulumi.Input[builtins.int] priority: Priority of the static route.
-        :param pulumi.Input[builtins.str] route_id: Identifier
+        :param pulumi.Input[builtins.str] description: An optional human provided description of the static route.
         :param pulumi.Input['MagicWanStaticRouteScopeArgs'] scope: Used only for ECMP routes.
         :param pulumi.Input[builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "nexthop", nexthop)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "priority", priority)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if nexthop is not None:
-            pulumi.set(__self__, "nexthop", nexthop)
-        if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
         if route is not None:
             pulumi.set(__self__, "route", route)
-        if route_id is not None:
-            pulumi.set(__self__, "route_id", route_id)
-        if routes is not None:
-            pulumi.set(__self__, "routes", routes)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if weight is not None:
@@ -77,6 +67,42 @@ class MagicWanStaticRouteArgs:
 
     @property
     @pulumi.getter
+    def nexthop(self) -> pulumi.Input[builtins.str]:
+        """
+        The next-hop IP Address for the static route.
+        """
+        return pulumi.get(self, "nexthop")
+
+    @nexthop.setter
+    def nexthop(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "nexthop", value)
+
+    @property
+    @pulumi.getter
+    def prefix(self) -> pulumi.Input[builtins.str]:
+        """
+        IP Prefix in Classless Inter-Domain Routing format.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "prefix", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[builtins.int]:
+        """
+        Priority of the static route.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[builtins.int]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         An optional human provided description of the static route.
@@ -89,69 +115,12 @@ class MagicWanStaticRouteArgs:
 
     @property
     @pulumi.getter
-    def nexthop(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The next-hop IP Address for the static route.
-        """
-        return pulumi.get(self, "nexthop")
-
-    @nexthop.setter
-    def nexthop(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "nexthop", value)
-
-    @property
-    @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        IP Prefix in Classless Inter-Domain Routing format.
-        """
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "prefix", value)
-
-    @property
-    @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Priority of the static route.
-        """
-        return pulumi.get(self, "priority")
-
-    @priority.setter
-    def priority(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "priority", value)
-
-    @property
-    @pulumi.getter
     def route(self) -> Optional[pulumi.Input['MagicWanStaticRouteRouteArgs']]:
         return pulumi.get(self, "route")
 
     @route.setter
     def route(self, value: Optional[pulumi.Input['MagicWanStaticRouteRouteArgs']]):
         pulumi.set(self, "route", value)
-
-    @property
-    @pulumi.getter(name="routeId")
-    def route_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "route_id")
-
-    @route_id.setter
-    def route_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "route_id", value)
-
-    @property
-    @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]]:
-        return pulumi.get(self, "routes")
-
-    @routes.setter
-    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]]):
-        pulumi.set(self, "routes", value)
 
     @property
     @pulumi.getter
@@ -182,34 +151,39 @@ class MagicWanStaticRouteArgs:
 class _MagicWanStaticRouteState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 created_on: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  modified: Optional[pulumi.Input[builtins.bool]] = None,
+                 modified_on: Optional[pulumi.Input[builtins.str]] = None,
                  modified_route: Optional[pulumi.Input['MagicWanStaticRouteModifiedRouteArgs']] = None,
                  nexthop: Optional[pulumi.Input[builtins.str]] = None,
                  prefix: Optional[pulumi.Input[builtins.str]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input['MagicWanStaticRouteRouteArgs']] = None,
-                 route_id: Optional[pulumi.Input[builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]] = None,
                  scope: Optional[pulumi.Input['MagicWanStaticRouteScopeArgs']] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering MagicWanStaticRoute resources.
         :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] created_on: When the route was created.
         :param pulumi.Input[builtins.str] description: An optional human provided description of the static route.
+        :param pulumi.Input[builtins.str] modified_on: When the route was last modified.
         :param pulumi.Input[builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
         :param pulumi.Input[builtins.int] priority: Priority of the static route.
-        :param pulumi.Input[builtins.str] route_id: Identifier
         :param pulumi.Input['MagicWanStaticRouteScopeArgs'] scope: Used only for ECMP routes.
         :param pulumi.Input[builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if modified is not None:
             pulumi.set(__self__, "modified", modified)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
         if modified_route is not None:
             pulumi.set(__self__, "modified_route", modified_route)
         if nexthop is not None:
@@ -220,10 +194,6 @@ class _MagicWanStaticRouteState:
             pulumi.set(__self__, "priority", priority)
         if route is not None:
             pulumi.set(__self__, "route", route)
-        if route_id is not None:
-            pulumi.set(__self__, "route_id", route_id)
-        if routes is not None:
-            pulumi.set(__self__, "routes", routes)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if weight is not None:
@@ -240,6 +210,18 @@ class _MagicWanStaticRouteState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When the route was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "created_on", value)
 
     @property
     @pulumi.getter
@@ -261,6 +243,18 @@ class _MagicWanStaticRouteState:
     @modified.setter
     def modified(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "modified", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        When the route was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "modified_on", value)
 
     @property
     @pulumi.getter(name="modifiedRoute")
@@ -317,27 +311,6 @@ class _MagicWanStaticRouteState:
         pulumi.set(self, "route", value)
 
     @property
-    @pulumi.getter(name="routeId")
-    def route_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "route_id")
-
-    @route_id.setter
-    def route_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "route_id", value)
-
-    @property
-    @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]]:
-        return pulumi.get(self, "routes")
-
-    @routes.setter
-    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MagicWanStaticRouteRouteArgs']]]]):
-        pulumi.set(self, "routes", value)
-
-    @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input['MagicWanStaticRouteScopeArgs']]:
         """
@@ -374,19 +347,16 @@ class MagicWanStaticRoute(pulumi.CustomResource):
                  prefix: Optional[pulumi.Input[builtins.str]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]] = None,
-                 route_id: Optional[pulumi.Input[builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]]]] = None,
                  scope: Optional[pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
+        ## Import
 
-        example_magic_wan_static_route = cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", account_id="023e105f4ecef8ad9ca31a8372d0c353")
+        ```sh
+        $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example '<account_id>/<route_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -396,7 +366,6 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
         :param pulumi.Input[builtins.int] priority: Priority of the static route.
-        :param pulumi.Input[builtins.str] route_id: Identifier
         :param pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']] scope: Used only for ECMP routes.
         :param pulumi.Input[builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
@@ -409,11 +378,10 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
+        ## Import
 
-        example_magic_wan_static_route = cloudflare.MagicWanStaticRoute("example_magic_wan_static_route", account_id="023e105f4ecef8ad9ca31a8372d0c353")
+        ```sh
+        $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example '<account_id>/<route_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -437,8 +405,6 @@ class MagicWanStaticRoute(pulumi.CustomResource):
                  prefix: Optional[pulumi.Input[builtins.str]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  route: Optional[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]] = None,
-                 route_id: Optional[pulumi.Input[builtins.str]] = None,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]]]] = None,
                  scope: Optional[pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
                  weight: Optional[pulumi.Input[builtins.int]] = None,
                  __props__=None):
@@ -454,15 +420,21 @@ class MagicWanStaticRoute(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
+            if nexthop is None and not opts.urn:
+                raise TypeError("Missing required property 'nexthop'")
             __props__.__dict__["nexthop"] = nexthop
+            if prefix is None and not opts.urn:
+                raise TypeError("Missing required property 'prefix'")
             __props__.__dict__["prefix"] = prefix
+            if priority is None and not opts.urn:
+                raise TypeError("Missing required property 'priority'")
             __props__.__dict__["priority"] = priority
             __props__.__dict__["route"] = route
-            __props__.__dict__["route_id"] = route_id
-            __props__.__dict__["routes"] = routes
             __props__.__dict__["scope"] = scope
             __props__.__dict__["weight"] = weight
+            __props__.__dict__["created_on"] = None
             __props__.__dict__["modified"] = None
+            __props__.__dict__["modified_on"] = None
             __props__.__dict__["modified_route"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/staticRoute:StaticRoute")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
@@ -477,15 +449,15 @@ class MagicWanStaticRoute(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            created_on: Optional[pulumi.Input[builtins.str]] = None,
             description: Optional[pulumi.Input[builtins.str]] = None,
             modified: Optional[pulumi.Input[builtins.bool]] = None,
+            modified_on: Optional[pulumi.Input[builtins.str]] = None,
             modified_route: Optional[pulumi.Input[Union['MagicWanStaticRouteModifiedRouteArgs', 'MagicWanStaticRouteModifiedRouteArgsDict']]] = None,
             nexthop: Optional[pulumi.Input[builtins.str]] = None,
             prefix: Optional[pulumi.Input[builtins.str]] = None,
             priority: Optional[pulumi.Input[builtins.int]] = None,
             route: Optional[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]] = None,
-            route_id: Optional[pulumi.Input[builtins.str]] = None,
-            routes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MagicWanStaticRouteRouteArgs', 'MagicWanStaticRouteRouteArgsDict']]]]] = None,
             scope: Optional[pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']]] = None,
             weight: Optional[pulumi.Input[builtins.int]] = None) -> 'MagicWanStaticRoute':
         """
@@ -496,11 +468,12 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] created_on: When the route was created.
         :param pulumi.Input[builtins.str] description: An optional human provided description of the static route.
+        :param pulumi.Input[builtins.str] modified_on: When the route was last modified.
         :param pulumi.Input[builtins.str] nexthop: The next-hop IP Address for the static route.
         :param pulumi.Input[builtins.str] prefix: IP Prefix in Classless Inter-Domain Routing format.
         :param pulumi.Input[builtins.int] priority: Priority of the static route.
-        :param pulumi.Input[builtins.str] route_id: Identifier
         :param pulumi.Input[Union['MagicWanStaticRouteScopeArgs', 'MagicWanStaticRouteScopeArgsDict']] scope: Used only for ECMP routes.
         :param pulumi.Input[builtins.int] weight: Optional weight of the ECMP scope - if provided.
         """
@@ -509,15 +482,15 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         __props__ = _MagicWanStaticRouteState.__new__(_MagicWanStaticRouteState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["created_on"] = created_on
         __props__.__dict__["description"] = description
         __props__.__dict__["modified"] = modified
+        __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["modified_route"] = modified_route
         __props__.__dict__["nexthop"] = nexthop
         __props__.__dict__["prefix"] = prefix
         __props__.__dict__["priority"] = priority
         __props__.__dict__["route"] = route
-        __props__.__dict__["route_id"] = route_id
-        __props__.__dict__["routes"] = routes
         __props__.__dict__["scope"] = scope
         __props__.__dict__["weight"] = weight
         return MagicWanStaticRoute(resource_name, opts=opts, __props__=__props__)
@@ -529,6 +502,14 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         Identifier
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> pulumi.Output[builtins.str]:
+        """
+        When the route was created.
+        """
+        return pulumi.get(self, "created_on")
 
     @property
     @pulumi.getter
@@ -544,13 +525,21 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         return pulumi.get(self, "modified")
 
     @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> pulumi.Output[builtins.str]:
+        """
+        When the route was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
     @pulumi.getter(name="modifiedRoute")
     def modified_route(self) -> pulumi.Output['outputs.MagicWanStaticRouteModifiedRoute']:
         return pulumi.get(self, "modified_route")
 
     @property
     @pulumi.getter
-    def nexthop(self) -> pulumi.Output[Optional[builtins.str]]:
+    def nexthop(self) -> pulumi.Output[builtins.str]:
         """
         The next-hop IP Address for the static route.
         """
@@ -558,7 +547,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def prefix(self) -> pulumi.Output[Optional[builtins.str]]:
+    def prefix(self) -> pulumi.Output[builtins.str]:
         """
         IP Prefix in Classless Inter-Domain Routing format.
         """
@@ -566,7 +555,7 @@ class MagicWanStaticRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[builtins.int]]:
+    def priority(self) -> pulumi.Output[builtins.int]:
         """
         Priority of the static route.
         """
@@ -578,21 +567,8 @@ class MagicWanStaticRoute(pulumi.CustomResource):
         return pulumi.get(self, "route")
 
     @property
-    @pulumi.getter(name="routeId")
-    def route_id(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "route_id")
-
-    @property
     @pulumi.getter
-    def routes(self) -> pulumi.Output[Sequence['outputs.MagicWanStaticRouteRoute']]:
-        return pulumi.get(self, "routes")
-
-    @property
-    @pulumi.getter
-    def scope(self) -> pulumi.Output['outputs.MagicWanStaticRouteScope']:
+    def scope(self) -> pulumi.Output[Optional['outputs.MagicWanStaticRouteScope']]:
         """
         Used only for ECMP routes.
         """

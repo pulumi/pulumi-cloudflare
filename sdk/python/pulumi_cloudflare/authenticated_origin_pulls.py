@@ -27,7 +27,7 @@ class AuthenticatedOriginPullsArgs:
                  hostname: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a AuthenticatedOriginPulls resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
         """
         pulumi.set(__self__, "configs", configs)
@@ -48,7 +48,7 @@ class AuthenticatedOriginPullsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -91,7 +91,7 @@ class _AuthenticatedOriginPullsState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthenticatedOriginPulls resources.
-        :param pulumi.Input[builtins.str] cert_id: Identifier
+        :param pulumi.Input[builtins.str] cert_id: Identifier.
         :param pulumi.Input[builtins.str] cert_status: Status of the certificate or the association.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[builtins.str] cert_updated_at: The time when the certificate was updated.
@@ -108,7 +108,7 @@ class _AuthenticatedOriginPullsState:
         :param pulumi.Input[builtins.str] status: Status of the certificate or the association.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[builtins.str] updated_at: The time when the certificate was updated.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if cert_id is not None:
             pulumi.set(__self__, "cert_id", cert_id)
@@ -149,7 +149,7 @@ class _AuthenticatedOriginPullsState:
     @pulumi.getter(name="certId")
     def cert_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "cert_id")
 
@@ -340,7 +340,7 @@ class _AuthenticatedOriginPullsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -365,7 +365,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] hostname: The hostname on the origin for which the client certificate uploaded will be used.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -460,7 +460,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] cert_id: Identifier
+        :param pulumi.Input[builtins.str] cert_id: Identifier.
         :param pulumi.Input[builtins.str] cert_status: Status of the certificate or the association.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[builtins.str] cert_updated_at: The time when the certificate was updated.
@@ -477,7 +477,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] status: Status of the certificate or the association.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[builtins.str] updated_at: The time when the certificate was updated.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -506,7 +506,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     @pulumi.getter(name="certId")
     def cert_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "cert_id")
 
@@ -633,7 +633,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

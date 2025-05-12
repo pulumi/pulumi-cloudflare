@@ -50,7 +50,7 @@ func LookupKeylessCertificates(ctx *pulumi.Context, args *LookupKeylessCertifica
 type LookupKeylessCertificatesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupKeylessCertificatesResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetKeylessCertificatesResult `pulumi:"results"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupKeylessCertificatesOutput(ctx *pulumi.Context, args LookupKeylessCert
 type LookupKeylessCertificatesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupKeylessCertificatesResultOutput) Results() GetKeylessCertificatesR
 	return o.ApplyT(func(v LookupKeylessCertificatesResult) []GetKeylessCertificatesResult { return v.Results }).(GetKeylessCertificatesResultArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupKeylessCertificatesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificatesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

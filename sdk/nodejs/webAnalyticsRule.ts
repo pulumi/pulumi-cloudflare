@@ -50,7 +50,7 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     public /*out*/ readonly created!: pulumi.Output<string>;
@@ -118,7 +118,7 @@ export class WebAnalyticsRule extends pulumi.CustomResource {
  */
 export interface WebAnalyticsRuleState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     created?: pulumi.Input<string>;
@@ -144,7 +144,7 @@ export interface WebAnalyticsRuleState {
  */
 export interface WebAnalyticsRuleArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     host?: pulumi.Input<string>;

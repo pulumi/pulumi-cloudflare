@@ -119,7 +119,7 @@ class GetApiShieldSchemaResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -159,7 +159,7 @@ def get_api_shield_schema(omit_source: Optional[builtins.bool] = None,
 
 
     :param builtins.bool omit_source: Omit the source-files of schemas and only retrieve their meta-data.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['omitSource'] = omit_source
@@ -196,7 +196,7 @@ def get_api_shield_schema_output(omit_source: Optional[pulumi.Input[Optional[bui
 
 
     :param builtins.bool omit_source: Omit the source-files of schemas and only retrieve their meta-data.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['omitSource'] = omit_source

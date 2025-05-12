@@ -74,7 +74,7 @@ class GetAuthenticatedOriginPullsCertificateResult:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -98,7 +98,7 @@ class GetAuthenticatedOriginPullsCertificateResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -147,7 +147,7 @@ class GetAuthenticatedOriginPullsCertificateResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -186,8 +186,8 @@ def get_authenticated_origin_pulls_certificate(certificate_id: Optional[builtins
     ```
 
 
-    :param builtins.str certificate_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str certificate_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id
@@ -222,8 +222,8 @@ def get_authenticated_origin_pulls_certificate_output(certificate_id: Optional[p
     ```
 
 
-    :param builtins.str certificate_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str certificate_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id

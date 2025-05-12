@@ -32,11 +32,11 @@ export function getKeylessCertificate(args: GetKeylessCertificateArgs, opts?: pu
  */
 export interface GetKeylessCertificateArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     keylessCertificateId?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -58,11 +58,11 @@ export interface GetKeylessCertificateResult {
      */
     readonly host: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly keylessCertificateId?: string;
     /**
@@ -91,7 +91,7 @@ export interface GetKeylessCertificateResult {
      */
     readonly tunnel: outputs.GetKeylessCertificateTunnel;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -121,11 +121,11 @@ export function getKeylessCertificateOutput(args: GetKeylessCertificateOutputArg
  */
 export interface GetKeylessCertificateOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     keylessCertificateId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

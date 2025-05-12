@@ -25,8 +25,8 @@ class ApiShieldDiscoveryOperationArgs:
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldDiscoveryOperation resource.
-        :param pulumi.Input[builtins.str] operation_id: UUID
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] operation_id: UUID.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] state: Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
                ignored Available values: "review", "ignored".
         """
@@ -39,7 +39,7 @@ class ApiShieldDiscoveryOperationArgs:
     @pulumi.getter(name="operationId")
     def operation_id(self) -> pulumi.Input[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -51,7 +51,7 @@ class ApiShieldDiscoveryOperationArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -81,10 +81,10 @@ class _ApiShieldDiscoveryOperationState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShieldDiscoveryOperation resources.
-        :param pulumi.Input[builtins.str] operation_id: UUID
+        :param pulumi.Input[builtins.str] operation_id: UUID.
         :param pulumi.Input[builtins.str] state: Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
                ignored Available values: "review", "ignored".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if operation_id is not None:
             pulumi.set(__self__, "operation_id", operation_id)
@@ -97,7 +97,7 @@ class _ApiShieldDiscoveryOperationState:
     @pulumi.getter(name="operationId")
     def operation_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -122,7 +122,7 @@ class _ApiShieldDiscoveryOperationState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -156,10 +156,10 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] operation_id: UUID
+        :param pulumi.Input[builtins.str] operation_id: UUID.
         :param pulumi.Input[builtins.str] state: Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
                ignored Available values: "review", "ignored".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -234,10 +234,10 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] operation_id: UUID
+        :param pulumi.Input[builtins.str] operation_id: UUID.
         :param pulumi.Input[builtins.str] state: Mark state of operation in API Discovery * `review` - Mark operation as for review * `ignored` - Mark operation as
                ignored Available values: "review", "ignored".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -252,7 +252,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
     @pulumi.getter(name="operationId")
     def operation_id(self) -> pulumi.Output[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -269,7 +269,7 @@ class ApiShieldDiscoveryOperation(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

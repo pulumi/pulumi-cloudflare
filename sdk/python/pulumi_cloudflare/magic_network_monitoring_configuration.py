@@ -300,6 +300,6 @@ class MagicNetworkMonitoringConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="warpDevices")
-    def warp_devices(self) -> pulumi.Output[Sequence['outputs.MagicNetworkMonitoringConfigurationWarpDevice']]:
+    def warp_devices(self) -> pulumi.Output[Optional[Sequence['outputs.MagicNetworkMonitoringConfigurationWarpDevice']]]:
         return pulumi.get(self, "warp_devices")
 

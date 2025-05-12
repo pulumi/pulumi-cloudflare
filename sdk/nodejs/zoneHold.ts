@@ -65,7 +65,7 @@ export class ZoneHold extends pulumi.CustomResource {
      */
     public readonly includeSubdomains!: pulumi.Output<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -122,7 +122,7 @@ export interface ZoneHoldState {
      */
     includeSubdomains?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -147,7 +147,7 @@ export interface ZoneHoldArgs {
      */
     includeSubdomains?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

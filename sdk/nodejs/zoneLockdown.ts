@@ -82,7 +82,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
      */
     public readonly urls!: pulumi.Output<string[]>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -159,7 +159,7 @@ export interface ZoneLockdownState {
      */
     urls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -177,7 +177,7 @@ export interface ZoneLockdownArgs {
      */
     urls: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

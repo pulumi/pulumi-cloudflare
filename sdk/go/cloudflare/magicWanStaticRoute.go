@@ -14,50 +14,33 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
+// ## Import
 //
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewMagicWanStaticRoute(ctx, "example_magic_wan_static_route", &cloudflare.MagicWanStaticRouteArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// ```sh
+// $ pulumi import cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute example '<account_id>/<route_id>'
 // ```
 type MagicWanStaticRoute struct {
 	pulumi.CustomResourceState
 
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// When the route was created.
+	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// An optional human provided description of the static route.
-	Description   pulumi.StringPtrOutput                 `pulumi:"description"`
-	Modified      pulumi.BoolOutput                      `pulumi:"modified"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Modified    pulumi.BoolOutput      `pulumi:"modified"`
+	// When the route was last modified.
+	ModifiedOn    pulumi.StringOutput                    `pulumi:"modifiedOn"`
 	ModifiedRoute MagicWanStaticRouteModifiedRouteOutput `pulumi:"modifiedRoute"`
 	// The next-hop IP Address for the static route.
-	Nexthop pulumi.StringPtrOutput `pulumi:"nexthop"`
+	Nexthop pulumi.StringOutput `pulumi:"nexthop"`
 	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix pulumi.StringPtrOutput `pulumi:"prefix"`
+	Prefix pulumi.StringOutput `pulumi:"prefix"`
 	// Priority of the static route.
-	Priority pulumi.IntPtrOutput            `pulumi:"priority"`
+	Priority pulumi.IntOutput               `pulumi:"priority"`
 	Route    MagicWanStaticRouteRouteOutput `pulumi:"route"`
-	// Identifier
-	RouteId pulumi.StringPtrOutput              `pulumi:"routeId"`
-	Routes  MagicWanStaticRouteRouteArrayOutput `pulumi:"routes"`
 	// Used only for ECMP routes.
-	Scope MagicWanStaticRouteScopeOutput `pulumi:"scope"`
+	Scope MagicWanStaticRouteScopePtrOutput `pulumi:"scope"`
 	// Optional weight of the ECMP scope - if provided.
 	Weight pulumi.IntPtrOutput `pulumi:"weight"`
 }
@@ -71,6 +54,15 @@ func NewMagicWanStaticRoute(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Nexthop == nil {
+		return nil, errors.New("invalid value for required argument 'Nexthop'")
+	}
+	if args.Prefix == nil {
+		return nil, errors.New("invalid value for required argument 'Prefix'")
+	}
+	if args.Priority == nil {
+		return nil, errors.New("invalid value for required argument 'Priority'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -103,9 +95,13 @@ func GetMagicWanStaticRoute(ctx *pulumi.Context,
 type magicWanStaticRouteState struct {
 	// Identifier
 	AccountId *string `pulumi:"accountId"`
+	// When the route was created.
+	CreatedOn *string `pulumi:"createdOn"`
 	// An optional human provided description of the static route.
-	Description   *string                           `pulumi:"description"`
-	Modified      *bool                             `pulumi:"modified"`
+	Description *string `pulumi:"description"`
+	Modified    *bool   `pulumi:"modified"`
+	// When the route was last modified.
+	ModifiedOn    *string                           `pulumi:"modifiedOn"`
 	ModifiedRoute *MagicWanStaticRouteModifiedRoute `pulumi:"modifiedRoute"`
 	// The next-hop IP Address for the static route.
 	Nexthop *string `pulumi:"nexthop"`
@@ -114,9 +110,6 @@ type magicWanStaticRouteState struct {
 	// Priority of the static route.
 	Priority *int                      `pulumi:"priority"`
 	Route    *MagicWanStaticRouteRoute `pulumi:"route"`
-	// Identifier
-	RouteId *string                    `pulumi:"routeId"`
-	Routes  []MagicWanStaticRouteRoute `pulumi:"routes"`
 	// Used only for ECMP routes.
 	Scope *MagicWanStaticRouteScope `pulumi:"scope"`
 	// Optional weight of the ECMP scope - if provided.
@@ -126,9 +119,13 @@ type magicWanStaticRouteState struct {
 type MagicWanStaticRouteState struct {
 	// Identifier
 	AccountId pulumi.StringPtrInput
+	// When the route was created.
+	CreatedOn pulumi.StringPtrInput
 	// An optional human provided description of the static route.
-	Description   pulumi.StringPtrInput
-	Modified      pulumi.BoolPtrInput
+	Description pulumi.StringPtrInput
+	Modified    pulumi.BoolPtrInput
+	// When the route was last modified.
+	ModifiedOn    pulumi.StringPtrInput
 	ModifiedRoute MagicWanStaticRouteModifiedRoutePtrInput
 	// The next-hop IP Address for the static route.
 	Nexthop pulumi.StringPtrInput
@@ -137,9 +134,6 @@ type MagicWanStaticRouteState struct {
 	// Priority of the static route.
 	Priority pulumi.IntPtrInput
 	Route    MagicWanStaticRouteRoutePtrInput
-	// Identifier
-	RouteId pulumi.StringPtrInput
-	Routes  MagicWanStaticRouteRouteArrayInput
 	// Used only for ECMP routes.
 	Scope MagicWanStaticRouteScopePtrInput
 	// Optional weight of the ECMP scope - if provided.
@@ -156,15 +150,12 @@ type magicWanStaticRouteArgs struct {
 	// An optional human provided description of the static route.
 	Description *string `pulumi:"description"`
 	// The next-hop IP Address for the static route.
-	Nexthop *string `pulumi:"nexthop"`
+	Nexthop string `pulumi:"nexthop"`
 	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix *string `pulumi:"prefix"`
+	Prefix string `pulumi:"prefix"`
 	// Priority of the static route.
-	Priority *int                      `pulumi:"priority"`
+	Priority int                       `pulumi:"priority"`
 	Route    *MagicWanStaticRouteRoute `pulumi:"route"`
-	// Identifier
-	RouteId *string                    `pulumi:"routeId"`
-	Routes  []MagicWanStaticRouteRoute `pulumi:"routes"`
 	// Used only for ECMP routes.
 	Scope *MagicWanStaticRouteScope `pulumi:"scope"`
 	// Optional weight of the ECMP scope - if provided.
@@ -178,15 +169,12 @@ type MagicWanStaticRouteArgs struct {
 	// An optional human provided description of the static route.
 	Description pulumi.StringPtrInput
 	// The next-hop IP Address for the static route.
-	Nexthop pulumi.StringPtrInput
+	Nexthop pulumi.StringInput
 	// IP Prefix in Classless Inter-Domain Routing format.
-	Prefix pulumi.StringPtrInput
+	Prefix pulumi.StringInput
 	// Priority of the static route.
-	Priority pulumi.IntPtrInput
+	Priority pulumi.IntInput
 	Route    MagicWanStaticRouteRoutePtrInput
-	// Identifier
-	RouteId pulumi.StringPtrInput
-	Routes  MagicWanStaticRouteRouteArrayInput
 	// Used only for ECMP routes.
 	Scope MagicWanStaticRouteScopePtrInput
 	// Optional weight of the ECMP scope - if provided.
@@ -285,6 +273,11 @@ func (o MagicWanStaticRouteOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// When the route was created.
+func (o MagicWanStaticRouteOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
 // An optional human provided description of the static route.
 func (o MagicWanStaticRouteOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -294,41 +287,37 @@ func (o MagicWanStaticRouteOutput) Modified() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.BoolOutput { return v.Modified }).(pulumi.BoolOutput)
 }
 
+// When the route was last modified.
+func (o MagicWanStaticRouteOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
 func (o MagicWanStaticRouteOutput) ModifiedRoute() MagicWanStaticRouteModifiedRouteOutput {
 	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteModifiedRouteOutput { return v.ModifiedRoute }).(MagicWanStaticRouteModifiedRouteOutput)
 }
 
 // The next-hop IP Address for the static route.
-func (o MagicWanStaticRouteOutput) Nexthop() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.Nexthop }).(pulumi.StringPtrOutput)
+func (o MagicWanStaticRouteOutput) Nexthop() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.Nexthop }).(pulumi.StringOutput)
 }
 
 // IP Prefix in Classless Inter-Domain Routing format.
-func (o MagicWanStaticRouteOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.Prefix }).(pulumi.StringPtrOutput)
+func (o MagicWanStaticRouteOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringOutput { return v.Prefix }).(pulumi.StringOutput)
 }
 
 // Priority of the static route.
-func (o MagicWanStaticRouteOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+func (o MagicWanStaticRouteOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
 func (o MagicWanStaticRouteOutput) Route() MagicWanStaticRouteRouteOutput {
 	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteRouteOutput { return v.Route }).(MagicWanStaticRouteRouteOutput)
 }
 
-// Identifier
-func (o MagicWanStaticRouteOutput) RouteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) pulumi.StringPtrOutput { return v.RouteId }).(pulumi.StringPtrOutput)
-}
-
-func (o MagicWanStaticRouteOutput) Routes() MagicWanStaticRouteRouteArrayOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteRouteArrayOutput { return v.Routes }).(MagicWanStaticRouteRouteArrayOutput)
-}
-
 // Used only for ECMP routes.
-func (o MagicWanStaticRouteOutput) Scope() MagicWanStaticRouteScopeOutput {
-	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteScopeOutput { return v.Scope }).(MagicWanStaticRouteScopeOutput)
+func (o MagicWanStaticRouteOutput) Scope() MagicWanStaticRouteScopePtrOutput {
+	return o.ApplyT(func(v *MagicWanStaticRoute) MagicWanStaticRouteScopePtrOutput { return v.Scope }).(MagicWanStaticRouteScopePtrOutput)
 }
 
 // Optional weight of the ECMP scope - if provided.

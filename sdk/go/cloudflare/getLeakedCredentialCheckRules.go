@@ -50,7 +50,7 @@ func LookupLeakedCredentialCheckRules(ctx *pulumi.Context, args *LookupLeakedCre
 type LookupLeakedCredentialCheckRulesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupLeakedCredentialCheckRulesResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetLeakedCredentialCheckRulesResult `pulumi:"results"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupLeakedCredentialCheckRulesOutput(ctx *pulumi.Context, args LookupLeak
 type LookupLeakedCredentialCheckRulesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupLeakedCredentialCheckRulesResultOutput) Results() GetLeakedCredent
 	return o.ApplyT(func(v LookupLeakedCredentialCheckRulesResult) []GetLeakedCredentialCheckRulesResult { return v.Results }).(GetLeakedCredentialCheckRulesResultArrayOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupLeakedCredentialCheckRulesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLeakedCredentialCheckRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

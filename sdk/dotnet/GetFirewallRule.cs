@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         public string? RuleId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? RuleId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? RuleId;
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         public readonly string ZoneId;
 

@@ -36,7 +36,7 @@ class BotManagementArgs:
                  suppress_session_score: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a BotManagement resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] ai_bots_protection: Enable rule to block AI Scrapers and Crawlers.
                Available values: "block", "disabled".
         :param pulumi.Input[builtins.bool] auto_update_model: Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
@@ -84,7 +84,7 @@ class BotManagementArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -271,7 +271,7 @@ class _BotManagementState:
         :param pulumi.Input['BotManagementStaleZoneConfigurationArgs'] stale_zone_configuration: A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
         :param pulumi.Input[builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         :param pulumi.Input[builtins.bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if ai_bots_protection is not None:
             pulumi.set(__self__, "ai_bots_protection", ai_bots_protection)
@@ -469,7 +469,7 @@ class _BotManagementState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -538,7 +538,7 @@ class BotManagement(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] sbfm_verified_bots: Super Bot Fight Mode (SBFM) action to take on verified bots requests.
                Available values: "allow", "block".
         :param pulumi.Input[builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -670,7 +670,7 @@ class BotManagement(pulumi.CustomResource):
         :param pulumi.Input[Union['BotManagementStaleZoneConfigurationArgs', 'BotManagementStaleZoneConfigurationArgsDict']] stale_zone_configuration: A read-only field that shows which unauthorized settings are currently active on the zone. These settings typically result from upgrades or downgrades.
         :param pulumi.Input[builtins.bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         :param pulumi.Input[builtins.bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -807,7 +807,7 @@ class BotManagement(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

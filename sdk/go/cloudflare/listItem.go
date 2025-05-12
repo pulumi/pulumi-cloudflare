@@ -42,8 +42,8 @@ import (
 type ListItem struct {
 	pulumi.CustomResourceState
 
-	// Identifier
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Defines an identifier.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
 	// An informative summary of the list item.
@@ -71,6 +71,9 @@ func NewListItem(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.ListId == nil {
 		return nil, errors.New("invalid value for required argument 'ListId'")
 	}
@@ -97,7 +100,7 @@ func GetListItem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ListItem resources.
 type listItemState struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId *string `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn *int `pulumi:"asn"`
@@ -120,7 +123,7 @@ type listItemState struct {
 }
 
 type ListItemState struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId pulumi.StringPtrInput
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrInput
@@ -147,8 +150,8 @@ func (ListItemState) ElementType() reflect.Type {
 }
 
 type listItemArgs struct {
-	// Identifier
-	AccountId *string `pulumi:"accountId"`
+	// Defines an identifier.
+	AccountId string `pulumi:"accountId"`
 	// A non-negative 32 bit integer
 	Asn *int `pulumi:"asn"`
 	// An informative summary of the list item.
@@ -165,8 +168,8 @@ type listItemArgs struct {
 
 // The set of arguments for constructing a ListItem resource.
 type ListItemArgs struct {
-	// Identifier
-	AccountId pulumi.StringPtrInput
+	// Defines an identifier.
+	AccountId pulumi.StringInput
 	// A non-negative 32 bit integer
 	Asn pulumi.IntPtrInput
 	// An informative summary of the list item.
@@ -268,9 +271,9 @@ func (o ListItemOutput) ToListItemOutputWithContext(ctx context.Context) ListIte
 	return o
 }
 
-// Identifier
-func (o ListItemOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+// Defines an identifier.
+func (o ListItemOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListItem) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // A non-negative 32 bit integer

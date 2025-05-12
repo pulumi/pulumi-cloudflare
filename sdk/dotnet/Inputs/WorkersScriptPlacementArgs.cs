@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkersScriptPlacementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// </summary>
+        [Input("lastAnalyzedAt")]
+        public Input<string>? LastAnalyzedAt { get; set; }
+
+        /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// Available values: "smart".
         /// </summary>

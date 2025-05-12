@@ -65,7 +65,7 @@ type LookupFiltersArgs struct {
 	Paused *bool `pulumi:"paused"`
 	// The filter ref (a short reference tag) to search for. Must be an exact match.
 	Ref *string `pulumi:"ref"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -85,7 +85,7 @@ type LookupFiltersResult struct {
 	Ref *string `pulumi:"ref"`
 	// The items returned by the data source
 	Results []GetFiltersResult `pulumi:"results"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -112,7 +112,7 @@ type LookupFiltersOutputArgs struct {
 	Paused pulumi.BoolPtrInput `pulumi:"paused"`
 	// The filter ref (a short reference tag) to search for. Must be an exact match.
 	Ref pulumi.StringPtrInput `pulumi:"ref"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -170,7 +170,7 @@ func (o LookupFiltersResultOutput) Results() GetFiltersResultArrayOutput {
 	return o.ApplyT(func(v LookupFiltersResult) []GetFiltersResult { return v.Results }).(GetFiltersResultArrayOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupFiltersResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFiltersResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

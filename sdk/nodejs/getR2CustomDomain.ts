@@ -34,15 +34,15 @@ export function getR2CustomDomain(args: GetR2CustomDomainArgs, opts?: pulumi.Inv
  */
 export interface GetR2CustomDomainArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: string;
     /**
-     * Name of the custom domain
+     * Name of the custom domain.
      */
     domain: string;
 }
@@ -52,19 +52,19 @@ export interface GetR2CustomDomainArgs {
  */
 export interface GetR2CustomDomainResult {
     /**
-     * Account ID
+     * Account ID.
      */
     readonly accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     readonly bucketName: string;
     /**
-     * Name of the custom domain
+     * Name of the custom domain.
      */
     readonly domain: string;
     /**
-     * Whether this bucket is publicly accessible at the specified custom domain
+     * Whether this bucket is publicly accessible at the specified custom domain.
      */
     readonly enabled: boolean;
     /**
@@ -78,11 +78,11 @@ export interface GetR2CustomDomainResult {
     readonly minTls: string;
     readonly status: outputs.GetR2CustomDomainStatus;
     /**
-     * Zone ID of the custom domain resides in
+     * Zone ID of the custom domain resides in.
      */
     readonly zoneId: string;
     /**
-     * Zone that the custom domain resides in
+     * Zone that the custom domain resides in.
      */
     readonly zoneName: string;
 }
@@ -114,15 +114,15 @@ export function getR2CustomDomainOutput(args: GetR2CustomDomainOutputArgs, opts?
  */
 export interface GetR2CustomDomainOutputArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
     /**
-     * Name of the custom domain
+     * Name of the custom domain.
      */
     domain: pulumi.Input<string>;
 }

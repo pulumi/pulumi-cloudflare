@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _actions;
 
         /// <summary>
-        /// Array of R2 object actions that will trigger notifications
+        /// Array of R2 object actions that will trigger notifications.
         /// </summary>
         public InputList<string> Actions
         {
@@ -25,19 +25,19 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// A description that can be used to identify the event notification rule after creation
+        /// A description that can be used to identify the event notification rule after creation.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Notifications will be sent only for objects with this prefix
+        /// Notifications will be sent only for objects with this prefix.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// Notifications will be sent only for objects with this suffix
+        /// Notifications will be sent only for objects with this suffix.
         /// </summary>
         [Input("suffix")]
         public Input<string>? Suffix { get; set; }

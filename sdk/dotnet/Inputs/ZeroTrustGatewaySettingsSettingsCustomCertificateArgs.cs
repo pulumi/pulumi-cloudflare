@@ -21,8 +21,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Enable use of custom certificate authority for signing Gateway traffic.
         /// </summary>
-        [Input("enabled", required: true)]
-        public Input<bool> Enabled { get; set; } = null!;
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// UUID of certificate (ID from MTLS certificate store).

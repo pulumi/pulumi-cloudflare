@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
         /// The name and type of DNS record for the Spectrum application.
         /// </summary>
         [Output("originDns")]
-        public Output<Outputs.SpectrumApplicationOriginDns> OriginDns { get; private set; } = null!;
+        public Output<Outputs.SpectrumApplicationOriginDns?> OriginDns { get; private set; } = null!;
 
         /// <summary>
         /// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.

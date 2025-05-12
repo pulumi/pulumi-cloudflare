@@ -68,6 +68,7 @@ type LookupHyperdriveConfigResult struct {
 	Id string `pulumi:"id"`
 	// When the Hyperdrive configuration was last modified.
 	ModifiedOn string                    `pulumi:"modifiedOn"`
+	Mtls       GetHyperdriveConfigMtls   `pulumi:"mtls"`
 	Name       string                    `pulumi:"name"`
 	Origin     GetHyperdriveConfigOrigin `pulumi:"origin"`
 }
@@ -135,6 +136,10 @@ func (o LookupHyperdriveConfigResultOutput) Id() pulumi.StringOutput {
 // When the Hyperdrive configuration was last modified.
 func (o LookupHyperdriveConfigResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o LookupHyperdriveConfigResultOutput) Mtls() GetHyperdriveConfigMtlsOutput {
+	return o.ApplyT(func(v LookupHyperdriveConfigResult) GetHyperdriveConfigMtls { return v.Mtls }).(GetHyperdriveConfigMtlsOutput)
 }
 
 func (o LookupHyperdriveConfigResultOutput) Name() pulumi.StringOutput {

@@ -50,6 +50,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsAccountSettingsFips? Fips;
         /// <summary>
+        /// Setting to enable host selector in egress policies.
+        /// </summary>
+        public readonly Outputs.TeamsAccountSettingsHostSelector? HostSelector;
+        /// <summary>
         /// Protocol Detection settings.
         /// </summary>
         public readonly Outputs.TeamsAccountSettingsProtocolDetection? ProtocolDetection;
@@ -82,6 +86,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsAccountSettingsFips? fips,
 
+            Outputs.TeamsAccountSettingsHostSelector? hostSelector,
+
             Outputs.TeamsAccountSettingsProtocolDetection? protocolDetection,
 
             Outputs.TeamsAccountSettingsSandbox? sandbox,
@@ -97,6 +103,7 @@ namespace Pulumi.Cloudflare.Outputs
             CustomCertificate = customCertificate;
             ExtendedEmailMatching = extendedEmailMatching;
             Fips = fips;
+            HostSelector = hostSelector;
             ProtocolDetection = protocolDetection;
             Sandbox = sandbox;
             TlsDecrypt = tlsDecrypt;

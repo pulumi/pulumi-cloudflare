@@ -27,8 +27,8 @@ type QueueConsumer struct {
 	// Name of a Worker
 	Script pulumi.StringOutput `pulumi:"script"`
 	// Name of a Worker
-	ScriptName pulumi.StringPtrOutput      `pulumi:"scriptName"`
-	Settings   QueueConsumerSettingsOutput `pulumi:"settings"`
+	ScriptName pulumi.StringPtrOutput         `pulumi:"scriptName"`
+	Settings   QueueConsumerSettingsPtrOutput `pulumi:"settings"`
 	// Available values: "worker".
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
@@ -259,8 +259,8 @@ func (o QueueConsumerOutput) ScriptName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QueueConsumer) pulumi.StringPtrOutput { return v.ScriptName }).(pulumi.StringPtrOutput)
 }
 
-func (o QueueConsumerOutput) Settings() QueueConsumerSettingsOutput {
-	return o.ApplyT(func(v *QueueConsumer) QueueConsumerSettingsOutput { return v.Settings }).(QueueConsumerSettingsOutput)
+func (o QueueConsumerOutput) Settings() QueueConsumerSettingsPtrOutput {
+	return o.ApplyT(func(v *QueueConsumer) QueueConsumerSettingsPtrOutput { return v.Settings }).(QueueConsumerSettingsPtrOutput)
 }
 
 // Available values: "worker".

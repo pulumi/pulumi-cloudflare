@@ -50,7 +50,7 @@ import (
 type AccountDnsSettingsInternalView struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// When the view was created.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
@@ -101,7 +101,7 @@ func GetAccountDnsSettingsInternalView(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountDnsSettingsInternalView resources.
 type accountDnsSettingsInternalViewState struct {
-	// Identifier
+	// Identifier.
 	AccountId *string `pulumi:"accountId"`
 	// When the view was created.
 	CreatedTime *string `pulumi:"createdTime"`
@@ -114,7 +114,7 @@ type accountDnsSettingsInternalViewState struct {
 }
 
 type AccountDnsSettingsInternalViewState struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringPtrInput
 	// When the view was created.
 	CreatedTime pulumi.StringPtrInput
@@ -131,7 +131,7 @@ func (AccountDnsSettingsInternalViewState) ElementType() reflect.Type {
 }
 
 type accountDnsSettingsInternalViewArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The name of the view.
 	Name string `pulumi:"name"`
@@ -141,7 +141,7 @@ type accountDnsSettingsInternalViewArgs struct {
 
 // The set of arguments for constructing a AccountDnsSettingsInternalView resource.
 type AccountDnsSettingsInternalViewArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput
 	// The name of the view.
 	Name pulumi.StringInput
@@ -236,7 +236,7 @@ func (o AccountDnsSettingsInternalViewOutput) ToAccountDnsSettingsInternalViewOu
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o AccountDnsSettingsInternalViewOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountDnsSettingsInternalView) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

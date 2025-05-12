@@ -41,9 +41,9 @@ import (
 type LeakedCredentialCheck struct {
 	pulumi.CustomResourceState
 
-	// Whether or not Leaked Credential Checks are enabled
+	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -80,16 +80,16 @@ func GetLeakedCredentialCheck(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LeakedCredentialCheck resources.
 type leakedCredentialCheckState struct {
-	// Whether or not Leaked Credential Checks are enabled
+	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type LeakedCredentialCheckState struct {
-	// Whether or not Leaked Credential Checks are enabled
+	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled pulumi.BoolPtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -98,17 +98,17 @@ func (LeakedCredentialCheckState) ElementType() reflect.Type {
 }
 
 type leakedCredentialCheckArgs struct {
-	// Whether or not Leaked Credential Checks are enabled
+	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a LeakedCredentialCheck resource.
 type LeakedCredentialCheckArgs struct {
-	// Whether or not Leaked Credential Checks are enabled
+	// Determines whether or not Leaked Credential Checks are enabled.
 	Enabled pulumi.BoolPtrInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -199,12 +199,12 @@ func (o LeakedCredentialCheckOutput) ToLeakedCredentialCheckOutputWithContext(ct
 	return o
 }
 
-// Whether or not Leaked Credential Checks are enabled
+// Determines whether or not Leaked Credential Checks are enabled.
 func (o LeakedCredentialCheckOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LeakedCredentialCheck) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LeakedCredentialCheckOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LeakedCredentialCheck) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

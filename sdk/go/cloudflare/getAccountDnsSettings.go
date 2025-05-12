@@ -48,13 +48,13 @@ func LookupAccountDnsSettings(ctx *pulumi.Context, args *LookupAccountDnsSetting
 
 // A collection of arguments for invoking getAccountDnsSettings.
 type LookupAccountDnsSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getAccountDnsSettings.
 type LookupAccountDnsSettingsResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                            `pulumi:"id"`
@@ -72,7 +72,7 @@ func LookupAccountDnsSettingsOutput(ctx *pulumi.Context, args LookupAccountDnsSe
 
 // A collection of arguments for invoking getAccountDnsSettings.
 type LookupAccountDnsSettingsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -95,7 +95,7 @@ func (o LookupAccountDnsSettingsResultOutput) ToLookupAccountDnsSettingsResultOu
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupAccountDnsSettingsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountDnsSettingsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

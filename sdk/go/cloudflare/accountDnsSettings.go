@@ -16,9 +16,9 @@ import (
 type AccountDnsSettings struct {
 	pulumi.CustomResourceState
 
-	// Identifier
-	AccountId    pulumi.StringOutput                  `pulumi:"accountId"`
-	ZoneDefaults AccountDnsSettingsZoneDefaultsOutput `pulumi:"zoneDefaults"`
+	// Identifier.
+	AccountId    pulumi.StringOutput                     `pulumi:"accountId"`
+	ZoneDefaults AccountDnsSettingsZoneDefaultsPtrOutput `pulumi:"zoneDefaults"`
 }
 
 // NewAccountDnsSettings registers a new resource with the given unique name, arguments, and options.
@@ -54,13 +54,13 @@ func GetAccountDnsSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountDnsSettings resources.
 type accountDnsSettingsState struct {
-	// Identifier
+	// Identifier.
 	AccountId    *string                         `pulumi:"accountId"`
 	ZoneDefaults *AccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
 }
 
 type AccountDnsSettingsState struct {
-	// Identifier
+	// Identifier.
 	AccountId    pulumi.StringPtrInput
 	ZoneDefaults AccountDnsSettingsZoneDefaultsPtrInput
 }
@@ -70,14 +70,14 @@ func (AccountDnsSettingsState) ElementType() reflect.Type {
 }
 
 type accountDnsSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId    string                          `pulumi:"accountId"`
 	ZoneDefaults *AccountDnsSettingsZoneDefaults `pulumi:"zoneDefaults"`
 }
 
 // The set of arguments for constructing a AccountDnsSettings resource.
 type AccountDnsSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId    pulumi.StringInput
 	ZoneDefaults AccountDnsSettingsZoneDefaultsPtrInput
 }
@@ -169,13 +169,13 @@ func (o AccountDnsSettingsOutput) ToAccountDnsSettingsOutputWithContext(ctx cont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o AccountDnsSettingsOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountDnsSettings) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o AccountDnsSettingsOutput) ZoneDefaults() AccountDnsSettingsZoneDefaultsOutput {
-	return o.ApplyT(func(v *AccountDnsSettings) AccountDnsSettingsZoneDefaultsOutput { return v.ZoneDefaults }).(AccountDnsSettingsZoneDefaultsOutput)
+func (o AccountDnsSettingsOutput) ZoneDefaults() AccountDnsSettingsZoneDefaultsPtrOutput {
+	return o.ApplyT(func(v *AccountDnsSettings) AccountDnsSettingsZoneDefaultsPtrOutput { return v.ZoneDefaults }).(AccountDnsSettingsZoneDefaultsPtrOutput)
 }
 
 type AccountDnsSettingsArrayOutput struct{ *pulumi.OutputState }

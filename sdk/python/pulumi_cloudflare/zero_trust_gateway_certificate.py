@@ -24,7 +24,6 @@ class ZeroTrustGatewayCertificateArgs:
                  validity_period_days: Optional[pulumi.Input[builtins.int]] = None):
         """
         The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
-        :param pulumi.Input[builtins.int] validity_period_days: Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         """
         pulumi.set(__self__, "account_id", account_id)
         if validity_period_days is not None:
@@ -42,9 +41,6 @@ class ZeroTrustGatewayCertificateArgs:
     @property
     @pulumi.getter(name="validityPeriodDays")
     def validity_period_days(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-        """
         return pulumi.get(self, "validity_period_days")
 
     @validity_period_days.setter
@@ -79,7 +75,6 @@ class _ZeroTrustGatewayCertificateState:
         :param pulumi.Input[builtins.str] issuer_raw: The entire issuer field of the certificate.
         :param pulumi.Input[builtins.str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed.
                Available values: "custom", "gateway_managed".
-        :param pulumi.Input[builtins.int] validity_period_days: Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -242,9 +237,6 @@ class _ZeroTrustGatewayCertificateState:
     @property
     @pulumi.getter(name="validityPeriodDays")
     def validity_period_days(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-        """
         return pulumi.get(self, "validity_period_days")
 
     @validity_period_days.setter
@@ -281,7 +273,6 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.int] validity_period_days: Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         """
         ...
     @overload
@@ -387,7 +378,6 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] issuer_raw: The entire issuer field of the certificate.
         :param pulumi.Input[builtins.str] type: The type of certificate, either BYO-PKI (custom) or Gateway-managed.
                Available values: "custom", "gateway_managed".
-        :param pulumi.Input[builtins.int] validity_period_days: Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -494,8 +484,5 @@ class ZeroTrustGatewayCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="validityPeriodDays")
     def validity_period_days(self) -> pulumi.Output[Optional[builtins.int]]:
-        """
-        Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-        """
         return pulumi.get(self, "validity_period_days")
 

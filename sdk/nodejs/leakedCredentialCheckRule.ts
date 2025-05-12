@@ -47,15 +47,15 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
     }
 
     /**
-     * The ruleset expression to use in matching the password in a request
+     * Defines ehe ruleset expression to use in matching the password in a request.
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * The ruleset expression to use in matching the username in a request
+     * Defines the ruleset expression to use in matching the username in a request.
      */
     public readonly username!: pulumi.Output<string | undefined>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -94,15 +94,15 @@ export class LeakedCredentialCheckRule extends pulumi.CustomResource {
  */
 export interface LeakedCredentialCheckRuleState {
     /**
-     * The ruleset expression to use in matching the password in a request
+     * Defines ehe ruleset expression to use in matching the password in a request.
      */
     password?: pulumi.Input<string>;
     /**
-     * The ruleset expression to use in matching the username in a request
+     * Defines the ruleset expression to use in matching the username in a request.
      */
     username?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -112,15 +112,15 @@ export interface LeakedCredentialCheckRuleState {
  */
 export interface LeakedCredentialCheckRuleArgs {
     /**
-     * The ruleset expression to use in matching the password in a request
+     * Defines ehe ruleset expression to use in matching the password in a request.
      */
     password?: pulumi.Input<string>;
     /**
-     * The ruleset expression to use in matching the username in a request
+     * Defines the ruleset expression to use in matching the username in a request.
      */
     username?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

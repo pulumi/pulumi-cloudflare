@@ -50,6 +50,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsFips? Fips;
         /// <summary>
+        /// Setting to enable host selector in egress policies.
+        /// </summary>
+        public readonly Outputs.ZeroTrustGatewaySettingsSettingsHostSelector? HostSelector;
+        /// <summary>
         /// Protocol Detection settings.
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection? ProtocolDetection;
@@ -82,6 +86,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustGatewaySettingsSettingsFips? fips,
 
+            Outputs.ZeroTrustGatewaySettingsSettingsHostSelector? hostSelector,
+
             Outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection? protocolDetection,
 
             Outputs.ZeroTrustGatewaySettingsSettingsSandbox? sandbox,
@@ -97,6 +103,7 @@ namespace Pulumi.Cloudflare.Outputs
             CustomCertificate = customCertificate;
             ExtendedEmailMatching = extendedEmailMatching;
             Fips = fips;
+            HostSelector = hostSelector;
             ProtocolDetection = protocolDetection;
             Sandbox = sandbox;
             TlsDecrypt = tlsDecrypt;

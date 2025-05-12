@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Description;
         public readonly Outputs.MagicWanIpsecTunnelIpsecTunnelHealthCheck? HealthCheck;
         /// <summary>
-        /// Tunnel identifier tag.
+        /// Identifier
         /// </summary>
         public readonly string? Id;
         /// <summary>

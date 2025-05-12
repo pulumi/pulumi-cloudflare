@@ -16,25 +16,25 @@ namespace Pulumi.Cloudflare
     public partial class R2BucketSippy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
 
         /// <summary>
-        /// R2 bucket to copy objects to
+        /// R2 bucket to copy objects to.
         /// </summary>
         [Output("destination")]
-        public Output<Outputs.R2BucketSippyDestination> Destination { get; private set; } = null!;
+        public Output<Outputs.R2BucketSippyDestination?> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// State of Sippy for this bucket
+        /// State of Sippy for this bucket.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -46,10 +46,10 @@ namespace Pulumi.Cloudflare
         public Output<string> Jurisdiction { get; private set; } = null!;
 
         /// <summary>
-        /// AWS S3 bucket to copy objects from
+        /// AWS S3 bucket to copy objects from.
         /// </summary>
         [Output("source")]
-        public Output<Outputs.R2BucketSippySource> Source { get; private set; } = null!;
+        public Output<Outputs.R2BucketSippySource?> Source { get; private set; } = null!;
 
 
         /// <summary>
@@ -98,19 +98,19 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketSippyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// R2 bucket to copy objects to
+        /// R2 bucket to copy objects to.
         /// </summary>
         [Input("destination")]
         public Input<Inputs.R2BucketSippyDestinationArgs>? Destination { get; set; }
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// AWS S3 bucket to copy objects from
+        /// AWS S3 bucket to copy objects from.
         /// </summary>
         [Input("source")]
         public Input<Inputs.R2BucketSippySourceArgs>? Source { get; set; }
@@ -136,25 +136,25 @@ namespace Pulumi.Cloudflare
     public sealed class R2BucketSippyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
         /// <summary>
-        /// R2 bucket to copy objects to
+        /// R2 bucket to copy objects to.
         /// </summary>
         [Input("destination")]
         public Input<Inputs.R2BucketSippyDestinationGetArgs>? Destination { get; set; }
 
         /// <summary>
-        /// State of Sippy for this bucket
+        /// State of Sippy for this bucket.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Jurisdiction { get; set; }
 
         /// <summary>
-        /// AWS S3 bucket to copy objects from
+        /// AWS S3 bucket to copy objects from.
         /// </summary>
         [Input("source")]
         public Input<Inputs.R2BucketSippySourceGetArgs>? Source { get; set; }

@@ -97,6 +97,7 @@ class GetLogpushDatasetJobResult:
     def dataset(self) -> builtins.str:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         """
         return pulumi.get(self, "dataset")
 
@@ -105,6 +106,7 @@ class GetLogpushDatasetJobResult:
     def dataset_id(self) -> builtins.str:
         """
         Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         """
         return pulumi.get(self, "dataset_id")
 
@@ -278,6 +280,7 @@ def get_logpush_dataset_job(account_id: Optional[builtins.str] = None,
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param builtins.str dataset_id: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+           Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()
@@ -307,7 +310,7 @@ def get_logpush_dataset_job(account_id: Optional[builtins.str] = None,
         output_options=pulumi.get(__ret__, 'output_options'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_logpush_dataset_job_output(account_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
-                                   dataset_id: Optional[pulumi.Input[builtins.str]] = None,
+                                   dataset_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                    zone_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogpushDatasetJobResult]:
     """
@@ -325,6 +328,7 @@ def get_logpush_dataset_job_output(account_id: Optional[pulumi.Input[Optional[bu
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
     :param builtins.str dataset_id: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+           Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
     __args__ = dict()

@@ -47,7 +47,7 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
     }
 
     /**
-     * UUID
+     * UUID.
      */
     public readonly operationId!: pulumi.Output<string>;
     /**
@@ -56,7 +56,7 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
      */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -98,7 +98,7 @@ export class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
  */
 export interface ApiShieldDiscoveryOperationState {
     /**
-     * UUID
+     * UUID.
      */
     operationId?: pulumi.Input<string>;
     /**
@@ -107,7 +107,7 @@ export interface ApiShieldDiscoveryOperationState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -117,7 +117,7 @@ export interface ApiShieldDiscoveryOperationState {
  */
 export interface ApiShieldDiscoveryOperationArgs {
     /**
-     * UUID
+     * UUID.
      */
     operationId: pulumi.Input<string>;
     /**
@@ -126,7 +126,7 @@ export interface ApiShieldDiscoveryOperationArgs {
      */
     state?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

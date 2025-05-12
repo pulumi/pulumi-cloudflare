@@ -52,7 +52,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export class EmailRoutingAddress extends pulumi.CustomResource {
  */
 export interface EmailRoutingAddressState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -154,7 +154,7 @@ export interface EmailRoutingAddressState {
  */
 export interface EmailRoutingAddressArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

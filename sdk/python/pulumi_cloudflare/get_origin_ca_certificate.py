@@ -70,7 +70,7 @@ class GetOriginCaCertificateResult:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -107,7 +107,7 @@ class GetOriginCaCertificateResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -161,7 +161,7 @@ def get_origin_ca_certificate(certificate_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str certificate_id: Identifier
+    :param builtins.str certificate_id: Identifier.
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id
@@ -193,7 +193,7 @@ def get_origin_ca_certificate_output(certificate_id: Optional[pulumi.Input[Optio
     ```
 
 
-    :param builtins.str certificate_id: Identifier
+    :param builtins.str certificate_id: Identifier.
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id

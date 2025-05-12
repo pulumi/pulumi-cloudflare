@@ -62,7 +62,7 @@ export class MagicTransitSiteWan extends pulumi.CustomResource {
     /**
      * (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
      */
-    public readonly staticAddressing!: pulumi.Output<outputs.MagicTransitSiteWanStaticAddressing>;
+    public readonly staticAddressing!: pulumi.Output<outputs.MagicTransitSiteWanStaticAddressing | undefined>;
     /**
      * VLAN ID. Use zero for untagged.
      */

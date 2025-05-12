@@ -20,7 +20,8 @@ import * as utilities from "./utilities";
  * });
  * ```
  */
-export function getLogpushDatasetJob(args: GetLogpushDatasetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetLogpushDatasetJobResult> {
+export function getLogpushDatasetJob(args?: GetLogpushDatasetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetLogpushDatasetJobResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob", {
         "accountId": args.accountId,
@@ -39,8 +40,9 @@ export interface GetLogpushDatasetJobArgs {
     accountId?: string;
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+     * Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
      */
-    datasetId: string;
+    datasetId?: string;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
@@ -57,10 +59,12 @@ export interface GetLogpushDatasetJobResult {
     readonly accountId?: string;
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+     * Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
      */
     readonly dataset: string;
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+     * Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
      */
     readonly datasetId: string;
     /**
@@ -144,7 +148,8 @@ export interface GetLogpushDatasetJobResult {
  * });
  * ```
  */
-export function getLogpushDatasetJobOutput(args: GetLogpushDatasetJobOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogpushDatasetJobResult> {
+export function getLogpushDatasetJobOutput(args?: GetLogpushDatasetJobOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogpushDatasetJobResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLogpushDatasetJob:getLogpushDatasetJob", {
         "accountId": args.accountId,
@@ -163,8 +168,9 @@ export interface GetLogpushDatasetJobOutputArgs {
     accountId?: pulumi.Input<string>;
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+     * Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
      */
-    datasetId: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
      */
