@@ -14,14 +14,14 @@ public final class GetBotManagementPlainArgs extends com.pulumi.resources.Invoke
     public static final GetBotManagementPlainArgs Empty = new GetBotManagementPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetBotManagementPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

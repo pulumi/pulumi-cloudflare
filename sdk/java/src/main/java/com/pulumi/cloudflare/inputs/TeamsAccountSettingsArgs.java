@@ -12,6 +12,7 @@ import com.pulumi.cloudflare.inputs.TeamsAccountSettingsCertificateArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsCustomCertificateArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsFipsArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountSettingsHostSelectorArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsProtocolDetectionArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsSandboxArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsTlsDecryptArgs;
@@ -170,6 +171,21 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Setting to enable host selector in egress policies.
+     * 
+     */
+    @Import(name="hostSelector")
+    private @Nullable Output<TeamsAccountSettingsHostSelectorArgs> hostSelector;
+
+    /**
+     * @return Setting to enable host selector in egress policies.
+     * 
+     */
+    public Optional<Output<TeamsAccountSettingsHostSelectorArgs>> hostSelector() {
+        return Optional.ofNullable(this.hostSelector);
+    }
+
+    /**
      * Protocol Detection settings.
      * 
      */
@@ -226,6 +242,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
         this.customCertificate = $.customCertificate;
         this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
+        this.hostSelector = $.hostSelector;
         this.protocolDetection = $.protocolDetection;
         this.sandbox = $.sandbox;
         this.tlsDecrypt = $.tlsDecrypt;
@@ -444,6 +461,27 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
          */
         public Builder fips(TeamsAccountSettingsFipsArgs fips) {
             return fips(Output.of(fips));
+        }
+
+        /**
+         * @param hostSelector Setting to enable host selector in egress policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostSelector(@Nullable Output<TeamsAccountSettingsHostSelectorArgs> hostSelector) {
+            $.hostSelector = hostSelector;
+            return this;
+        }
+
+        /**
+         * @param hostSelector Setting to enable host selector in egress policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostSelector(TeamsAccountSettingsHostSelectorArgs hostSelector) {
+            return hostSelector(Output.of(hostSelector));
         }
 
         /**

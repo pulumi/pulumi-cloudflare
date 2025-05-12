@@ -76,14 +76,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return A human-readable description of the pool.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
@@ -222,14 +222,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="notificationEmail", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> notificationEmail;
+    private Output<String> notificationEmail;
 
     /**
      * @return This field is now deprecated. It has been moved to Cloudflare&#39;s Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      * 
      */
-    public Output<Optional<String>> notificationEmail() {
-        return Codegen.optional(this.notificationEmail);
+    public Output<String> notificationEmail() {
+        return this.notificationEmail;
     }
     /**
      * Filter pool and origin health notifications by resource type or health status. Use null to reset.

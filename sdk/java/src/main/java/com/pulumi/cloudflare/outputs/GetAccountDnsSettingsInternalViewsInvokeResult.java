@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountDnsSettingsInternalViewsInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -68,7 +68,7 @@ public final class GetAccountDnsSettingsInternalViewsInvokeResult {
 
     private GetAccountDnsSettingsInternalViewsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

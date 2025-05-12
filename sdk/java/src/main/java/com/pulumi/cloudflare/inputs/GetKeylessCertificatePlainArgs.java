@@ -16,14 +16,14 @@ public final class GetKeylessCertificatePlainArgs extends com.pulumi.resources.I
     public static final GetKeylessCertificatePlainArgs Empty = new GetKeylessCertificatePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="keylessCertificateId")
     private @Nullable String keylessCertificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> keylessCertificateId() {
@@ -31,14 +31,14 @@ public final class GetKeylessCertificatePlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -71,7 +71,7 @@ public final class GetKeylessCertificatePlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param keylessCertificateId Identifier
+         * @param keylessCertificateId Identifier.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetKeylessCertificatePlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

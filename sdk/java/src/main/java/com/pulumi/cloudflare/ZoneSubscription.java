@@ -59,14 +59,14 @@ public class ZoneSubscription extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ratePlan", refs={ZoneSubscriptionRatePlan.class}, tree="[0]")
-    private Output<ZoneSubscriptionRatePlan> ratePlan;
+    private Output</* @Nullable */ ZoneSubscriptionRatePlan> ratePlan;
 
     /**
      * @return The rate plan applied to the subscription.
      * 
      */
-    public Output<ZoneSubscriptionRatePlan> ratePlan() {
-        return this.ratePlan;
+    public Output<Optional<ZoneSubscriptionRatePlan>> ratePlan() {
+        return Codegen.optional(this.ratePlan);
     }
 
     /**

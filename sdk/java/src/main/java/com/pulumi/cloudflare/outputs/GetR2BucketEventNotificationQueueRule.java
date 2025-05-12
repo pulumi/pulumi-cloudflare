@@ -12,74 +12,74 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketEventNotificationQueueRule {
     /**
-     * @return Array of R2 object actions that will trigger notifications
+     * @return Array of R2 object actions that will trigger notifications.
      * 
      */
     private List<String> actions;
     /**
-     * @return Timestamp when the rule was created
+     * @return Timestamp when the rule was created.
      * 
      */
     private String createdAt;
     /**
-     * @return A description that can be used to identify the event notification rule after creation
+     * @return A description that can be used to identify the event notification rule after creation.
      * 
      */
     private String description;
     /**
-     * @return Notifications will be sent only for objects with this prefix
+     * @return Notifications will be sent only for objects with this prefix.
      * 
      */
     private String prefix;
     /**
-     * @return Rule ID
+     * @return Rule ID.
      * 
      */
     private String ruleId;
     /**
-     * @return Notifications will be sent only for objects with this suffix
+     * @return Notifications will be sent only for objects with this suffix.
      * 
      */
     private String suffix;
 
     private GetR2BucketEventNotificationQueueRule() {}
     /**
-     * @return Array of R2 object actions that will trigger notifications
+     * @return Array of R2 object actions that will trigger notifications.
      * 
      */
     public List<String> actions() {
         return this.actions;
     }
     /**
-     * @return Timestamp when the rule was created
+     * @return Timestamp when the rule was created.
      * 
      */
     public String createdAt() {
         return this.createdAt;
     }
     /**
-     * @return A description that can be used to identify the event notification rule after creation
+     * @return A description that can be used to identify the event notification rule after creation.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return Notifications will be sent only for objects with this prefix
+     * @return Notifications will be sent only for objects with this prefix.
      * 
      */
     public String prefix() {
         return this.prefix;
     }
     /**
-     * @return Rule ID
+     * @return Rule ID.
      * 
      */
     public String ruleId() {
         return this.ruleId;
     }
     /**
-     * @return Notifications will be sent only for objects with this suffix
+     * @return Notifications will be sent only for objects with this suffix.
      * 
      */
     public String suffix() {

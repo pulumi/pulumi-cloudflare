@@ -34,6 +34,11 @@ public final class GetZeroTrustAccessApplicationResult {
      */
     private Boolean allowAuthenticateViaWarp;
     /**
+     * @return Enables loading application content in an iFrame.
+     * 
+     */
+    private Boolean allowIframe;
+    /**
      * @return The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      * 
      */
@@ -235,6 +240,13 @@ public final class GetZeroTrustAccessApplicationResult {
      */
     public Boolean allowAuthenticateViaWarp() {
         return this.allowAuthenticateViaWarp;
+    }
+    /**
+     * @return Enables loading application content in an iFrame.
+     * 
+     */
+    public Boolean allowIframe() {
+        return this.allowIframe;
     }
     /**
      * @return The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
@@ -517,6 +529,7 @@ public final class GetZeroTrustAccessApplicationResult {
     public static final class Builder {
         private @Nullable String accountId;
         private Boolean allowAuthenticateViaWarp;
+        private Boolean allowIframe;
         private List<String> allowedIdps;
         private @Nullable String appId;
         private String appLauncherLogoUrl;
@@ -563,6 +576,7 @@ public final class GetZeroTrustAccessApplicationResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.allowAuthenticateViaWarp = defaults.allowAuthenticateViaWarp;
+    	      this.allowIframe = defaults.allowIframe;
     	      this.allowedIdps = defaults.allowedIdps;
     	      this.appId = defaults.appId;
     	      this.appLauncherLogoUrl = defaults.appLauncherLogoUrl;
@@ -618,6 +632,14 @@ public final class GetZeroTrustAccessApplicationResult {
               throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationResult", "allowAuthenticateViaWarp");
             }
             this.allowAuthenticateViaWarp = allowAuthenticateViaWarp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowIframe(Boolean allowIframe) {
+            if (allowIframe == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustAccessApplicationResult", "allowIframe");
+            }
+            this.allowIframe = allowIframe;
             return this;
         }
         @CustomType.Setter
@@ -970,6 +992,7 @@ public final class GetZeroTrustAccessApplicationResult {
             final var _resultValue = new GetZeroTrustAccessApplicationResult();
             _resultValue.accountId = accountId;
             _resultValue.allowAuthenticateViaWarp = allowAuthenticateViaWarp;
+            _resultValue.allowIframe = allowIframe;
             _resultValue.allowedIdps = allowedIdps;
             _resultValue.appId = appId;
             _resultValue.appLauncherLogoUrl = appLauncherLogoUrl;

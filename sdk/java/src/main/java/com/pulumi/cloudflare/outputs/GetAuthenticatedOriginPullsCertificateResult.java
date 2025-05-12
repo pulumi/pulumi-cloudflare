@@ -17,7 +17,7 @@ public final class GetAuthenticatedOriginPullsCertificateResult {
      */
     private String certificate;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String certificateId;
@@ -32,7 +32,7 @@ public final class GetAuthenticatedOriginPullsCertificateResult {
      */
     private String expiresOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -63,7 +63,7 @@ public final class GetAuthenticatedOriginPullsCertificateResult {
      */
     private String uploadedOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -77,7 +77,7 @@ public final class GetAuthenticatedOriginPullsCertificateResult {
         return this.certificate;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String certificateId() {
@@ -98,7 +98,7 @@ public final class GetAuthenticatedOriginPullsCertificateResult {
         return this.expiresOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -141,7 +141,7 @@ public final class GetAuthenticatedOriginPullsCertificateResult {
         return this.uploadedOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

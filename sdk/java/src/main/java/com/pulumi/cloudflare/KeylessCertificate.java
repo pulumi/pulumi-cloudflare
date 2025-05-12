@@ -186,24 +186,24 @@ public class KeylessCertificate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tunnel", refs={KeylessCertificateTunnel.class}, tree="[0]")
-    private Output<KeylessCertificateTunnel> tunnel;
+    private Output</* @Nullable */ KeylessCertificateTunnel> tunnel;
 
     /**
      * @return Configuration for using Keyless SSL through a Cloudflare Tunnel
      * 
      */
-    public Output<KeylessCertificateTunnel> tunnel() {
-        return this.tunnel;
+    public Output<Optional<KeylessCertificateTunnel>> tunnel() {
+        return Codegen.optional(this.tunnel);
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

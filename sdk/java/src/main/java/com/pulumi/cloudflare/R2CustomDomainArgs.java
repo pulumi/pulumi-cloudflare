@@ -18,14 +18,14 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     public static final R2CustomDomainArgs Empty = new R2CustomDomainArgs();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
@@ -33,14 +33,14 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
@@ -48,14 +48,14 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the custom domain to be added
+     * Name of the custom domain to be added.
      * 
      */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
     /**
-     * @return Name of the custom domain to be added
+     * @return Name of the custom domain to be added.
      * 
      */
     public Output<String> domain() {
@@ -110,14 +110,14 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Zone ID of the custom domain
+     * Zone ID of the custom domain.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Zone ID of the custom domain
+     * @return Zone ID of the custom domain.
      * 
      */
     public Output<String> zoneId() {
@@ -155,7 +155,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param domain Name of the custom domain to be added
+         * @param domain Name of the custom domain to be added.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param domain Name of the custom domain to be added
+         * @param domain Name of the custom domain to be added.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zoneId Zone ID of the custom domain
+         * @param zoneId Zone ID of the custom domain.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class R2CustomDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zoneId Zone ID of the custom domain
+         * @param zoneId Zone ID of the custom domain.
          * 
          * @return builder
          * 

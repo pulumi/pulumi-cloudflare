@@ -13,7 +13,7 @@ import java.util.Objects;
 public final class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
     private String createdAt;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -33,7 +33,7 @@ public final class GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
         return this.createdAt;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {

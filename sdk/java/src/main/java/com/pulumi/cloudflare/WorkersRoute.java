@@ -6,16 +6,11 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkersRouteArgs;
 import com.pulumi.cloudflare.inputs.WorkersRouteState;
-import com.pulumi.cloudflare.outputs.WorkersRouteError;
-import com.pulumi.cloudflare.outputs.WorkersRouteMessage;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -46,8 +41,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleWorkersRoute = new WorkersRoute("exampleWorkersRoute", WorkersRouteArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .pattern("example.net/*")
- *             .script("this-is_my_script-01")
+ *             .pattern("example.com/*")
+ *             .script("my-workers-script")
  *             .build());
  * 
  *     }
@@ -56,68 +51,42 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/workersRoute:WorkersRoute example &#39;&lt;zone_id&gt;/&lt;route_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/workersRoute:WorkersRoute")
 public class WorkersRoute extends com.pulumi.resources.CustomResource {
-    @Export(name="errors", refs={List.class,WorkersRouteError.class}, tree="[0,1]")
-    private Output<List<WorkersRouteError>> errors;
-
-    public Output<List<WorkersRouteError>> errors() {
-        return this.errors;
-    }
-    @Export(name="messages", refs={List.class,WorkersRouteMessage.class}, tree="[0,1]")
-    private Output<List<WorkersRouteMessage>> messages;
-
-    public Output<List<WorkersRouteMessage>> messages() {
-        return this.messages;
-    }
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     @Export(name="pattern", refs={String.class}, tree="[0]")
     private Output<String> pattern;
 
+    /**
+     * @return Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     public Output<String> pattern() {
         return this.pattern;
     }
     /**
-     * Identifier.
-     * 
-     */
-    @Export(name="routeId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> routeId;
-
-    /**
-     * @return Identifier.
-     * 
-     */
-    public Output<Optional<String>> routeId() {
-        return Codegen.optional(this.routeId);
-    }
-    /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script to run if the route matches.
      * 
      */
     @Export(name="script", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> script;
+    private Output<String> script;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script to run if the route matches.
      * 
      */
-    public Output<Optional<String>> script() {
-        return Codegen.optional(this.script);
-    }
-    /**
-     * Whether the API call was successful.
-     * 
-     */
-    @Export(name="success", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> success;
-
-    /**
-     * @return Whether the API call was successful.
-     * 
-     */
-    public Output<Boolean> success() {
-        return this.success;
+    public Output<String> script() {
+        return this.script;
     }
     /**
      * Identifier.

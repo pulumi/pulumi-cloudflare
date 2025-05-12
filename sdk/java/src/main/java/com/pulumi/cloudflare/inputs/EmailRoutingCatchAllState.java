@@ -103,14 +103,14 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -280,7 +280,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class EmailRoutingCatchAllState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

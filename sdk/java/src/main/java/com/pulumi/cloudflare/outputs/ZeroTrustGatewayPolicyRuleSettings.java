@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
@@ -46,6 +47,11 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      * 
      */
     private @Nullable ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls bisoAdminControls;
+    /**
+     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * 
+     */
+    private @Nullable ZeroTrustGatewayPolicyRuleSettingsBlockPage blockPage;
     /**
      * @return Enable the custom block page.
      * 
@@ -175,6 +181,13 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
      */
     public Optional<ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls> bisoAdminControls() {
         return Optional.ofNullable(this.bisoAdminControls);
+    }
+    /**
+     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * 
+     */
+    public Optional<ZeroTrustGatewayPolicyRuleSettingsBlockPage> blockPage() {
+        return Optional.ofNullable(this.blockPage);
     }
     /**
      * @return Enable the custom block page.
@@ -330,6 +343,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         private @Nullable Boolean allowChildBypass;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsAuditSsh auditSsh;
         private @Nullable ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls bisoAdminControls;
+        private @Nullable ZeroTrustGatewayPolicyRuleSettingsBlockPage blockPage;
         private @Nullable Boolean blockPageEnabled;
         private @Nullable String blockReason;
         private @Nullable Boolean bypassParentRule;
@@ -357,6 +371,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
     	      this.allowChildBypass = defaults.allowChildBypass;
     	      this.auditSsh = defaults.auditSsh;
     	      this.bisoAdminControls = defaults.bisoAdminControls;
+    	      this.blockPage = defaults.blockPage;
     	      this.blockPageEnabled = defaults.blockPageEnabled;
     	      this.blockReason = defaults.blockReason;
     	      this.bypassParentRule = defaults.bypassParentRule;
@@ -401,6 +416,12 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
         public Builder bisoAdminControls(@Nullable ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls bisoAdminControls) {
 
             this.bisoAdminControls = bisoAdminControls;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder blockPage(@Nullable ZeroTrustGatewayPolicyRuleSettingsBlockPage blockPage) {
+
+            this.blockPage = blockPage;
             return this;
         }
         @CustomType.Setter
@@ -532,6 +553,7 @@ public final class ZeroTrustGatewayPolicyRuleSettings {
             _resultValue.allowChildBypass = allowChildBypass;
             _resultValue.auditSsh = auditSsh;
             _resultValue.bisoAdminControls = bisoAdminControls;
+            _resultValue.blockPage = blockPage;
             _resultValue.blockPageEnabled = blockPageEnabled;
             _resultValue.blockReason = blockReason;
             _resultValue.bypassParentRule = bypassParentRule;

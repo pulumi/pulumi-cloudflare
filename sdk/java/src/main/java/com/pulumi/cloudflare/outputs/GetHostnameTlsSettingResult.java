@@ -48,7 +48,7 @@ public final class GetHostnameTlsSettingResult {
      */
     private Double value;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -105,7 +105,7 @@ public final class GetHostnameTlsSettingResult {
         return this.value;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

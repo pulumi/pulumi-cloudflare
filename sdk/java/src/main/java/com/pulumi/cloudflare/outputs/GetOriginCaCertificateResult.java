@@ -21,7 +21,7 @@ public final class GetOriginCaCertificateResult {
      */
     private String certificate;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String certificateId;
@@ -42,7 +42,7 @@ public final class GetOriginCaCertificateResult {
      */
     private List<String> hostnames;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -68,7 +68,7 @@ public final class GetOriginCaCertificateResult {
         return this.certificate;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> certificateId() {
@@ -99,7 +99,7 @@ public final class GetOriginCaCertificateResult {
         return this.hostnames;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

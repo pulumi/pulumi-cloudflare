@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAuthenticatedOriginPullsResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String certId;
@@ -89,14 +89,14 @@ public final class GetAuthenticatedOriginPullsResult {
      */
     private String updatedAt;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
 
     private GetAuthenticatedOriginPullsResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String certId() {
@@ -203,7 +203,7 @@ public final class GetAuthenticatedOriginPullsResult {
         return this.updatedAt;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

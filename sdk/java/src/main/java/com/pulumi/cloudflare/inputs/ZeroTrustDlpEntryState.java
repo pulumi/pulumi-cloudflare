@@ -25,6 +25,25 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.accountId);
     }
 
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    @Import(name="caseSensitive")
+    private @Nullable Output<Boolean> caseSensitive;
+
+    /**
+     * @return Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    public Optional<Output<Boolean>> caseSensitive() {
+        return Optional.ofNullable(this.caseSensitive);
+    }
+
     @Import(name="confidence")
     private @Nullable Output<ZeroTrustDlpEntryConfidenceArgs> confidence;
 
@@ -107,6 +126,7 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
 
     private ZeroTrustDlpEntryState(ZeroTrustDlpEntryState $) {
         this.accountId = $.accountId;
+        this.caseSensitive = $.caseSensitive;
         this.confidence = $.confidence;
         this.createdAt = $.createdAt;
         this.enabled = $.enabled;
@@ -144,6 +164,31 @@ public final class ZeroTrustDlpEntryState extends com.pulumi.resources.ResourceA
 
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param caseSensitive Only applies to custom word lists.
+         * Determines if the words should be matched in a case-sensitive manner
+         * Cannot be set to false if secret is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caseSensitive(@Nullable Output<Boolean> caseSensitive) {
+            $.caseSensitive = caseSensitive;
+            return this;
+        }
+
+        /**
+         * @param caseSensitive Only applies to custom word lists.
+         * Determines if the words should be matched in a case-sensitive manner
+         * Cannot be set to false if secret is true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caseSensitive(Boolean caseSensitive) {
+            return caseSensitive(Output.of(caseSensitive));
         }
 
         public Builder confidence(@Nullable Output<ZeroTrustDlpEntryConfidenceArgs> confidence) {

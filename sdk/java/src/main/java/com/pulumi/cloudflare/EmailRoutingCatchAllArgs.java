@@ -81,14 +81,14 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -228,7 +228,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

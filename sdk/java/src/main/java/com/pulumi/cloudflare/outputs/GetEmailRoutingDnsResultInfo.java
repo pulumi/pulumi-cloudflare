@@ -11,50 +11,50 @@ import java.util.Objects;
 @CustomType
 public final class GetEmailRoutingDnsResultInfo {
     /**
-     * @return Total number of results for the requested service
+     * @return Total number of results for the requested service.
      * 
      */
     private Double count;
     /**
-     * @return Current page within paginated list of results
+     * @return Current page within paginated list of results.
      * 
      */
     private Double page;
     /**
-     * @return Number of results per page of results
+     * @return Number of results per page of results.
      * 
      */
     private Double perPage;
     /**
-     * @return Total results available without any search parameters
+     * @return Total results available without any search parameters.
      * 
      */
     private Double totalCount;
 
     private GetEmailRoutingDnsResultInfo() {}
     /**
-     * @return Total number of results for the requested service
+     * @return Total number of results for the requested service.
      * 
      */
     public Double count() {
         return this.count;
     }
     /**
-     * @return Current page within paginated list of results
+     * @return Current page within paginated list of results.
      * 
      */
     public Double page() {
         return this.page;
     }
     /**
-     * @return Number of results per page of results
+     * @return Number of results per page of results.
      * 
      */
     public Double perPage() {
         return this.perPage;
     }
     /**
-     * @return Total results available without any search parameters
+     * @return Total results available without any search parameters.
      * 
      */
     public Double totalCount() {

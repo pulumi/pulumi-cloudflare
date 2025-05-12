@@ -94,14 +94,14 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -255,7 +255,7 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class CustomHostnameFallbackOriginState extends com.pulumi.resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

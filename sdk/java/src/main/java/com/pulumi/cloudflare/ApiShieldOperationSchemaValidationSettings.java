@@ -82,28 +82,28 @@ public class ApiShieldOperationSchemaValidationSettings extends com.pulumi.resou
         return Codegen.optional(this.mitigationAction);
     }
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Export(name="operationId", refs={String.class}, tree="[0]")
     private Output<String> operationId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Output<String> operationId() {
         return this.operationId;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

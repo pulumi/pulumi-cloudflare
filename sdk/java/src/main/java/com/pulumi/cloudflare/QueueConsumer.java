@@ -107,10 +107,10 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scriptName);
     }
     @Export(name="settings", refs={QueueConsumerSettings.class}, tree="[0]")
-    private Output<QueueConsumerSettings> settings;
+    private Output</* @Nullable */ QueueConsumerSettings> settings;
 
-    public Output<QueueConsumerSettings> settings() {
-        return this.settings;
+    public Output<Optional<QueueConsumerSettings>> settings() {
+        return Codegen.optional(this.settings);
     }
     /**
      * Available values: &#34;worker&#34;.

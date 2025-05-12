@@ -176,14 +176,14 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      * 
      */
     @Export(name="success", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> success;
 
     /**
-     * @return Whether the API call was successful
+     * @return Whether the API call was successful.
      * 
      */
     public Output<Boolean> success() {
@@ -208,14 +208,14 @@ public class EmailRoutingDns extends com.pulumi.resources.CustomResource {
         return this.tag;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

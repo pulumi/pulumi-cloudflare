@@ -37,7 +37,7 @@ public final class GetCertificatePacksInvokeResult {
      */
     private @Nullable String status;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -73,7 +73,7 @@ public final class GetCertificatePacksInvokeResult {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

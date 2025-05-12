@@ -17,74 +17,74 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketLifecycleRule {
     /**
-     * @return Transition to abort ongoing multipart uploads
+     * @return Transition to abort ongoing multipart uploads.
      * 
      */
     private GetR2BucketLifecycleRuleAbortMultipartUploadsTransition abortMultipartUploadsTransition;
     /**
-     * @return Conditions that apply to all transitions of this rule
+     * @return Conditions that apply to all transitions of this rule.
      * 
      */
     private GetR2BucketLifecycleRuleConditions conditions;
     /**
-     * @return Transition to delete objects
+     * @return Transition to delete objects.
      * 
      */
     private GetR2BucketLifecycleRuleDeleteObjectsTransition deleteObjectsTransition;
     /**
-     * @return Whether or not this rule is in effect
+     * @return Whether or not this rule is in effect.
      * 
      */
     private Boolean enabled;
     /**
-     * @return Unique identifier for this rule
+     * @return Unique identifier for this rule.
      * 
      */
     private String id;
     /**
-     * @return Transitions to change the storage class of objects
+     * @return Transitions to change the storage class of objects.
      * 
      */
     private List<GetR2BucketLifecycleRuleStorageClassTransition> storageClassTransitions;
 
     private GetR2BucketLifecycleRule() {}
     /**
-     * @return Transition to abort ongoing multipart uploads
+     * @return Transition to abort ongoing multipart uploads.
      * 
      */
     public GetR2BucketLifecycleRuleAbortMultipartUploadsTransition abortMultipartUploadsTransition() {
         return this.abortMultipartUploadsTransition;
     }
     /**
-     * @return Conditions that apply to all transitions of this rule
+     * @return Conditions that apply to all transitions of this rule.
      * 
      */
     public GetR2BucketLifecycleRuleConditions conditions() {
         return this.conditions;
     }
     /**
-     * @return Transition to delete objects
+     * @return Transition to delete objects.
      * 
      */
     public GetR2BucketLifecycleRuleDeleteObjectsTransition deleteObjectsTransition() {
         return this.deleteObjectsTransition;
     }
     /**
-     * @return Whether or not this rule is in effect
+     * @return Whether or not this rule is in effect.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return Unique identifier for this rule
+     * @return Unique identifier for this rule.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Transitions to change the storage class of objects
+     * @return Transitions to change the storage class of objects.
      * 
      */
     public List<GetR2BucketLifecycleRuleStorageClassTransition> storageClassTransitions() {

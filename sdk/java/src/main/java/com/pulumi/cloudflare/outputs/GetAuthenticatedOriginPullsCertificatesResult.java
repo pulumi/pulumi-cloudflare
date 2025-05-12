@@ -27,7 +27,7 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
      */
     private String expiresOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -81,7 +81,7 @@ public final class GetAuthenticatedOriginPullsCertificatesResult {
         return this.expiresOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

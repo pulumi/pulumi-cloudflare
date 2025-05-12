@@ -14,14 +14,14 @@ public final class GetR2BucketLockPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetR2BucketLockPlainArgs Empty = new GetR2BucketLockPlainArgs();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public String accountId() {
@@ -29,14 +29,14 @@ public final class GetR2BucketLockPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName", required=true)
     private String bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public String bucketName() {
@@ -69,7 +69,7 @@ public final class GetR2BucketLockPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetR2BucketLockPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 

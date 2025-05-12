@@ -32,14 +32,14 @@ public final class GetApiShieldPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -93,7 +93,7 @@ public final class GetApiShieldPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

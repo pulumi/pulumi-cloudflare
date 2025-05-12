@@ -32,14 +32,14 @@ public final class GetKeylessCertificatesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -83,7 +83,7 @@ public final class GetKeylessCertificatesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

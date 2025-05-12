@@ -17,7 +17,7 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
 
     /**
      * ID of a Cloudflare API token.
-     * This is the value labelled &#34;Access Key ID&#34; when creating an API
+     * This is the value labelled &#34;Access Key ID&#34; when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      * 
      */
@@ -26,7 +26,7 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
 
     /**
      * @return ID of a Cloudflare API token.
-     * This is the value labelled &#34;Access Key ID&#34; when creating an API
+     * This is the value labelled &#34;Access Key ID&#34; when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      * 
      */
@@ -38,20 +38,20 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
      * Available values: &#34;r2&#34;.
      * 
      */
-    @Import(name="provider")
-    private @Nullable Output<String> provider;
+    @Import(name="cloudProvider")
+    private @Nullable Output<String> cloudProvider;
 
     /**
      * @return Available values: &#34;r2&#34;.
      * 
      */
-    public Optional<Output<String>> provider() {
-        return Optional.ofNullable(this.provider);
+    public Optional<Output<String>> cloudProvider() {
+        return Optional.ofNullable(this.cloudProvider);
     }
 
     /**
      * Value of a Cloudflare API token.
-     * This is the value labelled &#34;Secret Access Key&#34; when creating an API
+     * This is the value labelled &#34;Secret Access Key&#34; when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      * 
      * Sippy will use this token when writing objects to R2, so it is
@@ -63,7 +63,7 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
 
     /**
      * @return Value of a Cloudflare API token.
-     * This is the value labelled &#34;Secret Access Key&#34; when creating an API
+     * This is the value labelled &#34;Secret Access Key&#34; when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      * 
      * Sippy will use this token when writing objects to R2, so it is
@@ -78,7 +78,7 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
 
     private R2BucketSippyDestinationArgs(R2BucketSippyDestinationArgs $) {
         this.accessKeyId = $.accessKeyId;
-        this.provider = $.provider;
+        this.cloudProvider = $.cloudProvider;
         this.secretAccessKey = $.secretAccessKey;
     }
 
@@ -102,7 +102,7 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
 
         /**
          * @param accessKeyId ID of a Cloudflare API token.
-         * This is the value labelled &#34;Access Key ID&#34; when creating an API
+         * This is the value labelled &#34;Access Key ID&#34; when creating an API.
          * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
          * 
          * @return builder
@@ -115,7 +115,7 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
 
         /**
          * @param accessKeyId ID of a Cloudflare API token.
-         * This is the value labelled &#34;Access Key ID&#34; when creating an API
+         * This is the value labelled &#34;Access Key ID&#34; when creating an API.
          * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
          * 
          * @return builder
@@ -126,29 +126,29 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param provider Available values: &#34;r2&#34;.
+         * @param cloudProvider Available values: &#34;r2&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder provider(@Nullable Output<String> provider) {
-            $.provider = provider;
+        public Builder cloudProvider(@Nullable Output<String> cloudProvider) {
+            $.cloudProvider = cloudProvider;
             return this;
         }
 
         /**
-         * @param provider Available values: &#34;r2&#34;.
+         * @param cloudProvider Available values: &#34;r2&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder provider(String provider) {
-            return provider(Output.of(provider));
+        public Builder cloudProvider(String cloudProvider) {
+            return cloudProvider(Output.of(cloudProvider));
         }
 
         /**
          * @param secretAccessKey Value of a Cloudflare API token.
-         * This is the value labelled &#34;Secret Access Key&#34; when creating an API
+         * This is the value labelled &#34;Secret Access Key&#34; when creating an API.
          * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
          * 
          * Sippy will use this token when writing objects to R2, so it is
@@ -164,7 +164,7 @@ public final class R2BucketSippyDestinationArgs extends com.pulumi.resources.Res
 
         /**
          * @param secretAccessKey Value of a Cloudflare API token.
-         * This is the value labelled &#34;Secret Access Key&#34; when creating an API
+         * This is the value labelled &#34;Secret Access Key&#34; when creating an API.
          * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
          * 
          * Sippy will use this token when writing objects to R2, so it is

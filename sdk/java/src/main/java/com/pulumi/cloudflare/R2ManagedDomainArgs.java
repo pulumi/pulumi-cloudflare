@@ -18,14 +18,14 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
     public static final R2ManagedDomainArgs Empty = new R2ManagedDomainArgs();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
@@ -33,14 +33,14 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
@@ -48,14 +48,14 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether to enable public bucket access at the r2.dev domain
+     * Whether to enable public bucket access at the r2.dev domain.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable public bucket access at the r2.dev domain
+     * @return Whether to enable public bucket access at the r2.dev domain.
      * 
      */
     public Output<Boolean> enabled() {
@@ -105,7 +105,7 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled Whether to enable public bucket access at the r2.dev domain
+         * @param enabled Whether to enable public bucket access at the r2.dev domain.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class R2ManagedDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled Whether to enable public bucket access at the r2.dev domain
+         * @param enabled Whether to enable public bucket access at the r2.dev domain.
          * 
          * @return builder
          * 

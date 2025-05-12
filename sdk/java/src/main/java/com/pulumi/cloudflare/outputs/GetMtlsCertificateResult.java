@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetMtlsCertificateResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -34,7 +34,7 @@ public final class GetMtlsCertificateResult {
      */
     private String expiresOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -44,7 +44,7 @@ public final class GetMtlsCertificateResult {
      */
     private String issuer;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String mtlsCertificateId;
@@ -71,7 +71,7 @@ public final class GetMtlsCertificateResult {
 
     private GetMtlsCertificateResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -99,7 +99,7 @@ public final class GetMtlsCertificateResult {
         return this.expiresOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -113,7 +113,7 @@ public final class GetMtlsCertificateResult {
         return this.issuer;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> mtlsCertificateId() {

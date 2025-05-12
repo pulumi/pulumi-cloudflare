@@ -12,34 +12,34 @@ import java.util.Objects;
 public final class GetWeb3HostnamesResult {
     private String createdOn;
     /**
-     * @return An optional description of the hostname.
+     * @return Specify an optional description of the hostname.
      * 
      */
     private String description;
     /**
-     * @return DNSLink value used if the target is ipfs.
+     * @return Specify the DNSLink value used if the target is ipfs.
      * 
      */
     private String dnslink;
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     private String id;
     private String modifiedOn;
     /**
-     * @return The hostname that will point to the target gateway via CNAME.
+     * @return Specify the hostname that points to the target gateway via CNAME.
      * 
      */
     private String name;
     /**
-     * @return Status of the hostname&#39;s activation.
+     * @return Specifies the status of the hostname&#39;s activation.
      * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
     private String status;
     /**
-     * @return Target gateway of the hostname.
+     * @return Specify the target gateway of the hostname.
      * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
@@ -50,21 +50,21 @@ public final class GetWeb3HostnamesResult {
         return this.createdOn;
     }
     /**
-     * @return An optional description of the hostname.
+     * @return Specify an optional description of the hostname.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return DNSLink value used if the target is ipfs.
+     * @return Specify the DNSLink value used if the target is ipfs.
      * 
      */
     public String dnslink() {
         return this.dnslink;
     }
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public String id() {
@@ -74,14 +74,14 @@ public final class GetWeb3HostnamesResult {
         return this.modifiedOn;
     }
     /**
-     * @return The hostname that will point to the target gateway via CNAME.
+     * @return Specify the hostname that points to the target gateway via CNAME.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Status of the hostname&#39;s activation.
+     * @return Specifies the status of the hostname&#39;s activation.
      * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
@@ -89,7 +89,7 @@ public final class GetWeb3HostnamesResult {
         return this.status;
     }
     /**
-     * @return Target gateway of the hostname.
+     * @return Specify the target gateway of the hostname.
      * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */

@@ -17,7 +17,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
 
     /**
      * Name of compression algorithm to enable.
-     * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;.
+     * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;, &#34;zstd&#34;.
      * 
      */
     @Import(name="name")
@@ -25,7 +25,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
 
     /**
      * @return Name of compression algorithm to enable.
-     * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;.
+     * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;, &#34;zstd&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -58,7 +58,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
 
         /**
          * @param name Name of compression algorithm to enable.
-         * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;.
+         * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;, &#34;zstd&#34;.
          * 
          * @return builder
          * 
@@ -70,7 +70,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
 
         /**
          * @param name Name of compression algorithm to enable.
-         * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;.
+         * Available values: &#34;none&#34;, &#34;auto&#34;, &#34;default&#34;, &#34;gzip&#34;, &#34;brotli&#34;, &#34;zstd&#34;.
          * 
          * @return builder
          * 

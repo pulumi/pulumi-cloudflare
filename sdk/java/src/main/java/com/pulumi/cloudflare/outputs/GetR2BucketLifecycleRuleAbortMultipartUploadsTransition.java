@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketLifecycleRuleAbortMultipartUploadsTransition {
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     private GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition condition;
 
     private GetR2BucketLifecycleRuleAbortMultipartUploadsTransition() {}
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     public GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition condition() {

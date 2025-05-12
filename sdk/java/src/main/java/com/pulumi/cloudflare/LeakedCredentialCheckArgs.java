@@ -18,14 +18,14 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
     public static final LeakedCredentialCheckArgs Empty = new LeakedCredentialCheckArgs();
 
     /**
-     * Whether or not Leaked Credential Checks are enabled
+     * Determines whether or not Leaked Credential Checks are enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether or not Leaked Credential Checks are enabled
+     * @return Determines whether or not Leaked Credential Checks are enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,14 +33,14 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -73,7 +73,7 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled Whether or not Leaked Credential Checks are enabled
+         * @param enabled Determines whether or not Leaked Credential Checks are enabled.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled Whether or not Leaked Credential Checks are enabled
+         * @param enabled Determines whether or not Leaked Credential Checks are enabled.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class LeakedCredentialCheckArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

@@ -43,7 +43,7 @@ public final class GetCustomHostnameFallbackOriginResult {
      */
     private String updatedAt;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -93,7 +93,7 @@ public final class GetCustomHostnameFallbackOriginResult {
         return this.updatedAt;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

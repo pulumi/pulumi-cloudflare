@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetCertificatePackResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String certificatePackId;
@@ -21,14 +21,14 @@ public final class GetCertificatePackResult {
      */
     private String id;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
 
     private GetCertificatePackResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String certificatePackId() {
@@ -42,7 +42,7 @@ public final class GetCertificatePackResult {
         return this.id;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

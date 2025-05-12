@@ -76,14 +76,14 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bindings", refs={List.class,WorkerScriptBinding.class}, tree="[0,1]")
-    private Output<List<WorkerScriptBinding>> bindings;
+    private Output</* @Nullable */ List<WorkerScriptBinding>> bindings;
 
     /**
      * @return List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      * 
      */
-    public Output<List<WorkerScriptBinding>> bindings() {
-        return this.bindings;
+    public Output<Optional<List<WorkerScriptBinding>>> bindings() {
+        return Codegen.optional(this.bindings);
     }
     /**
      * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
@@ -258,14 +258,14 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="migrations", refs={WorkerScriptMigrations.class}, tree="[0]")
-    private Output<WorkerScriptMigrations> migrations;
+    private Output</* @Nullable */ WorkerScriptMigrations> migrations;
 
     /**
      * @return Migrations to apply for Durable Objects associated with this Worker.
      * 
      */
-    public Output<WorkerScriptMigrations> migrations() {
-        return this.migrations;
+    public Output<Optional<WorkerScriptMigrations>> migrations() {
+        return Codegen.optional(this.migrations);
     }
     /**
      * When the script was last modified.
@@ -286,28 +286,28 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="observability", refs={WorkerScriptObservability.class}, tree="[0]")
-    private Output<WorkerScriptObservability> observability;
+    private Output</* @Nullable */ WorkerScriptObservability> observability;
 
     /**
      * @return Observability settings for the Worker.
      * 
      */
-    public Output<WorkerScriptObservability> observability() {
-        return this.observability;
+    public Output<Optional<WorkerScriptObservability>> observability() {
+        return Codegen.optional(this.observability);
     }
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
      */
     @Export(name="placement", refs={WorkerScriptPlacement.class}, tree="[0]")
-    private Output<WorkerScriptPlacement> placement;
+    private Output</* @Nullable */ WorkerScriptPlacement> placement;
 
     /**
      * @return Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * 
      */
-    public Output<WorkerScriptPlacement> placement() {
-        return this.placement;
+    public Output<Optional<WorkerScriptPlacement>> placement() {
+        return Codegen.optional(this.placement);
     }
     /**
      * Name of the script, used in URLs and route configuration.
@@ -334,14 +334,14 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tailConsumers", refs={List.class,WorkerScriptTailConsumer.class}, tree="[0,1]")
-    private Output<List<WorkerScriptTailConsumer>> tailConsumers;
+    private Output</* @Nullable */ List<WorkerScriptTailConsumer>> tailConsumers;
 
     /**
      * @return List of Workers that will consume logs from the attached Worker.
      * 
      */
-    public Output<List<WorkerScriptTailConsumer>> tailConsumers() {
-        return this.tailConsumers;
+    public Output<Optional<List<WorkerScriptTailConsumer>>> tailConsumers() {
+        return Codegen.optional(this.tailConsumers);
     }
     /**
      * Usage model for the Worker invocations.

@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDlpPredefinedProfileEntryConfidence {
     /**
-     * @return Indicates whether this entry has AI remote service validation
+     * @return Indicates whether this entry has AI remote service validation.
      * 
      */
     private Boolean aiContextAvailable;
     /**
-     * @return Indicates whether this entry has any form of validation that is not an AI remote service
+     * @return Indicates whether this entry has any form of validation that is not an AI remote service.
      * 
      */
     private Boolean available;
 
     private GetZeroTrustDlpPredefinedProfileEntryConfidence() {}
     /**
-     * @return Indicates whether this entry has AI remote service validation
+     * @return Indicates whether this entry has AI remote service validation.
      * 
      */
     public Boolean aiContextAvailable() {
         return this.aiContextAvailable;
     }
     /**
-     * @return Indicates whether this entry has any form of validation that is not an AI remote service
+     * @return Indicates whether this entry has any form of validation that is not an AI remote service.
      * 
      */
     public Boolean available() {

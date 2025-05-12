@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketLifecycleResult {
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     private String accountId;
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     private String bucketName;
@@ -31,14 +31,14 @@ public final class GetR2BucketLifecycleResult {
 
     private GetR2BucketLifecycleResult() {}
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public String bucketName() {

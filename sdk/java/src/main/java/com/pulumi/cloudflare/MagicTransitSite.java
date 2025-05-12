@@ -124,14 +124,14 @@ public class MagicTransitSite extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="location", refs={MagicTransitSiteLocation.class}, tree="[0]")
-    private Output<MagicTransitSiteLocation> location;
+    private Output</* @Nullable */ MagicTransitSiteLocation> location;
 
     /**
      * @return Location of site in latitude and longitude.
      * 
      */
-    public Output<MagicTransitSiteLocation> location() {
-        return this.location;
+    public Output<Optional<MagicTransitSiteLocation>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * The name of the site.

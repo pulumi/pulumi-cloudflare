@@ -16,12 +16,12 @@ public final class GetAccessRuleScope {
      */
     private String email;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String id;
     /**
-     * @return The scope of the rule.
+     * @return Defines the scope of the rule.
      * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
@@ -36,14 +36,14 @@ public final class GetAccessRuleScope {
         return this.email;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The scope of the rule.
+     * @return Defines the scope of the rule.
      * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */

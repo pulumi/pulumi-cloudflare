@@ -39,14 +39,14 @@ public final class GetFilterPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {
@@ -96,7 +96,7 @@ public final class GetFilterPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

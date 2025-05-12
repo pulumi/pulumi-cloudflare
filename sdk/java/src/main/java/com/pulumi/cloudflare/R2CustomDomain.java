@@ -61,42 +61,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/r2CustomDomain:R2CustomDomain")
 public class R2CustomDomain extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
         return this.bucketName;
     }
     /**
-     * Name of the custom domain to be added
+     * Name of the custom domain to be added.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return Name of the custom domain to be added
+     * @return Name of the custom domain to be added.
      * 
      */
     public Output<String> domain() {
@@ -153,28 +153,28 @@ public class R2CustomDomain extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Zone ID of the custom domain
+     * Zone ID of the custom domain.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Zone ID of the custom domain
+     * @return Zone ID of the custom domain.
      * 
      */
     public Output<String> zoneId() {
         return this.zoneId;
     }
     /**
-     * Zone that the custom domain resides in
+     * Zone that the custom domain resides in.
      * 
      */
     @Export(name="zoneName", refs={String.class}, tree="[0]")
     private Output<String> zoneName;
 
     /**
-     * @return Zone that the custom domain resides in
+     * @return Zone that the custom domain resides in.
      * 
      */
     public Output<String> zoneName() {

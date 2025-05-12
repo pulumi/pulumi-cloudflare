@@ -125,14 +125,14 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -318,7 +318,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class ApiShieldSchemaState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

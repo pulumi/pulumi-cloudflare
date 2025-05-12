@@ -67,14 +67,14 @@ public final class DlpCustomProfileProfileArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The description of the profile
+     * The description of the profile.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     public Optional<Output<String>> description() {
@@ -210,7 +210,7 @@ public final class DlpCustomProfileProfileArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param description The description of the profile
+         * @param description The description of the profile.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class DlpCustomProfileProfileArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param description The description of the profile
+         * @param description The description of the profile.
          * 
          * @return builder
          * 

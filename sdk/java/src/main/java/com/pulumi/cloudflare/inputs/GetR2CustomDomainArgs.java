@@ -15,14 +15,14 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetR2CustomDomainArgs Empty = new GetR2CustomDomainArgs();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
@@ -30,14 +30,14 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
@@ -45,14 +45,14 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Name of the custom domain
+     * Name of the custom domain.
      * 
      */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
     /**
-     * @return Name of the custom domain
+     * @return Name of the custom domain.
      * 
      */
     public Output<String> domain() {
@@ -86,7 +86,7 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param domain Name of the custom domain
+         * @param domain Name of the custom domain.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class GetR2CustomDomainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param domain Name of the custom domain
+         * @param domain Name of the custom domain.
          * 
          * @return builder
          * 

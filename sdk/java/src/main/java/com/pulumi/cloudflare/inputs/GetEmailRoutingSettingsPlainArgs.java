@@ -14,14 +14,14 @@ public final class GetEmailRoutingSettingsPlainArgs extends com.pulumi.resources
     public static final GetEmailRoutingSettingsPlainArgs Empty = new GetEmailRoutingSettingsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetEmailRoutingSettingsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

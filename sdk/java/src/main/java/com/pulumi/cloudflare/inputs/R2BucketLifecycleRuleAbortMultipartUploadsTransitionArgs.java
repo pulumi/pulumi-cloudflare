@@ -16,14 +16,14 @@ public final class R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs exte
     public static final R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs Empty = new R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs();
 
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     @Import(name="condition")
     private @Nullable Output<R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs> condition;
 
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     public Optional<Output<R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs>> condition() {
@@ -55,7 +55,7 @@ public final class R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs exte
         }
 
         /**
-         * @param condition Condition for lifecycle transitions to apply after an object reaches an age in seconds
+         * @param condition Condition for lifecycle transitions to apply after an object reaches an age in seconds.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs exte
         }
 
         /**
-         * @param condition Condition for lifecycle transitions to apply after an object reaches an age in seconds
+         * @param condition Condition for lifecycle transitions to apply after an object reaches an age in seconds.
          * 
          * @return builder
          * 

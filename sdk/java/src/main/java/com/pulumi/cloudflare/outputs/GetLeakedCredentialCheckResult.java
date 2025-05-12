@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLeakedCredentialCheckResult {
     /**
-     * @return Whether or not Leaked Credential Checks are enabled
+     * @return Determines whether or not Leaked Credential Checks are enabled.
      * 
      */
     private Boolean enabled;
@@ -22,14 +22,14 @@ public final class GetLeakedCredentialCheckResult {
      */
     private String id;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
 
     private GetLeakedCredentialCheckResult() {}
     /**
-     * @return Whether or not Leaked Credential Checks are enabled
+     * @return Determines whether or not Leaked Credential Checks are enabled.
      * 
      */
     public Boolean enabled() {
@@ -43,7 +43,7 @@ public final class GetLeakedCredentialCheckResult {
         return this.id;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

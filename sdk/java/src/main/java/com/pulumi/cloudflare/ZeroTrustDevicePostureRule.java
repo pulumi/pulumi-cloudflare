@@ -72,28 +72,28 @@ public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="input", refs={ZeroTrustDevicePostureRuleInput.class}, tree="[0]")
-    private Output<ZeroTrustDevicePostureRuleInput> input;
+    private Output</* @Nullable */ ZeroTrustDevicePostureRuleInput> input;
 
     /**
      * @return The value to be checked against.
      * 
      */
-    public Output<ZeroTrustDevicePostureRuleInput> input() {
-        return this.input;
+    public Output<Optional<ZeroTrustDevicePostureRuleInput>> input() {
+        return Codegen.optional(this.input);
     }
     /**
      * The conditions that the client must match to run the rule.
      * 
      */
     @Export(name="matches", refs={List.class,ZeroTrustDevicePostureRuleMatch.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDevicePostureRuleMatch>> matches;
+    private Output</* @Nullable */ List<ZeroTrustDevicePostureRuleMatch>> matches;
 
     /**
      * @return The conditions that the client must match to run the rule.
      * 
      */
-    public Output<List<ZeroTrustDevicePostureRuleMatch>> matches() {
-        return this.matches;
+    public Output<Optional<List<ZeroTrustDevicePostureRuleMatch>>> matches() {
+        return Codegen.optional(this.matches);
     }
     /**
      * The name of the device posture rule.

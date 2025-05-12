@@ -58,7 +58,7 @@ public final class GetZoneLockdownResult {
      */
     private List<String> urls;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -124,7 +124,7 @@ public final class GetZoneLockdownResult {
         return this.urls;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

@@ -17,14 +17,14 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
     public static final ListState Empty = new ListState();
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -170,7 +170,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class ListState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 

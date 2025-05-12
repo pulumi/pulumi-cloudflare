@@ -19,14 +19,14 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
     public static final WebAnalyticsRuleState Empty = new WebAnalyticsRuleState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -138,7 +138,7 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class WebAnalyticsRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

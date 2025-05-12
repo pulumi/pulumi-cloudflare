@@ -14,14 +14,14 @@ public final class GetZoneDnsSettingsPlainArgs extends com.pulumi.resources.Invo
     public static final GetZoneDnsSettingsPlainArgs Empty = new GetZoneDnsSettingsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetZoneDnsSettingsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

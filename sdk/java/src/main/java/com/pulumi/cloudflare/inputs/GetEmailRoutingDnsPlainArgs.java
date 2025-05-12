@@ -31,14 +31,14 @@ public final class GetEmailRoutingDnsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -82,7 +82,7 @@ public final class GetEmailRoutingDnsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

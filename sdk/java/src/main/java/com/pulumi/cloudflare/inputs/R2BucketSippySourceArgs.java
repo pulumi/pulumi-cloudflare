@@ -16,14 +16,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     public static final R2BucketSippySourceArgs Empty = new R2BucketSippySourceArgs();
 
     /**
-     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     @Import(name="accessKeyId")
     private @Nullable Output<String> accessKeyId;
 
     /**
-     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     public Optional<Output<String>> accessKeyId() {
@@ -31,14 +31,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of the AWS S3 bucket
+     * Name of the AWS S3 bucket.
      * 
      */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
     /**
-     * @return Name of the AWS S3 bucket
+     * @return Name of the AWS S3 bucket.
      * 
      */
     public Optional<Output<String>> bucket() {
@@ -46,14 +46,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Client email of an IAM credential (ideally scoped to a single GCS bucket)
+     * Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     @Import(name="clientEmail")
     private @Nullable Output<String> clientEmail;
 
     /**
-     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket)
+     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     public Optional<Output<String>> clientEmail() {
@@ -61,14 +61,29 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+     * Available values: &#34;aws&#34;.
+     * 
+     */
+    @Import(name="cloudProvider")
+    private @Nullable Output<String> cloudProvider;
+
+    /**
+     * @return Available values: &#34;aws&#34;.
+     * 
+     */
+    public Optional<Output<String>> cloudProvider() {
+        return Optional.ofNullable(this.cloudProvider);
+    }
+
+    /**
+     * Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -76,29 +91,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Available values: &#34;aws&#34;.
-     * 
-     */
-    @Import(name="provider")
-    private @Nullable Output<String> provider;
-
-    /**
-     * @return Available values: &#34;aws&#34;.
-     * 
-     */
-    public Optional<Output<String>> provider() {
-        return Optional.ofNullable(this.provider);
-    }
-
-    /**
-     * Name of the AWS availability zone
+     * Name of the AWS availability zone.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Name of the AWS availability zone
+     * @return Name of the AWS availability zone.
      * 
      */
     public Optional<Output<String>> region() {
@@ -106,14 +106,14 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     @Import(name="secretAccessKey")
     private @Nullable Output<String> secretAccessKey;
 
     /**
-     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     public Optional<Output<String>> secretAccessKey() {
@@ -126,8 +126,8 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         this.accessKeyId = $.accessKeyId;
         this.bucket = $.bucket;
         this.clientEmail = $.clientEmail;
+        this.cloudProvider = $.cloudProvider;
         this.privateKey = $.privateKey;
-        this.provider = $.provider;
         this.region = $.region;
         this.secretAccessKey = $.secretAccessKey;
     }
@@ -151,7 +151,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessKeyId Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+         * @param accessKeyId Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessKeyId Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+         * @param accessKeyId Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bucket Name of the AWS S3 bucket
+         * @param bucket Name of the AWS S3 bucket.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param bucket Name of the AWS S3 bucket
+         * @param bucket Name of the AWS S3 bucket.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientEmail Client email of an IAM credential (ideally scoped to a single GCS bucket)
+         * @param clientEmail Client email of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientEmail Client email of an IAM credential (ideally scoped to a single GCS bucket)
+         * @param clientEmail Client email of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
          * 
@@ -214,7 +214,28 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param privateKey Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+         * @param cloudProvider Available values: &#34;aws&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudProvider(@Nullable Output<String> cloudProvider) {
+            $.cloudProvider = cloudProvider;
+            return this;
+        }
+
+        /**
+         * @param cloudProvider Available values: &#34;aws&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudProvider(String cloudProvider) {
+            return cloudProvider(Output.of(cloudProvider));
+        }
+
+        /**
+         * @param privateKey Private Key of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
          * 
@@ -225,7 +246,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param privateKey Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+         * @param privateKey Private Key of an IAM credential (ideally scoped to a single GCS bucket).
          * 
          * @return builder
          * 
@@ -235,28 +256,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param provider Available values: &#34;aws&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder provider(@Nullable Output<String> provider) {
-            $.provider = provider;
-            return this;
-        }
-
-        /**
-         * @param provider Available values: &#34;aws&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder provider(String provider) {
-            return provider(Output.of(provider));
-        }
-
-        /**
-         * @param region Name of the AWS availability zone
+         * @param region Name of the AWS availability zone.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param region Name of the AWS availability zone
+         * @param region Name of the AWS availability zone.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param secretAccessKey Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+         * @param secretAccessKey Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class R2BucketSippySourceArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param secretAccessKey Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+         * @param secretAccessKey Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
          * 
          * @return builder
          * 

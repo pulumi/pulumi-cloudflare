@@ -161,17 +161,9 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
         return Optional.ofNullable(this.uploadedOn);
     }
 
-    /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-     * 
-     */
     @Import(name="validityPeriodDays")
     private @Nullable Output<Integer> validityPeriodDays;
 
-    /**
-     * @return Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-     * 
-     */
     public Optional<Output<Integer>> validityPeriodDays() {
         return Optional.ofNullable(this.validityPeriodDays);
     }
@@ -408,23 +400,11 @@ public final class ZeroTrustGatewayCertificateState extends com.pulumi.resources
             return uploadedOn(Output.of(uploadedOn));
         }
 
-        /**
-         * @param validityPeriodDays Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-         * 
-         * @return builder
-         * 
-         */
         public Builder validityPeriodDays(@Nullable Output<Integer> validityPeriodDays) {
             $.validityPeriodDays = validityPeriodDays;
             return this;
         }
 
-        /**
-         * @param validityPeriodDays Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-         * 
-         * @return builder
-         * 
-         */
         public Builder validityPeriodDays(Integer validityPeriodDays) {
             return validityPeriodDays(Output.of(validityPeriodDays));
         }

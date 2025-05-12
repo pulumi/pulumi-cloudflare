@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class R2BucketEventNotificationQueue {
     /**
-     * @return Queue ID
+     * @return Queue ID.
      * 
      */
     private @Nullable String queueId;
     /**
-     * @return Name of the queue
+     * @return Name of the queue.
      * 
      */
     private @Nullable String queueName;
@@ -27,14 +27,14 @@ public final class R2BucketEventNotificationQueue {
 
     private R2BucketEventNotificationQueue() {}
     /**
-     * @return Queue ID
+     * @return Queue ID.
      * 
      */
     public Optional<String> queueId() {
         return Optional.ofNullable(this.queueId);
     }
     /**
-     * @return Name of the queue
+     * @return Name of the queue.
      * 
      */
     public Optional<String> queueName() {

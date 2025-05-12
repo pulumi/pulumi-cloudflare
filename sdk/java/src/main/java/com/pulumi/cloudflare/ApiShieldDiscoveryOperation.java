@@ -56,14 +56,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation")
 public class ApiShieldDiscoveryOperation extends com.pulumi.resources.CustomResource {
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Export(name="operationId", refs={String.class}, tree="[0]")
     private Output<String> operationId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Output<String> operationId() {
@@ -86,14 +86,14 @@ public class ApiShieldDiscoveryOperation extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.state);
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

@@ -64,14 +64,14 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
     }
 
     /**
-     * When the profile was created
+     * When the profile was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return When the profile was created
+     * @return When the profile was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -79,14 +79,14 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
     }
 
     /**
-     * The description of the profile
+     * The description of the profile.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     public Optional<Output<String>> description() {
@@ -101,14 +101,14 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
     }
 
     /**
-     * The name of the profile
+     * The name of the profile.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the profile
+     * @return The name of the profile.
      * 
      */
     public Optional<Output<String>> name() {
@@ -123,14 +123,14 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
     }
 
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      * 
      */
     @Import(name="openAccess")
     private @Nullable Output<Boolean> openAccess;
 
     /**
-     * @return Whether this profile can be accessed by anyone
+     * @return Whether this profile can be accessed by anyone.
      * 
      */
     public Optional<Output<Boolean>> openAccess() {
@@ -160,14 +160,14 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
     }
 
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return When the profile was lasted updated
+     * @return When the profile was lasted updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -269,7 +269,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param createdAt When the profile was created
+         * @param createdAt When the profile was created.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param createdAt When the profile was created
+         * @param createdAt When the profile was created.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param description The description of the profile
+         * @param description The description of the profile.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param description The description of the profile
+         * @param description The description of the profile.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param name The name of the profile
+         * @param name The name of the profile.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param name The name of the profile
+         * @param name The name of the profile.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param openAccess Whether this profile can be accessed by anyone
+         * @param openAccess Whether this profile can be accessed by anyone.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param openAccess Whether this profile can be accessed by anyone
+         * @param openAccess Whether this profile can be accessed by anyone.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param updatedAt When the profile was lasted updated
+         * @param updatedAt When the profile was lasted updated.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ZeroTrustDlpPredefinedProfileState extends com.pulumi.resourc
         }
 
         /**
-         * @param updatedAt When the profile was lasted updated
+         * @param updatedAt When the profile was lasted updated.
          * 
          * @return builder
          * 

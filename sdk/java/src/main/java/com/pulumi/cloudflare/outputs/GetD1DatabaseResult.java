@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetD1DatabaseFilter;
+import com.pulumi.cloudflare.outputs.GetD1DatabaseReadReplication;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
@@ -46,6 +47,11 @@ public final class GetD1DatabaseResult {
      */
     private String name;
     private Double numTables;
+    /**
+     * @return Configuration for D1 read replication.
+     * 
+     */
+    private GetD1DatabaseReadReplication readReplication;
     /**
      * @return D1 database identifier (UUID).
      * 
@@ -103,6 +109,13 @@ public final class GetD1DatabaseResult {
         return this.numTables;
     }
     /**
+     * @return Configuration for D1 read replication.
+     * 
+     */
+    public GetD1DatabaseReadReplication readReplication() {
+        return this.readReplication;
+    }
+    /**
      * @return D1 database identifier (UUID).
      * 
      */
@@ -130,6 +143,7 @@ public final class GetD1DatabaseResult {
         private String id;
         private String name;
         private Double numTables;
+        private GetD1DatabaseReadReplication readReplication;
         private String uuid;
         private String version;
         public Builder() {}
@@ -143,6 +157,7 @@ public final class GetD1DatabaseResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.numTables = defaults.numTables;
+    	      this.readReplication = defaults.readReplication;
     	      this.uuid = defaults.uuid;
     	      this.version = defaults.version;
         }
@@ -208,6 +223,14 @@ public final class GetD1DatabaseResult {
             return this;
         }
         @CustomType.Setter
+        public Builder readReplication(GetD1DatabaseReadReplication readReplication) {
+            if (readReplication == null) {
+              throw new MissingRequiredPropertyException("GetD1DatabaseResult", "readReplication");
+            }
+            this.readReplication = readReplication;
+            return this;
+        }
+        @CustomType.Setter
         public Builder uuid(String uuid) {
             if (uuid == null) {
               throw new MissingRequiredPropertyException("GetD1DatabaseResult", "uuid");
@@ -233,6 +256,7 @@ public final class GetD1DatabaseResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.numTables = numTables;
+            _resultValue.readReplication = readReplication;
             _resultValue.uuid = uuid;
             _resultValue.version = version;
             return _resultValue;

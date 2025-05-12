@@ -17,14 +17,14 @@ public final class GetWebAnalyticsSitesPlainArgs extends com.pulumi.resources.In
     public static final GetWebAnalyticsSitesPlainArgs Empty = new GetWebAnalyticsSitesPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -90,7 +90,7 @@ public final class GetWebAnalyticsSitesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

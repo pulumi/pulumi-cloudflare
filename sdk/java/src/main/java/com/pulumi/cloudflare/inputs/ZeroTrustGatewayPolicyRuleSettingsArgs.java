@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewayPolicyRuleSettingsEgressArgs;
@@ -88,6 +89,21 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
      */
     public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs>> bisoAdminControls() {
         return Optional.ofNullable(this.bisoAdminControls);
+    }
+
+    /**
+     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     * 
+     */
+    @Import(name="blockPage")
+    private @Nullable Output<ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs> blockPage;
+
+    /**
+     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs>> blockPage() {
+        return Optional.ofNullable(this.blockPage);
     }
 
     /**
@@ -397,6 +413,7 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
         this.allowChildBypass = $.allowChildBypass;
         this.auditSsh = $.auditSsh;
         this.bisoAdminControls = $.bisoAdminControls;
+        this.blockPage = $.blockPage;
         this.blockPageEnabled = $.blockPageEnabled;
         this.blockReason = $.blockReason;
         this.bypassParentRule = $.bypassParentRule;
@@ -519,6 +536,27 @@ public final class ZeroTrustGatewayPolicyRuleSettingsArgs extends com.pulumi.res
          */
         public Builder bisoAdminControls(ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs bisoAdminControls) {
             return bisoAdminControls(Output.of(bisoAdminControls));
+        }
+
+        /**
+         * @param blockPage Custom block page settings. If missing/null, blocking will use the the account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockPage(@Nullable Output<ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs> blockPage) {
+            $.blockPage = blockPage;
+            return this;
+        }
+
+        /**
+         * @param blockPage Custom block page settings. If missing/null, blocking will use the the account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockPage(ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs blockPage) {
+            return blockPage(Output.of(blockPage));
         }
 
         /**

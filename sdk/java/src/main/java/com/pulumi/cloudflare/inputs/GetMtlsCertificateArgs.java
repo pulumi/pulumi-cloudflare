@@ -17,14 +17,14 @@ public final class GetMtlsCertificateArgs extends com.pulumi.resources.InvokeArg
     public static final GetMtlsCertificateArgs Empty = new GetMtlsCertificateArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -32,14 +32,14 @@ public final class GetMtlsCertificateArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="mtlsCertificateId")
     private @Nullable Output<String> mtlsCertificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> mtlsCertificateId() {
@@ -72,7 +72,7 @@ public final class GetMtlsCertificateArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetMtlsCertificateArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetMtlsCertificateArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param mtlsCertificateId Identifier
+         * @param mtlsCertificateId Identifier.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetMtlsCertificateArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param mtlsCertificateId Identifier
+         * @param mtlsCertificateId Identifier.
          * 
          * @return builder
          * 

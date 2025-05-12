@@ -132,14 +132,14 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -335,7 +335,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class EmailRoutingSettingsState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

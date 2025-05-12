@@ -61,14 +61,29 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Identifier
+     * Configure which routing method to use for the regional hostname
+     * 
+     */
+    @Import(name="routing")
+    private @Nullable Output<String> routing;
+
+    /**
+     * @return Configure which routing method to use for the regional hostname
+     * 
+     */
+    public Optional<Output<String>> routing() {
+        return Optional.ofNullable(this.routing);
+    }
+
+    /**
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -81,6 +96,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         this.createdOn = $.createdOn;
         this.hostname = $.hostname;
         this.regionKey = $.regionKey;
+        this.routing = $.routing;
         this.zoneId = $.zoneId;
     }
 
@@ -166,7 +182,28 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param routing Configure which routing method to use for the regional hostname
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routing(@Nullable Output<String> routing) {
+            $.routing = routing;
+            return this;
+        }
+
+        /**
+         * @param routing Configure which routing method to use for the regional hostname
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routing(String routing) {
+            return routing(Output.of(routing));
+        }
+
+        /**
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -177,7 +214,7 @@ public final class RegionalHostnameState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

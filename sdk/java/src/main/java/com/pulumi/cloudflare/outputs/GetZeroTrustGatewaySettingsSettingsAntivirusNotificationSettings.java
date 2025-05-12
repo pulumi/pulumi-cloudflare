@@ -17,6 +17,11 @@ public final class GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetti
      */
     private Boolean enabled;
     /**
+     * @return If true, context information will be passed as query parameters
+     * 
+     */
+    private Boolean includeContext;
+    /**
      * @return Customize the message shown in the notification.
      * 
      */
@@ -34,6 +39,13 @@ public final class GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetti
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return If true, context information will be passed as query parameters
+     * 
+     */
+    public Boolean includeContext() {
+        return this.includeContext;
     }
     /**
      * @return Customize the message shown in the notification.
@@ -60,12 +72,14 @@ public final class GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetti
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private Boolean includeContext;
         private String msg;
         private String supportUrl;
         public Builder() {}
         public Builder(GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.includeContext = defaults.includeContext;
     	      this.msg = defaults.msg;
     	      this.supportUrl = defaults.supportUrl;
         }
@@ -76,6 +90,14 @@ public final class GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetti
               throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeContext(Boolean includeContext) {
+            if (includeContext == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings", "includeContext");
+            }
+            this.includeContext = includeContext;
             return this;
         }
         @CustomType.Setter
@@ -97,6 +119,7 @@ public final class GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetti
         public GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings build() {
             final var _resultValue = new GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings();
             _resultValue.enabled = enabled;
+            _resultValue.includeContext = includeContext;
             _resultValue.msg = msg;
             _resultValue.supportUrl = supportUrl;
             return _resultValue;

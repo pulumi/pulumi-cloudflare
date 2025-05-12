@@ -33,10 +33,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/apiToken:ApiToken")
 public class ApiToken extends com.pulumi.resources.CustomResource {
     @Export(name="condition", refs={ApiTokenCondition.class}, tree="[0]")
-    private Output<ApiTokenCondition> condition;
+    private Output</* @Nullable */ ApiTokenCondition> condition;
 
-    public Output<ApiTokenCondition> condition() {
-        return this.condition;
+    public Output<Optional<ApiTokenCondition>> condition() {
+        return Codegen.optional(this.condition);
     }
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.

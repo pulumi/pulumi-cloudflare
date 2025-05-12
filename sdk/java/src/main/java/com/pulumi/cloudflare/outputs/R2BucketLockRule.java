@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class R2BucketLockRule {
     /**
-     * @return Condition to apply a lock rule to an object for how long in seconds
+     * @return Condition to apply a lock rule to an object for how long in seconds.
      * 
      */
     private R2BucketLockRuleCondition condition;
     /**
-     * @return Whether or not this rule is in effect
+     * @return Whether or not this rule is in effect.
      * 
      */
     private Boolean enabled;
     /**
-     * @return Unique identifier for this rule
+     * @return Unique identifier for this rule.
      * 
      */
     private String id;
     /**
-     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     private @Nullable String prefix;
 
     private R2BucketLockRule() {}
     /**
-     * @return Condition to apply a lock rule to an object for how long in seconds
+     * @return Condition to apply a lock rule to an object for how long in seconds.
      * 
      */
     public R2BucketLockRuleCondition condition() {
         return this.condition;
     }
     /**
-     * @return Whether or not this rule is in effect
+     * @return Whether or not this rule is in effect.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return Unique identifier for this rule
+     * @return Unique identifier for this rule.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     public Optional<String> prefix() {

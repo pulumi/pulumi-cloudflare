@@ -37,30 +37,30 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
      * The IP address assigned to the Cloudflare side of the GRE tunnel.
      * 
      */
-    @Import(name="cloudflareGreEndpoint")
-    private @Nullable Output<String> cloudflareGreEndpoint;
+    @Import(name="cloudflareGreEndpoint", required=true)
+    private Output<String> cloudflareGreEndpoint;
 
     /**
      * @return The IP address assigned to the Cloudflare side of the GRE tunnel.
      * 
      */
-    public Optional<Output<String>> cloudflareGreEndpoint() {
-        return Optional.ofNullable(this.cloudflareGreEndpoint);
+    public Output<String> cloudflareGreEndpoint() {
+        return this.cloudflareGreEndpoint;
     }
 
     /**
      * The IP address assigned to the customer side of the GRE tunnel.
      * 
      */
-    @Import(name="customerGreEndpoint")
-    private @Nullable Output<String> customerGreEndpoint;
+    @Import(name="customerGreEndpoint", required=true)
+    private Output<String> customerGreEndpoint;
 
     /**
      * @return The IP address assigned to the customer side of the GRE tunnel.
      * 
      */
-    public Optional<Output<String>> customerGreEndpoint() {
-        return Optional.ofNullable(this.customerGreEndpoint);
+    public Output<String> customerGreEndpoint() {
+        return this.customerGreEndpoint;
     }
 
     /**
@@ -78,21 +78,6 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="greTunnelId")
-    private @Nullable Output<String> greTunnelId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> greTunnelId() {
-        return Optional.ofNullable(this.greTunnelId);
-    }
-
     @Import(name="healthCheck")
     private @Nullable Output<MagicWanGreTunnelHealthCheckArgs> healthCheck;
 
@@ -104,15 +89,15 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      * 
      */
-    @Import(name="interfaceAddress")
-    private @Nullable Output<String> interfaceAddress;
+    @Import(name="interfaceAddress", required=true)
+    private Output<String> interfaceAddress;
 
     /**
      * @return A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      * 
      */
-    public Optional<Output<String>> interfaceAddress() {
-        return Optional.ofNullable(this.interfaceAddress);
+    public Output<String> interfaceAddress() {
+        return this.interfaceAddress;
     }
 
     /**
@@ -134,15 +119,15 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
      * The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -167,7 +152,6 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
         this.cloudflareGreEndpoint = $.cloudflareGreEndpoint;
         this.customerGreEndpoint = $.customerGreEndpoint;
         this.description = $.description;
-        this.greTunnelId = $.greTunnelId;
         this.healthCheck = $.healthCheck;
         this.interfaceAddress = $.interfaceAddress;
         this.mtu = $.mtu;
@@ -220,7 +204,7 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder cloudflareGreEndpoint(@Nullable Output<String> cloudflareGreEndpoint) {
+        public Builder cloudflareGreEndpoint(Output<String> cloudflareGreEndpoint) {
             $.cloudflareGreEndpoint = cloudflareGreEndpoint;
             return this;
         }
@@ -241,7 +225,7 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder customerGreEndpoint(@Nullable Output<String> customerGreEndpoint) {
+        public Builder customerGreEndpoint(Output<String> customerGreEndpoint) {
             $.customerGreEndpoint = customerGreEndpoint;
             return this;
         }
@@ -277,27 +261,6 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
             return description(Output.of(description));
         }
 
-        /**
-         * @param greTunnelId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder greTunnelId(@Nullable Output<String> greTunnelId) {
-            $.greTunnelId = greTunnelId;
-            return this;
-        }
-
-        /**
-         * @param greTunnelId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder greTunnelId(String greTunnelId) {
-            return greTunnelId(Output.of(greTunnelId));
-        }
-
         public Builder healthCheck(@Nullable Output<MagicWanGreTunnelHealthCheckArgs> healthCheck) {
             $.healthCheck = healthCheck;
             return this;
@@ -313,7 +276,7 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder interfaceAddress(@Nullable Output<String> interfaceAddress) {
+        public Builder interfaceAddress(Output<String> interfaceAddress) {
             $.interfaceAddress = interfaceAddress;
             return this;
         }
@@ -355,7 +318,7 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -394,6 +357,18 @@ public final class MagicWanGreTunnelArgs extends com.pulumi.resources.ResourceAr
         public MagicWanGreTunnelArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("MagicWanGreTunnelArgs", "accountId");
+            }
+            if ($.cloudflareGreEndpoint == null) {
+                throw new MissingRequiredPropertyException("MagicWanGreTunnelArgs", "cloudflareGreEndpoint");
+            }
+            if ($.customerGreEndpoint == null) {
+                throw new MissingRequiredPropertyException("MagicWanGreTunnelArgs", "customerGreEndpoint");
+            }
+            if ($.interfaceAddress == null) {
+                throw new MissingRequiredPropertyException("MagicWanGreTunnelArgs", "interfaceAddress");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("MagicWanGreTunnelArgs", "name");
             }
             return $;
         }

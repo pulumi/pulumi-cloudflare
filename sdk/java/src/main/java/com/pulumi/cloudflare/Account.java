@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -128,14 +129,14 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="unit", refs={AccountUnit.class}, tree="[0]")
-    private Output<AccountUnit> unit;
+    private Output</* @Nullable */ AccountUnit> unit;
 
     /**
      * @return information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
      * 
      */
-    public Output<AccountUnit> unit() {
-        return this.unit;
+    public Output<Optional<AccountUnit>> unit() {
+        return Codegen.optional(this.unit);
     }
 
     /**

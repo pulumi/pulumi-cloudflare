@@ -17,14 +17,14 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
     public static final R2BucketEventNotificationQueueRuleArgs Empty = new R2BucketEventNotificationQueueRuleArgs();
 
     /**
-     * Array of R2 object actions that will trigger notifications
+     * Array of R2 object actions that will trigger notifications.
      * 
      */
     @Import(name="actions")
     private @Nullable Output<List<String>> actions;
 
     /**
-     * @return Array of R2 object actions that will trigger notifications
+     * @return Array of R2 object actions that will trigger notifications.
      * 
      */
     public Optional<Output<List<String>>> actions() {
@@ -32,14 +32,14 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
     }
 
     /**
-     * Timestamp when the rule was created
+     * Timestamp when the rule was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Timestamp when the rule was created
+     * @return Timestamp when the rule was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -47,14 +47,14 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
     }
 
     /**
-     * A description that can be used to identify the event notification rule after creation
+     * A description that can be used to identify the event notification rule after creation.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return A description that can be used to identify the event notification rule after creation
+     * @return A description that can be used to identify the event notification rule after creation.
      * 
      */
     public Optional<Output<String>> description() {
@@ -62,14 +62,14 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
     }
 
     /**
-     * Notifications will be sent only for objects with this prefix
+     * Notifications will be sent only for objects with this prefix.
      * 
      */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return Notifications will be sent only for objects with this prefix
+     * @return Notifications will be sent only for objects with this prefix.
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -77,14 +77,14 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
     }
 
     /**
-     * Rule ID
+     * Rule ID.
      * 
      */
     @Import(name="ruleId")
     private @Nullable Output<String> ruleId;
 
     /**
-     * @return Rule ID
+     * @return Rule ID.
      * 
      */
     public Optional<Output<String>> ruleId() {
@@ -92,14 +92,14 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
     }
 
     /**
-     * Notifications will be sent only for objects with this suffix
+     * Notifications will be sent only for objects with this suffix.
      * 
      */
     @Import(name="suffix")
     private @Nullable Output<String> suffix;
 
     /**
-     * @return Notifications will be sent only for objects with this suffix
+     * @return Notifications will be sent only for objects with this suffix.
      * 
      */
     public Optional<Output<String>> suffix() {
@@ -136,7 +136,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param actions Array of R2 object actions that will trigger notifications
+         * @param actions Array of R2 object actions that will trigger notifications.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param actions Array of R2 object actions that will trigger notifications
+         * @param actions Array of R2 object actions that will trigger notifications.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param actions Array of R2 object actions that will trigger notifications
+         * @param actions Array of R2 object actions that will trigger notifications.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param createdAt Timestamp when the rule was created
+         * @param createdAt Timestamp when the rule was created.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param createdAt Timestamp when the rule was created
+         * @param createdAt Timestamp when the rule was created.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param description A description that can be used to identify the event notification rule after creation
+         * @param description A description that can be used to identify the event notification rule after creation.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param description A description that can be used to identify the event notification rule after creation
+         * @param description A description that can be used to identify the event notification rule after creation.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param prefix Notifications will be sent only for objects with this prefix
+         * @param prefix Notifications will be sent only for objects with this prefix.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param prefix Notifications will be sent only for objects with this prefix
+         * @param prefix Notifications will be sent only for objects with this prefix.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param ruleId Rule ID
+         * @param ruleId Rule ID.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param ruleId Rule ID
+         * @param ruleId Rule ID.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param suffix Notifications will be sent only for objects with this suffix
+         * @param suffix Notifications will be sent only for objects with this suffix.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class R2BucketEventNotificationQueueRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param suffix Notifications will be sent only for objects with this suffix
+         * @param suffix Notifications will be sent only for objects with this suffix.
          * 
          * @return builder
          * 

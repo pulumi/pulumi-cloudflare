@@ -83,42 +83,42 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of the rule.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * The wirefilter expression used for device posture check matching.
      * 
      */
     @Export(name="devicePosture", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> devicePosture;
+    private Output<String> devicePosture;
 
     /**
      * @return The wirefilter expression used for device posture check matching.
      * 
      */
-    public Output<Optional<String>> devicePosture() {
-        return Codegen.optional(this.devicePosture);
+    public Output<String> devicePosture() {
+        return this.devicePosture;
     }
     /**
      * True if the rule is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> enabled;
+    private Output<Boolean> enabled;
 
     /**
      * @return True if the rule is enabled.
      * 
      */
-    public Output<Optional<Boolean>> enabled() {
-        return Codegen.optional(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * The expiration time stamp and default duration of a DNS policy. Takes
@@ -155,14 +155,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="identity", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> identity;
+    private Output<String> identity;
 
     /**
      * @return The wirefilter expression used for identity matching.
      * 
      */
-    public Output<Optional<String>> identity() {
-        return Codegen.optional(this.identity);
+    public Output<String> identity() {
+        return this.identity;
     }
     /**
      * The name of the rule.
@@ -213,28 +213,28 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="schedule", refs={ZeroTrustGatewayPolicySchedule.class}, tree="[0]")
-    private Output<ZeroTrustGatewayPolicySchedule> schedule;
+    private Output</* @Nullable */ ZeroTrustGatewayPolicySchedule> schedule;
 
     /**
      * @return The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      * 
      */
-    public Output<ZeroTrustGatewayPolicySchedule> schedule() {
-        return this.schedule;
+    public Output<Optional<ZeroTrustGatewayPolicySchedule>> schedule() {
+        return Codegen.optional(this.schedule);
     }
     /**
      * The wirefilter expression used for traffic matching.
      * 
      */
     @Export(name="traffic", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> traffic;
+    private Output<String> traffic;
 
     /**
      * @return The wirefilter expression used for traffic matching.
      * 
      */
-    public Output<Optional<String>> traffic() {
-        return Codegen.optional(this.traffic);
+    public Output<String> traffic() {
+        return this.traffic;
     }
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;

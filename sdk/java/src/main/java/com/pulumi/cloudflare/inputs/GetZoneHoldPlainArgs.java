@@ -14,14 +14,14 @@ public final class GetZoneHoldPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetZoneHoldPlainArgs Empty = new GetZoneHoldPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetZoneHoldPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

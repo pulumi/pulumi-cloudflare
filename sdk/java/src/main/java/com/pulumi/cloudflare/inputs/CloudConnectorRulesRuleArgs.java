@@ -17,23 +17,6 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
 
     public static final CloudConnectorRulesRuleArgs Empty = new CloudConnectorRulesRuleArgs();
 
-    /**
-     * Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
-     * 
-     */
-    @Import(name="cloudProvider")
-    private @Nullable Output<String> cloudProvider;
-
-    /**
-     * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
-     * 
-     */
-    public Optional<Output<String>> cloudProvider() {
-        return Optional.ofNullable(this.cloudProvider);
-    }
-
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -77,15 +60,32 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.parameters);
     }
 
+    /**
+     * Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * 
+     */
+    @Import(name="provider")
+    private @Nullable Output<String> provider;
+
+    /**
+     * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * 
+     */
+    public Optional<Output<String>> provider() {
+        return Optional.ofNullable(this.provider);
+    }
+
     private CloudConnectorRulesRuleArgs() {}
 
     private CloudConnectorRulesRuleArgs(CloudConnectorRulesRuleArgs $) {
-        this.cloudProvider = $.cloudProvider;
         this.description = $.description;
         this.enabled = $.enabled;
         this.expression = $.expression;
         this.id = $.id;
         this.parameters = $.parameters;
+        this.provider = $.provider;
     }
 
     public static Builder builder() {
@@ -104,29 +104,6 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
 
         public Builder(CloudConnectorRulesRuleArgs defaults) {
             $ = new CloudConnectorRulesRuleArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param cloudProvider Cloud Provider type
-         * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cloudProvider(@Nullable Output<String> cloudProvider) {
-            $.cloudProvider = cloudProvider;
-            return this;
-        }
-
-        /**
-         * @param cloudProvider Cloud Provider type
-         * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cloudProvider(String cloudProvider) {
-            return cloudProvider(Output.of(cloudProvider));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -184,6 +161,29 @@ public final class CloudConnectorRulesRuleArgs extends com.pulumi.resources.Reso
          */
         public Builder parameters(CloudConnectorRulesRuleParametersArgs parameters) {
             return parameters(Output.of(parameters));
+        }
+
+        /**
+         * @param provider Cloud Provider type
+         * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provider(@Nullable Output<String> provider) {
+            $.provider = provider;
+            return this;
+        }
+
+        /**
+         * @param provider Cloud Provider type
+         * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provider(String provider) {
+            return provider(Output.of(provider));
         }
 
         public CloudConnectorRulesRuleArgs build() {

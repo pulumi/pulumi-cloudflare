@@ -11,6 +11,11 @@ import java.util.Objects;
 @CustomType
 public final class GetWorkersScriptsResultPlacement {
     /**
+     * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    private String lastAnalyzedAt;
+    /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;smart&#34;.
      * 
@@ -24,6 +29,13 @@ public final class GetWorkersScriptsResultPlacement {
     private String status;
 
     private GetWorkersScriptsResultPlacement() {}
+    /**
+     * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    public String lastAnalyzedAt() {
+        return this.lastAnalyzedAt;
+    }
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;smart&#34;.
@@ -50,15 +62,25 @@ public final class GetWorkersScriptsResultPlacement {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String lastAnalyzedAt;
         private String mode;
         private String status;
         public Builder() {}
         public Builder(GetWorkersScriptsResultPlacement defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.lastAnalyzedAt = defaults.lastAnalyzedAt;
     	      this.mode = defaults.mode;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder lastAnalyzedAt(String lastAnalyzedAt) {
+            if (lastAnalyzedAt == null) {
+              throw new MissingRequiredPropertyException("GetWorkersScriptsResultPlacement", "lastAnalyzedAt");
+            }
+            this.lastAnalyzedAt = lastAnalyzedAt;
+            return this;
+        }
         @CustomType.Setter
         public Builder mode(String mode) {
             if (mode == null) {
@@ -77,6 +99,7 @@ public final class GetWorkersScriptsResultPlacement {
         }
         public GetWorkersScriptsResultPlacement build() {
             final var _resultValue = new GetWorkersScriptsResultPlacement();
+            _resultValue.lastAnalyzedAt = lastAnalyzedAt;
             _resultValue.mode = mode;
             _resultValue.status = status;
             return _resultValue;

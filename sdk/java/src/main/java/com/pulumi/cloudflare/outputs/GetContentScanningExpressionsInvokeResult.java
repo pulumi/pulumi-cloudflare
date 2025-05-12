@@ -31,7 +31,7 @@ public final class GetContentScanningExpressionsInvokeResult {
      */
     private List<GetContentScanningExpressionsResult> results;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -59,7 +59,7 @@ public final class GetContentScanningExpressionsInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

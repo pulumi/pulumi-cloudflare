@@ -17,14 +17,14 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
     public static final GetKeylessCertificateArgs Empty = new GetKeylessCertificateArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="keylessCertificateId")
     private @Nullable Output<String> keylessCertificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> keylessCertificateId() {
@@ -32,14 +32,14 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -72,7 +72,7 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param keylessCertificateId Identifier
+         * @param keylessCertificateId Identifier.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param keylessCertificateId Identifier
+         * @param keylessCertificateId Identifier.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetKeylessCertificateArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

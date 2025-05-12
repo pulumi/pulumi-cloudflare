@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.D1DatabaseArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.D1DatabaseState;
+import com.pulumi.cloudflare.outputs.D1DatabaseReadReplication;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -142,6 +143,20 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> primaryLocationHint() {
         return Codegen.optional(this.primaryLocationHint);
+    }
+    /**
+     * Configuration for D1 read replication.
+     * 
+     */
+    @Export(name="readReplication", refs={D1DatabaseReadReplication.class}, tree="[0]")
+    private Output</* @Nullable */ D1DatabaseReadReplication> readReplication;
+
+    /**
+     * @return Configuration for D1 read replication.
+     * 
+     */
+    public Output<Optional<D1DatabaseReadReplication>> readReplication() {
+        return Codegen.optional(this.readReplication);
     }
     /**
      * D1 database identifier (UUID).

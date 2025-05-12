@@ -18,30 +18,22 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
 
     public static final CloudConnectorRulesArgs Empty = new CloudConnectorRulesArgs();
 
-    /**
-     * List of Cloud Connector rules
-     * 
-     */
     @Import(name="rules")
     private @Nullable Output<List<CloudConnectorRulesRuleArgs>> rules;
 
-    /**
-     * @return List of Cloud Connector rules
-     * 
-     */
     public Optional<Output<List<CloudConnectorRulesRuleArgs>>> rules() {
         return Optional.ofNullable(this.rules);
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -73,39 +65,21 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
             $ = new CloudConnectorRulesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param rules List of Cloud Connector rules
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(@Nullable Output<List<CloudConnectorRulesRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
-        /**
-         * @param rules List of Cloud Connector rules
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(List<CloudConnectorRulesRuleArgs> rules) {
             return rules(Output.of(rules));
         }
 
-        /**
-         * @param rules List of Cloud Connector rules
-         * 
-         * @return builder
-         * 
-         */
         public Builder rules(CloudConnectorRulesRuleArgs... rules) {
             return rules(List.of(rules));
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -116,7 +90,7 @@ public final class CloudConnectorRulesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

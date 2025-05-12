@@ -18,14 +18,14 @@ public final class GetEmailRoutingAddressesPlainArgs extends com.pulumi.resource
     public static final GetEmailRoutingAddressesPlainArgs Empty = new GetEmailRoutingAddressesPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -107,7 +107,7 @@ public final class GetEmailRoutingAddressesPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

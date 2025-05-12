@@ -5,11 +5,13 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
+    private Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -18,6 +20,9 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
     private String zoneId;
 
     private GetZeroTrustDeviceDefaultProfileCertificatesResult() {}
+    public Boolean enabled() {
+        return this.enabled;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -38,15 +43,25 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enabled;
         private String id;
         private String zoneId;
         public Builder() {}
         public Builder(GetZeroTrustDeviceDefaultProfileCertificatesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceDefaultProfileCertificatesResult", "enabled");
+            }
+            this.enabled = enabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -65,6 +80,7 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
         }
         public GetZeroTrustDeviceDefaultProfileCertificatesResult build() {
             final var _resultValue = new GetZeroTrustDeviceDefaultProfileCertificatesResult();
+            _resultValue.enabled = enabled;
             _resultValue.id = id;
             _resultValue.zoneId = zoneId;
             return _resultValue;

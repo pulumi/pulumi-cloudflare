@@ -16,14 +16,14 @@ public final class GetOriginCaCertificatePlainArgs extends com.pulumi.resources.
     public static final GetOriginCaCertificatePlainArgs Empty = new GetOriginCaCertificatePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="certificateId")
     private @Nullable String certificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> certificateId() {
@@ -63,7 +63,7 @@ public final class GetOriginCaCertificatePlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param certificateId Identifier
+         * @param certificateId Identifier.
          * 
          * @return builder
          * 

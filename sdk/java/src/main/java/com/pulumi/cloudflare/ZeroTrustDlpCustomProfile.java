@@ -74,48 +74,48 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="contextAwareness", refs={ZeroTrustDlpCustomProfileContextAwareness.class}, tree="[0]")
-    private Output<ZeroTrustDlpCustomProfileContextAwareness> contextAwareness;
+    private Output</* @Nullable */ ZeroTrustDlpCustomProfileContextAwareness> contextAwareness;
 
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      */
-    public Output<ZeroTrustDlpCustomProfileContextAwareness> contextAwareness() {
-        return this.contextAwareness;
+    public Output<Optional<ZeroTrustDlpCustomProfileContextAwareness>> contextAwareness() {
+        return Codegen.optional(this.contextAwareness);
     }
     /**
-     * When the profile was created
+     * When the profile was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return When the profile was created
+     * @return When the profile was created.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * The description of the profile
+     * The description of the profile.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     @Export(name="entries", refs={List.class,ZeroTrustDlpCustomProfileEntry.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDlpCustomProfileEntry>> entries;
+    private Output</* @Nullable */ List<ZeroTrustDlpCustomProfileEntry>> entries;
 
-    public Output<List<ZeroTrustDlpCustomProfileEntry>> entries() {
-        return this.entries;
+    public Output<Optional<List<ZeroTrustDlpCustomProfileEntry>>> entries() {
+        return Codegen.optional(this.entries);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
@@ -130,14 +130,14 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.ocrEnabled);
     }
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      * 
      */
     @Export(name="openAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> openAccess;
 
     /**
-     * @return Whether this profile can be accessed by anyone
+     * @return Whether this profile can be accessed by anyone.
      * 
      */
     public Output<Boolean> openAccess() {
@@ -154,14 +154,14 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="sharedEntries", refs={List.class,ZeroTrustDlpCustomProfileSharedEntry.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDlpCustomProfileSharedEntry>> sharedEntries;
+    private Output</* @Nullable */ List<ZeroTrustDlpCustomProfileSharedEntry>> sharedEntries;
 
     /**
      * @return Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      * 
      */
-    public Output<List<ZeroTrustDlpCustomProfileSharedEntry>> sharedEntries() {
-        return this.sharedEntries;
+    public Output<Optional<List<ZeroTrustDlpCustomProfileSharedEntry>>> sharedEntries() {
+        return Codegen.optional(this.sharedEntries);
     }
     /**
      * Available values: &#34;custom&#34;.
@@ -178,14 +178,14 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
         return this.type;
     }
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return When the profile was lasted updated
+     * @return When the profile was lasted updated.
      * 
      */
     public Output<String> updatedAt() {

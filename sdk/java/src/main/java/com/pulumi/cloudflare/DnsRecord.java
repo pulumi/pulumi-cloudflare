@@ -96,14 +96,14 @@ public class DnsRecord extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="data", refs={DnsRecordData.class}, tree="[0]")
-    private Output<DnsRecordData> data;
+    private Output</* @Nullable */ DnsRecordData> data;
 
     /**
      * @return Components of a CAA record.
      * 
      */
-    public Output<DnsRecordData> data() {
-        return this.data;
+    public Output<Optional<DnsRecordData>> data() {
+        return Codegen.optional(this.data);
     }
     /**
      * Extra Cloudflare-specific information about the record.

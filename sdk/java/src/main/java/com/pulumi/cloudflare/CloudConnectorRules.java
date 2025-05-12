@@ -6,97 +6,82 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.CloudConnectorRulesArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.CloudConnectorRulesState;
-import com.pulumi.cloudflare.outputs.CloudConnectorRulesParameters;
 import com.pulumi.cloudflare.outputs.CloudConnectorRulesRule;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.CloudConnectorRules;
+ * import com.pulumi.cloudflare.CloudConnectorRulesArgs;
+ * import com.pulumi.cloudflare.inputs.CloudConnectorRulesRuleArgs;
+ * import com.pulumi.cloudflare.inputs.CloudConnectorRulesRuleParametersArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleCloudConnectorRules = new CloudConnectorRules("exampleCloudConnectorRules", CloudConnectorRulesArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .rules(CloudConnectorRulesRuleArgs.builder()
+ *                 .id("95c365e17e1b46599cd99e5b231fac4e")
+ *                 .description("Rule description")
+ *                 .enabled(true)
+ *                 .expression("http.cookie eq \"a=b\"")
+ *                 .parameters(CloudConnectorRulesRuleParametersArgs.builder()
+ *                     .host("examplebucket.s3.eu-north-1.amazonaws.com")
+ *                     .build())
+ *                 .provider("aws_s3")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/cloudConnectorRules:CloudConnectorRules")
 public class CloudConnectorRules extends com.pulumi.resources.CustomResource {
-    /**
-     * Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
-     * 
-     */
-    @Export(name="cloudProvider", refs={String.class}, tree="[0]")
-    private Output<String> cloudProvider;
-
-    /**
-     * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
-     * 
-     */
-    public Output<String> cloudProvider() {
-        return this.cloudProvider;
-    }
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
-
-    public Output<String> description() {
-        return this.description;
-    }
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> enabled;
-
-    public Output<Boolean> enabled() {
-        return this.enabled;
-    }
-    @Export(name="expression", refs={String.class}, tree="[0]")
-    private Output<String> expression;
-
-    public Output<String> expression() {
-        return this.expression;
-    }
-    /**
-     * Parameters of Cloud Connector Rule
-     * 
-     */
-    @Export(name="parameters", refs={CloudConnectorRulesParameters.class}, tree="[0]")
-    private Output<CloudConnectorRulesParameters> parameters;
-
-    /**
-     * @return Parameters of Cloud Connector Rule
-     * 
-     */
-    public Output<CloudConnectorRulesParameters> parameters() {
-        return this.parameters;
-    }
-    /**
-     * List of Cloud Connector rules
-     * 
-     */
     @Export(name="rules", refs={List.class,CloudConnectorRulesRule.class}, tree="[0,1]")
-    private Output<List<CloudConnectorRulesRule>> rules;
+    private Output</* @Nullable */ List<CloudConnectorRulesRule>> rules;
 
-    /**
-     * @return List of Cloud Connector rules
-     * 
-     */
-    public Output<List<CloudConnectorRulesRule>> rules() {
-        return this.rules;
+    public Output<Optional<List<CloudConnectorRulesRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

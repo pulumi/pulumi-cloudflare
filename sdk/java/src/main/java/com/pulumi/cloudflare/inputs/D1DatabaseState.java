@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.D1DatabaseReadReplicationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
@@ -101,6 +102,21 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for D1 read replication.
+     * 
+     */
+    @Import(name="readReplication")
+    private @Nullable Output<D1DatabaseReadReplicationArgs> readReplication;
+
+    /**
+     * @return Configuration for D1 read replication.
+     * 
+     */
+    public Optional<Output<D1DatabaseReadReplicationArgs>> readReplication() {
+        return Optional.ofNullable(this.readReplication);
+    }
+
+    /**
      * D1 database identifier (UUID).
      * 
      */
@@ -131,6 +147,7 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.numTables = $.numTables;
         this.primaryLocationHint = $.primaryLocationHint;
+        this.readReplication = $.readReplication;
         this.uuid = $.uuid;
         this.version = $.version;
     }
@@ -267,6 +284,27 @@ public final class D1DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder primaryLocationHint(String primaryLocationHint) {
             return primaryLocationHint(Output.of(primaryLocationHint));
+        }
+
+        /**
+         * @param readReplication Configuration for D1 read replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readReplication(@Nullable Output<D1DatabaseReadReplicationArgs> readReplication) {
+            $.readReplication = readReplication;
+            return this;
+        }
+
+        /**
+         * @param readReplication Configuration for D1 read replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readReplication(D1DatabaseReadReplicationArgs readReplication) {
+            return readReplication(Output.of(readReplication));
         }
 
         /**

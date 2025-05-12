@@ -100,14 +100,14 @@ public class Record extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="data", refs={RecordData.class}, tree="[0]")
-    private Output<RecordData> data;
+    private Output</* @Nullable */ RecordData> data;
 
     /**
      * @return Components of a CAA record.
      * 
      */
-    public Output<RecordData> data() {
-        return this.data;
+    public Output<Optional<RecordData>> data() {
+        return Codegen.optional(this.data);
     }
     /**
      * Extra Cloudflare-specific information about the record.

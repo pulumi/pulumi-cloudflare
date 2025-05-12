@@ -19,14 +19,14 @@ public final class GetAccountDnsSettingsInternalViewsArgs extends com.pulumi.res
     public static final GetAccountDnsSettingsInternalViewsArgs Empty = new GetAccountDnsSettingsInternalViewsArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -168,7 +168,7 @@ public final class GetAccountDnsSettingsInternalViewsArgs extends com.pulumi.res
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GetAccountDnsSettingsInternalViewsArgs extends com.pulumi.res
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

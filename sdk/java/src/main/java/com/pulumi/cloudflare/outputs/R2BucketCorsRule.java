@@ -26,7 +26,7 @@ public final class R2BucketCorsRule {
      */
     private @Nullable List<String> exposeHeaders;
     /**
-     * @return Identifier for this rule
+     * @return Identifier for this rule.
      * 
      */
     private @Nullable String id;
@@ -52,7 +52,7 @@ public final class R2BucketCorsRule {
         return this.exposeHeaders == null ? List.of() : this.exposeHeaders;
     }
     /**
-     * @return Identifier for this rule
+     * @return Identifier for this rule.
      * 
      */
     public Optional<String> id() {

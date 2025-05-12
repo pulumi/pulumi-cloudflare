@@ -14,17 +14,17 @@ import java.util.Objects;
 @CustomType
 public final class GetListItemResult {
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
-    private String accountIdentifier;
+    private String accountId;
     /**
-     * @return A non-negative 32 bit integer
+     * @return Defines a non-negative 32 bit integer.
      * 
      */
     private Integer asn;
     /**
-     * @return An informative summary of the list item.
+     * @return Defines an informative summary of the list item.
      * 
      */
     private String comment;
@@ -49,7 +49,7 @@ public final class GetListItemResult {
      */
     private String ip;
     /**
-     * @return The unique ID of the item in the List.
+     * @return Defines the unique ID of the item in the List.
      * 
      */
     private String itemId;
@@ -71,21 +71,21 @@ public final class GetListItemResult {
 
     private GetListItemResult() {}
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
     }
     /**
-     * @return A non-negative 32 bit integer
+     * @return Defines a non-negative 32 bit integer.
      * 
      */
     public Integer asn() {
         return this.asn;
     }
     /**
-     * @return An informative summary of the list item.
+     * @return Defines an informative summary of the list item.
      * 
      */
     public String comment() {
@@ -120,7 +120,7 @@ public final class GetListItemResult {
         return this.ip;
     }
     /**
-     * @return The unique ID of the item in the List.
+     * @return Defines the unique ID of the item in the List.
      * 
      */
     public String itemId() {
@@ -157,7 +157,7 @@ public final class GetListItemResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountIdentifier;
+        private String accountId;
         private Integer asn;
         private String comment;
         private String createdOn;
@@ -171,7 +171,7 @@ public final class GetListItemResult {
         public Builder() {}
         public Builder(GetListItemResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accountIdentifier = defaults.accountIdentifier;
+    	      this.accountId = defaults.accountId;
     	      this.asn = defaults.asn;
     	      this.comment = defaults.comment;
     	      this.createdOn = defaults.createdOn;
@@ -185,11 +185,11 @@ public final class GetListItemResult {
         }
 
         @CustomType.Setter
-        public Builder accountIdentifier(String accountIdentifier) {
-            if (accountIdentifier == null) {
-              throw new MissingRequiredPropertyException("GetListItemResult", "accountIdentifier");
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetListItemResult", "accountId");
             }
-            this.accountIdentifier = accountIdentifier;
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
@@ -274,7 +274,7 @@ public final class GetListItemResult {
         }
         public GetListItemResult build() {
             final var _resultValue = new GetListItemResult();
-            _resultValue.accountIdentifier = accountIdentifier;
+            _resultValue.accountId = accountId;
             _resultValue.asn = asn;
             _resultValue.comment = comment;
             _resultValue.createdOn = createdOn;

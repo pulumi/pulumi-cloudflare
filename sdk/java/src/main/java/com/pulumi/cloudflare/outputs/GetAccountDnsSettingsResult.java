@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountDnsSettingsResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -25,7 +25,7 @@ public final class GetAccountDnsSettingsResult {
 
     private GetAccountDnsSettingsResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

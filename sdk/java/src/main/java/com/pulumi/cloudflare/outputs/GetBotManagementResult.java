@@ -90,7 +90,7 @@ public final class GetBotManagementResult {
      */
     private Boolean usingLatestModel;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -202,7 +202,7 @@ public final class GetBotManagementResult {
         return this.usingLatestModel;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

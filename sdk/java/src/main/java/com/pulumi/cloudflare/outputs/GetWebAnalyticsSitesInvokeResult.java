@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWebAnalyticsSitesInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -44,7 +44,7 @@ public final class GetWebAnalyticsSitesInvokeResult {
 
     private GetWebAnalyticsSitesInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

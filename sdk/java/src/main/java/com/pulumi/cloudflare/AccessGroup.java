@@ -117,14 +117,14 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="excludes", refs={List.class,AccessGroupExclude.class}, tree="[0,1]")
-    private Output<List<AccessGroupExclude>> excludes;
+    private Output</* @Nullable */ List<AccessGroupExclude>> excludes;
 
     /**
      * @return Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      * 
      */
-    public Output<List<AccessGroupExclude>> excludes() {
-        return this.excludes;
+    public Output<Optional<List<AccessGroupExclude>>> excludes() {
+        return Codegen.optional(this.excludes);
     }
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -173,14 +173,14 @@ public class AccessGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="requires", refs={List.class,AccessGroupRequire.class}, tree="[0,1]")
-    private Output<List<AccessGroupRequire>> requires;
+    private Output</* @Nullable */ List<AccessGroupRequire>> requires;
 
     /**
      * @return Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
      * 
      */
-    public Output<List<AccessGroupRequire>> requires() {
-        return this.requires;
+    public Output<Optional<List<AccessGroupRequire>>> requires() {
+        return Codegen.optional(this.requires);
     }
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;

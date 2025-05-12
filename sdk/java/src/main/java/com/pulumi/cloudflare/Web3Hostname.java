@@ -70,28 +70,28 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
         return this.createdOn;
     }
     /**
-     * An optional description of the hostname.
+     * Specify an optional description of the hostname.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An optional description of the hostname.
+     * @return Specify an optional description of the hostname.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * DNSLink value used if the target is ipfs.
+     * Specify the DNSLink value used if the target is ipfs.
      * 
      */
     @Export(name="dnslink", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dnslink;
 
     /**
-     * @return DNSLink value used if the target is ipfs.
+     * @return Specify the DNSLink value used if the target is ipfs.
      * 
      */
     public Output<Optional<String>> dnslink() {
@@ -104,21 +104,21 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
         return this.modifiedOn;
     }
     /**
-     * The hostname that will point to the target gateway via CNAME.
+     * Specify the hostname that points to the target gateway via CNAME.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The hostname that will point to the target gateway via CNAME.
+     * @return Specify the hostname that points to the target gateway via CNAME.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Status of the hostname&#39;s activation.
+     * Specifies the status of the hostname&#39;s activation.
      * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
@@ -126,7 +126,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
     private Output<String> status;
 
     /**
-     * @return Status of the hostname&#39;s activation.
+     * @return Specifies the status of the hostname&#39;s activation.
      * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
@@ -134,7 +134,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Target gateway of the hostname.
+     * Specify the target gateway of the hostname.
      * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
@@ -142,7 +142,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
     private Output<String> target;
 
     /**
-     * @return Target gateway of the hostname.
+     * @return Specify the target gateway of the hostname.
      * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
@@ -150,14 +150,14 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
         return this.target;
     }
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public Output<String> zoneId() {

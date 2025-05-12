@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -94,6 +95,21 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    /**
+     * @return The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     * 
+     */
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
      * The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      * 
      */
@@ -131,6 +147,7 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
         this.enabled = $.enabled;
         this.header = $.header;
         this.name = $.name;
+        this.port = $.port;
         this.virtualNetworkId = $.virtualNetworkId;
         this.weight = $.weight;
     }
@@ -256,6 +273,27 @@ public final class LoadBalancerPoolOriginArgs extends com.pulumi.resources.Resou
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param port The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<Integer> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(Integer port) {
+            return port(Output.of(port));
         }
 
         /**

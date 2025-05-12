@@ -47,10 +47,10 @@ public class AccountToken extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     @Export(name="condition", refs={AccountTokenCondition.class}, tree="[0]")
-    private Output<AccountTokenCondition> condition;
+    private Output</* @Nullable */ AccountTokenCondition> condition;
 
-    public Output<AccountTokenCondition> condition() {
-        return this.condition;
+    public Output<Optional<AccountTokenCondition>> condition() {
+        return Codegen.optional(this.condition);
     }
     /**
      * The expiration time on or after which the JWT MUST NOT be accepted for processing.

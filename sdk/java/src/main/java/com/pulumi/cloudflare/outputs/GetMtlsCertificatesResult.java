@@ -27,7 +27,7 @@ public final class GetMtlsCertificatesResult {
      */
     private String expiresOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -80,7 +80,7 @@ public final class GetMtlsCertificatesResult {
         return this.expiresOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
 public final class GetAccessRuleFilter {
     private @Nullable GetAccessRuleFilterConfiguration configuration;
     /**
-     * @return The direction used to sort returned rules.
+     * @return Defines the direction used to sort returned rules.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
     private @Nullable String direction;
     /**
-     * @return When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * @return Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
@@ -33,13 +33,13 @@ public final class GetAccessRuleFilter {
      */
     private @Nullable String mode;
     /**
-     * @return The string to search for in the notes of existing IP Access rules.
+     * @return Defines the string to search for in the notes of existing IP Access rules.
      * Notes: For example, the string &#39;attack&#39; would match IP Access rules with notes &#39;Attack 26/02&#39; and &#39;Attack 27/02&#39;. The search is case insensitive.
      * 
      */
     private @Nullable String notes;
     /**
-     * @return The field used to sort returned rules.
+     * @return Defines the field used to sort returned rules.
      * Available values: &#34;configuration.target&#34;, &#34;configuration.value&#34;, &#34;mode&#34;.
      * 
      */
@@ -50,7 +50,7 @@ public final class GetAccessRuleFilter {
         return Optional.ofNullable(this.configuration);
     }
     /**
-     * @return The direction used to sort returned rules.
+     * @return Defines the direction used to sort returned rules.
      * Available values: &#34;asc&#34;, &#34;desc&#34;.
      * 
      */
@@ -58,7 +58,7 @@ public final class GetAccessRuleFilter {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * @return Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: &#34;any&#34;, &#34;all&#34;.
      * 
      */
@@ -74,7 +74,7 @@ public final class GetAccessRuleFilter {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return The string to search for in the notes of existing IP Access rules.
+     * @return Defines the string to search for in the notes of existing IP Access rules.
      * Notes: For example, the string &#39;attack&#39; would match IP Access rules with notes &#39;Attack 26/02&#39; and &#39;Attack 27/02&#39;. The search is case insensitive.
      * 
      */
@@ -82,7 +82,7 @@ public final class GetAccessRuleFilter {
         return Optional.ofNullable(this.notes);
     }
     /**
-     * @return The field used to sort returned rules.
+     * @return Defines the field used to sort returned rules.
      * Available values: &#34;configuration.target&#34;, &#34;configuration.value&#34;, &#34;mode&#34;.
      * 
      */

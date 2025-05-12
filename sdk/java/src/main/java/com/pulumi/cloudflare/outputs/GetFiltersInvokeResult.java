@@ -52,7 +52,7 @@ public final class GetFiltersInvokeResult {
      */
     private List<GetFiltersResult> results;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -108,7 +108,7 @@ public final class GetFiltersInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

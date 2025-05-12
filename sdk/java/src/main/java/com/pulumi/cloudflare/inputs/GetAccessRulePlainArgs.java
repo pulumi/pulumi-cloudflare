@@ -38,14 +38,14 @@ public final class GetAccessRulePlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Unique identifier for a rule
+     * Unique identifier for a rule.
      * 
      */
     @Import(name="ruleId")
     private @Nullable String ruleId;
 
     /**
-     * @return Unique identifier for a rule
+     * @return Unique identifier for a rule.
      * 
      */
     public Optional<String> ruleId() {
@@ -111,7 +111,7 @@ public final class GetAccessRulePlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param ruleId Unique identifier for a rule
+         * @param ruleId Unique identifier for a rule.
          * 
          * @return builder
          * 

@@ -18,14 +18,14 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
     public static final GetCustomHostnameArgs Empty = new GetCustomHostnameArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="customHostnameId")
     private @Nullable Output<String> customHostnameId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> customHostnameId() {
@@ -40,14 +40,14 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -81,7 +81,7 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param customHostnameId Identifier
+         * @param customHostnameId Identifier.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param customHostnameId Identifier
+         * @param customHostnameId Identifier.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class GetCustomHostnameArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

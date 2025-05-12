@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigCaching;
+import com.pulumi.cloudflare.outputs.GetHyperdriveConfigMtls;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigOrigin;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -40,6 +41,7 @@ public final class GetHyperdriveConfigResult {
      * 
      */
     private String modifiedOn;
+    private GetHyperdriveConfigMtls mtls;
     private String name;
     private GetHyperdriveConfigOrigin origin;
 
@@ -82,6 +84,9 @@ public final class GetHyperdriveConfigResult {
     public String modifiedOn() {
         return this.modifiedOn;
     }
+    public GetHyperdriveConfigMtls mtls() {
+        return this.mtls;
+    }
     public String name() {
         return this.name;
     }
@@ -104,6 +109,7 @@ public final class GetHyperdriveConfigResult {
         private @Nullable String hyperdriveId;
         private String id;
         private String modifiedOn;
+        private GetHyperdriveConfigMtls mtls;
         private String name;
         private GetHyperdriveConfigOrigin origin;
         public Builder() {}
@@ -115,6 +121,7 @@ public final class GetHyperdriveConfigResult {
     	      this.hyperdriveId = defaults.hyperdriveId;
     	      this.id = defaults.id;
     	      this.modifiedOn = defaults.modifiedOn;
+    	      this.mtls = defaults.mtls;
     	      this.name = defaults.name;
     	      this.origin = defaults.origin;
         }
@@ -166,6 +173,14 @@ public final class GetHyperdriveConfigResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mtls(GetHyperdriveConfigMtls mtls) {
+            if (mtls == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "mtls");
+            }
+            this.mtls = mtls;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetHyperdriveConfigResult", "name");
@@ -189,6 +204,7 @@ public final class GetHyperdriveConfigResult {
             _resultValue.hyperdriveId = hyperdriveId;
             _resultValue.id = id;
             _resultValue.modifiedOn = modifiedOn;
+            _resultValue.mtls = mtls;
             _resultValue.name = name;
             _resultValue.origin = origin;
             return _resultValue;

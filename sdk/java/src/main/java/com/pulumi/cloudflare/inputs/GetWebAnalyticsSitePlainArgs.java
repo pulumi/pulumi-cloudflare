@@ -17,14 +17,14 @@ public final class GetWebAnalyticsSitePlainArgs extends com.pulumi.resources.Inv
     public static final GetWebAnalyticsSitePlainArgs Empty = new GetWebAnalyticsSitePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -39,14 +39,14 @@ public final class GetWebAnalyticsSitePlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="siteId")
     private @Nullable String siteId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> siteId() {
@@ -80,7 +80,7 @@ public final class GetWebAnalyticsSitePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GetWebAnalyticsSitePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param siteId Identifier
+         * @param siteId Identifier.
          * 
          * @return builder
          * 

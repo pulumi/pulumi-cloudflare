@@ -25,6 +25,11 @@ public final class GetRegionalHostnamesResult {
      * 
      */
     private String regionKey;
+    /**
+     * @return Configure which routing method to use for the regional hostname
+     * 
+     */
+    private String routing;
 
     private GetRegionalHostnamesResult() {}
     /**
@@ -48,6 +53,13 @@ public final class GetRegionalHostnamesResult {
     public String regionKey() {
         return this.regionKey;
     }
+    /**
+     * @return Configure which routing method to use for the regional hostname
+     * 
+     */
+    public String routing() {
+        return this.routing;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,12 +73,14 @@ public final class GetRegionalHostnamesResult {
         private String createdOn;
         private String hostname;
         private String regionKey;
+        private String routing;
         public Builder() {}
         public Builder(GetRegionalHostnamesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdOn = defaults.createdOn;
     	      this.hostname = defaults.hostname;
     	      this.regionKey = defaults.regionKey;
+    	      this.routing = defaults.routing;
         }
 
         @CustomType.Setter
@@ -93,11 +107,20 @@ public final class GetRegionalHostnamesResult {
             this.regionKey = regionKey;
             return this;
         }
+        @CustomType.Setter
+        public Builder routing(String routing) {
+            if (routing == null) {
+              throw new MissingRequiredPropertyException("GetRegionalHostnamesResult", "routing");
+            }
+            this.routing = routing;
+            return this;
+        }
         public GetRegionalHostnamesResult build() {
             final var _resultValue = new GetRegionalHostnamesResult();
             _resultValue.createdOn = createdOn;
             _resultValue.hostname = hostname;
             _resultValue.regionKey = regionKey;
+            _resultValue.routing = routing;
             return _resultValue;
         }
     }

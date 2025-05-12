@@ -17,7 +17,7 @@ public final class GetPageRuleResult {
      */
     private String createdOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -27,7 +27,7 @@ public final class GetPageRuleResult {
      */
     private String modifiedOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String pageruleId;
@@ -47,7 +47,7 @@ public final class GetPageRuleResult {
      */
     private String status;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -61,7 +61,7 @@ public final class GetPageRuleResult {
         return this.createdOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -75,7 +75,7 @@ public final class GetPageRuleResult {
         return this.modifiedOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String pageruleId() {
@@ -101,7 +101,7 @@ public final class GetPageRuleResult {
         return this.status;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

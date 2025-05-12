@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class R2BucketLifecycleRuleDeleteObjectsTransition {
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     private @Nullable R2BucketLifecycleRuleDeleteObjectsTransitionCondition condition;
 
     private R2BucketLifecycleRuleDeleteObjectsTransition() {}
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     public Optional<R2BucketLifecycleRuleDeleteObjectsTransitionCondition> condition() {

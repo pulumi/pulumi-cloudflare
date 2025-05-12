@@ -33,12 +33,12 @@ public final class GetEmailRoutingDnsInvokeResult {
      */
     private @Nullable String subdomain;
     /**
-     * @return Whether the API call was successful
+     * @return Whether the API call was successful.
      * 
      */
     private Boolean success;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -71,14 +71,14 @@ public final class GetEmailRoutingDnsInvokeResult {
         return Optional.ofNullable(this.subdomain);
     }
     /**
-     * @return Whether the API call was successful
+     * @return Whether the API call was successful.
      * 
      */
     public Boolean success() {
         return this.success;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

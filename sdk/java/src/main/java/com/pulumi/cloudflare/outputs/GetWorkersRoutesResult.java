@@ -15,9 +15,13 @@ public final class GetWorkersRoutesResult {
      * 
      */
     private String id;
+    /**
+     * @return Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     private String pattern;
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script to run if the route matches.
      * 
      */
     private String script;
@@ -30,11 +34,15 @@ public final class GetWorkersRoutesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     public String pattern() {
         return this.pattern;
     }
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script to run if the route matches.
      * 
      */
     public String script() {

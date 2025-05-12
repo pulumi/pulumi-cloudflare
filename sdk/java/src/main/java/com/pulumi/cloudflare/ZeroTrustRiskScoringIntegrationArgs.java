@@ -72,14 +72,14 @@ public final class ZeroTrustRiskScoringIntegrationArgs extends com.pulumi.resour
     }
 
     /**
-     * The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+     * The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
      * 
      */
     @Import(name="tenantUrl", required=true)
     private Output<String> tenantUrl;
 
     /**
-     * @return The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+     * @return The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
      * 
      */
     public Output<String> tenantUrl() {
@@ -189,7 +189,7 @@ public final class ZeroTrustRiskScoringIntegrationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param tenantUrl The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+         * @param tenantUrl The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class ZeroTrustRiskScoringIntegrationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param tenantUrl The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+         * @param tenantUrl The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
          * 
          * @return builder
          * 

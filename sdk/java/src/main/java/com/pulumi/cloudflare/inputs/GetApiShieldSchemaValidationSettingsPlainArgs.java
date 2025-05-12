@@ -14,14 +14,14 @@ public final class GetApiShieldSchemaValidationSettingsPlainArgs extends com.pul
     public static final GetApiShieldSchemaValidationSettingsPlainArgs Empty = new GetApiShieldSchemaValidationSettingsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetApiShieldSchemaValidationSettingsPlainArgs extends com.pul
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

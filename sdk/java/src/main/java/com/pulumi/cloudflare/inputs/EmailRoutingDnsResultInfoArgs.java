@@ -16,14 +16,14 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
     public static final EmailRoutingDnsResultInfoArgs Empty = new EmailRoutingDnsResultInfoArgs();
 
     /**
-     * Total number of results for the requested service
+     * Total number of results for the requested service.
      * 
      */
     @Import(name="count")
     private @Nullable Output<Double> count;
 
     /**
-     * @return Total number of results for the requested service
+     * @return Total number of results for the requested service.
      * 
      */
     public Optional<Output<Double>> count() {
@@ -31,14 +31,14 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Current page within paginated list of results
+     * Current page within paginated list of results.
      * 
      */
     @Import(name="page")
     private @Nullable Output<Double> page;
 
     /**
-     * @return Current page within paginated list of results
+     * @return Current page within paginated list of results.
      * 
      */
     public Optional<Output<Double>> page() {
@@ -46,14 +46,14 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Number of results per page of results
+     * Number of results per page of results.
      * 
      */
     @Import(name="perPage")
     private @Nullable Output<Double> perPage;
 
     /**
-     * @return Number of results per page of results
+     * @return Number of results per page of results.
      * 
      */
     public Optional<Output<Double>> perPage() {
@@ -61,14 +61,14 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Total results available without any search parameters
+     * Total results available without any search parameters.
      * 
      */
     @Import(name="totalCount")
     private @Nullable Output<Double> totalCount;
 
     /**
-     * @return Total results available without any search parameters
+     * @return Total results available without any search parameters.
      * 
      */
     public Optional<Output<Double>> totalCount() {
@@ -103,7 +103,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param count Total number of results for the requested service
+         * @param count Total number of results for the requested service.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param count Total number of results for the requested service
+         * @param count Total number of results for the requested service.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param page Current page within paginated list of results
+         * @param page Current page within paginated list of results.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param page Current page within paginated list of results
+         * @param page Current page within paginated list of results.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param perPage Number of results per page of results
+         * @param perPage Number of results per page of results.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param perPage Number of results per page of results
+         * @param perPage Number of results per page of results.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param totalCount Total results available without any search parameters
+         * @param totalCount Total results available without any search parameters.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class EmailRoutingDnsResultInfoArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param totalCount Total results available without any search parameters
+         * @param totalCount Total results available without any search parameters.
          * 
          * @return builder
          * 

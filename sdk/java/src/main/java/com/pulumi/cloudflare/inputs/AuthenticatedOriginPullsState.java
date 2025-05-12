@@ -19,14 +19,14 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     public static final AuthenticatedOriginPullsState Empty = new AuthenticatedOriginPullsState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="certId")
     private @Nullable Output<String> certId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> certId() {
@@ -255,14 +255,14 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -310,7 +310,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param certId Identifier
+         * @param certId Identifier.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param certId Identifier
+         * @param certId Identifier.
          * 
          * @return builder
          * 
@@ -642,7 +642,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -653,7 +653,7 @@ public final class AuthenticatedOriginPullsState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

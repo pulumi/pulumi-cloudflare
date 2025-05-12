@@ -56,70 +56,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/r2ManagedDomain:R2ManagedDomain")
 public class R2ManagedDomain extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Bucket ID
+     * Bucket ID.
      * 
      */
     @Export(name="bucketId", refs={String.class}, tree="[0]")
     private Output<String> bucketId;
 
     /**
-     * @return Bucket ID
+     * @return Bucket ID.
      * 
      */
     public Output<String> bucketId() {
         return this.bucketId;
     }
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
         return this.bucketName;
     }
     /**
-     * Domain name of the bucket&#39;s r2.dev domain
+     * Domain name of the bucket&#39;s r2.dev domain.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return Domain name of the bucket&#39;s r2.dev domain
+     * @return Domain name of the bucket&#39;s r2.dev domain.
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
     /**
-     * Whether to enable public bucket access at the r2.dev domain
+     * Whether to enable public bucket access at the r2.dev domain.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable public bucket access at the r2.dev domain
+     * @return Whether to enable public bucket access at the r2.dev domain.
      * 
      */
     public Output<Boolean> enabled() {

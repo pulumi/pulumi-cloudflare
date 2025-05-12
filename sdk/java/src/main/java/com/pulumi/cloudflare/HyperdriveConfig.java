@@ -7,62 +7,20 @@ import com.pulumi.cloudflare.HyperdriveConfigArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.HyperdriveConfigState;
 import com.pulumi.cloudflare.outputs.HyperdriveConfigCaching;
+import com.pulumi.cloudflare.outputs.HyperdriveConfigMtls;
 import com.pulumi.cloudflare.outputs.HyperdriveConfigOrigin;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.HyperdriveConfig;
- * import com.pulumi.cloudflare.HyperdriveConfigArgs;
- * import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
- * import com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleHyperdriveConfig = new HyperdriveConfig("exampleHyperdriveConfig", HyperdriveConfigArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .name("example-hyperdrive")
- *             .origin(HyperdriveConfigOriginArgs.builder()
- *                 .database("postgres")
- *                 .host("database.example.com")
- *                 .password("password")
- *                 .port(5432)
- *                 .scheme("postgres")
- *                 .user("postgres")
- *                 .build())
- *             .caching(HyperdriveConfigCachingArgs.builder()
- *                 .disabled(true)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -89,10 +47,10 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     @Export(name="caching", refs={HyperdriveConfigCaching.class}, tree="[0]")
-    private Output<HyperdriveConfigCaching> caching;
+    private Output</* @Nullable */ HyperdriveConfigCaching> caching;
 
-    public Output<HyperdriveConfigCaching> caching() {
-        return this.caching;
+    public Output<Optional<HyperdriveConfigCaching>> caching() {
+        return Codegen.optional(this.caching);
     }
     /**
      * When the Hyperdrive configuration was created.
@@ -121,6 +79,12 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
+    }
+    @Export(name="mtls", refs={HyperdriveConfigMtls.class}, tree="[0]")
+    private Output</* @Nullable */ HyperdriveConfigMtls> mtls;
+
+    public Output<Optional<HyperdriveConfigMtls>> mtls() {
+        return Codegen.optional(this.mtls);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;

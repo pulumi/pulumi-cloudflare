@@ -169,14 +169,14 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
         return this.ref;
     }
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {

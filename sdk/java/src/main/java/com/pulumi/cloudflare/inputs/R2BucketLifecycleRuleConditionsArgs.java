@@ -15,14 +15,14 @@ public final class R2BucketLifecycleRuleConditionsArgs extends com.pulumi.resour
     public static final R2BucketLifecycleRuleConditionsArgs Empty = new R2BucketLifecycleRuleConditionsArgs();
 
     /**
-     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     @Import(name="prefix", required=true)
     private Output<String> prefix;
 
     /**
-     * @return Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * @return Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     public Output<String> prefix() {
@@ -54,7 +54,7 @@ public final class R2BucketLifecycleRuleConditionsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param prefix Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+         * @param prefix Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class R2BucketLifecycleRuleConditionsArgs extends com.pulumi.resour
         }
 
         /**
-         * @param prefix Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+         * @param prefix Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
          * 
          * @return builder
          * 

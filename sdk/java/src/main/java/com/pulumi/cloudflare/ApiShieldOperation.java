@@ -119,28 +119,28 @@ public class ApiShieldOperation extends com.pulumi.resources.CustomResource {
         return this.method;
     }
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Export(name="operationId", refs={String.class}, tree="[0]")
     private Output<String> operationId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Output<String> operationId() {
         return this.operationId;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

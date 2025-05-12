@@ -15,14 +15,14 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
     public static final GetCertificatePackArgs Empty = new GetCertificatePackArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="certificatePackId", required=true)
     private Output<String> certificatePackId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> certificatePackId() {
@@ -30,14 +30,14 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -70,7 +70,7 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param certificatePackId Identifier
+         * @param certificatePackId Identifier.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param certificatePackId Identifier
+         * @param certificatePackId Identifier.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetCertificatePackArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -45,7 +45,7 @@ public final class GetApiShieldSchemaResult {
      */
     private Boolean validationEnabled;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -101,7 +101,7 @@ public final class GetApiShieldSchemaResult {
         return this.validationEnabled;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

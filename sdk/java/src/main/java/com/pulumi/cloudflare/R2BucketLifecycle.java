@@ -13,6 +13,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -25,28 +26,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/r2BucketLifecycle:R2BucketLifecycle")
 public class R2BucketLifecycle extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
@@ -67,10 +68,10 @@ public class R2BucketLifecycle extends com.pulumi.resources.CustomResource {
         return this.jurisdiction;
     }
     @Export(name="rules", refs={List.class,R2BucketLifecycleRule.class}, tree="[0,1]")
-    private Output<List<R2BucketLifecycleRule>> rules;
+    private Output</* @Nullable */ List<R2BucketLifecycleRule>> rules;
 
-    public Output<List<R2BucketLifecycleRule>> rules() {
-        return this.rules;
+    public Output<Optional<List<R2BucketLifecycleRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
 
     /**

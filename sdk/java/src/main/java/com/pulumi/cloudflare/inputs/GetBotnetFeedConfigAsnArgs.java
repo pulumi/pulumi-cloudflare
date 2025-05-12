@@ -15,14 +15,14 @@ public final class GetBotnetFeedConfigAsnArgs extends com.pulumi.resources.Invok
     public static final GetBotnetFeedConfigAsnArgs Empty = new GetBotnetFeedConfigAsnArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -54,7 +54,7 @@ public final class GetBotnetFeedConfigAsnArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetBotnetFeedConfigAsnArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

@@ -7,12 +7,18 @@ import com.pulumi.cloudflare.outputs.WorkerScriptBindingOutbound;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkerScriptBinding {
+    /**
+     * @return Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * 
+     */
+    private @Nullable String algorithm;
     /**
      * @return R2 bucket to bind to.
      * 
@@ -39,6 +45,12 @@ public final class WorkerScriptBinding {
      */
     private @Nullable String environment;
     /**
+     * @return Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
+     * 
+     */
+    private @Nullable String format;
+    /**
      * @return Identifier of the D1 database to bind to.
      * 
      */
@@ -53,6 +65,16 @@ public final class WorkerScriptBinding {
      * 
      */
     private @Nullable String json;
+    /**
+     * @return Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+     * 
+     */
+    private @Nullable String keyBase64;
+    /**
+     * @return Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+     * 
+     */
+    private @Nullable String keyJwk;
     /**
      * @return A JavaScript variable name for the binding.
      * 
@@ -74,6 +96,11 @@ public final class WorkerScriptBinding {
      */
     private @Nullable WorkerScriptBindingOutbound outbound;
     /**
+     * @return Name of the Pipeline to bind to.
+     * 
+     */
+    private @Nullable String pipeline;
+    /**
      * @return Name of the Queue to bind to.
      * 
      */
@@ -84,10 +111,20 @@ public final class WorkerScriptBinding {
      */
     private @Nullable String scriptName;
     /**
+     * @return Name of the secret in the store.
+     * 
+     */
+    private @Nullable String secretName;
+    /**
      * @return Name of Worker to bind to.
      * 
      */
     private @Nullable String service;
+    /**
+     * @return ID of the store containing the secret.
+     * 
+     */
+    private @Nullable String storeId;
     /**
      * @return The text value to use.
      * 
@@ -95,12 +132,24 @@ public final class WorkerScriptBinding {
     private @Nullable String text;
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser*rendering&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;.
+     * Available values: &#34;ai&#34;.
      * 
      */
     private String type;
+    /**
+     * @return Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * 
+     */
+    private @Nullable List<String> usages;
 
     private WorkerScriptBinding() {}
+    /**
+     * @return Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * 
+     */
+    public Optional<String> algorithm() {
+        return Optional.ofNullable(this.algorithm);
+    }
     /**
      * @return R2 bucket to bind to.
      * 
@@ -137,6 +186,14 @@ public final class WorkerScriptBinding {
         return Optional.ofNullable(this.environment);
     }
     /**
+     * @return Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
+     * 
+     */
+    public Optional<String> format() {
+        return Optional.ofNullable(this.format);
+    }
+    /**
      * @return Identifier of the D1 database to bind to.
      * 
      */
@@ -156,6 +213,20 @@ public final class WorkerScriptBinding {
      */
     public Optional<String> json() {
         return Optional.ofNullable(this.json);
+    }
+    /**
+     * @return Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+     * 
+     */
+    public Optional<String> keyBase64() {
+        return Optional.ofNullable(this.keyBase64);
+    }
+    /**
+     * @return Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+     * 
+     */
+    public Optional<String> keyJwk() {
+        return Optional.ofNullable(this.keyJwk);
     }
     /**
      * @return A JavaScript variable name for the binding.
@@ -186,6 +257,13 @@ public final class WorkerScriptBinding {
         return Optional.ofNullable(this.outbound);
     }
     /**
+     * @return Name of the Pipeline to bind to.
+     * 
+     */
+    public Optional<String> pipeline() {
+        return Optional.ofNullable(this.pipeline);
+    }
+    /**
      * @return Name of the Queue to bind to.
      * 
      */
@@ -200,11 +278,25 @@ public final class WorkerScriptBinding {
         return Optional.ofNullable(this.scriptName);
     }
     /**
+     * @return Name of the secret in the store.
+     * 
+     */
+    public Optional<String> secretName() {
+        return Optional.ofNullable(this.secretName);
+    }
+    /**
      * @return Name of Worker to bind to.
      * 
      */
     public Optional<String> service() {
         return Optional.ofNullable(this.service);
+    }
+    /**
+     * @return ID of the store containing the secret.
+     * 
+     */
+    public Optional<String> storeId() {
+        return Optional.ofNullable(this.storeId);
     }
     /**
      * @return The text value to use.
@@ -215,11 +307,18 @@ public final class WorkerScriptBinding {
     }
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser*rendering&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;.
+     * Available values: &#34;ai&#34;.
      * 
      */
     public String type() {
         return this.type;
+    }
+    /**
+     * @return Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * 
+     */
+    public List<String> usages() {
+        return this.usages == null ? List.of() : this.usages;
     }
 
     public static Builder builder() {
@@ -231,45 +330,67 @@ public final class WorkerScriptBinding {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String algorithm;
         private @Nullable String bucketName;
         private @Nullable String certificateId;
         private @Nullable String className;
         private @Nullable String dataset;
         private @Nullable String environment;
+        private @Nullable String format;
         private @Nullable String id;
         private @Nullable String indexName;
         private @Nullable String json;
+        private @Nullable String keyBase64;
+        private @Nullable String keyJwk;
         private String name;
         private @Nullable String namespace;
         private @Nullable String namespaceId;
         private @Nullable WorkerScriptBindingOutbound outbound;
+        private @Nullable String pipeline;
         private @Nullable String queueName;
         private @Nullable String scriptName;
+        private @Nullable String secretName;
         private @Nullable String service;
+        private @Nullable String storeId;
         private @Nullable String text;
         private String type;
+        private @Nullable List<String> usages;
         public Builder() {}
         public Builder(WorkerScriptBinding defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.algorithm = defaults.algorithm;
     	      this.bucketName = defaults.bucketName;
     	      this.certificateId = defaults.certificateId;
     	      this.className = defaults.className;
     	      this.dataset = defaults.dataset;
     	      this.environment = defaults.environment;
+    	      this.format = defaults.format;
     	      this.id = defaults.id;
     	      this.indexName = defaults.indexName;
     	      this.json = defaults.json;
+    	      this.keyBase64 = defaults.keyBase64;
+    	      this.keyJwk = defaults.keyJwk;
     	      this.name = defaults.name;
     	      this.namespace = defaults.namespace;
     	      this.namespaceId = defaults.namespaceId;
     	      this.outbound = defaults.outbound;
+    	      this.pipeline = defaults.pipeline;
     	      this.queueName = defaults.queueName;
     	      this.scriptName = defaults.scriptName;
+    	      this.secretName = defaults.secretName;
     	      this.service = defaults.service;
+    	      this.storeId = defaults.storeId;
     	      this.text = defaults.text;
     	      this.type = defaults.type;
+    	      this.usages = defaults.usages;
         }
 
+        @CustomType.Setter
+        public Builder algorithm(@Nullable String algorithm) {
+
+            this.algorithm = algorithm;
+            return this;
+        }
         @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
 
@@ -301,6 +422,12 @@ public final class WorkerScriptBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder format(@Nullable String format) {
+
+            this.format = format;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
 
             this.id = id;
@@ -316,6 +443,18 @@ public final class WorkerScriptBinding {
         public Builder json(@Nullable String json) {
 
             this.json = json;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keyBase64(@Nullable String keyBase64) {
+
+            this.keyBase64 = keyBase64;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keyJwk(@Nullable String keyJwk) {
+
+            this.keyJwk = keyJwk;
             return this;
         }
         @CustomType.Setter
@@ -345,6 +484,12 @@ public final class WorkerScriptBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder pipeline(@Nullable String pipeline) {
+
+            this.pipeline = pipeline;
+            return this;
+        }
+        @CustomType.Setter
         public Builder queueName(@Nullable String queueName) {
 
             this.queueName = queueName;
@@ -357,9 +502,21 @@ public final class WorkerScriptBinding {
             return this;
         }
         @CustomType.Setter
+        public Builder secretName(@Nullable String secretName) {
+
+            this.secretName = secretName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder service(@Nullable String service) {
 
             this.service = service;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder storeId(@Nullable String storeId) {
+
+            this.storeId = storeId;
             return this;
         }
         @CustomType.Setter
@@ -376,25 +533,42 @@ public final class WorkerScriptBinding {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder usages(@Nullable List<String> usages) {
+
+            this.usages = usages;
+            return this;
+        }
+        public Builder usages(String... usages) {
+            return usages(List.of(usages));
+        }
         public WorkerScriptBinding build() {
             final var _resultValue = new WorkerScriptBinding();
+            _resultValue.algorithm = algorithm;
             _resultValue.bucketName = bucketName;
             _resultValue.certificateId = certificateId;
             _resultValue.className = className;
             _resultValue.dataset = dataset;
             _resultValue.environment = environment;
+            _resultValue.format = format;
             _resultValue.id = id;
             _resultValue.indexName = indexName;
             _resultValue.json = json;
+            _resultValue.keyBase64 = keyBase64;
+            _resultValue.keyJwk = keyJwk;
             _resultValue.name = name;
             _resultValue.namespace = namespace;
             _resultValue.namespaceId = namespaceId;
             _resultValue.outbound = outbound;
+            _resultValue.pipeline = pipeline;
             _resultValue.queueName = queueName;
             _resultValue.scriptName = scriptName;
+            _resultValue.secretName = secretName;
             _resultValue.service = service;
+            _resultValue.storeId = storeId;
             _resultValue.text = text;
             _resultValue.type = type;
+            _resultValue.usages = usages;
             return _resultValue;
         }
     }

@@ -32,14 +32,14 @@ public final class GetContentScanningExpressionsPlainArgs extends com.pulumi.res
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {
@@ -83,7 +83,7 @@ public final class GetContentScanningExpressionsPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

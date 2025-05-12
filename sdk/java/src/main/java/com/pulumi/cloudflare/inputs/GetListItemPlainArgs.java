@@ -14,29 +14,29 @@ public final class GetListItemPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetListItemPlainArgs Empty = new GetListItemPlainArgs();
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private String accountIdentifier;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
     }
 
     /**
-     * The unique ID of the item in the List.
+     * Defines the unique ID of the item in the List.
      * 
      */
     @Import(name="itemId", required=true)
     private String itemId;
 
     /**
-     * @return The unique ID of the item in the List.
+     * @return Defines the unique ID of the item in the List.
      * 
      */
     public String itemId() {
@@ -61,7 +61,7 @@ public final class GetListItemPlainArgs extends com.pulumi.resources.InvokeArgs 
     private GetListItemPlainArgs() {}
 
     private GetListItemPlainArgs(GetListItemPlainArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.itemId = $.itemId;
         this.listId = $.listId;
     }
@@ -85,18 +85,18 @@ public final class GetListItemPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(String accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param itemId The unique ID of the item in the List.
+         * @param itemId Defines the unique ID of the item in the List.
          * 
          * @return builder
          * 
@@ -118,8 +118,8 @@ public final class GetListItemPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetListItemPlainArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetListItemPlainArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetListItemPlainArgs", "accountId");
             }
             if ($.itemId == null) {
                 throw new MissingRequiredPropertyException("GetListItemPlainArgs", "itemId");

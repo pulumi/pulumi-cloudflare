@@ -56,28 +56,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/leakedCredentialCheck:LeakedCredentialCheck")
 public class LeakedCredentialCheck extends com.pulumi.resources.CustomResource {
     /**
-     * Whether or not Leaked Credential Checks are enabled
+     * Determines whether or not Leaked Credential Checks are enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Whether or not Leaked Credential Checks are enabled
+     * @return Determines whether or not Leaked Credential Checks are enabled.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {

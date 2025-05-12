@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EmailRoutingDnsResultInfo {
     /**
-     * @return Total number of results for the requested service
+     * @return Total number of results for the requested service.
      * 
      */
     private @Nullable Double count;
     /**
-     * @return Current page within paginated list of results
+     * @return Current page within paginated list of results.
      * 
      */
     private @Nullable Double page;
     /**
-     * @return Number of results per page of results
+     * @return Number of results per page of results.
      * 
      */
     private @Nullable Double perPage;
     /**
-     * @return Total results available without any search parameters
+     * @return Total results available without any search parameters.
      * 
      */
     private @Nullable Double totalCount;
 
     private EmailRoutingDnsResultInfo() {}
     /**
-     * @return Total number of results for the requested service
+     * @return Total number of results for the requested service.
      * 
      */
     public Optional<Double> count() {
         return Optional.ofNullable(this.count);
     }
     /**
-     * @return Current page within paginated list of results
+     * @return Current page within paginated list of results.
      * 
      */
     public Optional<Double> page() {
         return Optional.ofNullable(this.page);
     }
     /**
-     * @return Number of results per page of results
+     * @return Number of results per page of results.
      * 
      */
     public Optional<Double> perPage() {
         return Optional.ofNullable(this.perPage);
     }
     /**
-     * @return Total results available without any search parameters
+     * @return Total results available without any search parameters.
      * 
      */
     public Optional<Double> totalCount() {

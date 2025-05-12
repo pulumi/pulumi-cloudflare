@@ -17,14 +17,14 @@ public final class AccountDnsSettingsInternalViewState extends com.pulumi.resour
     public static final AccountDnsSettingsInternalViewState Empty = new AccountDnsSettingsInternalViewState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -120,7 +120,7 @@ public final class AccountDnsSettingsInternalViewState extends com.pulumi.resour
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class AccountDnsSettingsInternalViewState extends com.pulumi.resour
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -52,6 +51,21 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The date and time the tunnel was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return The date and time the tunnel was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
      * The IP address assigned to the customer side of the GRE tunnel.
      * 
      */
@@ -88,28 +102,6 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.greTunnel);
     }
 
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="greTunnelId")
-    private @Nullable Output<String> greTunnelId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> greTunnelId() {
-        return Optional.ofNullable(this.greTunnelId);
-    }
-
-    @Import(name="greTunnels")
-    private @Nullable Output<List<MagicWanGreTunnelGreTunnelArgs>> greTunnels;
-
-    public Optional<Output<List<MagicWanGreTunnelGreTunnelArgs>>> greTunnels() {
-        return Optional.ofNullable(this.greTunnels);
-    }
-
     @Import(name="healthCheck")
     private @Nullable Output<MagicWanGreTunnelHealthCheckArgs> healthCheck;
 
@@ -144,6 +136,21 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
 
     public Optional<Output<MagicWanGreTunnelModifiedGreTunnelArgs>> modifiedGreTunnel() {
         return Optional.ofNullable(this.modifiedGreTunnel);
+    }
+
+    /**
+     * The date and time the tunnel was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return The date and time the tunnel was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
     }
 
     /**
@@ -196,15 +203,15 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
     private MagicWanGreTunnelState(MagicWanGreTunnelState $) {
         this.accountId = $.accountId;
         this.cloudflareGreEndpoint = $.cloudflareGreEndpoint;
+        this.createdOn = $.createdOn;
         this.customerGreEndpoint = $.customerGreEndpoint;
         this.description = $.description;
         this.greTunnel = $.greTunnel;
-        this.greTunnelId = $.greTunnelId;
-        this.greTunnels = $.greTunnels;
         this.healthCheck = $.healthCheck;
         this.interfaceAddress = $.interfaceAddress;
         this.modified = $.modified;
         this.modifiedGreTunnel = $.modifiedGreTunnel;
+        this.modifiedOn = $.modifiedOn;
         this.mtu = $.mtu;
         this.name = $.name;
         this.ttl = $.ttl;
@@ -271,6 +278,27 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param createdOn The date and time the tunnel was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn The date and time the tunnel was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
          * @param customerGreEndpoint The IP address assigned to the customer side of the GRE tunnel.
          * 
          * @return builder
@@ -321,40 +349,6 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
             return greTunnel(Output.of(greTunnel));
         }
 
-        /**
-         * @param greTunnelId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder greTunnelId(@Nullable Output<String> greTunnelId) {
-            $.greTunnelId = greTunnelId;
-            return this;
-        }
-
-        /**
-         * @param greTunnelId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder greTunnelId(String greTunnelId) {
-            return greTunnelId(Output.of(greTunnelId));
-        }
-
-        public Builder greTunnels(@Nullable Output<List<MagicWanGreTunnelGreTunnelArgs>> greTunnels) {
-            $.greTunnels = greTunnels;
-            return this;
-        }
-
-        public Builder greTunnels(List<MagicWanGreTunnelGreTunnelArgs> greTunnels) {
-            return greTunnels(Output.of(greTunnels));
-        }
-
-        public Builder greTunnels(MagicWanGreTunnelGreTunnelArgs... greTunnels) {
-            return greTunnels(List.of(greTunnels));
-        }
-
         public Builder healthCheck(@Nullable Output<MagicWanGreTunnelHealthCheckArgs> healthCheck) {
             $.healthCheck = healthCheck;
             return this;
@@ -401,6 +395,27 @@ public final class MagicWanGreTunnelState extends com.pulumi.resources.ResourceA
 
         public Builder modifiedGreTunnel(MagicWanGreTunnelModifiedGreTunnelArgs modifiedGreTunnel) {
             return modifiedGreTunnel(Output.of(modifiedGreTunnel));
+        }
+
+        /**
+         * @param modifiedOn The date and time the tunnel was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn The date and time the tunnel was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
         }
 
         /**

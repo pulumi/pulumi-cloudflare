@@ -40,7 +40,7 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
     private String description;
     private GetMagicWanIpsecTunnelIpsecTunnelHealthCheck healthCheck;
     /**
-     * @return Tunnel identifier tag.
+     * @return Identifier
      * 
      */
     private String id;
@@ -110,7 +110,7 @@ public final class GetMagicWanIpsecTunnelIpsecTunnel {
         return this.healthCheck;
     }
     /**
-     * @return Tunnel identifier tag.
+     * @return Identifier
      * 
      */
     public String id() {

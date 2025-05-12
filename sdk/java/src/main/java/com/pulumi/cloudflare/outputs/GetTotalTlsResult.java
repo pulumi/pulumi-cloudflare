@@ -35,7 +35,7 @@ public final class GetTotalTlsResult {
      */
     private Integer validityPeriod;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -72,7 +72,7 @@ public final class GetTotalTlsResult {
         return this.validityPeriod;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

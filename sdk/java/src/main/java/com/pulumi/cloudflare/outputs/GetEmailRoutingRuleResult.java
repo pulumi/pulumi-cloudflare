@@ -64,7 +64,7 @@ public final class GetEmailRoutingRuleResult {
     @Deprecated /* This attribute is deprecated. */
     private String tag;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -134,7 +134,7 @@ public final class GetEmailRoutingRuleResult {
         return this.tag;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

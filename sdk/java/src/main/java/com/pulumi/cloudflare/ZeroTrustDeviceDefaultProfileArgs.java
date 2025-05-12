@@ -165,6 +165,36 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
     }
 
     /**
+     * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+     * 
+     */
+    @Import(name="lanAllowMinutes")
+    private @Nullable Output<Double> lanAllowMinutes;
+
+    /**
+     * @return The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+     * 
+     */
+    public Optional<Output<Double>> lanAllowMinutes() {
+        return Optional.ofNullable(this.lanAllowMinutes);
+    }
+
+    /**
+     * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+     * 
+     */
+    @Import(name="lanAllowSubnetSize")
+    private @Nullable Output<Double> lanAllowSubnetSize;
+
+    /**
+     * @return The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+     * 
+     */
+    public Optional<Output<Double>> lanAllowSubnetSize() {
+        return Optional.ofNullable(this.lanAllowSubnetSize);
+    }
+
+    /**
      * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
      */
@@ -244,6 +274,8 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
         this.excludeOfficeIps = $.excludeOfficeIps;
         this.excludes = $.excludes;
         this.includes = $.includes;
+        this.lanAllowMinutes = $.lanAllowMinutes;
+        this.lanAllowSubnetSize = $.lanAllowSubnetSize;
         this.registerInterfaceIpWithDns = $.registerInterfaceIpWithDns;
         this.serviceModeV2 = $.serviceModeV2;
         this.supportUrl = $.supportUrl;
@@ -485,6 +517,48 @@ public final class ZeroTrustDeviceDefaultProfileArgs extends com.pulumi.resource
          */
         public Builder includes(ZeroTrustDeviceDefaultProfileIncludeArgs... includes) {
             return includes(List.of(includes));
+        }
+
+        /**
+         * @param lanAllowMinutes The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lanAllowMinutes(@Nullable Output<Double> lanAllowMinutes) {
+            $.lanAllowMinutes = lanAllowMinutes;
+            return this;
+        }
+
+        /**
+         * @param lanAllowMinutes The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lanAllowMinutes(Double lanAllowMinutes) {
+            return lanAllowMinutes(Output.of(lanAllowMinutes));
+        }
+
+        /**
+         * @param lanAllowSubnetSize The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lanAllowSubnetSize(@Nullable Output<Double> lanAllowSubnetSize) {
+            $.lanAllowSubnetSize = lanAllowSubnetSize;
+            return this;
+        }
+
+        /**
+         * @param lanAllowSubnetSize The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lanAllowSubnetSize(Double lanAllowSubnetSize) {
+            return lanAllowSubnetSize(Output.of(lanAllowSubnetSize));
         }
 
         /**

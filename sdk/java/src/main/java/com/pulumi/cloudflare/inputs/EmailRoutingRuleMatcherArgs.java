@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,16 +21,16 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
      * Available values: &#34;to&#34;.
      * 
      */
-    @Import(name="field", required=true)
-    private Output<String> field;
+    @Import(name="field")
+    private @Nullable Output<String> field;
 
     /**
      * @return Field for type matcher.
      * Available values: &#34;to&#34;.
      * 
      */
-    public Output<String> field() {
-        return this.field;
+    public Optional<Output<String>> field() {
+        return Optional.ofNullable(this.field);
     }
 
     /**
@@ -52,15 +54,15 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
      * Value for matcher.
      * 
      */
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
     /**
      * @return Value for matcher.
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private EmailRoutingRuleMatcherArgs() {}
@@ -96,7 +98,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder field(Output<String> field) {
+        public Builder field(@Nullable Output<String> field) {
             $.field = field;
             return this;
         }
@@ -141,7 +143,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -157,14 +159,8 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         public EmailRoutingRuleMatcherArgs build() {
-            if ($.field == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingRuleMatcherArgs", "field");
-            }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingRuleMatcherArgs", "type");
-            }
-            if ($.value == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingRuleMatcherArgs", "value");
             }
             return $;
         }

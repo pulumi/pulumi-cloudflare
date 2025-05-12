@@ -55,7 +55,7 @@ public final class GetCustomHostnamesInvokeResult {
      */
     private @Nullable Double ssl;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -114,7 +114,7 @@ public final class GetCustomHostnamesInvokeResult {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

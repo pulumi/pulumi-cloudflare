@@ -34,7 +34,7 @@ public final class GetMagicWanGreTunnelGreTunnel {
     private String description;
     private GetMagicWanGreTunnelGreTunnelHealthCheck healthCheck;
     /**
-     * @return Tunnel identifier tag.
+     * @return Identifier
      * 
      */
     private String id;
@@ -97,7 +97,7 @@ public final class GetMagicWanGreTunnelGreTunnel {
         return this.healthCheck;
     }
     /**
-     * @return Tunnel identifier tag.
+     * @return Identifier
      * 
      */
     public String id() {

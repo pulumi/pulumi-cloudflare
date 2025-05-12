@@ -63,28 +63,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/r2Bucket:R2Bucket")
 public class R2Bucket extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Creation timestamp
+     * Creation timestamp.
      * 
      */
     @Export(name="creationDate", refs={String.class}, tree="[0]")
     private Output<String> creationDate;
 
     /**
-     * @return Creation timestamp
+     * @return Creation timestamp.
      * 
      */
     public Output<String> creationDate() {
@@ -105,7 +105,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
         return this.jurisdiction;
     }
     /**
-     * Location of the bucket
+     * Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
@@ -113,7 +113,7 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> location;
 
     /**
-     * @return Location of the bucket
+     * @return Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
@@ -121,14 +121,14 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.location);
     }
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> name() {

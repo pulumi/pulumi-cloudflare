@@ -18,6 +18,11 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
      */
     private @Nullable Boolean enabled;
     /**
+     * @return If true, context information will be passed as query parameters
+     * 
+     */
+    private @Nullable Boolean includeContext;
+    /**
      * @return Customize the message shown in the notification.
      * 
      */
@@ -35,6 +40,13 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return If true, context information will be passed as query parameters
+     * 
+     */
+    public Optional<Boolean> includeContext() {
+        return Optional.ofNullable(this.includeContext);
     }
     /**
      * @return Customize the message shown in the notification.
@@ -61,12 +73,14 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
+        private @Nullable Boolean includeContext;
         private @Nullable String msg;
         private @Nullable String supportUrl;
         public Builder() {}
         public Builder(ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.includeContext = defaults.includeContext;
     	      this.msg = defaults.msg;
     	      this.supportUrl = defaults.supportUrl;
         }
@@ -75,6 +89,12 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
         public Builder enabled(@Nullable Boolean enabled) {
 
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeContext(@Nullable Boolean includeContext) {
+
+            this.includeContext = includeContext;
             return this;
         }
         @CustomType.Setter
@@ -92,6 +112,7 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
         public ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings build() {
             final var _resultValue = new ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings();
             _resultValue.enabled = enabled;
+            _resultValue.includeContext = includeContext;
             _resultValue.msg = msg;
             _resultValue.supportUrl = supportUrl;
             return _resultValue;

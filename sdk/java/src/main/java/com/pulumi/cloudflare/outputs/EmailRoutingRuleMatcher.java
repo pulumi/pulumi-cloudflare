@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class EmailRoutingRuleMatcher {
@@ -15,7 +17,7 @@ public final class EmailRoutingRuleMatcher {
      * Available values: &#34;to&#34;.
      * 
      */
-    private String field;
+    private @Nullable String field;
     /**
      * @return Type of matcher.
      * Available values: &#34;literal&#34;.
@@ -26,7 +28,7 @@ public final class EmailRoutingRuleMatcher {
      * @return Value for matcher.
      * 
      */
-    private String value;
+    private @Nullable String value;
 
     private EmailRoutingRuleMatcher() {}
     /**
@@ -34,8 +36,8 @@ public final class EmailRoutingRuleMatcher {
      * Available values: &#34;to&#34;.
      * 
      */
-    public String field() {
-        return this.field;
+    public Optional<String> field() {
+        return Optional.ofNullable(this.field);
     }
     /**
      * @return Type of matcher.
@@ -49,8 +51,8 @@ public final class EmailRoutingRuleMatcher {
      * @return Value for matcher.
      * 
      */
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -62,9 +64,9 @@ public final class EmailRoutingRuleMatcher {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String field;
+        private @Nullable String field;
         private String type;
-        private String value;
+        private @Nullable String value;
         public Builder() {}
         public Builder(EmailRoutingRuleMatcher defaults) {
     	      Objects.requireNonNull(defaults);
@@ -74,10 +76,8 @@ public final class EmailRoutingRuleMatcher {
         }
 
         @CustomType.Setter
-        public Builder field(String field) {
-            if (field == null) {
-              throw new MissingRequiredPropertyException("EmailRoutingRuleMatcher", "field");
-            }
+        public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
@@ -90,10 +90,8 @@ public final class EmailRoutingRuleMatcher {
             return this;
         }
         @CustomType.Setter
-        public Builder value(String value) {
-            if (value == null) {
-              throw new MissingRequiredPropertyException("EmailRoutingRuleMatcher", "value");
-            }
+        public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

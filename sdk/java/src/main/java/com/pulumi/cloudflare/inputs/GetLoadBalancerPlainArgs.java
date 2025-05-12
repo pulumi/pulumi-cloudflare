@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -17,21 +16,6 @@ import javax.annotation.Nullable;
 public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetLoadBalancerPlainArgs Empty = new GetLoadBalancerPlainArgs();
-
-    /**
-     * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-     * 
-     */
-    @Import(name="countryPools")
-    private @Nullable Map<String,List<String>> countryPools;
-
-    /**
-     * @return A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-     * 
-     */
-    public Optional<Map<String,List<String>>> countryPools() {
-        return Optional.ofNullable(this.countryPools);
-    }
 
     @Import(name="loadBalancerId")
     private @Nullable String loadBalancerId;
@@ -70,51 +54,6 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.regionPools);
     }
 
-    /**
-     * Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
-     * 
-     */
-    @Import(name="sessionAffinityTtl")
-    private @Nullable Double sessionAffinityTtl;
-
-    /**
-     * @return Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
-     * 
-     */
-    public Optional<Double> sessionAffinityTtl() {
-        return Optional.ofNullable(this.sessionAffinityTtl);
-    }
-
-    /**
-     * Steering Policy for this load balancer.
-     * 
-     */
-    @Import(name="steeringPolicy")
-    private @Nullable String steeringPolicy;
-
-    /**
-     * @return Steering Policy for this load balancer.
-     * 
-     */
-    public Optional<String> steeringPolicy() {
-        return Optional.ofNullable(this.steeringPolicy);
-    }
-
-    /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-     * 
-     */
-    @Import(name="ttl")
-    private @Nullable Double ttl;
-
-    /**
-     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-     * 
-     */
-    public Optional<Double> ttl() {
-        return Optional.ofNullable(this.ttl);
-    }
-
     @Import(name="zoneId", required=true)
     private String zoneId;
 
@@ -125,13 +64,9 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
     private GetLoadBalancerPlainArgs() {}
 
     private GetLoadBalancerPlainArgs(GetLoadBalancerPlainArgs $) {
-        this.countryPools = $.countryPools;
         this.loadBalancerId = $.loadBalancerId;
         this.popPools = $.popPools;
         this.regionPools = $.regionPools;
-        this.sessionAffinityTtl = $.sessionAffinityTtl;
-        this.steeringPolicy = $.steeringPolicy;
-        this.ttl = $.ttl;
         this.zoneId = $.zoneId;
     }
 
@@ -151,17 +86,6 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetLoadBalancerPlainArgs defaults) {
             $ = new GetLoadBalancerPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param countryPools A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder countryPools(@Nullable Map<String,List<String>> countryPools) {
-            $.countryPools = countryPools;
-            return this;
         }
 
         public Builder loadBalancerId(@Nullable String loadBalancerId) {
@@ -188,39 +112,6 @@ public final class GetLoadBalancerPlainArgs extends com.pulumi.resources.InvokeA
          */
         public Builder regionPools(@Nullable Map<String,List<String>> regionPools) {
             $.regionPools = regionPools;
-            return this;
-        }
-
-        /**
-         * @param sessionAffinityTtl Time, in seconds, until a client&#39;s session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sessionAffinityTtl(@Nullable Double sessionAffinityTtl) {
-            $.sessionAffinityTtl = sessionAffinityTtl;
-            return this;
-        }
-
-        /**
-         * @param steeringPolicy Steering Policy for this load balancer.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder steeringPolicy(@Nullable String steeringPolicy) {
-            $.steeringPolicy = steeringPolicy;
-            return this;
-        }
-
-        /**
-         * @param ttl Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ttl(@Nullable Double ttl) {
-            $.ttl = ttl;
             return this;
         }
 

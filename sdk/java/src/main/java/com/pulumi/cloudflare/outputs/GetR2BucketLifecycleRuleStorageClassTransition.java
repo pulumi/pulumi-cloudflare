@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketLifecycleRuleStorageClassTransition {
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     private GetR2BucketLifecycleRuleStorageClassTransitionCondition condition;
@@ -24,7 +24,7 @@ public final class GetR2BucketLifecycleRuleStorageClassTransition {
 
     private GetR2BucketLifecycleRuleStorageClassTransition() {}
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     public GetR2BucketLifecycleRuleStorageClassTransitionCondition condition() {

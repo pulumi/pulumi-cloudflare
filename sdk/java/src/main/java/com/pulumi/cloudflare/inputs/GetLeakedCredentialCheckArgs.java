@@ -15,14 +15,14 @@ public final class GetLeakedCredentialCheckArgs extends com.pulumi.resources.Inv
     public static final GetLeakedCredentialCheckArgs Empty = new GetLeakedCredentialCheckArgs();
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -54,7 +54,7 @@ public final class GetLeakedCredentialCheckArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetLeakedCredentialCheckArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

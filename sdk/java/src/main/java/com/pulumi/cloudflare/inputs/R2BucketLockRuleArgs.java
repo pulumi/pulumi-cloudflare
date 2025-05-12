@@ -19,14 +19,14 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
     public static final R2BucketLockRuleArgs Empty = new R2BucketLockRuleArgs();
 
     /**
-     * Condition to apply a lock rule to an object for how long in seconds
+     * Condition to apply a lock rule to an object for how long in seconds.
      * 
      */
     @Import(name="condition", required=true)
     private Output<R2BucketLockRuleConditionArgs> condition;
 
     /**
-     * @return Condition to apply a lock rule to an object for how long in seconds
+     * @return Condition to apply a lock rule to an object for how long in seconds.
      * 
      */
     public Output<R2BucketLockRuleConditionArgs> condition() {
@@ -34,14 +34,14 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether or not this rule is in effect
+     * Whether or not this rule is in effect.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether or not this rule is in effect
+     * @return Whether or not this rule is in effect.
      * 
      */
     public Output<Boolean> enabled() {
@@ -49,14 +49,14 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Unique identifier for this rule
+     * Unique identifier for this rule.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Unique identifier for this rule
+     * @return Unique identifier for this rule.
      * 
      */
     public Output<String> id() {
@@ -64,14 +64,14 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -106,7 +106,7 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param condition Condition to apply a lock rule to an object for how long in seconds
+         * @param condition Condition to apply a lock rule to an object for how long in seconds.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param condition Condition to apply a lock rule to an object for how long in seconds
+         * @param condition Condition to apply a lock rule to an object for how long in seconds.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether or not this rule is in effect
+         * @param enabled Whether or not this rule is in effect.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether or not this rule is in effect
+         * @param enabled Whether or not this rule is in effect.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param id Unique identifier for this rule
+         * @param id Unique identifier for this rule.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param id Unique identifier for this rule
+         * @param id Unique identifier for this rule.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param prefix Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+         * @param prefix Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class R2BucketLockRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param prefix Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+         * @param prefix Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
          * 
          * @return builder
          * 

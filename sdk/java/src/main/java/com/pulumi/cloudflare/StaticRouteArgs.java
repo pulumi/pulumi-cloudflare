@@ -10,7 +10,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -54,45 +53,45 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
      * The next-hop IP Address for the static route.
      * 
      */
-    @Import(name="nexthop")
-    private @Nullable Output<String> nexthop;
+    @Import(name="nexthop", required=true)
+    private Output<String> nexthop;
 
     /**
      * @return The next-hop IP Address for the static route.
      * 
      */
-    public Optional<Output<String>> nexthop() {
-        return Optional.ofNullable(this.nexthop);
+    public Output<String> nexthop() {
+        return this.nexthop;
     }
 
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      * 
      */
-    @Import(name="prefix")
-    private @Nullable Output<String> prefix;
+    @Import(name="prefix", required=true)
+    private Output<String> prefix;
 
     /**
      * @return IP Prefix in Classless Inter-Domain Routing format.
      * 
      */
-    public Optional<Output<String>> prefix() {
-        return Optional.ofNullable(this.prefix);
+    public Output<String> prefix() {
+        return this.prefix;
     }
 
     /**
      * Priority of the static route.
      * 
      */
-    @Import(name="priority")
-    private @Nullable Output<Integer> priority;
+    @Import(name="priority", required=true)
+    private Output<Integer> priority;
 
     /**
      * @return Priority of the static route.
      * 
      */
-    public Optional<Output<Integer>> priority() {
-        return Optional.ofNullable(this.priority);
+    public Output<Integer> priority() {
+        return this.priority;
     }
 
     @Import(name="route")
@@ -100,28 +99,6 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<StaticRouteRouteArgs>> route() {
         return Optional.ofNullable(this.route);
-    }
-
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="routeId")
-    private @Nullable Output<String> routeId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> routeId() {
-        return Optional.ofNullable(this.routeId);
-    }
-
-    @Import(name="routes")
-    private @Nullable Output<List<StaticRouteRouteArgs>> routes;
-
-    public Optional<Output<List<StaticRouteRouteArgs>>> routes() {
-        return Optional.ofNullable(this.routes);
     }
 
     /**
@@ -163,8 +140,6 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
         this.prefix = $.prefix;
         this.priority = $.priority;
         this.route = $.route;
-        this.routeId = $.routeId;
-        this.routes = $.routes;
         this.scope = $.scope;
         this.weight = $.weight;
     }
@@ -235,7 +210,7 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder nexthop(@Nullable Output<String> nexthop) {
+        public Builder nexthop(Output<String> nexthop) {
             $.nexthop = nexthop;
             return this;
         }
@@ -256,7 +231,7 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder prefix(@Nullable Output<String> prefix) {
+        public Builder prefix(Output<String> prefix) {
             $.prefix = prefix;
             return this;
         }
@@ -277,7 +252,7 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder priority(@Nullable Output<Integer> priority) {
+        public Builder priority(Output<Integer> priority) {
             $.priority = priority;
             return this;
         }
@@ -299,40 +274,6 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder route(StaticRouteRouteArgs route) {
             return route(Output.of(route));
-        }
-
-        /**
-         * @param routeId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeId(@Nullable Output<String> routeId) {
-            $.routeId = routeId;
-            return this;
-        }
-
-        /**
-         * @param routeId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeId(String routeId) {
-            return routeId(Output.of(routeId));
-        }
-
-        public Builder routes(@Nullable Output<List<StaticRouteRouteArgs>> routes) {
-            $.routes = routes;
-            return this;
-        }
-
-        public Builder routes(List<StaticRouteRouteArgs> routes) {
-            return routes(Output.of(routes));
-        }
-
-        public Builder routes(StaticRouteRouteArgs... routes) {
-            return routes(List.of(routes));
         }
 
         /**
@@ -380,6 +321,15 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
         public StaticRouteArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("StaticRouteArgs", "accountId");
+            }
+            if ($.nexthop == null) {
+                throw new MissingRequiredPropertyException("StaticRouteArgs", "nexthop");
+            }
+            if ($.prefix == null) {
+                throw new MissingRequiredPropertyException("StaticRouteArgs", "prefix");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("StaticRouteArgs", "priority");
             }
             return $;
         }

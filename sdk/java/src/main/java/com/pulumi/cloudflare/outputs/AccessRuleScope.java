@@ -17,12 +17,12 @@ public final class AccessRuleScope {
      */
     private @Nullable String email;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private @Nullable String id;
     /**
-     * @return The scope of the rule.
+     * @return Defines the scope of the rule.
      * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
@@ -37,14 +37,14 @@ public final class AccessRuleScope {
         return Optional.ofNullable(this.email);
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The scope of the rule.
+     * @return Defines the scope of the rule.
      * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */

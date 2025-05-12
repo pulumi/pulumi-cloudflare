@@ -41,7 +41,7 @@ public final class MagicWanIpsecTunnelIpsecTunnel {
     private @Nullable String description;
     private @Nullable MagicWanIpsecTunnelIpsecTunnelHealthCheck healthCheck;
     /**
-     * @return Tunnel identifier tag.
+     * @return Identifier
      * 
      */
     private @Nullable String id;
@@ -111,7 +111,7 @@ public final class MagicWanIpsecTunnelIpsecTunnel {
         return Optional.ofNullable(this.healthCheck);
     }
     /**
-     * @return Tunnel identifier tag.
+     * @return Identifier
      * 
      */
     public Optional<String> id() {

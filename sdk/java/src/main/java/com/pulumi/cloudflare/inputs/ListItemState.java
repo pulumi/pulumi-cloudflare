@@ -19,14 +19,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     public static final ListItemState Empty = new ListItemState();
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -202,7 +202,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 

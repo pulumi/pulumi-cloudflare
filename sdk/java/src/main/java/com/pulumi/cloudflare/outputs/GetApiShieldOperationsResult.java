@@ -30,7 +30,7 @@ public final class GetApiShieldOperationsResult {
      */
     private String method;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String operationId;
@@ -65,7 +65,7 @@ public final class GetApiShieldOperationsResult {
         return this.method;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String operationId() {

@@ -16,14 +16,14 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     public static final R2BucketState Empty = new R2BucketState();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -31,14 +31,14 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Creation timestamp
+     * Creation timestamp.
      * 
      */
     @Import(name="creationDate")
     private @Nullable Output<String> creationDate;
 
     /**
-     * @return Creation timestamp
+     * @return Creation timestamp.
      * 
      */
     public Optional<Output<String>> creationDate() {
@@ -61,7 +61,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Location of the bucket
+     * Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
@@ -69,7 +69,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> location;
 
     /**
-     * @return Location of the bucket
+     * @return Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
@@ -78,14 +78,14 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Optional<Output<String>> name() {
@@ -139,7 +139,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationDate Creation timestamp
+         * @param creationDate Creation timestamp.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creationDate Creation timestamp
+         * @param creationDate Creation timestamp.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Location of the bucket
+         * @param location Location of the bucket.
          * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
          * 
          * @return builder
@@ -214,7 +214,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Location of the bucket
+         * @param location Location of the bucket.
          * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
          * 
          * @return builder
@@ -225,7 +225,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the bucket
+         * @param name Name of the bucket.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class R2BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the bucket
+         * @param name Name of the bucket.
          * 
          * @return builder
          * 

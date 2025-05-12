@@ -32,14 +32,14 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -154,14 +154,14 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -223,7 +223,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param certificateId Identifier
+         * @param certificateId Identifier.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param certificateId Identifier
+         * @param certificateId Identifier.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class AuthenticatedOriginPullsCertificateState extends com.pulumi.r
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

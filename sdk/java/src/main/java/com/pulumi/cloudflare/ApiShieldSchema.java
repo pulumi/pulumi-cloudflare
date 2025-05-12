@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleApiShieldSchema = new ApiShieldSchema("exampleApiShieldSchema", ApiShieldSchemaArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .file("file.txt")
+ *             .file(null)
  *             .kind("openapi_v3")
  *             .name("petstore schema")
  *             .validationEnabled("true")
@@ -158,14 +158,14 @@ public class ApiShieldSchema extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.validationEnabled);
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

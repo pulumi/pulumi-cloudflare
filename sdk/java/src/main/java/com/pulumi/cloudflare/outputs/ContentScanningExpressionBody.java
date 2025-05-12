@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ContentScanningExpressionBody {
     /**
-     * @return Ruleset expression to use in matching content objects
+     * @return Defines the ruleset expression to use in matching content objects.
      * 
      */
     private String payload;
 
     private ContentScanningExpressionBody() {}
     /**
-     * @return Ruleset expression to use in matching content objects
+     * @return Defines the ruleset expression to use in matching content objects.
      * 
      */
     public String payload() {

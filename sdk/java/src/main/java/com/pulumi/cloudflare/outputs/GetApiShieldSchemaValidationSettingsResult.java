@@ -22,7 +22,7 @@ public final class GetApiShieldSchemaValidationSettingsResult {
     private String validationDefaultMitigationAction;
     private String validationOverrideMitigationAction;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -46,7 +46,7 @@ public final class GetApiShieldSchemaValidationSettingsResult {
         return this.validationOverrideMitigationAction;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

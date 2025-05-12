@@ -20,14 +20,14 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
     public static final WebAnalyticsSiteState Empty = new WebAnalyticsSiteState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -219,7 +219,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class WebAnalyticsSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

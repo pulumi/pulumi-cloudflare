@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEmailRoutingAddressesInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -50,7 +50,7 @@ public final class GetEmailRoutingAddressesInvokeResult {
 
     private GetEmailRoutingAddressesInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {

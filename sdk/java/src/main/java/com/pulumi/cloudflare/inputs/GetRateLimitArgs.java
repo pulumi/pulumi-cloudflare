@@ -17,14 +17,14 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRateLimitArgs Empty = new GetRateLimitArgs();
 
     /**
-     * The unique identifier of the rate limit.
+     * Defines the unique identifier of the rate limit.
      * 
      */
     @Import(name="rateLimitId")
     private @Nullable Output<String> rateLimitId;
 
     /**
-     * @return The unique identifier of the rate limit.
+     * @return Defines the unique identifier of the rate limit.
      * 
      */
     public Optional<Output<String>> rateLimitId() {
@@ -32,14 +32,14 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -72,7 +72,7 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param rateLimitId The unique identifier of the rate limit.
+         * @param rateLimitId Defines the unique identifier of the rate limit.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param rateLimitId The unique identifier of the rate limit.
+         * @param rateLimitId Defines the unique identifier of the rate limit.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetRateLimitArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

@@ -50,14 +50,14 @@ public final class ApiShieldSchemaValidationSettingsState extends com.pulumi.res
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -137,7 +137,7 @@ public final class ApiShieldSchemaValidationSettingsState extends com.pulumi.res
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ApiShieldSchemaValidationSettingsState extends com.pulumi.res
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

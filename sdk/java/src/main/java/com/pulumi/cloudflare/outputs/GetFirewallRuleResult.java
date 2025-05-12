@@ -53,7 +53,7 @@ public final class GetFirewallRuleResult {
      */
     private @Nullable String ruleId;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -113,7 +113,7 @@ public final class GetFirewallRuleResult {
         return Optional.ofNullable(this.ruleId);
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

@@ -42,7 +42,7 @@ public final class GetApiShieldSchemasInvokeResult {
      */
     private @Nullable Boolean validationEnabled;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -84,7 +84,7 @@ public final class GetApiShieldSchemasInvokeResult {
         return Optional.ofNullable(this.validationEnabled);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
