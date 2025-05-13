@@ -19,8 +19,8 @@ type Snippets struct {
 	// Creation time of the snippet
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Content files of uploaded snippet
-	Files    pulumi.StringPtrOutput `pulumi:"files"`
-	Metadata SnippetsMetadataOutput `pulumi:"metadata"`
+	Files    pulumi.StringPtrOutput    `pulumi:"files"`
+	Metadata SnippetsMetadataPtrOutput `pulumi:"metadata"`
 	// Modification time of the snippet
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Snippet identifying name
@@ -214,8 +214,8 @@ func (o SnippetsOutput) Files() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snippets) pulumi.StringPtrOutput { return v.Files }).(pulumi.StringPtrOutput)
 }
 
-func (o SnippetsOutput) Metadata() SnippetsMetadataOutput {
-	return o.ApplyT(func(v *Snippets) SnippetsMetadataOutput { return v.Metadata }).(SnippetsMetadataOutput)
+func (o SnippetsOutput) Metadata() SnippetsMetadataPtrOutput {
+	return o.ApplyT(func(v *Snippets) SnippetsMetadataPtrOutput { return v.Metadata }).(SnippetsMetadataPtrOutput)
 }
 
 // Modification time of the snippet

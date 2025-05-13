@@ -25,37 +25,13 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.MagicWanStaticRoute;
- * import com.pulumi.cloudflare.MagicWanStaticRouteArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleMagicWanStaticRoute = new MagicWanStaticRoute("exampleMagicWanStaticRoute", MagicWanStaticRouteArgs.builder()
- *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/staticRoute:StaticRoute example &#39;&lt;account_id&gt;/&lt;route_id&gt;&#39;
+ * ```
  * 
  * @deprecated
  * cloudflare.index/staticroute.StaticRoute has been deprecated in favor of cloudflare.index/magicwanstaticroute.MagicWanStaticRoute
@@ -79,6 +55,20 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * When the route was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return When the route was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
+    }
+    /**
      * An optional human provided description of the static route.
      * 
      */
@@ -98,6 +88,20 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
     public Output<Boolean> modified() {
         return this.modified;
     }
+    /**
+     * When the route was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return When the route was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
+    }
     @Export(name="modifiedRoute", refs={StaticRouteModifiedRoute.class}, tree="[0]")
     private Output<StaticRouteModifiedRoute> modifiedRoute;
 
@@ -109,42 +113,42 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="nexthop", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> nexthop;
+    private Output<String> nexthop;
 
     /**
      * @return The next-hop IP Address for the static route.
      * 
      */
-    public Output<Optional<String>> nexthop() {
-        return Codegen.optional(this.nexthop);
+    public Output<String> nexthop() {
+        return this.nexthop;
     }
     /**
      * IP Prefix in Classless Inter-Domain Routing format.
      * 
      */
     @Export(name="prefix", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> prefix;
+    private Output<String> prefix;
 
     /**
      * @return IP Prefix in Classless Inter-Domain Routing format.
      * 
      */
-    public Output<Optional<String>> prefix() {
-        return Codegen.optional(this.prefix);
+    public Output<String> prefix() {
+        return this.prefix;
     }
     /**
      * Priority of the static route.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> priority;
+    private Output<Integer> priority;
 
     /**
      * @return Priority of the static route.
      * 
      */
-    public Output<Optional<Integer>> priority() {
-        return Codegen.optional(this.priority);
+    public Output<Integer> priority() {
+        return this.priority;
     }
     @Export(name="route", refs={StaticRouteRoute.class}, tree="[0]")
     private Output<StaticRouteRoute> route;
@@ -153,38 +157,18 @@ public class StaticRoute extends com.pulumi.resources.CustomResource {
         return this.route;
     }
     /**
-     * Identifier
-     * 
-     */
-    @Export(name="routeId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> routeId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Output<Optional<String>> routeId() {
-        return Codegen.optional(this.routeId);
-    }
-    @Export(name="routes", refs={List.class,StaticRouteRoute.class}, tree="[0,1]")
-    private Output<List<StaticRouteRoute>> routes;
-
-    public Output<List<StaticRouteRoute>> routes() {
-        return this.routes;
-    }
-    /**
      * Used only for ECMP routes.
      * 
      */
     @Export(name="scope", refs={StaticRouteScope.class}, tree="[0]")
-    private Output<StaticRouteScope> scope;
+    private Output</* @Nullable */ StaticRouteScope> scope;
 
     /**
      * @return Used only for ECMP routes.
      * 
      */
-    public Output<StaticRouteScope> scope() {
-        return this.scope;
+    public Output<Optional<StaticRouteScope>> scope() {
+        return Codegen.optional(this.scope);
     }
     /**
      * Optional weight of the ECMP scope - if provided.

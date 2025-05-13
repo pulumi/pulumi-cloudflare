@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWebAnalyticsSiteResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -30,7 +30,7 @@ public final class GetWebAnalyticsSiteResult {
     private String created;
     private @Nullable GetWebAnalyticsSiteFilter filter;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -41,7 +41,7 @@ public final class GetWebAnalyticsSiteResult {
     private List<GetWebAnalyticsSiteRule> rules;
     private GetWebAnalyticsSiteRuleset ruleset;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String siteId;
@@ -63,7 +63,7 @@ public final class GetWebAnalyticsSiteResult {
 
     private GetWebAnalyticsSiteResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -83,7 +83,7 @@ public final class GetWebAnalyticsSiteResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -100,7 +100,7 @@ public final class GetWebAnalyticsSiteResult {
         return this.ruleset;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> siteId() {

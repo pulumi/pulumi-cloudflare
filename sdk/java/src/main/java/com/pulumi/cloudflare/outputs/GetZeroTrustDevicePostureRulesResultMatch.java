@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDevicePostureRulesResultMatch {
     /**
-     * @return Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
+     * @return Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     private String platform;
 
     private GetZeroTrustDevicePostureRulesResultMatch() {}
     /**
-     * @return Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;.
+     * @return Available values: &#34;windows&#34;, &#34;mac&#34;, &#34;linux&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     public String platform() {

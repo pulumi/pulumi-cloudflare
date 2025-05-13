@@ -97,9 +97,6 @@ namespace Pulumi.Cloudflare
         [Output("uploadedOn")]
         public Output<string> UploadedOn { get; private set; } = null!;
 
-        /// <summary>
-        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-        /// </summary>
         [Output("validityPeriodDays")]
         public Output<int?> ValidityPeriodDays { get; private set; } = null!;
 
@@ -152,9 +149,6 @@ namespace Pulumi.Cloudflare
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
-        /// <summary>
-        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-        /// </summary>
         [Input("validityPeriodDays")]
         public Input<int>? ValidityPeriodDays { get; set; }
 
@@ -225,9 +219,6 @@ namespace Pulumi.Cloudflare
         [Input("uploadedOn")]
         public Input<string>? UploadedOn { get; set; }
 
-        /// <summary>
-        /// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-        /// </summary>
         [Input("validityPeriodDays")]
         public Input<int>? ValidityPeriodDays { get; set; }
 

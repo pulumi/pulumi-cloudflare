@@ -43,6 +43,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        /// <summary>
         /// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
         /// </summary>
         [Input("virtualNetworkId")]

@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetLeakedCredentialCheckRulesResult {
     /**
-     * @return The unique ID for this custom detection
+     * @return Defines the unique ID for this custom detection.
      * 
      */
     private String id;
     /**
-     * @return The ruleset expression to use in matching the password in a request
+     * @return Defines ehe ruleset expression to use in matching the password in a request.
      * 
      */
     private String password;
     /**
-     * @return The ruleset expression to use in matching the username in a request
+     * @return Defines the ruleset expression to use in matching the username in a request.
      * 
      */
     private String username;
 
     private GetLeakedCredentialCheckRulesResult() {}
     /**
-     * @return The unique ID for this custom detection
+     * @return Defines the unique ID for this custom detection.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The ruleset expression to use in matching the password in a request
+     * @return Defines ehe ruleset expression to use in matching the password in a request.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return The ruleset expression to use in matching the username in a request
+     * @return Defines the ruleset expression to use in matching the username in a request.
      * 
      */
     public String username() {

@@ -63,7 +63,7 @@ export class ApiShieldSchemaValidationSettings extends pulumi.CustomResource {
      */
     public readonly validationOverrideMitigationAction!: pulumi.Output<string | undefined>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -115,7 +115,7 @@ export interface ApiShieldSchemaValidationSettingsState {
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -135,7 +135,7 @@ export interface ApiShieldSchemaValidationSettingsArgs {
      */
     validationOverrideMitigationAction?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

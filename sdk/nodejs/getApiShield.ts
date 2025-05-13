@@ -36,7 +36,7 @@ export interface GetApiShieldArgs {
      */
     properties?: string[];
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -55,7 +55,7 @@ export interface GetApiShieldResult {
      */
     readonly properties?: string[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -89,7 +89,7 @@ export interface GetApiShieldOutputArgs {
      */
     properties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

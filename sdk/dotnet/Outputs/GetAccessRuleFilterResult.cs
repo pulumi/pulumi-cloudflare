@@ -15,12 +15,12 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly Outputs.GetAccessRuleFilterConfigurationResult? Configuration;
         /// <summary>
-        /// The direction used to sort returned rules.
+        /// Defines the direction used to sort returned rules.
         /// Available values: "asc", "desc".
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        /// Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
         /// Available values: "any", "all".
         /// </summary>
         public readonly string Match;
@@ -30,12 +30,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// The string to search for in the notes of existing IP Access rules.
+        /// Defines the string to search for in the notes of existing IP Access rules.
         /// Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
         /// </summary>
         public readonly string? Notes;
         /// <summary>
-        /// The field used to sort returned rules.
+        /// Defines the field used to sort returned rules.
         /// Available values: "configuration.target", "configuration.value", "mode".
         /// </summary>
         public readonly string? Order;

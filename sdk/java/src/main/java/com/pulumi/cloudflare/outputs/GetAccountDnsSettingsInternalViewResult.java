@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountDnsSettingsInternalViewResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String accountId;
@@ -26,7 +26,7 @@ public final class GetAccountDnsSettingsInternalViewResult {
     private String createdTime;
     private @Nullable GetAccountDnsSettingsInternalViewFilter filter;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -41,7 +41,7 @@ public final class GetAccountDnsSettingsInternalViewResult {
      */
     private String name;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String viewId;
@@ -53,7 +53,7 @@ public final class GetAccountDnsSettingsInternalViewResult {
 
     private GetAccountDnsSettingsInternalViewResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -70,7 +70,7 @@ public final class GetAccountDnsSettingsInternalViewResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -91,7 +91,7 @@ public final class GetAccountDnsSettingsInternalViewResult {
         return this.name;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> viewId() {

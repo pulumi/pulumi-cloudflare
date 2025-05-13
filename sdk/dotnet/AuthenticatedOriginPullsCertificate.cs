@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Certificate { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("certificateId")]
         public Output<string> CertificateId { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
         public Output<string> UploadedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Certificate { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UploadedOn { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

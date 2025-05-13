@@ -98,14 +98,14 @@ public class MagicTransitSiteWan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="staticAddressing", refs={MagicTransitSiteWanStaticAddressing.class}, tree="[0]")
-    private Output<MagicTransitSiteWanStaticAddressing> staticAddressing;
+    private Output</* @Nullable */ MagicTransitSiteWanStaticAddressing> staticAddressing;
 
     /**
      * @return (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
      * 
      */
-    public Output<MagicTransitSiteWanStaticAddressing> staticAddressing() {
-        return this.staticAddressing;
+    public Output<Optional<MagicTransitSiteWanStaticAddressing>> staticAddressing() {
+        return Codegen.optional(this.staticAddressing);
     }
     /**
      * VLAN ID. Use zero for untagged.

@@ -71,9 +71,9 @@ type LookupZeroTrustRiskScoringIntegrationResult struct {
 	// Should be set to the Access-Okta IDP integration ID.
 	// Useful when the risk-score integration needs to be associated with a secondary asset and recalled using that ID.
 	ReferenceId string `pulumi:"referenceId"`
-	// The base URL for the tenant. E.g. "https://tenant.okta.com"
+	// The base URL for the tenant. E.g. "https://tenant.okta.com".
 	TenantUrl string `pulumi:"tenantUrl"`
-	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+	// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
 	WellKnownUrl string `pulumi:"wellKnownUrl"`
 }
 
@@ -151,12 +151,12 @@ func (o LookupZeroTrustRiskScoringIntegrationResultOutput) ReferenceId() pulumi.
 	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) string { return v.ReferenceId }).(pulumi.StringOutput)
 }
 
-// The base URL for the tenant. E.g. "https://tenant.okta.com"
+// The base URL for the tenant. E.g. "https://tenant.okta.com".
 func (o LookupZeroTrustRiskScoringIntegrationResultOutput) TenantUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) string { return v.TenantUrl }).(pulumi.StringOutput)
 }
 
-// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+// The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
 func (o LookupZeroTrustRiskScoringIntegrationResultOutput) WellKnownUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustRiskScoringIntegrationResult) string { return v.WellKnownUrl }).(pulumi.StringOutput)
 }

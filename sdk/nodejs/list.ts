@@ -54,7 +54,7 @@ export class List extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export class List extends pulumi.CustomResource {
  */
 export interface ListState {
     /**
-     * Identifier
+     * Defines an identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -177,7 +177,7 @@ export interface ListState {
  */
 export interface ListArgs {
     /**
-     * Identifier
+     * Defines an identifier.
      */
     accountId: pulumi.Input<string>;
     /**

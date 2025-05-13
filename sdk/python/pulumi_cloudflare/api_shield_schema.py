@@ -33,7 +33,7 @@ class ApiShieldSchemaArgs:
         :param pulumi.Input[builtins.str] file: Schema file bytes
         :param pulumi.Input[builtins.str] kind: Kind of schema
                Available values: "openapi_v3".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] name: Name of the schema
         :param pulumi.Input[builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
@@ -77,7 +77,7 @@ class ApiShieldSchemaArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -142,7 +142,7 @@ class _ApiShieldSchemaState:
         :param pulumi.Input[builtins.str] source: Source of the schema
         :param pulumi.Input[builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -267,7 +267,7 @@ class _ApiShieldSchemaState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -298,7 +298,7 @@ class ApiShieldSchema(pulumi.CustomResource):
 
         example_api_shield_schema = cloudflare.ApiShieldSchema("example_api_shield_schema",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            file="file.txt",
+            file=None,
             kind="openapi_v3",
             name="petstore schema",
             validation_enabled="true")
@@ -312,7 +312,7 @@ class ApiShieldSchema(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Name of the schema
         :param pulumi.Input[builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -329,7 +329,7 @@ class ApiShieldSchema(pulumi.CustomResource):
 
         example_api_shield_schema = cloudflare.ApiShieldSchema("example_api_shield_schema",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-            file="file.txt",
+            file=None,
             kind="openapi_v3",
             name="petstore schema",
             validation_enabled="true")
@@ -415,7 +415,7 @@ class ApiShieldSchema(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] source: Source of the schema
         :param pulumi.Input[builtins.str] validation_enabled: Flag whether schema is enabled for validation.
                Available values: "true", "false".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -499,7 +499,7 @@ class ApiShieldSchema(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

@@ -30,6 +30,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsBisoAdminControls? BisoAdminControls;
         /// <summary>
+        /// Custom block page settings. If missing/null, blocking will use the the account settings.
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsBlockPage? BlockPage;
+        /// <summary>
         /// Enable the custom block page.
         /// </summary>
         public readonly bool? BlockPageEnabled;
@@ -120,6 +124,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsRuleRuleSettingsBisoAdminControls? bisoAdminControls,
 
+            Outputs.TeamsRuleRuleSettingsBlockPage? blockPage,
+
             bool? blockPageEnabled,
 
             string? blockReason,
@@ -164,6 +170,7 @@ namespace Pulumi.Cloudflare.Outputs
             AllowChildBypass = allowChildBypass;
             AuditSsh = auditSsh;
             BisoAdminControls = bisoAdminControls;
+            BlockPage = blockPage;
             BlockPageEnabled = blockPageEnabled;
             BlockReason = blockReason;
             BypassParentRule = bypassParentRule;

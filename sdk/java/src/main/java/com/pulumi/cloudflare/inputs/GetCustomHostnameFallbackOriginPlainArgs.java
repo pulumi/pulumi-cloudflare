@@ -14,14 +14,14 @@ public final class GetCustomHostnameFallbackOriginPlainArgs extends com.pulumi.r
     public static final GetCustomHostnameFallbackOriginPlainArgs Empty = new GetCustomHostnameFallbackOriginPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetCustomHostnameFallbackOriginPlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

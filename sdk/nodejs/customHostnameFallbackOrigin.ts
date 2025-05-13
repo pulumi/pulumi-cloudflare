@@ -73,7 +73,7 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -142,7 +142,7 @@ export interface CustomHostnameFallbackOriginState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -156,7 +156,7 @@ export interface CustomHostnameFallbackOriginArgs {
      */
     origin: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

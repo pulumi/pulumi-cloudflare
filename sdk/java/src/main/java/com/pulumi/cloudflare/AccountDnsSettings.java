@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -24,24 +25,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/accountDnsSettings:AccountDnsSettings")
 public class AccountDnsSettings extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     @Export(name="zoneDefaults", refs={AccountDnsSettingsZoneDefaults.class}, tree="[0]")
-    private Output<AccountDnsSettingsZoneDefaults> zoneDefaults;
+    private Output</* @Nullable */ AccountDnsSettingsZoneDefaults> zoneDefaults;
 
-    public Output<AccountDnsSettingsZoneDefaults> zoneDefaults() {
-        return this.zoneDefaults;
+    public Output<Optional<AccountDnsSettingsZoneDefaults>> zoneDefaults() {
+        return Codegen.optional(this.zoneDefaults);
     }
 
     /**

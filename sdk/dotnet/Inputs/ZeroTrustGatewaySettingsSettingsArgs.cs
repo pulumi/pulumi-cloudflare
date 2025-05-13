@@ -67,6 +67,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewaySettingsSettingsFipsArgs>? Fips { get; set; }
 
         /// <summary>
+        /// Setting to enable host selector in egress policies.
+        /// </summary>
+        [Input("hostSelector")]
+        public Input<Inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs>? HostSelector { get; set; }
+
+        /// <summary>
         /// Protocol Detection settings.
         /// </summary>
         [Input("protocolDetection")]

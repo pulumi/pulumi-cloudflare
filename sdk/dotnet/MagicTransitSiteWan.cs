@@ -53,7 +53,7 @@ namespace Pulumi.Cloudflare
         /// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         /// </summary>
         [Output("staticAddressing")]
-        public Output<Outputs.MagicTransitSiteWanStaticAddressing> StaticAddressing { get; private set; } = null!;
+        public Output<Outputs.MagicTransitSiteWanStaticAddressing?> StaticAddressing { get; private set; } = null!;
 
         /// <summary>
         /// VLAN ID. Use zero for untagged.

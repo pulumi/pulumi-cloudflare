@@ -56,14 +56,14 @@ public final class ApiShieldSchemaSchemaArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="schemaId")
     private @Nullable Output<String> schemaId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> schemaId() {
@@ -183,7 +183,7 @@ public final class ApiShieldSchemaSchemaArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param schemaId UUID
+         * @param schemaId UUID.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ApiShieldSchemaSchemaArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param schemaId UUID
+         * @param schemaId UUID.
          * 
          * @return builder
          * 

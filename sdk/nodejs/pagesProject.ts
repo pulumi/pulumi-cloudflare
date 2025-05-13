@@ -54,7 +54,7 @@ export class PagesProject extends pulumi.CustomResource {
     /**
      * Configs for the project build process.
      */
-    public readonly buildConfig!: pulumi.Output<outputs.PagesProjectBuildConfig>;
+    public readonly buildConfig!: pulumi.Output<outputs.PagesProjectBuildConfig | undefined>;
     /**
      * Most recent deployment to the repo.
      */
@@ -66,7 +66,7 @@ export class PagesProject extends pulumi.CustomResource {
     /**
      * Configs for deployments in a project.
      */
-    public readonly deploymentConfigs!: pulumi.Output<outputs.PagesProjectDeploymentConfigs>;
+    public readonly deploymentConfigs!: pulumi.Output<outputs.PagesProjectDeploymentConfigs | undefined>;
     /**
      * A list of associated custom domains for the project.
      */
@@ -83,7 +83,7 @@ export class PagesProject extends pulumi.CustomResource {
      * Production branch of the project. Used to identify production deployments.
      */
     public readonly productionBranch!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly source!: pulumi.Output<outputs.PagesProjectSource>;
+    public readonly source!: pulumi.Output<outputs.PagesProjectSource | undefined>;
     /**
      * The Cloudflare subdomain associated with the project.
      */
@@ -126,11 +126,11 @@ export class PagesProject extends pulumi.CustomResource {
             resourceInputs["deploymentConfigs"] = args ? args.deploymentConfigs : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["productionBranch"] = args ? args.productionBranch : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["canonicalDeployment"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["domains"] = undefined /*out*/;
             resourceInputs["latestDeployment"] = undefined /*out*/;
-            resourceInputs["source"] = undefined /*out*/;
             resourceInputs["subdomain"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -209,4 +209,5 @@ export interface PagesProjectArgs {
      * Production branch of the project. Used to identify production deployments.
      */
     productionBranch?: pulumi.Input<string>;
+    source?: pulumi.Input<inputs.PagesProjectSource>;
 }

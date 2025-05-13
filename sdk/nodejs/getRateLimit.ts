@@ -32,11 +32,11 @@ export function getRateLimit(args: GetRateLimitArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetRateLimitArgs {
     /**
-     * The unique identifier of the rate limit.
+     * Defines the unique identifier of the rate limit.
      */
     rateLimitId?: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -62,7 +62,7 @@ export interface GetRateLimitResult {
      */
     readonly disabled: boolean;
     /**
-     * The unique identifier of the rate limit.
+     * Defines the unique identifier of the rate limit.
      */
     readonly id: string;
     /**
@@ -74,7 +74,7 @@ export interface GetRateLimitResult {
      */
     readonly period: number;
     /**
-     * The unique identifier of the rate limit.
+     * Defines the unique identifier of the rate limit.
      */
     readonly rateLimitId?: string;
     /**
@@ -82,7 +82,7 @@ export interface GetRateLimitResult {
      */
     readonly threshold: number;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -112,11 +112,11 @@ export function getRateLimitOutput(args: GetRateLimitOutputArgs, opts?: pulumi.I
  */
 export interface GetRateLimitOutputArgs {
     /**
-     * The unique identifier of the rate limit.
+     * Defines the unique identifier of the rate limit.
      */
     rateLimitId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

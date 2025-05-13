@@ -14,14 +14,14 @@ public final class GetR2BucketLifecyclePlainArgs extends com.pulumi.resources.In
     public static final GetR2BucketLifecyclePlainArgs Empty = new GetR2BucketLifecyclePlainArgs();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public String accountId() {
@@ -29,14 +29,14 @@ public final class GetR2BucketLifecyclePlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName", required=true)
     private String bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public String bucketName() {
@@ -69,7 +69,7 @@ public final class GetR2BucketLifecyclePlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetR2BucketLifecyclePlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 

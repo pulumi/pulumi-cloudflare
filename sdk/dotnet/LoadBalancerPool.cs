@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
         /// A human-readable description of the pool.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
         /// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         /// </summary>
         [Output("notificationEmail")]
-        public Output<string?> NotificationEmail { get; private set; } = null!;
+        public Output<string> NotificationEmail { get; private set; } = null!;
 
         /// <summary>
         /// Filter pool and origin health notifications by resource type or health status. Use null to reset.

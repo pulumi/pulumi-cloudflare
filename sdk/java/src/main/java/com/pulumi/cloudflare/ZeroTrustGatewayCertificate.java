@@ -194,17 +194,9 @@ public class ZeroTrustGatewayCertificate extends com.pulumi.resources.CustomReso
     public Output<String> uploadedOn() {
         return this.uploadedOn;
     }
-    /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-     * 
-     */
     @Export(name="validityPeriodDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> validityPeriodDays;
 
-    /**
-     * @return Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-     * 
-     */
     public Output<Optional<Integer>> validityPeriodDays() {
         return Codegen.optional(this.validityPeriodDays);
     }

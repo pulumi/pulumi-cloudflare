@@ -65,7 +65,7 @@ export class ZeroTrustGatewayLogging extends pulumi.CustomResource {
     /**
      * Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      */
-    public readonly redactPii!: pulumi.Output<boolean | undefined>;
+    public readonly redactPii!: pulumi.Output<boolean>;
     /**
      * Logging settings by rule type.
      */

@@ -25,7 +25,7 @@ public final class ApiShieldSchemaSchema {
      */
     private @Nullable String name;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private @Nullable String schemaId;
@@ -60,7 +60,7 @@ public final class ApiShieldSchemaSchema {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> schemaId() {

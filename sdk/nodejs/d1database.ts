@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -78,6 +80,10 @@ export class D1Database extends pulumi.CustomResource {
      */
     public readonly primaryLocationHint!: pulumi.Output<string | undefined>;
     /**
+     * Configuration for D1 read replication.
+     */
+    public readonly readReplication!: pulumi.Output<outputs.D1DatabaseReadReplication | undefined>;
+    /**
      * D1 database identifier (UUID).
      */
     public /*out*/ readonly uuid!: pulumi.Output<string>;
@@ -102,6 +108,7 @@ export class D1Database extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["numTables"] = state ? state.numTables : undefined;
             resourceInputs["primaryLocationHint"] = state ? state.primaryLocationHint : undefined;
+            resourceInputs["readReplication"] = state ? state.readReplication : undefined;
             resourceInputs["uuid"] = state ? state.uuid : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
@@ -115,6 +122,7 @@ export class D1Database extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["primaryLocationHint"] = args ? args.primaryLocationHint : undefined;
+            resourceInputs["readReplication"] = args ? args.readReplication : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["fileSize"] = undefined /*out*/;
             resourceInputs["numTables"] = undefined /*out*/;
@@ -153,6 +161,10 @@ export interface D1DatabaseState {
      */
     primaryLocationHint?: pulumi.Input<string>;
     /**
+     * Configuration for D1 read replication.
+     */
+    readReplication?: pulumi.Input<inputs.D1DatabaseReadReplication>;
+    /**
      * D1 database identifier (UUID).
      */
     uuid?: pulumi.Input<string>;
@@ -176,4 +188,8 @@ export interface D1DatabaseArgs {
      * Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
      */
     primaryLocationHint?: pulumi.Input<string>;
+    /**
+     * Configuration for D1 read replication.
+     */
+    readReplication?: pulumi.Input<inputs.D1DatabaseReadReplication>;
 }

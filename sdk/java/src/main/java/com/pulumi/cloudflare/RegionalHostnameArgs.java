@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArgs {
@@ -45,14 +47,29 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Identifier
+     * Configure which routing method to use for the regional hostname
+     * 
+     */
+    @Import(name="routing")
+    private @Nullable Output<String> routing;
+
+    /**
+     * @return Configure which routing method to use for the regional hostname
+     * 
+     */
+    public Optional<Output<String>> routing() {
+        return Optional.ofNullable(this.routing);
+    }
+
+    /**
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -64,6 +81,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
     private RegionalHostnameArgs(RegionalHostnameArgs $) {
         this.hostname = $.hostname;
         this.regionKey = $.regionKey;
+        this.routing = $.routing;
         this.zoneId = $.zoneId;
     }
 
@@ -128,7 +146,28 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param routing Configure which routing method to use for the regional hostname
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routing(@Nullable Output<String> routing) {
+            $.routing = routing;
+            return this;
+        }
+
+        /**
+         * @param routing Configure which routing method to use for the regional hostname
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routing(String routing) {
+            return routing(Output.of(routing));
+        }
+
+        /**
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -139,7 +178,7 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountDnsSettingsInternalViewArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetAccountDnsSettingsInternalViewFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("viewId")]
         public string? ViewId { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountDnsSettingsInternalViewInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetAccountDnsSettingsInternalViewFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("viewId")]
         public Input<string>? ViewId { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountDnsSettingsInternalViewResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
         public readonly string CreatedTime;
         public readonly Outputs.GetAccountDnsSettingsInternalViewFilterResult? Filter;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -154,7 +154,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? ViewId;
         /// <summary>

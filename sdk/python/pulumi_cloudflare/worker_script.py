@@ -930,7 +930,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bindings(self) -> pulumi.Output[Sequence['outputs.WorkerScriptBinding']]:
+    def bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptBinding']]]:
         """
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
@@ -1034,7 +1034,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def migrations(self) -> pulumi.Output['outputs.WorkerScriptMigrations']:
+    def migrations(self) -> pulumi.Output[Optional['outputs.WorkerScriptMigrations']]:
         """
         Migrations to apply for Durable Objects associated with this Worker.
         """
@@ -1050,7 +1050,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def observability(self) -> pulumi.Output['outputs.WorkerScriptObservability']:
+    def observability(self) -> pulumi.Output[Optional['outputs.WorkerScriptObservability']]:
         """
         Observability settings for the Worker.
         """
@@ -1058,7 +1058,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def placement(self) -> pulumi.Output['outputs.WorkerScriptPlacement']:
+    def placement(self) -> pulumi.Output[Optional['outputs.WorkerScriptPlacement']]:
         """
         Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         """
@@ -1079,7 +1079,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tailConsumers")
-    def tail_consumers(self) -> pulumi.Output[Sequence['outputs.WorkerScriptTailConsumer']]:
+    def tail_consumers(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptTailConsumer']]]:
         """
         List of Workers that will consume logs from the attached Worker.
         """

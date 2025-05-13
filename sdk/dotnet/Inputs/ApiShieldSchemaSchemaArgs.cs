@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("schemaId")]
         public Input<string>? SchemaId { get; set; }

@@ -24,7 +24,7 @@ public final class GetR2BucketCorsRule {
      */
     private List<String> exposeHeaders;
     /**
-     * @return Identifier for this rule
+     * @return Identifier for this rule.
      * 
      */
     private String id;
@@ -50,7 +50,7 @@ public final class GetR2BucketCorsRule {
         return this.exposeHeaders;
     }
     /**
-     * @return Identifier for this rule
+     * @return Identifier for this rule.
      * 
      */
     public String id() {

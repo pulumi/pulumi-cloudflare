@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("certificateId")]
         public string? CertificateId { get; set; }
@@ -99,7 +99,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Certificate;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? CertificateId;
         /// <summary>
@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>

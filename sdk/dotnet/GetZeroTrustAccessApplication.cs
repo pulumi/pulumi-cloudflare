@@ -156,6 +156,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool AllowAuthenticateViaWarp;
         /// <summary>
+        /// Enables loading application content in an iFrame.
+        /// </summary>
+        public readonly bool AllowIframe;
+        /// <summary>
         /// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         /// </summary>
         public readonly ImmutableArray<string> AllowedIdps;
@@ -311,6 +315,8 @@ namespace Pulumi.Cloudflare
 
             bool allowAuthenticateViaWarp,
 
+            bool allowIframe,
+
             ImmutableArray<string> allowedIdps,
 
             string? appId,
@@ -395,6 +401,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             AllowAuthenticateViaWarp = allowAuthenticateViaWarp;
+            AllowIframe = allowIframe;
             AllowedIdps = allowedIdps;
             AppId = appId;
             AppLauncherLogoUrl = appLauncherLogoUrl;

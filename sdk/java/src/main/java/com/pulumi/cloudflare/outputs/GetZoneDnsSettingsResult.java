@@ -61,7 +61,7 @@ public final class GetZoneDnsSettingsResult {
      */
     private GetZoneDnsSettingsSoa soa;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -137,7 +137,7 @@ public final class GetZoneDnsSettingsResult {
         return this.soa;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

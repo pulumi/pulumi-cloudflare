@@ -13,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -85,14 +84,14 @@ public class ZeroTrustGatewayLogging extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="redactPii", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> redactPii;
+    private Output<Boolean> redactPii;
 
     /**
      * @return Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
      * 
      */
-    public Output<Optional<Boolean>> redactPii() {
-        return Codegen.optional(this.redactPii);
+    public Output<Boolean> redactPii() {
+        return this.redactPii;
     }
     /**
      * Logging settings by rule type.

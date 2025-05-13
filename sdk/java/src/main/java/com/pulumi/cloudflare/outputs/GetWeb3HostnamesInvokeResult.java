@@ -31,7 +31,7 @@ public final class GetWeb3HostnamesInvokeResult {
      */
     private List<GetWeb3HostnamesResult> results;
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     private String zoneId;
@@ -59,7 +59,7 @@ public final class GetWeb3HostnamesInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public String zoneId() {

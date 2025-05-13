@@ -60,11 +60,11 @@ export class ApiShieldOperationSchemaValidationSettings extends pulumi.CustomRes
      */
     public readonly mitigationAction!: pulumi.Output<string | undefined>;
     /**
-     * UUID
+     * UUID.
      */
     public readonly operationId!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -113,11 +113,11 @@ export interface ApiShieldOperationSchemaValidationSettingsState {
      */
     mitigationAction?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     operationId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -134,11 +134,11 @@ export interface ApiShieldOperationSchemaValidationSettingsArgs {
      */
     mitigationAction?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     operationId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

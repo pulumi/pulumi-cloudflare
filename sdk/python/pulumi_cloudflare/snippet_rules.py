@@ -266,7 +266,7 @@ class SnippetRules(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Sequence['outputs.SnippetRulesRule']]:
+    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.SnippetRulesRule']]]:
         """
         List of snippet rules
         """

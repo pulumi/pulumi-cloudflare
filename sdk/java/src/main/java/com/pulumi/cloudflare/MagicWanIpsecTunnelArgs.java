@@ -101,21 +101,6 @@ public final class MagicWanIpsecTunnelArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Identifier
-     * 
-     */
-    @Import(name="ipsecTunnelId")
-    private @Nullable Output<String> ipsecTunnelId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> ipsecTunnelId() {
-        return Optional.ofNullable(this.ipsecTunnelId);
-    }
-
-    /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      * 
      */
@@ -169,7 +154,6 @@ public final class MagicWanIpsecTunnelArgs extends com.pulumi.resources.Resource
         this.description = $.description;
         this.healthCheck = $.healthCheck;
         this.interfaceAddress = $.interfaceAddress;
-        this.ipsecTunnelId = $.ipsecTunnelId;
         this.name = $.name;
         this.psk = $.psk;
         this.replayProtection = $.replayProtection;
@@ -305,27 +289,6 @@ public final class MagicWanIpsecTunnelArgs extends com.pulumi.resources.Resource
          */
         public Builder interfaceAddress(String interfaceAddress) {
             return interfaceAddress(Output.of(interfaceAddress));
-        }
-
-        /**
-         * @param ipsecTunnelId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipsecTunnelId(@Nullable Output<String> ipsecTunnelId) {
-            $.ipsecTunnelId = ipsecTunnelId;
-            return this;
-        }
-
-        /**
-         * @param ipsecTunnelId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipsecTunnelId(String ipsecTunnelId) {
-            return ipsecTunnelId(Output.of(ipsecTunnelId));
         }
 
         /**

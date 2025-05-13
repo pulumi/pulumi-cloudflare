@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetR2BucketSippySourceResult
     {
         /// <summary>
-        /// Name of the bucket on the provider
+        /// Name of the bucket on the provider.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Provider;
         /// <summary>
-        /// Region where the bucket resides (AWS only)
+        /// Region where the bucket resides (AWS only).
         /// </summary>
         public readonly string Region;
 

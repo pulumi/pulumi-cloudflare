@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Field to order zones by.
-        /// Available values: "name", "status", "account.id", "account.name".
+        /// Available values: "name", "status", "account.id", "account.name", "plan.id".
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }

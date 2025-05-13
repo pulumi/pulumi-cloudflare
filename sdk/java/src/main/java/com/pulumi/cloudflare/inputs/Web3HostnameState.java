@@ -23,14 +23,14 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional description of the hostname.
+     * Specify an optional description of the hostname.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An optional description of the hostname.
+     * @return Specify an optional description of the hostname.
      * 
      */
     public Optional<Output<String>> description() {
@@ -38,14 +38,14 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * DNSLink value used if the target is ipfs.
+     * Specify the DNSLink value used if the target is ipfs.
      * 
      */
     @Import(name="dnslink")
     private @Nullable Output<String> dnslink;
 
     /**
-     * @return DNSLink value used if the target is ipfs.
+     * @return Specify the DNSLink value used if the target is ipfs.
      * 
      */
     public Optional<Output<String>> dnslink() {
@@ -60,14 +60,14 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The hostname that will point to the target gateway via CNAME.
+     * Specify the hostname that points to the target gateway via CNAME.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The hostname that will point to the target gateway via CNAME.
+     * @return Specify the hostname that points to the target gateway via CNAME.
      * 
      */
     public Optional<Output<String>> name() {
@@ -75,7 +75,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of the hostname&#39;s activation.
+     * Specifies the status of the hostname&#39;s activation.
      * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
@@ -83,7 +83,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> status;
 
     /**
-     * @return Status of the hostname&#39;s activation.
+     * @return Specifies the status of the hostname&#39;s activation.
      * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
      * 
      */
@@ -92,7 +92,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Target gateway of the hostname.
+     * Specify the target gateway of the hostname.
      * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
@@ -100,7 +100,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> target;
 
     /**
-     * @return Target gateway of the hostname.
+     * @return Specify the target gateway of the hostname.
      * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
      * 
      */
@@ -109,14 +109,14 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -164,7 +164,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of the hostname.
+         * @param description Specify an optional description of the hostname.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An optional description of the hostname.
+         * @param description Specify an optional description of the hostname.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnslink DNSLink value used if the target is ipfs.
+         * @param dnslink Specify the DNSLink value used if the target is ipfs.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnslink DNSLink value used if the target is ipfs.
+         * @param dnslink Specify the DNSLink value used if the target is ipfs.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The hostname that will point to the target gateway via CNAME.
+         * @param name Specify the hostname that points to the target gateway via CNAME.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The hostname that will point to the target gateway via CNAME.
+         * @param name Specify the hostname that points to the target gateway via CNAME.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of the hostname&#39;s activation.
+         * @param status Specifies the status of the hostname&#39;s activation.
          * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
          * 
          * @return builder
@@ -248,7 +248,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Status of the hostname&#39;s activation.
+         * @param status Specifies the status of the hostname&#39;s activation.
          * Available values: &#34;active&#34;, &#34;pending&#34;, &#34;deleting&#34;, &#34;error&#34;.
          * 
          * @return builder
@@ -259,7 +259,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target Target gateway of the hostname.
+         * @param target Specify the target gateway of the hostname.
          * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
          * 
          * @return builder
@@ -271,7 +271,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target Target gateway of the hostname.
+         * @param target Specify the target gateway of the hostname.
          * Available values: &#34;ethereum&#34;, &#34;ipfs&#34;, &#34;ipfs*universal*path&#34;.
          * 
          * @return builder
@@ -282,7 +282,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specify the identifier of the hostname.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class Web3HostnameState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specify the identifier of the hostname.
          * 
          * @return builder
          * 

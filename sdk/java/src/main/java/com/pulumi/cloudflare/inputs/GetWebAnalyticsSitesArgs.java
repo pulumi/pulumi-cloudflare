@@ -18,14 +18,14 @@ public final class GetWebAnalyticsSitesArgs extends com.pulumi.resources.InvokeA
     public static final GetWebAnalyticsSitesArgs Empty = new GetWebAnalyticsSitesArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -91,7 +91,7 @@ public final class GetWebAnalyticsSitesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetWebAnalyticsSitesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

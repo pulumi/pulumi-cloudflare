@@ -66,6 +66,7 @@ export interface GetHyperdriveConfigResult {
      * When the Hyperdrive configuration was last modified.
      */
     readonly modifiedOn: string;
+    readonly mtls: outputs.GetHyperdriveConfigMtls;
     readonly name: string;
     readonly origin: outputs.GetHyperdriveConfigOrigin;
 }

@@ -29,13 +29,16 @@ class GetZeroTrustAccessApplicationResult:
     """
     A collection of values returned by getZeroTrustAccessApplication.
     """
-    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, allowed_idps=None, app_id=None, app_launcher_logo_url=None, app_launcher_visible=None, aud=None, auto_redirect_to_identity=None, bg_color=None, cors_headers=None, created_at=None, custom_deny_message=None, custom_deny_url=None, custom_non_identity_deny_url=None, custom_pages=None, destinations=None, domain=None, enable_binding_cookie=None, filter=None, footer_links=None, header_bg_color=None, http_only_cookie_attribute=None, id=None, landing_page_design=None, logo_url=None, name=None, options_preflight_bypass=None, path_cookie_attribute=None, policies=None, read_service_tokens_from_header=None, saas_app=None, same_site_cookie_attribute=None, scim_config=None, self_hosted_domains=None, service_auth401_redirect=None, session_duration=None, skip_app_launcher_login_page=None, skip_interstitial=None, tags=None, target_criterias=None, type=None, updated_at=None, zone_id=None):
+    def __init__(__self__, account_id=None, allow_authenticate_via_warp=None, allow_iframe=None, allowed_idps=None, app_id=None, app_launcher_logo_url=None, app_launcher_visible=None, aud=None, auto_redirect_to_identity=None, bg_color=None, cors_headers=None, created_at=None, custom_deny_message=None, custom_deny_url=None, custom_non_identity_deny_url=None, custom_pages=None, destinations=None, domain=None, enable_binding_cookie=None, filter=None, footer_links=None, header_bg_color=None, http_only_cookie_attribute=None, id=None, landing_page_design=None, logo_url=None, name=None, options_preflight_bypass=None, path_cookie_attribute=None, policies=None, read_service_tokens_from_header=None, saas_app=None, same_site_cookie_attribute=None, scim_config=None, self_hosted_domains=None, service_auth401_redirect=None, session_duration=None, skip_app_launcher_login_page=None, skip_interstitial=None, tags=None, target_criterias=None, type=None, updated_at=None, zone_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if allow_authenticate_via_warp and not isinstance(allow_authenticate_via_warp, bool):
             raise TypeError("Expected argument 'allow_authenticate_via_warp' to be a bool")
         pulumi.set(__self__, "allow_authenticate_via_warp", allow_authenticate_via_warp)
+        if allow_iframe and not isinstance(allow_iframe, bool):
+            raise TypeError("Expected argument 'allow_iframe' to be a bool")
+        pulumi.set(__self__, "allow_iframe", allow_iframe)
         if allowed_idps and not isinstance(allowed_idps, list):
             raise TypeError("Expected argument 'allowed_idps' to be a list")
         pulumi.set(__self__, "allowed_idps", allowed_idps)
@@ -175,6 +178,14 @@ class GetZeroTrustAccessApplicationResult:
         When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
+
+    @property
+    @pulumi.getter(name="allowIframe")
+    def allow_iframe(self) -> builtins.bool:
+        """
+        Enables loading application content in an iFrame.
+        """
+        return pulumi.get(self, "allow_iframe")
 
     @property
     @pulumi.getter(name="allowedIdps")
@@ -499,6 +510,7 @@ class AwaitableGetZeroTrustAccessApplicationResult(GetZeroTrustAccessApplication
         return GetZeroTrustAccessApplicationResult(
             account_id=self.account_id,
             allow_authenticate_via_warp=self.allow_authenticate_via_warp,
+            allow_iframe=self.allow_iframe,
             allowed_idps=self.allowed_idps,
             app_id=self.app_id,
             app_launcher_logo_url=self.app_launcher_logo_url,
@@ -575,6 +587,7 @@ def get_zero_trust_access_application(account_id: Optional[builtins.str] = None,
     return AwaitableGetZeroTrustAccessApplicationResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         allow_authenticate_via_warp=pulumi.get(__ret__, 'allow_authenticate_via_warp'),
+        allow_iframe=pulumi.get(__ret__, 'allow_iframe'),
         allowed_idps=pulumi.get(__ret__, 'allowed_idps'),
         app_id=pulumi.get(__ret__, 'app_id'),
         app_launcher_logo_url=pulumi.get(__ret__, 'app_launcher_logo_url'),
@@ -648,6 +661,7 @@ def get_zero_trust_access_application_output(account_id: Optional[pulumi.Input[O
     return __ret__.apply(lambda __response__: GetZeroTrustAccessApplicationResult(
         account_id=pulumi.get(__response__, 'account_id'),
         allow_authenticate_via_warp=pulumi.get(__response__, 'allow_authenticate_via_warp'),
+        allow_iframe=pulumi.get(__response__, 'allow_iframe'),
         allowed_idps=pulumi.get(__response__, 'allowed_idps'),
         app_id=pulumi.get(__response__, 'app_id'),
         app_launcher_logo_url=pulumi.get(__response__, 'app_launcher_logo_url'),

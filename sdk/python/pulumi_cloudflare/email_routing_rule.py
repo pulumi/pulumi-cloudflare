@@ -32,7 +32,7 @@ class EmailRoutingRuleArgs:
         The set of arguments for constructing a EmailRoutingRule resource.
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleActionArgs']]] actions: List actions patterns.
         :param pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleMatcherArgs']]] matchers: Matching patterns to forward to your actions.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.bool] enabled: Routing rule status.
         :param pulumi.Input[builtins.str] name: Routing rule name.
         :param pulumi.Input[builtins.float] priority: Priority of the routing rule.
@@ -75,7 +75,7 @@ class EmailRoutingRuleArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -138,7 +138,7 @@ class _EmailRoutingRuleState:
         :param pulumi.Input[builtins.str] name: Routing rule name.
         :param pulumi.Input[builtins.float] priority: Priority of the routing rule.
         :param pulumi.Input[builtins.str] tag: Routing rule tag. (Deprecated, replaced by routing rule identifier)
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -235,7 +235,7 @@ class _EmailRoutingRuleState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -273,7 +273,7 @@ class EmailRoutingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
         :param pulumi.Input[builtins.str] name: Routing rule name.
         :param pulumi.Input[builtins.float] priority: Priority of the routing rule.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -363,7 +363,7 @@ class EmailRoutingRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: Routing rule name.
         :param pulumi.Input[builtins.float] priority: Priority of the routing rule.
         :param pulumi.Input[builtins.str] tag: Routing rule tag. (Deprecated, replaced by routing rule identifier)
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -431,7 +431,7 @@ class EmailRoutingRule(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

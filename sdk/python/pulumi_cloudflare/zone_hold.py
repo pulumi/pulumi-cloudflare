@@ -25,7 +25,7 @@ class ZoneHoldArgs:
                  include_subdomains: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a ZoneHold resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] hold_after: If `hold_after` is provided and future-dated, the hold will be temporarily disabled,
                then automatically re-enabled by the system at the time specified
                in this RFC3339-formatted timestamp. A past-dated `hold_after` value will have
@@ -46,7 +46,7 @@ class ZoneHoldArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -104,7 +104,7 @@ class _ZoneHoldState:
                as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
                'example.com' and include_subdomains=true will block 'example.com',
                'staging.example.com', 'api.staging.example.com', etc.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if hold is not None:
             pulumi.set(__self__, "hold", hold)
@@ -159,7 +159,7 @@ class _ZoneHoldState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -205,7 +205,7 @@ class ZoneHold(pulumi.CustomResource):
                as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
                'example.com' and include_subdomains=true will block 'example.com',
                'staging.example.com', 'api.staging.example.com', etc.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -292,7 +292,7 @@ class ZoneHold(pulumi.CustomResource):
                as SSL4SaaS Custom Hostnames. For example, a zone hold on a zone with the hostname
                'example.com' and include_subdomains=true will block 'example.com',
                'staging.example.com', 'api.staging.example.com', etc.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -336,7 +336,7 @@ class ZoneHold(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

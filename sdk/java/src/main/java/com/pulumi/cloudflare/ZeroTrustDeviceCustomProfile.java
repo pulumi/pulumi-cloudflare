@@ -252,14 +252,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="excludes", refs={List.class,ZeroTrustDeviceCustomProfileExclude.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDeviceCustomProfileExclude>> excludes;
+    private Output</* @Nullable */ List<ZeroTrustDeviceCustomProfileExclude>> excludes;
 
     /**
      * @return List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
      * 
      */
-    public Output<List<ZeroTrustDeviceCustomProfileExclude>> excludes() {
-        return this.excludes;
+    public Output<Optional<List<ZeroTrustDeviceCustomProfileExclude>>> excludes() {
+        return Codegen.optional(this.excludes);
     }
     @Export(name="fallbackDomains", refs={List.class,ZeroTrustDeviceCustomProfileFallbackDomain.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceCustomProfileFallbackDomain>> fallbackDomains;
@@ -278,14 +278,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="includes", refs={List.class,ZeroTrustDeviceCustomProfileInclude.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDeviceCustomProfileInclude>> includes;
+    private Output</* @Nullable */ List<ZeroTrustDeviceCustomProfileInclude>> includes;
 
     /**
      * @return List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
      * 
      */
-    public Output<List<ZeroTrustDeviceCustomProfileInclude>> includes() {
-        return this.includes;
+    public Output<Optional<List<ZeroTrustDeviceCustomProfileInclude>>> includes() {
+        return Codegen.optional(this.includes);
     }
     /**
      * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
@@ -316,14 +316,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.lanAllowSubnetSize);
     }
     /**
-     * The wirefilter expression to match devices.
+     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output<String> match;
 
     /**
-     * @return The wirefilter expression to match devices.
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
      * 
      */
     public Output<String> match() {
@@ -378,10 +378,10 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.registerInterfaceIpWithDns);
     }
     @Export(name="serviceModeV2", refs={ZeroTrustDeviceCustomProfileServiceModeV2.class}, tree="[0]")
-    private Output<ZeroTrustDeviceCustomProfileServiceModeV2> serviceModeV2;
+    private Output</* @Nullable */ ZeroTrustDeviceCustomProfileServiceModeV2> serviceModeV2;
 
-    public Output<ZeroTrustDeviceCustomProfileServiceModeV2> serviceModeV2() {
-        return this.serviceModeV2;
+    public Output<Optional<ZeroTrustDeviceCustomProfileServiceModeV2>> serviceModeV2() {
+        return Codegen.optional(this.serviceModeV2);
     }
     /**
      * The URL to launch when the Send Feedback button is clicked.

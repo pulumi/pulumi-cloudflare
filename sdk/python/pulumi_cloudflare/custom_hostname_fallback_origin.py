@@ -25,7 +25,7 @@ class CustomHostnameFallbackOriginArgs:
         """
         The set of arguments for constructing a CustomHostnameFallbackOrigin resource.
         :param pulumi.Input[builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "origin", origin)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -46,7 +46,7 @@ class CustomHostnameFallbackOriginArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -72,7 +72,7 @@ class _CustomHostnameFallbackOriginState:
         :param pulumi.Input[builtins.str] status: Status of the fallback origin's activation.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[builtins.str] updated_at: This is the time the fallback origin was updated.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -152,7 +152,7 @@ class _CustomHostnameFallbackOriginState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -191,7 +191,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] origin: Your origin hostname that requests to your custom hostnames will be sent to.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -282,7 +282,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] status: Status of the fallback origin's activation.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[builtins.str] updated_at: This is the time the fallback origin was updated.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -341,7 +341,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

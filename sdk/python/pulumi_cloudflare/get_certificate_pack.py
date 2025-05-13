@@ -42,7 +42,7 @@ class GetCertificatePackResult:
     @pulumi.getter(name="certificatePackId")
     def certificate_pack_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "certificate_pack_id")
 
@@ -58,7 +58,7 @@ class GetCertificatePackResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -89,8 +89,8 @@ def get_certificate_pack(certificate_pack_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str certificate_pack_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str certificate_pack_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['certificatePackId'] = certificate_pack_id
@@ -117,8 +117,8 @@ def get_certificate_pack_output(certificate_pack_id: Optional[pulumi.Input[built
     ```
 
 
-    :param builtins.str certificate_pack_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str certificate_pack_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['certificatePackId'] = certificate_pack_id

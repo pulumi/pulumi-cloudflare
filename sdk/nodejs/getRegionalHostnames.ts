@@ -35,7 +35,7 @@ export interface GetRegionalHostnamesArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetRegionalHostnamesResult {
      */
     readonly results: outputs.GetRegionalHostnamesResult[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetRegionalHostnamesOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

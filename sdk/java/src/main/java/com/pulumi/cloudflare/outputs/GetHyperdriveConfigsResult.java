@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultCaching;
+import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultMtls;
 import com.pulumi.cloudflare.outputs.GetHyperdriveConfigsResultOrigin;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -28,6 +29,7 @@ public final class GetHyperdriveConfigsResult {
      * 
      */
     private String modifiedOn;
+    private GetHyperdriveConfigsResultMtls mtls;
     private String name;
     private GetHyperdriveConfigsResultOrigin origin;
 
@@ -56,6 +58,9 @@ public final class GetHyperdriveConfigsResult {
     public String modifiedOn() {
         return this.modifiedOn;
     }
+    public GetHyperdriveConfigsResultMtls mtls() {
+        return this.mtls;
+    }
     public String name() {
         return this.name;
     }
@@ -76,6 +81,7 @@ public final class GetHyperdriveConfigsResult {
         private String createdOn;
         private String id;
         private String modifiedOn;
+        private GetHyperdriveConfigsResultMtls mtls;
         private String name;
         private GetHyperdriveConfigsResultOrigin origin;
         public Builder() {}
@@ -85,6 +91,7 @@ public final class GetHyperdriveConfigsResult {
     	      this.createdOn = defaults.createdOn;
     	      this.id = defaults.id;
     	      this.modifiedOn = defaults.modifiedOn;
+    	      this.mtls = defaults.mtls;
     	      this.name = defaults.name;
     	      this.origin = defaults.origin;
         }
@@ -122,6 +129,14 @@ public final class GetHyperdriveConfigsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder mtls(GetHyperdriveConfigsResultMtls mtls) {
+            if (mtls == null) {
+              throw new MissingRequiredPropertyException("GetHyperdriveConfigsResult", "mtls");
+            }
+            this.mtls = mtls;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetHyperdriveConfigsResult", "name");
@@ -143,6 +158,7 @@ public final class GetHyperdriveConfigsResult {
             _resultValue.createdOn = createdOn;
             _resultValue.id = id;
             _resultValue.modifiedOn = modifiedOn;
+            _resultValue.mtls = mtls;
             _resultValue.name = name;
             _resultValue.origin = origin;
             return _resultValue;

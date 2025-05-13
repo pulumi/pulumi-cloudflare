@@ -49,13 +49,13 @@ namespace Pulumi.Cloudflare
         public Inputs.GetApiShieldOperationFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("operationId")]
         public string? OperationId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -84,13 +84,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetApiShieldOperationFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("operationId")]
         public Input<string>? OperationId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         public readonly string LastUpdated;
@@ -130,11 +130,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Method;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string OperationId;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

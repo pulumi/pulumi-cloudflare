@@ -66,13 +66,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Method { get; private set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Output("operationId")]
         public Output<string> OperationId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Method { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -182,13 +182,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Method { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         [Input("operationId")]
         public Input<string>? OperationId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -524,14 +524,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+     * A list of phases to skip the execution of. This option is incompatible with the rulesets options.
      * 
      */
     @Import(name="phases")
     private @Nullable Output<List<String>> phases;
 
     /**
-     * @return A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets options.
      * 
      */
     public Optional<Output<List<String>>> phases() {
@@ -691,7 +691,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
      * Available values: &#34;current&#34;.
      * 
      */
@@ -699,7 +699,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     private @Nullable Output<String> ruleset;
 
     /**
-     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
      * Available values: &#34;current&#34;.
      * 
      */
@@ -1643,7 +1643,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param phases A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets options.
          * 
          * @return builder
          * 
@@ -1654,7 +1654,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param phases A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets options.
          * 
          * @return builder
          * 
@@ -1664,7 +1664,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param phases A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+         * @param phases A list of phases to skip the execution of. This option is incompatible with the rulesets options.
          * 
          * @return builder
          * 
@@ -1926,7 +1926,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+         * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
          * Available values: &#34;current&#34;.
          * 
          * @return builder
@@ -1938,7 +1938,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+         * @param ruleset A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
          * Available values: &#34;current&#34;.
          * 
          * @return builder

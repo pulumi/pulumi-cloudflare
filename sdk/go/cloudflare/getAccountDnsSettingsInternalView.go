@@ -49,27 +49,27 @@ func LookupAccountDnsSettingsInternalView(ctx *pulumi.Context, args *LookupAccou
 
 // A collection of arguments for invoking getAccountDnsSettingsInternalView.
 type LookupAccountDnsSettingsInternalViewArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string                                   `pulumi:"accountId"`
 	Filter    *GetAccountDnsSettingsInternalViewFilter `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	ViewId *string `pulumi:"viewId"`
 }
 
 // A collection of values returned by getAccountDnsSettingsInternalView.
 type LookupAccountDnsSettingsInternalViewResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// When the view was created.
 	CreatedTime string                                   `pulumi:"createdTime"`
 	Filter      *GetAccountDnsSettingsInternalViewFilter `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// When the view was last modified.
 	ModifiedTime string `pulumi:"modifiedTime"`
 	// The name of the view.
 	Name string `pulumi:"name"`
-	// Identifier
+	// Identifier.
 	ViewId *string `pulumi:"viewId"`
 	// The list of zones linked to this view.
 	Zones []string `pulumi:"zones"`
@@ -86,10 +86,10 @@ func LookupAccountDnsSettingsInternalViewOutput(ctx *pulumi.Context, args Lookup
 
 // A collection of arguments for invoking getAccountDnsSettingsInternalView.
 type LookupAccountDnsSettingsInternalViewOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput                              `pulumi:"accountId"`
 	Filter    GetAccountDnsSettingsInternalViewFilterPtrInput `pulumi:"filter"`
-	// Identifier
+	// Identifier.
 	ViewId pulumi.StringPtrInput `pulumi:"viewId"`
 }
 
@@ -112,7 +112,7 @@ func (o LookupAccountDnsSettingsInternalViewResultOutput) ToLookupAccountDnsSett
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupAccountDnsSettingsInternalViewResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -128,7 +128,7 @@ func (o LookupAccountDnsSettingsInternalViewResultOutput) Filter() GetAccountDns
 	}).(GetAccountDnsSettingsInternalViewFilterPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupAccountDnsSettingsInternalViewResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -143,7 +143,7 @@ func (o LookupAccountDnsSettingsInternalViewResultOutput) Name() pulumi.StringOu
 	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupAccountDnsSettingsInternalViewResultOutput) ViewId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewResult) *string { return v.ViewId }).(pulumi.StringPtrOutput)
 }

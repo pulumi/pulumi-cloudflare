@@ -72,6 +72,8 @@ type LookupD1DatabaseResult struct {
 	// D1 database name.
 	Name      string  `pulumi:"name"`
 	NumTables float64 `pulumi:"numTables"`
+	// Configuration for D1 read replication.
+	ReadReplication GetD1DatabaseReadReplication `pulumi:"readReplication"`
 	// D1 database identifier (UUID).
 	Uuid    string `pulumi:"uuid"`
 	Version string `pulumi:"version"`
@@ -150,6 +152,11 @@ func (o LookupD1DatabaseResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupD1DatabaseResultOutput) NumTables() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupD1DatabaseResult) float64 { return v.NumTables }).(pulumi.Float64Output)
+}
+
+// Configuration for D1 read replication.
+func (o LookupD1DatabaseResultOutput) ReadReplication() GetD1DatabaseReadReplicationOutput {
+	return o.ApplyT(func(v LookupD1DatabaseResult) GetD1DatabaseReadReplication { return v.ReadReplication }).(GetD1DatabaseReadReplicationOutput)
 }
 
 // D1 database identifier (UUID).

@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountDnsSettingsInternalViewsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -168,7 +168,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountDnsSettingsInternalViewsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetAccountDnsSettingsInternalViewsResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

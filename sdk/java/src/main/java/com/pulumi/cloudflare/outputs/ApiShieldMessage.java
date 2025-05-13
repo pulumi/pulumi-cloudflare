@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.ApiShieldMessageSource;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
@@ -13,14 +14,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApiShieldMessage {
     private @Nullable Integer code;
+    private @Nullable String documentationUrl;
     private @Nullable String message;
+    private @Nullable ApiShieldMessageSource source;
 
     private ApiShieldMessage() {}
     public Optional<Integer> code() {
         return Optional.ofNullable(this.code);
     }
+    public Optional<String> documentationUrl() {
+        return Optional.ofNullable(this.documentationUrl);
+    }
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
+    }
+    public Optional<ApiShieldMessageSource> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -33,12 +42,16 @@ public final class ApiShieldMessage {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer code;
+        private @Nullable String documentationUrl;
         private @Nullable String message;
+        private @Nullable ApiShieldMessageSource source;
         public Builder() {}
         public Builder(ApiShieldMessage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
+    	      this.documentationUrl = defaults.documentationUrl;
     	      this.message = defaults.message;
+    	      this.source = defaults.source;
         }
 
         @CustomType.Setter
@@ -48,15 +61,29 @@ public final class ApiShieldMessage {
             return this;
         }
         @CustomType.Setter
+        public Builder documentationUrl(@Nullable String documentationUrl) {
+
+            this.documentationUrl = documentationUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder message(@Nullable String message) {
 
             this.message = message;
             return this;
         }
+        @CustomType.Setter
+        public Builder source(@Nullable ApiShieldMessageSource source) {
+
+            this.source = source;
+            return this;
+        }
         public ApiShieldMessage build() {
             final var _resultValue = new ApiShieldMessage();
             _resultValue.code = code;
+            _resultValue.documentationUrl = documentationUrl;
             _resultValue.message = message;
+            _resultValue.source = source;
             return _resultValue;
         }
     }

@@ -30,13 +30,13 @@ type PagesProject struct {
 	// Identifier
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Configs for the project build process.
-	BuildConfig PagesProjectBuildConfigOutput `pulumi:"buildConfig"`
+	BuildConfig PagesProjectBuildConfigPtrOutput `pulumi:"buildConfig"`
 	// Most recent deployment to the repo.
 	CanonicalDeployment PagesProjectCanonicalDeploymentOutput `pulumi:"canonicalDeployment"`
 	// When the project was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Configs for deployments in a project.
-	DeploymentConfigs PagesProjectDeploymentConfigsOutput `pulumi:"deploymentConfigs"`
+	DeploymentConfigs PagesProjectDeploymentConfigsPtrOutput `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayOutput `pulumi:"domains"`
 	// Most recent deployment to the repo.
@@ -44,8 +44,8 @@ type PagesProject struct {
 	// Name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch pulumi.StringPtrOutput   `pulumi:"productionBranch"`
-	Source           PagesProjectSourceOutput `pulumi:"source"`
+	ProductionBranch pulumi.StringPtrOutput      `pulumi:"productionBranch"`
+	Source           PagesProjectSourcePtrOutput `pulumi:"source"`
 	// The Cloudflare subdomain associated with the project.
 	Subdomain pulumi.StringOutput `pulumi:"subdomain"`
 }
@@ -147,7 +147,8 @@ type pagesProjectArgs struct {
 	// Name of the project.
 	Name string `pulumi:"name"`
 	// Production branch of the project. Used to identify production deployments.
-	ProductionBranch *string `pulumi:"productionBranch"`
+	ProductionBranch *string             `pulumi:"productionBranch"`
+	Source           *PagesProjectSource `pulumi:"source"`
 }
 
 // The set of arguments for constructing a PagesProject resource.
@@ -162,6 +163,7 @@ type PagesProjectArgs struct {
 	Name pulumi.StringInput
 	// Production branch of the project. Used to identify production deployments.
 	ProductionBranch pulumi.StringPtrInput
+	Source           PagesProjectSourcePtrInput
 }
 
 func (PagesProjectArgs) ElementType() reflect.Type {
@@ -257,8 +259,8 @@ func (o PagesProjectOutput) AccountId() pulumi.StringOutput {
 }
 
 // Configs for the project build process.
-func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigOutput { return v.BuildConfig }).(PagesProjectBuildConfigOutput)
+func (o PagesProjectOutput) BuildConfig() PagesProjectBuildConfigPtrOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectBuildConfigPtrOutput { return v.BuildConfig }).(PagesProjectBuildConfigPtrOutput)
 }
 
 // Most recent deployment to the repo.
@@ -272,8 +274,8 @@ func (o PagesProjectOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // Configs for deployments in a project.
-func (o PagesProjectOutput) DeploymentConfigs() PagesProjectDeploymentConfigsOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectDeploymentConfigsOutput { return v.DeploymentConfigs }).(PagesProjectDeploymentConfigsOutput)
+func (o PagesProjectOutput) DeploymentConfigs() PagesProjectDeploymentConfigsPtrOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectDeploymentConfigsPtrOutput { return v.DeploymentConfigs }).(PagesProjectDeploymentConfigsPtrOutput)
 }
 
 // A list of associated custom domains for the project.
@@ -296,8 +298,8 @@ func (o PagesProjectOutput) ProductionBranch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringPtrOutput { return v.ProductionBranch }).(pulumi.StringPtrOutput)
 }
 
-func (o PagesProjectOutput) Source() PagesProjectSourceOutput {
-	return o.ApplyT(func(v *PagesProject) PagesProjectSourceOutput { return v.Source }).(PagesProjectSourceOutput)
+func (o PagesProjectOutput) Source() PagesProjectSourcePtrOutput {
+	return o.ApplyT(func(v *PagesProject) PagesProjectSourcePtrOutput { return v.Source }).(PagesProjectSourcePtrOutput)
 }
 
 // The Cloudflare subdomain associated with the project.

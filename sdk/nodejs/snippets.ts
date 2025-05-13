@@ -45,7 +45,7 @@ export class Snippets extends pulumi.CustomResource {
      * Content files of uploaded snippet
      */
     public readonly files!: pulumi.Output<string | undefined>;
-    public readonly metadata!: pulumi.Output<outputs.SnippetsMetadata>;
+    public readonly metadata!: pulumi.Output<outputs.SnippetsMetadata | undefined>;
     /**
      * Modification time of the snippet
      */

@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Task<GetLogpushDatasetFieldResult> InvokeAsync(GetLogpushDatasetFieldArgs args, InvokeOptions? options = null)
+        public static Task<GetLogpushDatasetFieldResult> InvokeAsync(GetLogpushDatasetFieldArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogpushDatasetFieldResult>("cloudflare:index/getLogpushDatasetField:getLogpushDatasetField", args ?? new GetLogpushDatasetFieldArgs(), options.WithDefaults());
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// });
         /// ```
         /// </summary>
-        public static Output<GetLogpushDatasetFieldResult> Invoke(GetLogpushDatasetFieldInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetLogpushDatasetFieldResult> Invoke(GetLogpushDatasetFieldInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogpushDatasetFieldResult>("cloudflare:index/getLogpushDatasetField:getLogpushDatasetField", args ?? new GetLogpushDatasetFieldInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -95,9 +95,10 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        /// Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         /// </summary>
-        [Input("datasetId", required: true)]
-        public string DatasetId { get; set; } = null!;
+        [Input("datasetId")]
+        public string? DatasetId { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -121,9 +122,10 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        /// Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         /// </summary>
-        [Input("datasetId", required: true)]
-        public Input<string> DatasetId { get; set; } = null!;
+        [Input("datasetId")]
+        public Input<string>? DatasetId { get; set; }
 
         /// <summary>
         /// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
@@ -147,6 +149,7 @@ namespace Pulumi.Cloudflare
         public readonly string? AccountId;
         /// <summary>
         /// Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+        /// Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         /// </summary>
         public readonly string DatasetId;
         /// <summary>

@@ -16,8 +16,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// Field for type matcher.
         /// Available values: "to".
         /// </summary>
-        [Input("field", required: true)]
-        public Input<string> Field { get; set; } = null!;
+        [Input("field")]
+        public Input<string>? Field { get; set; }
 
         /// <summary>
         /// Type of matcher.
@@ -29,8 +29,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Value for matcher.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public EmailRoutingRuleMatcherArgs()
         {

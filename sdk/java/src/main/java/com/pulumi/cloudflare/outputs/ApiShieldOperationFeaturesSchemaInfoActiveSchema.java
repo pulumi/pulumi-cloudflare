@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class ApiShieldOperationFeaturesSchemaInfoActiveSchema {
     private @Nullable String createdAt;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private @Nullable String id;
@@ -34,7 +34,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchema {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> id() {

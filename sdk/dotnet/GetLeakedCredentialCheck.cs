@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetLeakedCredentialCheckArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetLeakedCredentialCheckInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetLeakedCredentialCheckResult
     {
         /// <summary>
-        /// Whether or not Leaked Credential Checks are enabled
+        /// Determines whether or not Leaked Credential Checks are enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         public readonly string ZoneId;
 

@@ -60,15 +60,15 @@ export class TeamsRule extends pulumi.CustomResource {
     /**
      * The description of the rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The wirefilter expression used for device posture check matching.
      */
-    public readonly devicePosture!: pulumi.Output<string | undefined>;
+    public readonly devicePosture!: pulumi.Output<string>;
     /**
      * True if the rule is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The expiration time stamp and default duration of a DNS policy. Takes
      * precedence over the policy's `schedule` configuration, if any.
@@ -81,7 +81,7 @@ export class TeamsRule extends pulumi.CustomResource {
     /**
      * The wirefilter expression used for identity matching.
      */
-    public readonly identity!: pulumi.Output<string | undefined>;
+    public readonly identity!: pulumi.Output<string>;
     /**
      * The name of the rule.
      */
@@ -98,11 +98,11 @@ export class TeamsRule extends pulumi.CustomResource {
     /**
      * The schedule for activating DNS policies. This does not apply to HTTP or network policies.
      */
-    public readonly schedule!: pulumi.Output<outputs.TeamsRuleSchedule>;
+    public readonly schedule!: pulumi.Output<outputs.TeamsRuleSchedule | undefined>;
     /**
      * The wirefilter expression used for traffic matching.
      */
-    public readonly traffic!: pulumi.Output<string | undefined>;
+    public readonly traffic!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * version number of the rule

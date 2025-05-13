@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelState;
 import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelHealthCheck;
 import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelIpsecTunnel;
 import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelModifiedIpsecTunnel;
+import com.pulumi.cloudflare.outputs.MagicWanIpsecTunnelPskMetadata;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -74,6 +75,12 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example &#39;&lt;account_id&gt;/&lt;ipsec_tunnel_id&gt;&#39;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel")
 public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
@@ -92,6 +99,20 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+     * 
+     */
+    @Export(name="allowNullCipher", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> allowNullCipher;
+
+    /**
+     * @return When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+     * 
+     */
+    public Output<Boolean> allowNullCipher() {
+        return this.allowNullCipher;
+    }
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      * 
      */
@@ -104,6 +125,20 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<String> cloudflareEndpoint() {
         return this.cloudflareEndpoint;
+    }
+    /**
+     * The date and time the tunnel was created.
+     * 
+     */
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    private Output<String> createdOn;
+
+    /**
+     * @return The date and time the tunnel was created.
+     * 
+     */
+    public Output<String> createdOn() {
+        return this.createdOn;
     }
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -159,26 +194,6 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
     public Output<MagicWanIpsecTunnelIpsecTunnel> ipsecTunnel() {
         return this.ipsecTunnel;
     }
-    /**
-     * Identifier
-     * 
-     */
-    @Export(name="ipsecTunnelId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ipsecTunnelId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Output<Optional<String>> ipsecTunnelId() {
-        return Codegen.optional(this.ipsecTunnelId);
-    }
-    @Export(name="ipsecTunnels", refs={List.class,MagicWanIpsecTunnelIpsecTunnel.class}, tree="[0,1]")
-    private Output<List<MagicWanIpsecTunnelIpsecTunnel>> ipsecTunnels;
-
-    public Output<List<MagicWanIpsecTunnelIpsecTunnel>> ipsecTunnels() {
-        return this.ipsecTunnels;
-    }
     @Export(name="modified", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> modified;
 
@@ -190,6 +205,20 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
 
     public Output<MagicWanIpsecTunnelModifiedIpsecTunnel> modifiedIpsecTunnel() {
         return this.modifiedIpsecTunnel;
+    }
+    /**
+     * The date and time the tunnel was last modified.
+     * 
+     */
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    private Output<String> modifiedOn;
+
+    /**
+     * @return The date and time the tunnel was last modified.
+     * 
+     */
+    public Output<String> modifiedOn() {
+        return this.modifiedOn;
     }
     /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -218,6 +247,20 @@ public class MagicWanIpsecTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> psk() {
         return Codegen.optional(this.psk);
+    }
+    /**
+     * The PSK metadata that includes when the PSK was generated.
+     * 
+     */
+    @Export(name="pskMetadata", refs={MagicWanIpsecTunnelPskMetadata.class}, tree="[0]")
+    private Output<MagicWanIpsecTunnelPskMetadata> pskMetadata;
+
+    /**
+     * @return The PSK metadata that includes when the PSK was generated.
+     * 
+     */
+    public Output<MagicWanIpsecTunnelPskMetadata> pskMetadata() {
+        return this.pskMetadata;
     }
     /**
      * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.

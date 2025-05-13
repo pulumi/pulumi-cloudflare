@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomSslArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("customCertificateId")]
         public string? CustomCertificateId { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetCustomSslFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetCustomSslInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("customCertificateId")]
         public Input<string>? CustomCertificateId { get; set; }
@@ -117,7 +117,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetCustomSslFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BundleMethod;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? CustomCertificateId;
         /// <summary>
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetCustomSslGeoRestrictionsResult GeoRestrictions;
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -186,7 +186,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string UploadedOn;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

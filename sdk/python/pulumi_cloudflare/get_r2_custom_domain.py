@@ -61,7 +61,7 @@ class GetR2CustomDomainResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -69,7 +69,7 @@ class GetR2CustomDomainResult:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> builtins.str:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -77,7 +77,7 @@ class GetR2CustomDomainResult:
     @pulumi.getter
     def domain(self) -> builtins.str:
         """
-        Name of the custom domain
+        Name of the custom domain.
         """
         return pulumi.get(self, "domain")
 
@@ -85,7 +85,7 @@ class GetR2CustomDomainResult:
     @pulumi.getter
     def enabled(self) -> builtins.bool:
         """
-        Whether this bucket is publicly accessible at the specified custom domain
+        Whether this bucket is publicly accessible at the specified custom domain.
         """
         return pulumi.get(self, "enabled")
 
@@ -115,7 +115,7 @@ class GetR2CustomDomainResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Zone ID of the custom domain resides in
+        Zone ID of the custom domain resides in.
         """
         return pulumi.get(self, "zone_id")
 
@@ -123,7 +123,7 @@ class GetR2CustomDomainResult:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> builtins.str:
         """
-        Zone that the custom domain resides in
+        Zone that the custom domain resides in.
         """
         return pulumi.get(self, "zone_name")
 
@@ -162,9 +162,9 @@ def get_r2_custom_domain(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Account ID
-    :param builtins.str bucket_name: Name of the bucket
-    :param builtins.str domain: Name of the custom domain
+    :param builtins.str account_id: Account ID.
+    :param builtins.str bucket_name: Name of the bucket.
+    :param builtins.str domain: Name of the custom domain.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -200,9 +200,9 @@ def get_r2_custom_domain_output(account_id: Optional[pulumi.Input[builtins.str]]
     ```
 
 
-    :param builtins.str account_id: Account ID
-    :param builtins.str bucket_name: Name of the bucket
-    :param builtins.str domain: Name of the custom domain
+    :param builtins.str account_id: Account ID.
+    :param builtins.str bucket_name: Name of the bucket.
+    :param builtins.str domain: Name of the custom domain.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

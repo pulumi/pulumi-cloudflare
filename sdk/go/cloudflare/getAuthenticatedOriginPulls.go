@@ -51,13 +51,13 @@ func LookupAuthenticatedOriginPulls(ctx *pulumi.Context, args *LookupAuthenticat
 type LookupAuthenticatedOriginPullsArgs struct {
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname string `pulumi:"hostname"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getAuthenticatedOriginPulls.
 type LookupAuthenticatedOriginPullsResult struct {
-	// Identifier
+	// Identifier.
 	CertId string `pulumi:"certId"`
 	// Status of the certificate or the association.
 	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
@@ -89,7 +89,7 @@ type LookupAuthenticatedOriginPullsResult struct {
 	Status string `pulumi:"status"`
 	// The time when the certificate was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -106,7 +106,7 @@ func LookupAuthenticatedOriginPullsOutput(ctx *pulumi.Context, args LookupAuthen
 type LookupAuthenticatedOriginPullsOutputArgs struct {
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -129,7 +129,7 @@ func (o LookupAuthenticatedOriginPullsResultOutput) ToLookupAuthenticatedOriginP
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupAuthenticatedOriginPullsResultOutput) CertId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsResult) string { return v.CertId }).(pulumi.StringOutput)
 }
@@ -206,7 +206,7 @@ func (o LookupAuthenticatedOriginPullsResultOutput) UpdatedAt() pulumi.StringOut
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupAuthenticatedOriginPullsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -17,7 +17,7 @@ public final class GetAccountDnsSettingsInternalViewsResult {
      */
     private String createdTime;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -46,7 +46,7 @@ public final class GetAccountDnsSettingsInternalViewsResult {
         return this.createdTime;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

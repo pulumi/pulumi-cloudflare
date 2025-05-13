@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupWorkersRoute(ctx, &cloudflare.LookupWorkersRouteArgs{
 //				ZoneId:  "023e105f4ecef8ad9ca31a8372d0c353",
-//				RouteId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				RouteId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,7 +50,7 @@ func LookupWorkersRoute(ctx *pulumi.Context, args *LookupWorkersRouteArgs, opts 
 // A collection of arguments for invoking getWorkersRoute.
 type LookupWorkersRouteArgs struct {
 	// Identifier.
-	RouteId string `pulumi:"routeId"`
+	RouteId *string `pulumi:"routeId"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -58,11 +58,12 @@ type LookupWorkersRouteArgs struct {
 // A collection of values returned by getWorkersRoute.
 type LookupWorkersRouteResult struct {
 	// Identifier.
-	Id      string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern string `pulumi:"pattern"`
 	// Identifier.
-	RouteId string `pulumi:"routeId"`
-	// Name of the script, used in URLs and route configuration.
+	RouteId *string `pulumi:"routeId"`
+	// Name of the script to run if the route matches.
 	Script string `pulumi:"script"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -80,7 +81,7 @@ func LookupWorkersRouteOutput(ctx *pulumi.Context, args LookupWorkersRouteOutput
 // A collection of arguments for invoking getWorkersRoute.
 type LookupWorkersRouteOutputArgs struct {
 	// Identifier.
-	RouteId pulumi.StringInput `pulumi:"routeId"`
+	RouteId pulumi.StringPtrInput `pulumi:"routeId"`
 	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -109,16 +110,17 @@ func (o LookupWorkersRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 func (o LookupWorkersRouteResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
 // Identifier.
-func (o LookupWorkersRouteResultOutput) RouteId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.RouteId }).(pulumi.StringOutput)
+func (o LookupWorkersRouteResultOutput) RouteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkersRouteResult) *string { return v.RouteId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the script, used in URLs and route configuration.
+// Name of the script to run if the route matches.
 func (o LookupWorkersRouteResultOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkersRouteResult) string { return v.Script }).(pulumi.StringOutput)
 }

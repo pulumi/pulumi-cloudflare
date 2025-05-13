@@ -97,7 +97,7 @@ namespace Pulumi.Cloudflare
         public Inputs.GetAccessRuleFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// Unique identifier for a rule
+        /// Unique identifier for a rule.
         /// </summary>
         [Input("ruleId")]
         public string? RuleId { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.GetAccessRuleFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// Unique identifier for a rule
+        /// Unique identifier for a rule.
         /// </summary>
         [Input("ruleId")]
         public Input<string>? RuleId { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.Cloudflare
         public readonly string CreatedOn;
         public readonly Outputs.GetAccessRuleFilterResult? Filter;
         /// <summary>
-        /// Unique identifier for a rule
+        /// Unique identifier for a rule.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -182,7 +182,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Notes;
         /// <summary>
-        /// Unique identifier for a rule
+        /// Unique identifier for a rule.
         /// </summary>
         public readonly string? RuleId;
         /// <summary>

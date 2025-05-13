@@ -16,18 +16,18 @@ import (
 type R2BucketSippy struct {
 	pulumi.CustomResourceState
 
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
-	// R2 bucket to copy objects to
-	Destination R2BucketSippyDestinationOutput `pulumi:"destination"`
-	// State of Sippy for this bucket
+	// R2 bucket to copy objects to.
+	Destination R2BucketSippyDestinationPtrOutput `pulumi:"destination"`
+	// State of Sippy for this bucket.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
-	// AWS S3 bucket to copy objects from
-	Source R2BucketSippySourceOutput `pulumi:"source"`
+	// AWS S3 bucket to copy objects from.
+	Source R2BucketSippySourcePtrOutput `pulumi:"source"`
 }
 
 // NewR2BucketSippy registers a new resource with the given unique name, arguments, and options.
@@ -66,32 +66,32 @@ func GetR2BucketSippy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2BucketSippy resources.
 type r2bucketSippyState struct {
-	// Account ID
+	// Account ID.
 	AccountId *string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
-	// R2 bucket to copy objects to
+	// R2 bucket to copy objects to.
 	Destination *R2BucketSippyDestination `pulumi:"destination"`
-	// State of Sippy for this bucket
+	// State of Sippy for this bucket.
 	Enabled *bool `pulumi:"enabled"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
-	// AWS S3 bucket to copy objects from
+	// AWS S3 bucket to copy objects from.
 	Source *R2BucketSippySource `pulumi:"source"`
 }
 
 type R2BucketSippyState struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringPtrInput
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
-	// R2 bucket to copy objects to
+	// R2 bucket to copy objects to.
 	Destination R2BucketSippyDestinationPtrInput
-	// State of Sippy for this bucket
+	// State of Sippy for this bucket.
 	Enabled pulumi.BoolPtrInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
-	// AWS S3 bucket to copy objects from
+	// AWS S3 bucket to copy objects from.
 	Source R2BucketSippySourcePtrInput
 }
 
@@ -100,29 +100,29 @@ func (R2BucketSippyState) ElementType() reflect.Type {
 }
 
 type r2bucketSippyArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// R2 bucket to copy objects to
+	// R2 bucket to copy objects to.
 	Destination *R2BucketSippyDestination `pulumi:"destination"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
-	// AWS S3 bucket to copy objects from
+	// AWS S3 bucket to copy objects from.
 	Source *R2BucketSippySource `pulumi:"source"`
 }
 
 // The set of arguments for constructing a R2BucketSippy resource.
 type R2BucketSippyArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput
-	// R2 bucket to copy objects to
+	// R2 bucket to copy objects to.
 	Destination R2BucketSippyDestinationPtrInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
-	// AWS S3 bucket to copy objects from
+	// AWS S3 bucket to copy objects from.
 	Source R2BucketSippySourcePtrInput
 }
 
@@ -213,22 +213,22 @@ func (o R2BucketSippyOutput) ToR2BucketSippyOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o R2BucketSippyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketSippy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o R2BucketSippyOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketSippy) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// R2 bucket to copy objects to
-func (o R2BucketSippyOutput) Destination() R2BucketSippyDestinationOutput {
-	return o.ApplyT(func(v *R2BucketSippy) R2BucketSippyDestinationOutput { return v.Destination }).(R2BucketSippyDestinationOutput)
+// R2 bucket to copy objects to.
+func (o R2BucketSippyOutput) Destination() R2BucketSippyDestinationPtrOutput {
+	return o.ApplyT(func(v *R2BucketSippy) R2BucketSippyDestinationPtrOutput { return v.Destination }).(R2BucketSippyDestinationPtrOutput)
 }
 
-// State of Sippy for this bucket
+// State of Sippy for this bucket.
 func (o R2BucketSippyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *R2BucketSippy) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -238,9 +238,9 @@ func (o R2BucketSippyOutput) Jurisdiction() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketSippy) pulumi.StringOutput { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
-// AWS S3 bucket to copy objects from
-func (o R2BucketSippyOutput) Source() R2BucketSippySourceOutput {
-	return o.ApplyT(func(v *R2BucketSippy) R2BucketSippySourceOutput { return v.Source }).(R2BucketSippySourceOutput)
+// AWS S3 bucket to copy objects from.
+func (o R2BucketSippyOutput) Source() R2BucketSippySourcePtrOutput {
+	return o.ApplyT(func(v *R2BucketSippy) R2BucketSippySourcePtrOutput { return v.Source }).(R2BucketSippySourcePtrOutput)
 }
 
 type R2BucketSippyArrayOutput struct{ *pulumi.OutputState }

@@ -53,7 +53,7 @@ func LookupApiShield(ctx *pulumi.Context, args *LookupApiShieldArgs, opts ...pul
 type LookupApiShieldArgs struct {
 	// Requests information about certain properties.
 	Properties []string `pulumi:"properties"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -64,7 +64,7 @@ type LookupApiShieldResult struct {
 	Id string `pulumi:"id"`
 	// Requests information about certain properties.
 	Properties []string `pulumi:"properties"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -81,7 +81,7 @@ func LookupApiShieldOutput(ctx *pulumi.Context, args LookupApiShieldOutputArgs, 
 type LookupApiShieldOutputArgs struct {
 	// Requests information about certain properties.
 	Properties pulumi.StringArrayInput `pulumi:"properties"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -118,7 +118,7 @@ func (o LookupApiShieldResultOutput) Properties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApiShieldResult) []string { return v.Properties }).(pulumi.StringArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupApiShieldResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

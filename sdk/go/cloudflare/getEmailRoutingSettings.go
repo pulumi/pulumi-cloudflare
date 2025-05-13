@@ -48,7 +48,7 @@ func LookupEmailRoutingSettings(ctx *pulumi.Context, args *LookupEmailRoutingSet
 
 // A collection of arguments for invoking getEmailRoutingSettings.
 type LookupEmailRoutingSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -73,7 +73,7 @@ type LookupEmailRoutingSettingsResult struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag string `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -88,7 +88,7 @@ func LookupEmailRoutingSettingsOutput(ctx *pulumi.Context, args LookupEmailRouti
 
 // A collection of arguments for invoking getEmailRoutingSettings.
 type LookupEmailRoutingSettingsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -154,7 +154,7 @@ func (o LookupEmailRoutingSettingsResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingSettingsResult) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupEmailRoutingSettingsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

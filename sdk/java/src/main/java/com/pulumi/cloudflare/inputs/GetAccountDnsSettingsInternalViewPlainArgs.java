@@ -17,14 +17,14 @@ public final class GetAccountDnsSettingsInternalViewPlainArgs extends com.pulumi
     public static final GetAccountDnsSettingsInternalViewPlainArgs Empty = new GetAccountDnsSettingsInternalViewPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -39,14 +39,14 @@ public final class GetAccountDnsSettingsInternalViewPlainArgs extends com.pulumi
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="viewId")
     private @Nullable String viewId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> viewId() {
@@ -80,7 +80,7 @@ public final class GetAccountDnsSettingsInternalViewPlainArgs extends com.pulumi
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GetAccountDnsSettingsInternalViewPlainArgs extends com.pulumi
         }
 
         /**
-         * @param viewId Identifier
+         * @param viewId Identifier.
          * 
          * @return builder
          * 

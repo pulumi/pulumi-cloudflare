@@ -30,7 +30,7 @@ class WebAnalyticsSiteArgs:
                  zone_tag: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WebAnalyticsSite resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         :param pulumi.Input[builtins.bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[builtins.str] host: The hostname to use for gray-clouded sites.
@@ -53,7 +53,7 @@ class WebAnalyticsSiteArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -139,7 +139,7 @@ class _WebAnalyticsSiteState:
                  zone_tag: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WebAnalyticsSite resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         :param pulumi.Input[builtins.bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[builtins.str] host: The hostname to use for gray-clouded sites.
@@ -179,7 +179,7 @@ class _WebAnalyticsSiteState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -349,7 +349,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         :param pulumi.Input[builtins.bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[builtins.str] host: The hostname to use for gray-clouded sites.
@@ -455,7 +455,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.bool] auto_install: If enabled, the JavaScript snippet is automatically injected for orange-clouded sites.
         :param pulumi.Input[builtins.bool] enabled: Enables or disables RUM. This option can be used only when auto_install is set to true.
         :param pulumi.Input[builtins.str] host: The hostname to use for gray-clouded sites.
@@ -488,7 +488,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 

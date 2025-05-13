@@ -24,7 +24,7 @@ public final class GetApiShieldDiscoveryOperationsResult {
      */
     private String host;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -69,7 +69,7 @@ public final class GetApiShieldDiscoveryOperationsResult {
         return this.host;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {

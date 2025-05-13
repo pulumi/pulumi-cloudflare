@@ -6,11 +6,11 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelHealthCheckArgs;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelIpsecTunnelArgs;
 import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelModifiedIpsecTunnelArgs;
+import com.pulumi.cloudflare.inputs.MagicWanIpsecTunnelPskMetadataArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +36,21 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+     * 
+     */
+    @Import(name="allowNullCipher")
+    private @Nullable Output<Boolean> allowNullCipher;
+
+    /**
+     * @return When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+     * 
+     */
+    public Optional<Output<Boolean>> allowNullCipher() {
+        return Optional.ofNullable(this.allowNullCipher);
+    }
+
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      * 
      */
@@ -48,6 +63,21 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> cloudflareEndpoint() {
         return Optional.ofNullable(this.cloudflareEndpoint);
+    }
+
+    /**
+     * The date and time the tunnel was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return The date and time the tunnel was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
     }
 
     /**
@@ -109,28 +139,6 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.ipsecTunnel);
     }
 
-    /**
-     * Identifier
-     * 
-     */
-    @Import(name="ipsecTunnelId")
-    private @Nullable Output<String> ipsecTunnelId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> ipsecTunnelId() {
-        return Optional.ofNullable(this.ipsecTunnelId);
-    }
-
-    @Import(name="ipsecTunnels")
-    private @Nullable Output<List<MagicWanIpsecTunnelIpsecTunnelArgs>> ipsecTunnels;
-
-    public Optional<Output<List<MagicWanIpsecTunnelIpsecTunnelArgs>>> ipsecTunnels() {
-        return Optional.ofNullable(this.ipsecTunnels);
-    }
-
     @Import(name="modified")
     private @Nullable Output<Boolean> modified;
 
@@ -143,6 +151,21 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
 
     public Optional<Output<MagicWanIpsecTunnelModifiedIpsecTunnelArgs>> modifiedIpsecTunnel() {
         return Optional.ofNullable(this.modifiedIpsecTunnel);
+    }
+
+    /**
+     * The date and time the tunnel was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return The date and time the tunnel was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
     }
 
     /**
@@ -176,6 +199,21 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The PSK metadata that includes when the PSK was generated.
+     * 
+     */
+    @Import(name="pskMetadata")
+    private @Nullable Output<MagicWanIpsecTunnelPskMetadataArgs> pskMetadata;
+
+    /**
+     * @return The PSK metadata that includes when the PSK was generated.
+     * 
+     */
+    public Optional<Output<MagicWanIpsecTunnelPskMetadataArgs>> pskMetadata() {
+        return Optional.ofNullable(this.pskMetadata);
+    }
+
+    /**
      * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      * 
      */
@@ -194,18 +232,20 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
 
     private MagicWanIpsecTunnelState(MagicWanIpsecTunnelState $) {
         this.accountId = $.accountId;
+        this.allowNullCipher = $.allowNullCipher;
         this.cloudflareEndpoint = $.cloudflareEndpoint;
+        this.createdOn = $.createdOn;
         this.customerEndpoint = $.customerEndpoint;
         this.description = $.description;
         this.healthCheck = $.healthCheck;
         this.interfaceAddress = $.interfaceAddress;
         this.ipsecTunnel = $.ipsecTunnel;
-        this.ipsecTunnelId = $.ipsecTunnelId;
-        this.ipsecTunnels = $.ipsecTunnels;
         this.modified = $.modified;
         this.modifiedIpsecTunnel = $.modifiedIpsecTunnel;
+        this.modifiedOn = $.modifiedOn;
         this.name = $.name;
         this.psk = $.psk;
+        this.pskMetadata = $.pskMetadata;
         this.replayProtection = $.replayProtection;
     }
 
@@ -249,6 +289,27 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param allowNullCipher When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowNullCipher(@Nullable Output<Boolean> allowNullCipher) {
+            $.allowNullCipher = allowNullCipher;
+            return this;
+        }
+
+        /**
+         * @param allowNullCipher When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowNullCipher(Boolean allowNullCipher) {
+            return allowNullCipher(Output.of(allowNullCipher));
+        }
+
+        /**
          * @param cloudflareEndpoint The IP address assigned to the Cloudflare side of the IPsec tunnel.
          * 
          * @return builder
@@ -267,6 +328,27 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
          */
         public Builder cloudflareEndpoint(String cloudflareEndpoint) {
             return cloudflareEndpoint(Output.of(cloudflareEndpoint));
+        }
+
+        /**
+         * @param createdOn The date and time the tunnel was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn The date and time the tunnel was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
         }
 
         /**
@@ -350,40 +432,6 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
             return ipsecTunnel(Output.of(ipsecTunnel));
         }
 
-        /**
-         * @param ipsecTunnelId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipsecTunnelId(@Nullable Output<String> ipsecTunnelId) {
-            $.ipsecTunnelId = ipsecTunnelId;
-            return this;
-        }
-
-        /**
-         * @param ipsecTunnelId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ipsecTunnelId(String ipsecTunnelId) {
-            return ipsecTunnelId(Output.of(ipsecTunnelId));
-        }
-
-        public Builder ipsecTunnels(@Nullable Output<List<MagicWanIpsecTunnelIpsecTunnelArgs>> ipsecTunnels) {
-            $.ipsecTunnels = ipsecTunnels;
-            return this;
-        }
-
-        public Builder ipsecTunnels(List<MagicWanIpsecTunnelIpsecTunnelArgs> ipsecTunnels) {
-            return ipsecTunnels(Output.of(ipsecTunnels));
-        }
-
-        public Builder ipsecTunnels(MagicWanIpsecTunnelIpsecTunnelArgs... ipsecTunnels) {
-            return ipsecTunnels(List.of(ipsecTunnels));
-        }
-
         public Builder modified(@Nullable Output<Boolean> modified) {
             $.modified = modified;
             return this;
@@ -400,6 +448,27 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
 
         public Builder modifiedIpsecTunnel(MagicWanIpsecTunnelModifiedIpsecTunnelArgs modifiedIpsecTunnel) {
             return modifiedIpsecTunnel(Output.of(modifiedIpsecTunnel));
+        }
+
+        /**
+         * @param modifiedOn The date and time the tunnel was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn The date and time the tunnel was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
         }
 
         /**
@@ -442,6 +511,27 @@ public final class MagicWanIpsecTunnelState extends com.pulumi.resources.Resourc
          */
         public Builder psk(String psk) {
             return psk(Output.of(psk));
+        }
+
+        /**
+         * @param pskMetadata The PSK metadata that includes when the PSK was generated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pskMetadata(@Nullable Output<MagicWanIpsecTunnelPskMetadataArgs> pskMetadata) {
+            $.pskMetadata = pskMetadata;
+            return this;
+        }
+
+        /**
+         * @param pskMetadata The PSK metadata that includes when the PSK was generated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pskMetadata(MagicWanIpsecTunnelPskMetadataArgs pskMetadata) {
+            return pskMetadata(Output.of(pskMetadata));
         }
 
         /**

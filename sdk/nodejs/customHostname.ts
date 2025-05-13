@@ -85,7 +85,7 @@ export class CustomHostname extends pulumi.CustomResource {
      */
     public /*out*/ readonly verificationErrors!: pulumi.Output<string[]>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -187,7 +187,7 @@ export interface CustomHostnameState {
      */
     verificationErrors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -217,7 +217,7 @@ export interface CustomHostnameArgs {
      */
     ssl: pulumi.Input<inputs.CustomHostnameSsl>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

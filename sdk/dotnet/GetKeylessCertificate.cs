@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetKeylessCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("keylessCertificateId")]
         public string? KeylessCertificateId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetKeylessCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("keylessCertificateId")]
         public Input<string>? KeylessCertificateId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -139,11 +139,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string? KeylessCertificateId;
         /// <summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetKeylessCertificateTunnelResult Tunnel;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

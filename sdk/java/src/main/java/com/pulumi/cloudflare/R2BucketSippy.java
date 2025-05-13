@@ -14,6 +14,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -26,56 +27,56 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/r2BucketSippy:R2BucketSippy")
 public class R2BucketSippy extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
         return this.bucketName;
     }
     /**
-     * R2 bucket to copy objects to
+     * R2 bucket to copy objects to.
      * 
      */
     @Export(name="destination", refs={R2BucketSippyDestination.class}, tree="[0]")
-    private Output<R2BucketSippyDestination> destination;
+    private Output</* @Nullable */ R2BucketSippyDestination> destination;
 
     /**
-     * @return R2 bucket to copy objects to
+     * @return R2 bucket to copy objects to.
      * 
      */
-    public Output<R2BucketSippyDestination> destination() {
-        return this.destination;
+    public Output<Optional<R2BucketSippyDestination>> destination() {
+        return Codegen.optional(this.destination);
     }
     /**
-     * State of Sippy for this bucket
+     * State of Sippy for this bucket.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return State of Sippy for this bucket
+     * @return State of Sippy for this bucket.
      * 
      */
     public Output<Boolean> enabled() {
@@ -96,18 +97,18 @@ public class R2BucketSippy extends com.pulumi.resources.CustomResource {
         return this.jurisdiction;
     }
     /**
-     * AWS S3 bucket to copy objects from
+     * AWS S3 bucket to copy objects from.
      * 
      */
     @Export(name="source", refs={R2BucketSippySource.class}, tree="[0]")
-    private Output<R2BucketSippySource> source;
+    private Output</* @Nullable */ R2BucketSippySource> source;
 
     /**
-     * @return AWS S3 bucket to copy objects from
+     * @return AWS S3 bucket to copy objects from.
      * 
      */
-    public Output<R2BucketSippySource> source() {
-        return this.source;
+    public Output<Optional<R2BucketSippySource>> source() {
+        return Codegen.optional(this.source);
     }
 
     /**

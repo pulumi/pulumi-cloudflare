@@ -447,7 +447,7 @@ class MagicTransitSite(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output['outputs.MagicTransitSiteLocation']:
+    def location(self) -> pulumi.Output[Optional['outputs.MagicTransitSiteLocation']]:
         """
         Location of site in latitude and longitude.
         """

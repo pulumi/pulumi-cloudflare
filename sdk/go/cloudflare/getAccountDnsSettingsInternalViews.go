@@ -57,7 +57,7 @@ func LookupAccountDnsSettingsInternalViews(ctx *pulumi.Context, args *LookupAcco
 
 // A collection of arguments for invoking getAccountDnsSettingsInternalViews.
 type LookupAccountDnsSettingsInternalViewsArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Direction to order DNS views in.
 	// Available values: "asc", "desc".
@@ -79,7 +79,7 @@ type LookupAccountDnsSettingsInternalViewsArgs struct {
 
 // A collection of values returned by getAccountDnsSettingsInternalViews.
 type LookupAccountDnsSettingsInternalViewsResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Direction to order DNS views in.
 	// Available values: "asc", "desc".
@@ -114,7 +114,7 @@ func LookupAccountDnsSettingsInternalViewsOutput(ctx *pulumi.Context, args Looku
 
 // A collection of arguments for invoking getAccountDnsSettingsInternalViews.
 type LookupAccountDnsSettingsInternalViewsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Direction to order DNS views in.
 	// Available values: "asc", "desc".
@@ -153,7 +153,7 @@ func (o LookupAccountDnsSettingsInternalViewsResultOutput) ToLookupAccountDnsSet
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupAccountDnsSettingsInternalViewsResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountDnsSettingsInternalViewsResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

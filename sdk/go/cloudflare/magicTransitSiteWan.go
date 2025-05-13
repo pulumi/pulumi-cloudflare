@@ -33,7 +33,7 @@ type MagicTransitSiteWan struct {
 	// Identifier
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
-	StaticAddressing MagicTransitSiteWanStaticAddressingOutput `pulumi:"staticAddressing"`
+	StaticAddressing MagicTransitSiteWanStaticAddressingPtrOutput `pulumi:"staticAddressing"`
 	// VLAN ID. Use zero for untagged.
 	VlanTag pulumi.IntPtrOutput `pulumi:"vlanTag"`
 }
@@ -259,8 +259,8 @@ func (o MagicTransitSiteWanOutput) SiteId() pulumi.StringOutput {
 }
 
 // (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
-func (o MagicTransitSiteWanOutput) StaticAddressing() MagicTransitSiteWanStaticAddressingOutput {
-	return o.ApplyT(func(v *MagicTransitSiteWan) MagicTransitSiteWanStaticAddressingOutput { return v.StaticAddressing }).(MagicTransitSiteWanStaticAddressingOutput)
+func (o MagicTransitSiteWanOutput) StaticAddressing() MagicTransitSiteWanStaticAddressingPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSiteWan) MagicTransitSiteWanStaticAddressingPtrOutput { return v.StaticAddressing }).(MagicTransitSiteWanStaticAddressingPtrOutput)
 }
 
 // VLAN ID. Use zero for untagged.

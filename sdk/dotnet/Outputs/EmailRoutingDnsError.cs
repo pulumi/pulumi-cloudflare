@@ -14,16 +14,24 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class EmailRoutingDnsError
     {
         public readonly int? Code;
+        public readonly string? DocumentationUrl;
         public readonly string? Message;
+        public readonly Outputs.EmailRoutingDnsErrorSource? Source;
 
         [OutputConstructor]
         private EmailRoutingDnsError(
             int? code,
 
-            string? message)
+            string? documentationUrl,
+
+            string? message,
+
+            Outputs.EmailRoutingDnsErrorSource? source)
         {
             Code = code;
+            DocumentationUrl = documentationUrl;
             Message = message;
+            Source = source;
         }
     }
 }

@@ -14,42 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewHyperdriveConfig(ctx, "example_hyperdrive_config", &cloudflare.HyperdriveConfigArgs{
-//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				Name:      pulumi.String("example-hyperdrive"),
-//				Origin: &cloudflare.HyperdriveConfigOriginArgs{
-//					Database: pulumi.String("postgres"),
-//					Host:     pulumi.String("database.example.com"),
-//					Password: pulumi.String("password"),
-//					Port:     pulumi.Int(5432),
-//					Scheme:   pulumi.String("postgres"),
-//					User:     pulumi.String("postgres"),
-//				},
-//				Caching: &cloudflare.HyperdriveConfigCachingArgs{
-//					Disabled: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh
@@ -59,14 +23,15 @@ type HyperdriveConfig struct {
 	pulumi.CustomResourceState
 
 	// Identifier
-	AccountId pulumi.StringOutput           `pulumi:"accountId"`
-	Caching   HyperdriveConfigCachingOutput `pulumi:"caching"`
+	AccountId pulumi.StringOutput              `pulumi:"accountId"`
+	Caching   HyperdriveConfigCachingPtrOutput `pulumi:"caching"`
 	// When the Hyperdrive configuration was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// When the Hyperdrive configuration was last modified.
-	ModifiedOn pulumi.StringOutput          `pulumi:"modifiedOn"`
-	Name       pulumi.StringOutput          `pulumi:"name"`
-	Origin     HyperdriveConfigOriginOutput `pulumi:"origin"`
+	ModifiedOn pulumi.StringOutput           `pulumi:"modifiedOn"`
+	Mtls       HyperdriveConfigMtlsPtrOutput `pulumi:"mtls"`
+	Name       pulumi.StringOutput           `pulumi:"name"`
+	Origin     HyperdriveConfigOriginOutput  `pulumi:"origin"`
 }
 
 // NewHyperdriveConfig registers a new resource with the given unique name, arguments, and options.
@@ -115,6 +80,7 @@ type hyperdriveConfigState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// When the Hyperdrive configuration was last modified.
 	ModifiedOn *string                 `pulumi:"modifiedOn"`
+	Mtls       *HyperdriveConfigMtls   `pulumi:"mtls"`
 	Name       *string                 `pulumi:"name"`
 	Origin     *HyperdriveConfigOrigin `pulumi:"origin"`
 }
@@ -127,6 +93,7 @@ type HyperdriveConfigState struct {
 	CreatedOn pulumi.StringPtrInput
 	// When the Hyperdrive configuration was last modified.
 	ModifiedOn pulumi.StringPtrInput
+	Mtls       HyperdriveConfigMtlsPtrInput
 	Name       pulumi.StringPtrInput
 	Origin     HyperdriveConfigOriginPtrInput
 }
@@ -139,6 +106,7 @@ type hyperdriveConfigArgs struct {
 	// Identifier
 	AccountId string                   `pulumi:"accountId"`
 	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
+	Mtls      *HyperdriveConfigMtls    `pulumi:"mtls"`
 	Name      string                   `pulumi:"name"`
 	Origin    HyperdriveConfigOrigin   `pulumi:"origin"`
 }
@@ -148,6 +116,7 @@ type HyperdriveConfigArgs struct {
 	// Identifier
 	AccountId pulumi.StringInput
 	Caching   HyperdriveConfigCachingPtrInput
+	Mtls      HyperdriveConfigMtlsPtrInput
 	Name      pulumi.StringInput
 	Origin    HyperdriveConfigOriginInput
 }
@@ -244,8 +213,8 @@ func (o HyperdriveConfigOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-func (o HyperdriveConfigOutput) Caching() HyperdriveConfigCachingOutput {
-	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigCachingOutput { return v.Caching }).(HyperdriveConfigCachingOutput)
+func (o HyperdriveConfigOutput) Caching() HyperdriveConfigCachingPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigCachingPtrOutput { return v.Caching }).(HyperdriveConfigCachingPtrOutput)
 }
 
 // When the Hyperdrive configuration was created.
@@ -256,6 +225,10 @@ func (o HyperdriveConfigOutput) CreatedOn() pulumi.StringOutput {
 // When the Hyperdrive configuration was last modified.
 func (o HyperdriveConfigOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o HyperdriveConfigOutput) Mtls() HyperdriveConfigMtlsPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigMtlsPtrOutput { return v.Mtls }).(HyperdriveConfigMtlsPtrOutput)
 }
 
 func (o HyperdriveConfigOutput) Name() pulumi.StringOutput {

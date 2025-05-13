@@ -32,6 +32,21 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
     }
 
     /**
+     * If true, context information will be passed as query parameters
+     * 
+     */
+    @Import(name="includeContext")
+    private @Nullable Output<Boolean> includeContext;
+
+    /**
+     * @return If true, context information will be passed as query parameters
+     * 
+     */
+    public Optional<Output<Boolean>> includeContext() {
+        return Optional.ofNullable(this.includeContext);
+    }
+
+    /**
      * Customize the message shown in the notification.
      * 
      */
@@ -65,6 +80,7 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
 
     private ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs(ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs $) {
         this.enabled = $.enabled;
+        this.includeContext = $.includeContext;
         this.msg = $.msg;
         this.supportUrl = $.supportUrl;
     }
@@ -106,6 +122,27 @@ public final class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param includeContext If true, context information will be passed as query parameters
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeContext(@Nullable Output<Boolean> includeContext) {
+            $.includeContext = includeContext;
+            return this;
+        }
+
+        /**
+         * @param includeContext If true, context information will be passed as query parameters
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeContext(Boolean includeContext) {
+            return includeContext(Output.of(includeContext));
         }
 
         /**

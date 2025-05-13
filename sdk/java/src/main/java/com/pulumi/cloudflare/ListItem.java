@@ -59,18 +59,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/listItem:ListItem")
 public class ListItem extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * A non-negative 32 bit integer

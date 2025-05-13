@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.PagesProjectBuildConfigArgs;
 import com.pulumi.cloudflare.inputs.PagesProjectDeploymentConfigsArgs;
+import com.pulumi.cloudflare.inputs.PagesProjectSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -93,6 +94,13 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.productionBranch);
     }
 
+    @Import(name="source")
+    private @Nullable Output<PagesProjectSourceArgs> source;
+
+    public Optional<Output<PagesProjectSourceArgs>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     private PagesProjectArgs() {}
 
     private PagesProjectArgs(PagesProjectArgs $) {
@@ -101,6 +109,7 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
         this.deploymentConfigs = $.deploymentConfigs;
         this.name = $.name;
         this.productionBranch = $.productionBranch;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -224,6 +233,15 @@ public final class PagesProjectArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder productionBranch(String productionBranch) {
             return productionBranch(Output.of(productionBranch));
+        }
+
+        public Builder source(@Nullable Output<PagesProjectSourceArgs> source) {
+            $.source = source;
+            return this;
+        }
+
+        public Builder source(PagesProjectSourceArgs source) {
+            return source(Output.of(source));
         }
 
         public PagesProjectArgs build() {

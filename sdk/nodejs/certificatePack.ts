@@ -98,7 +98,7 @@ export class CertificatePack extends pulumi.CustomResource {
      */
     public readonly validityDays!: pulumi.Output<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -195,7 +195,7 @@ export interface CertificatePackState {
      */
     validityDays?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -233,7 +233,7 @@ export interface CertificatePackArgs {
      */
     validityDays: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

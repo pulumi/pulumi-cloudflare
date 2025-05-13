@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Hostname = "foo.example.com",
     ///         RegionKey = "ca",
+    ///         Routing = "routing",
     ///     });
     /// 
     /// });
@@ -58,7 +59,13 @@ namespace Pulumi.Cloudflare
         public Output<string> RegionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Configure which routing method to use for the regional hostname
+        /// </summary>
+        [Output("routing")]
+        public Output<string?> Routing { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -122,7 +129,13 @@ namespace Pulumi.Cloudflare
         public Input<string> RegionKey { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Configure which routing method to use for the regional hostname
+        /// </summary>
+        [Input("routing")]
+        public Input<string>? Routing { get; set; }
+
+        /// <summary>
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -154,7 +167,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? RegionKey { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Configure which routing method to use for the regional hostname
+        /// </summary>
+        [Input("routing")]
+        public Input<string>? Routing { get; set; }
+
+        /// <summary>
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -24,6 +24,7 @@ class ZeroTrustAccessApplicationArgs:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  allow_authenticate_via_warp: Optional[pulumi.Input[builtins.bool]] = None,
+                 allow_iframe: Optional[pulumi.Input[builtins.bool]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  app_launcher_logo_url: Optional[pulumi.Input[builtins.str]] = None,
                  app_launcher_visible: Optional[pulumi.Input[builtins.bool]] = None,
@@ -63,6 +64,7 @@ class ZeroTrustAccessApplicationArgs:
         The set of arguments for constructing a ZeroTrustAccessApplication resource.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        :param pulumi.Input[builtins.bool] allow_iframe: Enables loading application content in an iFrame.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_idps: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         :param pulumi.Input[builtins.str] app_launcher_logo_url: The image URL of the logo shown in the App Launcher header.
         :param pulumi.Input[builtins.bool] app_launcher_visible: Displays the application in the App Launcher.
@@ -106,6 +108,8 @@ class ZeroTrustAccessApplicationArgs:
             pulumi.set(__self__, "account_id", account_id)
         if allow_authenticate_via_warp is not None:
             pulumi.set(__self__, "allow_authenticate_via_warp", allow_authenticate_via_warp)
+        if allow_iframe is not None:
+            pulumi.set(__self__, "allow_iframe", allow_iframe)
         if allowed_idps is not None:
             pulumi.set(__self__, "allowed_idps", allowed_idps)
         if app_launcher_logo_url is not None:
@@ -203,6 +207,18 @@ class ZeroTrustAccessApplicationArgs:
     @allow_authenticate_via_warp.setter
     def allow_authenticate_via_warp(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "allow_authenticate_via_warp", value)
+
+    @property
+    @pulumi.getter(name="allowIframe")
+    def allow_iframe(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enables loading application content in an iFrame.
+        """
+        return pulumi.get(self, "allow_iframe")
+
+    @allow_iframe.setter
+    def allow_iframe(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_iframe", value)
 
     @property
     @pulumi.getter(name="allowedIdps")
@@ -628,6 +644,7 @@ class _ZeroTrustAccessApplicationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  allow_authenticate_via_warp: Optional[pulumi.Input[builtins.bool]] = None,
+                 allow_iframe: Optional[pulumi.Input[builtins.bool]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  app_launcher_logo_url: Optional[pulumi.Input[builtins.str]] = None,
                  app_launcher_visible: Optional[pulumi.Input[builtins.bool]] = None,
@@ -670,6 +687,7 @@ class _ZeroTrustAccessApplicationState:
         Input properties used for looking up and filtering ZeroTrustAccessApplication resources.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        :param pulumi.Input[builtins.bool] allow_iframe: Enables loading application content in an iFrame.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_idps: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         :param pulumi.Input[builtins.str] app_launcher_logo_url: The image URL of the logo shown in the App Launcher header.
         :param pulumi.Input[builtins.bool] app_launcher_visible: Displays the application in the App Launcher.
@@ -714,6 +732,8 @@ class _ZeroTrustAccessApplicationState:
             pulumi.set(__self__, "account_id", account_id)
         if allow_authenticate_via_warp is not None:
             pulumi.set(__self__, "allow_authenticate_via_warp", allow_authenticate_via_warp)
+        if allow_iframe is not None:
+            pulumi.set(__self__, "allow_iframe", allow_iframe)
         if allowed_idps is not None:
             pulumi.set(__self__, "allowed_idps", allowed_idps)
         if app_launcher_logo_url is not None:
@@ -817,6 +837,18 @@ class _ZeroTrustAccessApplicationState:
     @allow_authenticate_via_warp.setter
     def allow_authenticate_via_warp(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "allow_authenticate_via_warp", value)
+
+    @property
+    @pulumi.getter(name="allowIframe")
+    def allow_iframe(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enables loading application content in an iFrame.
+        """
+        return pulumi.get(self, "allow_iframe")
+
+    @allow_iframe.setter
+    def allow_iframe(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "allow_iframe", value)
 
     @property
     @pulumi.getter(name="allowedIdps")
@@ -1275,6 +1307,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  allow_authenticate_via_warp: Optional[pulumi.Input[builtins.bool]] = None,
+                 allow_iframe: Optional[pulumi.Input[builtins.bool]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  app_launcher_logo_url: Optional[pulumi.Input[builtins.str]] = None,
                  app_launcher_visible: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1324,6 +1357,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        :param pulumi.Input[builtins.bool] allow_iframe: Enables loading application content in an iFrame.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_idps: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         :param pulumi.Input[builtins.str] app_launcher_logo_url: The image URL of the logo shown in the App Launcher header.
         :param pulumi.Input[builtins.bool] app_launcher_visible: Displays the application in the App Launcher.
@@ -1395,6 +1429,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  allow_authenticate_via_warp: Optional[pulumi.Input[builtins.bool]] = None,
+                 allow_iframe: Optional[pulumi.Input[builtins.bool]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  app_launcher_logo_url: Optional[pulumi.Input[builtins.str]] = None,
                  app_launcher_visible: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1441,6 +1476,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allow_authenticate_via_warp"] = allow_authenticate_via_warp
+            __props__.__dict__["allow_iframe"] = allow_iframe
             __props__.__dict__["allowed_idps"] = allowed_idps
             __props__.__dict__["app_launcher_logo_url"] = app_launcher_logo_url
             __props__.__dict__["app_launcher_visible"] = app_launcher_visible
@@ -1493,6 +1529,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
             allow_authenticate_via_warp: Optional[pulumi.Input[builtins.bool]] = None,
+            allow_iframe: Optional[pulumi.Input[builtins.bool]] = None,
             allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             app_launcher_logo_url: Optional[pulumi.Input[builtins.str]] = None,
             app_launcher_visible: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1540,6 +1577,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
         :param pulumi.Input[builtins.bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
+        :param pulumi.Input[builtins.bool] allow_iframe: Enables loading application content in an iFrame.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_idps: The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         :param pulumi.Input[builtins.str] app_launcher_logo_url: The image URL of the logo shown in the App Launcher header.
         :param pulumi.Input[builtins.bool] app_launcher_visible: Displays the application in the App Launcher.
@@ -1586,6 +1624,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["allow_authenticate_via_warp"] = allow_authenticate_via_warp
+        __props__.__dict__["allow_iframe"] = allow_iframe
         __props__.__dict__["allowed_idps"] = allowed_idps
         __props__.__dict__["app_launcher_logo_url"] = app_launcher_logo_url
         __props__.__dict__["app_launcher_visible"] = app_launcher_visible
@@ -1643,6 +1682,14 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "allow_authenticate_via_warp")
 
     @property
+    @pulumi.getter(name="allowIframe")
+    def allow_iframe(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Enables loading application content in an iFrame.
+        """
+        return pulumi.get(self, "allow_iframe")
+
+    @property
     @pulumi.getter(name="allowedIdps")
     def allowed_idps(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
         """
@@ -1692,7 +1739,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="corsHeaders")
-    def cors_headers(self) -> pulumi.Output['outputs.ZeroTrustAccessApplicationCorsHeaders']:
+    def cors_headers(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessApplicationCorsHeaders']]:
         return pulumi.get(self, "cors_headers")
 
     @property
@@ -1734,7 +1781,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def destinations(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessApplicationDestination']]:
+    def destinations(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationDestination']]]:
         """
         List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
@@ -1758,7 +1805,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="footerLinks")
-    def footer_links(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessApplicationFooterLink']]:
+    def footer_links(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationFooterLink']]]:
         """
         The links in the App Launcher footer.
         """
@@ -1822,7 +1869,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policies(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessApplicationPolicy']]:
+    def policies(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationPolicy']]]:
         """
         The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         """
@@ -1857,7 +1904,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scimConfig")
-    def scim_config(self) -> pulumi.Output['outputs.ZeroTrustAccessApplicationScimConfig']:
+    def scim_config(self) -> pulumi.Output[Optional['outputs.ZeroTrustAccessApplicationScimConfig']]:
         """
         Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         """
@@ -1914,7 +1961,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetCriterias")
-    def target_criterias(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessApplicationTargetCriteria']]:
+    def target_criterias(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessApplicationTargetCriteria']]]:
         return pulumi.get(self, "target_criterias")
 
     @property

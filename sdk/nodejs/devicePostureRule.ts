@@ -58,11 +58,11 @@ export class DevicePostureRule extends pulumi.CustomResource {
     /**
      * The value to be checked against.
      */
-    public readonly input!: pulumi.Output<outputs.DevicePostureRuleInput>;
+    public readonly input!: pulumi.Output<outputs.DevicePostureRuleInput | undefined>;
     /**
      * The conditions that the client must match to run the rule.
      */
-    public readonly matches!: pulumi.Output<outputs.DevicePostureRuleMatch[]>;
+    public readonly matches!: pulumi.Output<outputs.DevicePostureRuleMatch[] | undefined>;
     /**
      * The name of the device posture rule.
      */

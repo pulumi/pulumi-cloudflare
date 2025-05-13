@@ -57,7 +57,7 @@ public final class GetEmailRoutingSettingsResult {
     @Deprecated /* This attribute is deprecated. */
     private String tag;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -125,7 +125,7 @@ public final class GetEmailRoutingSettingsResult {
         return this.tag;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

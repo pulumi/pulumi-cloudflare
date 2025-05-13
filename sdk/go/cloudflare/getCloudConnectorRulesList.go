@@ -50,7 +50,7 @@ func LookupCloudConnectorRulesList(ctx *pulumi.Context, args *LookupCloudConnect
 type LookupCloudConnectorRulesListArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupCloudConnectorRulesListResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetCloudConnectorRulesListResult `pulumi:"results"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupCloudConnectorRulesListOutput(ctx *pulumi.Context, args LookupCloudCo
 type LookupCloudConnectorRulesListOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupCloudConnectorRulesListResultOutput) Results() GetCloudConnectorRu
 	return o.ApplyT(func(v LookupCloudConnectorRulesListResult) []GetCloudConnectorRulesListResult { return v.Results }).(GetCloudConnectorRulesListResultArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCloudConnectorRulesListResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudConnectorRulesListResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

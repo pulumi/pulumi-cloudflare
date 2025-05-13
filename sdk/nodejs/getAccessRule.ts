@@ -41,7 +41,7 @@ export interface GetAccessRuleArgs {
     accountId?: string;
     filter?: inputs.GetAccessRuleFilter;
     /**
-     * Unique identifier for a rule
+     * Unique identifier for a rule.
      */
     ruleId?: string;
     /**
@@ -72,7 +72,7 @@ export interface GetAccessRuleResult {
     readonly createdOn: string;
     readonly filter?: outputs.GetAccessRuleFilter;
     /**
-     * Unique identifier for a rule
+     * Unique identifier for a rule.
      */
     readonly id: string;
     /**
@@ -89,7 +89,7 @@ export interface GetAccessRuleResult {
      */
     readonly notes: string;
     /**
-     * Unique identifier for a rule
+     * Unique identifier for a rule.
      */
     readonly ruleId?: string;
     /**
@@ -136,7 +136,7 @@ export interface GetAccessRuleOutputArgs {
     accountId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetAccessRuleFilterArgs>;
     /**
-     * Unique identifier for a rule
+     * Unique identifier for a rule.
      */
     ruleId?: pulumi.Input<string>;
     /**

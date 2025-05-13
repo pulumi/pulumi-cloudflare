@@ -40,16 +40,16 @@ namespace Pulumi.Cloudflare
         /// Scan the context of predefined entries to only return matches surrounded by keywords.
         /// </summary>
         [Output("contextAwareness")]
-        public Output<Outputs.ZeroTrustDlpCustomProfileContextAwareness> ContextAwareness { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustDlpCustomProfileContextAwareness?> ContextAwareness { get; private set; } = null!;
 
         /// <summary>
-        /// When the profile was created
+        /// When the profile was created.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the profile
+        /// The description of the profile.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> OcrEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this profile can be accessed by anyone
+        /// Whether this profile can be accessed by anyone.
         /// </summary>
         [Output("openAccess")]
         public Output<bool> OpenAccess { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// When the profile was lasted updated
+        /// When the profile was lasted updated.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs>? ContextAwareness { get; set; }
 
         /// <summary>
-        /// The description of the profile
+        /// The description of the profile.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -231,13 +231,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZeroTrustDlpCustomProfileContextAwarenessGetArgs>? ContextAwareness { get; set; }
 
         /// <summary>
-        /// When the profile was created
+        /// When the profile was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The description of the profile
+        /// The description of the profile.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -257,7 +257,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? OcrEnabled { get; set; }
 
         /// <summary>
-        /// Whether this profile can be accessed by anyone
+        /// Whether this profile can be accessed by anyone.
         /// </summary>
         [Input("openAccess")]
         public Input<bool>? OpenAccess { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// When the profile was lasted updated
+        /// When the profile was lasted updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

@@ -34,31 +34,31 @@ namespace Pulumi.Cloudflare
     public partial class R2ManagedDomain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Bucket ID
+        /// Bucket ID.
         /// </summary>
         [Output("bucketId")]
         public Output<string> BucketId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
 
         /// <summary>
-        /// Domain name of the bucket's r2.dev domain
+        /// Domain name of the bucket's r2.dev domain.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable public bucket access at the r2.dev domain
+        /// Whether to enable public bucket access at the r2.dev domain.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -116,19 +116,19 @@ namespace Pulumi.Cloudflare
     public sealed class R2ManagedDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable public bucket access at the r2.dev domain
+        /// Whether to enable public bucket access at the r2.dev domain.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -148,31 +148,31 @@ namespace Pulumi.Cloudflare
     public sealed class R2ManagedDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Bucket ID
+        /// Bucket ID.
         /// </summary>
         [Input("bucketId")]
         public Input<string>? BucketId { get; set; }
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
         /// <summary>
-        /// Domain name of the bucket's r2.dev domain
+        /// Domain name of the bucket's r2.dev domain.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// Whether to enable public bucket access at the r2.dev domain
+        /// Whether to enable public bucket access at the r2.dev domain.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

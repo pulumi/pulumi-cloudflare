@@ -19,14 +19,14 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
     public static final WebAnalyticsRuleArgs Empty = new WebAnalyticsRuleArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -122,7 +122,7 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

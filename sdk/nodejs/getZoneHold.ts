@@ -28,7 +28,7 @@ export function getZoneHold(args: GetZoneHoldArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetZoneHoldArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -45,7 +45,7 @@ export interface GetZoneHoldResult {
     readonly id: string;
     readonly includeSubdomains: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -73,7 +73,7 @@ export function getZoneHoldOutput(args: GetZoneHoldOutputArgs, opts?: pulumi.Inv
  */
 export interface GetZoneHoldOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

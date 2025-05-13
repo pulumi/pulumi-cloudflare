@@ -26,7 +26,7 @@ class ApiShieldSchemaValidationSettingsArgs:
         """
         The set of arguments for constructing a ApiShieldSchemaValidationSettings resource.
         :param pulumi.Input[builtins.str] validation_default_mitigation_action: The default mitigation action used when there is no mitigation action defined on the operation
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
                validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
                special value `disable_override` or `null` Available values: "none", "disable_override".
@@ -52,7 +52,7 @@ class ApiShieldSchemaValidationSettingsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -87,7 +87,7 @@ class _ApiShieldSchemaValidationSettingsState:
         :param pulumi.Input[builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
                validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
                special value `disable_override` or `null` Available values: "none", "disable_override".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if validation_default_mitigation_action is not None:
             pulumi.set(__self__, "validation_default_mitigation_action", validation_default_mitigation_action)
@@ -126,7 +126,7 @@ class _ApiShieldSchemaValidationSettingsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -170,7 +170,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
                validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
                special value `disable_override` or `null` Available values: "none", "disable_override".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -255,7 +255,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions. - `none` will skip running schema
                validation entirely for the request - `null` indicates that no override is in place To clear any override, use the
                special value `disable_override` or `null` Available values: "none", "disable_override".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -288,7 +288,7 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

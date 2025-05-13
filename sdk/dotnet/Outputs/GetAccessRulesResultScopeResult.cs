@@ -18,11 +18,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The scope of the rule.
+        /// Defines the scope of the rule.
         /// Available values: "user", "organization".
         /// </summary>
         public readonly string Type;

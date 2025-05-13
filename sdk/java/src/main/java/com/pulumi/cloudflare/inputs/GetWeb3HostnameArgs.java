@@ -17,14 +17,14 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetWeb3HostnameArgs Empty = new GetWeb3HostnameArgs();
 
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      * 
      */
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public Optional<Output<String>> identifier() {
@@ -32,14 +32,14 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public Output<String> zoneId() {
@@ -72,7 +72,7 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param identifier Identifier
+         * @param identifier Specify the identifier of the hostname.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param identifier Identifier
+         * @param identifier Specify the identifier of the hostname.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specify the identifier of the hostname.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetWeb3HostnameArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specify the identifier of the hostname.
          * 
          * @return builder
          * 

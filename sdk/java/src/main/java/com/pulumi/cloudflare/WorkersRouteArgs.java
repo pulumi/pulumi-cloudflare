@@ -8,49 +8,40 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkersRouteArgs Empty = new WorkersRouteArgs();
 
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     @Import(name="pattern", required=true)
     private Output<String> pattern;
 
+    /**
+     * @return Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     public Output<String> pattern() {
         return this.pattern;
     }
 
     /**
-     * Identifier.
+     * Name of the script to run if the route matches.
      * 
      */
-    @Import(name="routeId")
-    private @Nullable Output<String> routeId;
+    @Import(name="script", required=true)
+    private Output<String> script;
 
     /**
-     * @return Identifier.
+     * @return Name of the script to run if the route matches.
      * 
      */
-    public Optional<Output<String>> routeId() {
-        return Optional.ofNullable(this.routeId);
-    }
-
-    /**
-     * Name of the script, used in URLs and route configuration.
-     * 
-     */
-    @Import(name="script")
-    private @Nullable Output<String> script;
-
-    /**
-     * @return Name of the script, used in URLs and route configuration.
-     * 
-     */
-    public Optional<Output<String>> script() {
-        return Optional.ofNullable(this.script);
+    public Output<String> script() {
+        return this.script;
     }
 
     /**
@@ -72,7 +63,6 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
 
     private WorkersRouteArgs(WorkersRouteArgs $) {
         this.pattern = $.pattern;
-        this.routeId = $.routeId;
         this.script = $.script;
         this.zoneId = $.zoneId;
     }
@@ -95,49 +85,40 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
             $ = new WorkersRouteArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pattern Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
 
+        /**
+         * @param pattern Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(String pattern) {
             return pattern(Output.of(pattern));
         }
 
         /**
-         * @param routeId Identifier.
+         * @param script Name of the script to run if the route matches.
          * 
          * @return builder
          * 
          */
-        public Builder routeId(@Nullable Output<String> routeId) {
-            $.routeId = routeId;
-            return this;
-        }
-
-        /**
-         * @param routeId Identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeId(String routeId) {
-            return routeId(Output.of(routeId));
-        }
-
-        /**
-         * @param script Name of the script, used in URLs and route configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder script(@Nullable Output<String> script) {
+        public Builder script(Output<String> script) {
             $.script = script;
             return this;
         }
 
         /**
-         * @param script Name of the script, used in URLs and route configuration.
+         * @param script Name of the script to run if the route matches.
          * 
          * @return builder
          * 
@@ -170,6 +151,9 @@ public final class WorkersRouteArgs extends com.pulumi.resources.ResourceArgs {
         public WorkersRouteArgs build() {
             if ($.pattern == null) {
                 throw new MissingRequiredPropertyException("WorkersRouteArgs", "pattern");
+            }
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("WorkersRouteArgs", "script");
             }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("WorkersRouteArgs", "zoneId");

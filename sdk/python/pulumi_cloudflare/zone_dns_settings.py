@@ -34,7 +34,7 @@ class ZoneDnsSettingsArgs:
                  zone_mode: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneDnsSettings resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.bool] flatten_all_cnames: Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.
         :param pulumi.Input[builtins.bool] foundation_dns: Whether to enable Foundation DNS Advanced Nameservers on the zone.
         :param pulumi.Input['ZoneDnsSettingsInternalDnsArgs'] internal_dns: Settings for this internal zone.
@@ -70,7 +70,7 @@ class ZoneDnsSettingsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -211,7 +211,7 @@ class _ZoneDnsSettingsState:
         :param pulumi.Input[builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         :param pulumi.Input['ZoneDnsSettingsSoaArgs'] soa: Components of the zone's SOA record.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] zone_mode: Whether the zone mode is a regular or CDN/DNS only zone.
                Available values: "standard", "cdn*only", "dns*only".
         """
@@ -336,7 +336,7 @@ class _ZoneDnsSettingsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -388,7 +388,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         :param pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']] soa: Components of the zone's SOA record.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] zone_mode: Whether the zone mode is a regular or CDN/DNS only zone.
                Available values: "standard", "cdn*only", "dns*only".
         """
@@ -482,7 +482,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
         :param pulumi.Input[builtins.float] ns_ttl: The time to live (TTL) of the zone's nameserver (NS) records.
         :param pulumi.Input[builtins.bool] secondary_overrides: Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
         :param pulumi.Input[Union['ZoneDnsSettingsSoaArgs', 'ZoneDnsSettingsSoaArgsDict']] soa: Components of the zone's SOA record.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] zone_mode: Whether the zone mode is a regular or CDN/DNS only zone.
                Available values: "standard", "cdn*only", "dns*only".
         """
@@ -520,7 +520,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internalDns")
-    def internal_dns(self) -> pulumi.Output['outputs.ZoneDnsSettingsInternalDns']:
+    def internal_dns(self) -> pulumi.Output[Optional['outputs.ZoneDnsSettingsInternalDns']]:
         """
         Settings for this internal zone.
         """
@@ -536,7 +536,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def nameservers(self) -> pulumi.Output['outputs.ZoneDnsSettingsNameservers']:
+    def nameservers(self) -> pulumi.Output[Optional['outputs.ZoneDnsSettingsNameservers']]:
         """
         Settings determining the nameservers through which the zone should be available.
         """
@@ -560,7 +560,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def soa(self) -> pulumi.Output['outputs.ZoneDnsSettingsSoa']:
+    def soa(self) -> pulumi.Output[Optional['outputs.ZoneDnsSettingsSoa']]:
         """
         Components of the zone's SOA record.
         """
@@ -570,7 +570,7 @@ class ZoneDnsSettings(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

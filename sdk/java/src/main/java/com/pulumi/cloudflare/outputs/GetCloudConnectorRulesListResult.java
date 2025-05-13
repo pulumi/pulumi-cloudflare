@@ -12,12 +12,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCloudConnectorRulesListResult {
-    /**
-     * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
-     * 
-     */
-    private String cloudProvider;
     private String description;
     private Boolean enabled;
     private String expression;
@@ -27,16 +21,14 @@ public final class GetCloudConnectorRulesListResult {
      * 
      */
     private GetCloudConnectorRulesListResultParameters parameters;
-
-    private GetCloudConnectorRulesListResult() {}
     /**
      * @return Cloud Provider type
      * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
      * 
      */
-    public String cloudProvider() {
-        return this.cloudProvider;
-    }
+    private String provider;
+
+    private GetCloudConnectorRulesListResult() {}
     public String description() {
         return this.description;
     }
@@ -56,6 +48,14 @@ public final class GetCloudConnectorRulesListResult {
     public GetCloudConnectorRulesListResultParameters parameters() {
         return this.parameters;
     }
+    /**
+     * @return Cloud Provider type
+     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * 
+     */
+    public String provider() {
+        return this.provider;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -66,31 +66,23 @@ public final class GetCloudConnectorRulesListResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String cloudProvider;
         private String description;
         private Boolean enabled;
         private String expression;
         private String id;
         private GetCloudConnectorRulesListResultParameters parameters;
+        private String provider;
         public Builder() {}
         public Builder(GetCloudConnectorRulesListResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.cloudProvider = defaults.cloudProvider;
     	      this.description = defaults.description;
     	      this.enabled = defaults.enabled;
     	      this.expression = defaults.expression;
     	      this.id = defaults.id;
     	      this.parameters = defaults.parameters;
+    	      this.provider = defaults.provider;
         }
 
-        @CustomType.Setter
-        public Builder cloudProvider(String cloudProvider) {
-            if (cloudProvider == null) {
-              throw new MissingRequiredPropertyException("GetCloudConnectorRulesListResult", "cloudProvider");
-            }
-            this.cloudProvider = cloudProvider;
-            return this;
-        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -131,14 +123,22 @@ public final class GetCloudConnectorRulesListResult {
             this.parameters = parameters;
             return this;
         }
+        @CustomType.Setter
+        public Builder provider(String provider) {
+            if (provider == null) {
+              throw new MissingRequiredPropertyException("GetCloudConnectorRulesListResult", "provider");
+            }
+            this.provider = provider;
+            return this;
+        }
         public GetCloudConnectorRulesListResult build() {
             final var _resultValue = new GetCloudConnectorRulesListResult();
-            _resultValue.cloudProvider = cloudProvider;
             _resultValue.description = description;
             _resultValue.enabled = enabled;
             _resultValue.expression = expression;
             _resultValue.id = id;
             _resultValue.parameters = parameters;
+            _resultValue.provider = provider;
             return _resultValue;
         }
     }

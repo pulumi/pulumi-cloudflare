@@ -90,7 +90,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Field to order zones by.
-     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;, &#34;plan.id&#34;.
      * 
      */
     @Import(name="order")
@@ -98,7 +98,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Field to order zones by.
-     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;, &#34;plan.id&#34;.
      * 
      */
     public Optional<String> order() {
@@ -201,7 +201,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param order Field to order zones by.
-         * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
+         * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;, &#34;plan.id&#34;.
          * 
          * @return builder
          * 

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsAuditSshArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBisoAdminControlsArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsDnsResolversArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
@@ -88,6 +89,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<TeamsRuleRuleSettingsBisoAdminControlsArgs>> bisoAdminControls() {
         return Optional.ofNullable(this.bisoAdminControls);
+    }
+
+    /**
+     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     * 
+     */
+    @Import(name="blockPage")
+    private @Nullable Output<TeamsRuleRuleSettingsBlockPageArgs> blockPage;
+
+    /**
+     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsBlockPageArgs>> blockPage() {
+        return Optional.ofNullable(this.blockPage);
     }
 
     /**
@@ -397,6 +413,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.allowChildBypass = $.allowChildBypass;
         this.auditSsh = $.auditSsh;
         this.bisoAdminControls = $.bisoAdminControls;
+        this.blockPage = $.blockPage;
         this.blockPageEnabled = $.blockPageEnabled;
         this.blockReason = $.blockReason;
         this.bypassParentRule = $.bypassParentRule;
@@ -519,6 +536,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder bisoAdminControls(TeamsRuleRuleSettingsBisoAdminControlsArgs bisoAdminControls) {
             return bisoAdminControls(Output.of(bisoAdminControls));
+        }
+
+        /**
+         * @param blockPage Custom block page settings. If missing/null, blocking will use the the account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockPage(@Nullable Output<TeamsRuleRuleSettingsBlockPageArgs> blockPage) {
+            $.blockPage = blockPage;
+            return this;
+        }
+
+        /**
+         * @param blockPage Custom block page settings. If missing/null, blocking will use the the account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockPage(TeamsRuleRuleSettingsBlockPageArgs blockPage) {
+            return blockPage(Output.of(blockPage));
         }
 
         /**

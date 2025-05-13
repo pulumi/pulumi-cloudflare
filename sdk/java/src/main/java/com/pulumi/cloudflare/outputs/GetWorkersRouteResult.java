@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWorkersRouteResult {
@@ -15,14 +17,18 @@ public final class GetWorkersRouteResult {
      * 
      */
     private String id;
+    /**
+     * @return Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     private String pattern;
     /**
      * @return Identifier.
      * 
      */
-    private String routeId;
+    private @Nullable String routeId;
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script to run if the route matches.
      * 
      */
     private String script;
@@ -40,6 +46,10 @@ public final class GetWorkersRouteResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     public String pattern() {
         return this.pattern;
     }
@@ -47,11 +57,11 @@ public final class GetWorkersRouteResult {
      * @return Identifier.
      * 
      */
-    public String routeId() {
-        return this.routeId;
+    public Optional<String> routeId() {
+        return Optional.ofNullable(this.routeId);
     }
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script to run if the route matches.
      * 
      */
     public String script() {
@@ -76,7 +86,7 @@ public final class GetWorkersRouteResult {
     public static final class Builder {
         private String id;
         private String pattern;
-        private String routeId;
+        private @Nullable String routeId;
         private String script;
         private String zoneId;
         public Builder() {}
@@ -106,10 +116,8 @@ public final class GetWorkersRouteResult {
             return this;
         }
         @CustomType.Setter
-        public Builder routeId(String routeId) {
-            if (routeId == null) {
-              throw new MissingRequiredPropertyException("GetWorkersRouteResult", "routeId");
-            }
+        public Builder routeId(@Nullable String routeId) {
+
             this.routeId = routeId;
             return this;
         }

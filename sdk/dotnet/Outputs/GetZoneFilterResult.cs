@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Name;
         /// <summary>
         /// Field to order zones by.
-        /// Available values: "name", "status", "account.id", "account.name".
+        /// Available values: "name", "status", "account.id", "account.name", "plan.id".
         /// </summary>
         public readonly string? Order;
         /// <summary>

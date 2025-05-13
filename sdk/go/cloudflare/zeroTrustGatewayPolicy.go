@@ -30,18 +30,18 @@ type ZeroTrustGatewayPolicy struct {
 	// Date of deletion, if any.
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// The description of the rule.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The wirefilter expression used for device posture check matching.
-	DevicePosture pulumi.StringPtrOutput `pulumi:"devicePosture"`
+	DevicePosture pulumi.StringOutput `pulumi:"devicePosture"`
 	// True if the rule is enabled.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The expiration time stamp and default duration of a DNS policy. Takes
 	// precedence over the policy's `schedule` configuration, if any.
 	Expiration ZeroTrustGatewayPolicyExpirationOutput `pulumi:"expiration"`
 	// The protocol or layer to evaluate the traffic, identity, and device posture expressions.
 	Filters pulumi.StringArrayOutput `pulumi:"filters"`
 	// The wirefilter expression used for identity matching.
-	Identity pulumi.StringPtrOutput `pulumi:"identity"`
+	Identity pulumi.StringOutput `pulumi:"identity"`
 	// The name of the rule.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
@@ -50,10 +50,10 @@ type ZeroTrustGatewayPolicy struct {
 	// Additional settings that modify the rule's action.
 	RuleSettings ZeroTrustGatewayPolicyRuleSettingsOutput `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-	Schedule ZeroTrustGatewayPolicyScheduleOutput `pulumi:"schedule"`
+	Schedule ZeroTrustGatewayPolicySchedulePtrOutput `pulumi:"schedule"`
 	// The wirefilter expression used for traffic matching.
-	Traffic   pulumi.StringPtrOutput `pulumi:"traffic"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
+	Traffic   pulumi.StringOutput `pulumi:"traffic"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// version number of the rule
 	Version pulumi.IntOutput `pulumi:"version"`
 }
@@ -350,18 +350,18 @@ func (o ZeroTrustGatewayPolicyOutput) DeletedAt() pulumi.StringOutput {
 }
 
 // The description of the rule.
-func (o ZeroTrustGatewayPolicyOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The wirefilter expression used for device posture check matching.
-func (o ZeroTrustGatewayPolicyOutput) DevicePosture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.DevicePosture }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) DevicePosture() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.DevicePosture }).(pulumi.StringOutput)
 }
 
 // True if the rule is enabled.
-func (o ZeroTrustGatewayPolicyOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The expiration time stamp and default duration of a DNS policy. Takes
@@ -376,8 +376,8 @@ func (o ZeroTrustGatewayPolicyOutput) Filters() pulumi.StringArrayOutput {
 }
 
 // The wirefilter expression used for identity matching.
-func (o ZeroTrustGatewayPolicyOutput) Identity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.Identity }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Identity }).(pulumi.StringOutput)
 }
 
 // The name of the rule.
@@ -397,13 +397,13 @@ func (o ZeroTrustGatewayPolicyOutput) RuleSettings() ZeroTrustGatewayPolicyRuleS
 }
 
 // The schedule for activating DNS policies. This does not apply to HTTP or network policies.
-func (o ZeroTrustGatewayPolicyOutput) Schedule() ZeroTrustGatewayPolicyScheduleOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) ZeroTrustGatewayPolicyScheduleOutput { return v.Schedule }).(ZeroTrustGatewayPolicyScheduleOutput)
+func (o ZeroTrustGatewayPolicyOutput) Schedule() ZeroTrustGatewayPolicySchedulePtrOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) ZeroTrustGatewayPolicySchedulePtrOutput { return v.Schedule }).(ZeroTrustGatewayPolicySchedulePtrOutput)
 }
 
 // The wirefilter expression used for traffic matching.
-func (o ZeroTrustGatewayPolicyOutput) Traffic() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringPtrOutput { return v.Traffic }).(pulumi.StringPtrOutput)
+func (o ZeroTrustGatewayPolicyOutput) Traffic() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.Traffic }).(pulumi.StringOutput)
 }
 
 func (o ZeroTrustGatewayPolicyOutput) UpdatedAt() pulumi.StringOutput {

@@ -14,31 +14,31 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class R2BucketSippySource
     {
         /// <summary>
-        /// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+        /// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         public readonly string? AccessKeyId;
         /// <summary>
-        /// Name of the AWS S3 bucket
+        /// Name of the AWS S3 bucket.
         /// </summary>
         public readonly string? Bucket;
         /// <summary>
-        /// Client email of an IAM credential (ideally scoped to a single GCS bucket)
+        /// Client email of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         public readonly string? ClientEmail;
         /// <summary>
-        /// Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+        /// Available values: "aws".
+        /// </summary>
+        public readonly string? CloudProvider;
+        /// <summary>
+        /// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
         /// </summary>
         public readonly string? PrivateKey;
         /// <summary>
-        /// Available values: "aws".
-        /// </summary>
-        public readonly string? Provider;
-        /// <summary>
-        /// Name of the AWS availability zone
+        /// Name of the AWS availability zone.
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+        /// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         /// </summary>
         public readonly string? SecretAccessKey;
 
@@ -50,9 +50,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? clientEmail,
 
-            string? privateKey,
+            string? cloudProvider,
 
-            string? provider,
+            string? privateKey,
 
             string? region,
 
@@ -61,8 +61,8 @@ namespace Pulumi.Cloudflare.Outputs
             AccessKeyId = accessKeyId;
             Bucket = bucket;
             ClientEmail = clientEmail;
+            CloudProvider = cloudProvider;
             PrivateKey = privateKey;
-            Provider = provider;
             Region = region;
             SecretAccessKey = secretAccessKey;
         }

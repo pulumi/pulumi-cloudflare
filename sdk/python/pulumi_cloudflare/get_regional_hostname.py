@@ -27,7 +27,7 @@ class GetRegionalHostnameResult:
     """
     A collection of values returned by getRegionalHostname.
     """
-    def __init__(__self__, created_on=None, hostname=None, id=None, region_key=None, zone_id=None):
+    def __init__(__self__, created_on=None, hostname=None, id=None, region_key=None, routing=None, zone_id=None):
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
@@ -40,6 +40,9 @@ class GetRegionalHostnameResult:
         if region_key and not isinstance(region_key, str):
             raise TypeError("Expected argument 'region_key' to be a str")
         pulumi.set(__self__, "region_key", region_key)
+        if routing and not isinstance(routing, str):
+            raise TypeError("Expected argument 'routing' to be a str")
+        pulumi.set(__self__, "routing", routing)
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
@@ -77,10 +80,18 @@ class GetRegionalHostnameResult:
         return pulumi.get(self, "region_key")
 
     @property
+    @pulumi.getter
+    def routing(self) -> builtins.str:
+        """
+        Configure which routing method to use for the regional hostname
+        """
+        return pulumi.get(self, "routing")
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -95,6 +106,7 @@ class AwaitableGetRegionalHostnameResult(GetRegionalHostnameResult):
             hostname=self.hostname,
             id=self.id,
             region_key=self.region_key,
+            routing=self.routing,
             zone_id=self.zone_id)
 
 
@@ -114,7 +126,7 @@ def get_regional_hostname(hostname: Optional[builtins.str] = None,
 
 
     :param builtins.str hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['hostname'] = hostname
@@ -127,6 +139,7 @@ def get_regional_hostname(hostname: Optional[builtins.str] = None,
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
         region_key=pulumi.get(__ret__, 'region_key'),
+        routing=pulumi.get(__ret__, 'routing'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_regional_hostname_output(hostname: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -144,7 +157,7 @@ def get_regional_hostname_output(hostname: Optional[pulumi.Input[Optional[builti
 
 
     :param builtins.str hostname: DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com`
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['hostname'] = hostname
@@ -156,4 +169,5 @@ def get_regional_hostname_output(hostname: Optional[pulumi.Input[Optional[builti
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
         region_key=pulumi.get(__response__, 'region_key'),
+        routing=pulumi.get(__response__, 'routing'),
         zone_id=pulumi.get(__response__, 'zone_id')))

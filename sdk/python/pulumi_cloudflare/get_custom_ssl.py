@@ -92,7 +92,7 @@ class GetCustomSslResult:
     @pulumi.getter(name="customCertificateId")
     def custom_certificate_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "custom_certificate_id")
 
@@ -126,7 +126,7 @@ class GetCustomSslResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -196,7 +196,7 @@ class GetCustomSslResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -241,8 +241,8 @@ def get_custom_ssl(custom_certificate_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str custom_certificate_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str custom_certificate_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['customCertificateId'] = custom_certificate_id
@@ -284,8 +284,8 @@ def get_custom_ssl_output(custom_certificate_id: Optional[pulumi.Input[Optional[
     ```
 
 
-    :param builtins.str custom_certificate_id: Identifier
-    :param builtins.str zone_id: Identifier
+    :param builtins.str custom_certificate_id: Identifier.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['customCertificateId'] = custom_certificate_id

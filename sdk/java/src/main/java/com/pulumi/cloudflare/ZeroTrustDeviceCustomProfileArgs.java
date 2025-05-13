@@ -225,14 +225,14 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
     }
 
     /**
-     * The wirefilter expression to match devices.
+     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
      * 
      */
     @Import(name="match", required=true)
     private Output<String> match;
 
     /**
-     * @return The wirefilter expression to match devices.
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
      * 
      */
     public Output<String> match() {
@@ -684,7 +684,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         }
 
         /**
-         * @param match The wirefilter expression to match devices.
+         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         }
 
         /**
-         * @param match The wirefilter expression to match devices.
+         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
          * 
          * @return builder
          * 

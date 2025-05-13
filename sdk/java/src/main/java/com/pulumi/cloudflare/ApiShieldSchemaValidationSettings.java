@@ -94,14 +94,14 @@ public class ApiShieldSchemaValidationSettings extends com.pulumi.resources.Cust
         return Codegen.optional(this.validationOverrideMitigationAction);
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

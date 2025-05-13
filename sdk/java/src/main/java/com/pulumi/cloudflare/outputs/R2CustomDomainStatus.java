@@ -12,13 +12,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class R2CustomDomainStatus {
     /**
-     * @return Ownership status of the domain
+     * @return Ownership status of the domain.
      * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
     private @Nullable String ownership;
     /**
-     * @return SSL certificate status
+     * @return SSL certificate status.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
@@ -26,7 +26,7 @@ public final class R2CustomDomainStatus {
 
     private R2CustomDomainStatus() {}
     /**
-     * @return Ownership status of the domain
+     * @return Ownership status of the domain.
      * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
@@ -34,7 +34,7 @@ public final class R2CustomDomainStatus {
         return Optional.ofNullable(this.ownership);
     }
     /**
-     * @return SSL certificate status
+     * @return SSL certificate status.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */

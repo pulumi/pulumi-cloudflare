@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZeroTrustDlpPredefinedProfileEntryResult
     {
+        /// <summary>
+        /// Only applies to custom word lists.
+        /// Determines if the words should be matched in a case-sensitive manner
+        /// Cannot be set to false if secret is true
+        /// </summary>
+        public readonly bool CaseSensitive;
         public readonly Outputs.GetZeroTrustDlpPredefinedProfileEntryConfidenceResult Confidence;
         public readonly string CreatedAt;
         public readonly bool Enabled;
@@ -30,6 +36,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetZeroTrustDlpPredefinedProfileEntryResult(
+            bool caseSensitive,
+
             Outputs.GetZeroTrustDlpPredefinedProfileEntryConfidenceResult confidence,
 
             string createdAt,
@@ -52,6 +60,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string wordList)
         {
+            CaseSensitive = caseSensitive;
             Confidence = confidence;
             CreatedAt = createdAt;
             Enabled = enabled;

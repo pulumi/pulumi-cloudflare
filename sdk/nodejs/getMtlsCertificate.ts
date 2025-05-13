@@ -30,11 +30,11 @@ export function getMtlsCertificate(args: GetMtlsCertificateArgs, opts?: pulumi.I
  */
 export interface GetMtlsCertificateArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     mtlsCertificateId?: string;
 }
@@ -44,7 +44,7 @@ export interface GetMtlsCertificateArgs {
  */
 export interface GetMtlsCertificateResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -60,7 +60,7 @@ export interface GetMtlsCertificateResult {
      */
     readonly expiresOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -68,7 +68,7 @@ export interface GetMtlsCertificateResult {
      */
     readonly issuer: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly mtlsCertificateId?: string;
     /**
@@ -114,11 +114,11 @@ export function getMtlsCertificateOutput(args: GetMtlsCertificateOutputArgs, opt
  */
 export interface GetMtlsCertificateOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     mtlsCertificateId?: pulumi.Input<string>;
 }

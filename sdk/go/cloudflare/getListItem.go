@@ -26,9 +26,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupListItem(ctx, &cloudflare.LookupListItemArgs{
-//				AccountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
-//				ListId:            "2c0fc9fa937b11eaa1b71c4d701ab86e",
-//				ItemId:            "34b12448945f11eaa1b71c4d701ab86e",
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
+//				ItemId:    "34b12448945f11eaa1b71c4d701ab86e",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,9 +50,9 @@ func LookupListItem(ctx *pulumi.Context, args *LookupListItemArgs, opts ...pulum
 
 // A collection of arguments for invoking getListItem.
 type LookupListItemArgs struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// The unique ID of the item in the List.
+	// Defines an identifier.
+	AccountId string `pulumi:"accountId"`
+	// Defines the unique ID of the item in the List.
 	ItemId string `pulumi:"itemId"`
 	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
@@ -60,11 +60,11 @@ type LookupListItemArgs struct {
 
 // A collection of values returned by getListItem.
 type LookupListItemResult struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// A non-negative 32 bit integer
+	// Defines an identifier.
+	AccountId string `pulumi:"accountId"`
+	// Defines a non-negative 32 bit integer.
 	Asn int `pulumi:"asn"`
-	// An informative summary of the list item.
+	// Defines an informative summary of the list item.
 	Comment string `pulumi:"comment"`
 	// The RFC 3339 timestamp of when the item was created.
 	CreatedOn string `pulumi:"createdOn"`
@@ -74,7 +74,7 @@ type LookupListItemResult struct {
 	Id string `pulumi:"id"`
 	// An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Ip string `pulumi:"ip"`
-	// The unique ID of the item in the List.
+	// Defines the unique ID of the item in the List.
 	ItemId string `pulumi:"itemId"`
 	// The unique ID of the list.
 	ListId string `pulumi:"listId"`
@@ -95,9 +95,9 @@ func LookupListItemOutput(ctx *pulumi.Context, args LookupListItemOutputArgs, op
 
 // A collection of arguments for invoking getListItem.
 type LookupListItemOutputArgs struct {
-	// Identifier
-	AccountIdentifier pulumi.StringInput `pulumi:"accountIdentifier"`
-	// The unique ID of the item in the List.
+	// Defines an identifier.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Defines the unique ID of the item in the List.
 	ItemId pulumi.StringInput `pulumi:"itemId"`
 	// The unique ID of the list.
 	ListId pulumi.StringInput `pulumi:"listId"`
@@ -122,17 +122,17 @@ func (o LookupListItemResultOutput) ToLookupListItemResultOutputWithContext(ctx 
 	return o
 }
 
-// Identifier
-func (o LookupListItemResultOutput) AccountIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupListItemResult) string { return v.AccountIdentifier }).(pulumi.StringOutput)
+// Defines an identifier.
+func (o LookupListItemResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupListItemResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// A non-negative 32 bit integer
+// Defines a non-negative 32 bit integer.
 func (o LookupListItemResultOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupListItemResult) int { return v.Asn }).(pulumi.IntOutput)
 }
 
-// An informative summary of the list item.
+// Defines an informative summary of the list item.
 func (o LookupListItemResultOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListItemResult) string { return v.Comment }).(pulumi.StringOutput)
 }
@@ -157,7 +157,7 @@ func (o LookupListItemResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListItemResult) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// The unique ID of the item in the List.
+// Defines the unique ID of the item in the List.
 func (o LookupListItemResultOutput) ItemId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListItemResult) string { return v.ItemId }).(pulumi.StringOutput)
 }

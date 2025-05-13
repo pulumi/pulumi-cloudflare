@@ -34,6 +34,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> AllowAuthenticateViaWarp { get; private set; } = null!;
 
         /// <summary>
+        /// Enables loading application content in an iFrame.
+        /// </summary>
+        [Output("allowIframe")]
+        public Output<bool?> AllowIframe { get; private set; } = null!;
+
+        /// <summary>
         /// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
         /// </summary>
         [Output("allowedIdps")]
@@ -70,7 +76,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> BgColor { get; private set; } = null!;
 
         [Output("corsHeaders")]
-        public Output<Outputs.ZeroTrustAccessApplicationCorsHeaders> CorsHeaders { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustAccessApplicationCorsHeaders?> CorsHeaders { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -196,7 +202,7 @@ namespace Pulumi.Cloudflare
         /// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         /// </summary>
         [Output("scimConfig")]
-        public Output<Outputs.ZeroTrustAccessApplicationScimConfig> ScimConfig { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustAccessApplicationScimConfig?> ScimConfig { get; private set; } = null!;
 
         /// <summary>
         /// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -313,6 +319,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("allowAuthenticateViaWarp")]
         public Input<bool>? AllowAuthenticateViaWarp { get; set; }
+
+        /// <summary>
+        /// Enables loading application content in an iFrame.
+        /// </summary>
+        [Input("allowIframe")]
+        public Input<bool>? AllowIframe { get; set; }
 
         [Input("allowedIdps")]
         private InputList<string>? _allowedIdps;
@@ -588,6 +600,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("allowAuthenticateViaWarp")]
         public Input<bool>? AllowAuthenticateViaWarp { get; set; }
+
+        /// <summary>
+        /// Enables loading application content in an iFrame.
+        /// </summary>
+        [Input("allowIframe")]
+        public Input<bool>? AllowIframe { get; set; }
 
         [Input("allowedIdps")]
         private InputList<string>? _allowedIdps;

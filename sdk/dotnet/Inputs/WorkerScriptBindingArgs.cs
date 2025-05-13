@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerScriptBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+        /// </summary>
+        [Input("algorithm")]
+        public Input<string>? Algorithm { get; set; }
+
+        /// <summary>
         /// R2 bucket to bind to.
         /// </summary>
         [Input("bucketName")]
@@ -43,6 +49,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Environment { get; set; }
 
         /// <summary>
+        /// Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+        /// Available values: "raw", "pkcs8", "spki", "jwk".
+        /// </summary>
+        [Input("format")]
+        public Input<string>? Format { get; set; }
+
+        /// <summary>
         /// Identifier of the D1 database to bind to.
         /// </summary>
         [Input("id")]
@@ -59,6 +72,38 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("json")]
         public Input<string>? Json { get; set; }
+
+        [Input("keyBase64")]
+        private Input<string>? _keyBase64;
+
+        /// <summary>
+        /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        /// </summary>
+        public Input<string>? KeyBase64
+        {
+            get => _keyBase64;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyBase64 = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("keyJwk")]
+        private Input<string>? _keyJwk;
+
+        /// <summary>
+        /// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+        /// </summary>
+        public Input<string>? KeyJwk
+        {
+            get => _keyJwk;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyJwk = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// A JavaScript variable name for the binding.
@@ -85,6 +130,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.WorkerScriptBindingOutboundArgs>? Outbound { get; set; }
 
         /// <summary>
+        /// Name of the Pipeline to bind to.
+        /// </summary>
+        [Input("pipeline")]
+        public Input<string>? Pipeline { get; set; }
+
+        /// <summary>
         /// Name of the Queue to bind to.
         /// </summary>
         [Input("queueName")]
@@ -97,10 +148,22 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ScriptName { get; set; }
 
         /// <summary>
+        /// Name of the secret in the store.
+        /// </summary>
+        [Input("secretName")]
+        public Input<string>? SecretName { get; set; }
+
+        /// <summary>
         /// Name of Worker to bind to.
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }
+
+        /// <summary>
+        /// ID of the store containing the secret.
+        /// </summary>
+        [Input("storeId")]
+        public Input<string>? StoreId { get; set; }
 
         [Input("text")]
         private Input<string>? _text;
@@ -120,10 +183,22 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        /// Available values: "ai".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
+
+        [Input("usages")]
+        private InputList<string>? _usages;
+
+        /// <summary>
+        /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+        /// </summary>
+        public InputList<string> Usages
+        {
+            get => _usages ?? (_usages = new InputList<string>());
+            set => _usages = value;
+        }
 
         public WorkerScriptBindingArgs()
         {

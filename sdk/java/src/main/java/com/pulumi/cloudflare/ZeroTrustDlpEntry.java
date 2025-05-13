@@ -76,6 +76,24 @@ public class ZeroTrustDlpEntry extends com.pulumi.resources.CustomResource {
     public Output<String> accountId() {
         return this.accountId;
     }
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    @Export(name="caseSensitive", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> caseSensitive;
+
+    /**
+     * @return Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    public Output<Boolean> caseSensitive() {
+        return this.caseSensitive;
+    }
     @Export(name="confidence", refs={ZeroTrustDlpEntryConfidence.class}, tree="[0]")
     private Output<ZeroTrustDlpEntryConfidence> confidence;
 

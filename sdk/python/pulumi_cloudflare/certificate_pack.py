@@ -38,7 +38,7 @@ class CertificatePackArgs:
                Available values: "txt", "http", "email".
         :param pulumi.Input[builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.bool] cloudflare_branding: Whether or not to add Cloudflare Branding for the order.  This will add a subdomain of sni.cloudflaressl.com as the Common Name if set to true.
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
@@ -118,7 +118,7 @@ class CertificatePackArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -164,7 +164,7 @@ class _CertificatePackState:
                Available values: "txt", "http", "email".
         :param pulumi.Input[builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
@@ -276,7 +276,7 @@ class _CertificatePackState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -342,7 +342,7 @@ class CertificatePack(pulumi.CustomResource):
                Available values: "txt", "http", "email".
         :param pulumi.Input[builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -469,7 +469,7 @@ class CertificatePack(pulumi.CustomResource):
                Available values: "txt", "http", "email".
         :param pulumi.Input[builtins.int] validity_days: Validity Days selected for the order.
                Available values: 14, 30, 90, 365.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -550,7 +550,7 @@ class CertificatePack(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

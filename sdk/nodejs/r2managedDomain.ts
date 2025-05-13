@@ -47,23 +47,23 @@ export class R2ManagedDomain extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID
+     * Account ID.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Bucket ID
+     * Bucket ID.
      */
     public /*out*/ readonly bucketId!: pulumi.Output<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     public readonly bucketName!: pulumi.Output<string>;
     /**
-     * Domain name of the bucket's r2.dev domain
+     * Domain name of the bucket's r2.dev domain.
      */
     public /*out*/ readonly domain!: pulumi.Output<string>;
     /**
-     * Whether to enable public bucket access at the r2.dev domain
+     * Whether to enable public bucket access at the r2.dev domain.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
@@ -118,23 +118,23 @@ export class R2ManagedDomain extends pulumi.CustomResource {
  */
 export interface R2ManagedDomainState {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Bucket ID
+     * Bucket ID.
      */
     bucketId?: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     /**
-     * Domain name of the bucket's r2.dev domain
+     * Domain name of the bucket's r2.dev domain.
      */
     domain?: pulumi.Input<string>;
     /**
-     * Whether to enable public bucket access at the r2.dev domain
+     * Whether to enable public bucket access at the r2.dev domain.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -148,15 +148,15 @@ export interface R2ManagedDomainState {
  */
 export interface R2ManagedDomainArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
     /**
-     * Whether to enable public bucket access at the r2.dev domain
+     * Whether to enable public bucket access at the r2.dev domain.
      */
     enabled: pulumi.Input<boolean>;
     /**

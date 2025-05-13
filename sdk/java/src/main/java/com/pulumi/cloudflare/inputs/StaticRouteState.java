@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -37,6 +36,21 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When the route was created.
+     * 
+     */
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    /**
+     * @return When the route was created.
+     * 
+     */
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
+
+    /**
      * An optional human provided description of the static route.
      * 
      */
@@ -56,6 +70,21 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<Boolean>> modified() {
         return Optional.ofNullable(this.modified);
+    }
+
+    /**
+     * When the route was last modified.
+     * 
+     */
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    /**
+     * @return When the route was last modified.
+     * 
+     */
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
     }
 
     @Import(name="modifiedRoute")
@@ -118,28 +147,6 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifier
-     * 
-     */
-    @Import(name="routeId")
-    private @Nullable Output<String> routeId;
-
-    /**
-     * @return Identifier
-     * 
-     */
-    public Optional<Output<String>> routeId() {
-        return Optional.ofNullable(this.routeId);
-    }
-
-    @Import(name="routes")
-    private @Nullable Output<List<StaticRouteRouteArgs>> routes;
-
-    public Optional<Output<List<StaticRouteRouteArgs>>> routes() {
-        return Optional.ofNullable(this.routes);
-    }
-
-    /**
      * Used only for ECMP routes.
      * 
      */
@@ -173,15 +180,15 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
 
     private StaticRouteState(StaticRouteState $) {
         this.accountId = $.accountId;
+        this.createdOn = $.createdOn;
         this.description = $.description;
         this.modified = $.modified;
+        this.modifiedOn = $.modifiedOn;
         this.modifiedRoute = $.modifiedRoute;
         this.nexthop = $.nexthop;
         this.prefix = $.prefix;
         this.priority = $.priority;
         this.route = $.route;
-        this.routeId = $.routeId;
-        this.routes = $.routes;
         this.scope = $.scope;
         this.weight = $.weight;
     }
@@ -226,6 +233,27 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param createdOn When the route was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        /**
+         * @param createdOn When the route was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
+        /**
          * @param description An optional human provided description of the static route.
          * 
          * @return builder
@@ -253,6 +281,27 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
 
         public Builder modified(Boolean modified) {
             return modified(Output.of(modified));
+        }
+
+        /**
+         * @param modifiedOn When the route was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        /**
+         * @param modifiedOn When the route was last modified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
         }
 
         public Builder modifiedRoute(@Nullable Output<StaticRouteModifiedRouteArgs> modifiedRoute) {
@@ -334,40 +383,6 @@ public final class StaticRouteState extends com.pulumi.resources.ResourceArgs {
 
         public Builder route(StaticRouteRouteArgs route) {
             return route(Output.of(route));
-        }
-
-        /**
-         * @param routeId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeId(@Nullable Output<String> routeId) {
-            $.routeId = routeId;
-            return this;
-        }
-
-        /**
-         * @param routeId Identifier
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeId(String routeId) {
-            return routeId(Output.of(routeId));
-        }
-
-        public Builder routes(@Nullable Output<List<StaticRouteRouteArgs>> routes) {
-            $.routes = routes;
-            return this;
-        }
-
-        public Builder routes(List<StaticRouteRouteArgs> routes) {
-            return routes(Output.of(routes));
-        }
-
-        public Builder routes(StaticRouteRouteArgs... routes) {
-            return routes(List.of(routes));
         }
 
         /**

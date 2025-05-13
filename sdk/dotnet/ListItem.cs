@@ -34,10 +34,10 @@ namespace Pulumi.Cloudflare
     public partial class ListItem : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Output("accountId")]
-        public Output<string?> AccountId { get; private set; } = null!;
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// A non-negative 32 bit integer
@@ -140,10 +140,10 @@ namespace Pulumi.Cloudflare
     public sealed class ListItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// A non-negative 32 bit integer
@@ -190,7 +190,7 @@ namespace Pulumi.Cloudflare
     public sealed class ListItemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

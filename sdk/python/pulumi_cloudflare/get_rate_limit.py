@@ -96,7 +96,7 @@ class GetRateLimitResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        The unique identifier of the rate limit.
+        Defines the unique identifier of the rate limit.
         """
         return pulumi.get(self, "id")
 
@@ -120,7 +120,7 @@ class GetRateLimitResult:
     @pulumi.getter(name="rateLimitId")
     def rate_limit_id(self) -> Optional[builtins.str]:
         """
-        The unique identifier of the rate limit.
+        Defines the unique identifier of the rate limit.
         """
         return pulumi.get(self, "rate_limit_id")
 
@@ -136,7 +136,7 @@ class GetRateLimitResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -174,8 +174,8 @@ def get_rate_limit(rate_limit_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str rate_limit_id: The unique identifier of the rate limit.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str rate_limit_id: Defines the unique identifier of the rate limit.
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['rateLimitId'] = rate_limit_id
@@ -209,8 +209,8 @@ def get_rate_limit_output(rate_limit_id: Optional[pulumi.Input[Optional[builtins
     ```
 
 
-    :param builtins.str rate_limit_id: The unique identifier of the rate limit.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str rate_limit_id: Defines the unique identifier of the rate limit.
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['rateLimitId'] = rate_limit_id

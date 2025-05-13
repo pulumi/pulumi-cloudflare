@@ -101,14 +101,14 @@ public final class ZeroTrustRiskScoringIntegrationState extends com.pulumi.resou
     }
 
     /**
-     * The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+     * The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
      * 
      */
     @Import(name="tenantUrl")
     private @Nullable Output<String> tenantUrl;
 
     /**
-     * @return The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+     * @return The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
      * 
      */
     public Optional<Output<String>> tenantUrl() {
@@ -116,14 +116,14 @@ public final class ZeroTrustRiskScoringIntegrationState extends com.pulumi.resou
     }
 
     /**
-     * The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+     * The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      * 
      */
     @Import(name="wellKnownUrl")
     private @Nullable Output<String> wellKnownUrl;
 
     /**
-     * @return The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+     * @return The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      * 
      */
     public Optional<Output<String>> wellKnownUrl() {
@@ -278,7 +278,7 @@ public final class ZeroTrustRiskScoringIntegrationState extends com.pulumi.resou
         }
 
         /**
-         * @param tenantUrl The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+         * @param tenantUrl The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ZeroTrustRiskScoringIntegrationState extends com.pulumi.resou
         }
 
         /**
-         * @param tenantUrl The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+         * @param tenantUrl The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class ZeroTrustRiskScoringIntegrationState extends com.pulumi.resou
         }
 
         /**
-         * @param wellKnownUrl The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+         * @param wellKnownUrl The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class ZeroTrustRiskScoringIntegrationState extends com.pulumi.resou
         }
 
         /**
-         * @param wellKnownUrl The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+         * @param wellKnownUrl The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
          * 
          * @return builder
          * 

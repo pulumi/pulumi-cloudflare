@@ -57,7 +57,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
      * Administrators who can approve a temporary authentication request.
      */
-    public readonly approvalGroups!: pulumi.Output<outputs.ZeroTrustAccessPolicyApprovalGroup[]>;
+    public readonly approvalGroups!: pulumi.Output<outputs.ZeroTrustAccessPolicyApprovalGroup[] | undefined>;
     /**
      * Requires the user to request access from an administrator at the start of each session.
      */
@@ -71,7 +71,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    public readonly excludes!: pulumi.Output<outputs.ZeroTrustAccessPolicyExclude[]>;
+    public readonly excludes!: pulumi.Output<outputs.ZeroTrustAccessPolicyExclude[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
@@ -95,7 +95,7 @@ export class ZeroTrustAccessPolicy extends pulumi.CustomResource {
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    public readonly requires!: pulumi.Output<outputs.ZeroTrustAccessPolicyRequire[]>;
+    public readonly requires!: pulumi.Output<outputs.ZeroTrustAccessPolicyRequire[] | undefined>;
     public /*out*/ readonly reusable!: pulumi.Output<boolean>;
     /**
      * The amount of time that tokens issued for the application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.

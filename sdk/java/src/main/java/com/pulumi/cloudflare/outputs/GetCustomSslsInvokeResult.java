@@ -43,7 +43,7 @@ public final class GetCustomSslsInvokeResult {
      */
     private @Nullable String status;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -87,7 +87,7 @@ public final class GetCustomSslsInvokeResult {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

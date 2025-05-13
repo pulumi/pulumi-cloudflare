@@ -48,7 +48,7 @@ func LookupEmailRoutingCatchAll(ctx *pulumi.Context, args *LookupEmailRoutingCat
 
 // A collection of arguments for invoking getEmailRoutingCatchAll.
 type LookupEmailRoutingCatchAllArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -68,7 +68,7 @@ type LookupEmailRoutingCatchAllResult struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag string `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -83,7 +83,7 @@ func LookupEmailRoutingCatchAllOutput(ctx *pulumi.Context, args LookupEmailRouti
 
 // A collection of arguments for invoking getEmailRoutingCatchAll.
 type LookupEmailRoutingCatchAllOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -138,7 +138,7 @@ func (o LookupEmailRoutingCatchAllResultOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingCatchAllResult) string { return v.Tag }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupEmailRoutingCatchAllResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingCatchAllResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

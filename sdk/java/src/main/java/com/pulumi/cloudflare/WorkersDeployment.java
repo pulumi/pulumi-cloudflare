@@ -15,6 +15,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -47,10 +48,10 @@ public class WorkersDeployment extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     @Export(name="annotations", refs={WorkersDeploymentAnnotations.class}, tree="[0]")
-    private Output<WorkersDeploymentAnnotations> annotations;
+    private Output</* @Nullable */ WorkersDeploymentAnnotations> annotations;
 
-    public Output<WorkersDeploymentAnnotations> annotations() {
-        return this.annotations;
+    public Output<Optional<WorkersDeploymentAnnotations>> annotations() {
+        return Codegen.optional(this.annotations);
     }
     @Export(name="authorEmail", refs={String.class}, tree="[0]")
     private Output<String> authorEmail;

@@ -46,7 +46,7 @@ export function getAccountDnsSettingsInternalViews(args: GetAccountDnsSettingsIn
  */
 export interface GetAccountDnsSettingsInternalViewsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -84,7 +84,7 @@ export interface GetAccountDnsSettingsInternalViewsArgs {
  */
 export interface GetAccountDnsSettingsInternalViewsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -164,7 +164,7 @@ export function getAccountDnsSettingsInternalViewsOutput(args: GetAccountDnsSett
  */
 export interface GetAccountDnsSettingsInternalViewsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

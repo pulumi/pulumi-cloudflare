@@ -41,7 +41,7 @@ public final class GetZoneFilter {
     private @Nullable String name;
     /**
      * @return Field to order zones by.
-     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;, &#34;plan.id&#34;.
      * 
      */
     private @Nullable String order;
@@ -89,7 +89,7 @@ public final class GetZoneFilter {
     }
     /**
      * @return Field to order zones by.
-     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;.
+     * Available values: &#34;name&#34;, &#34;status&#34;, &#34;account.id&#34;, &#34;account.name&#34;, &#34;plan.id&#34;.
      * 
      */
     public Optional<String> order() {

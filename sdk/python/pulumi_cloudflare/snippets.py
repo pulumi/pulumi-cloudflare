@@ -311,7 +311,7 @@ class Snippets(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> pulumi.Output['outputs.SnippetsMetadata']:
+    def metadata(self) -> pulumi.Output[Optional['outputs.SnippetsMetadata']]:
         return pulumi.get(self, "metadata")
 
     @property

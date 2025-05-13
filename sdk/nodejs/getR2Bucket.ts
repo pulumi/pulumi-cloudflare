@@ -30,11 +30,11 @@ export function getR2Bucket(args: GetR2BucketArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetR2BucketArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: string;
 }
@@ -44,15 +44,15 @@ export interface GetR2BucketArgs {
  */
 export interface GetR2BucketResult {
     /**
-     * Account ID
+     * Account ID.
      */
     readonly accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     readonly bucketName: string;
     /**
-     * Creation timestamp
+     * Creation timestamp.
      */
     readonly creationDate: string;
     /**
@@ -60,12 +60,12 @@ export interface GetR2BucketResult {
      */
     readonly id: string;
     /**
-     * Location of the bucket
+     * Location of the bucket.
      * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
     readonly location: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     readonly name: string;
     /**
@@ -100,11 +100,11 @@ export function getR2BucketOutput(args: GetR2BucketOutputArgs, opts?: pulumi.Inv
  */
 export interface GetR2BucketOutputArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
 }

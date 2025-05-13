@@ -55,11 +55,12 @@ type LookupZeroTrustDlpDatasetArgs struct {
 
 // A collection of values returned by getZeroTrustDlpDataset.
 type LookupZeroTrustDlpDatasetResult struct {
-	AccountId string                         `pulumi:"accountId"`
-	Columns   []GetZeroTrustDlpDatasetColumn `pulumi:"columns"`
-	CreatedAt string                         `pulumi:"createdAt"`
-	DatasetId string                         `pulumi:"datasetId"`
-	// The description of the dataset
+	AccountId     string                         `pulumi:"accountId"`
+	CaseSensitive bool                           `pulumi:"caseSensitive"`
+	Columns       []GetZeroTrustDlpDatasetColumn `pulumi:"columns"`
+	CreatedAt     string                         `pulumi:"createdAt"`
+	DatasetId     string                         `pulumi:"datasetId"`
+	// The description of the dataset.
 	Description     string `pulumi:"description"`
 	EncodingVersion int    `pulumi:"encodingVersion"`
 	// The ID of this resource.
@@ -112,6 +113,10 @@ func (o LookupZeroTrustDlpDatasetResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+func (o LookupZeroTrustDlpDatasetResultOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
+}
+
 func (o LookupZeroTrustDlpDatasetResultOutput) Columns() GetZeroTrustDlpDatasetColumnArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) []GetZeroTrustDlpDatasetColumn { return v.Columns }).(GetZeroTrustDlpDatasetColumnArrayOutput)
 }
@@ -124,7 +129,7 @@ func (o LookupZeroTrustDlpDatasetResultOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// The description of the dataset
+// The description of the dataset.
 func (o LookupZeroTrustDlpDatasetResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpDatasetResult) string { return v.Description }).(pulumi.StringOutput)
 }

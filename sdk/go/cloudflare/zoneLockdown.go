@@ -67,7 +67,7 @@ type ZoneLockdown struct {
 	Paused pulumi.BoolOutput `pulumi:"paused"`
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -122,7 +122,7 @@ type zoneLockdownState struct {
 	Paused *bool `pulumi:"paused"`
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -139,7 +139,7 @@ type ZoneLockdownState struct {
 	Paused pulumi.BoolPtrInput
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -152,7 +152,7 @@ type zoneLockdownArgs struct {
 	Configurations []ZoneLockdownConfiguration `pulumi:"configurations"`
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -162,7 +162,7 @@ type ZoneLockdownArgs struct {
 	Configurations ZoneLockdownConfigurationArrayInput
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayInput
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -283,7 +283,7 @@ func (o ZoneLockdownOutput) Urls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o ZoneLockdownOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

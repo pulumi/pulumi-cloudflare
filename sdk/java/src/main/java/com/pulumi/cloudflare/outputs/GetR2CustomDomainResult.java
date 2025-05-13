@@ -13,22 +13,22 @@ import java.util.Objects;
 @CustomType
 public final class GetR2CustomDomainResult {
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     private String accountId;
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     private String bucketName;
     /**
-     * @return Name of the custom domain
+     * @return Name of the custom domain.
      * 
      */
     private String domain;
     /**
-     * @return Whether this bucket is publicly accessible at the specified custom domain
+     * @return Whether this bucket is publicly accessible at the specified custom domain.
      * 
      */
     private Boolean enabled;
@@ -45,40 +45,40 @@ public final class GetR2CustomDomainResult {
     private String minTls;
     private GetR2CustomDomainStatus status;
     /**
-     * @return Zone ID of the custom domain resides in
+     * @return Zone ID of the custom domain resides in.
      * 
      */
     private String zoneId;
     /**
-     * @return Zone that the custom domain resides in
+     * @return Zone that the custom domain resides in.
      * 
      */
     private String zoneName;
 
     private GetR2CustomDomainResult() {}
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public String bucketName() {
         return this.bucketName;
     }
     /**
-     * @return Name of the custom domain
+     * @return Name of the custom domain.
      * 
      */
     public String domain() {
         return this.domain;
     }
     /**
-     * @return Whether this bucket is publicly accessible at the specified custom domain
+     * @return Whether this bucket is publicly accessible at the specified custom domain.
      * 
      */
     public Boolean enabled() {
@@ -103,14 +103,14 @@ public final class GetR2CustomDomainResult {
         return this.status;
     }
     /**
-     * @return Zone ID of the custom domain resides in
+     * @return Zone ID of the custom domain resides in.
      * 
      */
     public String zoneId() {
         return this.zoneId;
     }
     /**
-     * @return Zone that the custom domain resides in
+     * @return Zone that the custom domain resides in.
      * 
      */
     public String zoneName() {

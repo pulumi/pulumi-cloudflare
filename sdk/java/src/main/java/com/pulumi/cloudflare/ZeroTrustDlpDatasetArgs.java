@@ -25,6 +25,25 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
         return this.accountId;
     }
 
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if `secret` is true or undefined
+     * 
+     */
+    @Import(name="caseSensitive")
+    private @Nullable Output<Boolean> caseSensitive;
+
+    /**
+     * @return Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if `secret` is true or undefined
+     * 
+     */
+    public Optional<Output<Boolean>> caseSensitive() {
+        return Optional.ofNullable(this.caseSensitive);
+    }
+
     @Import(name="datasetId")
     private @Nullable Output<String> datasetId;
 
@@ -33,14 +52,14 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The description of the dataset
+     * The description of the dataset.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the dataset
+     * @return The description of the dataset.
      * 
      */
     public Optional<Output<String>> description() {
@@ -90,6 +109,7 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
 
     private ZeroTrustDlpDatasetArgs(ZeroTrustDlpDatasetArgs $) {
         this.accountId = $.accountId;
+        this.caseSensitive = $.caseSensitive;
         this.datasetId = $.datasetId;
         this.description = $.description;
         this.encodingVersion = $.encodingVersion;
@@ -124,6 +144,31 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
             return accountId(Output.of(accountId));
         }
 
+        /**
+         * @param caseSensitive Only applies to custom word lists.
+         * Determines if the words should be matched in a case-sensitive manner
+         * Cannot be set to false if `secret` is true or undefined
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caseSensitive(@Nullable Output<Boolean> caseSensitive) {
+            $.caseSensitive = caseSensitive;
+            return this;
+        }
+
+        /**
+         * @param caseSensitive Only applies to custom word lists.
+         * Determines if the words should be matched in a case-sensitive manner
+         * Cannot be set to false if `secret` is true or undefined
+         * 
+         * @return builder
+         * 
+         */
+        public Builder caseSensitive(Boolean caseSensitive) {
+            return caseSensitive(Output.of(caseSensitive));
+        }
+
         public Builder datasetId(@Nullable Output<String> datasetId) {
             $.datasetId = datasetId;
             return this;
@@ -134,7 +179,7 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of the dataset
+         * @param description The description of the dataset.
          * 
          * @return builder
          * 
@@ -145,7 +190,7 @@ public final class ZeroTrustDlpDatasetArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The description of the dataset
+         * @param description The description of the dataset.
          * 
          * @return builder
          * 

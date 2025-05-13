@@ -11,17 +11,17 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketResult {
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     private String accountId;
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     private String bucketName;
     /**
-     * @return Creation timestamp
+     * @return Creation timestamp.
      * 
      */
     private String creationDate;
@@ -31,13 +31,13 @@ public final class GetR2BucketResult {
      */
     private String id;
     /**
-     * @return Location of the bucket
+     * @return Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
     private String location;
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     private String name;
@@ -50,21 +50,21 @@ public final class GetR2BucketResult {
 
     private GetR2BucketResult() {}
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public String bucketName() {
         return this.bucketName;
     }
     /**
-     * @return Creation timestamp
+     * @return Creation timestamp.
      * 
      */
     public String creationDate() {
@@ -78,7 +78,7 @@ public final class GetR2BucketResult {
         return this.id;
     }
     /**
-     * @return Location of the bucket
+     * @return Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
@@ -86,7 +86,7 @@ public final class GetR2BucketResult {
         return this.location;
     }
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public String name() {

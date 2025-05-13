@@ -64,6 +64,8 @@ type D1Database struct {
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	PrimaryLocationHint pulumi.StringPtrOutput `pulumi:"primaryLocationHint"`
+	// Configuration for D1 read replication.
+	ReadReplication D1DatabaseReadReplicationPtrOutput `pulumi:"readReplication"`
 	// D1 database identifier (UUID).
 	Uuid    pulumi.StringOutput `pulumi:"uuid"`
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -117,6 +119,8 @@ type d1databaseState struct {
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	PrimaryLocationHint *string `pulumi:"primaryLocationHint"`
+	// Configuration for D1 read replication.
+	ReadReplication *D1DatabaseReadReplication `pulumi:"readReplication"`
 	// D1 database identifier (UUID).
 	Uuid    *string `pulumi:"uuid"`
 	Version *string `pulumi:"version"`
@@ -135,6 +139,8 @@ type D1DatabaseState struct {
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	PrimaryLocationHint pulumi.StringPtrInput
+	// Configuration for D1 read replication.
+	ReadReplication D1DatabaseReadReplicationPtrInput
 	// D1 database identifier (UUID).
 	Uuid    pulumi.StringPtrInput
 	Version pulumi.StringPtrInput
@@ -152,6 +158,8 @@ type d1databaseArgs struct {
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	PrimaryLocationHint *string `pulumi:"primaryLocationHint"`
+	// Configuration for D1 read replication.
+	ReadReplication *D1DatabaseReadReplication `pulumi:"readReplication"`
 }
 
 // The set of arguments for constructing a D1Database resource.
@@ -163,6 +171,8 @@ type D1DatabaseArgs struct {
 	// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
 	// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 	PrimaryLocationHint pulumi.StringPtrInput
+	// Configuration for D1 read replication.
+	ReadReplication D1DatabaseReadReplicationPtrInput
 }
 
 func (D1DatabaseArgs) ElementType() reflect.Type {
@@ -280,6 +290,11 @@ func (o D1DatabaseOutput) NumTables() pulumi.Float64Output {
 // Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
 func (o D1DatabaseOutput) PrimaryLocationHint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *D1Database) pulumi.StringPtrOutput { return v.PrimaryLocationHint }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for D1 read replication.
+func (o D1DatabaseOutput) ReadReplication() D1DatabaseReadReplicationPtrOutput {
+	return o.ApplyT(func(v *D1Database) D1DatabaseReadReplicationPtrOutput { return v.ReadReplication }).(D1DatabaseReadReplicationPtrOutput)
 }
 
 // D1 database identifier (UUID).

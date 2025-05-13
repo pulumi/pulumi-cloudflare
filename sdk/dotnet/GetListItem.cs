@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleListItem = Cloudflare.GetListItem.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
         ///         ItemId = "34b12448945f11eaa1b71c4d701ab86e",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleListItem = Cloudflare.GetListItem.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
         ///         ItemId = "34b12448945f11eaa1b71c4d701ab86e",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleListItem = Cloudflare.GetListItem.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
         ///         ItemId = "34b12448945f11eaa1b71c4d701ab86e",
         ///     });
@@ -88,13 +88,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetListItemArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public string AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The unique ID of the item in the List.
+        /// Defines the unique ID of the item in the List.
         /// </summary>
         [Input("itemId", required: true)]
         public string ItemId { get; set; } = null!;
@@ -114,13 +114,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetListItemInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public Input<string> AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The unique ID of the item in the List.
+        /// Defines the unique ID of the item in the List.
         /// </summary>
         [Input("itemId", required: true)]
         public Input<string> ItemId { get; set; } = null!;
@@ -142,15 +142,15 @@ namespace Pulumi.Cloudflare
     public sealed class GetListItemResult
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
-        public readonly string AccountIdentifier;
+        public readonly string AccountId;
         /// <summary>
-        /// A non-negative 32 bit integer
+        /// Defines a non-negative 32 bit integer.
         /// </summary>
         public readonly int Asn;
         /// <summary>
-        /// An informative summary of the list item.
+        /// Defines an informative summary of the list item.
         /// </summary>
         public readonly string Comment;
         /// <summary>
@@ -170,7 +170,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Ip;
         /// <summary>
-        /// The unique ID of the item in the List.
+        /// Defines the unique ID of the item in the List.
         /// </summary>
         public readonly string ItemId;
         /// <summary>
@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetListItemResult(
-            string accountIdentifier,
+            string accountId,
 
             int asn,
 
@@ -210,7 +210,7 @@ namespace Pulumi.Cloudflare
 
             Outputs.GetListItemRedirectResult redirect)
         {
-            AccountIdentifier = accountIdentifier;
+            AccountId = accountId;
             Asn = asn;
             Comment = comment;
             CreatedOn = createdOn;

@@ -21,18 +21,18 @@ type ZoneDnsSettings struct {
 	// Whether to enable Foundation DNS Advanced Nameservers on the zone.
 	FoundationDns pulumi.BoolPtrOutput `pulumi:"foundationDns"`
 	// Settings for this internal zone.
-	InternalDns ZoneDnsSettingsInternalDnsOutput `pulumi:"internalDns"`
+	InternalDns ZoneDnsSettingsInternalDnsPtrOutput `pulumi:"internalDns"`
 	// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
 	MultiProvider pulumi.BoolPtrOutput `pulumi:"multiProvider"`
 	// Settings determining the nameservers through which the zone should be available.
-	Nameservers ZoneDnsSettingsNameserversOutput `pulumi:"nameservers"`
+	Nameservers ZoneDnsSettingsNameserversPtrOutput `pulumi:"nameservers"`
 	// The time to live (TTL) of the zone's nameserver (NS) records.
 	NsTtl pulumi.Float64PtrOutput `pulumi:"nsTtl"`
 	// Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
 	SecondaryOverrides pulumi.BoolPtrOutput `pulumi:"secondaryOverrides"`
 	// Components of the zone's SOA record.
-	Soa ZoneDnsSettingsSoaOutput `pulumi:"soa"`
-	// Identifier
+	Soa ZoneDnsSettingsSoaPtrOutput `pulumi:"soa"`
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn*only", "dns*only".
@@ -88,7 +88,7 @@ type zoneDnsSettingsState struct {
 	SecondaryOverrides *bool `pulumi:"secondaryOverrides"`
 	// Components of the zone's SOA record.
 	Soa *ZoneDnsSettingsSoa `pulumi:"soa"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn*only", "dns*only".
@@ -112,7 +112,7 @@ type ZoneDnsSettingsState struct {
 	SecondaryOverrides pulumi.BoolPtrInput
 	// Components of the zone's SOA record.
 	Soa ZoneDnsSettingsSoaPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn*only", "dns*only".
@@ -140,7 +140,7 @@ type zoneDnsSettingsArgs struct {
 	SecondaryOverrides *bool `pulumi:"secondaryOverrides"`
 	// Components of the zone's SOA record.
 	Soa *ZoneDnsSettingsSoa `pulumi:"soa"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn*only", "dns*only".
@@ -165,7 +165,7 @@ type ZoneDnsSettingsArgs struct {
 	SecondaryOverrides pulumi.BoolPtrInput
 	// Components of the zone's SOA record.
 	Soa ZoneDnsSettingsSoaPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 	// Whether the zone mode is a regular or CDN/DNS only zone.
 	// Available values: "standard", "cdn*only", "dns*only".
@@ -270,8 +270,8 @@ func (o ZoneDnsSettingsOutput) FoundationDns() pulumi.BoolPtrOutput {
 }
 
 // Settings for this internal zone.
-func (o ZoneDnsSettingsOutput) InternalDns() ZoneDnsSettingsInternalDnsOutput {
-	return o.ApplyT(func(v *ZoneDnsSettings) ZoneDnsSettingsInternalDnsOutput { return v.InternalDns }).(ZoneDnsSettingsInternalDnsOutput)
+func (o ZoneDnsSettingsOutput) InternalDns() ZoneDnsSettingsInternalDnsPtrOutput {
+	return o.ApplyT(func(v *ZoneDnsSettings) ZoneDnsSettingsInternalDnsPtrOutput { return v.InternalDns }).(ZoneDnsSettingsInternalDnsPtrOutput)
 }
 
 // Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
@@ -280,8 +280,8 @@ func (o ZoneDnsSettingsOutput) MultiProvider() pulumi.BoolPtrOutput {
 }
 
 // Settings determining the nameservers through which the zone should be available.
-func (o ZoneDnsSettingsOutput) Nameservers() ZoneDnsSettingsNameserversOutput {
-	return o.ApplyT(func(v *ZoneDnsSettings) ZoneDnsSettingsNameserversOutput { return v.Nameservers }).(ZoneDnsSettingsNameserversOutput)
+func (o ZoneDnsSettingsOutput) Nameservers() ZoneDnsSettingsNameserversPtrOutput {
+	return o.ApplyT(func(v *ZoneDnsSettings) ZoneDnsSettingsNameserversPtrOutput { return v.Nameservers }).(ZoneDnsSettingsNameserversPtrOutput)
 }
 
 // The time to live (TTL) of the zone's nameserver (NS) records.
@@ -295,11 +295,11 @@ func (o ZoneDnsSettingsOutput) SecondaryOverrides() pulumi.BoolPtrOutput {
 }
 
 // Components of the zone's SOA record.
-func (o ZoneDnsSettingsOutput) Soa() ZoneDnsSettingsSoaOutput {
-	return o.ApplyT(func(v *ZoneDnsSettings) ZoneDnsSettingsSoaOutput { return v.Soa }).(ZoneDnsSettingsSoaOutput)
+func (o ZoneDnsSettingsOutput) Soa() ZoneDnsSettingsSoaPtrOutput {
+	return o.ApplyT(func(v *ZoneDnsSettings) ZoneDnsSettingsSoaPtrOutput { return v.Soa }).(ZoneDnsSettingsSoaPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ZoneDnsSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneDnsSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

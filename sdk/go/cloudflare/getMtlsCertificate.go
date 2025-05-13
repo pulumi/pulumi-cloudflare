@@ -49,15 +49,15 @@ func LookupMtlsCertificate(ctx *pulumi.Context, args *LookupMtlsCertificateArgs,
 
 // A collection of arguments for invoking getMtlsCertificate.
 type LookupMtlsCertificateArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
 }
 
 // A collection of values returned by getMtlsCertificate.
 type LookupMtlsCertificateResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Indicates whether the certificate is a CA or leaf certificate.
 	Ca bool `pulumi:"ca"`
@@ -65,11 +65,11 @@ type LookupMtlsCertificateResult struct {
 	Certificates string `pulumi:"certificates"`
 	// When the certificate expires.
 	ExpiresOn string `pulumi:"expiresOn"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The certificate authority that issued the certificate.
 	Issuer string `pulumi:"issuer"`
-	// Identifier
+	// Identifier.
 	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
 	// Optional unique name for the certificate. Only used for human readability.
 	Name string `pulumi:"name"`
@@ -92,9 +92,9 @@ func LookupMtlsCertificateOutput(ctx *pulumi.Context, args LookupMtlsCertificate
 
 // A collection of arguments for invoking getMtlsCertificate.
 type LookupMtlsCertificateOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Identifier
+	// Identifier.
 	MtlsCertificateId pulumi.StringPtrInput `pulumi:"mtlsCertificateId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupMtlsCertificateResultOutput) ToLookupMtlsCertificateResultOutputWi
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupMtlsCertificateResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMtlsCertificateResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -137,7 +137,7 @@ func (o LookupMtlsCertificateResultOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMtlsCertificateResult) string { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupMtlsCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMtlsCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -147,7 +147,7 @@ func (o LookupMtlsCertificateResultOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMtlsCertificateResult) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupMtlsCertificateResultOutput) MtlsCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMtlsCertificateResult) *string { return v.MtlsCertificateId }).(pulumi.StringPtrOutput)
 }

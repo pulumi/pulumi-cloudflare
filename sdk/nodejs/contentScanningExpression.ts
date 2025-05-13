@@ -51,11 +51,11 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 
     public readonly bodies!: pulumi.Output<outputs.ContentScanningExpressionBody[]>;
     /**
-     * Ruleset expression to use in matching content objects
+     * Defines the ruleset expression to use in matching content objects.
      */
     public /*out*/ readonly payload!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -98,11 +98,11 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 export interface ContentScanningExpressionState {
     bodies?: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
     /**
-     * Ruleset expression to use in matching content objects
+     * Defines the ruleset expression to use in matching content objects.
      */
     payload?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -113,7 +113,7 @@ export interface ContentScanningExpressionState {
 export interface ContentScanningExpressionArgs {
     bodies: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

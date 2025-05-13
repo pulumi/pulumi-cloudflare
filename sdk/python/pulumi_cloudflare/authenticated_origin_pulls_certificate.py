@@ -27,7 +27,7 @@ class AuthenticatedOriginPullsCertificateArgs:
         The set of arguments for constructing a AuthenticatedOriginPullsCertificate resource.
         :param pulumi.Input[builtins.str] certificate: The zone's leaf certificate.
         :param pulumi.Input[builtins.str] private_key: The zone's private key.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "private_key", private_key)
@@ -61,7 +61,7 @@ class AuthenticatedOriginPullsCertificateArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -86,7 +86,7 @@ class _AuthenticatedOriginPullsCertificateState:
         """
         Input properties used for looking up and filtering AuthenticatedOriginPullsCertificate resources.
         :param pulumi.Input[builtins.str] certificate: The zone's leaf certificate.
-        :param pulumi.Input[builtins.str] certificate_id: Identifier
+        :param pulumi.Input[builtins.str] certificate_id: Identifier.
         :param pulumi.Input[builtins.bool] enabled: Indicates whether zone-level authenticated origin pulls is enabled.
         :param pulumi.Input[builtins.str] expires_on: When the certificate from the authority expires.
         :param pulumi.Input[builtins.str] issuer: The certificate authority that issued the certificate.
@@ -95,7 +95,7 @@ class _AuthenticatedOriginPullsCertificateState:
         :param pulumi.Input[builtins.str] status: Status of the certificate activation.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[builtins.str] uploaded_on: This is the time the certificate was uploaded.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -134,7 +134,7 @@ class _AuthenticatedOriginPullsCertificateState:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -231,7 +231,7 @@ class _AuthenticatedOriginPullsCertificateState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -318,7 +318,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] certificate: The zone's leaf certificate.
         :param pulumi.Input[builtins.str] private_key: The zone's private key.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -463,7 +463,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] certificate: The zone's leaf certificate.
-        :param pulumi.Input[builtins.str] certificate_id: Identifier
+        :param pulumi.Input[builtins.str] certificate_id: Identifier.
         :param pulumi.Input[builtins.bool] enabled: Indicates whether zone-level authenticated origin pulls is enabled.
         :param pulumi.Input[builtins.str] expires_on: When the certificate from the authority expires.
         :param pulumi.Input[builtins.str] issuer: The certificate authority that issued the certificate.
@@ -472,7 +472,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] status: Status of the certificate activation.
                Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
         :param pulumi.Input[builtins.str] uploaded_on: This is the time the certificate was uploaded.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -502,7 +502,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -567,7 +567,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

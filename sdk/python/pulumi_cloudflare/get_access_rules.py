@@ -81,7 +81,7 @@ class GetAccessRulesResult:
     @pulumi.getter
     def direction(self) -> Optional[builtins.str]:
         """
-        The direction used to sort returned rules.
+        Defines the direction used to sort returned rules.
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
@@ -98,7 +98,7 @@ class GetAccessRulesResult:
     @pulumi.getter
     def match(self) -> builtins.str:
         """
-        When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
         Available values: "any", "all".
         """
         return pulumi.get(self, "match")
@@ -124,7 +124,7 @@ class GetAccessRulesResult:
     @pulumi.getter
     def notes(self) -> Optional[builtins.str]:
         """
-        The string to search for in the notes of existing IP Access rules.
+        Defines the string to search for in the notes of existing IP Access rules.
         Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
         """
         return pulumi.get(self, "notes")
@@ -133,7 +133,7 @@ class GetAccessRulesResult:
     @pulumi.getter
     def order(self) -> Optional[builtins.str]:
         """
-        The field used to sort returned rules.
+        Defines the field used to sort returned rules.
         Available values: "configuration.target", "configuration.value", "mode".
         """
         return pulumi.get(self, "order")
@@ -205,16 +205,16 @@ def get_access_rules(account_id: Optional[builtins.str] = None,
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str direction: The direction used to sort returned rules.
+    :param builtins.str direction: Defines the direction used to sort returned rules.
            Available values: "asc", "desc".
-    :param builtins.str match: When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+    :param builtins.str match: Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
            Available values: "any", "all".
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str mode: The action to apply to a matched request.
            Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
-    :param builtins.str notes: The string to search for in the notes of existing IP Access rules.
+    :param builtins.str notes: Defines the string to search for in the notes of existing IP Access rules.
            Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
-    :param builtins.str order: The field used to sort returned rules.
+    :param builtins.str order: Defines the field used to sort returned rules.
            Available values: "configuration.target", "configuration.value", "mode".
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """
@@ -274,16 +274,16 @@ def get_access_rules_output(account_id: Optional[pulumi.Input[Optional[builtins.
 
 
     :param builtins.str account_id: The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
-    :param builtins.str direction: The direction used to sort returned rules.
+    :param builtins.str direction: Defines the direction used to sort returned rules.
            Available values: "asc", "desc".
-    :param builtins.str match: When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+    :param builtins.str match: Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
            Available values: "any", "all".
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.str mode: The action to apply to a matched request.
            Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
-    :param builtins.str notes: The string to search for in the notes of existing IP Access rules.
+    :param builtins.str notes: Defines the string to search for in the notes of existing IP Access rules.
            Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
-    :param builtins.str order: The field used to sort returned rules.
+    :param builtins.str order: Defines the field used to sort returned rules.
            Available values: "configuration.target", "configuration.value", "mode".
     :param builtins.str zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
     """

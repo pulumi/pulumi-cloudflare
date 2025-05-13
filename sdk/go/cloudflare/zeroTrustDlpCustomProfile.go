@@ -28,22 +28,22 @@ type ZeroTrustDlpCustomProfile struct {
 	AllowedMatchCount   pulumi.IntOutput       `pulumi:"allowedMatchCount"`
 	ConfidenceThreshold pulumi.StringPtrOutput `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
-	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessOutput `pulumi:"contextAwareness"`
-	// When the profile was created
+	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrOutput `pulumi:"contextAwareness"`
+	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The description of the profile
+	// The description of the profile.
 	Description pulumi.StringPtrOutput                    `pulumi:"description"`
 	Entries     ZeroTrustDlpCustomProfileEntryArrayOutput `pulumi:"entries"`
 	Name        pulumi.StringPtrOutput                    `pulumi:"name"`
 	OcrEnabled  pulumi.BoolPtrOutput                      `pulumi:"ocrEnabled"`
-	// Whether this profile can be accessed by anyone
+	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolOutput                           `pulumi:"openAccess"`
 	Profiles   ZeroTrustDlpCustomProfileProfileArrayOutput `pulumi:"profiles"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries ZeroTrustDlpCustomProfileSharedEntryArrayOutput `pulumi:"sharedEntries"`
 	// Available values: "custom".
 	Type pulumi.StringOutput `pulumi:"type"`
-	// When the profile was lasted updated
+	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -93,21 +93,21 @@ type zeroTrustDlpCustomProfileState struct {
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness *ZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
-	// When the profile was created
+	// When the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The description of the profile
+	// The description of the profile.
 	Description *string                          `pulumi:"description"`
 	Entries     []ZeroTrustDlpCustomProfileEntry `pulumi:"entries"`
 	Name        *string                          `pulumi:"name"`
 	OcrEnabled  *bool                            `pulumi:"ocrEnabled"`
-	// Whether this profile can be accessed by anyone
+	// Whether this profile can be accessed by anyone.
 	OpenAccess *bool                              `pulumi:"openAccess"`
 	Profiles   []ZeroTrustDlpCustomProfileProfile `pulumi:"profiles"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []ZeroTrustDlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 	// Available values: "custom".
 	Type *string `pulumi:"type"`
-	// When the profile was lasted updated
+	// When the profile was lasted updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -119,21 +119,21 @@ type ZeroTrustDlpCustomProfileState struct {
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrInput
-	// When the profile was created
+	// When the profile was created.
 	CreatedAt pulumi.StringPtrInput
-	// The description of the profile
+	// The description of the profile.
 	Description pulumi.StringPtrInput
 	Entries     ZeroTrustDlpCustomProfileEntryArrayInput
 	Name        pulumi.StringPtrInput
 	OcrEnabled  pulumi.BoolPtrInput
-	// Whether this profile can be accessed by anyone
+	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
 	Profiles   ZeroTrustDlpCustomProfileProfileArrayInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries ZeroTrustDlpCustomProfileSharedEntryArrayInput
 	// Available values: "custom".
 	Type pulumi.StringPtrInput
-	// When the profile was lasted updated
+	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -149,7 +149,7 @@ type zeroTrustDlpCustomProfileArgs struct {
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness *ZeroTrustDlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
-	// The description of the profile
+	// The description of the profile.
 	Description *string                            `pulumi:"description"`
 	Entries     []ZeroTrustDlpCustomProfileEntry   `pulumi:"entries"`
 	Name        *string                            `pulumi:"name"`
@@ -168,7 +168,7 @@ type ZeroTrustDlpCustomProfileArgs struct {
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness ZeroTrustDlpCustomProfileContextAwarenessPtrInput
-	// The description of the profile
+	// The description of the profile.
 	Description pulumi.StringPtrInput
 	Entries     ZeroTrustDlpCustomProfileEntryArrayInput
 	Name        pulumi.StringPtrInput
@@ -283,18 +283,18 @@ func (o ZeroTrustDlpCustomProfileOutput) ConfidenceThreshold() pulumi.StringPtrO
 }
 
 // Scan the context of predefined entries to only return matches surrounded by keywords.
-func (o ZeroTrustDlpCustomProfileOutput) ContextAwareness() ZeroTrustDlpCustomProfileContextAwarenessOutput {
-	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) ZeroTrustDlpCustomProfileContextAwarenessOutput {
+func (o ZeroTrustDlpCustomProfileOutput) ContextAwareness() ZeroTrustDlpCustomProfileContextAwarenessPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) ZeroTrustDlpCustomProfileContextAwarenessPtrOutput {
 		return v.ContextAwareness
-	}).(ZeroTrustDlpCustomProfileContextAwarenessOutput)
+	}).(ZeroTrustDlpCustomProfileContextAwarenessPtrOutput)
 }
 
-// When the profile was created
+// When the profile was created.
 func (o ZeroTrustDlpCustomProfileOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The description of the profile
+// The description of the profile.
 func (o ZeroTrustDlpCustomProfileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -311,7 +311,7 @@ func (o ZeroTrustDlpCustomProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.BoolPtrOutput { return v.OcrEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this profile can be accessed by anyone
+// Whether this profile can be accessed by anyone.
 func (o ZeroTrustDlpCustomProfileOutput) OpenAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.BoolOutput { return v.OpenAccess }).(pulumi.BoolOutput)
 }
@@ -332,7 +332,7 @@ func (o ZeroTrustDlpCustomProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// When the profile was lasted updated
+// When the profile was lasted updated.
 func (o ZeroTrustDlpCustomProfileOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpCustomProfile) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

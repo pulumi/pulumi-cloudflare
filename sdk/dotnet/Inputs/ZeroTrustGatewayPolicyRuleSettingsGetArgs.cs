@@ -43,6 +43,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsGetArgs>? BisoAdminControls { get; set; }
 
         /// <summary>
+        /// Custom block page settings. If missing/null, blocking will use the the account settings.
+        /// </summary>
+        [Input("blockPage")]
+        public Input<Inputs.ZeroTrustGatewayPolicyRuleSettingsBlockPageGetArgs>? BlockPage { get; set; }
+
+        /// <summary>
         /// Enable the custom block page.
         /// </summary>
         [Input("blockPageEnabled")]

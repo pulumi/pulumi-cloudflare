@@ -50,7 +50,7 @@ func LookupRateLimits(ctx *pulumi.Context, args *LookupRateLimitsArgs, opts ...p
 type LookupRateLimitsArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupRateLimitsResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetRateLimitsResult `pulumi:"results"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupRateLimitsOutput(ctx *pulumi.Context, args LookupRateLimitsOutputArgs
 type LookupRateLimitsOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupRateLimitsResultOutput) Results() GetRateLimitsResultArrayOutput {
 	return o.ApplyT(func(v LookupRateLimitsResult) []GetRateLimitsResult { return v.Results }).(GetRateLimitsResultArrayOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupRateLimitsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRateLimitsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

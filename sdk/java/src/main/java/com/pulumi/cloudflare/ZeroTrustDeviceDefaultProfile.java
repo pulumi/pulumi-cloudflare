@@ -68,6 +68,8 @@ import javax.annotation.Nullable;
  *                 .address("192.0.2.0/24")
  *                 .description("Include testing domains in the tunnel")
  *                 .build())
+ *             .lanAllowMinutes(30.0)
+ *             .lanAllowSubnetSize(24.0)
  *             .registerInterfaceIpWithDns(true)
  *             .serviceModeV2(ZeroTrustDeviceDefaultProfileServiceModeV2Args.builder()
  *                 .mode("proxy")
@@ -230,14 +232,14 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="excludes", refs={List.class,ZeroTrustDeviceDefaultProfileExclude.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDeviceDefaultProfileExclude>> excludes;
+    private Output</* @Nullable */ List<ZeroTrustDeviceDefaultProfileExclude>> excludes;
 
     /**
      * @return List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
      * 
      */
-    public Output<List<ZeroTrustDeviceDefaultProfileExclude>> excludes() {
-        return this.excludes;
+    public Output<Optional<List<ZeroTrustDeviceDefaultProfileExclude>>> excludes() {
+        return Codegen.optional(this.excludes);
     }
     @Export(name="fallbackDomains", refs={List.class,ZeroTrustDeviceDefaultProfileFallbackDomain.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceDefaultProfileFallbackDomain>> fallbackDomains;
@@ -256,14 +258,42 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="includes", refs={List.class,ZeroTrustDeviceDefaultProfileInclude.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDeviceDefaultProfileInclude>> includes;
+    private Output</* @Nullable */ List<ZeroTrustDeviceDefaultProfileInclude>> includes;
 
     /**
      * @return List of routes included in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
      * 
      */
-    public Output<List<ZeroTrustDeviceDefaultProfileInclude>> includes() {
-        return this.includes;
+    public Output<Optional<List<ZeroTrustDeviceDefaultProfileInclude>>> includes() {
+        return Codegen.optional(this.includes);
+    }
+    /**
+     * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+     * 
+     */
+    @Export(name="lanAllowMinutes", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> lanAllowMinutes;
+
+    /**
+     * @return The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+     * 
+     */
+    public Output<Optional<Double>> lanAllowMinutes() {
+        return Codegen.optional(this.lanAllowMinutes);
+    }
+    /**
+     * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+     * 
+     */
+    @Export(name="lanAllowSubnetSize", refs={Double.class}, tree="[0]")
+    private Output</* @Nullable */ Double> lanAllowSubnetSize;
+
+    /**
+     * @return The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+     * 
+     */
+    public Output<Optional<Double>> lanAllowSubnetSize() {
+        return Codegen.optional(this.lanAllowSubnetSize);
     }
     /**
      * Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
@@ -280,10 +310,10 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
         return Codegen.optional(this.registerInterfaceIpWithDns);
     }
     @Export(name="serviceModeV2", refs={ZeroTrustDeviceDefaultProfileServiceModeV2.class}, tree="[0]")
-    private Output<ZeroTrustDeviceDefaultProfileServiceModeV2> serviceModeV2;
+    private Output</* @Nullable */ ZeroTrustDeviceDefaultProfileServiceModeV2> serviceModeV2;
 
-    public Output<ZeroTrustDeviceDefaultProfileServiceModeV2> serviceModeV2() {
-        return this.serviceModeV2;
+    public Output<Optional<ZeroTrustDeviceDefaultProfileServiceModeV2>> serviceModeV2() {
+        return Codegen.optional(this.serviceModeV2);
     }
     /**
      * The URL to launch when the Send Feedback button is clicked.

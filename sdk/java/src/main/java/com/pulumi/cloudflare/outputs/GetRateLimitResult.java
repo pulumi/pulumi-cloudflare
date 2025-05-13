@@ -39,7 +39,7 @@ public final class GetRateLimitResult {
      */
     private Boolean disabled;
     /**
-     * @return The unique identifier of the rate limit.
+     * @return Defines the unique identifier of the rate limit.
      * 
      */
     private String id;
@@ -54,7 +54,7 @@ public final class GetRateLimitResult {
      */
     private Double period;
     /**
-     * @return The unique identifier of the rate limit.
+     * @return Defines the unique identifier of the rate limit.
      * 
      */
     private @Nullable String rateLimitId;
@@ -64,7 +64,7 @@ public final class GetRateLimitResult {
      */
     private Double threshold;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -99,7 +99,7 @@ public final class GetRateLimitResult {
         return this.disabled;
     }
     /**
-     * @return The unique identifier of the rate limit.
+     * @return Defines the unique identifier of the rate limit.
      * 
      */
     public String id() {
@@ -120,7 +120,7 @@ public final class GetRateLimitResult {
         return this.period;
     }
     /**
-     * @return The unique identifier of the rate limit.
+     * @return Defines the unique identifier of the rate limit.
      * 
      */
     public Optional<String> rateLimitId() {
@@ -134,7 +134,7 @@ public final class GetRateLimitResult {
         return this.threshold;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

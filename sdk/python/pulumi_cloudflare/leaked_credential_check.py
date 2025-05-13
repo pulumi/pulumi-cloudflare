@@ -24,8 +24,8 @@ class LeakedCredentialCheckArgs:
                  enabled: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a LeakedCredentialCheck resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
-        :param pulumi.Input[builtins.bool] enabled: Whether or not Leaked Credential Checks are enabled
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
+        :param pulumi.Input[builtins.bool] enabled: Determines whether or not Leaked Credential Checks are enabled.
         """
         pulumi.set(__self__, "zone_id", zone_id)
         if enabled is not None:
@@ -35,7 +35,7 @@ class LeakedCredentialCheckArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -47,7 +47,7 @@ class LeakedCredentialCheckArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether or not Leaked Credential Checks are enabled
+        Determines whether or not Leaked Credential Checks are enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -63,8 +63,8 @@ class _LeakedCredentialCheckState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering LeakedCredentialCheck resources.
-        :param pulumi.Input[builtins.bool] enabled: Whether or not Leaked Credential Checks are enabled
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] enabled: Determines whether or not Leaked Credential Checks are enabled.
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -75,7 +75,7 @@ class _LeakedCredentialCheckState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether or not Leaked Credential Checks are enabled
+        Determines whether or not Leaked Credential Checks are enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -87,7 +87,7 @@ class _LeakedCredentialCheckState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -119,8 +119,8 @@ class LeakedCredentialCheck(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] enabled: Whether or not Leaked Credential Checks are enabled
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] enabled: Determines whether or not Leaked Credential Checks are enabled.
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         ...
     @overload
@@ -189,8 +189,8 @@ class LeakedCredentialCheck(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] enabled: Whether or not Leaked Credential Checks are enabled
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] enabled: Determines whether or not Leaked Credential Checks are enabled.
+        :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -204,7 +204,7 @@ class LeakedCredentialCheck(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
-        Whether or not Leaked Credential Checks are enabled
+        Determines whether or not Leaked Credential Checks are enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -212,7 +212,7 @@ class LeakedCredentialCheck(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 

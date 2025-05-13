@@ -47,7 +47,7 @@ export class MagicNetworkMonitoringConfiguration extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly routerIps!: pulumi.Output<string[] | undefined>;
-    public readonly warpDevices!: pulumi.Output<outputs.MagicNetworkMonitoringConfigurationWarpDevice[]>;
+    public readonly warpDevices!: pulumi.Output<outputs.MagicNetworkMonitoringConfigurationWarpDevice[] | undefined>;
 
     /**
      * Create a MagicNetworkMonitoringConfiguration resource with the given unique name, arguments, and options.

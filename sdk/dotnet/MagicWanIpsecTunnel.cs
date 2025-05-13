@@ -45,6 +45,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '&lt;account_id&gt;/&lt;ipsec_tunnel_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel")]
     public partial class MagicWanIpsecTunnel : global::Pulumi.CustomResource
@@ -56,10 +62,22 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        /// </summary>
+        [Output("allowNullCipher")]
+        public Output<bool> AllowNullCipher { get; private set; } = null!;
+
+        /// <summary>
         /// The IP address assigned to the Cloudflare side of the IPsec tunnel.
         /// </summary>
         [Output("cloudflareEndpoint")]
         public Output<string> CloudflareEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The date and time the tunnel was created.
+        /// </summary>
+        [Output("createdOn")]
+        public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
         /// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -85,20 +103,17 @@ namespace Pulumi.Cloudflare
         [Output("ipsecTunnel")]
         public Output<Outputs.MagicWanIpsecTunnelIpsecTunnel> IpsecTunnel { get; private set; } = null!;
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Output("ipsecTunnelId")]
-        public Output<string?> IpsecTunnelId { get; private set; } = null!;
-
-        [Output("ipsecTunnels")]
-        public Output<ImmutableArray<Outputs.MagicWanIpsecTunnelIpsecTunnel>> IpsecTunnels { get; private set; } = null!;
-
         [Output("modified")]
         public Output<bool> Modified { get; private set; } = null!;
 
         [Output("modifiedIpsecTunnel")]
         public Output<Outputs.MagicWanIpsecTunnelModifiedIpsecTunnel> ModifiedIpsecTunnel { get; private set; } = null!;
+
+        /// <summary>
+        /// The date and time the tunnel was last modified.
+        /// </summary>
+        [Output("modifiedOn")]
+        public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
         /// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -111,6 +126,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("psk")]
         public Output<string?> Psk { get; private set; } = null!;
+
+        /// <summary>
+        /// The PSK metadata that includes when the PSK was generated.
+        /// </summary>
+        [Output("pskMetadata")]
+        public Output<Outputs.MagicWanIpsecTunnelPskMetadata> PskMetadata { get; private set; } = null!;
 
         /// <summary>
         /// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
@@ -202,12 +223,6 @@ namespace Pulumi.Cloudflare
         public Input<string> InterfaceAddress { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("ipsecTunnelId")]
-        public Input<string>? IpsecTunnelId { get; set; }
-
-        /// <summary>
         /// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
         /// </summary>
         [Input("name", required: true)]
@@ -240,10 +255,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+        /// </summary>
+        [Input("allowNullCipher")]
+        public Input<bool>? AllowNullCipher { get; set; }
+
+        /// <summary>
         /// The IP address assigned to the Cloudflare side of the IPsec tunnel.
         /// </summary>
         [Input("cloudflareEndpoint")]
         public Input<string>? CloudflareEndpoint { get; set; }
+
+        /// <summary>
+        /// The date and time the tunnel was created.
+        /// </summary>
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
         /// The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
@@ -269,25 +296,17 @@ namespace Pulumi.Cloudflare
         [Input("ipsecTunnel")]
         public Input<Inputs.MagicWanIpsecTunnelIpsecTunnelGetArgs>? IpsecTunnel { get; set; }
 
-        /// <summary>
-        /// Identifier
-        /// </summary>
-        [Input("ipsecTunnelId")]
-        public Input<string>? IpsecTunnelId { get; set; }
-
-        [Input("ipsecTunnels")]
-        private InputList<Inputs.MagicWanIpsecTunnelIpsecTunnelGetArgs>? _ipsecTunnels;
-        public InputList<Inputs.MagicWanIpsecTunnelIpsecTunnelGetArgs> IpsecTunnels
-        {
-            get => _ipsecTunnels ?? (_ipsecTunnels = new InputList<Inputs.MagicWanIpsecTunnelIpsecTunnelGetArgs>());
-            set => _ipsecTunnels = value;
-        }
-
         [Input("modified")]
         public Input<bool>? Modified { get; set; }
 
         [Input("modifiedIpsecTunnel")]
         public Input<Inputs.MagicWanIpsecTunnelModifiedIpsecTunnelGetArgs>? ModifiedIpsecTunnel { get; set; }
+
+        /// <summary>
+        /// The date and time the tunnel was last modified.
+        /// </summary>
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
         /// The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -300,6 +319,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("psk")]
         public Input<string>? Psk { get; set; }
+
+        /// <summary>
+        /// The PSK metadata that includes when the PSK was generated.
+        /// </summary>
+        [Input("pskMetadata")]
+        public Input<Inputs.MagicWanIpsecTunnelPskMetadataGetArgs>? PskMetadata { get; set; }
 
         /// <summary>
         /// If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.

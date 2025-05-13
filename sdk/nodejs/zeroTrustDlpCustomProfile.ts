@@ -53,33 +53,33 @@ export class ZeroTrustDlpCustomProfile extends pulumi.CustomResource {
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      */
-    public readonly contextAwareness!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileContextAwareness>;
+    public readonly contextAwareness!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileContextAwareness | undefined>;
     /**
-     * When the profile was created
+     * When the profile was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly entries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileEntry[]>;
+    public readonly entries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileEntry[] | undefined>;
     public readonly name!: pulumi.Output<string | undefined>;
     public readonly ocrEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      */
     public /*out*/ readonly openAccess!: pulumi.Output<boolean>;
     public readonly profiles!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileProfile[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
-    public readonly sharedEntries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileSharedEntry[]>;
+    public readonly sharedEntries!: pulumi.Output<outputs.ZeroTrustDlpCustomProfileSharedEntry[] | undefined>;
     /**
      * Available values: "custom".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -155,18 +155,18 @@ export interface ZeroTrustDlpCustomProfileState {
      */
     contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpCustomProfileContextAwareness>;
     /**
-     * When the profile was created
+     * When the profile was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: pulumi.Input<string>;
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileEntry>[]>;
     name?: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      */
     openAccess?: pulumi.Input<boolean>;
     profiles?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfile>[]>;
@@ -179,7 +179,7 @@ export interface ZeroTrustDlpCustomProfileState {
      */
     type?: pulumi.Input<string>;
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      */
     updatedAt?: pulumi.Input<string>;
 }
@@ -200,7 +200,7 @@ export interface ZeroTrustDlpCustomProfileArgs {
      */
     contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpCustomProfileContextAwareness>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: pulumi.Input<string>;
     entries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileEntry>[]>;

@@ -25,7 +25,7 @@ class AuthenticatedOriginPullsSettingsArgs:
         """
         The set of arguments for constructing a AuthenticatedOriginPullsSettings resource.
         :param pulumi.Input[builtins.bool] enabled: Indicates whether zone-level authenticated origin pulls is enabled.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -46,7 +46,7 @@ class AuthenticatedOriginPullsSettingsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -63,7 +63,7 @@ class _AuthenticatedOriginPullsSettingsState:
         """
         Input properties used for looking up and filtering AuthenticatedOriginPullsSettings resources.
         :param pulumi.Input[builtins.bool] enabled: Indicates whether zone-level authenticated origin pulls is enabled.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -86,7 +86,7 @@ class _AuthenticatedOriginPullsSettingsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -119,7 +119,7 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] enabled: Indicates whether zone-level authenticated origin pulls is enabled.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -191,7 +191,7 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] enabled: Indicates whether zone-level authenticated origin pulls is enabled.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -213,7 +213,7 @@ class AuthenticatedOriginPullsSettings(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

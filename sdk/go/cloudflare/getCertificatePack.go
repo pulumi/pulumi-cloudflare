@@ -49,19 +49,19 @@ func LookupCertificatePack(ctx *pulumi.Context, args *LookupCertificatePackArgs,
 
 // A collection of arguments for invoking getCertificatePack.
 type LookupCertificatePackArgs struct {
-	// Identifier
+	// Identifier.
 	CertificatePackId string `pulumi:"certificatePackId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getCertificatePack.
 type LookupCertificatePackResult struct {
-	// Identifier
+	// Identifier.
 	CertificatePackId string `pulumi:"certificatePackId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -76,9 +76,9 @@ func LookupCertificatePackOutput(ctx *pulumi.Context, args LookupCertificatePack
 
 // A collection of arguments for invoking getCertificatePack.
 type LookupCertificatePackOutputArgs struct {
-	// Identifier
+	// Identifier.
 	CertificatePackId pulumi.StringInput `pulumi:"certificatePackId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -101,7 +101,7 @@ func (o LookupCertificatePackResultOutput) ToLookupCertificatePackResultOutputWi
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupCertificatePackResultOutput) CertificatePackId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.CertificatePackId }).(pulumi.StringOutput)
 }
@@ -111,7 +111,7 @@ func (o LookupCertificatePackResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCertificatePackResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificatePackResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

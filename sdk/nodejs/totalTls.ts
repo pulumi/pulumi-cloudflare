@@ -67,7 +67,7 @@ export class TotalTls extends pulumi.CustomResource {
      */
     public /*out*/ readonly validityPeriod!: pulumi.Output<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -125,7 +125,7 @@ export interface TotalTlsState {
      */
     validityPeriod?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -144,7 +144,7 @@ export interface TotalTlsArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

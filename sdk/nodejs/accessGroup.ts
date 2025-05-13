@@ -80,7 +80,7 @@ export class AccessGroup extends pulumi.CustomResource {
     /**
      * Rules evaluated with a NOT logical operator. To match a policy, a user cannot meet any of the Exclude rules.
      */
-    public readonly excludes!: pulumi.Output<outputs.AccessGroupExclude[]>;
+    public readonly excludes!: pulumi.Output<outputs.AccessGroupExclude[] | undefined>;
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
@@ -96,7 +96,7 @@ export class AccessGroup extends pulumi.CustomResource {
     /**
      * Rules evaluated with an AND logical operator. To match a policy, a user must meet all of the Require rules.
      */
-    public readonly requires!: pulumi.Output<outputs.AccessGroupRequire[]>;
+    public readonly requires!: pulumi.Output<outputs.AccessGroupRequire[] | undefined>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.

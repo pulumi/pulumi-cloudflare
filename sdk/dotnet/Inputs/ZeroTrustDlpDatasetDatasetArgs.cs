@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ZeroTrustDlpDatasetDatasetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("caseSensitive")]
+        public Input<bool>? CaseSensitive { get; set; }
+
         [Input("columns")]
         private InputList<Inputs.ZeroTrustDlpDatasetDatasetColumnArgs>? _columns;
         public InputList<Inputs.ZeroTrustDlpDatasetDatasetColumnArgs> Columns
@@ -24,7 +27,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The description of the dataset
+        /// The description of the dataset.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

@@ -33,7 +33,7 @@ public final class GetOriginCaCertificatesResult {
      */
     private List<String> hostnames;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -80,7 +80,7 @@ public final class GetOriginCaCertificatesResult {
         return this.hostnames;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {

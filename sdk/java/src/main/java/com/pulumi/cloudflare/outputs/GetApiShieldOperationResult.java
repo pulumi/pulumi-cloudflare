@@ -33,7 +33,7 @@ public final class GetApiShieldOperationResult {
      */
     private String host;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
@@ -45,12 +45,12 @@ public final class GetApiShieldOperationResult {
      */
     private String method;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String operationId;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -84,7 +84,7 @@ public final class GetApiShieldOperationResult {
         return this.host;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {
@@ -102,14 +102,14 @@ public final class GetApiShieldOperationResult {
         return this.method;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String operationId() {
         return this.operationId;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

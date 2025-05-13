@@ -28,7 +28,7 @@ export function getApiShieldSchemaValidationSettings(args: GetApiShieldSchemaVal
  */
 export interface GetApiShieldSchemaValidationSettingsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -47,7 +47,7 @@ export interface GetApiShieldSchemaValidationSettingsResult {
     readonly validationDefaultMitigationAction: string;
     readonly validationOverrideMitigationAction: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -75,7 +75,7 @@ export function getApiShieldSchemaValidationSettingsOutput(args: GetApiShieldSch
  */
 export interface GetApiShieldSchemaValidationSettingsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

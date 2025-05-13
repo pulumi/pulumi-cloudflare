@@ -66,7 +66,7 @@ export class EmailRoutingCatchAll extends pulumi.CustomResource {
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -139,7 +139,7 @@ export interface EmailRoutingCatchAllState {
      */
     tag?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -165,7 +165,7 @@ export interface EmailRoutingCatchAllArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

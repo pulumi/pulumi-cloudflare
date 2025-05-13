@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare
         /// The rate plan applied to the subscription.
         /// </summary>
         [Output("ratePlan")]
-        public Output<Outputs.ZoneSubscriptionRatePlan> RatePlan { get; private set; } = null!;
+        public Output<Outputs.ZoneSubscriptionRatePlan?> RatePlan { get; private set; } = null!;
 
 
         /// <summary>

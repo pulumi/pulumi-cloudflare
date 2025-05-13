@@ -58,7 +58,7 @@ class GetAuthenticatedOriginPullsSettingsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -87,7 +87,7 @@ def get_authenticated_origin_pulls_settings(zone_id: Optional[builtins.str] = No
     ```
 
 
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -111,7 +111,7 @@ def get_authenticated_origin_pulls_settings_output(zone_id: Optional[pulumi.Inpu
     ```
 
 
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id

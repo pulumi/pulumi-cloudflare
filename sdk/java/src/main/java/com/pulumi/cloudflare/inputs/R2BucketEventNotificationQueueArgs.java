@@ -18,14 +18,14 @@ public final class R2BucketEventNotificationQueueArgs extends com.pulumi.resourc
     public static final R2BucketEventNotificationQueueArgs Empty = new R2BucketEventNotificationQueueArgs();
 
     /**
-     * Queue ID
+     * Queue ID.
      * 
      */
     @Import(name="queueId")
     private @Nullable Output<String> queueId;
 
     /**
-     * @return Queue ID
+     * @return Queue ID.
      * 
      */
     public Optional<Output<String>> queueId() {
@@ -33,14 +33,14 @@ public final class R2BucketEventNotificationQueueArgs extends com.pulumi.resourc
     }
 
     /**
-     * Name of the queue
+     * Name of the queue.
      * 
      */
     @Import(name="queueName")
     private @Nullable Output<String> queueName;
 
     /**
-     * @return Name of the queue
+     * @return Name of the queue.
      * 
      */
     public Optional<Output<String>> queueName() {
@@ -81,7 +81,7 @@ public final class R2BucketEventNotificationQueueArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param queueId Queue ID
+         * @param queueId Queue ID.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class R2BucketEventNotificationQueueArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param queueId Queue ID
+         * @param queueId Queue ID.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class R2BucketEventNotificationQueueArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param queueName Name of the queue
+         * @param queueName Name of the queue.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class R2BucketEventNotificationQueueArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param queueName Name of the queue
+         * @param queueName Name of the queue.
          * 
          * @return builder
          * 

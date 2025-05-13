@@ -19,14 +19,14 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
     public static final R2BucketSippyState Empty = new R2BucketSippyState();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -34,14 +34,14 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Optional<Output<String>> bucketName() {
@@ -49,14 +49,14 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * R2 bucket to copy objects to
+     * R2 bucket to copy objects to.
      * 
      */
     @Import(name="destination")
     private @Nullable Output<R2BucketSippyDestinationArgs> destination;
 
     /**
-     * @return R2 bucket to copy objects to
+     * @return R2 bucket to copy objects to.
      * 
      */
     public Optional<Output<R2BucketSippyDestinationArgs>> destination() {
@@ -64,14 +64,14 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * State of Sippy for this bucket
+     * State of Sippy for this bucket.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return State of Sippy for this bucket
+     * @return State of Sippy for this bucket.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -94,14 +94,14 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * AWS S3 bucket to copy objects from
+     * AWS S3 bucket to copy objects from.
      * 
      */
     @Import(name="source")
     private @Nullable Output<R2BucketSippySourceArgs> source;
 
     /**
-     * @return AWS S3 bucket to copy objects from
+     * @return AWS S3 bucket to copy objects from.
      * 
      */
     public Optional<Output<R2BucketSippySourceArgs>> source() {
@@ -138,7 +138,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param destination R2 bucket to copy objects to
+         * @param destination R2 bucket to copy objects to.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param destination R2 bucket to copy objects to
+         * @param destination R2 bucket to copy objects to.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enabled State of Sippy for this bucket
+         * @param enabled State of Sippy for this bucket.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enabled State of Sippy for this bucket
+         * @param enabled State of Sippy for this bucket.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param source AWS S3 bucket to copy objects from
+         * @param source AWS S3 bucket to copy objects from.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class R2BucketSippyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param source AWS S3 bucket to copy objects from
+         * @param source AWS S3 bucket to copy objects from.
          * 
          * @return builder
          * 

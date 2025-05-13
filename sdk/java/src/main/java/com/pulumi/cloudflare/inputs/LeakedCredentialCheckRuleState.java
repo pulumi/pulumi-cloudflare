@@ -16,14 +16,14 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
     public static final LeakedCredentialCheckRuleState Empty = new LeakedCredentialCheckRuleState();
 
     /**
-     * The ruleset expression to use in matching the password in a request
+     * Defines ehe ruleset expression to use in matching the password in a request.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The ruleset expression to use in matching the password in a request
+     * @return Defines ehe ruleset expression to use in matching the password in a request.
      * 
      */
     public Optional<Output<String>> password() {
@@ -31,14 +31,14 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * The ruleset expression to use in matching the username in a request
+     * Defines the ruleset expression to use in matching the username in a request.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The ruleset expression to use in matching the username in a request
+     * @return Defines the ruleset expression to use in matching the username in a request.
      * 
      */
     public Optional<Output<String>> username() {
@@ -46,14 +46,14 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -87,7 +87,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param password The ruleset expression to use in matching the password in a request
+         * @param password Defines ehe ruleset expression to use in matching the password in a request.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param password The ruleset expression to use in matching the password in a request
+         * @param password Defines ehe ruleset expression to use in matching the password in a request.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param username The ruleset expression to use in matching the username in a request
+         * @param username Defines the ruleset expression to use in matching the username in a request.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param username The ruleset expression to use in matching the username in a request
+         * @param username Defines the ruleset expression to use in matching the username in a request.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class LeakedCredentialCheckRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

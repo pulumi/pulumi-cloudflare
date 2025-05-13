@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetRateLimitArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier of the rate limit.
+        /// Defines the unique identifier of the rate limit.
         /// </summary>
         [Input("rateLimitId")]
         public string? RateLimitId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetRateLimitInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique identifier of the rate limit.
+        /// Defines the unique identifier of the rate limit.
         /// </summary>
         [Input("rateLimitId")]
         public Input<string>? RateLimitId { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
-        /// The unique identifier of the rate limit.
+        /// Defines the unique identifier of the rate limit.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double Period;
         /// <summary>
-        /// The unique identifier of the rate limit.
+        /// Defines the unique identifier of the rate limit.
         /// </summary>
         public readonly string? RateLimitId;
         /// <summary>
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double Threshold;
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         public readonly string ZoneId;
 

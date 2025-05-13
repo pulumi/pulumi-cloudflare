@@ -68,7 +68,7 @@ class GetWebAnalyticsSiteResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -94,7 +94,7 @@ class GetWebAnalyticsSiteResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -115,7 +115,7 @@ class GetWebAnalyticsSiteResult:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "site_id")
 
@@ -179,8 +179,8 @@ def get_web_analytics_site(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str site_id: Identifier
+    :param builtins.str account_id: Identifier.
+    :param builtins.str site_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -217,8 +217,8 @@ def get_web_analytics_site_output(account_id: Optional[pulumi.Input[builtins.str
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str site_id: Identifier
+    :param builtins.str account_id: Identifier.
+    :param builtins.str site_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

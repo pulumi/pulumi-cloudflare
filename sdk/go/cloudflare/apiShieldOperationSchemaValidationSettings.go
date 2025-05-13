@@ -53,9 +53,9 @@ type ApiShieldOperationSchemaValidationSettings struct {
 	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
 	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
 	MitigationAction pulumi.StringPtrOutput `pulumi:"mitigationAction"`
-	// UUID
+	// UUID.
 	OperationId pulumi.StringOutput `pulumi:"operationId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -100,9 +100,9 @@ type apiShieldOperationSchemaValidationSettingsState struct {
 	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
 	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
 	MitigationAction *string `pulumi:"mitigationAction"`
-	// UUID
+	// UUID.
 	OperationId *string `pulumi:"operationId"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -112,9 +112,9 @@ type ApiShieldOperationSchemaValidationSettingsState struct {
 	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
 	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
 	MitigationAction pulumi.StringPtrInput
-	// UUID
+	// UUID.
 	OperationId pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -128,9 +128,9 @@ type apiShieldOperationSchemaValidationSettingsArgs struct {
 	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
 	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
 	MitigationAction *string `pulumi:"mitigationAction"`
-	// UUID
+	// UUID.
 	OperationId string `pulumi:"operationId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -141,9 +141,9 @@ type ApiShieldOperationSchemaValidationSettingsArgs struct {
 	// will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
 	// Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
 	MitigationAction pulumi.StringPtrInput
-	// UUID
+	// UUID.
 	OperationId pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -242,12 +242,12 @@ func (o ApiShieldOperationSchemaValidationSettingsOutput) MitigationAction() pul
 	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringPtrOutput { return v.MitigationAction }).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o ApiShieldOperationSchemaValidationSettingsOutput) OperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringOutput { return v.OperationId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ApiShieldOperationSchemaValidationSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiShieldOperationSchemaValidationSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

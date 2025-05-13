@@ -27,10 +27,10 @@ class R2BucketArgs:
                  storage_class: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a R2Bucket resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] name: Name of the bucket
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] name: Name of the bucket.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[builtins.str] location: Location of the bucket
+        :param pulumi.Input[builtins.str] location: Location of the bucket.
                Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         :param pulumi.Input[builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
                Available values: "Standard", "InfrequentAccess".
@@ -48,7 +48,7 @@ class R2BucketArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -60,7 +60,7 @@ class R2BucketArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "name")
 
@@ -84,7 +84,7 @@ class R2BucketArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Location of the bucket
+        Location of the bucket.
         Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         """
         return pulumi.get(self, "location")
@@ -118,12 +118,12 @@ class _R2BucketState:
                  storage_class: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering R2Bucket resources.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] creation_date: Creation timestamp
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] creation_date: Creation timestamp.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[builtins.str] location: Location of the bucket
+        :param pulumi.Input[builtins.str] location: Location of the bucket.
                Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
-        :param pulumi.Input[builtins.str] name: Name of the bucket
+        :param pulumi.Input[builtins.str] name: Name of the bucket.
         :param pulumi.Input[builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
                Available values: "Standard", "InfrequentAccess".
         """
@@ -144,7 +144,7 @@ class _R2BucketState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -156,7 +156,7 @@ class _R2BucketState:
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Creation timestamp
+        Creation timestamp.
         """
         return pulumi.get(self, "creation_date")
 
@@ -180,7 +180,7 @@ class _R2BucketState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Location of the bucket
+        Location of the bucket.
         Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         """
         return pulumi.get(self, "location")
@@ -193,7 +193,7 @@ class _R2BucketState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "name")
 
@@ -249,11 +249,11 @@ class R2Bucket(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
+        :param pulumi.Input[builtins.str] account_id: Account ID.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[builtins.str] location: Location of the bucket
+        :param pulumi.Input[builtins.str] location: Location of the bucket.
                Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
-        :param pulumi.Input[builtins.str] name: Name of the bucket
+        :param pulumi.Input[builtins.str] name: Name of the bucket.
         :param pulumi.Input[builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
                Available values: "Standard", "InfrequentAccess".
         """
@@ -345,12 +345,12 @@ class R2Bucket(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] creation_date: Creation timestamp
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] creation_date: Creation timestamp.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
-        :param pulumi.Input[builtins.str] location: Location of the bucket
+        :param pulumi.Input[builtins.str] location: Location of the bucket.
                Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
-        :param pulumi.Input[builtins.str] name: Name of the bucket
+        :param pulumi.Input[builtins.str] name: Name of the bucket.
         :param pulumi.Input[builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
                Available values: "Standard", "InfrequentAccess".
         """
@@ -370,7 +370,7 @@ class R2Bucket(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -378,7 +378,7 @@ class R2Bucket(pulumi.CustomResource):
     @pulumi.getter(name="creationDate")
     def creation_date(self) -> pulumi.Output[builtins.str]:
         """
-        Creation timestamp
+        Creation timestamp.
         """
         return pulumi.get(self, "creation_date")
 
@@ -394,7 +394,7 @@ class R2Bucket(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Location of the bucket
+        Location of the bucket.
         Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         """
         return pulumi.get(self, "location")
@@ -403,7 +403,7 @@ class R2Bucket(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "name")
 

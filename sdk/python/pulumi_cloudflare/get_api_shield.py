@@ -67,7 +67,7 @@ class GetApiShieldResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -100,7 +100,7 @@ def get_api_shield(properties: Optional[Sequence[builtins.str]] = None,
 
 
     :param Sequence[builtins.str] properties: Requests information about certain properties.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['properties'] = properties
@@ -129,7 +129,7 @@ def get_api_shield_output(properties: Optional[pulumi.Input[Optional[Sequence[bu
 
 
     :param Sequence[builtins.str] properties: Requests information about certain properties.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['properties'] = properties

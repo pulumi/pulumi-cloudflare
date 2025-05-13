@@ -48,7 +48,7 @@ func LookupApiShieldSchemaValidationSettings(ctx *pulumi.Context, args *LookupAp
 
 // A collection of arguments for invoking getApiShieldSchemaValidationSettings.
 type LookupApiShieldSchemaValidationSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -59,7 +59,7 @@ type LookupApiShieldSchemaValidationSettingsResult struct {
 	// The default mitigation action used when there is no mitigation action defined on the operation
 	ValidationDefaultMitigationAction  string `pulumi:"validationDefaultMitigationAction"`
 	ValidationOverrideMitigationAction string `pulumi:"validationOverrideMitigationAction"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -74,7 +74,7 @@ func LookupApiShieldSchemaValidationSettingsOutput(ctx *pulumi.Context, args Loo
 
 // A collection of arguments for invoking getApiShieldSchemaValidationSettings.
 type LookupApiShieldSchemaValidationSettingsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -115,7 +115,7 @@ func (o LookupApiShieldSchemaValidationSettingsResultOutput) ValidationOverrideM
 	}).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupApiShieldSchemaValidationSettingsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiShieldSchemaValidationSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

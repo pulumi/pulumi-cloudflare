@@ -32,12 +32,12 @@ public final class GetKeylessCertificateResult {
      */
     private String host;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String keylessCertificateId;
@@ -73,7 +73,7 @@ public final class GetKeylessCertificateResult {
      */
     private GetKeylessCertificateTunnel tunnel;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -101,14 +101,14 @@ public final class GetKeylessCertificateResult {
         return this.host;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> keylessCertificateId() {
@@ -158,7 +158,7 @@ public final class GetKeylessCertificateResult {
         return this.tunnel;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

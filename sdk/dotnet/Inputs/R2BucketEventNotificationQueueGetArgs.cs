@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class R2BucketEventNotificationQueueGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Queue ID
+        /// Queue ID.
         /// </summary>
         [Input("queueId")]
         public Input<string>? QueueId { get; set; }
 
         /// <summary>
-        /// Name of the queue
+        /// Name of the queue.
         /// </summary>
         [Input("queueName")]
         public Input<string>? QueueName { get; set; }

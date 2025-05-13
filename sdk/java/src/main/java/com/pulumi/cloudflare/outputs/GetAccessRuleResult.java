@@ -38,7 +38,7 @@ public final class GetAccessRuleResult {
     private String createdOn;
     private @Nullable GetAccessRuleFilter filter;
     /**
-     * @return Unique identifier for a rule
+     * @return Unique identifier for a rule.
      * 
      */
     private String id;
@@ -59,7 +59,7 @@ public final class GetAccessRuleResult {
      */
     private String notes;
     /**
-     * @return Unique identifier for a rule
+     * @return Unique identifier for a rule.
      * 
      */
     private @Nullable String ruleId;
@@ -107,7 +107,7 @@ public final class GetAccessRuleResult {
         return Optional.ofNullable(this.filter);
     }
     /**
-     * @return Unique identifier for a rule
+     * @return Unique identifier for a rule.
      * 
      */
     public String id() {
@@ -136,7 +136,7 @@ public final class GetAccessRuleResult {
         return this.notes;
     }
     /**
-     * @return Unique identifier for a rule
+     * @return Unique identifier for a rule.
      * 
      */
     public Optional<String> ruleId() {

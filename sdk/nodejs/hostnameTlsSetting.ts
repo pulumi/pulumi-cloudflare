@@ -82,7 +82,7 @@ export class HostnameTlsSetting extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<any>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -163,7 +163,7 @@ export interface HostnameTlsSettingState {
      */
     value?: any;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -186,7 +186,7 @@ export interface HostnameTlsSettingArgs {
      */
     value: any;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

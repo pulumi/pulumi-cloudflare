@@ -65,28 +65,28 @@ public class ContentScanningExpression extends com.pulumi.resources.CustomResour
         return this.bodies;
     }
     /**
-     * Ruleset expression to use in matching content objects
+     * Defines the ruleset expression to use in matching content objects.
      * 
      */
     @Export(name="payload", refs={String.class}, tree="[0]")
     private Output<String> payload;
 
     /**
-     * @return Ruleset expression to use in matching content objects
+     * @return Defines the ruleset expression to use in matching content objects.
      * 
      */
     public Output<String> payload() {
         return this.payload;
     }
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {

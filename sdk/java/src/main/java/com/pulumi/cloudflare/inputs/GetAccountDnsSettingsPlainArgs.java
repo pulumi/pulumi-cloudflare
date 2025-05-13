@@ -14,14 +14,14 @@ public final class GetAccountDnsSettingsPlainArgs extends com.pulumi.resources.I
     public static final GetAccountDnsSettingsPlainArgs Empty = new GetAccountDnsSettingsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -53,7 +53,7 @@ public final class GetAccountDnsSettingsPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

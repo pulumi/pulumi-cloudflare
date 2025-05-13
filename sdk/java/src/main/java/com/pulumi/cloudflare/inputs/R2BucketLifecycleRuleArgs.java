@@ -23,14 +23,14 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
     public static final R2BucketLifecycleRuleArgs Empty = new R2BucketLifecycleRuleArgs();
 
     /**
-     * Transition to abort ongoing multipart uploads
+     * Transition to abort ongoing multipart uploads.
      * 
      */
     @Import(name="abortMultipartUploadsTransition")
     private @Nullable Output<R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs> abortMultipartUploadsTransition;
 
     /**
-     * @return Transition to abort ongoing multipart uploads
+     * @return Transition to abort ongoing multipart uploads.
      * 
      */
     public Optional<Output<R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs>> abortMultipartUploadsTransition() {
@@ -38,14 +38,14 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Conditions that apply to all transitions of this rule
+     * Conditions that apply to all transitions of this rule.
      * 
      */
     @Import(name="conditions", required=true)
     private Output<R2BucketLifecycleRuleConditionsArgs> conditions;
 
     /**
-     * @return Conditions that apply to all transitions of this rule
+     * @return Conditions that apply to all transitions of this rule.
      * 
      */
     public Output<R2BucketLifecycleRuleConditionsArgs> conditions() {
@@ -53,14 +53,14 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Transition to delete objects
+     * Transition to delete objects.
      * 
      */
     @Import(name="deleteObjectsTransition")
     private @Nullable Output<R2BucketLifecycleRuleDeleteObjectsTransitionArgs> deleteObjectsTransition;
 
     /**
-     * @return Transition to delete objects
+     * @return Transition to delete objects.
      * 
      */
     public Optional<Output<R2BucketLifecycleRuleDeleteObjectsTransitionArgs>> deleteObjectsTransition() {
@@ -68,14 +68,14 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether or not this rule is in effect
+     * Whether or not this rule is in effect.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether or not this rule is in effect
+     * @return Whether or not this rule is in effect.
      * 
      */
     public Output<Boolean> enabled() {
@@ -83,14 +83,14 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Unique identifier for this rule
+     * Unique identifier for this rule.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Unique identifier for this rule
+     * @return Unique identifier for this rule.
      * 
      */
     public Output<String> id() {
@@ -98,14 +98,14 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Transitions to change the storage class of objects
+     * Transitions to change the storage class of objects.
      * 
      */
     @Import(name="storageClassTransitions")
     private @Nullable Output<List<R2BucketLifecycleRuleStorageClassTransitionArgs>> storageClassTransitions;
 
     /**
-     * @return Transitions to change the storage class of objects
+     * @return Transitions to change the storage class of objects.
      * 
      */
     public Optional<Output<List<R2BucketLifecycleRuleStorageClassTransitionArgs>>> storageClassTransitions() {
@@ -142,7 +142,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param abortMultipartUploadsTransition Transition to abort ongoing multipart uploads
+         * @param abortMultipartUploadsTransition Transition to abort ongoing multipart uploads.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param abortMultipartUploadsTransition Transition to abort ongoing multipart uploads
+         * @param abortMultipartUploadsTransition Transition to abort ongoing multipart uploads.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param conditions Conditions that apply to all transitions of this rule
+         * @param conditions Conditions that apply to all transitions of this rule.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param conditions Conditions that apply to all transitions of this rule
+         * @param conditions Conditions that apply to all transitions of this rule.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deleteObjectsTransition Transition to delete objects
+         * @param deleteObjectsTransition Transition to delete objects.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deleteObjectsTransition Transition to delete objects
+         * @param deleteObjectsTransition Transition to delete objects.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled Whether or not this rule is in effect
+         * @param enabled Whether or not this rule is in effect.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled Whether or not this rule is in effect
+         * @param enabled Whether or not this rule is in effect.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param id Unique identifier for this rule
+         * @param id Unique identifier for this rule.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param id Unique identifier for this rule
+         * @param id Unique identifier for this rule.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param storageClassTransitions Transitions to change the storage class of objects
+         * @param storageClassTransitions Transitions to change the storage class of objects.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param storageClassTransitions Transitions to change the storage class of objects
+         * @param storageClassTransitions Transitions to change the storage class of objects.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class R2BucketLifecycleRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param storageClassTransitions Transitions to change the storage class of objects
+         * @param storageClassTransitions Transitions to change the storage class of objects.
          * 
          * @return builder
          * 

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketSippySource {
     /**
-     * @return Name of the bucket on the provider
+     * @return Name of the bucket on the provider.
      * 
      */
     private String bucket;
@@ -21,14 +21,14 @@ public final class GetR2BucketSippySource {
      */
     private String provider;
     /**
-     * @return Region where the bucket resides (AWS only)
+     * @return Region where the bucket resides (AWS only).
      * 
      */
     private String region;
 
     private GetR2BucketSippySource() {}
     /**
-     * @return Name of the bucket on the provider
+     * @return Name of the bucket on the provider.
      * 
      */
     public String bucket() {
@@ -42,7 +42,7 @@ public final class GetR2BucketSippySource {
         return this.provider;
     }
     /**
-     * @return Region where the bucket resides (AWS only)
+     * @return Region where the bucket resides (AWS only).
      * 
      */
     public String region() {

@@ -88,19 +88,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2CustomDomainArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the custom domain
+        /// Name of the custom domain.
         /// </summary>
         [Input("domain", required: true)]
         public string Domain { get; set; } = null!;
@@ -114,19 +114,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2CustomDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Name of the custom domain
+        /// Name of the custom domain.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -142,19 +142,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2CustomDomainResult
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// Name of the custom domain
+        /// Name of the custom domain.
         /// </summary>
         public readonly string Domain;
         /// <summary>
-        /// Whether this bucket is publicly accessible at the specified custom domain
+        /// Whether this bucket is publicly accessible at the specified custom domain.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -168,11 +168,11 @@ namespace Pulumi.Cloudflare
         public readonly string MinTls;
         public readonly Outputs.GetR2CustomDomainStatusResult Status;
         /// <summary>
-        /// Zone ID of the custom domain resides in
+        /// Zone ID of the custom domain resides in.
         /// </summary>
         public readonly string ZoneId;
         /// <summary>
-        /// Zone that the custom domain resides in
+        /// Zone that the custom domain resides in.
         /// </summary>
         public readonly string ZoneName;
 

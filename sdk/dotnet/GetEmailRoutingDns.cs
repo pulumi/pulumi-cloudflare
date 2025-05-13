@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         public string? Subdomain { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Subdomain { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -139,11 +139,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string? Subdomain;
         /// <summary>
-        /// Whether the API call was successful
+        /// Whether the API call was successful.
         /// </summary>
         public readonly bool Success;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

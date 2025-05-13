@@ -14,14 +14,14 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
     public static final GetCertificatePackPlainArgs Empty = new GetCertificatePackPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="certificatePackId", required=true)
     private String certificatePackId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String certificatePackId() {
@@ -29,14 +29,14 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -69,7 +69,7 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param certificatePackId Identifier
+         * @param certificatePackId Identifier.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetCertificatePackPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

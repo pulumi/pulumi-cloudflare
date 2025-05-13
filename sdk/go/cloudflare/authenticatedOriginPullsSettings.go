@@ -43,7 +43,7 @@ type AuthenticatedOriginPullsSettings struct {
 
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -85,14 +85,14 @@ func GetAuthenticatedOriginPullsSettings(ctx *pulumi.Context,
 type authenticatedOriginPullsSettingsState struct {
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AuthenticatedOriginPullsSettingsState struct {
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -103,7 +103,7 @@ func (AuthenticatedOriginPullsSettingsState) ElementType() reflect.Type {
 type authenticatedOriginPullsSettingsArgs struct {
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -111,7 +111,7 @@ type authenticatedOriginPullsSettingsArgs struct {
 type AuthenticatedOriginPullsSettingsArgs struct {
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled pulumi.BoolInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -207,7 +207,7 @@ func (o AuthenticatedOriginPullsSettingsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsSettings) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o AuthenticatedOriginPullsSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPullsSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

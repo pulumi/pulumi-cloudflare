@@ -712,7 +712,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def data(self) -> pulumi.Output['outputs.DnsRecordData']:
+    def data(self) -> pulumi.Output[Optional['outputs.DnsRecordData']]:
         """
         Components of a CAA record.
         """

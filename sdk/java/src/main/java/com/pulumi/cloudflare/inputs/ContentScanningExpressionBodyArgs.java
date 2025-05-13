@@ -15,14 +15,14 @@ public final class ContentScanningExpressionBodyArgs extends com.pulumi.resource
     public static final ContentScanningExpressionBodyArgs Empty = new ContentScanningExpressionBodyArgs();
 
     /**
-     * Ruleset expression to use in matching content objects
+     * Defines the ruleset expression to use in matching content objects.
      * 
      */
     @Import(name="payload", required=true)
     private Output<String> payload;
 
     /**
-     * @return Ruleset expression to use in matching content objects
+     * @return Defines the ruleset expression to use in matching content objects.
      * 
      */
     public Output<String> payload() {
@@ -54,7 +54,7 @@ public final class ContentScanningExpressionBodyArgs extends com.pulumi.resource
         }
 
         /**
-         * @param payload Ruleset expression to use in matching content objects
+         * @param payload Defines the ruleset expression to use in matching content objects.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ContentScanningExpressionBodyArgs extends com.pulumi.resource
         }
 
         /**
-         * @param payload Ruleset expression to use in matching content objects
+         * @param payload Defines the ruleset expression to use in matching content objects.
          * 
          * @return builder
          * 

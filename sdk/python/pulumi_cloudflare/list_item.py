@@ -22,8 +22,8 @@ __all__ = ['ListItemArgs', 'ListItem']
 @pulumi.input_type
 class ListItemArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[builtins.str],
                  list_id: pulumi.Input[builtins.str],
-                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  asn: Optional[pulumi.Input[builtins.int]] = None,
                  comment: Optional[pulumi.Input[builtins.str]] = None,
                  hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
@@ -31,17 +31,16 @@ class ListItemArgs:
                  redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
         """
         The set of arguments for constructing a ListItem resource.
+        :param pulumi.Input[builtins.str] account_id: Defines an identifier.
         :param pulumi.Input[builtins.str] list_id: The unique ID of the list.
-        :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input['ListItemHostnameArgs'] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
         :param pulumi.Input[builtins.str] ip: An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         :param pulumi.Input['ListItemRedirectArgs'] redirect: The definition of the redirect.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "list_id", list_id)
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
         if asn is not None:
             pulumi.set(__self__, "asn", asn)
         if comment is not None:
@@ -54,6 +53,18 @@ class ListItemArgs:
             pulumi.set(__self__, "redirect", redirect)
 
     @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[builtins.str]:
+        """
+        Defines an identifier.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
     @pulumi.getter(name="listId")
     def list_id(self) -> pulumi.Input[builtins.str]:
         """
@@ -64,18 +75,6 @@ class ListItemArgs:
     @list_id.setter
     def list_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "list_id", value)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Identifier
-        """
-        return pulumi.get(self, "account_id")
-
-    @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -153,7 +152,7 @@ class _ListItemState:
                  redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None):
         """
         Input properties used for looking up and filtering ListItem resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Defines an identifier.
         :param pulumi.Input[builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[builtins.str] created_on: The RFC 3339 timestamp of when the item was created.
@@ -189,7 +188,7 @@ class _ListItemState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -335,7 +334,7 @@ class ListItem(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Defines an identifier.
         :param pulumi.Input[builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[Union['ListItemHostnameArgs', 'ListItemHostnameArgsDict']] hostname: Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
@@ -393,6 +392,8 @@ class ListItem(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ListItemArgs.__new__(ListItemArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["asn"] = asn
             __props__.__dict__["comment"] = comment
@@ -432,7 +433,7 @@ class ListItem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Defines an identifier.
         :param pulumi.Input[builtins.int] asn: A non-negative 32 bit integer
         :param pulumi.Input[builtins.str] comment: An informative summary of the list item.
         :param pulumi.Input[builtins.str] created_on: The RFC 3339 timestamp of when the item was created.
@@ -461,9 +462,9 @@ class ListItem(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "account_id")
 

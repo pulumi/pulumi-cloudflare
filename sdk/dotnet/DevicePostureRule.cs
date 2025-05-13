@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
         /// The value to be checked against.
         /// </summary>
         [Output("input")]
-        public Output<Outputs.DevicePostureRuleInput> Input { get; private set; } = null!;
+        public Output<Outputs.DevicePostureRuleInput?> Input { get; private set; } = null!;
 
         /// <summary>
         /// The conditions that the client must match to run the rule.

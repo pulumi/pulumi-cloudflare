@@ -116,14 +116,14 @@ public class AccountSubscription extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ratePlan", refs={AccountSubscriptionRatePlan.class}, tree="[0]")
-    private Output<AccountSubscriptionRatePlan> ratePlan;
+    private Output</* @Nullable */ AccountSubscriptionRatePlan> ratePlan;
 
     /**
      * @return The rate plan applied to the subscription.
      * 
      */
-    public Output<AccountSubscriptionRatePlan> ratePlan() {
-        return this.ratePlan;
+    public Output<Optional<AccountSubscriptionRatePlan>> ratePlan() {
+        return Codegen.optional(this.ratePlan);
     }
     /**
      * The state that the subscription is in.

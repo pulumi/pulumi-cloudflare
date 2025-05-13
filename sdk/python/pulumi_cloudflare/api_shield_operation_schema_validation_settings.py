@@ -25,8 +25,8 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
                  mitigation_action: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ApiShieldOperationSchemaValidationSettings resource.
-        :param pulumi.Input[builtins.str] operation_id: UUID
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] operation_id: UUID.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] mitigation_action: When set, this applies a mitigation action to this operation - `log` log request when request does not conform to schema
                for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
                will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
@@ -41,7 +41,7 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
     @pulumi.getter(name="operationId")
     def operation_id(self) -> pulumi.Input[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -53,7 +53,7 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -89,8 +89,8 @@ class _ApiShieldOperationSchemaValidationSettingsState:
                for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
                will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
                Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
-        :param pulumi.Input[builtins.str] operation_id: UUID
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] operation_id: UUID.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if mitigation_action is not None:
             pulumi.set(__self__, "mitigation_action", mitigation_action)
@@ -118,7 +118,7 @@ class _ApiShieldOperationSchemaValidationSettingsState:
     @pulumi.getter(name="operationId")
     def operation_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -130,7 +130,7 @@ class _ApiShieldOperationSchemaValidationSettingsState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -174,8 +174,8 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
                for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
                will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
                Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
-        :param pulumi.Input[builtins.str] operation_id: UUID
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] operation_id: UUID.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -260,8 +260,8 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
                for this operation - `block` deny access to the site when request does not conform to schema for this operation - `none`
                will skip mitigation for this operation - `null` indicates that no operation level mitigation is in place, see Zone
                Level Schema Validation Settings for mitigation action that will be applied Available values: "log", "block", "none".
-        :param pulumi.Input[builtins.str] operation_id: UUID
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] operation_id: UUID.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -287,7 +287,7 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
     @pulumi.getter(name="operationId")
     def operation_id(self) -> pulumi.Output[builtins.str]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -295,7 +295,7 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

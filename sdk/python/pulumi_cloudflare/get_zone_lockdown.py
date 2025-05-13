@@ -134,7 +134,7 @@ class GetZoneLockdownResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -174,7 +174,7 @@ def get_zone_lockdown(filter: Optional[Union['GetZoneLockdownFilterArgs', 'GetZo
 
 
     :param builtins.str lock_downs_id: The unique identifier of the Zone Lockdown rule.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -211,7 +211,7 @@ def get_zone_lockdown_output(filter: Optional[pulumi.Input[Optional[Union['GetZo
 
 
     :param builtins.str lock_downs_id: The unique identifier of the Zone Lockdown rule.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['filter'] = filter

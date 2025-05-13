@@ -692,7 +692,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="approvalGroups")
-    def approval_groups(self) -> pulumi.Output[Sequence['outputs.AccessPolicyApprovalGroup']]:
+    def approval_groups(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyApprovalGroup']]]:
         """
         Administrators who can approve a temporary authentication request.
         """
@@ -722,7 +722,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def excludes(self) -> pulumi.Output[Sequence['outputs.AccessPolicyExclude']]:
+    def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyExclude']]]:
         """
         Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         """
@@ -770,7 +770,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def requires(self) -> pulumi.Output[Sequence['outputs.AccessPolicyRequire']]:
+    def requires(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyRequire']]]:
         """
         Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         """

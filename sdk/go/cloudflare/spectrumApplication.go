@@ -86,7 +86,7 @@ type SpectrumApplication struct {
 	// List of origin IP addresses. Array may contain multiple IP addresses for load balancing.
 	OriginDirects pulumi.StringArrayOutput `pulumi:"originDirects"`
 	// The name and type of DNS record for the Spectrum application.
-	OriginDns SpectrumApplicationOriginDnsOutput `pulumi:"originDns"`
+	OriginDns SpectrumApplicationOriginDnsPtrOutput `pulumi:"originDns"`
 	// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
 	// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
 	OriginPort pulumi.AnyOutput `pulumi:"originPort"`
@@ -413,8 +413,8 @@ func (o SpectrumApplicationOutput) OriginDirects() pulumi.StringArrayOutput {
 }
 
 // The name and type of DNS record for the Spectrum application.
-func (o SpectrumApplicationOutput) OriginDns() SpectrumApplicationOriginDnsOutput {
-	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplicationOriginDnsOutput { return v.OriginDns }).(SpectrumApplicationOriginDnsOutput)
+func (o SpectrumApplicationOutput) OriginDns() SpectrumApplicationOriginDnsPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplicationOriginDnsPtrOutput { return v.OriginDns }).(SpectrumApplicationOriginDnsPtrOutput)
 }
 
 // The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.

@@ -32,11 +32,11 @@ export function getR2BucketSippy(args: GetR2BucketSippyArgs, opts?: pulumi.Invok
  */
 export interface GetR2BucketSippyArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: string;
 }
@@ -46,19 +46,19 @@ export interface GetR2BucketSippyArgs {
  */
 export interface GetR2BucketSippyResult {
     /**
-     * Account ID
+     * Account ID.
      */
     readonly accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     readonly bucketName: string;
     /**
-     * Details about the configured destination bucket
+     * Details about the configured destination bucket.
      */
     readonly destination: outputs.GetR2BucketSippyDestination;
     /**
-     * State of Sippy for this bucket
+     * State of Sippy for this bucket.
      */
     readonly enabled: boolean;
     /**
@@ -66,7 +66,7 @@ export interface GetR2BucketSippyResult {
      */
     readonly id: string;
     /**
-     * Details about the configured source bucket
+     * Details about the configured source bucket.
      */
     readonly source: outputs.GetR2BucketSippySource;
 }
@@ -96,11 +96,11 @@ export function getR2BucketSippyOutput(args: GetR2BucketSippyOutputArgs, opts?: 
  */
 export interface GetR2BucketSippyOutputArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
 }

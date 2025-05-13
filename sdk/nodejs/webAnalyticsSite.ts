@@ -56,7 +56,7 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -151,7 +151,7 @@ export class WebAnalyticsSite extends pulumi.CustomResource {
  */
 export interface WebAnalyticsSiteState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -199,7 +199,7 @@ export interface WebAnalyticsSiteState {
  */
 export interface WebAnalyticsSiteArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

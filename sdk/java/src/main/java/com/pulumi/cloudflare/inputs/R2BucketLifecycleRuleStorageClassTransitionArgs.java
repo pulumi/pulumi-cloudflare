@@ -16,14 +16,14 @@ public final class R2BucketLifecycleRuleStorageClassTransitionArgs extends com.p
     public static final R2BucketLifecycleRuleStorageClassTransitionArgs Empty = new R2BucketLifecycleRuleStorageClassTransitionArgs();
 
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     @Import(name="condition", required=true)
     private Output<R2BucketLifecycleRuleStorageClassTransitionConditionArgs> condition;
 
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     public Output<R2BucketLifecycleRuleStorageClassTransitionConditionArgs> condition() {
@@ -71,7 +71,7 @@ public final class R2BucketLifecycleRuleStorageClassTransitionArgs extends com.p
         }
 
         /**
-         * @param condition Condition for lifecycle transitions to apply after an object reaches an age in seconds
+         * @param condition Condition for lifecycle transitions to apply after an object reaches an age in seconds.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class R2BucketLifecycleRuleStorageClassTransitionArgs extends com.p
         }
 
         /**
-         * @param condition Condition for lifecycle transitions to apply after an object reaches an age in seconds
+         * @param condition Condition for lifecycle transitions to apply after an object reaches an age in seconds.
          * 
          * @return builder
          * 

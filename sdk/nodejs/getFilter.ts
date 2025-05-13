@@ -38,7 +38,7 @@ export interface GetFilterArgs {
      */
     filterId?: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -73,7 +73,7 @@ export interface GetFilterResult {
      */
     readonly ref: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -109,7 +109,7 @@ export interface GetFilterOutputArgs {
      */
     filterId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

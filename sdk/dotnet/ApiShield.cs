@@ -55,13 +55,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ApiShieldMessage>> Messages { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the API call was successful
+        /// Whether the API call was successful.
         /// </summary>
         [Output("success")]
         public Output<bool> Success { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -159,13 +159,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Whether the API call was successful
+        /// Whether the API call was successful.
         /// </summary>
         [Input("success")]
         public Input<bool>? Success { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

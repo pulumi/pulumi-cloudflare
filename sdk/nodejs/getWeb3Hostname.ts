@@ -30,11 +30,11 @@ export function getWeb3Hostname(args: GetWeb3HostnameArgs, opts?: pulumi.InvokeO
  */
 export interface GetWeb3HostnameArgs {
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     identifier?: string;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     zoneId: string;
 }
@@ -45,38 +45,38 @@ export interface GetWeb3HostnameArgs {
 export interface GetWeb3HostnameResult {
     readonly createdOn: string;
     /**
-     * An optional description of the hostname.
+     * Specify an optional description of the hostname.
      */
     readonly description: string;
     /**
-     * DNSLink value used if the target is ipfs.
+     * Specify the DNSLink value used if the target is ipfs.
      */
     readonly dnslink: string;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     readonly id: string;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     readonly identifier?: string;
     readonly modifiedOn: string;
     /**
-     * The hostname that will point to the target gateway via CNAME.
+     * Specify the hostname that points to the target gateway via CNAME.
      */
     readonly name: string;
     /**
-     * Status of the hostname's activation.
+     * Specifies the status of the hostname's activation.
      * Available values: "active", "pending", "deleting", "error".
      */
     readonly status: string;
     /**
-     * Target gateway of the hostname.
+     * Specify the target gateway of the hostname.
      * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     readonly target: string;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     readonly zoneId: string;
 }
@@ -106,11 +106,11 @@ export function getWeb3HostnameOutput(args: GetWeb3HostnameOutputArgs, opts?: pu
  */
 export interface GetWeb3HostnameOutputArgs {
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     identifier?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     zoneId: pulumi.Input<string>;
 }

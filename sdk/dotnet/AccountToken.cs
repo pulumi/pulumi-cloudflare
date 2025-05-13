@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("condition")]
-        public Output<Outputs.AccountTokenCondition> Condition { get; private set; } = null!;
+        public Output<Outputs.AccountTokenCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// The expiration time on or after which the JWT MUST NOT be accepted for processing.

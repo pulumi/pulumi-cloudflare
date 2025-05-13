@@ -20,18 +20,18 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListItemArgs Empty = new ListItemArgs();
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
@@ -155,18 +155,18 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountId(@Nullable Output<String> accountId) {
+        public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 
@@ -302,6 +302,9 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListItemArgs build() {
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ListItemArgs", "accountId");
+            }
             if ($.listId == null) {
                 throw new MissingRequiredPropertyException("ListItemArgs", "listId");
             }

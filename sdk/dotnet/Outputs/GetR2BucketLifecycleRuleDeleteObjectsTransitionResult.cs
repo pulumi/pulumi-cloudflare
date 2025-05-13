@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetR2BucketLifecycleRuleDeleteObjectsTransitionResult
     {
         /// <summary>
-        /// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        /// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         /// </summary>
         public readonly Outputs.GetR2BucketLifecycleRuleDeleteObjectsTransitionConditionResult Condition;
 

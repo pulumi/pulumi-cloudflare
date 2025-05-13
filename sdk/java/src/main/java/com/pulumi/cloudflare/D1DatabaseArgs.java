@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.D1DatabaseReadReplicationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -63,12 +64,28 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.primaryLocationHint);
     }
 
+    /**
+     * Configuration for D1 read replication.
+     * 
+     */
+    @Import(name="readReplication")
+    private @Nullable Output<D1DatabaseReadReplicationArgs> readReplication;
+
+    /**
+     * @return Configuration for D1 read replication.
+     * 
+     */
+    public Optional<Output<D1DatabaseReadReplicationArgs>> readReplication() {
+        return Optional.ofNullable(this.readReplication);
+    }
+
     private D1DatabaseArgs() {}
 
     private D1DatabaseArgs(D1DatabaseArgs $) {
         this.accountId = $.accountId;
         this.name = $.name;
         this.primaryLocationHint = $.primaryLocationHint;
+        this.readReplication = $.readReplication;
     }
 
     public static Builder builder() {
@@ -152,6 +169,27 @@ public final class D1DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder primaryLocationHint(String primaryLocationHint) {
             return primaryLocationHint(Output.of(primaryLocationHint));
+        }
+
+        /**
+         * @param readReplication Configuration for D1 read replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readReplication(@Nullable Output<D1DatabaseReadReplicationArgs> readReplication) {
+            $.readReplication = readReplication;
+            return this;
+        }
+
+        /**
+         * @param readReplication Configuration for D1 read replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readReplication(D1DatabaseReadReplicationArgs readReplication) {
+            return readReplication(Output.of(readReplication));
         }
 
         public D1DatabaseArgs build() {

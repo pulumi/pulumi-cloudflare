@@ -33,14 +33,14 @@ public final class GetCloudConnectorRulesListArgs extends com.pulumi.resources.I
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -94,7 +94,7 @@ public final class GetCloudConnectorRulesListArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class GetCloudConnectorRulesListArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

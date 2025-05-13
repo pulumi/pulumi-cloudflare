@@ -20,7 +20,6 @@ import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -91,14 +90,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return Object description.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * Whether to enable (the default) this load balancer.
@@ -167,14 +166,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="networks", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> networks;
+    private Output<List<String>> networks;
 
     /**
      * @return List of networks where Load Balancer or Pool is enabled.
      * 
      */
-    public Output<Optional<List<String>>> networks() {
-        return Codegen.optional(this.networks);
+    public Output<List<String>> networks() {
+        return this.networks;
     }
     /**
      * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.

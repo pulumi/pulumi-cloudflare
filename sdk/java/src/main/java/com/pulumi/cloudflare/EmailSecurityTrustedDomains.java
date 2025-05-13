@@ -82,10 +82,10 @@ public class EmailSecurityTrustedDomains extends com.pulumi.resources.CustomReso
         return this.accountId;
     }
     @Export(name="bodies", refs={List.class,EmailSecurityTrustedDomainsBody.class}, tree="[0,1]")
-    private Output<List<EmailSecurityTrustedDomainsBody>> bodies;
+    private Output</* @Nullable */ List<EmailSecurityTrustedDomainsBody>> bodies;
 
-    public Output<List<EmailSecurityTrustedDomainsBody>> bodies() {
-        return this.bodies;
+    public Output<Optional<List<EmailSecurityTrustedDomainsBody>>> bodies() {
+        return Codegen.optional(this.bodies);
     }
     @Export(name="comments", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comments;

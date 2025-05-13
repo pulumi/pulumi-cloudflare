@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkerScriptPlacement {
     /**
+     * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    private @Nullable String lastAnalyzedAt;
+    /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;smart&#34;.
      * 
@@ -25,6 +30,13 @@ public final class WorkerScriptPlacement {
     private @Nullable String status;
 
     private WorkerScriptPlacement() {}
+    /**
+     * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    public Optional<String> lastAnalyzedAt() {
+        return Optional.ofNullable(this.lastAnalyzedAt);
+    }
     /**
      * @return Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;smart&#34;.
@@ -51,15 +63,23 @@ public final class WorkerScriptPlacement {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String lastAnalyzedAt;
         private @Nullable String mode;
         private @Nullable String status;
         public Builder() {}
         public Builder(WorkerScriptPlacement defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.lastAnalyzedAt = defaults.lastAnalyzedAt;
     	      this.mode = defaults.mode;
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
+        public Builder lastAnalyzedAt(@Nullable String lastAnalyzedAt) {
+
+            this.lastAnalyzedAt = lastAnalyzedAt;
+            return this;
+        }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
 
@@ -74,6 +94,7 @@ public final class WorkerScriptPlacement {
         }
         public WorkerScriptPlacement build() {
             final var _resultValue = new WorkerScriptPlacement();
+            _resultValue.lastAnalyzedAt = lastAnalyzedAt;
             _resultValue.mode = mode;
             _resultValue.status = status;
             return _resultValue;

@@ -53,7 +53,7 @@ type LookupEmailRoutingRulesArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -67,7 +67,7 @@ type LookupEmailRoutingRulesResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetEmailRoutingRulesResult `pulumi:"results"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -86,7 +86,7 @@ type LookupEmailRoutingRulesOutputArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -129,7 +129,7 @@ func (o LookupEmailRoutingRulesResultOutput) Results() GetEmailRoutingRulesResul
 	return o.ApplyT(func(v LookupEmailRoutingRulesResult) []GetEmailRoutingRulesResult { return v.Results }).(GetEmailRoutingRulesResultArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupEmailRoutingRulesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

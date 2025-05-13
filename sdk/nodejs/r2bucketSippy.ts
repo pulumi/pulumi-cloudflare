@@ -38,19 +38,19 @@ export class R2BucketSippy extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID
+     * Account ID.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     public readonly bucketName!: pulumi.Output<string>;
     /**
-     * R2 bucket to copy objects to
+     * R2 bucket to copy objects to.
      */
-    public readonly destination!: pulumi.Output<outputs.R2BucketSippyDestination>;
+    public readonly destination!: pulumi.Output<outputs.R2BucketSippyDestination | undefined>;
     /**
-     * State of Sippy for this bucket
+     * State of Sippy for this bucket.
      */
     public /*out*/ readonly enabled!: pulumi.Output<boolean>;
     /**
@@ -58,9 +58,9 @@ export class R2BucketSippy extends pulumi.CustomResource {
      */
     public readonly jurisdiction!: pulumi.Output<string>;
     /**
-     * AWS S3 bucket to copy objects from
+     * AWS S3 bucket to copy objects from.
      */
-    public readonly source!: pulumi.Output<outputs.R2BucketSippySource>;
+    public readonly source!: pulumi.Output<outputs.R2BucketSippySource | undefined>;
 
     /**
      * Create a R2BucketSippy resource with the given unique name, arguments, and options.
@@ -106,19 +106,19 @@ export class R2BucketSippy extends pulumi.CustomResource {
  */
 export interface R2BucketSippyState {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     /**
-     * R2 bucket to copy objects to
+     * R2 bucket to copy objects to.
      */
     destination?: pulumi.Input<inputs.R2BucketSippyDestination>;
     /**
-     * State of Sippy for this bucket
+     * State of Sippy for this bucket.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -126,7 +126,7 @@ export interface R2BucketSippyState {
      */
     jurisdiction?: pulumi.Input<string>;
     /**
-     * AWS S3 bucket to copy objects from
+     * AWS S3 bucket to copy objects from.
      */
     source?: pulumi.Input<inputs.R2BucketSippySource>;
 }
@@ -136,15 +136,15 @@ export interface R2BucketSippyState {
  */
 export interface R2BucketSippyArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
     /**
-     * R2 bucket to copy objects to
+     * R2 bucket to copy objects to.
      */
     destination?: pulumi.Input<inputs.R2BucketSippyDestination>;
     /**
@@ -152,7 +152,7 @@ export interface R2BucketSippyArgs {
      */
     jurisdiction?: pulumi.Input<string>;
     /**
-     * AWS S3 bucket to copy objects from
+     * AWS S3 bucket to copy objects from.
      */
     source?: pulumi.Input<inputs.R2BucketSippySource>;
 }

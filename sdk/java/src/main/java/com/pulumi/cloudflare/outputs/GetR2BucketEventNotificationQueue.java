@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketEventNotificationQueue {
     /**
-     * @return Queue ID
+     * @return Queue ID.
      * 
      */
     private String queueId;
     /**
-     * @return Name of the queue
+     * @return Name of the queue.
      * 
      */
     private String queueName;
@@ -26,14 +26,14 @@ public final class GetR2BucketEventNotificationQueue {
 
     private GetR2BucketEventNotificationQueue() {}
     /**
-     * @return Queue ID
+     * @return Queue ID.
      * 
      */
     public String queueId() {
         return this.queueId;
     }
     /**
-     * @return Name of the queue
+     * @return Name of the queue.
      * 
      */
     public String queueName() {

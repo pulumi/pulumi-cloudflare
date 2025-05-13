@@ -31,7 +31,7 @@ public final class DlpCustomProfileProfile {
      */
     private @Nullable DlpCustomProfileProfileContextAwareness contextAwareness;
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     private @Nullable String description;
@@ -66,7 +66,7 @@ public final class DlpCustomProfileProfile {
         return Optional.ofNullable(this.contextAwareness);
     }
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     public Optional<String> description() {

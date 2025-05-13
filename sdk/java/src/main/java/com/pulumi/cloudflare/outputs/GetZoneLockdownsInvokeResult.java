@@ -77,7 +77,7 @@ public final class GetZoneLockdownsInvokeResult {
      */
     private @Nullable String uriSearch;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -168,7 +168,7 @@ public final class GetZoneLockdownsInvokeResult {
         return Optional.ofNullable(this.uriSearch);
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

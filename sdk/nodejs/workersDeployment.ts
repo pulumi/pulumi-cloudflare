@@ -47,7 +47,7 @@ export class WorkersDeployment extends pulumi.CustomResource {
      * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
-    public readonly annotations!: pulumi.Output<outputs.WorkersDeploymentAnnotations>;
+    public readonly annotations!: pulumi.Output<outputs.WorkersDeploymentAnnotations | undefined>;
     public /*out*/ readonly authorEmail!: pulumi.Output<string>;
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     public /*out*/ readonly deployments!: pulumi.Output<outputs.WorkersDeploymentDeployment[]>;

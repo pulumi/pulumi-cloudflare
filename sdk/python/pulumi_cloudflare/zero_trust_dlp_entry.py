@@ -102,6 +102,7 @@ class ZeroTrustDlpEntryArgs:
 class _ZeroTrustDlpEntryState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
+                 case_sensitive: Optional[pulumi.Input[builtins.bool]] = None,
                  confidence: Optional[pulumi.Input['ZeroTrustDlpEntryConfidenceArgs']] = None,
                  created_at: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -114,10 +115,15 @@ class _ZeroTrustDlpEntryState:
                  word_list: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustDlpEntry resources.
+        :param pulumi.Input[builtins.bool] case_sensitive: Only applies to custom word lists.
+               Determines if the words should be matched in a case-sensitive manner
+               Cannot be set to false if secret is true
         :param pulumi.Input[builtins.str] type: Available values: "custom".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if case_sensitive is not None:
+            pulumi.set(__self__, "case_sensitive", case_sensitive)
         if confidence is not None:
             pulumi.set(__self__, "confidence", confidence)
         if created_at is not None:
@@ -147,6 +153,20 @@ class _ZeroTrustDlpEntryState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Only applies to custom word lists.
+        Determines if the words should be matched in a case-sensitive manner
+        Cannot be set to false if secret is true
+        """
+        return pulumi.get(self, "case_sensitive")
+
+    @case_sensitive.setter
+    def case_sensitive(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "case_sensitive", value)
 
     @property
     @pulumi.getter
@@ -359,6 +379,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
                 raise TypeError("Missing required property 'profile_id'")
             __props__.__dict__["profile_id"] = profile_id
             __props__.__dict__["type"] = type
+            __props__.__dict__["case_sensitive"] = None
             __props__.__dict__["confidence"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["secret"] = None
@@ -375,6 +396,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[builtins.str]] = None,
+            case_sensitive: Optional[pulumi.Input[builtins.bool]] = None,
             confidence: Optional[pulumi.Input[Union['ZeroTrustDlpEntryConfidenceArgs', 'ZeroTrustDlpEntryConfidenceArgsDict']]] = None,
             created_at: Optional[pulumi.Input[builtins.str]] = None,
             enabled: Optional[pulumi.Input[builtins.bool]] = None,
@@ -392,6 +414,9 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] case_sensitive: Only applies to custom word lists.
+               Determines if the words should be matched in a case-sensitive manner
+               Cannot be set to false if secret is true
         :param pulumi.Input[builtins.str] type: Available values: "custom".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -399,6 +424,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         __props__ = _ZeroTrustDlpEntryState.__new__(_ZeroTrustDlpEntryState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["case_sensitive"] = case_sensitive
         __props__.__dict__["confidence"] = confidence
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["enabled"] = enabled
@@ -415,6 +441,16 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> pulumi.Output[builtins.bool]:
+        """
+        Only applies to custom word lists.
+        Determines if the words should be matched in a case-sensitive manner
+        Cannot be set to false if secret is true
+        """
+        return pulumi.get(self, "case_sensitive")
 
     @property
     @pulumi.getter

@@ -14,6 +14,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -48,14 +49,14 @@ public class SnippetRules extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rules", refs={List.class,SnippetRulesRule.class}, tree="[0,1]")
-    private Output<List<SnippetRulesRule>> rules;
+    private Output</* @Nullable */ List<SnippetRulesRule>> rules;
 
     /**
      * @return List of snippet rules
      * 
      */
-    public Output<List<SnippetRulesRule>> rules() {
-        return this.rules;
+    public Output<Optional<List<SnippetRulesRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
     /**
      * Snippet identifying name

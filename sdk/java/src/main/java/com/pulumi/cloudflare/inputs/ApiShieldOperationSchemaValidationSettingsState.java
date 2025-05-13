@@ -37,14 +37,14 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="operationId")
     private @Nullable Output<String> operationId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> operationId() {
@@ -52,14 +52,14 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -120,7 +120,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param operationId UUID
+         * @param operationId UUID.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param operationId UUID
+         * @param operationId UUID.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ApiShieldOperationSchemaValidationSettingsState extends com.p
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

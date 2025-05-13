@@ -62,7 +62,7 @@ class GetEmailRoutingAddressResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -162,7 +162,7 @@ def get_email_routing_address(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str destination_address_identifier: Destination address identifier.
     """
     __args__ = dict()
@@ -198,7 +198,7 @@ def get_email_routing_address_output(account_id: Optional[pulumi.Input[builtins.
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str destination_address_identifier: Destination address identifier.
     """
     __args__ = dict()

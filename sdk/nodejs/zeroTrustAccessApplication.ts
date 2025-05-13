@@ -52,6 +52,10 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      */
     public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean | undefined>;
     /**
+     * Enables loading application content in an iFrame.
+     */
+    public readonly allowIframe!: pulumi.Output<boolean | undefined>;
+    /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      */
     public readonly allowedIdps!: pulumi.Output<string[] | undefined>;
@@ -75,7 +79,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      * The background color of the App Launcher page.
      */
     public readonly bgColor!: pulumi.Output<string | undefined>;
-    public readonly corsHeaders!: pulumi.Output<outputs.ZeroTrustAccessApplicationCorsHeaders>;
+    public readonly corsHeaders!: pulumi.Output<outputs.ZeroTrustAccessApplicationCorsHeaders | undefined>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The custom error message shown to a user when they are denied access to the application.
@@ -96,7 +100,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
      * List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      */
-    public readonly destinations!: pulumi.Output<outputs.ZeroTrustAccessApplicationDestination[]>;
+    public readonly destinations!: pulumi.Output<outputs.ZeroTrustAccessApplicationDestination[] | undefined>;
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      */
@@ -108,7 +112,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
      * The links in the App Launcher footer.
      */
-    public readonly footerLinks!: pulumi.Output<outputs.ZeroTrustAccessApplicationFooterLink[]>;
+    public readonly footerLinks!: pulumi.Output<outputs.ZeroTrustAccessApplicationFooterLink[] | undefined>;
     /**
      * The background color of the App Launcher header.
      */
@@ -140,7 +144,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
-    public readonly policies!: pulumi.Output<outputs.ZeroTrustAccessApplicationPolicy[]>;
+    public readonly policies!: pulumi.Output<outputs.ZeroTrustAccessApplicationPolicy[] | undefined>;
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
      * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
@@ -159,7 +163,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
      * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      */
-    public readonly scimConfig!: pulumi.Output<outputs.ZeroTrustAccessApplicationScimConfig>;
+    public readonly scimConfig!: pulumi.Output<outputs.ZeroTrustAccessApplicationScimConfig | undefined>;
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
      *
@@ -186,7 +190,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
-    public readonly targetCriterias!: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[]>;
+    public readonly targetCriterias!: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
      */
@@ -212,6 +216,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             const state = argsOrState as ZeroTrustAccessApplicationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["allowAuthenticateViaWarp"] = state ? state.allowAuthenticateViaWarp : undefined;
+            resourceInputs["allowIframe"] = state ? state.allowIframe : undefined;
             resourceInputs["allowedIdps"] = state ? state.allowedIdps : undefined;
             resourceInputs["appLauncherLogoUrl"] = state ? state.appLauncherLogoUrl : undefined;
             resourceInputs["appLauncherVisible"] = state ? state.appLauncherVisible : undefined;
@@ -254,6 +259,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
             const args = argsOrState as ZeroTrustAccessApplicationArgs | undefined;
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowAuthenticateViaWarp"] = args ? args.allowAuthenticateViaWarp : undefined;
+            resourceInputs["allowIframe"] = args ? args.allowIframe : undefined;
             resourceInputs["allowedIdps"] = args ? args.allowedIdps : undefined;
             resourceInputs["appLauncherLogoUrl"] = args ? args.appLauncherLogoUrl : undefined;
             resourceInputs["appLauncherVisible"] = args ? args.appLauncherVisible : undefined;
@@ -312,6 +318,10 @@ export interface ZeroTrustAccessApplicationState {
      * When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
     allowAuthenticateViaWarp?: pulumi.Input<boolean>;
+    /**
+     * Enables loading application content in an iFrame.
+     */
+    allowIframe?: pulumi.Input<boolean>;
     /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      */
@@ -471,6 +481,10 @@ export interface ZeroTrustAccessApplicationArgs {
      * When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
     allowAuthenticateViaWarp?: pulumi.Input<boolean>;
+    /**
+     * Enables loading application content in an iFrame.
+     */
+    allowIframe?: pulumi.Input<boolean>;
     /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      */

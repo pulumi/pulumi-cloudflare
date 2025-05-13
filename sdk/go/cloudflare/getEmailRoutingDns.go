@@ -51,7 +51,7 @@ func LookupEmailRoutingDns(ctx *pulumi.Context, args *LookupEmailRoutingDnsArgs,
 type LookupEmailRoutingDnsArgs struct {
 	// Domain of your zone.
 	Subdomain *string `pulumi:"subdomain"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -65,9 +65,9 @@ type LookupEmailRoutingDnsResult struct {
 	ResultInfo GetEmailRoutingDnsResultInfo `pulumi:"resultInfo"`
 	// Domain of your zone.
 	Subdomain *string `pulumi:"subdomain"`
-	// Whether the API call was successful
+	// Whether the API call was successful.
 	Success bool `pulumi:"success"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -84,7 +84,7 @@ func LookupEmailRoutingDnsOutput(ctx *pulumi.Context, args LookupEmailRoutingDns
 type LookupEmailRoutingDnsOutputArgs struct {
 	// Domain of your zone.
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -133,12 +133,12 @@ func (o LookupEmailRoutingDnsResultOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEmailRoutingDnsResult) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
-// Whether the API call was successful
+// Whether the API call was successful.
 func (o LookupEmailRoutingDnsResultOutput) Success() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupEmailRoutingDnsResult) bool { return v.Success }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupEmailRoutingDnsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingDnsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

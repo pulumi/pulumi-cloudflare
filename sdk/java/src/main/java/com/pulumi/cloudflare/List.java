@@ -64,14 +64,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/list:List")
 public class List extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> accountId() {

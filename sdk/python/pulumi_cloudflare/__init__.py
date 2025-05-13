@@ -54,7 +54,6 @@ from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
 from .d1_database import *
-from .device_dex_test import *
 from .device_managed_networks import *
 from .device_posture_integration import *
 from .device_posture_rule import *
@@ -185,8 +184,6 @@ from .get_leaked_credential_check import *
 from .get_leaked_credential_check_rules import *
 from .get_list import *
 from .get_list_item import *
-from .get_list_items import *
-from .get_lists import *
 from .get_load_balancer import *
 from .get_load_balancer_monitor import *
 from .get_load_balancer_monitors import *
@@ -297,8 +294,6 @@ from .get_workers_custom_domains import *
 from .get_workers_deployment import *
 from .get_workers_for_platforms_dispatch_namespace import *
 from .get_workers_for_platforms_dispatch_namespaces import *
-from .get_workers_for_platforms_script_secret import *
-from .get_workers_for_platforms_script_secrets import *
 from .get_workers_kv import *
 from .get_workers_kv_namespace import *
 from .get_workers_kv_namespaces import *
@@ -307,8 +302,6 @@ from .get_workers_routes import *
 from .get_workers_script import *
 from .get_workers_script_subdomain import *
 from .get_workers_scripts import *
-from .get_workers_secret import *
-from .get_workers_secrets import *
 from .get_zero_trust_access_application import *
 from .get_zero_trust_access_applications import *
 from .get_zero_trust_access_custom_page import *
@@ -343,8 +336,6 @@ from .get_zero_trust_device_posture_integration import *
 from .get_zero_trust_device_posture_integrations import *
 from .get_zero_trust_device_posture_rule import *
 from .get_zero_trust_device_posture_rules import *
-from .get_zero_trust_dex_test import *
-from .get_zero_trust_dex_tests import *
 from .get_zero_trust_dlp_custom_profile import *
 from .get_zero_trust_dlp_dataset import *
 from .get_zero_trust_dlp_datasets import *
@@ -484,13 +475,11 @@ from .workers_custom_domain import *
 from .workers_deployment import *
 from .workers_for_platforms_dispatch_namespace import *
 from .workers_for_platforms_namespace import *
-from .workers_for_platforms_script_secret import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .workers_route import *
 from .workers_script import *
 from .workers_script_subdomain import *
-from .workers_secret import *
 from .zero_trust_access_application import *
 from .zero_trust_access_custom_page import *
 from .zero_trust_access_group import *
@@ -511,7 +500,6 @@ from .zero_trust_device_default_profile_local_domain_fallback import *
 from .zero_trust_device_managed_networks import *
 from .zero_trust_device_posture_integration import *
 from .zero_trust_device_posture_rule import *
-from .zero_trust_dex_test import *
 from .zero_trust_dlp_custom_profile import *
 from .zero_trust_dlp_dataset import *
 from .zero_trust_dlp_entry import *
@@ -935,14 +923,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/d1Database:D1Database": "D1Database"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/deviceDexTest",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/deviceDexTest:DeviceDexTest": "DeviceDexTest"
   }
  },
  {
@@ -1891,14 +1871,6 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
-  "mod": "index/workersForPlatformsScriptSecret",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/workersForPlatformsScriptSecret:WorkersForPlatformsScriptSecret": "WorkersForPlatformsScriptSecret"
-  }
- },
- {
-  "pkg": "cloudflare",
   "mod": "index/workersKv",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -1935,14 +1907,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workersScriptSubdomain:WorkersScriptSubdomain": "WorkersScriptSubdomain"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/workersSecret",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/workersSecret:WorkersSecret": "WorkersSecret"
   }
  },
  {
@@ -2103,14 +2067,6 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule": "ZeroTrustDevicePostureRule"
-  }
- },
- {
-  "pkg": "cloudflare",
-  "mod": "index/zeroTrustDexTest",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest": "ZeroTrustDexTest"
   }
  },
  {

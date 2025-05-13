@@ -248,7 +248,7 @@ class ZoneSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ratePlan")
-    def rate_plan(self) -> pulumi.Output['outputs.ZoneSubscriptionRatePlan']:
+    def rate_plan(self) -> pulumi.Output[Optional['outputs.ZoneSubscriptionRatePlan']]:
         """
         The rate plan applied to the subscription.
         """

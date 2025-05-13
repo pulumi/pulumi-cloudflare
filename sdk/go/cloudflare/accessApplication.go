@@ -27,6 +27,8 @@ type AccessApplication struct {
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp pulumi.BoolPtrOutput `pulumi:"allowAuthenticateViaWarp"`
+	// Enables loading application content in an iFrame.
+	AllowIframe pulumi.BoolPtrOutput `pulumi:"allowIframe"`
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps pulumi.StringArrayOutput `pulumi:"allowedIdps"`
 	// The image URL of the logo shown in the App Launcher header.
@@ -38,9 +40,9 @@ type AccessApplication struct {
 	// When set to `true`, users skip the identity provider selection step during login. You must specify only one identity provider in allowed_idps.
 	AutoRedirectToIdentity pulumi.BoolOutput `pulumi:"autoRedirectToIdentity"`
 	// The background color of the App Launcher page.
-	BgColor     pulumi.StringPtrOutput             `pulumi:"bgColor"`
-	CorsHeaders AccessApplicationCorsHeadersOutput `pulumi:"corsHeaders"`
-	CreatedAt   pulumi.StringOutput                `pulumi:"createdAt"`
+	BgColor     pulumi.StringPtrOutput                `pulumi:"bgColor"`
+	CorsHeaders AccessApplicationCorsHeadersPtrOutput `pulumi:"corsHeaders"`
+	CreatedAt   pulumi.StringOutput                   `pulumi:"createdAt"`
 	// The custom error message shown to a user when they are denied access to the application.
 	CustomDenyMessage pulumi.StringPtrOutput `pulumi:"customDenyMessage"`
 	// The custom URL a user is redirected to when they are denied access to the application when failing identity-based rules.
@@ -85,7 +87,7 @@ type AccessApplication struct {
 	// Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
 	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-	ScimConfig AccessApplicationScimConfigOutput `pulumi:"scimConfig"`
+	ScimConfig AccessApplicationScimConfigPtrOutput `pulumi:"scimConfig"`
 	// List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.
 	//
 	// Deprecated: This attribute is deprecated.
@@ -148,6 +150,8 @@ type accessApplicationState struct {
 	AccountId *string `pulumi:"accountId"`
 	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
+	// Enables loading application content in an iFrame.
+	AllowIframe *bool `pulumi:"allowIframe"`
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps []string `pulumi:"allowedIdps"`
 	// The image URL of the logo shown in the App Launcher header.
@@ -234,6 +238,8 @@ type AccessApplicationState struct {
 	AccountId pulumi.StringPtrInput
 	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp pulumi.BoolPtrInput
+	// Enables loading application content in an iFrame.
+	AllowIframe pulumi.BoolPtrInput
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps pulumi.StringArrayInput
 	// The image URL of the logo shown in the App Launcher header.
@@ -324,6 +330,8 @@ type accessApplicationArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
+	// Enables loading application content in an iFrame.
+	AllowIframe *bool `pulumi:"allowIframe"`
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps []string `pulumi:"allowedIdps"`
 	// The image URL of the logo shown in the App Launcher header.
@@ -407,6 +415,8 @@ type AccessApplicationArgs struct {
 	AccountId pulumi.StringPtrInput
 	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp pulumi.BoolPtrInput
+	// Enables loading application content in an iFrame.
+	AllowIframe pulumi.BoolPtrInput
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps pulumi.StringArrayInput
 	// The image URL of the logo shown in the App Launcher header.
@@ -581,6 +591,11 @@ func (o AccessApplicationOutput) AllowAuthenticateViaWarp() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AllowAuthenticateViaWarp }).(pulumi.BoolPtrOutput)
 }
 
+// Enables loading application content in an iFrame.
+func (o AccessApplicationOutput) AllowIframe() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AllowIframe }).(pulumi.BoolPtrOutput)
+}
+
 // The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 func (o AccessApplicationOutput) AllowedIdps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.AllowedIdps }).(pulumi.StringArrayOutput)
@@ -611,8 +626,8 @@ func (o AccessApplicationOutput) BgColor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.BgColor }).(pulumi.StringPtrOutput)
 }
 
-func (o AccessApplicationOutput) CorsHeaders() AccessApplicationCorsHeadersOutput {
-	return o.ApplyT(func(v *AccessApplication) AccessApplicationCorsHeadersOutput { return v.CorsHeaders }).(AccessApplicationCorsHeadersOutput)
+func (o AccessApplicationOutput) CorsHeaders() AccessApplicationCorsHeadersPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationCorsHeadersPtrOutput { return v.CorsHeaders }).(AccessApplicationCorsHeadersPtrOutput)
 }
 
 func (o AccessApplicationOutput) CreatedAt() pulumi.StringOutput {
@@ -720,8 +735,8 @@ func (o AccessApplicationOutput) SameSiteCookieAttribute() pulumi.StringPtrOutpu
 }
 
 // Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-func (o AccessApplicationOutput) ScimConfig() AccessApplicationScimConfigOutput {
-	return o.ApplyT(func(v *AccessApplication) AccessApplicationScimConfigOutput { return v.ScimConfig }).(AccessApplicationScimConfigOutput)
+func (o AccessApplicationOutput) ScimConfig() AccessApplicationScimConfigPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationScimConfigPtrOutput { return v.ScimConfig }).(AccessApplicationScimConfigPtrOutput)
 }
 
 // List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `selfHostedDomains` will be ignored.

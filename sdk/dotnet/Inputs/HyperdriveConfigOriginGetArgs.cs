@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Specifies the URL scheme used to connect to your origin database.
-        /// Available values: "postgres", "postgresql".
+        /// Available values: "postgres", "postgresql", "mysql".
         /// </summary>
         [Input("scheme", required: true)]
         public Input<string> Scheme { get; set; } = null!;

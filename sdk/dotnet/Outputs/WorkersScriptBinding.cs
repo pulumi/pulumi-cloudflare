@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkersScriptBinding
     {
         /// <summary>
+        /// Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+        /// </summary>
+        public readonly string? Algorithm;
+        /// <summary>
         /// R2 bucket to bind to.
         /// </summary>
         public readonly string? BucketName;
@@ -34,6 +38,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Environment;
         /// <summary>
+        /// Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+        /// Available values: "raw", "pkcs8", "spki", "jwk".
+        /// </summary>
+        public readonly string? Format;
+        /// <summary>
         /// Identifier of the D1 database to bind to.
         /// </summary>
         public readonly string? Id;
@@ -45,6 +54,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// JSON data to use.
         /// </summary>
         public readonly string? Json;
+        /// <summary>
+        /// Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        /// </summary>
+        public readonly string? KeyBase64;
+        /// <summary>
+        /// Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+        /// </summary>
+        public readonly string? KeyJwk;
         /// <summary>
         /// A JavaScript variable name for the binding.
         /// </summary>
@@ -62,6 +79,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.WorkersScriptBindingOutbound? Outbound;
         /// <summary>
+        /// Name of the Pipeline to bind to.
+        /// </summary>
+        public readonly string? Pipeline;
+        /// <summary>
         /// Name of the Queue to bind to.
         /// </summary>
         public readonly string? QueueName;
@@ -70,21 +91,35 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ScriptName;
         /// <summary>
+        /// Name of the secret in the store.
+        /// </summary>
+        public readonly string? SecretName;
+        /// <summary>
         /// Name of Worker to bind to.
         /// </summary>
         public readonly string? Service;
+        /// <summary>
+        /// ID of the store containing the secret.
+        /// </summary>
+        public readonly string? StoreId;
         /// <summary>
         /// The text value to use.
         /// </summary>
         public readonly string? Text;
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        /// Available values: "ai".
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+        /// </summary>
+        public readonly ImmutableArray<string> Usages;
 
         [OutputConstructor]
         private WorkersScriptBinding(
+            string? algorithm,
+
             string? bucketName,
 
             string? certificateId,
@@ -95,11 +130,17 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? environment,
 
+            string? format,
+
             string? id,
 
             string? indexName,
 
             string? json,
+
+            string? keyBase64,
+
+            string? keyJwk,
 
             string name,
 
@@ -109,33 +150,49 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.WorkersScriptBindingOutbound? outbound,
 
+            string? pipeline,
+
             string? queueName,
 
             string? scriptName,
 
+            string? secretName,
+
             string? service,
+
+            string? storeId,
 
             string? text,
 
-            string type)
+            string type,
+
+            ImmutableArray<string> usages)
         {
+            Algorithm = algorithm;
             BucketName = bucketName;
             CertificateId = certificateId;
             ClassName = className;
             Dataset = dataset;
             Environment = environment;
+            Format = format;
             Id = id;
             IndexName = indexName;
             Json = json;
+            KeyBase64 = keyBase64;
+            KeyJwk = keyJwk;
             Name = name;
             Namespace = @namespace;
             NamespaceId = namespaceId;
             Outbound = outbound;
+            Pipeline = pipeline;
             QueueName = queueName;
             ScriptName = scriptName;
+            SecretName = secretName;
             Service = service;
+            StoreId = storeId;
             Text = text;
             Type = type;
+            Usages = usages;
         }
     }
 }

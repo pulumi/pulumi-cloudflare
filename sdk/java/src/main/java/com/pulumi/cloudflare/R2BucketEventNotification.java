@@ -68,28 +68,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/r2BucketEventNotification:R2BucketEventNotification")
 public class R2BucketEventNotification extends com.pulumi.resources.CustomResource {
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
@@ -110,14 +110,14 @@ public class R2BucketEventNotification extends com.pulumi.resources.CustomResour
         return this.jurisdiction;
     }
     /**
-     * Queue ID
+     * Queue ID.
      * 
      */
     @Export(name="queueId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queueId;
 
     /**
-     * @return Queue ID
+     * @return Queue ID.
      * 
      */
     public Output<Optional<String>> queueId() {
@@ -138,18 +138,18 @@ public class R2BucketEventNotification extends com.pulumi.resources.CustomResour
         return this.queues;
     }
     /**
-     * Array of rules to drive notifications
+     * Array of rules to drive notifications.
      * 
      */
     @Export(name="rules", refs={List.class,R2BucketEventNotificationRule.class}, tree="[0,1]")
-    private Output<List<R2BucketEventNotificationRule>> rules;
+    private Output</* @Nullable */ List<R2BucketEventNotificationRule>> rules;
 
     /**
-     * @return Array of rules to drive notifications
+     * @return Array of rules to drive notifications.
      * 
      */
-    public Output<List<R2BucketEventNotificationRule>> rules() {
-        return this.rules;
+    public Output<Optional<List<R2BucketEventNotificationRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
 
     /**

@@ -26,7 +26,7 @@ class ApiShieldArgs:
                  zone_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a ApiShield resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -44,7 +44,7 @@ class ApiShieldArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -63,8 +63,8 @@ class _ApiShieldState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiShield resources.
-        :param pulumi.Input[builtins.bool] success: Whether the API call was successful
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] success: Whether the API call was successful.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if auth_id_characteristics is not None:
             pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
@@ -108,7 +108,7 @@ class _ApiShieldState:
     @pulumi.getter
     def success(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether the API call was successful
+        Whether the API call was successful.
         """
         return pulumi.get(self, "success")
 
@@ -120,7 +120,7 @@ class _ApiShieldState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -161,7 +161,7 @@ class ApiShield(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -247,8 +247,8 @@ class ApiShield(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.bool] success: Whether the API call was successful
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] success: Whether the API call was successful.
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -280,7 +280,7 @@ class ApiShield(pulumi.CustomResource):
     @pulumi.getter
     def success(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether the API call was successful
+        Whether the API call was successful.
         """
         return pulumi.get(self, "success")
 
@@ -288,7 +288,7 @@ class ApiShield(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

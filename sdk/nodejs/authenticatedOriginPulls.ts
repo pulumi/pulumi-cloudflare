@@ -38,7 +38,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public /*out*/ readonly certId!: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -173,7 +173,7 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
  */
 export interface AuthenticatedOriginPullsState {
     /**
-     * Identifier
+     * Identifier.
      */
     certId?: pulumi.Input<string>;
     /**
@@ -236,7 +236,7 @@ export interface AuthenticatedOriginPullsState {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -251,7 +251,7 @@ export interface AuthenticatedOriginPullsArgs {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

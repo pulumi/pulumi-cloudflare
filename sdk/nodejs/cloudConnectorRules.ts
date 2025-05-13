@@ -8,6 +8,25 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleCloudConnectorRules = new cloudflare.CloudConnectorRules("example_cloud_connector_rules", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     rules: [{
+ *         id: "95c365e17e1b46599cd99e5b231fac4e",
+ *         description: "Rule description",
+ *         enabled: true,
+ *         expression: "http.cookie eq \"a=b\"",
+ *         parameters: {
+ *             host: "examplebucket.s3.eu-north-1.amazonaws.com",
+ *         },
+ *         provider: "aws_s3",
+ *     }],
+ * });
+ * ```
  */
 export class CloudConnectorRules extends pulumi.CustomResource {
     /**
@@ -37,24 +56,9 @@ export class CloudConnectorRules extends pulumi.CustomResource {
         return obj['__pulumiType'] === CloudConnectorRules.__pulumiType;
     }
 
+    public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[] | undefined>;
     /**
-     * Cloud Provider type
-     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-     */
-    public /*out*/ readonly cloudProvider!: pulumi.Output<string>;
-    public /*out*/ readonly description!: pulumi.Output<string>;
-    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
-    public /*out*/ readonly expression!: pulumi.Output<string>;
-    /**
-     * Parameters of Cloud Connector Rule
-     */
-    public /*out*/ readonly parameters!: pulumi.Output<outputs.CloudConnectorRulesParameters>;
-    /**
-     * List of Cloud Connector rules
-     */
-    public readonly rules!: pulumi.Output<outputs.CloudConnectorRulesRule[]>;
-    /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -71,11 +75,6 @@ export class CloudConnectorRules extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudConnectorRulesState | undefined;
-            resourceInputs["cloudProvider"] = state ? state.cloudProvider : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -85,11 +84,6 @@ export class CloudConnectorRules extends pulumi.CustomResource {
             }
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["cloudProvider"] = undefined /*out*/;
-            resourceInputs["description"] = undefined /*out*/;
-            resourceInputs["enabled"] = undefined /*out*/;
-            resourceInputs["expression"] = undefined /*out*/;
-            resourceInputs["parameters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CloudConnectorRules.__pulumiType, name, resourceInputs, opts);
@@ -100,24 +94,9 @@ export class CloudConnectorRules extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudConnectorRules resources.
  */
 export interface CloudConnectorRulesState {
-    /**
-     * Cloud Provider type
-     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-     */
-    cloudProvider?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    expression?: pulumi.Input<string>;
-    /**
-     * Parameters of Cloud Connector Rule
-     */
-    parameters?: pulumi.Input<inputs.CloudConnectorRulesParameters>;
-    /**
-     * List of Cloud Connector rules
-     */
     rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -126,12 +105,9 @@ export interface CloudConnectorRulesState {
  * The set of arguments for constructing a CloudConnectorRules resource.
  */
 export interface CloudConnectorRulesArgs {
-    /**
-     * List of Cloud Connector rules
-     */
     rules?: pulumi.Input<pulumi.Input<inputs.CloudConnectorRulesRule>[]>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -30,13 +30,13 @@ export function getList(args: GetListArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetListArgs {
     /**
-     * Identifier
+     * Defines an identifier.
      */
     accountId: string;
     /**
      * The unique ID of the list.
      */
-    listId?: string;
+    listId: string;
 }
 
 /**
@@ -44,7 +44,7 @@ export interface GetListArgs {
  */
 export interface GetListResult {
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly accountId: string;
     /**
@@ -67,7 +67,7 @@ export interface GetListResult {
     /**
      * The unique ID of the list.
      */
-    readonly listId?: string;
+    readonly listId: string;
     /**
      * The RFC 3339 timestamp of when the list was last modified.
      */
@@ -111,11 +111,11 @@ export function getListOutput(args: GetListOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetListOutputArgs {
     /**
-     * Identifier
+     * Defines an identifier.
      */
     accountId: pulumi.Input<string>;
     /**
      * The unique ID of the list.
      */
-    listId?: pulumi.Input<string>;
+    listId: pulumi.Input<string>;
 }

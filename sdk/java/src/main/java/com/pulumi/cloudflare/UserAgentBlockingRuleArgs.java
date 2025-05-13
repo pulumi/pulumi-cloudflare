@@ -65,14 +65,14 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -172,7 +172,7 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

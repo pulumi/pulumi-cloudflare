@@ -63,7 +63,7 @@ type MagicTransitSite struct {
 	// Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode.
 	HaMode pulumi.BoolPtrOutput `pulumi:"haMode"`
 	// Location of site in latitude and longitude.
-	Location MagicTransitSiteLocationOutput `pulumi:"location"`
+	Location MagicTransitSiteLocationPtrOutput `pulumi:"location"`
 	// The name of the site.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Magic Connector identifier tag. Used when high availability mode is on.
@@ -281,8 +281,8 @@ func (o MagicTransitSiteOutput) HaMode() pulumi.BoolPtrOutput {
 }
 
 // Location of site in latitude and longitude.
-func (o MagicTransitSiteOutput) Location() MagicTransitSiteLocationOutput {
-	return o.ApplyT(func(v *MagicTransitSite) MagicTransitSiteLocationOutput { return v.Location }).(MagicTransitSiteLocationOutput)
+func (o MagicTransitSiteOutput) Location() MagicTransitSiteLocationPtrOutput {
+	return o.ApplyT(func(v *MagicTransitSite) MagicTransitSiteLocationPtrOutput { return v.Location }).(MagicTransitSiteLocationPtrOutput)
 }
 
 // The name of the site.

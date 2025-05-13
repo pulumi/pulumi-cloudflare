@@ -116,38 +116,38 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="contextAwareness", refs={DlpPredefinedProfileContextAwareness.class}, tree="[0]")
-    private Output<DlpPredefinedProfileContextAwareness> contextAwareness;
+    private Output</* @Nullable */ DlpPredefinedProfileContextAwareness> contextAwareness;
 
     /**
      * @return Scan the context of predefined entries to only return matches surrounded by keywords.
      * 
      */
-    public Output<DlpPredefinedProfileContextAwareness> contextAwareness() {
-        return this.contextAwareness;
+    public Output<Optional<DlpPredefinedProfileContextAwareness>> contextAwareness() {
+        return Codegen.optional(this.contextAwareness);
     }
     /**
-     * When the profile was created
+     * When the profile was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return When the profile was created
+     * @return When the profile was created.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * The description of the profile
+     * The description of the profile.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     public Output<String> description() {
@@ -160,14 +160,14 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
         return this.entries;
     }
     /**
-     * The name of the profile
+     * The name of the profile.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the profile
+     * @return The name of the profile.
      * 
      */
     public Output<String> name() {
@@ -180,14 +180,14 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ocrEnabled);
     }
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      * 
      */
     @Export(name="openAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> openAccess;
 
     /**
-     * @return Whether this profile can be accessed by anyone
+     * @return Whether this profile can be accessed by anyone.
      * 
      */
     public Output<Boolean> openAccess() {
@@ -214,14 +214,14 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return When the profile was lasted updated
+     * @return When the profile was lasted updated.
      * 
      */
     public Output<String> updatedAt() {

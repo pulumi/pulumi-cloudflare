@@ -33,29 +33,29 @@ public final class GetZeroTrustDlpCustomProfileResult {
      */
     private GetZeroTrustDlpCustomProfileContextAwareness contextAwareness;
     /**
-     * @return When the profile was created
+     * @return When the profile was created.
      * 
      */
     private String createdAt;
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     private String description;
     private List<GetZeroTrustDlpCustomProfileEntry> entries;
     /**
-     * @return The id of the profile (uuid)
+     * @return The id of the profile (uuid).
      * 
      */
     private String id;
     /**
-     * @return The name of the profile
+     * @return The name of the profile.
      * 
      */
     private String name;
     private Boolean ocrEnabled;
     /**
-     * @return Whether this profile can be accessed by anyone
+     * @return Whether this profile can be accessed by anyone.
      * 
      */
     private Boolean openAccess;
@@ -66,7 +66,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
      */
     private String type;
     /**
-     * @return When the profile was lasted updated
+     * @return When the profile was lasted updated.
      * 
      */
     private String updatedAt;
@@ -100,14 +100,14 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.contextAwareness;
     }
     /**
-     * @return When the profile was created
+     * @return When the profile was created.
      * 
      */
     public String createdAt() {
         return this.createdAt;
     }
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     public String description() {
@@ -117,14 +117,14 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.entries;
     }
     /**
-     * @return The id of the profile (uuid)
+     * @return The id of the profile (uuid).
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the profile
+     * @return The name of the profile.
      * 
      */
     public String name() {
@@ -134,7 +134,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.ocrEnabled;
     }
     /**
-     * @return Whether this profile can be accessed by anyone
+     * @return Whether this profile can be accessed by anyone.
      * 
      */
     public Boolean openAccess() {
@@ -151,7 +151,7 @@ public final class GetZeroTrustDlpCustomProfileResult {
         return this.type;
     }
     /**
-     * @return When the profile was lasted updated
+     * @return When the profile was lasted updated.
      * 
      */
     public String updatedAt() {

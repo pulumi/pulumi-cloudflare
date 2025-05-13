@@ -27,14 +27,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls")
 public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="certId", refs={String.class}, tree="[0]")
     private Output<String> certId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> certId() {
@@ -247,14 +247,14 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
         return this.updatedAt;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

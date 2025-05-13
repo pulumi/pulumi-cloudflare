@@ -16,7 +16,7 @@ public final class GetAccessRulesConfigurationArgs extends com.pulumi.resources.
     public static final GetAccessRulesConfigurationArgs Empty = new GetAccessRulesConfigurationArgs();
 
     /**
-     * The target to search in existing rules.
+     * Defines the target to search in existing rules.
      * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
      * 
      */
@@ -24,7 +24,7 @@ public final class GetAccessRulesConfigurationArgs extends com.pulumi.resources.
     private @Nullable Output<String> target;
 
     /**
-     * @return The target to search in existing rules.
+     * @return Defines the target to search in existing rules.
      * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
      * 
      */
@@ -33,7 +33,7 @@ public final class GetAccessRulesConfigurationArgs extends com.pulumi.resources.
     }
 
     /**
-     * The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
      * Notes: You can search for a single IPv4 address, an IP address range with a subnet of &#39;/16&#39; or &#39;/24&#39;, or a two-letter ISO-3166-1 alpha-2 country code.
      * 
      */
@@ -41,7 +41,7 @@ public final class GetAccessRulesConfigurationArgs extends com.pulumi.resources.
     private @Nullable Output<String> value;
 
     /**
-     * @return The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * @return Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
      * Notes: You can search for a single IPv4 address, an IP address range with a subnet of &#39;/16&#39; or &#39;/24&#39;, or a two-letter ISO-3166-1 alpha-2 country code.
      * 
      */
@@ -75,7 +75,7 @@ public final class GetAccessRulesConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param target The target to search in existing rules.
+         * @param target Defines the target to search in existing rules.
          * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
          * 
          * @return builder
@@ -87,7 +87,7 @@ public final class GetAccessRulesConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param target The target to search in existing rules.
+         * @param target Defines the target to search in existing rules.
          * Available values: &#34;ip&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
          * 
          * @return builder
@@ -98,7 +98,7 @@ public final class GetAccessRulesConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param value The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+         * @param value Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
          * Notes: You can search for a single IPv4 address, an IP address range with a subnet of &#39;/16&#39; or &#39;/24&#39;, or a two-letter ISO-3166-1 alpha-2 country code.
          * 
          * @return builder
@@ -110,7 +110,7 @@ public final class GetAccessRulesConfigurationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param value The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+         * @param value Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
          * Notes: You can search for a single IPv4 address, an IP address range with a subnet of &#39;/16&#39; or &#39;/24&#39;, or a two-letter ISO-3166-1 alpha-2 country code.
          * 
          * @return builder

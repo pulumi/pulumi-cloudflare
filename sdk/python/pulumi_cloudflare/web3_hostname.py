@@ -27,12 +27,12 @@ class Web3HostnameArgs:
                  dnslink: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Web3Hostname resource.
-        :param pulumi.Input[builtins.str] name: The hostname that will point to the target gateway via CNAME.
-        :param pulumi.Input[builtins.str] target: Target gateway of the hostname.
+        :param pulumi.Input[builtins.str] name: Specify the hostname that points to the target gateway via CNAME.
+        :param pulumi.Input[builtins.str] target: Specify the target gateway of the hostname.
                Available values: "ethereum", "ipfs", "ipfs*universal*path".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
-        :param pulumi.Input[builtins.str] description: An optional description of the hostname.
-        :param pulumi.Input[builtins.str] dnslink: DNSLink value used if the target is ipfs.
+        :param pulumi.Input[builtins.str] zone_id: Specify the identifier of the hostname.
+        :param pulumi.Input[builtins.str] description: Specify an optional description of the hostname.
+        :param pulumi.Input[builtins.str] dnslink: Specify the DNSLink value used if the target is ipfs.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "target", target)
@@ -46,7 +46,7 @@ class Web3HostnameArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[builtins.str]:
         """
-        The hostname that will point to the target gateway via CNAME.
+        Specify the hostname that points to the target gateway via CNAME.
         """
         return pulumi.get(self, "name")
 
@@ -58,7 +58,7 @@ class Web3HostnameArgs:
     @pulumi.getter
     def target(self) -> pulumi.Input[builtins.str]:
         """
-        Target gateway of the hostname.
+        Specify the target gateway of the hostname.
         Available values: "ethereum", "ipfs", "ipfs*universal*path".
         """
         return pulumi.get(self, "target")
@@ -71,7 +71,7 @@ class Web3HostnameArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Specify the identifier of the hostname.
         """
         return pulumi.get(self, "zone_id")
 
@@ -83,7 +83,7 @@ class Web3HostnameArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        An optional description of the hostname.
+        Specify an optional description of the hostname.
         """
         return pulumi.get(self, "description")
 
@@ -95,7 +95,7 @@ class Web3HostnameArgs:
     @pulumi.getter
     def dnslink(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        DNSLink value used if the target is ipfs.
+        Specify the DNSLink value used if the target is ipfs.
         """
         return pulumi.get(self, "dnslink")
 
@@ -117,14 +117,14 @@ class _Web3HostnameState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Web3Hostname resources.
-        :param pulumi.Input[builtins.str] description: An optional description of the hostname.
-        :param pulumi.Input[builtins.str] dnslink: DNSLink value used if the target is ipfs.
-        :param pulumi.Input[builtins.str] name: The hostname that will point to the target gateway via CNAME.
-        :param pulumi.Input[builtins.str] status: Status of the hostname's activation.
+        :param pulumi.Input[builtins.str] description: Specify an optional description of the hostname.
+        :param pulumi.Input[builtins.str] dnslink: Specify the DNSLink value used if the target is ipfs.
+        :param pulumi.Input[builtins.str] name: Specify the hostname that points to the target gateway via CNAME.
+        :param pulumi.Input[builtins.str] status: Specifies the status of the hostname's activation.
                Available values: "active", "pending", "deleting", "error".
-        :param pulumi.Input[builtins.str] target: Target gateway of the hostname.
+        :param pulumi.Input[builtins.str] target: Specify the target gateway of the hostname.
                Available values: "ethereum", "ipfs", "ipfs*universal*path".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Specify the identifier of the hostname.
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
@@ -156,7 +156,7 @@ class _Web3HostnameState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        An optional description of the hostname.
+        Specify an optional description of the hostname.
         """
         return pulumi.get(self, "description")
 
@@ -168,7 +168,7 @@ class _Web3HostnameState:
     @pulumi.getter
     def dnslink(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        DNSLink value used if the target is ipfs.
+        Specify the DNSLink value used if the target is ipfs.
         """
         return pulumi.get(self, "dnslink")
 
@@ -189,7 +189,7 @@ class _Web3HostnameState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The hostname that will point to the target gateway via CNAME.
+        Specify the hostname that points to the target gateway via CNAME.
         """
         return pulumi.get(self, "name")
 
@@ -201,7 +201,7 @@ class _Web3HostnameState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Status of the hostname's activation.
+        Specifies the status of the hostname's activation.
         Available values: "active", "pending", "deleting", "error".
         """
         return pulumi.get(self, "status")
@@ -214,7 +214,7 @@ class _Web3HostnameState:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Target gateway of the hostname.
+        Specify the target gateway of the hostname.
         Available values: "ethereum", "ipfs", "ipfs*universal*path".
         """
         return pulumi.get(self, "target")
@@ -227,7 +227,7 @@ class _Web3HostnameState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Specify the identifier of the hostname.
         """
         return pulumi.get(self, "zone_id")
 
@@ -271,12 +271,12 @@ class Web3Hostname(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: An optional description of the hostname.
-        :param pulumi.Input[builtins.str] dnslink: DNSLink value used if the target is ipfs.
-        :param pulumi.Input[builtins.str] name: The hostname that will point to the target gateway via CNAME.
-        :param pulumi.Input[builtins.str] target: Target gateway of the hostname.
+        :param pulumi.Input[builtins.str] description: Specify an optional description of the hostname.
+        :param pulumi.Input[builtins.str] dnslink: Specify the DNSLink value used if the target is ipfs.
+        :param pulumi.Input[builtins.str] name: Specify the hostname that points to the target gateway via CNAME.
+        :param pulumi.Input[builtins.str] target: Specify the target gateway of the hostname.
                Available values: "ethereum", "ipfs", "ipfs*universal*path".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Specify the identifier of the hostname.
         """
         ...
     @overload
@@ -373,14 +373,14 @@ class Web3Hostname(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] description: An optional description of the hostname.
-        :param pulumi.Input[builtins.str] dnslink: DNSLink value used if the target is ipfs.
-        :param pulumi.Input[builtins.str] name: The hostname that will point to the target gateway via CNAME.
-        :param pulumi.Input[builtins.str] status: Status of the hostname's activation.
+        :param pulumi.Input[builtins.str] description: Specify an optional description of the hostname.
+        :param pulumi.Input[builtins.str] dnslink: Specify the DNSLink value used if the target is ipfs.
+        :param pulumi.Input[builtins.str] name: Specify the hostname that points to the target gateway via CNAME.
+        :param pulumi.Input[builtins.str] status: Specifies the status of the hostname's activation.
                Available values: "active", "pending", "deleting", "error".
-        :param pulumi.Input[builtins.str] target: Target gateway of the hostname.
+        :param pulumi.Input[builtins.str] target: Specify the target gateway of the hostname.
                Available values: "ethereum", "ipfs", "ipfs*universal*path".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Specify the identifier of the hostname.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -405,7 +405,7 @@ class Web3Hostname(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        An optional description of the hostname.
+        Specify an optional description of the hostname.
         """
         return pulumi.get(self, "description")
 
@@ -413,7 +413,7 @@ class Web3Hostname(pulumi.CustomResource):
     @pulumi.getter
     def dnslink(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        DNSLink value used if the target is ipfs.
+        Specify the DNSLink value used if the target is ipfs.
         """
         return pulumi.get(self, "dnslink")
 
@@ -426,7 +426,7 @@ class Web3Hostname(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[builtins.str]:
         """
-        The hostname that will point to the target gateway via CNAME.
+        Specify the hostname that points to the target gateway via CNAME.
         """
         return pulumi.get(self, "name")
 
@@ -434,7 +434,7 @@ class Web3Hostname(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        Status of the hostname's activation.
+        Specifies the status of the hostname's activation.
         Available values: "active", "pending", "deleting", "error".
         """
         return pulumi.get(self, "status")
@@ -443,7 +443,7 @@ class Web3Hostname(pulumi.CustomResource):
     @pulumi.getter
     def target(self) -> pulumi.Output[builtins.str]:
         """
-        Target gateway of the hostname.
+        Specify the target gateway of the hostname.
         Available values: "ethereum", "ipfs", "ipfs*universal*path".
         """
         return pulumi.get(self, "target")
@@ -452,7 +452,7 @@ class Web3Hostname(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Specify the identifier of the hostname.
         """
         return pulumi.get(self, "zone_id")
 

@@ -70,10 +70,10 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.name);
     }
     @Export(name="nat", refs={MagicTransitSiteLanNat.class}, tree="[0]")
-    private Output<MagicTransitSiteLanNat> nat;
+    private Output</* @Nullable */ MagicTransitSiteLanNat> nat;
 
-    public Output<MagicTransitSiteLanNat> nat() {
-        return this.nat;
+    public Output<Optional<MagicTransitSiteLanNat>> nat() {
+        return Codegen.optional(this.nat);
     }
     @Export(name="physport", refs={Integer.class}, tree="[0]")
     private Output<Integer> physport;
@@ -82,10 +82,10 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
         return this.physport;
     }
     @Export(name="routedSubnets", refs={List.class,MagicTransitSiteLanRoutedSubnet.class}, tree="[0,1]")
-    private Output<List<MagicTransitSiteLanRoutedSubnet>> routedSubnets;
+    private Output</* @Nullable */ List<MagicTransitSiteLanRoutedSubnet>> routedSubnets;
 
-    public Output<List<MagicTransitSiteLanRoutedSubnet>> routedSubnets() {
-        return this.routedSubnets;
+    public Output<Optional<List<MagicTransitSiteLanRoutedSubnet>>> routedSubnets() {
+        return Codegen.optional(this.routedSubnets);
     }
     /**
      * Identifier
@@ -106,14 +106,14 @@ public class MagicTransitSiteLan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="staticAddressing", refs={MagicTransitSiteLanStaticAddressing.class}, tree="[0]")
-    private Output<MagicTransitSiteLanStaticAddressing> staticAddressing;
+    private Output</* @Nullable */ MagicTransitSiteLanStaticAddressing> staticAddressing;
 
     /**
      * @return If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
      * 
      */
-    public Output<MagicTransitSiteLanStaticAddressing> staticAddressing() {
-        return this.staticAddressing;
+    public Output<Optional<MagicTransitSiteLanStaticAddressing>> staticAddressing() {
+        return Codegen.optional(this.staticAddressing);
     }
     /**
      * VLAN ID. Use zero for untagged.

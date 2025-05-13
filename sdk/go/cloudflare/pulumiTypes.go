@@ -35907,9 +35907,9 @@ func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
 type AccessRuleScope struct {
 	// The contact email address of the user.
 	Email *string `pulumi:"email"`
-	// Identifier
+	// Defines an identifier.
 	Id *string `pulumi:"id"`
-	// The scope of the rule.
+	// Defines the scope of the rule.
 	// Available values: "user", "organization".
 	Type *string `pulumi:"type"`
 }
@@ -35928,9 +35928,9 @@ type AccessRuleScopeInput interface {
 type AccessRuleScopeArgs struct {
 	// The contact email address of the user.
 	Email pulumi.StringPtrInput `pulumi:"email"`
-	// Identifier
+	// Defines an identifier.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The scope of the rule.
+	// Defines the scope of the rule.
 	// Available values: "user", "organization".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -36017,12 +36017,12 @@ func (o AccessRuleScopeOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessRuleScope) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o AccessRuleScopeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessRuleScope) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The scope of the rule.
+// Defines the scope of the rule.
 // Available values: "user", "organization".
 func (o AccessRuleScopeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessRuleScope) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -36062,7 +36062,7 @@ func (o AccessRuleScopePtrOutput) Email() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o AccessRuleScopePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRuleScope) *string {
 		if v == nil {
@@ -36072,7 +36072,7 @@ func (o AccessRuleScopePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The scope of the rule.
+// Defines the scope of the rule.
 // Available values: "user", "organization".
 func (o AccessRuleScopePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRuleScope) *string {
@@ -38978,8 +38978,10 @@ func (o ApiShieldAuthIdCharacteristicArrayOutput) Index(i pulumi.IntInput) ApiSh
 }
 
 type ApiShieldError struct {
-	Code    *int    `pulumi:"code"`
-	Message *string `pulumi:"message"`
+	Code             *int                  `pulumi:"code"`
+	DocumentationUrl *string               `pulumi:"documentationUrl"`
+	Message          *string               `pulumi:"message"`
+	Source           *ApiShieldErrorSource `pulumi:"source"`
 }
 
 // ApiShieldErrorInput is an input type that accepts ApiShieldErrorArgs and ApiShieldErrorOutput values.
@@ -38994,8 +38996,10 @@ type ApiShieldErrorInput interface {
 }
 
 type ApiShieldErrorArgs struct {
-	Code    pulumi.IntPtrInput    `pulumi:"code"`
-	Message pulumi.StringPtrInput `pulumi:"message"`
+	Code             pulumi.IntPtrInput           `pulumi:"code"`
+	DocumentationUrl pulumi.StringPtrInput        `pulumi:"documentationUrl"`
+	Message          pulumi.StringPtrInput        `pulumi:"message"`
+	Source           ApiShieldErrorSourcePtrInput `pulumi:"source"`
 }
 
 func (ApiShieldErrorArgs) ElementType() reflect.Type {
@@ -39053,8 +39057,16 @@ func (o ApiShieldErrorOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApiShieldError) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+func (o ApiShieldErrorOutput) DocumentationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiShieldError) *string { return v.DocumentationUrl }).(pulumi.StringPtrOutput)
+}
+
 func (o ApiShieldErrorOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiShieldError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiShieldErrorOutput) Source() ApiShieldErrorSourcePtrOutput {
+	return o.ApplyT(func(v ApiShieldError) *ApiShieldErrorSource { return v.Source }).(ApiShieldErrorSourcePtrOutput)
 }
 
 type ApiShieldErrorArrayOutput struct{ *pulumi.OutputState }
@@ -39077,9 +39089,144 @@ func (o ApiShieldErrorArrayOutput) Index(i pulumi.IntInput) ApiShieldErrorOutput
 	}).(ApiShieldErrorOutput)
 }
 
+type ApiShieldErrorSource struct {
+	Pointer *string `pulumi:"pointer"`
+}
+
+// ApiShieldErrorSourceInput is an input type that accepts ApiShieldErrorSourceArgs and ApiShieldErrorSourceOutput values.
+// You can construct a concrete instance of `ApiShieldErrorSourceInput` via:
+//
+//	ApiShieldErrorSourceArgs{...}
+type ApiShieldErrorSourceInput interface {
+	pulumi.Input
+
+	ToApiShieldErrorSourceOutput() ApiShieldErrorSourceOutput
+	ToApiShieldErrorSourceOutputWithContext(context.Context) ApiShieldErrorSourceOutput
+}
+
+type ApiShieldErrorSourceArgs struct {
+	Pointer pulumi.StringPtrInput `pulumi:"pointer"`
+}
+
+func (ApiShieldErrorSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiShieldErrorSource)(nil)).Elem()
+}
+
+func (i ApiShieldErrorSourceArgs) ToApiShieldErrorSourceOutput() ApiShieldErrorSourceOutput {
+	return i.ToApiShieldErrorSourceOutputWithContext(context.Background())
+}
+
+func (i ApiShieldErrorSourceArgs) ToApiShieldErrorSourceOutputWithContext(ctx context.Context) ApiShieldErrorSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldErrorSourceOutput)
+}
+
+func (i ApiShieldErrorSourceArgs) ToApiShieldErrorSourcePtrOutput() ApiShieldErrorSourcePtrOutput {
+	return i.ToApiShieldErrorSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ApiShieldErrorSourceArgs) ToApiShieldErrorSourcePtrOutputWithContext(ctx context.Context) ApiShieldErrorSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldErrorSourceOutput).ToApiShieldErrorSourcePtrOutputWithContext(ctx)
+}
+
+// ApiShieldErrorSourcePtrInput is an input type that accepts ApiShieldErrorSourceArgs, ApiShieldErrorSourcePtr and ApiShieldErrorSourcePtrOutput values.
+// You can construct a concrete instance of `ApiShieldErrorSourcePtrInput` via:
+//
+//	        ApiShieldErrorSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiShieldErrorSourcePtrInput interface {
+	pulumi.Input
+
+	ToApiShieldErrorSourcePtrOutput() ApiShieldErrorSourcePtrOutput
+	ToApiShieldErrorSourcePtrOutputWithContext(context.Context) ApiShieldErrorSourcePtrOutput
+}
+
+type apiShieldErrorSourcePtrType ApiShieldErrorSourceArgs
+
+func ApiShieldErrorSourcePtr(v *ApiShieldErrorSourceArgs) ApiShieldErrorSourcePtrInput {
+	return (*apiShieldErrorSourcePtrType)(v)
+}
+
+func (*apiShieldErrorSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiShieldErrorSource)(nil)).Elem()
+}
+
+func (i *apiShieldErrorSourcePtrType) ToApiShieldErrorSourcePtrOutput() ApiShieldErrorSourcePtrOutput {
+	return i.ToApiShieldErrorSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *apiShieldErrorSourcePtrType) ToApiShieldErrorSourcePtrOutputWithContext(ctx context.Context) ApiShieldErrorSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldErrorSourcePtrOutput)
+}
+
+type ApiShieldErrorSourceOutput struct{ *pulumi.OutputState }
+
+func (ApiShieldErrorSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiShieldErrorSource)(nil)).Elem()
+}
+
+func (o ApiShieldErrorSourceOutput) ToApiShieldErrorSourceOutput() ApiShieldErrorSourceOutput {
+	return o
+}
+
+func (o ApiShieldErrorSourceOutput) ToApiShieldErrorSourceOutputWithContext(ctx context.Context) ApiShieldErrorSourceOutput {
+	return o
+}
+
+func (o ApiShieldErrorSourceOutput) ToApiShieldErrorSourcePtrOutput() ApiShieldErrorSourcePtrOutput {
+	return o.ToApiShieldErrorSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ApiShieldErrorSourceOutput) ToApiShieldErrorSourcePtrOutputWithContext(ctx context.Context) ApiShieldErrorSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiShieldErrorSource) *ApiShieldErrorSource {
+		return &v
+	}).(ApiShieldErrorSourcePtrOutput)
+}
+
+func (o ApiShieldErrorSourceOutput) Pointer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiShieldErrorSource) *string { return v.Pointer }).(pulumi.StringPtrOutput)
+}
+
+type ApiShieldErrorSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiShieldErrorSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiShieldErrorSource)(nil)).Elem()
+}
+
+func (o ApiShieldErrorSourcePtrOutput) ToApiShieldErrorSourcePtrOutput() ApiShieldErrorSourcePtrOutput {
+	return o
+}
+
+func (o ApiShieldErrorSourcePtrOutput) ToApiShieldErrorSourcePtrOutputWithContext(ctx context.Context) ApiShieldErrorSourcePtrOutput {
+	return o
+}
+
+func (o ApiShieldErrorSourcePtrOutput) Elem() ApiShieldErrorSourceOutput {
+	return o.ApplyT(func(v *ApiShieldErrorSource) ApiShieldErrorSource {
+		if v != nil {
+			return *v
+		}
+		var ret ApiShieldErrorSource
+		return ret
+	}).(ApiShieldErrorSourceOutput)
+}
+
+func (o ApiShieldErrorSourcePtrOutput) Pointer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiShieldErrorSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pointer
+	}).(pulumi.StringPtrOutput)
+}
+
 type ApiShieldMessage struct {
-	Code    *int    `pulumi:"code"`
-	Message *string `pulumi:"message"`
+	Code             *int                    `pulumi:"code"`
+	DocumentationUrl *string                 `pulumi:"documentationUrl"`
+	Message          *string                 `pulumi:"message"`
+	Source           *ApiShieldMessageSource `pulumi:"source"`
 }
 
 // ApiShieldMessageInput is an input type that accepts ApiShieldMessageArgs and ApiShieldMessageOutput values.
@@ -39094,8 +39241,10 @@ type ApiShieldMessageInput interface {
 }
 
 type ApiShieldMessageArgs struct {
-	Code    pulumi.IntPtrInput    `pulumi:"code"`
-	Message pulumi.StringPtrInput `pulumi:"message"`
+	Code             pulumi.IntPtrInput             `pulumi:"code"`
+	DocumentationUrl pulumi.StringPtrInput          `pulumi:"documentationUrl"`
+	Message          pulumi.StringPtrInput          `pulumi:"message"`
+	Source           ApiShieldMessageSourcePtrInput `pulumi:"source"`
 }
 
 func (ApiShieldMessageArgs) ElementType() reflect.Type {
@@ -39153,8 +39302,16 @@ func (o ApiShieldMessageOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApiShieldMessage) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+func (o ApiShieldMessageOutput) DocumentationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiShieldMessage) *string { return v.DocumentationUrl }).(pulumi.StringPtrOutput)
+}
+
 func (o ApiShieldMessageOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiShieldMessage) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o ApiShieldMessageOutput) Source() ApiShieldMessageSourcePtrOutput {
+	return o.ApplyT(func(v ApiShieldMessage) *ApiShieldMessageSource { return v.Source }).(ApiShieldMessageSourcePtrOutput)
 }
 
 type ApiShieldMessageArrayOutput struct{ *pulumi.OutputState }
@@ -39175,6 +39332,139 @@ func (o ApiShieldMessageArrayOutput) Index(i pulumi.IntInput) ApiShieldMessageOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiShieldMessage {
 		return vs[0].([]ApiShieldMessage)[vs[1].(int)]
 	}).(ApiShieldMessageOutput)
+}
+
+type ApiShieldMessageSource struct {
+	Pointer *string `pulumi:"pointer"`
+}
+
+// ApiShieldMessageSourceInput is an input type that accepts ApiShieldMessageSourceArgs and ApiShieldMessageSourceOutput values.
+// You can construct a concrete instance of `ApiShieldMessageSourceInput` via:
+//
+//	ApiShieldMessageSourceArgs{...}
+type ApiShieldMessageSourceInput interface {
+	pulumi.Input
+
+	ToApiShieldMessageSourceOutput() ApiShieldMessageSourceOutput
+	ToApiShieldMessageSourceOutputWithContext(context.Context) ApiShieldMessageSourceOutput
+}
+
+type ApiShieldMessageSourceArgs struct {
+	Pointer pulumi.StringPtrInput `pulumi:"pointer"`
+}
+
+func (ApiShieldMessageSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiShieldMessageSource)(nil)).Elem()
+}
+
+func (i ApiShieldMessageSourceArgs) ToApiShieldMessageSourceOutput() ApiShieldMessageSourceOutput {
+	return i.ToApiShieldMessageSourceOutputWithContext(context.Background())
+}
+
+func (i ApiShieldMessageSourceArgs) ToApiShieldMessageSourceOutputWithContext(ctx context.Context) ApiShieldMessageSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldMessageSourceOutput)
+}
+
+func (i ApiShieldMessageSourceArgs) ToApiShieldMessageSourcePtrOutput() ApiShieldMessageSourcePtrOutput {
+	return i.ToApiShieldMessageSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ApiShieldMessageSourceArgs) ToApiShieldMessageSourcePtrOutputWithContext(ctx context.Context) ApiShieldMessageSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldMessageSourceOutput).ToApiShieldMessageSourcePtrOutputWithContext(ctx)
+}
+
+// ApiShieldMessageSourcePtrInput is an input type that accepts ApiShieldMessageSourceArgs, ApiShieldMessageSourcePtr and ApiShieldMessageSourcePtrOutput values.
+// You can construct a concrete instance of `ApiShieldMessageSourcePtrInput` via:
+//
+//	        ApiShieldMessageSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiShieldMessageSourcePtrInput interface {
+	pulumi.Input
+
+	ToApiShieldMessageSourcePtrOutput() ApiShieldMessageSourcePtrOutput
+	ToApiShieldMessageSourcePtrOutputWithContext(context.Context) ApiShieldMessageSourcePtrOutput
+}
+
+type apiShieldMessageSourcePtrType ApiShieldMessageSourceArgs
+
+func ApiShieldMessageSourcePtr(v *ApiShieldMessageSourceArgs) ApiShieldMessageSourcePtrInput {
+	return (*apiShieldMessageSourcePtrType)(v)
+}
+
+func (*apiShieldMessageSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiShieldMessageSource)(nil)).Elem()
+}
+
+func (i *apiShieldMessageSourcePtrType) ToApiShieldMessageSourcePtrOutput() ApiShieldMessageSourcePtrOutput {
+	return i.ToApiShieldMessageSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *apiShieldMessageSourcePtrType) ToApiShieldMessageSourcePtrOutputWithContext(ctx context.Context) ApiShieldMessageSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldMessageSourcePtrOutput)
+}
+
+type ApiShieldMessageSourceOutput struct{ *pulumi.OutputState }
+
+func (ApiShieldMessageSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiShieldMessageSource)(nil)).Elem()
+}
+
+func (o ApiShieldMessageSourceOutput) ToApiShieldMessageSourceOutput() ApiShieldMessageSourceOutput {
+	return o
+}
+
+func (o ApiShieldMessageSourceOutput) ToApiShieldMessageSourceOutputWithContext(ctx context.Context) ApiShieldMessageSourceOutput {
+	return o
+}
+
+func (o ApiShieldMessageSourceOutput) ToApiShieldMessageSourcePtrOutput() ApiShieldMessageSourcePtrOutput {
+	return o.ToApiShieldMessageSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ApiShieldMessageSourceOutput) ToApiShieldMessageSourcePtrOutputWithContext(ctx context.Context) ApiShieldMessageSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiShieldMessageSource) *ApiShieldMessageSource {
+		return &v
+	}).(ApiShieldMessageSourcePtrOutput)
+}
+
+func (o ApiShieldMessageSourceOutput) Pointer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiShieldMessageSource) *string { return v.Pointer }).(pulumi.StringPtrOutput)
+}
+
+type ApiShieldMessageSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiShieldMessageSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiShieldMessageSource)(nil)).Elem()
+}
+
+func (o ApiShieldMessageSourcePtrOutput) ToApiShieldMessageSourcePtrOutput() ApiShieldMessageSourcePtrOutput {
+	return o
+}
+
+func (o ApiShieldMessageSourcePtrOutput) ToApiShieldMessageSourcePtrOutputWithContext(ctx context.Context) ApiShieldMessageSourcePtrOutput {
+	return o
+}
+
+func (o ApiShieldMessageSourcePtrOutput) Elem() ApiShieldMessageSourceOutput {
+	return o.ApplyT(func(v *ApiShieldMessageSource) ApiShieldMessageSource {
+		if v != nil {
+			return *v
+		}
+		var ret ApiShieldMessageSource
+		return ret
+	}).(ApiShieldMessageSourceOutput)
+}
+
+func (o ApiShieldMessageSourcePtrOutput) Pointer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiShieldMessageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pointer
+	}).(pulumi.StringPtrOutput)
 }
 
 type ApiShieldOperationFeatures struct {
@@ -40988,7 +41278,7 @@ func (o ApiShieldOperationFeaturesSchemaInfoPtrOutput) MitigationAction() pulumi
 
 type ApiShieldOperationFeaturesSchemaInfoActiveSchema struct {
 	CreatedAt *string `pulumi:"createdAt"`
-	// UUID
+	// UUID.
 	Id *string `pulumi:"id"`
 	// True if schema is Cloudflare-provided.
 	IsLearned *bool `pulumi:"isLearned"`
@@ -41009,7 +41299,7 @@ type ApiShieldOperationFeaturesSchemaInfoActiveSchemaInput interface {
 
 type ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs struct {
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// UUID
+	// UUID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// True if schema is Cloudflare-provided.
 	IsLearned pulumi.BoolPtrInput `pulumi:"isLearned"`
@@ -41098,7 +41388,7 @@ func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput) CreatedAt() pulu
 	return o.ApplyT(func(v ApiShieldOperationFeaturesSchemaInfoActiveSchema) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiShieldOperationFeaturesSchemaInfoActiveSchema) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -41146,7 +41436,7 @@ func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrOutput) CreatedAt() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o ApiShieldOperationFeaturesSchemaInfoActiveSchemaPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldOperationFeaturesSchemaInfoActiveSchema) *string {
 		if v == nil {
@@ -41468,7 +41758,7 @@ type ApiShieldSchemaSchema struct {
 	Kind *string `pulumi:"kind"`
 	// Name of the schema
 	Name *string `pulumi:"name"`
-	// UUID
+	// UUID.
 	SchemaId *string `pulumi:"schemaId"`
 	// Source of the schema
 	Source *string `pulumi:"source"`
@@ -41494,7 +41784,7 @@ type ApiShieldSchemaSchemaArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Name of the schema
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// UUID
+	// UUID.
 	SchemaId pulumi.StringPtrInput `pulumi:"schemaId"`
 	// Source of the schema
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -41594,7 +41884,7 @@ func (o ApiShieldSchemaSchemaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiShieldSchemaSchema) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o ApiShieldSchemaSchemaOutput) SchemaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiShieldSchemaSchema) *string { return v.SchemaId }).(pulumi.StringPtrOutput)
 }
@@ -41663,7 +41953,7 @@ func (o ApiShieldSchemaSchemaPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// UUID
+// UUID.
 func (o ApiShieldSchemaSchemaPtrOutput) SchemaId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiShieldSchemaSchema) *string {
 		if v == nil {
@@ -42994,153 +43284,16 @@ func (o BotManagementStaleZoneConfigurationPtrOutput) SuppressSessionScore() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-type CloudConnectorRulesParameters struct {
-	// Host to perform Cloud Connection to
-	Host *string `pulumi:"host"`
-}
-
-// CloudConnectorRulesParametersInput is an input type that accepts CloudConnectorRulesParametersArgs and CloudConnectorRulesParametersOutput values.
-// You can construct a concrete instance of `CloudConnectorRulesParametersInput` via:
-//
-//	CloudConnectorRulesParametersArgs{...}
-type CloudConnectorRulesParametersInput interface {
-	pulumi.Input
-
-	ToCloudConnectorRulesParametersOutput() CloudConnectorRulesParametersOutput
-	ToCloudConnectorRulesParametersOutputWithContext(context.Context) CloudConnectorRulesParametersOutput
-}
-
-type CloudConnectorRulesParametersArgs struct {
-	// Host to perform Cloud Connection to
-	Host pulumi.StringPtrInput `pulumi:"host"`
-}
-
-func (CloudConnectorRulesParametersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudConnectorRulesParameters)(nil)).Elem()
-}
-
-func (i CloudConnectorRulesParametersArgs) ToCloudConnectorRulesParametersOutput() CloudConnectorRulesParametersOutput {
-	return i.ToCloudConnectorRulesParametersOutputWithContext(context.Background())
-}
-
-func (i CloudConnectorRulesParametersArgs) ToCloudConnectorRulesParametersOutputWithContext(ctx context.Context) CloudConnectorRulesParametersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorRulesParametersOutput)
-}
-
-func (i CloudConnectorRulesParametersArgs) ToCloudConnectorRulesParametersPtrOutput() CloudConnectorRulesParametersPtrOutput {
-	return i.ToCloudConnectorRulesParametersPtrOutputWithContext(context.Background())
-}
-
-func (i CloudConnectorRulesParametersArgs) ToCloudConnectorRulesParametersPtrOutputWithContext(ctx context.Context) CloudConnectorRulesParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorRulesParametersOutput).ToCloudConnectorRulesParametersPtrOutputWithContext(ctx)
-}
-
-// CloudConnectorRulesParametersPtrInput is an input type that accepts CloudConnectorRulesParametersArgs, CloudConnectorRulesParametersPtr and CloudConnectorRulesParametersPtrOutput values.
-// You can construct a concrete instance of `CloudConnectorRulesParametersPtrInput` via:
-//
-//	        CloudConnectorRulesParametersArgs{...}
-//
-//	or:
-//
-//	        nil
-type CloudConnectorRulesParametersPtrInput interface {
-	pulumi.Input
-
-	ToCloudConnectorRulesParametersPtrOutput() CloudConnectorRulesParametersPtrOutput
-	ToCloudConnectorRulesParametersPtrOutputWithContext(context.Context) CloudConnectorRulesParametersPtrOutput
-}
-
-type cloudConnectorRulesParametersPtrType CloudConnectorRulesParametersArgs
-
-func CloudConnectorRulesParametersPtr(v *CloudConnectorRulesParametersArgs) CloudConnectorRulesParametersPtrInput {
-	return (*cloudConnectorRulesParametersPtrType)(v)
-}
-
-func (*cloudConnectorRulesParametersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudConnectorRulesParameters)(nil)).Elem()
-}
-
-func (i *cloudConnectorRulesParametersPtrType) ToCloudConnectorRulesParametersPtrOutput() CloudConnectorRulesParametersPtrOutput {
-	return i.ToCloudConnectorRulesParametersPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudConnectorRulesParametersPtrType) ToCloudConnectorRulesParametersPtrOutputWithContext(ctx context.Context) CloudConnectorRulesParametersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorRulesParametersPtrOutput)
-}
-
-type CloudConnectorRulesParametersOutput struct{ *pulumi.OutputState }
-
-func (CloudConnectorRulesParametersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudConnectorRulesParameters)(nil)).Elem()
-}
-
-func (o CloudConnectorRulesParametersOutput) ToCloudConnectorRulesParametersOutput() CloudConnectorRulesParametersOutput {
-	return o
-}
-
-func (o CloudConnectorRulesParametersOutput) ToCloudConnectorRulesParametersOutputWithContext(ctx context.Context) CloudConnectorRulesParametersOutput {
-	return o
-}
-
-func (o CloudConnectorRulesParametersOutput) ToCloudConnectorRulesParametersPtrOutput() CloudConnectorRulesParametersPtrOutput {
-	return o.ToCloudConnectorRulesParametersPtrOutputWithContext(context.Background())
-}
-
-func (o CloudConnectorRulesParametersOutput) ToCloudConnectorRulesParametersPtrOutputWithContext(ctx context.Context) CloudConnectorRulesParametersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudConnectorRulesParameters) *CloudConnectorRulesParameters {
-		return &v
-	}).(CloudConnectorRulesParametersPtrOutput)
-}
-
-// Host to perform Cloud Connection to
-func (o CloudConnectorRulesParametersOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudConnectorRulesParameters) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-type CloudConnectorRulesParametersPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudConnectorRulesParametersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudConnectorRulesParameters)(nil)).Elem()
-}
-
-func (o CloudConnectorRulesParametersPtrOutput) ToCloudConnectorRulesParametersPtrOutput() CloudConnectorRulesParametersPtrOutput {
-	return o
-}
-
-func (o CloudConnectorRulesParametersPtrOutput) ToCloudConnectorRulesParametersPtrOutputWithContext(ctx context.Context) CloudConnectorRulesParametersPtrOutput {
-	return o
-}
-
-func (o CloudConnectorRulesParametersPtrOutput) Elem() CloudConnectorRulesParametersOutput {
-	return o.ApplyT(func(v *CloudConnectorRulesParameters) CloudConnectorRulesParameters {
-		if v != nil {
-			return *v
-		}
-		var ret CloudConnectorRulesParameters
-		return ret
-	}).(CloudConnectorRulesParametersOutput)
-}
-
-// Host to perform Cloud Connection to
-func (o CloudConnectorRulesParametersPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudConnectorRulesParameters) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
 type CloudConnectorRulesRule struct {
-	// Cloud Provider type
-	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-	CloudProvider *string `pulumi:"cloudProvider"`
-	Description   *string `pulumi:"description"`
-	Enabled       *bool   `pulumi:"enabled"`
-	Expression    *string `pulumi:"expression"`
-	Id            *string `pulumi:"id"`
+	Description *string `pulumi:"description"`
+	Enabled     *bool   `pulumi:"enabled"`
+	Expression  *string `pulumi:"expression"`
+	Id          *string `pulumi:"id"`
 	// Parameters of Cloud Connector Rule
 	Parameters *CloudConnectorRulesRuleParameters `pulumi:"parameters"`
+	// Cloud Provider type
+	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+	Provider *string `pulumi:"provider"`
 }
 
 // CloudConnectorRulesRuleInput is an input type that accepts CloudConnectorRulesRuleArgs and CloudConnectorRulesRuleOutput values.
@@ -43155,15 +43308,15 @@ type CloudConnectorRulesRuleInput interface {
 }
 
 type CloudConnectorRulesRuleArgs struct {
-	// Cloud Provider type
-	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-	CloudProvider pulumi.StringPtrInput `pulumi:"cloudProvider"`
-	Description   pulumi.StringPtrInput `pulumi:"description"`
-	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Expression    pulumi.StringPtrInput `pulumi:"expression"`
-	Id            pulumi.StringPtrInput `pulumi:"id"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Enabled     pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Expression  pulumi.StringPtrInput `pulumi:"expression"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
 	// Parameters of Cloud Connector Rule
 	Parameters CloudConnectorRulesRuleParametersPtrInput `pulumi:"parameters"`
+	// Cloud Provider type
+	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
 func (CloudConnectorRulesRuleArgs) ElementType() reflect.Type {
@@ -43217,12 +43370,6 @@ func (o CloudConnectorRulesRuleOutput) ToCloudConnectorRulesRuleOutputWithContex
 	return o
 }
 
-// Cloud Provider type
-// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-func (o CloudConnectorRulesRuleOutput) CloudProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.CloudProvider }).(pulumi.StringPtrOutput)
-}
-
 func (o CloudConnectorRulesRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -43242,6 +43389,12 @@ func (o CloudConnectorRulesRuleOutput) Id() pulumi.StringPtrOutput {
 // Parameters of Cloud Connector Rule
 func (o CloudConnectorRulesRuleOutput) Parameters() CloudConnectorRulesRuleParametersPtrOutput {
 	return o.ApplyT(func(v CloudConnectorRulesRule) *CloudConnectorRulesRuleParameters { return v.Parameters }).(CloudConnectorRulesRuleParametersPtrOutput)
+}
+
+// Cloud Provider type
+// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+func (o CloudConnectorRulesRuleOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
 type CloudConnectorRulesRuleArrayOutput struct{ *pulumi.OutputState }
@@ -43402,7 +43555,7 @@ func (o CloudConnectorRulesRuleParametersPtrOutput) Host() pulumi.StringPtrOutpu
 }
 
 type ContentScanningExpressionBody struct {
-	// Ruleset expression to use in matching content objects
+	// Defines the ruleset expression to use in matching content objects.
 	Payload string `pulumi:"payload"`
 }
 
@@ -43418,7 +43571,7 @@ type ContentScanningExpressionBodyInput interface {
 }
 
 type ContentScanningExpressionBodyArgs struct {
-	// Ruleset expression to use in matching content objects
+	// Defines the ruleset expression to use in matching content objects.
 	Payload pulumi.StringInput `pulumi:"payload"`
 }
 
@@ -43473,7 +43626,7 @@ func (o ContentScanningExpressionBodyOutput) ToContentScanningExpressionBodyOutp
 	return o
 }
 
-// Ruleset expression to use in matching content objects
+// Defines the ruleset expression to use in matching content objects.
 func (o ContentScanningExpressionBodyOutput) Payload() pulumi.StringOutput {
 	return o.ApplyT(func(v ContentScanningExpressionBody) string { return v.Payload }).(pulumi.StringOutput)
 }
@@ -45097,294 +45250,145 @@ func (o CustomSslKeylessServerTunnelPtrOutput) VnetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type DeviceDexTestData struct {
-	// The desired endpoint to test.
-	Host *string `pulumi:"host"`
-	// The type of test.
-	Kind *string `pulumi:"kind"`
-	// The HTTP request method type.
-	Method *string `pulumi:"method"`
+type D1DatabaseReadReplication struct {
+	// The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+	// Available values: "auto", "disabled".
+	Mode string `pulumi:"mode"`
 }
 
-// DeviceDexTestDataInput is an input type that accepts DeviceDexTestDataArgs and DeviceDexTestDataOutput values.
-// You can construct a concrete instance of `DeviceDexTestDataInput` via:
+// D1DatabaseReadReplicationInput is an input type that accepts D1DatabaseReadReplicationArgs and D1DatabaseReadReplicationOutput values.
+// You can construct a concrete instance of `D1DatabaseReadReplicationInput` via:
 //
-//	DeviceDexTestDataArgs{...}
-type DeviceDexTestDataInput interface {
+//	D1DatabaseReadReplicationArgs{...}
+type D1DatabaseReadReplicationInput interface {
 	pulumi.Input
 
-	ToDeviceDexTestDataOutput() DeviceDexTestDataOutput
-	ToDeviceDexTestDataOutputWithContext(context.Context) DeviceDexTestDataOutput
+	ToD1DatabaseReadReplicationOutput() D1DatabaseReadReplicationOutput
+	ToD1DatabaseReadReplicationOutputWithContext(context.Context) D1DatabaseReadReplicationOutput
 }
 
-type DeviceDexTestDataArgs struct {
-	// The desired endpoint to test.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The type of test.
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// The HTTP request method type.
-	Method pulumi.StringPtrInput `pulumi:"method"`
+type D1DatabaseReadReplicationArgs struct {
+	// The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+	// Available values: "auto", "disabled".
+	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
-func (DeviceDexTestDataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceDexTestData)(nil)).Elem()
+func (D1DatabaseReadReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*D1DatabaseReadReplication)(nil)).Elem()
 }
 
-func (i DeviceDexTestDataArgs) ToDeviceDexTestDataOutput() DeviceDexTestDataOutput {
-	return i.ToDeviceDexTestDataOutputWithContext(context.Background())
+func (i D1DatabaseReadReplicationArgs) ToD1DatabaseReadReplicationOutput() D1DatabaseReadReplicationOutput {
+	return i.ToD1DatabaseReadReplicationOutputWithContext(context.Background())
 }
 
-func (i DeviceDexTestDataArgs) ToDeviceDexTestDataOutputWithContext(ctx context.Context) DeviceDexTestDataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestDataOutput)
+func (i D1DatabaseReadReplicationArgs) ToD1DatabaseReadReplicationOutputWithContext(ctx context.Context) D1DatabaseReadReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(D1DatabaseReadReplicationOutput)
 }
 
-func (i DeviceDexTestDataArgs) ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput {
-	return i.ToDeviceDexTestDataPtrOutputWithContext(context.Background())
+func (i D1DatabaseReadReplicationArgs) ToD1DatabaseReadReplicationPtrOutput() D1DatabaseReadReplicationPtrOutput {
+	return i.ToD1DatabaseReadReplicationPtrOutputWithContext(context.Background())
 }
 
-func (i DeviceDexTestDataArgs) ToDeviceDexTestDataPtrOutputWithContext(ctx context.Context) DeviceDexTestDataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestDataOutput).ToDeviceDexTestDataPtrOutputWithContext(ctx)
+func (i D1DatabaseReadReplicationArgs) ToD1DatabaseReadReplicationPtrOutputWithContext(ctx context.Context) D1DatabaseReadReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(D1DatabaseReadReplicationOutput).ToD1DatabaseReadReplicationPtrOutputWithContext(ctx)
 }
 
-// DeviceDexTestDataPtrInput is an input type that accepts DeviceDexTestDataArgs, DeviceDexTestDataPtr and DeviceDexTestDataPtrOutput values.
-// You can construct a concrete instance of `DeviceDexTestDataPtrInput` via:
+// D1DatabaseReadReplicationPtrInput is an input type that accepts D1DatabaseReadReplicationArgs, D1DatabaseReadReplicationPtr and D1DatabaseReadReplicationPtrOutput values.
+// You can construct a concrete instance of `D1DatabaseReadReplicationPtrInput` via:
 //
-//	        DeviceDexTestDataArgs{...}
+//	        D1DatabaseReadReplicationArgs{...}
 //
 //	or:
 //
 //	        nil
-type DeviceDexTestDataPtrInput interface {
+type D1DatabaseReadReplicationPtrInput interface {
 	pulumi.Input
 
-	ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput
-	ToDeviceDexTestDataPtrOutputWithContext(context.Context) DeviceDexTestDataPtrOutput
+	ToD1DatabaseReadReplicationPtrOutput() D1DatabaseReadReplicationPtrOutput
+	ToD1DatabaseReadReplicationPtrOutputWithContext(context.Context) D1DatabaseReadReplicationPtrOutput
 }
 
-type deviceDexTestDataPtrType DeviceDexTestDataArgs
+type d1databaseReadReplicationPtrType D1DatabaseReadReplicationArgs
 
-func DeviceDexTestDataPtr(v *DeviceDexTestDataArgs) DeviceDexTestDataPtrInput {
-	return (*deviceDexTestDataPtrType)(v)
+func D1DatabaseReadReplicationPtr(v *D1DatabaseReadReplicationArgs) D1DatabaseReadReplicationPtrInput {
+	return (*d1databaseReadReplicationPtrType)(v)
 }
 
-func (*deviceDexTestDataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceDexTestData)(nil)).Elem()
+func (*d1databaseReadReplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**D1DatabaseReadReplication)(nil)).Elem()
 }
 
-func (i *deviceDexTestDataPtrType) ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput {
-	return i.ToDeviceDexTestDataPtrOutputWithContext(context.Background())
+func (i *d1databaseReadReplicationPtrType) ToD1DatabaseReadReplicationPtrOutput() D1DatabaseReadReplicationPtrOutput {
+	return i.ToD1DatabaseReadReplicationPtrOutputWithContext(context.Background())
 }
 
-func (i *deviceDexTestDataPtrType) ToDeviceDexTestDataPtrOutputWithContext(ctx context.Context) DeviceDexTestDataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestDataPtrOutput)
+func (i *d1databaseReadReplicationPtrType) ToD1DatabaseReadReplicationPtrOutputWithContext(ctx context.Context) D1DatabaseReadReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(D1DatabaseReadReplicationPtrOutput)
 }
 
-type DeviceDexTestDataOutput struct{ *pulumi.OutputState }
+type D1DatabaseReadReplicationOutput struct{ *pulumi.OutputState }
 
-func (DeviceDexTestDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceDexTestData)(nil)).Elem()
+func (D1DatabaseReadReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*D1DatabaseReadReplication)(nil)).Elem()
 }
 
-func (o DeviceDexTestDataOutput) ToDeviceDexTestDataOutput() DeviceDexTestDataOutput {
+func (o D1DatabaseReadReplicationOutput) ToD1DatabaseReadReplicationOutput() D1DatabaseReadReplicationOutput {
 	return o
 }
 
-func (o DeviceDexTestDataOutput) ToDeviceDexTestDataOutputWithContext(ctx context.Context) DeviceDexTestDataOutput {
+func (o D1DatabaseReadReplicationOutput) ToD1DatabaseReadReplicationOutputWithContext(ctx context.Context) D1DatabaseReadReplicationOutput {
 	return o
 }
 
-func (o DeviceDexTestDataOutput) ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput {
-	return o.ToDeviceDexTestDataPtrOutputWithContext(context.Background())
+func (o D1DatabaseReadReplicationOutput) ToD1DatabaseReadReplicationPtrOutput() D1DatabaseReadReplicationPtrOutput {
+	return o.ToD1DatabaseReadReplicationPtrOutputWithContext(context.Background())
 }
 
-func (o DeviceDexTestDataOutput) ToDeviceDexTestDataPtrOutputWithContext(ctx context.Context) DeviceDexTestDataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceDexTestData) *DeviceDexTestData {
+func (o D1DatabaseReadReplicationOutput) ToD1DatabaseReadReplicationPtrOutputWithContext(ctx context.Context) D1DatabaseReadReplicationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v D1DatabaseReadReplication) *D1DatabaseReadReplication {
 		return &v
-	}).(DeviceDexTestDataPtrOutput)
+	}).(D1DatabaseReadReplicationPtrOutput)
 }
 
-// The desired endpoint to test.
-func (o DeviceDexTestDataOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceDexTestData) *string { return v.Host }).(pulumi.StringPtrOutput)
+// The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+// Available values: "auto", "disabled".
+func (o D1DatabaseReadReplicationOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v D1DatabaseReadReplication) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The type of test.
-func (o DeviceDexTestDataOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceDexTestData) *string { return v.Kind }).(pulumi.StringPtrOutput)
+type D1DatabaseReadReplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (D1DatabaseReadReplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**D1DatabaseReadReplication)(nil)).Elem()
 }
 
-// The HTTP request method type.
-func (o DeviceDexTestDataOutput) Method() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceDexTestData) *string { return v.Method }).(pulumi.StringPtrOutput)
-}
-
-type DeviceDexTestDataPtrOutput struct{ *pulumi.OutputState }
-
-func (DeviceDexTestDataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DeviceDexTestData)(nil)).Elem()
-}
-
-func (o DeviceDexTestDataPtrOutput) ToDeviceDexTestDataPtrOutput() DeviceDexTestDataPtrOutput {
+func (o D1DatabaseReadReplicationPtrOutput) ToD1DatabaseReadReplicationPtrOutput() D1DatabaseReadReplicationPtrOutput {
 	return o
 }
 
-func (o DeviceDexTestDataPtrOutput) ToDeviceDexTestDataPtrOutputWithContext(ctx context.Context) DeviceDexTestDataPtrOutput {
+func (o D1DatabaseReadReplicationPtrOutput) ToD1DatabaseReadReplicationPtrOutputWithContext(ctx context.Context) D1DatabaseReadReplicationPtrOutput {
 	return o
 }
 
-func (o DeviceDexTestDataPtrOutput) Elem() DeviceDexTestDataOutput {
-	return o.ApplyT(func(v *DeviceDexTestData) DeviceDexTestData {
+func (o D1DatabaseReadReplicationPtrOutput) Elem() D1DatabaseReadReplicationOutput {
+	return o.ApplyT(func(v *D1DatabaseReadReplication) D1DatabaseReadReplication {
 		if v != nil {
 			return *v
 		}
-		var ret DeviceDexTestData
+		var ret D1DatabaseReadReplication
 		return ret
-	}).(DeviceDexTestDataOutput)
+	}).(D1DatabaseReadReplicationOutput)
 }
 
-// The desired endpoint to test.
-func (o DeviceDexTestDataPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceDexTestData) *string {
+// The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+// Available values: "auto", "disabled".
+func (o D1DatabaseReadReplicationPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *D1DatabaseReadReplication) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Host
+		return &v.Mode
 	}).(pulumi.StringPtrOutput)
-}
-
-// The type of test.
-func (o DeviceDexTestDataPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceDexTestData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Kind
-	}).(pulumi.StringPtrOutput)
-}
-
-// The HTTP request method type.
-func (o DeviceDexTestDataPtrOutput) Method() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceDexTestData) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Method
-	}).(pulumi.StringPtrOutput)
-}
-
-type DeviceDexTestTargetPolicy struct {
-	// Whether the profile is the account default
-	Default *bool `pulumi:"default"`
-	// The id of the device settings profile
-	Id *string `pulumi:"id"`
-	// The name of the device settings profile
-	Name *string `pulumi:"name"`
-}
-
-// DeviceDexTestTargetPolicyInput is an input type that accepts DeviceDexTestTargetPolicyArgs and DeviceDexTestTargetPolicyOutput values.
-// You can construct a concrete instance of `DeviceDexTestTargetPolicyInput` via:
-//
-//	DeviceDexTestTargetPolicyArgs{...}
-type DeviceDexTestTargetPolicyInput interface {
-	pulumi.Input
-
-	ToDeviceDexTestTargetPolicyOutput() DeviceDexTestTargetPolicyOutput
-	ToDeviceDexTestTargetPolicyOutputWithContext(context.Context) DeviceDexTestTargetPolicyOutput
-}
-
-type DeviceDexTestTargetPolicyArgs struct {
-	// Whether the profile is the account default
-	Default pulumi.BoolPtrInput `pulumi:"default"`
-	// The id of the device settings profile
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the device settings profile
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (DeviceDexTestTargetPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceDexTestTargetPolicy)(nil)).Elem()
-}
-
-func (i DeviceDexTestTargetPolicyArgs) ToDeviceDexTestTargetPolicyOutput() DeviceDexTestTargetPolicyOutput {
-	return i.ToDeviceDexTestTargetPolicyOutputWithContext(context.Background())
-}
-
-func (i DeviceDexTestTargetPolicyArgs) ToDeviceDexTestTargetPolicyOutputWithContext(ctx context.Context) DeviceDexTestTargetPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestTargetPolicyOutput)
-}
-
-// DeviceDexTestTargetPolicyArrayInput is an input type that accepts DeviceDexTestTargetPolicyArray and DeviceDexTestTargetPolicyArrayOutput values.
-// You can construct a concrete instance of `DeviceDexTestTargetPolicyArrayInput` via:
-//
-//	DeviceDexTestTargetPolicyArray{ DeviceDexTestTargetPolicyArgs{...} }
-type DeviceDexTestTargetPolicyArrayInput interface {
-	pulumi.Input
-
-	ToDeviceDexTestTargetPolicyArrayOutput() DeviceDexTestTargetPolicyArrayOutput
-	ToDeviceDexTestTargetPolicyArrayOutputWithContext(context.Context) DeviceDexTestTargetPolicyArrayOutput
-}
-
-type DeviceDexTestTargetPolicyArray []DeviceDexTestTargetPolicyInput
-
-func (DeviceDexTestTargetPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeviceDexTestTargetPolicy)(nil)).Elem()
-}
-
-func (i DeviceDexTestTargetPolicyArray) ToDeviceDexTestTargetPolicyArrayOutput() DeviceDexTestTargetPolicyArrayOutput {
-	return i.ToDeviceDexTestTargetPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i DeviceDexTestTargetPolicyArray) ToDeviceDexTestTargetPolicyArrayOutputWithContext(ctx context.Context) DeviceDexTestTargetPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestTargetPolicyArrayOutput)
-}
-
-type DeviceDexTestTargetPolicyOutput struct{ *pulumi.OutputState }
-
-func (DeviceDexTestTargetPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceDexTestTargetPolicy)(nil)).Elem()
-}
-
-func (o DeviceDexTestTargetPolicyOutput) ToDeviceDexTestTargetPolicyOutput() DeviceDexTestTargetPolicyOutput {
-	return o
-}
-
-func (o DeviceDexTestTargetPolicyOutput) ToDeviceDexTestTargetPolicyOutputWithContext(ctx context.Context) DeviceDexTestTargetPolicyOutput {
-	return o
-}
-
-// Whether the profile is the account default
-func (o DeviceDexTestTargetPolicyOutput) Default() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DeviceDexTestTargetPolicy) *bool { return v.Default }).(pulumi.BoolPtrOutput)
-}
-
-// The id of the device settings profile
-func (o DeviceDexTestTargetPolicyOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceDexTestTargetPolicy) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The name of the device settings profile
-func (o DeviceDexTestTargetPolicyOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceDexTestTargetPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type DeviceDexTestTargetPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (DeviceDexTestTargetPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DeviceDexTestTargetPolicy)(nil)).Elem()
-}
-
-func (o DeviceDexTestTargetPolicyArrayOutput) ToDeviceDexTestTargetPolicyArrayOutput() DeviceDexTestTargetPolicyArrayOutput {
-	return o
-}
-
-func (o DeviceDexTestTargetPolicyArrayOutput) ToDeviceDexTestTargetPolicyArrayOutputWithContext(ctx context.Context) DeviceDexTestTargetPolicyArrayOutput {
-	return o
-}
-
-func (o DeviceDexTestTargetPolicyArrayOutput) Index(i pulumi.IntInput) DeviceDexTestTargetPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceDexTestTargetPolicy {
-		return vs[0].([]DeviceDexTestTargetPolicy)[vs[1].(int)]
-	}).(DeviceDexTestTargetPolicyOutput)
 }
 
 type DeviceManagedNetworksConfig struct {
@@ -46884,7 +46888,7 @@ func (o DevicePostureRuleInputLocationsPtrOutput) TrustStores() pulumi.StringArr
 }
 
 type DevicePostureRuleMatch struct {
-	// Available values: "windows", "mac", "linux", "android", "ios".
+	// Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
 	Platform *string `pulumi:"platform"`
 }
 
@@ -46900,7 +46904,7 @@ type DevicePostureRuleMatchInput interface {
 }
 
 type DevicePostureRuleMatchArgs struct {
-	// Available values: "windows", "mac", "linux", "android", "ios".
+	// Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
 }
 
@@ -46955,7 +46959,7 @@ func (o DevicePostureRuleMatchOutput) ToDevicePostureRuleMatchOutputWithContext(
 	return o
 }
 
-// Available values: "windows", "mac", "linux", "android", "ios".
+// Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
 func (o DevicePostureRuleMatchOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleMatch) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }
@@ -47552,7 +47556,7 @@ type DlpCustomProfileProfile struct {
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness *DlpCustomProfileProfileContextAwareness `pulumi:"contextAwareness"`
-	// The description of the profile
+	// The description of the profile.
 	Description *string                        `pulumi:"description"`
 	Entries     []DlpCustomProfileProfileEntry `pulumi:"entries"`
 	Name        string                         `pulumi:"name"`
@@ -47579,7 +47583,7 @@ type DlpCustomProfileProfileArgs struct {
 	ConfidenceThreshold pulumi.StringPtrInput `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness DlpCustomProfileProfileContextAwarenessPtrInput `pulumi:"contextAwareness"`
-	// The description of the profile
+	// The description of the profile.
 	Description pulumi.StringPtrInput                  `pulumi:"description"`
 	Entries     DlpCustomProfileProfileEntryArrayInput `pulumi:"entries"`
 	Name        pulumi.StringInput                     `pulumi:"name"`
@@ -47657,7 +47661,7 @@ func (o DlpCustomProfileProfileOutput) ContextAwareness() DlpCustomProfileProfil
 	return o.ApplyT(func(v DlpCustomProfileProfile) *DlpCustomProfileProfileContextAwareness { return v.ContextAwareness }).(DlpCustomProfileProfileContextAwarenessPtrOutput)
 }
 
-// The description of the profile
+// The description of the profile.
 func (o DlpCustomProfileProfileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DlpCustomProfileProfile) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -50225,8 +50229,10 @@ func (o EmailRoutingCatchAllMatcherArrayOutput) Index(i pulumi.IntInput) EmailRo
 }
 
 type EmailRoutingDnsError struct {
-	Code    *int    `pulumi:"code"`
-	Message *string `pulumi:"message"`
+	Code             *int                        `pulumi:"code"`
+	DocumentationUrl *string                     `pulumi:"documentationUrl"`
+	Message          *string                     `pulumi:"message"`
+	Source           *EmailRoutingDnsErrorSource `pulumi:"source"`
 }
 
 // EmailRoutingDnsErrorInput is an input type that accepts EmailRoutingDnsErrorArgs and EmailRoutingDnsErrorOutput values.
@@ -50241,8 +50247,10 @@ type EmailRoutingDnsErrorInput interface {
 }
 
 type EmailRoutingDnsErrorArgs struct {
-	Code    pulumi.IntPtrInput    `pulumi:"code"`
-	Message pulumi.StringPtrInput `pulumi:"message"`
+	Code             pulumi.IntPtrInput                 `pulumi:"code"`
+	DocumentationUrl pulumi.StringPtrInput              `pulumi:"documentationUrl"`
+	Message          pulumi.StringPtrInput              `pulumi:"message"`
+	Source           EmailRoutingDnsErrorSourcePtrInput `pulumi:"source"`
 }
 
 func (EmailRoutingDnsErrorArgs) ElementType() reflect.Type {
@@ -50300,8 +50308,16 @@ func (o EmailRoutingDnsErrorOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EmailRoutingDnsError) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+func (o EmailRoutingDnsErrorOutput) DocumentationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailRoutingDnsError) *string { return v.DocumentationUrl }).(pulumi.StringPtrOutput)
+}
+
 func (o EmailRoutingDnsErrorOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailRoutingDnsError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o EmailRoutingDnsErrorOutput) Source() EmailRoutingDnsErrorSourcePtrOutput {
+	return o.ApplyT(func(v EmailRoutingDnsError) *EmailRoutingDnsErrorSource { return v.Source }).(EmailRoutingDnsErrorSourcePtrOutput)
 }
 
 type EmailRoutingDnsErrorArrayOutput struct{ *pulumi.OutputState }
@@ -50324,9 +50340,144 @@ func (o EmailRoutingDnsErrorArrayOutput) Index(i pulumi.IntInput) EmailRoutingDn
 	}).(EmailRoutingDnsErrorOutput)
 }
 
+type EmailRoutingDnsErrorSource struct {
+	Pointer *string `pulumi:"pointer"`
+}
+
+// EmailRoutingDnsErrorSourceInput is an input type that accepts EmailRoutingDnsErrorSourceArgs and EmailRoutingDnsErrorSourceOutput values.
+// You can construct a concrete instance of `EmailRoutingDnsErrorSourceInput` via:
+//
+//	EmailRoutingDnsErrorSourceArgs{...}
+type EmailRoutingDnsErrorSourceInput interface {
+	pulumi.Input
+
+	ToEmailRoutingDnsErrorSourceOutput() EmailRoutingDnsErrorSourceOutput
+	ToEmailRoutingDnsErrorSourceOutputWithContext(context.Context) EmailRoutingDnsErrorSourceOutput
+}
+
+type EmailRoutingDnsErrorSourceArgs struct {
+	Pointer pulumi.StringPtrInput `pulumi:"pointer"`
+}
+
+func (EmailRoutingDnsErrorSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailRoutingDnsErrorSource)(nil)).Elem()
+}
+
+func (i EmailRoutingDnsErrorSourceArgs) ToEmailRoutingDnsErrorSourceOutput() EmailRoutingDnsErrorSourceOutput {
+	return i.ToEmailRoutingDnsErrorSourceOutputWithContext(context.Background())
+}
+
+func (i EmailRoutingDnsErrorSourceArgs) ToEmailRoutingDnsErrorSourceOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsErrorSourceOutput)
+}
+
+func (i EmailRoutingDnsErrorSourceArgs) ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput {
+	return i.ToEmailRoutingDnsErrorSourcePtrOutputWithContext(context.Background())
+}
+
+func (i EmailRoutingDnsErrorSourceArgs) ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsErrorSourceOutput).ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx)
+}
+
+// EmailRoutingDnsErrorSourcePtrInput is an input type that accepts EmailRoutingDnsErrorSourceArgs, EmailRoutingDnsErrorSourcePtr and EmailRoutingDnsErrorSourcePtrOutput values.
+// You can construct a concrete instance of `EmailRoutingDnsErrorSourcePtrInput` via:
+//
+//	        EmailRoutingDnsErrorSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmailRoutingDnsErrorSourcePtrInput interface {
+	pulumi.Input
+
+	ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput
+	ToEmailRoutingDnsErrorSourcePtrOutputWithContext(context.Context) EmailRoutingDnsErrorSourcePtrOutput
+}
+
+type emailRoutingDnsErrorSourcePtrType EmailRoutingDnsErrorSourceArgs
+
+func EmailRoutingDnsErrorSourcePtr(v *EmailRoutingDnsErrorSourceArgs) EmailRoutingDnsErrorSourcePtrInput {
+	return (*emailRoutingDnsErrorSourcePtrType)(v)
+}
+
+func (*emailRoutingDnsErrorSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailRoutingDnsErrorSource)(nil)).Elem()
+}
+
+func (i *emailRoutingDnsErrorSourcePtrType) ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput {
+	return i.ToEmailRoutingDnsErrorSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *emailRoutingDnsErrorSourcePtrType) ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsErrorSourcePtrOutput)
+}
+
+type EmailRoutingDnsErrorSourceOutput struct{ *pulumi.OutputState }
+
+func (EmailRoutingDnsErrorSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailRoutingDnsErrorSource)(nil)).Elem()
+}
+
+func (o EmailRoutingDnsErrorSourceOutput) ToEmailRoutingDnsErrorSourceOutput() EmailRoutingDnsErrorSourceOutput {
+	return o
+}
+
+func (o EmailRoutingDnsErrorSourceOutput) ToEmailRoutingDnsErrorSourceOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourceOutput {
+	return o
+}
+
+func (o EmailRoutingDnsErrorSourceOutput) ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput {
+	return o.ToEmailRoutingDnsErrorSourcePtrOutputWithContext(context.Background())
+}
+
+func (o EmailRoutingDnsErrorSourceOutput) ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailRoutingDnsErrorSource) *EmailRoutingDnsErrorSource {
+		return &v
+	}).(EmailRoutingDnsErrorSourcePtrOutput)
+}
+
+func (o EmailRoutingDnsErrorSourceOutput) Pointer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailRoutingDnsErrorSource) *string { return v.Pointer }).(pulumi.StringPtrOutput)
+}
+
+type EmailRoutingDnsErrorSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (EmailRoutingDnsErrorSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailRoutingDnsErrorSource)(nil)).Elem()
+}
+
+func (o EmailRoutingDnsErrorSourcePtrOutput) ToEmailRoutingDnsErrorSourcePtrOutput() EmailRoutingDnsErrorSourcePtrOutput {
+	return o
+}
+
+func (o EmailRoutingDnsErrorSourcePtrOutput) ToEmailRoutingDnsErrorSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsErrorSourcePtrOutput {
+	return o
+}
+
+func (o EmailRoutingDnsErrorSourcePtrOutput) Elem() EmailRoutingDnsErrorSourceOutput {
+	return o.ApplyT(func(v *EmailRoutingDnsErrorSource) EmailRoutingDnsErrorSource {
+		if v != nil {
+			return *v
+		}
+		var ret EmailRoutingDnsErrorSource
+		return ret
+	}).(EmailRoutingDnsErrorSourceOutput)
+}
+
+func (o EmailRoutingDnsErrorSourcePtrOutput) Pointer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingDnsErrorSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pointer
+	}).(pulumi.StringPtrOutput)
+}
+
 type EmailRoutingDnsMessage struct {
-	Code    *int    `pulumi:"code"`
-	Message *string `pulumi:"message"`
+	Code             *int                          `pulumi:"code"`
+	DocumentationUrl *string                       `pulumi:"documentationUrl"`
+	Message          *string                       `pulumi:"message"`
+	Source           *EmailRoutingDnsMessageSource `pulumi:"source"`
 }
 
 // EmailRoutingDnsMessageInput is an input type that accepts EmailRoutingDnsMessageArgs and EmailRoutingDnsMessageOutput values.
@@ -50341,8 +50492,10 @@ type EmailRoutingDnsMessageInput interface {
 }
 
 type EmailRoutingDnsMessageArgs struct {
-	Code    pulumi.IntPtrInput    `pulumi:"code"`
-	Message pulumi.StringPtrInput `pulumi:"message"`
+	Code             pulumi.IntPtrInput                   `pulumi:"code"`
+	DocumentationUrl pulumi.StringPtrInput                `pulumi:"documentationUrl"`
+	Message          pulumi.StringPtrInput                `pulumi:"message"`
+	Source           EmailRoutingDnsMessageSourcePtrInput `pulumi:"source"`
 }
 
 func (EmailRoutingDnsMessageArgs) ElementType() reflect.Type {
@@ -50400,8 +50553,16 @@ func (o EmailRoutingDnsMessageOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EmailRoutingDnsMessage) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+func (o EmailRoutingDnsMessageOutput) DocumentationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailRoutingDnsMessage) *string { return v.DocumentationUrl }).(pulumi.StringPtrOutput)
+}
+
 func (o EmailRoutingDnsMessageOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailRoutingDnsMessage) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o EmailRoutingDnsMessageOutput) Source() EmailRoutingDnsMessageSourcePtrOutput {
+	return o.ApplyT(func(v EmailRoutingDnsMessage) *EmailRoutingDnsMessageSource { return v.Source }).(EmailRoutingDnsMessageSourcePtrOutput)
 }
 
 type EmailRoutingDnsMessageArrayOutput struct{ *pulumi.OutputState }
@@ -50422,6 +50583,139 @@ func (o EmailRoutingDnsMessageArrayOutput) Index(i pulumi.IntInput) EmailRouting
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailRoutingDnsMessage {
 		return vs[0].([]EmailRoutingDnsMessage)[vs[1].(int)]
 	}).(EmailRoutingDnsMessageOutput)
+}
+
+type EmailRoutingDnsMessageSource struct {
+	Pointer *string `pulumi:"pointer"`
+}
+
+// EmailRoutingDnsMessageSourceInput is an input type that accepts EmailRoutingDnsMessageSourceArgs and EmailRoutingDnsMessageSourceOutput values.
+// You can construct a concrete instance of `EmailRoutingDnsMessageSourceInput` via:
+//
+//	EmailRoutingDnsMessageSourceArgs{...}
+type EmailRoutingDnsMessageSourceInput interface {
+	pulumi.Input
+
+	ToEmailRoutingDnsMessageSourceOutput() EmailRoutingDnsMessageSourceOutput
+	ToEmailRoutingDnsMessageSourceOutputWithContext(context.Context) EmailRoutingDnsMessageSourceOutput
+}
+
+type EmailRoutingDnsMessageSourceArgs struct {
+	Pointer pulumi.StringPtrInput `pulumi:"pointer"`
+}
+
+func (EmailRoutingDnsMessageSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailRoutingDnsMessageSource)(nil)).Elem()
+}
+
+func (i EmailRoutingDnsMessageSourceArgs) ToEmailRoutingDnsMessageSourceOutput() EmailRoutingDnsMessageSourceOutput {
+	return i.ToEmailRoutingDnsMessageSourceOutputWithContext(context.Background())
+}
+
+func (i EmailRoutingDnsMessageSourceArgs) ToEmailRoutingDnsMessageSourceOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsMessageSourceOutput)
+}
+
+func (i EmailRoutingDnsMessageSourceArgs) ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput {
+	return i.ToEmailRoutingDnsMessageSourcePtrOutputWithContext(context.Background())
+}
+
+func (i EmailRoutingDnsMessageSourceArgs) ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsMessageSourceOutput).ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx)
+}
+
+// EmailRoutingDnsMessageSourcePtrInput is an input type that accepts EmailRoutingDnsMessageSourceArgs, EmailRoutingDnsMessageSourcePtr and EmailRoutingDnsMessageSourcePtrOutput values.
+// You can construct a concrete instance of `EmailRoutingDnsMessageSourcePtrInput` via:
+//
+//	        EmailRoutingDnsMessageSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type EmailRoutingDnsMessageSourcePtrInput interface {
+	pulumi.Input
+
+	ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput
+	ToEmailRoutingDnsMessageSourcePtrOutputWithContext(context.Context) EmailRoutingDnsMessageSourcePtrOutput
+}
+
+type emailRoutingDnsMessageSourcePtrType EmailRoutingDnsMessageSourceArgs
+
+func EmailRoutingDnsMessageSourcePtr(v *EmailRoutingDnsMessageSourceArgs) EmailRoutingDnsMessageSourcePtrInput {
+	return (*emailRoutingDnsMessageSourcePtrType)(v)
+}
+
+func (*emailRoutingDnsMessageSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailRoutingDnsMessageSource)(nil)).Elem()
+}
+
+func (i *emailRoutingDnsMessageSourcePtrType) ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput {
+	return i.ToEmailRoutingDnsMessageSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *emailRoutingDnsMessageSourcePtrType) ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingDnsMessageSourcePtrOutput)
+}
+
+type EmailRoutingDnsMessageSourceOutput struct{ *pulumi.OutputState }
+
+func (EmailRoutingDnsMessageSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EmailRoutingDnsMessageSource)(nil)).Elem()
+}
+
+func (o EmailRoutingDnsMessageSourceOutput) ToEmailRoutingDnsMessageSourceOutput() EmailRoutingDnsMessageSourceOutput {
+	return o
+}
+
+func (o EmailRoutingDnsMessageSourceOutput) ToEmailRoutingDnsMessageSourceOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourceOutput {
+	return o
+}
+
+func (o EmailRoutingDnsMessageSourceOutput) ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput {
+	return o.ToEmailRoutingDnsMessageSourcePtrOutputWithContext(context.Background())
+}
+
+func (o EmailRoutingDnsMessageSourceOutput) ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailRoutingDnsMessageSource) *EmailRoutingDnsMessageSource {
+		return &v
+	}).(EmailRoutingDnsMessageSourcePtrOutput)
+}
+
+func (o EmailRoutingDnsMessageSourceOutput) Pointer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailRoutingDnsMessageSource) *string { return v.Pointer }).(pulumi.StringPtrOutput)
+}
+
+type EmailRoutingDnsMessageSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (EmailRoutingDnsMessageSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EmailRoutingDnsMessageSource)(nil)).Elem()
+}
+
+func (o EmailRoutingDnsMessageSourcePtrOutput) ToEmailRoutingDnsMessageSourcePtrOutput() EmailRoutingDnsMessageSourcePtrOutput {
+	return o
+}
+
+func (o EmailRoutingDnsMessageSourcePtrOutput) ToEmailRoutingDnsMessageSourcePtrOutputWithContext(ctx context.Context) EmailRoutingDnsMessageSourcePtrOutput {
+	return o
+}
+
+func (o EmailRoutingDnsMessageSourcePtrOutput) Elem() EmailRoutingDnsMessageSourceOutput {
+	return o.ApplyT(func(v *EmailRoutingDnsMessageSource) EmailRoutingDnsMessageSource {
+		if v != nil {
+			return *v
+		}
+		var ret EmailRoutingDnsMessageSource
+		return ret
+	}).(EmailRoutingDnsMessageSourceOutput)
+}
+
+func (o EmailRoutingDnsMessageSourcePtrOutput) Pointer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EmailRoutingDnsMessageSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pointer
+	}).(pulumi.StringPtrOutput)
 }
 
 type EmailRoutingDnsResult struct {
@@ -50992,13 +51286,13 @@ func (o EmailRoutingDnsResultErrorMissingPtrOutput) Type() pulumi.StringPtrOutpu
 }
 
 type EmailRoutingDnsResultInfo struct {
-	// Total number of results for the requested service
+	// Total number of results for the requested service.
 	Count *float64 `pulumi:"count"`
-	// Current page within paginated list of results
+	// Current page within paginated list of results.
 	Page *float64 `pulumi:"page"`
-	// Number of results per page of results
+	// Number of results per page of results.
 	PerPage *float64 `pulumi:"perPage"`
-	// Total results available without any search parameters
+	// Total results available without any search parameters.
 	TotalCount *float64 `pulumi:"totalCount"`
 }
 
@@ -51014,13 +51308,13 @@ type EmailRoutingDnsResultInfoInput interface {
 }
 
 type EmailRoutingDnsResultInfoArgs struct {
-	// Total number of results for the requested service
+	// Total number of results for the requested service.
 	Count pulumi.Float64PtrInput `pulumi:"count"`
-	// Current page within paginated list of results
+	// Current page within paginated list of results.
 	Page pulumi.Float64PtrInput `pulumi:"page"`
-	// Number of results per page of results
+	// Number of results per page of results.
 	PerPage pulumi.Float64PtrInput `pulumi:"perPage"`
-	// Total results available without any search parameters
+	// Total results available without any search parameters.
 	TotalCount pulumi.Float64PtrInput `pulumi:"totalCount"`
 }
 
@@ -51101,22 +51395,22 @@ func (o EmailRoutingDnsResultInfoOutput) ToEmailRoutingDnsResultInfoPtrOutputWit
 	}).(EmailRoutingDnsResultInfoPtrOutput)
 }
 
-// Total number of results for the requested service
+// Total number of results for the requested service.
 func (o EmailRoutingDnsResultInfoOutput) Count() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
 }
 
-// Current page within paginated list of results
+// Current page within paginated list of results.
 func (o EmailRoutingDnsResultInfoOutput) Page() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.Page }).(pulumi.Float64PtrOutput)
 }
 
-// Number of results per page of results
+// Number of results per page of results.
 func (o EmailRoutingDnsResultInfoOutput) PerPage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.PerPage }).(pulumi.Float64PtrOutput)
 }
 
-// Total results available without any search parameters
+// Total results available without any search parameters.
 func (o EmailRoutingDnsResultInfoOutput) TotalCount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EmailRoutingDnsResultInfo) *float64 { return v.TotalCount }).(pulumi.Float64PtrOutput)
 }
@@ -51145,7 +51439,7 @@ func (o EmailRoutingDnsResultInfoPtrOutput) Elem() EmailRoutingDnsResultInfoOutp
 	}).(EmailRoutingDnsResultInfoOutput)
 }
 
-// Total number of results for the requested service
+// Total number of results for the requested service.
 func (o EmailRoutingDnsResultInfoPtrOutput) Count() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
 		if v == nil {
@@ -51155,7 +51449,7 @@ func (o EmailRoutingDnsResultInfoPtrOutput) Count() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Current page within paginated list of results
+// Current page within paginated list of results.
 func (o EmailRoutingDnsResultInfoPtrOutput) Page() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
 		if v == nil {
@@ -51165,7 +51459,7 @@ func (o EmailRoutingDnsResultInfoPtrOutput) Page() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Number of results per page of results
+// Number of results per page of results.
 func (o EmailRoutingDnsResultInfoPtrOutput) PerPage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
 		if v == nil {
@@ -51175,7 +51469,7 @@ func (o EmailRoutingDnsResultInfoPtrOutput) PerPage() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Total results available without any search parameters
+// Total results available without any search parameters.
 func (o EmailRoutingDnsResultInfoPtrOutput) TotalCount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EmailRoutingDnsResultInfo) *float64 {
 		if v == nil {
@@ -51430,12 +51724,12 @@ func (o EmailRoutingRuleActionArrayOutput) Index(i pulumi.IntInput) EmailRouting
 type EmailRoutingRuleMatcher struct {
 	// Field for type matcher.
 	// Available values: "to".
-	Field string `pulumi:"field"`
+	Field *string `pulumi:"field"`
 	// Type of matcher.
 	// Available values: "literal".
 	Type string `pulumi:"type"`
 	// Value for matcher.
-	Value string `pulumi:"value"`
+	Value *string `pulumi:"value"`
 }
 
 // EmailRoutingRuleMatcherInput is an input type that accepts EmailRoutingRuleMatcherArgs and EmailRoutingRuleMatcherOutput values.
@@ -51452,12 +51746,12 @@ type EmailRoutingRuleMatcherInput interface {
 type EmailRoutingRuleMatcherArgs struct {
 	// Field for type matcher.
 	// Available values: "to".
-	Field pulumi.StringInput `pulumi:"field"`
+	Field pulumi.StringPtrInput `pulumi:"field"`
 	// Type of matcher.
 	// Available values: "literal".
 	Type pulumi.StringInput `pulumi:"type"`
 	// Value for matcher.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (EmailRoutingRuleMatcherArgs) ElementType() reflect.Type {
@@ -51513,8 +51807,8 @@ func (o EmailRoutingRuleMatcherOutput) ToEmailRoutingRuleMatcherOutputWithContex
 
 // Field for type matcher.
 // Available values: "to".
-func (o EmailRoutingRuleMatcherOutput) Field() pulumi.StringOutput {
-	return o.ApplyT(func(v EmailRoutingRuleMatcher) string { return v.Field }).(pulumi.StringOutput)
+func (o EmailRoutingRuleMatcherOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailRoutingRuleMatcher) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
 // Type of matcher.
@@ -51524,8 +51818,8 @@ func (o EmailRoutingRuleMatcherOutput) Type() pulumi.StringOutput {
 }
 
 // Value for matcher.
-func (o EmailRoutingRuleMatcherOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v EmailRoutingRuleMatcher) string { return v.Value }).(pulumi.StringOutput)
+func (o EmailRoutingRuleMatcherOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EmailRoutingRuleMatcher) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 type EmailRoutingRuleMatcherArrayOutput struct{ *pulumi.OutputState }
@@ -52846,6 +53140,181 @@ func (o HyperdriveConfigCachingPtrOutput) StaleWhileRevalidate() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+type HyperdriveConfigMtls struct {
+	// CA certificate ID
+	CaCertificateId *string `pulumi:"caCertificateId"`
+	// mTLS certificate ID
+	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
+	// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+	Sslmode *string `pulumi:"sslmode"`
+}
+
+// HyperdriveConfigMtlsInput is an input type that accepts HyperdriveConfigMtlsArgs and HyperdriveConfigMtlsOutput values.
+// You can construct a concrete instance of `HyperdriveConfigMtlsInput` via:
+//
+//	HyperdriveConfigMtlsArgs{...}
+type HyperdriveConfigMtlsInput interface {
+	pulumi.Input
+
+	ToHyperdriveConfigMtlsOutput() HyperdriveConfigMtlsOutput
+	ToHyperdriveConfigMtlsOutputWithContext(context.Context) HyperdriveConfigMtlsOutput
+}
+
+type HyperdriveConfigMtlsArgs struct {
+	// CA certificate ID
+	CaCertificateId pulumi.StringPtrInput `pulumi:"caCertificateId"`
+	// mTLS certificate ID
+	MtlsCertificateId pulumi.StringPtrInput `pulumi:"mtlsCertificateId"`
+	// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+	Sslmode pulumi.StringPtrInput `pulumi:"sslmode"`
+}
+
+func (HyperdriveConfigMtlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperdriveConfigMtls)(nil)).Elem()
+}
+
+func (i HyperdriveConfigMtlsArgs) ToHyperdriveConfigMtlsOutput() HyperdriveConfigMtlsOutput {
+	return i.ToHyperdriveConfigMtlsOutputWithContext(context.Background())
+}
+
+func (i HyperdriveConfigMtlsArgs) ToHyperdriveConfigMtlsOutputWithContext(ctx context.Context) HyperdriveConfigMtlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigMtlsOutput)
+}
+
+func (i HyperdriveConfigMtlsArgs) ToHyperdriveConfigMtlsPtrOutput() HyperdriveConfigMtlsPtrOutput {
+	return i.ToHyperdriveConfigMtlsPtrOutputWithContext(context.Background())
+}
+
+func (i HyperdriveConfigMtlsArgs) ToHyperdriveConfigMtlsPtrOutputWithContext(ctx context.Context) HyperdriveConfigMtlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigMtlsOutput).ToHyperdriveConfigMtlsPtrOutputWithContext(ctx)
+}
+
+// HyperdriveConfigMtlsPtrInput is an input type that accepts HyperdriveConfigMtlsArgs, HyperdriveConfigMtlsPtr and HyperdriveConfigMtlsPtrOutput values.
+// You can construct a concrete instance of `HyperdriveConfigMtlsPtrInput` via:
+//
+//	        HyperdriveConfigMtlsArgs{...}
+//
+//	or:
+//
+//	        nil
+type HyperdriveConfigMtlsPtrInput interface {
+	pulumi.Input
+
+	ToHyperdriveConfigMtlsPtrOutput() HyperdriveConfigMtlsPtrOutput
+	ToHyperdriveConfigMtlsPtrOutputWithContext(context.Context) HyperdriveConfigMtlsPtrOutput
+}
+
+type hyperdriveConfigMtlsPtrType HyperdriveConfigMtlsArgs
+
+func HyperdriveConfigMtlsPtr(v *HyperdriveConfigMtlsArgs) HyperdriveConfigMtlsPtrInput {
+	return (*hyperdriveConfigMtlsPtrType)(v)
+}
+
+func (*hyperdriveConfigMtlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HyperdriveConfigMtls)(nil)).Elem()
+}
+
+func (i *hyperdriveConfigMtlsPtrType) ToHyperdriveConfigMtlsPtrOutput() HyperdriveConfigMtlsPtrOutput {
+	return i.ToHyperdriveConfigMtlsPtrOutputWithContext(context.Background())
+}
+
+func (i *hyperdriveConfigMtlsPtrType) ToHyperdriveConfigMtlsPtrOutputWithContext(ctx context.Context) HyperdriveConfigMtlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigMtlsPtrOutput)
+}
+
+type HyperdriveConfigMtlsOutput struct{ *pulumi.OutputState }
+
+func (HyperdriveConfigMtlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperdriveConfigMtls)(nil)).Elem()
+}
+
+func (o HyperdriveConfigMtlsOutput) ToHyperdriveConfigMtlsOutput() HyperdriveConfigMtlsOutput {
+	return o
+}
+
+func (o HyperdriveConfigMtlsOutput) ToHyperdriveConfigMtlsOutputWithContext(ctx context.Context) HyperdriveConfigMtlsOutput {
+	return o
+}
+
+func (o HyperdriveConfigMtlsOutput) ToHyperdriveConfigMtlsPtrOutput() HyperdriveConfigMtlsPtrOutput {
+	return o.ToHyperdriveConfigMtlsPtrOutputWithContext(context.Background())
+}
+
+func (o HyperdriveConfigMtlsOutput) ToHyperdriveConfigMtlsPtrOutputWithContext(ctx context.Context) HyperdriveConfigMtlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HyperdriveConfigMtls) *HyperdriveConfigMtls {
+		return &v
+	}).(HyperdriveConfigMtlsPtrOutput)
+}
+
+// CA certificate ID
+func (o HyperdriveConfigMtlsOutput) CaCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigMtls) *string { return v.CaCertificateId }).(pulumi.StringPtrOutput)
+}
+
+// mTLS certificate ID
+func (o HyperdriveConfigMtlsOutput) MtlsCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigMtls) *string { return v.MtlsCertificateId }).(pulumi.StringPtrOutput)
+}
+
+// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+func (o HyperdriveConfigMtlsOutput) Sslmode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigMtls) *string { return v.Sslmode }).(pulumi.StringPtrOutput)
+}
+
+type HyperdriveConfigMtlsPtrOutput struct{ *pulumi.OutputState }
+
+func (HyperdriveConfigMtlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HyperdriveConfigMtls)(nil)).Elem()
+}
+
+func (o HyperdriveConfigMtlsPtrOutput) ToHyperdriveConfigMtlsPtrOutput() HyperdriveConfigMtlsPtrOutput {
+	return o
+}
+
+func (o HyperdriveConfigMtlsPtrOutput) ToHyperdriveConfigMtlsPtrOutputWithContext(ctx context.Context) HyperdriveConfigMtlsPtrOutput {
+	return o
+}
+
+func (o HyperdriveConfigMtlsPtrOutput) Elem() HyperdriveConfigMtlsOutput {
+	return o.ApplyT(func(v *HyperdriveConfigMtls) HyperdriveConfigMtls {
+		if v != nil {
+			return *v
+		}
+		var ret HyperdriveConfigMtls
+		return ret
+	}).(HyperdriveConfigMtlsOutput)
+}
+
+// CA certificate ID
+func (o HyperdriveConfigMtlsPtrOutput) CaCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigMtls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertificateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// mTLS certificate ID
+func (o HyperdriveConfigMtlsPtrOutput) MtlsCertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigMtls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MtlsCertificateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+func (o HyperdriveConfigMtlsPtrOutput) Sslmode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigMtls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sslmode
+	}).(pulumi.StringPtrOutput)
+}
+
 type HyperdriveConfigOrigin struct {
 	// The Client ID of the Access token to use when connecting to the origin database.
 	AccessClientId *string `pulumi:"accessClientId"`
@@ -52860,7 +53329,7 @@ type HyperdriveConfigOrigin struct {
 	// The port (default: 5432 for Postgres) of your origin database.
 	Port *int `pulumi:"port"`
 	// Specifies the URL scheme used to connect to your origin database.
-	// Available values: "postgres", "postgresql".
+	// Available values: "postgres", "postgresql", "mysql".
 	Scheme string `pulumi:"scheme"`
 	// The user of your origin database.
 	User string `pulumi:"user"`
@@ -52891,7 +53360,7 @@ type HyperdriveConfigOriginArgs struct {
 	// The port (default: 5432 for Postgres) of your origin database.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Specifies the URL scheme used to connect to your origin database.
-	// Available values: "postgres", "postgresql".
+	// Available values: "postgres", "postgresql", "mysql".
 	Scheme pulumi.StringInput `pulumi:"scheme"`
 	// The user of your origin database.
 	User pulumi.StringInput `pulumi:"user"`
@@ -53005,7 +53474,7 @@ func (o HyperdriveConfigOriginOutput) Port() pulumi.IntPtrOutput {
 }
 
 // Specifies the URL scheme used to connect to your origin database.
-// Available values: "postgres", "postgresql".
+// Available values: "postgres", "postgresql", "mysql".
 func (o HyperdriveConfigOriginOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Scheme }).(pulumi.StringOutput)
 }
@@ -53100,7 +53569,7 @@ func (o HyperdriveConfigOriginPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 // Specifies the URL scheme used to connect to your origin database.
-// Available values: "postgres", "postgresql".
+// Available values: "postgres", "postgresql", "mysql".
 func (o HyperdriveConfigOriginPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
 		if v == nil {
@@ -55185,6 +55654,8 @@ type LoadBalancerPoolOrigin struct {
 	Header *LoadBalancerPoolOriginHeader `pulumi:"header"`
 	// A human-identifiable name for the origin.
 	Name *string `pulumi:"name"`
+	// The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+	Port *int `pulumi:"port"`
 	// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
 	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 	// The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
@@ -55213,6 +55684,8 @@ type LoadBalancerPoolOriginArgs struct {
 	Header LoadBalancerPoolOriginHeaderPtrInput `pulumi:"header"`
 	// A human-identifiable name for the origin.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
 	VirtualNetworkId pulumi.StringPtrInput `pulumi:"virtualNetworkId"`
 	// The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
@@ -55293,6 +55766,11 @@ func (o LoadBalancerPoolOriginOutput) Header() LoadBalancerPoolOriginHeaderPtrOu
 // A human-identifiable name for the origin.
 func (o LoadBalancerPoolOriginOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOrigin) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+func (o LoadBalancerPoolOriginOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPoolOrigin) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
@@ -59723,7 +60201,7 @@ type MagicWanGreTunnelGreTunnel struct {
 	// An optional description of the GRE tunnel.
 	Description *string                                `pulumi:"description"`
 	HealthCheck *MagicWanGreTunnelGreTunnelHealthCheck `pulumi:"healthCheck"`
-	// Tunnel identifier tag.
+	// Identifier
 	Id *string `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress *string `pulumi:"interfaceAddress"`
@@ -59758,7 +60236,7 @@ type MagicWanGreTunnelGreTunnelArgs struct {
 	// An optional description of the GRE tunnel.
 	Description pulumi.StringPtrInput                         `pulumi:"description"`
 	HealthCheck MagicWanGreTunnelGreTunnelHealthCheckPtrInput `pulumi:"healthCheck"`
-	// Tunnel identifier tag.
+	// Identifier
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringPtrInput `pulumi:"interfaceAddress"`
@@ -59825,31 +60303,6 @@ func (i *magicWanGreTunnelGreTunnelPtrType) ToMagicWanGreTunnelGreTunnelPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelPtrOutput)
 }
 
-// MagicWanGreTunnelGreTunnelArrayInput is an input type that accepts MagicWanGreTunnelGreTunnelArray and MagicWanGreTunnelGreTunnelArrayOutput values.
-// You can construct a concrete instance of `MagicWanGreTunnelGreTunnelArrayInput` via:
-//
-//	MagicWanGreTunnelGreTunnelArray{ MagicWanGreTunnelGreTunnelArgs{...} }
-type MagicWanGreTunnelGreTunnelArrayInput interface {
-	pulumi.Input
-
-	ToMagicWanGreTunnelGreTunnelArrayOutput() MagicWanGreTunnelGreTunnelArrayOutput
-	ToMagicWanGreTunnelGreTunnelArrayOutputWithContext(context.Context) MagicWanGreTunnelGreTunnelArrayOutput
-}
-
-type MagicWanGreTunnelGreTunnelArray []MagicWanGreTunnelGreTunnelInput
-
-func (MagicWanGreTunnelGreTunnelArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MagicWanGreTunnelGreTunnel)(nil)).Elem()
-}
-
-func (i MagicWanGreTunnelGreTunnelArray) ToMagicWanGreTunnelGreTunnelArrayOutput() MagicWanGreTunnelGreTunnelArrayOutput {
-	return i.ToMagicWanGreTunnelGreTunnelArrayOutputWithContext(context.Background())
-}
-
-func (i MagicWanGreTunnelGreTunnelArray) ToMagicWanGreTunnelGreTunnelArrayOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanGreTunnelGreTunnelArrayOutput)
-}
-
 type MagicWanGreTunnelGreTunnelOutput struct{ *pulumi.OutputState }
 
 func (MagicWanGreTunnelGreTunnelOutput) ElementType() reflect.Type {
@@ -59898,7 +60351,7 @@ func (o MagicWanGreTunnelGreTunnelOutput) HealthCheck() MagicWanGreTunnelGreTunn
 	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *MagicWanGreTunnelGreTunnelHealthCheck { return v.HealthCheck }).(MagicWanGreTunnelGreTunnelHealthCheckPtrOutput)
 }
 
-// Tunnel identifier tag.
+// Identifier
 func (o MagicWanGreTunnelGreTunnelOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MagicWanGreTunnelGreTunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -60001,7 +60454,7 @@ func (o MagicWanGreTunnelGreTunnelPtrOutput) HealthCheck() MagicWanGreTunnelGreT
 	}).(MagicWanGreTunnelGreTunnelHealthCheckPtrOutput)
 }
 
-// Tunnel identifier tag.
+// Identifier
 func (o MagicWanGreTunnelGreTunnelPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnelGreTunnel) *string {
 		if v == nil {
@@ -60059,26 +60512,6 @@ func (o MagicWanGreTunnelGreTunnelPtrOutput) Ttl() pulumi.IntPtrOutput {
 		}
 		return v.Ttl
 	}).(pulumi.IntPtrOutput)
-}
-
-type MagicWanGreTunnelGreTunnelArrayOutput struct{ *pulumi.OutputState }
-
-func (MagicWanGreTunnelGreTunnelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MagicWanGreTunnelGreTunnel)(nil)).Elem()
-}
-
-func (o MagicWanGreTunnelGreTunnelArrayOutput) ToMagicWanGreTunnelGreTunnelArrayOutput() MagicWanGreTunnelGreTunnelArrayOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelArrayOutput) ToMagicWanGreTunnelGreTunnelArrayOutputWithContext(ctx context.Context) MagicWanGreTunnelGreTunnelArrayOutput {
-	return o
-}
-
-func (o MagicWanGreTunnelGreTunnelArrayOutput) Index(i pulumi.IntInput) MagicWanGreTunnelGreTunnelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MagicWanGreTunnelGreTunnel {
-		return vs[0].([]MagicWanGreTunnelGreTunnel)[vs[1].(int)]
-	}).(MagicWanGreTunnelGreTunnelOutput)
 }
 
 type MagicWanGreTunnelGreTunnelHealthCheck struct {
@@ -60855,7 +61288,7 @@ type MagicWanGreTunnelModifiedGreTunnel struct {
 	// An optional description of the GRE tunnel.
 	Description *string                                        `pulumi:"description"`
 	HealthCheck *MagicWanGreTunnelModifiedGreTunnelHealthCheck `pulumi:"healthCheck"`
-	// Tunnel identifier tag.
+	// Identifier
 	Id *string `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress *string `pulumi:"interfaceAddress"`
@@ -60890,7 +61323,7 @@ type MagicWanGreTunnelModifiedGreTunnelArgs struct {
 	// An optional description of the GRE tunnel.
 	Description pulumi.StringPtrInput                                 `pulumi:"description"`
 	HealthCheck MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrInput `pulumi:"healthCheck"`
-	// Tunnel identifier tag.
+	// Identifier
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringPtrInput `pulumi:"interfaceAddress"`
@@ -61007,7 +61440,7 @@ func (o MagicWanGreTunnelModifiedGreTunnelOutput) HealthCheck() MagicWanGreTunne
 	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput)
 }
 
-// Tunnel identifier tag.
+// Identifier
 func (o MagicWanGreTunnelModifiedGreTunnelOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MagicWanGreTunnelModifiedGreTunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -61110,7 +61543,7 @@ func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) HealthCheck() MagicWanGreTu
 	}).(MagicWanGreTunnelModifiedGreTunnelHealthCheckPtrOutput)
 }
 
-// Tunnel identifier tag.
+// Identifier
 func (o MagicWanGreTunnelModifiedGreTunnelPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanGreTunnelModifiedGreTunnel) *string {
 		if v == nil {
@@ -61946,7 +62379,7 @@ type MagicWanIpsecTunnelIpsecTunnel struct {
 	// An optional description forthe IPsec tunnel.
 	Description *string                                    `pulumi:"description"`
 	HealthCheck *MagicWanIpsecTunnelIpsecTunnelHealthCheck `pulumi:"healthCheck"`
-	// Tunnel identifier tag.
+	// Identifier
 	Id *string `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress *string `pulumi:"interfaceAddress"`
@@ -61983,7 +62416,7 @@ type MagicWanIpsecTunnelIpsecTunnelArgs struct {
 	// An optional description forthe IPsec tunnel.
 	Description pulumi.StringPtrInput                             `pulumi:"description"`
 	HealthCheck MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrInput `pulumi:"healthCheck"`
-	// Tunnel identifier tag.
+	// Identifier
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringPtrInput `pulumi:"interfaceAddress"`
@@ -62050,31 +62483,6 @@ func (i *magicWanIpsecTunnelIpsecTunnelPtrType) ToMagicWanIpsecTunnelIpsecTunnel
 	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelPtrOutput)
 }
 
-// MagicWanIpsecTunnelIpsecTunnelArrayInput is an input type that accepts MagicWanIpsecTunnelIpsecTunnelArray and MagicWanIpsecTunnelIpsecTunnelArrayOutput values.
-// You can construct a concrete instance of `MagicWanIpsecTunnelIpsecTunnelArrayInput` via:
-//
-//	MagicWanIpsecTunnelIpsecTunnelArray{ MagicWanIpsecTunnelIpsecTunnelArgs{...} }
-type MagicWanIpsecTunnelIpsecTunnelArrayInput interface {
-	pulumi.Input
-
-	ToMagicWanIpsecTunnelIpsecTunnelArrayOutput() MagicWanIpsecTunnelIpsecTunnelArrayOutput
-	ToMagicWanIpsecTunnelIpsecTunnelArrayOutputWithContext(context.Context) MagicWanIpsecTunnelIpsecTunnelArrayOutput
-}
-
-type MagicWanIpsecTunnelIpsecTunnelArray []MagicWanIpsecTunnelIpsecTunnelInput
-
-func (MagicWanIpsecTunnelIpsecTunnelArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MagicWanIpsecTunnelIpsecTunnel)(nil)).Elem()
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelArray) ToMagicWanIpsecTunnelIpsecTunnelArrayOutput() MagicWanIpsecTunnelIpsecTunnelArrayOutput {
-	return i.ToMagicWanIpsecTunnelIpsecTunnelArrayOutputWithContext(context.Background())
-}
-
-func (i MagicWanIpsecTunnelIpsecTunnelArray) ToMagicWanIpsecTunnelIpsecTunnelArrayOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelIpsecTunnelArrayOutput)
-}
-
 type MagicWanIpsecTunnelIpsecTunnelOutput struct{ *pulumi.OutputState }
 
 func (MagicWanIpsecTunnelIpsecTunnelOutput) ElementType() reflect.Type {
@@ -62130,7 +62538,7 @@ func (o MagicWanIpsecTunnelIpsecTunnelOutput) HealthCheck() MagicWanIpsecTunnelI
 	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput)
 }
 
-// Tunnel identifier tag.
+// Identifier
 func (o MagicWanIpsecTunnelIpsecTunnelOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MagicWanIpsecTunnelIpsecTunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -62245,7 +62653,7 @@ func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) HealthCheck() MagicWanIpsecTunn
 	}).(MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput)
 }
 
-// Tunnel identifier tag.
+// Identifier
 func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnelIpsecTunnel) *string {
 		if v == nil {
@@ -62303,26 +62711,6 @@ func (o MagicWanIpsecTunnelIpsecTunnelPtrOutput) ReplayProtection() pulumi.BoolP
 		}
 		return v.ReplayProtection
 	}).(pulumi.BoolPtrOutput)
-}
-
-type MagicWanIpsecTunnelIpsecTunnelArrayOutput struct{ *pulumi.OutputState }
-
-func (MagicWanIpsecTunnelIpsecTunnelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MagicWanIpsecTunnelIpsecTunnel)(nil)).Elem()
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelArrayOutput) ToMagicWanIpsecTunnelIpsecTunnelArrayOutput() MagicWanIpsecTunnelIpsecTunnelArrayOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelArrayOutput) ToMagicWanIpsecTunnelIpsecTunnelArrayOutputWithContext(ctx context.Context) MagicWanIpsecTunnelIpsecTunnelArrayOutput {
-	return o
-}
-
-func (o MagicWanIpsecTunnelIpsecTunnelArrayOutput) Index(i pulumi.IntInput) MagicWanIpsecTunnelIpsecTunnelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MagicWanIpsecTunnelIpsecTunnel {
-		return vs[0].([]MagicWanIpsecTunnelIpsecTunnel)[vs[1].(int)]
-	}).(MagicWanIpsecTunnelIpsecTunnelOutput)
 }
 
 type MagicWanIpsecTunnelIpsecTunnelHealthCheck struct {
@@ -62857,7 +63245,7 @@ type MagicWanIpsecTunnelModifiedIpsecTunnel struct {
 	// An optional description forthe IPsec tunnel.
 	Description *string                                            `pulumi:"description"`
 	HealthCheck *MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck `pulumi:"healthCheck"`
-	// Tunnel identifier tag.
+	// Identifier
 	Id *string `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress *string `pulumi:"interfaceAddress"`
@@ -62894,7 +63282,7 @@ type MagicWanIpsecTunnelModifiedIpsecTunnelArgs struct {
 	// An optional description forthe IPsec tunnel.
 	Description pulumi.StringPtrInput                                     `pulumi:"description"`
 	HealthCheck MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrInput `pulumi:"healthCheck"`
-	// Tunnel identifier tag.
+	// Identifier
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
 	InterfaceAddress pulumi.StringPtrInput `pulumi:"interfaceAddress"`
@@ -63016,7 +63404,7 @@ func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) HealthCheck() MagicWanIpse
 	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput)
 }
 
-// Tunnel identifier tag.
+// Identifier
 func (o MagicWanIpsecTunnelModifiedIpsecTunnelOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MagicWanIpsecTunnelModifiedIpsecTunnel) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -63131,7 +63519,7 @@ func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) HealthCheck() MagicWanI
 	}).(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckPtrOutput)
 }
 
-// Tunnel identifier tag.
+// Identifier
 func (o MagicWanIpsecTunnelModifiedIpsecTunnelPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MagicWanIpsecTunnelModifiedIpsecTunnel) *string {
 		if v == nil {
@@ -63711,6 +64099,143 @@ func (o MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput) LastGenerate
 	}).(pulumi.StringPtrOutput)
 }
 
+type MagicWanIpsecTunnelPskMetadata struct {
+	// The date and time the tunnel was last modified.
+	LastGeneratedOn *string `pulumi:"lastGeneratedOn"`
+}
+
+// MagicWanIpsecTunnelPskMetadataInput is an input type that accepts MagicWanIpsecTunnelPskMetadataArgs and MagicWanIpsecTunnelPskMetadataOutput values.
+// You can construct a concrete instance of `MagicWanIpsecTunnelPskMetadataInput` via:
+//
+//	MagicWanIpsecTunnelPskMetadataArgs{...}
+type MagicWanIpsecTunnelPskMetadataInput interface {
+	pulumi.Input
+
+	ToMagicWanIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelPskMetadataOutput
+	ToMagicWanIpsecTunnelPskMetadataOutputWithContext(context.Context) MagicWanIpsecTunnelPskMetadataOutput
+}
+
+type MagicWanIpsecTunnelPskMetadataArgs struct {
+	// The date and time the tunnel was last modified.
+	LastGeneratedOn pulumi.StringPtrInput `pulumi:"lastGeneratedOn"`
+}
+
+func (MagicWanIpsecTunnelPskMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanIpsecTunnelPskMetadata)(nil)).Elem()
+}
+
+func (i MagicWanIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelPskMetadataOutput {
+	return i.ToMagicWanIpsecTunnelPskMetadataOutputWithContext(context.Background())
+}
+
+func (i MagicWanIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelPskMetadataOutputWithContext(ctx context.Context) MagicWanIpsecTunnelPskMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelPskMetadataOutput)
+}
+
+func (i MagicWanIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelPskMetadataPtrOutput {
+	return i.ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i MagicWanIpsecTunnelPskMetadataArgs) ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelPskMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelPskMetadataOutput).ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(ctx)
+}
+
+// MagicWanIpsecTunnelPskMetadataPtrInput is an input type that accepts MagicWanIpsecTunnelPskMetadataArgs, MagicWanIpsecTunnelPskMetadataPtr and MagicWanIpsecTunnelPskMetadataPtrOutput values.
+// You can construct a concrete instance of `MagicWanIpsecTunnelPskMetadataPtrInput` via:
+//
+//	        MagicWanIpsecTunnelPskMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type MagicWanIpsecTunnelPskMetadataPtrInput interface {
+	pulumi.Input
+
+	ToMagicWanIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelPskMetadataPtrOutput
+	ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(context.Context) MagicWanIpsecTunnelPskMetadataPtrOutput
+}
+
+type magicWanIpsecTunnelPskMetadataPtrType MagicWanIpsecTunnelPskMetadataArgs
+
+func MagicWanIpsecTunnelPskMetadataPtr(v *MagicWanIpsecTunnelPskMetadataArgs) MagicWanIpsecTunnelPskMetadataPtrInput {
+	return (*magicWanIpsecTunnelPskMetadataPtrType)(v)
+}
+
+func (*magicWanIpsecTunnelPskMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanIpsecTunnelPskMetadata)(nil)).Elem()
+}
+
+func (i *magicWanIpsecTunnelPskMetadataPtrType) ToMagicWanIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelPskMetadataPtrOutput {
+	return i.ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *magicWanIpsecTunnelPskMetadataPtrType) ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelPskMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicWanIpsecTunnelPskMetadataPtrOutput)
+}
+
+type MagicWanIpsecTunnelPskMetadataOutput struct{ *pulumi.OutputState }
+
+func (MagicWanIpsecTunnelPskMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicWanIpsecTunnelPskMetadata)(nil)).Elem()
+}
+
+func (o MagicWanIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelPskMetadataOutput() MagicWanIpsecTunnelPskMetadataOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelPskMetadataOutputWithContext(ctx context.Context) MagicWanIpsecTunnelPskMetadataOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelPskMetadataPtrOutput {
+	return o.ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o MagicWanIpsecTunnelPskMetadataOutput) ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelPskMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicWanIpsecTunnelPskMetadata) *MagicWanIpsecTunnelPskMetadata {
+		return &v
+	}).(MagicWanIpsecTunnelPskMetadataPtrOutput)
+}
+
+// The date and time the tunnel was last modified.
+func (o MagicWanIpsecTunnelPskMetadataOutput) LastGeneratedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MagicWanIpsecTunnelPskMetadata) *string { return v.LastGeneratedOn }).(pulumi.StringPtrOutput)
+}
+
+type MagicWanIpsecTunnelPskMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (MagicWanIpsecTunnelPskMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicWanIpsecTunnelPskMetadata)(nil)).Elem()
+}
+
+func (o MagicWanIpsecTunnelPskMetadataPtrOutput) ToMagicWanIpsecTunnelPskMetadataPtrOutput() MagicWanIpsecTunnelPskMetadataPtrOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelPskMetadataPtrOutput) ToMagicWanIpsecTunnelPskMetadataPtrOutputWithContext(ctx context.Context) MagicWanIpsecTunnelPskMetadataPtrOutput {
+	return o
+}
+
+func (o MagicWanIpsecTunnelPskMetadataPtrOutput) Elem() MagicWanIpsecTunnelPskMetadataOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelPskMetadata) MagicWanIpsecTunnelPskMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret MagicWanIpsecTunnelPskMetadata
+		return ret
+	}).(MagicWanIpsecTunnelPskMetadataOutput)
+}
+
+// The date and time the tunnel was last modified.
+func (o MagicWanIpsecTunnelPskMetadataPtrOutput) LastGeneratedOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicWanIpsecTunnelPskMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastGeneratedOn
+	}).(pulumi.StringPtrOutput)
+}
+
 type MagicWanStaticRouteModifiedRoute struct {
 	// When the route was created.
 	CreatedOn *string `pulumi:"createdOn"`
@@ -64262,31 +64787,6 @@ func (i *magicWanStaticRouteRoutePtrType) ToMagicWanStaticRouteRoutePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteRoutePtrOutput)
 }
 
-// MagicWanStaticRouteRouteArrayInput is an input type that accepts MagicWanStaticRouteRouteArray and MagicWanStaticRouteRouteArrayOutput values.
-// You can construct a concrete instance of `MagicWanStaticRouteRouteArrayInput` via:
-//
-//	MagicWanStaticRouteRouteArray{ MagicWanStaticRouteRouteArgs{...} }
-type MagicWanStaticRouteRouteArrayInput interface {
-	pulumi.Input
-
-	ToMagicWanStaticRouteRouteArrayOutput() MagicWanStaticRouteRouteArrayOutput
-	ToMagicWanStaticRouteRouteArrayOutputWithContext(context.Context) MagicWanStaticRouteRouteArrayOutput
-}
-
-type MagicWanStaticRouteRouteArray []MagicWanStaticRouteRouteInput
-
-func (MagicWanStaticRouteRouteArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MagicWanStaticRouteRoute)(nil)).Elem()
-}
-
-func (i MagicWanStaticRouteRouteArray) ToMagicWanStaticRouteRouteArrayOutput() MagicWanStaticRouteRouteArrayOutput {
-	return i.ToMagicWanStaticRouteRouteArrayOutputWithContext(context.Background())
-}
-
-func (i MagicWanStaticRouteRouteArray) ToMagicWanStaticRouteRouteArrayOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MagicWanStaticRouteRouteArrayOutput)
-}
-
 type MagicWanStaticRouteRouteOutput struct{ *pulumi.OutputState }
 
 func (MagicWanStaticRouteRouteOutput) ElementType() reflect.Type {
@@ -64468,26 +64968,6 @@ func (o MagicWanStaticRouteRoutePtrOutput) Weight() pulumi.IntPtrOutput {
 		}
 		return v.Weight
 	}).(pulumi.IntPtrOutput)
-}
-
-type MagicWanStaticRouteRouteArrayOutput struct{ *pulumi.OutputState }
-
-func (MagicWanStaticRouteRouteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MagicWanStaticRouteRoute)(nil)).Elem()
-}
-
-func (o MagicWanStaticRouteRouteArrayOutput) ToMagicWanStaticRouteRouteArrayOutput() MagicWanStaticRouteRouteArrayOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRouteArrayOutput) ToMagicWanStaticRouteRouteArrayOutputWithContext(ctx context.Context) MagicWanStaticRouteRouteArrayOutput {
-	return o
-}
-
-func (o MagicWanStaticRouteRouteArrayOutput) Index(i pulumi.IntInput) MagicWanStaticRouteRouteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MagicWanStaticRouteRoute {
-		return vs[0].([]MagicWanStaticRouteRoute)[vs[1].(int)]
-	}).(MagicWanStaticRouteRouteOutput)
 }
 
 type MagicWanStaticRouteRouteScope struct {
@@ -79354,7 +79834,7 @@ type R2BucketCorsRule struct {
 	Allowed R2BucketCorsRuleAllowed `pulumi:"allowed"`
 	// Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// Identifier for this rule
+	// Identifier for this rule.
 	Id *string `pulumi:"id"`
 	// Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
 	MaxAgeSeconds *float64 `pulumi:"maxAgeSeconds"`
@@ -79376,7 +79856,7 @@ type R2BucketCorsRuleArgs struct {
 	Allowed R2BucketCorsRuleAllowedInput `pulumi:"allowed"`
 	// Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// Identifier for this rule
+	// Identifier for this rule.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
 	MaxAgeSeconds pulumi.Float64PtrInput `pulumi:"maxAgeSeconds"`
@@ -79443,7 +79923,7 @@ func (o R2BucketCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v R2BucketCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Identifier for this rule
+// Identifier for this rule.
 func (o R2BucketCorsRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketCorsRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -79544,9 +80024,9 @@ func (o R2BucketCorsRuleAllowedOutput) Origins() pulumi.StringArrayOutput {
 }
 
 type R2BucketEventNotificationQueue struct {
-	// Queue ID
+	// Queue ID.
 	QueueId *string `pulumi:"queueId"`
-	// Name of the queue
+	// Name of the queue.
 	QueueName *string                              `pulumi:"queueName"`
 	Rules     []R2BucketEventNotificationQueueRule `pulumi:"rules"`
 }
@@ -79563,9 +80043,9 @@ type R2BucketEventNotificationQueueInput interface {
 }
 
 type R2BucketEventNotificationQueueArgs struct {
-	// Queue ID
+	// Queue ID.
 	QueueId pulumi.StringPtrInput `pulumi:"queueId"`
-	// Name of the queue
+	// Name of the queue.
 	QueueName pulumi.StringPtrInput                        `pulumi:"queueName"`
 	Rules     R2BucketEventNotificationQueueRuleArrayInput `pulumi:"rules"`
 }
@@ -79621,12 +80101,12 @@ func (o R2BucketEventNotificationQueueOutput) ToR2BucketEventNotificationQueueOu
 	return o
 }
 
-// Queue ID
+// Queue ID.
 func (o R2BucketEventNotificationQueueOutput) QueueId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationQueue) *string { return v.QueueId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the queue
+// Name of the queue.
 func (o R2BucketEventNotificationQueueOutput) QueueName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationQueue) *string { return v.QueueName }).(pulumi.StringPtrOutput)
 }
@@ -79656,17 +80136,17 @@ func (o R2BucketEventNotificationQueueArrayOutput) Index(i pulumi.IntInput) R2Bu
 }
 
 type R2BucketEventNotificationQueueRule struct {
-	// Array of R2 object actions that will trigger notifications
+	// Array of R2 object actions that will trigger notifications.
 	Actions []string `pulumi:"actions"`
-	// Timestamp when the rule was created
+	// Timestamp when the rule was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// A description that can be used to identify the event notification rule after creation
+	// A description that can be used to identify the event notification rule after creation.
 	Description *string `pulumi:"description"`
-	// Notifications will be sent only for objects with this prefix
+	// Notifications will be sent only for objects with this prefix.
 	Prefix *string `pulumi:"prefix"`
-	// Rule ID
+	// Rule ID.
 	RuleId *string `pulumi:"ruleId"`
-	// Notifications will be sent only for objects with this suffix
+	// Notifications will be sent only for objects with this suffix.
 	Suffix *string `pulumi:"suffix"`
 }
 
@@ -79682,17 +80162,17 @@ type R2BucketEventNotificationQueueRuleInput interface {
 }
 
 type R2BucketEventNotificationQueueRuleArgs struct {
-	// Array of R2 object actions that will trigger notifications
+	// Array of R2 object actions that will trigger notifications.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Timestamp when the rule was created
+	// Timestamp when the rule was created.
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// A description that can be used to identify the event notification rule after creation
+	// A description that can be used to identify the event notification rule after creation.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Notifications will be sent only for objects with this prefix
+	// Notifications will be sent only for objects with this prefix.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Rule ID
+	// Rule ID.
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
-	// Notifications will be sent only for objects with this suffix
+	// Notifications will be sent only for objects with this suffix.
 	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
 }
 
@@ -79747,32 +80227,32 @@ func (o R2BucketEventNotificationQueueRuleOutput) ToR2BucketEventNotificationQue
 	return o
 }
 
-// Array of R2 object actions that will trigger notifications
+// Array of R2 object actions that will trigger notifications.
 func (o R2BucketEventNotificationQueueRuleOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// Timestamp when the rule was created
+// Timestamp when the rule was created.
 func (o R2BucketEventNotificationQueueRuleOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
 }
 
-// A description that can be used to identify the event notification rule after creation
+// A description that can be used to identify the event notification rule after creation.
 func (o R2BucketEventNotificationQueueRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Notifications will be sent only for objects with this prefix
+// Notifications will be sent only for objects with this prefix.
 func (o R2BucketEventNotificationQueueRuleOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Rule ID
+// Rule ID.
 func (o R2BucketEventNotificationQueueRuleOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.RuleId }).(pulumi.StringPtrOutput)
 }
 
-// Notifications will be sent only for objects with this suffix
+// Notifications will be sent only for objects with this suffix.
 func (o R2BucketEventNotificationQueueRuleOutput) Suffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.Suffix }).(pulumi.StringPtrOutput)
 }
@@ -79798,13 +80278,13 @@ func (o R2BucketEventNotificationQueueRuleArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type R2BucketEventNotificationRule struct {
-	// Array of R2 object actions that will trigger notifications
+	// Array of R2 object actions that will trigger notifications.
 	Actions []string `pulumi:"actions"`
-	// A description that can be used to identify the event notification rule after creation
+	// A description that can be used to identify the event notification rule after creation.
 	Description *string `pulumi:"description"`
-	// Notifications will be sent only for objects with this prefix
+	// Notifications will be sent only for objects with this prefix.
 	Prefix *string `pulumi:"prefix"`
-	// Notifications will be sent only for objects with this suffix
+	// Notifications will be sent only for objects with this suffix.
 	Suffix *string `pulumi:"suffix"`
 }
 
@@ -79820,13 +80300,13 @@ type R2BucketEventNotificationRuleInput interface {
 }
 
 type R2BucketEventNotificationRuleArgs struct {
-	// Array of R2 object actions that will trigger notifications
+	// Array of R2 object actions that will trigger notifications.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// A description that can be used to identify the event notification rule after creation
+	// A description that can be used to identify the event notification rule after creation.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Notifications will be sent only for objects with this prefix
+	// Notifications will be sent only for objects with this prefix.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Notifications will be sent only for objects with this suffix
+	// Notifications will be sent only for objects with this suffix.
 	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
 }
 
@@ -79881,22 +80361,22 @@ func (o R2BucketEventNotificationRuleOutput) ToR2BucketEventNotificationRuleOutp
 	return o
 }
 
-// Array of R2 object actions that will trigger notifications
+// Array of R2 object actions that will trigger notifications.
 func (o R2BucketEventNotificationRuleOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationRule) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// A description that can be used to identify the event notification rule after creation
+// A description that can be used to identify the event notification rule after creation.
 func (o R2BucketEventNotificationRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Notifications will be sent only for objects with this prefix
+// Notifications will be sent only for objects with this prefix.
 func (o R2BucketEventNotificationRuleOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// Notifications will be sent only for objects with this suffix
+// Notifications will be sent only for objects with this suffix.
 func (o R2BucketEventNotificationRuleOutput) Suffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketEventNotificationRule) *string { return v.Suffix }).(pulumi.StringPtrOutput)
 }
@@ -79922,17 +80402,17 @@ func (o R2BucketEventNotificationRuleArrayOutput) Index(i pulumi.IntInput) R2Buc
 }
 
 type R2BucketLifecycleRule struct {
-	// Transition to abort ongoing multipart uploads
+	// Transition to abort ongoing multipart uploads.
 	AbortMultipartUploadsTransition *R2BucketLifecycleRuleAbortMultipartUploadsTransition `pulumi:"abortMultipartUploadsTransition"`
-	// Conditions that apply to all transitions of this rule
+	// Conditions that apply to all transitions of this rule.
 	Conditions R2BucketLifecycleRuleConditions `pulumi:"conditions"`
-	// Transition to delete objects
+	// Transition to delete objects.
 	DeleteObjectsTransition *R2BucketLifecycleRuleDeleteObjectsTransition `pulumi:"deleteObjectsTransition"`
-	// Whether or not this rule is in effect
+	// Whether or not this rule is in effect.
 	Enabled bool `pulumi:"enabled"`
-	// Unique identifier for this rule
+	// Unique identifier for this rule.
 	Id string `pulumi:"id"`
-	// Transitions to change the storage class of objects
+	// Transitions to change the storage class of objects.
 	StorageClassTransitions []R2BucketLifecycleRuleStorageClassTransition `pulumi:"storageClassTransitions"`
 }
 
@@ -79948,17 +80428,17 @@ type R2BucketLifecycleRuleInput interface {
 }
 
 type R2BucketLifecycleRuleArgs struct {
-	// Transition to abort ongoing multipart uploads
+	// Transition to abort ongoing multipart uploads.
 	AbortMultipartUploadsTransition R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrInput `pulumi:"abortMultipartUploadsTransition"`
-	// Conditions that apply to all transitions of this rule
+	// Conditions that apply to all transitions of this rule.
 	Conditions R2BucketLifecycleRuleConditionsInput `pulumi:"conditions"`
-	// Transition to delete objects
+	// Transition to delete objects.
 	DeleteObjectsTransition R2BucketLifecycleRuleDeleteObjectsTransitionPtrInput `pulumi:"deleteObjectsTransition"`
-	// Whether or not this rule is in effect
+	// Whether or not this rule is in effect.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Unique identifier for this rule
+	// Unique identifier for this rule.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Transitions to change the storage class of objects
+	// Transitions to change the storage class of objects.
 	StorageClassTransitions R2BucketLifecycleRuleStorageClassTransitionArrayInput `pulumi:"storageClassTransitions"`
 }
 
@@ -80013,36 +80493,36 @@ func (o R2BucketLifecycleRuleOutput) ToR2BucketLifecycleRuleOutputWithContext(ct
 	return o
 }
 
-// Transition to abort ongoing multipart uploads
+// Transition to abort ongoing multipart uploads.
 func (o R2BucketLifecycleRuleOutput) AbortMultipartUploadsTransition() R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRule) *R2BucketLifecycleRuleAbortMultipartUploadsTransition {
 		return v.AbortMultipartUploadsTransition
 	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput)
 }
 
-// Conditions that apply to all transitions of this rule
+// Conditions that apply to all transitions of this rule.
 func (o R2BucketLifecycleRuleOutput) Conditions() R2BucketLifecycleRuleConditionsOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRule) R2BucketLifecycleRuleConditions { return v.Conditions }).(R2BucketLifecycleRuleConditionsOutput)
 }
 
-// Transition to delete objects
+// Transition to delete objects.
 func (o R2BucketLifecycleRuleOutput) DeleteObjectsTransition() R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRule) *R2BucketLifecycleRuleDeleteObjectsTransition {
 		return v.DeleteObjectsTransition
 	}).(R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput)
 }
 
-// Whether or not this rule is in effect
+// Whether or not this rule is in effect.
 func (o R2BucketLifecycleRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Unique identifier for this rule
+// Unique identifier for this rule.
 func (o R2BucketLifecycleRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Transitions to change the storage class of objects
+// Transitions to change the storage class of objects.
 func (o R2BucketLifecycleRuleOutput) StorageClassTransitions() R2BucketLifecycleRuleStorageClassTransitionArrayOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRule) []R2BucketLifecycleRuleStorageClassTransition {
 		return v.StorageClassTransitions
@@ -80070,7 +80550,7 @@ func (o R2BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) R2BucketLifec
 }
 
 type R2BucketLifecycleRuleAbortMultipartUploadsTransition struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 	Condition *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition `pulumi:"condition"`
 }
 
@@ -80086,7 +80566,7 @@ type R2BucketLifecycleRuleAbortMultipartUploadsTransitionInput interface {
 }
 
 type R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 	Condition R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrInput `pulumi:"condition"`
 }
 
@@ -80167,7 +80647,7 @@ func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) ToR2BucketLi
 	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput)
 }
 
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput) Condition() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRuleAbortMultipartUploadsTransition) *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
 		return v.Condition
@@ -80198,7 +80678,7 @@ func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput) Elem() R2
 	}).(R2BucketLifecycleRuleAbortMultipartUploadsTransitionOutput)
 }
 
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionPtrOutput) Condition() R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput {
 	return o.ApplyT(func(v *R2BucketLifecycleRuleAbortMultipartUploadsTransition) *R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
 		if v == nil {
@@ -80361,7 +80841,7 @@ func (o R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionPtrOutput) 
 }
 
 type R2BucketLifecycleRuleConditions struct {
-	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	Prefix string `pulumi:"prefix"`
 }
 
@@ -80377,7 +80857,7 @@ type R2BucketLifecycleRuleConditionsInput interface {
 }
 
 type R2BucketLifecycleRuleConditionsArgs struct {
-	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+	// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	Prefix pulumi.StringInput `pulumi:"prefix"`
 }
 
@@ -80407,13 +80887,13 @@ func (o R2BucketLifecycleRuleConditionsOutput) ToR2BucketLifecycleRuleConditions
 	return o
 }
 
-// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+// Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 func (o R2BucketLifecycleRuleConditionsOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRuleConditions) string { return v.Prefix }).(pulumi.StringOutput)
 }
 
 type R2BucketLifecycleRuleDeleteObjectsTransition struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 	Condition *R2BucketLifecycleRuleDeleteObjectsTransitionCondition `pulumi:"condition"`
 }
 
@@ -80429,7 +80909,7 @@ type R2BucketLifecycleRuleDeleteObjectsTransitionInput interface {
 }
 
 type R2BucketLifecycleRuleDeleteObjectsTransitionArgs struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 	Condition R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrInput `pulumi:"condition"`
 }
 
@@ -80510,7 +80990,7 @@ func (o R2BucketLifecycleRuleDeleteObjectsTransitionOutput) ToR2BucketLifecycleR
 	}).(R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput)
 }
 
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 func (o R2BucketLifecycleRuleDeleteObjectsTransitionOutput) Condition() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRuleDeleteObjectsTransition) *R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
 		return v.Condition
@@ -80541,7 +81021,7 @@ func (o R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput) Elem() R2BucketLi
 	}).(R2BucketLifecycleRuleDeleteObjectsTransitionOutput)
 }
 
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 func (o R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput) Condition() R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput {
 	return o.ApplyT(func(v *R2BucketLifecycleRuleDeleteObjectsTransition) *R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
 		if v == nil {
@@ -80719,7 +81199,7 @@ func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) Type() p
 }
 
 type R2BucketLifecycleRuleStorageClassTransition struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 	Condition R2BucketLifecycleRuleStorageClassTransitionCondition `pulumi:"condition"`
 	// Available values: "InfrequentAccess".
 	StorageClass string `pulumi:"storageClass"`
@@ -80737,7 +81217,7 @@ type R2BucketLifecycleRuleStorageClassTransitionInput interface {
 }
 
 type R2BucketLifecycleRuleStorageClassTransitionArgs struct {
-	// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+	// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 	Condition R2BucketLifecycleRuleStorageClassTransitionConditionInput `pulumi:"condition"`
 	// Available values: "InfrequentAccess".
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
@@ -80794,7 +81274,7 @@ func (o R2BucketLifecycleRuleStorageClassTransitionOutput) ToR2BucketLifecycleRu
 	return o
 }
 
-// Condition for lifecycle transitions to apply after an object reaches an age in seconds
+// Condition for lifecycle transitions to apply after an object reaches an age in seconds.
 func (o R2BucketLifecycleRuleStorageClassTransitionOutput) Condition() R2BucketLifecycleRuleStorageClassTransitionConditionOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRuleStorageClassTransition) R2BucketLifecycleRuleStorageClassTransitionCondition {
 		return v.Condition
@@ -80891,13 +81371,13 @@ func (o R2BucketLifecycleRuleStorageClassTransitionConditionOutput) Type() pulum
 }
 
 type R2BucketLockRule struct {
-	// Condition to apply a lock rule to an object for how long in seconds
+	// Condition to apply a lock rule to an object for how long in seconds.
 	Condition R2BucketLockRuleCondition `pulumi:"condition"`
-	// Whether or not this rule is in effect
+	// Whether or not this rule is in effect.
 	Enabled bool `pulumi:"enabled"`
-	// Unique identifier for this rule
+	// Unique identifier for this rule.
 	Id string `pulumi:"id"`
-	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	Prefix *string `pulumi:"prefix"`
 }
 
@@ -80913,13 +81393,13 @@ type R2BucketLockRuleInput interface {
 }
 
 type R2BucketLockRuleArgs struct {
-	// Condition to apply a lock rule to an object for how long in seconds
+	// Condition to apply a lock rule to an object for how long in seconds.
 	Condition R2BucketLockRuleConditionInput `pulumi:"condition"`
-	// Whether or not this rule is in effect
+	// Whether or not this rule is in effect.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Unique identifier for this rule
+	// Unique identifier for this rule.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+	// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 }
 
@@ -80974,22 +81454,22 @@ func (o R2BucketLockRuleOutput) ToR2BucketLockRuleOutputWithContext(ctx context.
 	return o
 }
 
-// Condition to apply a lock rule to an object for how long in seconds
+// Condition to apply a lock rule to an object for how long in seconds.
 func (o R2BucketLockRuleOutput) Condition() R2BucketLockRuleConditionOutput {
 	return o.ApplyT(func(v R2BucketLockRule) R2BucketLockRuleCondition { return v.Condition }).(R2BucketLockRuleConditionOutput)
 }
 
-// Whether or not this rule is in effect
+// Whether or not this rule is in effect.
 func (o R2BucketLockRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v R2BucketLockRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Unique identifier for this rule
+// Unique identifier for this rule.
 func (o R2BucketLockRuleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v R2BucketLockRule) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+// Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
 func (o R2BucketLockRuleOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketLockRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -81080,13 +81560,13 @@ func (o R2BucketLockRuleConditionOutput) Type() pulumi.StringOutput {
 
 type R2BucketSippyDestination struct {
 	// ID of a Cloudflare API token.
-	// This is the value labelled "Access Key ID" when creating an API
+	// This is the value labelled "Access Key ID" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 	AccessKeyId *string `pulumi:"accessKeyId"`
 	// Available values: "r2".
-	Provider *string `pulumi:"provider"`
+	CloudProvider *string `pulumi:"cloudProvider"`
 	// Value of a Cloudflare API token.
-	// This is the value labelled "Secret Access Key" when creating an API
+	// This is the value labelled "Secret Access Key" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 	//
 	// Sippy will use this token when writing objects to R2, so it is
@@ -81107,13 +81587,13 @@ type R2BucketSippyDestinationInput interface {
 
 type R2BucketSippyDestinationArgs struct {
 	// ID of a Cloudflare API token.
-	// This is the value labelled "Access Key ID" when creating an API
+	// This is the value labelled "Access Key ID" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
 	// Available values: "r2".
-	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	CloudProvider pulumi.StringPtrInput `pulumi:"cloudProvider"`
 	// Value of a Cloudflare API token.
-	// This is the value labelled "Secret Access Key" when creating an API
+	// This is the value labelled "Secret Access Key" when creating an API.
 	// token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 	//
 	// Sippy will use this token when writing objects to R2, so it is
@@ -81199,19 +81679,19 @@ func (o R2BucketSippyDestinationOutput) ToR2BucketSippyDestinationPtrOutputWithC
 }
 
 // ID of a Cloudflare API token.
-// This is the value labelled "Access Key ID" when creating an API
+// This is the value labelled "Access Key ID" when creating an API.
 // token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 func (o R2BucketSippyDestinationOutput) AccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippyDestination) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
 }
 
 // Available values: "r2".
-func (o R2BucketSippyDestinationOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippyDestination) *string { return v.Provider }).(pulumi.StringPtrOutput)
+func (o R2BucketSippyDestinationOutput) CloudProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v R2BucketSippyDestination) *string { return v.CloudProvider }).(pulumi.StringPtrOutput)
 }
 
 // Value of a Cloudflare API token.
-// This is the value labelled "Secret Access Key" when creating an API
+// This is the value labelled "Secret Access Key" when creating an API.
 // token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 //
 // Sippy will use this token when writing objects to R2, so it is
@@ -81245,7 +81725,7 @@ func (o R2BucketSippyDestinationPtrOutput) Elem() R2BucketSippyDestinationOutput
 }
 
 // ID of a Cloudflare API token.
-// This is the value labelled "Access Key ID" when creating an API
+// This is the value labelled "Access Key ID" when creating an API.
 // token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 func (o R2BucketSippyDestinationPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippyDestination) *string {
@@ -81257,17 +81737,17 @@ func (o R2BucketSippyDestinationPtrOutput) AccessKeyId() pulumi.StringPtrOutput 
 }
 
 // Available values: "r2".
-func (o R2BucketSippyDestinationPtrOutput) Provider() pulumi.StringPtrOutput {
+func (o R2BucketSippyDestinationPtrOutput) CloudProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippyDestination) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Provider
+		return v.CloudProvider
 	}).(pulumi.StringPtrOutput)
 }
 
 // Value of a Cloudflare API token.
-// This is the value labelled "Secret Access Key" when creating an API
+// This is the value labelled "Secret Access Key" when creating an API.
 // token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 //
 // Sippy will use this token when writing objects to R2, so it is
@@ -81282,19 +81762,19 @@ func (o R2BucketSippyDestinationPtrOutput) SecretAccessKey() pulumi.StringPtrOut
 }
 
 type R2BucketSippySource struct {
-	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 	AccessKeyId *string `pulumi:"accessKeyId"`
-	// Name of the AWS S3 bucket
+	// Name of the AWS S3 bucket.
 	Bucket *string `pulumi:"bucket"`
-	// Client email of an IAM credential (ideally scoped to a single GCS bucket)
+	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	ClientEmail *string `pulumi:"clientEmail"`
-	// Private Key of an IAM credential (ideally scoped to a single GCS bucket)
-	PrivateKey *string `pulumi:"privateKey"`
 	// Available values: "aws".
-	Provider *string `pulumi:"provider"`
-	// Name of the AWS availability zone
+	CloudProvider *string `pulumi:"cloudProvider"`
+	// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+	PrivateKey *string `pulumi:"privateKey"`
+	// Name of the AWS availability zone.
 	Region *string `pulumi:"region"`
-	// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+	// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
 }
 
@@ -81310,19 +81790,19 @@ type R2BucketSippySourceInput interface {
 }
 
 type R2BucketSippySourceArgs struct {
-	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+	// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
-	// Name of the AWS S3 bucket
+	// Name of the AWS S3 bucket.
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// Client email of an IAM credential (ideally scoped to a single GCS bucket)
+	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	ClientEmail pulumi.StringPtrInput `pulumi:"clientEmail"`
-	// Private Key of an IAM credential (ideally scoped to a single GCS bucket)
-	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// Available values: "aws".
-	Provider pulumi.StringPtrInput `pulumi:"provider"`
-	// Name of the AWS availability zone
+	CloudProvider pulumi.StringPtrInput `pulumi:"cloudProvider"`
+	// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Name of the AWS availability zone.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+	// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
 	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 }
 
@@ -81403,37 +81883,37 @@ func (o R2BucketSippySourceOutput) ToR2BucketSippySourcePtrOutputWithContext(ctx
 	}).(R2BucketSippySourcePtrOutput)
 }
 
-// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 func (o R2BucketSippySourceOutput) AccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippySource) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Name of the AWS S3 bucket
+// Name of the AWS S3 bucket.
 func (o R2BucketSippySourceOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippySource) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
-// Client email of an IAM credential (ideally scoped to a single GCS bucket)
+// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 func (o R2BucketSippySourceOutput) ClientEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippySource) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
 }
 
-// Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+// Available values: "aws".
+func (o R2BucketSippySourceOutput) CloudProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v R2BucketSippySource) *string { return v.CloudProvider }).(pulumi.StringPtrOutput)
+}
+
+// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 func (o R2BucketSippySourceOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippySource) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "aws".
-func (o R2BucketSippySourceOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketSippySource) *string { return v.Provider }).(pulumi.StringPtrOutput)
-}
-
-// Name of the AWS availability zone
+// Name of the AWS availability zone.
 func (o R2BucketSippySourceOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippySource) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
 func (o R2BucketSippySourceOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippySource) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
@@ -81462,7 +81942,7 @@ func (o R2BucketSippySourcePtrOutput) Elem() R2BucketSippySourceOutput {
 	}).(R2BucketSippySourceOutput)
 }
 
-// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+// Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
 func (o R2BucketSippySourcePtrOutput) AccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippySource) *string {
 		if v == nil {
@@ -81472,7 +81952,7 @@ func (o R2BucketSippySourcePtrOutput) AccessKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the AWS S3 bucket
+// Name of the AWS S3 bucket.
 func (o R2BucketSippySourcePtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippySource) *string {
 		if v == nil {
@@ -81482,7 +81962,7 @@ func (o R2BucketSippySourcePtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Client email of an IAM credential (ideally scoped to a single GCS bucket)
+// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 func (o R2BucketSippySourcePtrOutput) ClientEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippySource) *string {
 		if v == nil {
@@ -81492,7 +81972,17 @@ func (o R2BucketSippySourcePtrOutput) ClientEmail() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+// Available values: "aws".
+func (o R2BucketSippySourcePtrOutput) CloudProvider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *R2BucketSippySource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudProvider
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 func (o R2BucketSippySourcePtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippySource) *string {
 		if v == nil {
@@ -81502,17 +81992,7 @@ func (o R2BucketSippySourcePtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Available values: "aws".
-func (o R2BucketSippySourcePtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketSippySource) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Provider
-	}).(pulumi.StringPtrOutput)
-}
-
-// Name of the AWS availability zone
+// Name of the AWS availability zone.
 func (o R2BucketSippySourcePtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippySource) *string {
 		if v == nil {
@@ -81522,7 +82002,7 @@ func (o R2BucketSippySourcePtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+// Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
 func (o R2BucketSippySourcePtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippySource) *string {
 		if v == nil {
@@ -81533,10 +82013,10 @@ func (o R2BucketSippySourcePtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 }
 
 type R2CustomDomainStatus struct {
-	// Ownership status of the domain
+	// Ownership status of the domain.
 	// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
 	Ownership *string `pulumi:"ownership"`
-	// SSL certificate status
+	// SSL certificate status.
 	// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
 	Ssl *string `pulumi:"ssl"`
 }
@@ -81553,10 +82033,10 @@ type R2CustomDomainStatusInput interface {
 }
 
 type R2CustomDomainStatusArgs struct {
-	// Ownership status of the domain
+	// Ownership status of the domain.
 	// Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
 	Ownership pulumi.StringPtrInput `pulumi:"ownership"`
-	// SSL certificate status
+	// SSL certificate status.
 	// Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
 	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
 }
@@ -81638,13 +82118,13 @@ func (o R2CustomDomainStatusOutput) ToR2CustomDomainStatusPtrOutputWithContext(c
 	}).(R2CustomDomainStatusPtrOutput)
 }
 
-// Ownership status of the domain
+// Ownership status of the domain.
 // Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
 func (o R2CustomDomainStatusOutput) Ownership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2CustomDomainStatus) *string { return v.Ownership }).(pulumi.StringPtrOutput)
 }
 
-// SSL certificate status
+// SSL certificate status.
 // Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
 func (o R2CustomDomainStatusOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2CustomDomainStatus) *string { return v.Ssl }).(pulumi.StringPtrOutput)
@@ -81674,7 +82154,7 @@ func (o R2CustomDomainStatusPtrOutput) Elem() R2CustomDomainStatusOutput {
 	}).(R2CustomDomainStatusOutput)
 }
 
-// Ownership status of the domain
+// Ownership status of the domain.
 // Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
 func (o R2CustomDomainStatusPtrOutput) Ownership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2CustomDomainStatus) *string {
@@ -81685,7 +82165,7 @@ func (o R2CustomDomainStatusPtrOutput) Ownership() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSL certificate status
+// SSL certificate status.
 // Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
 func (o R2CustomDomainStatusPtrOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2CustomDomainStatus) *string {
@@ -82036,568 +82516,6 @@ func (o RateLimitActionResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ContentType
-	}).(pulumi.StringPtrOutput)
-}
-
-type RateLimitBypass struct {
-	// Available values: "url".
-	Name *string `pulumi:"name"`
-	// The URL to bypass.
-	Value *string `pulumi:"value"`
-}
-
-// RateLimitBypassInput is an input type that accepts RateLimitBypassArgs and RateLimitBypassOutput values.
-// You can construct a concrete instance of `RateLimitBypassInput` via:
-//
-//	RateLimitBypassArgs{...}
-type RateLimitBypassInput interface {
-	pulumi.Input
-
-	ToRateLimitBypassOutput() RateLimitBypassOutput
-	ToRateLimitBypassOutputWithContext(context.Context) RateLimitBypassOutput
-}
-
-type RateLimitBypassArgs struct {
-	// Available values: "url".
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The URL to bypass.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (RateLimitBypassArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitBypass)(nil)).Elem()
-}
-
-func (i RateLimitBypassArgs) ToRateLimitBypassOutput() RateLimitBypassOutput {
-	return i.ToRateLimitBypassOutputWithContext(context.Background())
-}
-
-func (i RateLimitBypassArgs) ToRateLimitBypassOutputWithContext(ctx context.Context) RateLimitBypassOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitBypassOutput)
-}
-
-// RateLimitBypassArrayInput is an input type that accepts RateLimitBypassArray and RateLimitBypassArrayOutput values.
-// You can construct a concrete instance of `RateLimitBypassArrayInput` via:
-//
-//	RateLimitBypassArray{ RateLimitBypassArgs{...} }
-type RateLimitBypassArrayInput interface {
-	pulumi.Input
-
-	ToRateLimitBypassArrayOutput() RateLimitBypassArrayOutput
-	ToRateLimitBypassArrayOutputWithContext(context.Context) RateLimitBypassArrayOutput
-}
-
-type RateLimitBypassArray []RateLimitBypassInput
-
-func (RateLimitBypassArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RateLimitBypass)(nil)).Elem()
-}
-
-func (i RateLimitBypassArray) ToRateLimitBypassArrayOutput() RateLimitBypassArrayOutput {
-	return i.ToRateLimitBypassArrayOutputWithContext(context.Background())
-}
-
-func (i RateLimitBypassArray) ToRateLimitBypassArrayOutputWithContext(ctx context.Context) RateLimitBypassArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitBypassArrayOutput)
-}
-
-type RateLimitBypassOutput struct{ *pulumi.OutputState }
-
-func (RateLimitBypassOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitBypass)(nil)).Elem()
-}
-
-func (o RateLimitBypassOutput) ToRateLimitBypassOutput() RateLimitBypassOutput {
-	return o
-}
-
-func (o RateLimitBypassOutput) ToRateLimitBypassOutputWithContext(ctx context.Context) RateLimitBypassOutput {
-	return o
-}
-
-// Available values: "url".
-func (o RateLimitBypassOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitBypass) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The URL to bypass.
-func (o RateLimitBypassOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitBypass) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type RateLimitBypassArrayOutput struct{ *pulumi.OutputState }
-
-func (RateLimitBypassArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RateLimitBypass)(nil)).Elem()
-}
-
-func (o RateLimitBypassArrayOutput) ToRateLimitBypassArrayOutput() RateLimitBypassArrayOutput {
-	return o
-}
-
-func (o RateLimitBypassArrayOutput) ToRateLimitBypassArrayOutputWithContext(ctx context.Context) RateLimitBypassArrayOutput {
-	return o
-}
-
-func (o RateLimitBypassArrayOutput) Index(i pulumi.IntInput) RateLimitBypassOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RateLimitBypass {
-		return vs[0].([]RateLimitBypass)[vs[1].(int)]
-	}).(RateLimitBypassOutput)
-}
-
-type RateLimitMatch struct {
-	Headers  []RateLimitMatchHeader  `pulumi:"headers"`
-	Request  *RateLimitMatchRequest  `pulumi:"request"`
-	Response *RateLimitMatchResponse `pulumi:"response"`
-}
-
-// RateLimitMatchInput is an input type that accepts RateLimitMatchArgs and RateLimitMatchOutput values.
-// You can construct a concrete instance of `RateLimitMatchInput` via:
-//
-//	RateLimitMatchArgs{...}
-type RateLimitMatchInput interface {
-	pulumi.Input
-
-	ToRateLimitMatchOutput() RateLimitMatchOutput
-	ToRateLimitMatchOutputWithContext(context.Context) RateLimitMatchOutput
-}
-
-type RateLimitMatchArgs struct {
-	Headers  RateLimitMatchHeaderArrayInput `pulumi:"headers"`
-	Request  RateLimitMatchRequestPtrInput  `pulumi:"request"`
-	Response RateLimitMatchResponsePtrInput `pulumi:"response"`
-}
-
-func (RateLimitMatchArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitMatch)(nil)).Elem()
-}
-
-func (i RateLimitMatchArgs) ToRateLimitMatchOutput() RateLimitMatchOutput {
-	return i.ToRateLimitMatchOutputWithContext(context.Background())
-}
-
-func (i RateLimitMatchArgs) ToRateLimitMatchOutputWithContext(ctx context.Context) RateLimitMatchOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchOutput)
-}
-
-func (i RateLimitMatchArgs) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput {
-	return i.ToRateLimitMatchPtrOutputWithContext(context.Background())
-}
-
-func (i RateLimitMatchArgs) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchOutput).ToRateLimitMatchPtrOutputWithContext(ctx)
-}
-
-// RateLimitMatchPtrInput is an input type that accepts RateLimitMatchArgs, RateLimitMatchPtr and RateLimitMatchPtrOutput values.
-// You can construct a concrete instance of `RateLimitMatchPtrInput` via:
-//
-//	        RateLimitMatchArgs{...}
-//
-//	or:
-//
-//	        nil
-type RateLimitMatchPtrInput interface {
-	pulumi.Input
-
-	ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput
-	ToRateLimitMatchPtrOutputWithContext(context.Context) RateLimitMatchPtrOutput
-}
-
-type rateLimitMatchPtrType RateLimitMatchArgs
-
-func RateLimitMatchPtr(v *RateLimitMatchArgs) RateLimitMatchPtrInput {
-	return (*rateLimitMatchPtrType)(v)
-}
-
-func (*rateLimitMatchPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitMatch)(nil)).Elem()
-}
-
-func (i *rateLimitMatchPtrType) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput {
-	return i.ToRateLimitMatchPtrOutputWithContext(context.Background())
-}
-
-func (i *rateLimitMatchPtrType) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchPtrOutput)
-}
-
-type RateLimitMatchOutput struct{ *pulumi.OutputState }
-
-func (RateLimitMatchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitMatch)(nil)).Elem()
-}
-
-func (o RateLimitMatchOutput) ToRateLimitMatchOutput() RateLimitMatchOutput {
-	return o
-}
-
-func (o RateLimitMatchOutput) ToRateLimitMatchOutputWithContext(ctx context.Context) RateLimitMatchOutput {
-	return o
-}
-
-func (o RateLimitMatchOutput) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput {
-	return o.ToRateLimitMatchPtrOutputWithContext(context.Background())
-}
-
-func (o RateLimitMatchOutput) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatch) *RateLimitMatch {
-		return &v
-	}).(RateLimitMatchPtrOutput)
-}
-
-func (o RateLimitMatchOutput) Headers() RateLimitMatchHeaderArrayOutput {
-	return o.ApplyT(func(v RateLimitMatch) []RateLimitMatchHeader { return v.Headers }).(RateLimitMatchHeaderArrayOutput)
-}
-
-func (o RateLimitMatchOutput) Request() RateLimitMatchRequestPtrOutput {
-	return o.ApplyT(func(v RateLimitMatch) *RateLimitMatchRequest { return v.Request }).(RateLimitMatchRequestPtrOutput)
-}
-
-func (o RateLimitMatchOutput) Response() RateLimitMatchResponsePtrOutput {
-	return o.ApplyT(func(v RateLimitMatch) *RateLimitMatchResponse { return v.Response }).(RateLimitMatchResponsePtrOutput)
-}
-
-type RateLimitMatchPtrOutput struct{ *pulumi.OutputState }
-
-func (RateLimitMatchPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitMatch)(nil)).Elem()
-}
-
-func (o RateLimitMatchPtrOutput) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput {
-	return o
-}
-
-func (o RateLimitMatchPtrOutput) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
-	return o
-}
-
-func (o RateLimitMatchPtrOutput) Elem() RateLimitMatchOutput {
-	return o.ApplyT(func(v *RateLimitMatch) RateLimitMatch {
-		if v != nil {
-			return *v
-		}
-		var ret RateLimitMatch
-		return ret
-	}).(RateLimitMatchOutput)
-}
-
-func (o RateLimitMatchPtrOutput) Headers() RateLimitMatchHeaderArrayOutput {
-	return o.ApplyT(func(v *RateLimitMatch) []RateLimitMatchHeader {
-		if v == nil {
-			return nil
-		}
-		return v.Headers
-	}).(RateLimitMatchHeaderArrayOutput)
-}
-
-func (o RateLimitMatchPtrOutput) Request() RateLimitMatchRequestPtrOutput {
-	return o.ApplyT(func(v *RateLimitMatch) *RateLimitMatchRequest {
-		if v == nil {
-			return nil
-		}
-		return v.Request
-	}).(RateLimitMatchRequestPtrOutput)
-}
-
-func (o RateLimitMatchPtrOutput) Response() RateLimitMatchResponsePtrOutput {
-	return o.ApplyT(func(v *RateLimitMatch) *RateLimitMatchResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Response
-	}).(RateLimitMatchResponsePtrOutput)
-}
-
-type RateLimitMatchHeader struct {
-	// The name of the response header to match.
-	Name *string `pulumi:"name"`
-	// The operator used when matching: `eq` means "equal" and `ne` means "not equal".
-	// Available values: "eq", "ne".
-	Op *string `pulumi:"op"`
-	// The value of the response header, which must match exactly.
-	Value *string `pulumi:"value"`
-}
-
-// RateLimitMatchHeaderInput is an input type that accepts RateLimitMatchHeaderArgs and RateLimitMatchHeaderOutput values.
-// You can construct a concrete instance of `RateLimitMatchHeaderInput` via:
-//
-//	RateLimitMatchHeaderArgs{...}
-type RateLimitMatchHeaderInput interface {
-	pulumi.Input
-
-	ToRateLimitMatchHeaderOutput() RateLimitMatchHeaderOutput
-	ToRateLimitMatchHeaderOutputWithContext(context.Context) RateLimitMatchHeaderOutput
-}
-
-type RateLimitMatchHeaderArgs struct {
-	// The name of the response header to match.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The operator used when matching: `eq` means "equal" and `ne` means "not equal".
-	// Available values: "eq", "ne".
-	Op pulumi.StringPtrInput `pulumi:"op"`
-	// The value of the response header, which must match exactly.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (RateLimitMatchHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitMatchHeader)(nil)).Elem()
-}
-
-func (i RateLimitMatchHeaderArgs) ToRateLimitMatchHeaderOutput() RateLimitMatchHeaderOutput {
-	return i.ToRateLimitMatchHeaderOutputWithContext(context.Background())
-}
-
-func (i RateLimitMatchHeaderArgs) ToRateLimitMatchHeaderOutputWithContext(ctx context.Context) RateLimitMatchHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchHeaderOutput)
-}
-
-// RateLimitMatchHeaderArrayInput is an input type that accepts RateLimitMatchHeaderArray and RateLimitMatchHeaderArrayOutput values.
-// You can construct a concrete instance of `RateLimitMatchHeaderArrayInput` via:
-//
-//	RateLimitMatchHeaderArray{ RateLimitMatchHeaderArgs{...} }
-type RateLimitMatchHeaderArrayInput interface {
-	pulumi.Input
-
-	ToRateLimitMatchHeaderArrayOutput() RateLimitMatchHeaderArrayOutput
-	ToRateLimitMatchHeaderArrayOutputWithContext(context.Context) RateLimitMatchHeaderArrayOutput
-}
-
-type RateLimitMatchHeaderArray []RateLimitMatchHeaderInput
-
-func (RateLimitMatchHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RateLimitMatchHeader)(nil)).Elem()
-}
-
-func (i RateLimitMatchHeaderArray) ToRateLimitMatchHeaderArrayOutput() RateLimitMatchHeaderArrayOutput {
-	return i.ToRateLimitMatchHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i RateLimitMatchHeaderArray) ToRateLimitMatchHeaderArrayOutputWithContext(ctx context.Context) RateLimitMatchHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchHeaderArrayOutput)
-}
-
-type RateLimitMatchHeaderOutput struct{ *pulumi.OutputState }
-
-func (RateLimitMatchHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitMatchHeader)(nil)).Elem()
-}
-
-func (o RateLimitMatchHeaderOutput) ToRateLimitMatchHeaderOutput() RateLimitMatchHeaderOutput {
-	return o
-}
-
-func (o RateLimitMatchHeaderOutput) ToRateLimitMatchHeaderOutputWithContext(ctx context.Context) RateLimitMatchHeaderOutput {
-	return o
-}
-
-// The name of the response header to match.
-func (o RateLimitMatchHeaderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitMatchHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The operator used when matching: `eq` means "equal" and `ne` means "not equal".
-// Available values: "eq", "ne".
-func (o RateLimitMatchHeaderOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitMatchHeader) *string { return v.Op }).(pulumi.StringPtrOutput)
-}
-
-// The value of the response header, which must match exactly.
-func (o RateLimitMatchHeaderOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitMatchHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type RateLimitMatchHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (RateLimitMatchHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RateLimitMatchHeader)(nil)).Elem()
-}
-
-func (o RateLimitMatchHeaderArrayOutput) ToRateLimitMatchHeaderArrayOutput() RateLimitMatchHeaderArrayOutput {
-	return o
-}
-
-func (o RateLimitMatchHeaderArrayOutput) ToRateLimitMatchHeaderArrayOutputWithContext(ctx context.Context) RateLimitMatchHeaderArrayOutput {
-	return o
-}
-
-func (o RateLimitMatchHeaderArrayOutput) Index(i pulumi.IntInput) RateLimitMatchHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RateLimitMatchHeader {
-		return vs[0].([]RateLimitMatchHeader)[vs[1].(int)]
-	}).(RateLimitMatchHeaderOutput)
-}
-
-type RateLimitMatchRequest struct {
-	// The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
-	Methods []string `pulumi:"methods"`
-	// The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
-	Schemes []string `pulumi:"schemes"`
-	// The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
-	Url *string `pulumi:"url"`
-}
-
-// RateLimitMatchRequestInput is an input type that accepts RateLimitMatchRequestArgs and RateLimitMatchRequestOutput values.
-// You can construct a concrete instance of `RateLimitMatchRequestInput` via:
-//
-//	RateLimitMatchRequestArgs{...}
-type RateLimitMatchRequestInput interface {
-	pulumi.Input
-
-	ToRateLimitMatchRequestOutput() RateLimitMatchRequestOutput
-	ToRateLimitMatchRequestOutputWithContext(context.Context) RateLimitMatchRequestOutput
-}
-
-type RateLimitMatchRequestArgs struct {
-	// The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
-	Methods pulumi.StringArrayInput `pulumi:"methods"`
-	// The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
-	Schemes pulumi.StringArrayInput `pulumi:"schemes"`
-	// The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
-	Url pulumi.StringPtrInput `pulumi:"url"`
-}
-
-func (RateLimitMatchRequestArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitMatchRequest)(nil)).Elem()
-}
-
-func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestOutput() RateLimitMatchRequestOutput {
-	return i.ToRateLimitMatchRequestOutputWithContext(context.Background())
-}
-
-func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestOutputWithContext(ctx context.Context) RateLimitMatchRequestOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchRequestOutput)
-}
-
-func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput {
-	return i.ToRateLimitMatchRequestPtrOutputWithContext(context.Background())
-}
-
-func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchRequestOutput).ToRateLimitMatchRequestPtrOutputWithContext(ctx)
-}
-
-// RateLimitMatchRequestPtrInput is an input type that accepts RateLimitMatchRequestArgs, RateLimitMatchRequestPtr and RateLimitMatchRequestPtrOutput values.
-// You can construct a concrete instance of `RateLimitMatchRequestPtrInput` via:
-//
-//	        RateLimitMatchRequestArgs{...}
-//
-//	or:
-//
-//	        nil
-type RateLimitMatchRequestPtrInput interface {
-	pulumi.Input
-
-	ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput
-	ToRateLimitMatchRequestPtrOutputWithContext(context.Context) RateLimitMatchRequestPtrOutput
-}
-
-type rateLimitMatchRequestPtrType RateLimitMatchRequestArgs
-
-func RateLimitMatchRequestPtr(v *RateLimitMatchRequestArgs) RateLimitMatchRequestPtrInput {
-	return (*rateLimitMatchRequestPtrType)(v)
-}
-
-func (*rateLimitMatchRequestPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitMatchRequest)(nil)).Elem()
-}
-
-func (i *rateLimitMatchRequestPtrType) ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput {
-	return i.ToRateLimitMatchRequestPtrOutputWithContext(context.Background())
-}
-
-func (i *rateLimitMatchRequestPtrType) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchRequestPtrOutput)
-}
-
-type RateLimitMatchRequestOutput struct{ *pulumi.OutputState }
-
-func (RateLimitMatchRequestOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitMatchRequest)(nil)).Elem()
-}
-
-func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestOutput() RateLimitMatchRequestOutput {
-	return o
-}
-
-func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestOutputWithContext(ctx context.Context) RateLimitMatchRequestOutput {
-	return o
-}
-
-func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput {
-	return o.ToRateLimitMatchRequestPtrOutputWithContext(context.Background())
-}
-
-func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatchRequest) *RateLimitMatchRequest {
-		return &v
-	}).(RateLimitMatchRequestPtrOutput)
-}
-
-// The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
-func (o RateLimitMatchRequestOutput) Methods() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RateLimitMatchRequest) []string { return v.Methods }).(pulumi.StringArrayOutput)
-}
-
-// The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
-func (o RateLimitMatchRequestOutput) Schemes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RateLimitMatchRequest) []string { return v.Schemes }).(pulumi.StringArrayOutput)
-}
-
-// The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
-func (o RateLimitMatchRequestOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitMatchRequest) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type RateLimitMatchRequestPtrOutput struct{ *pulumi.OutputState }
-
-func (RateLimitMatchRequestPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RateLimitMatchRequest)(nil)).Elem()
-}
-
-func (o RateLimitMatchRequestPtrOutput) ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput {
-	return o
-}
-
-func (o RateLimitMatchRequestPtrOutput) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
-	return o
-}
-
-func (o RateLimitMatchRequestPtrOutput) Elem() RateLimitMatchRequestOutput {
-	return o.ApplyT(func(v *RateLimitMatchRequest) RateLimitMatchRequest {
-		if v != nil {
-			return *v
-		}
-		var ret RateLimitMatchRequest
-		return ret
-	}).(RateLimitMatchRequestOutput)
-}
-
-// The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
-func (o RateLimitMatchRequestPtrOutput) Methods() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RateLimitMatchRequest) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Methods
-	}).(pulumi.StringArrayOutput)
-}
-
-// The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
-func (o RateLimitMatchRequestPtrOutput) Schemes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RateLimitMatchRequest) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Schemes
-	}).(pulumi.StringArrayOutput)
-}
-
-// The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
-func (o RateLimitMatchRequestPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RateLimitMatchRequest) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -83112,8 +83030,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldAuthIdCharacteristicArrayInput)(nil)).Elem(), ApiShieldAuthIdCharacteristicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldErrorInput)(nil)).Elem(), ApiShieldErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldErrorArrayInput)(nil)).Elem(), ApiShieldErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldErrorSourceInput)(nil)).Elem(), ApiShieldErrorSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldErrorSourcePtrInput)(nil)).Elem(), ApiShieldErrorSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldMessageInput)(nil)).Elem(), ApiShieldMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldMessageArrayInput)(nil)).Elem(), ApiShieldMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldMessageSourceInput)(nil)).Elem(), ApiShieldMessageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldMessageSourcePtrInput)(nil)).Elem(), ApiShieldMessageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldOperationFeaturesInput)(nil)).Elem(), ApiShieldOperationFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldOperationFeaturesPtrInput)(nil)).Elem(), ApiShieldOperationFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiShieldOperationFeaturesApiRoutingInput)(nil)).Elem(), ApiShieldOperationFeaturesApiRoutingArgs{})
@@ -83160,8 +83082,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsConfigArrayInput)(nil)).Elem(), AuthenticatedOriginPullsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BotManagementStaleZoneConfigurationInput)(nil)).Elem(), BotManagementStaleZoneConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BotManagementStaleZoneConfigurationPtrInput)(nil)).Elem(), BotManagementStaleZoneConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesParametersInput)(nil)).Elem(), CloudConnectorRulesParametersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesParametersPtrInput)(nil)).Elem(), CloudConnectorRulesParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesRuleInput)(nil)).Elem(), CloudConnectorRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesRuleArrayInput)(nil)).Elem(), CloudConnectorRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudConnectorRulesRuleParametersInput)(nil)).Elem(), CloudConnectorRulesRuleParametersArgs{})
@@ -83184,10 +83104,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslKeylessServerPtrInput)(nil)).Elem(), CustomSslKeylessServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslKeylessServerTunnelInput)(nil)).Elem(), CustomSslKeylessServerTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslKeylessServerTunnelPtrInput)(nil)).Elem(), CustomSslKeylessServerTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceDexTestDataInput)(nil)).Elem(), DeviceDexTestDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceDexTestDataPtrInput)(nil)).Elem(), DeviceDexTestDataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceDexTestTargetPolicyInput)(nil)).Elem(), DeviceDexTestTargetPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceDexTestTargetPolicyArrayInput)(nil)).Elem(), DeviceDexTestTargetPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*D1DatabaseReadReplicationInput)(nil)).Elem(), D1DatabaseReadReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*D1DatabaseReadReplicationPtrInput)(nil)).Elem(), D1DatabaseReadReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceManagedNetworksConfigInput)(nil)).Elem(), DeviceManagedNetworksConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceManagedNetworksConfigPtrInput)(nil)).Elem(), DeviceManagedNetworksConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureIntegrationConfigInput)(nil)).Elem(), DevicePostureIntegrationConfigArgs{})
@@ -83238,8 +83156,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingCatchAllMatcherArrayInput)(nil)).Elem(), EmailRoutingCatchAllMatcherArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsErrorInput)(nil)).Elem(), EmailRoutingDnsErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsErrorArrayInput)(nil)).Elem(), EmailRoutingDnsErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsErrorSourceInput)(nil)).Elem(), EmailRoutingDnsErrorSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsErrorSourcePtrInput)(nil)).Elem(), EmailRoutingDnsErrorSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsMessageInput)(nil)).Elem(), EmailRoutingDnsMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsMessageArrayInput)(nil)).Elem(), EmailRoutingDnsMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsMessageSourceInput)(nil)).Elem(), EmailRoutingDnsMessageSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsMessageSourcePtrInput)(nil)).Elem(), EmailRoutingDnsMessageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultInput)(nil)).Elem(), EmailRoutingDnsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultPtrInput)(nil)).Elem(), EmailRoutingDnsResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmailRoutingDnsResultErrorInput)(nil)).Elem(), EmailRoutingDnsResultErrorArgs{})
@@ -83268,6 +83190,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckTcpConfigPtrInput)(nil)).Elem(), HealthcheckTcpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigCachingInput)(nil)).Elem(), HyperdriveConfigCachingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigCachingPtrInput)(nil)).Elem(), HyperdriveConfigCachingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigMtlsInput)(nil)).Elem(), HyperdriveConfigMtlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigMtlsPtrInput)(nil)).Elem(), HyperdriveConfigMtlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigOriginInput)(nil)).Elem(), HyperdriveConfigOriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigOriginPtrInput)(nil)).Elem(), HyperdriveConfigOriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageVariantOptionsInput)(nil)).Elem(), ImageVariantOptionsArgs{})
@@ -83346,7 +83270,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicTransitSiteWanStaticAddressingPtrInput)(nil)).Elem(), MagicTransitSiteWanStaticAddressingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelPtrInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelArrayInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanGreTunnelGreTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanGreTunnelGreTunnelHealthCheckTargetArgs{})
@@ -83367,7 +83290,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanIpsecTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelPtrInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelArrayInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetInput)(nil)).Elem(), MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetArgs{})
@@ -83382,13 +83304,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrInput)(nil)).Elem(), MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelPskMetadataInput)(nil)).Elem(), MagicWanIpsecTunnelPskMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanIpsecTunnelPskMetadataPtrInput)(nil)).Elem(), MagicWanIpsecTunnelPskMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteModifiedRouteInput)(nil)).Elem(), MagicWanStaticRouteModifiedRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteModifiedRoutePtrInput)(nil)).Elem(), MagicWanStaticRouteModifiedRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteModifiedRouteScopeInput)(nil)).Elem(), MagicWanStaticRouteModifiedRouteScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteModifiedRouteScopePtrInput)(nil)).Elem(), MagicWanStaticRouteModifiedRouteScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRouteInput)(nil)).Elem(), MagicWanStaticRouteRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRoutePtrInput)(nil)).Elem(), MagicWanStaticRouteRouteArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRouteArrayInput)(nil)).Elem(), MagicWanStaticRouteRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRouteScopeInput)(nil)).Elem(), MagicWanStaticRouteRouteScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteRouteScopePtrInput)(nil)).Elem(), MagicWanStaticRouteRouteScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MagicWanStaticRouteScopeInput)(nil)).Elem(), MagicWanStaticRouteScopeArgs{})
@@ -83593,14 +83516,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionPtrInput)(nil)).Elem(), RateLimitActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponseInput)(nil)).Elem(), RateLimitActionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponsePtrInput)(nil)).Elem(), RateLimitActionResponseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitBypassInput)(nil)).Elem(), RateLimitBypassArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitBypassArrayInput)(nil)).Elem(), RateLimitBypassArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchInput)(nil)).Elem(), RateLimitMatchArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchPtrInput)(nil)).Elem(), RateLimitMatchArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchHeaderInput)(nil)).Elem(), RateLimitMatchHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchHeaderArrayInput)(nil)).Elem(), RateLimitMatchHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchRequestInput)(nil)).Elem(), RateLimitMatchRequestArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchRequestPtrInput)(nil)).Elem(), RateLimitMatchRequestArgs{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -84111,8 +84026,12 @@ func init() {
 	pulumi.RegisterOutputType(ApiShieldAuthIdCharacteristicArrayOutput{})
 	pulumi.RegisterOutputType(ApiShieldErrorOutput{})
 	pulumi.RegisterOutputType(ApiShieldErrorArrayOutput{})
+	pulumi.RegisterOutputType(ApiShieldErrorSourceOutput{})
+	pulumi.RegisterOutputType(ApiShieldErrorSourcePtrOutput{})
 	pulumi.RegisterOutputType(ApiShieldMessageOutput{})
 	pulumi.RegisterOutputType(ApiShieldMessageArrayOutput{})
+	pulumi.RegisterOutputType(ApiShieldMessageSourceOutput{})
+	pulumi.RegisterOutputType(ApiShieldMessageSourcePtrOutput{})
 	pulumi.RegisterOutputType(ApiShieldOperationFeaturesOutput{})
 	pulumi.RegisterOutputType(ApiShieldOperationFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ApiShieldOperationFeaturesApiRoutingOutput{})
@@ -84159,8 +84078,6 @@ func init() {
 	pulumi.RegisterOutputType(AuthenticatedOriginPullsConfigArrayOutput{})
 	pulumi.RegisterOutputType(BotManagementStaleZoneConfigurationOutput{})
 	pulumi.RegisterOutputType(BotManagementStaleZoneConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(CloudConnectorRulesParametersOutput{})
-	pulumi.RegisterOutputType(CloudConnectorRulesParametersPtrOutput{})
 	pulumi.RegisterOutputType(CloudConnectorRulesRuleOutput{})
 	pulumi.RegisterOutputType(CloudConnectorRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(CloudConnectorRulesRuleParametersOutput{})
@@ -84183,10 +84100,8 @@ func init() {
 	pulumi.RegisterOutputType(CustomSslKeylessServerPtrOutput{})
 	pulumi.RegisterOutputType(CustomSslKeylessServerTunnelOutput{})
 	pulumi.RegisterOutputType(CustomSslKeylessServerTunnelPtrOutput{})
-	pulumi.RegisterOutputType(DeviceDexTestDataOutput{})
-	pulumi.RegisterOutputType(DeviceDexTestDataPtrOutput{})
-	pulumi.RegisterOutputType(DeviceDexTestTargetPolicyOutput{})
-	pulumi.RegisterOutputType(DeviceDexTestTargetPolicyArrayOutput{})
+	pulumi.RegisterOutputType(D1DatabaseReadReplicationOutput{})
+	pulumi.RegisterOutputType(D1DatabaseReadReplicationPtrOutput{})
 	pulumi.RegisterOutputType(DeviceManagedNetworksConfigOutput{})
 	pulumi.RegisterOutputType(DeviceManagedNetworksConfigPtrOutput{})
 	pulumi.RegisterOutputType(DevicePostureIntegrationConfigOutput{})
@@ -84237,8 +84152,12 @@ func init() {
 	pulumi.RegisterOutputType(EmailRoutingCatchAllMatcherArrayOutput{})
 	pulumi.RegisterOutputType(EmailRoutingDnsErrorOutput{})
 	pulumi.RegisterOutputType(EmailRoutingDnsErrorArrayOutput{})
+	pulumi.RegisterOutputType(EmailRoutingDnsErrorSourceOutput{})
+	pulumi.RegisterOutputType(EmailRoutingDnsErrorSourcePtrOutput{})
 	pulumi.RegisterOutputType(EmailRoutingDnsMessageOutput{})
 	pulumi.RegisterOutputType(EmailRoutingDnsMessageArrayOutput{})
+	pulumi.RegisterOutputType(EmailRoutingDnsMessageSourceOutput{})
+	pulumi.RegisterOutputType(EmailRoutingDnsMessageSourcePtrOutput{})
 	pulumi.RegisterOutputType(EmailRoutingDnsResultOutput{})
 	pulumi.RegisterOutputType(EmailRoutingDnsResultPtrOutput{})
 	pulumi.RegisterOutputType(EmailRoutingDnsResultErrorOutput{})
@@ -84267,6 +84186,8 @@ func init() {
 	pulumi.RegisterOutputType(HealthcheckTcpConfigPtrOutput{})
 	pulumi.RegisterOutputType(HyperdriveConfigCachingOutput{})
 	pulumi.RegisterOutputType(HyperdriveConfigCachingPtrOutput{})
+	pulumi.RegisterOutputType(HyperdriveConfigMtlsOutput{})
+	pulumi.RegisterOutputType(HyperdriveConfigMtlsPtrOutput{})
 	pulumi.RegisterOutputType(HyperdriveConfigOriginOutput{})
 	pulumi.RegisterOutputType(HyperdriveConfigOriginPtrOutput{})
 	pulumi.RegisterOutputType(ImageVariantOptionsOutput{})
@@ -84345,7 +84266,6 @@ func init() {
 	pulumi.RegisterOutputType(MagicTransitSiteWanStaticAddressingPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelArrayOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelHealthCheckOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanGreTunnelGreTunnelHealthCheckTargetOutput{})
@@ -84366,7 +84286,6 @@ func init() {
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelHealthCheckTargetPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelPtrOutput{})
-	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelArrayOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelHealthCheckOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelHealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelIpsecTunnelHealthCheckTargetOutput{})
@@ -84381,13 +84300,14 @@ func init() {
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataOutput{})
 	pulumi.RegisterOutputType(MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataPtrOutput{})
+	pulumi.RegisterOutputType(MagicWanIpsecTunnelPskMetadataOutput{})
+	pulumi.RegisterOutputType(MagicWanIpsecTunnelPskMetadataPtrOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteModifiedRouteOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteModifiedRoutePtrOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteModifiedRouteScopeOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteModifiedRouteScopePtrOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteRouteOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteRoutePtrOutput{})
-	pulumi.RegisterOutputType(MagicWanStaticRouteRouteArrayOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteRouteScopeOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteRouteScopePtrOutput{})
 	pulumi.RegisterOutputType(MagicWanStaticRouteScopeOutput{})
@@ -84592,12 +84512,4 @@ func init() {
 	pulumi.RegisterOutputType(RateLimitActionPtrOutput{})
 	pulumi.RegisterOutputType(RateLimitActionResponseOutput{})
 	pulumi.RegisterOutputType(RateLimitActionResponsePtrOutput{})
-	pulumi.RegisterOutputType(RateLimitBypassOutput{})
-	pulumi.RegisterOutputType(RateLimitBypassArrayOutput{})
-	pulumi.RegisterOutputType(RateLimitMatchOutput{})
-	pulumi.RegisterOutputType(RateLimitMatchPtrOutput{})
-	pulumi.RegisterOutputType(RateLimitMatchHeaderOutput{})
-	pulumi.RegisterOutputType(RateLimitMatchHeaderArrayOutput{})
-	pulumi.RegisterOutputType(RateLimitMatchRequestOutput{})
-	pulumi.RegisterOutputType(RateLimitMatchRequestPtrOutput{})
 }

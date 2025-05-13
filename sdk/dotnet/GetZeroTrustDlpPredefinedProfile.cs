@@ -129,25 +129,25 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetZeroTrustDlpPredefinedProfileContextAwarenessResult ContextAwareness;
         /// <summary>
-        /// When the profile was created
+        /// When the profile was created.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// The description of the profile
+        /// The description of the profile.
         /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpPredefinedProfileEntryResult> Entries;
         /// <summary>
-        /// The id of the profile (uuid)
+        /// The id of the profile (uuid).
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the profile
+        /// The name of the profile.
         /// </summary>
         public readonly string Name;
         public readonly bool OcrEnabled;
         /// <summary>
-        /// Whether this profile can be accessed by anyone
+        /// Whether this profile can be accessed by anyone.
         /// </summary>
         public readonly bool OpenAccess;
         public readonly string ProfileId;
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// When the profile was lasted updated
+        /// When the profile was lasted updated.
         /// </summary>
         public readonly string UpdatedAt;
 

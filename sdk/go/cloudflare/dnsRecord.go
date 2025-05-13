@@ -31,7 +31,7 @@ type DnsRecord struct {
 	// When the record was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Components of a CAA record.
-	Data DnsRecordDataOutput `pulumi:"data"`
+	Data DnsRecordDataPtrOutput `pulumi:"data"`
 	// Extra Cloudflare-specific information about the record.
 	Meta pulumi.StringOutput `pulumi:"meta"`
 	// When the record was last modified.
@@ -347,8 +347,8 @@ func (o DnsRecordOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // Components of a CAA record.
-func (o DnsRecordOutput) Data() DnsRecordDataOutput {
-	return o.ApplyT(func(v *DnsRecord) DnsRecordDataOutput { return v.Data }).(DnsRecordDataOutput)
+func (o DnsRecordOutput) Data() DnsRecordDataPtrOutput {
+	return o.ApplyT(func(v *DnsRecord) DnsRecordDataPtrOutput { return v.Data }).(DnsRecordDataPtrOutput)
 }
 
 // Extra Cloudflare-specific information about the record.

@@ -759,7 +759,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[builtins.str]]:
+    def description(self) -> pulumi.Output[builtins.str]:
         """
         A human-readable description of the pool.
         """
@@ -844,7 +844,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationEmail")
-    def notification_email(self) -> pulumi.Output[Optional[builtins.str]]:
+    def notification_email(self) -> pulumi.Output[builtins.str]:
         """
         This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         """

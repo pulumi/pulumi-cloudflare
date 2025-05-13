@@ -48,7 +48,7 @@ func GetDcvDelegation(ctx *pulumi.Context, args *GetDcvDelegationArgs, opts ...p
 
 // A collection of arguments for invoking getDcvDelegation.
 type GetDcvDelegationArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -58,7 +58,7 @@ type GetDcvDelegationResult struct {
 	Id string `pulumi:"id"`
 	// The DCV Delegation unique identifier.
 	Uuid string `pulumi:"uuid"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -73,7 +73,7 @@ func GetDcvDelegationOutput(ctx *pulumi.Context, args GetDcvDelegationOutputArgs
 
 // A collection of arguments for invoking getDcvDelegation.
 type GetDcvDelegationOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -106,7 +106,7 @@ func (o GetDcvDelegationResultOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcvDelegationResult) string { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o GetDcvDelegationResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcvDelegationResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

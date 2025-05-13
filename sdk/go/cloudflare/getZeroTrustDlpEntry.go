@@ -55,11 +55,15 @@ type LookupZeroTrustDlpEntryArgs struct {
 
 // A collection of values returned by getZeroTrustDlpEntry.
 type LookupZeroTrustDlpEntryResult struct {
-	AccountId  string                         `pulumi:"accountId"`
-	Confidence GetZeroTrustDlpEntryConfidence `pulumi:"confidence"`
-	CreatedAt  string                         `pulumi:"createdAt"`
-	Enabled    bool                           `pulumi:"enabled"`
-	EntryId    *string                        `pulumi:"entryId"`
+	AccountId string `pulumi:"accountId"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if secret is true
+	CaseSensitive bool                           `pulumi:"caseSensitive"`
+	Confidence    GetZeroTrustDlpEntryConfidence `pulumi:"confidence"`
+	CreatedAt     string                         `pulumi:"createdAt"`
+	Enabled       bool                           `pulumi:"enabled"`
+	EntryId       *string                        `pulumi:"entryId"`
 	// The ID of this resource.
 	Id        string                      `pulumi:"id"`
 	Name      string                      `pulumi:"name"`
@@ -108,6 +112,13 @@ func (o LookupZeroTrustDlpEntryResultOutput) ToLookupZeroTrustDlpEntryResultOutp
 
 func (o LookupZeroTrustDlpEntryResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if secret is true
+func (o LookupZeroTrustDlpEntryResultOutput) CaseSensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDlpEntryResult) bool { return v.CaseSensitive }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustDlpEntryResultOutput) Confidence() GetZeroTrustDlpEntryConfidenceOutput {

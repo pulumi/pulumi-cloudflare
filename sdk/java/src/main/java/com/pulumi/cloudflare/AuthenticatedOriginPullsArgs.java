@@ -41,14 +41,14 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -116,7 +116,7 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class AuthenticatedOriginPullsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

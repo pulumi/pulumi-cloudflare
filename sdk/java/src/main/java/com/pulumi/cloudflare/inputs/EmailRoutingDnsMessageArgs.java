@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.EmailRoutingDnsMessageSourceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -23,6 +24,13 @@ public final class EmailRoutingDnsMessageArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.code);
     }
 
+    @Import(name="documentationUrl")
+    private @Nullable Output<String> documentationUrl;
+
+    public Optional<Output<String>> documentationUrl() {
+        return Optional.ofNullable(this.documentationUrl);
+    }
+
     @Import(name="message")
     private @Nullable Output<String> message;
 
@@ -30,11 +38,20 @@ public final class EmailRoutingDnsMessageArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.message);
     }
 
+    @Import(name="source")
+    private @Nullable Output<EmailRoutingDnsMessageSourceArgs> source;
+
+    public Optional<Output<EmailRoutingDnsMessageSourceArgs>> source() {
+        return Optional.ofNullable(this.source);
+    }
+
     private EmailRoutingDnsMessageArgs() {}
 
     private EmailRoutingDnsMessageArgs(EmailRoutingDnsMessageArgs $) {
         this.code = $.code;
+        this.documentationUrl = $.documentationUrl;
         this.message = $.message;
+        this.source = $.source;
     }
 
     public static Builder builder() {
@@ -64,6 +81,15 @@ public final class EmailRoutingDnsMessageArgs extends com.pulumi.resources.Resou
             return code(Output.of(code));
         }
 
+        public Builder documentationUrl(@Nullable Output<String> documentationUrl) {
+            $.documentationUrl = documentationUrl;
+            return this;
+        }
+
+        public Builder documentationUrl(String documentationUrl) {
+            return documentationUrl(Output.of(documentationUrl));
+        }
+
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
@@ -71,6 +97,15 @@ public final class EmailRoutingDnsMessageArgs extends com.pulumi.resources.Resou
 
         public Builder message(String message) {
             return message(Output.of(message));
+        }
+
+        public Builder source(@Nullable Output<EmailRoutingDnsMessageSourceArgs> source) {
+            $.source = source;
+            return this;
+        }
+
+        public Builder source(EmailRoutingDnsMessageSourceArgs source) {
+            return source(Output.of(source));
         }
 
         public EmailRoutingDnsMessageArgs build() {

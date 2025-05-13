@@ -28,7 +28,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, adaptive_routing=None, country_pools=None, created_on=None, default_pools=None, description=None, enabled=None, fallback_pool=None, id=None, load_balancer_id=None, location_strategy=None, modified_on=None, name=None, networks=None, pop_pools=None, proxied=None, random_steering=None, region_pools=None, rules=None, session_affinity=None, session_affinity_attributes=None, session_affinity_ttl=None, steering_policy=None, ttl=None, zone_id=None, zone_name=None):
+    def __init__(__self__, adaptive_routing=None, country_pools=None, created_on=None, default_pools=None, description=None, enabled=None, fallback_pool=None, id=None, load_balancer_id=None, location_strategy=None, modified_on=None, name=None, networks=None, pop_pools=None, proxied=None, random_steering=None, region_pools=None, rules=None, session_affinity=None, session_affinity_attributes=None, session_affinity_ttl=None, steering_policy=None, ttl=None, zone_id=None):
         if adaptive_routing and not isinstance(adaptive_routing, dict):
             raise TypeError("Expected argument 'adaptive_routing' to be a dict")
         pulumi.set(__self__, "adaptive_routing", adaptive_routing)
@@ -101,9 +101,6 @@ class GetLoadBalancerResult:
         if zone_id and not isinstance(zone_id, str):
             raise TypeError("Expected argument 'zone_id' to be a str")
         pulumi.set(__self__, "zone_id", zone_id)
-        if zone_name and not isinstance(zone_name, str):
-            raise TypeError("Expected argument 'zone_name' to be a str")
-        pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter(name="adaptiveRouting")
@@ -285,11 +282,6 @@ class GetLoadBalancerResult:
     def zone_id(self) -> builtins.str:
         return pulumi.get(self, "zone_id")
 
-    @property
-    @pulumi.getter(name="zoneName")
-    def zone_name(self) -> builtins.str:
-        return pulumi.get(self, "zone_name")
-
 
 class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
     # pylint: disable=using-constant-test
@@ -320,17 +312,12 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             session_affinity_ttl=self.session_affinity_ttl,
             steering_policy=self.steering_policy,
             ttl=self.ttl,
-            zone_id=self.zone_id,
-            zone_name=self.zone_name)
+            zone_id=self.zone_id)
 
 
-def get_load_balancer(country_pools: Optional[Mapping[str, Sequence[builtins.str]]] = None,
-                      load_balancer_id: Optional[builtins.str] = None,
+def get_load_balancer(load_balancer_id: Optional[builtins.str] = None,
                       pop_pools: Optional[Mapping[str, Sequence[builtins.str]]] = None,
                       region_pools: Optional[Mapping[str, Sequence[builtins.str]]] = None,
-                      session_affinity_ttl: Optional[builtins.float] = None,
-                      steering_policy: Optional[builtins.str] = None,
-                      ttl: Optional[builtins.float] = None,
                       zone_id: Optional[builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
@@ -345,21 +332,13 @@ def get_load_balancer(country_pools: Optional[Mapping[str, Sequence[builtins.str
     ```
 
 
-    :param Mapping[str, Sequence[builtins.str]] country_pools: A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
     :param Mapping[str, Sequence[builtins.str]] pop_pools: (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
     :param Mapping[str, Sequence[builtins.str]] region_pools: A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
-    :param builtins.float session_affinity_ttl: Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
-    :param builtins.str steering_policy: Steering Policy for this load balancer.
-    :param builtins.float ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
     """
     __args__ = dict()
-    __args__['countryPools'] = country_pools
     __args__['loadBalancerId'] = load_balancer_id
     __args__['popPools'] = pop_pools
     __args__['regionPools'] = region_pools
-    __args__['sessionAffinityTtl'] = session_affinity_ttl
-    __args__['steeringPolicy'] = steering_policy
-    __args__['ttl'] = ttl
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult).value
@@ -388,15 +367,10 @@ def get_load_balancer(country_pools: Optional[Mapping[str, Sequence[builtins.str
         session_affinity_ttl=pulumi.get(__ret__, 'session_affinity_ttl'),
         steering_policy=pulumi.get(__ret__, 'steering_policy'),
         ttl=pulumi.get(__ret__, 'ttl'),
-        zone_id=pulumi.get(__ret__, 'zone_id'),
-        zone_name=pulumi.get(__ret__, 'zone_name'))
-def get_load_balancer_output(country_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[builtins.str]]]]] = None,
-                             load_balancer_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+        zone_id=pulumi.get(__ret__, 'zone_id'))
+def get_load_balancer_output(load_balancer_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                              pop_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[builtins.str]]]]] = None,
                              region_pools: Optional[pulumi.Input[Optional[Mapping[str, Sequence[builtins.str]]]]] = None,
-                             session_affinity_ttl: Optional[pulumi.Input[Optional[builtins.float]]] = None,
-                             steering_policy: Optional[pulumi.Input[Optional[builtins.str]]] = None,
-                             ttl: Optional[pulumi.Input[Optional[builtins.float]]] = None,
                              zone_id: Optional[pulumi.Input[builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
@@ -411,21 +385,13 @@ def get_load_balancer_output(country_pools: Optional[pulumi.Input[Optional[Mappi
     ```
 
 
-    :param Mapping[str, Sequence[builtins.str]] country_pools: A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
     :param Mapping[str, Sequence[builtins.str]] pop_pools: (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
     :param Mapping[str, Sequence[builtins.str]] region_pools: A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
-    :param builtins.float session_affinity_ttl: Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are:
-    :param builtins.str steering_policy: Steering Policy for this load balancer.
-    :param builtins.float ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
     """
     __args__ = dict()
-    __args__['countryPools'] = country_pools
     __args__['loadBalancerId'] = load_balancer_id
     __args__['popPools'] = pop_pools
     __args__['regionPools'] = region_pools
-    __args__['sessionAffinityTtl'] = session_affinity_ttl
-    __args__['steeringPolicy'] = steering_policy
-    __args__['ttl'] = ttl
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getLoadBalancer:getLoadBalancer', __args__, opts=opts, typ=GetLoadBalancerResult)
@@ -453,5 +419,4 @@ def get_load_balancer_output(country_pools: Optional[pulumi.Input[Optional[Mappi
         session_affinity_ttl=pulumi.get(__response__, 'session_affinity_ttl'),
         steering_policy=pulumi.get(__response__, 'steering_policy'),
         ttl=pulumi.get(__response__, 'ttl'),
-        zone_id=pulumi.get(__response__, 'zone_id'),
-        zone_name=pulumi.get(__response__, 'zone_name')))
+        zone_id=pulumi.get(__response__, 'zone_id')))

@@ -78,14 +78,14 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="operationId")
     private @Nullable Output<String> operationId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> operationId() {
@@ -93,14 +93,14 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -221,7 +221,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param operationId UUID
+         * @param operationId UUID.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param operationId UUID
+         * @param operationId UUID.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ApiShieldOperationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

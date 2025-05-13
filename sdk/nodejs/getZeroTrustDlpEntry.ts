@@ -40,6 +40,12 @@ export interface GetZeroTrustDlpEntryArgs {
  */
 export interface GetZeroTrustDlpEntryResult {
     readonly accountId: string;
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    readonly caseSensitive: boolean;
     readonly confidence: outputs.GetZeroTrustDlpEntryConfidence;
     readonly createdAt: string;
     readonly enabled: boolean;

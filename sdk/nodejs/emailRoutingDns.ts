@@ -83,7 +83,7 @@ export class EmailRoutingDns extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      */
     public /*out*/ readonly success!: pulumi.Output<boolean>;
     /**
@@ -93,7 +93,7 @@ export class EmailRoutingDns extends pulumi.CustomResource {
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -184,7 +184,7 @@ export interface EmailRoutingDnsState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      */
     success?: pulumi.Input<boolean>;
     /**
@@ -194,7 +194,7 @@ export interface EmailRoutingDnsState {
      */
     tag?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -208,7 +208,7 @@ export interface EmailRoutingDnsArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

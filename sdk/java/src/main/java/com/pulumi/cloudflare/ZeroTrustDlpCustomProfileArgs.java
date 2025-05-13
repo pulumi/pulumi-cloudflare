@@ -75,14 +75,14 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The description of the profile
+     * The description of the profile.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the profile
+     * @return The description of the profile.
      * 
      */
     public Optional<Output<String>> description() {
@@ -236,7 +236,7 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description The description of the profile
+         * @param description The description of the profile.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description The description of the profile
+         * @param description The description of the profile.
          * 
          * @return builder
          * 

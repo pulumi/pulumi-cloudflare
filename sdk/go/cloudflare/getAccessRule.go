@@ -53,7 +53,7 @@ type LookupAccessRuleArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId *string              `pulumi:"accountId"`
 	Filter    *GetAccessRuleFilter `pulumi:"filter"`
-	// Unique identifier for a rule
+	// Unique identifier for a rule.
 	RuleId *string `pulumi:"ruleId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -70,7 +70,7 @@ type LookupAccessRuleResult struct {
 	// The timestamp of when the rule was created.
 	CreatedOn string               `pulumi:"createdOn"`
 	Filter    *GetAccessRuleFilter `pulumi:"filter"`
-	// Unique identifier for a rule
+	// Unique identifier for a rule.
 	Id string `pulumi:"id"`
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -79,7 +79,7 @@ type LookupAccessRuleResult struct {
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// An informative summary of the rule, typically used as a reminder or explanation.
 	Notes string `pulumi:"notes"`
-	// Unique identifier for a rule
+	// Unique identifier for a rule.
 	RuleId *string `pulumi:"ruleId"`
 	// All zones owned by the user will have the rule applied.
 	Scope GetAccessRuleScope `pulumi:"scope"`
@@ -101,7 +101,7 @@ type LookupAccessRuleOutputArgs struct {
 	// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
 	AccountId pulumi.StringPtrInput       `pulumi:"accountId"`
 	Filter    GetAccessRuleFilterPtrInput `pulumi:"filter"`
-	// Unique identifier for a rule
+	// Unique identifier for a rule.
 	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
 	// The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
@@ -150,7 +150,7 @@ func (o LookupAccessRuleResultOutput) Filter() GetAccessRuleFilterPtrOutput {
 	return o.ApplyT(func(v LookupAccessRuleResult) *GetAccessRuleFilter { return v.Filter }).(GetAccessRuleFilterPtrOutput)
 }
 
-// Unique identifier for a rule
+// Unique identifier for a rule.
 func (o LookupAccessRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -171,7 +171,7 @@ func (o LookupAccessRuleResultOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessRuleResult) string { return v.Notes }).(pulumi.StringOutput)
 }
 
-// Unique identifier for a rule
+// Unique identifier for a rule.
 func (o LookupAccessRuleResultOutput) RuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccessRuleResult) *string { return v.RuleId }).(pulumi.StringPtrOutput)
 }

@@ -17,14 +17,14 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
     public static final ApiShieldDiscoveryOperationArgs Empty = new ApiShieldDiscoveryOperationArgs();
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="operationId", required=true)
     private Output<String> operationId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Output<String> operationId() {
@@ -49,14 +49,14 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -90,7 +90,7 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param operationId UUID
+         * @param operationId UUID.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param operationId UUID
+         * @param operationId UUID.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ApiShieldDiscoveryOperationArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

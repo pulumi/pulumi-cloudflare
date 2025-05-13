@@ -53,12 +53,12 @@ export interface GetAccessRulesArgs {
     accountId?: string;
     configuration?: inputs.GetAccessRulesConfiguration;
     /**
-     * The direction used to sort returned rules.
+     * Defines the direction used to sort returned rules.
      * Available values: "asc", "desc".
      */
     direction?: string;
     /**
-     * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: "any", "all".
      */
     match?: string;
@@ -72,12 +72,12 @@ export interface GetAccessRulesArgs {
      */
     mode?: string;
     /**
-     * The string to search for in the notes of existing IP Access rules.
+     * Defines the string to search for in the notes of existing IP Access rules.
      * Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
      */
     notes?: string;
     /**
-     * The field used to sort returned rules.
+     * Defines the field used to sort returned rules.
      * Available values: "configuration.target", "configuration.value", "mode".
      */
     order?: string;
@@ -97,7 +97,7 @@ export interface GetAccessRulesResult {
     readonly accountId?: string;
     readonly configuration?: outputs.GetAccessRulesConfiguration;
     /**
-     * The direction used to sort returned rules.
+     * Defines the direction used to sort returned rules.
      * Available values: "asc", "desc".
      */
     readonly direction?: string;
@@ -106,7 +106,7 @@ export interface GetAccessRulesResult {
      */
     readonly id: string;
     /**
-     * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: "any", "all".
      */
     readonly match: string;
@@ -120,12 +120,12 @@ export interface GetAccessRulesResult {
      */
     readonly mode?: string;
     /**
-     * The string to search for in the notes of existing IP Access rules.
+     * Defines the string to search for in the notes of existing IP Access rules.
      * Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
      */
     readonly notes?: string;
     /**
-     * The field used to sort returned rules.
+     * Defines the field used to sort returned rules.
      * Available values: "configuration.target", "configuration.value", "mode".
      */
     readonly order?: string;
@@ -185,12 +185,12 @@ export interface GetAccessRulesOutputArgs {
     accountId?: pulumi.Input<string>;
     configuration?: pulumi.Input<inputs.GetAccessRulesConfigurationArgs>;
     /**
-     * The direction used to sort returned rules.
+     * Defines the direction used to sort returned rules.
      * Available values: "asc", "desc".
      */
     direction?: pulumi.Input<string>;
     /**
-     * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: "any", "all".
      */
     match?: pulumi.Input<string>;
@@ -204,12 +204,12 @@ export interface GetAccessRulesOutputArgs {
      */
     mode?: pulumi.Input<string>;
     /**
-     * The string to search for in the notes of existing IP Access rules.
+     * Defines the string to search for in the notes of existing IP Access rules.
      * Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
      */
     notes?: pulumi.Input<string>;
     /**
-     * The field used to sort returned rules.
+     * Defines the field used to sort returned rules.
      * Available values: "configuration.target", "configuration.value", "mode".
      */
     order?: pulumi.Input<string>;

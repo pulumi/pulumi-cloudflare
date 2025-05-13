@@ -59,7 +59,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * Object description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Whether to enable (the default) this load balancer.
      */
@@ -80,7 +80,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * List of networks where Load Balancer or Pool is enabled.
      */
-    public readonly networks!: pulumi.Output<string[] | undefined>;
+    public readonly networks!: pulumi.Output<string[]>;
     /**
      * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
      */

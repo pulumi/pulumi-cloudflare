@@ -28,7 +28,7 @@ type ZeroTrustDevicePostureRule struct {
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// The value to be checked against.
-	Input ZeroTrustDevicePostureRuleInputTypeOutput `pulumi:"input"`
+	Input ZeroTrustDevicePostureRuleInputTypePtrOutput `pulumi:"input"`
 	// The conditions that the client must match to run the rule.
 	Matches ZeroTrustDevicePostureRuleMatchArrayOutput `pulumi:"matches"`
 	// The name of the device posture rule.
@@ -267,8 +267,8 @@ func (o ZeroTrustDevicePostureRuleOutput) Expiration() pulumi.StringPtrOutput {
 }
 
 // The value to be checked against.
-func (o ZeroTrustDevicePostureRuleOutput) Input() ZeroTrustDevicePostureRuleInputTypeOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) ZeroTrustDevicePostureRuleInputTypeOutput { return v.Input }).(ZeroTrustDevicePostureRuleInputTypeOutput)
+func (o ZeroTrustDevicePostureRuleOutput) Input() ZeroTrustDevicePostureRuleInputTypePtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) ZeroTrustDevicePostureRuleInputTypePtrOutput { return v.Input }).(ZeroTrustDevicePostureRuleInputTypePtrOutput)
 }
 
 // The conditions that the client must match to run the rule.

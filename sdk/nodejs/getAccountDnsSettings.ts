@@ -30,7 +30,7 @@ export function getAccountDnsSettings(args: GetAccountDnsSettingsArgs, opts?: pu
  */
 export interface GetAccountDnsSettingsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
 }
@@ -40,7 +40,7 @@ export interface GetAccountDnsSettingsArgs {
  */
 export interface GetAccountDnsSettingsResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -73,7 +73,7 @@ export function getAccountDnsSettingsOutput(args: GetAccountDnsSettingsOutputArg
  */
 export interface GetAccountDnsSettingsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
 }

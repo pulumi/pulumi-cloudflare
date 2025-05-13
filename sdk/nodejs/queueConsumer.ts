@@ -59,7 +59,7 @@ export class QueueConsumer extends pulumi.CustomResource {
      * Name of a Worker
      */
     public readonly scriptName!: pulumi.Output<string | undefined>;
-    public readonly settings!: pulumi.Output<outputs.QueueConsumerSettings>;
+    public readonly settings!: pulumi.Output<outputs.QueueConsumerSettings | undefined>;
     /**
      * Available values: "worker".
      */

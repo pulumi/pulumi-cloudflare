@@ -11,13 +11,13 @@ import java.util.Objects;
 @CustomType
 public final class GetR2CustomDomainStatus {
     /**
-     * @return Ownership status of the domain
+     * @return Ownership status of the domain.
      * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
     private String ownership;
     /**
-     * @return SSL certificate status
+     * @return SSL certificate status.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
@@ -25,7 +25,7 @@ public final class GetR2CustomDomainStatus {
 
     private GetR2CustomDomainStatus() {}
     /**
-     * @return Ownership status of the domain
+     * @return Ownership status of the domain.
      * Available values: &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;blocked&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */
@@ -33,7 +33,7 @@ public final class GetR2CustomDomainStatus {
         return this.ownership;
     }
     /**
-     * @return SSL certificate status
+     * @return SSL certificate status.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;deactivated&#34;, &#34;error&#34;, &#34;unknown&#34;.
      * 
      */

@@ -15,29 +15,29 @@ public final class GetListItemArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetListItemArgs Empty = new GetListItemArgs();
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * The unique ID of the item in the List.
+     * Defines the unique ID of the item in the List.
      * 
      */
     @Import(name="itemId", required=true)
     private Output<String> itemId;
 
     /**
-     * @return The unique ID of the item in the List.
+     * @return Defines the unique ID of the item in the List.
      * 
      */
     public Output<String> itemId() {
@@ -62,7 +62,7 @@ public final class GetListItemArgs extends com.pulumi.resources.InvokeArgs {
     private GetListItemArgs() {}
 
     private GetListItemArgs(GetListItemArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.itemId = $.itemId;
         this.listId = $.listId;
     }
@@ -86,28 +86,28 @@ public final class GetListItemArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Defines an identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param itemId The unique ID of the item in the List.
+         * @param itemId Defines the unique ID of the item in the List.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class GetListItemArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param itemId The unique ID of the item in the List.
+         * @param itemId Defines the unique ID of the item in the List.
          * 
          * @return builder
          * 
@@ -149,8 +149,8 @@ public final class GetListItemArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetListItemArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetListItemArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetListItemArgs", "accountId");
             }
             if ($.itemId == null) {
                 throw new MissingRequiredPropertyException("GetListItemArgs", "itemId");

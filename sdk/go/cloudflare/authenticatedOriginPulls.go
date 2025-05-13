@@ -16,7 +16,7 @@ import (
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Identifier.
 	CertId pulumi.StringOutput `pulumi:"certId"`
 	// Status of the certificate or the association.
 	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
@@ -49,7 +49,7 @@ type AuthenticatedOriginPulls struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The time when the certificate was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -93,7 +93,7 @@ func GetAuthenticatedOriginPulls(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthenticatedOriginPulls resources.
 type authenticatedOriginPullsState struct {
-	// Identifier
+	// Identifier.
 	CertId *string `pulumi:"certId"`
 	// Status of the certificate or the association.
 	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
@@ -126,12 +126,12 @@ type authenticatedOriginPullsState struct {
 	Status *string `pulumi:"status"`
 	// The time when the certificate was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AuthenticatedOriginPullsState struct {
-	// Identifier
+	// Identifier.
 	CertId pulumi.StringPtrInput
 	// Status of the certificate or the association.
 	// Available values: "initializing", "pending*deployment", "pending*deletion", "active", "deleted", "deployment*timed*out", "deletion*timed*out".
@@ -164,7 +164,7 @@ type AuthenticatedOriginPullsState struct {
 	Status pulumi.StringPtrInput
 	// The time when the certificate was updated.
 	UpdatedAt pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -176,7 +176,7 @@ type authenticatedOriginPullsArgs struct {
 	Configs []AuthenticatedOriginPullsConfig `pulumi:"configs"`
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname *string `pulumi:"hostname"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -185,7 +185,7 @@ type AuthenticatedOriginPullsArgs struct {
 	Configs AuthenticatedOriginPullsConfigArrayInput
 	// The hostname on the origin for which the client certificate uploaded will be used.
 	Hostname pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -276,7 +276,7 @@ func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutputWithCont
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o AuthenticatedOriginPullsOutput) CertId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.CertId }).(pulumi.StringOutput)
 }
@@ -357,7 +357,7 @@ func (o AuthenticatedOriginPullsOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o AuthenticatedOriginPullsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -63,7 +63,7 @@ public final class GetApiShieldOperationsInvokeResult {
      */
     private List<GetApiShieldOperationsResult> results;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -135,7 +135,7 @@ public final class GetApiShieldOperationsInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

@@ -13,50 +13,50 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketLockRule {
     /**
-     * @return Condition to apply a lock rule to an object for how long in seconds
+     * @return Condition to apply a lock rule to an object for how long in seconds.
      * 
      */
     private GetR2BucketLockRuleCondition condition;
     /**
-     * @return Whether or not this rule is in effect
+     * @return Whether or not this rule is in effect.
      * 
      */
     private Boolean enabled;
     /**
-     * @return Unique identifier for this rule
+     * @return Unique identifier for this rule.
      * 
      */
     private String id;
     /**
-     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     private String prefix;
 
     private GetR2BucketLockRule() {}
     /**
-     * @return Condition to apply a lock rule to an object for how long in seconds
+     * @return Condition to apply a lock rule to an object for how long in seconds.
      * 
      */
     public GetR2BucketLockRuleCondition condition() {
         return this.condition;
     }
     /**
-     * @return Whether or not this rule is in effect
+     * @return Whether or not this rule is in effect.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return Unique identifier for this rule
+     * @return Unique identifier for this rule.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * @return Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     public String prefix() {

@@ -32,7 +32,7 @@ export function getOriginCaCertificate(args?: GetOriginCaCertificateArgs, opts?:
  */
 export interface GetOriginCaCertificateArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     certificateId?: string;
     filter?: inputs.GetOriginCaCertificateFilter;
@@ -47,7 +47,7 @@ export interface GetOriginCaCertificateResult {
      */
     readonly certificate: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly certificateId?: string;
     /**
@@ -64,7 +64,7 @@ export interface GetOriginCaCertificateResult {
      */
     readonly hostnames: string[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -104,7 +104,7 @@ export function getOriginCaCertificateOutput(args?: GetOriginCaCertificateOutput
  */
 export interface GetOriginCaCertificateOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     certificateId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetOriginCaCertificateFilterArgs>;

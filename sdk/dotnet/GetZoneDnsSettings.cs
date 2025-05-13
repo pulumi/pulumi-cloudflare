@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneDnsSettingsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneDnsSettingsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetZoneDnsSettingsSoaResult Soa;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
         /// <summary>

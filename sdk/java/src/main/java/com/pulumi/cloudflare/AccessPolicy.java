@@ -79,14 +79,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="approvalGroups", refs={List.class,AccessPolicyApprovalGroup.class}, tree="[0,1]")
-    private Output<List<AccessPolicyApprovalGroup>> approvalGroups;
+    private Output</* @Nullable */ List<AccessPolicyApprovalGroup>> approvalGroups;
 
     /**
      * @return Administrators who can approve a temporary authentication request.
      * 
      */
-    public Output<List<AccessPolicyApprovalGroup>> approvalGroups() {
-        return this.approvalGroups;
+    public Output<Optional<List<AccessPolicyApprovalGroup>>> approvalGroups() {
+        return Codegen.optional(this.approvalGroups);
     }
     /**
      * Requires the user to request access from an administrator at the start of each session.
@@ -129,14 +129,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="excludes", refs={List.class,AccessPolicyExclude.class}, tree="[0,1]")
-    private Output<List<AccessPolicyExclude>> excludes;
+    private Output</* @Nullable */ List<AccessPolicyExclude>> excludes;
 
     /**
      * @return Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
-    public Output<List<AccessPolicyExclude>> excludes() {
-        return this.excludes;
+    public Output<Optional<List<AccessPolicyExclude>>> excludes() {
+        return Codegen.optional(this.excludes);
     }
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -213,14 +213,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="requires", refs={List.class,AccessPolicyRequire.class}, tree="[0,1]")
-    private Output<List<AccessPolicyRequire>> requires;
+    private Output</* @Nullable */ List<AccessPolicyRequire>> requires;
 
     /**
      * @return Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
-    public Output<List<AccessPolicyRequire>> requires() {
-        return this.requires;
+    public Output<Optional<List<AccessPolicyRequire>>> requires() {
+        return Codegen.optional(this.requires);
     }
     @Export(name="reusable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reusable;

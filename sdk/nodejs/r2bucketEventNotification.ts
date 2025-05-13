@@ -58,11 +58,11 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID
+     * Account ID.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     public readonly bucketName!: pulumi.Output<string>;
     /**
@@ -70,7 +70,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
      */
     public readonly jurisdiction!: pulumi.Output<string>;
     /**
-     * Queue ID
+     * Queue ID.
      */
     public readonly queueId!: pulumi.Output<string | undefined>;
     /**
@@ -78,9 +78,9 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
      */
     public /*out*/ readonly queues!: pulumi.Output<outputs.R2BucketEventNotificationQueue[]>;
     /**
-     * Array of rules to drive notifications
+     * Array of rules to drive notifications.
      */
-    public readonly rules!: pulumi.Output<outputs.R2BucketEventNotificationRule[]>;
+    public readonly rules!: pulumi.Output<outputs.R2BucketEventNotificationRule[] | undefined>;
 
     /**
      * Create a R2BucketEventNotification resource with the given unique name, arguments, and options.
@@ -126,11 +126,11 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
  */
 export interface R2BucketEventNotificationState {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     /**
@@ -138,7 +138,7 @@ export interface R2BucketEventNotificationState {
      */
     jurisdiction?: pulumi.Input<string>;
     /**
-     * Queue ID
+     * Queue ID.
      */
     queueId?: pulumi.Input<string>;
     /**
@@ -146,7 +146,7 @@ export interface R2BucketEventNotificationState {
      */
     queues?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationQueue>[]>;
     /**
-     * Array of rules to drive notifications
+     * Array of rules to drive notifications.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationRule>[]>;
 }
@@ -156,11 +156,11 @@ export interface R2BucketEventNotificationState {
  */
 export interface R2BucketEventNotificationArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
     /**
@@ -168,11 +168,11 @@ export interface R2BucketEventNotificationArgs {
      */
     jurisdiction?: pulumi.Input<string>;
     /**
-     * Queue ID
+     * Queue ID.
      */
     queueId?: pulumi.Input<string>;
     /**
-     * Array of rules to drive notifications
+     * Array of rules to drive notifications.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationRule>[]>;
 }

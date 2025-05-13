@@ -128,7 +128,7 @@ namespace Pulumi.Cloudflare
         public Output<double> Threshold { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Cloudflare
         public Input<double> Threshold { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -266,7 +266,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? Threshold { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

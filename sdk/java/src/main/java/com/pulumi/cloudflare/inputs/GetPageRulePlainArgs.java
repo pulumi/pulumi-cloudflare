@@ -14,14 +14,14 @@ public final class GetPageRulePlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetPageRulePlainArgs Empty = new GetPageRulePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="pageruleId", required=true)
     private String pageruleId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String pageruleId() {
@@ -29,14 +29,14 @@ public final class GetPageRulePlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -69,7 +69,7 @@ public final class GetPageRulePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param pageruleId Identifier
+         * @param pageruleId Identifier.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetPageRulePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

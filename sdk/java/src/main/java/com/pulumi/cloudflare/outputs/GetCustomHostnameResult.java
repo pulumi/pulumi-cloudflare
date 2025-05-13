@@ -24,7 +24,7 @@ public final class GetCustomHostnameResult {
      */
     private String createdAt;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String customHostnameId;
@@ -50,7 +50,7 @@ public final class GetCustomHostnameResult {
      */
     private String hostname;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -77,7 +77,7 @@ public final class GetCustomHostnameResult {
      */
     private List<String> verificationErrors;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -91,7 +91,7 @@ public final class GetCustomHostnameResult {
         return this.createdAt;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> customHostnameId() {
@@ -129,7 +129,7 @@ public final class GetCustomHostnameResult {
         return this.hostname;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -168,7 +168,7 @@ public final class GetCustomHostnameResult {
         return this.verificationErrors;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

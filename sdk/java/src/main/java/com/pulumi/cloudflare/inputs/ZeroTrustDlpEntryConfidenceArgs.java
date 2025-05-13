@@ -16,14 +16,14 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
     public static final ZeroTrustDlpEntryConfidenceArgs Empty = new ZeroTrustDlpEntryConfidenceArgs();
 
     /**
-     * Indicates whether this entry has AI remote service validation
+     * Indicates whether this entry has AI remote service validation.
      * 
      */
     @Import(name="aiContextAvailable")
     private @Nullable Output<Boolean> aiContextAvailable;
 
     /**
-     * @return Indicates whether this entry has AI remote service validation
+     * @return Indicates whether this entry has AI remote service validation.
      * 
      */
     public Optional<Output<Boolean>> aiContextAvailable() {
@@ -31,14 +31,14 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
     }
 
     /**
-     * Indicates whether this entry has any form of validation that is not an AI remote service
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
      * 
      */
     @Import(name="available")
     private @Nullable Output<Boolean> available;
 
     /**
-     * @return Indicates whether this entry has any form of validation that is not an AI remote service
+     * @return Indicates whether this entry has any form of validation that is not an AI remote service.
      * 
      */
     public Optional<Output<Boolean>> available() {
@@ -71,7 +71,7 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param aiContextAvailable Indicates whether this entry has AI remote service validation
+         * @param aiContextAvailable Indicates whether this entry has AI remote service validation.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param aiContextAvailable Indicates whether this entry has AI remote service validation
+         * @param aiContextAvailable Indicates whether this entry has AI remote service validation.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param available Indicates whether this entry has any form of validation that is not an AI remote service
+         * @param available Indicates whether this entry has any form of validation that is not an AI remote service.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ZeroTrustDlpEntryConfidenceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param available Indicates whether this entry has any form of validation that is not an AI remote service
+         * @param available Indicates whether this entry has any form of validation that is not an AI remote service.
          * 
          * @return builder
          * 

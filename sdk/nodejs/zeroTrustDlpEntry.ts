@@ -60,6 +60,12 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
     }
 
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    public /*out*/ readonly caseSensitive!: pulumi.Output<boolean>;
     public /*out*/ readonly confidence!: pulumi.Output<outputs.ZeroTrustDlpEntryConfidence>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean>;
@@ -88,6 +94,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZeroTrustDlpEntryState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["caseSensitive"] = state ? state.caseSensitive : undefined;
             resourceInputs["confidence"] = state ? state.confidence : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
@@ -121,6 +128,7 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
             resourceInputs["pattern"] = args ? args.pattern : undefined;
             resourceInputs["profileId"] = args ? args.profileId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["caseSensitive"] = undefined /*out*/;
             resourceInputs["confidence"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["secret"] = undefined /*out*/;
@@ -137,6 +145,12 @@ export class ZeroTrustDlpEntry extends pulumi.CustomResource {
  */
 export interface ZeroTrustDlpEntryState {
     accountId?: pulumi.Input<string>;
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive?: pulumi.Input<boolean>;
     confidence?: pulumi.Input<inputs.ZeroTrustDlpEntryConfidence>;
     createdAt?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;

@@ -65,7 +65,7 @@ class GetAccountDnsSettingsInternalViewsResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -189,7 +189,7 @@ def get_account_dns_settings_internal_views(account_id: Optional[builtins.str] =
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str direction: Direction to order DNS views in.
            Available values: "asc", "desc".
     :param builtins.str match: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.
@@ -252,7 +252,7 @@ def get_account_dns_settings_internal_views_output(account_id: Optional[pulumi.I
     ```
 
 
-    :param builtins.str account_id: Identifier
+    :param builtins.str account_id: Identifier.
     :param builtins.str direction: Direction to order DNS views in.
            Available values: "asc", "desc".
     :param builtins.str match: Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.

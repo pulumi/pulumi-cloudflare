@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -22,7 +21,7 @@ public final class TeamsAccountSettingsCustomCertificate {
      * @return Enable use of custom certificate authority for signing Gateway traffic.
      * 
      */
-    private Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return UUID of certificate (ID from MTLS certificate store).
      * 
@@ -42,8 +41,8 @@ public final class TeamsAccountSettingsCustomCertificate {
      * @return Enable use of custom certificate authority for signing Gateway traffic.
      * 
      */
-    public Boolean enabled() {
-        return this.enabled;
+    public Optional<Boolean> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
     /**
      * @return UUID of certificate (ID from MTLS certificate store).
@@ -66,7 +65,7 @@ public final class TeamsAccountSettingsCustomCertificate {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String bindingStatus;
-        private Boolean enabled;
+        private @Nullable Boolean enabled;
         private @Nullable String id;
         private @Nullable String updatedAt;
         public Builder() {}
@@ -85,10 +84,8 @@ public final class TeamsAccountSettingsCustomCertificate {
             return this;
         }
         @CustomType.Setter
-        public Builder enabled(Boolean enabled) {
-            if (enabled == null) {
-              throw new MissingRequiredPropertyException("TeamsAccountSettingsCustomCertificate", "enabled");
-            }
+        public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }

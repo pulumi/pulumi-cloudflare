@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  *         address: "192.0.2.0/24",
  *         description: "Include testing domains in the tunnel",
  *     }],
+ *     lanAllowMinutes: 30,
+ *     lanAllowSubnetSize: 24,
  *     registerInterfaceIpWithDns: true,
  *     serviceModeV2: {
  *         mode: "proxy",
@@ -115,18 +117,26 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
     /**
      * List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    public readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileExclude[]>;
+    public readonly excludes!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileExclude[] | undefined>;
     public /*out*/ readonly fallbackDomains!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileFallbackDomain[]>;
     public /*out*/ readonly gatewayUniqueId!: pulumi.Output<string>;
     /**
      * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
-    public readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileInclude[]>;
+    public readonly includes!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileInclude[] | undefined>;
+    /**
+     * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+     */
+    public readonly lanAllowMinutes!: pulumi.Output<number | undefined>;
+    /**
+     * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+     */
+    public readonly lanAllowSubnetSize!: pulumi.Output<number | undefined>;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     public readonly registerInterfaceIpWithDns!: pulumi.Output<boolean | undefined>;
-    public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
+    public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileServiceModeV2 | undefined>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
      */
@@ -167,6 +177,8 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["fallbackDomains"] = state ? state.fallbackDomains : undefined;
             resourceInputs["gatewayUniqueId"] = state ? state.gatewayUniqueId : undefined;
             resourceInputs["includes"] = state ? state.includes : undefined;
+            resourceInputs["lanAllowMinutes"] = state ? state.lanAllowMinutes : undefined;
+            resourceInputs["lanAllowSubnetSize"] = state ? state.lanAllowSubnetSize : undefined;
             resourceInputs["registerInterfaceIpWithDns"] = state ? state.registerInterfaceIpWithDns : undefined;
             resourceInputs["serviceModeV2"] = state ? state.serviceModeV2 : undefined;
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
@@ -187,6 +199,8 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["excludeOfficeIps"] = args ? args.excludeOfficeIps : undefined;
             resourceInputs["excludes"] = args ? args.excludes : undefined;
             resourceInputs["includes"] = args ? args.includes : undefined;
+            resourceInputs["lanAllowMinutes"] = args ? args.lanAllowMinutes : undefined;
+            resourceInputs["lanAllowSubnetSize"] = args ? args.lanAllowSubnetSize : undefined;
             resourceInputs["registerInterfaceIpWithDns"] = args ? args.registerInterfaceIpWithDns : undefined;
             resourceInputs["serviceModeV2"] = args ? args.serviceModeV2 : undefined;
             resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
@@ -256,6 +270,14 @@ export interface ZeroTrustDeviceDefaultProfileState {
      */
     includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileInclude>[]>;
     /**
+     * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+     */
+    lanAllowMinutes?: pulumi.Input<number>;
+    /**
+     * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+     */
+    lanAllowSubnetSize?: pulumi.Input<number>;
+    /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     registerInterfaceIpWithDns?: pulumi.Input<boolean>;
@@ -315,6 +337,14 @@ export interface ZeroTrustDeviceDefaultProfileArgs {
      * List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
      */
     includes?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileInclude>[]>;
+    /**
+     * The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
+     */
+    lanAllowMinutes?: pulumi.Input<number>;
+    /**
+     * The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
+     */
+    lanAllowSubnetSize?: pulumi.Input<number>;
     /**
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */

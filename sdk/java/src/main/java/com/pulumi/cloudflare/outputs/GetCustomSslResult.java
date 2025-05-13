@@ -24,7 +24,7 @@ public final class GetCustomSslResult {
      */
     private String bundleMethod;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private @Nullable String customCertificateId;
@@ -41,7 +41,7 @@ public final class GetCustomSslResult {
     private GetCustomSslGeoRestrictions geoRestrictions;
     private List<String> hosts;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String id;
@@ -83,7 +83,7 @@ public final class GetCustomSslResult {
      */
     private String uploadedOn;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -98,7 +98,7 @@ public final class GetCustomSslResult {
         return this.bundleMethod;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> customCertificateId() {
@@ -125,7 +125,7 @@ public final class GetCustomSslResult {
         return this.hosts;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String id() {
@@ -185,7 +185,7 @@ public final class GetCustomSslResult {
         return this.uploadedOn;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

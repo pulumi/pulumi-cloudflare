@@ -80,7 +80,7 @@ export class EmailRoutingSettings extends pulumi.CustomResource {
      */
     public /*out*/ readonly tag!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -160,7 +160,7 @@ export interface EmailRoutingSettingsState {
      */
     tag?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -170,7 +170,7 @@ export interface EmailRoutingSettingsState {
  */
 export interface EmailRoutingSettingsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

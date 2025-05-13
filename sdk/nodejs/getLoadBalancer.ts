@@ -22,13 +22,9 @@ import * as utilities from "./utilities";
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getLoadBalancer:getLoadBalancer", {
-        "countryPools": args.countryPools,
         "loadBalancerId": args.loadBalancerId,
         "popPools": args.popPools,
         "regionPools": args.regionPools,
-        "sessionAffinityTtl": args.sessionAffinityTtl,
-        "steeringPolicy": args.steeringPolicy,
-        "ttl": args.ttl,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -37,10 +33,6 @@ export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getLoadBalancer.
  */
 export interface GetLoadBalancerArgs {
-    /**
-     * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-     */
-    countryPools?: {[key: string]: string[]};
     loadBalancerId?: string;
     /**
      * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
@@ -50,18 +42,6 @@ export interface GetLoadBalancerArgs {
      * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
     regionPools?: {[key: string]: string[]};
-    /**
-     * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
-     */
-    sessionAffinityTtl?: number;
-    /**
-     * Steering Policy for this load balancer.
-     */
-    steeringPolicy?: string;
-    /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-     */
-    ttl?: number;
     zoneId: string;
 }
 
@@ -153,7 +133,6 @@ export interface GetLoadBalancerResult {
      */
     readonly ttl: number;
     readonly zoneId: string;
-    readonly zoneName: string;
 }
 /**
  * ## Example Usage
@@ -171,13 +150,9 @@ export interface GetLoadBalancerResult {
 export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLoadBalancerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getLoadBalancer:getLoadBalancer", {
-        "countryPools": args.countryPools,
         "loadBalancerId": args.loadBalancerId,
         "popPools": args.popPools,
         "regionPools": args.regionPools,
-        "sessionAffinityTtl": args.sessionAffinityTtl,
-        "steeringPolicy": args.steeringPolicy,
-        "ttl": args.ttl,
         "zoneId": args.zoneId,
     }, opts);
 }
@@ -186,10 +161,6 @@ export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pu
  * A collection of arguments for invoking getLoadBalancer.
  */
 export interface GetLoadBalancerOutputArgs {
-    /**
-     * A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-     */
-    countryPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     loadBalancerId?: pulumi.Input<string>;
     /**
      * (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
@@ -199,17 +170,5 @@ export interface GetLoadBalancerOutputArgs {
      * A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
      */
     regionPools?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
-    /**
-     * Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
-     */
-    sessionAffinityTtl?: pulumi.Input<number>;
-    /**
-     * Steering Policy for this load balancer.
-     */
-    steeringPolicy?: pulumi.Input<string>;
-    /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-     */
-    ttl?: pulumi.Input<number>;
     zoneId: pulumi.Input<string>;
 }

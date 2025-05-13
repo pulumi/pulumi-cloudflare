@@ -49,7 +49,7 @@ func LookupEmailRoutingAddress(ctx *pulumi.Context, args *LookupEmailRoutingAddr
 
 // A collection of arguments for invoking getEmailRoutingAddress.
 type LookupEmailRoutingAddressArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Destination address identifier.
 	DestinationAddressIdentifier *string                       `pulumi:"destinationAddressIdentifier"`
@@ -58,7 +58,7 @@ type LookupEmailRoutingAddressArgs struct {
 
 // A collection of values returned by getEmailRoutingAddress.
 type LookupEmailRoutingAddressResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created string `pulumi:"created"`
@@ -90,7 +90,7 @@ func LookupEmailRoutingAddressOutput(ctx *pulumi.Context, args LookupEmailRoutin
 
 // A collection of arguments for invoking getEmailRoutingAddress.
 type LookupEmailRoutingAddressOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Destination address identifier.
 	DestinationAddressIdentifier pulumi.StringPtrInput                `pulumi:"destinationAddressIdentifier"`
@@ -116,7 +116,7 @@ func (o LookupEmailRoutingAddressResultOutput) ToLookupEmailRoutingAddressResult
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupEmailRoutingAddressResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingAddressResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

@@ -81,7 +81,7 @@ class GetAuthenticatedOriginPullsResult:
     @pulumi.getter(name="certId")
     def cert_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "cert_id")
 
@@ -203,7 +203,7 @@ class GetAuthenticatedOriginPullsResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -248,7 +248,7 @@ def get_authenticated_origin_pulls(hostname: Optional[builtins.str] = None,
 
 
     :param builtins.str hostname: The hostname on the origin for which the client certificate uploaded will be used.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['hostname'] = hostname
@@ -289,7 +289,7 @@ def get_authenticated_origin_pulls_output(hostname: Optional[pulumi.Input[builti
 
 
     :param builtins.str hostname: The hostname on the origin for which the client certificate uploaded will be used.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['hostname'] = hostname

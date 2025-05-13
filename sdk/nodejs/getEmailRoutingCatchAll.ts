@@ -30,7 +30,7 @@ export function getEmailRoutingCatchAll(args: GetEmailRoutingCatchAllArgs, opts?
  */
 export interface GetEmailRoutingCatchAllArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -66,7 +66,7 @@ export interface GetEmailRoutingCatchAllResult {
      */
     readonly tag: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -94,7 +94,7 @@ export function getEmailRoutingCatchAllOutput(args: GetEmailRoutingCatchAllOutpu
  */
 export interface GetEmailRoutingCatchAllOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

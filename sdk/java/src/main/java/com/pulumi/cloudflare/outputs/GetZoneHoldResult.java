@@ -20,7 +20,7 @@ public final class GetZoneHoldResult {
     private String id;
     private String includeSubdomains;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -43,7 +43,7 @@ public final class GetZoneHoldResult {
         return this.includeSubdomains;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

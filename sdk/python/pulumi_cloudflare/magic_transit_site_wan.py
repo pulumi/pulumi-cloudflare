@@ -428,7 +428,7 @@ class MagicTransitSiteWan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="staticAddressing")
-    def static_addressing(self) -> pulumi.Output['outputs.MagicTransitSiteWanStaticAddressing']:
+    def static_addressing(self) -> pulumi.Output[Optional['outputs.MagicTransitSiteWanStaticAddressing']]:
         """
         (optional) if omitted, use DHCP. Submit secondary*address when site is in high availability mode.
         """

@@ -65,7 +65,7 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
      */
     public readonly uaRuleId!: pulumi.Output<string | undefined>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -125,7 +125,7 @@ export interface UserAgentBlockingRuleState {
      */
     uaRuleId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -148,7 +148,7 @@ export interface UserAgentBlockingRuleArgs {
      */
     uaRuleId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -95,7 +95,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly ref!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -172,7 +172,7 @@ export interface FirewallRuleState {
      */
     ref?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -187,7 +187,7 @@ export interface FirewallRuleArgs {
     action: pulumi.Input<inputs.FirewallRuleAction>;
     filter: pulumi.Input<inputs.FirewallRuleFilter>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

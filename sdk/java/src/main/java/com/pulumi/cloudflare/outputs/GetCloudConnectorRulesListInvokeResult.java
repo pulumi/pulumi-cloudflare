@@ -31,7 +31,7 @@ public final class GetCloudConnectorRulesListInvokeResult {
      */
     private List<GetCloudConnectorRulesListResult> results;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -59,7 +59,7 @@ public final class GetCloudConnectorRulesListInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

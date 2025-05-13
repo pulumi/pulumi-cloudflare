@@ -34,7 +34,7 @@ class KeylessCertificateArgs:
         The set of arguments for constructing a KeylessCertificate resource.
         :param pulumi.Input[builtins.str] certificate: The zone's SSL certificate or SSL certificate and intermediate(s).
         :param pulumi.Input[builtins.str] host: The keyless SSL name.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] bundle_method: A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
                Available values: "ubiquitous", "optimal", "force".
         :param pulumi.Input[builtins.bool] enabled: Whether or not the Keyless SSL is on or off.
@@ -87,7 +87,7 @@ class KeylessCertificateArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -188,7 +188,7 @@ class _KeylessCertificateState:
         :param pulumi.Input[builtins.str] status: Status of the Keyless SSL.
                Available values: "active", "deleted".
         :param pulumi.Input['KeylessCertificateTunnelArgs'] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if bundle_method is not None:
             pulumi.set(__self__, "bundle_method", bundle_method)
@@ -357,7 +357,7 @@ class _KeylessCertificateState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -400,7 +400,7 @@ class KeylessCertificate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The keyless SSL name.
         :param pulumi.Input[builtins.float] port: The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server.
         :param pulumi.Input[Union['KeylessCertificateTunnelArgs', 'KeylessCertificateTunnelArgsDict']] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -509,7 +509,7 @@ class KeylessCertificate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] status: Status of the Keyless SSL.
                Available values: "active", "deleted".
         :param pulumi.Input[Union['KeylessCertificateTunnelArgs', 'KeylessCertificateTunnelArgsDict']] tunnel: Configuration for using Keyless SSL through a Cloudflare Tunnel
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -614,7 +614,7 @@ class KeylessCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tunnel(self) -> pulumi.Output['outputs.KeylessCertificateTunnel']:
+    def tunnel(self) -> pulumi.Output[Optional['outputs.KeylessCertificateTunnel']]:
         """
         Configuration for using Keyless SSL through a Cloudflare Tunnel
         """
@@ -624,7 +624,7 @@ class KeylessCertificate(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

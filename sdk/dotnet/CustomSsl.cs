@@ -120,7 +120,7 @@ namespace Pulumi.Cloudflare
         /// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
         /// </summary>
         [Output("geoRestrictions")]
-        public Output<Outputs.CustomSslGeoRestrictions> GeoRestrictions { get; private set; } = null!;
+        public Output<Outputs.CustomSslGeoRestrictions?> GeoRestrictions { get; private set; } = null!;
 
         [Output("hosts")]
         public Output<ImmutableArray<string>> Hosts { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Cloudflare
         public Output<string> UploadedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -289,7 +289,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -405,7 +405,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UploadedOn { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

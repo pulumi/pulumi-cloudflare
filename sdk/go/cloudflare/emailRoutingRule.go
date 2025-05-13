@@ -36,7 +36,7 @@ type EmailRoutingRule struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -93,7 +93,7 @@ type emailRoutingRuleState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag *string `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -112,7 +112,7 @@ type EmailRoutingRuleState struct {
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -131,7 +131,7 @@ type emailRoutingRuleArgs struct {
 	Name *string `pulumi:"name"`
 	// Priority of the routing rule.
 	Priority *float64 `pulumi:"priority"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -147,7 +147,7 @@ type EmailRoutingRuleArgs struct {
 	Name pulumi.StringPtrInput
 	// Priority of the routing rule.
 	Priority pulumi.Float64PtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -270,7 +270,7 @@ func (o EmailRoutingRuleOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o EmailRoutingRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

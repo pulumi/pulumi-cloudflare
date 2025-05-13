@@ -12,6 +12,7 @@ import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCertificateA
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsCustomCertificateArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsFipsArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsHostSelectorArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsSandboxArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsTlsDecryptArgs;
@@ -170,6 +171,21 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     }
 
     /**
+     * Setting to enable host selector in egress policies.
+     * 
+     */
+    @Import(name="hostSelector")
+    private @Nullable Output<ZeroTrustGatewaySettingsSettingsHostSelectorArgs> hostSelector;
+
+    /**
+     * @return Setting to enable host selector in egress policies.
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewaySettingsSettingsHostSelectorArgs>> hostSelector() {
+        return Optional.ofNullable(this.hostSelector);
+    }
+
+    /**
      * Protocol Detection settings.
      * 
      */
@@ -226,6 +242,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
         this.customCertificate = $.customCertificate;
         this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
+        this.hostSelector = $.hostSelector;
         this.protocolDetection = $.protocolDetection;
         this.sandbox = $.sandbox;
         this.tlsDecrypt = $.tlsDecrypt;
@@ -444,6 +461,27 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
          */
         public Builder fips(ZeroTrustGatewaySettingsSettingsFipsArgs fips) {
             return fips(Output.of(fips));
+        }
+
+        /**
+         * @param hostSelector Setting to enable host selector in egress policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostSelector(@Nullable Output<ZeroTrustGatewaySettingsSettingsHostSelectorArgs> hostSelector) {
+            $.hostSelector = hostSelector;
+            return this;
+        }
+
+        /**
+         * @param hostSelector Setting to enable host selector in egress policies.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostSelector(ZeroTrustGatewaySettingsSettingsHostSelectorArgs hostSelector) {
+            return hostSelector(Output.of(hostSelector));
         }
 
         /**

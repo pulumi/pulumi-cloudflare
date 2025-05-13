@@ -526,8 +526,12 @@ __all__ = [
     'ApiShieldAuthIdCharacteristicArgsDict',
     'ApiShieldErrorArgs',
     'ApiShieldErrorArgsDict',
+    'ApiShieldErrorSourceArgs',
+    'ApiShieldErrorSourceArgsDict',
     'ApiShieldMessageArgs',
     'ApiShieldMessageArgsDict',
+    'ApiShieldMessageSourceArgs',
+    'ApiShieldMessageSourceArgsDict',
     'ApiShieldOperationFeaturesArgs',
     'ApiShieldOperationFeaturesArgsDict',
     'ApiShieldOperationFeaturesApiRoutingArgs',
@@ -574,8 +578,6 @@ __all__ = [
     'AuthenticatedOriginPullsConfigArgsDict',
     'BotManagementStaleZoneConfigurationArgs',
     'BotManagementStaleZoneConfigurationArgsDict',
-    'CloudConnectorRulesParametersArgs',
-    'CloudConnectorRulesParametersArgsDict',
     'CloudConnectorRulesRuleArgs',
     'CloudConnectorRulesRuleArgsDict',
     'CloudConnectorRulesRuleParametersArgs',
@@ -598,10 +600,8 @@ __all__ = [
     'CustomSslKeylessServerArgsDict',
     'CustomSslKeylessServerTunnelArgs',
     'CustomSslKeylessServerTunnelArgsDict',
-    'DeviceDexTestDataArgs',
-    'DeviceDexTestDataArgsDict',
-    'DeviceDexTestTargetPolicyArgs',
-    'DeviceDexTestTargetPolicyArgsDict',
+    'D1DatabaseReadReplicationArgs',
+    'D1DatabaseReadReplicationArgsDict',
     'DeviceManagedNetworksConfigArgs',
     'DeviceManagedNetworksConfigArgsDict',
     'DevicePostureIntegrationConfigArgs',
@@ -652,8 +652,12 @@ __all__ = [
     'EmailRoutingCatchAllMatcherArgsDict',
     'EmailRoutingDnsErrorArgs',
     'EmailRoutingDnsErrorArgsDict',
+    'EmailRoutingDnsErrorSourceArgs',
+    'EmailRoutingDnsErrorSourceArgsDict',
     'EmailRoutingDnsMessageArgs',
     'EmailRoutingDnsMessageArgsDict',
+    'EmailRoutingDnsMessageSourceArgs',
+    'EmailRoutingDnsMessageSourceArgsDict',
     'EmailRoutingDnsResultArgs',
     'EmailRoutingDnsResultArgsDict',
     'EmailRoutingDnsResultErrorArgs',
@@ -682,6 +686,8 @@ __all__ = [
     'HealthcheckTcpConfigArgsDict',
     'HyperdriveConfigCachingArgs',
     'HyperdriveConfigCachingArgsDict',
+    'HyperdriveConfigMtlsArgs',
+    'HyperdriveConfigMtlsArgsDict',
     'HyperdriveConfigOriginArgs',
     'HyperdriveConfigOriginArgsDict',
     'ImageVariantOptionsArgs',
@@ -794,6 +800,8 @@ __all__ = [
     'MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTargetArgsDict',
     'MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs',
     'MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgsDict',
+    'MagicWanIpsecTunnelPskMetadataArgs',
+    'MagicWanIpsecTunnelPskMetadataArgsDict',
     'MagicWanStaticRouteModifiedRouteArgs',
     'MagicWanStaticRouteModifiedRouteArgsDict',
     'MagicWanStaticRouteModifiedRouteScopeArgs',
@@ -1170,6 +1178,8 @@ __all__ = [
     'TeamsAccountSettingsExtendedEmailMatchingArgsDict',
     'TeamsAccountSettingsFipsArgs',
     'TeamsAccountSettingsFipsArgsDict',
+    'TeamsAccountSettingsHostSelectorArgs',
+    'TeamsAccountSettingsHostSelectorArgsDict',
     'TeamsAccountSettingsProtocolDetectionArgs',
     'TeamsAccountSettingsProtocolDetectionArgsDict',
     'TeamsAccountSettingsSandboxArgs',
@@ -1204,6 +1214,8 @@ __all__ = [
     'TeamsRuleRuleSettingsAuditSshArgsDict',
     'TeamsRuleRuleSettingsBisoAdminControlsArgs',
     'TeamsRuleRuleSettingsBisoAdminControlsArgsDict',
+    'TeamsRuleRuleSettingsBlockPageArgs',
+    'TeamsRuleRuleSettingsBlockPageArgsDict',
     'TeamsRuleRuleSettingsCheckSessionArgs',
     'TeamsRuleRuleSettingsCheckSessionArgsDict',
     'TeamsRuleRuleSettingsDnsResolversArgs',
@@ -1300,14 +1312,6 @@ __all__ = [
     'WorkersDeploymentDeploymentVersionArgsDict',
     'WorkersDeploymentVersionArgs',
     'WorkersDeploymentVersionArgsDict',
-    'WorkersRouteErrorArgs',
-    'WorkersRouteErrorArgsDict',
-    'WorkersRouteErrorSourceArgs',
-    'WorkersRouteErrorSourceArgsDict',
-    'WorkersRouteMessageArgs',
-    'WorkersRouteMessageArgsDict',
-    'WorkersRouteMessageSourceArgs',
-    'WorkersRouteMessageSourceArgsDict',
     'WorkersScriptAssetsArgs',
     'WorkersScriptAssetsArgsDict',
     'WorkersScriptAssetsConfigArgs',
@@ -1838,10 +1842,6 @@ __all__ = [
     'ZeroTrustDevicePostureRuleInputLocationsArgsDict',
     'ZeroTrustDevicePostureRuleMatchArgs',
     'ZeroTrustDevicePostureRuleMatchArgsDict',
-    'ZeroTrustDexTestDataArgs',
-    'ZeroTrustDexTestDataArgsDict',
-    'ZeroTrustDexTestTargetPolicyArgs',
-    'ZeroTrustDexTestTargetPolicyArgsDict',
     'ZeroTrustDlpCustomProfileContextAwarenessArgs',
     'ZeroTrustDlpCustomProfileContextAwarenessArgsDict',
     'ZeroTrustDlpCustomProfileContextAwarenessSkipArgs',
@@ -1918,6 +1918,8 @@ __all__ = [
     'ZeroTrustGatewayPolicyRuleSettingsAuditSshArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs',
     'ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgsDict',
+    'ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs',
+    'ZeroTrustGatewayPolicyRuleSettingsBlockPageArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgs',
     'ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgsDict',
     'ZeroTrustGatewayPolicyRuleSettingsDnsResolversArgs',
@@ -1966,6 +1968,8 @@ __all__ = [
     'ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgsDict',
     'ZeroTrustGatewaySettingsSettingsFipsArgs',
     'ZeroTrustGatewaySettingsSettingsFipsArgsDict',
+    'ZeroTrustGatewaySettingsSettingsHostSelectorArgs',
+    'ZeroTrustGatewaySettingsSettingsHostSelectorArgsDict',
     'ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs',
     'ZeroTrustGatewaySettingsSettingsProtocolDetectionArgsDict',
     'ZeroTrustGatewaySettingsSettingsSandboxArgs',
@@ -15653,11 +15657,11 @@ if not MYPY:
         """
         id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Identifier
+        Defines an identifier.
         """
         type: NotRequired[pulumi.Input[builtins.str]]
         """
-        The scope of the rule.
+        Defines the scope of the rule.
         Available values: "user", "organization".
         """
 elif False:
@@ -15671,8 +15675,8 @@ class AccessRuleScopeArgs:
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] email: The contact email address of the user.
-        :param pulumi.Input[builtins.str] id: Identifier
-        :param pulumi.Input[builtins.str] type: The scope of the rule.
+        :param pulumi.Input[builtins.str] id: Defines an identifier.
+        :param pulumi.Input[builtins.str] type: Defines the scope of the rule.
                Available values: "user", "organization".
         """
         if email is not None:
@@ -15698,7 +15702,7 @@ class AccessRuleScopeArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "id")
 
@@ -15710,7 +15714,7 @@ class AccessRuleScopeArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The scope of the rule.
+        Defines the scope of the rule.
         Available values: "user", "organization".
         """
         return pulumi.get(self, "type")
@@ -17118,7 +17122,9 @@ class ApiShieldAuthIdCharacteristicArgs:
 if not MYPY:
     class ApiShieldErrorArgsDict(TypedDict):
         code: NotRequired[pulumi.Input[builtins.int]]
+        documentation_url: NotRequired[pulumi.Input[builtins.str]]
         message: NotRequired[pulumi.Input[builtins.str]]
+        source: NotRequired[pulumi.Input['ApiShieldErrorSourceArgsDict']]
 elif False:
     ApiShieldErrorArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -17126,11 +17132,17 @@ elif False:
 class ApiShieldErrorArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[builtins.int]] = None,
-                 message: Optional[pulumi.Input[builtins.str]] = None):
+                 documentation_url: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input['ApiShieldErrorSourceArgs']] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if documentation_url is not None:
+            pulumi.set(__self__, "documentation_url", documentation_url)
         if message is not None:
             pulumi.set(__self__, "message", message)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -17142,6 +17154,15 @@ class ApiShieldErrorArgs:
         pulumi.set(self, "code", value)
 
     @property
+    @pulumi.getter(name="documentationUrl")
+    def documentation_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "documentation_url")
+
+    @documentation_url.setter
+    def documentation_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "documentation_url", value)
+
+    @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "message")
@@ -17150,11 +17171,45 @@ class ApiShieldErrorArgs:
     def message(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "message", value)
 
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['ApiShieldErrorSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['ApiShieldErrorSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class ApiShieldErrorSourceArgsDict(TypedDict):
+        pointer: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    ApiShieldErrorSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiShieldErrorSourceArgs:
+    def __init__(__self__, *,
+                 pointer: Optional[pulumi.Input[builtins.str]] = None):
+        if pointer is not None:
+            pulumi.set(__self__, "pointer", pointer)
+
+    @property
+    @pulumi.getter
+    def pointer(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "pointer")
+
+    @pointer.setter
+    def pointer(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pointer", value)
+
 
 if not MYPY:
     class ApiShieldMessageArgsDict(TypedDict):
         code: NotRequired[pulumi.Input[builtins.int]]
+        documentation_url: NotRequired[pulumi.Input[builtins.str]]
         message: NotRequired[pulumi.Input[builtins.str]]
+        source: NotRequired[pulumi.Input['ApiShieldMessageSourceArgsDict']]
 elif False:
     ApiShieldMessageArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -17162,11 +17217,17 @@ elif False:
 class ApiShieldMessageArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[builtins.int]] = None,
-                 message: Optional[pulumi.Input[builtins.str]] = None):
+                 documentation_url: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input['ApiShieldMessageSourceArgs']] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if documentation_url is not None:
+            pulumi.set(__self__, "documentation_url", documentation_url)
         if message is not None:
             pulumi.set(__self__, "message", message)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -17178,6 +17239,15 @@ class ApiShieldMessageArgs:
         pulumi.set(self, "code", value)
 
     @property
+    @pulumi.getter(name="documentationUrl")
+    def documentation_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "documentation_url")
+
+    @documentation_url.setter
+    def documentation_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "documentation_url", value)
+
+    @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "message")
@@ -17185,6 +17255,38 @@ class ApiShieldMessageArgs:
     @message.setter
     def message(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['ApiShieldMessageSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['ApiShieldMessageSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class ApiShieldMessageSourceArgsDict(TypedDict):
+        pointer: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    ApiShieldMessageSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiShieldMessageSourceArgs:
+    def __init__(__self__, *,
+                 pointer: Optional[pulumi.Input[builtins.str]] = None):
+        if pointer is not None:
+            pulumi.set(__self__, "pointer", pointer)
+
+    @property
+    @pulumi.getter
+    def pointer(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "pointer")
+
+    @pointer.setter
+    def pointer(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pointer", value)
 
 
 if not MYPY:
@@ -17802,7 +17904,7 @@ if not MYPY:
         created_at: NotRequired[pulumi.Input[builtins.str]]
         id: NotRequired[pulumi.Input[builtins.str]]
         """
-        UUID
+        UUID.
         """
         is_learned: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -17823,7 +17925,7 @@ class ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs:
                  is_learned: Optional[pulumi.Input[builtins.bool]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] id: UUID
+        :param pulumi.Input[builtins.str] id: UUID.
         :param pulumi.Input[builtins.bool] is_learned: True if schema is Cloudflare-provided.
         :param pulumi.Input[builtins.str] name: Schema file name.
         """
@@ -17849,7 +17951,7 @@ class ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -18081,7 +18183,7 @@ if not MYPY:
         """
         schema_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        UUID
+        UUID.
         """
         source: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -18107,7 +18209,7 @@ class ApiShieldSchemaSchemaArgs:
         :param pulumi.Input[builtins.str] kind: Kind of schema
                Available values: "openapi_v3".
         :param pulumi.Input[builtins.str] name: Name of the schema
-        :param pulumi.Input[builtins.str] schema_id: UUID
+        :param pulumi.Input[builtins.str] schema_id: UUID.
         :param pulumi.Input[builtins.str] source: Source of the schema
         :param pulumi.Input[builtins.bool] validation_enabled: Flag whether schema is enabled for validation.
         """
@@ -18162,7 +18264,7 @@ class ApiShieldSchemaSchemaArgs:
     @pulumi.getter(name="schemaId")
     def schema_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "schema_id")
 
@@ -18807,44 +18909,7 @@ class BotManagementStaleZoneConfigurationArgs:
 
 
 if not MYPY:
-    class CloudConnectorRulesParametersArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Host to perform Cloud Connection to
-        """
-elif False:
-    CloudConnectorRulesParametersArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CloudConnectorRulesParametersArgs:
-    def __init__(__self__, *,
-                 host: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        :param pulumi.Input[builtins.str] host: Host to perform Cloud Connection to
-        """
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Host to perform Cloud Connection to
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "host", value)
-
-
-if not MYPY:
     class CloudConnectorRulesRuleArgsDict(TypedDict):
-        cloud_provider: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Cloud Provider type
-        Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
-        """
         description: NotRequired[pulumi.Input[builtins.str]]
         enabled: NotRequired[pulumi.Input[builtins.bool]]
         expression: NotRequired[pulumi.Input[builtins.str]]
@@ -18853,25 +18918,28 @@ if not MYPY:
         """
         Parameters of Cloud Connector Rule
         """
+        provider: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Cloud Provider type
+        Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
+        """
 elif False:
     CloudConnectorRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudConnectorRulesRuleArgs:
     def __init__(__self__, *,
-                 cloud_provider: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  expression: Optional[pulumi.Input[builtins.str]] = None,
                  id: Optional[pulumi.Input[builtins.str]] = None,
-                 parameters: Optional[pulumi.Input['CloudConnectorRulesRuleParametersArgs']] = None):
+                 parameters: Optional[pulumi.Input['CloudConnectorRulesRuleParametersArgs']] = None,
+                 provider: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] cloud_provider: Cloud Provider type
-               Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         :param pulumi.Input['CloudConnectorRulesRuleParametersArgs'] parameters: Parameters of Cloud Connector Rule
+        :param pulumi.Input[builtins.str] provider: Cloud Provider type
+               Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
         """
-        if cloud_provider is not None:
-            pulumi.set(__self__, "cloud_provider", cloud_provider)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
@@ -18882,19 +18950,8 @@ class CloudConnectorRulesRuleArgs:
             pulumi.set(__self__, "id", id)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
-
-    @property
-    @pulumi.getter(name="cloudProvider")
-    def cloud_provider(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Cloud Provider type
-        Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
-        """
-        return pulumi.get(self, "cloud_provider")
-
-    @cloud_provider.setter
-    def cloud_provider(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "cloud_provider", value)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
 
     @property
     @pulumi.getter
@@ -18944,6 +19001,19 @@ class CloudConnectorRulesRuleArgs:
     def parameters(self, value: Optional[pulumi.Input['CloudConnectorRulesRuleParametersArgs']]):
         pulumi.set(self, "parameters", value)
 
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Cloud Provider type
+        Available values: "aws*s3", "r2", "gcp*storage", "azure_storage".
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "provider", value)
+
 
 if not MYPY:
     class CloudConnectorRulesRuleParametersArgsDict(TypedDict):
@@ -18981,7 +19051,7 @@ if not MYPY:
     class ContentScanningExpressionBodyArgsDict(TypedDict):
         payload: pulumi.Input[builtins.str]
         """
-        Ruleset expression to use in matching content objects
+        Defines the ruleset expression to use in matching content objects.
         """
 elif False:
     ContentScanningExpressionBodyArgsDict: TypeAlias = Mapping[str, Any]
@@ -18991,7 +19061,7 @@ class ContentScanningExpressionBodyArgs:
     def __init__(__self__, *,
                  payload: pulumi.Input[builtins.str]):
         """
-        :param pulumi.Input[builtins.str] payload: Ruleset expression to use in matching content objects
+        :param pulumi.Input[builtins.str] payload: Defines the ruleset expression to use in matching content objects.
         """
         pulumi.set(__self__, "payload", payload)
 
@@ -18999,7 +19069,7 @@ class ContentScanningExpressionBodyArgs:
     @pulumi.getter
     def payload(self) -> pulumi.Input[builtins.str]:
         """
-        Ruleset expression to use in matching content objects
+        Defines the ruleset expression to use in matching content objects.
         """
         return pulumi.get(self, "payload")
 
@@ -19833,147 +19903,37 @@ class CustomSslKeylessServerTunnelArgs:
 
 
 if not MYPY:
-    class DeviceDexTestDataArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[builtins.str]]
+    class D1DatabaseReadReplicationArgsDict(TypedDict):
+        mode: pulumi.Input[builtins.str]
         """
-        The desired endpoint to test.
-        """
-        kind: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The type of test.
-        """
-        method: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The HTTP request method type.
+        The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+        Available values: "auto", "disabled".
         """
 elif False:
-    DeviceDexTestDataArgsDict: TypeAlias = Mapping[str, Any]
+    D1DatabaseReadReplicationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class DeviceDexTestDataArgs:
+class D1DatabaseReadReplicationArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[builtins.str]] = None,
-                 kind: Optional[pulumi.Input[builtins.str]] = None,
-                 method: Optional[pulumi.Input[builtins.str]] = None):
+                 mode: pulumi.Input[builtins.str]):
         """
-        :param pulumi.Input[builtins.str] host: The desired endpoint to test.
-        :param pulumi.Input[builtins.str] kind: The type of test.
-        :param pulumi.Input[builtins.str] method: The HTTP request method type.
+        :param pulumi.Input[builtins.str] mode: The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+               Available values: "auto", "disabled".
         """
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if method is not None:
-            pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[builtins.str]]:
+    def mode(self) -> pulumi.Input[builtins.str]:
         """
-        The desired endpoint to test.
+        The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+        Available values: "auto", "disabled".
         """
-        return pulumi.get(self, "host")
+        return pulumi.get(self, "mode")
 
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The type of test.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def method(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The HTTP request method type.
-        """
-        return pulumi.get(self, "method")
-
-    @method.setter
-    def method(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "method", value)
-
-
-if not MYPY:
-    class DeviceDexTestTargetPolicyArgsDict(TypedDict):
-        default: NotRequired[pulumi.Input[builtins.bool]]
-        """
-        Whether the profile is the account default
-        """
-        id: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The id of the device settings profile
-        """
-        name: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The name of the device settings profile
-        """
-elif False:
-    DeviceDexTestTargetPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class DeviceDexTestTargetPolicyArgs:
-    def __init__(__self__, *,
-                 default: Optional[pulumi.Input[builtins.bool]] = None,
-                 id: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        :param pulumi.Input[builtins.bool] default: Whether the profile is the account default
-        :param pulumi.Input[builtins.str] id: The id of the device settings profile
-        :param pulumi.Input[builtins.str] name: The name of the device settings profile
-        """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Whether the profile is the account default
-        """
-        return pulumi.get(self, "default")
-
-    @default.setter
-    def default(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "default", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The id of the device settings profile
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The name of the device settings profile
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "name", value)
+    @mode.setter
+    def mode(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "mode", value)
 
 
 if not MYPY:
@@ -21090,7 +21050,7 @@ if not MYPY:
     class DevicePostureRuleMatchArgsDict(TypedDict):
         platform: NotRequired[pulumi.Input[builtins.str]]
         """
-        Available values: "windows", "mac", "linux", "android", "ios".
+        Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
         """
 elif False:
     DevicePostureRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
@@ -21100,7 +21060,7 @@ class DevicePostureRuleMatchArgs:
     def __init__(__self__, *,
                  platform: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] platform: Available values: "windows", "mac", "linux", "android", "ios".
+        :param pulumi.Input[builtins.str] platform: Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
         """
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
@@ -21109,7 +21069,7 @@ class DevicePostureRuleMatchArgs:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Available values: "windows", "mac", "linux", "android", "ios".
+        Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
         """
         return pulumi.get(self, "platform")
 
@@ -21323,7 +21283,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        The description of the profile
+        The description of the profile.
         """
         ocr_enabled: NotRequired[pulumi.Input[builtins.bool]]
         shared_entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileSharedEntryArgsDict']]]]
@@ -21348,7 +21308,7 @@ class DlpCustomProfileProfileArgs:
         """
         :param pulumi.Input[builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input['DlpCustomProfileProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
-        :param pulumi.Input[builtins.str] description: The description of the profile
+        :param pulumi.Input[builtins.str] description: The description of the profile.
         :param pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
         pulumi.set(__self__, "entries", entries)
@@ -21432,7 +21392,7 @@ class DlpCustomProfileProfileArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the profile
+        The description of the profile.
         """
         return pulumi.get(self, "description")
 
@@ -22822,7 +22782,9 @@ class EmailRoutingCatchAllMatcherArgs:
 if not MYPY:
     class EmailRoutingDnsErrorArgsDict(TypedDict):
         code: NotRequired[pulumi.Input[builtins.int]]
+        documentation_url: NotRequired[pulumi.Input[builtins.str]]
         message: NotRequired[pulumi.Input[builtins.str]]
+        source: NotRequired[pulumi.Input['EmailRoutingDnsErrorSourceArgsDict']]
 elif False:
     EmailRoutingDnsErrorArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -22830,11 +22792,17 @@ elif False:
 class EmailRoutingDnsErrorArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[builtins.int]] = None,
-                 message: Optional[pulumi.Input[builtins.str]] = None):
+                 documentation_url: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input['EmailRoutingDnsErrorSourceArgs']] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if documentation_url is not None:
+            pulumi.set(__self__, "documentation_url", documentation_url)
         if message is not None:
             pulumi.set(__self__, "message", message)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -22846,6 +22814,15 @@ class EmailRoutingDnsErrorArgs:
         pulumi.set(self, "code", value)
 
     @property
+    @pulumi.getter(name="documentationUrl")
+    def documentation_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "documentation_url")
+
+    @documentation_url.setter
+    def documentation_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "documentation_url", value)
+
+    @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "message")
@@ -22854,11 +22831,45 @@ class EmailRoutingDnsErrorArgs:
     def message(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "message", value)
 
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['EmailRoutingDnsErrorSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['EmailRoutingDnsErrorSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class EmailRoutingDnsErrorSourceArgsDict(TypedDict):
+        pointer: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    EmailRoutingDnsErrorSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EmailRoutingDnsErrorSourceArgs:
+    def __init__(__self__, *,
+                 pointer: Optional[pulumi.Input[builtins.str]] = None):
+        if pointer is not None:
+            pulumi.set(__self__, "pointer", pointer)
+
+    @property
+    @pulumi.getter
+    def pointer(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "pointer")
+
+    @pointer.setter
+    def pointer(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pointer", value)
+
 
 if not MYPY:
     class EmailRoutingDnsMessageArgsDict(TypedDict):
         code: NotRequired[pulumi.Input[builtins.int]]
+        documentation_url: NotRequired[pulumi.Input[builtins.str]]
         message: NotRequired[pulumi.Input[builtins.str]]
+        source: NotRequired[pulumi.Input['EmailRoutingDnsMessageSourceArgsDict']]
 elif False:
     EmailRoutingDnsMessageArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -22866,11 +22877,17 @@ elif False:
 class EmailRoutingDnsMessageArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[builtins.int]] = None,
-                 message: Optional[pulumi.Input[builtins.str]] = None):
+                 documentation_url: Optional[pulumi.Input[builtins.str]] = None,
+                 message: Optional[pulumi.Input[builtins.str]] = None,
+                 source: Optional[pulumi.Input['EmailRoutingDnsMessageSourceArgs']] = None):
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if documentation_url is not None:
+            pulumi.set(__self__, "documentation_url", documentation_url)
         if message is not None:
             pulumi.set(__self__, "message", message)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -22882,6 +22899,15 @@ class EmailRoutingDnsMessageArgs:
         pulumi.set(self, "code", value)
 
     @property
+    @pulumi.getter(name="documentationUrl")
+    def documentation_url(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "documentation_url")
+
+    @documentation_url.setter
+    def documentation_url(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "documentation_url", value)
+
+    @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "message")
@@ -22889,6 +22915,38 @@ class EmailRoutingDnsMessageArgs:
     @message.setter
     def message(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['EmailRoutingDnsMessageSourceArgs']]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['EmailRoutingDnsMessageSourceArgs']]):
+        pulumi.set(self, "source", value)
+
+
+if not MYPY:
+    class EmailRoutingDnsMessageSourceArgsDict(TypedDict):
+        pointer: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    EmailRoutingDnsMessageSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EmailRoutingDnsMessageSourceArgs:
+    def __init__(__self__, *,
+                 pointer: Optional[pulumi.Input[builtins.str]] = None):
+        if pointer is not None:
+            pulumi.set(__self__, "pointer", pointer)
+
+    @property
+    @pulumi.getter
+    def pointer(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "pointer")
+
+    @pointer.setter
+    def pointer(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pointer", value)
 
 
 if not MYPY:
@@ -23196,19 +23254,19 @@ if not MYPY:
     class EmailRoutingDnsResultInfoArgsDict(TypedDict):
         count: NotRequired[pulumi.Input[builtins.float]]
         """
-        Total number of results for the requested service
+        Total number of results for the requested service.
         """
         page: NotRequired[pulumi.Input[builtins.float]]
         """
-        Current page within paginated list of results
+        Current page within paginated list of results.
         """
         per_page: NotRequired[pulumi.Input[builtins.float]]
         """
-        Number of results per page of results
+        Number of results per page of results.
         """
         total_count: NotRequired[pulumi.Input[builtins.float]]
         """
-        Total results available without any search parameters
+        Total results available without any search parameters.
         """
 elif False:
     EmailRoutingDnsResultInfoArgsDict: TypeAlias = Mapping[str, Any]
@@ -23221,10 +23279,10 @@ class EmailRoutingDnsResultInfoArgs:
                  per_page: Optional[pulumi.Input[builtins.float]] = None,
                  total_count: Optional[pulumi.Input[builtins.float]] = None):
         """
-        :param pulumi.Input[builtins.float] count: Total number of results for the requested service
-        :param pulumi.Input[builtins.float] page: Current page within paginated list of results
-        :param pulumi.Input[builtins.float] per_page: Number of results per page of results
-        :param pulumi.Input[builtins.float] total_count: Total results available without any search parameters
+        :param pulumi.Input[builtins.float] count: Total number of results for the requested service.
+        :param pulumi.Input[builtins.float] page: Current page within paginated list of results.
+        :param pulumi.Input[builtins.float] per_page: Number of results per page of results.
+        :param pulumi.Input[builtins.float] total_count: Total results available without any search parameters.
         """
         if count is not None:
             pulumi.set(__self__, "count", count)
@@ -23239,7 +23297,7 @@ class EmailRoutingDnsResultInfoArgs:
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Total number of results for the requested service
+        Total number of results for the requested service.
         """
         return pulumi.get(self, "count")
 
@@ -23251,7 +23309,7 @@ class EmailRoutingDnsResultInfoArgs:
     @pulumi.getter
     def page(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Current page within paginated list of results
+        Current page within paginated list of results.
         """
         return pulumi.get(self, "page")
 
@@ -23263,7 +23321,7 @@ class EmailRoutingDnsResultInfoArgs:
     @pulumi.getter(name="perPage")
     def per_page(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Number of results per page of results
+        Number of results per page of results.
         """
         return pulumi.get(self, "per_page")
 
@@ -23275,7 +23333,7 @@ class EmailRoutingDnsResultInfoArgs:
     @pulumi.getter(name="totalCount")
     def total_count(self) -> Optional[pulumi.Input[builtins.float]]:
         """
-        Total results available without any search parameters
+        Total results available without any search parameters.
         """
         return pulumi.get(self, "total_count")
 
@@ -23406,7 +23464,7 @@ if not MYPY:
         Type of supported action.
         Available values: "drop", "forward", "worker".
         """
-        values: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
 elif False:
     EmailRoutingRuleActionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -23414,13 +23472,14 @@ elif False:
 class EmailRoutingRuleActionArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[builtins.str],
-                 values: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] type: Type of supported action.
                Available values: "drop", "forward", "worker".
         """
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "values", values)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
@@ -23437,27 +23496,27 @@ class EmailRoutingRuleActionArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 
 if not MYPY:
     class EmailRoutingRuleMatcherArgsDict(TypedDict):
-        field: pulumi.Input[builtins.str]
-        """
-        Field for type matcher.
-        Available values: "to".
-        """
         type: pulumi.Input[builtins.str]
         """
         Type of matcher.
         Available values: "literal".
         """
-        value: pulumi.Input[builtins.str]
+        field: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Field for type matcher.
+        Available values: "to".
+        """
+        value: NotRequired[pulumi.Input[builtins.str]]
         """
         Value for matcher.
         """
@@ -23467,32 +23526,21 @@ elif False:
 @pulumi.input_type
 class EmailRoutingRuleMatcherArgs:
     def __init__(__self__, *,
-                 field: pulumi.Input[builtins.str],
                  type: pulumi.Input[builtins.str],
-                 value: pulumi.Input[builtins.str]):
+                 field: Optional[pulumi.Input[builtins.str]] = None,
+                 value: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] field: Field for type matcher.
-               Available values: "to".
         :param pulumi.Input[builtins.str] type: Type of matcher.
                Available values: "literal".
+        :param pulumi.Input[builtins.str] field: Field for type matcher.
+               Available values: "to".
         :param pulumi.Input[builtins.str] value: Value for matcher.
         """
-        pulumi.set(__self__, "field", field)
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def field(self) -> pulumi.Input[builtins.str]:
-        """
-        Field for type matcher.
-        Available values: "to".
-        """
-        return pulumi.get(self, "field")
-
-    @field.setter
-    def field(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "field", value)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -23509,14 +23557,27 @@ class EmailRoutingRuleMatcherArgs:
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[builtins.str]:
+    def field(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Field for type matcher.
+        Available values: "to".
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Value for matcher.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[builtins.str]):
+    def value(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -24164,6 +24225,78 @@ class HyperdriveConfigCachingArgs:
 
 
 if not MYPY:
+    class HyperdriveConfigMtlsArgsDict(TypedDict):
+        ca_certificate_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        CA certificate ID
+        """
+        mtls_certificate_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        mTLS certificate ID
+        """
+        sslmode: NotRequired[pulumi.Input[builtins.str]]
+        """
+        SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+        """
+elif False:
+    HyperdriveConfigMtlsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HyperdriveConfigMtlsArgs:
+    def __init__(__self__, *,
+                 ca_certificate_id: Optional[pulumi.Input[builtins.str]] = None,
+                 mtls_certificate_id: Optional[pulumi.Input[builtins.str]] = None,
+                 sslmode: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] ca_certificate_id: CA certificate ID
+        :param pulumi.Input[builtins.str] mtls_certificate_id: mTLS certificate ID
+        :param pulumi.Input[builtins.str] sslmode: SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+        """
+        if ca_certificate_id is not None:
+            pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
+        if mtls_certificate_id is not None:
+            pulumi.set(__self__, "mtls_certificate_id", mtls_certificate_id)
+        if sslmode is not None:
+            pulumi.set(__self__, "sslmode", sslmode)
+
+    @property
+    @pulumi.getter(name="caCertificateId")
+    def ca_certificate_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        CA certificate ID
+        """
+        return pulumi.get(self, "ca_certificate_id")
+
+    @ca_certificate_id.setter
+    def ca_certificate_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ca_certificate_id", value)
+
+    @property
+    @pulumi.getter(name="mtlsCertificateId")
+    def mtls_certificate_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        mTLS certificate ID
+        """
+        return pulumi.get(self, "mtls_certificate_id")
+
+    @mtls_certificate_id.setter
+    def mtls_certificate_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "mtls_certificate_id", value)
+
+    @property
+    @pulumi.getter
+    def sslmode(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+        """
+        return pulumi.get(self, "sslmode")
+
+    @sslmode.setter
+    def sslmode(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "sslmode", value)
+
+
+if not MYPY:
     class HyperdriveConfigOriginArgsDict(TypedDict):
         database: pulumi.Input[builtins.str]
         """
@@ -24180,7 +24313,7 @@ if not MYPY:
         scheme: pulumi.Input[builtins.str]
         """
         Specifies the URL scheme used to connect to your origin database.
-        Available values: "postgres", "postgresql".
+        Available values: "postgres", "postgresql", "mysql".
         """
         user: pulumi.Input[builtins.str]
         """
@@ -24217,7 +24350,7 @@ class HyperdriveConfigOriginArgs:
         :param pulumi.Input[builtins.str] host: The host (hostname or IP) of your origin database.
         :param pulumi.Input[builtins.str] password: The password required to access your origin database. This value is write-only and never returned by the API.
         :param pulumi.Input[builtins.str] scheme: Specifies the URL scheme used to connect to your origin database.
-               Available values: "postgres", "postgresql".
+               Available values: "postgres", "postgresql", "mysql".
         :param pulumi.Input[builtins.str] user: The user of your origin database.
         :param pulumi.Input[builtins.str] access_client_id: The Client ID of the Access token to use when connecting to the origin database.
         :param pulumi.Input[builtins.str] access_client_secret: The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
@@ -24276,7 +24409,7 @@ class HyperdriveConfigOriginArgs:
     def scheme(self) -> pulumi.Input[builtins.str]:
         """
         Specifies the URL scheme used to connect to your origin database.
-        Available values: "postgres", "postgresql".
+        Available values: "postgres", "postgresql", "mysql".
         """
         return pulumi.get(self, "scheme")
 
@@ -25130,6 +25263,10 @@ if not MYPY:
         """
         A human-identifiable name for the origin.
         """
+        port: NotRequired[pulumi.Input[builtins.int]]
+        """
+        The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+        """
         virtual_network_id: NotRequired[pulumi.Input[builtins.str]]
         """
         The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
@@ -25149,6 +25286,7 @@ class LoadBalancerPoolOriginArgs:
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  header: Optional[pulumi.Input['LoadBalancerPoolOriginHeaderArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 port: Optional[pulumi.Input[builtins.int]] = None,
                  virtual_network_id: Optional[pulumi.Input[builtins.str]] = None,
                  weight: Optional[pulumi.Input[builtins.float]] = None):
         """
@@ -25157,6 +25295,7 @@ class LoadBalancerPoolOriginArgs:
         :param pulumi.Input[builtins.bool] enabled: Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
         :param pulumi.Input['LoadBalancerPoolOriginHeaderArgs'] header: The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'.
         :param pulumi.Input[builtins.str] name: A human-identifiable name for the origin.
+        :param pulumi.Input[builtins.int] port: The port for upstream connections. A value of 0 means the default port for the protocol will be used.
         :param pulumi.Input[builtins.str] virtual_network_id: The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
         :param pulumi.Input[builtins.float] weight: The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool.
         """
@@ -25170,6 +25309,8 @@ class LoadBalancerPoolOriginArgs:
             pulumi.set(__self__, "header", header)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if virtual_network_id is not None:
             pulumi.set(__self__, "virtual_network_id", virtual_network_id)
         if weight is not None:
@@ -25234,6 +25375,18 @@ class LoadBalancerPoolOriginArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[builtins.int]]:
+        """
+        The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="virtualNetworkId")
@@ -27393,7 +27546,7 @@ if not MYPY:
         health_check: NotRequired[pulumi.Input['MagicWanGreTunnelGreTunnelHealthCheckArgsDict']]
         id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Tunnel identifier tag.
+        Identifier
         """
         interface_address: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -27437,7 +27590,7 @@ class MagicWanGreTunnelGreTunnelArgs:
         :param pulumi.Input[builtins.str] created_on: The date and time the tunnel was created.
         :param pulumi.Input[builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
         :param pulumi.Input[builtins.str] description: An optional description of the GRE tunnel.
-        :param pulumi.Input[builtins.str] id: Tunnel identifier tag.
+        :param pulumi.Input[builtins.str] id: Identifier
         :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         :param pulumi.Input[builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -27528,7 +27681,7 @@ class MagicWanGreTunnelGreTunnelArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Tunnel identifier tag.
+        Identifier
         """
         return pulumi.get(self, "id")
 
@@ -27964,7 +28117,7 @@ if not MYPY:
         health_check: NotRequired[pulumi.Input['MagicWanGreTunnelModifiedGreTunnelHealthCheckArgsDict']]
         id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Tunnel identifier tag.
+        Identifier
         """
         interface_address: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -28008,7 +28161,7 @@ class MagicWanGreTunnelModifiedGreTunnelArgs:
         :param pulumi.Input[builtins.str] created_on: The date and time the tunnel was created.
         :param pulumi.Input[builtins.str] customer_gre_endpoint: The IP address assigned to the customer side of the GRE tunnel.
         :param pulumi.Input[builtins.str] description: An optional description of the GRE tunnel.
-        :param pulumi.Input[builtins.str] id: Tunnel identifier tag.
+        :param pulumi.Input[builtins.str] id: Identifier
         :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         :param pulumi.Input[builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[builtins.int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576.
@@ -28099,7 +28252,7 @@ class MagicWanGreTunnelModifiedGreTunnelArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Tunnel identifier tag.
+        Identifier
         """
         return pulumi.get(self, "id")
 
@@ -28539,7 +28692,7 @@ if not MYPY:
         health_check: NotRequired[pulumi.Input['MagicWanIpsecTunnelIpsecTunnelHealthCheckArgsDict']]
         id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Tunnel identifier tag.
+        Identifier
         """
         interface_address: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -28585,7 +28738,7 @@ class MagicWanIpsecTunnelIpsecTunnelArgs:
         :param pulumi.Input[builtins.str] created_on: The date and time the tunnel was created.
         :param pulumi.Input[builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[builtins.str] description: An optional description forthe IPsec tunnel.
-        :param pulumi.Input[builtins.str] id: Tunnel identifier tag.
+        :param pulumi.Input[builtins.str] id: Identifier
         :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         :param pulumi.Input[builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -28690,7 +28843,7 @@ class MagicWanIpsecTunnelIpsecTunnelArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Tunnel identifier tag.
+        Identifier
         """
         return pulumi.get(self, "id")
 
@@ -28989,7 +29142,7 @@ if not MYPY:
         health_check: NotRequired[pulumi.Input['MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckArgsDict']]
         id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Tunnel identifier tag.
+        Identifier
         """
         interface_address: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -29035,7 +29188,7 @@ class MagicWanIpsecTunnelModifiedIpsecTunnelArgs:
         :param pulumi.Input[builtins.str] created_on: The date and time the tunnel was created.
         :param pulumi.Input[builtins.str] customer_endpoint: The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
         :param pulumi.Input[builtins.str] description: An optional description forthe IPsec tunnel.
-        :param pulumi.Input[builtins.str] id: Tunnel identifier tag.
+        :param pulumi.Input[builtins.str] id: Identifier
         :param pulumi.Input[builtins.str] interface_address: A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
         :param pulumi.Input[builtins.str] modified_on: The date and time the tunnel was last modified.
         :param pulumi.Input[builtins.str] name: The name of the IPsec tunnel. The name cannot share a name with other tunnels.
@@ -29140,7 +29293,7 @@ class MagicWanIpsecTunnelModifiedIpsecTunnelArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Tunnel identifier tag.
+        Identifier
         """
         return pulumi.get(self, "id")
 
@@ -29393,6 +29546,38 @@ elif False:
 
 @pulumi.input_type
 class MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadataArgs:
+    def __init__(__self__, *,
+                 last_generated_on: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] last_generated_on: The date and time the tunnel was last modified.
+        """
+        if last_generated_on is not None:
+            pulumi.set(__self__, "last_generated_on", last_generated_on)
+
+    @property
+    @pulumi.getter(name="lastGeneratedOn")
+    def last_generated_on(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The date and time the tunnel was last modified.
+        """
+        return pulumi.get(self, "last_generated_on")
+
+    @last_generated_on.setter
+    def last_generated_on(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_generated_on", value)
+
+
+if not MYPY:
+    class MagicWanIpsecTunnelPskMetadataArgsDict(TypedDict):
+        last_generated_on: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The date and time the tunnel was last modified.
+        """
+elif False:
+    MagicWanIpsecTunnelPskMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MagicWanIpsecTunnelPskMetadataArgs:
     def __init__(__self__, *,
                  last_generated_on: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -37591,7 +37776,7 @@ if not MYPY:
         """
         id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Identifier for this rule
+        Identifier for this rule.
         """
         max_age_seconds: NotRequired[pulumi.Input[builtins.float]]
         """
@@ -37610,7 +37795,7 @@ class R2BucketCorsRuleArgs:
         """
         :param pulumi.Input['R2BucketCorsRuleAllowedArgs'] allowed: Object specifying allowed origins, methods and headers for this CORS rule.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] expose_headers: Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the safelisted response headers, such as Content-Encoding or cf-cache-status, you must specify it here.
-        :param pulumi.Input[builtins.str] id: Identifier for this rule
+        :param pulumi.Input[builtins.str] id: Identifier for this rule.
         :param pulumi.Input[builtins.float] max_age_seconds: Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.
         """
         pulumi.set(__self__, "allowed", allowed)
@@ -37649,7 +37834,7 @@ class R2BucketCorsRuleArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier for this rule
+        Identifier for this rule.
         """
         return pulumi.get(self, "id")
 
@@ -37744,11 +37929,11 @@ if not MYPY:
     class R2BucketEventNotificationQueueArgsDict(TypedDict):
         queue_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Queue ID
+        Queue ID.
         """
         queue_name: NotRequired[pulumi.Input[builtins.str]]
         """
-        Name of the queue
+        Name of the queue.
         """
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationQueueRuleArgsDict']]]]
 elif False:
@@ -37761,8 +37946,8 @@ class R2BucketEventNotificationQueueArgs:
                  queue_name: Optional[pulumi.Input[builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketEventNotificationQueueRuleArgs']]]] = None):
         """
-        :param pulumi.Input[builtins.str] queue_id: Queue ID
-        :param pulumi.Input[builtins.str] queue_name: Name of the queue
+        :param pulumi.Input[builtins.str] queue_id: Queue ID.
+        :param pulumi.Input[builtins.str] queue_name: Name of the queue.
         """
         if queue_id is not None:
             pulumi.set(__self__, "queue_id", queue_id)
@@ -37775,7 +37960,7 @@ class R2BucketEventNotificationQueueArgs:
     @pulumi.getter(name="queueId")
     def queue_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Queue ID
+        Queue ID.
         """
         return pulumi.get(self, "queue_id")
 
@@ -37787,7 +37972,7 @@ class R2BucketEventNotificationQueueArgs:
     @pulumi.getter(name="queueName")
     def queue_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the queue
+        Name of the queue.
         """
         return pulumi.get(self, "queue_name")
 
@@ -37809,27 +37994,27 @@ if not MYPY:
     class R2BucketEventNotificationQueueRuleArgsDict(TypedDict):
         actions: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
-        Array of R2 object actions that will trigger notifications
+        Array of R2 object actions that will trigger notifications.
         """
         created_at: NotRequired[pulumi.Input[builtins.str]]
         """
-        Timestamp when the rule was created
+        Timestamp when the rule was created.
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        A description that can be used to identify the event notification rule after creation
+        A description that can be used to identify the event notification rule after creation.
         """
         prefix: NotRequired[pulumi.Input[builtins.str]]
         """
-        Notifications will be sent only for objects with this prefix
+        Notifications will be sent only for objects with this prefix.
         """
         rule_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Rule ID
+        Rule ID.
         """
         suffix: NotRequired[pulumi.Input[builtins.str]]
         """
-        Notifications will be sent only for objects with this suffix
+        Notifications will be sent only for objects with this suffix.
         """
 elif False:
     R2BucketEventNotificationQueueRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -37844,12 +38029,12 @@ class R2BucketEventNotificationQueueRuleArgs:
                  rule_id: Optional[pulumi.Input[builtins.str]] = None,
                  suffix: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] actions: Array of R2 object actions that will trigger notifications
-        :param pulumi.Input[builtins.str] created_at: Timestamp when the rule was created
-        :param pulumi.Input[builtins.str] description: A description that can be used to identify the event notification rule after creation
-        :param pulumi.Input[builtins.str] prefix: Notifications will be sent only for objects with this prefix
-        :param pulumi.Input[builtins.str] rule_id: Rule ID
-        :param pulumi.Input[builtins.str] suffix: Notifications will be sent only for objects with this suffix
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] actions: Array of R2 object actions that will trigger notifications.
+        :param pulumi.Input[builtins.str] created_at: Timestamp when the rule was created.
+        :param pulumi.Input[builtins.str] description: A description that can be used to identify the event notification rule after creation.
+        :param pulumi.Input[builtins.str] prefix: Notifications will be sent only for objects with this prefix.
+        :param pulumi.Input[builtins.str] rule_id: Rule ID.
+        :param pulumi.Input[builtins.str] suffix: Notifications will be sent only for objects with this suffix.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -37868,7 +38053,7 @@ class R2BucketEventNotificationQueueRuleArgs:
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        Array of R2 object actions that will trigger notifications
+        Array of R2 object actions that will trigger notifications.
         """
         return pulumi.get(self, "actions")
 
@@ -37880,7 +38065,7 @@ class R2BucketEventNotificationQueueRuleArgs:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Timestamp when the rule was created
+        Timestamp when the rule was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -37892,7 +38077,7 @@ class R2BucketEventNotificationQueueRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A description that can be used to identify the event notification rule after creation
+        A description that can be used to identify the event notification rule after creation.
         """
         return pulumi.get(self, "description")
 
@@ -37904,7 +38089,7 @@ class R2BucketEventNotificationQueueRuleArgs:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Notifications will be sent only for objects with this prefix
+        Notifications will be sent only for objects with this prefix.
         """
         return pulumi.get(self, "prefix")
 
@@ -37916,7 +38101,7 @@ class R2BucketEventNotificationQueueRuleArgs:
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Rule ID
+        Rule ID.
         """
         return pulumi.get(self, "rule_id")
 
@@ -37928,7 +38113,7 @@ class R2BucketEventNotificationQueueRuleArgs:
     @pulumi.getter
     def suffix(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Notifications will be sent only for objects with this suffix
+        Notifications will be sent only for objects with this suffix.
         """
         return pulumi.get(self, "suffix")
 
@@ -37941,19 +38126,19 @@ if not MYPY:
     class R2BucketEventNotificationRuleArgsDict(TypedDict):
         actions: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
         """
-        Array of R2 object actions that will trigger notifications
+        Array of R2 object actions that will trigger notifications.
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        A description that can be used to identify the event notification rule after creation
+        A description that can be used to identify the event notification rule after creation.
         """
         prefix: NotRequired[pulumi.Input[builtins.str]]
         """
-        Notifications will be sent only for objects with this prefix
+        Notifications will be sent only for objects with this prefix.
         """
         suffix: NotRequired[pulumi.Input[builtins.str]]
         """
-        Notifications will be sent only for objects with this suffix
+        Notifications will be sent only for objects with this suffix.
         """
 elif False:
     R2BucketEventNotificationRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -37966,10 +38151,10 @@ class R2BucketEventNotificationRuleArgs:
                  prefix: Optional[pulumi.Input[builtins.str]] = None,
                  suffix: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] actions: Array of R2 object actions that will trigger notifications
-        :param pulumi.Input[builtins.str] description: A description that can be used to identify the event notification rule after creation
-        :param pulumi.Input[builtins.str] prefix: Notifications will be sent only for objects with this prefix
-        :param pulumi.Input[builtins.str] suffix: Notifications will be sent only for objects with this suffix
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] actions: Array of R2 object actions that will trigger notifications.
+        :param pulumi.Input[builtins.str] description: A description that can be used to identify the event notification rule after creation.
+        :param pulumi.Input[builtins.str] prefix: Notifications will be sent only for objects with this prefix.
+        :param pulumi.Input[builtins.str] suffix: Notifications will be sent only for objects with this suffix.
         """
         pulumi.set(__self__, "actions", actions)
         if description is not None:
@@ -37983,7 +38168,7 @@ class R2BucketEventNotificationRuleArgs:
     @pulumi.getter
     def actions(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        Array of R2 object actions that will trigger notifications
+        Array of R2 object actions that will trigger notifications.
         """
         return pulumi.get(self, "actions")
 
@@ -37995,7 +38180,7 @@ class R2BucketEventNotificationRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A description that can be used to identify the event notification rule after creation
+        A description that can be used to identify the event notification rule after creation.
         """
         return pulumi.get(self, "description")
 
@@ -38007,7 +38192,7 @@ class R2BucketEventNotificationRuleArgs:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Notifications will be sent only for objects with this prefix
+        Notifications will be sent only for objects with this prefix.
         """
         return pulumi.get(self, "prefix")
 
@@ -38019,7 +38204,7 @@ class R2BucketEventNotificationRuleArgs:
     @pulumi.getter
     def suffix(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Notifications will be sent only for objects with this suffix
+        Notifications will be sent only for objects with this suffix.
         """
         return pulumi.get(self, "suffix")
 
@@ -38032,27 +38217,27 @@ if not MYPY:
     class R2BucketLifecycleRuleArgsDict(TypedDict):
         conditions: pulumi.Input['R2BucketLifecycleRuleConditionsArgsDict']
         """
-        Conditions that apply to all transitions of this rule
+        Conditions that apply to all transitions of this rule.
         """
         enabled: pulumi.Input[builtins.bool]
         """
-        Whether or not this rule is in effect
+        Whether or not this rule is in effect.
         """
         id: pulumi.Input[builtins.str]
         """
-        Unique identifier for this rule
+        Unique identifier for this rule.
         """
         abort_multipart_uploads_transition: NotRequired[pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgsDict']]
         """
-        Transition to abort ongoing multipart uploads
+        Transition to abort ongoing multipart uploads.
         """
         delete_objects_transition: NotRequired[pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionArgsDict']]
         """
-        Transition to delete objects
+        Transition to delete objects.
         """
         storage_class_transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionArgsDict']]]]
         """
-        Transitions to change the storage class of objects
+        Transitions to change the storage class of objects.
         """
 elif False:
     R2BucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -38067,12 +38252,12 @@ class R2BucketLifecycleRuleArgs:
                  delete_objects_transition: Optional[pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionArgs']] = None,
                  storage_class_transitions: Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionArgs']]]] = None):
         """
-        :param pulumi.Input['R2BucketLifecycleRuleConditionsArgs'] conditions: Conditions that apply to all transitions of this rule
-        :param pulumi.Input[builtins.bool] enabled: Whether or not this rule is in effect
-        :param pulumi.Input[builtins.str] id: Unique identifier for this rule
-        :param pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs'] abort_multipart_uploads_transition: Transition to abort ongoing multipart uploads
-        :param pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionArgs'] delete_objects_transition: Transition to delete objects
-        :param pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionArgs']]] storage_class_transitions: Transitions to change the storage class of objects
+        :param pulumi.Input['R2BucketLifecycleRuleConditionsArgs'] conditions: Conditions that apply to all transitions of this rule.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not this rule is in effect.
+        :param pulumi.Input[builtins.str] id: Unique identifier for this rule.
+        :param pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs'] abort_multipart_uploads_transition: Transition to abort ongoing multipart uploads.
+        :param pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionArgs'] delete_objects_transition: Transition to delete objects.
+        :param pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionArgs']]] storage_class_transitions: Transitions to change the storage class of objects.
         """
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "enabled", enabled)
@@ -38088,7 +38273,7 @@ class R2BucketLifecycleRuleArgs:
     @pulumi.getter
     def conditions(self) -> pulumi.Input['R2BucketLifecycleRuleConditionsArgs']:
         """
-        Conditions that apply to all transitions of this rule
+        Conditions that apply to all transitions of this rule.
         """
         return pulumi.get(self, "conditions")
 
@@ -38100,7 +38285,7 @@ class R2BucketLifecycleRuleArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[builtins.bool]:
         """
-        Whether or not this rule is in effect
+        Whether or not this rule is in effect.
         """
         return pulumi.get(self, "enabled")
 
@@ -38112,7 +38297,7 @@ class R2BucketLifecycleRuleArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[builtins.str]:
         """
-        Unique identifier for this rule
+        Unique identifier for this rule.
         """
         return pulumi.get(self, "id")
 
@@ -38124,7 +38309,7 @@ class R2BucketLifecycleRuleArgs:
     @pulumi.getter(name="abortMultipartUploadsTransition")
     def abort_multipart_uploads_transition(self) -> Optional[pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs']]:
         """
-        Transition to abort ongoing multipart uploads
+        Transition to abort ongoing multipart uploads.
         """
         return pulumi.get(self, "abort_multipart_uploads_transition")
 
@@ -38136,7 +38321,7 @@ class R2BucketLifecycleRuleArgs:
     @pulumi.getter(name="deleteObjectsTransition")
     def delete_objects_transition(self) -> Optional[pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionArgs']]:
         """
-        Transition to delete objects
+        Transition to delete objects.
         """
         return pulumi.get(self, "delete_objects_transition")
 
@@ -38148,7 +38333,7 @@ class R2BucketLifecycleRuleArgs:
     @pulumi.getter(name="storageClassTransitions")
     def storage_class_transitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionArgs']]]]:
         """
-        Transitions to change the storage class of objects
+        Transitions to change the storage class of objects.
         """
         return pulumi.get(self, "storage_class_transitions")
 
@@ -38161,7 +38346,7 @@ if not MYPY:
     class R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgsDict(TypedDict):
         condition: NotRequired[pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgsDict']]
         """
-        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         """
 elif False:
     R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgsDict: TypeAlias = Mapping[str, Any]
@@ -38171,7 +38356,7 @@ class R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs']] = None):
         """
-        :param pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs'] condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        :param pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs'] condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -38180,7 +38365,7 @@ class R2BucketLifecycleRuleAbortMultipartUploadsTransitionArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['R2BucketLifecycleRuleAbortMultipartUploadsTransitionConditionArgs']]:
         """
-        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         """
         return pulumi.get(self, "condition")
 
@@ -38236,7 +38421,7 @@ if not MYPY:
     class R2BucketLifecycleRuleConditionsArgsDict(TypedDict):
         prefix: pulumi.Input[builtins.str]
         """
-        Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         """
 elif False:
     R2BucketLifecycleRuleConditionsArgsDict: TypeAlias = Mapping[str, Any]
@@ -38246,7 +38431,7 @@ class R2BucketLifecycleRuleConditionsArgs:
     def __init__(__self__, *,
                  prefix: pulumi.Input[builtins.str]):
         """
-        :param pulumi.Input[builtins.str] prefix: Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        :param pulumi.Input[builtins.str] prefix: Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         """
         pulumi.set(__self__, "prefix", prefix)
 
@@ -38254,7 +38439,7 @@ class R2BucketLifecycleRuleConditionsArgs:
     @pulumi.getter
     def prefix(self) -> pulumi.Input[builtins.str]:
         """
-        Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         """
         return pulumi.get(self, "prefix")
 
@@ -38267,7 +38452,7 @@ if not MYPY:
     class R2BucketLifecycleRuleDeleteObjectsTransitionArgsDict(TypedDict):
         condition: NotRequired[pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgsDict']]
         """
-        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         """
 elif False:
     R2BucketLifecycleRuleDeleteObjectsTransitionArgsDict: TypeAlias = Mapping[str, Any]
@@ -38277,7 +38462,7 @@ class R2BucketLifecycleRuleDeleteObjectsTransitionArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs']] = None):
         """
-        :param pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs'] condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        :param pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs'] condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -38286,7 +38471,7 @@ class R2BucketLifecycleRuleDeleteObjectsTransitionArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs']]:
         """
-        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         """
         return pulumi.get(self, "condition")
 
@@ -38356,7 +38541,7 @@ if not MYPY:
     class R2BucketLifecycleRuleStorageClassTransitionArgsDict(TypedDict):
         condition: pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionConditionArgsDict']
         """
-        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         """
         storage_class: pulumi.Input[builtins.str]
         """
@@ -38371,7 +38556,7 @@ class R2BucketLifecycleRuleStorageClassTransitionArgs:
                  condition: pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionConditionArgs'],
                  storage_class: pulumi.Input[builtins.str]):
         """
-        :param pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionConditionArgs'] condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        :param pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionConditionArgs'] condition: Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         :param pulumi.Input[builtins.str] storage_class: Available values: "InfrequentAccess".
         """
         pulumi.set(__self__, "condition", condition)
@@ -38381,7 +38566,7 @@ class R2BucketLifecycleRuleStorageClassTransitionArgs:
     @pulumi.getter
     def condition(self) -> pulumi.Input['R2BucketLifecycleRuleStorageClassTransitionConditionArgs']:
         """
-        Condition for lifecycle transitions to apply after an object reaches an age in seconds
+        Condition for lifecycle transitions to apply after an object reaches an age in seconds.
         """
         return pulumi.get(self, "condition")
 
@@ -38463,19 +38648,19 @@ if not MYPY:
     class R2BucketLockRuleArgsDict(TypedDict):
         condition: pulumi.Input['R2BucketLockRuleConditionArgsDict']
         """
-        Condition to apply a lock rule to an object for how long in seconds
+        Condition to apply a lock rule to an object for how long in seconds.
         """
         enabled: pulumi.Input[builtins.bool]
         """
-        Whether or not this rule is in effect
+        Whether or not this rule is in effect.
         """
         id: pulumi.Input[builtins.str]
         """
-        Unique identifier for this rule
+        Unique identifier for this rule.
         """
         prefix: NotRequired[pulumi.Input[builtins.str]]
         """
-        Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         """
 elif False:
     R2BucketLockRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -38488,10 +38673,10 @@ class R2BucketLockRuleArgs:
                  id: pulumi.Input[builtins.str],
                  prefix: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input['R2BucketLockRuleConditionArgs'] condition: Condition to apply a lock rule to an object for how long in seconds
-        :param pulumi.Input[builtins.bool] enabled: Whether or not this rule is in effect
-        :param pulumi.Input[builtins.str] id: Unique identifier for this rule
-        :param pulumi.Input[builtins.str] prefix: Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        :param pulumi.Input['R2BucketLockRuleConditionArgs'] condition: Condition to apply a lock rule to an object for how long in seconds.
+        :param pulumi.Input[builtins.bool] enabled: Whether or not this rule is in effect.
+        :param pulumi.Input[builtins.str] id: Unique identifier for this rule.
+        :param pulumi.Input[builtins.str] prefix: Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "enabled", enabled)
@@ -38503,7 +38688,7 @@ class R2BucketLockRuleArgs:
     @pulumi.getter
     def condition(self) -> pulumi.Input['R2BucketLockRuleConditionArgs']:
         """
-        Condition to apply a lock rule to an object for how long in seconds
+        Condition to apply a lock rule to an object for how long in seconds.
         """
         return pulumi.get(self, "condition")
 
@@ -38515,7 +38700,7 @@ class R2BucketLockRuleArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[builtins.bool]:
         """
-        Whether or not this rule is in effect
+        Whether or not this rule is in effect.
         """
         return pulumi.get(self, "enabled")
 
@@ -38527,7 +38712,7 @@ class R2BucketLockRuleArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[builtins.str]:
         """
-        Unique identifier for this rule
+        Unique identifier for this rule.
         """
         return pulumi.get(self, "id")
 
@@ -38539,7 +38724,7 @@ class R2BucketLockRuleArgs:
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+        Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
         """
         return pulumi.get(self, "prefix")
 
@@ -38610,17 +38795,17 @@ if not MYPY:
         access_key_id: NotRequired[pulumi.Input[builtins.str]]
         """
         ID of a Cloudflare API token.
-        This is the value labelled "Access Key ID" when creating an API
+        This is the value labelled "Access Key ID" when creating an API.
         token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
         """
-        provider: NotRequired[pulumi.Input[builtins.str]]
+        cloud_provider: NotRequired[pulumi.Input[builtins.str]]
         """
         Available values: "r2".
         """
         secret_access_key: NotRequired[pulumi.Input[builtins.str]]
         """
         Value of a Cloudflare API token.
-        This is the value labelled "Secret Access Key" when creating an API
+        This is the value labelled "Secret Access Key" when creating an API.
         token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 
         Sippy will use this token when writing objects to R2, so it is
@@ -38633,15 +38818,15 @@ elif False:
 class R2BucketSippyDestinationArgs:
     def __init__(__self__, *,
                  access_key_id: Optional[pulumi.Input[builtins.str]] = None,
-                 provider: Optional[pulumi.Input[builtins.str]] = None,
+                 cloud_provider: Optional[pulumi.Input[builtins.str]] = None,
                  secret_access_key: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] access_key_id: ID of a Cloudflare API token.
-               This is the value labelled "Access Key ID" when creating an API
+               This is the value labelled "Access Key ID" when creating an API.
                token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
-        :param pulumi.Input[builtins.str] provider: Available values: "r2".
+        :param pulumi.Input[builtins.str] cloud_provider: Available values: "r2".
         :param pulumi.Input[builtins.str] secret_access_key: Value of a Cloudflare API token.
-               This is the value labelled "Secret Access Key" when creating an API
+               This is the value labelled "Secret Access Key" when creating an API.
                token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
                
                Sippy will use this token when writing objects to R2, so it is
@@ -38649,8 +38834,8 @@ class R2BucketSippyDestinationArgs:
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
-        if provider is not None:
-            pulumi.set(__self__, "provider", provider)
+        if cloud_provider is not None:
+            pulumi.set(__self__, "cloud_provider", cloud_provider)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
 
@@ -38659,7 +38844,7 @@ class R2BucketSippyDestinationArgs:
     def access_key_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         ID of a Cloudflare API token.
-        This is the value labelled "Access Key ID" when creating an API
+        This is the value labelled "Access Key ID" when creating an API.
         token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
         """
         return pulumi.get(self, "access_key_id")
@@ -38669,23 +38854,23 @@ class R2BucketSippyDestinationArgs:
         pulumi.set(self, "access_key_id", value)
 
     @property
-    @pulumi.getter
-    def provider(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="cloudProvider")
+    def cloud_provider(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Available values: "r2".
         """
-        return pulumi.get(self, "provider")
+        return pulumi.get(self, "cloud_provider")
 
-    @provider.setter
-    def provider(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "provider", value)
+    @cloud_provider.setter
+    def cloud_provider(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cloud_provider", value)
 
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Value of a Cloudflare API token.
-        This is the value labelled "Secret Access Key" when creating an API
+        This is the value labelled "Secret Access Key" when creating an API.
         token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 
         Sippy will use this token when writing objects to R2, so it is
@@ -38702,31 +38887,31 @@ if not MYPY:
     class R2BucketSippySourceArgsDict(TypedDict):
         access_key_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+        Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
         """
         bucket: NotRequired[pulumi.Input[builtins.str]]
         """
-        Name of the AWS S3 bucket
+        Name of the AWS S3 bucket.
         """
         client_email: NotRequired[pulumi.Input[builtins.str]]
         """
-        Client email of an IAM credential (ideally scoped to a single GCS bucket)
+        Client email of an IAM credential (ideally scoped to a single GCS bucket).
         """
-        private_key: NotRequired[pulumi.Input[builtins.str]]
-        """
-        Private Key of an IAM credential (ideally scoped to a single GCS bucket)
-        """
-        provider: NotRequired[pulumi.Input[builtins.str]]
+        cloud_provider: NotRequired[pulumi.Input[builtins.str]]
         """
         Available values: "aws".
         """
+        private_key: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+        """
         region: NotRequired[pulumi.Input[builtins.str]]
         """
-        Name of the AWS availability zone
+        Name of the AWS availability zone.
         """
         secret_access_key: NotRequired[pulumi.Input[builtins.str]]
         """
-        Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+        Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         """
 elif False:
     R2BucketSippySourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -38737,18 +38922,18 @@ class R2BucketSippySourceArgs:
                  access_key_id: Optional[pulumi.Input[builtins.str]] = None,
                  bucket: Optional[pulumi.Input[builtins.str]] = None,
                  client_email: Optional[pulumi.Input[builtins.str]] = None,
+                 cloud_provider: Optional[pulumi.Input[builtins.str]] = None,
                  private_key: Optional[pulumi.Input[builtins.str]] = None,
-                 provider: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  secret_access_key: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] access_key_id: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
-        :param pulumi.Input[builtins.str] bucket: Name of the AWS S3 bucket
-        :param pulumi.Input[builtins.str] client_email: Client email of an IAM credential (ideally scoped to a single GCS bucket)
-        :param pulumi.Input[builtins.str] private_key: Private Key of an IAM credential (ideally scoped to a single GCS bucket)
-        :param pulumi.Input[builtins.str] provider: Available values: "aws".
-        :param pulumi.Input[builtins.str] region: Name of the AWS availability zone
-        :param pulumi.Input[builtins.str] secret_access_key: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+        :param pulumi.Input[builtins.str] access_key_id: Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
+        :param pulumi.Input[builtins.str] bucket: Name of the AWS S3 bucket.
+        :param pulumi.Input[builtins.str] client_email: Client email of an IAM credential (ideally scoped to a single GCS bucket).
+        :param pulumi.Input[builtins.str] cloud_provider: Available values: "aws".
+        :param pulumi.Input[builtins.str] private_key: Private Key of an IAM credential (ideally scoped to a single GCS bucket).
+        :param pulumi.Input[builtins.str] region: Name of the AWS availability zone.
+        :param pulumi.Input[builtins.str] secret_access_key: Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
@@ -38756,10 +38941,10 @@ class R2BucketSippySourceArgs:
             pulumi.set(__self__, "bucket", bucket)
         if client_email is not None:
             pulumi.set(__self__, "client_email", client_email)
+        if cloud_provider is not None:
+            pulumi.set(__self__, "cloud_provider", cloud_provider)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
-        if provider is not None:
-            pulumi.set(__self__, "provider", provider)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if secret_access_key is not None:
@@ -38769,7 +38954,7 @@ class R2BucketSippySourceArgs:
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+        Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
         """
         return pulumi.get(self, "access_key_id")
 
@@ -38781,7 +38966,7 @@ class R2BucketSippySourceArgs:
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the AWS S3 bucket
+        Name of the AWS S3 bucket.
         """
         return pulumi.get(self, "bucket")
 
@@ -38793,7 +38978,7 @@ class R2BucketSippySourceArgs:
     @pulumi.getter(name="clientEmail")
     def client_email(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Client email of an IAM credential (ideally scoped to a single GCS bucket)
+        Client email of an IAM credential (ideally scoped to a single GCS bucket).
         """
         return pulumi.get(self, "client_email")
 
@@ -38802,10 +38987,22 @@ class R2BucketSippySourceArgs:
         pulumi.set(self, "client_email", value)
 
     @property
+    @pulumi.getter(name="cloudProvider")
+    def cloud_provider(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Available values: "aws".
+        """
+        return pulumi.get(self, "cloud_provider")
+
+    @cloud_provider.setter
+    def cloud_provider(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cloud_provider", value)
+
+    @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+        Private Key of an IAM credential (ideally scoped to a single GCS bucket).
         """
         return pulumi.get(self, "private_key")
 
@@ -38815,21 +39012,9 @@ class R2BucketSippySourceArgs:
 
     @property
     @pulumi.getter
-    def provider(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Available values: "aws".
-        """
-        return pulumi.get(self, "provider")
-
-    @provider.setter
-    def provider(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "provider", value)
-
-    @property
-    @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the AWS availability zone
+        Name of the AWS availability zone.
         """
         return pulumi.get(self, "region")
 
@@ -38841,7 +39026,7 @@ class R2BucketSippySourceArgs:
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+        Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
         """
         return pulumi.get(self, "secret_access_key")
 
@@ -38854,12 +39039,12 @@ if not MYPY:
     class R2CustomDomainStatusArgsDict(TypedDict):
         ownership: NotRequired[pulumi.Input[builtins.str]]
         """
-        Ownership status of the domain
+        Ownership status of the domain.
         Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
         """
         ssl: NotRequired[pulumi.Input[builtins.str]]
         """
-        SSL certificate status
+        SSL certificate status.
         Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
         """
 elif False:
@@ -38871,9 +39056,9 @@ class R2CustomDomainStatusArgs:
                  ownership: Optional[pulumi.Input[builtins.str]] = None,
                  ssl: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] ownership: Ownership status of the domain
+        :param pulumi.Input[builtins.str] ownership: Ownership status of the domain.
                Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
-        :param pulumi.Input[builtins.str] ssl: SSL certificate status
+        :param pulumi.Input[builtins.str] ssl: SSL certificate status.
                Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
         """
         if ownership is not None:
@@ -38885,7 +39070,7 @@ class R2CustomDomainStatusArgs:
     @pulumi.getter
     def ownership(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Ownership status of the domain
+        Ownership status of the domain.
         Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
         """
         return pulumi.get(self, "ownership")
@@ -38898,7 +39083,7 @@ class R2CustomDomainStatusArgs:
     @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        SSL certificate status
+        SSL certificate status.
         Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
         """
         return pulumi.get(self, "ssl")
@@ -40545,7 +40730,7 @@ if not MYPY:
         """
         phases: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         """
-        A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+        A list of phases to skip the execution of. This option is incompatible with the rulesets options.
         """
         polish: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -40590,7 +40775,7 @@ if not MYPY:
         """
         ruleset: NotRequired[pulumi.Input[builtins.str]]
         """
-        A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+        A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
         Available values: "current".
         """
         rulesets: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
@@ -40729,7 +40914,7 @@ class RulesetRuleActionParametersArgs:
         :param pulumi.Input[builtins.bool] origin_cache_control: When enabled, Cloudflare will aim to strictly adhere to RFC 7234.
         :param pulumi.Input[builtins.bool] origin_error_page_passthru: Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
         :param pulumi.Input['RulesetRuleActionParametersOverridesArgs'] overrides: A set of overrides to apply to the target ruleset.
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] phases: A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] phases: A list of phases to skip the execution of. This option is incompatible with the rulesets options.
         :param pulumi.Input[builtins.str] polish: Configure the Polish level.
                Available values: "off", "lossless", "lossy".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] products: A list of legacy security products to skip the execution of.
@@ -40741,7 +40926,7 @@ class RulesetRuleActionParametersArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersResponseFieldArgs']]] response_fields: The transformed response fields to log.
         :param pulumi.Input[builtins.bool] rocket_loader: Turn on or off Rocket Loader
         :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]] rules: A mapping of ruleset IDs to a list of rule IDs in that ruleset to skip the execution of. This option is incompatible with the ruleset option.
-        :param pulumi.Input[builtins.str] ruleset: A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+        :param pulumi.Input[builtins.str] ruleset: A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
                Available values: "current".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] rulesets: A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
         :param pulumi.Input[builtins.str] security_level: Configure the Security Level.
@@ -41254,7 +41439,7 @@ class RulesetRuleActionParametersArgs:
     @pulumi.getter
     def phases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+        A list of phases to skip the execution of. This option is incompatible with the rulesets options.
         """
         return pulumi.get(self, "phases")
 
@@ -41387,7 +41572,7 @@ class RulesetRuleActionParametersArgs:
     @pulumi.getter
     def ruleset(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+        A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
         Available values: "current".
         """
         return pulumi.get(self, "ruleset")
@@ -41524,7 +41709,7 @@ if not MYPY:
         name: NotRequired[pulumi.Input[builtins.str]]
         """
         Name of compression algorithm to enable.
-        Available values: "none", "auto", "default", "gzip", "brotli".
+        Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
         """
 elif False:
     RulesetRuleActionParametersAlgorithmArgsDict: TypeAlias = Mapping[str, Any]
@@ -41535,7 +41720,7 @@ class RulesetRuleActionParametersAlgorithmArgs:
                  name: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.str] name: Name of compression algorithm to enable.
-               Available values: "none", "auto", "default", "gzip", "brotli".
+               Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -41545,7 +41730,7 @@ class RulesetRuleActionParametersAlgorithmArgs:
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Name of compression algorithm to enable.
-        Available values: "none", "auto", "default", "gzip", "brotli".
+        Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
         """
         return pulumi.get(self, "name")
 
@@ -45660,6 +45845,10 @@ if not MYPY:
         """
         FIPS settings.
         """
+        host_selector: NotRequired[pulumi.Input['TeamsAccountSettingsHostSelectorArgsDict']]
+        """
+        Setting to enable host selector in egress policies.
+        """
         protocol_detection: NotRequired[pulumi.Input['TeamsAccountSettingsProtocolDetectionArgsDict']]
         """
         Protocol Detection settings.
@@ -45687,6 +45876,7 @@ class TeamsAccountSettingsArgs:
                  custom_certificate: Optional[pulumi.Input['TeamsAccountSettingsCustomCertificateArgs']] = None,
                  extended_email_matching: Optional[pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgs']] = None,
                  fips: Optional[pulumi.Input['TeamsAccountSettingsFipsArgs']] = None,
+                 host_selector: Optional[pulumi.Input['TeamsAccountSettingsHostSelectorArgs']] = None,
                  protocol_detection: Optional[pulumi.Input['TeamsAccountSettingsProtocolDetectionArgs']] = None,
                  sandbox: Optional[pulumi.Input['TeamsAccountSettingsSandboxArgs']] = None,
                  tls_decrypt: Optional[pulumi.Input['TeamsAccountSettingsTlsDecryptArgs']] = None):
@@ -45700,6 +45890,7 @@ class TeamsAccountSettingsArgs:
         :param pulumi.Input['TeamsAccountSettingsCustomCertificateArgs'] custom_certificate: Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
         :param pulumi.Input['TeamsAccountSettingsExtendedEmailMatchingArgs'] extended_email_matching: Extended e-mail matching settings.
         :param pulumi.Input['TeamsAccountSettingsFipsArgs'] fips: FIPS settings.
+        :param pulumi.Input['TeamsAccountSettingsHostSelectorArgs'] host_selector: Setting to enable host selector in egress policies.
         :param pulumi.Input['TeamsAccountSettingsProtocolDetectionArgs'] protocol_detection: Protocol Detection settings.
         :param pulumi.Input['TeamsAccountSettingsSandboxArgs'] sandbox: Sandbox settings.
         :param pulumi.Input['TeamsAccountSettingsTlsDecryptArgs'] tls_decrypt: TLS interception settings.
@@ -45725,6 +45916,8 @@ class TeamsAccountSettingsArgs:
             pulumi.set(__self__, "extended_email_matching", extended_email_matching)
         if fips is not None:
             pulumi.set(__self__, "fips", fips)
+        if host_selector is not None:
+            pulumi.set(__self__, "host_selector", host_selector)
         if protocol_detection is not None:
             pulumi.set(__self__, "protocol_detection", protocol_detection)
         if sandbox is not None:
@@ -45840,6 +46033,18 @@ class TeamsAccountSettingsArgs:
     @fips.setter
     def fips(self, value: Optional[pulumi.Input['TeamsAccountSettingsFipsArgs']]):
         pulumi.set(self, "fips", value)
+
+    @property
+    @pulumi.getter(name="hostSelector")
+    def host_selector(self) -> Optional[pulumi.Input['TeamsAccountSettingsHostSelectorArgs']]:
+        """
+        Setting to enable host selector in egress policies.
+        """
+        return pulumi.get(self, "host_selector")
+
+    @host_selector.setter
+    def host_selector(self, value: Optional[pulumi.Input['TeamsAccountSettingsHostSelectorArgs']]):
+        pulumi.set(self, "host_selector", value)
 
     @property
     @pulumi.getter(name="protocolDetection")
@@ -46008,6 +46213,10 @@ if not MYPY:
         """
         Set notification on
         """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, context information will be passed as query parameters
+        """
         msg: NotRequired[pulumi.Input[builtins.str]]
         """
         Customize the message shown in the notification.
@@ -46023,15 +46232,19 @@ elif False:
 class TeamsAccountSettingsAntivirusNotificationSettingsArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None,
                  msg: Optional[pulumi.Input[builtins.str]] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.bool] enabled: Set notification on
+        :param pulumi.Input[builtins.bool] include_context: If true, context information will be passed as query parameters
         :param pulumi.Input[builtins.str] msg: Customize the message shown in the notification.
         :param pulumi.Input[builtins.str] support_url: Optional URL to direct users to additional information. If not set, the notification will open a block page.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
         if msg is not None:
             pulumi.set(__self__, "msg", msg)
         if support_url is not None:
@@ -46048,6 +46261,18 @@ class TeamsAccountSettingsAntivirusNotificationSettingsArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, context information will be passed as query parameters
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
 
     @property
     @pulumi.getter
@@ -46446,13 +46671,13 @@ class TeamsAccountSettingsCertificateArgs:
 
 if not MYPY:
     class TeamsAccountSettingsCustomCertificateArgsDict(TypedDict):
-        enabled: pulumi.Input[builtins.bool]
-        """
-        Enable use of custom certificate authority for signing Gateway traffic.
-        """
         binding_status: NotRequired[pulumi.Input[builtins.str]]
         """
         Certificate status (internal).
+        """
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Enable use of custom certificate authority for signing Gateway traffic.
         """
         id: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -46465,34 +46690,23 @@ elif False:
 @pulumi.input_type
 class TeamsAccountSettingsCustomCertificateArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[builtins.bool],
                  binding_status: Optional[pulumi.Input[builtins.str]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  id: Optional[pulumi.Input[builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.bool] enabled: Enable use of custom certificate authority for signing Gateway traffic.
         :param pulumi.Input[builtins.str] binding_status: Certificate status (internal).
+        :param pulumi.Input[builtins.bool] enabled: Enable use of custom certificate authority for signing Gateway traffic.
         :param pulumi.Input[builtins.str] id: UUID of certificate (ID from MTLS certificate store).
         """
-        pulumi.set(__self__, "enabled", enabled)
         if binding_status is not None:
             pulumi.set(__self__, "binding_status", binding_status)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[builtins.bool]:
-        """
-        Enable use of custom certificate authority for signing Gateway traffic.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[builtins.bool]):
-        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="bindingStatus")
@@ -46505,6 +46719,18 @@ class TeamsAccountSettingsCustomCertificateArgs:
     @binding_status.setter
     def binding_status(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "binding_status", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable use of custom certificate authority for signing Gateway traffic.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter
@@ -46590,6 +46816,38 @@ class TeamsAccountSettingsFipsArgs:
     @tls.setter
     def tls(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "tls", value)
+
+
+if not MYPY:
+    class TeamsAccountSettingsHostSelectorArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Enable filtering via hosts for egress policies.
+        """
+elif False:
+    TeamsAccountSettingsHostSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsAccountSettingsHostSelectorArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: Enable filtering via hosts for egress policies.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable filtering via hosts for egress policies.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -47262,6 +47520,10 @@ if not MYPY:
         """
         Configure how browser isolation behaves.
         """
+        block_page: NotRequired[pulumi.Input['TeamsRuleRuleSettingsBlockPageArgsDict']]
+        """
+        Custom block page settings. If missing/null, blocking will use the the account settings.
+        """
         block_page_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
         Enable the custom block page.
@@ -47352,6 +47614,7 @@ class TeamsRuleRuleSettingsArgs:
                  allow_child_bypass: Optional[pulumi.Input[builtins.bool]] = None,
                  audit_ssh: Optional[pulumi.Input['TeamsRuleRuleSettingsAuditSshArgs']] = None,
                  biso_admin_controls: Optional[pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs']] = None,
+                 block_page: Optional[pulumi.Input['TeamsRuleRuleSettingsBlockPageArgs']] = None,
                  block_page_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  block_reason: Optional[pulumi.Input[builtins.str]] = None,
                  bypass_parent_rule: Optional[pulumi.Input[builtins.bool]] = None,
@@ -47377,6 +47640,7 @@ class TeamsRuleRuleSettingsArgs:
         :param pulumi.Input[builtins.bool] allow_child_bypass: Set by parent MSP accounts to enable their children to bypass this rule.
         :param pulumi.Input['TeamsRuleRuleSettingsAuditSshArgs'] audit_ssh: Settings for the Audit SSH action.
         :param pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs'] biso_admin_controls: Configure how browser isolation behaves.
+        :param pulumi.Input['TeamsRuleRuleSettingsBlockPageArgs'] block_page: Custom block page settings. If missing/null, blocking will use the the account settings.
         :param pulumi.Input[builtins.bool] block_page_enabled: Enable the custom block page.
         :param pulumi.Input[builtins.str] block_reason: The text describing why this block occurred, displayed on the custom block page (if enabled).
         :param pulumi.Input[builtins.bool] bypass_parent_rule: Set by children MSP accounts to bypass their parent's rules.
@@ -47406,6 +47670,8 @@ class TeamsRuleRuleSettingsArgs:
             pulumi.set(__self__, "audit_ssh", audit_ssh)
         if biso_admin_controls is not None:
             pulumi.set(__self__, "biso_admin_controls", biso_admin_controls)
+        if block_page is not None:
+            pulumi.set(__self__, "block_page", block_page)
         if block_page_enabled is not None:
             pulumi.set(__self__, "block_page_enabled", block_page_enabled)
         if block_reason is not None:
@@ -47494,6 +47760,18 @@ class TeamsRuleRuleSettingsArgs:
     @biso_admin_controls.setter
     def biso_admin_controls(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsBisoAdminControlsArgs']]):
         pulumi.set(self, "biso_admin_controls", value)
+
+    @property
+    @pulumi.getter(name="blockPage")
+    def block_page(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsBlockPageArgs']]:
+        """
+        Custom block page settings. If missing/null, blocking will use the the account settings.
+        """
+        return pulumi.get(self, "block_page")
+
+    @block_page.setter
+    def block_page(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsBlockPageArgs']]):
+        pulumi.set(self, "block_page", value)
 
     @property
     @pulumi.getter(name="blockPageEnabled")
@@ -48042,6 +48320,57 @@ class TeamsRuleRuleSettingsBisoAdminControlsArgs:
 
 
 if not MYPY:
+    class TeamsRuleRuleSettingsBlockPageArgsDict(TypedDict):
+        target_uri: pulumi.Input[builtins.str]
+        """
+        URI to which the user will be redirected
+        """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, context information will be passed as query parameters
+        """
+elif False:
+    TeamsRuleRuleSettingsBlockPageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TeamsRuleRuleSettingsBlockPageArgs:
+    def __init__(__self__, *,
+                 target_uri: pulumi.Input[builtins.str],
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] target_uri: URI to which the user will be redirected
+        :param pulumi.Input[builtins.bool] include_context: If true, context information will be passed as query parameters
+        """
+        pulumi.set(__self__, "target_uri", target_uri)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> pulumi.Input[builtins.str]:
+        """
+        URI to which the user will be redirected
+        """
+        return pulumi.get(self, "target_uri")
+
+    @target_uri.setter
+    def target_uri(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "target_uri", value)
+
+    @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, context information will be passed as query parameters
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
+
+
+if not MYPY:
     class TeamsRuleRuleSettingsCheckSessionArgsDict(TypedDict):
         duration: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -48441,6 +48770,10 @@ if not MYPY:
         """
         Set notification on
         """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, context information will be passed as query parameters
+        """
         msg: NotRequired[pulumi.Input[builtins.str]]
         """
         Customize the message shown in the notification.
@@ -48456,15 +48789,19 @@ elif False:
 class TeamsRuleRuleSettingsNotificationSettingsArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None,
                  msg: Optional[pulumi.Input[builtins.str]] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.bool] enabled: Set notification on
+        :param pulumi.Input[builtins.bool] include_context: If true, context information will be passed as query parameters
         :param pulumi.Input[builtins.str] msg: Customize the message shown in the notification.
         :param pulumi.Input[builtins.str] support_url: Optional URL to direct users to additional information. If not set, the notification will open a block page.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
         if msg is not None:
             pulumi.set(__self__, "msg", msg)
         if support_url is not None:
@@ -48481,6 +48818,18 @@ class TeamsRuleRuleSettingsNotificationSettingsArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, context information will be passed as query parameters
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
 
     @property
     @pulumi.getter
@@ -50680,7 +51029,11 @@ if not MYPY:
         type: pulumi.Input[builtins.str]
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        Available values: "ai".
+        """
+        algorithm: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         """
         bucket_name: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -50702,6 +51055,11 @@ if not MYPY:
         """
         The environment of the script_name to bind to.
         """
+        format: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+        Available values: "raw", "pkcs8", "spki", "jwk".
+        """
         id: NotRequired[pulumi.Input[builtins.str]]
         """
         Identifier of the D1 database to bind to.
@@ -50713,6 +51071,14 @@ if not MYPY:
         json: NotRequired[pulumi.Input[builtins.str]]
         """
         JSON data to use.
+        """
+        key_base64: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        """
+        key_jwk: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
         """
         namespace: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -50726,6 +51092,10 @@ if not MYPY:
         """
         Outbound worker.
         """
+        pipeline: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the Pipeline to bind to.
+        """
         queue_name: NotRequired[pulumi.Input[builtins.str]]
         """
         Name of the Queue to bind to.
@@ -50734,13 +51104,25 @@ if not MYPY:
         """
         The script where the Durable Object is defined, if it is external to this Worker.
         """
+        secret_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the secret in the store.
+        """
         service: NotRequired[pulumi.Input[builtins.str]]
         """
         Name of Worker to bind to.
         """
+        store_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the store containing the secret.
+        """
         text: NotRequired[pulumi.Input[builtins.str]]
         """
         The text value to use.
+        """
+        usages: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         """
 elif False:
     WorkerScriptBindingArgsDict: TypeAlias = Mapping[str, Any]
@@ -50750,43 +51132,62 @@ class WorkerScriptBindingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[builtins.str],
                  type: pulumi.Input[builtins.str],
+                 algorithm: Optional[pulumi.Input[builtins.str]] = None,
                  bucket_name: Optional[pulumi.Input[builtins.str]] = None,
                  certificate_id: Optional[pulumi.Input[builtins.str]] = None,
                  class_name: Optional[pulumi.Input[builtins.str]] = None,
                  dataset: Optional[pulumi.Input[builtins.str]] = None,
                  environment: Optional[pulumi.Input[builtins.str]] = None,
+                 format: Optional[pulumi.Input[builtins.str]] = None,
                  id: Optional[pulumi.Input[builtins.str]] = None,
                  index_name: Optional[pulumi.Input[builtins.str]] = None,
                  json: Optional[pulumi.Input[builtins.str]] = None,
+                 key_base64: Optional[pulumi.Input[builtins.str]] = None,
+                 key_jwk: Optional[pulumi.Input[builtins.str]] = None,
                  namespace: Optional[pulumi.Input[builtins.str]] = None,
                  namespace_id: Optional[pulumi.Input[builtins.str]] = None,
                  outbound: Optional[pulumi.Input['WorkerScriptBindingOutboundArgs']] = None,
+                 pipeline: Optional[pulumi.Input[builtins.str]] = None,
                  queue_name: Optional[pulumi.Input[builtins.str]] = None,
                  script_name: Optional[pulumi.Input[builtins.str]] = None,
+                 secret_name: Optional[pulumi.Input[builtins.str]] = None,
                  service: Optional[pulumi.Input[builtins.str]] = None,
-                 text: Optional[pulumi.Input[builtins.str]] = None):
+                 store_id: Optional[pulumi.Input[builtins.str]] = None,
+                 text: Optional[pulumi.Input[builtins.str]] = None,
+                 usages: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] name: A JavaScript variable name for the binding.
         :param pulumi.Input[builtins.str] type: The kind of resource that the binding provides.
-               Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+               Available values: "ai".
+        :param pulumi.Input[builtins.str] algorithm: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         :param pulumi.Input[builtins.str] bucket_name: R2 bucket to bind to.
         :param pulumi.Input[builtins.str] certificate_id: Identifier of the certificate to bind to.
         :param pulumi.Input[builtins.str] class_name: The exported class name of the Durable Object.
         :param pulumi.Input[builtins.str] dataset: The name of the dataset to bind to.
         :param pulumi.Input[builtins.str] environment: The environment of the script_name to bind to.
+        :param pulumi.Input[builtins.str] format: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+               Available values: "raw", "pkcs8", "spki", "jwk".
         :param pulumi.Input[builtins.str] id: Identifier of the D1 database to bind to.
         :param pulumi.Input[builtins.str] index_name: Name of the Vectorize index to bind to.
         :param pulumi.Input[builtins.str] json: JSON data to use.
+        :param pulumi.Input[builtins.str] key_base64: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        :param pulumi.Input[builtins.str] key_jwk: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
         :param pulumi.Input[builtins.str] namespace: Namespace to bind to.
         :param pulumi.Input[builtins.str] namespace_id: Namespace identifier tag.
         :param pulumi.Input['WorkerScriptBindingOutboundArgs'] outbound: Outbound worker.
+        :param pulumi.Input[builtins.str] pipeline: Name of the Pipeline to bind to.
         :param pulumi.Input[builtins.str] queue_name: Name of the Queue to bind to.
         :param pulumi.Input[builtins.str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
+        :param pulumi.Input[builtins.str] secret_name: Name of the secret in the store.
         :param pulumi.Input[builtins.str] service: Name of Worker to bind to.
+        :param pulumi.Input[builtins.str] store_id: ID of the store containing the secret.
         :param pulumi.Input[builtins.str] text: The text value to use.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if certificate_id is not None:
@@ -50797,26 +51198,40 @@ class WorkerScriptBindingArgs:
             pulumi.set(__self__, "dataset", dataset)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if index_name is not None:
             pulumi.set(__self__, "index_name", index_name)
         if json is not None:
             pulumi.set(__self__, "json", json)
+        if key_base64 is not None:
+            pulumi.set(__self__, "key_base64", key_base64)
+        if key_jwk is not None:
+            pulumi.set(__self__, "key_jwk", key_jwk)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if namespace_id is not None:
             pulumi.set(__self__, "namespace_id", namespace_id)
         if outbound is not None:
             pulumi.set(__self__, "outbound", outbound)
+        if pipeline is not None:
+            pulumi.set(__self__, "pipeline", pipeline)
         if queue_name is not None:
             pulumi.set(__self__, "queue_name", queue_name)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
+        if secret_name is not None:
+            pulumi.set(__self__, "secret_name", secret_name)
         if service is not None:
             pulumi.set(__self__, "service", service)
+        if store_id is not None:
+            pulumi.set(__self__, "store_id", store_id)
         if text is not None:
             pulumi.set(__self__, "text", text)
+        if usages is not None:
+            pulumi.set(__self__, "usages", usages)
 
     @property
     @pulumi.getter
@@ -50835,13 +51250,25 @@ class WorkerScriptBindingArgs:
     def type(self) -> pulumi.Input[builtins.str]:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        Available values: "ai".
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "algorithm", value)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -50905,6 +51332,19 @@ class WorkerScriptBindingArgs:
 
     @property
     @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+        Available values: "raw", "pkcs8", "spki", "jwk".
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Identifier of the D1 database to bind to.
@@ -50938,6 +51378,30 @@ class WorkerScriptBindingArgs:
     @json.setter
     def json(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "json", value)
+
+    @property
+    @pulumi.getter(name="keyBase64")
+    def key_base64(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        """
+        return pulumi.get(self, "key_base64")
+
+    @key_base64.setter
+    def key_base64(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key_base64", value)
+
+    @property
+    @pulumi.getter(name="keyJwk")
+    def key_jwk(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+        """
+        return pulumi.get(self, "key_jwk")
+
+    @key_jwk.setter
+    def key_jwk(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key_jwk", value)
 
     @property
     @pulumi.getter
@@ -50976,6 +51440,18 @@ class WorkerScriptBindingArgs:
         pulumi.set(self, "outbound", value)
 
     @property
+    @pulumi.getter
+    def pipeline(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the Pipeline to bind to.
+        """
+        return pulumi.get(self, "pipeline")
+
+    @pipeline.setter
+    def pipeline(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pipeline", value)
+
+    @property
     @pulumi.getter(name="queueName")
     def queue_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -51000,6 +51476,18 @@ class WorkerScriptBindingArgs:
         pulumi.set(self, "script_name", value)
 
     @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the secret in the store.
+        """
+        return pulumi.get(self, "secret_name")
+
+    @secret_name.setter
+    def secret_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secret_name", value)
+
+    @property
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -51012,6 +51500,18 @@ class WorkerScriptBindingArgs:
         pulumi.set(self, "service", value)
 
     @property
+    @pulumi.getter(name="storeId")
+    def store_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the store containing the secret.
+        """
+        return pulumi.get(self, "store_id")
+
+    @store_id.setter
+    def store_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "store_id", value)
+
+    @property
     @pulumi.getter
     def text(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -51022,6 +51522,18 @@ class WorkerScriptBindingArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+        """
+        return pulumi.get(self, "usages")
+
+    @usages.setter
+    def usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "usages", value)
 
 
 if not MYPY:
@@ -51635,6 +52147,10 @@ class WorkerScriptObservabilityArgs:
 
 if not MYPY:
     class WorkerScriptPlacementArgsDict(TypedDict):
+        last_analyzed_at: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        """
         mode: NotRequired[pulumi.Input[builtins.str]]
         """
         Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -51651,18 +52167,34 @@ elif False:
 @pulumi.input_type
 class WorkerScriptPlacementArgs:
     def __init__(__self__, *,
+                 last_analyzed_at: Optional[pulumi.Input[builtins.str]] = None,
                  mode: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None):
         """
+        :param pulumi.Input[builtins.str] last_analyzed_at: The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[builtins.str] mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "smart".
         :param pulumi.Input[builtins.str] status: Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         """
+        if last_analyzed_at is not None:
+            pulumi.set(__self__, "last_analyzed_at", last_analyzed_at)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="lastAnalyzedAt")
+    def last_analyzed_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        """
+        return pulumi.get(self, "last_analyzed_at")
+
+    @last_analyzed_at.setter
+    def last_analyzed_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_analyzed_at", value)
 
     @property
     @pulumi.getter
@@ -52029,176 +52561,6 @@ class WorkersDeploymentVersionArgs:
 
 
 if not MYPY:
-    class WorkersRouteErrorArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[builtins.int]]
-        documentation_url: NotRequired[pulumi.Input[builtins.str]]
-        message: NotRequired[pulumi.Input[builtins.str]]
-        source: NotRequired[pulumi.Input['WorkersRouteErrorSourceArgsDict']]
-elif False:
-    WorkersRouteErrorArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersRouteErrorArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[builtins.int]] = None,
-                 documentation_url: Optional[pulumi.Input[builtins.str]] = None,
-                 message: Optional[pulumi.Input[builtins.str]] = None,
-                 source: Optional[pulumi.Input['WorkersRouteErrorSourceArgs']] = None):
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if documentation_url is not None:
-            pulumi.set(__self__, "documentation_url", documentation_url)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[builtins.int]]:
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter(name="documentationUrl")
-    def documentation_url(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "documentation_url")
-
-    @documentation_url.setter
-    def documentation_url(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "documentation_url", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "message", value)
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['WorkersRouteErrorSourceArgs']]:
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input['WorkersRouteErrorSourceArgs']]):
-        pulumi.set(self, "source", value)
-
-
-if not MYPY:
-    class WorkersRouteErrorSourceArgsDict(TypedDict):
-        pointer: NotRequired[pulumi.Input[builtins.str]]
-elif False:
-    WorkersRouteErrorSourceArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersRouteErrorSourceArgs:
-    def __init__(__self__, *,
-                 pointer: Optional[pulumi.Input[builtins.str]] = None):
-        if pointer is not None:
-            pulumi.set(__self__, "pointer", pointer)
-
-    @property
-    @pulumi.getter
-    def pointer(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "pointer")
-
-    @pointer.setter
-    def pointer(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "pointer", value)
-
-
-if not MYPY:
-    class WorkersRouteMessageArgsDict(TypedDict):
-        code: NotRequired[pulumi.Input[builtins.int]]
-        documentation_url: NotRequired[pulumi.Input[builtins.str]]
-        message: NotRequired[pulumi.Input[builtins.str]]
-        source: NotRequired[pulumi.Input['WorkersRouteMessageSourceArgsDict']]
-elif False:
-    WorkersRouteMessageArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersRouteMessageArgs:
-    def __init__(__self__, *,
-                 code: Optional[pulumi.Input[builtins.int]] = None,
-                 documentation_url: Optional[pulumi.Input[builtins.str]] = None,
-                 message: Optional[pulumi.Input[builtins.str]] = None,
-                 source: Optional[pulumi.Input['WorkersRouteMessageSourceArgs']] = None):
-        if code is not None:
-            pulumi.set(__self__, "code", code)
-        if documentation_url is not None:
-            pulumi.set(__self__, "documentation_url", documentation_url)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-
-    @property
-    @pulumi.getter
-    def code(self) -> Optional[pulumi.Input[builtins.int]]:
-        return pulumi.get(self, "code")
-
-    @code.setter
-    def code(self, value: Optional[pulumi.Input[builtins.int]]):
-        pulumi.set(self, "code", value)
-
-    @property
-    @pulumi.getter(name="documentationUrl")
-    def documentation_url(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "documentation_url")
-
-    @documentation_url.setter
-    def documentation_url(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "documentation_url", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "message", value)
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['WorkersRouteMessageSourceArgs']]:
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input['WorkersRouteMessageSourceArgs']]):
-        pulumi.set(self, "source", value)
-
-
-if not MYPY:
-    class WorkersRouteMessageSourceArgsDict(TypedDict):
-        pointer: NotRequired[pulumi.Input[builtins.str]]
-elif False:
-    WorkersRouteMessageSourceArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WorkersRouteMessageSourceArgs:
-    def __init__(__self__, *,
-                 pointer: Optional[pulumi.Input[builtins.str]] = None):
-        if pointer is not None:
-            pulumi.set(__self__, "pointer", pointer)
-
-    @property
-    @pulumi.getter
-    def pointer(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "pointer")
-
-    @pointer.setter
-    def pointer(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "pointer", value)
-
-
-if not MYPY:
     class WorkersScriptAssetsArgsDict(TypedDict):
         config: NotRequired[pulumi.Input['WorkersScriptAssetsConfigArgsDict']]
         """
@@ -52401,7 +52763,11 @@ if not MYPY:
         type: pulumi.Input[builtins.str]
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        Available values: "ai".
+        """
+        algorithm: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         """
         bucket_name: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -52423,6 +52789,11 @@ if not MYPY:
         """
         The environment of the script_name to bind to.
         """
+        format: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+        Available values: "raw", "pkcs8", "spki", "jwk".
+        """
         id: NotRequired[pulumi.Input[builtins.str]]
         """
         Identifier of the D1 database to bind to.
@@ -52434,6 +52805,14 @@ if not MYPY:
         json: NotRequired[pulumi.Input[builtins.str]]
         """
         JSON data to use.
+        """
+        key_base64: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        """
+        key_jwk: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
         """
         namespace: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -52447,6 +52826,10 @@ if not MYPY:
         """
         Outbound worker.
         """
+        pipeline: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the Pipeline to bind to.
+        """
         queue_name: NotRequired[pulumi.Input[builtins.str]]
         """
         Name of the Queue to bind to.
@@ -52455,13 +52838,25 @@ if not MYPY:
         """
         The script where the Durable Object is defined, if it is external to this Worker.
         """
+        secret_name: NotRequired[pulumi.Input[builtins.str]]
+        """
+        Name of the secret in the store.
+        """
         service: NotRequired[pulumi.Input[builtins.str]]
         """
         Name of Worker to bind to.
         """
+        store_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        ID of the store containing the secret.
+        """
         text: NotRequired[pulumi.Input[builtins.str]]
         """
         The text value to use.
+        """
+        usages: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         """
 elif False:
     WorkersScriptBindingArgsDict: TypeAlias = Mapping[str, Any]
@@ -52471,43 +52866,62 @@ class WorkersScriptBindingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[builtins.str],
                  type: pulumi.Input[builtins.str],
+                 algorithm: Optional[pulumi.Input[builtins.str]] = None,
                  bucket_name: Optional[pulumi.Input[builtins.str]] = None,
                  certificate_id: Optional[pulumi.Input[builtins.str]] = None,
                  class_name: Optional[pulumi.Input[builtins.str]] = None,
                  dataset: Optional[pulumi.Input[builtins.str]] = None,
                  environment: Optional[pulumi.Input[builtins.str]] = None,
+                 format: Optional[pulumi.Input[builtins.str]] = None,
                  id: Optional[pulumi.Input[builtins.str]] = None,
                  index_name: Optional[pulumi.Input[builtins.str]] = None,
                  json: Optional[pulumi.Input[builtins.str]] = None,
+                 key_base64: Optional[pulumi.Input[builtins.str]] = None,
+                 key_jwk: Optional[pulumi.Input[builtins.str]] = None,
                  namespace: Optional[pulumi.Input[builtins.str]] = None,
                  namespace_id: Optional[pulumi.Input[builtins.str]] = None,
                  outbound: Optional[pulumi.Input['WorkersScriptBindingOutboundArgs']] = None,
+                 pipeline: Optional[pulumi.Input[builtins.str]] = None,
                  queue_name: Optional[pulumi.Input[builtins.str]] = None,
                  script_name: Optional[pulumi.Input[builtins.str]] = None,
+                 secret_name: Optional[pulumi.Input[builtins.str]] = None,
                  service: Optional[pulumi.Input[builtins.str]] = None,
-                 text: Optional[pulumi.Input[builtins.str]] = None):
+                 store_id: Optional[pulumi.Input[builtins.str]] = None,
+                 text: Optional[pulumi.Input[builtins.str]] = None,
+                 usages: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] name: A JavaScript variable name for the binding.
         :param pulumi.Input[builtins.str] type: The kind of resource that the binding provides.
-               Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+               Available values: "ai".
+        :param pulumi.Input[builtins.str] algorithm: Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
         :param pulumi.Input[builtins.str] bucket_name: R2 bucket to bind to.
         :param pulumi.Input[builtins.str] certificate_id: Identifier of the certificate to bind to.
         :param pulumi.Input[builtins.str] class_name: The exported class name of the Durable Object.
         :param pulumi.Input[builtins.str] dataset: The name of the dataset to bind to.
         :param pulumi.Input[builtins.str] environment: The environment of the script_name to bind to.
+        :param pulumi.Input[builtins.str] format: Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+               Available values: "raw", "pkcs8", "spki", "jwk".
         :param pulumi.Input[builtins.str] id: Identifier of the D1 database to bind to.
         :param pulumi.Input[builtins.str] index_name: Name of the Vectorize index to bind to.
         :param pulumi.Input[builtins.str] json: JSON data to use.
+        :param pulumi.Input[builtins.str] key_base64: Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        :param pulumi.Input[builtins.str] key_jwk: Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
         :param pulumi.Input[builtins.str] namespace: Namespace to bind to.
         :param pulumi.Input[builtins.str] namespace_id: Namespace identifier tag.
         :param pulumi.Input['WorkersScriptBindingOutboundArgs'] outbound: Outbound worker.
+        :param pulumi.Input[builtins.str] pipeline: Name of the Pipeline to bind to.
         :param pulumi.Input[builtins.str] queue_name: Name of the Queue to bind to.
         :param pulumi.Input[builtins.str] script_name: The script where the Durable Object is defined, if it is external to this Worker.
+        :param pulumi.Input[builtins.str] secret_name: Name of the secret in the store.
         :param pulumi.Input[builtins.str] service: Name of Worker to bind to.
+        :param pulumi.Input[builtins.str] store_id: ID of the store containing the secret.
         :param pulumi.Input[builtins.str] text: The text value to use.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] usages: Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if certificate_id is not None:
@@ -52518,26 +52932,40 @@ class WorkersScriptBindingArgs:
             pulumi.set(__self__, "dataset", dataset)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if index_name is not None:
             pulumi.set(__self__, "index_name", index_name)
         if json is not None:
             pulumi.set(__self__, "json", json)
+        if key_base64 is not None:
+            pulumi.set(__self__, "key_base64", key_base64)
+        if key_jwk is not None:
+            pulumi.set(__self__, "key_jwk", key_jwk)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if namespace_id is not None:
             pulumi.set(__self__, "namespace_id", namespace_id)
         if outbound is not None:
             pulumi.set(__self__, "outbound", outbound)
+        if pipeline is not None:
+            pulumi.set(__self__, "pipeline", pipeline)
         if queue_name is not None:
             pulumi.set(__self__, "queue_name", queue_name)
         if script_name is not None:
             pulumi.set(__self__, "script_name", script_name)
+        if secret_name is not None:
+            pulumi.set(__self__, "secret_name", secret_name)
         if service is not None:
             pulumi.set(__self__, "service", service)
+        if store_id is not None:
+            pulumi.set(__self__, "store_id", store_id)
         if text is not None:
             pulumi.set(__self__, "text", text)
+        if usages is not None:
+            pulumi.set(__self__, "usages", usages)
 
     @property
     @pulumi.getter
@@ -52556,13 +52984,25 @@ class WorkersScriptBindingArgs:
     def type(self) -> pulumi.Input[builtins.str]:
         """
         The kind of resource that the binding provides.
-        Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+        Available values: "ai".
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "algorithm", value)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -52626,6 +53066,19 @@ class WorkersScriptBindingArgs:
 
     @property
     @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+        Available values: "raw", "pkcs8", "spki", "jwk".
+        """
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
     def id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Identifier of the D1 database to bind to.
@@ -52659,6 +53112,30 @@ class WorkersScriptBindingArgs:
     @json.setter
     def json(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "json", value)
+
+    @property
+    @pulumi.getter(name="keyBase64")
+    def key_base64(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+        """
+        return pulumi.get(self, "key_base64")
+
+    @key_base64.setter
+    def key_base64(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key_base64", value)
+
+    @property
+    @pulumi.getter(name="keyJwk")
+    def key_jwk(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+        """
+        return pulumi.get(self, "key_jwk")
+
+    @key_jwk.setter
+    def key_jwk(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "key_jwk", value)
 
     @property
     @pulumi.getter
@@ -52697,6 +53174,18 @@ class WorkersScriptBindingArgs:
         pulumi.set(self, "outbound", value)
 
     @property
+    @pulumi.getter
+    def pipeline(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the Pipeline to bind to.
+        """
+        return pulumi.get(self, "pipeline")
+
+    @pipeline.setter
+    def pipeline(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "pipeline", value)
+
+    @property
     @pulumi.getter(name="queueName")
     def queue_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -52721,6 +53210,18 @@ class WorkersScriptBindingArgs:
         pulumi.set(self, "script_name", value)
 
     @property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the secret in the store.
+        """
+        return pulumi.get(self, "secret_name")
+
+    @secret_name.setter
+    def secret_name(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "secret_name", value)
+
+    @property
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -52733,6 +53234,18 @@ class WorkersScriptBindingArgs:
         pulumi.set(self, "service", value)
 
     @property
+    @pulumi.getter(name="storeId")
+    def store_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        ID of the store containing the secret.
+        """
+        return pulumi.get(self, "store_id")
+
+    @store_id.setter
+    def store_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "store_id", value)
+
+    @property
     @pulumi.getter
     def text(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -52743,6 +53256,18 @@ class WorkersScriptBindingArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+        """
+        return pulumi.get(self, "usages")
+
+    @usages.setter
+    def usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "usages", value)
 
 
 if not MYPY:
@@ -53356,6 +53881,10 @@ class WorkersScriptObservabilityArgs:
 
 if not MYPY:
     class WorkersScriptPlacementArgsDict(TypedDict):
+        last_analyzed_at: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        """
         mode: NotRequired[pulumi.Input[builtins.str]]
         """
         Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
@@ -53372,18 +53901,34 @@ elif False:
 @pulumi.input_type
 class WorkersScriptPlacementArgs:
     def __init__(__self__, *,
+                 last_analyzed_at: Optional[pulumi.Input[builtins.str]] = None,
                  mode: Optional[pulumi.Input[builtins.str]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None):
         """
+        :param pulumi.Input[builtins.str] last_analyzed_at: The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         :param pulumi.Input[builtins.str] mode: Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "smart".
         :param pulumi.Input[builtins.str] status: Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
                Available values: "SUCCESS", "UNSUPPORTED*APPLICATION", "INSUFFICIENT*INVOCATIONS".
         """
+        if last_analyzed_at is not None:
+            pulumi.set(__self__, "last_analyzed_at", last_analyzed_at)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if status is not None:
             pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="lastAnalyzedAt")
+    def last_analyzed_at(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        """
+        return pulumi.get(self, "last_analyzed_at")
+
+    @last_analyzed_at.setter
+    def last_analyzed_at(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "last_analyzed_at", value)
 
     @property
     @pulumi.getter
@@ -68791,7 +69336,7 @@ if not MYPY:
     class ZeroTrustDevicePostureRuleMatchArgsDict(TypedDict):
         platform: NotRequired[pulumi.Input[builtins.str]]
         """
-        Available values: "windows", "mac", "linux", "android", "ios".
+        Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
         """
 elif False:
     ZeroTrustDevicePostureRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
@@ -68801,7 +69346,7 @@ class ZeroTrustDevicePostureRuleMatchArgs:
     def __init__(__self__, *,
                  platform: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.str] platform: Available values: "windows", "mac", "linux", "android", "ios".
+        :param pulumi.Input[builtins.str] platform: Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
         """
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
@@ -68810,157 +69355,13 @@ class ZeroTrustDevicePostureRuleMatchArgs:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Available values: "windows", "mac", "linux", "android", "ios".
+        Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
         """
         return pulumi.get(self, "platform")
 
     @platform.setter
     def platform(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "platform", value)
-
-
-if not MYPY:
-    class ZeroTrustDexTestDataArgsDict(TypedDict):
-        host: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The desired endpoint to test.
-        """
-        kind: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The type of test.
-        """
-        method: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The HTTP request method type.
-        """
-elif False:
-    ZeroTrustDexTestDataArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class ZeroTrustDexTestDataArgs:
-    def __init__(__self__, *,
-                 host: Optional[pulumi.Input[builtins.str]] = None,
-                 kind: Optional[pulumi.Input[builtins.str]] = None,
-                 method: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        :param pulumi.Input[builtins.str] host: The desired endpoint to test.
-        :param pulumi.Input[builtins.str] kind: The type of test.
-        :param pulumi.Input[builtins.str] method: The HTTP request method type.
-        """
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if method is not None:
-            pulumi.set(__self__, "method", method)
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The desired endpoint to test.
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The type of test.
-        """
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def method(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The HTTP request method type.
-        """
-        return pulumi.get(self, "method")
-
-    @method.setter
-    def method(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "method", value)
-
-
-if not MYPY:
-    class ZeroTrustDexTestTargetPolicyArgsDict(TypedDict):
-        default: NotRequired[pulumi.Input[builtins.bool]]
-        """
-        Whether the profile is the account default
-        """
-        id: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The id of the device settings profile
-        """
-        name: NotRequired[pulumi.Input[builtins.str]]
-        """
-        The name of the device settings profile
-        """
-elif False:
-    ZeroTrustDexTestTargetPolicyArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class ZeroTrustDexTestTargetPolicyArgs:
-    def __init__(__self__, *,
-                 default: Optional[pulumi.Input[builtins.bool]] = None,
-                 id: Optional[pulumi.Input[builtins.str]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None):
-        """
-        :param pulumi.Input[builtins.bool] default: Whether the profile is the account default
-        :param pulumi.Input[builtins.str] id: The id of the device settings profile
-        :param pulumi.Input[builtins.str] name: The name of the device settings profile
-        """
-        if default is not None:
-            pulumi.set(__self__, "default", default)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        Whether the profile is the account default
-        """
-        return pulumi.get(self, "default")
-
-    @default.setter
-    def default(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "default", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The id of the device settings profile
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The name of the device settings profile
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "name", value)
 
 
 if not MYPY:
@@ -69168,7 +69569,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        The description of the profile
+        The description of the profile.
         """
         ocr_enabled: NotRequired[pulumi.Input[builtins.bool]]
         shared_entries: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileProfileSharedEntryArgsDict']]]]
@@ -69193,7 +69594,7 @@ class ZeroTrustDlpCustomProfileProfileArgs:
         """
         :param pulumi.Input[builtins.int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input['ZeroTrustDlpCustomProfileProfileContextAwarenessArgs'] context_awareness: Scan the context of predefined entries to only return matches surrounded by keywords.
-        :param pulumi.Input[builtins.str] description: The description of the profile
+        :param pulumi.Input[builtins.str] description: The description of the profile.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
         pulumi.set(__self__, "entries", entries)
@@ -69277,7 +69678,7 @@ class ZeroTrustDlpCustomProfileProfileArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the profile
+        The description of the profile.
         """
         return pulumi.get(self, "description")
 
@@ -69679,11 +70080,12 @@ class ZeroTrustDlpDatasetColumnArgs:
 
 if not MYPY:
     class ZeroTrustDlpDatasetDatasetArgsDict(TypedDict):
+        case_sensitive: NotRequired[pulumi.Input[builtins.bool]]
         columns: NotRequired[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetColumnArgsDict']]]]
         created_at: NotRequired[pulumi.Input[builtins.str]]
         description: NotRequired[pulumi.Input[builtins.str]]
         """
-        The description of the dataset
+        The description of the dataset.
         """
         encoding_version: NotRequired[pulumi.Input[builtins.int]]
         id: NotRequired[pulumi.Input[builtins.str]]
@@ -69705,6 +70107,7 @@ elif False:
 @pulumi.input_type
 class ZeroTrustDlpDatasetDatasetArgs:
     def __init__(__self__, *,
+                 case_sensitive: Optional[pulumi.Input[builtins.bool]] = None,
                  columns: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetColumnArgs']]]] = None,
                  created_at: Optional[pulumi.Input[builtins.str]] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
@@ -69717,10 +70120,12 @@ class ZeroTrustDlpDatasetDatasetArgs:
                  updated_at: Optional[pulumi.Input[builtins.str]] = None,
                  uploads: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetUploadArgs']]]] = None):
         """
-        :param pulumi.Input[builtins.str] description: The description of the dataset
+        :param pulumi.Input[builtins.str] description: The description of the dataset.
         :param pulumi.Input[builtins.str] status: Available values: "empty", "uploading", "processing", "failed", "complete".
         :param pulumi.Input[builtins.str] updated_at: When the dataset was last updated.
         """
+        if case_sensitive is not None:
+            pulumi.set(__self__, "case_sensitive", case_sensitive)
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
         if created_at is not None:
@@ -69745,6 +70150,15 @@ class ZeroTrustDlpDatasetDatasetArgs:
             pulumi.set(__self__, "uploads", uploads)
 
     @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> Optional[pulumi.Input[builtins.bool]]:
+        return pulumi.get(self, "case_sensitive")
+
+    @case_sensitive.setter
+    def case_sensitive(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "case_sensitive", value)
+
+    @property
     @pulumi.getter
     def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpDatasetDatasetColumnArgs']]]]:
         return pulumi.get(self, "columns")
@@ -69766,7 +70180,7 @@ class ZeroTrustDlpDatasetDatasetArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The description of the dataset
+        The description of the dataset.
         """
         return pulumi.get(self, "description")
 
@@ -70044,11 +70458,11 @@ if not MYPY:
     class ZeroTrustDlpEntryConfidenceArgsDict(TypedDict):
         ai_context_available: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Indicates whether this entry has AI remote service validation
+        Indicates whether this entry has AI remote service validation.
         """
         available: NotRequired[pulumi.Input[builtins.bool]]
         """
-        Indicates whether this entry has any form of validation that is not an AI remote service
+        Indicates whether this entry has any form of validation that is not an AI remote service.
         """
 elif False:
     ZeroTrustDlpEntryConfidenceArgsDict: TypeAlias = Mapping[str, Any]
@@ -70059,8 +70473,8 @@ class ZeroTrustDlpEntryConfidenceArgs:
                  ai_context_available: Optional[pulumi.Input[builtins.bool]] = None,
                  available: Optional[pulumi.Input[builtins.bool]] = None):
         """
-        :param pulumi.Input[builtins.bool] ai_context_available: Indicates whether this entry has AI remote service validation
-        :param pulumi.Input[builtins.bool] available: Indicates whether this entry has any form of validation that is not an AI remote service
+        :param pulumi.Input[builtins.bool] ai_context_available: Indicates whether this entry has AI remote service validation.
+        :param pulumi.Input[builtins.bool] available: Indicates whether this entry has any form of validation that is not an AI remote service.
         """
         if ai_context_available is not None:
             pulumi.set(__self__, "ai_context_available", ai_context_available)
@@ -70071,7 +70485,7 @@ class ZeroTrustDlpEntryConfidenceArgs:
     @pulumi.getter(name="aiContextAvailable")
     def ai_context_available(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Indicates whether this entry has AI remote service validation
+        Indicates whether this entry has AI remote service validation.
         """
         return pulumi.get(self, "ai_context_available")
 
@@ -70083,7 +70497,7 @@ class ZeroTrustDlpEntryConfidenceArgs:
     @pulumi.getter
     def available(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Indicates whether this entry has any form of validation that is not an AI remote service
+        Indicates whether this entry has any form of validation that is not an AI remote service.
         """
         return pulumi.get(self, "available")
 
@@ -70946,6 +71360,10 @@ if not MYPY:
         """
         Configure how browser isolation behaves.
         """
+        block_page: NotRequired[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBlockPageArgsDict']]
+        """
+        Custom block page settings. If missing/null, blocking will use the the account settings.
+        """
         block_page_enabled: NotRequired[pulumi.Input[builtins.bool]]
         """
         Enable the custom block page.
@@ -71036,6 +71454,7 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
                  allow_child_bypass: Optional[pulumi.Input[builtins.bool]] = None,
                  audit_ssh: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs']] = None,
                  biso_admin_controls: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs']] = None,
+                 block_page: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs']] = None,
                  block_page_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  block_reason: Optional[pulumi.Input[builtins.str]] = None,
                  bypass_parent_rule: Optional[pulumi.Input[builtins.bool]] = None,
@@ -71061,6 +71480,7 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
         :param pulumi.Input[builtins.bool] allow_child_bypass: Set by parent MSP accounts to enable their children to bypass this rule.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsAuditSshArgs'] audit_ssh: Settings for the Audit SSH action.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs'] biso_admin_controls: Configure how browser isolation behaves.
+        :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs'] block_page: Custom block page settings. If missing/null, blocking will use the the account settings.
         :param pulumi.Input[builtins.bool] block_page_enabled: Enable the custom block page.
         :param pulumi.Input[builtins.str] block_reason: The text describing why this block occurred, displayed on the custom block page (if enabled).
         :param pulumi.Input[builtins.bool] bypass_parent_rule: Set by children MSP accounts to bypass their parent's rules.
@@ -71090,6 +71510,8 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
             pulumi.set(__self__, "audit_ssh", audit_ssh)
         if biso_admin_controls is not None:
             pulumi.set(__self__, "biso_admin_controls", biso_admin_controls)
+        if block_page is not None:
+            pulumi.set(__self__, "block_page", block_page)
         if block_page_enabled is not None:
             pulumi.set(__self__, "block_page_enabled", block_page_enabled)
         if block_reason is not None:
@@ -71178,6 +71600,18 @@ class ZeroTrustGatewayPolicyRuleSettingsArgs:
     @biso_admin_controls.setter
     def biso_admin_controls(self, value: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs']]):
         pulumi.set(self, "biso_admin_controls", value)
+
+    @property
+    @pulumi.getter(name="blockPage")
+    def block_page(self) -> Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs']]:
+        """
+        Custom block page settings. If missing/null, blocking will use the the account settings.
+        """
+        return pulumi.get(self, "block_page")
+
+    @block_page.setter
+    def block_page(self, value: Optional[pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs']]):
+        pulumi.set(self, "block_page", value)
 
     @property
     @pulumi.getter(name="blockPageEnabled")
@@ -71726,6 +72160,57 @@ class ZeroTrustGatewayPolicyRuleSettingsBisoAdminControlsArgs:
 
 
 if not MYPY:
+    class ZeroTrustGatewayPolicyRuleSettingsBlockPageArgsDict(TypedDict):
+        target_uri: pulumi.Input[builtins.str]
+        """
+        URI to which the user will be redirected
+        """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, context information will be passed as query parameters
+        """
+elif False:
+    ZeroTrustGatewayPolicyRuleSettingsBlockPageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustGatewayPolicyRuleSettingsBlockPageArgs:
+    def __init__(__self__, *,
+                 target_uri: pulumi.Input[builtins.str],
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.str] target_uri: URI to which the user will be redirected
+        :param pulumi.Input[builtins.bool] include_context: If true, context information will be passed as query parameters
+        """
+        pulumi.set(__self__, "target_uri", target_uri)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> pulumi.Input[builtins.str]:
+        """
+        URI to which the user will be redirected
+        """
+        return pulumi.get(self, "target_uri")
+
+    @target_uri.setter
+    def target_uri(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "target_uri", value)
+
+    @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, context information will be passed as query parameters
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
+
+
+if not MYPY:
     class ZeroTrustGatewayPolicyRuleSettingsCheckSessionArgsDict(TypedDict):
         duration: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -72125,6 +72610,10 @@ if not MYPY:
         """
         Set notification on
         """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, context information will be passed as query parameters
+        """
         msg: NotRequired[pulumi.Input[builtins.str]]
         """
         Customize the message shown in the notification.
@@ -72140,15 +72629,19 @@ elif False:
 class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None,
                  msg: Optional[pulumi.Input[builtins.str]] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.bool] enabled: Set notification on
+        :param pulumi.Input[builtins.bool] include_context: If true, context information will be passed as query parameters
         :param pulumi.Input[builtins.str] msg: Customize the message shown in the notification.
         :param pulumi.Input[builtins.str] support_url: Optional URL to direct users to additional information. If not set, the notification will open a block page.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
         if msg is not None:
             pulumi.set(__self__, "msg", msg)
         if support_url is not None:
@@ -72165,6 +72658,18 @@ class ZeroTrustGatewayPolicyRuleSettingsNotificationSettingsArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, context information will be passed as query parameters
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
 
     @property
     @pulumi.getter
@@ -72626,6 +73131,10 @@ if not MYPY:
         """
         FIPS settings.
         """
+        host_selector: NotRequired[pulumi.Input['ZeroTrustGatewaySettingsSettingsHostSelectorArgsDict']]
+        """
+        Setting to enable host selector in egress policies.
+        """
         protocol_detection: NotRequired[pulumi.Input['ZeroTrustGatewaySettingsSettingsProtocolDetectionArgsDict']]
         """
         Protocol Detection settings.
@@ -72653,6 +73162,7 @@ class ZeroTrustGatewaySettingsSettingsArgs:
                  custom_certificate: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsCustomCertificateArgs']] = None,
                  extended_email_matching: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs']] = None,
                  fips: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsFipsArgs']] = None,
+                 host_selector: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsHostSelectorArgs']] = None,
                  protocol_detection: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs']] = None,
                  sandbox: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsSandboxArgs']] = None,
                  tls_decrypt: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsTlsDecryptArgs']] = None):
@@ -72666,6 +73176,7 @@ class ZeroTrustGatewaySettingsSettingsArgs:
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsCustomCertificateArgs'] custom_certificate: Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsExtendedEmailMatchingArgs'] extended_email_matching: Extended e-mail matching settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsFipsArgs'] fips: FIPS settings.
+        :param pulumi.Input['ZeroTrustGatewaySettingsSettingsHostSelectorArgs'] host_selector: Setting to enable host selector in egress policies.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsProtocolDetectionArgs'] protocol_detection: Protocol Detection settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsSandboxArgs'] sandbox: Sandbox settings.
         :param pulumi.Input['ZeroTrustGatewaySettingsSettingsTlsDecryptArgs'] tls_decrypt: TLS interception settings.
@@ -72691,6 +73202,8 @@ class ZeroTrustGatewaySettingsSettingsArgs:
             pulumi.set(__self__, "extended_email_matching", extended_email_matching)
         if fips is not None:
             pulumi.set(__self__, "fips", fips)
+        if host_selector is not None:
+            pulumi.set(__self__, "host_selector", host_selector)
         if protocol_detection is not None:
             pulumi.set(__self__, "protocol_detection", protocol_detection)
         if sandbox is not None:
@@ -72806,6 +73319,18 @@ class ZeroTrustGatewaySettingsSettingsArgs:
     @fips.setter
     def fips(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsFipsArgs']]):
         pulumi.set(self, "fips", value)
+
+    @property
+    @pulumi.getter(name="hostSelector")
+    def host_selector(self) -> Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsHostSelectorArgs']]:
+        """
+        Setting to enable host selector in egress policies.
+        """
+        return pulumi.get(self, "host_selector")
+
+    @host_selector.setter
+    def host_selector(self, value: Optional[pulumi.Input['ZeroTrustGatewaySettingsSettingsHostSelectorArgs']]):
+        pulumi.set(self, "host_selector", value)
 
     @property
     @pulumi.getter(name="protocolDetection")
@@ -72974,6 +73499,10 @@ if not MYPY:
         """
         Set notification on
         """
+        include_context: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        If true, context information will be passed as query parameters
+        """
         msg: NotRequired[pulumi.Input[builtins.str]]
         """
         Customize the message shown in the notification.
@@ -72989,15 +73518,19 @@ elif False:
 class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 include_context: Optional[pulumi.Input[builtins.bool]] = None,
                  msg: Optional[pulumi.Input[builtins.str]] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None):
         """
         :param pulumi.Input[builtins.bool] enabled: Set notification on
+        :param pulumi.Input[builtins.bool] include_context: If true, context information will be passed as query parameters
         :param pulumi.Input[builtins.str] msg: Customize the message shown in the notification.
         :param pulumi.Input[builtins.str] support_url: Optional URL to direct users to additional information. If not set, the notification will open a block page.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if include_context is not None:
+            pulumi.set(__self__, "include_context", include_context)
         if msg is not None:
             pulumi.set(__self__, "msg", msg)
         if support_url is not None:
@@ -73014,6 +73547,18 @@ class ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettingsArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="includeContext")
+    def include_context(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, context information will be passed as query parameters
+        """
+        return pulumi.get(self, "include_context")
+
+    @include_context.setter
+    def include_context(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "include_context", value)
 
     @property
     @pulumi.getter
@@ -73412,13 +73957,13 @@ class ZeroTrustGatewaySettingsSettingsCertificateArgs:
 
 if not MYPY:
     class ZeroTrustGatewaySettingsSettingsCustomCertificateArgsDict(TypedDict):
-        enabled: pulumi.Input[builtins.bool]
-        """
-        Enable use of custom certificate authority for signing Gateway traffic.
-        """
         binding_status: NotRequired[pulumi.Input[builtins.str]]
         """
         Certificate status (internal).
+        """
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Enable use of custom certificate authority for signing Gateway traffic.
         """
         id: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -73431,34 +73976,23 @@ elif False:
 @pulumi.input_type
 class ZeroTrustGatewaySettingsSettingsCustomCertificateArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[builtins.bool],
                  binding_status: Optional[pulumi.Input[builtins.str]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  id: Optional[pulumi.Input[builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[builtins.str]] = None):
         """
-        :param pulumi.Input[builtins.bool] enabled: Enable use of custom certificate authority for signing Gateway traffic.
         :param pulumi.Input[builtins.str] binding_status: Certificate status (internal).
+        :param pulumi.Input[builtins.bool] enabled: Enable use of custom certificate authority for signing Gateway traffic.
         :param pulumi.Input[builtins.str] id: UUID of certificate (ID from MTLS certificate store).
         """
-        pulumi.set(__self__, "enabled", enabled)
         if binding_status is not None:
             pulumi.set(__self__, "binding_status", binding_status)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Input[builtins.bool]:
-        """
-        Enable use of custom certificate authority for signing Gateway traffic.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: pulumi.Input[builtins.bool]):
-        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="bindingStatus")
@@ -73471,6 +74005,18 @@ class ZeroTrustGatewaySettingsSettingsCustomCertificateArgs:
     @binding_status.setter
     def binding_status(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "binding_status", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable use of custom certificate authority for signing Gateway traffic.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter
@@ -73556,6 +74102,38 @@ class ZeroTrustGatewaySettingsSettingsFipsArgs:
     @tls.setter
     def tls(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "tls", value)
+
+
+if not MYPY:
+    class ZeroTrustGatewaySettingsSettingsHostSelectorArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Enable filtering via hosts for egress policies.
+        """
+elif False:
+    ZeroTrustGatewaySettingsSettingsHostSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ZeroTrustGatewaySettingsSettingsHostSelectorArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
+        """
+        :param pulumi.Input[builtins.bool] enabled: Enable filtering via hosts for egress policies.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Enable filtering via hosts for egress policies.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -76016,13 +76594,13 @@ if not MYPY:
     class GetAccessRuleFilterArgsDict(TypedDict):
         match: builtins.str
         """
-        When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
         Available values: "any", "all".
         """
         configuration: NotRequired['GetAccessRuleFilterConfigurationArgsDict']
         direction: NotRequired[builtins.str]
         """
-        The direction used to sort returned rules.
+        Defines the direction used to sort returned rules.
         Available values: "asc", "desc".
         """
         mode: NotRequired[builtins.str]
@@ -76032,12 +76610,12 @@ if not MYPY:
         """
         notes: NotRequired[builtins.str]
         """
-        The string to search for in the notes of existing IP Access rules.
+        Defines the string to search for in the notes of existing IP Access rules.
         Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
         """
         order: NotRequired[builtins.str]
         """
-        The field used to sort returned rules.
+        Defines the field used to sort returned rules.
         Available values: "configuration.target", "configuration.value", "mode".
         """
 elif False:
@@ -76053,15 +76631,15 @@ class GetAccessRuleFilterArgs:
                  notes: Optional[builtins.str] = None,
                  order: Optional[builtins.str] = None):
         """
-        :param builtins.str match: When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        :param builtins.str match: Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
                Available values: "any", "all".
-        :param builtins.str direction: The direction used to sort returned rules.
+        :param builtins.str direction: Defines the direction used to sort returned rules.
                Available values: "asc", "desc".
         :param builtins.str mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
-        :param builtins.str notes: The string to search for in the notes of existing IP Access rules.
+        :param builtins.str notes: Defines the string to search for in the notes of existing IP Access rules.
                Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
-        :param builtins.str order: The field used to sort returned rules.
+        :param builtins.str order: Defines the field used to sort returned rules.
                Available values: "configuration.target", "configuration.value", "mode".
         """
         pulumi.set(__self__, "match", match)
@@ -76080,7 +76658,7 @@ class GetAccessRuleFilterArgs:
     @pulumi.getter
     def match(self) -> builtins.str:
         """
-        When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+        Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
         Available values: "any", "all".
         """
         return pulumi.get(self, "match")
@@ -76102,7 +76680,7 @@ class GetAccessRuleFilterArgs:
     @pulumi.getter
     def direction(self) -> Optional[builtins.str]:
         """
-        The direction used to sort returned rules.
+        Defines the direction used to sort returned rules.
         Available values: "asc", "desc".
         """
         return pulumi.get(self, "direction")
@@ -76128,7 +76706,7 @@ class GetAccessRuleFilterArgs:
     @pulumi.getter
     def notes(self) -> Optional[builtins.str]:
         """
-        The string to search for in the notes of existing IP Access rules.
+        Defines the string to search for in the notes of existing IP Access rules.
         Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
         """
         return pulumi.get(self, "notes")
@@ -76141,7 +76719,7 @@ class GetAccessRuleFilterArgs:
     @pulumi.getter
     def order(self) -> Optional[builtins.str]:
         """
-        The field used to sort returned rules.
+        Defines the field used to sort returned rules.
         Available values: "configuration.target", "configuration.value", "mode".
         """
         return pulumi.get(self, "order")
@@ -76155,12 +76733,12 @@ if not MYPY:
     class GetAccessRuleFilterConfigurationArgsDict(TypedDict):
         target: NotRequired[builtins.str]
         """
-        The target to search in existing rules.
+        Defines the target to search in existing rules.
         Available values: "ip", "ip_range", "asn", "country".
         """
         value: NotRequired[builtins.str]
         """
-        The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+        Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
         Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
         """
 elif False:
@@ -76172,9 +76750,9 @@ class GetAccessRuleFilterConfigurationArgs:
                  target: Optional[builtins.str] = None,
                  value: Optional[builtins.str] = None):
         """
-        :param builtins.str target: The target to search in existing rules.
+        :param builtins.str target: Defines the target to search in existing rules.
                Available values: "ip", "ip_range", "asn", "country".
-        :param builtins.str value: The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+        :param builtins.str value: Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
                Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
         """
         if target is not None:
@@ -76186,7 +76764,7 @@ class GetAccessRuleFilterConfigurationArgs:
     @pulumi.getter
     def target(self) -> Optional[builtins.str]:
         """
-        The target to search in existing rules.
+        Defines the target to search in existing rules.
         Available values: "ip", "ip_range", "asn", "country".
         """
         return pulumi.get(self, "target")
@@ -76199,7 +76777,7 @@ class GetAccessRuleFilterConfigurationArgs:
     @pulumi.getter
     def value(self) -> Optional[builtins.str]:
         """
-        The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+        Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
         Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
         """
         return pulumi.get(self, "value")
@@ -76213,12 +76791,12 @@ if not MYPY:
     class GetAccessRulesConfigurationArgsDict(TypedDict):
         target: NotRequired[builtins.str]
         """
-        The target to search in existing rules.
+        Defines the target to search in existing rules.
         Available values: "ip", "ip_range", "asn", "country".
         """
         value: NotRequired[builtins.str]
         """
-        The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+        Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
         Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
         """
 elif False:
@@ -76230,9 +76808,9 @@ class GetAccessRulesConfigurationArgs:
                  target: Optional[builtins.str] = None,
                  value: Optional[builtins.str] = None):
         """
-        :param builtins.str target: The target to search in existing rules.
+        :param builtins.str target: Defines the target to search in existing rules.
                Available values: "ip", "ip_range", "asn", "country".
-        :param builtins.str value: The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+        :param builtins.str value: Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
                Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
         """
         if target is not None:
@@ -76244,7 +76822,7 @@ class GetAccessRulesConfigurationArgs:
     @pulumi.getter
     def target(self) -> Optional[builtins.str]:
         """
-        The target to search in existing rules.
+        Defines the target to search in existing rules.
         Available values: "ip", "ip_range", "asn", "country".
         """
         return pulumi.get(self, "target")
@@ -76257,7 +76835,7 @@ class GetAccessRulesConfigurationArgs:
     @pulumi.getter
     def value(self) -> Optional[builtins.str]:
         """
-        The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+        Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
         Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
         """
         return pulumi.get(self, "value")
@@ -78838,7 +79416,15 @@ if not MYPY:
     class GetOriginCaCertificateFilterArgsDict(TypedDict):
         zone_id: builtins.str
         """
-        Identifier
+        Identifier.
+        """
+        limit: NotRequired[builtins.int]
+        """
+        Limit to the number of records returned.
+        """
+        offset: NotRequired[builtins.int]
+        """
+        Offset the results
         """
 elif False:
     GetOriginCaCertificateFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -78846,23 +79432,55 @@ elif False:
 @pulumi.input_type
 class GetOriginCaCertificateFilterArgs:
     def __init__(__self__, *,
-                 zone_id: builtins.str):
+                 zone_id: builtins.str,
+                 limit: Optional[builtins.int] = None,
+                 offset: Optional[builtins.int] = None):
         """
-        :param builtins.str zone_id: Identifier
+        :param builtins.str zone_id: Identifier.
+        :param builtins.int limit: Limit to the number of records returned.
+        :param builtins.int offset: Offset the results
         """
         pulumi.set(__self__, "zone_id", zone_id)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
     def zone_id(self, value: builtins.str):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[builtins.int]:
+        """
+        Limit to the number of records returned.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[builtins.int]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[builtins.int]:
+        """
+        Offset the results
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[builtins.int]):
+        pulumi.set(self, "offset", value)
 
 
 if not MYPY:
@@ -80272,7 +80890,7 @@ if not MYPY:
         order: NotRequired[builtins.str]
         """
         Field to order zones by.
-        Available values: "name", "status", "account.id", "account.name".
+        Available values: "name", "status", "account.id", "account.name", "plan.id".
         """
         status: NotRequired[builtins.str]
         """
@@ -80306,7 +80924,7 @@ class GetZoneFilterArgs:
                  * `ends_with_case_sensitive`
                  * `contains_case_sensitive`
         :param builtins.str order: Field to order zones by.
-               Available values: "name", "status", "account.id", "account.name".
+               Available values: "name", "status", "account.id", "account.name", "plan.id".
         :param builtins.str status: A zone status
                Available values: "initializing", "pending", "active", "moved".
         """
@@ -80382,7 +81000,7 @@ class GetZoneFilterArgs:
     def order(self) -> Optional[builtins.str]:
         """
         Field to order zones by.
-        Available values: "name", "status", "account.id", "account.name".
+        Available values: "name", "status", "account.id", "account.name", "plan.id".
         """
         return pulumi.get(self, "order")
 

@@ -459,7 +459,7 @@ class AccountToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output['outputs.AccountTokenCondition']:
+    def condition(self) -> pulumi.Output[Optional['outputs.AccountTokenCondition']]:
         return pulumi.get(self, "condition")
 
     @property

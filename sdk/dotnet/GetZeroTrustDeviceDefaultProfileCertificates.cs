@@ -105,6 +105,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDeviceDefaultProfileCertificatesResult
     {
+        public readonly bool Enabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -113,10 +114,13 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetZeroTrustDeviceDefaultProfileCertificatesResult(
+            bool enabled,
+
             string id,
 
             string zoneId)
         {
+            Enabled = enabled;
             Id = id;
             ZoneId = zoneId;
         }

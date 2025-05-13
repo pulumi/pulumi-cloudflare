@@ -422,7 +422,7 @@ class AccountSubscription(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ratePlan")
-    def rate_plan(self) -> pulumi.Output['outputs.AccountSubscriptionRatePlan']:
+    def rate_plan(self) -> pulumi.Output[Optional['outputs.AccountSubscriptionRatePlan']]:
         """
         The rate plan applied to the subscription.
         """

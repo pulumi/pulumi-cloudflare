@@ -32,7 +32,7 @@ class CustomHostnameArgs:
         The set of arguments for constructing a CustomHostname resource.
         :param pulumi.Input[builtins.str] hostname: The custom hostname that will point to your hostname via CNAME.
         :param pulumi.Input['CustomHostnameSslArgs'] ssl: SSL properties used when creating the custom hostname.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[builtins.str]]] custom_metadata: Unique key/value metadata for this hostname. These are per-hostname (customer) settings.
         :param pulumi.Input[builtins.str] custom_origin_server: a valid hostname that’s been added to your DNS zone as an A, AAAA, or CNAME record.
         :param pulumi.Input[builtins.str] custom_origin_sni: A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
@@ -75,7 +75,7 @@ class CustomHostnameArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -147,7 +147,7 @@ class _CustomHostnameState:
         :param pulumi.Input[builtins.str] status: Status of the hostname's activation.
                Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] verification_errors: These are errors that were encountered while trying to activate a hostname.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -297,7 +297,7 @@ class _CustomHostnameState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -335,7 +335,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] custom_origin_sni: A hostname that will be sent to your custom origin server as SNI for TLS handshake. This can be a valid subdomain of the zone or custom origin server name or the string ':request*host*header:' which will cause the host header in the request to be used as SNI. Not configurable with default/fallback origin server.
         :param pulumi.Input[builtins.str] hostname: The custom hostname that will point to your hostname via CNAME.
         :param pulumi.Input[Union['CustomHostnameSslArgs', 'CustomHostnameSslArgsDict']] ssl: SSL properties used when creating the custom hostname.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -438,7 +438,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] status: Status of the hostname's activation.
                Available values: "active", "pending", "active*redeploying", "moved", "pending*deletion", "deleted", "pending*blocked", "pending*migration", "pending*provisioned", "test*pending", "test*active", "test*active*apex", "test*blocked", "test_failed", "provisioned", "blocked".
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] verification_errors: These are errors that were encountered while trying to activate a hostname.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -542,7 +542,7 @@ class CustomHostname(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

@@ -21,7 +21,7 @@ public final class GetUserAgentBlockingRuleResult {
      */
     private String uaRuleId;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -42,7 +42,7 @@ public final class GetUserAgentBlockingRuleResult {
         return this.uaRuleId;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

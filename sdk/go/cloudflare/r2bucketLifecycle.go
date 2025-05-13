@@ -16,9 +16,9 @@ import (
 type R2BucketLifecycle struct {
 	pulumi.CustomResourceState
 
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringOutput              `pulumi:"jurisdiction"`
@@ -61,9 +61,9 @@ func GetR2BucketLifecycle(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering R2BucketLifecycle resources.
 type r2bucketLifecycleState struct {
-	// Account ID
+	// Account ID.
 	AccountId *string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName *string `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string                 `pulumi:"jurisdiction"`
@@ -71,9 +71,9 @@ type r2bucketLifecycleState struct {
 }
 
 type R2BucketLifecycleState struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringPtrInput
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringPtrInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
@@ -85,9 +85,9 @@ func (R2BucketLifecycleState) ElementType() reflect.Type {
 }
 
 type r2bucketLifecycleArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// Jurisdiction of the bucket
 	Jurisdiction *string                 `pulumi:"jurisdiction"`
@@ -96,9 +96,9 @@ type r2bucketLifecycleArgs struct {
 
 // The set of arguments for constructing a R2BucketLifecycle resource.
 type R2BucketLifecycleArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
@@ -192,12 +192,12 @@ func (o R2BucketLifecycleOutput) ToR2BucketLifecycleOutputWithContext(ctx contex
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o R2BucketLifecycleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketLifecycle) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o R2BucketLifecycleOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2BucketLifecycle) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
 }

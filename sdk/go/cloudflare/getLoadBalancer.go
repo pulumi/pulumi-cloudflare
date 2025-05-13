@@ -49,20 +49,12 @@ func LookupLoadBalancer(ctx *pulumi.Context, args *LookupLoadBalancerArgs, opts 
 
 // A collection of arguments for invoking getLoadBalancer.
 type LookupLoadBalancerArgs struct {
-	// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-	CountryPools   map[string][]string `pulumi:"countryPools"`
-	LoadBalancerId *string             `pulumi:"loadBalancerId"`
+	LoadBalancerId *string `pulumi:"loadBalancerId"`
 	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools map[string][]string `pulumi:"popPools"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools map[string][]string `pulumi:"regionPools"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
-	SessionAffinityTtl *float64 `pulumi:"sessionAffinityTtl"`
-	// Steering Policy for this load balancer.
-	SteeringPolicy *string `pulumi:"steeringPolicy"`
-	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-	Ttl    *float64 `pulumi:"ttl"`
-	ZoneId string   `pulumi:"zoneId"`
+	ZoneId      string              `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getLoadBalancer.
@@ -109,9 +101,8 @@ type LookupLoadBalancerResult struct {
 	// Steering Policy for this load balancer.
 	SteeringPolicy string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-	Ttl      float64 `pulumi:"ttl"`
-	ZoneId   string  `pulumi:"zoneId"`
-	ZoneName string  `pulumi:"zoneName"`
+	Ttl    float64 `pulumi:"ttl"`
+	ZoneId string  `pulumi:"zoneId"`
 }
 
 func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadBalancerResultOutput {
@@ -125,20 +116,12 @@ func LookupLoadBalancerOutput(ctx *pulumi.Context, args LookupLoadBalancerOutput
 
 // A collection of arguments for invoking getLoadBalancer.
 type LookupLoadBalancerOutputArgs struct {
-	// A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region*pool mapping if it exists else to default*pools.
-	CountryPools   pulumi.StringArrayMapInput `pulumi:"countryPools"`
-	LoadBalancerId pulumi.StringPtrInput      `pulumi:"loadBalancerId"`
+	LoadBalancerId pulumi.StringPtrInput `pulumi:"loadBalancerId"`
 	// (Enterprise only): A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country*pool, then region*pool mapping if it exists else to default_pools.
 	PopPools pulumi.StringArrayMapInput `pulumi:"popPools"`
 	// A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools.
 	RegionPools pulumi.StringArrayMapInput `pulumi:"regionPools"`
-	// Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `sessionAffinity` policy are:
-	SessionAffinityTtl pulumi.Float64PtrInput `pulumi:"sessionAffinityTtl"`
-	// Steering Policy for this load balancer.
-	SteeringPolicy pulumi.StringPtrInput `pulumi:"steeringPolicy"`
-	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers.
-	Ttl    pulumi.Float64PtrInput `pulumi:"ttl"`
-	ZoneId pulumi.StringInput     `pulumi:"zoneId"`
+	ZoneId      pulumi.StringInput         `pulumi:"zoneId"`
 }
 
 func (LookupLoadBalancerOutputArgs) ElementType() reflect.Type {
@@ -276,10 +259,6 @@ func (o LookupLoadBalancerResultOutput) Ttl() pulumi.Float64Output {
 
 func (o LookupLoadBalancerResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.ZoneId }).(pulumi.StringOutput)
-}
-
-func (o LookupLoadBalancerResultOutput) ZoneName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.ZoneName }).(pulumi.StringOutput)
 }
 
 func init() {

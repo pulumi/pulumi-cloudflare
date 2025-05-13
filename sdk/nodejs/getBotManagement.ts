@@ -30,7 +30,7 @@ export function getBotManagement(args: GetBotManagementArgs, opts?: pulumi.Invok
  */
 export interface GetBotManagementArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -103,7 +103,7 @@ export interface GetBotManagementResult {
      */
     readonly usingLatestModel: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -131,7 +131,7 @@ export function getBotManagementOutput(args: GetBotManagementOutputArgs, opts?: 
  */
 export interface GetBotManagementOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -52,15 +52,15 @@ export class R2CustomDomain extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID
+     * Account ID.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     public readonly bucketName!: pulumi.Output<string>;
     /**
-     * Name of the custom domain to be added
+     * Name of the custom domain to be added.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
@@ -78,11 +78,11 @@ export class R2CustomDomain extends pulumi.CustomResource {
     public readonly minTls!: pulumi.Output<string | undefined>;
     public /*out*/ readonly status!: pulumi.Output<outputs.R2CustomDomainStatus>;
     /**
-     * Zone ID of the custom domain
+     * Zone ID of the custom domain.
      */
     public readonly zoneId!: pulumi.Output<string>;
     /**
-     * Zone that the custom domain resides in
+     * Zone that the custom domain resides in.
      */
     public /*out*/ readonly zoneName!: pulumi.Output<string>;
 
@@ -145,15 +145,15 @@ export class R2CustomDomain extends pulumi.CustomResource {
  */
 export interface R2CustomDomainState {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     /**
-     * Name of the custom domain to be added
+     * Name of the custom domain to be added.
      */
     domain?: pulumi.Input<string>;
     /**
@@ -171,11 +171,11 @@ export interface R2CustomDomainState {
     minTls?: pulumi.Input<string>;
     status?: pulumi.Input<inputs.R2CustomDomainStatus>;
     /**
-     * Zone ID of the custom domain
+     * Zone ID of the custom domain.
      */
     zoneId?: pulumi.Input<string>;
     /**
-     * Zone that the custom domain resides in
+     * Zone that the custom domain resides in.
      */
     zoneName?: pulumi.Input<string>;
 }
@@ -185,15 +185,15 @@ export interface R2CustomDomainState {
  */
 export interface R2CustomDomainArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
     /**
-     * Name of the custom domain to be added
+     * Name of the custom domain to be added.
      */
     domain: pulumi.Input<string>;
     /**
@@ -210,7 +210,7 @@ export interface R2CustomDomainArgs {
      */
     minTls?: pulumi.Input<string>;
     /**
-     * Zone ID of the custom domain
+     * Zone ID of the custom domain.
      */
     zoneId: pulumi.Input<string>;
 }

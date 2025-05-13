@@ -13,20 +13,47 @@ import (
 )
 
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewCloudConnectorRules(ctx, "example_cloud_connector_rules", &cloudflare.CloudConnectorRulesArgs{
+//				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				Rules: cloudflare.CloudConnectorRulesRuleArray{
+//					&cloudflare.CloudConnectorRulesRuleArgs{
+//						Id:          pulumi.String("95c365e17e1b46599cd99e5b231fac4e"),
+//						Description: pulumi.String("Rule description"),
+//						Enabled:     pulumi.Bool(true),
+//						Expression:  pulumi.String("http.cookie eq \"a=b\""),
+//						Parameters: &cloudflare.CloudConnectorRulesRuleParametersArgs{
+//							Host: pulumi.String("examplebucket.s3.eu-north-1.amazonaws.com"),
+//						},
+//						Provider: pulumi.String("aws_s3"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type CloudConnectorRules struct {
 	pulumi.CustomResourceState
 
-	// Cloud Provider type
-	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-	CloudProvider pulumi.StringOutput `pulumi:"cloudProvider"`
-	Description   pulumi.StringOutput `pulumi:"description"`
-	Enabled       pulumi.BoolOutput   `pulumi:"enabled"`
-	Expression    pulumi.StringOutput `pulumi:"expression"`
-	// Parameters of Cloud Connector Rule
-	Parameters CloudConnectorRulesParametersOutput `pulumi:"parameters"`
-	// List of Cloud Connector rules
 	Rules CloudConnectorRulesRuleArrayOutput `pulumi:"rules"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -63,32 +90,14 @@ func GetCloudConnectorRules(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudConnectorRules resources.
 type cloudConnectorRulesState struct {
-	// Cloud Provider type
-	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-	CloudProvider *string `pulumi:"cloudProvider"`
-	Description   *string `pulumi:"description"`
-	Enabled       *bool   `pulumi:"enabled"`
-	Expression    *string `pulumi:"expression"`
-	// Parameters of Cloud Connector Rule
-	Parameters *CloudConnectorRulesParameters `pulumi:"parameters"`
-	// List of Cloud Connector rules
 	Rules []CloudConnectorRulesRule `pulumi:"rules"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type CloudConnectorRulesState struct {
-	// Cloud Provider type
-	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-	CloudProvider pulumi.StringPtrInput
-	Description   pulumi.StringPtrInput
-	Enabled       pulumi.BoolPtrInput
-	Expression    pulumi.StringPtrInput
-	// Parameters of Cloud Connector Rule
-	Parameters CloudConnectorRulesParametersPtrInput
-	// List of Cloud Connector rules
 	Rules CloudConnectorRulesRuleArrayInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -97,17 +106,15 @@ func (CloudConnectorRulesState) ElementType() reflect.Type {
 }
 
 type cloudConnectorRulesArgs struct {
-	// List of Cloud Connector rules
 	Rules []CloudConnectorRulesRule `pulumi:"rules"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a CloudConnectorRules resource.
 type CloudConnectorRulesArgs struct {
-	// List of Cloud Connector rules
 	Rules CloudConnectorRulesRuleArrayInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -198,35 +205,11 @@ func (o CloudConnectorRulesOutput) ToCloudConnectorRulesOutputWithContext(ctx co
 	return o
 }
 
-// Cloud Provider type
-// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-func (o CloudConnectorRulesOutput) CloudProvider() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudConnectorRules) pulumi.StringOutput { return v.CloudProvider }).(pulumi.StringOutput)
-}
-
-func (o CloudConnectorRulesOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudConnectorRules) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
-}
-
-func (o CloudConnectorRulesOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *CloudConnectorRules) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-func (o CloudConnectorRulesOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudConnectorRules) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
-}
-
-// Parameters of Cloud Connector Rule
-func (o CloudConnectorRulesOutput) Parameters() CloudConnectorRulesParametersOutput {
-	return o.ApplyT(func(v *CloudConnectorRules) CloudConnectorRulesParametersOutput { return v.Parameters }).(CloudConnectorRulesParametersOutput)
-}
-
-// List of Cloud Connector rules
 func (o CloudConnectorRulesOutput) Rules() CloudConnectorRulesRuleArrayOutput {
 	return o.ApplyT(func(v *CloudConnectorRules) CloudConnectorRulesRuleArrayOutput { return v.Rules }).(CloudConnectorRulesRuleArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o CloudConnectorRulesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudConnectorRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

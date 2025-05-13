@@ -56,42 +56,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule")
 public class LeakedCredentialCheckRule extends com.pulumi.resources.CustomResource {
     /**
-     * The ruleset expression to use in matching the password in a request
+     * Defines ehe ruleset expression to use in matching the password in a request.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The ruleset expression to use in matching the password in a request
+     * @return Defines ehe ruleset expression to use in matching the password in a request.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * The ruleset expression to use in matching the username in a request
+     * Defines the ruleset expression to use in matching the username in a request.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
-     * @return The ruleset expression to use in matching the username in a request
+     * @return Defines the ruleset expression to use in matching the username in a request.
      * 
      */
     public Output<Optional<String>> username() {
         return Codegen.optional(this.username);
     }
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {

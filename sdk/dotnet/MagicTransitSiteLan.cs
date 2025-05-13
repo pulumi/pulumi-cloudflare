@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Name { get; private set; } = null!;
 
         [Output("nat")]
-        public Output<Outputs.MagicTransitSiteLanNat> Nat { get; private set; } = null!;
+        public Output<Outputs.MagicTransitSiteLanNat?> Nat { get; private set; } = null!;
 
         [Output("physport")]
         public Output<int> Physport { get; private set; } = null!;
@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare
         /// If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static*address is required along with secondary and virtual address.
         /// </summary>
         [Output("staticAddressing")]
-        public Output<Outputs.MagicTransitSiteLanStaticAddressing> StaticAddressing { get; private set; } = null!;
+        public Output<Outputs.MagicTransitSiteLanStaticAddressing?> StaticAddressing { get; private set; } = null!;
 
         /// <summary>
         /// VLAN ID. Use zero for untagged.

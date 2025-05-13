@@ -85,14 +85,14 @@ public final class MagicWanGreTunnelGreTunnelArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Tunnel identifier tag.
+     * Identifier
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Tunnel identifier tag.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> id() {
@@ -302,7 +302,7 @@ public final class MagicWanGreTunnelGreTunnelArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param id Tunnel identifier tag.
+         * @param id Identifier
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class MagicWanGreTunnelGreTunnelArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param id Tunnel identifier tag.
+         * @param id Identifier
          * 
          * @return builder
          * 

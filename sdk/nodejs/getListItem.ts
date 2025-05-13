@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleListItem = cloudflare.getListItem({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     itemId: "34b12448945f11eaa1b71c4d701ab86e",
  * });
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
 export function getListItem(args: GetListItemArgs, opts?: pulumi.InvokeOptions): Promise<GetListItemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getListItem:getListItem", {
-        "accountIdentifier": args.accountIdentifier,
+        "accountId": args.accountId,
         "itemId": args.itemId,
         "listId": args.listId,
     }, opts);
@@ -34,11 +34,11 @@ export function getListItem(args: GetListItemArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetListItemArgs {
     /**
-     * Identifier
+     * Defines an identifier.
      */
-    accountIdentifier: string;
+    accountId: string;
     /**
-     * The unique ID of the item in the List.
+     * Defines the unique ID of the item in the List.
      */
     itemId: string;
     /**
@@ -52,15 +52,15 @@ export interface GetListItemArgs {
  */
 export interface GetListItemResult {
     /**
-     * Identifier
+     * Defines an identifier.
      */
-    readonly accountIdentifier: string;
+    readonly accountId: string;
     /**
-     * A non-negative 32 bit integer
+     * Defines a non-negative 32 bit integer.
      */
     readonly asn: number;
     /**
-     * An informative summary of the list item.
+     * Defines an informative summary of the list item.
      */
     readonly comment: string;
     /**
@@ -80,7 +80,7 @@ export interface GetListItemResult {
      */
     readonly ip: string;
     /**
-     * The unique ID of the item in the List.
+     * Defines the unique ID of the item in the List.
      */
     readonly itemId: string;
     /**
@@ -104,7 +104,7 @@ export interface GetListItemResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleListItem = cloudflare.getListItem({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
  *     itemId: "34b12448945f11eaa1b71c4d701ab86e",
  * });
@@ -113,7 +113,7 @@ export interface GetListItemResult {
 export function getListItemOutput(args: GetListItemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListItemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getListItem:getListItem", {
-        "accountIdentifier": args.accountIdentifier,
+        "accountId": args.accountId,
         "itemId": args.itemId,
         "listId": args.listId,
     }, opts);
@@ -124,11 +124,11 @@ export function getListItemOutput(args: GetListItemOutputArgs, opts?: pulumi.Inv
  */
 export interface GetListItemOutputArgs {
     /**
-     * Identifier
+     * Defines an identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * The unique ID of the item in the List.
+     * Defines the unique ID of the item in the List.
      */
     itemId: pulumi.Input<string>;
     /**

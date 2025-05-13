@@ -24,7 +24,7 @@ public final class GetApiShieldSchemasResult {
      */
     private String name;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String schemaId;
@@ -59,7 +59,7 @@ public final class GetApiShieldSchemasResult {
         return this.name;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String schemaId() {

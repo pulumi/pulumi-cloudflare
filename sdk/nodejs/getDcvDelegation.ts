@@ -28,7 +28,7 @@ export function getDcvDelegation(args: GetDcvDelegationArgs, opts?: pulumi.Invok
  */
 export interface GetDcvDelegationArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -46,7 +46,7 @@ export interface GetDcvDelegationResult {
      */
     readonly uuid: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -74,7 +74,7 @@ export function getDcvDelegationOutput(args: GetDcvDelegationOutputArgs, opts?: 
  */
 export interface GetDcvDelegationOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

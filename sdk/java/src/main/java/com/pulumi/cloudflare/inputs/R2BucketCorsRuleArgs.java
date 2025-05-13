@@ -50,14 +50,14 @@ public final class R2BucketCorsRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Identifier for this rule
+     * Identifier for this rule.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Identifier for this rule
+     * @return Identifier for this rule.
      * 
      */
     public Optional<Output<String>> id() {
@@ -159,7 +159,7 @@ public final class R2BucketCorsRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param id Identifier for this rule
+         * @param id Identifier for this rule.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class R2BucketCorsRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param id Identifier for this rule
+         * @param id Identifier for this rule.
          * 
          * @return builder
          * 

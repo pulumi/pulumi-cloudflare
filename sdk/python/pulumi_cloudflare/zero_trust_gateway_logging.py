@@ -266,7 +266,7 @@ class ZeroTrustGatewayLogging(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="redactPii")
-    def redact_pii(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def redact_pii(self) -> pulumi.Output[builtins.bool]:
         """
         Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
         """

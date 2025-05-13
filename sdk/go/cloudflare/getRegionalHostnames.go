@@ -50,7 +50,7 @@ func LookupRegionalHostnames(ctx *pulumi.Context, args *LookupRegionalHostnamesA
 type LookupRegionalHostnamesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupRegionalHostnamesResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetRegionalHostnamesResult `pulumi:"results"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupRegionalHostnamesOutput(ctx *pulumi.Context, args LookupRegionalHostn
 type LookupRegionalHostnamesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupRegionalHostnamesResultOutput) Results() GetRegionalHostnamesResul
 	return o.ApplyT(func(v LookupRegionalHostnamesResult) []GetRegionalHostnamesResult { return v.Results }).(GetRegionalHostnamesResultArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupRegionalHostnamesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalHostnamesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -14,14 +14,14 @@ public final class GetAuthenticatedOriginPullsCertificatePlainArgs extends com.p
     public static final GetAuthenticatedOriginPullsCertificatePlainArgs Empty = new GetAuthenticatedOriginPullsCertificatePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="certificateId", required=true)
     private String certificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String certificateId() {
@@ -29,14 +29,14 @@ public final class GetAuthenticatedOriginPullsCertificatePlainArgs extends com.p
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -69,7 +69,7 @@ public final class GetAuthenticatedOriginPullsCertificatePlainArgs extends com.p
         }
 
         /**
-         * @param certificateId Identifier
+         * @param certificateId Identifier.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetAuthenticatedOriginPullsCertificatePlainArgs extends com.p
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

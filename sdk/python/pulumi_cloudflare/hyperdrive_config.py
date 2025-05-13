@@ -25,7 +25,8 @@ class HyperdriveConfigArgs:
                  account_id: pulumi.Input[builtins.str],
                  name: pulumi.Input[builtins.str],
                  origin: pulumi.Input['HyperdriveConfigOriginArgs'],
-                 caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None):
+                 caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None,
+                 mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
@@ -35,6 +36,8 @@ class HyperdriveConfigArgs:
         pulumi.set(__self__, "origin", origin)
         if caching is not None:
             pulumi.set(__self__, "caching", caching)
+        if mtls is not None:
+            pulumi.set(__self__, "mtls", mtls)
 
     @property
     @pulumi.getter(name="accountId")
@@ -75,6 +78,15 @@ class HyperdriveConfigArgs:
     def caching(self, value: Optional[pulumi.Input['HyperdriveConfigCachingArgs']]):
         pulumi.set(self, "caching", value)
 
+    @property
+    @pulumi.getter
+    def mtls(self) -> Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]:
+        return pulumi.get(self, "mtls")
+
+    @mtls.setter
+    def mtls(self, value: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]):
+        pulumi.set(self, "mtls", value)
+
 
 @pulumi.input_type
 class _HyperdriveConfigState:
@@ -83,6 +95,7 @@ class _HyperdriveConfigState:
                  caching: Optional[pulumi.Input['HyperdriveConfigCachingArgs']] = None,
                  created_on: Optional[pulumi.Input[builtins.str]] = None,
                  modified_on: Optional[pulumi.Input[builtins.str]] = None,
+                 mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  origin: Optional[pulumi.Input['HyperdriveConfigOriginArgs']] = None):
         """
@@ -99,6 +112,8 @@ class _HyperdriveConfigState:
             pulumi.set(__self__, "created_on", created_on)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
+        if mtls is not None:
+            pulumi.set(__self__, "mtls", mtls)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if origin is not None:
@@ -151,6 +166,15 @@ class _HyperdriveConfigState:
 
     @property
     @pulumi.getter
+    def mtls(self) -> Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]:
+        return pulumi.get(self, "mtls")
+
+    @mtls.setter
+    def mtls(self, value: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']]):
+        pulumi.set(self, "mtls", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "name")
 
@@ -176,31 +200,12 @@ class HyperdriveConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
+                 mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
                  __props__=None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            name="example-hyperdrive",
-            origin={
-                "database": "postgres",
-                "host": "database.example.com",
-                "password": "password",
-                "port": 5432,
-                "scheme": "postgres",
-                "user": "postgres",
-            },
-            caching={
-                "disabled": True,
-            })
-        ```
 
         ## Import
 
@@ -220,26 +225,6 @@ class HyperdriveConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
-            account_id="023e105f4ecef8ad9ca31a8372d0c353",
-            name="example-hyperdrive",
-            origin={
-                "database": "postgres",
-                "host": "database.example.com",
-                "password": "password",
-                "port": 5432,
-                "scheme": "postgres",
-                "user": "postgres",
-            },
-            caching={
-                "disabled": True,
-            })
-        ```
 
         ## Import
 
@@ -264,6 +249,7 @@ class HyperdriveConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
+                 mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None,
                  __props__=None):
@@ -279,6 +265,7 @@ class HyperdriveConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["caching"] = caching
+            __props__.__dict__["mtls"] = mtls
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -301,6 +288,7 @@ class HyperdriveConfig(pulumi.CustomResource):
             caching: Optional[pulumi.Input[Union['HyperdriveConfigCachingArgs', 'HyperdriveConfigCachingArgsDict']]] = None,
             created_on: Optional[pulumi.Input[builtins.str]] = None,
             modified_on: Optional[pulumi.Input[builtins.str]] = None,
+            mtls: Optional[pulumi.Input[Union['HyperdriveConfigMtlsArgs', 'HyperdriveConfigMtlsArgsDict']]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
             origin: Optional[pulumi.Input[Union['HyperdriveConfigOriginArgs', 'HyperdriveConfigOriginArgsDict']]] = None) -> 'HyperdriveConfig':
         """
@@ -322,6 +310,7 @@ class HyperdriveConfig(pulumi.CustomResource):
         __props__.__dict__["caching"] = caching
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["mtls"] = mtls
         __props__.__dict__["name"] = name
         __props__.__dict__["origin"] = origin
         return HyperdriveConfig(resource_name, opts=opts, __props__=__props__)
@@ -336,7 +325,7 @@ class HyperdriveConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def caching(self) -> pulumi.Output['outputs.HyperdriveConfigCaching']:
+    def caching(self) -> pulumi.Output[Optional['outputs.HyperdriveConfigCaching']]:
         return pulumi.get(self, "caching")
 
     @property
@@ -354,6 +343,11 @@ class HyperdriveConfig(pulumi.CustomResource):
         When the Hyperdrive configuration was last modified.
         """
         return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def mtls(self) -> pulumi.Output[Optional['outputs.HyperdriveConfigMtls']]:
+        return pulumi.get(self, "mtls")
 
     @property
     @pulumi.getter

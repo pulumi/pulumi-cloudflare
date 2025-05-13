@@ -15,14 +15,14 @@ public final class GetAuthenticatedOriginPullsCertificateArgs extends com.pulumi
     public static final GetAuthenticatedOriginPullsCertificateArgs Empty = new GetAuthenticatedOriginPullsCertificateArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="certificateId", required=true)
     private Output<String> certificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> certificateId() {
@@ -30,14 +30,14 @@ public final class GetAuthenticatedOriginPullsCertificateArgs extends com.pulumi
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -70,7 +70,7 @@ public final class GetAuthenticatedOriginPullsCertificateArgs extends com.pulumi
         }
 
         /**
-         * @param certificateId Identifier
+         * @param certificateId Identifier.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetAuthenticatedOriginPullsCertificateArgs extends com.pulumi
         }
 
         /**
-         * @param certificateId Identifier
+         * @param certificateId Identifier.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetAuthenticatedOriginPullsCertificateArgs extends com.pulumi
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetAuthenticatedOriginPullsCertificateArgs extends com.pulumi
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

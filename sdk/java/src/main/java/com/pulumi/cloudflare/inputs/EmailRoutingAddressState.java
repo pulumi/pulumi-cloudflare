@@ -16,14 +16,14 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
     public static final EmailRoutingAddressState Empty = new EmailRoutingAddressState();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -143,7 +143,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

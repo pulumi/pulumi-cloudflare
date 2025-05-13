@@ -17,14 +17,14 @@ public final class GetCustomSslPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetCustomSslPlainArgs Empty = new GetCustomSslPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="customCertificateId")
     private @Nullable String customCertificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<String> customCertificateId() {
@@ -39,14 +39,14 @@ public final class GetCustomSslPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -80,7 +80,7 @@ public final class GetCustomSslPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param customCertificateId Identifier
+         * @param customCertificateId Identifier.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GetCustomSslPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

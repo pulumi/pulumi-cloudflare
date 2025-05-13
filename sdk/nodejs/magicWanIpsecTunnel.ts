@@ -33,6 +33,12 @@ import * as utilities from "./utilities";
  *     replayProtection: false,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel example '<account_id>/<ipsec_tunnel_id>'
+ * ```
  */
 export class MagicWanIpsecTunnel extends pulumi.CustomResource {
     /**
@@ -67,9 +73,17 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+     */
+    public /*out*/ readonly allowNullCipher!: pulumi.Output<boolean>;
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
     public readonly cloudflareEndpoint!: pulumi.Output<string>;
+    /**
+     * The date and time the tunnel was created.
+     */
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      */
@@ -84,13 +98,12 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
      */
     public readonly interfaceAddress!: pulumi.Output<string>;
     public /*out*/ readonly ipsecTunnel!: pulumi.Output<outputs.MagicWanIpsecTunnelIpsecTunnel>;
-    /**
-     * Identifier
-     */
-    public readonly ipsecTunnelId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly ipsecTunnels!: pulumi.Output<outputs.MagicWanIpsecTunnelIpsecTunnel[]>;
     public /*out*/ readonly modified!: pulumi.Output<boolean>;
     public /*out*/ readonly modifiedIpsecTunnel!: pulumi.Output<outputs.MagicWanIpsecTunnelModifiedIpsecTunnel>;
+    /**
+     * The date and time the tunnel was last modified.
+     */
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      */
@@ -99,6 +112,10 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
      * A randomly generated or provided string for use in the IPsec tunnel.
      */
     public readonly psk!: pulumi.Output<string | undefined>;
+    /**
+     * The PSK metadata that includes when the PSK was generated.
+     */
+    public /*out*/ readonly pskMetadata!: pulumi.Output<outputs.MagicWanIpsecTunnelPskMetadata>;
     /**
      * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      */
@@ -118,18 +135,20 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MagicWanIpsecTunnelState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["allowNullCipher"] = state ? state.allowNullCipher : undefined;
             resourceInputs["cloudflareEndpoint"] = state ? state.cloudflareEndpoint : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["customerEndpoint"] = state ? state.customerEndpoint : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = state ? state.interfaceAddress : undefined;
             resourceInputs["ipsecTunnel"] = state ? state.ipsecTunnel : undefined;
-            resourceInputs["ipsecTunnelId"] = state ? state.ipsecTunnelId : undefined;
-            resourceInputs["ipsecTunnels"] = state ? state.ipsecTunnels : undefined;
             resourceInputs["modified"] = state ? state.modified : undefined;
             resourceInputs["modifiedIpsecTunnel"] = state ? state.modifiedIpsecTunnel : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["psk"] = state ? state.psk : undefined;
+            resourceInputs["pskMetadata"] = state ? state.pskMetadata : undefined;
             resourceInputs["replayProtection"] = state ? state.replayProtection : undefined;
         } else {
             const args = argsOrState as MagicWanIpsecTunnelArgs | undefined;
@@ -151,14 +170,16 @@ export class MagicWanIpsecTunnel extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
             resourceInputs["interfaceAddress"] = args ? args.interfaceAddress : undefined;
-            resourceInputs["ipsecTunnelId"] = args ? args.ipsecTunnelId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["psk"] = args ? args.psk : undefined;
             resourceInputs["replayProtection"] = args ? args.replayProtection : undefined;
+            resourceInputs["allowNullCipher"] = undefined /*out*/;
+            resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["ipsecTunnel"] = undefined /*out*/;
-            resourceInputs["ipsecTunnels"] = undefined /*out*/;
             resourceInputs["modified"] = undefined /*out*/;
             resourceInputs["modifiedIpsecTunnel"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["pskMetadata"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/ipsecTunnel:IpsecTunnel" }] };
@@ -176,9 +197,17 @@ export interface MagicWanIpsecTunnelState {
      */
     accountId?: pulumi.Input<string>;
     /**
+     * When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2).
+     */
+    allowNullCipher?: pulumi.Input<boolean>;
+    /**
      * The IP address assigned to the Cloudflare side of the IPsec tunnel.
      */
     cloudflareEndpoint?: pulumi.Input<string>;
+    /**
+     * The date and time the tunnel was created.
+     */
+    createdOn?: pulumi.Input<string>;
     /**
      * The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work.
      */
@@ -193,13 +222,12 @@ export interface MagicWanIpsecTunnelState {
      */
     interfaceAddress?: pulumi.Input<string>;
     ipsecTunnel?: pulumi.Input<inputs.MagicWanIpsecTunnelIpsecTunnel>;
-    /**
-     * Identifier
-     */
-    ipsecTunnelId?: pulumi.Input<string>;
-    ipsecTunnels?: pulumi.Input<pulumi.Input<inputs.MagicWanIpsecTunnelIpsecTunnel>[]>;
     modified?: pulumi.Input<boolean>;
     modifiedIpsecTunnel?: pulumi.Input<inputs.MagicWanIpsecTunnelModifiedIpsecTunnel>;
+    /**
+     * The date and time the tunnel was last modified.
+     */
+    modifiedOn?: pulumi.Input<string>;
     /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      */
@@ -208,6 +236,10 @@ export interface MagicWanIpsecTunnelState {
      * A randomly generated or provided string for use in the IPsec tunnel.
      */
     psk?: pulumi.Input<string>;
+    /**
+     * The PSK metadata that includes when the PSK was generated.
+     */
+    pskMetadata?: pulumi.Input<inputs.MagicWanIpsecTunnelPskMetadata>;
     /**
      * If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction.
      */
@@ -239,10 +271,6 @@ export interface MagicWanIpsecTunnelArgs {
      * A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255.
      */
     interfaceAddress: pulumi.Input<string>;
-    /**
-     * Identifier
-     */
-    ipsecTunnelId?: pulumi.Input<string>;
     /**
      * The name of the IPsec tunnel. The name cannot share a name with other tunnels.
      */

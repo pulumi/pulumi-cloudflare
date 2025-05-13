@@ -79,7 +79,7 @@ type CertificatePack struct {
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntOutput `pulumi:"validityDays"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -150,7 +150,7 @@ type certificatePackState struct {
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays *int `pulumi:"validityDays"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -174,7 +174,7 @@ type CertificatePackState struct {
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -199,7 +199,7 @@ type certificatePackArgs struct {
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays int `pulumi:"validityDays"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -221,7 +221,7 @@ type CertificatePackArgs struct {
 	// Validity Days selected for the order.
 	// Available values: 14, 30, 90, 365.
 	ValidityDays pulumi.IntInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -352,7 +352,7 @@ func (o CertificatePackOutput) ValidityDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.IntOutput { return v.ValidityDays }).(pulumi.IntOutput)
 }
 
-// Identifier
+// Identifier.
 func (o CertificatePackOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificatePack) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

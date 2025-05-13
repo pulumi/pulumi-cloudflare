@@ -14,14 +14,14 @@ public final class GetAuthenticatedOriginPullsSettingsPlainArgs extends com.pulu
     public static final GetAuthenticatedOriginPullsSettingsPlainArgs Empty = new GetAuthenticatedOriginPullsSettingsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetAuthenticatedOriginPullsSettingsPlainArgs extends com.pulu
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -91,7 +91,7 @@ namespace Pulumi.Cloudflare
         public string? Hostname { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -143,7 +143,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string RegionKey;
         /// <summary>
-        /// Identifier
+        /// Configure which routing method to use for the regional hostname
+        /// </summary>
+        public readonly string Routing;
+        /// <summary>
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 
@@ -157,12 +161,15 @@ namespace Pulumi.Cloudflare
 
             string regionKey,
 
+            string routing,
+
             string zoneId)
         {
             CreatedOn = createdOn;
             Hostname = hostname;
             Id = id;
             RegionKey = regionKey;
+            Routing = routing;
             ZoneId = zoneId;
         }
     }

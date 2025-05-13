@@ -14,14 +14,14 @@ public final class GetTotalTlsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetTotalTlsPlainArgs Empty = new GetTotalTlsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -53,7 +53,7 @@ public final class GetTotalTlsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -64,10 +64,10 @@ public class MagicNetworkMonitoringConfiguration extends com.pulumi.resources.Cu
         return Codegen.optional(this.routerIps);
     }
     @Export(name="warpDevices", refs={List.class,MagicNetworkMonitoringConfigurationWarpDevice.class}, tree="[0,1]")
-    private Output<List<MagicNetworkMonitoringConfigurationWarpDevice>> warpDevices;
+    private Output</* @Nullable */ List<MagicNetworkMonitoringConfigurationWarpDevice>> warpDevices;
 
-    public Output<List<MagicNetworkMonitoringConfigurationWarpDevice>> warpDevices() {
-        return this.warpDevices;
+    public Output<Optional<List<MagicNetworkMonitoringConfigurationWarpDevice>>> warpDevices() {
+        return Codegen.optional(this.warpDevices);
     }
 
     /**

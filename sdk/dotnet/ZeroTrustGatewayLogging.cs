@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// Redact personally identifiable information from activity logging (PII fields are: source IP, user email, user ID, device ID, URL, referrer, user agent).
         /// </summary>
         [Output("redactPii")]
-        public Output<bool?> RedactPii { get; private set; } = null!;
+        public Output<bool> RedactPii { get; private set; } = null!;
 
         /// <summary>
         /// Logging settings by rule type.

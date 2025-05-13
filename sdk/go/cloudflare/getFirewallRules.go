@@ -62,7 +62,7 @@ type LookupFirewallRulesArgs struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// When true, indicates that the firewall rule is currently paused.
 	Paused *bool `pulumi:"paused"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -80,7 +80,7 @@ type LookupFirewallRulesResult struct {
 	Paused *bool `pulumi:"paused"`
 	// The items returned by the data source
 	Results []GetFirewallRulesResult `pulumi:"results"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -105,7 +105,7 @@ type LookupFirewallRulesOutputArgs struct {
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// When true, indicates that the firewall rule is currently paused.
 	Paused pulumi.BoolPtrInput `pulumi:"paused"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -158,7 +158,7 @@ func (o LookupFirewallRulesResultOutput) Results() GetFirewallRulesResultArrayOu
 	return o.ApplyT(func(v LookupFirewallRulesResult) []GetFirewallRulesResult { return v.Results }).(GetFirewallRulesResultArrayOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupFirewallRulesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

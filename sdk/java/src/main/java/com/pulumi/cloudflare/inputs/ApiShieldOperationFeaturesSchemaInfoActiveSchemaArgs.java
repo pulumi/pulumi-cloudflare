@@ -24,14 +24,14 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs extends 
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<Output<String>> id() {
@@ -105,7 +105,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs extends 
         }
 
         /**
-         * @param id UUID
+         * @param id UUID.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ApiShieldOperationFeaturesSchemaInfoActiveSchemaArgs extends 
         }
 
         /**
-         * @param id UUID
+         * @param id UUID.
          * 
          * @return builder
          * 

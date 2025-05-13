@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ZeroTrustDlpEntryConfidence {
     /**
-     * @return Indicates whether this entry has AI remote service validation
+     * @return Indicates whether this entry has AI remote service validation.
      * 
      */
     private @Nullable Boolean aiContextAvailable;
     /**
-     * @return Indicates whether this entry has any form of validation that is not an AI remote service
+     * @return Indicates whether this entry has any form of validation that is not an AI remote service.
      * 
      */
     private @Nullable Boolean available;
 
     private ZeroTrustDlpEntryConfidence() {}
     /**
-     * @return Indicates whether this entry has AI remote service validation
+     * @return Indicates whether this entry has AI remote service validation.
      * 
      */
     public Optional<Boolean> aiContextAvailable() {
         return Optional.ofNullable(this.aiContextAvailable);
     }
     /**
-     * @return Indicates whether this entry has any form of validation that is not an AI remote service
+     * @return Indicates whether this entry has any form of validation that is not an AI remote service.
      * 
      */
     public Optional<Boolean> available() {

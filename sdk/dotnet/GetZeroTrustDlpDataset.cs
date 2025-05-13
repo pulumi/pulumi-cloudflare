@@ -115,11 +115,12 @@ namespace Pulumi.Cloudflare
     public sealed class GetZeroTrustDlpDatasetResult
     {
         public readonly string AccountId;
+        public readonly bool CaseSensitive;
         public readonly ImmutableArray<Outputs.GetZeroTrustDlpDatasetColumnResult> Columns;
         public readonly string CreatedAt;
         public readonly string DatasetId;
         /// <summary>
-        /// The description of the dataset
+        /// The description of the dataset.
         /// </summary>
         public readonly string Description;
         public readonly int EncodingVersion;
@@ -143,6 +144,8 @@ namespace Pulumi.Cloudflare
         [OutputConstructor]
         private GetZeroTrustDlpDatasetResult(
             string accountId,
+
+            bool caseSensitive,
 
             ImmutableArray<Outputs.GetZeroTrustDlpDatasetColumnResult> columns,
 
@@ -169,6 +172,7 @@ namespace Pulumi.Cloudflare
             ImmutableArray<Outputs.GetZeroTrustDlpDatasetUploadResult> uploads)
         {
             AccountId = accountId;
+            CaseSensitive = caseSensitive;
             Columns = columns;
             CreatedAt = createdAt;
             DatasetId = datasetId;

@@ -31,7 +31,12 @@ public final class GetRegionalHostnameResult {
      */
     private String regionKey;
     /**
-     * @return Identifier
+     * @return Configure which routing method to use for the regional hostname
+     * 
+     */
+    private String routing;
+    /**
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -66,7 +71,14 @@ public final class GetRegionalHostnameResult {
         return this.regionKey;
     }
     /**
-     * @return Identifier
+     * @return Configure which routing method to use for the regional hostname
+     * 
+     */
+    public String routing() {
+        return this.routing;
+    }
+    /**
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -86,6 +98,7 @@ public final class GetRegionalHostnameResult {
         private String hostname;
         private String id;
         private String regionKey;
+        private String routing;
         private String zoneId;
         public Builder() {}
         public Builder(GetRegionalHostnameResult defaults) {
@@ -94,6 +107,7 @@ public final class GetRegionalHostnameResult {
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
     	      this.regionKey = defaults.regionKey;
+    	      this.routing = defaults.routing;
     	      this.zoneId = defaults.zoneId;
         }
 
@@ -130,6 +144,14 @@ public final class GetRegionalHostnameResult {
             return this;
         }
         @CustomType.Setter
+        public Builder routing(String routing) {
+            if (routing == null) {
+              throw new MissingRequiredPropertyException("GetRegionalHostnameResult", "routing");
+            }
+            this.routing = routing;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zoneId(String zoneId) {
             if (zoneId == null) {
               throw new MissingRequiredPropertyException("GetRegionalHostnameResult", "zoneId");
@@ -143,6 +165,7 @@ public final class GetRegionalHostnameResult {
             _resultValue.hostname = hostname;
             _resultValue.id = id;
             _resultValue.regionKey = regionKey;
+            _resultValue.routing = routing;
             _resultValue.zoneId = zoneId;
             return _resultValue;
         }

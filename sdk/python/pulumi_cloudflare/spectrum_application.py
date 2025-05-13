@@ -782,7 +782,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="originDns")
-    def origin_dns(self) -> pulumi.Output['outputs.SpectrumApplicationOriginDns']:
+    def origin_dns(self) -> pulumi.Output[Optional['outputs.SpectrumApplicationOriginDns']]:
         """
         The name and type of DNS record for the Spectrum application.
         """

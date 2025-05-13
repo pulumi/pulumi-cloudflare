@@ -48,7 +48,7 @@ func LookupEmailRoutingAddresses(ctx *pulumi.Context, args *LookupEmailRoutingAd
 
 // A collection of arguments for invoking getEmailRoutingAddresses.
 type LookupEmailRoutingAddressesArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Sorts results in an ascending or descending order.
 	// Available values: "asc", "desc".
@@ -61,7 +61,7 @@ type LookupEmailRoutingAddressesArgs struct {
 
 // A collection of values returned by getEmailRoutingAddresses.
 type LookupEmailRoutingAddressesResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	// Sorts results in an ascending or descending order.
 	// Available values: "asc", "desc".
@@ -87,7 +87,7 @@ func LookupEmailRoutingAddressesOutput(ctx *pulumi.Context, args LookupEmailRout
 
 // A collection of arguments for invoking getEmailRoutingAddresses.
 type LookupEmailRoutingAddressesOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Sorts results in an ascending or descending order.
 	// Available values: "asc", "desc".
@@ -117,7 +117,7 @@ func (o LookupEmailRoutingAddressesResultOutput) ToLookupEmailRoutingAddressesRe
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o LookupEmailRoutingAddressesResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEmailRoutingAddressesResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

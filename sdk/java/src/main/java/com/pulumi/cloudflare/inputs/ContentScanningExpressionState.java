@@ -25,14 +25,14 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
     }
 
     /**
-     * Ruleset expression to use in matching content objects
+     * Defines the ruleset expression to use in matching content objects.
      * 
      */
     @Import(name="payload")
     private @Nullable Output<String> payload;
 
     /**
-     * @return Ruleset expression to use in matching content objects
+     * @return Defines the ruleset expression to use in matching content objects.
      * 
      */
     public Optional<Output<String>> payload() {
@@ -40,14 +40,14 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -94,7 +94,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param payload Ruleset expression to use in matching content objects
+         * @param payload Defines the ruleset expression to use in matching content objects.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param payload Ruleset expression to use in matching content objects
+         * @param payload Defines the ruleset expression to use in matching content objects.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

@@ -50,10 +50,10 @@ public class Snippets extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.files);
     }
     @Export(name="metadata", refs={SnippetsMetadata.class}, tree="[0]")
-    private Output<SnippetsMetadata> metadata;
+    private Output</* @Nullable */ SnippetsMetadata> metadata;
 
-    public Output<SnippetsMetadata> metadata() {
-        return this.metadata;
+    public Output<Optional<SnippetsMetadata>> metadata() {
+        return Codegen.optional(this.metadata);
     }
     /**
      * Modification time of the snippet

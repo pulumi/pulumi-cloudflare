@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     ///     var exampleApiShieldSchema = new Cloudflare.ApiShieldSchema("example_api_shield_schema", new()
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         File = "file.txt",
+    ///         File = null,
     ///         Kind = "openapi_v3",
     ///         Name = "petstore schema",
     ///         ValidationEnabled = "true",
@@ -80,7 +80,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> ValidationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ValidationEnabled { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ValidationEnabled { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -48,13 +48,13 @@ func GetBotnetFeedConfigAsn(ctx *pulumi.Context, args *GetBotnetFeedConfigAsnArg
 
 // A collection of arguments for invoking getBotnetFeedConfigAsn.
 type GetBotnetFeedConfigAsnArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 }
 
 // A collection of values returned by getBotnetFeedConfigAsn.
 type GetBotnetFeedConfigAsnResult struct {
-	// Identifier
+	// Identifier.
 	AccountId string `pulumi:"accountId"`
 	Asn       int    `pulumi:"asn"`
 	// The provider-assigned unique ID for this managed resource.
@@ -72,7 +72,7 @@ func GetBotnetFeedConfigAsnOutput(ctx *pulumi.Context, args GetBotnetFeedConfigA
 
 // A collection of arguments for invoking getBotnetFeedConfigAsn.
 type GetBotnetFeedConfigAsnOutputArgs struct {
-	// Identifier
+	// Identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -95,7 +95,7 @@ func (o GetBotnetFeedConfigAsnResultOutput) ToGetBotnetFeedConfigAsnResultOutput
 	return o
 }
 
-// Identifier
+// Identifier.
 func (o GetBotnetFeedConfigAsnResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBotnetFeedConfigAsnResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

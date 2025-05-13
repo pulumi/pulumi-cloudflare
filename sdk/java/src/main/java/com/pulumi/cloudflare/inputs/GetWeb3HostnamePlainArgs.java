@@ -16,14 +16,14 @@ public final class GetWeb3HostnamePlainArgs extends com.pulumi.resources.InvokeA
     public static final GetWeb3HostnamePlainArgs Empty = new GetWeb3HostnamePlainArgs();
 
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      * 
      */
     @Import(name="identifier")
     private @Nullable String identifier;
 
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public Optional<String> identifier() {
@@ -31,14 +31,14 @@ public final class GetWeb3HostnamePlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public String zoneId() {
@@ -71,7 +71,7 @@ public final class GetWeb3HostnamePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param identifier Identifier
+         * @param identifier Specify the identifier of the hostname.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetWeb3HostnamePlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specify the identifier of the hostname.
          * 
          * @return builder
          * 

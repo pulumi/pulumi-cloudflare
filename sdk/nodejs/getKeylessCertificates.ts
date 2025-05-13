@@ -35,7 +35,7 @@ export interface GetKeylessCertificatesArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetKeylessCertificatesResult {
      */
     readonly results: outputs.GetKeylessCertificatesResult[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetKeylessCertificatesOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

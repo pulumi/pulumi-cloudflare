@@ -49,26 +49,26 @@ func LookupR2Bucket(ctx *pulumi.Context, args *LookupR2BucketArgs, opts ...pulum
 
 // A collection of arguments for invoking getR2Bucket.
 type LookupR2BucketArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 }
 
 // A collection of values returned by getR2Bucket.
 type LookupR2BucketResult struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// Creation timestamp
+	// Creation timestamp.
 	CreationDate string `pulumi:"creationDate"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Location of the bucket
+	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location string `pulumi:"location"`
-	// Name of the bucket
+	// Name of the bucket.
 	Name string `pulumi:"name"`
 	// Storage class for newly uploaded objects, unless specified otherwise.
 	// Available values: "Standard", "InfrequentAccess".
@@ -86,9 +86,9 @@ func LookupR2BucketOutput(ctx *pulumi.Context, args LookupR2BucketOutputArgs, op
 
 // A collection of arguments for invoking getR2Bucket.
 type LookupR2BucketOutputArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
@@ -111,17 +111,17 @@ func (o LookupR2BucketResultOutput) ToLookupR2BucketResultOutputWithContext(ctx 
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o LookupR2BucketResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o LookupR2BucketResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Creation timestamp
+// Creation timestamp.
 func (o LookupR2BucketResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
@@ -131,13 +131,13 @@ func (o LookupR2BucketResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Location of the bucket
+// Location of the bucket.
 // Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 func (o LookupR2BucketResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o LookupR2BucketResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.Name }).(pulumi.StringOutput)
 }

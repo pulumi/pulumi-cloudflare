@@ -69,14 +69,14 @@ public class AuthenticatedOriginPullsSettings extends com.pulumi.resources.Custo
         return this.enabled;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

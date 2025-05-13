@@ -22,7 +22,7 @@ public final class GetAuthenticatedOriginPullsSettingsResult {
      */
     private String id;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -43,7 +43,7 @@ public final class GetAuthenticatedOriginPullsSettingsResult {
         return this.id;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

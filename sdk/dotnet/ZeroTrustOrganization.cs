@@ -43,13 +43,13 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedAt { get; private set; } = null!;
 
         [Output("customPages")]
-        public Output<Outputs.ZeroTrustOrganizationCustomPages> CustomPages { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustOrganizationCustomPages?> CustomPages { get; private set; } = null!;
 
         [Output("isUiReadOnly")]
         public Output<bool?> IsUiReadOnly { get; private set; } = null!;
 
         [Output("loginDesign")]
-        public Output<Outputs.ZeroTrustOrganizationLoginDesign> LoginDesign { get; private set; } = null!;
+        public Output<Outputs.ZeroTrustOrganizationLoginDesign?> LoginDesign { get; private set; } = null!;
 
         /// <summary>
         /// The name of your Zero Trust organization.

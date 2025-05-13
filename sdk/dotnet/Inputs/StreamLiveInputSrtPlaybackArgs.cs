@@ -34,11 +34,21 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("streamId")]
         public Input<string>? StreamId { get; set; }
 
+        [Input("url")]
+        private Input<string>? _url;
+
         /// <summary>
         /// The URL used to play live video over SRT.
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        public Input<string>? Url
+        {
+            get => _url;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _url = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public StreamLiveInputSrtPlaybackArgs()
         {

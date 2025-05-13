@@ -64,13 +64,13 @@ type EmailRoutingDns struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Whether the API call was successful
+	// Whether the API call was successful.
 	Success pulumi.BoolOutput `pulumi:"success"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringOutput `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -127,13 +127,13 @@ type emailRoutingDnsState struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status *string `pulumi:"status"`
-	// Whether the API call was successful
+	// Whether the API call was successful.
 	Success *bool `pulumi:"success"`
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag *string `pulumi:"tag"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -155,13 +155,13 @@ type EmailRoutingDnsState struct {
 	// Show the state of your account, and the type or configuration error.
 	// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
 	Status pulumi.StringPtrInput
-	// Whether the API call was successful
+	// Whether the API call was successful.
 	Success pulumi.BoolPtrInput
 	// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
 	//
 	// Deprecated: This attribute is deprecated.
 	Tag pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -172,7 +172,7 @@ func (EmailRoutingDnsState) ElementType() reflect.Type {
 type emailRoutingDnsArgs struct {
 	// Domain of your zone.
 	Name string `pulumi:"name"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -180,7 +180,7 @@ type emailRoutingDnsArgs struct {
 type EmailRoutingDnsArgs struct {
 	// Domain of your zone.
 	Name pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -318,7 +318,7 @@ func (o EmailRoutingDnsOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Whether the API call was successful
+// Whether the API call was successful.
 func (o EmailRoutingDnsOutput) Success() pulumi.BoolOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.BoolOutput { return v.Success }).(pulumi.BoolOutput)
 }
@@ -330,7 +330,7 @@ func (o EmailRoutingDnsOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o EmailRoutingDnsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingDns) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

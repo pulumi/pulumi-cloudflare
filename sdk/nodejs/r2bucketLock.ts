@@ -57,18 +57,18 @@ export class R2BucketLock extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID
+     * Account ID.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     public readonly bucketName!: pulumi.Output<string>;
     /**
      * Jurisdiction of the bucket
      */
     public readonly jurisdiction!: pulumi.Output<string>;
-    public readonly rules!: pulumi.Output<outputs.R2BucketLockRule[]>;
+    public readonly rules!: pulumi.Output<outputs.R2BucketLockRule[] | undefined>;
 
     /**
      * Create a R2BucketLock resource with the given unique name, arguments, and options.
@@ -110,11 +110,11 @@ export class R2BucketLock extends pulumi.CustomResource {
  */
 export interface R2BucketLockState {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     /**
@@ -129,11 +129,11 @@ export interface R2BucketLockState {
  */
 export interface R2BucketLockArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
     /**

@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare.Outputs
     {
         /// <summary>
         /// Name of compression algorithm to enable.
-        /// Available values: "none", "auto", "default", "gzip", "brotli".
+        /// Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
         /// </summary>
         public readonly string Name;
 

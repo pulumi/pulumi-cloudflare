@@ -26,9 +26,9 @@ class R2ManagedDomainArgs:
                  jurisdiction: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a R2ManagedDomain resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -41,7 +41,7 @@ class R2ManagedDomainArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -53,7 +53,7 @@ class R2ManagedDomainArgs:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Input[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -65,7 +65,7 @@ class R2ManagedDomainArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[builtins.bool]:
         """
-        Whether to enable public bucket access at the r2.dev domain
+        Whether to enable public bucket access at the r2.dev domain.
         """
         return pulumi.get(self, "enabled")
 
@@ -97,11 +97,11 @@ class _R2ManagedDomainState:
                  jurisdiction: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering R2ManagedDomain resources.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_id: Bucket ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[builtins.str] domain: Domain name of the bucket's r2.dev domain
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_id: Bucket ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[builtins.str] domain: Domain name of the bucket's r2.dev domain.
+        :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         """
         if account_id is not None:
@@ -121,7 +121,7 @@ class _R2ManagedDomainState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -133,7 +133,7 @@ class _R2ManagedDomainState:
     @pulumi.getter(name="bucketId")
     def bucket_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Bucket ID
+        Bucket ID.
         """
         return pulumi.get(self, "bucket_id")
 
@@ -145,7 +145,7 @@ class _R2ManagedDomainState:
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -157,7 +157,7 @@ class _R2ManagedDomainState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Domain name of the bucket's r2.dev domain
+        Domain name of the bucket's r2.dev domain.
         """
         return pulumi.get(self, "domain")
 
@@ -169,7 +169,7 @@ class _R2ManagedDomainState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether to enable public bucket access at the r2.dev domain
+        Whether to enable public bucket access at the r2.dev domain.
         """
         return pulumi.get(self, "enabled")
 
@@ -216,9 +216,9 @@ class R2ManagedDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         """
         ...
@@ -303,11 +303,11 @@ class R2ManagedDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Account ID
-        :param pulumi.Input[builtins.str] bucket_id: Bucket ID
-        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket
-        :param pulumi.Input[builtins.str] domain: Domain name of the bucket's r2.dev domain
-        :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain
+        :param pulumi.Input[builtins.str] account_id: Account ID.
+        :param pulumi.Input[builtins.str] bucket_id: Bucket ID.
+        :param pulumi.Input[builtins.str] bucket_name: Name of the bucket.
+        :param pulumi.Input[builtins.str] domain: Domain name of the bucket's r2.dev domain.
+        :param pulumi.Input[builtins.bool] enabled: Whether to enable public bucket access at the r2.dev domain.
         :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -326,7 +326,7 @@ class R2ManagedDomain(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Account ID
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -334,7 +334,7 @@ class R2ManagedDomain(pulumi.CustomResource):
     @pulumi.getter(name="bucketId")
     def bucket_id(self) -> pulumi.Output[builtins.str]:
         """
-        Bucket ID
+        Bucket ID.
         """
         return pulumi.get(self, "bucket_id")
 
@@ -342,7 +342,7 @@ class R2ManagedDomain(pulumi.CustomResource):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> pulumi.Output[builtins.str]:
         """
-        Name of the bucket
+        Name of the bucket.
         """
         return pulumi.get(self, "bucket_name")
 
@@ -350,7 +350,7 @@ class R2ManagedDomain(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[builtins.str]:
         """
-        Domain name of the bucket's r2.dev domain
+        Domain name of the bucket's r2.dev domain.
         """
         return pulumi.get(self, "domain")
 
@@ -358,7 +358,7 @@ class R2ManagedDomain(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether to enable public bucket access at the r2.dev domain
+        Whether to enable public bucket access at the r2.dev domain.
         """
         return pulumi.get(self, "enabled")
 

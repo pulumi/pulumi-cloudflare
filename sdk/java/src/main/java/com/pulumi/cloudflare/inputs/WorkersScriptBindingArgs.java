@@ -8,6 +8,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class WorkersScriptBindingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkersScriptBindingArgs Empty = new WorkersScriptBindingArgs();
+
+    /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * 
+     */
+    @Import(name="algorithm")
+    private @Nullable Output<String> algorithm;
+
+    /**
+     * @return Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     * 
+     */
+    public Optional<Output<String>> algorithm() {
+        return Optional.ofNullable(this.algorithm);
+    }
 
     /**
      * R2 bucket to bind to.
@@ -93,6 +109,23 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
+     * 
+     */
+    @Import(name="format")
+    private @Nullable Output<String> format;
+
+    /**
+     * @return Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
+     * 
+     */
+    public Optional<Output<String>> format() {
+        return Optional.ofNullable(this.format);
+    }
+
+    /**
      * Identifier of the D1 database to bind to.
      * 
      */
@@ -135,6 +168,36 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> json() {
         return Optional.ofNullable(this.json);
+    }
+
+    /**
+     * Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+     * 
+     */
+    @Import(name="keyBase64")
+    private @Nullable Output<String> keyBase64;
+
+    /**
+     * @return Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+     * 
+     */
+    public Optional<Output<String>> keyBase64() {
+        return Optional.ofNullable(this.keyBase64);
+    }
+
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+     * 
+     */
+    @Import(name="keyJwk")
+    private @Nullable Output<String> keyJwk;
+
+    /**
+     * @return Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+     * 
+     */
+    public Optional<Output<String>> keyJwk() {
+        return Optional.ofNullable(this.keyJwk);
     }
 
     /**
@@ -198,6 +261,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Name of the Pipeline to bind to.
+     * 
+     */
+    @Import(name="pipeline")
+    private @Nullable Output<String> pipeline;
+
+    /**
+     * @return Name of the Pipeline to bind to.
+     * 
+     */
+    public Optional<Output<String>> pipeline() {
+        return Optional.ofNullable(this.pipeline);
+    }
+
+    /**
      * Name of the Queue to bind to.
      * 
      */
@@ -228,6 +306,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Name of the secret in the store.
+     * 
+     */
+    @Import(name="secretName")
+    private @Nullable Output<String> secretName;
+
+    /**
+     * @return Name of the secret in the store.
+     * 
+     */
+    public Optional<Output<String>> secretName() {
+        return Optional.ofNullable(this.secretName);
+    }
+
+    /**
      * Name of Worker to bind to.
      * 
      */
@@ -240,6 +333,21 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> service() {
         return Optional.ofNullable(this.service);
+    }
+
+    /**
+     * ID of the store containing the secret.
+     * 
+     */
+    @Import(name="storeId")
+    private @Nullable Output<String> storeId;
+
+    /**
+     * @return ID of the store containing the secret.
+     * 
+     */
+    public Optional<Output<String>> storeId() {
+        return Optional.ofNullable(this.storeId);
     }
 
     /**
@@ -259,7 +367,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser*rendering&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;.
+     * Available values: &#34;ai&#34;.
      * 
      */
     @Import(name="type", required=true)
@@ -267,33 +375,56 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The kind of resource that the binding provides.
-     * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser*rendering&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;.
+     * Available values: &#34;ai&#34;.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
 
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * 
+     */
+    @Import(name="usages")
+    private @Nullable Output<List<String>> usages;
+
+    /**
+     * @return Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     * 
+     */
+    public Optional<Output<List<String>>> usages() {
+        return Optional.ofNullable(this.usages);
+    }
+
     private WorkersScriptBindingArgs() {}
 
     private WorkersScriptBindingArgs(WorkersScriptBindingArgs $) {
+        this.algorithm = $.algorithm;
         this.bucketName = $.bucketName;
         this.certificateId = $.certificateId;
         this.className = $.className;
         this.dataset = $.dataset;
         this.environment = $.environment;
+        this.format = $.format;
         this.id = $.id;
         this.indexName = $.indexName;
         this.json = $.json;
+        this.keyBase64 = $.keyBase64;
+        this.keyJwk = $.keyJwk;
         this.name = $.name;
         this.namespace = $.namespace;
         this.namespaceId = $.namespaceId;
         this.outbound = $.outbound;
+        this.pipeline = $.pipeline;
         this.queueName = $.queueName;
         this.scriptName = $.scriptName;
+        this.secretName = $.secretName;
         this.service = $.service;
+        this.storeId = $.storeId;
         this.text = $.text;
         this.type = $.type;
+        this.usages = $.usages;
     }
 
     public static Builder builder() {
@@ -312,6 +443,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         public Builder(WorkersScriptBindingArgs defaults) {
             $ = new WorkersScriptBindingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param algorithm Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder algorithm(@Nullable Output<String> algorithm) {
+            $.algorithm = algorithm;
+            return this;
+        }
+
+        /**
+         * @param algorithm Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder algorithm(String algorithm) {
+            return algorithm(Output.of(algorithm));
         }
 
         /**
@@ -420,6 +572,29 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param format Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+         * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder format(@Nullable Output<String> format) {
+            $.format = format;
+            return this;
+        }
+
+        /**
+         * @param format Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+         * Available values: &#34;raw&#34;, &#34;pkcs8&#34;, &#34;spki&#34;, &#34;jwk&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder format(String format) {
+            return format(Output.of(format));
+        }
+
+        /**
          * @param id Identifier of the D1 database to bind to.
          * 
          * @return builder
@@ -480,6 +655,48 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder json(String json) {
             return json(Output.of(json));
+        }
+
+        /**
+         * @param keyBase64 Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyBase64(@Nullable Output<String> keyBase64) {
+            $.keyBase64 = keyBase64;
+            return this;
+        }
+
+        /**
+         * @param keyBase64 Base64-encoded key data. Required if `format` is &#34;raw&#34;, &#34;pkcs8&#34;, or &#34;spki&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyBase64(String keyBase64) {
+            return keyBase64(Output.of(keyBase64));
+        }
+
+        /**
+         * @param keyJwk Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyJwk(@Nullable Output<String> keyJwk) {
+            $.keyJwk = keyJwk;
+            return this;
+        }
+
+        /**
+         * @param keyJwk Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is &#34;jwk&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyJwk(String keyJwk) {
+            return keyJwk(Output.of(keyJwk));
         }
 
         /**
@@ -567,6 +784,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param pipeline Name of the Pipeline to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipeline(@Nullable Output<String> pipeline) {
+            $.pipeline = pipeline;
+            return this;
+        }
+
+        /**
+         * @param pipeline Name of the Pipeline to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pipeline(String pipeline) {
+            return pipeline(Output.of(pipeline));
+        }
+
+        /**
          * @param queueName Name of the Queue to bind to.
          * 
          * @return builder
@@ -609,6 +847,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param secretName Name of the secret in the store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretName(@Nullable Output<String> secretName) {
+            $.secretName = secretName;
+            return this;
+        }
+
+        /**
+         * @param secretName Name of the secret in the store.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretName(String secretName) {
+            return secretName(Output.of(secretName));
+        }
+
+        /**
          * @param service Name of Worker to bind to.
          * 
          * @return builder
@@ -627,6 +886,27 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
          */
         public Builder service(String service) {
             return service(Output.of(service));
+        }
+
+        /**
+         * @param storeId ID of the store containing the secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storeId(@Nullable Output<String> storeId) {
+            $.storeId = storeId;
+            return this;
+        }
+
+        /**
+         * @param storeId ID of the store containing the secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storeId(String storeId) {
+            return storeId(Output.of(storeId));
         }
 
         /**
@@ -652,7 +932,7 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser*rendering&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;.
+         * Available values: &#34;ai&#34;.
          * 
          * @return builder
          * 
@@ -664,13 +944,44 @@ public final class WorkersScriptBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param type The kind of resource that the binding provides.
-         * Available values: &#34;ai&#34;, &#34;analytics*engine&#34;, &#34;assets&#34;, &#34;browser*rendering&#34;, &#34;d1&#34;, &#34;dispatch*namespace&#34;, &#34;durable*object*namespace&#34;, &#34;hyperdrive&#34;, &#34;json&#34;, &#34;kv*namespace&#34;, &#34;mtls*certificate&#34;, &#34;plain*text&#34;, &#34;queue&#34;, &#34;r2*bucket&#34;, &#34;secret*text&#34;, &#34;service&#34;, &#34;tail*consumer&#34;, &#34;vectorize&#34;, &#34;version*metadata&#34;.
+         * Available values: &#34;ai&#34;.
          * 
          * @return builder
          * 
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param usages Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usages(@Nullable Output<List<String>> usages) {
+            $.usages = usages;
+            return this;
+        }
+
+        /**
+         * @param usages Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usages(List<String> usages) {
+            return usages(Output.of(usages));
+        }
+
+        /**
+         * @param usages Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usages(String... usages) {
+            return usages(List.of(usages));
         }
 
         public WorkersScriptBindingArgs build() {

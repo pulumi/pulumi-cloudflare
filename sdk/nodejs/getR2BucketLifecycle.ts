@@ -32,11 +32,11 @@ export function getR2BucketLifecycle(args: GetR2BucketLifecycleArgs, opts?: pulu
  */
 export interface GetR2BucketLifecycleArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: string;
 }
@@ -46,11 +46,11 @@ export interface GetR2BucketLifecycleArgs {
  */
 export interface GetR2BucketLifecycleResult {
     /**
-     * Account ID
+     * Account ID.
      */
     readonly accountId: string;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     readonly bucketName: string;
     /**
@@ -85,11 +85,11 @@ export function getR2BucketLifecycleOutput(args: GetR2BucketLifecycleOutputArgs,
  */
 export interface GetR2BucketLifecycleOutputArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
 }

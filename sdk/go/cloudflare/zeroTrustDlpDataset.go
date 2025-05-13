@@ -29,6 +29,7 @@ import (
 //			_, err := cloudflare.NewZeroTrustDlpDataset(ctx, "example_zero_trust_dlp_dataset", &cloudflare.ZeroTrustDlpDatasetArgs{
 //				AccountId:       pulumi.String("account_id"),
 //				Name:            pulumi.String("name"),
+//				CaseSensitive:   pulumi.Bool(true),
 //				Description:     pulumi.String("description"),
 //				EncodingVersion: pulumi.Int(0),
 //				Secret:          pulumi.Bool(true),
@@ -44,12 +45,16 @@ import (
 type ZeroTrustDlpDataset struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput                  `pulumi:"accountId"`
-	Columns   ZeroTrustDlpDatasetColumnArrayOutput `pulumi:"columns"`
-	CreatedAt pulumi.StringOutput                  `pulumi:"createdAt"`
-	Dataset   ZeroTrustDlpDatasetDatasetOutput     `pulumi:"dataset"`
-	DatasetId pulumi.StringPtrOutput               `pulumi:"datasetId"`
-	// The description of the dataset
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if `secret` is true or undefined
+	CaseSensitive pulumi.BoolPtrOutput                 `pulumi:"caseSensitive"`
+	Columns       ZeroTrustDlpDatasetColumnArrayOutput `pulumi:"columns"`
+	CreatedAt     pulumi.StringOutput                  `pulumi:"createdAt"`
+	Dataset       ZeroTrustDlpDatasetDatasetOutput     `pulumi:"dataset"`
+	DatasetId     pulumi.StringPtrOutput               `pulumi:"datasetId"`
+	// The description of the dataset.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Dataset encoding version
 	EncodingVersion pulumi.IntPtrOutput `pulumi:"encodingVersion"`
@@ -104,12 +109,16 @@ func GetZeroTrustDlpDataset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustDlpDataset resources.
 type zeroTrustDlpDatasetState struct {
-	AccountId *string                     `pulumi:"accountId"`
-	Columns   []ZeroTrustDlpDatasetColumn `pulumi:"columns"`
-	CreatedAt *string                     `pulumi:"createdAt"`
-	Dataset   *ZeroTrustDlpDatasetDataset `pulumi:"dataset"`
-	DatasetId *string                     `pulumi:"datasetId"`
-	// The description of the dataset
+	AccountId *string `pulumi:"accountId"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if `secret` is true or undefined
+	CaseSensitive *bool                       `pulumi:"caseSensitive"`
+	Columns       []ZeroTrustDlpDatasetColumn `pulumi:"columns"`
+	CreatedAt     *string                     `pulumi:"createdAt"`
+	Dataset       *ZeroTrustDlpDatasetDataset `pulumi:"dataset"`
+	DatasetId     *string                     `pulumi:"datasetId"`
+	// The description of the dataset.
 	Description *string `pulumi:"description"`
 	// Dataset encoding version
 	EncodingVersion *int    `pulumi:"encodingVersion"`
@@ -130,11 +139,15 @@ type zeroTrustDlpDatasetState struct {
 
 type ZeroTrustDlpDatasetState struct {
 	AccountId pulumi.StringPtrInput
-	Columns   ZeroTrustDlpDatasetColumnArrayInput
-	CreatedAt pulumi.StringPtrInput
-	Dataset   ZeroTrustDlpDatasetDatasetPtrInput
-	DatasetId pulumi.StringPtrInput
-	// The description of the dataset
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if `secret` is true or undefined
+	CaseSensitive pulumi.BoolPtrInput
+	Columns       ZeroTrustDlpDatasetColumnArrayInput
+	CreatedAt     pulumi.StringPtrInput
+	Dataset       ZeroTrustDlpDatasetDatasetPtrInput
+	DatasetId     pulumi.StringPtrInput
+	// The description of the dataset.
 	Description pulumi.StringPtrInput
 	// Dataset encoding version
 	EncodingVersion pulumi.IntPtrInput
@@ -158,9 +171,13 @@ func (ZeroTrustDlpDatasetState) ElementType() reflect.Type {
 }
 
 type zeroTrustDlpDatasetArgs struct {
-	AccountId string  `pulumi:"accountId"`
-	DatasetId *string `pulumi:"datasetId"`
-	// The description of the dataset
+	AccountId string `pulumi:"accountId"`
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if `secret` is true or undefined
+	CaseSensitive *bool   `pulumi:"caseSensitive"`
+	DatasetId     *string `pulumi:"datasetId"`
+	// The description of the dataset.
 	Description *string `pulumi:"description"`
 	// Dataset encoding version
 	EncodingVersion *int   `pulumi:"encodingVersion"`
@@ -173,8 +190,12 @@ type zeroTrustDlpDatasetArgs struct {
 // The set of arguments for constructing a ZeroTrustDlpDataset resource.
 type ZeroTrustDlpDatasetArgs struct {
 	AccountId pulumi.StringInput
-	DatasetId pulumi.StringPtrInput
-	// The description of the dataset
+	// Only applies to custom word lists.
+	// Determines if the words should be matched in a case-sensitive manner
+	// Cannot be set to false if `secret` is true or undefined
+	CaseSensitive pulumi.BoolPtrInput
+	DatasetId     pulumi.StringPtrInput
+	// The description of the dataset.
 	Description pulumi.StringPtrInput
 	// Dataset encoding version
 	EncodingVersion pulumi.IntPtrInput
@@ -275,6 +296,13 @@ func (o ZeroTrustDlpDatasetOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Only applies to custom word lists.
+// Determines if the words should be matched in a case-sensitive manner
+// Cannot be set to false if `secret` is true or undefined
+func (o ZeroTrustDlpDatasetOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.BoolPtrOutput { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
+}
+
 func (o ZeroTrustDlpDatasetOutput) Columns() ZeroTrustDlpDatasetColumnArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) ZeroTrustDlpDatasetColumnArrayOutput { return v.Columns }).(ZeroTrustDlpDatasetColumnArrayOutput)
 }
@@ -291,7 +319,7 @@ func (o ZeroTrustDlpDatasetOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringPtrOutput { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
 
-// The description of the dataset
+// The description of the dataset.
 func (o ZeroTrustDlpDatasetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpDataset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

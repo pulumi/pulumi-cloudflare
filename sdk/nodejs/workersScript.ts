@@ -54,7 +54,7 @@ export class WorkersScript extends pulumi.CustomResource {
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    public readonly bindings!: pulumi.Output<outputs.WorkersScriptBinding[]>;
+    public readonly bindings!: pulumi.Output<outputs.WorkersScriptBinding[] | undefined>;
     /**
      * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
@@ -106,7 +106,7 @@ export class WorkersScript extends pulumi.CustomResource {
     /**
      * Migrations to apply for Durable Objects associated with this Worker.
      */
-    public readonly migrations!: pulumi.Output<outputs.WorkersScriptMigrations>;
+    public readonly migrations!: pulumi.Output<outputs.WorkersScriptMigrations | undefined>;
     /**
      * When the script was last modified.
      */
@@ -114,11 +114,11 @@ export class WorkersScript extends pulumi.CustomResource {
     /**
      * Observability settings for the Worker.
      */
-    public readonly observability!: pulumi.Output<outputs.WorkersScriptObservability>;
+    public readonly observability!: pulumi.Output<outputs.WorkersScriptObservability | undefined>;
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
-    public readonly placement!: pulumi.Output<outputs.WorkersScriptPlacement>;
+    public readonly placement!: pulumi.Output<outputs.WorkersScriptPlacement | undefined>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -127,7 +127,7 @@ export class WorkersScript extends pulumi.CustomResource {
     /**
      * List of Workers that will consume logs from the attached Worker.
      */
-    public readonly tailConsumers!: pulumi.Output<outputs.WorkersScriptTailConsumer[]>;
+    public readonly tailConsumers!: pulumi.Output<outputs.WorkersScriptTailConsumer[] | undefined>;
     /**
      * Usage model for the Worker invocations.
      * Available values: "standard".

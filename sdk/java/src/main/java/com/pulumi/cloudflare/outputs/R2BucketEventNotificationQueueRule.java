@@ -13,74 +13,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class R2BucketEventNotificationQueueRule {
     /**
-     * @return Array of R2 object actions that will trigger notifications
+     * @return Array of R2 object actions that will trigger notifications.
      * 
      */
     private @Nullable List<String> actions;
     /**
-     * @return Timestamp when the rule was created
+     * @return Timestamp when the rule was created.
      * 
      */
     private @Nullable String createdAt;
     /**
-     * @return A description that can be used to identify the event notification rule after creation
+     * @return A description that can be used to identify the event notification rule after creation.
      * 
      */
     private @Nullable String description;
     /**
-     * @return Notifications will be sent only for objects with this prefix
+     * @return Notifications will be sent only for objects with this prefix.
      * 
      */
     private @Nullable String prefix;
     /**
-     * @return Rule ID
+     * @return Rule ID.
      * 
      */
     private @Nullable String ruleId;
     /**
-     * @return Notifications will be sent only for objects with this suffix
+     * @return Notifications will be sent only for objects with this suffix.
      * 
      */
     private @Nullable String suffix;
 
     private R2BucketEventNotificationQueueRule() {}
     /**
-     * @return Array of R2 object actions that will trigger notifications
+     * @return Array of R2 object actions that will trigger notifications.
      * 
      */
     public List<String> actions() {
         return this.actions == null ? List.of() : this.actions;
     }
     /**
-     * @return Timestamp when the rule was created
+     * @return Timestamp when the rule was created.
      * 
      */
     public Optional<String> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return A description that can be used to identify the event notification rule after creation
+     * @return A description that can be used to identify the event notification rule after creation.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Notifications will be sent only for objects with this prefix
+     * @return Notifications will be sent only for objects with this prefix.
      * 
      */
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }
     /**
-     * @return Rule ID
+     * @return Rule ID.
      * 
      */
     public Optional<String> ruleId() {
         return Optional.ofNullable(this.ruleId);
     }
     /**
-     * @return Notifications will be sent only for objects with this suffix
+     * @return Notifications will be sent only for objects with this suffix.
      * 
      */
     public Optional<String> suffix() {

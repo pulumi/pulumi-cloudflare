@@ -15,14 +15,14 @@ public final class GetAccountDnsSettingsArgs extends com.pulumi.resources.Invoke
     public static final GetAccountDnsSettingsArgs Empty = new GetAccountDnsSettingsArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> accountId() {
@@ -54,7 +54,7 @@ public final class GetAccountDnsSettingsArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetAccountDnsSettingsArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

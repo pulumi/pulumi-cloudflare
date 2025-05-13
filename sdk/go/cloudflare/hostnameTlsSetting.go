@@ -65,7 +65,7 @@ type HostnameTlsSetting struct {
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The tls setting value.
 	Value pulumi.AnyOutput `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -124,7 +124,7 @@ type hostnameTlsSettingState struct {
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The tls setting value.
 	Value interface{} `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -142,7 +142,7 @@ type HostnameTlsSettingState struct {
 	UpdatedAt pulumi.StringPtrInput
 	// The tls setting value.
 	Value pulumi.Input
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -158,7 +158,7 @@ type hostnameTlsSettingArgs struct {
 	SettingId string `pulumi:"settingId"`
 	// The tls setting value.
 	Value interface{} `pulumi:"value"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -171,7 +171,7 @@ type HostnameTlsSettingArgs struct {
 	SettingId pulumi.StringInput
 	// The tls setting value.
 	Value pulumi.Input
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -293,7 +293,7 @@ func (o HostnameTlsSettingOutput) Value() pulumi.AnyOutput {
 	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.AnyOutput { return v.Value }).(pulumi.AnyOutput)
 }
 
-// Identifier
+// Identifier.
 func (o HostnameTlsSettingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostnameTlsSetting) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

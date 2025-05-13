@@ -46,7 +46,7 @@ public final class GetFilterResult {
      */
     private String ref;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -98,7 +98,7 @@ public final class GetFilterResult {
         return this.ref;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

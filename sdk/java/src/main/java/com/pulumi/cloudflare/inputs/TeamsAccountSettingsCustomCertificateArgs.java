@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -36,15 +35,15 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
      * Enable use of custom certificate authority for signing Gateway traffic.
      * 
      */
-    @Import(name="enabled", required=true)
-    private Output<Boolean> enabled;
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Enable use of custom certificate authority for signing Gateway traffic.
      * 
      */
-    public Output<Boolean> enabled() {
-        return this.enabled;
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
     }
 
     /**
@@ -123,7 +122,7 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder enabled(Output<Boolean> enabled) {
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -169,9 +168,6 @@ public final class TeamsAccountSettingsCustomCertificateArgs extends com.pulumi.
         }
 
         public TeamsAccountSettingsCustomCertificateArgs build() {
-            if ($.enabled == null) {
-                throw new MissingRequiredPropertyException("TeamsAccountSettingsCustomCertificateArgs", "enabled");
-            }
             return $;
         }
     }

@@ -25,6 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Identifying key for the region
         /// </summary>
         public readonly string RegionKey;
+        /// <summary>
+        /// Configure which routing method to use for the regional hostname
+        /// </summary>
+        public readonly string Routing;
 
         [OutputConstructor]
         private GetRegionalHostnamesResultResult(
@@ -32,11 +36,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             string hostname,
 
-            string regionKey)
+            string regionKey,
+
+            string routing)
         {
             CreatedOn = createdOn;
             Hostname = hostname;
             RegionKey = regionKey;
+            Routing = routing;
         }
     }
 }

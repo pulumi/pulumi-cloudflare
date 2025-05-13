@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -38,6 +39,11 @@ public final class GetLoadBalancerPoolsResultOrigin {
      * 
      */
     private String name;
+    /**
+     * @return The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     * 
+     */
+    private Integer port;
     /**
      * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      * 
@@ -86,6 +92,13 @@ public final class GetLoadBalancerPoolsResultOrigin {
         return this.name;
     }
     /**
+     * @return The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     * 
+     */
+    public Integer port() {
+        return this.port;
+    }
+    /**
      * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      * 
      */
@@ -114,6 +127,7 @@ public final class GetLoadBalancerPoolsResultOrigin {
         private Boolean enabled;
         private GetLoadBalancerPoolsResultOriginHeader header;
         private String name;
+        private Integer port;
         private String virtualNetworkId;
         private Double weight;
         public Builder() {}
@@ -124,6 +138,7 @@ public final class GetLoadBalancerPoolsResultOrigin {
     	      this.enabled = defaults.enabled;
     	      this.header = defaults.header;
     	      this.name = defaults.name;
+    	      this.port = defaults.port;
     	      this.virtualNetworkId = defaults.virtualNetworkId;
     	      this.weight = defaults.weight;
         }
@@ -169,6 +184,14 @@ public final class GetLoadBalancerPoolsResultOrigin {
             return this;
         }
         @CustomType.Setter
+        public Builder port(Integer port) {
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsResultOrigin", "port");
+            }
+            this.port = port;
+            return this;
+        }
+        @CustomType.Setter
         public Builder virtualNetworkId(String virtualNetworkId) {
             if (virtualNetworkId == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancerPoolsResultOrigin", "virtualNetworkId");
@@ -191,6 +214,7 @@ public final class GetLoadBalancerPoolsResultOrigin {
             _resultValue.enabled = enabled;
             _resultValue.header = header;
             _resultValue.name = name;
+            _resultValue.port = port;
             _resultValue.virtualNetworkId = virtualNetworkId;
             _resultValue.weight = weight;
             return _resultValue;

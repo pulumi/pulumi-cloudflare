@@ -35,7 +35,7 @@ export interface GetHostnameTlsSettingArgs {
      */
     settingId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -74,7 +74,7 @@ export interface GetHostnameTlsSettingResult {
      */
     readonly value: number;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -109,7 +109,7 @@ export interface GetHostnameTlsSettingOutputArgs {
      */
     settingId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

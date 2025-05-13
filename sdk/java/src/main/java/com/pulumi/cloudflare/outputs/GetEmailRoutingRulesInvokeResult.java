@@ -37,7 +37,7 @@ public final class GetEmailRoutingRulesInvokeResult {
      */
     private List<GetEmailRoutingRulesResult> results;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -72,7 +72,7 @@ public final class GetEmailRoutingRulesInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

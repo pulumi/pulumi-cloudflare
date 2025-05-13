@@ -48,7 +48,7 @@ func LookupZoneHold(ctx *pulumi.Context, args *LookupZoneHoldArgs, opts ...pulum
 
 // A collection of arguments for invoking getZoneHold.
 type LookupZoneHoldArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -59,7 +59,7 @@ type LookupZoneHoldResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                string `pulumi:"id"`
 	IncludeSubdomains string `pulumi:"includeSubdomains"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -74,7 +74,7 @@ func LookupZoneHoldOutput(ctx *pulumi.Context, args LookupZoneHoldOutputArgs, op
 
 // A collection of arguments for invoking getZoneHold.
 type LookupZoneHoldOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -114,7 +114,7 @@ func (o LookupZoneHoldResultOutput) IncludeSubdomains() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneHoldResult) string { return v.IncludeSubdomains }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupZoneHoldResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneHoldResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

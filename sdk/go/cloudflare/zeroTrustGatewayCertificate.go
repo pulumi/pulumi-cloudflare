@@ -65,10 +65,9 @@ type ZeroTrustGatewayCertificate struct {
 	IssuerRaw pulumi.StringOutput `pulumi:"issuerRaw"`
 	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
-	Type       pulumi.StringOutput `pulumi:"type"`
-	UpdatedAt  pulumi.StringOutput `pulumi:"updatedAt"`
-	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
+	Type               pulumi.StringOutput `pulumi:"type"`
+	UpdatedAt          pulumi.StringOutput `pulumi:"updatedAt"`
+	UploadedOn         pulumi.StringOutput `pulumi:"uploadedOn"`
 	ValidityPeriodDays pulumi.IntPtrOutput `pulumi:"validityPeriodDays"`
 }
 
@@ -123,11 +122,10 @@ type zeroTrustGatewayCertificateState struct {
 	IssuerRaw *string `pulumi:"issuerRaw"`
 	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
-	Type       *string `pulumi:"type"`
-	UpdatedAt  *string `pulumi:"updatedAt"`
-	UploadedOn *string `pulumi:"uploadedOn"`
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-	ValidityPeriodDays *int `pulumi:"validityPeriodDays"`
+	Type               *string `pulumi:"type"`
+	UpdatedAt          *string `pulumi:"updatedAt"`
+	UploadedOn         *string `pulumi:"uploadedOn"`
+	ValidityPeriodDays *int    `pulumi:"validityPeriodDays"`
 }
 
 type ZeroTrustGatewayCertificateState struct {
@@ -149,10 +147,9 @@ type ZeroTrustGatewayCertificateState struct {
 	IssuerRaw pulumi.StringPtrInput
 	// The type of certificate, either BYO-PKI (custom) or Gateway-managed.
 	// Available values: "custom", "gatewayManaged".
-	Type       pulumi.StringPtrInput
-	UpdatedAt  pulumi.StringPtrInput
-	UploadedOn pulumi.StringPtrInput
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
+	Type               pulumi.StringPtrInput
+	UpdatedAt          pulumi.StringPtrInput
+	UploadedOn         pulumi.StringPtrInput
 	ValidityPeriodDays pulumi.IntPtrInput
 }
 
@@ -161,15 +158,13 @@ func (ZeroTrustGatewayCertificateState) ElementType() reflect.Type {
 }
 
 type zeroTrustGatewayCertificateArgs struct {
-	AccountId string `pulumi:"accountId"`
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-	ValidityPeriodDays *int `pulumi:"validityPeriodDays"`
+	AccountId          string `pulumi:"accountId"`
+	ValidityPeriodDays *int   `pulumi:"validityPeriodDays"`
 }
 
 // The set of arguments for constructing a ZeroTrustGatewayCertificate resource.
 type ZeroTrustGatewayCertificateArgs struct {
-	AccountId pulumi.StringInput
-	// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
+	AccountId          pulumi.StringInput
 	ValidityPeriodDays pulumi.IntPtrInput
 }
 
@@ -317,7 +312,6 @@ func (o ZeroTrustGatewayCertificateOutput) UploadedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
 func (o ZeroTrustGatewayCertificateOutput) ValidityPeriodDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayCertificate) pulumi.IntPtrOutput { return v.ValidityPeriodDays }).(pulumi.IntPtrOutput)
 }

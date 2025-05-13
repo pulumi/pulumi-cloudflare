@@ -124,14 +124,14 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
         return this.certificate;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> certificateId() {
@@ -238,14 +238,14 @@ public class AuthenticatedOriginPullsCertificate extends com.pulumi.resources.Cu
         return this.uploadedOn;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

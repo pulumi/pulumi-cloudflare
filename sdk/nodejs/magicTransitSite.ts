@@ -77,7 +77,7 @@ export class MagicTransitSite extends pulumi.CustomResource {
     /**
      * Location of site in latitude and longitude.
      */
-    public readonly location!: pulumi.Output<outputs.MagicTransitSiteLocation>;
+    public readonly location!: pulumi.Output<outputs.MagicTransitSiteLocation | undefined>;
     /**
      * The name of the site.
      */

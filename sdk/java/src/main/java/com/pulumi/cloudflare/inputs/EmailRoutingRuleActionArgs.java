@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,11 +34,11 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         return this.type;
     }
 
-    @Import(name="values", required=true)
-    private Output<List<String>> values;
+    @Import(name="values")
+    private @Nullable Output<List<String>> values;
 
-    public Output<List<String>> values() {
-        return this.values;
+    public Optional<Output<List<String>>> values() {
+        return Optional.ofNullable(this.values);
     }
 
     private EmailRoutingRuleActionArgs() {}
@@ -87,7 +89,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
             return type(Output.of(type));
         }
 
-        public Builder values(Output<List<String>> values) {
+        public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
@@ -103,9 +105,6 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         public EmailRoutingRuleActionArgs build() {
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingRuleActionArgs", "type");
-            }
-            if ($.values == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingRuleActionArgs", "values");
             }
             return $;
         }

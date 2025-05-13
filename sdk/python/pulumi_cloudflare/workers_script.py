@@ -924,7 +924,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bindings(self) -> pulumi.Output[Sequence['outputs.WorkersScriptBinding']]:
+    def bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkersScriptBinding']]]:
         """
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
@@ -1028,7 +1028,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def migrations(self) -> pulumi.Output['outputs.WorkersScriptMigrations']:
+    def migrations(self) -> pulumi.Output[Optional['outputs.WorkersScriptMigrations']]:
         """
         Migrations to apply for Durable Objects associated with this Worker.
         """
@@ -1044,7 +1044,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def observability(self) -> pulumi.Output['outputs.WorkersScriptObservability']:
+    def observability(self) -> pulumi.Output[Optional['outputs.WorkersScriptObservability']]:
         """
         Observability settings for the Worker.
         """
@@ -1052,7 +1052,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def placement(self) -> pulumi.Output['outputs.WorkersScriptPlacement']:
+    def placement(self) -> pulumi.Output[Optional['outputs.WorkersScriptPlacement']]:
         """
         Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         """
@@ -1073,7 +1073,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tailConsumers")
-    def tail_consumers(self) -> pulumi.Output[Sequence['outputs.WorkersScriptTailConsumer']]:
+    def tail_consumers(self) -> pulumi.Output[Optional[Sequence['outputs.WorkersScriptTailConsumer']]]:
         """
         List of Workers that will consume logs from the attached Worker.
         """

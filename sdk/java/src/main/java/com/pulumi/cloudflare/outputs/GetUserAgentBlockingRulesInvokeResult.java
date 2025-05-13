@@ -46,7 +46,7 @@ public final class GetUserAgentBlockingRulesInvokeResult {
      */
     private @Nullable String uaSearch;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -95,7 +95,7 @@ public final class GetUserAgentBlockingRulesInvokeResult {
         return Optional.ofNullable(this.uaSearch);
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

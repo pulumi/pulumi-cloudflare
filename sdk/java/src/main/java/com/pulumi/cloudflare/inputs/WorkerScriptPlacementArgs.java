@@ -16,6 +16,21 @@ public final class WorkerScriptPlacementArgs extends com.pulumi.resources.Resour
     public static final WorkerScriptPlacementArgs Empty = new WorkerScriptPlacementArgs();
 
     /**
+     * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    @Import(name="lastAnalyzedAt")
+    private @Nullable Output<String> lastAnalyzedAt;
+
+    /**
+     * @return The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     * 
+     */
+    public Optional<Output<String>> lastAnalyzedAt() {
+        return Optional.ofNullable(this.lastAnalyzedAt);
+    }
+
+    /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: &#34;smart&#34;.
      * 
@@ -52,6 +67,7 @@ public final class WorkerScriptPlacementArgs extends com.pulumi.resources.Resour
     private WorkerScriptPlacementArgs() {}
 
     private WorkerScriptPlacementArgs(WorkerScriptPlacementArgs $) {
+        this.lastAnalyzedAt = $.lastAnalyzedAt;
         this.mode = $.mode;
         this.status = $.status;
     }
@@ -72,6 +88,27 @@ public final class WorkerScriptPlacementArgs extends com.pulumi.resources.Resour
 
         public Builder(WorkerScriptPlacementArgs defaults) {
             $ = new WorkerScriptPlacementArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param lastAnalyzedAt The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastAnalyzedAt(@Nullable Output<String> lastAnalyzedAt) {
+            $.lastAnalyzedAt = lastAnalyzedAt;
+            return this;
+        }
+
+        /**
+         * @param lastAnalyzedAt The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastAnalyzedAt(String lastAnalyzedAt) {
+            return lastAnalyzedAt(Output.of(lastAnalyzedAt));
         }
 
         /**

@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// When the Hyperdrive configuration was last modified.
         /// </summary>
         public readonly string ModifiedOn;
+        public readonly Outputs.GetHyperdriveConfigsResultMtlsResult Mtls;
         public readonly string Name;
         public readonly Outputs.GetHyperdriveConfigsResultOriginResult Origin;
 
@@ -39,6 +40,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string modifiedOn,
 
+            Outputs.GetHyperdriveConfigsResultMtlsResult mtls,
+
             string name,
 
             Outputs.GetHyperdriveConfigsResultOriginResult origin)
@@ -47,6 +50,7 @@ namespace Pulumi.Cloudflare.Outputs
             CreatedOn = createdOn;
             Id = id;
             ModifiedOn = modifiedOn;
+            Mtls = mtls;
             Name = name;
             Origin = origin;
         }

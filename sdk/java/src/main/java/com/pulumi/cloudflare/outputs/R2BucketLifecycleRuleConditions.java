@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class R2BucketLifecycleRuleConditions {
     /**
-     * @return Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * @return Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     private String prefix;
 
     private R2BucketLifecycleRuleConditions() {}
     /**
-     * @return Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * @return Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      * 
      */
     public String prefix() {

@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the API call was successful
+        /// Whether the API call was successful.
         /// </summary>
         [Output("success")]
         public Output<bool> Success { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Tag { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -231,7 +231,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Whether the API call was successful
+        /// Whether the API call was successful.
         /// </summary>
         [Input("success")]
         public Input<bool>? Success { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Tag { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

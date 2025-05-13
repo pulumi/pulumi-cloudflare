@@ -27,7 +27,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupList(ctx, &cloudflare.LookupListArgs{
 //				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-//				ListId:    pulumi.StringRef("2c0fc9fa937b11eaa1b71c4d701ab86e"),
+//				ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,15 +49,15 @@ func LookupList(ctx *pulumi.Context, args *LookupListArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getList.
 type LookupListArgs struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId string `pulumi:"accountId"`
 	// The unique ID of the list.
-	ListId *string `pulumi:"listId"`
+	ListId string `pulumi:"listId"`
 }
 
 // A collection of values returned by getList.
 type LookupListResult struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId string `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn string `pulumi:"createdOn"`
@@ -69,7 +69,7 @@ type LookupListResult struct {
 	// Available values: "ip", "redirect", "hostname", "asn".
 	Kind string `pulumi:"kind"`
 	// The unique ID of the list.
-	ListId *string `pulumi:"listId"`
+	ListId string `pulumi:"listId"`
 	// The RFC 3339 timestamp of when the list was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
 	// An informative name for the list. Use this name in filter and rule expressions.
@@ -91,10 +91,10 @@ func LookupListOutput(ctx *pulumi.Context, args LookupListOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getList.
 type LookupListOutputArgs struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// The unique ID of the list.
-	ListId pulumi.StringPtrInput `pulumi:"listId"`
+	ListId pulumi.StringInput `pulumi:"listId"`
 }
 
 func (LookupListOutputArgs) ElementType() reflect.Type {
@@ -116,7 +116,7 @@ func (o LookupListResultOutput) ToLookupListResultOutputWithContext(ctx context.
 	return o
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupListResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupListResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -143,8 +143,8 @@ func (o LookupListResultOutput) Kind() pulumi.StringOutput {
 }
 
 // The unique ID of the list.
-func (o LookupListResultOutput) ListId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupListResult) *string { return v.ListId }).(pulumi.StringPtrOutput)
+func (o LookupListResultOutput) ListId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupListResult) string { return v.ListId }).(pulumi.StringOutput)
 }
 
 // The RFC 3339 timestamp of when the list was last modified.

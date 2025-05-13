@@ -15,10 +15,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDlpDatasetsResult {
+    private Boolean caseSensitive;
     private List<GetZeroTrustDlpDatasetsResultColumn> columns;
     private String createdAt;
     /**
-     * @return The description of the dataset
+     * @return The description of the dataset.
      * 
      */
     private String description;
@@ -40,6 +41,9 @@ public final class GetZeroTrustDlpDatasetsResult {
     private List<GetZeroTrustDlpDatasetsResultUpload> uploads;
 
     private GetZeroTrustDlpDatasetsResult() {}
+    public Boolean caseSensitive() {
+        return this.caseSensitive;
+    }
     public List<GetZeroTrustDlpDatasetsResultColumn> columns() {
         return this.columns;
     }
@@ -47,7 +51,7 @@ public final class GetZeroTrustDlpDatasetsResult {
         return this.createdAt;
     }
     /**
-     * @return The description of the dataset
+     * @return The description of the dataset.
      * 
      */
     public String description() {
@@ -95,6 +99,7 @@ public final class GetZeroTrustDlpDatasetsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean caseSensitive;
         private List<GetZeroTrustDlpDatasetsResultColumn> columns;
         private String createdAt;
         private String description;
@@ -109,6 +114,7 @@ public final class GetZeroTrustDlpDatasetsResult {
         public Builder() {}
         public Builder(GetZeroTrustDlpDatasetsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.caseSensitive = defaults.caseSensitive;
     	      this.columns = defaults.columns;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
@@ -122,6 +128,14 @@ public final class GetZeroTrustDlpDatasetsResult {
     	      this.uploads = defaults.uploads;
         }
 
+        @CustomType.Setter
+        public Builder caseSensitive(Boolean caseSensitive) {
+            if (caseSensitive == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpDatasetsResult", "caseSensitive");
+            }
+            this.caseSensitive = caseSensitive;
+            return this;
+        }
         @CustomType.Setter
         public Builder columns(List<GetZeroTrustDlpDatasetsResultColumn> columns) {
             if (columns == null) {
@@ -218,6 +232,7 @@ public final class GetZeroTrustDlpDatasetsResult {
         }
         public GetZeroTrustDlpDatasetsResult build() {
             final var _resultValue = new GetZeroTrustDlpDatasetsResult();
+            _resultValue.caseSensitive = caseSensitive;
             _resultValue.columns = columns;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;

@@ -38,7 +38,7 @@ export interface GetEmailRoutingRuleArgs {
      */
     ruleIdentifier?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -83,7 +83,7 @@ export interface GetEmailRoutingRuleResult {
      */
     readonly tag: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -119,7 +119,7 @@ export interface GetEmailRoutingRuleOutputArgs {
      */
     ruleIdentifier?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -67,7 +67,7 @@ export interface GetCustomHostnamesArgs {
      */
     ssl?: number;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -108,7 +108,7 @@ export interface GetCustomHostnamesResult {
      */
     readonly ssl?: number;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -173,7 +173,7 @@ export interface GetCustomHostnamesOutputArgs {
      */
     ssl?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

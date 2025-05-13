@@ -46,7 +46,7 @@ export interface GetApiShieldSchemasArgs {
      */
     validationEnabled?: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -76,7 +76,7 @@ export interface GetApiShieldSchemasResult {
      */
     readonly validationEnabled?: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -120,7 +120,7 @@ export interface GetApiShieldSchemasOutputArgs {
      */
     validationEnabled?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

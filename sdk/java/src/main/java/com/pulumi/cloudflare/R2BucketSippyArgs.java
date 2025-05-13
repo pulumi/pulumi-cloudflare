@@ -19,14 +19,14 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
     public static final R2BucketSippyArgs Empty = new R2BucketSippyArgs();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
@@ -34,14 +34,14 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
@@ -49,14 +49,14 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * R2 bucket to copy objects to
+     * R2 bucket to copy objects to.
      * 
      */
     @Import(name="destination")
     private @Nullable Output<R2BucketSippyDestinationArgs> destination;
 
     /**
-     * @return R2 bucket to copy objects to
+     * @return R2 bucket to copy objects to.
      * 
      */
     public Optional<Output<R2BucketSippyDestinationArgs>> destination() {
@@ -79,14 +79,14 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * AWS S3 bucket to copy objects from
+     * AWS S3 bucket to copy objects from.
      * 
      */
     @Import(name="source")
     private @Nullable Output<R2BucketSippySourceArgs> source;
 
     /**
-     * @return AWS S3 bucket to copy objects from
+     * @return AWS S3 bucket to copy objects from.
      * 
      */
     public Optional<Output<R2BucketSippySourceArgs>> source() {
@@ -122,7 +122,7 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destination R2 bucket to copy objects to
+         * @param destination R2 bucket to copy objects to.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destination R2 bucket to copy objects to
+         * @param destination R2 bucket to copy objects to.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source AWS S3 bucket to copy objects from
+         * @param source AWS S3 bucket to copy objects from.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class R2BucketSippyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param source AWS S3 bucket to copy objects from
+         * @param source AWS S3 bucket to copy objects from.
          * 
          * @return builder
          * 

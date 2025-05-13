@@ -196,14 +196,14 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="originDns", refs={SpectrumApplicationOriginDns.class}, tree="[0]")
-    private Output<SpectrumApplicationOriginDns> originDns;
+    private Output</* @Nullable */ SpectrumApplicationOriginDns> originDns;
 
     /**
      * @return The name and type of DNS record for the Spectrum application.
      * 
      */
-    public Output<SpectrumApplicationOriginDns> originDns() {
-        return this.originDns;
+    public Output<Optional<SpectrumApplicationOriginDns>> originDns() {
+        return Codegen.optional(this.originDns);
     }
     /**
      * The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `&#34;1000-2000&#34;`.

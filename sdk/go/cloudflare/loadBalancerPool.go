@@ -28,7 +28,7 @@ type LoadBalancerPool struct {
 	CheckRegions pulumi.StringArrayOutput `pulumi:"checkRegions"`
 	CreatedOn    pulumi.StringOutput      `pulumi:"createdOn"`
 	// A human-readable description of the pool.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
 	DisabledAt pulumi.StringOutput `pulumi:"disabledAt"`
 	// Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any).
@@ -49,7 +49,7 @@ type LoadBalancerPool struct {
 	// List of networks where Load Balancer or Pool is enabled.
 	Networks pulumi.StringArrayOutput `pulumi:"networks"`
 	// This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
-	NotificationEmail pulumi.StringPtrOutput `pulumi:"notificationEmail"`
+	NotificationEmail pulumi.StringOutput `pulumi:"notificationEmail"`
 	// Filter pool and origin health notifications by resource type or health status. Use null to reset.
 	NotificationFilter LoadBalancerPoolNotificationFilterOutput `pulumi:"notificationFilter"`
 	// Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity.
@@ -339,8 +339,8 @@ func (o LoadBalancerPoolOutput) CreatedOn() pulumi.StringOutput {
 }
 
 // A human-readable description of the pool.
-func (o LoadBalancerPoolOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o LoadBalancerPoolOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at.
@@ -393,8 +393,8 @@ func (o LoadBalancerPoolOutput) Networks() pulumi.StringArrayOutput {
 }
 
 // This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
-func (o LoadBalancerPoolOutput) NotificationEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.NotificationEmail }).(pulumi.StringPtrOutput)
+func (o LoadBalancerPoolOutput) NotificationEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.NotificationEmail }).(pulumi.StringOutput)
 }
 
 // Filter pool and origin health notifications by resource type or health status. Use null to reset.

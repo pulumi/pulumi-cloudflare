@@ -49,7 +49,7 @@ export class ZoneSubscription extends pulumi.CustomResource {
     /**
      * The rate plan applied to the subscription.
      */
-    public readonly ratePlan!: pulumi.Output<outputs.ZoneSubscriptionRatePlan>;
+    public readonly ratePlan!: pulumi.Output<outputs.ZoneSubscriptionRatePlan | undefined>;
 
     /**
      * Create a ZoneSubscription resource with the given unique name, arguments, and options.

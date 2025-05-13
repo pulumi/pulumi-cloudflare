@@ -32,14 +32,14 @@ public final class AuthenticatedOriginPullsSettingsState extends com.pulumi.reso
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -93,7 +93,7 @@ public final class AuthenticatedOriginPullsSettingsState extends com.pulumi.reso
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class AuthenticatedOriginPullsSettingsState extends com.pulumi.reso
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

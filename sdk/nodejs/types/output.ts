@@ -110,7 +110,7 @@ export interface AccessApplicationPolicy {
     /**
      * The rules that define how users may connect to the targets secured by your application.
      */
-    connectionRules: outputs.AccessApplicationPolicyConnectionRules;
+    connectionRules?: outputs.AccessApplicationPolicyConnectionRules;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -119,7 +119,7 @@ export interface AccessApplicationPolicy {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    excludes: outputs.AccessApplicationPolicyExclude[];
+    excludes?: outputs.AccessApplicationPolicyExclude[];
     /**
      * The UUID of the policy
      */
@@ -127,7 +127,7 @@ export interface AccessApplicationPolicy {
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes: outputs.AccessApplicationPolicyInclude[];
+    includes?: outputs.AccessApplicationPolicyInclude[];
     /**
      * The name of the Access policy.
      */
@@ -139,14 +139,14 @@ export interface AccessApplicationPolicy {
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    requires: outputs.AccessApplicationPolicyRequire[];
+    requires?: outputs.AccessApplicationPolicyRequire[];
 }
 
 export interface AccessApplicationPolicyConnectionRules {
     /**
      * The SSH-specific rules that define how users may connect to the targets secured by your application.
      */
-    ssh: outputs.AccessApplicationPolicyConnectionRulesSsh;
+    ssh?: outputs.AccessApplicationPolicyConnectionRulesSsh;
 }
 
 export interface AccessApplicationPolicyConnectionRulesSsh {
@@ -165,30 +165,30 @@ export interface AccessApplicationPolicyExclude {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.AccessApplicationPolicyExcludeAnyValidServiceToken;
-    authContext: outputs.AccessApplicationPolicyExcludeAuthContext;
-    authMethod: outputs.AccessApplicationPolicyExcludeAuthMethod;
-    azureAd: outputs.AccessApplicationPolicyExcludeAzureAd;
+    authContext?: outputs.AccessApplicationPolicyExcludeAuthContext;
+    authMethod?: outputs.AccessApplicationPolicyExcludeAuthMethod;
+    azureAd?: outputs.AccessApplicationPolicyExcludeAzureAd;
     certificate?: outputs.AccessApplicationPolicyExcludeCertificate;
-    commonName: outputs.AccessApplicationPolicyExcludeCommonName;
-    devicePosture: outputs.AccessApplicationPolicyExcludeDevicePosture;
-    email: outputs.AccessApplicationPolicyExcludeEmail;
-    emailDomain: outputs.AccessApplicationPolicyExcludeEmailDomain;
-    emailList: outputs.AccessApplicationPolicyExcludeEmailList;
+    commonName?: outputs.AccessApplicationPolicyExcludeCommonName;
+    devicePosture?: outputs.AccessApplicationPolicyExcludeDevicePosture;
+    email?: outputs.AccessApplicationPolicyExcludeEmail;
+    emailDomain?: outputs.AccessApplicationPolicyExcludeEmailDomain;
+    emailList?: outputs.AccessApplicationPolicyExcludeEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.AccessApplicationPolicyExcludeEveryone;
-    externalEvaluation: outputs.AccessApplicationPolicyExcludeExternalEvaluation;
-    geo: outputs.AccessApplicationPolicyExcludeGeo;
-    githubOrganization: outputs.AccessApplicationPolicyExcludeGithubOrganization;
-    group: outputs.AccessApplicationPolicyExcludeGroup;
-    gsuite: outputs.AccessApplicationPolicyExcludeGsuite;
-    ip: outputs.AccessApplicationPolicyExcludeIp;
-    ipList: outputs.AccessApplicationPolicyExcludeIpList;
-    loginMethod: outputs.AccessApplicationPolicyExcludeLoginMethod;
-    okta: outputs.AccessApplicationPolicyExcludeOkta;
-    saml: outputs.AccessApplicationPolicyExcludeSaml;
-    serviceToken: outputs.AccessApplicationPolicyExcludeServiceToken;
+    externalEvaluation?: outputs.AccessApplicationPolicyExcludeExternalEvaluation;
+    geo?: outputs.AccessApplicationPolicyExcludeGeo;
+    githubOrganization?: outputs.AccessApplicationPolicyExcludeGithubOrganization;
+    group?: outputs.AccessApplicationPolicyExcludeGroup;
+    gsuite?: outputs.AccessApplicationPolicyExcludeGsuite;
+    ip?: outputs.AccessApplicationPolicyExcludeIp;
+    ipList?: outputs.AccessApplicationPolicyExcludeIpList;
+    loginMethod?: outputs.AccessApplicationPolicyExcludeLoginMethod;
+    okta?: outputs.AccessApplicationPolicyExcludeOkta;
+    saml?: outputs.AccessApplicationPolicyExcludeSaml;
+    serviceToken?: outputs.AccessApplicationPolicyExcludeServiceToken;
 }
 
 export interface AccessApplicationPolicyExcludeAnyValidServiceToken {
@@ -378,30 +378,30 @@ export interface AccessApplicationPolicyInclude {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.AccessApplicationPolicyIncludeAnyValidServiceToken;
-    authContext: outputs.AccessApplicationPolicyIncludeAuthContext;
-    authMethod: outputs.AccessApplicationPolicyIncludeAuthMethod;
-    azureAd: outputs.AccessApplicationPolicyIncludeAzureAd;
+    authContext?: outputs.AccessApplicationPolicyIncludeAuthContext;
+    authMethod?: outputs.AccessApplicationPolicyIncludeAuthMethod;
+    azureAd?: outputs.AccessApplicationPolicyIncludeAzureAd;
     certificate?: outputs.AccessApplicationPolicyIncludeCertificate;
-    commonName: outputs.AccessApplicationPolicyIncludeCommonName;
-    devicePosture: outputs.AccessApplicationPolicyIncludeDevicePosture;
-    email: outputs.AccessApplicationPolicyIncludeEmail;
-    emailDomain: outputs.AccessApplicationPolicyIncludeEmailDomain;
-    emailList: outputs.AccessApplicationPolicyIncludeEmailList;
+    commonName?: outputs.AccessApplicationPolicyIncludeCommonName;
+    devicePosture?: outputs.AccessApplicationPolicyIncludeDevicePosture;
+    email?: outputs.AccessApplicationPolicyIncludeEmail;
+    emailDomain?: outputs.AccessApplicationPolicyIncludeEmailDomain;
+    emailList?: outputs.AccessApplicationPolicyIncludeEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.AccessApplicationPolicyIncludeEveryone;
-    externalEvaluation: outputs.AccessApplicationPolicyIncludeExternalEvaluation;
-    geo: outputs.AccessApplicationPolicyIncludeGeo;
-    githubOrganization: outputs.AccessApplicationPolicyIncludeGithubOrganization;
-    group: outputs.AccessApplicationPolicyIncludeGroup;
-    gsuite: outputs.AccessApplicationPolicyIncludeGsuite;
-    ip: outputs.AccessApplicationPolicyIncludeIp;
-    ipList: outputs.AccessApplicationPolicyIncludeIpList;
-    loginMethod: outputs.AccessApplicationPolicyIncludeLoginMethod;
-    okta: outputs.AccessApplicationPolicyIncludeOkta;
-    saml: outputs.AccessApplicationPolicyIncludeSaml;
-    serviceToken: outputs.AccessApplicationPolicyIncludeServiceToken;
+    externalEvaluation?: outputs.AccessApplicationPolicyIncludeExternalEvaluation;
+    geo?: outputs.AccessApplicationPolicyIncludeGeo;
+    githubOrganization?: outputs.AccessApplicationPolicyIncludeGithubOrganization;
+    group?: outputs.AccessApplicationPolicyIncludeGroup;
+    gsuite?: outputs.AccessApplicationPolicyIncludeGsuite;
+    ip?: outputs.AccessApplicationPolicyIncludeIp;
+    ipList?: outputs.AccessApplicationPolicyIncludeIpList;
+    loginMethod?: outputs.AccessApplicationPolicyIncludeLoginMethod;
+    okta?: outputs.AccessApplicationPolicyIncludeOkta;
+    saml?: outputs.AccessApplicationPolicyIncludeSaml;
+    serviceToken?: outputs.AccessApplicationPolicyIncludeServiceToken;
 }
 
 export interface AccessApplicationPolicyIncludeAnyValidServiceToken {
@@ -591,30 +591,30 @@ export interface AccessApplicationPolicyRequire {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.AccessApplicationPolicyRequireAnyValidServiceToken;
-    authContext: outputs.AccessApplicationPolicyRequireAuthContext;
-    authMethod: outputs.AccessApplicationPolicyRequireAuthMethod;
-    azureAd: outputs.AccessApplicationPolicyRequireAzureAd;
+    authContext?: outputs.AccessApplicationPolicyRequireAuthContext;
+    authMethod?: outputs.AccessApplicationPolicyRequireAuthMethod;
+    azureAd?: outputs.AccessApplicationPolicyRequireAzureAd;
     certificate?: outputs.AccessApplicationPolicyRequireCertificate;
-    commonName: outputs.AccessApplicationPolicyRequireCommonName;
-    devicePosture: outputs.AccessApplicationPolicyRequireDevicePosture;
-    email: outputs.AccessApplicationPolicyRequireEmail;
-    emailDomain: outputs.AccessApplicationPolicyRequireEmailDomain;
-    emailList: outputs.AccessApplicationPolicyRequireEmailList;
+    commonName?: outputs.AccessApplicationPolicyRequireCommonName;
+    devicePosture?: outputs.AccessApplicationPolicyRequireDevicePosture;
+    email?: outputs.AccessApplicationPolicyRequireEmail;
+    emailDomain?: outputs.AccessApplicationPolicyRequireEmailDomain;
+    emailList?: outputs.AccessApplicationPolicyRequireEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.AccessApplicationPolicyRequireEveryone;
-    externalEvaluation: outputs.AccessApplicationPolicyRequireExternalEvaluation;
-    geo: outputs.AccessApplicationPolicyRequireGeo;
-    githubOrganization: outputs.AccessApplicationPolicyRequireGithubOrganization;
-    group: outputs.AccessApplicationPolicyRequireGroup;
-    gsuite: outputs.AccessApplicationPolicyRequireGsuite;
-    ip: outputs.AccessApplicationPolicyRequireIp;
-    ipList: outputs.AccessApplicationPolicyRequireIpList;
-    loginMethod: outputs.AccessApplicationPolicyRequireLoginMethod;
-    okta: outputs.AccessApplicationPolicyRequireOkta;
-    saml: outputs.AccessApplicationPolicyRequireSaml;
-    serviceToken: outputs.AccessApplicationPolicyRequireServiceToken;
+    externalEvaluation?: outputs.AccessApplicationPolicyRequireExternalEvaluation;
+    geo?: outputs.AccessApplicationPolicyRequireGeo;
+    githubOrganization?: outputs.AccessApplicationPolicyRequireGithubOrganization;
+    group?: outputs.AccessApplicationPolicyRequireGroup;
+    gsuite?: outputs.AccessApplicationPolicyRequireGsuite;
+    ip?: outputs.AccessApplicationPolicyRequireIp;
+    ipList?: outputs.AccessApplicationPolicyRequireIpList;
+    loginMethod?: outputs.AccessApplicationPolicyRequireLoginMethod;
+    okta?: outputs.AccessApplicationPolicyRequireOkta;
+    saml?: outputs.AccessApplicationPolicyRequireSaml;
+    serviceToken?: outputs.AccessApplicationPolicyRequireServiceToken;
 }
 
 export interface AccessApplicationPolicyRequireAnyValidServiceToken {
@@ -830,8 +830,8 @@ export interface AccessApplicationSaasApp {
      */
     consumerServiceUrl?: string;
     createdAt: string;
-    customAttributes: outputs.AccessApplicationSaasAppCustomAttribute[];
-    customClaims: outputs.AccessApplicationSaasAppCustomClaim[];
+    customAttributes?: outputs.AccessApplicationSaasAppCustomAttribute[];
+    customClaims?: outputs.AccessApplicationSaasAppCustomClaim[];
     /**
      * The URL that the user will be redirected to after a successful login for IDP initiated logins.
      */
@@ -844,7 +844,7 @@ export interface AccessApplicationSaasApp {
      * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
      */
     groupFilterRegex?: string;
-    hybridAndImplicitOptions: outputs.AccessApplicationSaasAppHybridAndImplicitOptions;
+    hybridAndImplicitOptions?: outputs.AccessApplicationSaasAppHybridAndImplicitOptions;
     /**
      * The unique identifier for your SaaS application.
      */
@@ -866,7 +866,7 @@ export interface AccessApplicationSaasApp {
      * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
      */
     redirectUris?: string[];
-    refreshTokenOptions: outputs.AccessApplicationSaasAppRefreshTokenOptions;
+    refreshTokenOptions?: outputs.AccessApplicationSaasAppRefreshTokenOptions;
     /**
      * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
      */
@@ -904,7 +904,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
      * If the attribute is required when building a SAML assertion.
      */
     required?: boolean;
-    source: outputs.AccessApplicationSaasAppCustomAttributeSource;
+    source?: outputs.AccessApplicationSaasAppCustomAttributeSource;
 }
 
 export interface AccessApplicationSaasAppCustomAttributeSource {
@@ -915,7 +915,7 @@ export interface AccessApplicationSaasAppCustomAttributeSource {
     /**
      * A mapping from IdP ID to attribute name.
      */
-    nameByIdps: outputs.AccessApplicationSaasAppCustomAttributeSourceNameByIdp[];
+    nameByIdps?: outputs.AccessApplicationSaasAppCustomAttributeSourceNameByIdp[];
 }
 
 export interface AccessApplicationSaasAppCustomAttributeSourceNameByIdp {
@@ -943,7 +943,7 @@ export interface AccessApplicationSaasAppCustomClaim {
      * Available values: "groups", "profile", "email", "openid".
      */
     scope?: string;
-    source: outputs.AccessApplicationSaasAppCustomClaimSource;
+    source?: outputs.AccessApplicationSaasAppCustomClaimSource;
 }
 
 export interface AccessApplicationSaasAppCustomClaimSource {
@@ -979,7 +979,7 @@ export interface AccessApplicationScimConfig {
     /**
      * Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
      */
-    authentication: outputs.AccessApplicationScimConfigAuthentication;
+    authentication?: outputs.AccessApplicationScimConfigAuthentication;
     /**
      * If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
      */
@@ -995,7 +995,7 @@ export interface AccessApplicationScimConfig {
     /**
      * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
      */
-    mappings: outputs.AccessApplicationScimConfigMapping[];
+    mappings?: outputs.AccessApplicationScimConfigMapping[];
     /**
      * The base URI for the application's SCIM-compatible API.
      */
@@ -1054,7 +1054,7 @@ export interface AccessApplicationScimConfigMapping {
     /**
      * Whether or not this mapping applies to creates, updates, or deletes.
      */
-    operations: outputs.AccessApplicationScimConfigMappingOperations;
+    operations?: outputs.AccessApplicationScimConfigMappingOperations;
     /**
      * Which SCIM resource type this mapping applies to.
      */
@@ -1106,30 +1106,30 @@ export interface AccessGroupExclude {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.AccessGroupExcludeAnyValidServiceToken;
-    authContext: outputs.AccessGroupExcludeAuthContext;
-    authMethod: outputs.AccessGroupExcludeAuthMethod;
-    azureAd: outputs.AccessGroupExcludeAzureAd;
+    authContext?: outputs.AccessGroupExcludeAuthContext;
+    authMethod?: outputs.AccessGroupExcludeAuthMethod;
+    azureAd?: outputs.AccessGroupExcludeAzureAd;
     certificate?: outputs.AccessGroupExcludeCertificate;
-    commonName: outputs.AccessGroupExcludeCommonName;
-    devicePosture: outputs.AccessGroupExcludeDevicePosture;
-    email: outputs.AccessGroupExcludeEmail;
-    emailDomain: outputs.AccessGroupExcludeEmailDomain;
-    emailList: outputs.AccessGroupExcludeEmailList;
+    commonName?: outputs.AccessGroupExcludeCommonName;
+    devicePosture?: outputs.AccessGroupExcludeDevicePosture;
+    email?: outputs.AccessGroupExcludeEmail;
+    emailDomain?: outputs.AccessGroupExcludeEmailDomain;
+    emailList?: outputs.AccessGroupExcludeEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.AccessGroupExcludeEveryone;
-    externalEvaluation: outputs.AccessGroupExcludeExternalEvaluation;
-    geo: outputs.AccessGroupExcludeGeo;
-    githubOrganization: outputs.AccessGroupExcludeGithubOrganization;
-    group: outputs.AccessGroupExcludeGroup;
-    gsuite: outputs.AccessGroupExcludeGsuite;
-    ip: outputs.AccessGroupExcludeIp;
-    ipList: outputs.AccessGroupExcludeIpList;
-    loginMethod: outputs.AccessGroupExcludeLoginMethod;
-    okta: outputs.AccessGroupExcludeOkta;
-    saml: outputs.AccessGroupExcludeSaml;
-    serviceToken: outputs.AccessGroupExcludeServiceToken;
+    externalEvaluation?: outputs.AccessGroupExcludeExternalEvaluation;
+    geo?: outputs.AccessGroupExcludeGeo;
+    githubOrganization?: outputs.AccessGroupExcludeGithubOrganization;
+    group?: outputs.AccessGroupExcludeGroup;
+    gsuite?: outputs.AccessGroupExcludeGsuite;
+    ip?: outputs.AccessGroupExcludeIp;
+    ipList?: outputs.AccessGroupExcludeIpList;
+    loginMethod?: outputs.AccessGroupExcludeLoginMethod;
+    okta?: outputs.AccessGroupExcludeOkta;
+    saml?: outputs.AccessGroupExcludeSaml;
+    serviceToken?: outputs.AccessGroupExcludeServiceToken;
 }
 
 export interface AccessGroupExcludeAnyValidServiceToken {
@@ -1532,30 +1532,30 @@ export interface AccessGroupRequire {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.AccessGroupRequireAnyValidServiceToken;
-    authContext: outputs.AccessGroupRequireAuthContext;
-    authMethod: outputs.AccessGroupRequireAuthMethod;
-    azureAd: outputs.AccessGroupRequireAzureAd;
+    authContext?: outputs.AccessGroupRequireAuthContext;
+    authMethod?: outputs.AccessGroupRequireAuthMethod;
+    azureAd?: outputs.AccessGroupRequireAzureAd;
     certificate?: outputs.AccessGroupRequireCertificate;
-    commonName: outputs.AccessGroupRequireCommonName;
-    devicePosture: outputs.AccessGroupRequireDevicePosture;
-    email: outputs.AccessGroupRequireEmail;
-    emailDomain: outputs.AccessGroupRequireEmailDomain;
-    emailList: outputs.AccessGroupRequireEmailList;
+    commonName?: outputs.AccessGroupRequireCommonName;
+    devicePosture?: outputs.AccessGroupRequireDevicePosture;
+    email?: outputs.AccessGroupRequireEmail;
+    emailDomain?: outputs.AccessGroupRequireEmailDomain;
+    emailList?: outputs.AccessGroupRequireEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.AccessGroupRequireEveryone;
-    externalEvaluation: outputs.AccessGroupRequireExternalEvaluation;
-    geo: outputs.AccessGroupRequireGeo;
-    githubOrganization: outputs.AccessGroupRequireGithubOrganization;
-    group: outputs.AccessGroupRequireGroup;
-    gsuite: outputs.AccessGroupRequireGsuite;
-    ip: outputs.AccessGroupRequireIp;
-    ipList: outputs.AccessGroupRequireIpList;
-    loginMethod: outputs.AccessGroupRequireLoginMethod;
-    okta: outputs.AccessGroupRequireOkta;
-    saml: outputs.AccessGroupRequireSaml;
-    serviceToken: outputs.AccessGroupRequireServiceToken;
+    externalEvaluation?: outputs.AccessGroupRequireExternalEvaluation;
+    geo?: outputs.AccessGroupRequireGeo;
+    githubOrganization?: outputs.AccessGroupRequireGithubOrganization;
+    group?: outputs.AccessGroupRequireGroup;
+    gsuite?: outputs.AccessGroupRequireGsuite;
+    ip?: outputs.AccessGroupRequireIp;
+    ipList?: outputs.AccessGroupRequireIpList;
+    loginMethod?: outputs.AccessGroupRequireLoginMethod;
+    okta?: outputs.AccessGroupRequireOkta;
+    saml?: outputs.AccessGroupRequireSaml;
+    serviceToken?: outputs.AccessGroupRequireServiceToken;
 }
 
 export interface AccessGroupRequireAnyValidServiceToken {
@@ -1961,30 +1961,30 @@ export interface AccessPolicyExclude {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.AccessPolicyExcludeAnyValidServiceToken;
-    authContext: outputs.AccessPolicyExcludeAuthContext;
-    authMethod: outputs.AccessPolicyExcludeAuthMethod;
-    azureAd: outputs.AccessPolicyExcludeAzureAd;
+    authContext?: outputs.AccessPolicyExcludeAuthContext;
+    authMethod?: outputs.AccessPolicyExcludeAuthMethod;
+    azureAd?: outputs.AccessPolicyExcludeAzureAd;
     certificate?: outputs.AccessPolicyExcludeCertificate;
-    commonName: outputs.AccessPolicyExcludeCommonName;
-    devicePosture: outputs.AccessPolicyExcludeDevicePosture;
-    email: outputs.AccessPolicyExcludeEmail;
-    emailDomain: outputs.AccessPolicyExcludeEmailDomain;
-    emailList: outputs.AccessPolicyExcludeEmailList;
+    commonName?: outputs.AccessPolicyExcludeCommonName;
+    devicePosture?: outputs.AccessPolicyExcludeDevicePosture;
+    email?: outputs.AccessPolicyExcludeEmail;
+    emailDomain?: outputs.AccessPolicyExcludeEmailDomain;
+    emailList?: outputs.AccessPolicyExcludeEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.AccessPolicyExcludeEveryone;
-    externalEvaluation: outputs.AccessPolicyExcludeExternalEvaluation;
-    geo: outputs.AccessPolicyExcludeGeo;
-    githubOrganization: outputs.AccessPolicyExcludeGithubOrganization;
-    group: outputs.AccessPolicyExcludeGroup;
-    gsuite: outputs.AccessPolicyExcludeGsuite;
-    ip: outputs.AccessPolicyExcludeIp;
-    ipList: outputs.AccessPolicyExcludeIpList;
-    loginMethod: outputs.AccessPolicyExcludeLoginMethod;
-    okta: outputs.AccessPolicyExcludeOkta;
-    saml: outputs.AccessPolicyExcludeSaml;
-    serviceToken: outputs.AccessPolicyExcludeServiceToken;
+    externalEvaluation?: outputs.AccessPolicyExcludeExternalEvaluation;
+    geo?: outputs.AccessPolicyExcludeGeo;
+    githubOrganization?: outputs.AccessPolicyExcludeGithubOrganization;
+    group?: outputs.AccessPolicyExcludeGroup;
+    gsuite?: outputs.AccessPolicyExcludeGsuite;
+    ip?: outputs.AccessPolicyExcludeIp;
+    ipList?: outputs.AccessPolicyExcludeIpList;
+    loginMethod?: outputs.AccessPolicyExcludeLoginMethod;
+    okta?: outputs.AccessPolicyExcludeOkta;
+    saml?: outputs.AccessPolicyExcludeSaml;
+    serviceToken?: outputs.AccessPolicyExcludeServiceToken;
 }
 
 export interface AccessPolicyExcludeAnyValidServiceToken {
@@ -2387,30 +2387,30 @@ export interface AccessPolicyRequire {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.AccessPolicyRequireAnyValidServiceToken;
-    authContext: outputs.AccessPolicyRequireAuthContext;
-    authMethod: outputs.AccessPolicyRequireAuthMethod;
-    azureAd: outputs.AccessPolicyRequireAzureAd;
+    authContext?: outputs.AccessPolicyRequireAuthContext;
+    authMethod?: outputs.AccessPolicyRequireAuthMethod;
+    azureAd?: outputs.AccessPolicyRequireAzureAd;
     certificate?: outputs.AccessPolicyRequireCertificate;
-    commonName: outputs.AccessPolicyRequireCommonName;
-    devicePosture: outputs.AccessPolicyRequireDevicePosture;
-    email: outputs.AccessPolicyRequireEmail;
-    emailDomain: outputs.AccessPolicyRequireEmailDomain;
-    emailList: outputs.AccessPolicyRequireEmailList;
+    commonName?: outputs.AccessPolicyRequireCommonName;
+    devicePosture?: outputs.AccessPolicyRequireDevicePosture;
+    email?: outputs.AccessPolicyRequireEmail;
+    emailDomain?: outputs.AccessPolicyRequireEmailDomain;
+    emailList?: outputs.AccessPolicyRequireEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.AccessPolicyRequireEveryone;
-    externalEvaluation: outputs.AccessPolicyRequireExternalEvaluation;
-    geo: outputs.AccessPolicyRequireGeo;
-    githubOrganization: outputs.AccessPolicyRequireGithubOrganization;
-    group: outputs.AccessPolicyRequireGroup;
-    gsuite: outputs.AccessPolicyRequireGsuite;
-    ip: outputs.AccessPolicyRequireIp;
-    ipList: outputs.AccessPolicyRequireIpList;
-    loginMethod: outputs.AccessPolicyRequireLoginMethod;
-    okta: outputs.AccessPolicyRequireOkta;
-    saml: outputs.AccessPolicyRequireSaml;
-    serviceToken: outputs.AccessPolicyRequireServiceToken;
+    externalEvaluation?: outputs.AccessPolicyRequireExternalEvaluation;
+    geo?: outputs.AccessPolicyRequireGeo;
+    githubOrganization?: outputs.AccessPolicyRequireGithubOrganization;
+    group?: outputs.AccessPolicyRequireGroup;
+    gsuite?: outputs.AccessPolicyRequireGsuite;
+    ip?: outputs.AccessPolicyRequireIp;
+    ipList?: outputs.AccessPolicyRequireIpList;
+    loginMethod?: outputs.AccessPolicyRequireLoginMethod;
+    okta?: outputs.AccessPolicyRequireOkta;
+    saml?: outputs.AccessPolicyRequireSaml;
+    serviceToken?: outputs.AccessPolicyRequireServiceToken;
 }
 
 export interface AccessPolicyRequireAnyValidServiceToken {
@@ -2613,11 +2613,11 @@ export interface AccessRuleScope {
      */
     email: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     id: string;
     /**
-     * The scope of the rule.
+     * Defines the scope of the rule.
      * Available values: "user", "organization".
      */
     type: string;
@@ -2635,7 +2635,7 @@ export interface AccountDnsSettingsZoneDefaults {
     /**
      * Settings for this internal zone.
      */
-    internalDns: outputs.AccountDnsSettingsZoneDefaultsInternalDns;
+    internalDns?: outputs.AccountDnsSettingsZoneDefaultsInternalDns;
     /**
      * Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
      */
@@ -2643,7 +2643,7 @@ export interface AccountDnsSettingsZoneDefaults {
     /**
      * Settings determining the nameservers through which the zone should be available.
      */
-    nameservers: outputs.AccountDnsSettingsZoneDefaultsNameservers;
+    nameservers?: outputs.AccountDnsSettingsZoneDefaultsNameservers;
     /**
      * The time to live (TTL) of the zone's nameserver (NS) records.
      */
@@ -2655,7 +2655,7 @@ export interface AccountDnsSettingsZoneDefaults {
     /**
      * Components of the zone's SOA record.
      */
-    soa: outputs.AccountDnsSettingsZoneDefaultsSoa;
+    soa?: outputs.AccountDnsSettingsZoneDefaultsSoa;
     /**
      * Whether the zone mode is a regular or CDN/DNS only zone.
      * Available values: "standard", "cdn*only", "dns*only".
@@ -2829,7 +2829,7 @@ export interface AccountTokenCondition {
     /**
      * Client IP restrictions.
      */
-    requestIp: outputs.AccountTokenConditionRequestIp;
+    requestIp?: outputs.AccountTokenConditionRequestIp;
 }
 
 export interface AccountTokenConditionRequestIp {
@@ -2921,12 +2921,24 @@ export interface ApiShieldAuthIdCharacteristic {
 
 export interface ApiShieldError {
     code: number;
+    documentationUrl: string;
     message: string;
+    source: outputs.ApiShieldErrorSource;
+}
+
+export interface ApiShieldErrorSource {
+    pointer: string;
 }
 
 export interface ApiShieldMessage {
     code: number;
+    documentationUrl: string;
     message: string;
+    source: outputs.ApiShieldMessageSource;
+}
+
+export interface ApiShieldMessageSource {
+    pointer: string;
 }
 
 export interface ApiShieldOperationFeatures {
@@ -3047,7 +3059,7 @@ export interface ApiShieldOperationFeaturesSchemaInfo {
 export interface ApiShieldOperationFeaturesSchemaInfoActiveSchema {
     createdAt: string;
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     /**
@@ -3108,7 +3120,7 @@ export interface ApiShieldSchemaSchema {
      */
     name: string;
     /**
-     * UUID
+     * UUID.
      */
     schemaId: string;
     /**
@@ -3147,7 +3159,7 @@ export interface ApiTokenCondition {
     /**
      * Client IP restrictions.
      */
-    requestIp: outputs.ApiTokenConditionRequestIp;
+    requestIp?: outputs.ApiTokenConditionRequestIp;
 }
 
 export interface ApiTokenConditionRequestIp {
@@ -3247,19 +3259,7 @@ export interface BotManagementStaleZoneConfiguration {
     suppressSessionScore: boolean;
 }
 
-export interface CloudConnectorRulesParameters {
-    /**
-     * Host to perform Cloud Connection to
-     */
-    host: string;
-}
-
 export interface CloudConnectorRulesRule {
-    /**
-     * Cloud Provider type
-     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-     */
-    cloudProvider?: string;
     description?: string;
     enabled?: boolean;
     expression?: string;
@@ -3267,7 +3267,12 @@ export interface CloudConnectorRulesRule {
     /**
      * Parameters of Cloud Connector Rule
      */
-    parameters: outputs.CloudConnectorRulesRuleParameters;
+    parameters?: outputs.CloudConnectorRulesRuleParameters;
+    /**
+     * Cloud Provider type
+     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+     */
+    provider?: string;
 }
 
 export interface CloudConnectorRulesRuleParameters {
@@ -3279,7 +3284,7 @@ export interface CloudConnectorRulesRuleParameters {
 
 export interface ContentScanningExpressionBody {
     /**
-     * Ruleset expression to use in matching content objects
+     * Defines the ruleset expression to use in matching content objects.
      */
     payload: string;
 }
@@ -3458,34 +3463,12 @@ export interface CustomSslKeylessServerTunnel {
     vnetId: string;
 }
 
-export interface DeviceDexTestData {
+export interface D1DatabaseReadReplication {
     /**
-     * The desired endpoint to test.
+     * The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+     * Available values: "auto", "disabled".
      */
-    host?: string;
-    /**
-     * The type of test.
-     */
-    kind?: string;
-    /**
-     * The HTTP request method type.
-     */
-    method?: string;
-}
-
-export interface DeviceDexTestTargetPolicy {
-    /**
-     * Whether the profile is the account default
-     */
-    default?: boolean;
-    /**
-     * The id of the device settings profile
-     */
-    id?: string;
-    /**
-     * The name of the device settings profile
-     */
-    name?: string;
+    mode: string;
 }
 
 export interface DeviceManagedNetworksConfig {
@@ -3609,7 +3592,7 @@ export interface DevicePostureRuleInput {
      * For more details on last seen, please refer to the Crowdstrike documentation.
      */
     lastSeen?: string;
-    locations: outputs.DevicePostureRuleInputLocations;
+    locations?: outputs.DevicePostureRuleInputLocations;
     /**
      * Network status of device.
      * Available values: "connected", "disconnected", "disconnecting", "connecting".
@@ -3717,7 +3700,7 @@ export interface DevicePostureRuleInputLocations {
 
 export interface DevicePostureRuleMatch {
     /**
-     * Available values: "windows", "mac", "linux", "android", "ios".
+     * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform?: string;
 }
@@ -3743,7 +3726,7 @@ export interface DlpCustomProfileContextAwarenessSkip {
 export interface DlpCustomProfileEntry {
     enabled: boolean;
     name: string;
-    pattern: outputs.DlpCustomProfileEntryPattern;
+    pattern?: outputs.DlpCustomProfileEntryPattern;
     words?: string[];
 }
 
@@ -3767,9 +3750,9 @@ export interface DlpCustomProfileProfile {
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      */
-    contextAwareness: outputs.DlpCustomProfileProfileContextAwareness;
+    contextAwareness?: outputs.DlpCustomProfileProfileContextAwareness;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: string;
     entries: outputs.DlpCustomProfileProfileEntry[];
@@ -3778,7 +3761,7 @@ export interface DlpCustomProfileProfile {
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
-    sharedEntries: outputs.DlpCustomProfileProfileSharedEntry[];
+    sharedEntries?: outputs.DlpCustomProfileProfileSharedEntry[];
 }
 
 export interface DlpCustomProfileProfileContextAwareness {
@@ -4051,12 +4034,24 @@ export interface EmailRoutingCatchAllMatcher {
 
 export interface EmailRoutingDnsError {
     code: number;
+    documentationUrl: string;
     message: string;
+    source: outputs.EmailRoutingDnsErrorSource;
+}
+
+export interface EmailRoutingDnsErrorSource {
+    pointer: string;
 }
 
 export interface EmailRoutingDnsMessage {
     code: number;
+    documentationUrl: string;
     message: string;
+    source: outputs.EmailRoutingDnsMessageSource;
+}
+
+export interface EmailRoutingDnsMessageSource {
+    pointer: string;
 }
 
 export interface EmailRoutingDnsResult {
@@ -4119,19 +4114,19 @@ export interface EmailRoutingDnsResultErrorMissing {
 
 export interface EmailRoutingDnsResultInfo {
     /**
-     * Total number of results for the requested service
+     * Total number of results for the requested service.
      */
     count: number;
     /**
-     * Current page within paginated list of results
+     * Current page within paginated list of results.
      */
     page: number;
     /**
-     * Number of results per page of results
+     * Number of results per page of results.
      */
     perPage: number;
     /**
-     * Total results available without any search parameters
+     * Total results available without any search parameters.
      */
     totalCount: number;
 }
@@ -4166,7 +4161,7 @@ export interface EmailRoutingRuleAction {
      * Available values: "drop", "forward", "worker".
      */
     type: string;
-    values: string[];
+    values?: string[];
 }
 
 export interface EmailRoutingRuleMatcher {
@@ -4174,7 +4169,7 @@ export interface EmailRoutingRuleMatcher {
      * Field for type matcher.
      * Available values: "to".
      */
-    field: string;
+    field?: string;
     /**
      * Type of matcher.
      * Available values: "literal".
@@ -4183,7 +4178,7 @@ export interface EmailRoutingRuleMatcher {
     /**
      * Value for matcher.
      */
-    value: string;
+    value?: string;
 }
 
 export interface EmailSecurityTrustedDomainsBody {
@@ -4270,12 +4265,12 @@ export interface GetAccessRuleConfiguration {
 export interface GetAccessRuleFilter {
     configuration?: outputs.GetAccessRuleFilterConfiguration;
     /**
-     * The direction used to sort returned rules.
+     * Defines the direction used to sort returned rules.
      * Available values: "asc", "desc".
      */
     direction?: string;
     /**
-     * When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
+     * Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.
      * Available values: "any", "all".
      */
     match: string;
@@ -4285,12 +4280,12 @@ export interface GetAccessRuleFilter {
      */
     mode?: string;
     /**
-     * The string to search for in the notes of existing IP Access rules.
+     * Defines the string to search for in the notes of existing IP Access rules.
      * Notes: For example, the string 'attack' would match IP Access rules with notes 'Attack 26/02' and 'Attack 27/02'. The search is case insensitive.
      */
     notes?: string;
     /**
-     * The field used to sort returned rules.
+     * Defines the field used to sort returned rules.
      * Available values: "configuration.target", "configuration.value", "mode".
      */
     order?: string;
@@ -4298,12 +4293,12 @@ export interface GetAccessRuleFilter {
 
 export interface GetAccessRuleFilterConfiguration {
     /**
-     * The target to search in existing rules.
+     * Defines the target to search in existing rules.
      * Available values: "ip", "ipRange", "asn", "country".
      */
     target?: string;
     /**
-     * The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
      * Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
      */
     value?: string;
@@ -4315,11 +4310,11 @@ export interface GetAccessRuleScope {
      */
     email: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     id: string;
     /**
-     * The scope of the rule.
+     * Defines the scope of the rule.
      * Available values: "user", "organization".
      */
     type: string;
@@ -4327,12 +4322,12 @@ export interface GetAccessRuleScope {
 
 export interface GetAccessRulesConfiguration {
     /**
-     * The target to search in existing rules.
+     * Defines the target to search in existing rules.
      * Available values: "ip", "ipRange", "asn", "country".
      */
     target?: string;
     /**
-     * The target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
+     * Defines the target value to search for in existing rules: an IP address, an IP address range, or a country code, depending on the provided `configuration.target`.
      * Notes: You can search for a single IPv4 address, an IP address range with a subnet of '/16' or '/24', or a two-letter ISO-3166-1 alpha-2 country code.
      */
     value?: string;
@@ -4392,11 +4387,11 @@ export interface GetAccessRulesResultScope {
      */
     email: string;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     id: string;
     /**
-     * The scope of the rule.
+     * Defines the scope of the rule.
      * Available values: "user", "organization".
      */
     type: string;
@@ -4488,7 +4483,7 @@ export interface GetAccountDnsSettingsInternalViewsResult {
      */
     createdTime: string;
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     /**
@@ -5575,7 +5570,7 @@ export interface GetApiShieldDiscoveryOperationsResult {
      */
     host: string;
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     lastUpdated: string;
@@ -5732,7 +5727,7 @@ export interface GetApiShieldOperationFeaturesSchemaInfo {
 export interface GetApiShieldOperationFeaturesSchemaInfoActiveSchema {
     createdAt: string;
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     /**
@@ -5827,7 +5822,7 @@ export interface GetApiShieldOperationsResult {
      */
     method: string;
     /**
-     * UUID
+     * UUID.
      */
     operationId: string;
 }
@@ -5950,7 +5945,7 @@ export interface GetApiShieldOperationsResultFeaturesSchemaInfo {
 export interface GetApiShieldOperationsResultFeaturesSchemaInfoActiveSchema {
     createdAt: string;
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     /**
@@ -6011,7 +6006,7 @@ export interface GetApiShieldSchemasResult {
      */
     name: string;
     /**
-     * UUID
+     * UUID.
      */
     schemaId: string;
     /**
@@ -6218,7 +6213,7 @@ export interface GetAuthenticatedOriginPullsCertificatesResult {
      */
     expiresOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     /**
@@ -6366,11 +6361,6 @@ export interface GetCertificatePacksResult {
 }
 
 export interface GetCloudConnectorRulesListResult {
-    /**
-     * Cloud Provider type
-     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
-     */
-    cloudProvider: string;
     description: string;
     enabled: boolean;
     expression: string;
@@ -6379,6 +6369,11 @@ export interface GetCloudConnectorRulesListResult {
      * Parameters of Cloud Connector Rule
      */
     parameters: outputs.GetCloudConnectorRulesListResultParameters;
+    /**
+     * Cloud Provider type
+     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+     */
+    provider: string;
 }
 
 export interface GetCloudConnectorRulesListResultParameters {
@@ -6443,11 +6438,11 @@ export interface GetCloudforceOneRequestsResult {
 
 export interface GetContentScanningExpressionsResult {
     /**
-     * The unique ID for this custom scan expression
+     * defines the unique ID for this custom scan expression.
      */
     id: string;
     /**
-     * Ruleset expression to use in matching content objects
+     * Defines the ruleset expression to use in matching content objects.
      */
     payload: string;
 }
@@ -6662,7 +6657,7 @@ export interface GetCustomHostnamesResult {
      */
     hostname: string;
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     /**
@@ -6941,7 +6936,7 @@ export interface GetCustomSslsResult {
     geoRestrictions: outputs.GetCustomSslsResultGeoRestrictions;
     hosts: string[];
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     /**
@@ -6975,7 +6970,7 @@ export interface GetCustomSslsResult {
      */
     uploadedOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -7047,6 +7042,14 @@ export interface GetD1DatabaseFilter {
      * a database name to search for.
      */
     name?: string;
+}
+
+export interface GetD1DatabaseReadReplication {
+    /**
+     * The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted).
+     * Available values: "auto", "disabled".
+     */
+    mode: string;
 }
 
 export interface GetD1DatabasesResult {
@@ -7872,12 +7875,24 @@ export interface GetEmailRoutingCatchAllMatcher {
 
 export interface GetEmailRoutingDnsError {
     code: number;
+    documentationUrl: string;
     message: string;
+    source: outputs.GetEmailRoutingDnsErrorSource;
+}
+
+export interface GetEmailRoutingDnsErrorSource {
+    pointer: string;
 }
 
 export interface GetEmailRoutingDnsMessage {
     code: number;
+    documentationUrl: string;
     message: string;
+    source: outputs.GetEmailRoutingDnsMessageSource;
+}
+
+export interface GetEmailRoutingDnsMessageSource {
+    pointer: string;
 }
 
 export interface GetEmailRoutingDnsResult {
@@ -7940,19 +7955,19 @@ export interface GetEmailRoutingDnsResultErrorMissing {
 
 export interface GetEmailRoutingDnsResultInfo {
     /**
-     * Total number of results for the requested service
+     * Total number of results for the requested service.
      */
     count: number;
     /**
-     * Current page within paginated list of results
+     * Current page within paginated list of results.
      */
     page: number;
     /**
-     * Number of results per page of results
+     * Number of results per page of results.
      */
     perPage: number;
     /**
-     * Total results available without any search parameters
+     * Total results available without any search parameters.
      */
     totalCount: number;
 }
@@ -8483,6 +8498,21 @@ export interface GetHyperdriveConfigCaching {
     staleWhileRevalidate: number;
 }
 
+export interface GetHyperdriveConfigMtls {
+    /**
+     * CA certificate ID
+     */
+    caCertificateId: string;
+    /**
+     * mTLS certificate ID
+     */
+    mtlsCertificateId: string;
+    /**
+     * SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+     */
+    sslmode: string;
+}
+
 export interface GetHyperdriveConfigOrigin {
     /**
      * The Client ID of the Access token to use when connecting to the origin database.
@@ -8510,7 +8540,7 @@ export interface GetHyperdriveConfigOrigin {
     port: number;
     /**
      * Specifies the URL scheme used to connect to your origin database.
-     * Available values: "postgres", "postgresql".
+     * Available values: "postgres", "postgresql", "mysql".
      */
     scheme: string;
     /**
@@ -8533,6 +8563,7 @@ export interface GetHyperdriveConfigsResult {
      * When the Hyperdrive configuration was last modified.
      */
     modifiedOn: string;
+    mtls: outputs.GetHyperdriveConfigsResultMtls;
     name: string;
     origin: outputs.GetHyperdriveConfigsResultOrigin;
 }
@@ -8550,6 +8581,21 @@ export interface GetHyperdriveConfigsResultCaching {
      * When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
      */
     staleWhileRevalidate: number;
+}
+
+export interface GetHyperdriveConfigsResultMtls {
+    /**
+     * CA certificate ID
+     */
+    caCertificateId: string;
+    /**
+     * mTLS certificate ID
+     */
+    mtlsCertificateId: string;
+    /**
+     * SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+     */
+    sslmode: string;
 }
 
 export interface GetHyperdriveConfigsResultOrigin {
@@ -8579,7 +8625,7 @@ export interface GetHyperdriveConfigsResultOrigin {
     port: number;
     /**
      * Specifies the URL scheme used to connect to your origin database.
-     * Available values: "postgres", "postgresql".
+     * Available values: "postgres", "postgresql", "mysql".
      */
     scheme: string;
     /**
@@ -8720,15 +8766,15 @@ export interface GetKeylessCertificatesResultTunnel {
 
 export interface GetLeakedCredentialCheckRulesResult {
     /**
-     * The unique ID for this custom detection
+     * Defines the unique ID for this custom detection.
      */
     id: string;
     /**
-     * The ruleset expression to use in matching the password in a request
+     * Defines ehe ruleset expression to use in matching the password in a request.
      */
     password: string;
     /**
-     * The ruleset expression to use in matching the username in a request
+     * Defines the ruleset expression to use in matching the username in a request.
      */
     username: string;
 }
@@ -8748,94 +8794,6 @@ export interface GetListItemRedirect {
     statusCode: number;
     subpathMatching: boolean;
     targetUrl: string;
-}
-
-export interface GetListItemsResult {
-    /**
-     * A non-negative 32 bit integer
-     */
-    asn: number;
-    /**
-     * An informative summary of the list item.
-     */
-    comment: string;
-    /**
-     * The RFC 3339 timestamp of when the item was created.
-     */
-    createdOn: string;
-    /**
-     * Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
-     */
-    hostname: outputs.GetListItemsResultHostname;
-    /**
-     * The unique ID of the list.
-     */
-    id: string;
-    /**
-     * An IPv4 address, an IPv4 CIDR, or an IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
-     */
-    ip: string;
-    /**
-     * The RFC 3339 timestamp of when the item was last modified.
-     */
-    modifiedOn: string;
-    /**
-     * The definition of the redirect.
-     */
-    redirect: outputs.GetListItemsResultRedirect;
-}
-
-export interface GetListItemsResultHostname {
-    urlHostname: string;
-}
-
-export interface GetListItemsResultRedirect {
-    includeSubdomains: boolean;
-    preservePathSuffix: boolean;
-    preserveQueryString: boolean;
-    sourceUrl: string;
-    /**
-     * Available values: 301, 302, 307, 308.
-     */
-    statusCode: number;
-    subpathMatching: boolean;
-    targetUrl: string;
-}
-
-export interface GetListsResult {
-    /**
-     * The RFC 3339 timestamp of when the list was created.
-     */
-    createdOn: string;
-    /**
-     * An informative summary of the list.
-     */
-    description: string;
-    /**
-     * The unique ID of the list.
-     */
-    id: string;
-    /**
-     * The type of the list. Each type supports specific list items (IP addresses, ASNs, hostnames or redirects).
-     * Available values: "ip", "redirect", "hostname", "asn".
-     */
-    kind: string;
-    /**
-     * The RFC 3339 timestamp of when the list was last modified.
-     */
-    modifiedOn: string;
-    /**
-     * An informative name for the list. Use this name in filter and rule expressions.
-     */
-    name: string;
-    /**
-     * The number of items in the list.
-     */
-    numItems: number;
-    /**
-     * The number of [filters](https://www.terraform.io/operations/filters-list-filters) referencing the list.
-     */
-    numReferencingFilters: number;
 }
 
 export interface GetLoadBalancerAdaptiveRouting {
@@ -9010,6 +8968,10 @@ export interface GetLoadBalancerPoolOrigin {
      */
     name: string;
     /**
+     * The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     */
+    port: number;
+    /**
      * The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      */
     virtualNetworkId: string;
@@ -9174,6 +9136,10 @@ export interface GetLoadBalancerPoolsResultOrigin {
      * A human-identifiable name for the origin.
      */
     name: string;
+    /**
+     * The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     */
+    port: number;
     /**
      * The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      */
@@ -9814,6 +9780,7 @@ export interface GetLogpushJobOutputOptions {
 export interface GetLogpushJobsResult {
     /**
      * Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
+     * Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
      */
     dataset: string;
     /**
@@ -10441,7 +10408,7 @@ export interface GetMagicWanGreTunnelGreTunnel {
     description: string;
     healthCheck: outputs.GetMagicWanGreTunnelGreTunnelHealthCheck;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id: string;
     /**
@@ -10526,7 +10493,7 @@ export interface GetMagicWanIpsecTunnelIpsecTunnel {
     description: string;
     healthCheck: outputs.GetMagicWanIpsecTunnelIpsecTunnelHealthCheck;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id: string;
     /**
@@ -10697,7 +10664,7 @@ export interface GetMtlsCertificatesResult {
      */
     expiresOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     /**
@@ -10729,7 +10696,7 @@ export interface GetNotificationPoliciesResult {
     alertInterval: string;
     /**
      * Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values.
-     * Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
+     * Available values: "access*custom*certificate*expiration*type", "advanced*ddos*attack*l4*alert", "advanced*ddos*attack*l7*alert", "advanced*http*alert*error", "bgp*hijack*notification", "billing*usage*alert", "block*notification*block*removed", "block*notification*new*block", "block*notification*review*rejected", "bot*traffic*basic*alert", "brand*protection*alert", "brand*protection*digest", "clickhouse*alert*fw*anomaly", "clickhouse*alert*fw*ent*anomaly", "cloudforce*one*request*notification", "custom*analytics", "custom*bot*detection*alert", "custom*ssl*certificate*event*type", "dedicated*ssl*certificate*event*type", "device*connectivity*anomaly*alert", "dos*attack*l4", "dos*attack*l7", "expiring*service*token*alert", "failing*logpush*job*disabled*alert", "fbm*auto*advertisement", "fbm*dosd*attack", "fbm*volumetric*attack", "health*check*status*notification", "hostname*aop*custom*certificate*expiration*type", "http*alert*edge*error", "http*alert*origin*error", "image*notification", "image*resizing*notification", "incident*alert", "load*balancing*health*alert", "load*balancing*pool*enablement*alert", "logo*match*alert", "magic*tunnel*health*check*event", "magic*wan*tunnel*health", "maintenance*event*notification", "mtls*certificate*store*certificate*expiration*type", "pages*event*alert", "radar*notification", "real*origin*monitoring", "scriptmonitor*alert*new*code*change*detections", "scriptmonitor*alert*new*hosts", "scriptmonitor*alert*new*malicious*hosts", "scriptmonitor*alert*new*malicious*scripts", "scriptmonitor*alert*new*malicious*url", "scriptmonitor*alert*new*max*length*resource*url", "scriptmonitor*alert*new*resources", "secondary*dns*all*primaries*failing", "secondary*dns*primaries*failing", "secondary*dns*warning", "secondary*dns*zone*successfully*updated", "secondary*dns*zone*validation*warning", "security*insights*alert", "sentinel*alert", "stream*live*notifications", "synthetic*test*latency*alert", "synthetic*test*low*availability*alert", "traffic*anomalies*alert", "tunnel*health*event", "tunnel*update*event", "universal*ssl*event*type", "web*analytics*metrics*update", "zone*aop*custom*certificate*expiration*type".
      */
     alertType: string;
     created: string;
@@ -11194,7 +11161,15 @@ export interface GetNotificationPolicyWebhooksListResult {
 
 export interface GetOriginCaCertificateFilter {
     /**
-     * Identifier
+     * Limit to the number of records returned.
+     */
+    limit?: number;
+    /**
+     * Offset the results
+     */
+    offset?: number;
+    /**
+     * Identifier.
      */
     zoneId: string;
 }
@@ -11217,7 +11192,7 @@ export interface GetOriginCaCertificatesResult {
      */
     hostnames: string[];
     /**
-     * Identifier
+     * Identifier.
      */
     id: string;
     /**
@@ -12599,7 +12574,7 @@ export interface GetR2BucketCorsRule {
      */
     exposeHeaders: string[];
     /**
-     * Identifier for this rule
+     * Identifier for this rule.
      */
     id: string;
     /**
@@ -12625,11 +12600,11 @@ export interface GetR2BucketCorsRuleAllowed {
 
 export interface GetR2BucketEventNotificationQueue {
     /**
-     * Queue ID
+     * Queue ID.
      */
     queueId: string;
     /**
-     * Name of the queue
+     * Name of the queue.
      */
     queueName: string;
     rules: outputs.GetR2BucketEventNotificationQueueRule[];
@@ -12637,61 +12612,61 @@ export interface GetR2BucketEventNotificationQueue {
 
 export interface GetR2BucketEventNotificationQueueRule {
     /**
-     * Array of R2 object actions that will trigger notifications
+     * Array of R2 object actions that will trigger notifications.
      */
     actions: string[];
     /**
-     * Timestamp when the rule was created
+     * Timestamp when the rule was created.
      */
     createdAt: string;
     /**
-     * A description that can be used to identify the event notification rule after creation
+     * A description that can be used to identify the event notification rule after creation.
      */
     description: string;
     /**
-     * Notifications will be sent only for objects with this prefix
+     * Notifications will be sent only for objects with this prefix.
      */
     prefix: string;
     /**
-     * Rule ID
+     * Rule ID.
      */
     ruleId: string;
     /**
-     * Notifications will be sent only for objects with this suffix
+     * Notifications will be sent only for objects with this suffix.
      */
     suffix: string;
 }
 
 export interface GetR2BucketLifecycleRule {
     /**
-     * Transition to abort ongoing multipart uploads
+     * Transition to abort ongoing multipart uploads.
      */
     abortMultipartUploadsTransition: outputs.GetR2BucketLifecycleRuleAbortMultipartUploadsTransition;
     /**
-     * Conditions that apply to all transitions of this rule
+     * Conditions that apply to all transitions of this rule.
      */
     conditions: outputs.GetR2BucketLifecycleRuleConditions;
     /**
-     * Transition to delete objects
+     * Transition to delete objects.
      */
     deleteObjectsTransition: outputs.GetR2BucketLifecycleRuleDeleteObjectsTransition;
     /**
-     * Whether or not this rule is in effect
+     * Whether or not this rule is in effect.
      */
     enabled: boolean;
     /**
-     * Unique identifier for this rule
+     * Unique identifier for this rule.
      */
     id: string;
     /**
-     * Transitions to change the storage class of objects
+     * Transitions to change the storage class of objects.
      */
     storageClassTransitions: outputs.GetR2BucketLifecycleRuleStorageClassTransition[];
 }
 
 export interface GetR2BucketLifecycleRuleAbortMultipartUploadsTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
     condition: outputs.GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition;
 }
@@ -12706,14 +12681,14 @@ export interface GetR2BucketLifecycleRuleAbortMultipartUploadsTransitionConditio
 
 export interface GetR2BucketLifecycleRuleConditions {
     /**
-     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      */
     prefix: string;
 }
 
 export interface GetR2BucketLifecycleRuleDeleteObjectsTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
     condition: outputs.GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition;
 }
@@ -12729,7 +12704,7 @@ export interface GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition {
 
 export interface GetR2BucketLifecycleRuleStorageClassTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
     condition: outputs.GetR2BucketLifecycleRuleStorageClassTransitionCondition;
     /**
@@ -12749,19 +12724,19 @@ export interface GetR2BucketLifecycleRuleStorageClassTransitionCondition {
 
 export interface GetR2BucketLockRule {
     /**
-     * Condition to apply a lock rule to an object for how long in seconds
+     * Condition to apply a lock rule to an object for how long in seconds.
      */
     condition: outputs.GetR2BucketLockRuleCondition;
     /**
-     * Whether or not this rule is in effect
+     * Whether or not this rule is in effect.
      */
     enabled: boolean;
     /**
-     * Unique identifier for this rule
+     * Unique identifier for this rule.
      */
     id: string;
     /**
-     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      */
     prefix: string;
 }
@@ -12778,12 +12753,12 @@ export interface GetR2BucketLockRuleCondition {
 export interface GetR2BucketSippyDestination {
     /**
      * ID of the Cloudflare API token used when writing objects to this
-     * bucket
+     * bucket.
      */
     accessKeyId: string;
     account: string;
     /**
-     * Name of the bucket on the provider
+     * Name of the bucket on the provider.
      */
     bucket: string;
     /**
@@ -12794,7 +12769,7 @@ export interface GetR2BucketSippyDestination {
 
 export interface GetR2BucketSippySource {
     /**
-     * Name of the bucket on the provider
+     * Name of the bucket on the provider.
      */
     bucket: string;
     /**
@@ -12802,19 +12777,19 @@ export interface GetR2BucketSippySource {
      */
     provider: string;
     /**
-     * Region where the bucket resides (AWS only)
+     * Region where the bucket resides (AWS only).
      */
     region: string;
 }
 
 export interface GetR2CustomDomainStatus {
     /**
-     * Ownership status of the domain
+     * Ownership status of the domain.
      * Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
      */
     ownership: string;
     /**
-     * SSL certificate status
+     * SSL certificate status.
      * Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
      */
     ssl: string;
@@ -13038,6 +13013,10 @@ export interface GetRegionalHostnamesResult {
      * Identifying key for the region
      */
     regionKey: string;
+    /**
+     * Configure which routing method to use for the regional hostname
+     */
+    routing: string;
 }
 
 export interface GetRegistrarDomainsResult {
@@ -13422,7 +13401,7 @@ export interface GetRulesetRuleActionParameters {
      */
     overrides: outputs.GetRulesetRuleActionParametersOverrides;
     /**
-     * A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+     * A list of phases to skip the execution of. This option is incompatible with the rulesets options.
      */
     phases: string[];
     /**
@@ -13467,7 +13446,7 @@ export interface GetRulesetRuleActionParameters {
      */
     rules: {[key: string]: string[]};
     /**
-     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
      * Available values: "current".
      */
     ruleset: string;
@@ -13518,7 +13497,7 @@ export interface GetRulesetRuleActionParameters {
 export interface GetRulesetRuleActionParametersAlgorithm {
     /**
      * Name of compression algorithm to enable.
-     * Available values: "none", "auto", "default", "gzip", "brotli".
+     * Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
      */
     name: string;
 }
@@ -14942,29 +14921,29 @@ export interface GetWaitingRoomsResultCookieAttributes {
 export interface GetWeb3HostnamesResult {
     createdOn: string;
     /**
-     * An optional description of the hostname.
+     * Specify an optional description of the hostname.
      */
     description: string;
     /**
-     * DNSLink value used if the target is ipfs.
+     * Specify the DNSLink value used if the target is ipfs.
      */
     dnslink: string;
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      */
     id: string;
     modifiedOn: string;
     /**
-     * The hostname that will point to the target gateway via CNAME.
+     * Specify the hostname that points to the target gateway via CNAME.
      */
     name: string;
     /**
-     * Status of the hostname's activation.
+     * Specifies the status of the hostname's activation.
      * Available values: "active", "pending", "deleting", "error".
      */
     status: string;
     /**
-     * Target gateway of the hostname.
+     * Specify the target gateway of the hostname.
      * Available values: "ethereum", "ipfs", "ipfs*universal*path".
      */
     target: string;
@@ -15197,18 +15176,6 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
     scriptCount: number;
 }
 
-export interface GetWorkersForPlatformsScriptSecretsResult {
-    /**
-     * The name of this secret, this is what will be used to access it inside the Worker.
-     */
-    name: string;
-    /**
-     * The type of secret.
-     * Available values: "secretText".
-     */
-    type: string;
-}
-
 export interface GetWorkersKvNamespaceFilter {
     /**
      * Direction to order namespaces.
@@ -15246,9 +15213,12 @@ export interface GetWorkersRoutesResult {
      * Identifier.
      */
     id: string;
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     */
     pattern: string;
     /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script to run if the route matches.
      */
     script: string;
 }
@@ -15313,6 +15283,10 @@ export interface GetWorkersScriptsResult {
 
 export interface GetWorkersScriptsResultPlacement {
     /**
+     * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     */
+    lastAnalyzedAt: string;
+    /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "smart".
      */
@@ -15337,18 +15311,6 @@ export interface GetWorkersScriptsResultTailConsumer {
      * Name of Worker that is to be the consumer.
      */
     service: string;
-}
-
-export interface GetWorkersSecretsResult {
-    /**
-     * The name of this secret, this is what will be used to access it inside the Worker.
-     */
-    name: string;
-    /**
-     * The type of secret.
-     * Available values: "secretText".
-     */
-    type: string;
 }
 
 export interface GetZeroTrustAccessApplicationCorsHeaders {
@@ -16512,6 +16474,10 @@ export interface GetZeroTrustAccessApplicationsResult {
      * When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
     allowAuthenticateViaWarp: boolean;
+    /**
+     * Enables loading application content in an iFrame.
+     */
+    allowIframe: boolean;
     /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      */
@@ -21645,7 +21611,7 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      */
     lanAllowSubnetSize: number;
     /**
-     * The wirefilter expression to match devices.
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
      */
     match: string;
     /**
@@ -22079,7 +22045,7 @@ export interface GetZeroTrustDevicePostureRuleInputLocations {
 
 export interface GetZeroTrustDevicePostureRuleMatch {
     /**
-     * Available values: "windows", "mac", "linux", "android", "ios".
+     * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform: string;
 }
@@ -22303,101 +22269,9 @@ export interface GetZeroTrustDevicePostureRulesResultInputLocations {
 
 export interface GetZeroTrustDevicePostureRulesResultMatch {
     /**
-     * Available values: "windows", "mac", "linux", "android", "ios".
+     * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform: string;
-}
-
-export interface GetZeroTrustDexTestData {
-    /**
-     * The desired endpoint to test.
-     */
-    host: string;
-    /**
-     * The type of test.
-     */
-    kind: string;
-    /**
-     * The HTTP request method type.
-     */
-    method: string;
-}
-
-export interface GetZeroTrustDexTestTargetPolicy {
-    /**
-     * Whether the profile is the account default
-     */
-    default: boolean;
-    /**
-     * The id of the device settings profile
-     */
-    id: string;
-    /**
-     * The name of the device settings profile
-     */
-    name: string;
-}
-
-export interface GetZeroTrustDexTestsResult {
-    /**
-     * The configuration object which contains the details for the WARP client to conduct the test.
-     */
-    data: outputs.GetZeroTrustDexTestsResultData;
-    /**
-     * Additional details about the test.
-     */
-    description: string;
-    /**
-     * Determines whether or not the test is active.
-     */
-    enabled: boolean;
-    /**
-     * How often the test will run.
-     */
-    interval: string;
-    /**
-     * The name of the DEX test. Must be unique.
-     */
-    name: string;
-    /**
-     * Device settings profiles targeted by this test
-     */
-    targetPolicies: outputs.GetZeroTrustDexTestsResultTargetPolicy[];
-    targeted: boolean;
-    /**
-     * The unique identifier for the test.
-     */
-    testId: string;
-}
-
-export interface GetZeroTrustDexTestsResultData {
-    /**
-     * The desired endpoint to test.
-     */
-    host: string;
-    /**
-     * The type of test.
-     */
-    kind: string;
-    /**
-     * The HTTP request method type.
-     */
-    method: string;
-}
-
-export interface GetZeroTrustDexTestsResultTargetPolicy {
-    /**
-     * Whether the profile is the account default
-     */
-    default: boolean;
-    /**
-     * The id of the device settings profile
-     */
-    id: string;
-    /**
-     * The name of the device settings profile
-     */
-    name: string;
 }
 
 export interface GetZeroTrustDlpCustomProfileContextAwareness {
@@ -22419,6 +22293,12 @@ export interface GetZeroTrustDlpCustomProfileContextAwarenessSkip {
 }
 
 export interface GetZeroTrustDlpCustomProfileEntry {
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpCustomProfileEntryConfidence;
     createdAt: string;
     enabled: boolean;
@@ -22437,11 +22317,11 @@ export interface GetZeroTrustDlpCustomProfileEntry {
 
 export interface GetZeroTrustDlpCustomProfileEntryConfidence {
     /**
-     * Indicates whether this entry has AI remote service validation
+     * Indicates whether this entry has AI remote service validation.
      */
     aiContextAvailable: boolean;
     /**
-     * Indicates whether this entry has any form of validation that is not an AI remote service
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
      */
     available: boolean;
 }
@@ -22476,10 +22356,11 @@ export interface GetZeroTrustDlpDatasetUpload {
 }
 
 export interface GetZeroTrustDlpDatasetsResult {
+    caseSensitive: boolean;
     columns: outputs.GetZeroTrustDlpDatasetsResultColumn[];
     createdAt: string;
     /**
-     * The description of the dataset
+     * The description of the dataset.
      */
     description: string;
     encodingVersion: number;
@@ -22518,6 +22399,12 @@ export interface GetZeroTrustDlpDatasetsResultUpload {
 }
 
 export interface GetZeroTrustDlpEntriesResult {
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpEntriesResultConfidence;
     createdAt: string;
     enabled: boolean;
@@ -22536,11 +22423,11 @@ export interface GetZeroTrustDlpEntriesResult {
 
 export interface GetZeroTrustDlpEntriesResultConfidence {
     /**
-     * Indicates whether this entry has AI remote service validation
+     * Indicates whether this entry has AI remote service validation.
      */
     aiContextAvailable: boolean;
     /**
-     * Indicates whether this entry has any form of validation that is not an AI remote service
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
      */
     available: boolean;
 }
@@ -22557,11 +22444,11 @@ export interface GetZeroTrustDlpEntriesResultPattern {
 
 export interface GetZeroTrustDlpEntryConfidence {
     /**
-     * Indicates whether this entry has AI remote service validation
+     * Indicates whether this entry has AI remote service validation.
      */
     aiContextAvailable: boolean;
     /**
-     * Indicates whether this entry has any form of validation that is not an AI remote service
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
      */
     available: boolean;
 }
@@ -22595,6 +22482,12 @@ export interface GetZeroTrustDlpPredefinedProfileContextAwarenessSkip {
 }
 
 export interface GetZeroTrustDlpPredefinedProfileEntry {
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     */
+    caseSensitive: boolean;
     confidence: outputs.GetZeroTrustDlpPredefinedProfileEntryConfidence;
     createdAt: string;
     enabled: boolean;
@@ -22613,11 +22506,11 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
 
 export interface GetZeroTrustDlpPredefinedProfileEntryConfidence {
     /**
-     * Indicates whether this entry has AI remote service validation
+     * Indicates whether this entry has AI remote service validation.
      */
     aiContextAvailable: boolean;
     /**
-     * Indicates whether this entry has any form of validation that is not an AI remote service
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
      */
     available: boolean;
 }
@@ -23093,6 +22986,10 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettings {
      */
     bisoAdminControls: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls;
     /**
+     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     */
+    blockPage: outputs.GetZeroTrustGatewayPoliciesResultRuleSettingsBlockPage;
+    /**
      * Enable the custom block page.
      */
     blockPageEnabled: boolean;
@@ -23239,6 +23136,17 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls 
     version: string;
 }
 
+export interface GetZeroTrustGatewayPoliciesResultRuleSettingsBlockPage {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: string;
+}
+
 export interface GetZeroTrustGatewayPoliciesResultRuleSettingsCheckSession {
     /**
      * Configure how fresh the session needs to be to be considered valid.
@@ -23324,6 +23232,10 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsNotificationSettin
      * Set notification on
      */
     enabled: boolean;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -23451,6 +23363,10 @@ export interface GetZeroTrustGatewayPolicyRuleSettings {
      * Configure how browser isolation behaves.
      */
     bisoAdminControls: outputs.GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls;
+    /**
+     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     */
+    blockPage: outputs.GetZeroTrustGatewayPolicyRuleSettingsBlockPage;
     /**
      * Enable the custom block page.
      */
@@ -23598,6 +23514,17 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     version: string;
 }
 
+export interface GetZeroTrustGatewayPolicyRuleSettingsBlockPage {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: string;
+}
+
 export interface GetZeroTrustGatewayPolicyRuleSettingsCheckSession {
     /**
      * Configure how fresh the session needs to be to be considered valid.
@@ -23683,6 +23610,10 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
      * Set notification on
      */
     enabled: boolean;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -23817,6 +23748,10 @@ export interface GetZeroTrustGatewaySettingsSettings {
      */
     fips: outputs.GetZeroTrustGatewaySettingsSettingsFips;
     /**
+     * Setting to enable host selector in egress policies.
+     */
+    hostSelector: outputs.GetZeroTrustGatewaySettingsSettingsHostSelector;
+    /**
      * Protocol Detection settings.
      */
     protocolDetection: outputs.GetZeroTrustGatewaySettingsSettingsProtocolDetection;
@@ -23861,6 +23796,10 @@ export interface GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetting
      * Set notification on
      */
     enabled: boolean;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -23976,6 +23915,13 @@ export interface GetZeroTrustGatewaySettingsSettingsFips {
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
     tls: boolean;
+}
+
+export interface GetZeroTrustGatewaySettingsSettingsHostSelector {
+    /**
+     * Enable filtering via hosts for egress policies.
+     */
+    enabled: boolean;
 }
 
 export interface GetZeroTrustGatewaySettingsSettingsProtocolDetection {
@@ -24138,11 +24084,11 @@ export interface GetZeroTrustRiskScoringIntegrationsResult {
      */
     referenceId: string;
     /**
-     * The base URL for the tenant. E.g. "https://tenant.okta.com"
+     * The base URL for the tenant. E.g. "https://tenant.okta.com".
      */
     tenantUrl: string;
     /**
-     * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+     * The URL for the Shared Signals Framework configuration, e.g. "/.well-known/sse-configuration/{integration*uuid}/". https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      */
     wellKnownUrl: string;
 }
@@ -24694,7 +24640,7 @@ export interface GetZoneFilter {
     name?: string;
     /**
      * Field to order zones by.
-     * Available values: "name", "status", "account.id", "account.name".
+     * Available values: "name", "status", "account.id", "account.name", "plan.id".
      */
     order?: string;
     /**
@@ -25079,6 +25025,21 @@ export interface HyperdriveConfigCaching {
     staleWhileRevalidate?: number;
 }
 
+export interface HyperdriveConfigMtls {
+    /**
+     * CA certificate ID
+     */
+    caCertificateId?: string;
+    /**
+     * mTLS certificate ID
+     */
+    mtlsCertificateId?: string;
+    /**
+     * SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+     */
+    sslmode?: string;
+}
+
 export interface HyperdriveConfigOrigin {
     /**
      * The Client ID of the Access token to use when connecting to the origin database.
@@ -25106,7 +25067,7 @@ export interface HyperdriveConfigOrigin {
     port?: number;
     /**
      * Specifies the URL scheme used to connect to your origin database.
-     * Available values: "postgres", "postgresql".
+     * Available values: "postgres", "postgresql", "mysql".
      */
     scheme: string;
     /**
@@ -25291,6 +25252,10 @@ export interface LoadBalancerPoolOrigin {
      */
     name?: string;
     /**
+     * The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     */
+    port: number;
+    /**
      * The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      */
     virtualNetworkId?: string;
@@ -25337,7 +25302,7 @@ export interface LoadBalancerRule {
     /**
      * A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed*response is supplied the rule will be marked as terminates.
      */
-    fixedResponse: outputs.LoadBalancerRuleFixedResponse;
+    fixedResponse?: outputs.LoadBalancerRuleFixedResponse;
     /**
      * Name of this rule. Only used for human readability.
      */
@@ -25353,7 +25318,7 @@ export interface LoadBalancerRule {
     /**
      * If this rule's condition is true, this causes rule evaluation to stop after processing this rule.
      */
-    terminates: boolean;
+    terminates?: boolean;
 }
 
 export interface LoadBalancerRuleFixedResponse {
@@ -25644,7 +25609,7 @@ export interface MagicTransitSiteLanNat {
 }
 
 export interface MagicTransitSiteLanRoutedSubnet {
-    nat: outputs.MagicTransitSiteLanRoutedSubnetNat;
+    nat?: outputs.MagicTransitSiteLanRoutedSubnetNat;
     /**
      * A valid IPv4 address.
      */
@@ -25667,8 +25632,8 @@ export interface MagicTransitSiteLanStaticAddressing {
      * A valid CIDR notation representing an IP range.
      */
     address: string;
-    dhcpRelay: outputs.MagicTransitSiteLanStaticAddressingDhcpRelay;
-    dhcpServer: outputs.MagicTransitSiteLanStaticAddressingDhcpServer;
+    dhcpRelay?: outputs.MagicTransitSiteLanStaticAddressingDhcpRelay;
+    dhcpServer?: outputs.MagicTransitSiteLanStaticAddressingDhcpServer;
     /**
      * A valid CIDR notation representing an IP range.
      */
@@ -25751,7 +25716,7 @@ export interface MagicWanGreTunnelGreTunnel {
     description: string;
     healthCheck: outputs.MagicWanGreTunnelGreTunnelHealthCheck;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id: string;
     /**
@@ -25869,7 +25834,7 @@ export interface MagicWanGreTunnelModifiedGreTunnel {
     description: string;
     healthCheck: outputs.MagicWanGreTunnelModifiedGreTunnelHealthCheck;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id: string;
     /**
@@ -25991,7 +25956,7 @@ export interface MagicWanIpsecTunnelIpsecTunnel {
     description: string;
     healthCheck: outputs.MagicWanIpsecTunnelIpsecTunnelHealthCheck;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id: string;
     /**
@@ -26083,7 +26048,7 @@ export interface MagicWanIpsecTunnelModifiedIpsecTunnel {
     description: string;
     healthCheck: outputs.MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheck;
     /**
-     * Tunnel identifier tag.
+     * Identifier
      */
     id: string;
     /**
@@ -26146,6 +26111,13 @@ export interface MagicWanIpsecTunnelModifiedIpsecTunnelHealthCheckTarget {
 }
 
 export interface MagicWanIpsecTunnelModifiedIpsecTunnelPskMetadata {
+    /**
+     * The date and time the tunnel was last modified.
+     */
+    lastGeneratedOn: string;
+}
+
+export interface MagicWanIpsecTunnelPskMetadata {
     /**
      * The date and time the tunnel was last modified.
      */
@@ -27047,22 +27019,22 @@ export interface PagesProjectDeploymentConfigs {
     /**
      * Configs for preview deploys.
      */
-    preview: outputs.PagesProjectDeploymentConfigsPreview;
+    preview?: outputs.PagesProjectDeploymentConfigsPreview;
     /**
      * Configs for production deploys.
      */
-    production: outputs.PagesProjectDeploymentConfigsProduction;
+    production?: outputs.PagesProjectDeploymentConfigsProduction;
 }
 
 export interface PagesProjectDeploymentConfigsPreview {
     /**
      * Constellation bindings used for Pages Functions.
      */
-    aiBindings: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewAiBindings};
+    aiBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewAiBindings};
     /**
      * Analytics Engine bindings used for Pages Functions.
      */
-    analyticsEngineDatasets: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets};
+    analyticsEngineDatasets?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewAnalyticsEngineDatasets};
     /**
      * Browser bindings used for Pages Functions.
      */
@@ -27078,47 +27050,47 @@ export interface PagesProjectDeploymentConfigsPreview {
     /**
      * D1 databases used for Pages Functions.
      */
-    d1Databases: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewD1Databases};
+    d1Databases?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewD1Databases};
     /**
      * Durable Object namespaces used for Pages Functions.
      */
-    durableObjectNamespaces: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces};
+    durableObjectNamespaces?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces};
     /**
      * Environment variables used for builds and Pages Functions.
      */
-    envVars: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewEnvVars};
+    envVars?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewEnvVars};
     /**
      * Hyperdrive bindings used for Pages Functions.
      */
-    hyperdriveBindings: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindings};
+    hyperdriveBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewHyperdriveBindings};
     /**
      * KV namespaces used for Pages Functions.
      */
-    kvNamespaces: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewKvNamespaces};
+    kvNamespaces?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewKvNamespaces};
     /**
      * mTLS bindings used for Pages Functions.
      */
-    mtlsCertificates: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewMtlsCertificates};
+    mtlsCertificates?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewMtlsCertificates};
     /**
      * Placement setting used for Pages Functions.
      */
-    placement: outputs.PagesProjectDeploymentConfigsPreviewPlacement;
+    placement?: outputs.PagesProjectDeploymentConfigsPreviewPlacement;
     /**
      * Queue Producer bindings used for Pages Functions.
      */
-    queueProducers: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewQueueProducers};
+    queueProducers?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewQueueProducers};
     /**
      * R2 buckets used for Pages Functions.
      */
-    r2Buckets: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewR2Buckets};
+    r2Buckets?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewR2Buckets};
     /**
      * Services used for Pages Functions.
      */
-    services: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewServices};
+    services?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewServices};
     /**
      * Vectorize bindings used for Pages Functions.
      */
-    vectorizeBindings: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewVectorizeBindings};
+    vectorizeBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsPreviewVectorizeBindings};
 }
 
 export interface PagesProjectDeploymentConfigsPreviewAiBindings {
@@ -27223,11 +27195,11 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * Constellation bindings used for Pages Functions.
      */
-    aiBindings: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionAiBindings};
+    aiBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionAiBindings};
     /**
      * Analytics Engine bindings used for Pages Functions.
      */
-    analyticsEngineDatasets: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets};
+    analyticsEngineDatasets?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionAnalyticsEngineDatasets};
     /**
      * Browser bindings used for Pages Functions.
      */
@@ -27243,47 +27215,47 @@ export interface PagesProjectDeploymentConfigsProduction {
     /**
      * D1 databases used for Pages Functions.
      */
-    d1Databases: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionD1Databases};
+    d1Databases?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionD1Databases};
     /**
      * Durable Object namespaces used for Pages Functions.
      */
-    durableObjectNamespaces: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionDurableObjectNamespaces};
+    durableObjectNamespaces?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionDurableObjectNamespaces};
     /**
      * Environment variables used for builds and Pages Functions.
      */
-    envVars: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionEnvVars};
+    envVars?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionEnvVars};
     /**
      * Hyperdrive bindings used for Pages Functions.
      */
-    hyperdriveBindings: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionHyperdriveBindings};
+    hyperdriveBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionHyperdriveBindings};
     /**
      * KV namespaces used for Pages Functions.
      */
-    kvNamespaces: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionKvNamespaces};
+    kvNamespaces?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionKvNamespaces};
     /**
      * mTLS bindings used for Pages Functions.
      */
-    mtlsCertificates: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionMtlsCertificates};
+    mtlsCertificates?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionMtlsCertificates};
     /**
      * Placement setting used for Pages Functions.
      */
-    placement: outputs.PagesProjectDeploymentConfigsProductionPlacement;
+    placement?: outputs.PagesProjectDeploymentConfigsProductionPlacement;
     /**
      * Queue Producer bindings used for Pages Functions.
      */
-    queueProducers: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionQueueProducers};
+    queueProducers?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionQueueProducers};
     /**
      * R2 buckets used for Pages Functions.
      */
-    r2Buckets: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionR2Buckets};
+    r2Buckets?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionR2Buckets};
     /**
      * Services used for Pages Functions.
      */
-    services: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionServices};
+    services?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionServices};
     /**
      * Vectorize bindings used for Pages Functions.
      */
-    vectorizeBindings: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionVectorizeBindings};
+    vectorizeBindings?: {[key: string]: outputs.PagesProjectDeploymentConfigsProductionVectorizeBindings};
 }
 
 export interface PagesProjectDeploymentConfigsProductionAiBindings {
@@ -27579,25 +27551,25 @@ export interface PagesProjectLatestDeploymentStage {
 }
 
 export interface PagesProjectSource {
-    config: outputs.PagesProjectSourceConfig;
-    type: string;
+    config?: outputs.PagesProjectSourceConfig;
+    type?: string;
 }
 
 export interface PagesProjectSourceConfig {
-    deploymentsEnabled: boolean;
-    owner: string;
-    pathExcludes: string[];
-    pathIncludes: string[];
-    prCommentsEnabled: boolean;
-    previewBranchExcludes: string[];
-    previewBranchIncludes: string[];
+    deploymentsEnabled?: boolean;
+    owner?: string;
+    pathExcludes?: string[];
+    pathIncludes?: string[];
+    prCommentsEnabled?: boolean;
+    previewBranchExcludes?: string[];
+    previewBranchIncludes?: string[];
     /**
      * Available values: "all", "none", "custom".
      */
-    previewDeploymentSetting: string;
-    productionBranch: string;
-    productionDeploymentsEnabled: boolean;
-    repoName: string;
+    previewDeploymentSetting?: string;
+    productionBranch?: string;
+    productionDeploymentsEnabled?: boolean;
+    repoName?: string;
 }
 
 export interface QueueConsumer {
@@ -27665,15 +27637,15 @@ export interface QueueSettings {
     /**
      * Number of seconds to delay delivery of all messages to consumers.
      */
-    deliveryDelay?: number;
+    deliveryDelay: number;
     /**
      * Indicates if message delivery to consumers is currently paused.
      */
-    deliveryPaused?: boolean;
+    deliveryPaused: boolean;
     /**
      * Number of seconds after which an unconsumed message will be delayed.
      */
-    messageRetentionPeriod?: number;
+    messageRetentionPeriod: number;
 }
 
 export interface R2BucketCorsRule {
@@ -27686,7 +27658,7 @@ export interface R2BucketCorsRule {
      */
     exposeHeaders?: string[];
     /**
-     * Identifier for this rule
+     * Identifier for this rule.
      */
     id?: string;
     /**
@@ -27712,11 +27684,11 @@ export interface R2BucketCorsRuleAllowed {
 
 export interface R2BucketEventNotificationQueue {
     /**
-     * Queue ID
+     * Queue ID.
      */
     queueId: string;
     /**
-     * Name of the queue
+     * Name of the queue.
      */
     queueName: string;
     rules: outputs.R2BucketEventNotificationQueueRule[];
@@ -27724,82 +27696,82 @@ export interface R2BucketEventNotificationQueue {
 
 export interface R2BucketEventNotificationQueueRule {
     /**
-     * Array of R2 object actions that will trigger notifications
+     * Array of R2 object actions that will trigger notifications.
      */
     actions: string[];
     /**
-     * Timestamp when the rule was created
+     * Timestamp when the rule was created.
      */
     createdAt: string;
     /**
-     * A description that can be used to identify the event notification rule after creation
+     * A description that can be used to identify the event notification rule after creation.
      */
     description: string;
     /**
-     * Notifications will be sent only for objects with this prefix
+     * Notifications will be sent only for objects with this prefix.
      */
     prefix: string;
     /**
-     * Rule ID
+     * Rule ID.
      */
     ruleId: string;
     /**
-     * Notifications will be sent only for objects with this suffix
+     * Notifications will be sent only for objects with this suffix.
      */
     suffix: string;
 }
 
 export interface R2BucketEventNotificationRule {
     /**
-     * Array of R2 object actions that will trigger notifications
+     * Array of R2 object actions that will trigger notifications.
      */
     actions: string[];
     /**
-     * A description that can be used to identify the event notification rule after creation
+     * A description that can be used to identify the event notification rule after creation.
      */
     description?: string;
     /**
-     * Notifications will be sent only for objects with this prefix
+     * Notifications will be sent only for objects with this prefix.
      */
     prefix?: string;
     /**
-     * Notifications will be sent only for objects with this suffix
+     * Notifications will be sent only for objects with this suffix.
      */
     suffix?: string;
 }
 
 export interface R2BucketLifecycleRule {
     /**
-     * Transition to abort ongoing multipart uploads
+     * Transition to abort ongoing multipart uploads.
      */
-    abortMultipartUploadsTransition: outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransition;
+    abortMultipartUploadsTransition?: outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransition;
     /**
-     * Conditions that apply to all transitions of this rule
+     * Conditions that apply to all transitions of this rule.
      */
     conditions: outputs.R2BucketLifecycleRuleConditions;
     /**
-     * Transition to delete objects
+     * Transition to delete objects.
      */
-    deleteObjectsTransition: outputs.R2BucketLifecycleRuleDeleteObjectsTransition;
+    deleteObjectsTransition?: outputs.R2BucketLifecycleRuleDeleteObjectsTransition;
     /**
-     * Whether or not this rule is in effect
+     * Whether or not this rule is in effect.
      */
     enabled: boolean;
     /**
-     * Unique identifier for this rule
+     * Unique identifier for this rule.
      */
     id: string;
     /**
-     * Transitions to change the storage class of objects
+     * Transitions to change the storage class of objects.
      */
-    storageClassTransitions: outputs.R2BucketLifecycleRuleStorageClassTransition[];
+    storageClassTransitions?: outputs.R2BucketLifecycleRuleStorageClassTransition[];
 }
 
 export interface R2BucketLifecycleRuleAbortMultipartUploadsTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
-    condition: outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition;
+    condition?: outputs.R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition;
 }
 
 export interface R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
@@ -27812,16 +27784,16 @@ export interface R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition {
 
 export interface R2BucketLifecycleRuleConditions {
     /**
-     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      */
     prefix: string;
 }
 
 export interface R2BucketLifecycleRuleDeleteObjectsTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
-    condition: outputs.R2BucketLifecycleRuleDeleteObjectsTransitionCondition;
+    condition?: outputs.R2BucketLifecycleRuleDeleteObjectsTransitionCondition;
 }
 
 export interface R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
@@ -27835,7 +27807,7 @@ export interface R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
 
 export interface R2BucketLifecycleRuleStorageClassTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
     condition: outputs.R2BucketLifecycleRuleStorageClassTransitionCondition;
     /**
@@ -27855,19 +27827,19 @@ export interface R2BucketLifecycleRuleStorageClassTransitionCondition {
 
 export interface R2BucketLockRule {
     /**
-     * Condition to apply a lock rule to an object for how long in seconds
+     * Condition to apply a lock rule to an object for how long in seconds.
      */
     condition: outputs.R2BucketLockRuleCondition;
     /**
-     * Whether or not this rule is in effect
+     * Whether or not this rule is in effect.
      */
     enabled: boolean;
     /**
-     * Unique identifier for this rule
+     * Unique identifier for this rule.
      */
     id: string;
     /**
-     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads
+     * Rule will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      */
     prefix?: string;
 }
@@ -27884,17 +27856,17 @@ export interface R2BucketLockRuleCondition {
 export interface R2BucketSippyDestination {
     /**
      * ID of a Cloudflare API token.
-     * This is the value labelled "Access Key ID" when creating an API
+     * This is the value labelled "Access Key ID" when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      */
     accessKeyId?: string;
     /**
      * Available values: "r2".
      */
-    provider?: string;
+    cloudProvider?: string;
     /**
      * Value of a Cloudflare API token.
-     * This is the value labelled "Secret Access Key" when creating an API
+     * This is the value labelled "Secret Access Key" when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      *
      * Sippy will use this token when writing objects to R2, so it is
@@ -27905,43 +27877,43 @@ export interface R2BucketSippyDestination {
 
 export interface R2BucketSippySource {
     /**
-     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+     * Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      */
     accessKeyId?: string;
     /**
-     * Name of the AWS S3 bucket
+     * Name of the AWS S3 bucket.
      */
     bucket?: string;
     /**
-     * Client email of an IAM credential (ideally scoped to a single GCS bucket)
+     * Client email of an IAM credential (ideally scoped to a single GCS bucket).
      */
     clientEmail?: string;
     /**
-     * Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+     * Available values: "aws".
+     */
+    cloudProvider?: string;
+    /**
+     * Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      */
     privateKey?: string;
     /**
-     * Available values: "aws".
-     */
-    provider?: string;
-    /**
-     * Name of the AWS availability zone
+     * Name of the AWS availability zone.
      */
     region?: string;
     /**
-     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+     * Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      */
     secretAccessKey?: string;
 }
 
 export interface R2CustomDomainStatus {
     /**
-     * Ownership status of the domain
+     * Ownership status of the domain.
      * Available values: "pending", "active", "deactivated", "blocked", "error", "unknown".
      */
     ownership: string;
     /**
-     * SSL certificate status
+     * SSL certificate status.
      * Available values: "initializing", "pending", "active", "deactivated", "error", "unknown".
      */
     ssl: string;
@@ -28383,7 +28355,7 @@ export interface RulesetRuleActionParameters {
      */
     overrides?: outputs.RulesetRuleActionParametersOverrides;
     /**
-     * A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+     * A list of phases to skip the execution of. This option is incompatible with the rulesets options.
      */
     phases?: string[];
     /**
@@ -28428,7 +28400,7 @@ export interface RulesetRuleActionParameters {
      */
     rules?: {[key: string]: string[]};
     /**
-     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
      * Available values: "current".
      */
     ruleset?: string;
@@ -28479,7 +28451,7 @@ export interface RulesetRuleActionParameters {
 export interface RulesetRuleActionParametersAlgorithm {
     /**
      * Name of compression algorithm to enable.
-     * Available values: "none", "auto", "default", "gzip", "brotli".
+     * Available values: "none", "auto", "default", "gzip", "brotli", "zstd".
      */
     name?: string;
 }
@@ -29351,7 +29323,7 @@ export interface TeamsAccountSettings {
     /**
      * DLP body scanning settings.
      */
-    bodyScanning: outputs.TeamsAccountSettingsBodyScanning;
+    bodyScanning?: outputs.TeamsAccountSettingsBodyScanning;
     /**
      * Browser isolation settings.
      */
@@ -29359,7 +29331,7 @@ export interface TeamsAccountSettings {
     /**
      * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
      */
-    certificate: outputs.TeamsAccountSettingsCertificate;
+    certificate?: outputs.TeamsAccountSettingsCertificate;
     /**
      * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
      *
@@ -29374,6 +29346,10 @@ export interface TeamsAccountSettings {
      * FIPS settings.
      */
     fips: outputs.TeamsAccountSettingsFips;
+    /**
+     * Setting to enable host selector in egress policies.
+     */
+    hostSelector?: outputs.TeamsAccountSettingsHostSelector;
     /**
      * Protocol Detection settings.
      */
@@ -29392,22 +29368,22 @@ export interface TeamsAccountSettingsActivityLog {
     /**
      * Enable activity logging.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface TeamsAccountSettingsAntivirus {
     /**
      * Enable anti-virus scanning on downloads.
      */
-    enabledDownloadPhase?: boolean;
+    enabledDownloadPhase: boolean;
     /**
      * Enable anti-virus scanning on uploads.
      */
-    enabledUploadPhase?: boolean;
+    enabledUploadPhase: boolean;
     /**
      * Block requests for files that cannot be scanned.
      */
-    failClosed?: boolean;
+    failClosed: boolean;
     /**
      * Configure a message to display on the user's device when an antivirus search is performed.
      */
@@ -29418,7 +29394,11 @@ export interface TeamsAccountSettingsAntivirusNotificationSettings {
     /**
      * Set notification on
      */
-    enabled?: boolean;
+    enabled: boolean;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -29433,35 +29413,35 @@ export interface TeamsAccountSettingsBlockPage {
     /**
      * If mode is customized*block*page: block page background color in #rrggbb format.
      */
-    backgroundColor?: string;
+    backgroundColor: string;
     /**
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * If mode is customized*block*page: block page footer text.
      */
-    footerText?: string;
+    footerText: string;
     /**
      * If mode is customized*block*page: block page header text.
      */
-    headerText?: string;
+    headerText: string;
     /**
      * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
      */
-    includeContext?: boolean;
+    includeContext: boolean;
     /**
      * If mode is customized*block*page: full URL to the logo file.
      */
-    logoPath?: string;
+    logoPath: string;
     /**
      * If mode is customized*block*page: admin email for users to contact.
      */
-    mailtoAddress?: string;
+    mailtoAddress: string;
     /**
      * If mode is customized*block*page: subject line for emails created from block page.
      */
-    mailtoSubject?: string;
+    mailtoSubject: string;
     /**
      * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
      * Available values: "customized*block*page", "redirectUri".
@@ -29492,11 +29472,11 @@ export interface TeamsAccountSettingsBrowserIsolation {
     /**
      * Enable non-identity onramp support for Browser Isolation.
      */
-    nonIdentityEnabled?: boolean;
+    nonIdentityEnabled: boolean;
     /**
      * Enable Clientless Browser Isolation.
      */
-    urlBrowserIsolationEnabled?: boolean;
+    urlBrowserIsolationEnabled: boolean;
 }
 
 export interface TeamsAccountSettingsCertificate {
@@ -29526,28 +29506,35 @@ export interface TeamsAccountSettingsExtendedEmailMatching {
     /**
      * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface TeamsAccountSettingsFips {
     /**
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
-    tls?: boolean;
+    tls: boolean;
+}
+
+export interface TeamsAccountSettingsHostSelector {
+    /**
+     * Enable filtering via hosts for egress policies.
+     */
+    enabled?: boolean;
 }
 
 export interface TeamsAccountSettingsProtocolDetection {
     /**
      * Enable detecting protocol on initial bytes of client traffic.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface TeamsAccountSettingsSandbox {
     /**
      * Enable sandbox.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Action to take when the file cannot be scanned.
      * Available values: "allow", "block".
@@ -29559,7 +29546,7 @@ export interface TeamsAccountSettingsTlsDecrypt {
     /**
      * Enable inspecting encrypted HTTP traffic.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface TeamsListItem {
@@ -29575,10 +29562,10 @@ export interface TeamsListItem {
 }
 
 export interface TeamsLocationEndpoints {
-    doh: outputs.TeamsLocationEndpointsDoh;
-    dot: outputs.TeamsLocationEndpointsDot;
-    ipv4: outputs.TeamsLocationEndpointsIpv4;
-    ipv6: outputs.TeamsLocationEndpointsIpv6;
+    doh?: outputs.TeamsLocationEndpointsDoh;
+    dot?: outputs.TeamsLocationEndpointsDot;
+    ipv4?: outputs.TeamsLocationEndpointsIpv4;
+    ipv6?: outputs.TeamsLocationEndpointsIpv6;
 }
 
 export interface TeamsLocationEndpointsDoh {
@@ -29589,7 +29576,7 @@ export interface TeamsLocationEndpointsDoh {
     /**
      * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
      */
-    networks: outputs.TeamsLocationEndpointsDohNetwork[];
+    networks?: outputs.TeamsLocationEndpointsDohNetwork[];
     /**
      * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
      */
@@ -29611,7 +29598,7 @@ export interface TeamsLocationEndpointsDot {
     /**
      * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
      */
-    networks: outputs.TeamsLocationEndpointsDotNetwork[];
+    networks?: outputs.TeamsLocationEndpointsDotNetwork[];
 }
 
 export interface TeamsLocationEndpointsDotNetwork {
@@ -29636,7 +29623,7 @@ export interface TeamsLocationEndpointsIpv6 {
     /**
      * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
      */
-    networks: outputs.TeamsLocationEndpointsIpv6Network[];
+    networks?: outputs.TeamsLocationEndpointsIpv6Network[];
 }
 
 export interface TeamsLocationEndpointsIpv6Network {
@@ -29661,7 +29648,7 @@ export interface TeamsRuleExpiration {
     /**
      * Whether the policy has expired.
      */
-    expired?: boolean;
+    expired: boolean;
     /**
      * The time stamp at which the policy will expire and cease to be
      * applied.
@@ -29687,13 +29674,17 @@ export interface TeamsRuleRuleSettings {
      */
     bisoAdminControls: outputs.TeamsRuleRuleSettingsBisoAdminControls;
     /**
+     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     */
+    blockPage: outputs.TeamsRuleRuleSettingsBlockPage;
+    /**
      * Enable the custom block page.
      */
-    blockPageEnabled?: boolean;
+    blockPageEnabled: boolean;
     /**
      * The text describing why this block occurred, displayed on the custom block page (if enabled).
      */
-    blockReason?: string;
+    blockReason: string;
     /**
      * Set by children MSP accounts to bypass their parent's rules.
      */
@@ -29705,31 +29696,31 @@ export interface TeamsRuleRuleSettings {
     /**
      * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
      */
-    dnsResolvers: outputs.TeamsRuleRuleSettingsDnsResolvers;
+    dnsResolvers?: outputs.TeamsRuleRuleSettingsDnsResolvers;
     /**
      * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
      */
-    egress: outputs.TeamsRuleRuleSettingsEgress;
+    egress?: outputs.TeamsRuleRuleSettingsEgress;
     /**
      * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
      */
-    ignoreCnameCategoryMatches?: boolean;
+    ignoreCnameCategoryMatches: boolean;
     /**
      * INSECURE - disable DNSSEC validation (for Allow actions).
      */
-    insecureDisableDnssecValidation?: boolean;
+    insecureDisableDnssecValidation: boolean;
     /**
      * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
      */
-    ipCategories?: boolean;
+    ipCategories: boolean;
     /**
      * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
      */
-    ipIndicatorFeeds?: boolean;
+    ipIndicatorFeeds: boolean;
     /**
      * Send matching traffic to the supplied destination IP address and port.
      */
-    l4override: outputs.TeamsRuleRuleSettingsL4override;
+    l4override?: outputs.TeamsRuleRuleSettingsL4override;
     /**
      * Configure a notification to display on the user's device when this rule is matched.
      */
@@ -29737,7 +29728,7 @@ export interface TeamsRuleRuleSettings {
     /**
      * Override matching DNS queries with a hostname.
      */
-    overrideHost?: string;
+    overrideHost: string;
     /**
      * Override matching DNS queries with an IP or set of IPs.
      */
@@ -29749,7 +29740,7 @@ export interface TeamsRuleRuleSettings {
     /**
      * Settings that apply to quarantine rules
      */
-    quarantine: outputs.TeamsRuleRuleSettingsQuarantine;
+    quarantine?: outputs.TeamsRuleRuleSettingsQuarantine;
     /**
      * Settings that apply to redirect rules
      */
@@ -29761,18 +29752,18 @@ export interface TeamsRuleRuleSettings {
     /**
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
      */
-    resolveDnsThroughCloudflare?: boolean;
+    resolveDnsThroughCloudflare: boolean;
     /**
      * Configure behavior when an upstream cert is invalid or an SSL error occurs.
      */
-    untrustedCert: outputs.TeamsRuleRuleSettingsUntrustedCert;
+    untrustedCert?: outputs.TeamsRuleRuleSettingsUntrustedCert;
 }
 
 export interface TeamsRuleRuleSettingsAuditSsh {
     /**
      * Enable to turn on SSH command logging.
      */
-    commandLogging?: boolean;
+    commandLogging: boolean;
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
@@ -29784,15 +29775,15 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
     /**
      * Set to false to enable copy-pasting. Only applies when `version == "v1"`.
      */
-    dcp?: boolean;
+    dcp: boolean;
     /**
      * Set to false to enable downloading. Only applies when `version == "v1"`.
      */
-    dd?: boolean;
+    dd: boolean;
     /**
      * Set to false to enable keyboard usage. Only applies when `version == "v1"`.
      */
-    dk?: boolean;
+    dk: boolean;
     /**
      * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
      * Available values: "enabled", "disabled".
@@ -29801,11 +29792,11 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
     /**
      * Set to false to enable printing. Only applies when `version == "v1"`.
      */
-    dp?: boolean;
+    dp: boolean;
     /**
      * Set to false to enable uploading. Only applies when `version == "v1"`.
      */
-    du?: boolean;
+    du: boolean;
     /**
      * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
      * Available values: "enabled", "disabled".
@@ -29833,6 +29824,17 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
     version: string;
 }
 
+export interface TeamsRuleRuleSettingsBlockPage {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: string;
+}
+
 export interface TeamsRuleRuleSettingsCheckSession {
     /**
      * Configure how fresh the session needs to be to be considered valid.
@@ -29841,12 +29843,12 @@ export interface TeamsRuleRuleSettingsCheckSession {
     /**
      * Set to true to enable session enforcement.
      */
-    enforce?: boolean;
+    enforce: boolean;
 }
 
 export interface TeamsRuleRuleSettingsDnsResolvers {
-    ipv4s: outputs.TeamsRuleRuleSettingsDnsResolversIpv4[];
-    ipv6s: outputs.TeamsRuleRuleSettingsDnsResolversIpv6[];
+    ipv4s?: outputs.TeamsRuleRuleSettingsDnsResolversIpv4[];
+    ipv6s?: outputs.TeamsRuleRuleSettingsDnsResolversIpv6[];
 }
 
 export interface TeamsRuleRuleSettingsDnsResolversIpv4 {
@@ -29917,7 +29919,11 @@ export interface TeamsRuleRuleSettingsNotificationSettings {
     /**
      * Set notification on
      */
-    enabled?: boolean;
+    enabled: boolean;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -29932,7 +29938,7 @@ export interface TeamsRuleRuleSettingsPayloadLog {
     /**
      * Set to true to enable DLP payload logging for this rule.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface TeamsRuleRuleSettingsQuarantine {
@@ -29946,11 +29952,11 @@ export interface TeamsRuleRuleSettingsRedirect {
     /**
      * If true, context information will be passed as query parameters
      */
-    includeContext?: boolean;
+    includeContext: boolean;
     /**
      * If true, the path and query parameters from the original request will be appended to target_uri
      */
-    preservePathAndQuery?: boolean;
+    preservePathAndQuery: boolean;
     /**
      * URI to which the user will be redirected
      */
@@ -30372,6 +30378,10 @@ export interface WorkerScriptAssetsConfig {
 
 export interface WorkerScriptBinding {
     /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     */
+    algorithm?: string;
+    /**
      * R2 bucket to bind to.
      */
     bucketName?: string;
@@ -30392,6 +30402,11 @@ export interface WorkerScriptBinding {
      */
     environment?: string;
     /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: "raw", "pkcs8", "spki", "jwk".
+     */
+    format?: string;
+    /**
      * Identifier of the D1 database to bind to.
      */
     id?: string;
@@ -30403,6 +30418,14 @@ export interface WorkerScriptBinding {
      * JSON data to use.
      */
     json?: string;
+    /**
+     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     */
+    keyBase64?: string;
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     */
+    keyJwk?: string;
     /**
      * A JavaScript variable name for the binding.
      */
@@ -30420,6 +30443,10 @@ export interface WorkerScriptBinding {
      */
     outbound?: outputs.WorkerScriptBindingOutbound;
     /**
+     * Name of the Pipeline to bind to.
+     */
+    pipeline?: string;
+    /**
      * Name of the Queue to bind to.
      */
     queueName?: string;
@@ -30428,18 +30455,30 @@ export interface WorkerScriptBinding {
      */
     scriptName?: string;
     /**
+     * Name of the secret in the store.
+     */
+    secretName?: string;
+    /**
      * Name of Worker to bind to.
      */
     service?: string;
+    /**
+     * ID of the store containing the secret.
+     */
+    storeId?: string;
     /**
      * The text value to use.
      */
     text?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+     * Available values: "ai".
      */
     type: string;
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     */
+    usages?: string[];
 }
 
 export interface WorkerScriptBindingOutbound {
@@ -30557,6 +30596,10 @@ export interface WorkerScriptObservability {
 
 export interface WorkerScriptPlacement {
     /**
+     * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     */
+    lastAnalyzedAt: string;
+    /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "smart".
      */
@@ -30624,28 +30667,6 @@ export interface WorkersDeploymentVersion {
     versionId: string;
 }
 
-export interface WorkersRouteError {
-    code: number;
-    documentationUrl: string;
-    message: string;
-    source: outputs.WorkersRouteErrorSource;
-}
-
-export interface WorkersRouteErrorSource {
-    pointer: string;
-}
-
-export interface WorkersRouteMessage {
-    code: number;
-    documentationUrl: string;
-    message: string;
-    source: outputs.WorkersRouteMessageSource;
-}
-
-export interface WorkersRouteMessageSource {
-    pointer: string;
-}
-
 export interface WorkersScriptAssets {
     /**
      * Configuration for assets within a Worker.
@@ -30690,6 +30711,10 @@ export interface WorkersScriptAssetsConfig {
 
 export interface WorkersScriptBinding {
     /**
+     * Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm).
+     */
+    algorithm?: string;
+    /**
      * R2 bucket to bind to.
      */
     bucketName?: string;
@@ -30710,6 +30735,11 @@ export interface WorkersScriptBinding {
      */
     environment?: string;
     /**
+     * Data format of the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#format).
+     * Available values: "raw", "pkcs8", "spki", "jwk".
+     */
+    format?: string;
+    /**
      * Identifier of the D1 database to bind to.
      */
     id?: string;
@@ -30721,6 +30751,14 @@ export interface WorkersScriptBinding {
      * JSON data to use.
      */
     json?: string;
+    /**
+     * Base64-encoded key data. Required if `format` is "raw", "pkcs8", or "spki".
+     */
+    keyBase64?: string;
+    /**
+     * Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk".
+     */
+    keyJwk?: string;
     /**
      * A JavaScript variable name for the binding.
      */
@@ -30738,6 +30776,10 @@ export interface WorkersScriptBinding {
      */
     outbound?: outputs.WorkersScriptBindingOutbound;
     /**
+     * Name of the Pipeline to bind to.
+     */
+    pipeline?: string;
+    /**
      * Name of the Queue to bind to.
      */
     queueName?: string;
@@ -30746,18 +30788,30 @@ export interface WorkersScriptBinding {
      */
     scriptName?: string;
     /**
+     * Name of the secret in the store.
+     */
+    secretName?: string;
+    /**
      * Name of Worker to bind to.
      */
     service?: string;
+    /**
+     * ID of the store containing the secret.
+     */
+    storeId?: string;
     /**
      * The text value to use.
      */
     text?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai", "analytics*engine", "assets", "browser*rendering", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata".
+     * Available values: "ai".
      */
     type: string;
+    /**
+     * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
+     */
+    usages?: string[];
 }
 
 export interface WorkersScriptBindingOutbound {
@@ -30874,6 +30928,10 @@ export interface WorkersScriptObservability {
 }
 
 export interface WorkersScriptPlacement {
+    /**
+     * The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+     */
+    lastAnalyzedAt: string;
     /**
      * Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      * Available values: "smart".
@@ -31006,7 +31064,7 @@ export interface ZeroTrustAccessApplicationPolicy {
     /**
      * The rules that define how users may connect to the targets secured by your application.
      */
-    connectionRules: outputs.ZeroTrustAccessApplicationPolicyConnectionRules;
+    connectionRules?: outputs.ZeroTrustAccessApplicationPolicyConnectionRules;
     /**
      * The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
      * Available values: "allow", "deny", "nonIdentity", "bypass".
@@ -31015,7 +31073,7 @@ export interface ZeroTrustAccessApplicationPolicy {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    excludes: outputs.ZeroTrustAccessApplicationPolicyExclude[];
+    excludes?: outputs.ZeroTrustAccessApplicationPolicyExclude[];
     /**
      * The UUID of the policy
      */
@@ -31023,7 +31081,7 @@ export interface ZeroTrustAccessApplicationPolicy {
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes: outputs.ZeroTrustAccessApplicationPolicyInclude[];
+    includes?: outputs.ZeroTrustAccessApplicationPolicyInclude[];
     /**
      * The name of the Access policy.
      */
@@ -31035,14 +31093,14 @@ export interface ZeroTrustAccessApplicationPolicy {
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    requires: outputs.ZeroTrustAccessApplicationPolicyRequire[];
+    requires?: outputs.ZeroTrustAccessApplicationPolicyRequire[];
 }
 
 export interface ZeroTrustAccessApplicationPolicyConnectionRules {
     /**
      * The SSH-specific rules that define how users may connect to the targets secured by your application.
      */
-    ssh: outputs.ZeroTrustAccessApplicationPolicyConnectionRulesSsh;
+    ssh?: outputs.ZeroTrustAccessApplicationPolicyConnectionRulesSsh;
 }
 
 export interface ZeroTrustAccessApplicationPolicyConnectionRulesSsh {
@@ -31061,30 +31119,30 @@ export interface ZeroTrustAccessApplicationPolicyExclude {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.ZeroTrustAccessApplicationPolicyExcludeAnyValidServiceToken;
-    authContext: outputs.ZeroTrustAccessApplicationPolicyExcludeAuthContext;
-    authMethod: outputs.ZeroTrustAccessApplicationPolicyExcludeAuthMethod;
-    azureAd: outputs.ZeroTrustAccessApplicationPolicyExcludeAzureAd;
+    authContext?: outputs.ZeroTrustAccessApplicationPolicyExcludeAuthContext;
+    authMethod?: outputs.ZeroTrustAccessApplicationPolicyExcludeAuthMethod;
+    azureAd?: outputs.ZeroTrustAccessApplicationPolicyExcludeAzureAd;
     certificate?: outputs.ZeroTrustAccessApplicationPolicyExcludeCertificate;
-    commonName: outputs.ZeroTrustAccessApplicationPolicyExcludeCommonName;
-    devicePosture: outputs.ZeroTrustAccessApplicationPolicyExcludeDevicePosture;
-    email: outputs.ZeroTrustAccessApplicationPolicyExcludeEmail;
-    emailDomain: outputs.ZeroTrustAccessApplicationPolicyExcludeEmailDomain;
-    emailList: outputs.ZeroTrustAccessApplicationPolicyExcludeEmailList;
+    commonName?: outputs.ZeroTrustAccessApplicationPolicyExcludeCommonName;
+    devicePosture?: outputs.ZeroTrustAccessApplicationPolicyExcludeDevicePosture;
+    email?: outputs.ZeroTrustAccessApplicationPolicyExcludeEmail;
+    emailDomain?: outputs.ZeroTrustAccessApplicationPolicyExcludeEmailDomain;
+    emailList?: outputs.ZeroTrustAccessApplicationPolicyExcludeEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.ZeroTrustAccessApplicationPolicyExcludeEveryone;
-    externalEvaluation: outputs.ZeroTrustAccessApplicationPolicyExcludeExternalEvaluation;
-    geo: outputs.ZeroTrustAccessApplicationPolicyExcludeGeo;
-    githubOrganization: outputs.ZeroTrustAccessApplicationPolicyExcludeGithubOrganization;
-    group: outputs.ZeroTrustAccessApplicationPolicyExcludeGroup;
-    gsuite: outputs.ZeroTrustAccessApplicationPolicyExcludeGsuite;
-    ip: outputs.ZeroTrustAccessApplicationPolicyExcludeIp;
-    ipList: outputs.ZeroTrustAccessApplicationPolicyExcludeIpList;
-    loginMethod: outputs.ZeroTrustAccessApplicationPolicyExcludeLoginMethod;
-    okta: outputs.ZeroTrustAccessApplicationPolicyExcludeOkta;
-    saml: outputs.ZeroTrustAccessApplicationPolicyExcludeSaml;
-    serviceToken: outputs.ZeroTrustAccessApplicationPolicyExcludeServiceToken;
+    externalEvaluation?: outputs.ZeroTrustAccessApplicationPolicyExcludeExternalEvaluation;
+    geo?: outputs.ZeroTrustAccessApplicationPolicyExcludeGeo;
+    githubOrganization?: outputs.ZeroTrustAccessApplicationPolicyExcludeGithubOrganization;
+    group?: outputs.ZeroTrustAccessApplicationPolicyExcludeGroup;
+    gsuite?: outputs.ZeroTrustAccessApplicationPolicyExcludeGsuite;
+    ip?: outputs.ZeroTrustAccessApplicationPolicyExcludeIp;
+    ipList?: outputs.ZeroTrustAccessApplicationPolicyExcludeIpList;
+    loginMethod?: outputs.ZeroTrustAccessApplicationPolicyExcludeLoginMethod;
+    okta?: outputs.ZeroTrustAccessApplicationPolicyExcludeOkta;
+    saml?: outputs.ZeroTrustAccessApplicationPolicyExcludeSaml;
+    serviceToken?: outputs.ZeroTrustAccessApplicationPolicyExcludeServiceToken;
 }
 
 export interface ZeroTrustAccessApplicationPolicyExcludeAnyValidServiceToken {
@@ -31274,30 +31332,30 @@ export interface ZeroTrustAccessApplicationPolicyInclude {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.ZeroTrustAccessApplicationPolicyIncludeAnyValidServiceToken;
-    authContext: outputs.ZeroTrustAccessApplicationPolicyIncludeAuthContext;
-    authMethod: outputs.ZeroTrustAccessApplicationPolicyIncludeAuthMethod;
-    azureAd: outputs.ZeroTrustAccessApplicationPolicyIncludeAzureAd;
+    authContext?: outputs.ZeroTrustAccessApplicationPolicyIncludeAuthContext;
+    authMethod?: outputs.ZeroTrustAccessApplicationPolicyIncludeAuthMethod;
+    azureAd?: outputs.ZeroTrustAccessApplicationPolicyIncludeAzureAd;
     certificate?: outputs.ZeroTrustAccessApplicationPolicyIncludeCertificate;
-    commonName: outputs.ZeroTrustAccessApplicationPolicyIncludeCommonName;
-    devicePosture: outputs.ZeroTrustAccessApplicationPolicyIncludeDevicePosture;
-    email: outputs.ZeroTrustAccessApplicationPolicyIncludeEmail;
-    emailDomain: outputs.ZeroTrustAccessApplicationPolicyIncludeEmailDomain;
-    emailList: outputs.ZeroTrustAccessApplicationPolicyIncludeEmailList;
+    commonName?: outputs.ZeroTrustAccessApplicationPolicyIncludeCommonName;
+    devicePosture?: outputs.ZeroTrustAccessApplicationPolicyIncludeDevicePosture;
+    email?: outputs.ZeroTrustAccessApplicationPolicyIncludeEmail;
+    emailDomain?: outputs.ZeroTrustAccessApplicationPolicyIncludeEmailDomain;
+    emailList?: outputs.ZeroTrustAccessApplicationPolicyIncludeEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.ZeroTrustAccessApplicationPolicyIncludeEveryone;
-    externalEvaluation: outputs.ZeroTrustAccessApplicationPolicyIncludeExternalEvaluation;
-    geo: outputs.ZeroTrustAccessApplicationPolicyIncludeGeo;
-    githubOrganization: outputs.ZeroTrustAccessApplicationPolicyIncludeGithubOrganization;
-    group: outputs.ZeroTrustAccessApplicationPolicyIncludeGroup;
-    gsuite: outputs.ZeroTrustAccessApplicationPolicyIncludeGsuite;
-    ip: outputs.ZeroTrustAccessApplicationPolicyIncludeIp;
-    ipList: outputs.ZeroTrustAccessApplicationPolicyIncludeIpList;
-    loginMethod: outputs.ZeroTrustAccessApplicationPolicyIncludeLoginMethod;
-    okta: outputs.ZeroTrustAccessApplicationPolicyIncludeOkta;
-    saml: outputs.ZeroTrustAccessApplicationPolicyIncludeSaml;
-    serviceToken: outputs.ZeroTrustAccessApplicationPolicyIncludeServiceToken;
+    externalEvaluation?: outputs.ZeroTrustAccessApplicationPolicyIncludeExternalEvaluation;
+    geo?: outputs.ZeroTrustAccessApplicationPolicyIncludeGeo;
+    githubOrganization?: outputs.ZeroTrustAccessApplicationPolicyIncludeGithubOrganization;
+    group?: outputs.ZeroTrustAccessApplicationPolicyIncludeGroup;
+    gsuite?: outputs.ZeroTrustAccessApplicationPolicyIncludeGsuite;
+    ip?: outputs.ZeroTrustAccessApplicationPolicyIncludeIp;
+    ipList?: outputs.ZeroTrustAccessApplicationPolicyIncludeIpList;
+    loginMethod?: outputs.ZeroTrustAccessApplicationPolicyIncludeLoginMethod;
+    okta?: outputs.ZeroTrustAccessApplicationPolicyIncludeOkta;
+    saml?: outputs.ZeroTrustAccessApplicationPolicyIncludeSaml;
+    serviceToken?: outputs.ZeroTrustAccessApplicationPolicyIncludeServiceToken;
 }
 
 export interface ZeroTrustAccessApplicationPolicyIncludeAnyValidServiceToken {
@@ -31487,30 +31545,30 @@ export interface ZeroTrustAccessApplicationPolicyRequire {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.ZeroTrustAccessApplicationPolicyRequireAnyValidServiceToken;
-    authContext: outputs.ZeroTrustAccessApplicationPolicyRequireAuthContext;
-    authMethod: outputs.ZeroTrustAccessApplicationPolicyRequireAuthMethod;
-    azureAd: outputs.ZeroTrustAccessApplicationPolicyRequireAzureAd;
+    authContext?: outputs.ZeroTrustAccessApplicationPolicyRequireAuthContext;
+    authMethod?: outputs.ZeroTrustAccessApplicationPolicyRequireAuthMethod;
+    azureAd?: outputs.ZeroTrustAccessApplicationPolicyRequireAzureAd;
     certificate?: outputs.ZeroTrustAccessApplicationPolicyRequireCertificate;
-    commonName: outputs.ZeroTrustAccessApplicationPolicyRequireCommonName;
-    devicePosture: outputs.ZeroTrustAccessApplicationPolicyRequireDevicePosture;
-    email: outputs.ZeroTrustAccessApplicationPolicyRequireEmail;
-    emailDomain: outputs.ZeroTrustAccessApplicationPolicyRequireEmailDomain;
-    emailList: outputs.ZeroTrustAccessApplicationPolicyRequireEmailList;
+    commonName?: outputs.ZeroTrustAccessApplicationPolicyRequireCommonName;
+    devicePosture?: outputs.ZeroTrustAccessApplicationPolicyRequireDevicePosture;
+    email?: outputs.ZeroTrustAccessApplicationPolicyRequireEmail;
+    emailDomain?: outputs.ZeroTrustAccessApplicationPolicyRequireEmailDomain;
+    emailList?: outputs.ZeroTrustAccessApplicationPolicyRequireEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.ZeroTrustAccessApplicationPolicyRequireEveryone;
-    externalEvaluation: outputs.ZeroTrustAccessApplicationPolicyRequireExternalEvaluation;
-    geo: outputs.ZeroTrustAccessApplicationPolicyRequireGeo;
-    githubOrganization: outputs.ZeroTrustAccessApplicationPolicyRequireGithubOrganization;
-    group: outputs.ZeroTrustAccessApplicationPolicyRequireGroup;
-    gsuite: outputs.ZeroTrustAccessApplicationPolicyRequireGsuite;
-    ip: outputs.ZeroTrustAccessApplicationPolicyRequireIp;
-    ipList: outputs.ZeroTrustAccessApplicationPolicyRequireIpList;
-    loginMethod: outputs.ZeroTrustAccessApplicationPolicyRequireLoginMethod;
-    okta: outputs.ZeroTrustAccessApplicationPolicyRequireOkta;
-    saml: outputs.ZeroTrustAccessApplicationPolicyRequireSaml;
-    serviceToken: outputs.ZeroTrustAccessApplicationPolicyRequireServiceToken;
+    externalEvaluation?: outputs.ZeroTrustAccessApplicationPolicyRequireExternalEvaluation;
+    geo?: outputs.ZeroTrustAccessApplicationPolicyRequireGeo;
+    githubOrganization?: outputs.ZeroTrustAccessApplicationPolicyRequireGithubOrganization;
+    group?: outputs.ZeroTrustAccessApplicationPolicyRequireGroup;
+    gsuite?: outputs.ZeroTrustAccessApplicationPolicyRequireGsuite;
+    ip?: outputs.ZeroTrustAccessApplicationPolicyRequireIp;
+    ipList?: outputs.ZeroTrustAccessApplicationPolicyRequireIpList;
+    loginMethod?: outputs.ZeroTrustAccessApplicationPolicyRequireLoginMethod;
+    okta?: outputs.ZeroTrustAccessApplicationPolicyRequireOkta;
+    saml?: outputs.ZeroTrustAccessApplicationPolicyRequireSaml;
+    serviceToken?: outputs.ZeroTrustAccessApplicationPolicyRequireServiceToken;
 }
 
 export interface ZeroTrustAccessApplicationPolicyRequireAnyValidServiceToken {
@@ -31726,8 +31784,8 @@ export interface ZeroTrustAccessApplicationSaasApp {
      */
     consumerServiceUrl?: string;
     createdAt: string;
-    customAttributes: outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute[];
-    customClaims: outputs.ZeroTrustAccessApplicationSaasAppCustomClaim[];
+    customAttributes?: outputs.ZeroTrustAccessApplicationSaasAppCustomAttribute[];
+    customClaims?: outputs.ZeroTrustAccessApplicationSaasAppCustomClaim[];
     /**
      * The URL that the user will be redirected to after a successful login for IDP initiated logins.
      */
@@ -31740,7 +31798,7 @@ export interface ZeroTrustAccessApplicationSaasApp {
      * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
      */
     groupFilterRegex?: string;
-    hybridAndImplicitOptions: outputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions;
+    hybridAndImplicitOptions?: outputs.ZeroTrustAccessApplicationSaasAppHybridAndImplicitOptions;
     /**
      * The unique identifier for your SaaS application.
      */
@@ -31762,7 +31820,7 @@ export interface ZeroTrustAccessApplicationSaasApp {
      * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
      */
     redirectUris?: string[];
-    refreshTokenOptions: outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptions;
+    refreshTokenOptions?: outputs.ZeroTrustAccessApplicationSaasAppRefreshTokenOptions;
     /**
      * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
      */
@@ -31800,7 +31858,7 @@ export interface ZeroTrustAccessApplicationSaasAppCustomAttribute {
      * If the attribute is required when building a SAML assertion.
      */
     required?: boolean;
-    source: outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource;
+    source?: outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSource;
 }
 
 export interface ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
@@ -31811,7 +31869,7 @@ export interface ZeroTrustAccessApplicationSaasAppCustomAttributeSource {
     /**
      * A mapping from IdP ID to attribute name.
      */
-    nameByIdps: outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp[];
+    nameByIdps?: outputs.ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp[];
 }
 
 export interface ZeroTrustAccessApplicationSaasAppCustomAttributeSourceNameByIdp {
@@ -31839,7 +31897,7 @@ export interface ZeroTrustAccessApplicationSaasAppCustomClaim {
      * Available values: "groups", "profile", "email", "openid".
      */
     scope?: string;
-    source: outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource;
+    source?: outputs.ZeroTrustAccessApplicationSaasAppCustomClaimSource;
 }
 
 export interface ZeroTrustAccessApplicationSaasAppCustomClaimSource {
@@ -31875,7 +31933,7 @@ export interface ZeroTrustAccessApplicationScimConfig {
     /**
      * Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
      */
-    authentication: outputs.ZeroTrustAccessApplicationScimConfigAuthentication;
+    authentication?: outputs.ZeroTrustAccessApplicationScimConfigAuthentication;
     /**
      * If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
      */
@@ -31891,7 +31949,7 @@ export interface ZeroTrustAccessApplicationScimConfig {
     /**
      * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
      */
-    mappings: outputs.ZeroTrustAccessApplicationScimConfigMapping[];
+    mappings?: outputs.ZeroTrustAccessApplicationScimConfigMapping[];
     /**
      * The base URI for the application's SCIM-compatible API.
      */
@@ -31950,7 +32008,7 @@ export interface ZeroTrustAccessApplicationScimConfigMapping {
     /**
      * Whether or not this mapping applies to creates, updates, or deletes.
      */
-    operations: outputs.ZeroTrustAccessApplicationScimConfigMappingOperations;
+    operations?: outputs.ZeroTrustAccessApplicationScimConfigMappingOperations;
     /**
      * Which SCIM resource type this mapping applies to.
      */
@@ -32002,30 +32060,30 @@ export interface ZeroTrustAccessGroupExclude {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.ZeroTrustAccessGroupExcludeAnyValidServiceToken;
-    authContext: outputs.ZeroTrustAccessGroupExcludeAuthContext;
-    authMethod: outputs.ZeroTrustAccessGroupExcludeAuthMethod;
-    azureAd: outputs.ZeroTrustAccessGroupExcludeAzureAd;
+    authContext?: outputs.ZeroTrustAccessGroupExcludeAuthContext;
+    authMethod?: outputs.ZeroTrustAccessGroupExcludeAuthMethod;
+    azureAd?: outputs.ZeroTrustAccessGroupExcludeAzureAd;
     certificate?: outputs.ZeroTrustAccessGroupExcludeCertificate;
-    commonName: outputs.ZeroTrustAccessGroupExcludeCommonName;
-    devicePosture: outputs.ZeroTrustAccessGroupExcludeDevicePosture;
-    email: outputs.ZeroTrustAccessGroupExcludeEmail;
-    emailDomain: outputs.ZeroTrustAccessGroupExcludeEmailDomain;
-    emailList: outputs.ZeroTrustAccessGroupExcludeEmailList;
+    commonName?: outputs.ZeroTrustAccessGroupExcludeCommonName;
+    devicePosture?: outputs.ZeroTrustAccessGroupExcludeDevicePosture;
+    email?: outputs.ZeroTrustAccessGroupExcludeEmail;
+    emailDomain?: outputs.ZeroTrustAccessGroupExcludeEmailDomain;
+    emailList?: outputs.ZeroTrustAccessGroupExcludeEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.ZeroTrustAccessGroupExcludeEveryone;
-    externalEvaluation: outputs.ZeroTrustAccessGroupExcludeExternalEvaluation;
-    geo: outputs.ZeroTrustAccessGroupExcludeGeo;
-    githubOrganization: outputs.ZeroTrustAccessGroupExcludeGithubOrganization;
-    group: outputs.ZeroTrustAccessGroupExcludeGroup;
-    gsuite: outputs.ZeroTrustAccessGroupExcludeGsuite;
-    ip: outputs.ZeroTrustAccessGroupExcludeIp;
-    ipList: outputs.ZeroTrustAccessGroupExcludeIpList;
-    loginMethod: outputs.ZeroTrustAccessGroupExcludeLoginMethod;
-    okta: outputs.ZeroTrustAccessGroupExcludeOkta;
-    saml: outputs.ZeroTrustAccessGroupExcludeSaml;
-    serviceToken: outputs.ZeroTrustAccessGroupExcludeServiceToken;
+    externalEvaluation?: outputs.ZeroTrustAccessGroupExcludeExternalEvaluation;
+    geo?: outputs.ZeroTrustAccessGroupExcludeGeo;
+    githubOrganization?: outputs.ZeroTrustAccessGroupExcludeGithubOrganization;
+    group?: outputs.ZeroTrustAccessGroupExcludeGroup;
+    gsuite?: outputs.ZeroTrustAccessGroupExcludeGsuite;
+    ip?: outputs.ZeroTrustAccessGroupExcludeIp;
+    ipList?: outputs.ZeroTrustAccessGroupExcludeIpList;
+    loginMethod?: outputs.ZeroTrustAccessGroupExcludeLoginMethod;
+    okta?: outputs.ZeroTrustAccessGroupExcludeOkta;
+    saml?: outputs.ZeroTrustAccessGroupExcludeSaml;
+    serviceToken?: outputs.ZeroTrustAccessGroupExcludeServiceToken;
 }
 
 export interface ZeroTrustAccessGroupExcludeAnyValidServiceToken {
@@ -32428,30 +32486,30 @@ export interface ZeroTrustAccessGroupRequire {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.ZeroTrustAccessGroupRequireAnyValidServiceToken;
-    authContext: outputs.ZeroTrustAccessGroupRequireAuthContext;
-    authMethod: outputs.ZeroTrustAccessGroupRequireAuthMethod;
-    azureAd: outputs.ZeroTrustAccessGroupRequireAzureAd;
+    authContext?: outputs.ZeroTrustAccessGroupRequireAuthContext;
+    authMethod?: outputs.ZeroTrustAccessGroupRequireAuthMethod;
+    azureAd?: outputs.ZeroTrustAccessGroupRequireAzureAd;
     certificate?: outputs.ZeroTrustAccessGroupRequireCertificate;
-    commonName: outputs.ZeroTrustAccessGroupRequireCommonName;
-    devicePosture: outputs.ZeroTrustAccessGroupRequireDevicePosture;
-    email: outputs.ZeroTrustAccessGroupRequireEmail;
-    emailDomain: outputs.ZeroTrustAccessGroupRequireEmailDomain;
-    emailList: outputs.ZeroTrustAccessGroupRequireEmailList;
+    commonName?: outputs.ZeroTrustAccessGroupRequireCommonName;
+    devicePosture?: outputs.ZeroTrustAccessGroupRequireDevicePosture;
+    email?: outputs.ZeroTrustAccessGroupRequireEmail;
+    emailDomain?: outputs.ZeroTrustAccessGroupRequireEmailDomain;
+    emailList?: outputs.ZeroTrustAccessGroupRequireEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.ZeroTrustAccessGroupRequireEveryone;
-    externalEvaluation: outputs.ZeroTrustAccessGroupRequireExternalEvaluation;
-    geo: outputs.ZeroTrustAccessGroupRequireGeo;
-    githubOrganization: outputs.ZeroTrustAccessGroupRequireGithubOrganization;
-    group: outputs.ZeroTrustAccessGroupRequireGroup;
-    gsuite: outputs.ZeroTrustAccessGroupRequireGsuite;
-    ip: outputs.ZeroTrustAccessGroupRequireIp;
-    ipList: outputs.ZeroTrustAccessGroupRequireIpList;
-    loginMethod: outputs.ZeroTrustAccessGroupRequireLoginMethod;
-    okta: outputs.ZeroTrustAccessGroupRequireOkta;
-    saml: outputs.ZeroTrustAccessGroupRequireSaml;
-    serviceToken: outputs.ZeroTrustAccessGroupRequireServiceToken;
+    externalEvaluation?: outputs.ZeroTrustAccessGroupRequireExternalEvaluation;
+    geo?: outputs.ZeroTrustAccessGroupRequireGeo;
+    githubOrganization?: outputs.ZeroTrustAccessGroupRequireGithubOrganization;
+    group?: outputs.ZeroTrustAccessGroupRequireGroup;
+    gsuite?: outputs.ZeroTrustAccessGroupRequireGsuite;
+    ip?: outputs.ZeroTrustAccessGroupRequireIp;
+    ipList?: outputs.ZeroTrustAccessGroupRequireIpList;
+    loginMethod?: outputs.ZeroTrustAccessGroupRequireLoginMethod;
+    okta?: outputs.ZeroTrustAccessGroupRequireOkta;
+    saml?: outputs.ZeroTrustAccessGroupRequireSaml;
+    serviceToken?: outputs.ZeroTrustAccessGroupRequireServiceToken;
 }
 
 export interface ZeroTrustAccessGroupRequireAnyValidServiceToken {
@@ -32856,30 +32914,30 @@ export interface ZeroTrustAccessPolicyExclude {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.ZeroTrustAccessPolicyExcludeAnyValidServiceToken;
-    authContext: outputs.ZeroTrustAccessPolicyExcludeAuthContext;
-    authMethod: outputs.ZeroTrustAccessPolicyExcludeAuthMethod;
-    azureAd: outputs.ZeroTrustAccessPolicyExcludeAzureAd;
+    authContext?: outputs.ZeroTrustAccessPolicyExcludeAuthContext;
+    authMethod?: outputs.ZeroTrustAccessPolicyExcludeAuthMethod;
+    azureAd?: outputs.ZeroTrustAccessPolicyExcludeAzureAd;
     certificate?: outputs.ZeroTrustAccessPolicyExcludeCertificate;
-    commonName: outputs.ZeroTrustAccessPolicyExcludeCommonName;
-    devicePosture: outputs.ZeroTrustAccessPolicyExcludeDevicePosture;
-    email: outputs.ZeroTrustAccessPolicyExcludeEmail;
-    emailDomain: outputs.ZeroTrustAccessPolicyExcludeEmailDomain;
-    emailList: outputs.ZeroTrustAccessPolicyExcludeEmailList;
+    commonName?: outputs.ZeroTrustAccessPolicyExcludeCommonName;
+    devicePosture?: outputs.ZeroTrustAccessPolicyExcludeDevicePosture;
+    email?: outputs.ZeroTrustAccessPolicyExcludeEmail;
+    emailDomain?: outputs.ZeroTrustAccessPolicyExcludeEmailDomain;
+    emailList?: outputs.ZeroTrustAccessPolicyExcludeEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.ZeroTrustAccessPolicyExcludeEveryone;
-    externalEvaluation: outputs.ZeroTrustAccessPolicyExcludeExternalEvaluation;
-    geo: outputs.ZeroTrustAccessPolicyExcludeGeo;
-    githubOrganization: outputs.ZeroTrustAccessPolicyExcludeGithubOrganization;
-    group: outputs.ZeroTrustAccessPolicyExcludeGroup;
-    gsuite: outputs.ZeroTrustAccessPolicyExcludeGsuite;
-    ip: outputs.ZeroTrustAccessPolicyExcludeIp;
-    ipList: outputs.ZeroTrustAccessPolicyExcludeIpList;
-    loginMethod: outputs.ZeroTrustAccessPolicyExcludeLoginMethod;
-    okta: outputs.ZeroTrustAccessPolicyExcludeOkta;
-    saml: outputs.ZeroTrustAccessPolicyExcludeSaml;
-    serviceToken: outputs.ZeroTrustAccessPolicyExcludeServiceToken;
+    externalEvaluation?: outputs.ZeroTrustAccessPolicyExcludeExternalEvaluation;
+    geo?: outputs.ZeroTrustAccessPolicyExcludeGeo;
+    githubOrganization?: outputs.ZeroTrustAccessPolicyExcludeGithubOrganization;
+    group?: outputs.ZeroTrustAccessPolicyExcludeGroup;
+    gsuite?: outputs.ZeroTrustAccessPolicyExcludeGsuite;
+    ip?: outputs.ZeroTrustAccessPolicyExcludeIp;
+    ipList?: outputs.ZeroTrustAccessPolicyExcludeIpList;
+    loginMethod?: outputs.ZeroTrustAccessPolicyExcludeLoginMethod;
+    okta?: outputs.ZeroTrustAccessPolicyExcludeOkta;
+    saml?: outputs.ZeroTrustAccessPolicyExcludeSaml;
+    serviceToken?: outputs.ZeroTrustAccessPolicyExcludeServiceToken;
 }
 
 export interface ZeroTrustAccessPolicyExcludeAnyValidServiceToken {
@@ -33282,30 +33340,30 @@ export interface ZeroTrustAccessPolicyRequire {
      * An empty object which matches on all service tokens.
      */
     anyValidServiceToken?: outputs.ZeroTrustAccessPolicyRequireAnyValidServiceToken;
-    authContext: outputs.ZeroTrustAccessPolicyRequireAuthContext;
-    authMethod: outputs.ZeroTrustAccessPolicyRequireAuthMethod;
-    azureAd: outputs.ZeroTrustAccessPolicyRequireAzureAd;
+    authContext?: outputs.ZeroTrustAccessPolicyRequireAuthContext;
+    authMethod?: outputs.ZeroTrustAccessPolicyRequireAuthMethod;
+    azureAd?: outputs.ZeroTrustAccessPolicyRequireAzureAd;
     certificate?: outputs.ZeroTrustAccessPolicyRequireCertificate;
-    commonName: outputs.ZeroTrustAccessPolicyRequireCommonName;
-    devicePosture: outputs.ZeroTrustAccessPolicyRequireDevicePosture;
-    email: outputs.ZeroTrustAccessPolicyRequireEmail;
-    emailDomain: outputs.ZeroTrustAccessPolicyRequireEmailDomain;
-    emailList: outputs.ZeroTrustAccessPolicyRequireEmailList;
+    commonName?: outputs.ZeroTrustAccessPolicyRequireCommonName;
+    devicePosture?: outputs.ZeroTrustAccessPolicyRequireDevicePosture;
+    email?: outputs.ZeroTrustAccessPolicyRequireEmail;
+    emailDomain?: outputs.ZeroTrustAccessPolicyRequireEmailDomain;
+    emailList?: outputs.ZeroTrustAccessPolicyRequireEmailList;
     /**
      * An empty object which matches on all users.
      */
     everyone?: outputs.ZeroTrustAccessPolicyRequireEveryone;
-    externalEvaluation: outputs.ZeroTrustAccessPolicyRequireExternalEvaluation;
-    geo: outputs.ZeroTrustAccessPolicyRequireGeo;
-    githubOrganization: outputs.ZeroTrustAccessPolicyRequireGithubOrganization;
-    group: outputs.ZeroTrustAccessPolicyRequireGroup;
-    gsuite: outputs.ZeroTrustAccessPolicyRequireGsuite;
-    ip: outputs.ZeroTrustAccessPolicyRequireIp;
-    ipList: outputs.ZeroTrustAccessPolicyRequireIpList;
-    loginMethod: outputs.ZeroTrustAccessPolicyRequireLoginMethod;
-    okta: outputs.ZeroTrustAccessPolicyRequireOkta;
-    saml: outputs.ZeroTrustAccessPolicyRequireSaml;
-    serviceToken: outputs.ZeroTrustAccessPolicyRequireServiceToken;
+    externalEvaluation?: outputs.ZeroTrustAccessPolicyRequireExternalEvaluation;
+    geo?: outputs.ZeroTrustAccessPolicyRequireGeo;
+    githubOrganization?: outputs.ZeroTrustAccessPolicyRequireGithubOrganization;
+    group?: outputs.ZeroTrustAccessPolicyRequireGroup;
+    gsuite?: outputs.ZeroTrustAccessPolicyRequireGsuite;
+    ip?: outputs.ZeroTrustAccessPolicyRequireIp;
+    ipList?: outputs.ZeroTrustAccessPolicyRequireIpList;
+    loginMethod?: outputs.ZeroTrustAccessPolicyRequireLoginMethod;
+    okta?: outputs.ZeroTrustAccessPolicyRequireOkta;
+    saml?: outputs.ZeroTrustAccessPolicyRequireSaml;
+    serviceToken?: outputs.ZeroTrustAccessPolicyRequireServiceToken;
 }
 
 export interface ZeroTrustAccessPolicyRequireAnyValidServiceToken {
@@ -33764,7 +33822,7 @@ export interface ZeroTrustDevicePostureRuleInput {
      * For more details on last seen, please refer to the Crowdstrike documentation.
      */
     lastSeen?: string;
-    locations: outputs.ZeroTrustDevicePostureRuleInputLocations;
+    locations?: outputs.ZeroTrustDevicePostureRuleInputLocations;
     /**
      * Network status of device.
      * Available values: "connected", "disconnected", "disconnecting", "connecting".
@@ -33872,39 +33930,9 @@ export interface ZeroTrustDevicePostureRuleInputLocations {
 
 export interface ZeroTrustDevicePostureRuleMatch {
     /**
-     * Available values: "windows", "mac", "linux", "android", "ios".
+     * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform?: string;
-}
-
-export interface ZeroTrustDexTestData {
-    /**
-     * The desired endpoint to test.
-     */
-    host?: string;
-    /**
-     * The type of test.
-     */
-    kind?: string;
-    /**
-     * The HTTP request method type.
-     */
-    method?: string;
-}
-
-export interface ZeroTrustDexTestTargetPolicy {
-    /**
-     * Whether the profile is the account default
-     */
-    default?: boolean;
-    /**
-     * The id of the device settings profile
-     */
-    id?: string;
-    /**
-     * The name of the device settings profile
-     */
-    name?: string;
 }
 
 export interface ZeroTrustDlpCustomProfileContextAwareness {
@@ -33928,7 +33956,7 @@ export interface ZeroTrustDlpCustomProfileContextAwarenessSkip {
 export interface ZeroTrustDlpCustomProfileEntry {
     enabled: boolean;
     name: string;
-    pattern: outputs.ZeroTrustDlpCustomProfileEntryPattern;
+    pattern?: outputs.ZeroTrustDlpCustomProfileEntryPattern;
     words?: string[];
 }
 
@@ -33952,9 +33980,9 @@ export interface ZeroTrustDlpCustomProfileProfile {
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      */
-    contextAwareness: outputs.ZeroTrustDlpCustomProfileProfileContextAwareness;
+    contextAwareness?: outputs.ZeroTrustDlpCustomProfileProfileContextAwareness;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: string;
     entries: outputs.ZeroTrustDlpCustomProfileProfileEntry[];
@@ -33963,7 +33991,7 @@ export interface ZeroTrustDlpCustomProfileProfile {
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
-    sharedEntries: outputs.ZeroTrustDlpCustomProfileProfileSharedEntry[];
+    sharedEntries?: outputs.ZeroTrustDlpCustomProfileProfileSharedEntry[];
 }
 
 export interface ZeroTrustDlpCustomProfileProfileContextAwareness {
@@ -34030,10 +34058,11 @@ export interface ZeroTrustDlpDatasetColumn {
 }
 
 export interface ZeroTrustDlpDatasetDataset {
+    caseSensitive: boolean;
     columns: outputs.ZeroTrustDlpDatasetDatasetColumn[];
     createdAt: string;
     /**
-     * The description of the dataset
+     * The description of the dataset.
      */
     description: string;
     encodingVersion: number;
@@ -34082,11 +34111,11 @@ export interface ZeroTrustDlpDatasetUpload {
 
 export interface ZeroTrustDlpEntryConfidence {
     /**
-     * Indicates whether this entry has AI remote service validation
+     * Indicates whether this entry has AI remote service validation.
      */
     aiContextAvailable: boolean;
     /**
-     * Indicates whether this entry has any form of validation that is not an AI remote service
+     * Indicates whether this entry has any form of validation that is not an AI remote service.
      */
     available: boolean;
 }
@@ -34125,10 +34154,10 @@ export interface ZeroTrustDlpPredefinedProfileEntry {
 }
 
 export interface ZeroTrustDnsLocationEndpoints {
-    doh: outputs.ZeroTrustDnsLocationEndpointsDoh;
-    dot: outputs.ZeroTrustDnsLocationEndpointsDot;
-    ipv4: outputs.ZeroTrustDnsLocationEndpointsIpv4;
-    ipv6: outputs.ZeroTrustDnsLocationEndpointsIpv6;
+    doh?: outputs.ZeroTrustDnsLocationEndpointsDoh;
+    dot?: outputs.ZeroTrustDnsLocationEndpointsDot;
+    ipv4?: outputs.ZeroTrustDnsLocationEndpointsIpv4;
+    ipv6?: outputs.ZeroTrustDnsLocationEndpointsIpv6;
 }
 
 export interface ZeroTrustDnsLocationEndpointsDoh {
@@ -34139,7 +34168,7 @@ export interface ZeroTrustDnsLocationEndpointsDoh {
     /**
      * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
      */
-    networks: outputs.ZeroTrustDnsLocationEndpointsDohNetwork[];
+    networks?: outputs.ZeroTrustDnsLocationEndpointsDohNetwork[];
     /**
      * True if the endpoint requires [user identity](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless/dns/dns-over-https/#filter-doh-requests-by-user) authentication.
      */
@@ -34161,7 +34190,7 @@ export interface ZeroTrustDnsLocationEndpointsDot {
     /**
      * A list of allowed source IP network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
      */
-    networks: outputs.ZeroTrustDnsLocationEndpointsDotNetwork[];
+    networks?: outputs.ZeroTrustDnsLocationEndpointsDotNetwork[];
 }
 
 export interface ZeroTrustDnsLocationEndpointsDotNetwork {
@@ -34186,7 +34215,7 @@ export interface ZeroTrustDnsLocationEndpointsIpv6 {
     /**
      * A list of allowed source IPv6 network ranges for this endpoint. When empty, all source IPs are allowed. A non-empty list is only effective if the endpoint is enabled for this location.
      */
-    networks: outputs.ZeroTrustDnsLocationEndpointsIpv6Network[];
+    networks?: outputs.ZeroTrustDnsLocationEndpointsIpv6Network[];
 }
 
 export interface ZeroTrustDnsLocationEndpointsIpv6Network {
@@ -34213,33 +34242,33 @@ export interface ZeroTrustGatewayLoggingSettingsByRuleTypeDns {
     /**
      * Log all requests to this service.
      */
-    logAll?: boolean;
+    logAll: boolean;
     /**
      * Log only blocking requests to this service.
      */
-    logBlocks?: boolean;
+    logBlocks: boolean;
 }
 
 export interface ZeroTrustGatewayLoggingSettingsByRuleTypeHttp {
     /**
      * Log all requests to this service.
      */
-    logAll?: boolean;
+    logAll: boolean;
     /**
      * Log only blocking requests to this service.
      */
-    logBlocks?: boolean;
+    logBlocks: boolean;
 }
 
 export interface ZeroTrustGatewayLoggingSettingsByRuleTypeL4 {
     /**
      * Log all requests to this service.
      */
-    logAll?: boolean;
+    logAll: boolean;
     /**
      * Log only blocking requests to this service.
      */
-    logBlocks?: boolean;
+    logBlocks: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyExpiration {
@@ -34250,7 +34279,7 @@ export interface ZeroTrustGatewayPolicyExpiration {
     /**
      * Whether the policy has expired.
      */
-    expired?: boolean;
+    expired: boolean;
     /**
      * The time stamp at which the policy will expire and cease to be
      * applied.
@@ -34276,13 +34305,17 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
      */
     bisoAdminControls: outputs.ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls;
     /**
+     * Custom block page settings. If missing/null, blocking will use the the account settings.
+     */
+    blockPage: outputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage;
+    /**
      * Enable the custom block page.
      */
-    blockPageEnabled?: boolean;
+    blockPageEnabled: boolean;
     /**
      * The text describing why this block occurred, displayed on the custom block page (if enabled).
      */
-    blockReason?: string;
+    blockReason: string;
     /**
      * Set by children MSP accounts to bypass their parent's rules.
      */
@@ -34294,31 +34327,31 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
      */
-    dnsResolvers: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
+    dnsResolvers?: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolvers;
     /**
      * Configure how Gateway Proxy traffic egresses. You can enable this setting for rules with Egress actions and filters, or omit it to indicate local egress via WARP IPs.
      */
-    egress: outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
+    egress?: outputs.ZeroTrustGatewayPolicyRuleSettingsEgress;
     /**
      * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
      */
-    ignoreCnameCategoryMatches?: boolean;
+    ignoreCnameCategoryMatches: boolean;
     /**
      * INSECURE - disable DNSSEC validation (for Allow actions).
      */
-    insecureDisableDnssecValidation?: boolean;
+    insecureDisableDnssecValidation: boolean;
     /**
      * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
      */
-    ipCategories?: boolean;
+    ipCategories: boolean;
     /**
      * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
      */
-    ipIndicatorFeeds?: boolean;
+    ipIndicatorFeeds: boolean;
     /**
      * Send matching traffic to the supplied destination IP address and port.
      */
-    l4override: outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
+    l4override?: outputs.ZeroTrustGatewayPolicyRuleSettingsL4override;
     /**
      * Configure a notification to display on the user's device when this rule is matched.
      */
@@ -34326,7 +34359,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Override matching DNS queries with a hostname.
      */
-    overrideHost?: string;
+    overrideHost: string;
     /**
      * Override matching DNS queries with an IP or set of IPs.
      */
@@ -34338,7 +34371,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Settings that apply to quarantine rules
      */
-    quarantine: outputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine;
+    quarantine?: outputs.ZeroTrustGatewayPolicyRuleSettingsQuarantine;
     /**
      * Settings that apply to redirect rules
      */
@@ -34350,18 +34383,18 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
      */
-    resolveDnsThroughCloudflare?: boolean;
+    resolveDnsThroughCloudflare: boolean;
     /**
      * Configure behavior when an upstream cert is invalid or an SSL error occurs.
      */
-    untrustedCert: outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
+    untrustedCert?: outputs.ZeroTrustGatewayPolicyRuleSettingsUntrustedCert;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
     /**
      * Enable to turn on SSH command logging.
      */
-    commandLogging?: boolean;
+    commandLogging: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
@@ -34373,15 +34406,15 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     /**
      * Set to false to enable copy-pasting. Only applies when `version == "v1"`.
      */
-    dcp?: boolean;
+    dcp: boolean;
     /**
      * Set to false to enable downloading. Only applies when `version == "v1"`.
      */
-    dd?: boolean;
+    dd: boolean;
     /**
      * Set to false to enable keyboard usage. Only applies when `version == "v1"`.
      */
-    dk?: boolean;
+    dk: boolean;
     /**
      * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
      * Available values: "enabled", "disabled".
@@ -34390,11 +34423,11 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     /**
      * Set to false to enable printing. Only applies when `version == "v1"`.
      */
-    dp?: boolean;
+    dp: boolean;
     /**
      * Set to false to enable uploading. Only applies when `version == "v1"`.
      */
-    du?: boolean;
+    du: boolean;
     /**
      * Configure whether keyboard usage is enabled or not. When absent, keyboard usage is enabled. Only applies when `version == "v2"`.
      * Available values: "enabled", "disabled".
@@ -34422,6 +34455,17 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
     version: string;
 }
 
+export interface ZeroTrustGatewayPolicyRuleSettingsBlockPage {
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
+    /**
+     * URI to which the user will be redirected
+     */
+    targetUri: string;
+}
+
 export interface ZeroTrustGatewayPolicyRuleSettingsCheckSession {
     /**
      * Configure how fresh the session needs to be to be considered valid.
@@ -34430,12 +34474,12 @@ export interface ZeroTrustGatewayPolicyRuleSettingsCheckSession {
     /**
      * Set to true to enable session enforcement.
      */
-    enforce?: boolean;
+    enforce: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolvers {
-    ipv4s: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4[];
-    ipv6s: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6[];
+    ipv4s?: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4[];
+    ipv6s?: outputs.ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv6[];
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolversIpv4 {
@@ -34506,7 +34550,11 @@ export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
      * Set notification on
      */
-    enabled?: boolean;
+    enabled: boolean;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext?: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -34521,7 +34569,7 @@ export interface ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
     /**
      * Set to true to enable DLP payload logging for this rule.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsQuarantine {
@@ -34535,11 +34583,11 @@ export interface ZeroTrustGatewayPolicyRuleSettingsRedirect {
     /**
      * If true, context information will be passed as query parameters
      */
-    includeContext?: boolean;
+    includeContext: boolean;
     /**
      * If true, the path and query parameters from the original request will be appended to target_uri
      */
-    preservePathAndQuery?: boolean;
+    preservePathAndQuery: boolean;
     /**
      * URI to which the user will be redirected
      */
@@ -34617,7 +34665,7 @@ export interface ZeroTrustGatewaySettingsSettings {
     /**
      * DLP body scanning settings.
      */
-    bodyScanning: outputs.ZeroTrustGatewaySettingsSettingsBodyScanning;
+    bodyScanning?: outputs.ZeroTrustGatewaySettingsSettingsBodyScanning;
     /**
      * Browser isolation settings.
      */
@@ -34625,7 +34673,7 @@ export interface ZeroTrustGatewaySettingsSettings {
     /**
      * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
      */
-    certificate: outputs.ZeroTrustGatewaySettingsSettingsCertificate;
+    certificate?: outputs.ZeroTrustGatewaySettingsSettingsCertificate;
     /**
      * Custom certificate settings for BYO-PKI. (deprecated and replaced by `certificate`)
      *
@@ -34640,6 +34688,10 @@ export interface ZeroTrustGatewaySettingsSettings {
      * FIPS settings.
      */
     fips: outputs.ZeroTrustGatewaySettingsSettingsFips;
+    /**
+     * Setting to enable host selector in egress policies.
+     */
+    hostSelector?: outputs.ZeroTrustGatewaySettingsSettingsHostSelector;
     /**
      * Protocol Detection settings.
      */
@@ -34658,22 +34710,22 @@ export interface ZeroTrustGatewaySettingsSettingsActivityLog {
     /**
      * Enable activity logging.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsAntivirus {
     /**
      * Enable anti-virus scanning on downloads.
      */
-    enabledDownloadPhase?: boolean;
+    enabledDownloadPhase: boolean;
     /**
      * Enable anti-virus scanning on uploads.
      */
-    enabledUploadPhase?: boolean;
+    enabledUploadPhase: boolean;
     /**
      * Block requests for files that cannot be scanned.
      */
-    failClosed?: boolean;
+    failClosed: boolean;
     /**
      * Configure a message to display on the user's device when an antivirus search is performed.
      */
@@ -34684,7 +34736,11 @@ export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
      * Set notification on
      */
-    enabled?: boolean;
+    enabled: boolean;
+    /**
+     * If true, context information will be passed as query parameters
+     */
+    includeContext: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -34699,35 +34755,35 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
     /**
      * If mode is customized*block*page: block page background color in #rrggbb format.
      */
-    backgroundColor?: string;
+    backgroundColor: string;
     /**
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * If mode is customized*block*page: block page footer text.
      */
-    footerText?: string;
+    footerText: string;
     /**
      * If mode is customized*block*page: block page header text.
      */
-    headerText?: string;
+    headerText: string;
     /**
      * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
      */
-    includeContext?: boolean;
+    includeContext: boolean;
     /**
      * If mode is customized*block*page: full URL to the logo file.
      */
-    logoPath?: string;
+    logoPath: string;
     /**
      * If mode is customized*block*page: admin email for users to contact.
      */
-    mailtoAddress?: string;
+    mailtoAddress: string;
     /**
      * If mode is customized*block*page: subject line for emails created from block page.
      */
-    mailtoSubject?: string;
+    mailtoSubject: string;
     /**
      * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
      * Available values: "customized*block*page", "redirectUri".
@@ -34758,11 +34814,11 @@ export interface ZeroTrustGatewaySettingsSettingsBrowserIsolation {
     /**
      * Enable non-identity onramp support for Browser Isolation.
      */
-    nonIdentityEnabled?: boolean;
+    nonIdentityEnabled: boolean;
     /**
      * Enable Clientless Browser Isolation.
      */
-    urlBrowserIsolationEnabled?: boolean;
+    urlBrowserIsolationEnabled: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsCertificate {
@@ -34792,28 +34848,35 @@ export interface ZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
     /**
      * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsFips {
     /**
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
-    tls?: boolean;
+    tls: boolean;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsHostSelector {
+    /**
+     * Enable filtering via hosts for egress policies.
+     */
+    enabled?: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsProtocolDetection {
     /**
      * Enable detecting protocol on initial bytes of client traffic.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsSandbox {
     /**
      * Enable sandbox.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Action to take when the file cannot be scanned.
      * Available values: "allow", "block".
@@ -34825,7 +34888,7 @@ export interface ZeroTrustGatewaySettingsSettingsTlsDecrypt {
     /**
      * Enable inspecting encrypted HTTP traffic.
      */
-    enabled?: boolean;
+    enabled: boolean;
 }
 
 export interface ZeroTrustListItem {

@@ -85,13 +85,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketSippyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
@@ -105,13 +105,13 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketSippyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
@@ -127,19 +127,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketSippyResult
     {
         /// <summary>
-        /// Account ID
+        /// Account ID.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Name of the bucket
+        /// Name of the bucket.
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// Details about the configured destination bucket
+        /// Details about the configured destination bucket.
         /// </summary>
         public readonly Outputs.GetR2BucketSippyDestinationResult Destination;
         /// <summary>
-        /// State of Sippy for this bucket
+        /// State of Sippy for this bucket.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
@@ -147,7 +147,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Details about the configured source bucket
+        /// Details about the configured source bucket.
         /// </summary>
         public readonly Outputs.GetR2BucketSippySourceResult Source;
 

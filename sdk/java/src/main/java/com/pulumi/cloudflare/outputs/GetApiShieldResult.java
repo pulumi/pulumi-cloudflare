@@ -25,7 +25,7 @@ public final class GetApiShieldResult {
      */
     private @Nullable List<String> properties;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -49,7 +49,7 @@ public final class GetApiShieldResult {
         return this.properties == null ? List.of() : this.properties;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

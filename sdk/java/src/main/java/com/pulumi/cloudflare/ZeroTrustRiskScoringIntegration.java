@@ -142,28 +142,28 @@ public class ZeroTrustRiskScoringIntegration extends com.pulumi.resources.Custom
         return Codegen.optional(this.referenceId);
     }
     /**
-     * The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+     * The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
      * 
      */
     @Export(name="tenantUrl", refs={String.class}, tree="[0]")
     private Output<String> tenantUrl;
 
     /**
-     * @return The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;
+     * @return The base url of the tenant, e.g. &#34;https://tenant.okta.com&#34;.
      * 
      */
     public Output<String> tenantUrl() {
         return this.tenantUrl;
     }
     /**
-     * The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+     * The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      * 
      */
     @Export(name="wellKnownUrl", refs={String.class}, tree="[0]")
     private Output<String> wellKnownUrl;
 
     /**
-     * @return The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1
+     * @return The URL for the Shared Signals Framework configuration, e.g. &#34;/.well-known/sse-configuration/{integration*uuid}/&#34;. https://openid.net/specs/openid-sse-framework-1*0.html#rfc.section.6.2.1.
      * 
      */
     public Output<String> wellKnownUrl() {

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class R2BucketLifecycleRuleAbortMultipartUploadsTransition {
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     private @Nullable R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition condition;
 
     private R2BucketLifecycleRuleAbortMultipartUploadsTransition() {}
     /**
-     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds
+     * @return Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      * 
      */
     public Optional<R2BucketLifecycleRuleAbortMultipartUploadsTransitionCondition> condition() {

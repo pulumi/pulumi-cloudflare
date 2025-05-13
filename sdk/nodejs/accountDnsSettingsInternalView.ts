@@ -53,7 +53,7 @@ export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -118,7 +118,7 @@ export class AccountDnsSettingsInternalView extends pulumi.CustomResource {
  */
 export interface AccountDnsSettingsInternalViewState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -144,7 +144,7 @@ export interface AccountDnsSettingsInternalViewState {
  */
 export interface AccountDnsSettingsInternalViewArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

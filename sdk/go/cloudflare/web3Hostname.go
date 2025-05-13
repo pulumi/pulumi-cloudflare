@@ -51,20 +51,20 @@ type Web3Hostname struct {
 	pulumi.CustomResourceState
 
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// An optional description of the hostname.
+	// Specify an optional description of the hostname.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// DNSLink value used if the target is ipfs.
+	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink    pulumi.StringPtrOutput `pulumi:"dnslink"`
 	ModifiedOn pulumi.StringOutput    `pulumi:"modifiedOn"`
-	// The hostname that will point to the target gateway via CNAME.
+	// Specify the hostname that points to the target gateway via CNAME.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Status of the hostname's activation.
+	// Specifies the status of the hostname's activation.
 	// Available values: "active", "pending", "deleting", "error".
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Target gateway of the hostname.
+	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringOutput `pulumi:"target"`
-	// Identifier
+	// Specify the identifier of the hostname.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -108,39 +108,39 @@ func GetWeb3Hostname(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Web3Hostname resources.
 type web3HostnameState struct {
 	CreatedOn *string `pulumi:"createdOn"`
-	// An optional description of the hostname.
+	// Specify an optional description of the hostname.
 	Description *string `pulumi:"description"`
-	// DNSLink value used if the target is ipfs.
+	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink    *string `pulumi:"dnslink"`
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The hostname that will point to the target gateway via CNAME.
+	// Specify the hostname that points to the target gateway via CNAME.
 	Name *string `pulumi:"name"`
-	// Status of the hostname's activation.
+	// Specifies the status of the hostname's activation.
 	// Available values: "active", "pending", "deleting", "error".
 	Status *string `pulumi:"status"`
-	// Target gateway of the hostname.
+	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target *string `pulumi:"target"`
-	// Identifier
+	// Specify the identifier of the hostname.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type Web3HostnameState struct {
 	CreatedOn pulumi.StringPtrInput
-	// An optional description of the hostname.
+	// Specify an optional description of the hostname.
 	Description pulumi.StringPtrInput
-	// DNSLink value used if the target is ipfs.
+	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink    pulumi.StringPtrInput
 	ModifiedOn pulumi.StringPtrInput
-	// The hostname that will point to the target gateway via CNAME.
+	// Specify the hostname that points to the target gateway via CNAME.
 	Name pulumi.StringPtrInput
-	// Status of the hostname's activation.
+	// Specifies the status of the hostname's activation.
 	// Available values: "active", "pending", "deleting", "error".
 	Status pulumi.StringPtrInput
-	// Target gateway of the hostname.
+	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringPtrInput
-	// Identifier
+	// Specify the identifier of the hostname.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -149,31 +149,31 @@ func (Web3HostnameState) ElementType() reflect.Type {
 }
 
 type web3HostnameArgs struct {
-	// An optional description of the hostname.
+	// Specify an optional description of the hostname.
 	Description *string `pulumi:"description"`
-	// DNSLink value used if the target is ipfs.
+	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink *string `pulumi:"dnslink"`
-	// The hostname that will point to the target gateway via CNAME.
+	// Specify the hostname that points to the target gateway via CNAME.
 	Name string `pulumi:"name"`
-	// Target gateway of the hostname.
+	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target string `pulumi:"target"`
-	// Identifier
+	// Specify the identifier of the hostname.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Web3Hostname resource.
 type Web3HostnameArgs struct {
-	// An optional description of the hostname.
+	// Specify an optional description of the hostname.
 	Description pulumi.StringPtrInput
-	// DNSLink value used if the target is ipfs.
+	// Specify the DNSLink value used if the target is ipfs.
 	Dnslink pulumi.StringPtrInput
-	// The hostname that will point to the target gateway via CNAME.
+	// Specify the hostname that points to the target gateway via CNAME.
 	Name pulumi.StringInput
-	// Target gateway of the hostname.
+	// Specify the target gateway of the hostname.
 	// Available values: "ethereum", "ipfs", "ipfs*universal*path".
 	Target pulumi.StringInput
-	// Identifier
+	// Specify the identifier of the hostname.
 	ZoneId pulumi.StringInput
 }
 
@@ -268,12 +268,12 @@ func (o Web3HostnameOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// An optional description of the hostname.
+// Specify an optional description of the hostname.
 func (o Web3HostnameOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// DNSLink value used if the target is ipfs.
+// Specify the DNSLink value used if the target is ipfs.
 func (o Web3HostnameOutput) Dnslink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringPtrOutput { return v.Dnslink }).(pulumi.StringPtrOutput)
 }
@@ -282,24 +282,24 @@ func (o Web3HostnameOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The hostname that will point to the target gateway via CNAME.
+// Specify the hostname that points to the target gateway via CNAME.
 func (o Web3HostnameOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Status of the hostname's activation.
+// Specifies the status of the hostname's activation.
 // Available values: "active", "pending", "deleting", "error".
 func (o Web3HostnameOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Target gateway of the hostname.
+// Specify the target gateway of the hostname.
 // Available values: "ethereum", "ipfs", "ipfs*universal*path".
 func (o Web3HostnameOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Specify the identifier of the hostname.
 func (o Web3HostnameOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Web3Hostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

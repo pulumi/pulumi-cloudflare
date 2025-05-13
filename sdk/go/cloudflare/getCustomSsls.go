@@ -57,7 +57,7 @@ type LookupCustomSslsArgs struct {
 	// Status of the zone's custom SSL.
 	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status *string `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -75,7 +75,7 @@ type LookupCustomSslsResult struct {
 	// Status of the zone's custom SSL.
 	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status *string `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -98,7 +98,7 @@ type LookupCustomSslsOutputArgs struct {
 	// Status of the zone's custom SSL.
 	// Available values: "active", "expired", "deleted", "pending", "initializing".
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -148,7 +148,7 @@ func (o LookupCustomSslsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCustomSslsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupCustomSslsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCustomSslsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

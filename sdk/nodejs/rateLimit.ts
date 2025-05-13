@@ -118,7 +118,7 @@ export class RateLimit extends pulumi.CustomResource {
      */
     public readonly threshold!: pulumi.Output<number>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -207,7 +207,7 @@ export interface RateLimitState {
      */
     threshold?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -233,7 +233,7 @@ export interface RateLimitArgs {
      */
     threshold: pulumi.Input<number>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

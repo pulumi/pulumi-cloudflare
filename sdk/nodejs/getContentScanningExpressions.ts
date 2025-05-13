@@ -35,7 +35,7 @@ export interface GetContentScanningExpressionsArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetContentScanningExpressionsResult {
      */
     readonly results: outputs.GetContentScanningExpressionsResult[];
     /**
-     * Identifier
+     * Defines an identifier.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetContentScanningExpressionsOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Defines an identifier.
      */
     zoneId: pulumi.Input<string>;
 }

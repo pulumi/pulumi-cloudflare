@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustDlpDataset = new ZeroTrustDlpDataset("exampleZeroTrustDlpDataset", ZeroTrustDlpDatasetArgs.builder()
  *             .accountId("account_id")
  *             .name("name")
+ *             .caseSensitive(true)
  *             .description("description")
  *             .encodingVersion(0)
  *             .secret(true)
@@ -68,6 +69,24 @@ public class ZeroTrustDlpDataset extends com.pulumi.resources.CustomResource {
 
     public Output<String> accountId() {
         return this.accountId;
+    }
+    /**
+     * Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if `secret` is true or undefined
+     * 
+     */
+    @Export(name="caseSensitive", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> caseSensitive;
+
+    /**
+     * @return Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if `secret` is true or undefined
+     * 
+     */
+    public Output<Optional<Boolean>> caseSensitive() {
+        return Codegen.optional(this.caseSensitive);
     }
     @Export(name="columns", refs={List.class,ZeroTrustDlpDatasetColumn.class}, tree="[0,1]")
     private Output<List<ZeroTrustDlpDatasetColumn>> columns;
@@ -94,14 +113,14 @@ public class ZeroTrustDlpDataset extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.datasetId);
     }
     /**
-     * The description of the dataset
+     * The description of the dataset.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the dataset
+     * @return The description of the dataset.
      * 
      */
     public Output<Optional<String>> description() {

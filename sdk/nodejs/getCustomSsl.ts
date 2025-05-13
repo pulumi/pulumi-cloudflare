@@ -33,12 +33,12 @@ export function getCustomSsl(args: GetCustomSslArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetCustomSslArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     customCertificateId?: string;
     filter?: inputs.GetCustomSslFilter;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -53,7 +53,7 @@ export interface GetCustomSslResult {
      */
     readonly bundleMethod: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly customCertificateId?: string;
     /**
@@ -67,7 +67,7 @@ export interface GetCustomSslResult {
     readonly geoRestrictions: outputs.GetCustomSslGeoRestrictions;
     readonly hosts: string[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -101,7 +101,7 @@ export interface GetCustomSslResult {
      */
     readonly uploadedOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -132,12 +132,12 @@ export function getCustomSslOutput(args: GetCustomSslOutputArgs, opts?: pulumi.I
  */
 export interface GetCustomSslOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     customCertificateId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetCustomSslFilterArgs>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

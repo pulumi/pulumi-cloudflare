@@ -114,7 +114,7 @@ class GetFiltersResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Defines an identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -165,7 +165,7 @@ def get_filters(description: Optional[builtins.str] = None,
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.bool paused: When true, indicates that the filter is currently paused.
     :param builtins.str ref: The filter ref (a short reference tag) to search for. Must be an exact match.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -217,7 +217,7 @@ def get_filters_output(description: Optional[pulumi.Input[Optional[builtins.str]
     :param builtins.int max_items: Max items to fetch, default: 1000
     :param builtins.bool paused: When true, indicates that the filter is currently paused.
     :param builtins.str ref: The filter ref (a short reference tag) to search for. Must be an exact match.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Defines an identifier.
     """
     __args__ = dict()
     __args__['description'] = description

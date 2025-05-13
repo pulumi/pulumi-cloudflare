@@ -18,14 +18,14 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
     public static final R2BucketLifecycleState Empty = new R2BucketLifecycleState();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +33,14 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Optional<Output<String>> bucketName() {
@@ -97,7 +97,7 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class R2BucketLifecycleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 

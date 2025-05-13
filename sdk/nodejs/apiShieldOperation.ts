@@ -71,11 +71,11 @@ export class ApiShieldOperation extends pulumi.CustomResource {
      */
     public readonly method!: pulumi.Output<string>;
     /**
-     * UUID
+     * UUID.
      */
     public /*out*/ readonly operationId!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -146,11 +146,11 @@ export interface ApiShieldOperationState {
      */
     method?: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
     operationId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -173,7 +173,7 @@ export interface ApiShieldOperationArgs {
      */
     method: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

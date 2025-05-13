@@ -58,7 +58,7 @@ type ZoneHold struct {
 	// 'example.com' and include_subdomains=true will block 'example.com',
 	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains pulumi.BoolOutput `pulumi:"includeSubdomains"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -107,7 +107,7 @@ type zoneHoldState struct {
 	// 'example.com' and include_subdomains=true will block 'example.com',
 	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains *bool `pulumi:"includeSubdomains"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -124,7 +124,7 @@ type ZoneHoldState struct {
 	// 'example.com' and include_subdomains=true will block 'example.com',
 	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -144,7 +144,7 @@ type zoneHoldArgs struct {
 	// 'example.com' and include_subdomains=true will block 'example.com',
 	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains *bool `pulumi:"includeSubdomains"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -161,7 +161,7 @@ type ZoneHoldArgs struct {
 	// 'example.com' and include_subdomains=true will block 'example.com',
 	// 'staging.example.com', 'api.staging.example.com', etc.
 	IncludeSubdomains pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -273,7 +273,7 @@ func (o ZoneHoldOutput) IncludeSubdomains() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZoneHold) pulumi.BoolOutput { return v.IncludeSubdomains }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o ZoneHoldOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneHold) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

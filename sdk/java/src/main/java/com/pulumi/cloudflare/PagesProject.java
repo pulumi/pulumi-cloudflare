@@ -60,14 +60,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="buildConfig", refs={PagesProjectBuildConfig.class}, tree="[0]")
-    private Output<PagesProjectBuildConfig> buildConfig;
+    private Output</* @Nullable */ PagesProjectBuildConfig> buildConfig;
 
     /**
      * @return Configs for the project build process.
      * 
      */
-    public Output<PagesProjectBuildConfig> buildConfig() {
-        return this.buildConfig;
+    public Output<Optional<PagesProjectBuildConfig>> buildConfig() {
+        return Codegen.optional(this.buildConfig);
     }
     /**
      * Most recent deployment to the repo.
@@ -102,14 +102,14 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="deploymentConfigs", refs={PagesProjectDeploymentConfigs.class}, tree="[0]")
-    private Output<PagesProjectDeploymentConfigs> deploymentConfigs;
+    private Output</* @Nullable */ PagesProjectDeploymentConfigs> deploymentConfigs;
 
     /**
      * @return Configs for deployments in a project.
      * 
      */
-    public Output<PagesProjectDeploymentConfigs> deploymentConfigs() {
-        return this.deploymentConfigs;
+    public Output<Optional<PagesProjectDeploymentConfigs>> deploymentConfigs() {
+        return Codegen.optional(this.deploymentConfigs);
     }
     /**
      * A list of associated custom domains for the project.
@@ -168,10 +168,10 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.productionBranch);
     }
     @Export(name="source", refs={PagesProjectSource.class}, tree="[0]")
-    private Output<PagesProjectSource> source;
+    private Output</* @Nullable */ PagesProjectSource> source;
 
-    public Output<PagesProjectSource> source() {
-        return this.source;
+    public Output<Optional<PagesProjectSource>> source() {
+        return Codegen.optional(this.source);
     }
     /**
      * The Cloudflare subdomain associated with the project.

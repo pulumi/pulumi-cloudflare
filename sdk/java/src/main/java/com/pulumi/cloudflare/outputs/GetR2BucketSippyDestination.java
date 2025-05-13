@@ -12,13 +12,13 @@ import java.util.Objects;
 public final class GetR2BucketSippyDestination {
     /**
      * @return ID of the Cloudflare API token used when writing objects to this
-     * bucket
+     * bucket.
      * 
      */
     private String accessKeyId;
     private String account;
     /**
-     * @return Name of the bucket on the provider
+     * @return Name of the bucket on the provider.
      * 
      */
     private String bucket;
@@ -31,7 +31,7 @@ public final class GetR2BucketSippyDestination {
     private GetR2BucketSippyDestination() {}
     /**
      * @return ID of the Cloudflare API token used when writing objects to this
-     * bucket
+     * bucket.
      * 
      */
     public String accessKeyId() {
@@ -41,7 +41,7 @@ public final class GetR2BucketSippyDestination {
         return this.account;
     }
     /**
-     * @return Name of the bucket on the provider
+     * @return Name of the bucket on the provider.
      * 
      */
     public String bucket() {

@@ -19,14 +19,14 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
     public static final R2BucketEventNotificationArgs Empty = new R2BucketEventNotificationArgs();
 
     /**
-     * Account ID
+     * Account ID.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public Output<String> accountId() {
@@ -34,14 +34,14 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Name of the bucket
+     * Name of the bucket.
      * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public Output<String> bucketName() {
@@ -64,14 +64,14 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Queue ID
+     * Queue ID.
      * 
      */
     @Import(name="queueId")
     private @Nullable Output<String> queueId;
 
     /**
-     * @return Queue ID
+     * @return Queue ID.
      * 
      */
     public Optional<Output<String>> queueId() {
@@ -79,14 +79,14 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Array of rules to drive notifications
+     * Array of rules to drive notifications.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<R2BucketEventNotificationRuleArgs>> rules;
 
     /**
-     * @return Array of rules to drive notifications
+     * @return Array of rules to drive notifications.
      * 
      */
     public Optional<Output<List<R2BucketEventNotificationRuleArgs>>> rules() {
@@ -122,7 +122,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountId Account ID
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bucketName Name of the bucket
+         * @param bucketName Name of the bucket.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param queueId Queue ID
+         * @param queueId Queue ID.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param queueId Queue ID
+         * @param queueId Queue ID.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param rules Array of rules to drive notifications
+         * @param rules Array of rules to drive notifications.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param rules Array of rules to drive notifications
+         * @param rules Array of rules to drive notifications.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param rules Array of rules to drive notifications
+         * @param rules Array of rules to drive notifications.
          * 
          * @return builder
          * 

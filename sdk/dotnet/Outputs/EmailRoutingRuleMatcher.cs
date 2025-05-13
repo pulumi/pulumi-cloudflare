@@ -17,7 +17,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Field for type matcher.
         /// Available values: "to".
         /// </summary>
-        public readonly string Field;
+        public readonly string? Field;
         /// <summary>
         /// Type of matcher.
         /// Available values: "literal".
@@ -26,15 +26,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Value for matcher.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private EmailRoutingRuleMatcher(
-            string field,
+            string? field,
 
             string type,
 
-            string value)
+            string? value)
         {
             Field = field;
             Type = type;

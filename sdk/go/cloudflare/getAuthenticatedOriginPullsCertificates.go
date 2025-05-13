@@ -50,7 +50,7 @@ func LookupAuthenticatedOriginPullsCertificates(ctx *pulumi.Context, args *Looku
 type LookupAuthenticatedOriginPullsCertificatesArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -62,7 +62,7 @@ type LookupAuthenticatedOriginPullsCertificatesResult struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// The items returned by the data source
 	Results []GetAuthenticatedOriginPullsCertificatesResult `pulumi:"results"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -79,7 +79,7 @@ func LookupAuthenticatedOriginPullsCertificatesOutput(ctx *pulumi.Context, args 
 type LookupAuthenticatedOriginPullsCertificatesOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -119,7 +119,7 @@ func (o LookupAuthenticatedOriginPullsCertificatesResultOutput) Results() GetAut
 	}).(GetAuthenticatedOriginPullsCertificatesResultArrayOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupAuthenticatedOriginPullsCertificatesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificatesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

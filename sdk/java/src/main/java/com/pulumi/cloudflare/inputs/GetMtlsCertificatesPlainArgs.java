@@ -17,14 +17,14 @@ public final class GetMtlsCertificatesPlainArgs extends com.pulumi.resources.Inv
     public static final GetMtlsCertificatesPlainArgs Empty = new GetMtlsCertificatesPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String accountId() {
@@ -72,7 +72,7 @@ public final class GetMtlsCertificatesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 

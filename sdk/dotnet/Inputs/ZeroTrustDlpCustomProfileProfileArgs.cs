@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ZeroTrustDlpCustomProfileProfileContextAwarenessArgs>? ContextAwareness { get; set; }
 
         /// <summary>
-        /// The description of the profile
+        /// The description of the profile.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

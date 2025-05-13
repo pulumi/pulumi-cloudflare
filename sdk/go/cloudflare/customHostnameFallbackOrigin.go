@@ -58,7 +58,7 @@ type CustomHostnameFallbackOrigin struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// This is the time the fallback origin was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -109,7 +109,7 @@ type customHostnameFallbackOriginState struct {
 	Status *string `pulumi:"status"`
 	// This is the time the fallback origin was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -125,7 +125,7 @@ type CustomHostnameFallbackOriginState struct {
 	Status pulumi.StringPtrInput
 	// This is the time the fallback origin was updated.
 	UpdatedAt pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -136,7 +136,7 @@ func (CustomHostnameFallbackOriginState) ElementType() reflect.Type {
 type customHostnameFallbackOriginArgs struct {
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin string `pulumi:"origin"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -144,7 +144,7 @@ type customHostnameFallbackOriginArgs struct {
 type CustomHostnameFallbackOriginArgs struct {
 	// Your origin hostname that requests to your custom hostnames will be sent to.
 	Origin pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -261,7 +261,7 @@ func (o CustomHostnameFallbackOriginOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o CustomHostnameFallbackOriginOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

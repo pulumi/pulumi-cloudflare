@@ -128,14 +128,14 @@ public final class GetApiShieldOperationsArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -355,7 +355,7 @@ public final class GetApiShieldOperationsArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class GetApiShieldOperationsArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

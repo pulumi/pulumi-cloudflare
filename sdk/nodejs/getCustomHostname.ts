@@ -33,12 +33,12 @@ export function getCustomHostname(args: GetCustomHostnameArgs, opts?: pulumi.Inv
  */
 export interface GetCustomHostnameArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     customHostnameId?: string;
     filter?: inputs.GetCustomHostnameFilter;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -52,7 +52,7 @@ export interface GetCustomHostnameResult {
      */
     readonly createdAt: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly customHostnameId?: string;
     /**
@@ -73,7 +73,7 @@ export interface GetCustomHostnameResult {
      */
     readonly hostname: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -95,7 +95,7 @@ export interface GetCustomHostnameResult {
      */
     readonly verificationErrors: string[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -126,12 +126,12 @@ export function getCustomHostnameOutput(args: GetCustomHostnameOutputArgs, opts?
  */
 export interface GetCustomHostnameOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     customHostnameId?: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetCustomHostnameFilterArgs>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

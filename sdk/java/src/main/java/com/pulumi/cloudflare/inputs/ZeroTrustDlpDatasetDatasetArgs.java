@@ -20,6 +20,13 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
 
     public static final ZeroTrustDlpDatasetDatasetArgs Empty = new ZeroTrustDlpDatasetDatasetArgs();
 
+    @Import(name="caseSensitive")
+    private @Nullable Output<Boolean> caseSensitive;
+
+    public Optional<Output<Boolean>> caseSensitive() {
+        return Optional.ofNullable(this.caseSensitive);
+    }
+
     @Import(name="columns")
     private @Nullable Output<List<ZeroTrustDlpDatasetDatasetColumnArgs>> columns;
 
@@ -35,14 +42,14 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The description of the dataset
+     * The description of the dataset.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the dataset
+     * @return The description of the dataset.
      * 
      */
     public Optional<Output<String>> description() {
@@ -124,6 +131,7 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
     private ZeroTrustDlpDatasetDatasetArgs() {}
 
     private ZeroTrustDlpDatasetDatasetArgs(ZeroTrustDlpDatasetDatasetArgs $) {
+        this.caseSensitive = $.caseSensitive;
         this.columns = $.columns;
         this.createdAt = $.createdAt;
         this.description = $.description;
@@ -155,6 +163,15 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
             $ = new ZeroTrustDlpDatasetDatasetArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder caseSensitive(@Nullable Output<Boolean> caseSensitive) {
+            $.caseSensitive = caseSensitive;
+            return this;
+        }
+
+        public Builder caseSensitive(Boolean caseSensitive) {
+            return caseSensitive(Output.of(caseSensitive));
+        }
+
         public Builder columns(@Nullable Output<List<ZeroTrustDlpDatasetDatasetColumnArgs>> columns) {
             $.columns = columns;
             return this;
@@ -178,7 +195,7 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param description The description of the dataset
+         * @param description The description of the dataset.
          * 
          * @return builder
          * 
@@ -189,7 +206,7 @@ public final class ZeroTrustDlpDatasetDatasetArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param description The description of the dataset
+         * @param description The description of the dataset.
          * 
          * @return builder
          * 

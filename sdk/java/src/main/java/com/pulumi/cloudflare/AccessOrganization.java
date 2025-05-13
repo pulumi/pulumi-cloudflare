@@ -95,10 +95,10 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     @Export(name="customPages", refs={AccessOrganizationCustomPages.class}, tree="[0]")
-    private Output<AccessOrganizationCustomPages> customPages;
+    private Output</* @Nullable */ AccessOrganizationCustomPages> customPages;
 
-    public Output<AccessOrganizationCustomPages> customPages() {
-        return this.customPages;
+    public Output<Optional<AccessOrganizationCustomPages>> customPages() {
+        return Codegen.optional(this.customPages);
     }
     @Export(name="isUiReadOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isUiReadOnly;
@@ -107,10 +107,10 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.isUiReadOnly);
     }
     @Export(name="loginDesign", refs={AccessOrganizationLoginDesign.class}, tree="[0]")
-    private Output<AccessOrganizationLoginDesign> loginDesign;
+    private Output</* @Nullable */ AccessOrganizationLoginDesign> loginDesign;
 
-    public Output<AccessOrganizationLoginDesign> loginDesign() {
-        return this.loginDesign;
+    public Output<Optional<AccessOrganizationLoginDesign>> loginDesign() {
+        return Codegen.optional(this.loginDesign);
     }
     /**
      * The name of your Zero Trust organization.

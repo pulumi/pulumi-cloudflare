@@ -54,11 +54,11 @@ export class R2Bucket extends pulumi.CustomResource {
     }
 
     /**
-     * Account ID
+     * Account ID.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Creation timestamp
+     * Creation timestamp.
      */
     public /*out*/ readonly creationDate!: pulumi.Output<string>;
     /**
@@ -66,12 +66,12 @@ export class R2Bucket extends pulumi.CustomResource {
      */
     public readonly jurisdiction!: pulumi.Output<string>;
     /**
-     * Location of the bucket
+     * Location of the bucket.
      * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -124,11 +124,11 @@ export class R2Bucket extends pulumi.CustomResource {
  */
 export interface R2BucketState {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Creation timestamp
+     * Creation timestamp.
      */
     creationDate?: pulumi.Input<string>;
     /**
@@ -136,12 +136,12 @@ export interface R2BucketState {
      */
     jurisdiction?: pulumi.Input<string>;
     /**
-     * Location of the bucket
+     * Location of the bucket.
      * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
     location?: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     name?: pulumi.Input<string>;
     /**
@@ -156,7 +156,7 @@ export interface R2BucketState {
  */
 export interface R2BucketArgs {
     /**
-     * Account ID
+     * Account ID.
      */
     accountId: pulumi.Input<string>;
     /**
@@ -164,12 +164,12 @@ export interface R2BucketArgs {
      */
     jurisdiction?: pulumi.Input<string>;
     /**
-     * Location of the bucket
+     * Location of the bucket.
      * Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
      */
     location?: pulumi.Input<string>;
     /**
-     * Name of the bucket
+     * Name of the bucket.
      */
     name: pulumi.Input<string>;
     /**

@@ -32,14 +32,14 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -93,7 +93,7 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetEmailRoutingDnsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

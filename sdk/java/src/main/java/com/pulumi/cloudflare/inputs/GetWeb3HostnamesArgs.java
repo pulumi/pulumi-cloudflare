@@ -33,14 +33,14 @@ public final class GetWeb3HostnamesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Identifier
+     * Specify the identifier of the hostname.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Specify the identifier of the hostname.
      * 
      */
     public Output<String> zoneId() {
@@ -94,7 +94,7 @@ public final class GetWeb3HostnamesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specify the identifier of the hostname.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class GetWeb3HostnamesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Specify the identifier of the hostname.
          * 
          * @return builder
          * 

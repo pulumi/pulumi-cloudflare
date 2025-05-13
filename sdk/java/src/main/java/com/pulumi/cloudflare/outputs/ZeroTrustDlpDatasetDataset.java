@@ -16,10 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ZeroTrustDlpDatasetDataset {
+    private @Nullable Boolean caseSensitive;
     private @Nullable List<ZeroTrustDlpDatasetDatasetColumn> columns;
     private @Nullable String createdAt;
     /**
-     * @return The description of the dataset
+     * @return The description of the dataset.
      * 
      */
     private @Nullable String description;
@@ -41,6 +42,9 @@ public final class ZeroTrustDlpDatasetDataset {
     private @Nullable List<ZeroTrustDlpDatasetDatasetUpload> uploads;
 
     private ZeroTrustDlpDatasetDataset() {}
+    public Optional<Boolean> caseSensitive() {
+        return Optional.ofNullable(this.caseSensitive);
+    }
     public List<ZeroTrustDlpDatasetDatasetColumn> columns() {
         return this.columns == null ? List.of() : this.columns;
     }
@@ -48,7 +52,7 @@ public final class ZeroTrustDlpDatasetDataset {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return The description of the dataset
+     * @return The description of the dataset.
      * 
      */
     public Optional<String> description() {
@@ -96,6 +100,7 @@ public final class ZeroTrustDlpDatasetDataset {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean caseSensitive;
         private @Nullable List<ZeroTrustDlpDatasetDatasetColumn> columns;
         private @Nullable String createdAt;
         private @Nullable String description;
@@ -110,6 +115,7 @@ public final class ZeroTrustDlpDatasetDataset {
         public Builder() {}
         public Builder(ZeroTrustDlpDatasetDataset defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.caseSensitive = defaults.caseSensitive;
     	      this.columns = defaults.columns;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
@@ -123,6 +129,12 @@ public final class ZeroTrustDlpDatasetDataset {
     	      this.uploads = defaults.uploads;
         }
 
+        @CustomType.Setter
+        public Builder caseSensitive(@Nullable Boolean caseSensitive) {
+
+            this.caseSensitive = caseSensitive;
+            return this;
+        }
         @CustomType.Setter
         public Builder columns(@Nullable List<ZeroTrustDlpDatasetDatasetColumn> columns) {
 
@@ -197,6 +209,7 @@ public final class ZeroTrustDlpDatasetDataset {
         }
         public ZeroTrustDlpDatasetDataset build() {
             final var _resultValue = new ZeroTrustDlpDatasetDataset();
+            _resultValue.caseSensitive = caseSensitive;
             _resultValue.columns = columns;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;

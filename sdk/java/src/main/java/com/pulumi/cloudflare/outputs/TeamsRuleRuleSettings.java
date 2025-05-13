@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsAuditSsh;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsBisoAdminControls;
+import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsDnsResolvers;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsEgress;
@@ -46,6 +47,11 @@ public final class TeamsRuleRuleSettings {
      * 
      */
     private @Nullable TeamsRuleRuleSettingsBisoAdminControls bisoAdminControls;
+    /**
+     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * 
+     */
+    private @Nullable TeamsRuleRuleSettingsBlockPage blockPage;
     /**
      * @return Enable the custom block page.
      * 
@@ -175,6 +181,13 @@ public final class TeamsRuleRuleSettings {
      */
     public Optional<TeamsRuleRuleSettingsBisoAdminControls> bisoAdminControls() {
         return Optional.ofNullable(this.bisoAdminControls);
+    }
+    /**
+     * @return Custom block page settings. If missing/null, blocking will use the the account settings.
+     * 
+     */
+    public Optional<TeamsRuleRuleSettingsBlockPage> blockPage() {
+        return Optional.ofNullable(this.blockPage);
     }
     /**
      * @return Enable the custom block page.
@@ -330,6 +343,7 @@ public final class TeamsRuleRuleSettings {
         private @Nullable Boolean allowChildBypass;
         private @Nullable TeamsRuleRuleSettingsAuditSsh auditSsh;
         private @Nullable TeamsRuleRuleSettingsBisoAdminControls bisoAdminControls;
+        private @Nullable TeamsRuleRuleSettingsBlockPage blockPage;
         private @Nullable Boolean blockPageEnabled;
         private @Nullable String blockReason;
         private @Nullable Boolean bypassParentRule;
@@ -357,6 +371,7 @@ public final class TeamsRuleRuleSettings {
     	      this.allowChildBypass = defaults.allowChildBypass;
     	      this.auditSsh = defaults.auditSsh;
     	      this.bisoAdminControls = defaults.bisoAdminControls;
+    	      this.blockPage = defaults.blockPage;
     	      this.blockPageEnabled = defaults.blockPageEnabled;
     	      this.blockReason = defaults.blockReason;
     	      this.bypassParentRule = defaults.bypassParentRule;
@@ -401,6 +416,12 @@ public final class TeamsRuleRuleSettings {
         public Builder bisoAdminControls(@Nullable TeamsRuleRuleSettingsBisoAdminControls bisoAdminControls) {
 
             this.bisoAdminControls = bisoAdminControls;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder blockPage(@Nullable TeamsRuleRuleSettingsBlockPage blockPage) {
+
+            this.blockPage = blockPage;
             return this;
         }
         @CustomType.Setter
@@ -532,6 +553,7 @@ public final class TeamsRuleRuleSettings {
             _resultValue.allowChildBypass = allowChildBypass;
             _resultValue.auditSsh = auditSsh;
             _resultValue.bisoAdminControls = bisoAdminControls;
+            _resultValue.blockPage = blockPage;
             _resultValue.blockPageEnabled = blockPageEnabled;
             _resultValue.blockReason = blockReason;
             _resultValue.bypassParentRule = bypassParentRule;

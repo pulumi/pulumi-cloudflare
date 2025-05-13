@@ -66,6 +66,20 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.allowAuthenticateViaWarp);
     }
     /**
+     * Enables loading application content in an iFrame.
+     * 
+     */
+    @Export(name="allowIframe", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowIframe;
+
+    /**
+     * @return Enables loading application content in an iFrame.
+     * 
+     */
+    public Output<Optional<Boolean>> allowIframe() {
+        return Codegen.optional(this.allowIframe);
+    }
+    /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      * 
      */
@@ -150,10 +164,10 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.bgColor);
     }
     @Export(name="corsHeaders", refs={ZeroTrustAccessApplicationCorsHeaders.class}, tree="[0]")
-    private Output<ZeroTrustAccessApplicationCorsHeaders> corsHeaders;
+    private Output</* @Nullable */ ZeroTrustAccessApplicationCorsHeaders> corsHeaders;
 
-    public Output<ZeroTrustAccessApplicationCorsHeaders> corsHeaders() {
-        return this.corsHeaders;
+    public Output<Optional<ZeroTrustAccessApplicationCorsHeaders>> corsHeaders() {
+        return Codegen.optional(this.corsHeaders);
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
@@ -222,14 +236,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="destinations", refs={List.class,ZeroTrustAccessApplicationDestination.class}, tree="[0,1]")
-    private Output<List<ZeroTrustAccessApplicationDestination>> destinations;
+    private Output</* @Nullable */ List<ZeroTrustAccessApplicationDestination>> destinations;
 
     /**
      * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    public Output<List<ZeroTrustAccessApplicationDestination>> destinations() {
-        return this.destinations;
+    public Output<Optional<List<ZeroTrustAccessApplicationDestination>>> destinations() {
+        return Codegen.optional(this.destinations);
     }
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
@@ -264,14 +278,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="footerLinks", refs={List.class,ZeroTrustAccessApplicationFooterLink.class}, tree="[0,1]")
-    private Output<List<ZeroTrustAccessApplicationFooterLink>> footerLinks;
+    private Output</* @Nullable */ List<ZeroTrustAccessApplicationFooterLink>> footerLinks;
 
     /**
      * @return The links in the App Launcher footer.
      * 
      */
-    public Output<List<ZeroTrustAccessApplicationFooterLink>> footerLinks() {
-        return this.footerLinks;
+    public Output<Optional<List<ZeroTrustAccessApplicationFooterLink>>> footerLinks() {
+        return Codegen.optional(this.footerLinks);
     }
     /**
      * The background color of the App Launcher header.
@@ -376,14 +390,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="policies", refs={List.class,ZeroTrustAccessApplicationPolicy.class}, tree="[0,1]")
-    private Output<List<ZeroTrustAccessApplicationPolicy>> policies;
+    private Output</* @Nullable */ List<ZeroTrustAccessApplicationPolicy>> policies;
 
     /**
      * @return The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      * 
      */
-    public Output<List<ZeroTrustAccessApplicationPolicy>> policies() {
-        return this.policies;
+    public Output<Optional<List<ZeroTrustAccessApplicationPolicy>>> policies() {
+        return Codegen.optional(this.policies);
     }
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
@@ -436,14 +450,14 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="scimConfig", refs={ZeroTrustAccessApplicationScimConfig.class}, tree="[0]")
-    private Output<ZeroTrustAccessApplicationScimConfig> scimConfig;
+    private Output</* @Nullable */ ZeroTrustAccessApplicationScimConfig> scimConfig;
 
     /**
      * @return Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      * 
      */
-    public Output<ZeroTrustAccessApplicationScimConfig> scimConfig() {
-        return this.scimConfig;
+    public Output<Optional<ZeroTrustAccessApplicationScimConfig>> scimConfig() {
+        return Codegen.optional(this.scimConfig);
     }
     /**
      * List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
@@ -534,10 +548,10 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.tags);
     }
     @Export(name="targetCriterias", refs={List.class,ZeroTrustAccessApplicationTargetCriteria.class}, tree="[0,1]")
-    private Output<List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias;
+    private Output</* @Nullable */ List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias;
 
-    public Output<List<ZeroTrustAccessApplicationTargetCriteria>> targetCriterias() {
-        return this.targetCriterias;
+    public Output<Optional<List<ZeroTrustAccessApplicationTargetCriteria>>> targetCriterias() {
+        return Codegen.optional(this.targetCriterias);
     }
     /**
      * The application type.

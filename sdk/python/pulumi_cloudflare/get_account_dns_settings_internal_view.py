@@ -59,7 +59,7 @@ class GetAccountDnsSettingsInternalViewResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -80,7 +80,7 @@ class GetAccountDnsSettingsInternalViewResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -104,7 +104,7 @@ class GetAccountDnsSettingsInternalViewResult:
     @pulumi.getter(name="viewId")
     def view_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "view_id")
 
@@ -149,8 +149,8 @@ def get_account_dns_settings_internal_view(account_id: Optional[builtins.str] = 
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str view_id: Identifier
+    :param builtins.str account_id: Identifier.
+    :param builtins.str view_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -184,8 +184,8 @@ def get_account_dns_settings_internal_view_output(account_id: Optional[pulumi.In
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str view_id: Identifier
+    :param builtins.str account_id: Identifier.
+    :param builtins.str view_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

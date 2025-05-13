@@ -30,11 +30,11 @@ export function getAuthenticatedOriginPullsCertificate(args: GetAuthenticatedOri
  */
 export interface GetAuthenticatedOriginPullsCertificateArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     certificateId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -48,7 +48,7 @@ export interface GetAuthenticatedOriginPullsCertificateResult {
      */
     readonly certificate: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly certificateId: string;
     /**
@@ -60,7 +60,7 @@ export interface GetAuthenticatedOriginPullsCertificateResult {
      */
     readonly expiresOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -85,7 +85,7 @@ export interface GetAuthenticatedOriginPullsCertificateResult {
      */
     readonly uploadedOn: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -115,11 +115,11 @@ export function getAuthenticatedOriginPullsCertificateOutput(args: GetAuthentica
  */
 export interface GetAuthenticatedOriginPullsCertificateOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     certificateId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

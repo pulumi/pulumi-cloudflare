@@ -25,6 +25,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleOriginCaCertificates = Cloudflare.GetOriginCaCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Limit = 10,
+        ///         Offset = 10,
         ///     });
         /// 
         /// });
@@ -47,6 +49,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleOriginCaCertificates = Cloudflare.GetOriginCaCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Limit = 10,
+        ///         Offset = 10,
         ///     });
         /// 
         /// });
@@ -69,6 +73,8 @@ namespace Pulumi.Cloudflare
         ///     var exampleOriginCaCertificates = Cloudflare.GetOriginCaCertificates.Invoke(new()
         ///     {
         ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         Limit = 10,
+        ///         Offset = 10,
         ///     });
         /// 
         /// });
@@ -82,13 +88,25 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Limit to the number of records returned.
+        /// </summary>
+        [Input("limit")]
+        public int? Limit { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public int? MaxItems { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Offset the results
+        /// </summary>
+        [Input("offset")]
+        public int? Offset { get; set; }
+
+        /// <summary>
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -102,13 +120,25 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Limit to the number of records returned.
+        /// </summary>
+        [Input("limit")]
+        public Input<int>? Limit { get; set; }
+
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         [Input("maxItems")]
         public Input<int>? MaxItems { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Offset the results
+        /// </summary>
+        [Input("offset")]
+        public Input<int>? Offset { get; set; }
+
+        /// <summary>
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -128,15 +158,23 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Limit to the number of records returned.
+        /// </summary>
+        public readonly int? Limit;
+        /// <summary>
         /// Max items to fetch, default: 1000
         /// </summary>
         public readonly int? MaxItems;
+        /// <summary>
+        /// Offset the results
+        /// </summary>
+        public readonly int? Offset;
         /// <summary>
         /// The items returned by the data source
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOriginCaCertificatesResultResult> Results;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 
@@ -144,14 +182,20 @@ namespace Pulumi.Cloudflare
         private GetOriginCaCertificatesResult(
             string id,
 
+            int? limit,
+
             int? maxItems,
+
+            int? offset,
 
             ImmutableArray<Outputs.GetOriginCaCertificatesResultResult> results,
 
             string zoneId)
         {
             Id = id;
+            Limit = limit;
             MaxItems = maxItems;
+            Offset = offset;
             Results = results;
             ZoneId = zoneId;
         }

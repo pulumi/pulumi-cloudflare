@@ -59,7 +59,7 @@ type LookupUserAgentBlockingRulesArgs struct {
 	MaxItems *int `pulumi:"maxItems"`
 	// A string to search for in the user agent values of existing rules.
 	UaSearch *string `pulumi:"uaSearch"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -77,7 +77,7 @@ type LookupUserAgentBlockingRulesResult struct {
 	Results []GetUserAgentBlockingRulesResult `pulumi:"results"`
 	// A string to search for in the user agent values of existing rules.
 	UaSearch *string `pulumi:"uaSearch"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -100,7 +100,7 @@ type LookupUserAgentBlockingRulesOutputArgs struct {
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
 	// A string to search for in the user agent values of existing rules.
 	UaSearch pulumi.StringPtrInput `pulumi:"uaSearch"`
-	// Identifier
+	// Defines an identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -153,7 +153,7 @@ func (o LookupUserAgentBlockingRulesResultOutput) UaSearch() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) *string { return v.UaSearch }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Defines an identifier.
 func (o LookupUserAgentBlockingRulesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserAgentBlockingRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

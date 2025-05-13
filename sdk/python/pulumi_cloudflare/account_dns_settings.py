@@ -26,7 +26,7 @@ class AccountDnsSettingsArgs:
                  zone_defaults: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
         The set of arguments for constructing a AccountDnsSettings resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
         if zone_defaults is not None:
@@ -36,7 +36,7 @@ class AccountDnsSettingsArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -61,7 +61,7 @@ class _AccountDnsSettingsState:
                  zone_defaults: Optional[pulumi.Input['AccountDnsSettingsZoneDefaultsArgs']] = None):
         """
         Input properties used for looking up and filtering AccountDnsSettings resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -72,7 +72,7 @@ class _AccountDnsSettingsState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -104,7 +104,7 @@ class AccountDnsSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         """
         ...
     @overload
@@ -164,7 +164,7 @@ class AccountDnsSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -178,12 +178,12 @@ class AccountDnsSettings(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="zoneDefaults")
-    def zone_defaults(self) -> pulumi.Output['outputs.AccountDnsSettingsZoneDefaults']:
+    def zone_defaults(self) -> pulumi.Output[Optional['outputs.AccountDnsSettingsZoneDefaults']]:
         return pulumi.get(self, "zone_defaults")
 

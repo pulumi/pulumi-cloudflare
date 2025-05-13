@@ -21,7 +21,7 @@ public final class GetDcvDelegationResult {
      */
     private String uuid;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -42,7 +42,7 @@ public final class GetDcvDelegationResult {
         return this.uuid;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

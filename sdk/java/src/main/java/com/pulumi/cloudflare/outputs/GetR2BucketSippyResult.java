@@ -14,22 +14,22 @@ import java.util.Objects;
 @CustomType
 public final class GetR2BucketSippyResult {
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     private String accountId;
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     private String bucketName;
     /**
-     * @return Details about the configured destination bucket
+     * @return Details about the configured destination bucket.
      * 
      */
     private GetR2BucketSippyDestination destination;
     /**
-     * @return State of Sippy for this bucket
+     * @return State of Sippy for this bucket.
      * 
      */
     private Boolean enabled;
@@ -39,35 +39,35 @@ public final class GetR2BucketSippyResult {
      */
     private String id;
     /**
-     * @return Details about the configured source bucket
+     * @return Details about the configured source bucket.
      * 
      */
     private GetR2BucketSippySource source;
 
     private GetR2BucketSippyResult() {}
     /**
-     * @return Account ID
+     * @return Account ID.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Name of the bucket
+     * @return Name of the bucket.
      * 
      */
     public String bucketName() {
         return this.bucketName;
     }
     /**
-     * @return Details about the configured destination bucket
+     * @return Details about the configured destination bucket.
      * 
      */
     public GetR2BucketSippyDestination destination() {
         return this.destination;
     }
     /**
-     * @return State of Sippy for this bucket
+     * @return State of Sippy for this bucket.
      * 
      */
     public Boolean enabled() {
@@ -81,7 +81,7 @@ public final class GetR2BucketSippyResult {
         return this.id;
     }
     /**
-     * @return Details about the configured source bucket
+     * @return Details about the configured source bucket.
      * 
      */
     public GetR2BucketSippySource source() {

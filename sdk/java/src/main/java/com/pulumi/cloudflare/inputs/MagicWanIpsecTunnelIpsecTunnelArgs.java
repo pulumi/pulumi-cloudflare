@@ -101,14 +101,14 @@ public final class MagicWanIpsecTunnelIpsecTunnelArgs extends com.pulumi.resourc
     }
 
     /**
-     * Tunnel identifier tag.
+     * Identifier
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Tunnel identifier tag.
+     * @return Identifier
      * 
      */
     public Optional<Output<String>> id() {
@@ -340,7 +340,7 @@ public final class MagicWanIpsecTunnelIpsecTunnelArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param id Tunnel identifier tag.
+         * @param id Identifier
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class MagicWanIpsecTunnelIpsecTunnelArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param id Tunnel identifier tag.
+         * @param id Identifier
          * 
          * @return builder
          * 

@@ -34,19 +34,19 @@ namespace Pulumi.Cloudflare
     public partial class LeakedCredentialCheckRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ruleset expression to use in matching the password in a request
+        /// Defines ehe ruleset expression to use in matching the password in a request.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The ruleset expression to use in matching the username in a request
+        /// Defines the ruleset expression to use in matching the username in a request.
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -98,19 +98,19 @@ namespace Pulumi.Cloudflare
     public sealed class LeakedCredentialCheckRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ruleset expression to use in matching the password in a request
+        /// Defines ehe ruleset expression to use in matching the password in a request.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The ruleset expression to use in matching the username in a request
+        /// Defines the ruleset expression to use in matching the username in a request.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -124,19 +124,19 @@ namespace Pulumi.Cloudflare
     public sealed class LeakedCredentialCheckRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ruleset expression to use in matching the password in a request
+        /// Defines ehe ruleset expression to use in matching the password in a request.
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The ruleset expression to use in matching the username in a request
+        /// Defines the ruleset expression to use in matching the username in a request.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

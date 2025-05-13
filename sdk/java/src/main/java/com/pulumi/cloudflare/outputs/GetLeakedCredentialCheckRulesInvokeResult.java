@@ -31,7 +31,7 @@ public final class GetLeakedCredentialCheckRulesInvokeResult {
      */
     private List<GetLeakedCredentialCheckRulesResult> results;
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     private String zoneId;
@@ -59,7 +59,7 @@ public final class GetLeakedCredentialCheckRulesInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public String zoneId() {

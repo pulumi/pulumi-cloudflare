@@ -31,7 +31,7 @@ public final class GetRegionalHostnamesInvokeResult {
      */
     private List<GetRegionalHostnamesResult> results;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -59,7 +59,7 @@ public final class GetRegionalHostnamesInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

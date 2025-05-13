@@ -56,6 +56,21 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Enables loading application content in an iFrame.
+     * 
+     */
+    @Import(name="allowIframe")
+    private @Nullable Output<Boolean> allowIframe;
+
+    /**
+     * @return Enables loading application content in an iFrame.
+     * 
+     */
+    public Optional<Output<Boolean>> allowIframe() {
+        return Optional.ofNullable(this.allowIframe);
+    }
+
+    /**
      * The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
      * 
      */
@@ -581,6 +596,7 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
     private ZeroTrustAccessApplicationArgs(ZeroTrustAccessApplicationArgs $) {
         this.accountId = $.accountId;
         this.allowAuthenticateViaWarp = $.allowAuthenticateViaWarp;
+        this.allowIframe = $.allowIframe;
         this.allowedIdps = $.allowedIdps;
         this.appLauncherLogoUrl = $.appLauncherLogoUrl;
         this.appLauncherVisible = $.appLauncherVisible;
@@ -676,6 +692,27 @@ public final class ZeroTrustAccessApplicationArgs extends com.pulumi.resources.R
          */
         public Builder allowAuthenticateViaWarp(Boolean allowAuthenticateViaWarp) {
             return allowAuthenticateViaWarp(Output.of(allowAuthenticateViaWarp));
+        }
+
+        /**
+         * @param allowIframe Enables loading application content in an iFrame.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowIframe(@Nullable Output<Boolean> allowIframe) {
+            $.allowIframe = allowIframe;
+            return this;
+        }
+
+        /**
+         * @param allowIframe Enables loading application content in an iFrame.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowIframe(Boolean allowIframe) {
+            return allowIframe(Output.of(allowIframe));
         }
 
         /**

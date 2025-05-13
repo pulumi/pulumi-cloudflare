@@ -33,7 +33,7 @@ export function getWebAnalyticsSites(args: GetWebAnalyticsSitesArgs, opts?: pulu
  */
 export interface GetWebAnalyticsSitesArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     /**
@@ -52,7 +52,7 @@ export interface GetWebAnalyticsSitesArgs {
  */
 export interface GetWebAnalyticsSitesResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -100,7 +100,7 @@ export function getWebAnalyticsSitesOutput(args: GetWebAnalyticsSitesOutputArgs,
  */
 export interface GetWebAnalyticsSitesOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     /**

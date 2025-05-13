@@ -77,6 +77,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> PrimaryLocationHint { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for D1 read replication.
+        /// </summary>
+        [Output("readReplication")]
+        public Output<Outputs.D1DatabaseReadReplication?> ReadReplication { get; private set; } = null!;
+
+        /// <summary>
         /// D1 database identifier (UUID).
         /// </summary>
         [Output("uuid")]
@@ -150,6 +156,12 @@ namespace Pulumi.Cloudflare
         [Input("primaryLocationHint")]
         public Input<string>? PrimaryLocationHint { get; set; }
 
+        /// <summary>
+        /// Configuration for D1 read replication.
+        /// </summary>
+        [Input("readReplication")]
+        public Input<Inputs.D1DatabaseReadReplicationArgs>? ReadReplication { get; set; }
+
         public D1DatabaseArgs()
         {
         }
@@ -191,6 +203,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("primaryLocationHint")]
         public Input<string>? PrimaryLocationHint { get; set; }
+
+        /// <summary>
+        /// Configuration for D1 read replication.
+        /// </summary>
+        [Input("readReplication")]
+        public Input<Inputs.D1DatabaseReadReplicationGetArgs>? ReadReplication { get; set; }
 
         /// <summary>
         /// D1 database identifier (UUID).

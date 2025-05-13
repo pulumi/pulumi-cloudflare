@@ -33,12 +33,12 @@ export function getWebAnalyticsSite(args: GetWebAnalyticsSiteArgs, opts?: pulumi
  */
 export interface GetWebAnalyticsSiteArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: string;
     filter?: inputs.GetWebAnalyticsSiteFilter;
     /**
-     * Identifier
+     * Identifier.
      */
     siteId?: string;
 }
@@ -48,7 +48,7 @@ export interface GetWebAnalyticsSiteArgs {
  */
 export interface GetWebAnalyticsSiteResult {
     /**
-     * Identifier
+     * Identifier.
      */
     readonly accountId: string;
     /**
@@ -58,7 +58,7 @@ export interface GetWebAnalyticsSiteResult {
     readonly created: string;
     readonly filter?: outputs.GetWebAnalyticsSiteFilter;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly id: string;
     /**
@@ -67,7 +67,7 @@ export interface GetWebAnalyticsSiteResult {
     readonly rules: outputs.GetWebAnalyticsSiteRule[];
     readonly ruleset: outputs.GetWebAnalyticsSiteRuleset;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly siteId?: string;
     /**
@@ -110,12 +110,12 @@ export function getWebAnalyticsSiteOutput(args: GetWebAnalyticsSiteOutputArgs, o
  */
 export interface GetWebAnalyticsSiteOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     filter?: pulumi.Input<inputs.GetWebAnalyticsSiteFilterArgs>;
     /**
-     * Identifier
+     * Identifier.
      */
     siteId?: pulumi.Input<string>;
 }

@@ -31,14 +31,14 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Optional<Output<String>> id() {
@@ -46,7 +46,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The scope of the rule.
+     * Defines the scope of the rule.
      * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
@@ -54,7 +54,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> type;
 
     /**
-     * @return The scope of the rule.
+     * @return Defines the scope of the rule.
      * Available values: &#34;user&#34;, &#34;organization&#34;.
      * 
      */
@@ -110,7 +110,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id Identifier
+         * @param id Defines an identifier.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id Identifier
+         * @param id Defines an identifier.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The scope of the rule.
+         * @param type Defines the scope of the rule.
          * Available values: &#34;user&#34;, &#34;organization&#34;.
          * 
          * @return builder
@@ -143,7 +143,7 @@ public final class AccessRuleScopeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The scope of the rule.
+         * @param type Defines the scope of the rule.
          * Available values: &#34;user&#34;, &#34;organization&#34;.
          * 
          * @return builder

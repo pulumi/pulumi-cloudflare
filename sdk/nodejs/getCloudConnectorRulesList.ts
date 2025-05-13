@@ -35,7 +35,7 @@ export interface GetCloudConnectorRulesListArgs {
      */
     maxItems?: number;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -57,7 +57,7 @@ export interface GetCloudConnectorRulesListResult {
      */
     readonly results: outputs.GetCloudConnectorRulesListResult[];
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -90,7 +90,7 @@ export interface GetCloudConnectorRulesListOutputArgs {
      */
     maxItems?: pulumi.Input<number>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

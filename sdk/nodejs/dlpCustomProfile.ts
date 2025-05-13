@@ -56,33 +56,33 @@ export class DlpCustomProfile extends pulumi.CustomResource {
     /**
      * Scan the context of predefined entries to only return matches surrounded by keywords.
      */
-    public readonly contextAwareness!: pulumi.Output<outputs.DlpCustomProfileContextAwareness>;
+    public readonly contextAwareness!: pulumi.Output<outputs.DlpCustomProfileContextAwareness | undefined>;
     /**
-     * When the profile was created
+     * When the profile was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly entries!: pulumi.Output<outputs.DlpCustomProfileEntry[]>;
+    public readonly entries!: pulumi.Output<outputs.DlpCustomProfileEntry[] | undefined>;
     public readonly name!: pulumi.Output<string | undefined>;
     public readonly ocrEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      */
     public /*out*/ readonly openAccess!: pulumi.Output<boolean>;
     public readonly profiles!: pulumi.Output<outputs.DlpCustomProfileProfile[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
-    public readonly sharedEntries!: pulumi.Output<outputs.DlpCustomProfileSharedEntry[]>;
+    public readonly sharedEntries!: pulumi.Output<outputs.DlpCustomProfileSharedEntry[] | undefined>;
     /**
      * Available values: "custom".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -161,18 +161,18 @@ export interface DlpCustomProfileState {
      */
     contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness>;
     /**
-     * When the profile was created
+     * When the profile was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: pulumi.Input<string>;
     entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
     name?: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether this profile can be accessed by anyone
+     * Whether this profile can be accessed by anyone.
      */
     openAccess?: pulumi.Input<boolean>;
     profiles?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileProfile>[]>;
@@ -185,7 +185,7 @@ export interface DlpCustomProfileState {
      */
     type?: pulumi.Input<string>;
     /**
-     * When the profile was lasted updated
+     * When the profile was lasted updated.
      */
     updatedAt?: pulumi.Input<string>;
 }
@@ -206,7 +206,7 @@ export interface DlpCustomProfileArgs {
      */
     contextAwareness?: pulumi.Input<inputs.DlpCustomProfileContextAwareness>;
     /**
-     * The description of the profile
+     * The description of the profile.
      */
     description?: pulumi.Input<string>;
     entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;

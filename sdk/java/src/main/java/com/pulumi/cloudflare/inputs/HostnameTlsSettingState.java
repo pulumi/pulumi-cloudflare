@@ -109,14 +109,14 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -282,7 +282,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class HostnameTlsSettingState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

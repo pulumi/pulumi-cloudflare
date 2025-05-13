@@ -49,17 +49,17 @@ func LookupR2BucketLock(ctx *pulumi.Context, args *LookupR2BucketLockArgs, opts 
 
 // A collection of arguments for invoking getR2BucketLock.
 type LookupR2BucketLockArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 }
 
 // A collection of values returned by getR2BucketLock.
 type LookupR2BucketLockResult struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id    string                `pulumi:"id"`
@@ -77,9 +77,9 @@ func LookupR2BucketLockOutput(ctx *pulumi.Context, args LookupR2BucketLockOutput
 
 // A collection of arguments for invoking getR2BucketLock.
 type LookupR2BucketLockOutputArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
@@ -102,12 +102,12 @@ func (o LookupR2BucketLockResultOutput) ToLookupR2BucketLockResultOutputWithCont
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o LookupR2BucketLockResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketLockResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o LookupR2BucketLockResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketLockResult) string { return v.BucketName }).(pulumi.StringOutput)
 }

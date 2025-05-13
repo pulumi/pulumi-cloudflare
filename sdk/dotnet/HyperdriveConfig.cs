@@ -12,36 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleHyperdriveConfig = new Cloudflare.HyperdriveConfig("example_hyperdrive_config", new()
-    ///     {
-    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         Name = "example-hyperdrive",
-    ///         Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs
-    ///         {
-    ///             Database = "postgres",
-    ///             Host = "database.example.com",
-    ///             Password = "password",
-    ///             Port = 5432,
-    ///             Scheme = "postgres",
-    ///             User = "postgres",
-    ///         },
-    ///         Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs
-    ///         {
-    ///             Disabled = true,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -58,7 +28,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         [Output("caching")]
-        public Output<Outputs.HyperdriveConfigCaching> Caching { get; private set; } = null!;
+        public Output<Outputs.HyperdriveConfigCaching?> Caching { get; private set; } = null!;
 
         /// <summary>
         /// When the Hyperdrive configuration was created.
@@ -71,6 +41,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
+
+        [Output("mtls")]
+        public Output<Outputs.HyperdriveConfigMtls?> Mtls { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -133,6 +106,9 @@ namespace Pulumi.Cloudflare
         [Input("caching")]
         public Input<Inputs.HyperdriveConfigCachingArgs>? Caching { get; set; }
 
+        [Input("mtls")]
+        public Input<Inputs.HyperdriveConfigMtlsArgs>? Mtls { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -167,6 +143,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
+
+        [Input("mtls")]
+        public Input<Inputs.HyperdriveConfigMtlsGetArgs>? Mtls { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

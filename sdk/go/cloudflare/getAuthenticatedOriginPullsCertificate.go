@@ -49,9 +49,9 @@ func LookupAuthenticatedOriginPullsCertificate(ctx *pulumi.Context, args *Lookup
 
 // A collection of arguments for invoking getAuthenticatedOriginPullsCertificate.
 type LookupAuthenticatedOriginPullsCertificateArgs struct {
-	// Identifier
+	// Identifier.
 	CertificateId string `pulumi:"certificateId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -59,13 +59,13 @@ type LookupAuthenticatedOriginPullsCertificateArgs struct {
 type LookupAuthenticatedOriginPullsCertificateResult struct {
 	// The zone's leaf certificate.
 	Certificate string `pulumi:"certificate"`
-	// Identifier
+	// Identifier.
 	CertificateId string `pulumi:"certificateId"`
 	// Indicates whether zone-level authenticated origin pulls is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// When the certificate from the authority expires.
 	ExpiresOn string `pulumi:"expiresOn"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
 	// The certificate authority that issued the certificate.
 	Issuer string `pulumi:"issuer"`
@@ -78,7 +78,7 @@ type LookupAuthenticatedOriginPullsCertificateResult struct {
 	Status string `pulumi:"status"`
 	// This is the time the certificate was uploaded.
 	UploadedOn string `pulumi:"uploadedOn"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -93,9 +93,9 @@ func LookupAuthenticatedOriginPullsCertificateOutput(ctx *pulumi.Context, args L
 
 // A collection of arguments for invoking getAuthenticatedOriginPullsCertificate.
 type LookupAuthenticatedOriginPullsCertificateOutputArgs struct {
-	// Identifier
+	// Identifier.
 	CertificateId pulumi.StringInput `pulumi:"certificateId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -123,7 +123,7 @@ func (o LookupAuthenticatedOriginPullsCertificateResultOutput) Certificate() pul
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupAuthenticatedOriginPullsCertificateResultOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.CertificateId }).(pulumi.StringOutput)
 }
@@ -138,7 +138,7 @@ func (o LookupAuthenticatedOriginPullsCertificateResultOutput) ExpiresOn() pulum
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupAuthenticatedOriginPullsCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -169,7 +169,7 @@ func (o LookupAuthenticatedOriginPullsCertificateResultOutput) UploadedOn() pulu
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.UploadedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupAuthenticatedOriginPullsCertificateResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthenticatedOriginPullsCertificateResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

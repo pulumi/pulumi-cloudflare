@@ -40,14 +40,14 @@ public final class GetApiShieldOperationPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
     @Import(name="operationId")
     private @Nullable String operationId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public Optional<String> operationId() {
@@ -55,14 +55,14 @@ public final class GetApiShieldOperationPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -123,7 +123,7 @@ public final class GetApiShieldOperationPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param operationId UUID
+         * @param operationId UUID.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class GetApiShieldOperationPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

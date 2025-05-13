@@ -49,7 +49,7 @@ import (
 type List struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Defines an identifier.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
@@ -107,7 +107,7 @@ func GetList(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering List resources.
 type listState struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId *string `pulumi:"accountId"`
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn *string `pulumi:"createdOn"`
@@ -127,7 +127,7 @@ type listState struct {
 }
 
 type ListState struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId pulumi.StringPtrInput
 	// The RFC 3339 timestamp of when the list was created.
 	CreatedOn pulumi.StringPtrInput
@@ -151,7 +151,7 @@ func (ListState) ElementType() reflect.Type {
 }
 
 type listArgs struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId string `pulumi:"accountId"`
 	// An informative summary of the list.
 	Description *string `pulumi:"description"`
@@ -164,7 +164,7 @@ type listArgs struct {
 
 // The set of arguments for constructing a List resource.
 type ListArgs struct {
-	// Identifier
+	// Defines an identifier.
 	AccountId pulumi.StringInput
 	// An informative summary of the list.
 	Description pulumi.StringPtrInput
@@ -262,7 +262,7 @@ func (o ListOutput) ToListOutputWithContext(ctx context.Context) ListOutput {
 	return o
 }
 
-// Identifier
+// Defines an identifier.
 func (o ListOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *List) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

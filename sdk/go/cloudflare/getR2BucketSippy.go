@@ -49,25 +49,25 @@ func LookupR2BucketSippy(ctx *pulumi.Context, args *LookupR2BucketSippyArgs, opt
 
 // A collection of arguments for invoking getR2BucketSippy.
 type LookupR2BucketSippyArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
 }
 
 // A collection of values returned by getR2BucketSippy.
 type LookupR2BucketSippyResult struct {
-	// Account ID
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// Details about the configured destination bucket
+	// Details about the configured destination bucket.
 	Destination GetR2BucketSippyDestination `pulumi:"destination"`
-	// State of Sippy for this bucket
+	// State of Sippy for this bucket.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Details about the configured source bucket
+	// Details about the configured source bucket.
 	Source GetR2BucketSippySource `pulumi:"source"`
 }
 
@@ -82,9 +82,9 @@ func LookupR2BucketSippyOutput(ctx *pulumi.Context, args LookupR2BucketSippyOutp
 
 // A collection of arguments for invoking getR2BucketSippy.
 type LookupR2BucketSippyOutputArgs struct {
-	// Account ID
+	// Account ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Name of the bucket
+	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 }
 
@@ -107,22 +107,22 @@ func (o LookupR2BucketSippyResultOutput) ToLookupR2BucketSippyResultOutputWithCo
 	return o
 }
 
-// Account ID
+// Account ID.
 func (o LookupR2BucketSippyResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketSippyResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Name of the bucket
+// Name of the bucket.
 func (o LookupR2BucketSippyResultOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketSippyResult) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Details about the configured destination bucket
+// Details about the configured destination bucket.
 func (o LookupR2BucketSippyResultOutput) Destination() GetR2BucketSippyDestinationOutput {
 	return o.ApplyT(func(v LookupR2BucketSippyResult) GetR2BucketSippyDestination { return v.Destination }).(GetR2BucketSippyDestinationOutput)
 }
 
-// State of Sippy for this bucket
+// State of Sippy for this bucket.
 func (o LookupR2BucketSippyResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupR2BucketSippyResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -132,7 +132,7 @@ func (o LookupR2BucketSippyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketSippyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Details about the configured source bucket
+// Details about the configured source bucket.
 func (o LookupR2BucketSippyResultOutput) Source() GetR2BucketSippySourceOutput {
 	return o.ApplyT(func(v LookupR2BucketSippyResult) GetR2BucketSippySource { return v.Source }).(GetR2BucketSippySourceOutput)
 }

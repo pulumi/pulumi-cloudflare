@@ -21,17 +21,27 @@ public final class GetOriginCaCertificatesInvokeResult {
      */
     private String id;
     /**
+     * @return Limit to the number of records returned.
+     * 
+     */
+    private @Nullable Integer limit;
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
     private @Nullable Integer maxItems;
+    /**
+     * @return Offset the results
+     * 
+     */
+    private @Nullable Integer offset;
     /**
      * @return The items returned by the data source
      * 
      */
     private List<GetOriginCaCertificatesResult> results;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -45,11 +55,25 @@ public final class GetOriginCaCertificatesInvokeResult {
         return this.id;
     }
     /**
+     * @return Limit to the number of records returned.
+     * 
+     */
+    public Optional<Integer> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+    /**
      * @return Max items to fetch, default: 1000
      * 
      */
     public Optional<Integer> maxItems() {
         return Optional.ofNullable(this.maxItems);
+    }
+    /**
+     * @return Offset the results
+     * 
+     */
+    public Optional<Integer> offset() {
+        return Optional.ofNullable(this.offset);
     }
     /**
      * @return The items returned by the data source
@@ -59,7 +83,7 @@ public final class GetOriginCaCertificatesInvokeResult {
         return this.results;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {
@@ -76,14 +100,18 @@ public final class GetOriginCaCertificatesInvokeResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Integer limit;
         private @Nullable Integer maxItems;
+        private @Nullable Integer offset;
         private List<GetOriginCaCertificatesResult> results;
         private String zoneId;
         public Builder() {}
         public Builder(GetOriginCaCertificatesInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.limit = defaults.limit;
     	      this.maxItems = defaults.maxItems;
+    	      this.offset = defaults.offset;
     	      this.results = defaults.results;
     	      this.zoneId = defaults.zoneId;
         }
@@ -97,9 +125,21 @@ public final class GetOriginCaCertificatesInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder limit(@Nullable Integer limit) {
+
+            this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxItems(@Nullable Integer maxItems) {
 
             this.maxItems = maxItems;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder offset(@Nullable Integer offset) {
+
+            this.offset = offset;
             return this;
         }
         @CustomType.Setter
@@ -124,7 +164,9 @@ public final class GetOriginCaCertificatesInvokeResult {
         public GetOriginCaCertificatesInvokeResult build() {
             final var _resultValue = new GetOriginCaCertificatesInvokeResult();
             _resultValue.id = id;
+            _resultValue.limit = limit;
             _resultValue.maxItems = maxItems;
+            _resultValue.offset = offset;
             _resultValue.results = results;
             _resultValue.zoneId = zoneId;
             return _resultValue;

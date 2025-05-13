@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetWorkersScriptsResultPlacementResult
     {
         /// <summary>
+        /// The last time the script was analyzed for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
+        /// </summary>
+        public readonly string LastAnalyzedAt;
+        /// <summary>
         /// Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// Available values: "smart".
         /// </summary>
@@ -26,10 +30,13 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetWorkersScriptsResultPlacementResult(
+            string lastAnalyzedAt,
+
             string mode,
 
             string status)
         {
+            LastAnalyzedAt = lastAnalyzedAt;
             Mode = mode;
             Status = status;
         }

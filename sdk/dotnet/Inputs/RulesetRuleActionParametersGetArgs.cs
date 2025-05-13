@@ -233,7 +233,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _phases;
 
         /// <summary>
-        /// A list of phases to skip the execution of. This option is incompatible with the ruleset and rulesets options.
+        /// A list of phases to skip the execution of. This option is incompatible with the rulesets options.
         /// </summary>
         public InputList<string> Phases
         {
@@ -333,7 +333,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// A ruleset to skip the execution of. This option is incompatible with the rulesets, rules and phases options.
+        /// A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
         /// Available values: "current".
         /// </summary>
         [Input("ruleset")]

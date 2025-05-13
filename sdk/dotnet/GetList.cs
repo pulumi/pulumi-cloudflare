@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetListArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -93,8 +93,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique ID of the list.
         /// </summary>
-        [Input("listId")]
-        public string? ListId { get; set; }
+        [Input("listId", required: true)]
+        public string ListId { get; set; } = null!;
 
         public GetListArgs()
         {
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetListInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -113,8 +113,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique ID of the list.
         /// </summary>
-        [Input("listId")]
-        public Input<string>? ListId { get; set; }
+        [Input("listId", required: true)]
+        public Input<string> ListId { get; set; } = null!;
 
         public GetListInvokeArgs()
         {
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetListResult
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The unique ID of the list.
         /// </summary>
-        public readonly string? ListId;
+        public readonly string ListId;
         /// <summary>
         /// The RFC 3339 timestamp of when the list was last modified.
         /// </summary>
@@ -180,7 +180,7 @@ namespace Pulumi.Cloudflare
 
             string kind,
 
-            string? listId,
+            string listId,
 
             string modifiedOn,
 

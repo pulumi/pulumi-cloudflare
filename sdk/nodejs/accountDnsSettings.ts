@@ -38,10 +38,10 @@ export class AccountDnsSettings extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
-    public readonly zoneDefaults!: pulumi.Output<outputs.AccountDnsSettingsZoneDefaults>;
+    public readonly zoneDefaults!: pulumi.Output<outputs.AccountDnsSettingsZoneDefaults | undefined>;
 
     /**
      * Create a AccountDnsSettings resource with the given unique name, arguments, and options.
@@ -76,7 +76,7 @@ export class AccountDnsSettings extends pulumi.CustomResource {
  */
 export interface AccountDnsSettingsState {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId?: pulumi.Input<string>;
     zoneDefaults?: pulumi.Input<inputs.AccountDnsSettingsZoneDefaults>;
@@ -87,7 +87,7 @@ export interface AccountDnsSettingsState {
  */
 export interface AccountDnsSettingsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     accountId: pulumi.Input<string>;
     zoneDefaults?: pulumi.Input<inputs.AccountDnsSettingsZoneDefaults>;

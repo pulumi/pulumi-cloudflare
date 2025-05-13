@@ -66,7 +66,7 @@ class GetMtlsCertificateResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -98,7 +98,7 @@ class GetMtlsCertificateResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "id")
 
@@ -114,7 +114,7 @@ class GetMtlsCertificateResult:
     @pulumi.getter(name="mtlsCertificateId")
     def mtls_certificate_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "mtls_certificate_id")
 
@@ -185,8 +185,8 @@ def get_mtls_certificate(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str mtls_certificate_id: Identifier
+    :param builtins.str account_id: Identifier.
+    :param builtins.str mtls_certificate_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -221,8 +221,8 @@ def get_mtls_certificate_output(account_id: Optional[pulumi.Input[builtins.str]]
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str mtls_certificate_id: Identifier
+    :param builtins.str account_id: Identifier.
+    :param builtins.str mtls_certificate_id: Identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

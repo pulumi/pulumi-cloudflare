@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.DlpCustomProfileProfileContextAwareness? ContextAwareness;
         /// <summary>
-        /// The description of the profile
+        /// The description of the profile.
         /// </summary>
         public readonly string? Description;
         public readonly ImmutableArray<Outputs.DlpCustomProfileProfileEntry> Entries;

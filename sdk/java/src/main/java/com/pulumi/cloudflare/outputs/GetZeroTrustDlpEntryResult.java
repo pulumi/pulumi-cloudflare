@@ -16,6 +16,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZeroTrustDlpEntryResult {
     private String accountId;
+    /**
+     * @return Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    private Boolean caseSensitive;
     private GetZeroTrustDlpEntryConfidence confidence;
     private String createdAt;
     private Boolean enabled;
@@ -40,6 +47,15 @@ public final class GetZeroTrustDlpEntryResult {
     private GetZeroTrustDlpEntryResult() {}
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return Only applies to custom word lists.
+     * Determines if the words should be matched in a case-sensitive manner
+     * Cannot be set to false if secret is true
+     * 
+     */
+    public Boolean caseSensitive() {
+        return this.caseSensitive;
     }
     public GetZeroTrustDlpEntryConfidence confidence() {
         return this.confidence;
@@ -96,6 +112,7 @@ public final class GetZeroTrustDlpEntryResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private Boolean caseSensitive;
         private GetZeroTrustDlpEntryConfidence confidence;
         private String createdAt;
         private Boolean enabled;
@@ -112,6 +129,7 @@ public final class GetZeroTrustDlpEntryResult {
         public Builder(GetZeroTrustDlpEntryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.caseSensitive = defaults.caseSensitive;
     	      this.confidence = defaults.confidence;
     	      this.createdAt = defaults.createdAt;
     	      this.enabled = defaults.enabled;
@@ -132,6 +150,14 @@ public final class GetZeroTrustDlpEntryResult {
               throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder caseSensitive(Boolean caseSensitive) {
+            if (caseSensitive == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDlpEntryResult", "caseSensitive");
+            }
+            this.caseSensitive = caseSensitive;
             return this;
         }
         @CustomType.Setter
@@ -231,6 +257,7 @@ public final class GetZeroTrustDlpEntryResult {
         public GetZeroTrustDlpEntryResult build() {
             final var _resultValue = new GetZeroTrustDlpEntryResult();
             _resultValue.accountId = accountId;
+            _resultValue.caseSensitive = caseSensitive;
             _resultValue.confidence = confidence;
             _resultValue.createdAt = createdAt;
             _resultValue.enabled = enabled;

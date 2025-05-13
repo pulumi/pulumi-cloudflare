@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     public partial class List : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Cloudflare
     public sealed class ListArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Cloudflare
     public sealed class ListState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Defines an identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }

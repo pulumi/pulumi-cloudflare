@@ -135,7 +135,7 @@ class GetEmailRoutingRuleResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -175,7 +175,7 @@ def get_email_routing_rule(filter: Optional[Union['GetEmailRoutingRuleFilterArgs
 
 
     :param builtins.str rule_identifier: Routing rule identifier.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -212,7 +212,7 @@ def get_email_routing_rule_output(filter: Optional[pulumi.Input[Optional[Union['
 
 
     :param builtins.str rule_identifier: Routing rule identifier.
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['filter'] = filter

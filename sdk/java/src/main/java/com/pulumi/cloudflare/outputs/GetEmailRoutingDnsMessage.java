@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetEmailRoutingDnsMessageSource;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -12,14 +13,22 @@ import java.util.Objects;
 @CustomType
 public final class GetEmailRoutingDnsMessage {
     private Integer code;
+    private String documentationUrl;
     private String message;
+    private GetEmailRoutingDnsMessageSource source;
 
     private GetEmailRoutingDnsMessage() {}
     public Integer code() {
         return this.code;
     }
+    public String documentationUrl() {
+        return this.documentationUrl;
+    }
     public String message() {
         return this.message;
+    }
+    public GetEmailRoutingDnsMessageSource source() {
+        return this.source;
     }
 
     public static Builder builder() {
@@ -32,12 +41,16 @@ public final class GetEmailRoutingDnsMessage {
     @CustomType.Builder
     public static final class Builder {
         private Integer code;
+        private String documentationUrl;
         private String message;
+        private GetEmailRoutingDnsMessageSource source;
         public Builder() {}
         public Builder(GetEmailRoutingDnsMessage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.code = defaults.code;
+    	      this.documentationUrl = defaults.documentationUrl;
     	      this.message = defaults.message;
+    	      this.source = defaults.source;
         }
 
         @CustomType.Setter
@@ -49,6 +62,14 @@ public final class GetEmailRoutingDnsMessage {
             return this;
         }
         @CustomType.Setter
+        public Builder documentationUrl(String documentationUrl) {
+            if (documentationUrl == null) {
+              throw new MissingRequiredPropertyException("GetEmailRoutingDnsMessage", "documentationUrl");
+            }
+            this.documentationUrl = documentationUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder message(String message) {
             if (message == null) {
               throw new MissingRequiredPropertyException("GetEmailRoutingDnsMessage", "message");
@@ -56,10 +77,20 @@ public final class GetEmailRoutingDnsMessage {
             this.message = message;
             return this;
         }
+        @CustomType.Setter
+        public Builder source(GetEmailRoutingDnsMessageSource source) {
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetEmailRoutingDnsMessage", "source");
+            }
+            this.source = source;
+            return this;
+        }
         public GetEmailRoutingDnsMessage build() {
             final var _resultValue = new GetEmailRoutingDnsMessage();
             _resultValue.code = code;
+            _resultValue.documentationUrl = documentationUrl;
             _resultValue.message = message;
+            _resultValue.source = source;
             return _resultValue;
         }
     }

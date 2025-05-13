@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class R2BucketEventNotificationRule
     {
         /// <summary>
-        /// Array of R2 object actions that will trigger notifications
+        /// Array of R2 object actions that will trigger notifications.
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>
-        /// A description that can be used to identify the event notification rule after creation
+        /// A description that can be used to identify the event notification rule after creation.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Notifications will be sent only for objects with this prefix
+        /// Notifications will be sent only for objects with this prefix.
         /// </summary>
         public readonly string? Prefix;
         /// <summary>
-        /// Notifications will be sent only for objects with this suffix
+        /// Notifications will be sent only for objects with this suffix.
         /// </summary>
         public readonly string? Suffix;
 

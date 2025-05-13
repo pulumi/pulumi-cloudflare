@@ -3,13 +3,9 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.WorkersRouteErrorArgs;
-import com.pulumi.cloudflare.inputs.WorkersRouteMessageArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,70 +15,34 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkersRouteState Empty = new WorkersRouteState();
 
-    @Import(name="errors")
-    private @Nullable Output<List<WorkersRouteErrorArgs>> errors;
-
-    public Optional<Output<List<WorkersRouteErrorArgs>>> errors() {
-        return Optional.ofNullable(this.errors);
-    }
-
-    @Import(name="messages")
-    private @Nullable Output<List<WorkersRouteMessageArgs>> messages;
-
-    public Optional<Output<List<WorkersRouteMessageArgs>>> messages() {
-        return Optional.ofNullable(this.messages);
-    }
-
+    /**
+     * Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     @Import(name="pattern")
     private @Nullable Output<String> pattern;
 
+    /**
+     * @return Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+     * 
+     */
     public Optional<Output<String>> pattern() {
         return Optional.ofNullable(this.pattern);
     }
 
     /**
-     * Identifier.
-     * 
-     */
-    @Import(name="routeId")
-    private @Nullable Output<String> routeId;
-
-    /**
-     * @return Identifier.
-     * 
-     */
-    public Optional<Output<String>> routeId() {
-        return Optional.ofNullable(this.routeId);
-    }
-
-    /**
-     * Name of the script, used in URLs and route configuration.
+     * Name of the script to run if the route matches.
      * 
      */
     @Import(name="script")
     private @Nullable Output<String> script;
 
     /**
-     * @return Name of the script, used in URLs and route configuration.
+     * @return Name of the script to run if the route matches.
      * 
      */
     public Optional<Output<String>> script() {
         return Optional.ofNullable(this.script);
-    }
-
-    /**
-     * Whether the API call was successful.
-     * 
-     */
-    @Import(name="success")
-    private @Nullable Output<Boolean> success;
-
-    /**
-     * @return Whether the API call was successful.
-     * 
-     */
-    public Optional<Output<Boolean>> success() {
-        return Optional.ofNullable(this.success);
     }
 
     /**
@@ -103,12 +63,8 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
     private WorkersRouteState() {}
 
     private WorkersRouteState(WorkersRouteState $) {
-        this.errors = $.errors;
-        this.messages = $.messages;
         this.pattern = $.pattern;
-        this.routeId = $.routeId;
         this.script = $.script;
-        this.success = $.success;
         this.zoneId = $.zoneId;
     }
 
@@ -130,64 +86,29 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
             $ = new WorkersRouteState(Objects.requireNonNull(defaults));
         }
 
-        public Builder errors(@Nullable Output<List<WorkersRouteErrorArgs>> errors) {
-            $.errors = errors;
-            return this;
-        }
-
-        public Builder errors(List<WorkersRouteErrorArgs> errors) {
-            return errors(Output.of(errors));
-        }
-
-        public Builder errors(WorkersRouteErrorArgs... errors) {
-            return errors(List.of(errors));
-        }
-
-        public Builder messages(@Nullable Output<List<WorkersRouteMessageArgs>> messages) {
-            $.messages = messages;
-            return this;
-        }
-
-        public Builder messages(List<WorkersRouteMessageArgs> messages) {
-            return messages(Output.of(messages));
-        }
-
-        public Builder messages(WorkersRouteMessageArgs... messages) {
-            return messages(List.of(messages));
-        }
-
+        /**
+         * @param pattern Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(@Nullable Output<String> pattern) {
             $.pattern = pattern;
             return this;
         }
 
+        /**
+         * @param pattern Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
+         * 
+         * @return builder
+         * 
+         */
         public Builder pattern(String pattern) {
             return pattern(Output.of(pattern));
         }
 
         /**
-         * @param routeId Identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeId(@Nullable Output<String> routeId) {
-            $.routeId = routeId;
-            return this;
-        }
-
-        /**
-         * @param routeId Identifier.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder routeId(String routeId) {
-            return routeId(Output.of(routeId));
-        }
-
-        /**
-         * @param script Name of the script, used in URLs and route configuration.
+         * @param script Name of the script to run if the route matches.
          * 
          * @return builder
          * 
@@ -198,34 +119,13 @@ public final class WorkersRouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param script Name of the script, used in URLs and route configuration.
+         * @param script Name of the script to run if the route matches.
          * 
          * @return builder
          * 
          */
         public Builder script(String script) {
             return script(Output.of(script));
-        }
-
-        /**
-         * @param success Whether the API call was successful.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder success(@Nullable Output<Boolean> success) {
-            $.success = success;
-            return this;
-        }
-
-        /**
-         * @param success Whether the API call was successful.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder success(Boolean success) {
-            return success(Output.of(success));
         }
 
         /**

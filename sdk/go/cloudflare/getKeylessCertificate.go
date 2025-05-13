@@ -49,9 +49,9 @@ func LookupKeylessCertificate(ctx *pulumi.Context, args *LookupKeylessCertificat
 
 // A collection of arguments for invoking getKeylessCertificate.
 type LookupKeylessCertificateArgs struct {
-	// Identifier
+	// Identifier.
 	KeylessCertificateId *string `pulumi:"keylessCertificateId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -63,9 +63,9 @@ type LookupKeylessCertificateResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The keyless SSL name.
 	Host string `pulumi:"host"`
-	// Identifier
+	// Identifier.
 	Id string `pulumi:"id"`
-	// Identifier
+	// Identifier.
 	KeylessCertificateId *string `pulumi:"keylessCertificateId"`
 	// When the Keyless SSL was last modified.
 	ModifiedOn string `pulumi:"modifiedOn"`
@@ -80,7 +80,7 @@ type LookupKeylessCertificateResult struct {
 	Status string `pulumi:"status"`
 	// Configuration for using Keyless SSL through a Cloudflare Tunnel
 	Tunnel GetKeylessCertificateTunnel `pulumi:"tunnel"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -95,9 +95,9 @@ func LookupKeylessCertificateOutput(ctx *pulumi.Context, args LookupKeylessCerti
 
 // A collection of arguments for invoking getKeylessCertificate.
 type LookupKeylessCertificateOutputArgs struct {
-	// Identifier
+	// Identifier.
 	KeylessCertificateId pulumi.StringPtrInput `pulumi:"keylessCertificateId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -135,12 +135,12 @@ func (o LookupKeylessCertificateResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupKeylessCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupKeylessCertificateResultOutput) KeylessCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) *string { return v.KeylessCertificateId }).(pulumi.StringPtrOutput)
 }
@@ -176,7 +176,7 @@ func (o LookupKeylessCertificateResultOutput) Tunnel() GetKeylessCertificateTunn
 	return o.ApplyT(func(v LookupKeylessCertificateResult) GetKeylessCertificateTunnel { return v.Tunnel }).(GetKeylessCertificateTunnelOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupKeylessCertificateResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeylessCertificateResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

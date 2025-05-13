@@ -366,7 +366,7 @@ class WorkersDeployment(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def annotations(self) -> pulumi.Output['outputs.WorkersDeploymentAnnotations']:
+    def annotations(self) -> pulumi.Output[Optional['outputs.WorkersDeploymentAnnotations']]:
         return pulumi.get(self, "annotations")
 
     @property

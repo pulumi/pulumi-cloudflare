@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class R2BucketSippyDestination {
     /**
      * @return ID of a Cloudflare API token.
-     * This is the value labelled &#34;Access Key ID&#34; when creating an API
+     * This is the value labelled &#34;Access Key ID&#34; when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      * 
      */
@@ -22,10 +22,10 @@ public final class R2BucketSippyDestination {
      * @return Available values: &#34;r2&#34;.
      * 
      */
-    private @Nullable String provider;
+    private @Nullable String cloudProvider;
     /**
      * @return Value of a Cloudflare API token.
-     * This is the value labelled &#34;Secret Access Key&#34; when creating an API
+     * This is the value labelled &#34;Secret Access Key&#34; when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      * 
      * Sippy will use this token when writing objects to R2, so it is
@@ -37,7 +37,7 @@ public final class R2BucketSippyDestination {
     private R2BucketSippyDestination() {}
     /**
      * @return ID of a Cloudflare API token.
-     * This is the value labelled &#34;Access Key ID&#34; when creating an API
+     * This is the value labelled &#34;Access Key ID&#34; when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      * 
      */
@@ -48,12 +48,12 @@ public final class R2BucketSippyDestination {
      * @return Available values: &#34;r2&#34;.
      * 
      */
-    public Optional<String> provider() {
-        return Optional.ofNullable(this.provider);
+    public Optional<String> cloudProvider() {
+        return Optional.ofNullable(this.cloudProvider);
     }
     /**
      * @return Value of a Cloudflare API token.
-     * This is the value labelled &#34;Secret Access Key&#34; when creating an API
+     * This is the value labelled &#34;Secret Access Key&#34; when creating an API.
      * token from the [R2 dashboard](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
      * 
      * Sippy will use this token when writing objects to R2, so it is
@@ -74,13 +74,13 @@ public final class R2BucketSippyDestination {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessKeyId;
-        private @Nullable String provider;
+        private @Nullable String cloudProvider;
         private @Nullable String secretAccessKey;
         public Builder() {}
         public Builder(R2BucketSippyDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessKeyId = defaults.accessKeyId;
-    	      this.provider = defaults.provider;
+    	      this.cloudProvider = defaults.cloudProvider;
     	      this.secretAccessKey = defaults.secretAccessKey;
         }
 
@@ -91,9 +91,9 @@ public final class R2BucketSippyDestination {
             return this;
         }
         @CustomType.Setter
-        public Builder provider(@Nullable String provider) {
+        public Builder cloudProvider(@Nullable String cloudProvider) {
 
-            this.provider = provider;
+            this.cloudProvider = cloudProvider;
             return this;
         }
         @CustomType.Setter
@@ -105,7 +105,7 @@ public final class R2BucketSippyDestination {
         public R2BucketSippyDestination build() {
             final var _resultValue = new R2BucketSippyDestination();
             _resultValue.accessKeyId = accessKeyId;
-            _resultValue.provider = provider;
+            _resultValue.cloudProvider = cloudProvider;
             _resultValue.secretAccessKey = secretAccessKey;
             return _resultValue;
         }

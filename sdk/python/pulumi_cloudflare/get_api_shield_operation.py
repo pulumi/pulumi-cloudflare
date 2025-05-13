@@ -99,7 +99,7 @@ class GetApiShieldOperationResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -121,7 +121,7 @@ class GetApiShieldOperationResult:
     @pulumi.getter(name="operationId")
     def operation_id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "operation_id")
 
@@ -129,7 +129,7 @@ class GetApiShieldOperationResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -162,8 +162,8 @@ def get_api_shield_operation(feature: Optional[Sequence[builtins.str]] = None,
 
 
     :param Sequence[builtins.str] feature: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
-    :param builtins.str operation_id: UUID
-    :param builtins.str zone_id: Identifier
+    :param builtins.str operation_id: UUID.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['feature'] = feature
@@ -194,8 +194,8 @@ def get_api_shield_operation_output(feature: Optional[pulumi.Input[Optional[Sequ
 
 
     :param Sequence[builtins.str] feature: Add feature(s) to the results. The feature name that is given here corresponds to the resulting feature object. Have a look at the top-level object description for more details on the specific meaning.
-    :param builtins.str operation_id: UUID
-    :param builtins.str zone_id: Identifier
+    :param builtins.str operation_id: UUID.
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['feature'] = feature

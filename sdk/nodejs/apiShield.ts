@@ -60,11 +60,11 @@ export class ApiShield extends pulumi.CustomResource {
     public /*out*/ readonly errors!: pulumi.Output<outputs.ApiShieldError[]>;
     public /*out*/ readonly messages!: pulumi.Output<outputs.ApiShieldMessage[]>;
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      */
     public /*out*/ readonly success!: pulumi.Output<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -113,11 +113,11 @@ export interface ApiShieldState {
     errors?: pulumi.Input<pulumi.Input<inputs.ApiShieldError>[]>;
     messages?: pulumi.Input<pulumi.Input<inputs.ApiShieldMessage>[]>;
     /**
-     * Whether the API call was successful
+     * Whether the API call was successful.
      */
     success?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -128,7 +128,7 @@ export interface ApiShieldState {
 export interface ApiShieldArgs {
     authIdCharacteristics: pulumi.Input<pulumi.Input<inputs.ApiShieldAuthIdCharacteristic>[]>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

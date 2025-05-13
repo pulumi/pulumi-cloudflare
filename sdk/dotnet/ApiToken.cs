@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     public partial class ApiToken : global::Pulumi.CustomResource
     {
         [Output("condition")]
-        public Output<Outputs.ApiTokenCondition> Condition { get; private set; } = null!;
+        public Output<Outputs.ApiTokenCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// The expiration time on or after which the JWT MUST NOT be accepted for processing.

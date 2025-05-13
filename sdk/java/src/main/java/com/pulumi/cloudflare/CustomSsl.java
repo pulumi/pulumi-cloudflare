@@ -174,14 +174,14 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="geoRestrictions", refs={CustomSslGeoRestrictions.class}, tree="[0]")
-    private Output<CustomSslGeoRestrictions> geoRestrictions;
+    private Output</* @Nullable */ CustomSslGeoRestrictions> geoRestrictions;
 
     /**
      * @return Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
      * 
      */
-    public Output<CustomSslGeoRestrictions> geoRestrictions() {
-        return this.geoRestrictions;
+    public Output<Optional<CustomSslGeoRestrictions>> geoRestrictions() {
+        return Codegen.optional(this.geoRestrictions);
     }
     @Export(name="hosts", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> hosts;
@@ -326,14 +326,14 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
         return this.uploadedOn;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

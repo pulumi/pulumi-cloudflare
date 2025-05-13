@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         public double? Ssl { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? Ssl { get; set; }
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double? Ssl;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

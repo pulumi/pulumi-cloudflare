@@ -24,14 +24,14 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Identifier
+     * Defines an identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Defines an identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -77,7 +77,7 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class ContentScanningExpressionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Defines an identifier.
          * 
          * @return builder
          * 

@@ -76,28 +76,28 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="input", refs={DevicePostureRuleInput.class}, tree="[0]")
-    private Output<DevicePostureRuleInput> input;
+    private Output</* @Nullable */ DevicePostureRuleInput> input;
 
     /**
      * @return The value to be checked against.
      * 
      */
-    public Output<DevicePostureRuleInput> input() {
-        return this.input;
+    public Output<Optional<DevicePostureRuleInput>> input() {
+        return Codegen.optional(this.input);
     }
     /**
      * The conditions that the client must match to run the rule.
      * 
      */
     @Export(name="matches", refs={List.class,DevicePostureRuleMatch.class}, tree="[0,1]")
-    private Output<List<DevicePostureRuleMatch>> matches;
+    private Output</* @Nullable */ List<DevicePostureRuleMatch>> matches;
 
     /**
      * @return The conditions that the client must match to run the rule.
      * 
      */
-    public Output<List<DevicePostureRuleMatch>> matches() {
-        return this.matches;
+    public Output<Optional<List<DevicePostureRuleMatch>>> matches() {
+        return Codegen.optional(this.matches);
     }
     /**
      * The name of the device posture rule.

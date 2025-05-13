@@ -12,86 +12,86 @@ import javax.annotation.Nullable;
 @CustomType
 public final class R2BucketSippySource {
     /**
-     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     private @Nullable String accessKeyId;
     /**
-     * @return Name of the AWS S3 bucket
+     * @return Name of the AWS S3 bucket.
      * 
      */
     private @Nullable String bucket;
     /**
-     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket)
+     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     private @Nullable String clientEmail;
     /**
-     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+     * @return Available values: &#34;aws&#34;.
+     * 
+     */
+    private @Nullable String cloudProvider;
+    /**
+     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     private @Nullable String privateKey;
     /**
-     * @return Available values: &#34;aws&#34;.
-     * 
-     */
-    private @Nullable String provider;
-    /**
-     * @return Name of the AWS availability zone
+     * @return Name of the AWS availability zone.
      * 
      */
     private @Nullable String region;
     /**
-     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     private @Nullable String secretAccessKey;
 
     private R2BucketSippySource() {}
     /**
-     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket)
+     * @return Access Key ID of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     public Optional<String> accessKeyId() {
         return Optional.ofNullable(this.accessKeyId);
     }
     /**
-     * @return Name of the AWS S3 bucket
+     * @return Name of the AWS S3 bucket.
      * 
      */
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
     }
     /**
-     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket)
+     * @return Client email of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     public Optional<String> clientEmail() {
         return Optional.ofNullable(this.clientEmail);
     }
     /**
-     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket)
+     * @return Available values: &#34;aws&#34;.
+     * 
+     */
+    public Optional<String> cloudProvider() {
+        return Optional.ofNullable(this.cloudProvider);
+    }
+    /**
+     * @return Private Key of an IAM credential (ideally scoped to a single GCS bucket).
      * 
      */
     public Optional<String> privateKey() {
         return Optional.ofNullable(this.privateKey);
     }
     /**
-     * @return Available values: &#34;aws&#34;.
-     * 
-     */
-    public Optional<String> provider() {
-        return Optional.ofNullable(this.provider);
-    }
-    /**
-     * @return Name of the AWS availability zone
+     * @return Name of the AWS availability zone.
      * 
      */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
     /**
-     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket)
+     * @return Secret Access Key of an IAM credential (ideally scoped to a single S3 bucket).
      * 
      */
     public Optional<String> secretAccessKey() {
@@ -110,8 +110,8 @@ public final class R2BucketSippySource {
         private @Nullable String accessKeyId;
         private @Nullable String bucket;
         private @Nullable String clientEmail;
+        private @Nullable String cloudProvider;
         private @Nullable String privateKey;
-        private @Nullable String provider;
         private @Nullable String region;
         private @Nullable String secretAccessKey;
         public Builder() {}
@@ -120,8 +120,8 @@ public final class R2BucketSippySource {
     	      this.accessKeyId = defaults.accessKeyId;
     	      this.bucket = defaults.bucket;
     	      this.clientEmail = defaults.clientEmail;
+    	      this.cloudProvider = defaults.cloudProvider;
     	      this.privateKey = defaults.privateKey;
-    	      this.provider = defaults.provider;
     	      this.region = defaults.region;
     	      this.secretAccessKey = defaults.secretAccessKey;
         }
@@ -145,15 +145,15 @@ public final class R2BucketSippySource {
             return this;
         }
         @CustomType.Setter
-        public Builder privateKey(@Nullable String privateKey) {
+        public Builder cloudProvider(@Nullable String cloudProvider) {
 
-            this.privateKey = privateKey;
+            this.cloudProvider = cloudProvider;
             return this;
         }
         @CustomType.Setter
-        public Builder provider(@Nullable String provider) {
+        public Builder privateKey(@Nullable String privateKey) {
 
-            this.provider = provider;
+            this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
@@ -173,8 +173,8 @@ public final class R2BucketSippySource {
             _resultValue.accessKeyId = accessKeyId;
             _resultValue.bucket = bucket;
             _resultValue.clientEmail = clientEmail;
+            _resultValue.cloudProvider = cloudProvider;
             _resultValue.privateKey = privateKey;
-            _resultValue.provider = provider;
             _resultValue.region = region;
             _resultValue.secretAccessKey = secretAccessKey;
             return _resultValue;

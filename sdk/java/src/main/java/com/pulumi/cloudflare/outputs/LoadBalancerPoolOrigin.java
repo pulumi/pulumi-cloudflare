@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.LoadBalancerPoolOriginHeader;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -39,6 +40,11 @@ public final class LoadBalancerPoolOrigin {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     * 
+     */
+    private @Nullable Integer port;
     /**
      * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      * 
@@ -87,6 +93,13 @@ public final class LoadBalancerPoolOrigin {
         return Optional.ofNullable(this.name);
     }
     /**
+     * @return The port for upstream connections. A value of 0 means the default port for the protocol will be used.
+     * 
+     */
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
+    }
+    /**
      * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
      * 
      */
@@ -115,6 +128,7 @@ public final class LoadBalancerPoolOrigin {
         private @Nullable Boolean enabled;
         private @Nullable LoadBalancerPoolOriginHeader header;
         private @Nullable String name;
+        private @Nullable Integer port;
         private @Nullable String virtualNetworkId;
         private @Nullable Double weight;
         public Builder() {}
@@ -125,6 +139,7 @@ public final class LoadBalancerPoolOrigin {
     	      this.enabled = defaults.enabled;
     	      this.header = defaults.header;
     	      this.name = defaults.name;
+    	      this.port = defaults.port;
     	      this.virtualNetworkId = defaults.virtualNetworkId;
     	      this.weight = defaults.weight;
         }
@@ -160,6 +175,12 @@ public final class LoadBalancerPoolOrigin {
             return this;
         }
         @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+
+            this.port = port;
+            return this;
+        }
+        @CustomType.Setter
         public Builder virtualNetworkId(@Nullable String virtualNetworkId) {
 
             this.virtualNetworkId = virtualNetworkId;
@@ -178,6 +199,7 @@ public final class LoadBalancerPoolOrigin {
             _resultValue.enabled = enabled;
             _resultValue.header = header;
             _resultValue.name = name;
+            _resultValue.port = port;
             _resultValue.virtualNetworkId = virtualNetworkId;
             _resultValue.weight = weight;
             return _resultValue;

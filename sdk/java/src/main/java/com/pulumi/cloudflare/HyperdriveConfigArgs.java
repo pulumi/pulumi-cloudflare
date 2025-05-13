@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;
+import com.pulumi.cloudflare.inputs.HyperdriveConfigMtlsArgs;
 import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -40,6 +41,13 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.caching);
     }
 
+    @Import(name="mtls")
+    private @Nullable Output<HyperdriveConfigMtlsArgs> mtls;
+
+    public Optional<Output<HyperdriveConfigMtlsArgs>> mtls() {
+        return Optional.ofNullable(this.mtls);
+    }
+
     @Import(name="name", required=true)
     private Output<String> name;
 
@@ -59,6 +67,7 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
     private HyperdriveConfigArgs(HyperdriveConfigArgs $) {
         this.accountId = $.accountId;
         this.caching = $.caching;
+        this.mtls = $.mtls;
         this.name = $.name;
         this.origin = $.origin;
     }
@@ -109,6 +118,15 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
 
         public Builder caching(HyperdriveConfigCachingArgs caching) {
             return caching(Output.of(caching));
+        }
+
+        public Builder mtls(@Nullable Output<HyperdriveConfigMtlsArgs> mtls) {
+            $.mtls = mtls;
+            return this;
+        }
+
+        public Builder mtls(HyperdriveConfigMtlsArgs mtls) {
+            return mtls(Output.of(mtls));
         }
 
         public Builder name(Output<String> name) {

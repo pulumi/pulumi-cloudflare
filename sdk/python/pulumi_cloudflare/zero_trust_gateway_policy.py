@@ -736,7 +736,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[builtins.str]]:
+    def description(self) -> pulumi.Output[builtins.str]:
         """
         The description of the rule.
         """
@@ -744,7 +744,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="devicePosture")
-    def device_posture(self) -> pulumi.Output[Optional[builtins.str]]:
+    def device_posture(self) -> pulumi.Output[builtins.str]:
         """
         The wirefilter expression used for device posture check matching.
         """
@@ -752,7 +752,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def enabled(self) -> pulumi.Output[builtins.bool]:
         """
         True if the rule is enabled.
         """
@@ -777,7 +777,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def identity(self) -> pulumi.Output[Optional[builtins.str]]:
+    def identity(self) -> pulumi.Output[builtins.str]:
         """
         The wirefilter expression used for identity matching.
         """
@@ -810,7 +810,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> pulumi.Output['outputs.ZeroTrustGatewayPolicySchedule']:
+    def schedule(self) -> pulumi.Output[Optional['outputs.ZeroTrustGatewayPolicySchedule']]:
         """
         The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         """
@@ -818,7 +818,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def traffic(self) -> pulumi.Output[Optional[builtins.str]]:
+    def traffic(self) -> pulumi.Output[builtins.str]:
         """
         The wirefilter expression used for traffic matching.
         """

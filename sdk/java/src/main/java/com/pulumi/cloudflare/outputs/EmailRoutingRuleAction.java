@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class EmailRoutingRuleAction {
@@ -17,7 +18,7 @@ public final class EmailRoutingRuleAction {
      * 
      */
     private String type;
-    private List<String> values;
+    private @Nullable List<String> values;
 
     private EmailRoutingRuleAction() {}
     /**
@@ -29,7 +30,7 @@ public final class EmailRoutingRuleAction {
         return this.type;
     }
     public List<String> values() {
-        return this.values;
+        return this.values == null ? List.of() : this.values;
     }
 
     public static Builder builder() {
@@ -42,7 +43,7 @@ public final class EmailRoutingRuleAction {
     @CustomType.Builder
     public static final class Builder {
         private String type;
-        private List<String> values;
+        private @Nullable List<String> values;
         public Builder() {}
         public Builder(EmailRoutingRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
@@ -59,10 +60,8 @@ public final class EmailRoutingRuleAction {
             return this;
         }
         @CustomType.Setter
-        public Builder values(List<String> values) {
-            if (values == null) {
-              throw new MissingRequiredPropertyException("EmailRoutingRuleAction", "values");
-            }
+        public Builder values(@Nullable List<String> values) {
+
             this.values = values;
             return this;
         }

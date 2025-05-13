@@ -48,7 +48,7 @@ func LookupBotManagement(ctx *pulumi.Context, args *LookupBotManagementArgs, opt
 
 // A collection of arguments for invoking getBotManagement.
 type LookupBotManagementArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -89,7 +89,7 @@ type LookupBotManagementResult struct {
 	SuppressSessionScore bool `pulumi:"suppressSessionScore"`
 	// A read-only field that indicates whether the zone currently is running the latest ML model.
 	UsingLatestModel bool `pulumi:"usingLatestModel"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -104,7 +104,7 @@ func LookupBotManagementOutput(ctx *pulumi.Context, args LookupBotManagementOutp
 
 // A collection of arguments for invoking getBotManagement.
 type LookupBotManagementOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -206,7 +206,7 @@ func (o LookupBotManagementResultOutput) UsingLatestModel() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) bool { return v.UsingLatestModel }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupBotManagementResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBotManagementResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

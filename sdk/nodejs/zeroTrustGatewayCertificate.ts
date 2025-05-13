@@ -86,9 +86,6 @@ export class ZeroTrustGatewayCertificate extends pulumi.CustomResource {
     public /*out*/ readonly type!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     public /*out*/ readonly uploadedOn!: pulumi.Output<string>;
-    /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-     */
     public readonly validityPeriodDays!: pulumi.Output<number | undefined>;
 
     /**
@@ -180,9 +177,6 @@ export interface ZeroTrustGatewayCertificateState {
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
     uploadedOn?: pulumi.Input<string>;
-    /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-     */
     validityPeriodDays?: pulumi.Input<number>;
 }
 
@@ -191,8 +185,5 @@ export interface ZeroTrustGatewayCertificateState {
  */
 export interface ZeroTrustGatewayCertificateArgs {
     accountId: pulumi.Input<string>;
-    /**
-     * Number of days the generated certificate will be valid, minimum 1 day and maximum 30 years. Defaults to 5 years.
-     */
     validityPeriodDays?: pulumi.Input<number>;
 }

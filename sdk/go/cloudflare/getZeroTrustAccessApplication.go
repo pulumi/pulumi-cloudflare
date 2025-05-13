@@ -65,6 +65,8 @@ type LookupZeroTrustAccessApplicationResult struct {
 	AccountId *string `pulumi:"accountId"`
 	// When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 	AllowAuthenticateViaWarp bool `pulumi:"allowAuthenticateViaWarp"`
+	// Enables loading application content in an iFrame.
+	AllowIframe bool `pulumi:"allowIframe"`
 	// The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
 	AllowedIdps []string `pulumi:"allowedIdps"`
 	// Identifier.
@@ -197,6 +199,11 @@ func (o LookupZeroTrustAccessApplicationResultOutput) AccountId() pulumi.StringP
 // When set to true, users can authenticate to this application using their WARP session.  When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
 func (o LookupZeroTrustAccessApplicationResultOutput) AllowAuthenticateViaWarp() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.AllowAuthenticateViaWarp }).(pulumi.BoolOutput)
+}
+
+// Enables loading application content in an iFrame.
+func (o LookupZeroTrustAccessApplicationResultOutput) AllowIframe() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.AllowIframe }).(pulumi.BoolOutput)
 }
 
 // The identity providers your users can select when connecting to this application. Defaults to all IdPs configured in your account.
