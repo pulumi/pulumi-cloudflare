@@ -122,6 +122,12 @@ func TestAccRecordGo(t *testing.T) {
 	pt.Up(t, optup.ExpectNoChanges())
 }
 
+// Regression test for [pulumi/pulumi-cloudflare#1180]
+func TestIssue1180(t *testing.T) {
+	pt := testProgram(t, "test-programs/issue_1180")
+	pt.Up(t)
+}
+
 func TestWorkersRoute(t *testing.T) {
 	// TODO[pulumi/pulumi-cloudflare#1130]: Destroy does not work on this resource
 	t.Skip()

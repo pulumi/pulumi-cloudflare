@@ -1,0 +1,23 @@
+runtime: yaml
+name: cloudflare-1180
+description: Reproduction of pulumi-cloudflare issue #1180
+config:
+  cloudflare-zone-id:
+    type: string
+  cloudflare-domain:
+    type: string
+resources:
+  randomSuffix:
+    type: random:index/randomString:RandomString
+    properties:
+      length: 6
+      numeric: false
+      special: false
+      upper: false
+  pageRule:
+    type: cloudflare:index/pageRule:PageRule
+    properties:
+      zoneId: ${cloudflare-zone-id}
+      target: "${cloudflare-domain}/${randomSuffix.result}"
+      actions:
+        cacheLevel: "aggressive"

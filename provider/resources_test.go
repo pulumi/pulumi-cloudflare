@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
+	"github.com/stretchr/testify/assert"
 
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
-	"github.com/stretchr/testify/assert"
+
+	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
 
 // TestSchemaVersionsForResetResources tests that the schema version of resources that were migrated
