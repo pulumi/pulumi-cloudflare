@@ -19,7 +19,7 @@ func main() {
 		})
 
 		_, err = cloudflare.NewRecord(ctx, "my-record-go", &cloudflare.RecordArgs{
-			Name:    pulumi.String("my-record-go"),
+			Name:    pulumi.String("my-record-go.go-test-cloudflare-pulumi.com"),
 			ZoneId:  zone.ID(),
 			Type:    pulumi.String("A"),
 			Content: pulumi.String("162.168.0.13"),
