@@ -30,6 +30,7 @@ import (
 //				ZoneId:            pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				DnssecMultiSigner: pulumi.Bool(false),
 //				DnssecPresigned:   pulumi.Bool(true),
+//				DnssecUseNsec3:    pulumi.Bool(false),
 //				Status:            pulumi.String("active"),
 //			})
 //			if err != nil {
@@ -67,6 +68,11 @@ type ZoneDnssec struct {
 	// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
 	// details.
 	DnssecPresigned pulumi.BoolPtrOutput `pulumi:"dnssecPresigned"`
+	// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+	// enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+	// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+	// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+	DnssecUseNsec3 pulumi.BoolPtrOutput `pulumi:"dnssecUseNsec3"`
 	// Full DS record.
 	Ds pulumi.StringOutput `pulumi:"ds"`
 	// Flag for DNSSEC record.
@@ -136,6 +142,11 @@ type zoneDnssecState struct {
 	// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
 	// details.
 	DnssecPresigned *bool `pulumi:"dnssecPresigned"`
+	// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+	// enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+	// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+	// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+	DnssecUseNsec3 *bool `pulumi:"dnssecUseNsec3"`
 	// Full DS record.
 	Ds *string `pulumi:"ds"`
 	// Flag for DNSSEC record.
@@ -173,6 +184,11 @@ type ZoneDnssecState struct {
 	// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
 	// details.
 	DnssecPresigned pulumi.BoolPtrInput
+	// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+	// enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+	// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+	// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+	DnssecUseNsec3 pulumi.BoolPtrInput
 	// Full DS record.
 	Ds pulumi.StringPtrInput
 	// Flag for DNSSEC record.
@@ -206,6 +222,11 @@ type zoneDnssecArgs struct {
 	// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
 	// details.
 	DnssecPresigned *bool `pulumi:"dnssecPresigned"`
+	// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+	// enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+	// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+	// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+	DnssecUseNsec3 *bool `pulumi:"dnssecUseNsec3"`
 	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status *string `pulumi:"status"`
 	// Identifier.
@@ -224,6 +245,11 @@ type ZoneDnssecArgs struct {
 	// Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
 	// details.
 	DnssecPresigned pulumi.BoolPtrInput
+	// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+	// enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+	// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+	// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+	DnssecUseNsec3 pulumi.BoolPtrInput
 	// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
 	Status pulumi.StringPtrInput
 	// Identifier.
@@ -351,6 +377,14 @@ func (o ZoneDnssecOutput) DnssecMultiSigner() pulumi.BoolPtrOutput {
 // details.
 func (o ZoneDnssecOutput) DnssecPresigned() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZoneDnssec) pulumi.BoolPtrOutput { return v.DnssecPresigned }).(pulumi.BoolPtrOutput)
+}
+
+// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+// enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+func (o ZoneDnssecOutput) DnssecUseNsec3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.BoolPtrOutput { return v.DnssecUseNsec3 }).(pulumi.BoolPtrOutput)
 }
 
 // Full DS record.

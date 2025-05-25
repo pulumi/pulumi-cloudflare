@@ -40,13 +40,14 @@ class ZeroTrustDeviceCustomProfileArgs:
                  lan_allow_minutes: Optional[pulumi.Input[builtins.float]] = None,
                  lan_allow_subnet_size: Optional[pulumi.Input[builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+                 sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceCustomProfileServiceModeV2Args']] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None,
                  switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
                  tunnel_protocol: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDeviceCustomProfile resource.
-        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] allow_mode_switch: Whether to allow the user to switch WARP between modes.
@@ -63,6 +64,7 @@ class ZeroTrustDeviceCustomProfileArgs:
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        :param pulumi.Input[builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -99,6 +101,8 @@ class ZeroTrustDeviceCustomProfileArgs:
             pulumi.set(__self__, "lan_allow_subnet_size", lan_allow_subnet_size)
         if register_interface_ip_with_dns is not None:
             pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
+        if sccm_vpn_boundary_support is not None:
+            pulumi.set(__self__, "sccm_vpn_boundary_support", sccm_vpn_boundary_support)
         if service_mode_v2 is not None:
             pulumi.set(__self__, "service_mode_v2", service_mode_v2)
         if support_url is not None:
@@ -121,7 +125,7 @@ class ZeroTrustDeviceCustomProfileArgs:
     @pulumi.getter
     def match(self) -> pulumi.Input[builtins.str]:
         """
-        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         """
         return pulumi.get(self, "match")
 
@@ -322,6 +326,18 @@ class ZeroTrustDeviceCustomProfileArgs:
         pulumi.set(self, "register_interface_ip_with_dns", value)
 
     @property
+    @pulumi.getter(name="sccmVpnBoundarySupport")
+    def sccm_vpn_boundary_support(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        """
+        return pulumi.get(self, "sccm_vpn_boundary_support")
+
+    @sccm_vpn_boundary_support.setter
+    def sccm_vpn_boundary_support(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "sccm_vpn_boundary_support", value)
+
+    @property
     @pulumi.getter(name="serviceModeV2")
     def service_mode_v2(self) -> Optional[pulumi.Input['ZeroTrustDeviceCustomProfileServiceModeV2Args']]:
         return pulumi.get(self, "service_mode_v2")
@@ -392,6 +408,7 @@ class _ZeroTrustDeviceCustomProfileState:
                  policy_id: Optional[pulumi.Input[builtins.str]] = None,
                  precedence: Optional[pulumi.Input[builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+                 sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceCustomProfileServiceModeV2Args']] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None,
                  switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -413,10 +430,11 @@ class _ZeroTrustDeviceCustomProfileState:
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDeviceCustomProfileIncludeArgs']]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
-        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        :param pulumi.Input[builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -465,6 +483,8 @@ class _ZeroTrustDeviceCustomProfileState:
             pulumi.set(__self__, "precedence", precedence)
         if register_interface_ip_with_dns is not None:
             pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
+        if sccm_vpn_boundary_support is not None:
+            pulumi.set(__self__, "sccm_vpn_boundary_support", sccm_vpn_boundary_support)
         if service_mode_v2 is not None:
             pulumi.set(__self__, "service_mode_v2", service_mode_v2)
         if support_url is not None:
@@ -675,7 +695,7 @@ class _ZeroTrustDeviceCustomProfileState:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         """
         return pulumi.get(self, "match")
 
@@ -727,6 +747,18 @@ class _ZeroTrustDeviceCustomProfileState:
     @register_interface_ip_with_dns.setter
     def register_interface_ip_with_dns(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "register_interface_ip_with_dns", value)
+
+    @property
+    @pulumi.getter(name="sccmVpnBoundarySupport")
+    def sccm_vpn_boundary_support(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        """
+        return pulumi.get(self, "sccm_vpn_boundary_support")
+
+    @sccm_vpn_boundary_support.setter
+    def sccm_vpn_boundary_support(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "sccm_vpn_boundary_support", value)
 
     @property
     @pulumi.getter(name="serviceModeV2")
@@ -807,6 +839,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  precedence: Optional[pulumi.Input[builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+                 sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict']]] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None,
                  switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -844,6 +877,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             lan_allow_minutes=30,
             lan_allow_subnet_size=24,
             register_interface_ip_with_dns=True,
+            sccm_vpn_boundary_support=False,
             service_mode_v2={
                 "mode": "proxy",
                 "port": 3000,
@@ -874,10 +908,11 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
-        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        :param pulumi.Input[builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -920,6 +955,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             lan_allow_minutes=30,
             lan_allow_subnet_size=24,
             register_interface_ip_with_dns=True,
+            sccm_vpn_boundary_support=False,
             service_mode_v2={
                 "mode": "proxy",
                 "port": 3000,
@@ -968,6 +1004,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  precedence: Optional[pulumi.Input[builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+                 sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict']]] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None,
                  switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1007,6 +1044,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'precedence'")
             __props__.__dict__["precedence"] = precedence
             __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
+            __props__.__dict__["sccm_vpn_boundary_support"] = sccm_vpn_boundary_support
             __props__.__dict__["service_mode_v2"] = service_mode_v2
             __props__.__dict__["support_url"] = support_url
             __props__.__dict__["switch_locked"] = switch_locked
@@ -1050,6 +1088,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
             policy_id: Optional[pulumi.Input[builtins.str]] = None,
             precedence: Optional[pulumi.Input[builtins.float]] = None,
             register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+            sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
             service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceCustomProfileServiceModeV2Args', 'ZeroTrustDeviceCustomProfileServiceModeV2ArgsDict']]] = None,
             support_url: Optional[pulumi.Input[builtins.str]] = None,
             switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -1076,10 +1115,11 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDeviceCustomProfileIncludeArgs', 'ZeroTrustDeviceCustomProfileIncludeArgsDict']]]] includes: List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
-        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        :param pulumi.Input[builtins.str] match: The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         :param pulumi.Input[builtins.str] name: The name of the device settings profile.
         :param pulumi.Input[builtins.float] precedence: The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        :param pulumi.Input[builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -1110,6 +1150,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         __props__.__dict__["policy_id"] = policy_id
         __props__.__dict__["precedence"] = precedence
         __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
+        __props__.__dict__["sccm_vpn_boundary_support"] = sccm_vpn_boundary_support
         __props__.__dict__["service_mode_v2"] = service_mode_v2
         __props__.__dict__["support_url"] = support_url
         __props__.__dict__["switch_locked"] = switch_locked
@@ -1248,7 +1289,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
     @pulumi.getter
     def match(self) -> pulumi.Output[builtins.str]:
         """
-        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         """
         return pulumi.get(self, "match")
 
@@ -1280,6 +1321,14 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
         Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         """
         return pulumi.get(self, "register_interface_ip_with_dns")
+
+    @property
+    @pulumi.getter(name="sccmVpnBoundarySupport")
+    def sccm_vpn_boundary_support(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        """
+        return pulumi.get(self, "sccm_vpn_boundary_support")
 
     @property
     @pulumi.getter(name="serviceModeV2")

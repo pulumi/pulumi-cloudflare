@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetHyperdriveConfigsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetHyperdriveConfigsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetHyperdriveConfigsResult
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         public readonly string AccountId;
         /// <summary>

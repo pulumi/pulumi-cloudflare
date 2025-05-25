@@ -82,7 +82,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWaitingRoomSettingsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare
     public sealed class GetWaitingRoomSettingsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool SearchEngineCrawlerBypass;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

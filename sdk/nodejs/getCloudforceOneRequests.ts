@@ -14,15 +14,35 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequests = cloudflare.getCloudforceOneRequests({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     page: 0,
+ *     perPage: 10,
+ *     completedAfter: "2022-01-01T00:00:00Z",
+ *     completedBefore: "2024-01-01T00:00:00Z",
+ *     createdAfter: "2022-01-01T00:00:00Z",
+ *     createdBefore: "2024-01-01T00:00:00Z",
+ *     requestType: "Victomology",
+ *     sortBy: "created",
+ *     sortOrder: "asc",
+ *     status: "open",
  * });
  * ```
  */
 export function getCloudforceOneRequests(args: GetCloudforceOneRequestsArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequests:getCloudforceOneRequests", {
-        "accountIdentifier": args.accountIdentifier,
+        "accountId": args.accountId,
+        "completedAfter": args.completedAfter,
+        "completedBefore": args.completedBefore,
+        "createdAfter": args.createdAfter,
+        "createdBefore": args.createdBefore,
         "maxItems": args.maxItems,
+        "page": args.page,
+        "perPage": args.perPage,
+        "requestType": args.requestType,
+        "sortBy": args.sortBy,
+        "sortOrder": args.sortOrder,
+        "status": args.status,
     }, opts);
 }
 
@@ -31,13 +51,55 @@ export function getCloudforceOneRequests(args: GetCloudforceOneRequestsArgs, opt
  */
 export interface GetCloudforceOneRequestsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: string;
+    accountId: string;
+    /**
+     * Retrieve requests completed after this time.
+     */
+    completedAfter?: string;
+    /**
+     * Retrieve requests completed before this time.
+     */
+    completedBefore?: string;
+    /**
+     * Retrieve requests created after this time.
+     */
+    createdAfter?: string;
+    /**
+     * Retrieve requests created before this time.
+     */
+    createdBefore?: string;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: number;
+    /**
+     * Page number of results.
+     */
+    page: number;
+    /**
+     * Number of results per page.
+     */
+    perPage: number;
+    /**
+     * Requested information from request.
+     */
+    requestType?: string;
+    /**
+     * Field to sort results by.
+     */
+    sortBy?: string;
+    /**
+     * Sort order (asc or desc).
+     * Available values: "asc", "desc".
+     */
+    sortOrder?: string;
+    /**
+     * Request Status.
+     * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+     */
+    status?: string;
 }
 
 /**
@@ -45,9 +107,25 @@ export interface GetCloudforceOneRequestsArgs {
  */
 export interface GetCloudforceOneRequestsResult {
     /**
-     * Identifier
+     * Identifier.
      */
-    readonly accountIdentifier: string;
+    readonly accountId: string;
+    /**
+     * Retrieve requests completed after this time.
+     */
+    readonly completedAfter?: string;
+    /**
+     * Retrieve requests completed before this time.
+     */
+    readonly completedBefore?: string;
+    /**
+     * Retrieve requests created after this time.
+     */
+    readonly createdAfter?: string;
+    /**
+     * Retrieve requests created before this time.
+     */
+    readonly createdBefore?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -57,9 +135,35 @@ export interface GetCloudforceOneRequestsResult {
      */
     readonly maxItems?: number;
     /**
+     * Page number of results.
+     */
+    readonly page: number;
+    /**
+     * Number of results per page.
+     */
+    readonly perPage: number;
+    /**
+     * Requested information from request.
+     */
+    readonly requestType?: string;
+    /**
      * The items returned by the data source
      */
     readonly results: outputs.GetCloudforceOneRequestsResult[];
+    /**
+     * Field to sort results by.
+     */
+    readonly sortBy?: string;
+    /**
+     * Sort order (asc or desc).
+     * Available values: "asc", "desc".
+     */
+    readonly sortOrder?: string;
+    /**
+     * Request Status.
+     * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+     */
+    readonly status?: string;
 }
 /**
  * ## Example Usage
@@ -69,15 +173,35 @@ export interface GetCloudforceOneRequestsResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequests = cloudflare.getCloudforceOneRequests({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     page: 0,
+ *     perPage: 10,
+ *     completedAfter: "2022-01-01T00:00:00Z",
+ *     completedBefore: "2024-01-01T00:00:00Z",
+ *     createdAfter: "2022-01-01T00:00:00Z",
+ *     createdBefore: "2024-01-01T00:00:00Z",
+ *     requestType: "Victomology",
+ *     sortBy: "created",
+ *     sortOrder: "asc",
+ *     status: "open",
  * });
  * ```
  */
 export function getCloudforceOneRequestsOutput(args: GetCloudforceOneRequestsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequests:getCloudforceOneRequests", {
-        "accountIdentifier": args.accountIdentifier,
+        "accountId": args.accountId,
+        "completedAfter": args.completedAfter,
+        "completedBefore": args.completedBefore,
+        "createdAfter": args.createdAfter,
+        "createdBefore": args.createdBefore,
         "maxItems": args.maxItems,
+        "page": args.page,
+        "perPage": args.perPage,
+        "requestType": args.requestType,
+        "sortBy": args.sortBy,
+        "sortOrder": args.sortOrder,
+        "status": args.status,
     }, opts);
 }
 
@@ -86,11 +210,53 @@ export function getCloudforceOneRequestsOutput(args: GetCloudforceOneRequestsOut
  */
 export interface GetCloudforceOneRequestsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
+    /**
+     * Retrieve requests completed after this time.
+     */
+    completedAfter?: pulumi.Input<string>;
+    /**
+     * Retrieve requests completed before this time.
+     */
+    completedBefore?: pulumi.Input<string>;
+    /**
+     * Retrieve requests created after this time.
+     */
+    createdAfter?: pulumi.Input<string>;
+    /**
+     * Retrieve requests created before this time.
+     */
+    createdBefore?: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000
      */
     maxItems?: pulumi.Input<number>;
+    /**
+     * Page number of results.
+     */
+    page: pulumi.Input<number>;
+    /**
+     * Number of results per page.
+     */
+    perPage: pulumi.Input<number>;
+    /**
+     * Requested information from request.
+     */
+    requestType?: pulumi.Input<string>;
+    /**
+     * Field to sort results by.
+     */
+    sortBy?: pulumi.Input<string>;
+    /**
+     * Sort order (asc or desc).
+     * Available values: "asc", "desc".
+     */
+    sortOrder?: pulumi.Input<string>;
+    /**
+     * Request Status.
+     * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+     */
+    status?: pulumi.Input<string>;
 }

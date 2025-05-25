@@ -55,6 +55,13 @@ namespace Pulumi.Cloudflare
         public Output<string> ActivatedOn { get; private set; } = null!;
 
         /// <summary>
+        /// Allows the customer to use a custom apex.
+        /// *Tenants Only Configuration*.
+        /// </summary>
+        [Output("cnameSuffix")]
+        public Output<string> CnameSuffix { get; private set; } = null!;
+
+        /// <summary>
         /// When the zone was created
         /// </summary>
         [Output("createdOn")]
@@ -125,11 +132,35 @@ namespace Pulumi.Cloudflare
         public Output<bool> Paused { get; private set; } = null!;
 
         /// <summary>
+        /// Legacy permissions based on legacy user membership information.
+        /// </summary>
+        [Output("permissions")]
+        public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
+
+        /// <summary>
+        /// A Zones subscription information.
+        /// </summary>
+        [Output("plan")]
+        public Output<Outputs.ZonePlan> Plan { get; private set; } = null!;
+
+        /// <summary>
         /// The zone status on Cloudflare.
         /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The root organizational unit that this zone belongs to (such as a tenant or organization).
+        /// </summary>
+        [Output("tenant")]
+        public Output<Outputs.ZoneTenant> Tenant { get; private set; } = null!;
+
+        /// <summary>
+        /// The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+        /// </summary>
+        [Output("tenantUnit")]
+        public Output<Outputs.ZoneTenantUnit> TenantUnit { get; private set; } = null!;
 
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
@@ -247,6 +278,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? ActivatedOn { get; set; }
 
         /// <summary>
+        /// Allows the customer to use a custom apex.
+        /// *Tenants Only Configuration*.
+        /// </summary>
+        [Input("cnameSuffix")]
+        public Input<string>? CnameSuffix { get; set; }
+
+        /// <summary>
         /// When the zone was created
         /// </summary>
         [Input("createdOn")]
@@ -328,12 +366,43 @@ namespace Pulumi.Cloudflare
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
+        [Input("permissions")]
+        private InputList<string>? _permissions;
+
+        /// <summary>
+        /// Legacy permissions based on legacy user membership information.
+        /// </summary>
+        [Obsolete(@"This attribute is deprecated.")]
+        public InputList<string> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<string>());
+            set => _permissions = value;
+        }
+
+        /// <summary>
+        /// A Zones subscription information.
+        /// </summary>
+        [Input("plan")]
+        public Input<Inputs.ZonePlanGetArgs>? Plan { get; set; }
+
         /// <summary>
         /// The zone status on Cloudflare.
         /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The root organizational unit that this zone belongs to (such as a tenant or organization).
+        /// </summary>
+        [Input("tenant")]
+        public Input<Inputs.ZoneTenantGetArgs>? Tenant { get; set; }
+
+        /// <summary>
+        /// The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+        /// </summary>
+        [Input("tenantUnit")]
+        public Input<Inputs.ZoneTenantUnitGetArgs>? TenantUnit { get; set; }
 
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is

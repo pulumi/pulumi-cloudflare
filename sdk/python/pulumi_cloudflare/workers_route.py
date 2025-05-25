@@ -21,17 +21,18 @@ __all__ = ['WorkersRouteArgs', 'WorkersRoute']
 class WorkersRouteArgs:
     def __init__(__self__, *,
                  pattern: pulumi.Input[builtins.str],
-                 script: pulumi.Input[builtins.str],
-                 zone_id: pulumi.Input[builtins.str]):
+                 zone_id: pulumi.Input[builtins.str],
+                 script: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a WorkersRoute resource.
         :param pulumi.Input[builtins.str] pattern: Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
-        :param pulumi.Input[builtins.str] script: Name of the script to run if the route matches.
         :param pulumi.Input[builtins.str] zone_id: Identifier.
+        :param pulumi.Input[builtins.str] script: Name of the script to run if the route matches.
         """
         pulumi.set(__self__, "pattern", pattern)
-        pulumi.set(__self__, "script", script)
         pulumi.set(__self__, "zone_id", zone_id)
+        if script is not None:
+            pulumi.set(__self__, "script", script)
 
     @property
     @pulumi.getter
@@ -46,18 +47,6 @@ class WorkersRouteArgs:
         pulumi.set(self, "pattern", value)
 
     @property
-    @pulumi.getter
-    def script(self) -> pulumi.Input[builtins.str]:
-        """
-        Name of the script to run if the route matches.
-        """
-        return pulumi.get(self, "script")
-
-    @script.setter
-    def script(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "script", value)
-
-    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
@@ -68,6 +57,18 @@ class WorkersRouteArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def script(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Name of the script to run if the route matches.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "script", value)
 
 
 @pulumi.input_type
@@ -216,8 +217,6 @@ class WorkersRoute(pulumi.CustomResource):
             if pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'pattern'")
             __props__.__dict__["pattern"] = pattern
-            if script is None and not opts.urn:
-                raise TypeError("Missing required property 'script'")
             __props__.__dict__["script"] = script
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -265,7 +264,7 @@ class WorkersRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def script(self) -> pulumi.Output[builtins.str]:
+    def script(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Name of the script to run if the route matches.
         """

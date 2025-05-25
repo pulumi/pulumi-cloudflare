@@ -18,7 +18,7 @@ public final class RulesetRuleActionParametersHeaders {
      */
     private @Nullable String expression;
     /**
-     * @return Available values: &#34;remove&#34;.
+     * @return Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
      * 
      */
     private String operation;
@@ -37,7 +37,7 @@ public final class RulesetRuleActionParametersHeaders {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Available values: &#34;remove&#34;.
+     * @return Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
      * 
      */
     public String operation() {

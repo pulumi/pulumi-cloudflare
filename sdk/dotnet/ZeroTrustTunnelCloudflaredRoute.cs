@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         /// UUID of the virtual network.
         /// </summary>
         [Output("virtualNetworkId")]
-        public Output<string?> VirtualNetworkId { get; private set; } = null!;
+        public Output<string> VirtualNetworkId { get; private set; } = null!;
 
 
         /// <summary>

@@ -20,14 +20,14 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
     public static final HyperdriveConfigArgs Empty = new HyperdriveConfigArgs();
 
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public Output<String> accountId() {
@@ -91,7 +91,7 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class HyperdriveConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 

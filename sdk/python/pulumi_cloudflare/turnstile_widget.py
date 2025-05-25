@@ -44,8 +44,8 @@ class TurnstileWidgetArgs:
                Available values: "no_clearance", "jschallenge", "managed", "interactive".
         :param pulumi.Input[builtins.bool] ephemeral_id: Return the Ephemeral ID in /siteverify (ENT only).
         :param pulumi.Input[builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
-        :param pulumi.Input[builtins.str] region: Region where this widget can be used.
-               Available values: "world".
+        :param pulumi.Input[builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
+               Available values: "world", "china".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "domains", domains)
@@ -165,8 +165,8 @@ class TurnstileWidgetArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Region where this widget can be used.
-        Available values: "world".
+        Region where this widget can be used. This cannot be changed after creation.
+        Available values: "world", "china".
         """
         return pulumi.get(self, "region")
 
@@ -208,8 +208,8 @@ class _TurnstileWidgetState:
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
-        :param pulumi.Input[builtins.str] region: Region where this widget can be used.
-               Available values: "world".
+        :param pulumi.Input[builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
+               Available values: "world", "china".
         :param pulumi.Input[builtins.str] secret: Secret key for this widget.
         :param pulumi.Input[builtins.str] sitekey: Widget item identifier tag.
         """
@@ -367,8 +367,8 @@ class _TurnstileWidgetState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Region where this widget can be used.
-        Available values: "world".
+        Region where this widget can be used. This cannot be changed after creation.
+        Available values: "world", "china".
         """
         return pulumi.get(self, "region")
 
@@ -461,8 +461,8 @@ class TurnstileWidget(pulumi.CustomResource):
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
-        :param pulumi.Input[builtins.str] region: Region where this widget can be used.
-               Available values: "world".
+        :param pulumi.Input[builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
+               Available values: "world", "china".
         """
         ...
     @overload
@@ -553,6 +553,8 @@ class TurnstileWidget(pulumi.CustomResource):
             __props__.__dict__["modified_on"] = None
             __props__.__dict__["secret"] = None
             __props__.__dict__["sitekey"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(TurnstileWidget, __self__).__init__(
             'cloudflare:index/turnstileWidget:TurnstileWidget',
             resource_name,
@@ -598,8 +600,8 @@ class TurnstileWidget(pulumi.CustomResource):
                set this to a meaningful string to make it easier to identify your
                widget, and where it is used.
         :param pulumi.Input[builtins.bool] offlabel: Do not show any Cloudflare branding on the widget (ENT only).
-        :param pulumi.Input[builtins.str] region: Region where this widget can be used.
-               Available values: "world".
+        :param pulumi.Input[builtins.str] region: Region where this widget can be used. This cannot be changed after creation.
+               Available values: "world", "china".
         :param pulumi.Input[builtins.str] secret: Secret key for this widget.
         :param pulumi.Input[builtins.str] sitekey: Widget item identifier tag.
         """
@@ -641,7 +643,7 @@ class TurnstileWidget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clearanceLevel")
-    def clearance_level(self) -> pulumi.Output[Optional[builtins.str]]:
+    def clearance_level(self) -> pulumi.Output[builtins.str]:
         """
         If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
         this setting can determine the clearance level to be set
@@ -664,7 +666,7 @@ class TurnstileWidget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ephemeralId")
-    def ephemeral_id(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def ephemeral_id(self) -> pulumi.Output[builtins.bool]:
         """
         Return the Ephemeral ID in /siteverify (ENT only).
         """
@@ -709,8 +711,8 @@ class TurnstileWidget(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[builtins.str]:
         """
-        Region where this widget can be used.
-        Available values: "world".
+        Region where this widget can be used. This cannot be changed after creation.
+        Available values: "world", "china".
         """
         return pulumi.get(self, "region")
 

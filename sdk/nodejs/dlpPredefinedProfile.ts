@@ -98,7 +98,7 @@ export class DlpPredefinedProfile extends pulumi.CustomResource {
     public /*out*/ readonly openAccess!: pulumi.Output<boolean>;
     public readonly profileId!: pulumi.Output<string>;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -201,7 +201,7 @@ export interface DlpPredefinedProfileState {
     openAccess?: pulumi.Input<boolean>;
     profileId?: pulumi.Input<string>;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration".
      */
     type?: pulumi.Input<string>;
     /**

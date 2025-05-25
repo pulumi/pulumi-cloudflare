@@ -27,13 +27,19 @@ class GetCloudforceOneRequestMessageResult:
     """
     A collection of values returned by getCloudforceOneRequestMessage.
     """
-    def __init__(__self__, account_identifier=None, author=None, content=None, created=None, id=None, is_follow_on_request=None, request_identifier=None, updated=None):
-        if account_identifier and not isinstance(account_identifier, str):
-            raise TypeError("Expected argument 'account_identifier' to be a str")
-        pulumi.set(__self__, "account_identifier", account_identifier)
+    def __init__(__self__, account_id=None, after=None, author=None, before=None, content=None, created=None, id=None, is_follow_on_request=None, page=None, per_page=None, request_id=None, sort_by=None, sort_order=None, updated=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
+        if after and not isinstance(after, str):
+            raise TypeError("Expected argument 'after' to be a str")
+        pulumi.set(__self__, "after", after)
         if author and not isinstance(author, str):
             raise TypeError("Expected argument 'author' to be a str")
         pulumi.set(__self__, "author", author)
+        if before and not isinstance(before, str):
+            raise TypeError("Expected argument 'before' to be a str")
+        pulumi.set(__self__, "before", before)
         if content and not isinstance(content, str):
             raise TypeError("Expected argument 'content' to be a str")
         pulumi.set(__self__, "content", content)
@@ -46,34 +52,62 @@ class GetCloudforceOneRequestMessageResult:
         if is_follow_on_request and not isinstance(is_follow_on_request, bool):
             raise TypeError("Expected argument 'is_follow_on_request' to be a bool")
         pulumi.set(__self__, "is_follow_on_request", is_follow_on_request)
-        if request_identifier and not isinstance(request_identifier, str):
-            raise TypeError("Expected argument 'request_identifier' to be a str")
-        pulumi.set(__self__, "request_identifier", request_identifier)
+        if page and not isinstance(page, int):
+            raise TypeError("Expected argument 'page' to be a int")
+        pulumi.set(__self__, "page", page)
+        if per_page and not isinstance(per_page, int):
+            raise TypeError("Expected argument 'per_page' to be a int")
+        pulumi.set(__self__, "per_page", per_page)
+        if request_id and not isinstance(request_id, str):
+            raise TypeError("Expected argument 'request_id' to be a str")
+        pulumi.set(__self__, "request_id", request_id)
+        if sort_by and not isinstance(sort_by, str):
+            raise TypeError("Expected argument 'sort_by' to be a str")
+        pulumi.set(__self__, "sort_by", sort_by)
+        if sort_order and not isinstance(sort_order, str):
+            raise TypeError("Expected argument 'sort_order' to be a str")
+        pulumi.set(__self__, "sort_order", sort_order)
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> builtins.str:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def after(self) -> Optional[builtins.str]:
+        """
+        Retrieve mes  ges created after this time.
+        """
+        return pulumi.get(self, "after")
 
     @property
     @pulumi.getter
     def author(self) -> builtins.str:
         """
-        Author of message
+        Author of message.
         """
         return pulumi.get(self, "author")
 
     @property
     @pulumi.getter
+    def before(self) -> Optional[builtins.str]:
+        """
+        Retrieve messages created before this time.
+        """
+        return pulumi.get(self, "before")
+
+    @property
+    @pulumi.getter
     def content(self) -> builtins.str:
         """
-        Content of message
+        Content of message.
         """
         return pulumi.get(self, "content")
 
@@ -81,7 +115,7 @@ class GetCloudforceOneRequestMessageResult:
     @pulumi.getter
     def created(self) -> builtins.str:
         """
-        Message creation time
+        Defines the message creation time.
         """
         return pulumi.get(self, "created")
 
@@ -89,7 +123,7 @@ class GetCloudforceOneRequestMessageResult:
     @pulumi.getter
     def id(self) -> builtins.int:
         """
-        Message ID
+        Message ID.
         """
         return pulumi.get(self, "id")
 
@@ -97,23 +131,56 @@ class GetCloudforceOneRequestMessageResult:
     @pulumi.getter(name="isFollowOnRequest")
     def is_follow_on_request(self) -> builtins.bool:
         """
-        Whether the message is a follow-on request
+        Whether the message is a follow-on request.
         """
         return pulumi.get(self, "is_follow_on_request")
 
     @property
-    @pulumi.getter(name="requestIdentifier")
-    def request_identifier(self) -> builtins.str:
+    @pulumi.getter
+    def page(self) -> builtins.int:
         """
-        UUID
+        Page number of results.
         """
-        return pulumi.get(self, "request_identifier")
+        return pulumi.get(self, "page")
+
+    @property
+    @pulumi.getter(name="perPage")
+    def per_page(self) -> builtins.int:
+        """
+        Number of results per page.
+        """
+        return pulumi.get(self, "per_page")
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> builtins.str:
+        """
+        UUID.
+        """
+        return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="sortBy")
+    def sort_by(self) -> Optional[builtins.str]:
+        """
+        Field to sort results by.
+        """
+        return pulumi.get(self, "sort_by")
+
+    @property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> Optional[builtins.str]:
+        """
+        Sort order (asc or desc).
+        Available values: "asc", "desc".
+        """
+        return pulumi.get(self, "sort_order")
 
     @property
     @pulumi.getter
     def updated(self) -> builtins.str:
         """
-        Message last updated time
+        Defines the message last updated time.
         """
         return pulumi.get(self, "updated")
 
@@ -124,18 +191,30 @@ class AwaitableGetCloudforceOneRequestMessageResult(GetCloudforceOneRequestMessa
         if False:
             yield self
         return GetCloudforceOneRequestMessageResult(
-            account_identifier=self.account_identifier,
+            account_id=self.account_id,
+            after=self.after,
             author=self.author,
+            before=self.before,
             content=self.content,
             created=self.created,
             id=self.id,
             is_follow_on_request=self.is_follow_on_request,
-            request_identifier=self.request_identifier,
+            page=self.page,
+            per_page=self.per_page,
+            request_id=self.request_id,
+            sort_by=self.sort_by,
+            sort_order=self.sort_order,
             updated=self.updated)
 
 
-def get_cloudforce_one_request_message(account_identifier: Optional[builtins.str] = None,
-                                       request_identifier: Optional[builtins.str] = None,
+def get_cloudforce_one_request_message(account_id: Optional[builtins.str] = None,
+                                       after: Optional[builtins.str] = None,
+                                       before: Optional[builtins.str] = None,
+                                       page: Optional[builtins.int] = None,
+                                       per_page: Optional[builtins.int] = None,
+                                       request_id: Optional[builtins.str] = None,
+                                       sort_by: Optional[builtins.str] = None,
+                                       sort_order: Optional[builtins.str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudforceOneRequestMessageResult:
     """
     ## Example Usage
@@ -144,31 +223,62 @@ def get_cloudforce_one_request_message(account_identifier: Optional[builtins.str
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_message = cloudflare.get_cloudforce_one_request_message(account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
-        request_identifier="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+    example_cloudforce_one_request_message = cloudflare.get_cloudforce_one_request_message(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        page=0,
+        per_page=10,
+        after="2022-04-01T05:20:00Z",
+        before="2024-01-01T00:00:00Z",
+        sort_by="created",
+        sort_order="asc")
     ```
 
 
-    :param builtins.str account_identifier: Identifier
-    :param builtins.str request_identifier: UUID
+    :param builtins.str account_id: Identifier.
+    :param builtins.str after: Retrieve mes  ges created after this time.
+    :param builtins.str before: Retrieve messages created before this time.
+    :param builtins.int page: Page number of results.
+    :param builtins.int per_page: Number of results per page.
+    :param builtins.str request_id: UUID.
+    :param builtins.str sort_by: Field to sort results by.
+    :param builtins.str sort_order: Sort order (asc or desc).
+           Available values: "asc", "desc".
     """
     __args__ = dict()
-    __args__['accountIdentifier'] = account_identifier
-    __args__['requestIdentifier'] = request_identifier
+    __args__['accountId'] = account_id
+    __args__['after'] = after
+    __args__['before'] = before
+    __args__['page'] = page
+    __args__['perPage'] = per_page
+    __args__['requestId'] = request_id
+    __args__['sortBy'] = sort_by
+    __args__['sortOrder'] = sort_order
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage', __args__, opts=opts, typ=GetCloudforceOneRequestMessageResult).value
 
     return AwaitableGetCloudforceOneRequestMessageResult(
-        account_identifier=pulumi.get(__ret__, 'account_identifier'),
+        account_id=pulumi.get(__ret__, 'account_id'),
+        after=pulumi.get(__ret__, 'after'),
         author=pulumi.get(__ret__, 'author'),
+        before=pulumi.get(__ret__, 'before'),
         content=pulumi.get(__ret__, 'content'),
         created=pulumi.get(__ret__, 'created'),
         id=pulumi.get(__ret__, 'id'),
         is_follow_on_request=pulumi.get(__ret__, 'is_follow_on_request'),
-        request_identifier=pulumi.get(__ret__, 'request_identifier'),
+        page=pulumi.get(__ret__, 'page'),
+        per_page=pulumi.get(__ret__, 'per_page'),
+        request_id=pulumi.get(__ret__, 'request_id'),
+        sort_by=pulumi.get(__ret__, 'sort_by'),
+        sort_order=pulumi.get(__ret__, 'sort_order'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_cloudforce_one_request_message_output(account_identifier: Optional[pulumi.Input[builtins.str]] = None,
-                                              request_identifier: Optional[pulumi.Input[builtins.str]] = None,
+def get_cloudforce_one_request_message_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
+                                              after: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                              before: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                              page: Optional[pulumi.Input[builtins.int]] = None,
+                                              per_page: Optional[pulumi.Input[builtins.int]] = None,
+                                              request_id: Optional[pulumi.Input[builtins.str]] = None,
+                                              sort_by: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                              sort_order: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestMessageResult]:
     """
     ## Example Usage
@@ -177,25 +287,50 @@ def get_cloudforce_one_request_message_output(account_identifier: Optional[pulum
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_message = cloudflare.get_cloudforce_one_request_message(account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
-        request_identifier="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+    example_cloudforce_one_request_message = cloudflare.get_cloudforce_one_request_message(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        page=0,
+        per_page=10,
+        after="2022-04-01T05:20:00Z",
+        before="2024-01-01T00:00:00Z",
+        sort_by="created",
+        sort_order="asc")
     ```
 
 
-    :param builtins.str account_identifier: Identifier
-    :param builtins.str request_identifier: UUID
+    :param builtins.str account_id: Identifier.
+    :param builtins.str after: Retrieve mes  ges created after this time.
+    :param builtins.str before: Retrieve messages created before this time.
+    :param builtins.int page: Page number of results.
+    :param builtins.int per_page: Number of results per page.
+    :param builtins.str request_id: UUID.
+    :param builtins.str sort_by: Field to sort results by.
+    :param builtins.str sort_order: Sort order (asc or desc).
+           Available values: "asc", "desc".
     """
     __args__ = dict()
-    __args__['accountIdentifier'] = account_identifier
-    __args__['requestIdentifier'] = request_identifier
+    __args__['accountId'] = account_id
+    __args__['after'] = after
+    __args__['before'] = before
+    __args__['page'] = page
+    __args__['perPage'] = per_page
+    __args__['requestId'] = request_id
+    __args__['sortBy'] = sort_by
+    __args__['sortOrder'] = sort_order
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage', __args__, opts=opts, typ=GetCloudforceOneRequestMessageResult)
     return __ret__.apply(lambda __response__: GetCloudforceOneRequestMessageResult(
-        account_identifier=pulumi.get(__response__, 'account_identifier'),
+        account_id=pulumi.get(__response__, 'account_id'),
+        after=pulumi.get(__response__, 'after'),
         author=pulumi.get(__response__, 'author'),
+        before=pulumi.get(__response__, 'before'),
         content=pulumi.get(__response__, 'content'),
         created=pulumi.get(__response__, 'created'),
         id=pulumi.get(__response__, 'id'),
         is_follow_on_request=pulumi.get(__response__, 'is_follow_on_request'),
-        request_identifier=pulumi.get(__response__, 'request_identifier'),
+        page=pulumi.get(__response__, 'page'),
+        per_page=pulumi.get(__response__, 'per_page'),
+        request_id=pulumi.get(__response__, 'request_id'),
+        sort_by=pulumi.get(__response__, 'sort_by'),
+        sort_order=pulumi.get(__response__, 'sort_order'),
         updated=pulumi.get(__response__, 'updated')))

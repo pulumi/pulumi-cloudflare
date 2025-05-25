@@ -119,7 +119,7 @@ class GetQueueConsumerResult:
     @pulumi.getter
     def type(self) -> builtins.str:
         """
-        Available values: "worker".
+        Available values: "worker", "http_pull".
         """
         return pulumi.get(self, "type")
 

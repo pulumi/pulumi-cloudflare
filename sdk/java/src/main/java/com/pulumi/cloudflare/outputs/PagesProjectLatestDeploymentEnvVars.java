@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PagesProjectLatestDeploymentEnvVars {
     /**
-     * @return Available values: &#34;plain_text&#34;.
+     * @return Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
      * 
      */
     private @Nullable String type;
@@ -24,7 +24,7 @@ public final class PagesProjectLatestDeploymentEnvVars {
 
     private PagesProjectLatestDeploymentEnvVars() {}
     /**
-     * @return Available values: &#34;plain_text&#34;.
+     * @return Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
      * 
      */
     public Optional<String> type() {

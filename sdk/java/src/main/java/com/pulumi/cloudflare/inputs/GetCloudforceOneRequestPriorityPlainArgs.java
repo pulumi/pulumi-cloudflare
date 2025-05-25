@@ -14,40 +14,40 @@ public final class GetCloudforceOneRequestPriorityPlainArgs extends com.pulumi.r
     public static final GetCloudforceOneRequestPriorityPlainArgs Empty = new GetCloudforceOneRequestPriorityPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private String accountIdentifier;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="priorityIdentifer", required=true)
-    private String priorityIdentifer;
+    @Import(name="priorityId", required=true)
+    private String priorityId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public String priorityIdentifer() {
-        return this.priorityIdentifer;
+    public String priorityId() {
+        return this.priorityId;
     }
 
     private GetCloudforceOneRequestPriorityPlainArgs() {}
 
     private GetCloudforceOneRequestPriorityPlainArgs(GetCloudforceOneRequestPriorityPlainArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
-        this.priorityIdentifer = $.priorityIdentifer;
+        this.accountId = $.accountId;
+        this.priorityId = $.priorityId;
     }
 
     public static Builder builder() {
@@ -69,33 +69,33 @@ public final class GetCloudforceOneRequestPriorityPlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(String accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param priorityIdentifer UUID
+         * @param priorityId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder priorityIdentifer(String priorityIdentifer) {
-            $.priorityIdentifer = priorityIdentifer;
+        public Builder priorityId(String priorityId) {
+            $.priorityId = priorityId;
             return this;
         }
 
         public GetCloudforceOneRequestPriorityPlainArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityPlainArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityPlainArgs", "accountId");
             }
-            if ($.priorityIdentifer == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityPlainArgs", "priorityIdentifer");
+            if ($.priorityId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityPlainArgs", "priorityId");
             }
             return $;
         }

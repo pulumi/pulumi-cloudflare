@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     public partial class HyperdriveConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -31,13 +31,13 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.HyperdriveConfigCaching?> Caching { get; private set; } = null!;
 
         /// <summary>
-        /// When the Hyperdrive configuration was created.
+        /// Defines the creation time of the Hyperdrive configuration.
         /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// When the Hyperdrive configuration was last modified.
+        /// Defines the last modified time of the Hyperdrive configuration.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
     public sealed class HyperdriveConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Cloudflare
     public sealed class HyperdriveConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -133,13 +133,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.HyperdriveConfigCachingGetArgs>? Caching { get; set; }
 
         /// <summary>
-        /// When the Hyperdrive configuration was created.
+        /// Defines the creation time of the Hyperdrive configuration.
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// When the Hyperdrive configuration was last modified.
+        /// Defines the last modified time of the Hyperdrive configuration.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }

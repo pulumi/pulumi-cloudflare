@@ -43,14 +43,14 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? CheckPrivateKey { get; set; }
 
         /// <summary>
-        /// Common Name that is protected by the certificate
+        /// Common Name that is protected by the certificate.
         /// </summary>
         [Input("cn")]
         public Input<string>? Cn { get; set; }
 
         /// <summary>
-        /// Compliance Status
-        /// Available values: "compliant", "noncompliant", "unknown".
+        /// Compliance Status.
+        /// Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
         /// </summary>
         [Input("complianceStatus")]
         public Input<string>? ComplianceStatus { get; set; }
@@ -62,14 +62,14 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
-        /// Count Operator
+        /// Count Operator.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("countOperator")]
         public Input<string>? CountOperator { get; set; }
 
         /// <summary>
-        /// Domain
+        /// Domain.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -81,13 +81,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? EidLastSeen { get; set; }
 
         /// <summary>
-        /// Enabled
+        /// Enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Whether or not file exists
+        /// Whether or not file exists.
         /// </summary>
         [Input("exists")]
         public Input<bool>? Exists { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _extendedKeyUsages;
 
         /// <summary>
-        /// List of values indicating purposes for which the certificate public key can be used
+        /// List of values indicating purposes for which the certificate public key can be used.
         /// </summary>
         public InputList<string> ExtendedKeyUsages
         {
@@ -145,8 +145,8 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? NetworkStatus { get; set; }
 
         /// <summary>
-        /// Operating system
-        /// Available values: "windows", "linux", "mac".
+        /// Operating system.
+        /// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
         /// </summary>
         [Input("operatingSystem")]
         public Input<string>? OperatingSystem { get; set; }
@@ -159,38 +159,38 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? OperationalState { get; set; }
 
         /// <summary>
-        /// operator
+        /// Operator.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// Os Version
+        /// Os Version.
         /// </summary>
         [Input("os")]
         public Input<string>? Os { get; set; }
 
         /// <summary>
-        /// Operating System Distribution Name (linux only)
+        /// Operating System Distribution Name (linux only).
         /// </summary>
         [Input("osDistroName")]
         public Input<string>? OsDistroName { get; set; }
 
         /// <summary>
-        /// Version of OS Distribution (linux only)
+        /// Version of OS Distribution (linux only).
         /// </summary>
         [Input("osDistroRevision")]
         public Input<string>? OsDistroRevision { get; set; }
 
         /// <summary>
-        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
         /// </summary>
         [Input("osVersionExtra")]
         public Input<string>? OsVersionExtra { get; set; }
 
         /// <summary>
-        /// overall
+        /// Overall.
         /// </summary>
         [Input("overall")]
         public Input<string>? Overall { get; set; }
@@ -221,14 +221,14 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? Score { get; set; }
 
         /// <summary>
-        /// Score Operator
+        /// Score Operator.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("scoreOperator")]
         public Input<string>? ScoreOperator { get; set; }
 
         /// <summary>
-        /// SensorConfig
+        /// SensorConfig.
         /// </summary>
         [Input("sensorConfig")]
         public Input<string>? SensorConfig { get; set; }
@@ -259,13 +259,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<double>? TotalScore { get; set; }
 
         /// <summary>
-        /// Version of OS
+        /// Version of OS.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
         /// <summary>
-        /// Version Operator
+        /// Version Operator.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         [Input("versionOperator")]

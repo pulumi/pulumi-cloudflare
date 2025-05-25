@@ -72,7 +72,7 @@ export interface GetQueueConsumerResult {
     readonly scriptName: string;
     readonly settings: outputs.GetQueueConsumerSettings;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "httpPull".
      */
     readonly type: string;
 }

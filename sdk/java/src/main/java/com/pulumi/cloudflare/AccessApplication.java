@@ -240,14 +240,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="destinations", refs={List.class,AccessApplicationDestination.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessApplicationDestination>> destinations;
+    private Output<List<AccessApplicationDestination>> destinations;
 
     /**
      * @return List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    public Output<Optional<List<AccessApplicationDestination>>> destinations() {
-        return Codegen.optional(this.destinations);
+    public Output<List<AccessApplicationDestination>> destinations() {
+        return this.destinations;
     }
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
@@ -394,14 +394,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="policies", refs={List.class,AccessApplicationPolicy.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessApplicationPolicy>> policies;
+    private Output<List<AccessApplicationPolicy>> policies;
 
     /**
      * @return The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      * 
      */
-    public Output<Optional<List<AccessApplicationPolicy>>> policies() {
-        return Codegen.optional(this.policies);
+    public Output<List<AccessApplicationPolicy>> policies() {
+        return this.policies;
     }
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
@@ -472,14 +472,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      */
     @Deprecated /* This attribute is deprecated. */
     @Export(name="selfHostedDomains", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> selfHostedDomains;
+    private Output<List<String>> selfHostedDomains;
 
     /**
      * @return List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
      * 
      */
-    public Output<Optional<List<String>>> selfHostedDomains() {
-        return Codegen.optional(this.selfHostedDomains);
+    public Output<List<String>> selfHostedDomains() {
+        return this.selfHostedDomains;
     }
     /**
      * Returns a 401 status code when the request is blocked by a Service Auth policy.
@@ -496,14 +496,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceAuth401Redirect);
     }
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     @Export(name="sessionDuration", refs={String.class}, tree="[0]")
     private Output<String> sessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * @return The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      * 
      */
     public Output<String> sessionDuration() {
@@ -542,14 +542,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> tags;
+    private Output<List<String>> tags;
 
     /**
      * @return The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      * 
      */
-    public Output<Optional<List<String>>> tags() {
-        return Codegen.optional(this.tags);
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     @Export(name="targetCriterias", refs={List.class,AccessApplicationTargetCriteria.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessApplicationTargetCriteria>> targetCriterias;

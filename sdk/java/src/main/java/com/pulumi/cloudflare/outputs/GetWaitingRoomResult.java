@@ -61,7 +61,7 @@ public final class GetWaitingRoomResult {
     private String turnstileMode;
     private @Nullable String waitingRoomId;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -165,7 +165,7 @@ public final class GetWaitingRoomResult {
         return Optional.ofNullable(this.waitingRoomId);
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

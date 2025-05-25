@@ -32,14 +32,14 @@ public final class R2BucketLockRuleConditionArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Available values: &#34;Age&#34;.
+     * Available values: &#34;Age&#34;, &#34;Date&#34;, &#34;Indefinite&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;Age&#34;.
+     * @return Available values: &#34;Age&#34;, &#34;Date&#34;, &#34;Indefinite&#34;.
      * 
      */
     public Output<String> type() {
@@ -91,7 +91,7 @@ public final class R2BucketLockRuleConditionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Available values: &#34;Age&#34;.
+         * @param type Available values: &#34;Age&#34;, &#34;Date&#34;, &#34;Indefinite&#34;.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class R2BucketLockRuleConditionArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param type Available values: &#34;Age&#34;.
+         * @param type Available values: &#34;Age&#34;, &#34;Date&#34;, &#34;Indefinite&#34;.
          * 
          * @return builder
          * 

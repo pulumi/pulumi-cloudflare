@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HyperdriveConfigCaching {
     /**
-     * @return When set to true, disables the caching of SQL responses. (Default: false)
+     * @return Set to true to disable caching of SQL responses. Default is false.
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+     * @return Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
      * 
      */
     private @Nullable Integer maxAge;
     /**
-     * @return When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+     * @return Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
      * 
      */
     private @Nullable Integer staleWhileRevalidate;
 
     private HyperdriveConfigCaching() {}
     /**
-     * @return When set to true, disables the caching of SQL responses. (Default: false)
+     * @return Set to true to disable caching of SQL responses. Default is false.
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+     * @return Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
      * 
      */
     public Optional<Integer> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
     /**
-     * @return When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+     * @return Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
      * 
      */
     public Optional<Integer> staleWhileRevalidate() {

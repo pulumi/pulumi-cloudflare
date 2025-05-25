@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         DnssecMultiSigner = false,
     ///         DnssecPresigned = true,
+    ///         DnssecUseNsec3 = false,
     ///         Status = "active",
     ///     });
     /// 
@@ -81,6 +82,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("dnssecPresigned")]
         public Output<bool?> DnssecPresigned { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+        /// enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+        /// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+        /// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        /// </summary>
+        [Output("dnssecUseNsec3")]
+        public Output<bool?> DnssecUseNsec3 { get; private set; } = null!;
 
         /// <summary>
         /// Full DS record.
@@ -195,6 +205,15 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DnssecPresigned { get; set; }
 
         /// <summary>
+        /// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+        /// enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+        /// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+        /// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        /// </summary>
+        [Input("dnssecUseNsec3")]
+        public Input<bool>? DnssecUseNsec3 { get; set; }
+
+        /// <summary>
         /// Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         /// </summary>
         [Input("status")]
@@ -255,6 +274,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("dnssecPresigned")]
         public Input<bool>? DnssecPresigned { get; set; }
+
+        /// <summary>
+        /// If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+        /// enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+        /// false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+        /// NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        /// </summary>
+        [Input("dnssecUseNsec3")]
+        public Input<bool>? DnssecUseNsec3 { get; set; }
 
         /// <summary>
         /// Full DS record.

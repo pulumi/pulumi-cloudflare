@@ -77,7 +77,7 @@ export interface GetZeroTrustDlpPredefinedProfileResult {
     readonly openAccess: boolean;
     readonly profileId: string;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration".
      */
     readonly type: string;
     /**

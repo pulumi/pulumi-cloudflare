@@ -108,7 +108,7 @@ export class Record extends pulumi.CustomResource {
     public readonly ttl!: pulumi.Output<number>;
     /**
      * Record type.
-     * Available values: "A".
+     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -254,7 +254,7 @@ export interface RecordState {
     ttl?: pulumi.Input<number>;
     /**
      * Record type.
-     * Available values: "A".
+     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
      */
     type?: pulumi.Input<string>;
     /**
@@ -305,7 +305,7 @@ export interface RecordArgs {
     ttl: pulumi.Input<number>;
     /**
      * Record type.
-     * Available values: "A".
+     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
      */
     type: pulumi.Input<string>;
     /**

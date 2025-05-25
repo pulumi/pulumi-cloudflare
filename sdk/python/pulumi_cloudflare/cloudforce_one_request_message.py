@@ -20,49 +20,49 @@ __all__ = ['CloudforceOneRequestMessageArgs', 'CloudforceOneRequestMessage']
 @pulumi.input_type
 class CloudforceOneRequestMessageArgs:
     def __init__(__self__, *,
-                 account_identifier: pulumi.Input[builtins.str],
-                 request_identifier: pulumi.Input[builtins.str],
+                 account_id: pulumi.Input[builtins.str],
+                 request_id: pulumi.Input[builtins.str],
                  content: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a CloudforceOneRequestMessage resource.
-        :param pulumi.Input[builtins.str] account_identifier: Identifier
-        :param pulumi.Input[builtins.str] request_identifier: UUID
-        :param pulumi.Input[builtins.str] content: Content of message
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[builtins.str] request_id: UUID.
+        :param pulumi.Input[builtins.str] content: Content of message.
         """
-        pulumi.set(__self__, "account_identifier", account_identifier)
-        pulumi.set(__self__, "request_identifier", request_identifier)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "request_id", request_id)
         if content is not None:
             pulumi.set(__self__, "content", content)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> pulumi.Input[builtins.str]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
-    @account_identifier.setter
-    def account_identifier(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "account_identifier", value)
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="requestIdentifier")
-    def request_identifier(self) -> pulumi.Input[builtins.str]:
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Input[builtins.str]:
         """
-        UUID
+        UUID.
         """
-        return pulumi.get(self, "request_identifier")
+        return pulumi.get(self, "request_id")
 
-    @request_identifier.setter
-    def request_identifier(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "request_identifier", value)
+    @request_id.setter
+    def request_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "request_id", value)
 
     @property
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Content of message
+        Content of message.
         """
         return pulumi.get(self, "content")
 
@@ -74,25 +74,25 @@ class CloudforceOneRequestMessageArgs:
 @pulumi.input_type
 class _CloudforceOneRequestMessageState:
     def __init__(__self__, *,
-                 account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  author: Optional[pulumi.Input[builtins.str]] = None,
                  content: Optional[pulumi.Input[builtins.str]] = None,
                  created: Optional[pulumi.Input[builtins.str]] = None,
                  is_follow_on_request: Optional[pulumi.Input[builtins.bool]] = None,
-                 request_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 request_id: Optional[pulumi.Input[builtins.str]] = None,
                  updated: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudforceOneRequestMessage resources.
-        :param pulumi.Input[builtins.str] account_identifier: Identifier
-        :param pulumi.Input[builtins.str] author: Author of message
-        :param pulumi.Input[builtins.str] content: Content of message
-        :param pulumi.Input[builtins.str] created: Message creation time
-        :param pulumi.Input[builtins.bool] is_follow_on_request: Whether the message is a follow-on request
-        :param pulumi.Input[builtins.str] request_identifier: UUID
-        :param pulumi.Input[builtins.str] updated: Message last updated time
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[builtins.str] author: Author of message.
+        :param pulumi.Input[builtins.str] content: Content of message.
+        :param pulumi.Input[builtins.str] created: Defines the message creation time.
+        :param pulumi.Input[builtins.bool] is_follow_on_request: Whether the message is a follow-on request.
+        :param pulumi.Input[builtins.str] request_id: UUID.
+        :param pulumi.Input[builtins.str] updated: Defines the message last updated time.
         """
-        if account_identifier is not None:
-            pulumi.set(__self__, "account_identifier", account_identifier)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if author is not None:
             pulumi.set(__self__, "author", author)
         if content is not None:
@@ -101,28 +101,28 @@ class _CloudforceOneRequestMessageState:
             pulumi.set(__self__, "created", created)
         if is_follow_on_request is not None:
             pulumi.set(__self__, "is_follow_on_request", is_follow_on_request)
-        if request_identifier is not None:
-            pulumi.set(__self__, "request_identifier", request_identifier)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
-    @account_identifier.setter
-    def account_identifier(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_identifier", value)
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
     def author(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Author of message
+        Author of message.
         """
         return pulumi.get(self, "author")
 
@@ -134,7 +134,7 @@ class _CloudforceOneRequestMessageState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Content of message
+        Content of message.
         """
         return pulumi.get(self, "content")
 
@@ -146,7 +146,7 @@ class _CloudforceOneRequestMessageState:
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Message creation time
+        Defines the message creation time.
         """
         return pulumi.get(self, "created")
 
@@ -158,7 +158,7 @@ class _CloudforceOneRequestMessageState:
     @pulumi.getter(name="isFollowOnRequest")
     def is_follow_on_request(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
-        Whether the message is a follow-on request
+        Whether the message is a follow-on request.
         """
         return pulumi.get(self, "is_follow_on_request")
 
@@ -167,22 +167,22 @@ class _CloudforceOneRequestMessageState:
         pulumi.set(self, "is_follow_on_request", value)
 
     @property
-    @pulumi.getter(name="requestIdentifier")
-    def request_identifier(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        UUID
+        UUID.
         """
-        return pulumi.get(self, "request_identifier")
+        return pulumi.get(self, "request_id")
 
-    @request_identifier.setter
-    def request_identifier(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "request_identifier", value)
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "request_id", value)
 
     @property
     @pulumi.getter
     def updated(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Message last updated time
+        Defines the message last updated time.
         """
         return pulumi.get(self, "updated")
 
@@ -197,9 +197,9 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  content: Optional[pulumi.Input[builtins.str]] = None,
-                 request_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 request_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -209,22 +209,22 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_cloudforce_one_request_message = cloudflare.CloudforceOneRequestMessage("example_cloudforce_one_request_message",
-            account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
-            request_identifier="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             content="Can you elaborate on the type of DoS that occurred?")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_identifier>/<request_identifier>'
+        $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_identifier: Identifier
-        :param pulumi.Input[builtins.str] content: Content of message
-        :param pulumi.Input[builtins.str] request_identifier: UUID
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[builtins.str] content: Content of message.
+        :param pulumi.Input[builtins.str] request_id: UUID.
         """
         ...
     @overload
@@ -240,15 +240,15 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_cloudforce_one_request_message = cloudflare.CloudforceOneRequestMessage("example_cloudforce_one_request_message",
-            account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
-            request_identifier="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
+            request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
             content="Can you elaborate on the type of DoS that occurred?")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_identifier>/<request_identifier>'
+        $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -266,9 +266,9 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  content: Optional[pulumi.Input[builtins.str]] = None,
-                 request_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 request_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,13 +278,13 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudforceOneRequestMessageArgs.__new__(CloudforceOneRequestMessageArgs)
 
-            if account_identifier is None and not opts.urn:
-                raise TypeError("Missing required property 'account_identifier'")
-            __props__.__dict__["account_identifier"] = account_identifier
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
+            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["content"] = content
-            if request_identifier is None and not opts.urn:
-                raise TypeError("Missing required property 'request_identifier'")
-            __props__.__dict__["request_identifier"] = request_identifier
+            if request_id is None and not opts.urn:
+                raise TypeError("Missing required property 'request_id'")
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["author"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["is_follow_on_request"] = None
@@ -299,12 +299,12 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+            account_id: Optional[pulumi.Input[builtins.str]] = None,
             author: Optional[pulumi.Input[builtins.str]] = None,
             content: Optional[pulumi.Input[builtins.str]] = None,
             created: Optional[pulumi.Input[builtins.str]] = None,
             is_follow_on_request: Optional[pulumi.Input[builtins.bool]] = None,
-            request_identifier: Optional[pulumi.Input[builtins.str]] = None,
+            request_id: Optional[pulumi.Input[builtins.str]] = None,
             updated: Optional[pulumi.Input[builtins.str]] = None) -> 'CloudforceOneRequestMessage':
         """
         Get an existing CloudforceOneRequestMessage resource's state with the given name, id, and optional extra
@@ -313,40 +313,40 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_identifier: Identifier
-        :param pulumi.Input[builtins.str] author: Author of message
-        :param pulumi.Input[builtins.str] content: Content of message
-        :param pulumi.Input[builtins.str] created: Message creation time
-        :param pulumi.Input[builtins.bool] is_follow_on_request: Whether the message is a follow-on request
-        :param pulumi.Input[builtins.str] request_identifier: UUID
-        :param pulumi.Input[builtins.str] updated: Message last updated time
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[builtins.str] author: Author of message.
+        :param pulumi.Input[builtins.str] content: Content of message.
+        :param pulumi.Input[builtins.str] created: Defines the message creation time.
+        :param pulumi.Input[builtins.bool] is_follow_on_request: Whether the message is a follow-on request.
+        :param pulumi.Input[builtins.str] request_id: UUID.
+        :param pulumi.Input[builtins.str] updated: Defines the message last updated time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CloudforceOneRequestMessageState.__new__(_CloudforceOneRequestMessageState)
 
-        __props__.__dict__["account_identifier"] = account_identifier
+        __props__.__dict__["account_id"] = account_id
         __props__.__dict__["author"] = author
         __props__.__dict__["content"] = content
         __props__.__dict__["created"] = created
         __props__.__dict__["is_follow_on_request"] = is_follow_on_request
-        __props__.__dict__["request_identifier"] = request_identifier
+        __props__.__dict__["request_id"] = request_id
         __props__.__dict__["updated"] = updated
         return CloudforceOneRequestMessage(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def author(self) -> pulumi.Output[builtins.str]:
         """
-        Author of message
+        Author of message.
         """
         return pulumi.get(self, "author")
 
@@ -354,7 +354,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Content of message
+        Content of message.
         """
         return pulumi.get(self, "content")
 
@@ -362,7 +362,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
     @pulumi.getter
     def created(self) -> pulumi.Output[builtins.str]:
         """
-        Message creation time
+        Defines the message creation time.
         """
         return pulumi.get(self, "created")
 
@@ -370,23 +370,23 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
     @pulumi.getter(name="isFollowOnRequest")
     def is_follow_on_request(self) -> pulumi.Output[builtins.bool]:
         """
-        Whether the message is a follow-on request
+        Whether the message is a follow-on request.
         """
         return pulumi.get(self, "is_follow_on_request")
 
     @property
-    @pulumi.getter(name="requestIdentifier")
-    def request_identifier(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> pulumi.Output[builtins.str]:
         """
-        UUID
+        UUID.
         """
-        return pulumi.get(self, "request_identifier")
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter
     def updated(self) -> pulumi.Output[builtins.str]:
         """
-        Message last updated time
+        Defines the message last updated time.
         """
         return pulumi.get(self, "updated")
 

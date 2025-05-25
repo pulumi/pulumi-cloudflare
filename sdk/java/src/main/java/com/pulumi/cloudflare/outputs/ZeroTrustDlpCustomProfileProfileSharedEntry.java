@@ -14,7 +14,7 @@ public final class ZeroTrustDlpCustomProfileProfileSharedEntry {
     private Boolean enabled;
     private String entryId;
     /**
-     * @return Available values: &#34;custom&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact_data&#34;.
      * 
      */
     private String entryType;
@@ -27,7 +27,7 @@ public final class ZeroTrustDlpCustomProfileProfileSharedEntry {
         return this.entryId;
     }
     /**
-     * @return Available values: &#34;custom&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;, &#34;exact_data&#34;.
      * 
      */
     public String entryType() {

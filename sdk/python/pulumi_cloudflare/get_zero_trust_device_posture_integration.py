@@ -101,7 +101,7 @@ class GetZeroTrustDevicePostureIntegrationResult:
     def type(self) -> builtins.str:
         """
         The type of device posture integration.
-        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         """
         return pulumi.get(self, "type")
 

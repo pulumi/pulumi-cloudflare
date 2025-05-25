@@ -17,29 +17,29 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
     public static final CloudforceOneRequestPriorityArgs Empty = new CloudforceOneRequestPriorityArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * List of labels
+     * List of labels.
      * 
      */
     @Import(name="labels", required=true)
     private Output<List<String>> labels;
 
     /**
-     * @return List of labels
+     * @return List of labels.
      * 
      */
     public Output<List<String>> labels() {
@@ -47,14 +47,14 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
     }
 
     /**
-     * Priority
+     * Priority.
      * 
      */
     @Import(name="priority", required=true)
     private Output<Integer> priority;
 
     /**
-     * @return Priority
+     * @return Priority.
      * 
      */
     public Output<Integer> priority() {
@@ -62,14 +62,14 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
     }
 
     /**
-     * Requirement
+     * Requirement.
      * 
      */
     @Import(name="requirement", required=true)
     private Output<String> requirement;
 
     /**
-     * @return Requirement
+     * @return Requirement.
      * 
      */
     public Output<String> requirement() {
@@ -77,7 +77,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
     }
 
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -85,7 +85,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
     private Output<String> tlp;
 
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -96,7 +96,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
     private CloudforceOneRequestPriorityArgs() {}
 
     private CloudforceOneRequestPriorityArgs(CloudforceOneRequestPriorityArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.labels = $.labels;
         this.priority = $.priority;
         this.requirement = $.requirement;
@@ -122,28 +122,28 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param labels List of labels
+         * @param labels List of labels.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param labels List of labels
+         * @param labels List of labels.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param labels List of labels
+         * @param labels List of labels.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param priority Priority
+         * @param priority Priority.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param priority Priority
+         * @param priority Priority.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param requirement Requirement
+         * @param requirement Requirement.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param requirement Requirement
+         * @param requirement Requirement.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * @param tlp The CISA defined Traffic Light Protocol (TLP).
          * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
@@ -228,7 +228,7 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * @param tlp The CISA defined Traffic Light Protocol (TLP).
          * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
@@ -239,8 +239,8 @@ public final class CloudforceOneRequestPriorityArgs extends com.pulumi.resources
         }
 
         public CloudforceOneRequestPriorityArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("CloudforceOneRequestPriorityArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("CloudforceOneRequestPriorityArgs", "accountId");
             }
             if ($.labels == null) {
                 throw new MissingRequiredPropertyException("CloudforceOneRequestPriorityArgs", "labels");

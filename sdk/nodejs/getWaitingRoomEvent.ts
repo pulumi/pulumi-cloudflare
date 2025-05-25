@@ -34,7 +34,7 @@ export interface GetWaitingRoomEventArgs {
     eventId?: string;
     waitingRoomId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -114,7 +114,7 @@ export interface GetWaitingRoomEventResult {
     readonly turnstileMode: string;
     readonly waitingRoomId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -148,7 +148,7 @@ export interface GetWaitingRoomEventOutputArgs {
     eventId?: pulumi.Input<string>;
     waitingRoomId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -59,7 +59,7 @@ export class WorkersRoute extends pulumi.CustomResource {
     /**
      * Name of the script to run if the route matches.
      */
-    public readonly script!: pulumi.Output<string>;
+    public readonly script!: pulumi.Output<string | undefined>;
     /**
      * Identifier.
      */
@@ -85,9 +85,6 @@ export class WorkersRoute extends pulumi.CustomResource {
             const args = argsOrState as WorkersRouteArgs | undefined;
             if ((!args || args.pattern === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pattern'");
-            }
-            if ((!args || args.script === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'script'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
@@ -130,7 +127,7 @@ export interface WorkersRouteArgs {
     /**
      * Name of the script to run if the route matches.
      */
-    script: pulumi.Input<string>;
+    script?: pulumi.Input<string>;
     /**
      * Identifier.
      */

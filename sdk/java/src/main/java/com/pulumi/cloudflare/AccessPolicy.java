@@ -129,14 +129,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="excludes", refs={List.class,AccessPolicyExclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessPolicyExclude>> excludes;
+    private Output<List<AccessPolicyExclude>> excludes;
 
     /**
      * @return Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
-    public Output<Optional<List<AccessPolicyExclude>>> excludes() {
-        return Codegen.optional(this.excludes);
+    public Output<List<AccessPolicyExclude>> excludes() {
+        return this.excludes;
     }
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -213,14 +213,14 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="requires", refs={List.class,AccessPolicyRequire.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessPolicyRequire>> requires;
+    private Output<List<AccessPolicyRequire>> requires;
 
     /**
      * @return Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
-    public Output<Optional<List<AccessPolicyRequire>>> requires() {
-        return Codegen.optional(this.requires);
+    public Output<List<AccessPolicyRequire>> requires() {
+        return this.requires;
     }
     @Export(name="reusable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reusable;

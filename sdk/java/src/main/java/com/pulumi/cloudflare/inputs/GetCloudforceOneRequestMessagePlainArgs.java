@@ -5,8 +5,11 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetCloudforceOneRequestMessagePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,40 +17,138 @@ public final class GetCloudforceOneRequestMessagePlainArgs extends com.pulumi.re
     public static final GetCloudforceOneRequestMessagePlainArgs Empty = new GetCloudforceOneRequestMessagePlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private String accountIdentifier;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
     }
 
     /**
-     * UUID
+     * Retrieve mes  ges created after this time.
      * 
      */
-    @Import(name="requestIdentifier", required=true)
-    private String requestIdentifier;
+    @Import(name="after")
+    private @Nullable String after;
 
     /**
-     * @return UUID
+     * @return Retrieve mes  ges created after this time.
      * 
      */
-    public String requestIdentifier() {
-        return this.requestIdentifier;
+    public Optional<String> after() {
+        return Optional.ofNullable(this.after);
+    }
+
+    /**
+     * Retrieve messages created before this time.
+     * 
+     */
+    @Import(name="before")
+    private @Nullable String before;
+
+    /**
+     * @return Retrieve messages created before this time.
+     * 
+     */
+    public Optional<String> before() {
+        return Optional.ofNullable(this.before);
+    }
+
+    /**
+     * Page number of results.
+     * 
+     */
+    @Import(name="page", required=true)
+    private Integer page;
+
+    /**
+     * @return Page number of results.
+     * 
+     */
+    public Integer page() {
+        return this.page;
+    }
+
+    /**
+     * Number of results per page.
+     * 
+     */
+    @Import(name="perPage", required=true)
+    private Integer perPage;
+
+    /**
+     * @return Number of results per page.
+     * 
+     */
+    public Integer perPage() {
+        return this.perPage;
+    }
+
+    /**
+     * UUID.
+     * 
+     */
+    @Import(name="requestId", required=true)
+    private String requestId;
+
+    /**
+     * @return UUID.
+     * 
+     */
+    public String requestId() {
+        return this.requestId;
+    }
+
+    /**
+     * Field to sort results by.
+     * 
+     */
+    @Import(name="sortBy")
+    private @Nullable String sortBy;
+
+    /**
+     * @return Field to sort results by.
+     * 
+     */
+    public Optional<String> sortBy() {
+        return Optional.ofNullable(this.sortBy);
+    }
+
+    /**
+     * Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="sortOrder")
+    private @Nullable String sortOrder;
+
+    /**
+     * @return Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> sortOrder() {
+        return Optional.ofNullable(this.sortOrder);
     }
 
     private GetCloudforceOneRequestMessagePlainArgs() {}
 
     private GetCloudforceOneRequestMessagePlainArgs(GetCloudforceOneRequestMessagePlainArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
-        this.requestIdentifier = $.requestIdentifier;
+        this.accountId = $.accountId;
+        this.after = $.after;
+        this.before = $.before;
+        this.page = $.page;
+        this.perPage = $.perPage;
+        this.requestId = $.requestId;
+        this.sortBy = $.sortBy;
+        this.sortOrder = $.sortOrder;
     }
 
     public static Builder builder() {
@@ -69,33 +170,106 @@ public final class GetCloudforceOneRequestMessagePlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(String accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param after Retrieve mes  ges created after this time.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder after(@Nullable String after) {
+            $.after = after;
+            return this;
+        }
+
+        /**
+         * @param before Retrieve messages created before this time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder before(@Nullable String before) {
+            $.before = before;
+            return this;
+        }
+
+        /**
+         * @param page Page number of results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder page(Integer page) {
+            $.page = page;
+            return this;
+        }
+
+        /**
+         * @param perPage Number of results per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(Integer perPage) {
+            $.perPage = perPage;
+            return this;
+        }
+
+        /**
+         * @param requestId UUID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestId(String requestId) {
+            $.requestId = requestId;
+            return this;
+        }
+
+        /**
+         * @param sortBy Field to sort results by.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortBy(@Nullable String sortBy) {
+            $.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * @param sortOrder Sort order (asc or desc).
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortOrder(@Nullable String sortOrder) {
+            $.sortOrder = sortOrder;
             return this;
         }
 
         public GetCloudforceOneRequestMessagePlainArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessagePlainArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessagePlainArgs", "accountId");
             }
-            if ($.requestIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessagePlainArgs", "requestIdentifier");
+            if ($.page == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessagePlainArgs", "page");
+            }
+            if ($.perPage == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessagePlainArgs", "perPage");
+            }
+            if ($.requestId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessagePlainArgs", "requestId");
             }
             return $;
         }

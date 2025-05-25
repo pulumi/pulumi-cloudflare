@@ -52,7 +52,7 @@ type LookupWaitingRoomEventsArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems      *int   `pulumi:"maxItems"`
 	WaitingRoomId string `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -65,7 +65,7 @@ type LookupWaitingRoomEventsResult struct {
 	// The items returned by the data source
 	Results       []GetWaitingRoomEventsResult `pulumi:"results"`
 	WaitingRoomId string                       `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -83,7 +83,7 @@ type LookupWaitingRoomEventsOutputArgs struct {
 	// Max items to fetch, default: 1000
 	MaxItems      pulumi.IntPtrInput `pulumi:"maxItems"`
 	WaitingRoomId pulumi.StringInput `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -125,7 +125,7 @@ func (o LookupWaitingRoomEventsResultOutput) WaitingRoomId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupWaitingRoomEventsResult) string { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWaitingRoomEventsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomEventsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

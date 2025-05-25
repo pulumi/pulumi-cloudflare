@@ -61,7 +61,7 @@ export class QueueConsumer extends pulumi.CustomResource {
     public readonly scriptName!: pulumi.Output<string | undefined>;
     public readonly settings!: pulumi.Output<outputs.QueueConsumerSettings | undefined>;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "httpPull".
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -138,7 +138,7 @@ export interface QueueConsumerState {
     scriptName?: pulumi.Input<string>;
     settings?: pulumi.Input<inputs.QueueConsumerSettings>;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "httpPull".
      */
     type?: pulumi.Input<string>;
 }
@@ -166,7 +166,7 @@ export interface QueueConsumerArgs {
     scriptName?: pulumi.Input<string>;
     settings?: pulumi.Input<inputs.QueueConsumerSettings>;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "httpPull".
      */
     type?: pulumi.Input<string>;
 }

@@ -22,8 +22,8 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleCloudforceOneRequestMessage = new Cloudflare.CloudforceOneRequestMessage("example_cloudforce_one_request_message", new()
     ///     {
-    ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
     ///         Content = "Can you elaborate on the type of DoS that occurred?",
     ///     });
     /// 
@@ -33,50 +33,50 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '&lt;account_identifier&gt;/&lt;request_identifier&gt;'
+    /// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '&lt;account_id&gt;/&lt;request_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage")]
     public partial class CloudforceOneRequestMessage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Output("accountIdentifier")]
-        public Output<string> AccountIdentifier { get; private set; } = null!;
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Author of message
+        /// Author of message.
         /// </summary>
         [Output("author")]
         public Output<string> Author { get; private set; } = null!;
 
         /// <summary>
-        /// Content of message
+        /// Content of message.
         /// </summary>
         [Output("content")]
         public Output<string?> Content { get; private set; } = null!;
 
         /// <summary>
-        /// Message creation time
+        /// Defines the message creation time.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the message is a follow-on request
+        /// Whether the message is a follow-on request.
         /// </summary>
         [Output("isFollowOnRequest")]
         public Output<bool> IsFollowOnRequest { get; private set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Output("requestIdentifier")]
-        public Output<string> RequestIdentifier { get; private set; } = null!;
+        [Output("requestId")]
+        public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// Message last updated time
+        /// Defines the message last updated time.
         /// </summary>
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
@@ -128,22 +128,22 @@ namespace Pulumi.Cloudflare
     public sealed class CloudforceOneRequestMessageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public Input<string> AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Content of message
+        /// Content of message.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("requestIdentifier", required: true)]
-        public Input<string> RequestIdentifier { get; set; } = null!;
+        [Input("requestId", required: true)]
+        public Input<string> RequestId { get; set; } = null!;
 
         public CloudforceOneRequestMessageArgs()
         {
@@ -154,43 +154,43 @@ namespace Pulumi.Cloudflare
     public sealed class CloudforceOneRequestMessageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier")]
-        public Input<string>? AccountIdentifier { get; set; }
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Author of message
+        /// Author of message.
         /// </summary>
         [Input("author")]
         public Input<string>? Author { get; set; }
 
         /// <summary>
-        /// Content of message
+        /// Content of message.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Message creation time
+        /// Defines the message creation time.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// Whether the message is a follow-on request
+        /// Whether the message is a follow-on request.
         /// </summary>
         [Input("isFollowOnRequest")]
         public Input<bool>? IsFollowOnRequest { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("requestIdentifier")]
-        public Input<string>? RequestIdentifier { get; set; }
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// Message last updated time
+        /// Defines the message last updated time.
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }

@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetZeroTrustDeviceCustomProfilesResultTargetTest {
     /**
-     * @return The id of the DEX test targeting this policy
+     * @return The id of the DEX test targeting this policy.
      * 
      */
     private String id;
     /**
-     * @return The name of the DEX test targeting this policy
+     * @return The name of the DEX test targeting this policy.
      * 
      */
     private String name;
 
     private GetZeroTrustDeviceCustomProfilesResultTargetTest() {}
     /**
-     * @return The id of the DEX test targeting this policy
+     * @return The id of the DEX test targeting this policy.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the DEX test targeting this policy
+     * @return The name of the DEX test targeting this policy.
      * 
      */
     public String name() {

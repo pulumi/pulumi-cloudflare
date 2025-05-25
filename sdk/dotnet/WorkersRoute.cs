@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
         /// Name of the script to run if the route matches.
         /// </summary>
         [Output("script")]
-        public Output<string> Script { get; private set; } = null!;
+        public Output<string?> Script { get; private set; } = null!;
 
         /// <summary>
         /// Identifier.
@@ -112,8 +112,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Name of the script to run if the route matches.
         /// </summary>
-        [Input("script", required: true)]
-        public Input<string> Script { get; set; } = null!;
+        [Input("script")]
+        public Input<string>? Script { get; set; }
 
         /// <summary>
         /// Identifier.

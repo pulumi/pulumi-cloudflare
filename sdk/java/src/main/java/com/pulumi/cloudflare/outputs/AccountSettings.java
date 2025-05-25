@@ -18,32 +18,11 @@ public final class AccountSettings {
      */
     private @Nullable String abuseContactEmail;
     /**
-     * @return Specifies the default nameservers to be used for new zones added to this account.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    private @Nullable String defaultNameservers;
-    /**
      * @return Indicates whether membership in this account requires that
      * Two-Factor Authentication is enabled
      * 
      */
     private @Nullable Boolean enforceTwofactor;
-    /**
-     * @return Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     * 
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    private @Nullable Boolean useAccountCustomNsByDefault;
 
     private AccountSettings() {}
     /**
@@ -54,37 +33,12 @@ public final class AccountSettings {
         return Optional.ofNullable(this.abuseContactEmail);
     }
     /**
-     * @return Specifies the default nameservers to be used for new zones added to this account.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    public Optional<String> defaultNameservers() {
-        return Optional.ofNullable(this.defaultNameservers);
-    }
-    /**
      * @return Indicates whether membership in this account requires that
      * Two-Factor Authentication is enabled
      * 
      */
     public Optional<Boolean> enforceTwofactor() {
         return Optional.ofNullable(this.enforceTwofactor);
-    }
-    /**
-     * @return Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     * 
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    public Optional<Boolean> useAccountCustomNsByDefault() {
-        return Optional.ofNullable(this.useAccountCustomNsByDefault);
     }
 
     public static Builder builder() {
@@ -97,16 +51,12 @@ public final class AccountSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String abuseContactEmail;
-        private @Nullable String defaultNameservers;
         private @Nullable Boolean enforceTwofactor;
-        private @Nullable Boolean useAccountCustomNsByDefault;
         public Builder() {}
         public Builder(AccountSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.abuseContactEmail = defaults.abuseContactEmail;
-    	      this.defaultNameservers = defaults.defaultNameservers;
     	      this.enforceTwofactor = defaults.enforceTwofactor;
-    	      this.useAccountCustomNsByDefault = defaults.useAccountCustomNsByDefault;
         }
 
         @CustomType.Setter
@@ -116,29 +66,15 @@ public final class AccountSettings {
             return this;
         }
         @CustomType.Setter
-        public Builder defaultNameservers(@Nullable String defaultNameservers) {
-
-            this.defaultNameservers = defaultNameservers;
-            return this;
-        }
-        @CustomType.Setter
         public Builder enforceTwofactor(@Nullable Boolean enforceTwofactor) {
 
             this.enforceTwofactor = enforceTwofactor;
             return this;
         }
-        @CustomType.Setter
-        public Builder useAccountCustomNsByDefault(@Nullable Boolean useAccountCustomNsByDefault) {
-
-            this.useAccountCustomNsByDefault = useAccountCustomNsByDefault;
-            return this;
-        }
         public AccountSettings build() {
             final var _resultValue = new AccountSettings();
             _resultValue.abuseContactEmail = abuseContactEmail;
-            _resultValue.defaultNameservers = defaultNameservers;
             _resultValue.enforceTwofactor = enforceTwofactor;
-            _resultValue.useAccountCustomNsByDefault = useAccountCustomNsByDefault;
             return _resultValue;
         }
     }

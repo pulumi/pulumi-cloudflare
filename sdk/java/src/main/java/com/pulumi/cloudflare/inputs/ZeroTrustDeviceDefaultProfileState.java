@@ -253,6 +253,21 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         return Optional.ofNullable(this.registerInterfaceIpWithDns);
     }
 
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    @Import(name="sccmVpnBoundarySupport")
+    private @Nullable Output<Boolean> sccmVpnBoundarySupport;
+
+    /**
+     * @return Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    public Optional<Output<Boolean>> sccmVpnBoundarySupport() {
+        return Optional.ofNullable(this.sccmVpnBoundarySupport);
+    }
+
     @Import(name="serviceModeV2")
     private @Nullable Output<ZeroTrustDeviceDefaultProfileServiceModeV2Args> serviceModeV2;
 
@@ -325,6 +340,7 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
         this.lanAllowMinutes = $.lanAllowMinutes;
         this.lanAllowSubnetSize = $.lanAllowSubnetSize;
         this.registerInterfaceIpWithDns = $.registerInterfaceIpWithDns;
+        this.sccmVpnBoundarySupport = $.sccmVpnBoundarySupport;
         this.serviceModeV2 = $.serviceModeV2;
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
@@ -692,6 +708,27 @@ public final class ZeroTrustDeviceDefaultProfileState extends com.pulumi.resourc
          */
         public Builder registerInterfaceIpWithDns(Boolean registerInterfaceIpWithDns) {
             return registerInterfaceIpWithDns(Output.of(registerInterfaceIpWithDns));
+        }
+
+        /**
+         * @param sccmVpnBoundarySupport Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sccmVpnBoundarySupport(@Nullable Output<Boolean> sccmVpnBoundarySupport) {
+            $.sccmVpnBoundarySupport = sccmVpnBoundarySupport;
+            return this;
+        }
+
+        /**
+         * @param sccmVpnBoundarySupport Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sccmVpnBoundarySupport(Boolean sccmVpnBoundarySupport) {
+            return sccmVpnBoundarySupport(Output.of(sccmVpnBoundarySupport));
         }
 
         public Builder serviceModeV2(@Nullable Output<ZeroTrustDeviceDefaultProfileServiceModeV2Args> serviceModeV2) {
