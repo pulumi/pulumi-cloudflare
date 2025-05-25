@@ -217,7 +217,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ServiceAuth401Redirect { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string> SessionDuration { get; private set; } = null!;
@@ -532,7 +532,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
-        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
@@ -822,7 +822,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
-        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }

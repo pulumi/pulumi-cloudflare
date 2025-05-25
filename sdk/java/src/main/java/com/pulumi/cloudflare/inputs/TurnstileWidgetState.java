@@ -172,16 +172,16 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Region where this widget can be used.
-     * Available values: &#34;world&#34;.
+     * Region where this widget can be used. This cannot be changed after creation.
+     * Available values: &#34;world&#34;, &#34;china&#34;.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return Region where this widget can be used.
-     * Available values: &#34;world&#34;.
+     * @return Region where this widget can be used. This cannot be changed after creation.
+     * Available values: &#34;world&#34;, &#34;china&#34;.
      * 
      */
     public Optional<Output<String>> region() {
@@ -469,8 +469,8 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region Region where this widget can be used.
-         * Available values: &#34;world&#34;.
+         * @param region Region where this widget can be used. This cannot be changed after creation.
+         * Available values: &#34;world&#34;, &#34;china&#34;.
          * 
          * @return builder
          * 
@@ -481,8 +481,8 @@ public final class TurnstileWidgetState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param region Region where this widget can be used.
-         * Available values: &#34;world&#34;.
+         * @param region Region where this widget can be used. This cannot be changed after creation.
+         * Available values: &#34;world&#34;, &#34;china&#34;.
          * 
          * @return builder
          * 

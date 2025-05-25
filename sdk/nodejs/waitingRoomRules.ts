@@ -84,7 +84,7 @@ export class WaitingRoomRules extends pulumi.CustomResource {
     public /*out*/ readonly version!: pulumi.Output<string>;
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -165,7 +165,7 @@ export interface WaitingRoomRulesState {
     version?: pulumi.Input<string>;
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -177,7 +177,7 @@ export interface WaitingRoomRulesArgs {
     rules: pulumi.Input<pulumi.Input<inputs.WaitingRoomRulesRule>[]>;
     waitingRoomId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

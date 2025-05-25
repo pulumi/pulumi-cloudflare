@@ -178,7 +178,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly double LanAllowSubnetSize;
         /// <summary>
-        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         /// </summary>
         public readonly string Match;
         /// <summary>
@@ -194,6 +194,10 @@ namespace Pulumi.Cloudflare
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         public readonly bool RegisterInterfaceIpWithDns;
+        /// <summary>
+        /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        /// </summary>
+        public readonly bool SccmVpnBoundarySupport;
         public readonly Outputs.GetZeroTrustDeviceCustomProfileServiceModeV2Result ServiceModeV2;
         /// <summary>
         /// The URL to launch when the Send Feedback button is clicked.
@@ -257,6 +261,8 @@ namespace Pulumi.Cloudflare
 
             bool registerInterfaceIpWithDns,
 
+            bool sccmVpnBoundarySupport,
+
             Outputs.GetZeroTrustDeviceCustomProfileServiceModeV2Result serviceModeV2,
 
             string supportUrl,
@@ -290,6 +296,7 @@ namespace Pulumi.Cloudflare
             PolicyId = policyId;
             Precedence = precedence;
             RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
+            SccmVpnBoundarySupport = sccmVpnBoundarySupport;
             ServiceModeV2 = serviceModeV2;
             SupportUrl = supportUrl;
             SwitchLocked = switchLocked;

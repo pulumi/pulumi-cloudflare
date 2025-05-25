@@ -98,8 +98,8 @@ import com.pulumi.cloudflare.inputs.GetCertificatePackArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePackPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePacksArgs;
 import com.pulumi.cloudflare.inputs.GetCertificatePacksPlainArgs;
-import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
-import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListPlainArgs;
+import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
+import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestAssetArgs;
 import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestAssetPlainArgs;
@@ -522,6 +522,10 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRuleArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRulePlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRulesArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDevicePostureRulesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomProfileArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomProfilePlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustDlpDatasetArgs;
@@ -584,6 +588,8 @@ import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredVirtualNetworks
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredVirtualNetworksPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredsArgs;
 import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelCloudflaredsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZoneArgs;
 import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
 import com.pulumi.cloudflare.inputs.GetZoneCacheReservePlainArgs;
@@ -653,7 +659,7 @@ import com.pulumi.cloudflare.outputs.GetCallsTurnAppResult;
 import com.pulumi.cloudflare.outputs.GetCallsTurnAppsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetCertificatePackResult;
 import com.pulumi.cloudflare.outputs.GetCertificatePacksInvokeResult;
-import com.pulumi.cloudflare.outputs.GetCloudConnectorRulesListInvokeResult;
+import com.pulumi.cloudflare.outputs.GetCloudConnectorRulesResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestAssetResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestMessageResult;
 import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestPriorityResult;
@@ -866,6 +872,8 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureIntegrationResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureIntegrationsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRuleResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDevicePostureRulesInvokeResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustDexTestsInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpCustomProfileResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpDatasetResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustDlpDatasetsInvokeResult;
@@ -897,6 +905,7 @@ import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredTokenResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredVirtualNetworkResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult;
 import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelCloudflaredsInvokeResult;
+import com.pulumi.cloudflare.outputs.GetZeroTrustTunnelWarpConnectorTokenResult;
 import com.pulumi.cloudflare.outputs.GetZoneCacheReserveResult;
 import com.pulumi.cloudflare.outputs.GetZoneCacheVariantsResult;
 import com.pulumi.cloudflare.outputs.GetZoneDnsSettingsResult;
@@ -11068,7 +11077,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11082,7 +11091,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11093,8 +11102,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesList(GetCloudConnectorRulesListArgs args) {
-        return getCloudConnectorRulesList(args, InvokeOptions.Empty);
+    public static Output<GetCloudConnectorRulesResult> getCloudConnectorRules(GetCloudConnectorRulesArgs args) {
+        return getCloudConnectorRules(args, InvokeOptions.Empty);
     }
     /**
      * ## Example Usage
@@ -11108,7 +11117,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11122,7 +11131,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11133,8 +11142,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesListPlain(GetCloudConnectorRulesListPlainArgs args) {
-        return getCloudConnectorRulesListPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetCloudConnectorRulesResult> getCloudConnectorRulesPlain(GetCloudConnectorRulesPlainArgs args) {
+        return getCloudConnectorRulesPlain(args, InvokeOptions.Empty);
     }
     /**
      * ## Example Usage
@@ -11148,7 +11157,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11162,7 +11171,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11173,8 +11182,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesList(GetCloudConnectorRulesListArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getCloudConnectorRulesList:getCloudConnectorRulesList", TypeShape.of(GetCloudConnectorRulesListInvokeResult.class), args, Utilities.withVersion(options));
+    public static Output<GetCloudConnectorRulesResult> getCloudConnectorRules(GetCloudConnectorRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", TypeShape.of(GetCloudConnectorRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -11188,7 +11197,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11202,7 +11211,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11213,8 +11222,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static Output<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesList(GetCloudConnectorRulesListArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("cloudflare:index/getCloudConnectorRulesList:getCloudConnectorRulesList", TypeShape.of(GetCloudConnectorRulesListInvokeResult.class), args, Utilities.withVersion(options));
+    public static Output<GetCloudConnectorRulesResult> getCloudConnectorRules(GetCloudConnectorRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", TypeShape.of(GetCloudConnectorRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -11228,7 +11237,7 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
-     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesListArgs;
+     * import com.pulumi.cloudflare.inputs.GetCloudConnectorRulesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11242,7 +11251,7 @@ public final class CloudflareFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleCloudConnectorRulesList = CloudflareFunctions.getCloudConnectorRulesList(GetCloudConnectorRulesListArgs.builder()
+     *         final var exampleCloudConnectorRules = CloudflareFunctions.getCloudConnectorRules(GetCloudConnectorRulesArgs.builder()
      *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .build());
      * 
@@ -11253,8 +11262,8 @@ public final class CloudflareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
-    public static CompletableFuture<GetCloudConnectorRulesListInvokeResult> getCloudConnectorRulesListPlain(GetCloudConnectorRulesListPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("cloudflare:index/getCloudConnectorRulesList:getCloudConnectorRulesList", TypeShape.of(GetCloudConnectorRulesListInvokeResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetCloudConnectorRulesResult> getCloudConnectorRulesPlain(GetCloudConnectorRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getCloudConnectorRules:getCloudConnectorRules", TypeShape.of(GetCloudConnectorRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -11283,8 +11292,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11324,8 +11333,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11365,8 +11374,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11406,8 +11415,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11447,8 +11456,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequest = CloudflareFunctions.getCloudforceOneRequest(GetCloudforceOneRequestArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11488,9 +11497,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11530,9 +11539,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11572,9 +11581,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11614,9 +11623,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11656,9 +11665,9 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestAsset = CloudflareFunctions.getCloudforceOneRequestAsset(GetCloudforceOneRequestAssetArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
-     *             .assetIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .assetId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11698,8 +11707,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11739,8 +11754,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11780,8 +11801,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11821,8 +11848,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11862,8 +11895,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestMessage = CloudflareFunctions.getCloudforceOneRequestMessage(GetCloudforceOneRequestMessageArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .page(0)
+     *             .perPage(10)
+     *             .after("2022-04-01T05:20:00Z")
+     *             .before("2024-01-01T00:00:00Z")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
      *             .build());
      * 
      *     }
@@ -11903,8 +11942,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11944,8 +11983,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -11985,8 +12024,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -12026,8 +12065,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -12067,8 +12106,8 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequestPriority = CloudflareFunctions.getCloudforceOneRequestPriority(GetCloudforceOneRequestPriorityArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
-     *             .priorityIdentifer("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .priorityId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
      *             .build());
      * 
      *     }
@@ -12108,7 +12147,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -12148,7 +12197,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -12188,7 +12247,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -12228,7 +12297,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -12268,7 +12347,17 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleCloudforceOneRequests = CloudflareFunctions.getCloudforceOneRequests(GetCloudforceOneRequestsArgs.builder()
-     *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+     *             .page(0)
+     *             .perPage(10)
+     *             .completedAfter("2022-01-01T00:00:00Z")
+     *             .completedBefore("2024-01-01T00:00:00Z")
+     *             .createdAfter("2022-01-01T00:00:00Z")
+     *             .createdBefore("2024-01-01T00:00:00Z")
+     *             .requestType("Victomology")
+     *             .sortBy("created")
+     *             .sortOrder("asc")
+     *             .status("open")
      *             .build());
      * 
      *     }
@@ -35761,6 +35850,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -35802,6 +35892,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -35843,6 +35934,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -35884,6 +35976,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -35925,6 +36018,7 @@ public final class CloudflareFunctions {
      *         final var exampleR2BucketEventNotification = CloudflareFunctions.getR2BucketEventNotification(GetR2BucketEventNotificationArgs.builder()
      *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
      *             .bucketName("example-bucket")
+     *             .queueId("queue_id")
      *             .build());
      * 
      *     }
@@ -57053,6 +57147,411 @@ public final class CloudflareFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestResult> getZeroTrustDexTest(GetZeroTrustDexTestArgs args) {
+        return getZeroTrustDexTest(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexTestResult> getZeroTrustDexTestPlain(GetZeroTrustDexTestPlainArgs args) {
+        return getZeroTrustDexTestPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestResult> getZeroTrustDexTest(GetZeroTrustDexTestArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", TypeShape.of(GetZeroTrustDexTestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestResult> getZeroTrustDexTest(GetZeroTrustDexTestArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", TypeShape.of(GetZeroTrustDexTestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTest = CloudflareFunctions.getZeroTrustDexTest(GetZeroTrustDexTestArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .dexTestId("372e67954025e0ba6aaa6d586b9e0b59")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexTestResult> getZeroTrustDexTestPlain(GetZeroTrustDexTestPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest", TypeShape.of(GetZeroTrustDexTestResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTests(GetZeroTrustDexTestsArgs args) {
+        return getZeroTrustDexTests(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTestsPlain(GetZeroTrustDexTestsPlainArgs args) {
+        return getZeroTrustDexTestsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTests(GetZeroTrustDexTestsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", TypeShape.of(GetZeroTrustDexTestsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTests(GetZeroTrustDexTestsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", TypeShape.of(GetZeroTrustDexTestsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustDexTestsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustDexTests = CloudflareFunctions.getZeroTrustDexTests(GetZeroTrustDexTestsArgs.builder()
+     *             .accountId("01a7362d577a6c3019a474fd6f485823")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTestsPlain(GetZeroTrustDexTestsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests", TypeShape.of(GetZeroTrustDexTestsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
      * import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomProfileArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -63517,6 +64016,211 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetZeroTrustTunnelCloudflaredsInvokeResult> getZeroTrustTunnelCloudflaredsPlain(GetZeroTrustTunnelCloudflaredsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustTunnelCloudflareds:getZeroTrustTunnelCloudflareds", TypeShape.of(GetZeroTrustTunnelCloudflaredsInvokeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs args) {
+        return getZeroTrustTunnelWarpConnectorToken(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorTokenPlain(GetZeroTrustTunnelWarpConnectorTokenPlainArgs args) {
+        return getZeroTrustTunnelWarpConnectorTokenPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken", TypeShape.of(GetZeroTrustTunnelWarpConnectorTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken", TypeShape.of(GetZeroTrustTunnelWarpConnectorTokenResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetZeroTrustTunnelWarpConnectorTokenArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleZeroTrustTunnelWarpConnectorToken = CloudflareFunctions.getZeroTrustTunnelWarpConnectorToken(GetZeroTrustTunnelWarpConnectorTokenArgs.builder()
+     *             .accountId("699d98642c564d2e855e9661899b7252")
+     *             .tunnelId("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarpConnectorTokenPlain(GetZeroTrustTunnelWarpConnectorTokenPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken", TypeShape.of(GetZeroTrustTunnelWarpConnectorTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

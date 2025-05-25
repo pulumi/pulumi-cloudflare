@@ -34,6 +34,9 @@ export interface GetZeroTrustDeviceDefaultProfileCertificatesArgs {
  * A collection of values returned by getZeroTrustDeviceDefaultProfileCertificates.
  */
 export interface GetZeroTrustDeviceDefaultProfileCertificatesResult {
+    /**
+     * The current status of the device policy certificate provisioning feature for WARP clients.
+     */
     readonly enabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.

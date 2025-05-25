@@ -16,14 +16,14 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
     public static final HyperdriveConfigMtlsArgs Empty = new HyperdriveConfigMtlsArgs();
 
     /**
-     * CA certificate ID
+     * Define CA certificate ID obtained after uploading CA cert.
      * 
      */
     @Import(name="caCertificateId")
     private @Nullable Output<String> caCertificateId;
 
     /**
-     * @return CA certificate ID
+     * @return Define CA certificate ID obtained after uploading CA cert.
      * 
      */
     public Optional<Output<String>> caCertificateId() {
@@ -31,14 +31,14 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * mTLS certificate ID
+     * Define mTLS certificate ID obtained after uploading client cert.
      * 
      */
     @Import(name="mtlsCertificateId")
     private @Nullable Output<String> mtlsCertificateId;
 
     /**
-     * @return mTLS certificate ID
+     * @return Define mTLS certificate ID obtained after uploading client cert.
      * 
      */
     public Optional<Output<String>> mtlsCertificateId() {
@@ -46,14 +46,14 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * SSL mode used for CA verification. Must be &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39;
+     * Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
      * 
      */
     @Import(name="sslmode")
     private @Nullable Output<String> sslmode;
 
     /**
-     * @return SSL mode used for CA verification. Must be &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39;
+     * @return Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
      * 
      */
     public Optional<Output<String>> sslmode() {
@@ -87,7 +87,7 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param caCertificateId CA certificate ID
+         * @param caCertificateId Define CA certificate ID obtained after uploading CA cert.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param caCertificateId CA certificate ID
+         * @param caCertificateId Define CA certificate ID obtained after uploading CA cert.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mtlsCertificateId mTLS certificate ID
+         * @param mtlsCertificateId Define mTLS certificate ID obtained after uploading client cert.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mtlsCertificateId mTLS certificate ID
+         * @param mtlsCertificateId Define mTLS certificate ID obtained after uploading client cert.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sslmode SSL mode used for CA verification. Must be &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39;
+         * @param sslmode Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class HyperdriveConfigMtlsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sslmode SSL mode used for CA verification. Must be &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39;
+         * @param sslmode Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
          * 
          * @return builder
          * 

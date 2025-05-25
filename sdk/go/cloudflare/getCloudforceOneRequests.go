@@ -26,7 +26,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupCloudforceOneRequests(ctx, &cloudflare.LookupCloudforceOneRequestsArgs{
-//				AccountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
+//				AccountId:       "023e105f4ecef8ad9ca31a8372d0c353",
+//				Page:            0,
+//				PerPage:         10,
+//				CompletedAfter:  pulumi.StringRef("2022-01-01T00:00:00Z"),
+//				CompletedBefore: pulumi.StringRef("2024-01-01T00:00:00Z"),
+//				CreatedAfter:    pulumi.StringRef("2022-01-01T00:00:00Z"),
+//				CreatedBefore:   pulumi.StringRef("2024-01-01T00:00:00Z"),
+//				RequestType:     pulumi.StringRef("Victomology"),
+//				SortBy:          pulumi.StringRef("created"),
+//				SortOrder:       pulumi.StringRef("asc"),
+//				Status:          pulumi.StringRef("open"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -48,22 +58,66 @@ func LookupCloudforceOneRequests(ctx *pulumi.Context, args *LookupCloudforceOneR
 
 // A collection of arguments for invoking getCloudforceOneRequests.
 type LookupCloudforceOneRequestsArgs struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// Retrieve requests completed after this time.
+	CompletedAfter *string `pulumi:"completedAfter"`
+	// Retrieve requests completed before this time.
+	CompletedBefore *string `pulumi:"completedBefore"`
+	// Retrieve requests created after this time.
+	CreatedAfter *string `pulumi:"createdAfter"`
+	// Retrieve requests created before this time.
+	CreatedBefore *string `pulumi:"createdBefore"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Page number of results.
+	Page int `pulumi:"page"`
+	// Number of results per page.
+	PerPage int `pulumi:"perPage"`
+	// Requested information from request.
+	RequestType *string `pulumi:"requestType"`
+	// Field to sort results by.
+	SortBy *string `pulumi:"sortBy"`
+	// Sort order (asc or desc).
+	// Available values: "asc", "desc".
+	SortOrder *string `pulumi:"sortOrder"`
+	// Request Status.
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+	Status *string `pulumi:"status"`
 }
 
 // A collection of values returned by getCloudforceOneRequests.
 type LookupCloudforceOneRequestsResult struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// Retrieve requests completed after this time.
+	CompletedAfter *string `pulumi:"completedAfter"`
+	// Retrieve requests completed before this time.
+	CompletedBefore *string `pulumi:"completedBefore"`
+	// Retrieve requests created after this time.
+	CreatedAfter *string `pulumi:"createdAfter"`
+	// Retrieve requests created before this time.
+	CreatedBefore *string `pulumi:"createdBefore"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Max items to fetch, default: 1000
 	MaxItems *int `pulumi:"maxItems"`
+	// Page number of results.
+	Page int `pulumi:"page"`
+	// Number of results per page.
+	PerPage int `pulumi:"perPage"`
+	// Requested information from request.
+	RequestType *string `pulumi:"requestType"`
 	// The items returned by the data source
 	Results []GetCloudforceOneRequestsResult `pulumi:"results"`
+	// Field to sort results by.
+	SortBy *string `pulumi:"sortBy"`
+	// Sort order (asc or desc).
+	// Available values: "asc", "desc".
+	SortOrder *string `pulumi:"sortOrder"`
+	// Request Status.
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+	Status *string `pulumi:"status"`
 }
 
 func LookupCloudforceOneRequestsOutput(ctx *pulumi.Context, args LookupCloudforceOneRequestsOutputArgs, opts ...pulumi.InvokeOption) LookupCloudforceOneRequestsResultOutput {
@@ -77,10 +131,32 @@ func LookupCloudforceOneRequestsOutput(ctx *pulumi.Context, args LookupCloudforc
 
 // A collection of arguments for invoking getCloudforceOneRequests.
 type LookupCloudforceOneRequestsOutputArgs struct {
-	// Identifier
-	AccountIdentifier pulumi.StringInput `pulumi:"accountIdentifier"`
+	// Identifier.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Retrieve requests completed after this time.
+	CompletedAfter pulumi.StringPtrInput `pulumi:"completedAfter"`
+	// Retrieve requests completed before this time.
+	CompletedBefore pulumi.StringPtrInput `pulumi:"completedBefore"`
+	// Retrieve requests created after this time.
+	CreatedAfter pulumi.StringPtrInput `pulumi:"createdAfter"`
+	// Retrieve requests created before this time.
+	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
 	// Max items to fetch, default: 1000
 	MaxItems pulumi.IntPtrInput `pulumi:"maxItems"`
+	// Page number of results.
+	Page pulumi.IntInput `pulumi:"page"`
+	// Number of results per page.
+	PerPage pulumi.IntInput `pulumi:"perPage"`
+	// Requested information from request.
+	RequestType pulumi.StringPtrInput `pulumi:"requestType"`
+	// Field to sort results by.
+	SortBy pulumi.StringPtrInput `pulumi:"sortBy"`
+	// Sort order (asc or desc).
+	// Available values: "asc", "desc".
+	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
+	// Request Status.
+	// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (LookupCloudforceOneRequestsOutputArgs) ElementType() reflect.Type {
@@ -102,9 +178,29 @@ func (o LookupCloudforceOneRequestsResultOutput) ToLookupCloudforceOneRequestsRe
 	return o
 }
 
-// Identifier
-func (o LookupCloudforceOneRequestsResultOutput) AccountIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) string { return v.AccountIdentifier }).(pulumi.StringOutput)
+// Identifier.
+func (o LookupCloudforceOneRequestsResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Retrieve requests completed after this time.
+func (o LookupCloudforceOneRequestsResultOutput) CompletedAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.CompletedAfter }).(pulumi.StringPtrOutput)
+}
+
+// Retrieve requests completed before this time.
+func (o LookupCloudforceOneRequestsResultOutput) CompletedBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.CompletedBefore }).(pulumi.StringPtrOutput)
+}
+
+// Retrieve requests created after this time.
+func (o LookupCloudforceOneRequestsResultOutput) CreatedAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.CreatedAfter }).(pulumi.StringPtrOutput)
+}
+
+// Retrieve requests created before this time.
+func (o LookupCloudforceOneRequestsResultOutput) CreatedBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -117,9 +213,41 @@ func (o LookupCloudforceOneRequestsResultOutput) MaxItems() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *int { return v.MaxItems }).(pulumi.IntPtrOutput)
 }
 
+// Page number of results.
+func (o LookupCloudforceOneRequestsResultOutput) Page() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) int { return v.Page }).(pulumi.IntOutput)
+}
+
+// Number of results per page.
+func (o LookupCloudforceOneRequestsResultOutput) PerPage() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) int { return v.PerPage }).(pulumi.IntOutput)
+}
+
+// Requested information from request.
+func (o LookupCloudforceOneRequestsResultOutput) RequestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.RequestType }).(pulumi.StringPtrOutput)
+}
+
 // The items returned by the data source
 func (o LookupCloudforceOneRequestsResultOutput) Results() GetCloudforceOneRequestsResultArrayOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) []GetCloudforceOneRequestsResult { return v.Results }).(GetCloudforceOneRequestsResultArrayOutput)
+}
+
+// Field to sort results by.
+func (o LookupCloudforceOneRequestsResultOutput) SortBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.SortBy }).(pulumi.StringPtrOutput)
+}
+
+// Sort order (asc or desc).
+// Available values: "asc", "desc".
+func (o LookupCloudforceOneRequestsResultOutput) SortOrder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
+}
+
+// Request Status.
+// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+func (o LookupCloudforceOneRequestsResultOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 func init() {

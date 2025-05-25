@@ -143,6 +143,11 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Jurisdiction where objects in this bucket are guaranteed to be stored.
+        /// Available values: "default", "eu", "fedramp".
+        /// </summary>
+        public readonly string Jurisdiction;
+        /// <summary>
         /// Location of the bucket.
         /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
@@ -167,6 +172,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            string jurisdiction,
+
             string location,
 
             string name,
@@ -177,6 +184,7 @@ namespace Pulumi.Cloudflare
             BucketName = bucketName;
             CreationDate = creationDate;
             Id = id;
+            Jurisdiction = jurisdiction;
             Location = location;
             Name = name;
             StorageClass = storageClass;

@@ -33,7 +33,7 @@ export function getWaitingRoom(args: GetWaitingRoomArgs, opts?: pulumi.InvokeOpt
 export interface GetWaitingRoomArgs {
     waitingRoomId?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -82,7 +82,7 @@ export interface GetWaitingRoomResult {
     readonly turnstileMode: string;
     readonly waitingRoomId?: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -113,7 +113,7 @@ export function getWaitingRoomOutput(args: GetWaitingRoomOutputArgs, opts?: pulu
 export interface GetWaitingRoomOutputArgs {
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

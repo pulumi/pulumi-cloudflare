@@ -63,7 +63,7 @@ type ZeroTrustTunnelCloudflaredRoute struct {
 	// UUID of the tunnel.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
 	// UUID of the virtual network.
-	VirtualNetworkId pulumi.StringPtrOutput `pulumi:"virtualNetworkId"`
+	VirtualNetworkId pulumi.StringOutput `pulumi:"virtualNetworkId"`
 }
 
 // NewZeroTrustTunnelCloudflaredRoute registers a new resource with the given unique name, arguments, and options.
@@ -293,8 +293,8 @@ func (o ZeroTrustTunnelCloudflaredRouteOutput) TunnelId() pulumi.StringOutput {
 }
 
 // UUID of the virtual network.
-func (o ZeroTrustTunnelCloudflaredRouteOutput) VirtualNetworkId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredRoute) pulumi.StringPtrOutput { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
+func (o ZeroTrustTunnelCloudflaredRouteOutput) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustTunnelCloudflaredRoute) pulumi.StringOutput { return v.VirtualNetworkId }).(pulumi.StringOutput)
 }
 
 type ZeroTrustTunnelCloudflaredRouteArrayOutput struct{ *pulumi.OutputState }

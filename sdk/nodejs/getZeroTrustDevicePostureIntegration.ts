@@ -65,7 +65,7 @@ export interface GetZeroTrustDevicePostureIntegrationResult {
     readonly name: string;
     /**
      * The type of device posture integration.
-     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
      */
     readonly type: string;
 }

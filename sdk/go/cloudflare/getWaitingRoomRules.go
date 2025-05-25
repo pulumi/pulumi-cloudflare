@@ -50,7 +50,7 @@ func LookupWaitingRoomRules(ctx *pulumi.Context, args *LookupWaitingRoomRulesArg
 // A collection of arguments for invoking getWaitingRoomRules.
 type LookupWaitingRoomRulesArgs struct {
 	WaitingRoomId string `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -71,7 +71,7 @@ type LookupWaitingRoomRulesResult struct {
 	// The version of the rule.
 	Version       string `pulumi:"version"`
 	WaitingRoomId string `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -87,7 +87,7 @@ func LookupWaitingRoomRulesOutput(ctx *pulumi.Context, args LookupWaitingRoomRul
 // A collection of arguments for invoking getWaitingRoomRules.
 type LookupWaitingRoomRulesOutputArgs struct {
 	WaitingRoomId pulumi.StringInput `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -149,7 +149,7 @@ func (o LookupWaitingRoomRulesResultOutput) WaitingRoomId() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWaitingRoomRulesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

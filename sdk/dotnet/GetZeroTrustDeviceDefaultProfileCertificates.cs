@@ -105,6 +105,9 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetZeroTrustDeviceDefaultProfileCertificatesResult
     {
+        /// <summary>
+        /// The current status of the device policy certificate provisioning feature for WARP clients.
+        /// </summary>
         public readonly bool Enabled;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

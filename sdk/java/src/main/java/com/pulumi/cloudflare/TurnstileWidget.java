@@ -13,7 +13,6 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -109,7 +108,7 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="clearanceLevel", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> clearanceLevel;
+    private Output<String> clearanceLevel;
 
     /**
      * @return If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
@@ -117,8 +116,8 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * Available values: &#34;no_clearance&#34;, &#34;jschallenge&#34;, &#34;managed&#34;, &#34;interactive&#34;.
      * 
      */
-    public Output<Optional<String>> clearanceLevel() {
-        return Codegen.optional(this.clearanceLevel);
+    public Output<String> clearanceLevel() {
+        return this.clearanceLevel;
     }
     /**
      * When the widget was created.
@@ -145,14 +144,14 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ephemeralId", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ephemeralId;
+    private Output<Boolean> ephemeralId;
 
     /**
      * @return Return the Ephemeral ID in /siteverify (ENT only).
      * 
      */
-    public Output<Optional<Boolean>> ephemeralId() {
-        return Codegen.optional(this.ephemeralId);
+    public Output<Boolean> ephemeralId() {
+        return this.ephemeralId;
     }
     /**
      * Widget Mode
@@ -217,16 +216,16 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
         return this.offlabel;
     }
     /**
-     * Region where this widget can be used.
-     * Available values: &#34;world&#34;.
+     * Region where this widget can be used. This cannot be changed after creation.
+     * Available values: &#34;world&#34;, &#34;china&#34;.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return Region where this widget can be used.
-     * Available values: &#34;world&#34;.
+     * @return Region where this widget can be used. This cannot be changed after creation.
+     * Available values: &#34;world&#34;, &#34;china&#34;.
      * 
      */
     public Output<String> region() {
@@ -300,6 +299,9 @@ public class TurnstileWidget extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secret"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

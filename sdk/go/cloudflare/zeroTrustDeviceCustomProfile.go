@@ -55,6 +55,7 @@ import (
 //				LanAllowMinutes:            pulumi.Float64(30),
 //				LanAllowSubnetSize:         pulumi.Float64(24),
 //				RegisterInterfaceIpWithDns: pulumi.Bool(true),
+//				SccmVpnBoundarySupport:     pulumi.Bool(false),
 //				ServiceModeV2: &cloudflare.ZeroTrustDeviceCustomProfileServiceModeV2Args{
 //					Mode: pulumi.String("proxy"),
 //					Port: pulumi.Float64(3000),
@@ -111,7 +112,7 @@ type ZeroTrustDeviceCustomProfile struct {
 	LanAllowMinutes pulumi.Float64PtrOutput `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrOutput `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	Match pulumi.StringOutput `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     pulumi.StringOutput `pulumi:"name"`
@@ -119,8 +120,10 @@ type ZeroTrustDeviceCustomProfile struct {
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence pulumi.Float64Output `pulumi:"precedence"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
-	RegisterInterfaceIpWithDns pulumi.BoolPtrOutput                               `pulumi:"registerInterfaceIpWithDns"`
-	ServiceModeV2              ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput `pulumi:"serviceModeV2"`
+	RegisterInterfaceIpWithDns pulumi.BoolPtrOutput `pulumi:"registerInterfaceIpWithDns"`
+	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+	SccmVpnBoundarySupport pulumi.BoolPtrOutput                               `pulumi:"sccmVpnBoundarySupport"`
+	ServiceModeV2          ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -212,7 +215,7 @@ type zeroTrustDeviceCustomProfileState struct {
 	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	Match *string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name     *string `pulumi:"name"`
@@ -220,8 +223,10 @@ type zeroTrustDeviceCustomProfileState struct {
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence *float64 `pulumi:"precedence"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
-	RegisterInterfaceIpWithDns *bool                                      `pulumi:"registerInterfaceIpWithDns"`
-	ServiceModeV2              *ZeroTrustDeviceCustomProfileServiceModeV2 `pulumi:"serviceModeV2"`
+	RegisterInterfaceIpWithDns *bool `pulumi:"registerInterfaceIpWithDns"`
+	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+	SccmVpnBoundarySupport *bool                                      `pulumi:"sccmVpnBoundarySupport"`
+	ServiceModeV2          *ZeroTrustDeviceCustomProfileServiceModeV2 `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -263,7 +268,7 @@ type ZeroTrustDeviceCustomProfileState struct {
 	LanAllowMinutes pulumi.Float64PtrInput
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	Match pulumi.StringPtrInput
 	// The name of the device settings profile.
 	Name     pulumi.StringPtrInput
@@ -272,7 +277,9 @@ type ZeroTrustDeviceCustomProfileState struct {
 	Precedence pulumi.Float64PtrInput
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
-	ServiceModeV2              ZeroTrustDeviceCustomProfileServiceModeV2PtrInput
+	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+	SccmVpnBoundarySupport pulumi.BoolPtrInput
+	ServiceModeV2          ZeroTrustDeviceCustomProfileServiceModeV2PtrInput
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl pulumi.StringPtrInput
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -314,15 +321,17 @@ type zeroTrustDeviceCustomProfileArgs struct {
 	LanAllowMinutes *float64 `pulumi:"lanAllowMinutes"`
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize *float64 `pulumi:"lanAllowSubnetSize"`
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	Match string `pulumi:"match"`
 	// The name of the device settings profile.
 	Name string `pulumi:"name"`
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence float64 `pulumi:"precedence"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
-	RegisterInterfaceIpWithDns *bool                                      `pulumi:"registerInterfaceIpWithDns"`
-	ServiceModeV2              *ZeroTrustDeviceCustomProfileServiceModeV2 `pulumi:"serviceModeV2"`
+	RegisterInterfaceIpWithDns *bool `pulumi:"registerInterfaceIpWithDns"`
+	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+	SccmVpnBoundarySupport *bool                                      `pulumi:"sccmVpnBoundarySupport"`
+	ServiceModeV2          *ZeroTrustDeviceCustomProfileServiceModeV2 `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl *string `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -360,7 +369,7 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	LanAllowMinutes pulumi.Float64PtrInput
 	// The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
 	LanAllowSubnetSize pulumi.Float64PtrInput
-	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+	// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 	Match pulumi.StringInput
 	// The name of the device settings profile.
 	Name pulumi.StringInput
@@ -368,7 +377,9 @@ type ZeroTrustDeviceCustomProfileArgs struct {
 	Precedence pulumi.Float64Input
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 	RegisterInterfaceIpWithDns pulumi.BoolPtrInput
-	ServiceModeV2              ZeroTrustDeviceCustomProfileServiceModeV2PtrInput
+	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+	SccmVpnBoundarySupport pulumi.BoolPtrInput
+	ServiceModeV2          ZeroTrustDeviceCustomProfileServiceModeV2PtrInput
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl pulumi.StringPtrInput
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -552,7 +563,7 @@ func (o ZeroTrustDeviceCustomProfileOutput) LanAllowSubnetSize() pulumi.Float64P
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64PtrOutput { return v.LanAllowSubnetSize }).(pulumi.Float64PtrOutput)
 }
 
-// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
 func (o ZeroTrustDeviceCustomProfileOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.Match }).(pulumi.StringOutput)
 }
@@ -574,6 +585,11 @@ func (o ZeroTrustDeviceCustomProfileOutput) Precedence() pulumi.Float64Output {
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 func (o ZeroTrustDeviceCustomProfileOutput) RegisterInterfaceIpWithDns() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolPtrOutput)
+}
+
+// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+func (o ZeroTrustDeviceCustomProfileOutput) SccmVpnBoundarySupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.SccmVpnBoundarySupport }).(pulumi.BoolPtrOutput)
 }
 
 func (o ZeroTrustDeviceCustomProfileOutput) ServiceModeV2() ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput {

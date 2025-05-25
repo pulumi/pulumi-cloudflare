@@ -50,7 +50,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[builtins.str] name: A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[builtins.int] new_users_per_minute: Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
         :param pulumi.Input[builtins.int] total_active_users: Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]] additional_routes: Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms.
         :param pulumi.Input['WaitingRoomCookieAttributesArgs'] cookie_attributes: Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position.
         :param pulumi.Input[builtins.str] cookie_suffix: Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(_*cf*waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`.
@@ -88,7 +88,7 @@ class WaitingRoomArgs:
                attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
                `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
                `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-               website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+               website. When the `queueingMethod` is `reject`, there is no specified refresh time —\\_it will always be **zero**. 12.
                `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
                **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
                (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -108,9 +108,12 @@ class WaitingRoomArgs:
                `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
                `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
                Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-               the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H
-               "Accept: application/json" If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON
-               response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+               the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+               Turnstile widget. Please add the `{{{turnstile}}}` tag to the `custom_html` template to ensure the Turnstile widget
+               appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+               cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H "Accept: application/json" If
+               `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when
+               `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
                "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
                "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
                "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
@@ -123,7 +126,7 @@ class WaitingRoomArgs:
                false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
                "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
                "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-               "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+               "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
         :param pulumi.Input[builtins.str] path: Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well.
                If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen.
                Wildcards and query parameters are not supported.
@@ -252,7 +255,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -389,7 +392,7 @@ class WaitingRoomArgs:
         attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
         `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
         `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-        website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+        website. When the `queueingMethod` is `reject`, there is no specified refresh time —\\_it will always be **zero**. 12.
         `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
         **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
         (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -409,9 +412,12 @@ class WaitingRoomArgs:
         `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
         `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
         Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-        the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H
-        "Accept: application/json" If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON
-        response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+        the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+        Turnstile widget. Please add the `{{{turnstile}}}` tag to the `custom_html` template to ensure the Turnstile widget
+        appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+        cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H "Accept: application/json" If
+        `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when
+        `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
         "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
         "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
         "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
@@ -424,7 +430,7 @@ class WaitingRoomArgs:
         false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
         "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
         "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-        "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+        "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
         """
         return pulumi.get(self, "json_response_enabled")
 
@@ -625,7 +631,7 @@ class _WaitingRoomState:
                attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
                `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
                `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-               website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+               website. When the `queueingMethod` is `reject`, there is no specified refresh time —\\_it will always be **zero**. 12.
                `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
                **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
                (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -645,9 +651,12 @@ class _WaitingRoomState:
                `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
                `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
                Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-               the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H
-               "Accept: application/json" If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON
-               response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+               the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+               Turnstile widget. Please add the `{{{turnstile}}}` tag to the `custom_html` template to ensure the Turnstile widget
+               appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+               cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H "Accept: application/json" If
+               `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when
+               `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
                "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
                "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
                "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
@@ -660,7 +669,7 @@ class _WaitingRoomState:
                false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
                "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
                "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-               "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+               "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
         :param pulumi.Input[builtins.str] name: A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[builtins.int] new_users_per_minute: Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
         :param pulumi.Input[builtins.str] next_event_prequeue_start_time: An ISO 8601 timestamp that marks when the next event will begin queueing.
@@ -701,7 +710,7 @@ class _WaitingRoomState:
                widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
                `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
                "visible_managed".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if additional_routes is not None:
             pulumi.set(__self__, "additional_routes", additional_routes)
@@ -906,7 +915,7 @@ class _WaitingRoomState:
         attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
         `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
         `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-        website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+        website. When the `queueingMethod` is `reject`, there is no specified refresh time —\\_it will always be **zero**. 12.
         `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
         **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
         (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -926,9 +935,12 @@ class _WaitingRoomState:
         `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
         `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
         Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-        the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H
-        "Accept: application/json" If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON
-        response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+        the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+        Turnstile widget. Please add the `{{{turnstile}}}` tag to the `custom_html` template to ensure the Turnstile widget
+        appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+        cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H "Accept: application/json" If
+        `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when
+        `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
         "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
         "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
         "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
@@ -941,7 +953,7 @@ class _WaitingRoomState:
         false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
         "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
         "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-        "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+        "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
         """
         return pulumi.get(self, "json_response_enabled")
 
@@ -1145,7 +1157,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1267,7 +1279,7 @@ class WaitingRoom(pulumi.CustomResource):
                attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
                `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
                `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-               website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+               website. When the `queueingMethod` is `reject`, there is no specified refresh time —\\_it will always be **zero**. 12.
                `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
                **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
                (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -1287,9 +1299,12 @@ class WaitingRoom(pulumi.CustomResource):
                `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
                `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
                Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-               the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H
-               "Accept: application/json" If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON
-               response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+               the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+               Turnstile widget. Please add the `{{{turnstile}}}` tag to the `custom_html` template to ensure the Turnstile widget
+               appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+               cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H "Accept: application/json" If
+               `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when
+               `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
                "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
                "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
                "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
@@ -1302,7 +1317,7 @@ class WaitingRoom(pulumi.CustomResource):
                false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
                "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
                "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-               "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+               "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
         :param pulumi.Input[builtins.str] name: A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[builtins.int] new_users_per_minute: Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
         :param pulumi.Input[builtins.str] path: Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well.
@@ -1341,7 +1356,7 @@ class WaitingRoom(pulumi.CustomResource):
                widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
                `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
                "visible_managed".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -1556,7 +1571,7 @@ class WaitingRoom(pulumi.CustomResource):
                attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
                `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
                `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-               website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+               website. When the `queueingMethod` is `reject`, there is no specified refresh time —\\_it will always be **zero**. 12.
                `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
                **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
                (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -1576,9 +1591,12 @@ class WaitingRoom(pulumi.CustomResource):
                `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
                `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
                Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-               the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H
-               "Accept: application/json" If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON
-               response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+               the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+               Turnstile widget. Please add the `{{{turnstile}}}` tag to the `custom_html` template to ensure the Turnstile widget
+               appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+               cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H "Accept: application/json" If
+               `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when
+               `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
                "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
                "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
                "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
@@ -1591,7 +1609,7 @@ class WaitingRoom(pulumi.CustomResource):
                false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
                "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
                "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-               "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+               "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
         :param pulumi.Input[builtins.str] name: A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
         :param pulumi.Input[builtins.int] new_users_per_minute: Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world.
         :param pulumi.Input[builtins.str] next_event_prequeue_start_time: An ISO 8601 timestamp that marks when the next event will begin queueing.
@@ -1632,7 +1650,7 @@ class WaitingRoom(pulumi.CustomResource):
                widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or
                `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visible_non_interactive",
                "visible_managed".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1776,7 +1794,7 @@ class WaitingRoom(pulumi.CustomResource):
         attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
         `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
         `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-        website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+        website. When the `queueingMethod` is `reject`, there is no specified refresh time —\\_it will always be **zero**. 12.
         `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
         **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
         (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -1796,9 +1814,12 @@ class WaitingRoom(pulumi.CustomResource):
         `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
         `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
         Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-        the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H
-        "Accept: application/json" If `json_response_enabled` is **true** and the request hits the waiting room, an example JSON
-        response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
+        the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+        Turnstile widget. Please add the `{{{turnstile}}}` tag to the `custom_html` template to ensure the Turnstile widget
+        appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+        cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \\ -H "Accept: application/json" If
+        `json_response_enabled` is **true** and the request hits the waiting room, an example JSON response when
+        `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
         "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
         "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
         "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
@@ -1811,7 +1832,7 @@ class WaitingRoom(pulumi.CustomResource):
         false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
         "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
         "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-        "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+        "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
         """
         return pulumi.get(self, "json_response_enabled")
 
@@ -1955,7 +1976,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

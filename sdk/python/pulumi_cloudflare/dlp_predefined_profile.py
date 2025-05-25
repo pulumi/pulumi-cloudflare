@@ -148,7 +148,7 @@ class _DlpPredefinedProfileState:
         :param pulumi.Input[builtins.str] description: The description of the profile.
         :param pulumi.Input[builtins.str] name: The name of the profile.
         :param pulumi.Input[builtins.bool] open_access: Whether this profile can be accessed by anyone.
-        :param pulumi.Input[builtins.str] type: Available values: "custom".
+        :param pulumi.Input[builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[builtins.str] updated_at: When the profile was lasted updated.
         """
         if account_id is not None:
@@ -307,7 +307,7 @@ class _DlpPredefinedProfileState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Available values: "custom".
+        Available values: "custom", "predefined", "integration".
         """
         return pulumi.get(self, "type")
 
@@ -513,7 +513,7 @@ class DlpPredefinedProfile(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: The description of the profile.
         :param pulumi.Input[builtins.str] name: The name of the profile.
         :param pulumi.Input[builtins.bool] open_access: Whether this profile can be accessed by anyone.
-        :param pulumi.Input[builtins.str] type: Available values: "custom".
+        :param pulumi.Input[builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[builtins.str] updated_at: When the profile was lasted updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -615,7 +615,7 @@ class DlpPredefinedProfile(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[builtins.str]:
         """
-        Available values: "custom".
+        Available values: "custom", "predefined", "integration".
         """
         return pulumi.get(self, "type")
 

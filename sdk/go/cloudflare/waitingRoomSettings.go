@@ -51,7 +51,7 @@ type WaitingRoomSettings struct {
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass pulumi.BoolOutput `pulumi:"searchEngineCrawlerBypass"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -92,7 +92,7 @@ type waitingRoomSettingsState struct {
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass *bool `pulumi:"searchEngineCrawlerBypass"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -101,7 +101,7 @@ type WaitingRoomSettingsState struct {
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -114,7 +114,7 @@ type waitingRoomSettingsArgs struct {
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass *bool `pulumi:"searchEngineCrawlerBypass"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -124,7 +124,7 @@ type WaitingRoomSettingsArgs struct {
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass pulumi.BoolPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -222,7 +222,7 @@ func (o WaitingRoomSettingsOutput) SearchEngineCrawlerBypass() pulumi.BoolOutput
 	return o.ApplyT(func(v *WaitingRoomSettings) pulumi.BoolOutput { return v.SearchEngineCrawlerBypass }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WaitingRoomSettingsOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomSettings) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -78,7 +78,7 @@ export class DlpCustomProfile extends pulumi.CustomResource {
      */
     public readonly sharedEntries!: pulumi.Output<outputs.DlpCustomProfileSharedEntry[] | undefined>;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration".
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -181,7 +181,7 @@ export interface DlpCustomProfileState {
      */
     sharedEntries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileSharedEntry>[]>;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration".
      */
     type?: pulumi.Input<string>;
     /**

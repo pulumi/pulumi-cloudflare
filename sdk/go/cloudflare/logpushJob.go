@@ -33,6 +33,8 @@ type LogpushJob struct {
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage pulumi.StringOutput `pulumi:"errorMessage"`
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -40,7 +42,7 @@ type LogpushJob struct {
 	Frequency pulumi.StringOutput `pulumi:"frequency"`
 	// The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
 	// Available values: "edge".
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
 	LastComplete pulumi.StringOutput `pulumi:"lastComplete"`
 	// Records the last time the job failed. If not null, the job is currently failing. If null, the job has either never failed or has run successfully at least once since last failure. See also the errorMessage field.
@@ -116,6 +118,8 @@ type logpushJobState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage *string `pulumi:"errorMessage"`
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter *string `pulumi:"filter"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -160,6 +164,8 @@ type LogpushJobState struct {
 	Enabled pulumi.BoolPtrInput
 	// If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
 	ErrorMessage pulumi.StringPtrInput
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter pulumi.StringPtrInput
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -206,6 +212,8 @@ type logpushJobArgs struct {
 	DestinationConf string `pulumi:"destinationConf"`
 	// Flag that indicates if the job is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter *string `pulumi:"filter"`
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -245,6 +253,8 @@ type LogpushJobArgs struct {
 	DestinationConf pulumi.StringInput
 	// Flag that indicates if the job is enabled.
 	Enabled pulumi.BoolPtrInput
+	// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+	Filter pulumi.StringPtrInput
 	// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 	// Available values: "high", "low".
 	//
@@ -386,6 +396,11 @@ func (o LogpushJobOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
+// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+func (o LogpushJobOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
 // This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
 // Available values: "high", "low".
 //
@@ -396,8 +411,8 @@ func (o LogpushJobOutput) Frequency() pulumi.StringOutput {
 
 // The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
 // Available values: "edge".
-func (o LogpushJobOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+func (o LogpushJobOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.

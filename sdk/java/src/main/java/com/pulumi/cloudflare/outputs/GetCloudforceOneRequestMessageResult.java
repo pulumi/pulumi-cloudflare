@@ -9,102 +9,178 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCloudforceOneRequestMessageResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    private String accountIdentifier;
+    private String accountId;
     /**
-     * @return Author of message
+     * @return Retrieve mes  ges created after this time.
+     * 
+     */
+    private @Nullable String after;
+    /**
+     * @return Author of message.
      * 
      */
     private String author;
     /**
-     * @return Content of message
+     * @return Retrieve messages created before this time.
+     * 
+     */
+    private @Nullable String before;
+    /**
+     * @return Content of message.
      * 
      */
     private String content;
     /**
-     * @return Message creation time
+     * @return Defines the message creation time.
      * 
      */
     private String created;
     /**
-     * @return Message ID
+     * @return Message ID.
      * 
      */
     private Integer id;
     /**
-     * @return Whether the message is a follow-on request
+     * @return Whether the message is a follow-on request.
      * 
      */
     private Boolean isFollowOnRequest;
     /**
-     * @return UUID
+     * @return Page number of results.
      * 
      */
-    private String requestIdentifier;
+    private Integer page;
     /**
-     * @return Message last updated time
+     * @return Number of results per page.
+     * 
+     */
+    private Integer perPage;
+    /**
+     * @return UUID.
+     * 
+     */
+    private String requestId;
+    /**
+     * @return Field to sort results by.
+     * 
+     */
+    private @Nullable String sortBy;
+    /**
+     * @return Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private @Nullable String sortOrder;
+    /**
+     * @return Defines the message last updated time.
      * 
      */
     private String updated;
 
     private GetCloudforceOneRequestMessageResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
     }
     /**
-     * @return Author of message
+     * @return Retrieve mes  ges created after this time.
+     * 
+     */
+    public Optional<String> after() {
+        return Optional.ofNullable(this.after);
+    }
+    /**
+     * @return Author of message.
      * 
      */
     public String author() {
         return this.author;
     }
     /**
-     * @return Content of message
+     * @return Retrieve messages created before this time.
+     * 
+     */
+    public Optional<String> before() {
+        return Optional.ofNullable(this.before);
+    }
+    /**
+     * @return Content of message.
      * 
      */
     public String content() {
         return this.content;
     }
     /**
-     * @return Message creation time
+     * @return Defines the message creation time.
      * 
      */
     public String created() {
         return this.created;
     }
     /**
-     * @return Message ID
+     * @return Message ID.
      * 
      */
     public Integer id() {
         return this.id;
     }
     /**
-     * @return Whether the message is a follow-on request
+     * @return Whether the message is a follow-on request.
      * 
      */
     public Boolean isFollowOnRequest() {
         return this.isFollowOnRequest;
     }
     /**
-     * @return UUID
+     * @return Page number of results.
      * 
      */
-    public String requestIdentifier() {
-        return this.requestIdentifier;
+    public Integer page() {
+        return this.page;
     }
     /**
-     * @return Message last updated time
+     * @return Number of results per page.
+     * 
+     */
+    public Integer perPage() {
+        return this.perPage;
+    }
+    /**
+     * @return UUID.
+     * 
+     */
+    public String requestId() {
+        return this.requestId;
+    }
+    /**
+     * @return Field to sort results by.
+     * 
+     */
+    public Optional<String> sortBy() {
+        return Optional.ofNullable(this.sortBy);
+    }
+    /**
+     * @return Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> sortOrder() {
+        return Optional.ofNullable(this.sortOrder);
+    }
+    /**
+     * @return Defines the message last updated time.
      * 
      */
     public String updated() {
@@ -120,33 +196,51 @@ public final class GetCloudforceOneRequestMessageResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountIdentifier;
+        private String accountId;
+        private @Nullable String after;
         private String author;
+        private @Nullable String before;
         private String content;
         private String created;
         private Integer id;
         private Boolean isFollowOnRequest;
-        private String requestIdentifier;
+        private Integer page;
+        private Integer perPage;
+        private String requestId;
+        private @Nullable String sortBy;
+        private @Nullable String sortOrder;
         private String updated;
         public Builder() {}
         public Builder(GetCloudforceOneRequestMessageResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accountIdentifier = defaults.accountIdentifier;
+    	      this.accountId = defaults.accountId;
+    	      this.after = defaults.after;
     	      this.author = defaults.author;
+    	      this.before = defaults.before;
     	      this.content = defaults.content;
     	      this.created = defaults.created;
     	      this.id = defaults.id;
     	      this.isFollowOnRequest = defaults.isFollowOnRequest;
-    	      this.requestIdentifier = defaults.requestIdentifier;
+    	      this.page = defaults.page;
+    	      this.perPage = defaults.perPage;
+    	      this.requestId = defaults.requestId;
+    	      this.sortBy = defaults.sortBy;
+    	      this.sortOrder = defaults.sortOrder;
     	      this.updated = defaults.updated;
         }
 
         @CustomType.Setter
-        public Builder accountIdentifier(String accountIdentifier) {
-            if (accountIdentifier == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "accountIdentifier");
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "accountId");
             }
-            this.accountIdentifier = accountIdentifier;
+            this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder after(@Nullable String after) {
+
+            this.after = after;
             return this;
         }
         @CustomType.Setter
@@ -155,6 +249,12 @@ public final class GetCloudforceOneRequestMessageResult {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "author");
             }
             this.author = author;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder before(@Nullable String before) {
+
+            this.before = before;
             return this;
         }
         @CustomType.Setter
@@ -190,11 +290,39 @@ public final class GetCloudforceOneRequestMessageResult {
             return this;
         }
         @CustomType.Setter
-        public Builder requestIdentifier(String requestIdentifier) {
-            if (requestIdentifier == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "requestIdentifier");
+        public Builder page(Integer page) {
+            if (page == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "page");
             }
-            this.requestIdentifier = requestIdentifier;
+            this.page = page;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder perPage(Integer perPage) {
+            if (perPage == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "perPage");
+            }
+            this.perPage = perPage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder requestId(String requestId) {
+            if (requestId == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageResult", "requestId");
+            }
+            this.requestId = requestId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sortBy(@Nullable String sortBy) {
+
+            this.sortBy = sortBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sortOrder(@Nullable String sortOrder) {
+
+            this.sortOrder = sortOrder;
             return this;
         }
         @CustomType.Setter
@@ -207,13 +335,19 @@ public final class GetCloudforceOneRequestMessageResult {
         }
         public GetCloudforceOneRequestMessageResult build() {
             final var _resultValue = new GetCloudforceOneRequestMessageResult();
-            _resultValue.accountIdentifier = accountIdentifier;
+            _resultValue.accountId = accountId;
+            _resultValue.after = after;
             _resultValue.author = author;
+            _resultValue.before = before;
             _resultValue.content = content;
             _resultValue.created = created;
             _resultValue.id = id;
             _resultValue.isFollowOnRequest = isFollowOnRequest;
-            _resultValue.requestIdentifier = requestIdentifier;
+            _resultValue.page = page;
+            _resultValue.perPage = perPage;
+            _resultValue.requestId = requestId;
+            _resultValue.sortBy = sortBy;
+            _resultValue.sortOrder = sortOrder;
             _resultValue.updated = updated;
             return _resultValue;
         }

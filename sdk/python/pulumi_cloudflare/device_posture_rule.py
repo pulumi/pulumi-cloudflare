@@ -34,7 +34,7 @@ class DevicePostureRuleArgs:
         The set of arguments for constructing a DevicePostureRule resource.
         :param pulumi.Input[builtins.str] name: The name of the device posture rule.
         :param pulumi.Input[builtins.str] type: The type of device posture rule.
-               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
+               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         :param pulumi.Input[builtins.str] description: The description of the device posture rule.
         :param pulumi.Input[builtins.str] expiration: Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
         :param pulumi.Input['DevicePostureRuleInputArgs'] input: The value to be checked against.
@@ -81,7 +81,7 @@ class DevicePostureRuleArgs:
     def type(self) -> pulumi.Input[builtins.str]:
         """
         The type of device posture rule.
-        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
+        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         """
         return pulumi.get(self, "type")
 
@@ -170,7 +170,7 @@ class _DevicePostureRuleState:
         :param pulumi.Input[builtins.str] name: The name of the device posture rule.
         :param pulumi.Input[builtins.str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         :param pulumi.Input[builtins.str] type: The type of device posture rule.
-               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
+               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -275,7 +275,7 @@ class _DevicePostureRuleState:
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The type of device posture rule.
-        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
+        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         """
         return pulumi.get(self, "type")
 
@@ -322,7 +322,7 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the device posture rule.
         :param pulumi.Input[builtins.str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         :param pulumi.Input[builtins.str] type: The type of device posture rule.
-               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
+               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         """
         ...
     @overload
@@ -420,7 +420,7 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The name of the device posture rule.
         :param pulumi.Input[builtins.str] schedule: Polling frequency for the WARP client posture check. Default: `5m` (poll every five minutes). Minimum: `1m`.
         :param pulumi.Input[builtins.str] type: The type of device posture rule.
-               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
+               Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -494,7 +494,7 @@ class DevicePostureRule(pulumi.CustomResource):
     def type(self) -> pulumi.Output[builtins.str]:
         """
         The type of device posture rule.
-        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom_s2s".
+        Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
         """
         return pulumi.get(self, "type")
 

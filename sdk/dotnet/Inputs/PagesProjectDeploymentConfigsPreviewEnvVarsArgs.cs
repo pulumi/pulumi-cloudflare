@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class PagesProjectDeploymentConfigsPreviewEnvVarsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Available values: "plain_text".
+        /// Available values: "plain*text", "secret*text".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

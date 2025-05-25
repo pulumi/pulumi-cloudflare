@@ -13,12 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class WorkerCronTriggerSchedule
     {
+        public readonly string? CreatedOn;
         public readonly string Cron;
+        public readonly string? ModifiedOn;
 
         [OutputConstructor]
-        private WorkerCronTriggerSchedule(string cron)
+        private WorkerCronTriggerSchedule(
+            string? createdOn,
+
+            string cron,
+
+            string? modifiedOn)
         {
+            CreatedOn = createdOn;
             Cron = cron;
+            ModifiedOn = modifiedOn;
         }
     }
 }

@@ -12,16 +12,16 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequestPriority = cloudflare.getCloudforceOneRequestPriority({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     priorityIdentifer: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     priorityId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
 export function getCloudforceOneRequestPriority(args: GetCloudforceOneRequestPriorityArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestPriorityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority", {
-        "accountIdentifier": args.accountIdentifier,
-        "priorityIdentifer": args.priorityIdentifer,
+        "accountId": args.accountId,
+        "priorityId": args.priorityId,
     }, opts);
 }
 
@@ -30,13 +30,13 @@ export function getCloudforceOneRequestPriority(args: GetCloudforceOneRequestPri
  */
 export interface GetCloudforceOneRequestPriorityArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: string;
+    accountId: string;
     /**
-     * UUID
+     * UUID.
      */
-    priorityIdentifer: string;
+    priorityId: string;
 }
 
 /**
@@ -44,52 +44,52 @@ export interface GetCloudforceOneRequestPriorityArgs {
  */
 export interface GetCloudforceOneRequestPriorityResult {
     /**
-     * Identifier
+     * Identifier.
      */
-    readonly accountIdentifier: string;
+    readonly accountId: string;
     readonly completed: string;
     /**
-     * Request content
+     * Request content.
      */
     readonly content: string;
     readonly created: string;
     /**
-     * UUID
+     * UUID.
      */
     readonly id: string;
     /**
-     * Tokens for the request messages
+     * Tokens for the request messages.
      */
     readonly messageTokens: number;
     readonly priority: string;
     /**
-     * UUID
+     * UUID.
      */
-    readonly priorityIdentifer: string;
+    readonly priorityId: string;
     /**
-     * Readable Request ID
+     * Readable Request ID.
      */
     readonly readableId: string;
     /**
-     * Requested information from request
+     * Requested information from request.
      */
     readonly request: string;
     /**
-     * Request Status
+     * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     readonly status: string;
     /**
-     * Brief description of the request
+     * Brief description of the request.
      */
     readonly summary: string;
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     readonly tlp: string;
     /**
-     * Tokens for the request
+     * Tokens for the request.
      */
     readonly tokens: number;
     readonly updated: string;
@@ -102,16 +102,16 @@ export interface GetCloudforceOneRequestPriorityResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequestPriority = cloudflare.getCloudforceOneRequestPriority({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     priorityIdentifer: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     priorityId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
 export function getCloudforceOneRequestPriorityOutput(args: GetCloudforceOneRequestPriorityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestPriorityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority", {
-        "accountIdentifier": args.accountIdentifier,
-        "priorityIdentifer": args.priorityIdentifer,
+        "accountId": args.accountId,
+        "priorityId": args.priorityId,
     }, opts);
 }
 
@@ -120,11 +120,11 @@ export function getCloudforceOneRequestPriorityOutput(args: GetCloudforceOneRequ
  */
 export interface GetCloudforceOneRequestPriorityOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
-    priorityIdentifer: pulumi.Input<string>;
+    priorityId: pulumi.Input<string>;
 }

@@ -28,7 +28,7 @@ export function getWaitingRoomSettings(args: GetWaitingRoomSettingsArgs, opts?: 
  */
 export interface GetWaitingRoomSettingsArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -48,7 +48,7 @@ export interface GetWaitingRoomSettingsResult {
      */
     readonly searchEngineCrawlerBypass: boolean;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -76,7 +76,7 @@ export function getWaitingRoomSettingsOutput(args: GetWaitingRoomSettingsOutputA
  */
 export interface GetWaitingRoomSettingsOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

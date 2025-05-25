@@ -162,14 +162,14 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Available values: &#34;custom&#34;.
+     * Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;custom&#34;.
+     * @return Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -437,7 +437,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Available values: &#34;custom&#34;.
+         * @param type Available values: &#34;custom&#34;, &#34;predefined&#34;, &#34;integration&#34;.
          * 
          * @return builder
          * 

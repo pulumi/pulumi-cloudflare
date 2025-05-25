@@ -32,11 +32,11 @@ export function getHyperdriveConfig(args: GetHyperdriveConfigArgs, opts?: pulumi
  */
 export interface GetHyperdriveConfigArgs {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     accountId: string;
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     hyperdriveId?: string;
 }
@@ -46,24 +46,24 @@ export interface GetHyperdriveConfigArgs {
  */
 export interface GetHyperdriveConfigResult {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     readonly accountId: string;
     readonly caching: outputs.GetHyperdriveConfigCaching;
     /**
-     * When the Hyperdrive configuration was created.
+     * Defines the creation time of the Hyperdrive configuration.
      */
     readonly createdOn: string;
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     readonly hyperdriveId?: string;
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     readonly id: string;
     /**
-     * When the Hyperdrive configuration was last modified.
+     * Defines the last modified time of the Hyperdrive configuration.
      */
     readonly modifiedOn: string;
     readonly mtls: outputs.GetHyperdriveConfigMtls;
@@ -96,11 +96,11 @@ export function getHyperdriveConfigOutput(args: GetHyperdriveConfigOutputArgs, o
  */
 export interface GetHyperdriveConfigOutputArgs {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     accountId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     hyperdriveId?: pulumi.Input<string>;
 }

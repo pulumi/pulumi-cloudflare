@@ -26,6 +26,7 @@ class LogpushJobArgs:
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  dataset: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filter: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  logpull_options: Optional[pulumi.Input[builtins.str]] = None,
@@ -43,6 +44,7 @@ class LogpushJobArgs:
         :param pulumi.Input[builtins.str] dataset: Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/).
                Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
+        :param pulumi.Input[builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param pulumi.Input[builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
@@ -63,6 +65,8 @@ class LogpushJobArgs:
             pulumi.set(__self__, "dataset", dataset)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if frequency is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""frequency is deprecated: This attribute is deprecated.""")
@@ -138,6 +142,18 @@ class LogpushJobArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -272,6 +288,7 @@ class _LogpushJobState:
                  destination_conf: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  error_message: Optional[pulumi.Input[builtins.str]] = None,
+                 filter: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  last_complete: Optional[pulumi.Input[builtins.str]] = None,
@@ -292,6 +309,7 @@ class _LogpushJobState:
         :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[builtins.str] error_message: If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+        :param pulumi.Input[builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param pulumi.Input[builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
@@ -317,6 +335,8 @@ class _LogpushJobState:
             pulumi.set(__self__, "enabled", enabled)
         if error_message is not None:
             pulumi.set(__self__, "error_message", error_message)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if frequency is not None:
             warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
             pulumi.log.warn("""frequency is deprecated: This attribute is deprecated.""")
@@ -408,6 +428,18 @@ class _LogpushJobState:
     @error_message.setter
     def error_message(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "error_message", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -568,6 +600,7 @@ class LogpushJob(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[builtins.str]] = None,
                  destination_conf: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filter: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  logpull_options: Optional[pulumi.Input[builtins.str]] = None,
@@ -595,6 +628,7 @@ class LogpushJob(pulumi.CustomResource):
                Available values: "access*requests", "audit*logs", "biso*user*actions", "casb*findings", "device*posture*results", "dlp*forensic*copies", "dns*firewall*logs", "dns*logs", "email*security*alerts", "firewall*events", "gateway*dns", "gateway*http", "gateway*network", "http*requests", "magic*ids*detections", "nel*reports", "network*analytics*logs", "page*shield*events", "sinkhole*http*logs", "spectrum*events", "ssh*logs", "workers*trace*events", "zaraz*events", "zero*trust*network*sessions".
         :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
+        :param pulumi.Input[builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param pulumi.Input[builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
@@ -642,6 +676,7 @@ class LogpushJob(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[builtins.str]] = None,
                  destination_conf: Optional[pulumi.Input[builtins.str]] = None,
                  enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 filter: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  kind: Optional[pulumi.Input[builtins.str]] = None,
                  logpull_options: Optional[pulumi.Input[builtins.str]] = None,
@@ -667,6 +702,7 @@ class LogpushJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'destination_conf'")
             __props__.__dict__["destination_conf"] = destination_conf
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["filter"] = filter
             __props__.__dict__["frequency"] = frequency
             __props__.__dict__["kind"] = kind
             __props__.__dict__["logpull_options"] = logpull_options
@@ -697,6 +733,7 @@ class LogpushJob(pulumi.CustomResource):
             destination_conf: Optional[pulumi.Input[builtins.str]] = None,
             enabled: Optional[pulumi.Input[builtins.bool]] = None,
             error_message: Optional[pulumi.Input[builtins.str]] = None,
+            filter: Optional[pulumi.Input[builtins.str]] = None,
             frequency: Optional[pulumi.Input[builtins.str]] = None,
             kind: Optional[pulumi.Input[builtins.str]] = None,
             last_complete: Optional[pulumi.Input[builtins.str]] = None,
@@ -722,6 +759,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included.
         :param pulumi.Input[builtins.bool] enabled: Flag that indicates if the job is enabled.
         :param pulumi.Input[builtins.str] error_message: If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
+        :param pulumi.Input[builtins.str] filter: The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
         :param pulumi.Input[builtins.str] frequency: This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
                Available values: "high", "low".
         :param pulumi.Input[builtins.str] kind: The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
@@ -746,6 +784,7 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["destination_conf"] = destination_conf
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["error_message"] = error_message
+        __props__.__dict__["filter"] = filter
         __props__.__dict__["frequency"] = frequency
         __props__.__dict__["kind"] = kind
         __props__.__dict__["last_complete"] = last_complete
@@ -803,6 +842,14 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def filter(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated.""")
     def frequency(self) -> pulumi.Output[builtins.str]:
         """
@@ -813,7 +860,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def kind(self) -> pulumi.Output[Optional[builtins.str]]:
+    def kind(self) -> pulumi.Output[builtins.str]:
         """
         The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `http_requests` dataset.
         Available values: "edge".

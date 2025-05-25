@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetHyperdriveConfigMtls {
     /**
-     * @return CA certificate ID
+     * @return Define CA certificate ID obtained after uploading CA cert.
      * 
      */
     private String caCertificateId;
     /**
-     * @return mTLS certificate ID
+     * @return Define mTLS certificate ID obtained after uploading client cert.
      * 
      */
     private String mtlsCertificateId;
     /**
-     * @return SSL mode used for CA verification. Must be &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39;
+     * @return Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
      * 
      */
     private String sslmode;
 
     private GetHyperdriveConfigMtls() {}
     /**
-     * @return CA certificate ID
+     * @return Define CA certificate ID obtained after uploading CA cert.
      * 
      */
     public String caCertificateId() {
         return this.caCertificateId;
     }
     /**
-     * @return mTLS certificate ID
+     * @return Define mTLS certificate ID obtained after uploading client cert.
      * 
      */
     public String mtlsCertificateId() {
         return this.mtlsCertificateId;
     }
     /**
-     * @return SSL mode used for CA verification. Must be &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39;
+     * @return Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
      * 
      */
     public String sslmode() {

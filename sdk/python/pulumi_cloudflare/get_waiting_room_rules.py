@@ -119,7 +119,7 @@ class GetWaitingRoomRulesResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -156,7 +156,7 @@ def get_waiting_room_rules(waiting_room_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['waitingRoomId'] = waiting_room_id
@@ -189,7 +189,7 @@ def get_waiting_room_rules_output(waiting_room_id: Optional[pulumi.Input[builtin
     ```
 
 
-    :param builtins.str zone_id: Identifier
+    :param builtins.str zone_id: Identifier.
     """
     __args__ = dict()
     __args__['waitingRoomId'] = waiting_room_id

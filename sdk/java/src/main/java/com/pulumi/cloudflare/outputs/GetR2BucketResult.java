@@ -31,6 +31,12 @@ public final class GetR2BucketResult {
      */
     private String id;
     /**
+     * @return Jurisdiction where objects in this bucket are guaranteed to be stored.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    private String jurisdiction;
+    /**
      * @return Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
@@ -78,6 +84,14 @@ public final class GetR2BucketResult {
         return this.id;
     }
     /**
+     * @return Jurisdiction where objects in this bucket are guaranteed to be stored.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
+     * 
+     */
+    public String jurisdiction() {
+        return this.jurisdiction;
+    }
+    /**
      * @return Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
@@ -114,6 +128,7 @@ public final class GetR2BucketResult {
         private String bucketName;
         private String creationDate;
         private String id;
+        private String jurisdiction;
         private String location;
         private String name;
         private String storageClass;
@@ -124,6 +139,7 @@ public final class GetR2BucketResult {
     	      this.bucketName = defaults.bucketName;
     	      this.creationDate = defaults.creationDate;
     	      this.id = defaults.id;
+    	      this.jurisdiction = defaults.jurisdiction;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.storageClass = defaults.storageClass;
@@ -162,6 +178,14 @@ public final class GetR2BucketResult {
             return this;
         }
         @CustomType.Setter
+        public Builder jurisdiction(String jurisdiction) {
+            if (jurisdiction == null) {
+              throw new MissingRequiredPropertyException("GetR2BucketResult", "jurisdiction");
+            }
+            this.jurisdiction = jurisdiction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder location(String location) {
             if (location == null) {
               throw new MissingRequiredPropertyException("GetR2BucketResult", "location");
@@ -191,6 +215,7 @@ public final class GetR2BucketResult {
             _resultValue.bucketName = bucketName;
             _resultValue.creationDate = creationDate;
             _resultValue.id = id;
+            _resultValue.jurisdiction = jurisdiction;
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.storageClass = storageClass;

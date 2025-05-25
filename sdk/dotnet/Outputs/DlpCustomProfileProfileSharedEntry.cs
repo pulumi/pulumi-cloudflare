@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool Enabled;
         public readonly string EntryId;
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration", "exact_data".
         /// </summary>
         public readonly string EntryType;
 

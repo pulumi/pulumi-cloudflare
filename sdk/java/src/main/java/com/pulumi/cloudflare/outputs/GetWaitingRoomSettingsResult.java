@@ -24,7 +24,7 @@ public final class GetWaitingRoomSettingsResult {
      */
     private Boolean searchEngineCrawlerBypass;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -47,7 +47,7 @@ public final class GetWaitingRoomSettingsResult {
         return this.searchEngineCrawlerBypass;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

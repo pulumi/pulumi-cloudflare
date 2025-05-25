@@ -15,14 +15,14 @@ public final class GetWaitingRoomSettingsArgs extends com.pulumi.resources.Invok
     public static final GetWaitingRoomSettingsArgs Empty = new GetWaitingRoomSettingsArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -54,7 +54,7 @@ public final class GetWaitingRoomSettingsArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetWaitingRoomSettingsArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

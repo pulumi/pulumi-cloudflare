@@ -42,6 +42,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/cloudConnectorRules:CloudConnectorRules example '&lt;zone_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudConnectorRules:CloudConnectorRules")]
     public partial class CloudConnectorRules : global::Pulumi.CustomResource

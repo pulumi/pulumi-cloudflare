@@ -18,14 +18,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     public static final HyperdriveConfigOriginArgs Empty = new HyperdriveConfigOriginArgs();
 
     /**
-     * The Client ID of the Access token to use when connecting to the origin database.
+     * Defines the Client ID of the Access token to use when connecting to the origin database.
      * 
      */
     @Import(name="accessClientId")
     private @Nullable Output<String> accessClientId;
 
     /**
-     * @return The Client ID of the Access token to use when connecting to the origin database.
+     * @return Defines the Client ID of the Access token to use when connecting to the origin database.
      * 
      */
     public Optional<Output<String>> accessClientId() {
@@ -33,14 +33,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+     * Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
      * 
      */
     @Import(name="accessClientSecret")
     private @Nullable Output<String> accessClientSecret;
 
     /**
-     * @return The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+     * @return Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
      * 
      */
     public Optional<Output<String>> accessClientSecret() {
@@ -48,14 +48,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The name of your origin database.
+     * Set the name of your origin database.
      * 
      */
     @Import(name="database", required=true)
     private Output<String> database;
 
     /**
-     * @return The name of your origin database.
+     * @return Set the name of your origin database.
      * 
      */
     public Output<String> database() {
@@ -63,14 +63,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The host (hostname or IP) of your origin database.
+     * Defines the host (hostname or IP) of your origin database.
      * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
-     * @return The host (hostname or IP) of your origin database.
+     * @return Defines the host (hostname or IP) of your origin database.
      * 
      */
     public Output<String> host() {
@@ -78,14 +78,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The password required to access your origin database. This value is write-only and never returned by the API.
+     * Set the password needed to access your origin database. The API never returns this write-only value.
      * 
      */
     @Import(name="password", required=true)
     private Output<String> password;
 
     /**
-     * @return The password required to access your origin database. This value is write-only and never returned by the API.
+     * @return Set the password needed to access your origin database. The API never returns this write-only value.
      * 
      */
     public Output<String> password() {
@@ -93,14 +93,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The port (default: 5432 for Postgres) of your origin database.
+     * Defines the port (default: 5432 for Postgres) of your origin database.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port (default: 5432 for Postgres) of your origin database.
+     * @return Defines the port (default: 5432 for Postgres) of your origin database.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -125,14 +125,14 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The user of your origin database.
+     * Set the user of your origin database.
      * 
      */
     @Import(name="user", required=true)
     private Output<String> user;
 
     /**
-     * @return The user of your origin database.
+     * @return Set the user of your origin database.
      * 
      */
     public Output<String> user() {
@@ -171,7 +171,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accessClientId The Client ID of the Access token to use when connecting to the origin database.
+         * @param accessClientId Defines the Client ID of the Access token to use when connecting to the origin database.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accessClientId The Client ID of the Access token to use when connecting to the origin database.
+         * @param accessClientId Defines the Client ID of the Access token to use when connecting to the origin database.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accessClientSecret The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+         * @param accessClientSecret Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param accessClientSecret The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+         * @param accessClientSecret Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param database The name of your origin database.
+         * @param database Set the name of your origin database.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param database The name of your origin database.
+         * @param database Set the name of your origin database.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param host The host (hostname or IP) of your origin database.
+         * @param host Defines the host (hostname or IP) of your origin database.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param host The host (hostname or IP) of your origin database.
+         * @param host Defines the host (hostname or IP) of your origin database.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password The password required to access your origin database. This value is write-only and never returned by the API.
+         * @param password Set the password needed to access your origin database. The API never returns this write-only value.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password The password required to access your origin database. This value is write-only and never returned by the API.
+         * @param password Set the password needed to access your origin database. The API never returns this write-only value.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param port The port (default: 5432 for Postgres) of your origin database.
+         * @param port Defines the port (default: 5432 for Postgres) of your origin database.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param port The port (default: 5432 for Postgres) of your origin database.
+         * @param port Defines the port (default: 5432 for Postgres) of your origin database.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param user The user of your origin database.
+         * @param user Set the user of your origin database.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class HyperdriveConfigOriginArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param user The user of your origin database.
+         * @param user Set the user of your origin database.
          * 
          * @return builder
          * 

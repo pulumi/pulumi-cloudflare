@@ -27,7 +27,6 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int? MitigationTimeout;
         /// <summary>
         /// Period in seconds over which the counter is being incremented.
-        /// Available values: 10, 60, 600, 3600.
         /// </summary>
         public readonly int Period;
         /// <summary>
