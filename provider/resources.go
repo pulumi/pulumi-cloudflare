@@ -64,11 +64,6 @@ func Provider() info.Provider {
 	// Instantiate the Terraform provider
 	p := pfbridge.ShimProvider(provShim.PFProvider())
 
-	delegateID := func(pulumiField string) tfbridge.ComputeID {
-		return tfbridge.DelegateIDField(resource.PropertyKey(pulumiField),
-			"cloudflare", "https://github.com/pulumi/pulumi-cloudflare")
-	}
-
 	// Create a Pulumi provider mapping
 	prov := info.Provider{
 		P:                       p,
@@ -139,15 +134,15 @@ func Provider() info.Provider {
 							return r
 						}
 						s := args.PriorState
-						copy := s.Copy()
+						sCopy := s.Copy()
 						if rules, ok := s["rules"]; ok && rules.IsArray() {
 							updatedRules := []resource.PropertyValue{}
 							for _, rule := range rules.ArrayValue() {
 								updatedRules = append(updatedRules, updateRule(rule))
 							}
-							copy["rules"] = resource.NewArrayProperty(updatedRules)
+							sCopy["rules"] = resource.NewArrayProperty(updatedRules)
 						}
-						return 0, copy, nil
+						return 0, sCopy, nil
 					}
 					return 0, args.PriorState, nil
 				},
@@ -583,5 +578,29 @@ func resetMigratedResourcesSchemaVersion(prov *info.Provider) {
 			}
 			return newPreStateUpgradeHook(args)
 		}
+	}
+}
+
+func delegateID(pulumiField resource.PropertyKey) tfbridge.ComputeID {
+	repoURL := "https://github.com/pulumi/pulumi-cloudflare"
+	d := tfbridge.DelegateIDField(pulumiField, "cloudflare", repoURL)
+
+	return func(ctx context.Context, state resource.PropertyMap) (resource.ID, error) {
+		modifiedState := state
+
+		// pulumiField may be carrying a numeric value, as is the case of resources such as Logpush Job:
+		//
+		// type LogpushJobModel struct {
+		//    ID types.Int64 `tfsdk:"id" json:"id,computed"`
+		// }
+		//
+		// DelegateIDField does not support this yet, but to compensate we auto-convert these values to strings.
+		if v, ok := modifiedState[pulumiField]; ok && v.IsNumber() {
+			modifiedState = modifiedState.Copy()
+			n := v.NumberValue()
+			modifiedState[pulumiField] = resource.NewStringProperty(fmt.Sprintf("%v", n))
+		}
+
+		return d(ctx, modifiedState)
 	}
 }
