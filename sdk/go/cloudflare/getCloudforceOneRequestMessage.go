@@ -26,8 +26,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.LookupCloudforceOneRequestMessage(ctx, &cloudflare.LookupCloudforceOneRequestMessageArgs{
-//				AccountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
-//				RequestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+//				RequestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+//				Page:      0,
+//				PerPage:   10,
+//				After:     pulumi.StringRef("2022-04-01T05:20:00Z"),
+//				Before:    pulumi.StringRef("2024-01-01T00:00:00Z"),
+//				SortBy:    pulumi.StringRef("created"),
+//				SortOrder: pulumi.StringRef("asc"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -49,29 +55,55 @@ func LookupCloudforceOneRequestMessage(ctx *pulumi.Context, args *LookupCloudfor
 
 // A collection of arguments for invoking getCloudforceOneRequestMessage.
 type LookupCloudforceOneRequestMessageArgs struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// UUID
-	RequestIdentifier string `pulumi:"requestIdentifier"`
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// Retrieve mes  ges created after this time.
+	After *string `pulumi:"after"`
+	// Retrieve messages created before this time.
+	Before *string `pulumi:"before"`
+	// Page number of results.
+	Page int `pulumi:"page"`
+	// Number of results per page.
+	PerPage int `pulumi:"perPage"`
+	// UUID.
+	RequestId string `pulumi:"requestId"`
+	// Field to sort results by.
+	SortBy *string `pulumi:"sortBy"`
+	// Sort order (asc or desc).
+	// Available values: "asc", "desc".
+	SortOrder *string `pulumi:"sortOrder"`
 }
 
 // A collection of values returned by getCloudforceOneRequestMessage.
 type LookupCloudforceOneRequestMessageResult struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// Author of message
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// Retrieve mes  ges created after this time.
+	After *string `pulumi:"after"`
+	// Author of message.
 	Author string `pulumi:"author"`
-	// Content of message
+	// Retrieve messages created before this time.
+	Before *string `pulumi:"before"`
+	// Content of message.
 	Content string `pulumi:"content"`
-	// Message creation time
+	// Defines the message creation time.
 	Created string `pulumi:"created"`
-	// Message ID
+	// Message ID.
 	Id int `pulumi:"id"`
-	// Whether the message is a follow-on request
+	// Whether the message is a follow-on request.
 	IsFollowOnRequest bool `pulumi:"isFollowOnRequest"`
-	// UUID
-	RequestIdentifier string `pulumi:"requestIdentifier"`
-	// Message last updated time
+	// Page number of results.
+	Page int `pulumi:"page"`
+	// Number of results per page.
+	PerPage int `pulumi:"perPage"`
+	// UUID.
+	RequestId string `pulumi:"requestId"`
+	// Field to sort results by.
+	SortBy *string `pulumi:"sortBy"`
+	// Sort order (asc or desc).
+	// Available values: "asc", "desc".
+	SortOrder *string `pulumi:"sortOrder"`
+	// Defines the message last updated time.
 	Updated string `pulumi:"updated"`
 }
 
@@ -86,10 +118,23 @@ func LookupCloudforceOneRequestMessageOutput(ctx *pulumi.Context, args LookupClo
 
 // A collection of arguments for invoking getCloudforceOneRequestMessage.
 type LookupCloudforceOneRequestMessageOutputArgs struct {
-	// Identifier
-	AccountIdentifier pulumi.StringInput `pulumi:"accountIdentifier"`
-	// UUID
-	RequestIdentifier pulumi.StringInput `pulumi:"requestIdentifier"`
+	// Identifier.
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Retrieve mes  ges created after this time.
+	After pulumi.StringPtrInput `pulumi:"after"`
+	// Retrieve messages created before this time.
+	Before pulumi.StringPtrInput `pulumi:"before"`
+	// Page number of results.
+	Page pulumi.IntInput `pulumi:"page"`
+	// Number of results per page.
+	PerPage pulumi.IntInput `pulumi:"perPage"`
+	// UUID.
+	RequestId pulumi.StringInput `pulumi:"requestId"`
+	// Field to sort results by.
+	SortBy pulumi.StringPtrInput `pulumi:"sortBy"`
+	// Sort order (asc or desc).
+	// Available values: "asc", "desc".
+	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
 }
 
 func (LookupCloudforceOneRequestMessageOutputArgs) ElementType() reflect.Type {
@@ -111,42 +156,73 @@ func (o LookupCloudforceOneRequestMessageResultOutput) ToLookupCloudforceOneRequ
 	return o
 }
 
-// Identifier
-func (o LookupCloudforceOneRequestMessageResultOutput) AccountIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.AccountIdentifier }).(pulumi.StringOutput)
+// Identifier.
+func (o LookupCloudforceOneRequestMessageResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Author of message
+// Retrieve mes  ges created after this time.
+func (o LookupCloudforceOneRequestMessageResultOutput) After() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) *string { return v.After }).(pulumi.StringPtrOutput)
+}
+
+// Author of message.
 func (o LookupCloudforceOneRequestMessageResultOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Author }).(pulumi.StringOutput)
 }
 
-// Content of message
+// Retrieve messages created before this time.
+func (o LookupCloudforceOneRequestMessageResultOutput) Before() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) *string { return v.Before }).(pulumi.StringPtrOutput)
+}
+
+// Content of message.
 func (o LookupCloudforceOneRequestMessageResultOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// Message creation time
+// Defines the message creation time.
 func (o LookupCloudforceOneRequestMessageResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// Message ID
+// Message ID.
 func (o LookupCloudforceOneRequestMessageResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) int { return v.Id }).(pulumi.IntOutput)
 }
 
-// Whether the message is a follow-on request
+// Whether the message is a follow-on request.
 func (o LookupCloudforceOneRequestMessageResultOutput) IsFollowOnRequest() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) bool { return v.IsFollowOnRequest }).(pulumi.BoolOutput)
 }
 
-// UUID
-func (o LookupCloudforceOneRequestMessageResultOutput) RequestIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.RequestIdentifier }).(pulumi.StringOutput)
+// Page number of results.
+func (o LookupCloudforceOneRequestMessageResultOutput) Page() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) int { return v.Page }).(pulumi.IntOutput)
 }
 
-// Message last updated time
+// Number of results per page.
+func (o LookupCloudforceOneRequestMessageResultOutput) PerPage() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) int { return v.PerPage }).(pulumi.IntOutput)
+}
+
+// UUID.
+func (o LookupCloudforceOneRequestMessageResultOutput) RequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.RequestId }).(pulumi.StringOutput)
+}
+
+// Field to sort results by.
+func (o LookupCloudforceOneRequestMessageResultOutput) SortBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) *string { return v.SortBy }).(pulumi.StringPtrOutput)
+}
+
+// Sort order (asc or desc).
+// Available values: "asc", "desc".
+func (o LookupCloudforceOneRequestMessageResultOutput) SortOrder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
+}
+
+// Defines the message last updated time.
 func (o LookupCloudforceOneRequestMessageResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudforceOneRequestMessageResult) string { return v.Updated }).(pulumi.StringOutput)
 }

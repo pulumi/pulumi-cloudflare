@@ -23,6 +23,7 @@ class ZoneDnssecArgs:
                  zone_id: pulumi.Input[builtins.str],
                  dnssec_multi_signer: Optional[pulumi.Input[builtins.bool]] = None,
                  dnssec_presigned: Optional[pulumi.Input[builtins.bool]] = None,
+                 dnssec_use_nsec3: Optional[pulumi.Input[builtins.bool]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneDnssec resource.
@@ -35,6 +36,10 @@ class ZoneDnssecArgs:
                requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
                Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
                details.
+        :param pulumi.Input[builtins.bool] dnssec_use_nsec3: If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+               enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+               false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+               NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
         :param pulumi.Input[builtins.str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         """
         pulumi.set(__self__, "zone_id", zone_id)
@@ -42,6 +47,8 @@ class ZoneDnssecArgs:
             pulumi.set(__self__, "dnssec_multi_signer", dnssec_multi_signer)
         if dnssec_presigned is not None:
             pulumi.set(__self__, "dnssec_presigned", dnssec_presigned)
+        if dnssec_use_nsec3 is not None:
+            pulumi.set(__self__, "dnssec_use_nsec3", dnssec_use_nsec3)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -88,6 +95,21 @@ class ZoneDnssecArgs:
         pulumi.set(self, "dnssec_presigned", value)
 
     @property
+    @pulumi.getter(name="dnssecUseNsec3")
+    def dnssec_use_nsec3(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+        enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+        false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+        NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        """
+        return pulumi.get(self, "dnssec_use_nsec3")
+
+    @dnssec_use_nsec3.setter
+    def dnssec_use_nsec3(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "dnssec_use_nsec3", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -109,6 +131,7 @@ class _ZoneDnssecState:
                  digest_type: Optional[pulumi.Input[builtins.str]] = None,
                  dnssec_multi_signer: Optional[pulumi.Input[builtins.bool]] = None,
                  dnssec_presigned: Optional[pulumi.Input[builtins.bool]] = None,
+                 dnssec_use_nsec3: Optional[pulumi.Input[builtins.bool]] = None,
                  ds: Optional[pulumi.Input[builtins.str]] = None,
                  flags: Optional[pulumi.Input[builtins.float]] = None,
                  key_tag: Optional[pulumi.Input[builtins.float]] = None,
@@ -131,6 +154,10 @@ class _ZoneDnssecState:
                requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
                Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
                details.
+        :param pulumi.Input[builtins.bool] dnssec_use_nsec3: If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+               enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+               false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+               NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
         :param pulumi.Input[builtins.str] ds: Full DS record.
         :param pulumi.Input[builtins.float] flags: Flag for DNSSEC record.
         :param pulumi.Input[builtins.float] key_tag: Code for key tag.
@@ -152,6 +179,8 @@ class _ZoneDnssecState:
             pulumi.set(__self__, "dnssec_multi_signer", dnssec_multi_signer)
         if dnssec_presigned is not None:
             pulumi.set(__self__, "dnssec_presigned", dnssec_presigned)
+        if dnssec_use_nsec3 is not None:
+            pulumi.set(__self__, "dnssec_use_nsec3", dnssec_use_nsec3)
         if ds is not None:
             pulumi.set(__self__, "ds", ds)
         if flags is not None:
@@ -246,6 +275,21 @@ class _ZoneDnssecState:
     @dnssec_presigned.setter
     def dnssec_presigned(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "dnssec_presigned", value)
+
+    @property
+    @pulumi.getter(name="dnssecUseNsec3")
+    def dnssec_use_nsec3(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+        enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+        false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+        NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        """
+        return pulumi.get(self, "dnssec_use_nsec3")
+
+    @dnssec_use_nsec3.setter
+    def dnssec_use_nsec3(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "dnssec_use_nsec3", value)
 
     @property
     @pulumi.getter
@@ -352,6 +396,7 @@ class ZoneDnssec(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dnssec_multi_signer: Optional[pulumi.Input[builtins.bool]] = None,
                  dnssec_presigned: Optional[pulumi.Input[builtins.bool]] = None,
+                 dnssec_use_nsec3: Optional[pulumi.Input[builtins.bool]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -366,6 +411,7 @@ class ZoneDnssec(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             dnssec_multi_signer=False,
             dnssec_presigned=True,
+            dnssec_use_nsec3=False,
             status="active")
         ```
 
@@ -385,6 +431,10 @@ class ZoneDnssec(pulumi.CustomResource):
                requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
                Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
                details.
+        :param pulumi.Input[builtins.bool] dnssec_use_nsec3: If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+               enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+               false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+               NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
         :param pulumi.Input[builtins.str] status: Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
         :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
@@ -405,6 +455,7 @@ class ZoneDnssec(pulumi.CustomResource):
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             dnssec_multi_signer=False,
             dnssec_presigned=True,
+            dnssec_use_nsec3=False,
             status="active")
         ```
 
@@ -431,6 +482,7 @@ class ZoneDnssec(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dnssec_multi_signer: Optional[pulumi.Input[builtins.bool]] = None,
                  dnssec_presigned: Optional[pulumi.Input[builtins.bool]] = None,
+                 dnssec_use_nsec3: Optional[pulumi.Input[builtins.bool]] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -444,6 +496,7 @@ class ZoneDnssec(pulumi.CustomResource):
 
             __props__.__dict__["dnssec_multi_signer"] = dnssec_multi_signer
             __props__.__dict__["dnssec_presigned"] = dnssec_presigned
+            __props__.__dict__["dnssec_use_nsec3"] = dnssec_use_nsec3
             __props__.__dict__["status"] = status
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -474,6 +527,7 @@ class ZoneDnssec(pulumi.CustomResource):
             digest_type: Optional[pulumi.Input[builtins.str]] = None,
             dnssec_multi_signer: Optional[pulumi.Input[builtins.bool]] = None,
             dnssec_presigned: Optional[pulumi.Input[builtins.bool]] = None,
+            dnssec_use_nsec3: Optional[pulumi.Input[builtins.bool]] = None,
             ds: Optional[pulumi.Input[builtins.str]] = None,
             flags: Optional[pulumi.Input[builtins.float]] = None,
             key_tag: Optional[pulumi.Input[builtins.float]] = None,
@@ -501,6 +555,10 @@ class ZoneDnssec(pulumi.CustomResource):
                requiring Cloudflare to sign any records on the fly. Note that this feature has some limitations. See [Cloudflare as
                Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/#dnssec) for
                details.
+        :param pulumi.Input[builtins.bool] dnssec_use_nsec3: If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+               enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+               false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+               NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
         :param pulumi.Input[builtins.str] ds: Full DS record.
         :param pulumi.Input[builtins.float] flags: Flag for DNSSEC record.
         :param pulumi.Input[builtins.float] key_tag: Code for key tag.
@@ -520,6 +578,7 @@ class ZoneDnssec(pulumi.CustomResource):
         __props__.__dict__["digest_type"] = digest_type
         __props__.__dict__["dnssec_multi_signer"] = dnssec_multi_signer
         __props__.__dict__["dnssec_presigned"] = dnssec_presigned
+        __props__.__dict__["dnssec_use_nsec3"] = dnssec_use_nsec3
         __props__.__dict__["ds"] = ds
         __props__.__dict__["flags"] = flags
         __props__.__dict__["key_tag"] = key_tag
@@ -583,6 +642,17 @@ class ZoneDnssec(pulumi.CustomResource):
         details.
         """
         return pulumi.get(self, "dnssec_presigned")
+
+    @property
+    @pulumi.getter(name="dnssecUseNsec3")
+    def dnssec_use_nsec3(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+        enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+        false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+        NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+        """
+        return pulumi.get(self, "dnssec_use_nsec3")
 
     @property
     @pulumi.getter

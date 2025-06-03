@@ -97,7 +97,7 @@ type WaitingRoomEvent struct {
 	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
 	TurnstileMode pulumi.StringPtrOutput `pulumi:"turnstileMode"`
 	WaitingRoomId pulumi.StringOutput    `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -181,7 +181,7 @@ type waitingRoomEventState struct {
 	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
 	TurnstileMode *string `pulumi:"turnstileMode"`
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -221,7 +221,7 @@ type WaitingRoomEventState struct {
 	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
 	TurnstileMode pulumi.StringPtrInput
 	WaitingRoomId pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -263,7 +263,7 @@ type waitingRoomEventArgs struct {
 	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
 	TurnstileMode *string `pulumi:"turnstileMode"`
 	WaitingRoomId string  `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -302,7 +302,7 @@ type WaitingRoomEventArgs struct {
 	// Available values: "off", "invisible", "visible*non*interactive", "visibleManaged".
 	TurnstileMode pulumi.StringPtrInput
 	WaitingRoomId pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -482,7 +482,7 @@ func (o WaitingRoomEventOutput) WaitingRoomId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WaitingRoomEventOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

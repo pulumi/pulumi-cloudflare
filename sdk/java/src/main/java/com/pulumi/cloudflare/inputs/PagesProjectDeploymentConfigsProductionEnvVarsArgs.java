@@ -15,14 +15,14 @@ public final class PagesProjectDeploymentConfigsProductionEnvVarsArgs extends co
     public static final PagesProjectDeploymentConfigsProductionEnvVarsArgs Empty = new PagesProjectDeploymentConfigsProductionEnvVarsArgs();
 
     /**
-     * Available values: &#34;plain_text&#34;.
+     * Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Available values: &#34;plain_text&#34;.
+     * @return Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
      * 
      */
     public Output<String> type() {
@@ -70,7 +70,7 @@ public final class PagesProjectDeploymentConfigsProductionEnvVarsArgs extends co
         }
 
         /**
-         * @param type Available values: &#34;plain_text&#34;.
+         * @param type Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class PagesProjectDeploymentConfigsProductionEnvVarsArgs extends co
         }
 
         /**
-         * @param type Available values: &#34;plain_text&#34;.
+         * @param type Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
          * 
          * @return builder
          * 

@@ -15,56 +15,56 @@ public final class GetCloudforceOneRequestAssetArgs extends com.pulumi.resources
     public static final GetCloudforceOneRequestAssetArgs Empty = new GetCloudforceOneRequestAssetArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="assetIdentifer", required=true)
-    private Output<String> assetIdentifer;
+    @Import(name="assetId", required=true)
+    private Output<String> assetId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Output<String> assetIdentifer() {
-        return this.assetIdentifer;
+    public Output<String> assetId() {
+        return this.assetId;
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="requestIdentifier", required=true)
-    private Output<String> requestIdentifier;
+    @Import(name="requestId", required=true)
+    private Output<String> requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Output<String> requestIdentifier() {
-        return this.requestIdentifier;
+    public Output<String> requestId() {
+        return this.requestId;
     }
 
     private GetCloudforceOneRequestAssetArgs() {}
 
     private GetCloudforceOneRequestAssetArgs(GetCloudforceOneRequestAssetArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
-        this.assetIdentifer = $.assetIdentifer;
-        this.requestIdentifier = $.requestIdentifier;
+        this.accountId = $.accountId;
+        this.assetId = $.assetId;
+        this.requestId = $.requestId;
     }
 
     public static Builder builder() {
@@ -86,77 +86,77 @@ public final class GetCloudforceOneRequestAssetArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param assetIdentifer UUID
+         * @param assetId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder assetIdentifer(Output<String> assetIdentifer) {
-            $.assetIdentifer = assetIdentifer;
+        public Builder assetId(Output<String> assetId) {
+            $.assetId = assetId;
             return this;
         }
 
         /**
-         * @param assetIdentifer UUID
+         * @param assetId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder assetIdentifer(String assetIdentifer) {
-            return assetIdentifer(Output.of(assetIdentifer));
+        public Builder assetId(String assetId) {
+            return assetId(Output.of(assetId));
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(Output<String> requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder requestId(Output<String> requestId) {
+            $.requestId = requestId;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            return requestIdentifier(Output.of(requestIdentifier));
+        public Builder requestId(String requestId) {
+            return requestId(Output.of(requestId));
         }
 
         public GetCloudforceOneRequestAssetArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetArgs", "accountId");
             }
-            if ($.assetIdentifer == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetArgs", "assetIdentifer");
+            if ($.assetId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetArgs", "assetId");
             }
-            if ($.requestIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetArgs", "requestIdentifier");
+            if ($.requestId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetArgs", "requestId");
             }
             return $;
         }

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     dnssecMultiSigner: false,
  *     dnssecPresigned: true,
+ *     dnssecUseNsec3: false,
  *     status: "active",
  * });
  * ```
@@ -84,6 +85,13 @@ export class ZoneDnssec extends pulumi.CustomResource {
      */
     public readonly dnssecPresigned!: pulumi.Output<boolean | undefined>;
     /**
+     * If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+     * enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     */
+    public readonly dnssecUseNsec3!: pulumi.Output<boolean | undefined>;
+    /**
      * Full DS record.
      */
     public /*out*/ readonly ds!: pulumi.Output<string>;
@@ -135,6 +143,7 @@ export class ZoneDnssec extends pulumi.CustomResource {
             resourceInputs["digestType"] = state ? state.digestType : undefined;
             resourceInputs["dnssecMultiSigner"] = state ? state.dnssecMultiSigner : undefined;
             resourceInputs["dnssecPresigned"] = state ? state.dnssecPresigned : undefined;
+            resourceInputs["dnssecUseNsec3"] = state ? state.dnssecUseNsec3 : undefined;
             resourceInputs["ds"] = state ? state.ds : undefined;
             resourceInputs["flags"] = state ? state.flags : undefined;
             resourceInputs["keyTag"] = state ? state.keyTag : undefined;
@@ -150,6 +159,7 @@ export class ZoneDnssec extends pulumi.CustomResource {
             }
             resourceInputs["dnssecMultiSigner"] = args ? args.dnssecMultiSigner : undefined;
             resourceInputs["dnssecPresigned"] = args ? args.dnssecPresigned : undefined;
+            resourceInputs["dnssecUseNsec3"] = args ? args.dnssecUseNsec3 : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["algorithm"] = undefined /*out*/;
@@ -203,6 +213,13 @@ export interface ZoneDnssecState {
      */
     dnssecPresigned?: pulumi.Input<boolean>;
     /**
+     * If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+     * enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     */
+    dnssecUseNsec3?: pulumi.Input<boolean>;
+    /**
      * Full DS record.
      */
     ds?: pulumi.Input<string>;
@@ -254,6 +271,13 @@ export interface ZoneDnssecArgs {
      * details.
      */
     dnssecPresigned?: pulumi.Input<boolean>;
+    /**
+     * If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssecPresigned to true, this
+     * enables the use of NSEC3 records when transferring in from an external provider. If dnssecPresigned is instead set to
+     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     */
+    dnssecUseNsec3?: pulumi.Input<boolean>;
     /**
      * Status of DNSSEC, based on user-desired state and presence of necessary records. Available values: "active", "disabled".
      */

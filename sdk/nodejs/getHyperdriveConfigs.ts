@@ -31,7 +31,7 @@ export function getHyperdriveConfigs(args: GetHyperdriveConfigsArgs, opts?: pulu
  */
 export interface GetHyperdriveConfigsArgs {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     accountId: string;
     /**
@@ -45,7 +45,7 @@ export interface GetHyperdriveConfigsArgs {
  */
 export interface GetHyperdriveConfigsResult {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     readonly accountId: string;
     /**
@@ -86,7 +86,7 @@ export function getHyperdriveConfigsOutput(args: GetHyperdriveConfigsOutputArgs,
  */
 export interface GetHyperdriveConfigsOutputArgs {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     accountId: pulumi.Input<string>;
     /**

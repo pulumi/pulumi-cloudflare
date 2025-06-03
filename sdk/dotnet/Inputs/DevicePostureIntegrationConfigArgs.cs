@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class DevicePostureIntegrationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
+        /// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
         /// </summary>
         [Input("accessClientId")]
         public Input<string>? AccessClientId { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private Input<string>? _accessClientSecret;
 
         /// <summary>
-        /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
+        /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
         /// </summary>
         public Input<string>? AccessClientSecret
         {

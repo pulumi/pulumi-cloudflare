@@ -92,14 +92,14 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
     }
 
     /**
-     * The name of the dispatch namespace
+     * The name of the dispatch namespace.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the dispatch namespace
+     * @return The name of the dispatch namespace.
      * 
      */
     public Optional<Output<String>> name() {
@@ -137,14 +137,14 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
     }
 
     /**
-     * The current number of scripts in this Dispatch Namespace
+     * The current number of scripts in this Dispatch Namespace.
      * 
      */
     @Import(name="scriptCount")
     private @Nullable Output<Integer> scriptCount;
 
     /**
-     * @return The current number of scripts in this Dispatch Namespace
+     * @return The current number of scripts in this Dispatch Namespace.
      * 
      */
     public Optional<Output<Integer>> scriptCount() {
@@ -289,7 +289,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param name The name of the dispatch namespace
+         * @param name The name of the dispatch namespace.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param name The name of the dispatch namespace
+         * @param name The name of the dispatch namespace.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param scriptCount The current number of scripts in this Dispatch Namespace
+         * @param scriptCount The current number of scripts in this Dispatch Namespace.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class WorkersForPlatformsDispatchNamespaceState extends com.pulumi.
         }
 
         /**
-         * @param scriptCount The current number of scripts in this Dispatch Namespace
+         * @param scriptCount The current number of scripts in this Dispatch Namespace.
          * 
          * @return builder
          * 

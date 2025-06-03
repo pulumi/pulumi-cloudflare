@@ -97,7 +97,7 @@ class AccessApplicationArgs:
         :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
-        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         :param pulumi.Input[builtins.bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
@@ -561,7 +561,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         """
         return pulumi.get(self, "session_duration")
 
@@ -721,7 +721,7 @@ class _AccessApplicationState:
         :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
-        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         :param pulumi.Input[builtins.bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
@@ -1212,7 +1212,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         """
         return pulumi.get(self, "session_duration")
 
@@ -1395,7 +1395,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
-        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         :param pulumi.Input[builtins.bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
@@ -1617,7 +1617,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] self_hosted_domains: List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         :param pulumi.Input[builtins.bool] service_auth401_redirect: Returns a 401 status code when the request is blocked by a Service Auth policy.
-        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        :param pulumi.Input[builtins.str] session_duration: The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         :param pulumi.Input[builtins.bool] skip_app_launcher_login_page: Determines when to skip the App Launcher landing page.
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
@@ -1787,7 +1787,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def destinations(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationDestination']]]:
+    def destinations(self) -> pulumi.Output[Sequence['outputs.AccessApplicationDestination']]:
         """
         List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
@@ -1875,7 +1875,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def policies(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationPolicy']]]:
+    def policies(self) -> pulumi.Output[Sequence['outputs.AccessApplicationPolicy']]:
         """
         The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
         """
@@ -1919,7 +1919,7 @@ class AccessApplication(pulumi.CustomResource):
     @property
     @pulumi.getter(name="selfHostedDomains")
     @_utilities.deprecated("""This attribute is deprecated.""")
-    def self_hosted_domains(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def self_hosted_domains(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until **November 21, 2025.** If `destinations` are provided, then `self_hosted_domains` will be ignored.
         """
@@ -1937,7 +1937,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Output[builtins.str]:
         """
-        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         """
         return pulumi.get(self, "session_duration")
 
@@ -1959,7 +1959,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def tags(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         """

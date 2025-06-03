@@ -48,7 +48,7 @@ func LookupWaitingRoomSettings(ctx *pulumi.Context, args *LookupWaitingRoomSetti
 
 // A collection of arguments for invoking getWaitingRoomSettings.
 type LookupWaitingRoomSettingsArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -60,7 +60,7 @@ type LookupWaitingRoomSettingsResult struct {
 	// Verified search engine crawlers will not be tracked or counted by the waiting room system,
 	// and will not appear in waiting room analytics.
 	SearchEngineCrawlerBypass bool `pulumi:"searchEngineCrawlerBypass"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -75,7 +75,7 @@ func LookupWaitingRoomSettingsOutput(ctx *pulumi.Context, args LookupWaitingRoom
 
 // A collection of arguments for invoking getWaitingRoomSettings.
 type LookupWaitingRoomSettingsOutputArgs struct {
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -110,7 +110,7 @@ func (o LookupWaitingRoomSettingsResultOutput) SearchEngineCrawlerBypass() pulum
 	return o.ApplyT(func(v LookupWaitingRoomSettingsResult) bool { return v.SearchEngineCrawlerBypass }).(pulumi.BoolOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWaitingRoomSettingsResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomSettingsResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

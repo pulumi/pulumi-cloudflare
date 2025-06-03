@@ -136,7 +136,7 @@ type LookupZeroTrustAccessApplicationResult struct {
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect bool `pulumi:"serviceAuth401Redirect"`
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
 	SessionDuration string `pulumi:"sessionDuration"`
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage bool `pulumi:"skipAppLauncherLoginPage"`
@@ -386,7 +386,7 @@ func (o LookupZeroTrustAccessApplicationResultOutput) ServiceAuth401Redirect() p
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) bool { return v.ServiceAuth401Redirect }).(pulumi.BoolOutput)
 }
 
-// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
 func (o LookupZeroTrustAccessApplicationResultOutput) SessionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustAccessApplicationResult) string { return v.SessionDuration }).(pulumi.StringOutput)
 }

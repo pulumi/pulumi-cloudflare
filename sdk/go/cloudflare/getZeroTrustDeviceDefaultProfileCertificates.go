@@ -53,6 +53,7 @@ type LookupZeroTrustDeviceDefaultProfileCertificatesArgs struct {
 
 // A collection of values returned by getZeroTrustDeviceDefaultProfileCertificates.
 type LookupZeroTrustDeviceDefaultProfileCertificatesResult struct {
+	// The current status of the device policy certificate provisioning feature for WARP clients.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string `pulumi:"id"`
@@ -92,6 +93,7 @@ func (o LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput) ToLookupZer
 	return o
 }
 
+// The current status of the device policy certificate provisioning feature for WARP clients.
 func (o LookupZeroTrustDeviceDefaultProfileCertificatesResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileCertificatesResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }

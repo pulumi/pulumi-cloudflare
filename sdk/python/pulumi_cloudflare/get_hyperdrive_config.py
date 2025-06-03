@@ -61,7 +61,7 @@ class GetHyperdriveConfigResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
         """
-        Identifier
+        Define configurations using a unique string identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -74,7 +74,7 @@ class GetHyperdriveConfigResult:
     @pulumi.getter(name="createdOn")
     def created_on(self) -> builtins.str:
         """
-        When the Hyperdrive configuration was created.
+        Defines the creation time of the Hyperdrive configuration.
         """
         return pulumi.get(self, "created_on")
 
@@ -82,7 +82,7 @@ class GetHyperdriveConfigResult:
     @pulumi.getter(name="hyperdriveId")
     def hyperdrive_id(self) -> Optional[builtins.str]:
         """
-        Identifier
+        Define configurations using a unique string identifier.
         """
         return pulumi.get(self, "hyperdrive_id")
 
@@ -90,7 +90,7 @@ class GetHyperdriveConfigResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier
+        Define configurations using a unique string identifier.
         """
         return pulumi.get(self, "id")
 
@@ -98,7 +98,7 @@ class GetHyperdriveConfigResult:
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> builtins.str:
         """
-        When the Hyperdrive configuration was last modified.
+        Defines the last modified time of the Hyperdrive configuration.
         """
         return pulumi.get(self, "modified_on")
 
@@ -150,8 +150,8 @@ def get_hyperdrive_config(account_id: Optional[builtins.str] = None,
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str hyperdrive_id: Identifier
+    :param builtins.str account_id: Define configurations using a unique string identifier.
+    :param builtins.str hyperdrive_id: Define configurations using a unique string identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
@@ -184,8 +184,8 @@ def get_hyperdrive_config_output(account_id: Optional[pulumi.Input[builtins.str]
     ```
 
 
-    :param builtins.str account_id: Identifier
-    :param builtins.str hyperdrive_id: Identifier
+    :param builtins.str account_id: Define configurations using a unique string identifier.
+    :param builtins.str hyperdrive_id: Define configurations using a unique string identifier.
     """
     __args__ = dict()
     __args__['accountId'] = account_id

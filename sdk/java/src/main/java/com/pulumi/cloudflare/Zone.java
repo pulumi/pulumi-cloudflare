@@ -9,6 +9,9 @@ import com.pulumi.cloudflare.inputs.ZoneState;
 import com.pulumi.cloudflare.outputs.ZoneAccount;
 import com.pulumi.cloudflare.outputs.ZoneMeta;
 import com.pulumi.cloudflare.outputs.ZoneOwner;
+import com.pulumi.cloudflare.outputs.ZonePlan;
+import com.pulumi.cloudflare.outputs.ZoneTenant;
+import com.pulumi.cloudflare.outputs.ZoneTenantUnit;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -93,6 +96,22 @@ public class Zone extends com.pulumi.resources.CustomResource {
      */
     public Output<String> activatedOn() {
         return this.activatedOn;
+    }
+    /**
+     * Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    @Export(name="cnameSuffix", refs={String.class}, tree="[0]")
+    private Output<String> cnameSuffix;
+
+    /**
+     * @return Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    public Output<String> cnameSuffix() {
+        return this.cnameSuffix;
     }
     /**
      * When the zone was created
@@ -257,6 +276,42 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.paused;
     }
     /**
+     * Legacy permissions based on legacy user membership information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> permissions;
+
+    /**
+     * @return Legacy permissions based on legacy user membership information.
+     * 
+     */
+    public Output<List<String>> permissions() {
+        return this.permissions;
+    }
+    /**
+     * A Zones subscription information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Export(name="plan", refs={ZonePlan.class}, tree="[0]")
+    private Output<ZonePlan> plan;
+
+    /**
+     * @return A Zones subscription information.
+     * 
+     */
+    public Output<ZonePlan> plan() {
+        return this.plan;
+    }
+    /**
      * The zone status on Cloudflare.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
@@ -271,6 +326,34 @@ public class Zone extends com.pulumi.resources.CustomResource {
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    @Export(name="tenant", refs={ZoneTenant.class}, tree="[0]")
+    private Output<ZoneTenant> tenant;
+
+    /**
+     * @return The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    public Output<ZoneTenant> tenant() {
+        return this.tenant;
+    }
+    /**
+     * The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    @Export(name="tenantUnit", refs={ZoneTenantUnit.class}, tree="[0]")
+    private Output<ZoneTenantUnit> tenantUnit;
+
+    /**
+     * @return The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    public Output<ZoneTenantUnit> tenantUnit() {
+        return this.tenantUnit;
     }
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is

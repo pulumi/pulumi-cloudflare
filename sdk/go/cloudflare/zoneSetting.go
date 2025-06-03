@@ -14,6 +14,32 @@ import (
 
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZoneSetting(ctx, "example_zone_setting", &cloudflare.ZoneSettingArgs{
+//				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				SettingId: pulumi.String("always_online"),
+//				Enabled:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -24,6 +50,8 @@ type ZoneSetting struct {
 
 	// Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
 	Editable pulumi.BoolOutput `pulumi:"editable"`
+	// ssl-recommender enrollment setting.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// last time this setting was modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Setting name
@@ -78,6 +106,8 @@ func GetZoneSetting(ctx *pulumi.Context,
 type zoneSettingState struct {
 	// Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
 	Editable *bool `pulumi:"editable"`
+	// ssl-recommender enrollment setting.
+	Enabled *bool `pulumi:"enabled"`
 	// last time this setting was modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// Setting name
@@ -94,6 +124,8 @@ type zoneSettingState struct {
 type ZoneSettingState struct {
 	// Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
 	Editable pulumi.BoolPtrInput
+	// ssl-recommender enrollment setting.
+	Enabled pulumi.BoolPtrInput
 	// last time this setting was modified.
 	ModifiedOn pulumi.StringPtrInput
 	// Setting name
@@ -112,6 +144,8 @@ func (ZoneSettingState) ElementType() reflect.Type {
 }
 
 type zoneSettingArgs struct {
+	// ssl-recommender enrollment setting.
+	Enabled *bool `pulumi:"enabled"`
 	// Setting name
 	SettingId string `pulumi:"settingId"`
 	// Current value of the zone setting.
@@ -122,6 +156,8 @@ type zoneSettingArgs struct {
 
 // The set of arguments for constructing a ZoneSetting resource.
 type ZoneSettingArgs struct {
+	// ssl-recommender enrollment setting.
+	Enabled pulumi.BoolPtrInput
 	// Setting name
 	SettingId pulumi.StringInput
 	// Current value of the zone setting.
@@ -220,6 +256,11 @@ func (o ZoneSettingOutput) ToZoneSettingOutputWithContext(ctx context.Context) Z
 // Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
 func (o ZoneSettingOutput) Editable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZoneSetting) pulumi.BoolOutput { return v.Editable }).(pulumi.BoolOutput)
+}
+
+// ssl-recommender enrollment setting.
+func (o ZoneSettingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZoneSetting) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // last time this setting was modified.

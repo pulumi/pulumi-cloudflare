@@ -59,7 +59,7 @@ export interface GetZeroTrustDlpEntryResult {
     readonly profileId: string;
     readonly secret: boolean;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration", "exact*data", "word*list".
      */
     readonly type: string;
     readonly updatedAt: string;

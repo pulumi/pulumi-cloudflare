@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Expression;
         /// <summary>
-        /// Available values: "remove".
+        /// Available values: "remove", "add", "set".
         /// </summary>
         public readonly string Operation;
         /// <summary>

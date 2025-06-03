@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  *             .lanAllowMinutes(30.0)
  *             .lanAllowSubnetSize(24.0)
  *             .registerInterfaceIpWithDns(true)
+ *             .sccmVpnBoundarySupport(false)
  *             .serviceModeV2(ZeroTrustDeviceDefaultProfileServiceModeV2Args.builder()
  *                 .mode("proxy")
  *                 .port(3000.0)
@@ -308,6 +309,20 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      */
     public Output<Optional<Boolean>> registerInterfaceIpWithDns() {
         return Codegen.optional(this.registerInterfaceIpWithDns);
+    }
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    @Export(name="sccmVpnBoundarySupport", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> sccmVpnBoundarySupport;
+
+    /**
+     * @return Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    public Output<Optional<Boolean>> sccmVpnBoundarySupport() {
+        return Codegen.optional(this.sccmVpnBoundarySupport);
     }
     @Export(name="serviceModeV2", refs={ZeroTrustDeviceDefaultProfileServiceModeV2.class}, tree="[0]")
     private Output</* @Nullable */ ZeroTrustDeviceDefaultProfileServiceModeV2> serviceModeV2;

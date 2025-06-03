@@ -12,6 +12,24 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZoneSetting = new Cloudflare.ZoneSetting("example_zone_setting", new()
+    ///     {
+    ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         SettingId = "always_online",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -26,6 +44,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("editable")]
         public Output<bool> Editable { get; private set; } = null!;
+
+        /// <summary>
+        /// ssl-recommender enrollment setting.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// last time this setting was modified.
@@ -105,6 +129,12 @@ namespace Pulumi.Cloudflare
     public sealed class ZoneSettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// ssl-recommender enrollment setting.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// Setting name
         /// </summary>
         [Input("settingId", required: true)]
@@ -135,6 +165,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("editable")]
         public Input<bool>? Editable { get; set; }
+
+        /// <summary>
+        /// ssl-recommender enrollment setting.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// last time this setting was modified.

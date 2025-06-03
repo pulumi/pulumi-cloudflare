@@ -27,7 +27,7 @@ public final class GetWorkersScriptSubdomainResult {
      */
     private String id;
     /**
-     * @return Whether the Worker&#39;s Preview URLs should be available on the workers.dev subdomain.
+     * @return Whether the Worker&#39;s Preview URLs are available on the workers.dev subdomain.
      * 
      */
     private Boolean previewsEnabled;
@@ -60,7 +60,7 @@ public final class GetWorkersScriptSubdomainResult {
         return this.id;
     }
     /**
-     * @return Whether the Worker&#39;s Preview URLs should be available on the workers.dev subdomain.
+     * @return Whether the Worker&#39;s Preview URLs are available on the workers.dev subdomain.
      * 
      */
     public Boolean previewsEnabled() {

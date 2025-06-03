@@ -58,7 +58,7 @@ export class WaitingRoomSettings extends pulumi.CustomResource {
      */
     public readonly searchEngineCrawlerBypass!: pulumi.Output<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -101,7 +101,7 @@ export interface WaitingRoomSettingsState {
      */
     searchEngineCrawlerBypass?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -117,7 +117,7 @@ export interface WaitingRoomSettingsArgs {
      */
     searchEngineCrawlerBypass?: pulumi.Input<boolean>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

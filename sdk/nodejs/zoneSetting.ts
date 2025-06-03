@@ -7,6 +7,17 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZoneSetting = new cloudflare.ZoneSetting("example_zone_setting", {
+ *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     settingId: "always_online",
+ *     enabled: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -46,6 +57,10 @@ export class ZoneSetting extends pulumi.CustomResource {
      */
     public /*out*/ readonly editable!: pulumi.Output<boolean>;
     /**
+     * ssl-recommender enrollment setting.
+     */
+    public readonly enabled!: pulumi.Output<boolean>;
+    /**
      * last time this setting was modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
@@ -81,6 +96,7 @@ export class ZoneSetting extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZoneSettingState | undefined;
             resourceInputs["editable"] = state ? state.editable : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["settingId"] = state ? state.settingId : undefined;
             resourceInputs["timeRemaining"] = state ? state.timeRemaining : undefined;
@@ -97,6 +113,7 @@ export class ZoneSetting extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["settingId"] = args ? args.settingId : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -117,6 +134,10 @@ export interface ZoneSettingState {
      * Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
      */
     editable?: pulumi.Input<boolean>;
+    /**
+     * ssl-recommender enrollment setting.
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * last time this setting was modified.
      */
@@ -144,6 +165,10 @@ export interface ZoneSettingState {
  * The set of arguments for constructing a ZoneSetting resource.
  */
 export interface ZoneSettingArgs {
+    /**
+     * ssl-recommender enrollment setting.
+     */
+    enabled?: pulumi.Input<boolean>;
     /**
      * Setting name
      */

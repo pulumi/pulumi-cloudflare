@@ -15,15 +15,15 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly Outputs.GetHyperdriveConfigsResultCachingResult Caching;
         /// <summary>
-        /// When the Hyperdrive configuration was created.
+        /// Defines the creation time of the Hyperdrive configuration.
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
-        /// Identifier
+        /// Define configurations using a unique string identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// When the Hyperdrive configuration was last modified.
+        /// Defines the last modified time of the Hyperdrive configuration.
         /// </summary>
         public readonly string ModifiedOn;
         public readonly Outputs.GetHyperdriveConfigsResultMtlsResult Mtls;

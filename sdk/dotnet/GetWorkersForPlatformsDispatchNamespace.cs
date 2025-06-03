@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string NamespaceName;
         /// <summary>
-        /// The current number of scripts in this Dispatch Namespace
+        /// The current number of scripts in this Dispatch Namespace.
         /// </summary>
         public readonly int ScriptCount;
 

@@ -41,6 +41,9 @@ class GetZeroTrustDeviceDefaultProfileCertificatesResult:
     @property
     @pulumi.getter
     def enabled(self) -> builtins.bool:
+        """
+        The current status of the device policy certificate provisioning feature for WARP clients.
+        """
         return pulumi.get(self, "enabled")
 
     @property

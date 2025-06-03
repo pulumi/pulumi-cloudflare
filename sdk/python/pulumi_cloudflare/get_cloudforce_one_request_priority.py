@@ -27,10 +27,10 @@ class GetCloudforceOneRequestPriorityResult:
     """
     A collection of values returned by getCloudforceOneRequestPriority.
     """
-    def __init__(__self__, account_identifier=None, completed=None, content=None, created=None, id=None, message_tokens=None, priority=None, priority_identifer=None, readable_id=None, request=None, status=None, summary=None, tlp=None, tokens=None, updated=None):
-        if account_identifier and not isinstance(account_identifier, str):
-            raise TypeError("Expected argument 'account_identifier' to be a str")
-        pulumi.set(__self__, "account_identifier", account_identifier)
+    def __init__(__self__, account_id=None, completed=None, content=None, created=None, id=None, message_tokens=None, priority=None, priority_id=None, readable_id=None, request=None, status=None, summary=None, tlp=None, tokens=None, updated=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
         if completed and not isinstance(completed, str):
             raise TypeError("Expected argument 'completed' to be a str")
         pulumi.set(__self__, "completed", completed)
@@ -49,9 +49,9 @@ class GetCloudforceOneRequestPriorityResult:
         if priority and not isinstance(priority, str):
             raise TypeError("Expected argument 'priority' to be a str")
         pulumi.set(__self__, "priority", priority)
-        if priority_identifer and not isinstance(priority_identifer, str):
-            raise TypeError("Expected argument 'priority_identifer' to be a str")
-        pulumi.set(__self__, "priority_identifer", priority_identifer)
+        if priority_id and not isinstance(priority_id, str):
+            raise TypeError("Expected argument 'priority_id' to be a str")
+        pulumi.set(__self__, "priority_id", priority_id)
         if readable_id and not isinstance(readable_id, str):
             raise TypeError("Expected argument 'readable_id' to be a str")
         pulumi.set(__self__, "readable_id", readable_id)
@@ -75,12 +75,12 @@ class GetCloudforceOneRequestPriorityResult:
         pulumi.set(__self__, "updated", updated)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> builtins.str:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
@@ -91,7 +91,7 @@ class GetCloudforceOneRequestPriorityResult:
     @pulumi.getter
     def content(self) -> builtins.str:
         """
-        Request content
+        Request content.
         """
         return pulumi.get(self, "content")
 
@@ -104,7 +104,7 @@ class GetCloudforceOneRequestPriorityResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -112,7 +112,7 @@ class GetCloudforceOneRequestPriorityResult:
     @pulumi.getter(name="messageTokens")
     def message_tokens(self) -> builtins.int:
         """
-        Tokens for the request messages
+        Tokens for the request messages.
         """
         return pulumi.get(self, "message_tokens")
 
@@ -122,18 +122,18 @@ class GetCloudforceOneRequestPriorityResult:
         return pulumi.get(self, "priority")
 
     @property
-    @pulumi.getter(name="priorityIdentifer")
-    def priority_identifer(self) -> builtins.str:
+    @pulumi.getter(name="priorityId")
+    def priority_id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
-        return pulumi.get(self, "priority_identifer")
+        return pulumi.get(self, "priority_id")
 
     @property
     @pulumi.getter(name="readableId")
     def readable_id(self) -> builtins.str:
         """
-        Readable Request ID
+        Readable Request ID.
         """
         return pulumi.get(self, "readable_id")
 
@@ -141,7 +141,7 @@ class GetCloudforceOneRequestPriorityResult:
     @pulumi.getter
     def request(self) -> builtins.str:
         """
-        Requested information from request
+        Requested information from request.
         """
         return pulumi.get(self, "request")
 
@@ -149,7 +149,7 @@ class GetCloudforceOneRequestPriorityResult:
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        Request Status
+        Request Status.
         Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         """
         return pulumi.get(self, "status")
@@ -158,7 +158,7 @@ class GetCloudforceOneRequestPriorityResult:
     @pulumi.getter
     def summary(self) -> builtins.str:
         """
-        Brief description of the request
+        Brief description of the request.
         """
         return pulumi.get(self, "summary")
 
@@ -166,7 +166,7 @@ class GetCloudforceOneRequestPriorityResult:
     @pulumi.getter
     def tlp(self) -> builtins.str:
         """
-        The CISA defined Traffic Light Protocol (TLP)
+        The CISA defined Traffic Light Protocol (TLP).
         Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
@@ -175,7 +175,7 @@ class GetCloudforceOneRequestPriorityResult:
     @pulumi.getter
     def tokens(self) -> builtins.int:
         """
-        Tokens for the request
+        Tokens for the request.
         """
         return pulumi.get(self, "tokens")
 
@@ -191,14 +191,14 @@ class AwaitableGetCloudforceOneRequestPriorityResult(GetCloudforceOneRequestPrio
         if False:
             yield self
         return GetCloudforceOneRequestPriorityResult(
-            account_identifier=self.account_identifier,
+            account_id=self.account_id,
             completed=self.completed,
             content=self.content,
             created=self.created,
             id=self.id,
             message_tokens=self.message_tokens,
             priority=self.priority,
-            priority_identifer=self.priority_identifer,
+            priority_id=self.priority_id,
             readable_id=self.readable_id,
             request=self.request,
             status=self.status,
@@ -208,8 +208,8 @@ class AwaitableGetCloudforceOneRequestPriorityResult(GetCloudforceOneRequestPrio
             updated=self.updated)
 
 
-def get_cloudforce_one_request_priority(account_identifier: Optional[builtins.str] = None,
-                                        priority_identifer: Optional[builtins.str] = None,
+def get_cloudforce_one_request_priority(account_id: Optional[builtins.str] = None,
+                                        priority_id: Optional[builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudforceOneRequestPriorityResult:
     """
     ## Example Usage
@@ -218,29 +218,29 @@ def get_cloudforce_one_request_priority(account_identifier: Optional[builtins.st
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_priority = cloudflare.get_cloudforce_one_request_priority(account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
-        priority_identifer="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+    example_cloudforce_one_request_priority = cloudflare.get_cloudforce_one_request_priority(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        priority_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
-    :param builtins.str account_identifier: Identifier
-    :param builtins.str priority_identifer: UUID
+    :param builtins.str account_id: Identifier.
+    :param builtins.str priority_id: UUID.
     """
     __args__ = dict()
-    __args__['accountIdentifier'] = account_identifier
-    __args__['priorityIdentifer'] = priority_identifer
+    __args__['accountId'] = account_id
+    __args__['priorityId'] = priority_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority', __args__, opts=opts, typ=GetCloudforceOneRequestPriorityResult).value
 
     return AwaitableGetCloudforceOneRequestPriorityResult(
-        account_identifier=pulumi.get(__ret__, 'account_identifier'),
+        account_id=pulumi.get(__ret__, 'account_id'),
         completed=pulumi.get(__ret__, 'completed'),
         content=pulumi.get(__ret__, 'content'),
         created=pulumi.get(__ret__, 'created'),
         id=pulumi.get(__ret__, 'id'),
         message_tokens=pulumi.get(__ret__, 'message_tokens'),
         priority=pulumi.get(__ret__, 'priority'),
-        priority_identifer=pulumi.get(__ret__, 'priority_identifer'),
+        priority_id=pulumi.get(__ret__, 'priority_id'),
         readable_id=pulumi.get(__ret__, 'readable_id'),
         request=pulumi.get(__ret__, 'request'),
         status=pulumi.get(__ret__, 'status'),
@@ -248,8 +248,8 @@ def get_cloudforce_one_request_priority(account_identifier: Optional[builtins.st
         tlp=pulumi.get(__ret__, 'tlp'),
         tokens=pulumi.get(__ret__, 'tokens'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_cloudforce_one_request_priority_output(account_identifier: Optional[pulumi.Input[builtins.str]] = None,
-                                               priority_identifer: Optional[pulumi.Input[builtins.str]] = None,
+def get_cloudforce_one_request_priority_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
+                                               priority_id: Optional[pulumi.Input[builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestPriorityResult]:
     """
     ## Example Usage
@@ -258,28 +258,28 @@ def get_cloudforce_one_request_priority_output(account_identifier: Optional[pulu
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request_priority = cloudflare.get_cloudforce_one_request_priority(account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
-        priority_identifer="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+    example_cloudforce_one_request_priority = cloudflare.get_cloudforce_one_request_priority(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        priority_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
-    :param builtins.str account_identifier: Identifier
-    :param builtins.str priority_identifer: UUID
+    :param builtins.str account_id: Identifier.
+    :param builtins.str priority_id: UUID.
     """
     __args__ = dict()
-    __args__['accountIdentifier'] = account_identifier
-    __args__['priorityIdentifer'] = priority_identifer
+    __args__['accountId'] = account_id
+    __args__['priorityId'] = priority_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCloudforceOneRequestPriority:getCloudforceOneRequestPriority', __args__, opts=opts, typ=GetCloudforceOneRequestPriorityResult)
     return __ret__.apply(lambda __response__: GetCloudforceOneRequestPriorityResult(
-        account_identifier=pulumi.get(__response__, 'account_identifier'),
+        account_id=pulumi.get(__response__, 'account_id'),
         completed=pulumi.get(__response__, 'completed'),
         content=pulumi.get(__response__, 'content'),
         created=pulumi.get(__response__, 'created'),
         id=pulumi.get(__response__, 'id'),
         message_tokens=pulumi.get(__response__, 'message_tokens'),
         priority=pulumi.get(__response__, 'priority'),
-        priority_identifer=pulumi.get(__response__, 'priority_identifer'),
+        priority_id=pulumi.get(__response__, 'priority_id'),
         readable_id=pulumi.get(__response__, 'readable_id'),
         request=pulumi.get(__response__, 'request'),
         status=pulumi.get(__response__, 'status'),

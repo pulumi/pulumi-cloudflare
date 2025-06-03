@@ -43,11 +43,27 @@ public final class GetR2BucketEventNotificationPlainArgs extends com.pulumi.reso
         return this.bucketName;
     }
 
+    /**
+     * Queue ID.
+     * 
+     */
+    @Import(name="queueId", required=true)
+    private String queueId;
+
+    /**
+     * @return Queue ID.
+     * 
+     */
+    public String queueId() {
+        return this.queueId;
+    }
+
     private GetR2BucketEventNotificationPlainArgs() {}
 
     private GetR2BucketEventNotificationPlainArgs(GetR2BucketEventNotificationPlainArgs $) {
         this.accountId = $.accountId;
         this.bucketName = $.bucketName;
+        this.queueId = $.queueId;
     }
 
     public static Builder builder() {
@@ -90,12 +106,26 @@ public final class GetR2BucketEventNotificationPlainArgs extends com.pulumi.reso
             return this;
         }
 
+        /**
+         * @param queueId Queue ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queueId(String queueId) {
+            $.queueId = queueId;
+            return this;
+        }
+
         public GetR2BucketEventNotificationPlainArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("GetR2BucketEventNotificationPlainArgs", "accountId");
             }
             if ($.bucketName == null) {
                 throw new MissingRequiredPropertyException("GetR2BucketEventNotificationPlainArgs", "bucketName");
+            }
+            if ($.queueId == null) {
+                throw new MissingRequiredPropertyException("GetR2BucketEventNotificationPlainArgs", "queueId");
             }
             return $;
         }

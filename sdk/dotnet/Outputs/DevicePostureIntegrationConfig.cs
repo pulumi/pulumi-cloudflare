@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class DevicePostureIntegrationConfig
     {
         /// <summary>
-        /// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
+        /// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
         /// </summary>
         public readonly string? AccessClientId;
         /// <summary>
-        /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
+        /// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
         /// </summary>
         public readonly string? AccessClientSecret;
         /// <summary>

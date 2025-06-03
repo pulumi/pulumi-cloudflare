@@ -32,14 +32,14 @@ public final class WorkersForPlatformsDispatchNamespaceArgs extends com.pulumi.r
     }
 
     /**
-     * The name of the dispatch namespace
+     * The name of the dispatch namespace.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the dispatch namespace
+     * @return The name of the dispatch namespace.
      * 
      */
     public Optional<Output<String>> name() {
@@ -93,7 +93,7 @@ public final class WorkersForPlatformsDispatchNamespaceArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The name of the dispatch namespace
+         * @param name The name of the dispatch namespace.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class WorkersForPlatformsDispatchNamespaceArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The name of the dispatch namespace
+         * @param name The name of the dispatch namespace.
          * 
          * @return builder
          * 

@@ -56,9 +56,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// The name of the rule.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.
-        /// </summary>
         public readonly int Precedence;
         /// <summary>
         /// Additional settings that modify the rule's action.

@@ -96,6 +96,7 @@ class _ZoneState:
     def __init__(__self__, *,
                  account: Optional[pulumi.Input['ZoneAccountArgs']] = None,
                  activated_on: Optional[pulumi.Input[builtins.str]] = None,
+                 cname_suffix: Optional[pulumi.Input[builtins.str]] = None,
                  created_on: Optional[pulumi.Input[builtins.str]] = None,
                  development_mode: Optional[pulumi.Input[builtins.float]] = None,
                  meta: Optional[pulumi.Input['ZoneMetaArgs']] = None,
@@ -107,7 +108,11 @@ class _ZoneState:
                  original_registrar: Optional[pulumi.Input[builtins.str]] = None,
                  owner: Optional[pulumi.Input['ZoneOwnerArgs']] = None,
                  paused: Optional[pulumi.Input[builtins.bool]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 plan: Optional[pulumi.Input['ZonePlanArgs']] = None,
                  status: Optional[pulumi.Input[builtins.str]] = None,
+                 tenant: Optional[pulumi.Input['ZoneTenantArgs']] = None,
+                 tenant_unit: Optional[pulumi.Input['ZoneTenantUnitArgs']] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  verification_key: Optional[pulumi.Input[builtins.str]] = None):
@@ -115,6 +120,8 @@ class _ZoneState:
         Input properties used for looking up and filtering Zone resources.
         :param pulumi.Input[builtins.str] activated_on: The last time proof of ownership was detected and the zone was made
                active
+        :param pulumi.Input[builtins.str] cname_suffix: Allows the customer to use a custom apex.
+               *Tenants Only Configuration*.
         :param pulumi.Input[builtins.str] created_on: When the zone was created
         :param pulumi.Input[builtins.float] development_mode: The interval (in seconds) from when development mode expires
                (positive integer) or last expired (negative integer) for the
@@ -130,8 +137,12 @@ class _ZoneState:
         :param pulumi.Input[builtins.bool] paused: Indicates whether the zone is only using Cloudflare DNS services. A
                true value means the zone will not receive security or performance
                benefits.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] permissions: Legacy permissions based on legacy user membership information.
+        :param pulumi.Input['ZonePlanArgs'] plan: A Zones subscription information.
         :param pulumi.Input[builtins.str] status: The zone status on Cloudflare.
                Available values: "initializing", "pending", "active", "moved".
+        :param pulumi.Input['ZoneTenantArgs'] tenant: The root organizational unit that this zone belongs to (such as a tenant or organization).
+        :param pulumi.Input['ZoneTenantUnitArgs'] tenant_unit: The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
         :param pulumi.Input[builtins.str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
                typically a partner-hosted zone or a CNAME setup.
                Available values: "full", "partial", "secondary", "internal".
@@ -143,6 +154,8 @@ class _ZoneState:
             pulumi.set(__self__, "account", account)
         if activated_on is not None:
             pulumi.set(__self__, "activated_on", activated_on)
+        if cname_suffix is not None:
+            pulumi.set(__self__, "cname_suffix", cname_suffix)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if development_mode is not None:
@@ -165,8 +178,22 @@ class _ZoneState:
             pulumi.set(__self__, "owner", owner)
         if paused is not None:
             pulumi.set(__self__, "paused", paused)
+        if permissions is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""permissions is deprecated: This attribute is deprecated.""")
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+        if plan is not None:
+            warnings.warn("""This attribute is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""plan is deprecated: This attribute is deprecated.""")
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tenant is not None:
+            pulumi.set(__self__, "tenant", tenant)
+        if tenant_unit is not None:
+            pulumi.set(__self__, "tenant_unit", tenant_unit)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vanity_name_servers is not None:
@@ -195,6 +222,19 @@ class _ZoneState:
     @activated_on.setter
     def activated_on(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "activated_on", value)
+
+    @property
+    @pulumi.getter(name="cnameSuffix")
+    def cname_suffix(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Allows the customer to use a custom apex.
+        *Tenants Only Configuration*.
+        """
+        return pulumi.get(self, "cname_suffix")
+
+    @cname_suffix.setter
+    def cname_suffix(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "cname_suffix", value)
 
     @property
     @pulumi.getter(name="createdOn")
@@ -334,6 +374,32 @@ class _ZoneState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Legacy permissions based on legacy user membership information.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "permissions", value)
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def plan(self) -> Optional[pulumi.Input['ZonePlanArgs']]:
+        """
+        A Zones subscription information.
+        """
+        return pulumi.get(self, "plan")
+
+    @plan.setter
+    def plan(self, value: Optional[pulumi.Input['ZonePlanArgs']]):
+        pulumi.set(self, "plan", value)
+
+    @property
+    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The zone status on Cloudflare.
@@ -344,6 +410,30 @@ class _ZoneState:
     @status.setter
     def status(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def tenant(self) -> Optional[pulumi.Input['ZoneTenantArgs']]:
+        """
+        The root organizational unit that this zone belongs to (such as a tenant or organization).
+        """
+        return pulumi.get(self, "tenant")
+
+    @tenant.setter
+    def tenant(self, value: Optional[pulumi.Input['ZoneTenantArgs']]):
+        pulumi.set(self, "tenant", value)
+
+    @property
+    @pulumi.getter(name="tenantUnit")
+    def tenant_unit(self) -> Optional[pulumi.Input['ZoneTenantUnitArgs']]:
+        """
+        The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+        """
+        return pulumi.get(self, "tenant_unit")
+
+    @tenant_unit.setter
+    def tenant_unit(self, value: Optional[pulumi.Input['ZoneTenantUnitArgs']]):
+        pulumi.set(self, "tenant_unit", value)
 
     @property
     @pulumi.getter
@@ -494,6 +584,7 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["vanity_name_servers"] = vanity_name_servers
             __props__.__dict__["activated_on"] = None
+            __props__.__dict__["cname_suffix"] = None
             __props__.__dict__["created_on"] = None
             __props__.__dict__["development_mode"] = None
             __props__.__dict__["meta"] = None
@@ -504,7 +595,11 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["original_registrar"] = None
             __props__.__dict__["owner"] = None
             __props__.__dict__["paused"] = None
+            __props__.__dict__["permissions"] = None
+            __props__.__dict__["plan"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["tenant"] = None
+            __props__.__dict__["tenant_unit"] = None
             __props__.__dict__["verification_key"] = None
         super(Zone, __self__).__init__(
             'cloudflare:index/zone:Zone',
@@ -518,6 +613,7 @@ class Zone(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account: Optional[pulumi.Input[Union['ZoneAccountArgs', 'ZoneAccountArgsDict']]] = None,
             activated_on: Optional[pulumi.Input[builtins.str]] = None,
+            cname_suffix: Optional[pulumi.Input[builtins.str]] = None,
             created_on: Optional[pulumi.Input[builtins.str]] = None,
             development_mode: Optional[pulumi.Input[builtins.float]] = None,
             meta: Optional[pulumi.Input[Union['ZoneMetaArgs', 'ZoneMetaArgsDict']]] = None,
@@ -529,7 +625,11 @@ class Zone(pulumi.CustomResource):
             original_registrar: Optional[pulumi.Input[builtins.str]] = None,
             owner: Optional[pulumi.Input[Union['ZoneOwnerArgs', 'ZoneOwnerArgsDict']]] = None,
             paused: Optional[pulumi.Input[builtins.bool]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            plan: Optional[pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict']]] = None,
             status: Optional[pulumi.Input[builtins.str]] = None,
+            tenant: Optional[pulumi.Input[Union['ZoneTenantArgs', 'ZoneTenantArgsDict']]] = None,
+            tenant_unit: Optional[pulumi.Input[Union['ZoneTenantUnitArgs', 'ZoneTenantUnitArgsDict']]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None,
             vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             verification_key: Optional[pulumi.Input[builtins.str]] = None) -> 'Zone':
@@ -542,6 +642,8 @@ class Zone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] activated_on: The last time proof of ownership was detected and the zone was made
                active
+        :param pulumi.Input[builtins.str] cname_suffix: Allows the customer to use a custom apex.
+               *Tenants Only Configuration*.
         :param pulumi.Input[builtins.str] created_on: When the zone was created
         :param pulumi.Input[builtins.float] development_mode: The interval (in seconds) from when development mode expires
                (positive integer) or last expired (negative integer) for the
@@ -557,8 +659,12 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] paused: Indicates whether the zone is only using Cloudflare DNS services. A
                true value means the zone will not receive security or performance
                benefits.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] permissions: Legacy permissions based on legacy user membership information.
+        :param pulumi.Input[Union['ZonePlanArgs', 'ZonePlanArgsDict']] plan: A Zones subscription information.
         :param pulumi.Input[builtins.str] status: The zone status on Cloudflare.
                Available values: "initializing", "pending", "active", "moved".
+        :param pulumi.Input[Union['ZoneTenantArgs', 'ZoneTenantArgsDict']] tenant: The root organizational unit that this zone belongs to (such as a tenant or organization).
+        :param pulumi.Input[Union['ZoneTenantUnitArgs', 'ZoneTenantUnitArgsDict']] tenant_unit: The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
         :param pulumi.Input[builtins.str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is
                typically a partner-hosted zone or a CNAME setup.
                Available values: "full", "partial", "secondary", "internal".
@@ -572,6 +678,7 @@ class Zone(pulumi.CustomResource):
 
         __props__.__dict__["account"] = account
         __props__.__dict__["activated_on"] = activated_on
+        __props__.__dict__["cname_suffix"] = cname_suffix
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["development_mode"] = development_mode
         __props__.__dict__["meta"] = meta
@@ -583,7 +690,11 @@ class Zone(pulumi.CustomResource):
         __props__.__dict__["original_registrar"] = original_registrar
         __props__.__dict__["owner"] = owner
         __props__.__dict__["paused"] = paused
+        __props__.__dict__["permissions"] = permissions
+        __props__.__dict__["plan"] = plan
         __props__.__dict__["status"] = status
+        __props__.__dict__["tenant"] = tenant
+        __props__.__dict__["tenant_unit"] = tenant_unit
         __props__.__dict__["type"] = type
         __props__.__dict__["vanity_name_servers"] = vanity_name_servers
         __props__.__dict__["verification_key"] = verification_key
@@ -602,6 +713,15 @@ class Zone(pulumi.CustomResource):
         active
         """
         return pulumi.get(self, "activated_on")
+
+    @property
+    @pulumi.getter(name="cnameSuffix")
+    def cname_suffix(self) -> pulumi.Output[builtins.str]:
+        """
+        Allows the customer to use a custom apex.
+        *Tenants Only Configuration*.
+        """
+        return pulumi.get(self, "cname_suffix")
 
     @property
     @pulumi.getter(name="createdOn")
@@ -697,12 +817,46 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def permissions(self) -> pulumi.Output[Sequence[builtins.str]]:
+        """
+        Legacy permissions based on legacy user membership information.
+        """
+        return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def plan(self) -> pulumi.Output['outputs.ZonePlan']:
+        """
+        A Zones subscription information.
+        """
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
         The zone status on Cloudflare.
         Available values: "initializing", "pending", "active", "moved".
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tenant(self) -> pulumi.Output['outputs.ZoneTenant']:
+        """
+        The root organizational unit that this zone belongs to (such as a tenant or organization).
+        """
+        return pulumi.get(self, "tenant")
+
+    @property
+    @pulumi.getter(name="tenantUnit")
+    def tenant_unit(self) -> pulumi.Output['outputs.ZoneTenantUnit']:
+        """
+        The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+        """
+        return pulumi.get(self, "tenant_unit")
 
     @property
     @pulumi.getter

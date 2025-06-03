@@ -94,7 +94,7 @@ type AccessApplication struct {
 	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
 	SessionDuration pulumi.StringOutput `pulumi:"sessionDuration"`
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage pulumi.BoolOutput `pulumi:"skipAppLauncherLoginPage"`
@@ -217,7 +217,7 @@ type accessApplicationState struct {
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage *bool `pulumi:"skipAppLauncherLoginPage"`
@@ -305,7 +305,7 @@ type AccessApplicationState struct {
 	SelfHostedDomains pulumi.StringArrayInput
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
 	SessionDuration pulumi.StringPtrInput
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage pulumi.BoolPtrInput
@@ -394,7 +394,7 @@ type accessApplicationArgs struct {
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage *bool `pulumi:"skipAppLauncherLoginPage"`
@@ -479,7 +479,7 @@ type AccessApplicationArgs struct {
 	SelfHostedDomains pulumi.StringArrayInput
 	// Returns a 401 status code when the request is blocked by a Service Auth policy.
 	ServiceAuth401Redirect pulumi.BoolPtrInput
-	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+	// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
 	SessionDuration pulumi.StringPtrInput
 	// Determines when to skip the App Launcher landing page.
 	SkipAppLauncherLoginPage pulumi.BoolPtrInput
@@ -751,7 +751,7 @@ func (o AccessApplicationOutput) ServiceAuth401Redirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.ServiceAuth401Redirect }).(pulumi.BoolPtrOutput)
 }
 
-// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
 func (o AccessApplicationOutput) SessionDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.SessionDuration }).(pulumi.StringOutput)
 }

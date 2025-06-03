@@ -15,17 +15,17 @@ import java.util.Objects;
 public final class GetHyperdriveConfigsResult {
     private GetHyperdriveConfigsResultCaching caching;
     /**
-     * @return When the Hyperdrive configuration was created.
+     * @return Defines the creation time of the Hyperdrive configuration.
      * 
      */
     private String createdOn;
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     private String id;
     /**
-     * @return When the Hyperdrive configuration was last modified.
+     * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     private String modifiedOn;
@@ -38,21 +38,21 @@ public final class GetHyperdriveConfigsResult {
         return this.caching;
     }
     /**
-     * @return When the Hyperdrive configuration was created.
+     * @return Defines the creation time of the Hyperdrive configuration.
      * 
      */
     public String createdOn() {
         return this.createdOn;
     }
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return When the Hyperdrive configuration was last modified.
+     * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     public String modifiedOn() {

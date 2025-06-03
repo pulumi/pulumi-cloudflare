@@ -16,28 +16,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetHyperdriveConfigResult {
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     private String accountId;
     private GetHyperdriveConfigCaching caching;
     /**
-     * @return When the Hyperdrive configuration was created.
+     * @return Defines the creation time of the Hyperdrive configuration.
      * 
      */
     private String createdOn;
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     private @Nullable String hyperdriveId;
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     private String id;
     /**
-     * @return When the Hyperdrive configuration was last modified.
+     * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     private String modifiedOn;
@@ -47,7 +47,7 @@ public final class GetHyperdriveConfigResult {
 
     private GetHyperdriveConfigResult() {}
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public String accountId() {
@@ -57,28 +57,28 @@ public final class GetHyperdriveConfigResult {
         return this.caching;
     }
     /**
-     * @return When the Hyperdrive configuration was created.
+     * @return Defines the creation time of the Hyperdrive configuration.
      * 
      */
     public String createdOn() {
         return this.createdOn;
     }
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public Optional<String> hyperdriveId() {
         return Optional.ofNullable(this.hyperdriveId);
     }
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return When the Hyperdrive configuration was last modified.
+     * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     public String modifiedOn() {

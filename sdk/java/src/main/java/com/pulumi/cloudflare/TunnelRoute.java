@@ -158,14 +158,14 @@ public class TunnelRoute extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="virtualNetworkId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> virtualNetworkId;
+    private Output<String> virtualNetworkId;
 
     /**
      * @return UUID of the virtual network.
      * 
      */
-    public Output<Optional<String>> virtualNetworkId() {
-        return Codegen.optional(this.virtualNetworkId);
+    public Output<String> virtualNetworkId() {
+        return this.virtualNetworkId;
     }
 
     /**

@@ -16,14 +16,14 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
     public static final PagesProjectCanonicalDeploymentEnvVarsArgs Empty = new PagesProjectCanonicalDeploymentEnvVarsArgs();
 
     /**
-     * Available values: &#34;plain_text&#34;.
+     * Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;plain_text&#34;.
+     * @return Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -71,7 +71,7 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
         }
 
         /**
-         * @param type Available values: &#34;plain_text&#34;.
+         * @param type Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class PagesProjectCanonicalDeploymentEnvVarsArgs extends com.pulumi
         }
 
         /**
-         * @param type Available values: &#34;plain_text&#34;.
+         * @param type Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
          * 
          * @return builder
          * 

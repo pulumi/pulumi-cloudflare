@@ -76,7 +76,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
      * this setting can determine the clearance level to be set
      * Available values: "noClearance", "jschallenge", "managed", "interactive".
      */
-    public readonly clearanceLevel!: pulumi.Output<string | undefined>;
+    public readonly clearanceLevel!: pulumi.Output<string>;
     /**
      * When the widget was created.
      */
@@ -85,7 +85,7 @@ export class TurnstileWidget extends pulumi.CustomResource {
     /**
      * Return the Ephemeral ID in /siteverify (ENT only).
      */
-    public readonly ephemeralId!: pulumi.Output<boolean | undefined>;
+    public readonly ephemeralId!: pulumi.Output<boolean>;
     /**
      * Widget Mode
      * Available values: "non-interactive", "invisible", "managed".
@@ -106,8 +106,8 @@ export class TurnstileWidget extends pulumi.CustomResource {
      */
     public readonly offlabel!: pulumi.Output<boolean>;
     /**
-     * Region where this widget can be used.
-     * Available values: "world".
+     * Region where this widget can be used. This cannot be changed after creation.
+     * Available values: "world", "china".
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -174,6 +174,8 @@ export class TurnstileWidget extends pulumi.CustomResource {
             resourceInputs["sitekey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(TurnstileWidget.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -226,8 +228,8 @@ export interface TurnstileWidgetState {
      */
     offlabel?: pulumi.Input<boolean>;
     /**
-     * Region where this widget can be used.
-     * Available values: "world".
+     * Region where this widget can be used. This cannot be changed after creation.
+     * Available values: "world", "china".
      */
     region?: pulumi.Input<string>;
     /**
@@ -280,8 +282,8 @@ export interface TurnstileWidgetArgs {
      */
     offlabel?: pulumi.Input<boolean>;
     /**
-     * Region where this widget can be used.
-     * Available values: "world".
+     * Region where this widget can be used. This cannot be changed after creation.
+     * Available values: "world", "china".
      */
     region?: pulumi.Input<string>;
 }

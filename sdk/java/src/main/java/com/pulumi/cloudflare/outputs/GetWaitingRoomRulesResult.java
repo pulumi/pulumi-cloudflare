@@ -45,7 +45,7 @@ public final class GetWaitingRoomRulesResult {
     private String version;
     private String waitingRoomId;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -101,7 +101,7 @@ public final class GetWaitingRoomRulesResult {
         return this.waitingRoomId;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

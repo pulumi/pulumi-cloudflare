@@ -113,14 +113,14 @@ public class QueueConsumer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.settings);
     }
     /**
-     * Available values: &#34;worker&#34;.
+     * Available values: &#34;worker&#34;, &#34;http_pull&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Available values: &#34;worker&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;http_pull&#34;.
      * 
      */
     public Output<Optional<String>> type() {

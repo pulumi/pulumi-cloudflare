@@ -21,7 +21,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Type of matcher.
-        /// Available values: "literal".
+        /// Available values: "all", "literal".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

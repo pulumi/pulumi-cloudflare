@@ -66,12 +66,12 @@ type TurnstileWidget struct {
 	// If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 	// this setting can determine the clearance level to be set
 	// Available values: "noClearance", "jschallenge", "managed", "interactive".
-	ClearanceLevel pulumi.StringPtrOutput `pulumi:"clearanceLevel"`
+	ClearanceLevel pulumi.StringOutput `pulumi:"clearanceLevel"`
 	// When the widget was created.
 	CreatedOn pulumi.StringOutput      `pulumi:"createdOn"`
 	Domains   pulumi.StringArrayOutput `pulumi:"domains"`
 	// Return the Ephemeral ID in /siteverify (ENT only).
-	EphemeralId pulumi.BoolPtrOutput `pulumi:"ephemeralId"`
+	EphemeralId pulumi.BoolOutput `pulumi:"ephemeralId"`
 	// Widget Mode
 	// Available values: "non-interactive", "invisible", "managed".
 	Mode pulumi.StringOutput `pulumi:"mode"`
@@ -83,8 +83,8 @@ type TurnstileWidget struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolOutput `pulumi:"offlabel"`
-	// Region where this widget can be used.
-	// Available values: "world".
+	// Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Secret key for this widget.
 	Secret pulumi.StringOutput `pulumi:"secret"`
@@ -111,6 +111,10 @@ func NewTurnstileWidget(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TurnstileWidget
 	err := ctx.RegisterResource("cloudflare:index/turnstileWidget:TurnstileWidget", name, args, &resource, opts...)
@@ -159,8 +163,8 @@ type turnstileWidgetState struct {
 	Name *string `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `pulumi:"offlabel"`
-	// Region where this widget can be used.
-	// Available values: "world".
+	// Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	Region *string `pulumi:"region"`
 	// Secret key for this widget.
 	Secret *string `pulumi:"secret"`
@@ -194,8 +198,8 @@ type TurnstileWidgetState struct {
 	Name pulumi.StringPtrInput
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolPtrInput
-	// Region where this widget can be used.
-	// Available values: "world".
+	// Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	Region pulumi.StringPtrInput
 	// Secret key for this widget.
 	Secret pulumi.StringPtrInput
@@ -229,8 +233,8 @@ type turnstileWidgetArgs struct {
 	Name string `pulumi:"name"`
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel *bool `pulumi:"offlabel"`
-	// Region where this widget can be used.
-	// Available values: "world".
+	// Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	Region *string `pulumi:"region"`
 }
 
@@ -257,8 +261,8 @@ type TurnstileWidgetArgs struct {
 	Name pulumi.StringInput
 	// Do not show any Cloudflare branding on the widget (ENT only).
 	Offlabel pulumi.BoolPtrInput
-	// Region where this widget can be used.
-	// Available values: "world".
+	// Region where this widget can be used. This cannot be changed after creation.
+	// Available values: "world", "china".
 	Region pulumi.StringPtrInput
 }
 
@@ -363,8 +367,8 @@ func (o TurnstileWidgetOutput) BotFightMode() pulumi.BoolOutput {
 // If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance,
 // this setting can determine the clearance level to be set
 // Available values: "noClearance", "jschallenge", "managed", "interactive".
-func (o TurnstileWidgetOutput) ClearanceLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringPtrOutput { return v.ClearanceLevel }).(pulumi.StringPtrOutput)
+func (o TurnstileWidgetOutput) ClearanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.ClearanceLevel }).(pulumi.StringOutput)
 }
 
 // When the widget was created.
@@ -377,8 +381,8 @@ func (o TurnstileWidgetOutput) Domains() pulumi.StringArrayOutput {
 }
 
 // Return the Ephemeral ID in /siteverify (ENT only).
-func (o TurnstileWidgetOutput) EphemeralId() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolPtrOutput { return v.EphemeralId }).(pulumi.BoolPtrOutput)
+func (o TurnstileWidgetOutput) EphemeralId() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.EphemeralId }).(pulumi.BoolOutput)
 }
 
 // Widget Mode
@@ -404,8 +408,8 @@ func (o TurnstileWidgetOutput) Offlabel() pulumi.BoolOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.BoolOutput { return v.Offlabel }).(pulumi.BoolOutput)
 }
 
-// Region where this widget can be used.
-// Available values: "world".
+// Region where this widget can be used. This cannot be changed after creation.
+// Available values: "world", "china".
 func (o TurnstileWidgetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TurnstileWidget) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

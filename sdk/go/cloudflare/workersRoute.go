@@ -51,7 +51,7 @@ type WorkersRoute struct {
 	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern pulumi.StringOutput `pulumi:"pattern"`
 	// Name of the script to run if the route matches.
-	Script pulumi.StringOutput `pulumi:"script"`
+	Script pulumi.StringPtrOutput `pulumi:"script"`
 	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -65,9 +65,6 @@ func NewWorkersRoute(ctx *pulumi.Context,
 
 	if args.Pattern == nil {
 		return nil, errors.New("invalid value for required argument 'Pattern'")
-	}
-	if args.Script == nil {
-		return nil, errors.New("invalid value for required argument 'Script'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -120,7 +117,7 @@ type workersRouteArgs struct {
 	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern string `pulumi:"pattern"`
 	// Name of the script to run if the route matches.
-	Script string `pulumi:"script"`
+	Script *string `pulumi:"script"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -130,7 +127,7 @@ type WorkersRouteArgs struct {
 	// Pattern to match incoming requests against. [Learn more](https://developers.cloudflare.com/workers/configuration/routing/routes/#matching-behavior).
 	Pattern pulumi.StringInput
 	// Name of the script to run if the route matches.
-	Script pulumi.StringInput
+	Script pulumi.StringPtrInput
 	// Identifier.
 	ZoneId pulumi.StringInput
 }
@@ -228,8 +225,8 @@ func (o WorkersRouteOutput) Pattern() pulumi.StringOutput {
 }
 
 // Name of the script to run if the route matches.
-func (o WorkersRouteOutput) Script() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkersRoute) pulumi.StringOutput { return v.Script }).(pulumi.StringOutput)
+func (o WorkersRouteOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkersRoute) pulumi.StringPtrOutput { return v.Script }).(pulumi.StringPtrOutput)
 }
 
 // Identifier.
