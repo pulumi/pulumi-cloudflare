@@ -2282,6 +2282,15 @@
                     }
                 }
             },
+            "cloudflare_zero_trust_dex_test": {
+                "current": "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest",
+                "majorVersion": 6,
+                "fields": {
+                    "target_policies": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_zero_trust_dlp_custom_profile": {
                 "current": "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile",
                 "past": [
@@ -2620,6 +2629,9 @@
                         "maxItemsOne": false
                     },
                     "original_name_servers": {
+                        "maxItemsOne": false
+                    },
+                    "permissions": {
                         "maxItemsOne": false
                     },
                     "vanity_name_servers": {
@@ -3316,11 +3328,11 @@
                     }
                 }
             },
-            "cloudflare_cloud_connector_rules_list": {
-                "current": "cloudflare:index/getCloudConnectorRulesList:getCloudConnectorRulesList",
+            "cloudflare_cloud_connector_rules": {
+                "current": "cloudflare:index/getCloudConnectorRules:getCloudConnectorRules",
                 "majorVersion": 6,
                 "fields": {
-                    "result": {
+                    "rules": {
                         "maxItemsOne": false
                     }
                 }
@@ -5239,22 +5251,8 @@
                 "current": "cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification",
                 "majorVersion": 6,
                 "fields": {
-                    "queues": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "rules": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "actions": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    "storage_class_transitions": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -6671,6 +6669,31 @@
                     }
                 }
             },
+            "cloudflare_zero_trust_dex_test": {
+                "current": "cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest",
+                "majorVersion": 6,
+                "fields": {
+                    "target_policies": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_zero_trust_dex_tests": {
+                "current": "cloudflare:index/getZeroTrustDexTests:getZeroTrustDexTests",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "target_policies": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "cloudflare_zero_trust_dlp_custom_profile": {
                 "current": "cloudflare:index/getZeroTrustDlpCustomProfile:getZeroTrustDlpCustomProfile",
                 "majorVersion": 6,
@@ -7088,6 +7111,10 @@
                     }
                 }
             },
+            "cloudflare_zero_trust_tunnel_warp_connector_token": {
+                "current": "cloudflare:index/getZeroTrustTunnelWarpConnectorToken:getZeroTrustTunnelWarpConnectorToken",
+                "majorVersion": 6
+            },
             "cloudflare_zone": {
                 "current": "cloudflare:index/getZone:getZone",
                 "majorVersion": 6,
@@ -7096,6 +7123,9 @@
                         "maxItemsOne": false
                     },
                     "original_name_servers": {
+                        "maxItemsOne": false
+                    },
+                    "permissions": {
                         "maxItemsOne": false
                     },
                     "vanity_name_servers": {
@@ -7174,6 +7204,9 @@
                                     "maxItemsOne": false
                                 },
                                 "original_name_servers": {
+                                    "maxItemsOne": false
+                                },
+                                "permissions": {
                                     "maxItemsOne": false
                                 },
                                 "vanity_name_servers": {
