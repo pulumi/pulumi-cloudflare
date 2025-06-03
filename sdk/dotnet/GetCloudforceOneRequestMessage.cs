@@ -24,8 +24,14 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestMessage = Cloudflare.GetCloudforceOneRequestMessage.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         Page = 0,
+        ///         PerPage = 10,
+        ///         After = "2022-04-01T05:20:00Z",
+        ///         Before = "2024-01-01T00:00:00Z",
+        ///         SortBy = "created",
+        ///         SortOrder = "asc",
         ///     });
         /// 
         /// });
@@ -47,8 +53,14 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestMessage = Cloudflare.GetCloudforceOneRequestMessage.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         Page = 0,
+        ///         PerPage = 10,
+        ///         After = "2022-04-01T05:20:00Z",
+        ///         Before = "2024-01-01T00:00:00Z",
+        ///         SortBy = "created",
+        ///         SortOrder = "asc",
         ///     });
         /// 
         /// });
@@ -70,8 +82,14 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestMessage = Cloudflare.GetCloudforceOneRequestMessage.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         Page = 0,
+        ///         PerPage = 10,
+        ///         After = "2022-04-01T05:20:00Z",
+        ///         Before = "2024-01-01T00:00:00Z",
+        ///         SortBy = "created",
+        ///         SortOrder = "asc",
         ///     });
         /// 
         /// });
@@ -85,16 +103,53 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestMessageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public string AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// Retrieve mes  ges created after this time.
         /// </summary>
-        [Input("requestIdentifier", required: true)]
-        public string RequestIdentifier { get; set; } = null!;
+        [Input("after")]
+        public string? After { get; set; }
+
+        /// <summary>
+        /// Retrieve messages created before this time.
+        /// </summary>
+        [Input("before")]
+        public string? Before { get; set; }
+
+        /// <summary>
+        /// Page number of results.
+        /// </summary>
+        [Input("page", required: true)]
+        public int Page { get; set; }
+
+        /// <summary>
+        /// Number of results per page.
+        /// </summary>
+        [Input("perPage", required: true)]
+        public int PerPage { get; set; }
+
+        /// <summary>
+        /// UUID.
+        /// </summary>
+        [Input("requestId", required: true)]
+        public string RequestId { get; set; } = null!;
+
+        /// <summary>
+        /// Field to sort results by.
+        /// </summary>
+        [Input("sortBy")]
+        public string? SortBy { get; set; }
+
+        /// <summary>
+        /// Sort order (asc or desc).
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("sortOrder")]
+        public string? SortOrder { get; set; }
 
         public GetCloudforceOneRequestMessageArgs()
         {
@@ -105,16 +160,53 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestMessageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public Input<string> AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// Retrieve mes  ges created after this time.
         /// </summary>
-        [Input("requestIdentifier", required: true)]
-        public Input<string> RequestIdentifier { get; set; } = null!;
+        [Input("after")]
+        public Input<string>? After { get; set; }
+
+        /// <summary>
+        /// Retrieve messages created before this time.
+        /// </summary>
+        [Input("before")]
+        public Input<string>? Before { get; set; }
+
+        /// <summary>
+        /// Page number of results.
+        /// </summary>
+        [Input("page", required: true)]
+        public Input<int> Page { get; set; } = null!;
+
+        /// <summary>
+        /// Number of results per page.
+        /// </summary>
+        [Input("perPage", required: true)]
+        public Input<int> PerPage { get; set; } = null!;
+
+        /// <summary>
+        /// UUID.
+        /// </summary>
+        [Input("requestId", required: true)]
+        public Input<string> RequestId { get; set; } = null!;
+
+        /// <summary>
+        /// Field to sort results by.
+        /// </summary>
+        [Input("sortBy")]
+        public Input<string>? SortBy { get; set; }
+
+        /// <summary>
+        /// Sort order (asc or desc).
+        /// Available values: "asc", "desc".
+        /// </summary>
+        [Input("sortOrder")]
+        public Input<string>? SortOrder { get; set; }
 
         public GetCloudforceOneRequestMessageInvokeArgs()
         {
@@ -127,43 +219,72 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestMessageResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        public readonly string AccountIdentifier;
+        public readonly string AccountId;
         /// <summary>
-        /// Author of message
+        /// Retrieve mes  ges created after this time.
+        /// </summary>
+        public readonly string? After;
+        /// <summary>
+        /// Author of message.
         /// </summary>
         public readonly string Author;
         /// <summary>
-        /// Content of message
+        /// Retrieve messages created before this time.
+        /// </summary>
+        public readonly string? Before;
+        /// <summary>
+        /// Content of message.
         /// </summary>
         public readonly string Content;
         /// <summary>
-        /// Message creation time
+        /// Defines the message creation time.
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// Message ID
+        /// Message ID.
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// Whether the message is a follow-on request
+        /// Whether the message is a follow-on request.
         /// </summary>
         public readonly bool IsFollowOnRequest;
         /// <summary>
-        /// UUID
+        /// Page number of results.
         /// </summary>
-        public readonly string RequestIdentifier;
+        public readonly int Page;
         /// <summary>
-        /// Message last updated time
+        /// Number of results per page.
+        /// </summary>
+        public readonly int PerPage;
+        /// <summary>
+        /// UUID.
+        /// </summary>
+        public readonly string RequestId;
+        /// <summary>
+        /// Field to sort results by.
+        /// </summary>
+        public readonly string? SortBy;
+        /// <summary>
+        /// Sort order (asc or desc).
+        /// Available values: "asc", "desc".
+        /// </summary>
+        public readonly string? SortOrder;
+        /// <summary>
+        /// Defines the message last updated time.
         /// </summary>
         public readonly string Updated;
 
         [OutputConstructor]
         private GetCloudforceOneRequestMessageResult(
-            string accountIdentifier,
+            string accountId,
+
+            string? after,
 
             string author,
+
+            string? before,
 
             string content,
 
@@ -173,17 +294,31 @@ namespace Pulumi.Cloudflare
 
             bool isFollowOnRequest,
 
-            string requestIdentifier,
+            int page,
+
+            int perPage,
+
+            string requestId,
+
+            string? sortBy,
+
+            string? sortOrder,
 
             string updated)
         {
-            AccountIdentifier = accountIdentifier;
+            AccountId = accountId;
+            After = after;
             Author = author;
+            Before = before;
             Content = content;
             Created = created;
             Id = id;
             IsFollowOnRequest = isFollowOnRequest;
-            RequestIdentifier = requestIdentifier;
+            Page = page;
+            PerPage = perPage;
+            RequestId = requestId;
+            SortBy = sortBy;
+            SortOrder = sortOrder;
             Updated = updated;
         }
     }

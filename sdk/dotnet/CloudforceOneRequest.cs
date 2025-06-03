@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleCloudforceOneRequest = new Cloudflare.CloudforceOneRequest("example_cloudforce_one_request", new()
     ///     {
-    ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Content = "What regions were most effected by the recent DoS?",
     ///         Priority = "routine",
     ///         RequestType = "Victomology",
@@ -36,23 +36,23 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '&lt;account_identifier&gt;/&lt;request_identifier&gt;'
+    /// $ pulumi import cloudflare:index/cloudforceOneRequest:CloudforceOneRequest example '&lt;account_id&gt;/&lt;request_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequest:CloudforceOneRequest")]
     public partial class CloudforceOneRequest : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Output("accountIdentifier")]
-        public Output<string> AccountIdentifier { get; private set; } = null!;
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
 
         [Output("completed")]
         public Output<string> Completed { get; private set; } = null!;
 
         /// <summary>
-        /// Request content
+        /// Request content.
         /// </summary>
         [Output("content")]
         public Output<string?> Content { get; private set; } = null!;
@@ -61,57 +61,57 @@ namespace Pulumi.Cloudflare
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// Tokens for the request messages
+        /// Tokens for the request messages.
         /// </summary>
         [Output("messageTokens")]
         public Output<int> MessageTokens { get; private set; } = null!;
 
         /// <summary>
-        /// Priority for analyzing the request
+        /// Priority for analyzing the request.
         /// </summary>
         [Output("priority")]
         public Output<string?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Readable Request ID
+        /// Readable Request ID.
         /// </summary>
         [Output("readableId")]
         public Output<string> ReadableId { get; private set; } = null!;
 
         /// <summary>
-        /// Requested information from request
+        /// Requested information from request.
         /// </summary>
         [Output("request")]
         public Output<string> Request { get; private set; } = null!;
 
         /// <summary>
-        /// Requested information from request
+        /// Requested information from request.
         /// </summary>
         [Output("requestType")]
         public Output<string?> RequestType { get; private set; } = null!;
 
         /// <summary>
-        /// Request Status
+        /// Request Status.
         /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Brief description of the request
+        /// Brief description of the request.
         /// </summary>
         [Output("summary")]
         public Output<string?> Summary { get; private set; } = null!;
 
         /// <summary>
-        /// The CISA defined Traffic Light Protocol (TLP)
+        /// The CISA defined Traffic Light Protocol (TLP).
         /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         [Output("tlp")]
         public Output<string?> Tlp { get; private set; } = null!;
 
         /// <summary>
-        /// Tokens for the request
+        /// Tokens for the request.
         /// </summary>
         [Output("tokens")]
         public Output<int> Tokens { get; private set; } = null!;
@@ -166,37 +166,37 @@ namespace Pulumi.Cloudflare
     public sealed class CloudforceOneRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public Input<string> AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Request content
+        /// Request content.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Priority for analyzing the request
+        /// Priority for analyzing the request.
         /// </summary>
         [Input("priority")]
         public Input<string>? Priority { get; set; }
 
         /// <summary>
-        /// Requested information from request
+        /// Requested information from request.
         /// </summary>
         [Input("requestType")]
         public Input<string>? RequestType { get; set; }
 
         /// <summary>
-        /// Brief description of the request
+        /// Brief description of the request.
         /// </summary>
         [Input("summary")]
         public Input<string>? Summary { get; set; }
 
         /// <summary>
-        /// The CISA defined Traffic Light Protocol (TLP)
+        /// The CISA defined Traffic Light Protocol (TLP).
         /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         [Input("tlp")]
@@ -211,16 +211,16 @@ namespace Pulumi.Cloudflare
     public sealed class CloudforceOneRequestState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier")]
-        public Input<string>? AccountIdentifier { get; set; }
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("completed")]
         public Input<string>? Completed { get; set; }
 
         /// <summary>
-        /// Request content
+        /// Request content.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -229,57 +229,57 @@ namespace Pulumi.Cloudflare
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// Tokens for the request messages
+        /// Tokens for the request messages.
         /// </summary>
         [Input("messageTokens")]
         public Input<int>? MessageTokens { get; set; }
 
         /// <summary>
-        /// Priority for analyzing the request
+        /// Priority for analyzing the request.
         /// </summary>
         [Input("priority")]
         public Input<string>? Priority { get; set; }
 
         /// <summary>
-        /// Readable Request ID
+        /// Readable Request ID.
         /// </summary>
         [Input("readableId")]
         public Input<string>? ReadableId { get; set; }
 
         /// <summary>
-        /// Requested information from request
+        /// Requested information from request.
         /// </summary>
         [Input("request")]
         public Input<string>? Request { get; set; }
 
         /// <summary>
-        /// Requested information from request
+        /// Requested information from request.
         /// </summary>
         [Input("requestType")]
         public Input<string>? RequestType { get; set; }
 
         /// <summary>
-        /// Request Status
+        /// Request Status.
         /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Brief description of the request
+        /// Brief description of the request.
         /// </summary>
         [Input("summary")]
         public Input<string>? Summary { get; set; }
 
         /// <summary>
-        /// The CISA defined Traffic Light Protocol (TLP)
+        /// The CISA defined Traffic Light Protocol (TLP).
         /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         [Input("tlp")]
         public Input<string>? Tlp { get; set; }
 
         /// <summary>
-        /// Tokens for the request
+        /// Tokens for the request.
         /// </summary>
         [Input("tokens")]
         public Input<int>? Tokens { get; set; }

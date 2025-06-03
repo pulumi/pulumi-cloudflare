@@ -8,11 +8,20 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkersCronTriggerScheduleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkersCronTriggerScheduleArgs Empty = new WorkersCronTriggerScheduleArgs();
+
+    @Import(name="createdOn")
+    private @Nullable Output<String> createdOn;
+
+    public Optional<Output<String>> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
 
     @Import(name="cron", required=true)
     private Output<String> cron;
@@ -21,10 +30,19 @@ public final class WorkersCronTriggerScheduleArgs extends com.pulumi.resources.R
         return this.cron;
     }
 
+    @Import(name="modifiedOn")
+    private @Nullable Output<String> modifiedOn;
+
+    public Optional<Output<String>> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
+    }
+
     private WorkersCronTriggerScheduleArgs() {}
 
     private WorkersCronTriggerScheduleArgs(WorkersCronTriggerScheduleArgs $) {
+        this.createdOn = $.createdOn;
         this.cron = $.cron;
+        this.modifiedOn = $.modifiedOn;
     }
 
     public static Builder builder() {
@@ -45,6 +63,15 @@ public final class WorkersCronTriggerScheduleArgs extends com.pulumi.resources.R
             $ = new WorkersCronTriggerScheduleArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder createdOn(@Nullable Output<String> createdOn) {
+            $.createdOn = createdOn;
+            return this;
+        }
+
+        public Builder createdOn(String createdOn) {
+            return createdOn(Output.of(createdOn));
+        }
+
         public Builder cron(Output<String> cron) {
             $.cron = cron;
             return this;
@@ -52,6 +79,15 @@ public final class WorkersCronTriggerScheduleArgs extends com.pulumi.resources.R
 
         public Builder cron(String cron) {
             return cron(Output.of(cron));
+        }
+
+        public Builder modifiedOn(@Nullable Output<String> modifiedOn) {
+            $.modifiedOn = modifiedOn;
+            return this;
+        }
+
+        public Builder modifiedOn(String modifiedOn) {
+            return modifiedOn(Output.of(modifiedOn));
         }
 
         public WorkersCronTriggerScheduleArgs build() {

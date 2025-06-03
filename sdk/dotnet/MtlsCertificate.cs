@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The private key for the certificate
+        /// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         /// </summary>
         [Output("privateKey")]
         public Output<string?> PrivateKey { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The private key for the certificate
+        /// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -251,7 +251,7 @@ namespace Pulumi.Cloudflare
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// The private key for the certificate
+        /// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         /// </summary>
         public Input<string>? PrivateKey
         {

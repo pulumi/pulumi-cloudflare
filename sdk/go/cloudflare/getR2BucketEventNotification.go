@@ -28,6 +28,7 @@ import (
 //			_, err := cloudflare.LookupR2BucketEventNotification(ctx, &cloudflare.LookupR2BucketEventNotificationArgs{
 //				AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
 //				BucketName: "example-bucket",
+//				QueueId:    "queue_id",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,18 +54,30 @@ type LookupR2BucketEventNotificationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
+	// Queue ID.
+	QueueId string `pulumi:"queueId"`
 }
 
 // A collection of values returned by getR2BucketEventNotification.
 type LookupR2BucketEventNotificationResult struct {
+	// Transition to abort ongoing multipart uploads.
+	AbortMultipartUploadsTransition GetR2BucketEventNotificationAbortMultipartUploadsTransition `pulumi:"abortMultipartUploadsTransition"`
 	// Account ID.
 	AccountId string `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// The provider-assigned unique ID for this managed resource.
+	// Conditions that apply to all transitions of this rule.
+	Conditions GetR2BucketEventNotificationConditions `pulumi:"conditions"`
+	// Transition to delete objects.
+	DeleteObjectsTransition GetR2BucketEventNotificationDeleteObjectsTransition `pulumi:"deleteObjectsTransition"`
+	// Whether or not this rule is in effect.
+	Enabled bool `pulumi:"enabled"`
+	// Unique identifier for this rule.
 	Id string `pulumi:"id"`
-	// List of queues associated with the bucket.
-	Queues []GetR2BucketEventNotificationQueue `pulumi:"queues"`
+	// Queue ID.
+	QueueId string `pulumi:"queueId"`
+	// Transitions to change the storage class of objects.
+	StorageClassTransitions []GetR2BucketEventNotificationStorageClassTransition `pulumi:"storageClassTransitions"`
 }
 
 func LookupR2BucketEventNotificationOutput(ctx *pulumi.Context, args LookupR2BucketEventNotificationOutputArgs, opts ...pulumi.InvokeOption) LookupR2BucketEventNotificationResultOutput {
@@ -82,6 +95,8 @@ type LookupR2BucketEventNotificationOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// Name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Queue ID.
+	QueueId pulumi.StringInput `pulumi:"queueId"`
 }
 
 func (LookupR2BucketEventNotificationOutputArgs) ElementType() reflect.Type {
@@ -103,6 +118,13 @@ func (o LookupR2BucketEventNotificationResultOutput) ToLookupR2BucketEventNotifi
 	return o
 }
 
+// Transition to abort ongoing multipart uploads.
+func (o LookupR2BucketEventNotificationResultOutput) AbortMultipartUploadsTransition() GetR2BucketEventNotificationAbortMultipartUploadsTransitionOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) GetR2BucketEventNotificationAbortMultipartUploadsTransition {
+		return v.AbortMultipartUploadsTransition
+	}).(GetR2BucketEventNotificationAbortMultipartUploadsTransitionOutput)
+}
+
 // Account ID.
 func (o LookupR2BucketEventNotificationResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.AccountId }).(pulumi.StringOutput)
@@ -113,14 +135,40 @@ func (o LookupR2BucketEventNotificationResultOutput) BucketName() pulumi.StringO
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Conditions that apply to all transitions of this rule.
+func (o LookupR2BucketEventNotificationResultOutput) Conditions() GetR2BucketEventNotificationConditionsOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) GetR2BucketEventNotificationConditions {
+		return v.Conditions
+	}).(GetR2BucketEventNotificationConditionsOutput)
+}
+
+// Transition to delete objects.
+func (o LookupR2BucketEventNotificationResultOutput) DeleteObjectsTransition() GetR2BucketEventNotificationDeleteObjectsTransitionOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) GetR2BucketEventNotificationDeleteObjectsTransition {
+		return v.DeleteObjectsTransition
+	}).(GetR2BucketEventNotificationDeleteObjectsTransitionOutput)
+}
+
+// Whether or not this rule is in effect.
+func (o LookupR2BucketEventNotificationResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Unique identifier for this rule.
 func (o LookupR2BucketEventNotificationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// List of queues associated with the bucket.
-func (o LookupR2BucketEventNotificationResultOutput) Queues() GetR2BucketEventNotificationQueueArrayOutput {
-	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) []GetR2BucketEventNotificationQueue { return v.Queues }).(GetR2BucketEventNotificationQueueArrayOutput)
+// Queue ID.
+func (o LookupR2BucketEventNotificationResultOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) string { return v.QueueId }).(pulumi.StringOutput)
+}
+
+// Transitions to change the storage class of objects.
+func (o LookupR2BucketEventNotificationResultOutput) StorageClassTransitions() GetR2BucketEventNotificationStorageClassTransitionArrayOutput {
+	return o.ApplyT(func(v LookupR2BucketEventNotificationResult) []GetR2BucketEventNotificationStorageClassTransition {
+		return v.StorageClassTransitions
+	}).(GetR2BucketEventNotificationStorageClassTransitionArrayOutput)
 }
 
 func init() {

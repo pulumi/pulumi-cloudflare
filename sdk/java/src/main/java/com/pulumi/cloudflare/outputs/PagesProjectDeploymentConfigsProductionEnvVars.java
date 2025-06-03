@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class PagesProjectDeploymentConfigsProductionEnvVars {
     /**
-     * @return Available values: &#34;plain_text&#34;.
+     * @return Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
      * 
      */
     private String type;
@@ -23,7 +23,7 @@ public final class PagesProjectDeploymentConfigsProductionEnvVars {
 
     private PagesProjectDeploymentConfigsProductionEnvVars() {}
     /**
-     * @return Available values: &#34;plain_text&#34;.
+     * @return Available values: &#34;plain*text&#34;, &#34;secret*text&#34;.
      * 
      */
     public String type() {

@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleCloudforceOneRequestAsset = new CloudforceOneRequestAsset("exampleCloudforceOneRequestAsset", CloudforceOneRequestAssetArgs.builder()
- *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
- *             .requestIdentifier("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .requestId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
  *             .page(0)
  *             .perPage(10)
  *             .build());
@@ -57,133 +57,133 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example &#39;&lt;account_identifier&gt;/&lt;request_identifier&gt;/&lt;asset_identifer&gt;&#39;
+ * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example &#39;&lt;account_id&gt;/&lt;request_id&gt;/&lt;asset_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")
 public class CloudforceOneRequestAsset extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Export(name="accountIdentifier", refs={String.class}, tree="[0]")
-    private Output<String> accountIdentifier;
+    @Export(name="accountId", refs={String.class}, tree="[0]")
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
-     * Asset creation time
+     * Defines the asset creation time.
      * 
      */
     @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
-     * @return Asset creation time
+     * @return Defines the asset creation time.
      * 
      */
     public Output<String> created() {
         return this.created;
     }
     /**
-     * Asset description
+     * Asset description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Asset description
+     * @return Asset description.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * Asset file type
+     * Asset file type.
      * 
      */
     @Export(name="fileType", refs={String.class}, tree="[0]")
     private Output<String> fileType;
 
     /**
-     * @return Asset file type
+     * @return Asset file type.
      * 
      */
     public Output<String> fileType() {
         return this.fileType;
     }
     /**
-     * Asset name
+     * Asset name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Asset name
+     * @return Asset name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Page number of results
+     * Page number of results.
      * 
      */
     @Export(name="page", refs={Integer.class}, tree="[0]")
     private Output<Integer> page;
 
     /**
-     * @return Page number of results
+     * @return Page number of results.
      * 
      */
     public Output<Integer> page() {
         return this.page;
     }
     /**
-     * Number of results per page
+     * Number of results per page.
      * 
      */
     @Export(name="perPage", refs={Integer.class}, tree="[0]")
     private Output<Integer> perPage;
 
     /**
-     * @return Number of results per page
+     * @return Number of results per page.
      * 
      */
     public Output<Integer> perPage() {
         return this.perPage;
     }
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Export(name="requestIdentifier", refs={String.class}, tree="[0]")
-    private Output<String> requestIdentifier;
+    @Export(name="requestId", refs={String.class}, tree="[0]")
+    private Output<String> requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Output<String> requestIdentifier() {
-        return this.requestIdentifier;
+    public Output<String> requestId() {
+        return this.requestId;
     }
     /**
-     * Asset file to upload
+     * Asset file to upload.
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**
-     * @return Asset file to upload
+     * @return Asset file to upload.
      * 
      */
     public Output<Optional<String>> source() {

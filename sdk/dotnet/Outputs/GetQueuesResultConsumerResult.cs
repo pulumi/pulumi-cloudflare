@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string ScriptName;
         public readonly Outputs.GetQueuesResultConsumerSettingsResult Settings;
         /// <summary>
-        /// Available values: "worker".
+        /// Available values: "worker", "http_pull".
         /// </summary>
         public readonly string Type;
 

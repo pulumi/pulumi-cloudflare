@@ -29,7 +29,8 @@ class R2BucketArgs:
         The set of arguments for constructing a R2Bucket resource.
         :param pulumi.Input[builtins.str] account_id: Account ID.
         :param pulumi.Input[builtins.str] name: Name of the bucket.
-        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
+        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
+               Available values: "default", "eu", "fedramp".
         :param pulumi.Input[builtins.str] location: Location of the bucket.
                Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         :param pulumi.Input[builtins.str] storage_class: Storage class for newly uploaded objects, unless specified otherwise.
@@ -72,7 +73,8 @@ class R2BucketArgs:
     @pulumi.getter
     def jurisdiction(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Jurisdiction of the bucket
+        Jurisdiction where objects in this bucket are guaranteed to be stored.
+        Available values: "default", "eu", "fedramp".
         """
         return pulumi.get(self, "jurisdiction")
 
@@ -120,7 +122,8 @@ class _R2BucketState:
         Input properties used for looking up and filtering R2Bucket resources.
         :param pulumi.Input[builtins.str] account_id: Account ID.
         :param pulumi.Input[builtins.str] creation_date: Creation timestamp.
-        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
+        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
+               Available values: "default", "eu", "fedramp".
         :param pulumi.Input[builtins.str] location: Location of the bucket.
                Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         :param pulumi.Input[builtins.str] name: Name of the bucket.
@@ -168,7 +171,8 @@ class _R2BucketState:
     @pulumi.getter
     def jurisdiction(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Jurisdiction of the bucket
+        Jurisdiction where objects in this bucket are guaranteed to be stored.
+        Available values: "default", "eu", "fedramp".
         """
         return pulumi.get(self, "jurisdiction")
 
@@ -250,7 +254,8 @@ class R2Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Account ID.
-        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
+        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
+               Available values: "default", "eu", "fedramp".
         :param pulumi.Input[builtins.str] location: Location of the bucket.
                Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         :param pulumi.Input[builtins.str] name: Name of the bucket.
@@ -347,7 +352,8 @@ class R2Bucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Account ID.
         :param pulumi.Input[builtins.str] creation_date: Creation timestamp.
-        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction of the bucket
+        :param pulumi.Input[builtins.str] jurisdiction: Jurisdiction where objects in this bucket are guaranteed to be stored.
+               Available values: "default", "eu", "fedramp".
         :param pulumi.Input[builtins.str] location: Location of the bucket.
                Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         :param pulumi.Input[builtins.str] name: Name of the bucket.
@@ -386,13 +392,14 @@ class R2Bucket(pulumi.CustomResource):
     @pulumi.getter
     def jurisdiction(self) -> pulumi.Output[builtins.str]:
         """
-        Jurisdiction of the bucket
+        Jurisdiction where objects in this bucket are guaranteed to be stored.
+        Available values: "default", "eu", "fedramp".
         """
         return pulumi.get(self, "jurisdiction")
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[Optional[builtins.str]]:
+    def location(self) -> pulumi.Output[builtins.str]:
         """
         Location of the bucket.
         Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".

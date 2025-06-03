@@ -31,7 +31,7 @@ type WorkersScript struct {
 	// Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
 	BodyPart pulumi.StringPtrOutput `pulumi:"bodyPart"`
 	// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-	CompatibilityDate pulumi.StringPtrOutput `pulumi:"compatibilityDate"`
+	CompatibilityDate pulumi.StringOutput `pulumi:"compatibilityDate"`
 	// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
 	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
 	// Module or Service Worker contents of the Worker.
@@ -53,13 +53,13 @@ type WorkersScript struct {
 	// Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker.
 	MainModule pulumi.StringPtrOutput `pulumi:"mainModule"`
 	// Migrations to apply for Durable Objects associated with this Worker.
-	Migrations WorkersScriptMigrationsPtrOutput `pulumi:"migrations"`
+	Migrations WorkersScriptMigrationsOutput `pulumi:"migrations"`
 	// When the script was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// Observability settings for the Worker.
 	Observability WorkersScriptObservabilityPtrOutput `pulumi:"observability"`
 	// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-	Placement WorkersScriptPlacementPtrOutput `pulumi:"placement"`
+	Placement WorkersScriptPlacementOutput `pulumi:"placement"`
 	// Name of the script, used in URLs and route configuration.
 	ScriptName    pulumi.StringOutput `pulumi:"scriptName"`
 	StartupTimeMs pulumi.IntOutput    `pulumi:"startupTimeMs"`
@@ -401,8 +401,8 @@ func (o WorkersScriptOutput) BodyPart() pulumi.StringPtrOutput {
 }
 
 // Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
-func (o WorkersScriptOutput) CompatibilityDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkersScript) pulumi.StringPtrOutput { return v.CompatibilityDate }).(pulumi.StringPtrOutput)
+func (o WorkersScriptOutput) CompatibilityDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersScript) pulumi.StringOutput { return v.CompatibilityDate }).(pulumi.StringOutput)
 }
 
 // Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
@@ -456,8 +456,8 @@ func (o WorkersScriptOutput) MainModule() pulumi.StringPtrOutput {
 }
 
 // Migrations to apply for Durable Objects associated with this Worker.
-func (o WorkersScriptOutput) Migrations() WorkersScriptMigrationsPtrOutput {
-	return o.ApplyT(func(v *WorkersScript) WorkersScriptMigrationsPtrOutput { return v.Migrations }).(WorkersScriptMigrationsPtrOutput)
+func (o WorkersScriptOutput) Migrations() WorkersScriptMigrationsOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptMigrationsOutput { return v.Migrations }).(WorkersScriptMigrationsOutput)
 }
 
 // When the script was last modified.
@@ -471,8 +471,8 @@ func (o WorkersScriptOutput) Observability() WorkersScriptObservabilityPtrOutput
 }
 
 // Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
-func (o WorkersScriptOutput) Placement() WorkersScriptPlacementPtrOutput {
-	return o.ApplyT(func(v *WorkersScript) WorkersScriptPlacementPtrOutput { return v.Placement }).(WorkersScriptPlacementPtrOutput)
+func (o WorkersScriptOutput) Placement() WorkersScriptPlacementOutput {
+	return o.ApplyT(func(v *WorkersScript) WorkersScriptPlacementOutput { return v.Placement }).(WorkersScriptPlacementOutput)
 }
 
 // Name of the script, used in URLs and route configuration.

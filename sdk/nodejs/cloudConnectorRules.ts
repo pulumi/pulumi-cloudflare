@@ -27,6 +27,12 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/cloudConnectorRules:CloudConnectorRules example '<zone_id>'
+ * ```
  */
 export class CloudConnectorRules extends pulumi.CustomResource {
     /**

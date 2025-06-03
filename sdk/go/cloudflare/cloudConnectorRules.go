@@ -49,6 +49,12 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/cloudConnectorRules:CloudConnectorRules example '<zone_id>'
+// ```
 type CloudConnectorRules struct {
 	pulumi.CustomResourceState
 

@@ -17,29 +17,29 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
     public static final CloudforceOneRequestArgs Empty = new CloudforceOneRequestArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * Request content
+     * Request content.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return Request content
+     * @return Request content.
      * 
      */
     public Optional<Output<String>> content() {
@@ -47,14 +47,14 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Priority for analyzing the request
+     * Priority for analyzing the request.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<String> priority;
 
     /**
-     * @return Priority for analyzing the request
+     * @return Priority for analyzing the request.
      * 
      */
     public Optional<Output<String>> priority() {
@@ -62,14 +62,14 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Requested information from request
+     * Requested information from request.
      * 
      */
     @Import(name="requestType")
     private @Nullable Output<String> requestType;
 
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     public Optional<Output<String>> requestType() {
@@ -77,14 +77,14 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Brief description of the request
+     * Brief description of the request.
      * 
      */
     @Import(name="summary")
     private @Nullable Output<String> summary;
 
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     public Optional<Output<String>> summary() {
@@ -92,7 +92,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -100,7 +100,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> tlp;
 
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -111,7 +111,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
     private CloudforceOneRequestArgs() {}
 
     private CloudforceOneRequestArgs(CloudforceOneRequestArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.content = $.content;
         this.priority = $.priority;
         this.requestType = $.requestType;
@@ -138,28 +138,28 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param content Request content
+         * @param content Request content.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param content Request content
+         * @param content Request content.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param priority Priority for analyzing the request
+         * @param priority Priority for analyzing the request.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param priority Priority for analyzing the request
+         * @param priority Priority for analyzing the request.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param requestType Requested information from request
+         * @param requestType Requested information from request.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param requestType Requested information from request
+         * @param requestType Requested information from request.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param summary Brief description of the request
+         * @param summary Brief description of the request.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param summary Brief description of the request
+         * @param summary Brief description of the request.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * @param tlp The CISA defined Traffic Light Protocol (TLP).
          * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
@@ -255,7 +255,7 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlp The CISA defined Traffic Light Protocol (TLP)
+         * @param tlp The CISA defined Traffic Light Protocol (TLP).
          * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
          * 
          * @return builder
@@ -266,8 +266,8 @@ public final class CloudforceOneRequestArgs extends com.pulumi.resources.Resourc
         }
 
         public CloudforceOneRequestArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("CloudforceOneRequestArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("CloudforceOneRequestArgs", "accountId");
             }
             return $;
         }

@@ -12,8 +12,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequestAsset = new cloudflare.CloudforceOneRequestAsset("example_cloudforce_one_request_asset", {
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     requestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  *     page: 0,
  *     perPage: 10,
  * });
@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_identifier>/<request_identifier>/<asset_identifer>'
+ * $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_id>/<request_id>/<asset_id>'
  * ```
  */
 export class CloudforceOneRequestAsset extends pulumi.CustomResource {
@@ -54,39 +54,39 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Identifier.
      */
-    public readonly accountIdentifier!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string>;
     /**
-     * Asset creation time
+     * Defines the asset creation time.
      */
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
-     * Asset description
+     * Asset description.
      */
     public /*out*/ readonly description!: pulumi.Output<string>;
     /**
-     * Asset file type
+     * Asset file type.
      */
     public /*out*/ readonly fileType!: pulumi.Output<string>;
     /**
-     * Asset name
+     * Asset name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Page number of results
+     * Page number of results.
      */
     public readonly page!: pulumi.Output<number>;
     /**
-     * Number of results per page
+     * Number of results per page.
      */
     public readonly perPage!: pulumi.Output<number>;
     /**
-     * UUID
+     * UUID.
      */
-    public readonly requestIdentifier!: pulumi.Output<string>;
+    public readonly requestId!: pulumi.Output<string>;
     /**
-     * Asset file to upload
+     * Asset file to upload.
      */
     public readonly source!: pulumi.Output<string | undefined>;
 
@@ -103,19 +103,19 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudforceOneRequestAssetState | undefined;
-            resourceInputs["accountIdentifier"] = state ? state.accountIdentifier : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fileType"] = state ? state.fileType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["page"] = state ? state.page : undefined;
             resourceInputs["perPage"] = state ? state.perPage : undefined;
-            resourceInputs["requestIdentifier"] = state ? state.requestIdentifier : undefined;
+            resourceInputs["requestId"] = state ? state.requestId : undefined;
             resourceInputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as CloudforceOneRequestAssetArgs | undefined;
-            if ((!args || args.accountIdentifier === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountIdentifier'");
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
             }
             if ((!args || args.page === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'page'");
@@ -123,13 +123,13 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
             if ((!args || args.perPage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'perPage'");
             }
-            if ((!args || args.requestIdentifier === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'requestIdentifier'");
+            if ((!args || args.requestId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'requestId'");
             }
-            resourceInputs["accountIdentifier"] = args ? args.accountIdentifier : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["page"] = args ? args.page : undefined;
             resourceInputs["perPage"] = args ? args.perPage : undefined;
-            resourceInputs["requestIdentifier"] = args ? args.requestIdentifier : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -146,39 +146,39 @@ export class CloudforceOneRequestAsset extends pulumi.CustomResource {
  */
 export interface CloudforceOneRequestAssetState {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
-     * Asset creation time
+     * Defines the asset creation time.
      */
     created?: pulumi.Input<string>;
     /**
-     * Asset description
+     * Asset description.
      */
     description?: pulumi.Input<string>;
     /**
-     * Asset file type
+     * Asset file type.
      */
     fileType?: pulumi.Input<string>;
     /**
-     * Asset name
+     * Asset name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Page number of results
+     * Page number of results.
      */
     page?: pulumi.Input<number>;
     /**
-     * Number of results per page
+     * Number of results per page.
      */
     perPage?: pulumi.Input<number>;
     /**
-     * UUID
+     * UUID.
      */
-    requestIdentifier?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
-     * Asset file to upload
+     * Asset file to upload.
      */
     source?: pulumi.Input<string>;
 }
@@ -188,23 +188,23 @@ export interface CloudforceOneRequestAssetState {
  */
 export interface CloudforceOneRequestAssetArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * Page number of results
+     * Page number of results.
      */
     page: pulumi.Input<number>;
     /**
-     * Number of results per page
+     * Number of results per page.
      */
     perPage: pulumi.Input<number>;
     /**
-     * UUID
+     * UUID.
      */
-    requestIdentifier: pulumi.Input<string>;
+    requestId: pulumi.Input<string>;
     /**
-     * Asset file to upload
+     * Asset file to upload.
      */
     source?: pulumi.Input<string>;
 }

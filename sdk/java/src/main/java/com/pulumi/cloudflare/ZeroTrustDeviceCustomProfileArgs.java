@@ -225,14 +225,14 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
     }
 
     /**
-     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
+     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
     @Import(name="match", required=true)
     private Output<String> match;
 
     /**
-     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
     public Output<String> match() {
@@ -282,6 +282,21 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
      */
     public Optional<Output<Boolean>> registerInterfaceIpWithDns() {
         return Optional.ofNullable(this.registerInterfaceIpWithDns);
+    }
+
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    @Import(name="sccmVpnBoundarySupport")
+    private @Nullable Output<Boolean> sccmVpnBoundarySupport;
+
+    /**
+     * @return Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    public Optional<Output<Boolean>> sccmVpnBoundarySupport() {
+        return Optional.ofNullable(this.sccmVpnBoundarySupport);
     }
 
     @Import(name="serviceModeV2")
@@ -357,6 +372,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         this.name = $.name;
         this.precedence = $.precedence;
         this.registerInterfaceIpWithDns = $.registerInterfaceIpWithDns;
+        this.sccmVpnBoundarySupport = $.sccmVpnBoundarySupport;
         this.serviceModeV2 = $.serviceModeV2;
         this.supportUrl = $.supportUrl;
         this.switchLocked = $.switchLocked;
@@ -684,7 +700,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         }
 
         /**
-         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
+         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
          * 
          * @return builder
          * 
@@ -695,7 +711,7 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
         }
 
         /**
-         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
+         * @param match The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
          * 
          * @return builder
          * 
@@ -765,6 +781,27 @@ public final class ZeroTrustDeviceCustomProfileArgs extends com.pulumi.resources
          */
         public Builder registerInterfaceIpWithDns(Boolean registerInterfaceIpWithDns) {
             return registerInterfaceIpWithDns(Output.of(registerInterfaceIpWithDns));
+        }
+
+        /**
+         * @param sccmVpnBoundarySupport Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sccmVpnBoundarySupport(@Nullable Output<Boolean> sccmVpnBoundarySupport) {
+            $.sccmVpnBoundarySupport = sccmVpnBoundarySupport;
+            return this;
+        }
+
+        /**
+         * @param sccmVpnBoundarySupport Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sccmVpnBoundarySupport(Boolean sccmVpnBoundarySupport) {
+            return sccmVpnBoundarySupport(Output.of(sccmVpnBoundarySupport));
         }
 
         public Builder serviceModeV2(@Nullable Output<ZeroTrustDeviceCustomProfileServiceModeV2Args> serviceModeV2) {

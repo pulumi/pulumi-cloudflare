@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         public Output<bool> Secret { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Cloudflare
         public Input<string> ProfileId { get; set; } = null!;
 
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Secret { get; set; }
 
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

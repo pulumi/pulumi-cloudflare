@@ -78,14 +78,14 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
     }
 
     /**
-     * Available values: &#34;public&#34;.
+     * Available values: &#34;public&#34;, &#34;private&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;public&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -239,7 +239,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
         }
 
         /**
-         * @param type Available values: &#34;public&#34;.
+         * @param type Available values: &#34;public&#34;, &#34;private&#34;.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class ZeroTrustAccessApplicationDestinationArgs extends com.pulumi.
         }
 
         /**
-         * @param type Available values: &#34;public&#34;.
+         * @param type Available values: &#34;public&#34;, &#34;private&#34;.
          * 
          * @return builder
          * 

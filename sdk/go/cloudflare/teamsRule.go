@@ -32,7 +32,7 @@ type TeamsRule struct {
 	// Date of deletion, if any.
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// The description of the rule.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The wirefilter expression used for device posture check matching.
 	DevicePosture pulumi.StringOutput `pulumi:"devicePosture"`
 	// True if the rule is enabled.
@@ -45,9 +45,7 @@ type TeamsRule struct {
 	// The wirefilter expression used for identity matching.
 	Identity pulumi.StringOutput `pulumi:"identity"`
 	// The name of the rule.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
+	Name       pulumi.StringOutput `pulumi:"name"`
 	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
 	// Additional settings that modify the rule's action.
 	RuleSettings TeamsRuleRuleSettingsOutput `pulumi:"ruleSettings"`
@@ -126,10 +124,8 @@ type teamsRuleState struct {
 	// The wirefilter expression used for identity matching.
 	Identity *string `pulumi:"identity"`
 	// The name of the rule.
-	Name *string `pulumi:"name"`
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
-	Precedence *int `pulumi:"precedence"`
+	Name       *string `pulumi:"name"`
+	Precedence *int    `pulumi:"precedence"`
 	// Additional settings that modify the rule's action.
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
@@ -163,9 +159,7 @@ type TeamsRuleState struct {
 	// The wirefilter expression used for identity matching.
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
-	Name pulumi.StringPtrInput
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
+	Name       pulumi.StringPtrInput
 	Precedence pulumi.IntPtrInput
 	// Additional settings that modify the rule's action.
 	RuleSettings TeamsRuleRuleSettingsPtrInput
@@ -201,10 +195,8 @@ type teamsRuleArgs struct {
 	// The wirefilter expression used for identity matching.
 	Identity *string `pulumi:"identity"`
 	// The name of the rule.
-	Name string `pulumi:"name"`
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
-	Precedence *int `pulumi:"precedence"`
+	Name       string `pulumi:"name"`
+	Precedence *int   `pulumi:"precedence"`
 	// Additional settings that modify the rule's action.
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The schedule for activating DNS policies. This does not apply to HTTP or network policies.
@@ -233,9 +225,7 @@ type TeamsRuleArgs struct {
 	// The wirefilter expression used for identity matching.
 	Identity pulumi.StringPtrInput
 	// The name of the rule.
-	Name pulumi.StringInput
-	// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-	// rules are evaluated in ascending order of this value.
+	Name       pulumi.StringInput
 	Precedence pulumi.IntPtrInput
 	// Additional settings that modify the rule's action.
 	RuleSettings TeamsRuleRuleSettingsPtrInput
@@ -352,8 +342,8 @@ func (o TeamsRuleOutput) DeletedAt() pulumi.StringOutput {
 }
 
 // The description of the rule.
-func (o TeamsRuleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+func (o TeamsRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The wirefilter expression used for device posture check matching.
@@ -387,8 +377,6 @@ func (o TeamsRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-// rules are evaluated in ascending order of this value.
 func (o TeamsRuleOutput) Precedence() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.IntPtrOutput { return v.Precedence }).(pulumi.IntPtrOutput)
 }

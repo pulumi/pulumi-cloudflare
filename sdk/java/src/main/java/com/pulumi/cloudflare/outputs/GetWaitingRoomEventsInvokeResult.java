@@ -32,7 +32,7 @@ public final class GetWaitingRoomEventsInvokeResult {
     private List<GetWaitingRoomEventsResult> results;
     private String waitingRoomId;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -63,7 +63,7 @@ public final class GetWaitingRoomEventsInvokeResult {
         return this.waitingRoomId;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

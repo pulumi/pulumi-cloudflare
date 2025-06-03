@@ -29,7 +29,7 @@ class HyperdriveConfigArgs:
                  mtls: Optional[pulumi.Input['HyperdriveConfigMtlsArgs']] = None):
         """
         The set of arguments for constructing a HyperdriveConfig resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Define configurations using a unique string identifier.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -43,7 +43,7 @@ class HyperdriveConfigArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Define configurations using a unique string identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -100,9 +100,9 @@ class _HyperdriveConfigState:
                  origin: Optional[pulumi.Input['HyperdriveConfigOriginArgs']] = None):
         """
         Input properties used for looking up and filtering HyperdriveConfig resources.
-        :param pulumi.Input[builtins.str] account_id: Identifier
-        :param pulumi.Input[builtins.str] created_on: When the Hyperdrive configuration was created.
-        :param pulumi.Input[builtins.str] modified_on: When the Hyperdrive configuration was last modified.
+        :param pulumi.Input[builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
+        :param pulumi.Input[builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -123,7 +123,7 @@ class _HyperdriveConfigState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Define configurations using a unique string identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -144,7 +144,7 @@ class _HyperdriveConfigState:
     @pulumi.getter(name="createdOn")
     def created_on(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        When the Hyperdrive configuration was created.
+        Defines the creation time of the Hyperdrive configuration.
         """
         return pulumi.get(self, "created_on")
 
@@ -156,7 +156,7 @@ class _HyperdriveConfigState:
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        When the Hyperdrive configuration was last modified.
+        Defines the last modified time of the Hyperdrive configuration.
         """
         return pulumi.get(self, "modified_on")
 
@@ -215,7 +215,7 @@ class HyperdriveConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
+        :param pulumi.Input[builtins.str] account_id: Define configurations using a unique string identifier.
         """
         ...
     @overload
@@ -298,9 +298,9 @@ class HyperdriveConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_id: Identifier
-        :param pulumi.Input[builtins.str] created_on: When the Hyperdrive configuration was created.
-        :param pulumi.Input[builtins.str] modified_on: When the Hyperdrive configuration was last modified.
+        :param pulumi.Input[builtins.str] account_id: Define configurations using a unique string identifier.
+        :param pulumi.Input[builtins.str] created_on: Defines the creation time of the Hyperdrive configuration.
+        :param pulumi.Input[builtins.str] modified_on: Defines the last modified time of the Hyperdrive configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -319,7 +319,7 @@ class HyperdriveConfig(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Define configurations using a unique string identifier.
         """
         return pulumi.get(self, "account_id")
 
@@ -332,7 +332,7 @@ class HyperdriveConfig(pulumi.CustomResource):
     @pulumi.getter(name="createdOn")
     def created_on(self) -> pulumi.Output[builtins.str]:
         """
-        When the Hyperdrive configuration was created.
+        Defines the creation time of the Hyperdrive configuration.
         """
         return pulumi.get(self, "created_on")
 
@@ -340,7 +340,7 @@ class HyperdriveConfig(pulumi.CustomResource):
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[builtins.str]:
         """
-        When the Hyperdrive configuration was last modified.
+        Defines the last modified time of the Hyperdrive configuration.
         """
         return pulumi.get(self, "modified_on")
 

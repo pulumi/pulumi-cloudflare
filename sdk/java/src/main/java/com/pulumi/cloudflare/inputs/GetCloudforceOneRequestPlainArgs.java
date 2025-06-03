@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestFilter;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -16,40 +17,48 @@ public final class GetCloudforceOneRequestPlainArgs extends com.pulumi.resources
     public static final GetCloudforceOneRequestPlainArgs Empty = new GetCloudforceOneRequestPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private String accountIdentifier;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
+    }
+
+    @Import(name="filter")
+    private @Nullable GetCloudforceOneRequestFilter filter;
+
+    public Optional<GetCloudforceOneRequestFilter> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="requestIdentifier")
-    private @Nullable String requestIdentifier;
+    @Import(name="requestId")
+    private @Nullable String requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Optional<String> requestIdentifier() {
-        return Optional.ofNullable(this.requestIdentifier);
+    public Optional<String> requestId() {
+        return Optional.ofNullable(this.requestId);
     }
 
     private GetCloudforceOneRequestPlainArgs() {}
 
     private GetCloudforceOneRequestPlainArgs(GetCloudforceOneRequestPlainArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
-        this.requestIdentifier = $.requestIdentifier;
+        this.accountId = $.accountId;
+        this.filter = $.filter;
+        this.requestId = $.requestId;
     }
 
     public static Builder builder() {
@@ -71,30 +80,35 @@ public final class GetCloudforceOneRequestPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(String accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        public Builder filter(@Nullable GetCloudforceOneRequestFilter filter) {
+            $.filter = filter;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(@Nullable String requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder requestId(@Nullable String requestId) {
+            $.requestId = requestId;
             return this;
         }
 
         public GetCloudforceOneRequestPlainArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPlainArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPlainArgs", "accountId");
             }
             return $;
         }

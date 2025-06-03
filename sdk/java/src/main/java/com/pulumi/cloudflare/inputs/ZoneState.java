@@ -6,6 +6,9 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.ZoneAccountArgs;
 import com.pulumi.cloudflare.inputs.ZoneMetaArgs;
 import com.pulumi.cloudflare.inputs.ZoneOwnerArgs;
+import com.pulumi.cloudflare.inputs.ZonePlanArgs;
+import com.pulumi.cloudflare.inputs.ZoneTenantArgs;
+import com.pulumi.cloudflare.inputs.ZoneTenantUnitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -43,6 +46,23 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> activatedOn() {
         return Optional.ofNullable(this.activatedOn);
+    }
+
+    /**
+     * Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    @Import(name="cnameSuffix")
+    private @Nullable Output<String> cnameSuffix;
+
+    /**
+     * @return Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     * 
+     */
+    public Optional<Output<String>> cnameSuffix() {
+        return Optional.ofNullable(this.cnameSuffix);
     }
 
     /**
@@ -219,6 +239,52 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Legacy permissions based on legacy user membership information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="permissions")
+    private @Nullable Output<List<String>> permissions;
+
+    /**
+     * @return Legacy permissions based on legacy user membership information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<List<String>>> permissions() {
+        return Optional.ofNullable(this.permissions);
+    }
+
+    /**
+     * A Zones subscription information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="plan")
+    private @Nullable Output<ZonePlanArgs> plan;
+
+    /**
+     * @return A Zones subscription information.
+     * 
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<ZonePlanArgs>> plan() {
+        return Optional.ofNullable(this.plan);
+    }
+
+    /**
      * The zone status on Cloudflare.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
@@ -233,6 +299,36 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    @Import(name="tenant")
+    private @Nullable Output<ZoneTenantArgs> tenant;
+
+    /**
+     * @return The root organizational unit that this zone belongs to (such as a tenant or organization).
+     * 
+     */
+    public Optional<Output<ZoneTenantArgs>> tenant() {
+        return Optional.ofNullable(this.tenant);
+    }
+
+    /**
+     * The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    @Import(name="tenantUnit")
+    private @Nullable Output<ZoneTenantUnitArgs> tenantUnit;
+
+    /**
+     * @return The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     * 
+     */
+    public Optional<Output<ZoneTenantUnitArgs>> tenantUnit() {
+        return Optional.ofNullable(this.tenantUnit);
     }
 
     /**
@@ -291,6 +387,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     private ZoneState(ZoneState $) {
         this.account = $.account;
         this.activatedOn = $.activatedOn;
+        this.cnameSuffix = $.cnameSuffix;
         this.createdOn = $.createdOn;
         this.developmentMode = $.developmentMode;
         this.meta = $.meta;
@@ -302,7 +399,11 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         this.originalRegistrar = $.originalRegistrar;
         this.owner = $.owner;
         this.paused = $.paused;
+        this.permissions = $.permissions;
+        this.plan = $.plan;
         this.status = $.status;
+        this.tenant = $.tenant;
+        this.tenantUnit = $.tenantUnit;
         this.type = $.type;
         this.vanityNameServers = $.vanityNameServers;
         this.verificationKey = $.verificationKey;
@@ -356,6 +457,29 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder activatedOn(String activatedOn) {
             return activatedOn(Output.of(activatedOn));
+        }
+
+        /**
+         * @param cnameSuffix Allows the customer to use a custom apex.
+         * *Tenants Only Configuration*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnameSuffix(@Nullable Output<String> cnameSuffix) {
+            $.cnameSuffix = cnameSuffix;
+            return this;
+        }
+
+        /**
+         * @param cnameSuffix Allows the customer to use a custom apex.
+         * *Tenants Only Configuration*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cnameSuffix(String cnameSuffix) {
+            return cnameSuffix(Output.of(cnameSuffix));
         }
 
         /**
@@ -618,6 +742,78 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param permissions Legacy permissions based on legacy user membership information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder permissions(@Nullable Output<List<String>> permissions) {
+            $.permissions = permissions;
+            return this;
+        }
+
+        /**
+         * @param permissions Legacy permissions based on legacy user membership information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder permissions(List<String> permissions) {
+            return permissions(Output.of(permissions));
+        }
+
+        /**
+         * @param permissions Legacy permissions based on legacy user membership information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder permissions(String... permissions) {
+            return permissions(List.of(permissions));
+        }
+
+        /**
+         * @param plan A Zones subscription information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder plan(@Nullable Output<ZonePlanArgs> plan) {
+            $.plan = plan;
+            return this;
+        }
+
+        /**
+         * @param plan A Zones subscription information.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder plan(ZonePlanArgs plan) {
+            return plan(Output.of(plan));
+        }
+
+        /**
          * @param status The zone status on Cloudflare.
          * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
@@ -638,6 +834,48 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tenant The root organizational unit that this zone belongs to (such as a tenant or organization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenant(@Nullable Output<ZoneTenantArgs> tenant) {
+            $.tenant = tenant;
+            return this;
+        }
+
+        /**
+         * @param tenant The root organizational unit that this zone belongs to (such as a tenant or organization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenant(ZoneTenantArgs tenant) {
+            return tenant(Output.of(tenant));
+        }
+
+        /**
+         * @param tenantUnit The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenantUnit(@Nullable Output<ZoneTenantUnitArgs> tenantUnit) {
+            $.tenantUnit = tenantUnit;
+            return this;
+        }
+
+        /**
+         * @param tenantUnit The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tenantUnit(ZoneTenantUnitArgs tenantUnit) {
+            return tenantUnit(Output.of(tenantUnit));
         }
 
         /**

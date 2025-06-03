@@ -12,18 +12,18 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequestAsset = cloudflare.getCloudforceOneRequestAsset({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     requestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
- *     assetIdentifer: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     assetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
 export function getCloudforceOneRequestAsset(args: GetCloudforceOneRequestAssetArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestAssetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset", {
-        "accountIdentifier": args.accountIdentifier,
-        "assetIdentifer": args.assetIdentifer,
-        "requestIdentifier": args.requestIdentifier,
+        "accountId": args.accountId,
+        "assetId": args.assetId,
+        "requestId": args.requestId,
     }, opts);
 }
 
@@ -32,17 +32,17 @@ export function getCloudforceOneRequestAsset(args: GetCloudforceOneRequestAssetA
  */
 export interface GetCloudforceOneRequestAssetArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: string;
+    accountId: string;
     /**
-     * UUID
+     * UUID.
      */
-    assetIdentifer: string;
+    assetId: string;
     /**
-     * UUID
+     * UUID.
      */
-    requestIdentifier: string;
+    requestId: string;
 }
 
 /**
@@ -50,37 +50,37 @@ export interface GetCloudforceOneRequestAssetArgs {
  */
 export interface GetCloudforceOneRequestAssetResult {
     /**
-     * Identifier
+     * Identifier.
      */
-    readonly accountIdentifier: string;
+    readonly accountId: string;
     /**
-     * UUID
+     * UUID.
      */
-    readonly assetIdentifer: string;
+    readonly assetId: string;
     /**
-     * Asset creation time
+     * Defines the asset creation time.
      */
     readonly created: string;
     /**
-     * Asset description
+     * Asset description.
      */
     readonly description: string;
     /**
-     * Asset file type
+     * Asset file type.
      */
     readonly fileType: string;
     /**
-     * Asset ID
+     * Asset ID.
      */
     readonly id: number;
     /**
-     * Asset name
+     * Asset name.
      */
     readonly name: string;
     /**
-     * UUID
+     * UUID.
      */
-    readonly requestIdentifier: string;
+    readonly requestId: string;
 }
 /**
  * ## Example Usage
@@ -90,18 +90,18 @@ export interface GetCloudforceOneRequestAssetResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequestAsset = cloudflare.getCloudforceOneRequestAsset({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     requestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
- *     assetIdentifer: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     assetId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
 export function getCloudforceOneRequestAssetOutput(args: GetCloudforceOneRequestAssetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestAssetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequestAsset:getCloudforceOneRequestAsset", {
-        "accountIdentifier": args.accountIdentifier,
-        "assetIdentifer": args.assetIdentifer,
-        "requestIdentifier": args.requestIdentifier,
+        "accountId": args.accountId,
+        "assetId": args.assetId,
+        "requestId": args.requestId,
     }, opts);
 }
 
@@ -110,15 +110,15 @@ export function getCloudforceOneRequestAssetOutput(args: GetCloudforceOneRequest
  */
 export interface GetCloudforceOneRequestAssetOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
-    assetIdentifer: pulumi.Input<string>;
+    assetId: pulumi.Input<string>;
     /**
-     * UUID
+     * UUID.
      */
-    requestIdentifier: pulumi.Input<string>;
+    requestId: pulumi.Input<string>;
 }

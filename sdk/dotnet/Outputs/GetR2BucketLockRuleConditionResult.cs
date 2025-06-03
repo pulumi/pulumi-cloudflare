@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Date;
         public readonly int MaxAgeSeconds;
         /// <summary>
-        /// Available values: "Age".
+        /// Available values: "Age", "Date", "Indefinite".
         /// </summary>
         public readonly string Type;
 

@@ -17,7 +17,7 @@ public final class ApiShieldAuthIdCharacteristic {
     private String name;
     /**
      * @return The type of characteristic.
-     * Available values: &#34;header&#34;, &#34;cookie&#34;.
+     * Available values: &#34;header&#34;, &#34;cookie&#34;, &#34;jwt&#34;.
      * 
      */
     private String type;
@@ -32,7 +32,7 @@ public final class ApiShieldAuthIdCharacteristic {
     }
     /**
      * @return The type of characteristic.
-     * Available values: &#34;header&#34;, &#34;cookie&#34;.
+     * Available values: &#34;header&#34;, &#34;cookie&#34;, &#34;jwt&#34;.
      * 
      */
     public String type() {

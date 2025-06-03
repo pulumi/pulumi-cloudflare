@@ -114,7 +114,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Record type.
-        /// Available values: "A".
+        /// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Record type.
-        /// Available values: "A".
+        /// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -354,7 +354,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Record type.
-        /// Available values: "A".
+        /// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

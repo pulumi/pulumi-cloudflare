@@ -924,7 +924,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkersScriptBinding']]]:
+    def bindings(self) -> pulumi.Output[Sequence['outputs.WorkersScriptBinding']]:
         """
         List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
         """
@@ -940,7 +940,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="compatibilityDate")
-    def compatibility_date(self) -> pulumi.Output[Optional[builtins.str]]:
+    def compatibility_date(self) -> pulumi.Output[builtins.str]:
         """
         Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         """
@@ -948,7 +948,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="compatibilityFlags")
-    def compatibility_flags(self) -> pulumi.Output[Optional[Sequence[builtins.str]]]:
+    def compatibility_flags(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
         Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
         """
@@ -1028,7 +1028,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def migrations(self) -> pulumi.Output[Optional['outputs.WorkersScriptMigrations']]:
+    def migrations(self) -> pulumi.Output['outputs.WorkersScriptMigrations']:
         """
         Migrations to apply for Durable Objects associated with this Worker.
         """
@@ -1052,7 +1052,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def placement(self) -> pulumi.Output[Optional['outputs.WorkersScriptPlacement']]:
+    def placement(self) -> pulumi.Output['outputs.WorkersScriptPlacement']:
         """
         Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         """
@@ -1073,7 +1073,7 @@ class WorkersScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tailConsumers")
-    def tail_consumers(self) -> pulumi.Output[Optional[Sequence['outputs.WorkersScriptTailConsumer']]]:
+    def tail_consumers(self) -> pulumi.Output[Sequence['outputs.WorkersScriptTailConsumer']]:
         """
         List of Workers that will consume logs from the attached Worker.
         """

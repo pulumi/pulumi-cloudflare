@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DevicePostureIntegrationConfig {
     /**
-     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
+     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
      * 
      */
     private @Nullable String accessClientId;
     /**
-     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
+     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
      * 
      */
     private @Nullable String accessClientSecret;
@@ -54,14 +54,14 @@ public final class DevicePostureIntegrationConfig {
 
     private DevicePostureIntegrationConfig() {}
     /**
-     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`
+     * @return If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `api_url`.
      * 
      */
     public Optional<String> accessClientId() {
         return Optional.ofNullable(this.accessClientId);
     }
     /**
-     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`
+     * @return If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `api_url`.
      * 
      */
     public Optional<String> accessClientSecret() {

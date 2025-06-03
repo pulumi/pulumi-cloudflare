@@ -21,15 +21,22 @@ namespace Pulumi.Cloudflare.Outputs
         /// The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
         /// </summary>
         public readonly double? HeadSamplingRate;
+        /// <summary>
+        /// Log settings for the Worker.
+        /// </summary>
+        public readonly Outputs.WorkersScriptObservabilityLogs? Logs;
 
         [OutputConstructor]
         private WorkersScriptObservability(
             bool enabled,
 
-            double? headSamplingRate)
+            double? headSamplingRate,
+
+            Outputs.WorkersScriptObservabilityLogs? logs)
         {
             Enabled = enabled;
             HeadSamplingRate = headSamplingRate;
+            Logs = logs;
         }
     }
 }

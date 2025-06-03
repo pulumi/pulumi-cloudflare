@@ -20,43 +20,43 @@ __all__ = ['CloudforceOneRequestPriorityArgs', 'CloudforceOneRequestPriority']
 @pulumi.input_type
 class CloudforceOneRequestPriorityArgs:
     def __init__(__self__, *,
-                 account_identifier: pulumi.Input[builtins.str],
+                 account_id: pulumi.Input[builtins.str],
                  labels: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
                  priority: pulumi.Input[builtins.int],
                  requirement: pulumi.Input[builtins.str],
                  tlp: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a CloudforceOneRequestPriority resource.
-        :param pulumi.Input[builtins.str] account_identifier: Identifier
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] labels: List of labels
-        :param pulumi.Input[builtins.int] priority: Priority
-        :param pulumi.Input[builtins.str] requirement: Requirement
-        :param pulumi.Input[builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP)
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] labels: List of labels.
+        :param pulumi.Input[builtins.int] priority: Priority.
+        :param pulumi.Input[builtins.str] requirement: Requirement.
+        :param pulumi.Input[builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP).
                Available values: "clear", "amber", "amber-strict", "green", "red".
         """
-        pulumi.set(__self__, "account_identifier", account_identifier)
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "requirement", requirement)
         pulumi.set(__self__, "tlp", tlp)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> pulumi.Input[builtins.str]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
-    @account_identifier.setter
-    def account_identifier(self, value: pulumi.Input[builtins.str]):
-        pulumi.set(self, "account_identifier", value)
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
         """
-        List of labels
+        List of labels.
         """
         return pulumi.get(self, "labels")
 
@@ -68,7 +68,7 @@ class CloudforceOneRequestPriorityArgs:
     @pulumi.getter
     def priority(self) -> pulumi.Input[builtins.int]:
         """
-        Priority
+        Priority.
         """
         return pulumi.get(self, "priority")
 
@@ -80,7 +80,7 @@ class CloudforceOneRequestPriorityArgs:
     @pulumi.getter
     def requirement(self) -> pulumi.Input[builtins.str]:
         """
-        Requirement
+        Requirement.
         """
         return pulumi.get(self, "requirement")
 
@@ -92,7 +92,7 @@ class CloudforceOneRequestPriorityArgs:
     @pulumi.getter
     def tlp(self) -> pulumi.Input[builtins.str]:
         """
-        The CISA defined Traffic Light Protocol (TLP)
+        The CISA defined Traffic Light Protocol (TLP).
         Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
@@ -105,7 +105,7 @@ class CloudforceOneRequestPriorityArgs:
 @pulumi.input_type
 class _CloudforceOneRequestPriorityState:
     def __init__(__self__, *,
-                 account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  completed: Optional[pulumi.Input[builtins.str]] = None,
                  content: Optional[pulumi.Input[builtins.str]] = None,
                  created: Optional[pulumi.Input[builtins.str]] = None,
@@ -122,23 +122,23 @@ class _CloudforceOneRequestPriorityState:
                  updated: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudforceOneRequestPriority resources.
-        :param pulumi.Input[builtins.str] account_identifier: Identifier
-        :param pulumi.Input[builtins.str] content: Request content
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] labels: List of labels
-        :param pulumi.Input[builtins.int] message_tokens: Tokens for the request messages
-        :param pulumi.Input[builtins.int] priority: Priority
-        :param pulumi.Input[builtins.str] readable_id: Readable Request ID
-        :param pulumi.Input[builtins.str] request: Requested information from request
-        :param pulumi.Input[builtins.str] requirement: Requirement
-        :param pulumi.Input[builtins.str] status: Request Status
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[builtins.str] content: Request content.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] labels: List of labels.
+        :param pulumi.Input[builtins.int] message_tokens: Tokens for the request messages.
+        :param pulumi.Input[builtins.int] priority: Priority.
+        :param pulumi.Input[builtins.str] readable_id: Readable Request ID.
+        :param pulumi.Input[builtins.str] request: Requested information from request.
+        :param pulumi.Input[builtins.str] requirement: Requirement.
+        :param pulumi.Input[builtins.str] status: Request Status.
                Available values: "open", "accepted", "reported", "approved", "completed", "declined".
-        :param pulumi.Input[builtins.str] summary: Brief description of the request
-        :param pulumi.Input[builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP)
+        :param pulumi.Input[builtins.str] summary: Brief description of the request.
+        :param pulumi.Input[builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP).
                Available values: "clear", "amber", "amber-strict", "green", "red".
-        :param pulumi.Input[builtins.int] tokens: Tokens for the request
+        :param pulumi.Input[builtins.int] tokens: Tokens for the request.
         """
-        if account_identifier is not None:
-            pulumi.set(__self__, "account_identifier", account_identifier)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if completed is not None:
             pulumi.set(__self__, "completed", completed)
         if content is not None:
@@ -169,16 +169,16 @@ class _CloudforceOneRequestPriorityState:
             pulumi.set(__self__, "updated", updated)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
-    @account_identifier.setter
-    def account_identifier(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "account_identifier", value)
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -193,7 +193,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Request content
+        Request content.
         """
         return pulumi.get(self, "content")
 
@@ -214,7 +214,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
         """
-        List of labels
+        List of labels.
         """
         return pulumi.get(self, "labels")
 
@@ -226,7 +226,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter(name="messageTokens")
     def message_tokens(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Tokens for the request messages
+        Tokens for the request messages.
         """
         return pulumi.get(self, "message_tokens")
 
@@ -238,7 +238,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Priority
+        Priority.
         """
         return pulumi.get(self, "priority")
 
@@ -250,7 +250,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter(name="readableId")
     def readable_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Readable Request ID
+        Readable Request ID.
         """
         return pulumi.get(self, "readable_id")
 
@@ -262,7 +262,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def request(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Requested information from request
+        Requested information from request.
         """
         return pulumi.get(self, "request")
 
@@ -274,7 +274,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def requirement(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Requirement
+        Requirement.
         """
         return pulumi.get(self, "requirement")
 
@@ -286,7 +286,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Request Status
+        Request Status.
         Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         """
         return pulumi.get(self, "status")
@@ -299,7 +299,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def summary(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Brief description of the request
+        Brief description of the request.
         """
         return pulumi.get(self, "summary")
 
@@ -311,7 +311,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def tlp(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The CISA defined Traffic Light Protocol (TLP)
+        The CISA defined Traffic Light Protocol (TLP).
         Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
@@ -324,7 +324,7 @@ class _CloudforceOneRequestPriorityState:
     @pulumi.getter
     def tokens(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        Tokens for the request
+        Tokens for the request.
         """
         return pulumi.get(self, "tokens")
 
@@ -348,7 +348,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  requirement: Optional[pulumi.Input[builtins.str]] = None,
@@ -362,7 +362,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_cloudforce_one_request_priority = cloudflare.CloudforceOneRequestPriority("example_cloudforce_one_request_priority",
-            account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
             labels=[
                 "DoS",
                 "CVE",
@@ -375,16 +375,16 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example '<account_identifier>/<priority_identifer>'
+        $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example '<account_id>/<priority_id>'
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_identifier: Identifier
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] labels: List of labels
-        :param pulumi.Input[builtins.int] priority: Priority
-        :param pulumi.Input[builtins.str] requirement: Requirement
-        :param pulumi.Input[builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP)
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] labels: List of labels.
+        :param pulumi.Input[builtins.int] priority: Priority.
+        :param pulumi.Input[builtins.str] requirement: Requirement.
+        :param pulumi.Input[builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP).
                Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         ...
@@ -401,7 +401,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example_cloudforce_one_request_priority = cloudflare.CloudforceOneRequestPriority("example_cloudforce_one_request_priority",
-            account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
+            account_id="023e105f4ecef8ad9ca31a8372d0c353",
             labels=[
                 "DoS",
                 "CVE",
@@ -414,7 +414,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example '<account_identifier>/<priority_identifer>'
+        $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example '<account_id>/<priority_id>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -432,7 +432,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+                 account_id: Optional[pulumi.Input[builtins.str]] = None,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  priority: Optional[pulumi.Input[builtins.int]] = None,
                  requirement: Optional[pulumi.Input[builtins.str]] = None,
@@ -446,9 +446,9 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudforceOneRequestPriorityArgs.__new__(CloudforceOneRequestPriorityArgs)
 
-            if account_identifier is None and not opts.urn:
-                raise TypeError("Missing required property 'account_identifier'")
-            __props__.__dict__["account_identifier"] = account_identifier
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
+            __props__.__dict__["account_id"] = account_id
             if labels is None and not opts.urn:
                 raise TypeError("Missing required property 'labels'")
             __props__.__dict__["labels"] = labels
@@ -481,7 +481,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_identifier: Optional[pulumi.Input[builtins.str]] = None,
+            account_id: Optional[pulumi.Input[builtins.str]] = None,
             completed: Optional[pulumi.Input[builtins.str]] = None,
             content: Optional[pulumi.Input[builtins.str]] = None,
             created: Optional[pulumi.Input[builtins.str]] = None,
@@ -503,26 +503,26 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] account_identifier: Identifier
-        :param pulumi.Input[builtins.str] content: Request content
-        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] labels: List of labels
-        :param pulumi.Input[builtins.int] message_tokens: Tokens for the request messages
-        :param pulumi.Input[builtins.int] priority: Priority
-        :param pulumi.Input[builtins.str] readable_id: Readable Request ID
-        :param pulumi.Input[builtins.str] request: Requested information from request
-        :param pulumi.Input[builtins.str] requirement: Requirement
-        :param pulumi.Input[builtins.str] status: Request Status
+        :param pulumi.Input[builtins.str] account_id: Identifier.
+        :param pulumi.Input[builtins.str] content: Request content.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] labels: List of labels.
+        :param pulumi.Input[builtins.int] message_tokens: Tokens for the request messages.
+        :param pulumi.Input[builtins.int] priority: Priority.
+        :param pulumi.Input[builtins.str] readable_id: Readable Request ID.
+        :param pulumi.Input[builtins.str] request: Requested information from request.
+        :param pulumi.Input[builtins.str] requirement: Requirement.
+        :param pulumi.Input[builtins.str] status: Request Status.
                Available values: "open", "accepted", "reported", "approved", "completed", "declined".
-        :param pulumi.Input[builtins.str] summary: Brief description of the request
-        :param pulumi.Input[builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP)
+        :param pulumi.Input[builtins.str] summary: Brief description of the request.
+        :param pulumi.Input[builtins.str] tlp: The CISA defined Traffic Light Protocol (TLP).
                Available values: "clear", "amber", "amber-strict", "green", "red".
-        :param pulumi.Input[builtins.int] tokens: Tokens for the request
+        :param pulumi.Input[builtins.int] tokens: Tokens for the request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _CloudforceOneRequestPriorityState.__new__(_CloudforceOneRequestPriorityState)
 
-        __props__.__dict__["account_identifier"] = account_identifier
+        __props__.__dict__["account_id"] = account_id
         __props__.__dict__["completed"] = completed
         __props__.__dict__["content"] = content
         __props__.__dict__["created"] = created
@@ -540,12 +540,12 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
         return CloudforceOneRequestPriority(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
@@ -556,7 +556,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[builtins.str]:
         """
-        Request content
+        Request content.
         """
         return pulumi.get(self, "content")
 
@@ -569,7 +569,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Sequence[builtins.str]]:
         """
-        List of labels
+        List of labels.
         """
         return pulumi.get(self, "labels")
 
@@ -577,7 +577,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter(name="messageTokens")
     def message_tokens(self) -> pulumi.Output[builtins.int]:
         """
-        Tokens for the request messages
+        Tokens for the request messages.
         """
         return pulumi.get(self, "message_tokens")
 
@@ -585,7 +585,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[builtins.int]:
         """
-        Priority
+        Priority.
         """
         return pulumi.get(self, "priority")
 
@@ -593,7 +593,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter(name="readableId")
     def readable_id(self) -> pulumi.Output[builtins.str]:
         """
-        Readable Request ID
+        Readable Request ID.
         """
         return pulumi.get(self, "readable_id")
 
@@ -601,7 +601,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def request(self) -> pulumi.Output[builtins.str]:
         """
-        Requested information from request
+        Requested information from request.
         """
         return pulumi.get(self, "request")
 
@@ -609,7 +609,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def requirement(self) -> pulumi.Output[builtins.str]:
         """
-        Requirement
+        Requirement.
         """
         return pulumi.get(self, "requirement")
 
@@ -617,7 +617,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[builtins.str]:
         """
-        Request Status
+        Request Status.
         Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         """
         return pulumi.get(self, "status")
@@ -626,7 +626,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def summary(self) -> pulumi.Output[builtins.str]:
         """
-        Brief description of the request
+        Brief description of the request.
         """
         return pulumi.get(self, "summary")
 
@@ -634,7 +634,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def tlp(self) -> pulumi.Output[builtins.str]:
         """
-        The CISA defined Traffic Light Protocol (TLP)
+        The CISA defined Traffic Light Protocol (TLP).
         Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
@@ -643,7 +643,7 @@ class CloudforceOneRequestPriority(pulumi.CustomResource):
     @pulumi.getter
     def tokens(self) -> pulumi.Output[builtins.int]:
         """
-        Tokens for the request
+        Tokens for the request.
         """
         return pulumi.get(self, "tokens")
 

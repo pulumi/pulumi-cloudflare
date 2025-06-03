@@ -103,15 +103,15 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
-    @Import(name="includes", required=true)
-    private Output<List<AccessPolicyIncludeArgs>> includes;
+    @Import(name="includes")
+    private @Nullable Output<List<AccessPolicyIncludeArgs>> includes;
 
     /**
      * @return Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      * 
      */
-    public Output<List<AccessPolicyIncludeArgs>> includes() {
-        return this.includes;
+    public Optional<Output<List<AccessPolicyIncludeArgs>>> includes() {
+        return Optional.ofNullable(this.includes);
     }
 
     /**
@@ -372,7 +372,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder includes(Output<List<AccessPolicyIncludeArgs>> includes) {
+        public Builder includes(@Nullable Output<List<AccessPolicyIncludeArgs>> includes) {
             $.includes = includes;
             return this;
         }
@@ -539,9 +539,6 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.decision == null) {
                 throw new MissingRequiredPropertyException("AccessPolicyArgs", "decision");
-            }
-            if ($.includes == null) {
-                throw new MissingRequiredPropertyException("AccessPolicyArgs", "includes");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("AccessPolicyArgs", "name");

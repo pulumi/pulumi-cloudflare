@@ -32,14 +32,14 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
     }
 
     /**
-     * Available values: &#34;remove&#34;.
+     * Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
      * 
      */
     @Import(name="operation", required=true)
     private Output<String> operation;
 
     /**
-     * @return Available values: &#34;remove&#34;.
+     * @return Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
      * 
      */
     public Output<String> operation() {
@@ -109,7 +109,7 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         /**
-         * @param operation Available values: &#34;remove&#34;.
+         * @param operation Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class RulesetRuleActionParametersHeadersArgs extends com.pulumi.res
         }
 
         /**
-         * @param operation Available values: &#34;remove&#34;.
+         * @param operation Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
          * 
          * @return builder
          * 

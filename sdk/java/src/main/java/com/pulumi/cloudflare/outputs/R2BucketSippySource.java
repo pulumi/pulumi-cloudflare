@@ -27,7 +27,7 @@ public final class R2BucketSippySource {
      */
     private @Nullable String clientEmail;
     /**
-     * @return Available values: &#34;aws&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
      * 
      */
     private @Nullable String cloudProvider;
@@ -70,7 +70,7 @@ public final class R2BucketSippySource {
         return Optional.ofNullable(this.clientEmail);
     }
     /**
-     * @return Available values: &#34;aws&#34;.
+     * @return Available values: &#34;aws&#34;, &#34;gcs&#34;.
      * 
      */
     public Optional<String> cloudProvider() {

@@ -24,9 +24,9 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestAsset = Cloudflare.GetCloudforceOneRequestAsset.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-        ///         AssetIdentifer = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AssetId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -48,9 +48,9 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestAsset = Cloudflare.GetCloudforceOneRequestAsset.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-        ///         AssetIdentifer = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AssetId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -72,9 +72,9 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestAsset = Cloudflare.GetCloudforceOneRequestAsset.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
-        ///         AssetIdentifer = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AssetId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -88,22 +88,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestAssetArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public string AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("assetIdentifer", required: true)]
-        public string AssetIdentifer { get; set; } = null!;
+        [Input("assetId", required: true)]
+        public string AssetId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("requestIdentifier", required: true)]
-        public string RequestIdentifier { get; set; } = null!;
+        [Input("requestId", required: true)]
+        public string RequestId { get; set; } = null!;
 
         public GetCloudforceOneRequestAssetArgs()
         {
@@ -114,22 +114,22 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestAssetInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public Input<string> AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("assetIdentifer", required: true)]
-        public Input<string> AssetIdentifer { get; set; } = null!;
+        [Input("assetId", required: true)]
+        public Input<string> AssetId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("requestIdentifier", required: true)]
-        public Input<string> RequestIdentifier { get; set; } = null!;
+        [Input("requestId", required: true)]
+        public Input<string> RequestId { get; set; } = null!;
 
         public GetCloudforceOneRequestAssetInvokeArgs()
         {
@@ -142,43 +142,43 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestAssetResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        public readonly string AccountIdentifier;
+        public readonly string AccountId;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        public readonly string AssetIdentifer;
+        public readonly string AssetId;
         /// <summary>
-        /// Asset creation time
+        /// Defines the asset creation time.
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// Asset description
+        /// Asset description.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Asset file type
+        /// Asset file type.
         /// </summary>
         public readonly string FileType;
         /// <summary>
-        /// Asset ID
+        /// Asset ID.
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// Asset name
+        /// Asset name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        public readonly string RequestIdentifier;
+        public readonly string RequestId;
 
         [OutputConstructor]
         private GetCloudforceOneRequestAssetResult(
-            string accountIdentifier,
+            string accountId,
 
-            string assetIdentifer,
+            string assetId,
 
             string created,
 
@@ -190,16 +190,16 @@ namespace Pulumi.Cloudflare
 
             string name,
 
-            string requestIdentifier)
+            string requestId)
         {
-            AccountIdentifier = accountIdentifier;
-            AssetIdentifer = assetIdentifer;
+            AccountId = accountId;
+            AssetId = assetId;
             Created = created;
             Description = description;
             FileType = fileType;
             Id = id;
             Name = name;
-            RequestIdentifier = requestIdentifier;
+            RequestId = requestId;
         }
     }
 }

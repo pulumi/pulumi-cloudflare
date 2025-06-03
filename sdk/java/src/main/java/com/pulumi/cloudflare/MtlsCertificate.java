@@ -158,14 +158,14 @@ public class MtlsCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.name);
     }
     /**
-     * The private key for the certificate
+     * The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust&#39;s block page.
      * 
      */
     @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
-     * @return The private key for the certificate
+     * @return The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust&#39;s block page.
      * 
      */
     public Output<Optional<String>> privateKey() {

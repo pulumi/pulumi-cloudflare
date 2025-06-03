@@ -30,14 +30,14 @@ public final class QueueProducerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Available values: &#34;worker&#34;.
+     * Available values: &#34;worker&#34;, &#34;r2_bucket&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;worker&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;r2_bucket&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -89,7 +89,7 @@ public final class QueueProducerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Available values: &#34;worker&#34;.
+         * @param type Available values: &#34;worker&#34;, &#34;r2_bucket&#34;.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class QueueProducerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Available values: &#34;worker&#34;.
+         * @param type Available values: &#34;worker&#34;, &#34;r2_bucket&#34;.
          * 
          * @return builder
          * 

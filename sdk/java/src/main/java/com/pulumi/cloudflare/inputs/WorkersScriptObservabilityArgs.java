@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.WorkersScriptObservabilityLogsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -47,11 +48,27 @@ public final class WorkersScriptObservabilityArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.headSamplingRate);
     }
 
+    /**
+     * Log settings for the Worker.
+     * 
+     */
+    @Import(name="logs")
+    private @Nullable Output<WorkersScriptObservabilityLogsArgs> logs;
+
+    /**
+     * @return Log settings for the Worker.
+     * 
+     */
+    public Optional<Output<WorkersScriptObservabilityLogsArgs>> logs() {
+        return Optional.ofNullable(this.logs);
+    }
+
     private WorkersScriptObservabilityArgs() {}
 
     private WorkersScriptObservabilityArgs(WorkersScriptObservabilityArgs $) {
         this.enabled = $.enabled;
         this.headSamplingRate = $.headSamplingRate;
+        this.logs = $.logs;
     }
 
     public static Builder builder() {
@@ -112,6 +129,27 @@ public final class WorkersScriptObservabilityArgs extends com.pulumi.resources.R
          */
         public Builder headSamplingRate(Double headSamplingRate) {
             return headSamplingRate(Output.of(headSamplingRate));
+        }
+
+        /**
+         * @param logs Log settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logs(@Nullable Output<WorkersScriptObservabilityLogsArgs> logs) {
+            $.logs = logs;
+            return this;
+        }
+
+        /**
+         * @param logs Log settings for the Worker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logs(WorkersScriptObservabilityLogsArgs logs) {
+            return logs(Output.of(logs));
         }
 
         public WorkersScriptObservabilityArgs build() {

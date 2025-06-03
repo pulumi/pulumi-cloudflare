@@ -590,10 +590,10 @@ export const getCertificatePacks: typeof import("./getCertificatePacks").getCert
 export const getCertificatePacksOutput: typeof import("./getCertificatePacks").getCertificatePacksOutput = null as any;
 utilities.lazyLoad(exports, ["getCertificatePacks","getCertificatePacksOutput"], () => require("./getCertificatePacks"));
 
-export { GetCloudConnectorRulesListArgs, GetCloudConnectorRulesListResult, GetCloudConnectorRulesListOutputArgs } from "./getCloudConnectorRulesList";
-export const getCloudConnectorRulesList: typeof import("./getCloudConnectorRulesList").getCloudConnectorRulesList = null as any;
-export const getCloudConnectorRulesListOutput: typeof import("./getCloudConnectorRulesList").getCloudConnectorRulesListOutput = null as any;
-utilities.lazyLoad(exports, ["getCloudConnectorRulesList","getCloudConnectorRulesListOutput"], () => require("./getCloudConnectorRulesList"));
+export { GetCloudConnectorRulesArgs, GetCloudConnectorRulesResult, GetCloudConnectorRulesOutputArgs } from "./getCloudConnectorRules";
+export const getCloudConnectorRules: typeof import("./getCloudConnectorRules").getCloudConnectorRules = null as any;
+export const getCloudConnectorRulesOutput: typeof import("./getCloudConnectorRules").getCloudConnectorRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudConnectorRules","getCloudConnectorRulesOutput"], () => require("./getCloudConnectorRules"));
 
 export { GetCloudforceOneRequestArgs, GetCloudforceOneRequestResult, GetCloudforceOneRequestOutputArgs } from "./getCloudforceOneRequest";
 export const getCloudforceOneRequest: typeof import("./getCloudforceOneRequest").getCloudforceOneRequest = null as any;
@@ -1655,6 +1655,16 @@ export const getZeroTrustDevicePostureRules: typeof import("./getZeroTrustDevice
 export const getZeroTrustDevicePostureRulesOutput: typeof import("./getZeroTrustDevicePostureRules").getZeroTrustDevicePostureRulesOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustDevicePostureRules","getZeroTrustDevicePostureRulesOutput"], () => require("./getZeroTrustDevicePostureRules"));
 
+export { GetZeroTrustDexTestArgs, GetZeroTrustDexTestResult, GetZeroTrustDexTestOutputArgs } from "./getZeroTrustDexTest";
+export const getZeroTrustDexTest: typeof import("./getZeroTrustDexTest").getZeroTrustDexTest = null as any;
+export const getZeroTrustDexTestOutput: typeof import("./getZeroTrustDexTest").getZeroTrustDexTestOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDexTest","getZeroTrustDexTestOutput"], () => require("./getZeroTrustDexTest"));
+
+export { GetZeroTrustDexTestsArgs, GetZeroTrustDexTestsResult, GetZeroTrustDexTestsOutputArgs } from "./getZeroTrustDexTests";
+export const getZeroTrustDexTests: typeof import("./getZeroTrustDexTests").getZeroTrustDexTests = null as any;
+export const getZeroTrustDexTestsOutput: typeof import("./getZeroTrustDexTests").getZeroTrustDexTestsOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustDexTests","getZeroTrustDexTestsOutput"], () => require("./getZeroTrustDexTests"));
+
 export { GetZeroTrustDlpCustomProfileArgs, GetZeroTrustDlpCustomProfileResult, GetZeroTrustDlpCustomProfileOutputArgs } from "./getZeroTrustDlpCustomProfile";
 export const getZeroTrustDlpCustomProfile: typeof import("./getZeroTrustDlpCustomProfile").getZeroTrustDlpCustomProfile = null as any;
 export const getZeroTrustDlpCustomProfileOutput: typeof import("./getZeroTrustDlpCustomProfile").getZeroTrustDlpCustomProfileOutput = null as any;
@@ -1809,6 +1819,11 @@ export { GetZeroTrustTunnelCloudflaredsArgs, GetZeroTrustTunnelCloudflaredsResul
 export const getZeroTrustTunnelCloudflareds: typeof import("./getZeroTrustTunnelCloudflareds").getZeroTrustTunnelCloudflareds = null as any;
 export const getZeroTrustTunnelCloudflaredsOutput: typeof import("./getZeroTrustTunnelCloudflareds").getZeroTrustTunnelCloudflaredsOutput = null as any;
 utilities.lazyLoad(exports, ["getZeroTrustTunnelCloudflareds","getZeroTrustTunnelCloudflaredsOutput"], () => require("./getZeroTrustTunnelCloudflareds"));
+
+export { GetZeroTrustTunnelWarpConnectorTokenArgs, GetZeroTrustTunnelWarpConnectorTokenResult, GetZeroTrustTunnelWarpConnectorTokenOutputArgs } from "./getZeroTrustTunnelWarpConnectorToken";
+export const getZeroTrustTunnelWarpConnectorToken: typeof import("./getZeroTrustTunnelWarpConnectorToken").getZeroTrustTunnelWarpConnectorToken = null as any;
+export const getZeroTrustTunnelWarpConnectorTokenOutput: typeof import("./getZeroTrustTunnelWarpConnectorToken").getZeroTrustTunnelWarpConnectorTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getZeroTrustTunnelWarpConnectorToken","getZeroTrustTunnelWarpConnectorTokenOutput"], () => require("./getZeroTrustTunnelWarpConnectorToken"));
 
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
@@ -2473,6 +2488,11 @@ export type ZeroTrustDevicePostureRule = import("./zeroTrustDevicePostureRule").
 export const ZeroTrustDevicePostureRule: typeof import("./zeroTrustDevicePostureRule").ZeroTrustDevicePostureRule = null as any;
 utilities.lazyLoad(exports, ["ZeroTrustDevicePostureRule"], () => require("./zeroTrustDevicePostureRule"));
 
+export { ZeroTrustDexTestArgs, ZeroTrustDexTestState } from "./zeroTrustDexTest";
+export type ZeroTrustDexTest = import("./zeroTrustDexTest").ZeroTrustDexTest;
+export const ZeroTrustDexTest: typeof import("./zeroTrustDexTest").ZeroTrustDexTest = null as any;
+utilities.lazyLoad(exports, ["ZeroTrustDexTest"], () => require("./zeroTrustDexTest"));
+
 export { ZeroTrustDlpCustomProfileArgs, ZeroTrustDlpCustomProfileState } from "./zeroTrustDlpCustomProfile";
 export type ZeroTrustDlpCustomProfile = import("./zeroTrustDlpCustomProfile").ZeroTrustDlpCustomProfile;
 export const ZeroTrustDlpCustomProfile: typeof import("./zeroTrustDlpCustomProfile").ZeroTrustDlpCustomProfile = null as any;
@@ -3009,6 +3029,8 @@ const _module = {
                 return new ZeroTrustDevicePostureIntegration(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule":
                 return new ZeroTrustDevicePostureRule(name, <any>undefined, { urn })
+            case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
+                return new ZeroTrustDexTest(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile":
                 return new ZeroTrustDlpCustomProfile(name, <any>undefined, { urn })
             case "cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset":
@@ -3261,6 +3283,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceDefaul
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDeviceManagedNetworks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDevicePostureRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDexTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpCustomProfile", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpDataset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zeroTrustDlpEntry", _module)
