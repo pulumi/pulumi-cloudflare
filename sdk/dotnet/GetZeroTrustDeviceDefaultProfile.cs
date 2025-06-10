@@ -160,6 +160,10 @@ namespace Pulumi.Cloudflare
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         public readonly bool RegisterInterfaceIpWithDns;
+        /// <summary>
+        /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        /// </summary>
+        public readonly bool SccmVpnBoundarySupport;
         public readonly Outputs.GetZeroTrustDeviceDefaultProfileServiceModeV2Result ServiceModeV2;
         /// <summary>
         /// The URL to launch when the Send Feedback button is clicked.
@@ -208,6 +212,8 @@ namespace Pulumi.Cloudflare
 
             bool registerInterfaceIpWithDns,
 
+            bool sccmVpnBoundarySupport,
+
             Outputs.GetZeroTrustDeviceDefaultProfileServiceModeV2Result serviceModeV2,
 
             string supportUrl,
@@ -232,6 +238,7 @@ namespace Pulumi.Cloudflare
             Id = id;
             Includes = includes;
             RegisterInterfaceIpWithDns = registerInterfaceIpWithDns;
+            SccmVpnBoundarySupport = sccmVpnBoundarySupport;
             ServiceModeV2 = serviceModeV2;
             SupportUrl = supportUrl;
             SwitchLocked = switchLocked;

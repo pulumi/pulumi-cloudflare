@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class HyperdriveConfigMtlsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CA certificate ID
+        /// Define CA certificate ID obtained after uploading CA cert.
         /// </summary>
         [Input("caCertificateId")]
         public Input<string>? CaCertificateId { get; set; }
 
         /// <summary>
-        /// mTLS certificate ID
+        /// Define mTLS certificate ID obtained after uploading client cert.
         /// </summary>
         [Input("mtlsCertificateId")]
         public Input<string>? MtlsCertificateId { get; set; }
 
         /// <summary>
-        /// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+        /// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
         /// </summary>
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }

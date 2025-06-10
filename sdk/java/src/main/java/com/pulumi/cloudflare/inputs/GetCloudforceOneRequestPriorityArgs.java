@@ -15,40 +15,40 @@ public final class GetCloudforceOneRequestPriorityArgs extends com.pulumi.resour
     public static final GetCloudforceOneRequestPriorityArgs Empty = new GetCloudforceOneRequestPriorityArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="priorityIdentifer", required=true)
-    private Output<String> priorityIdentifer;
+    @Import(name="priorityId", required=true)
+    private Output<String> priorityId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Output<String> priorityIdentifer() {
-        return this.priorityIdentifer;
+    public Output<String> priorityId() {
+        return this.priorityId;
     }
 
     private GetCloudforceOneRequestPriorityArgs() {}
 
     private GetCloudforceOneRequestPriorityArgs(GetCloudforceOneRequestPriorityArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
-        this.priorityIdentifer = $.priorityIdentifer;
+        this.accountId = $.accountId;
+        this.priorityId = $.priorityId;
     }
 
     public static Builder builder() {
@@ -70,53 +70,53 @@ public final class GetCloudforceOneRequestPriorityArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param priorityIdentifer UUID
+         * @param priorityId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder priorityIdentifer(Output<String> priorityIdentifer) {
-            $.priorityIdentifer = priorityIdentifer;
+        public Builder priorityId(Output<String> priorityId) {
+            $.priorityId = priorityId;
             return this;
         }
 
         /**
-         * @param priorityIdentifer UUID
+         * @param priorityId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder priorityIdentifer(String priorityIdentifer) {
-            return priorityIdentifer(Output.of(priorityIdentifer));
+        public Builder priorityId(String priorityId) {
+            return priorityId(Output.of(priorityId));
         }
 
         public GetCloudforceOneRequestPriorityArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityArgs", "accountId");
             }
-            if ($.priorityIdentifer == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityArgs", "priorityIdentifer");
+            if ($.priorityId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestPriorityArgs", "priorityId");
             }
             return $;
         }

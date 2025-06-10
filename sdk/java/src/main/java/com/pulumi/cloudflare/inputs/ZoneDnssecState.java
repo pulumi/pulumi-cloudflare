@@ -120,6 +120,27 @@ public final class ZoneDnssecState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+     * enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     * 
+     */
+    @Import(name="dnssecUseNsec3")
+    private @Nullable Output<Boolean> dnssecUseNsec3;
+
+    /**
+     * @return If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+     * enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     * 
+     */
+    public Optional<Output<Boolean>> dnssecUseNsec3() {
+        return Optional.ofNullable(this.dnssecUseNsec3);
+    }
+
+    /**
      * Full DS record.
      * 
      */
@@ -248,6 +269,7 @@ public final class ZoneDnssecState extends com.pulumi.resources.ResourceArgs {
         this.digestType = $.digestType;
         this.dnssecMultiSigner = $.dnssecMultiSigner;
         this.dnssecPresigned = $.dnssecPresigned;
+        this.dnssecUseNsec3 = $.dnssecUseNsec3;
         this.ds = $.ds;
         this.flags = $.flags;
         this.keyTag = $.keyTag;
@@ -412,6 +434,33 @@ public final class ZoneDnssecState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dnssecPresigned(Boolean dnssecPresigned) {
             return dnssecPresigned(Output.of(dnssecPresigned));
+        }
+
+        /**
+         * @param dnssecUseNsec3 If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+         * enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+         * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+         * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnssecUseNsec3(@Nullable Output<Boolean> dnssecUseNsec3) {
+            $.dnssecUseNsec3 = dnssecUseNsec3;
+            return this;
+        }
+
+        /**
+         * @param dnssecUseNsec3 If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+         * enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+         * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+         * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnssecUseNsec3(Boolean dnssecUseNsec3) {
+            return dnssecUseNsec3(Output.of(dnssecUseNsec3));
         }
 
         /**

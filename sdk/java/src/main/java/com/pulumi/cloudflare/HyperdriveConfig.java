@@ -33,14 +33,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/hyperdriveConfig:HyperdriveConfig")
 public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public Output<String> accountId() {
@@ -53,28 +53,28 @@ public class HyperdriveConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.caching);
     }
     /**
-     * When the Hyperdrive configuration was created.
+     * Defines the creation time of the Hyperdrive configuration.
      * 
      */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
-     * @return When the Hyperdrive configuration was created.
+     * @return Defines the creation time of the Hyperdrive configuration.
      * 
      */
     public Output<String> createdOn() {
         return this.createdOn;
     }
     /**
-     * When the Hyperdrive configuration was last modified.
+     * Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return When the Hyperdrive configuration was last modified.
+     * @return Defines the last modified time of the Hyperdrive configuration.
      * 
      */
     public Output<String> modifiedOn() {

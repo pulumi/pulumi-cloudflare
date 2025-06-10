@@ -59,7 +59,7 @@ export interface AccessApplicationDestination {
      */
     portRange?: string;
     /**
-     * Available values: "public".
+     * Available values: "public", "private".
      */
     type?: string;
     /**
@@ -119,7 +119,7 @@ export interface AccessApplicationPolicy {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    excludes?: outputs.AccessApplicationPolicyExclude[];
+    excludes: outputs.AccessApplicationPolicyExclude[];
     /**
      * The UUID of the policy
      */
@@ -127,7 +127,7 @@ export interface AccessApplicationPolicy {
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes?: outputs.AccessApplicationPolicyInclude[];
+    includes: outputs.AccessApplicationPolicyInclude[];
     /**
      * The name of the Access policy.
      */
@@ -139,7 +139,7 @@ export interface AccessApplicationPolicy {
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    requires?: outputs.AccessApplicationPolicyRequire[];
+    requires: outputs.AccessApplicationPolicyRequire[];
 }
 
 export interface AccessApplicationPolicyConnectionRules {
@@ -1021,7 +1021,7 @@ export interface AccessApplicationScimConfigAuthentication {
     password?: string;
     /**
      * The authentication scheme to use when making SCIM requests to this application.
-     * Available values: "httpbasic".
+     * Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
      */
     scheme: string;
     /**
@@ -1838,7 +1838,7 @@ export interface AccessIdentityProviderConfig {
     /**
      * Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
      */
-    signRequest?: boolean;
+    signRequest: boolean;
     /**
      * URL to send the SAML authentication requests to
      */
@@ -2598,7 +2598,7 @@ export interface AccessPolicyRequireServiceToken {
 export interface AccessRuleConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip".
+     * Available values: "ip", "ip6", "ipRange", "asn", "country".
      */
     target?: string;
     /**
@@ -2772,25 +2772,10 @@ export interface AccountSettings {
      */
     abuseContactEmail?: string;
     /**
-     * Specifies the default nameservers to be used for new zones added to this account.
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    defaultNameservers: string;
-    /**
      * Indicates whether membership in this account requires that
      * Two-Factor Authentication is enabled
      */
     enforceTwofactor: boolean;
-    /**
-     * Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     *
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    useAccountCustomNsByDefault: boolean;
 }
 
 export interface AccountSubscriptionRatePlan {
@@ -2914,7 +2899,7 @@ export interface ApiShieldAuthIdCharacteristic {
     name: string;
     /**
      * The type of characteristic.
-     * Available values: "header", "cookie".
+     * Available values: "header", "cookie", "jwt".
      */
     type: string;
 }
@@ -3263,7 +3248,7 @@ export interface CloudConnectorRulesRule {
     description?: string;
     enabled?: boolean;
     expression?: string;
-    id?: string;
+    id: string;
     /**
      * Parameters of Cloud Connector Rule
      */
@@ -3484,11 +3469,11 @@ export interface DeviceManagedNetworksConfig {
 
 export interface DevicePostureIntegrationConfig {
     /**
-     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
      */
     accessClientId?: string;
     /**
-     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      */
     accessClientSecret?: string;
     /**
@@ -3535,12 +3520,12 @@ export interface DevicePostureRuleInput {
      */
     checkPrivateKey?: boolean;
     /**
-     * Common Name that is protected by the certificate
+     * Common Name that is protected by the certificate.
      */
     cn?: string;
     /**
-     * Compliance Status
-     * Available values: "compliant", "noncompliant", "unknown".
+     * Compliance Status.
+     * Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
      */
     complianceStatus?: string;
     /**
@@ -3548,12 +3533,12 @@ export interface DevicePostureRuleInput {
      */
     connectionId?: string;
     /**
-     * Count Operator
+     * Count Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     countOperator?: string;
     /**
-     * Domain
+     * Domain.
      */
     domain?: string;
     /**
@@ -3561,15 +3546,15 @@ export interface DevicePostureRuleInput {
      */
     eidLastSeen?: string;
     /**
-     * Enabled
+     * Enabled.
      */
     enabled?: boolean;
     /**
-     * Whether or not file exists
+     * Whether or not file exists.
      */
     exists?: boolean;
     /**
-     * List of values indicating purposes for which the certificate public key can be used
+     * List of values indicating purposes for which the certificate public key can be used.
      */
     extendedKeyUsages?: string[];
     /**
@@ -3599,8 +3584,8 @@ export interface DevicePostureRuleInput {
      */
     networkStatus?: string;
     /**
-     * Operating system
-     * Available values: "windows", "linux", "mac".
+     * Operating system.
+     * Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
      */
     operatingSystem?: string;
     /**
@@ -3609,28 +3594,28 @@ export interface DevicePostureRuleInput {
      */
     operationalState?: string;
     /**
-     * operator
+     * Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     operator?: string;
     /**
-     * Os Version
+     * Os Version.
      */
     os?: string;
     /**
-     * Operating System Distribution Name (linux only)
+     * Operating System Distribution Name (linux only).
      */
     osDistroName?: string;
     /**
-     * Version of OS Distribution (linux only)
+     * Version of OS Distribution (linux only).
      */
     osDistroRevision?: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      */
     osVersionExtra?: string;
     /**
-     * overall
+     * Overall.
      */
     overall?: string;
     /**
@@ -3651,12 +3636,12 @@ export interface DevicePostureRuleInput {
      */
     score?: number;
     /**
-     * Score Operator
+     * Score Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     scoreOperator?: string;
     /**
-     * SensorConfig
+     * SensorConfig.
      */
     sensorConfig?: string;
     /**
@@ -3677,11 +3662,11 @@ export interface DevicePostureRuleInput {
      */
     totalScore?: number;
     /**
-     * Version of OS
+     * Version of OS.
      */
     version?: string;
     /**
-     * Version Operator
+     * Version Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     versionOperator?: string;
@@ -3803,7 +3788,7 @@ export interface DlpCustomProfileProfileSharedEntry {
     enabled: boolean;
     entryId: string;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration", "exactData".
      */
     entryType: string;
 }
@@ -3812,7 +3797,7 @@ export interface DlpCustomProfileSharedEntry {
     enabled: boolean;
     entryId: string;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration", "exactData".
      */
     entryType: string;
 }
@@ -4172,7 +4157,7 @@ export interface EmailRoutingRuleMatcher {
     field?: string;
     /**
      * Type of matcher.
-     * Available values: "literal".
+     * Available values: "all", "literal".
      */
     type: string;
     /**
@@ -4253,7 +4238,7 @@ export interface FirewallRuleFilter {
 export interface GetAccessRuleConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip".
+     * Available values: "ip", "ip6", "ipRange", "asn", "country".
      */
     target: string;
     /**
@@ -4372,7 +4357,7 @@ export interface GetAccessRulesResult {
 export interface GetAccessRulesResultConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip".
+     * Available values: "ip", "ip6", "ipRange", "asn", "country".
      */
     target: string;
     /**
@@ -5229,25 +5214,10 @@ export interface GetAccountSettings {
      */
     abuseContactEmail: string;
     /**
-     * Specifies the default nameservers to be used for new zones added to this account.
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    defaultNameservers: string;
-    /**
      * Indicates whether membership in this account requires that
      * Two-Factor Authentication is enabled
      */
     enforceTwofactor: boolean;
-    /**
-     * Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     *
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    useAccountCustomNsByDefault: boolean;
 }
 
 export interface GetAccountSubscriptionRatePlan {
@@ -5472,25 +5442,10 @@ export interface GetAccountsResultSettings {
      */
     abuseContactEmail: string;
     /**
-     * Specifies the default nameservers to be used for new zones added to this account.
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    defaultNameservers: string;
-    /**
      * Indicates whether membership in this account requires that
      * Two-Factor Authentication is enabled
      */
     enforceTwofactor: boolean;
-    /**
-     * Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     *
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    useAccountCustomNsByDefault: boolean;
 }
 
 export interface GetAddressMapIp {
@@ -5554,7 +5509,7 @@ export interface GetApiShieldAuthIdCharacteristic {
     name: string;
     /**
      * The type of characteristic.
-     * Available values: "header", "cookie".
+     * Available values: "header", "cookie", "jwt".
      */
     type: string;
 }
@@ -6360,7 +6315,7 @@ export interface GetCallsTurnAppsResult {
 export interface GetCertificatePacksResult {
 }
 
-export interface GetCloudConnectorRulesListResult {
+export interface GetCloudConnectorRulesRule {
     description: string;
     enabled: boolean;
     expression: string;
@@ -6368,7 +6323,7 @@ export interface GetCloudConnectorRulesListResult {
     /**
      * Parameters of Cloud Connector Rule
      */
-    parameters: outputs.GetCloudConnectorRulesListResultParameters;
+    parameters: outputs.GetCloudConnectorRulesRuleParameters;
     /**
      * Cloud Provider type
      * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
@@ -6376,28 +6331,73 @@ export interface GetCloudConnectorRulesListResult {
     provider: string;
 }
 
-export interface GetCloudConnectorRulesListResultParameters {
+export interface GetCloudConnectorRulesRuleParameters {
     /**
      * Host to perform Cloud Connection to
      */
     host: string;
 }
 
+export interface GetCloudforceOneRequestFilter {
+    /**
+     * Retrieve requests completed after this time.
+     */
+    completedAfter?: string;
+    /**
+     * Retrieve requests completed before this time.
+     */
+    completedBefore?: string;
+    /**
+     * Retrieve requests created after this time.
+     */
+    createdAfter?: string;
+    /**
+     * Retrieve requests created before this time.
+     */
+    createdBefore?: string;
+    /**
+     * Page number of results.
+     */
+    page: number;
+    /**
+     * Number of results per page.
+     */
+    perPage: number;
+    /**
+     * Requested information from request.
+     */
+    requestType?: string;
+    /**
+     * Field to sort results by.
+     */
+    sortBy?: string;
+    /**
+     * Sort order (asc or desc).
+     * Available values: "asc", "desc".
+     */
+    sortOrder?: string;
+    /**
+     * Request Status.
+     * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
+     */
+    status?: string;
+}
+
 export interface GetCloudforceOneRequestsResult {
     /**
-     * Request completion time
+     * Request completion time.
      */
     completed: string;
     /**
-     * Request creation time
+     * Request creation time.
      */
     created: string;
     /**
-     * UUID
+     * UUID.
      */
     id: string;
     /**
-     * Tokens for the request messages
+     * Tokens for the request messages.
      */
     messageTokens: number;
     /**
@@ -6405,33 +6405,33 @@ export interface GetCloudforceOneRequestsResult {
      */
     priority: string;
     /**
-     * Readable Request ID
+     * Readable Request ID.
      */
     readableId: string;
     /**
-     * Requested information from request
+     * Requested information from request.
      */
     request: string;
     /**
-     * Request Status
+     * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     status: string;
     /**
-     * Brief description of the request
+     * Brief description of the request.
      */
     summary: string;
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     tlp: string;
     /**
-     * Tokens for the request
+     * Tokens for the request.
      */
     tokens: number;
     /**
-     * Request last updated time
+     * Request last updated time.
      */
     updated: string;
 }
@@ -7567,7 +7567,7 @@ export interface GetDnsRecordsResult {
     ttl: number;
     /**
      * Record type.
-     * Available values: "A".
+     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
      */
     type: string;
 }
@@ -8020,7 +8020,7 @@ export interface GetEmailRoutingRuleMatcher {
     field: string;
     /**
      * Type of matcher.
-     * Available values: "literal".
+     * Available values: "all", "literal".
      */
     type: string;
     /**
@@ -8079,7 +8079,7 @@ export interface GetEmailRoutingRulesResultMatcher {
     field: string;
     /**
      * Type of matcher.
-     * Available values: "literal".
+     * Available values: "all", "literal".
      */
     type: string;
     /**
@@ -8485,57 +8485,57 @@ export interface GetHealthchecksResultTcpConfig {
 
 export interface GetHyperdriveConfigCaching {
     /**
-     * When set to true, disables the caching of SQL responses. (Default: false)
+     * Set to true to disable caching of SQL responses. Default is false.
      */
     disabled: boolean;
     /**
-     * When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+     * Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
      */
     maxAge: number;
     /**
-     * When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+     * Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
      */
     staleWhileRevalidate: number;
 }
 
 export interface GetHyperdriveConfigMtls {
     /**
-     * CA certificate ID
+     * Define CA certificate ID obtained after uploading CA cert.
      */
     caCertificateId: string;
     /**
-     * mTLS certificate ID
+     * Define mTLS certificate ID obtained after uploading client cert.
      */
     mtlsCertificateId: string;
     /**
-     * SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+     * Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
      */
     sslmode: string;
 }
 
 export interface GetHyperdriveConfigOrigin {
     /**
-     * The Client ID of the Access token to use when connecting to the origin database.
+     * Defines the Client ID of the Access token to use when connecting to the origin database.
      */
     accessClientId: string;
     /**
-     * The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+     * Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
      */
     accessClientSecret: string;
     /**
-     * The name of your origin database.
+     * Set the name of your origin database.
      */
     database: string;
     /**
-     * The host (hostname or IP) of your origin database.
+     * Defines the host (hostname or IP) of your origin database.
      */
     host: string;
     /**
-     * The password required to access your origin database. This value is write-only and never returned by the API.
+     * Set the password needed to access your origin database. The API never returns this write-only value.
      */
     password: string;
     /**
-     * The port (default: 5432 for Postgres) of your origin database.
+     * Defines the port (default: 5432 for Postgres) of your origin database.
      */
     port: number;
     /**
@@ -8544,7 +8544,7 @@ export interface GetHyperdriveConfigOrigin {
      */
     scheme: string;
     /**
-     * The user of your origin database.
+     * Set the user of your origin database.
      */
     user: string;
 }
@@ -8552,15 +8552,15 @@ export interface GetHyperdriveConfigOrigin {
 export interface GetHyperdriveConfigsResult {
     caching: outputs.GetHyperdriveConfigsResultCaching;
     /**
-     * When the Hyperdrive configuration was created.
+     * Defines the creation time of the Hyperdrive configuration.
      */
     createdOn: string;
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     id: string;
     /**
-     * When the Hyperdrive configuration was last modified.
+     * Defines the last modified time of the Hyperdrive configuration.
      */
     modifiedOn: string;
     mtls: outputs.GetHyperdriveConfigsResultMtls;
@@ -8570,57 +8570,57 @@ export interface GetHyperdriveConfigsResult {
 
 export interface GetHyperdriveConfigsResultCaching {
     /**
-     * When set to true, disables the caching of SQL responses. (Default: false)
+     * Set to true to disable caching of SQL responses. Default is false.
      */
     disabled: boolean;
     /**
-     * When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+     * Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
      */
     maxAge: number;
     /**
-     * When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+     * Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
      */
     staleWhileRevalidate: number;
 }
 
 export interface GetHyperdriveConfigsResultMtls {
     /**
-     * CA certificate ID
+     * Define CA certificate ID obtained after uploading CA cert.
      */
     caCertificateId: string;
     /**
-     * mTLS certificate ID
+     * Define mTLS certificate ID obtained after uploading client cert.
      */
     mtlsCertificateId: string;
     /**
-     * SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+     * Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
      */
     sslmode: string;
 }
 
 export interface GetHyperdriveConfigsResultOrigin {
     /**
-     * The Client ID of the Access token to use when connecting to the origin database.
+     * Defines the Client ID of the Access token to use when connecting to the origin database.
      */
     accessClientId: string;
     /**
-     * The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+     * Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
      */
     accessClientSecret: string;
     /**
-     * The name of your origin database.
+     * Set the name of your origin database.
      */
     database: string;
     /**
-     * The host (hostname or IP) of your origin database.
+     * Defines the host (hostname or IP) of your origin database.
      */
     host: string;
     /**
-     * The password required to access your origin database. This value is write-only and never returned by the API.
+     * Set the password needed to access your origin database. The API never returns this write-only value.
      */
     password: string;
     /**
-     * The port (default: 5432 for Postgres) of your origin database.
+     * Defines the port (default: 5432 for Postgres) of your origin database.
      */
     port: number;
     /**
@@ -8629,7 +8629,7 @@ export interface GetHyperdriveConfigsResultOrigin {
      */
     scheme: string;
     /**
-     * The user of your origin database.
+     * Set the user of your origin database.
      */
     user: string;
 }
@@ -11576,7 +11576,7 @@ export interface GetPagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
 
 export interface GetPagesProjectCanonicalDeploymentEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -11757,7 +11757,7 @@ export interface GetPagesProjectDeploymentConfigsPreviewDurableObjectNamespaces 
 
 export interface GetPagesProjectDeploymentConfigsPreviewEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -11922,7 +11922,7 @@ export interface GetPagesProjectDeploymentConfigsProductionDurableObjectNamespac
 
 export interface GetPagesProjectDeploymentConfigsProductionEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -12111,7 +12111,7 @@ export interface GetPagesProjectLatestDeploymentDeploymentTriggerMetadata {
 
 export interface GetPagesProjectLatestDeploymentEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -12327,7 +12327,7 @@ export interface GetPagesProjectsResultDeploymentTriggerMetadata {
 
 export interface GetPagesProjectsResultEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -12420,7 +12420,7 @@ export interface GetQueueConsumer {
     scriptName: string;
     settings: outputs.GetQueueConsumerSettings;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "httpPull".
      */
     type: string;
 }
@@ -12456,7 +12456,7 @@ export interface GetQueueProducer {
     bucketName: string;
     script: string;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "r2Bucket".
      */
     type: string;
 }
@@ -12508,7 +12508,7 @@ export interface GetQueuesResultConsumer {
     scriptName: string;
     settings: outputs.GetQueuesResultConsumerSettings;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "httpPull".
      */
     type: string;
 }
@@ -12544,7 +12544,7 @@ export interface GetQueuesResultProducer {
     bucketName: string;
     script: string;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "r2Bucket".
      */
     type: string;
 }
@@ -12598,43 +12598,62 @@ export interface GetR2BucketCorsRuleAllowed {
     origins: string[];
 }
 
-export interface GetR2BucketEventNotificationQueue {
+export interface GetR2BucketEventNotificationAbortMultipartUploadsTransition {
     /**
-     * Queue ID.
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
-    queueId: string;
-    /**
-     * Name of the queue.
-     */
-    queueName: string;
-    rules: outputs.GetR2BucketEventNotificationQueueRule[];
+    condition: outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransitionCondition;
 }
 
-export interface GetR2BucketEventNotificationQueueRule {
+export interface GetR2BucketEventNotificationAbortMultipartUploadsTransitionCondition {
+    maxAge: number;
     /**
-     * Array of R2 object actions that will trigger notifications.
+     * Available values: "Age".
      */
-    actions: string[];
+    type: string;
+}
+
+export interface GetR2BucketEventNotificationConditions {
     /**
-     * Timestamp when the rule was created.
-     */
-    createdAt: string;
-    /**
-     * A description that can be used to identify the event notification rule after creation.
-     */
-    description: string;
-    /**
-     * Notifications will be sent only for objects with this prefix.
+     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
      */
     prefix: string;
+}
+
+export interface GetR2BucketEventNotificationDeleteObjectsTransition {
     /**
-     * Rule ID.
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
      */
-    ruleId: string;
+    condition: outputs.GetR2BucketEventNotificationDeleteObjectsTransitionCondition;
+}
+
+export interface GetR2BucketEventNotificationDeleteObjectsTransitionCondition {
+    date: string;
+    maxAge: number;
     /**
-     * Notifications will be sent only for objects with this suffix.
+     * Available values: "Age", "Date".
      */
-    suffix: string;
+    type: string;
+}
+
+export interface GetR2BucketEventNotificationStorageClassTransition {
+    /**
+     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+     */
+    condition: outputs.GetR2BucketEventNotificationStorageClassTransitionCondition;
+    /**
+     * Available values: "InfrequentAccess".
+     */
+    storageClass: string;
+}
+
+export interface GetR2BucketEventNotificationStorageClassTransitionCondition {
+    date: string;
+    maxAge: number;
+    /**
+     * Available values: "Age", "Date".
+     */
+    type: string;
 }
 
 export interface GetR2BucketLifecycleRule {
@@ -12697,7 +12716,7 @@ export interface GetR2BucketLifecycleRuleDeleteObjectsTransitionCondition {
     date: string;
     maxAge: number;
     /**
-     * Available values: "Age".
+     * Available values: "Age", "Date".
      */
     type: string;
 }
@@ -12717,7 +12736,7 @@ export interface GetR2BucketLifecycleRuleStorageClassTransitionCondition {
     date: string;
     maxAge: number;
     /**
-     * Available values: "Age".
+     * Available values: "Age", "Date".
      */
     type: string;
 }
@@ -12745,7 +12764,7 @@ export interface GetR2BucketLockRuleCondition {
     date: string;
     maxAgeSeconds: number;
     /**
-     * Available values: "Age".
+     * Available values: "Age", "Date", "Indefinite".
      */
     type: string;
 }
@@ -13225,7 +13244,7 @@ export interface GetResourceGroupsResultScopeObject {
 export interface GetRulesetRule {
     /**
      * The action to perform when the rule matches.
-     * Available values: "block".
+     * Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
      */
     action: string;
     /**
@@ -13401,7 +13420,7 @@ export interface GetRulesetRuleActionParameters {
      */
     overrides: outputs.GetRulesetRuleActionParametersOverrides;
     /**
-     * A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+     * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      */
     phases: string[];
     /**
@@ -13446,7 +13465,7 @@ export interface GetRulesetRuleActionParameters {
      */
     rules: {[key: string]: string[]};
     /**
-     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+     * A ruleset to skip the execution of. This option is incompatible with the rulesets option.
      * Available values: "current".
      */
     ruleset: string;
@@ -13754,7 +13773,7 @@ export interface GetRulesetRuleActionParametersHeaders {
      */
     expression: string;
     /**
-     * Available values: "remove".
+     * Available values: "remove", "add", "set".
      */
     operation: string;
     /**
@@ -13980,7 +13999,6 @@ export interface GetRulesetRuleRatelimit {
     mitigationTimeout: number;
     /**
      * Period in seconds over which the counter is being incremented.
-     * Available values: 10, 60, 600, 3600.
      */
     period: number;
     /**
@@ -14075,7 +14093,7 @@ export interface GetSpectrumApplicationEdgeIps {
     ips: string[];
     /**
      * The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
-     * Available values: "dynamic".
+     * Available values: "dynamic", "static".
      */
     type: string;
 }
@@ -14554,8 +14572,8 @@ export interface GetTurnstileWidgetsResult {
      */
     offlabel: boolean;
     /**
-     * Region where this widget can be used.
-     * Available values: "world".
+     * Region where this widget can be used. This cannot be changed after creation.
+     * Available values: "world", "china".
      */
     region: string;
     /**
@@ -14743,7 +14761,7 @@ export interface GetWaitingRoomsResult {
      * 8. `queueIsFull`: Boolean indicating if the waiting room's queue is currently full and not accepting new users at the moment.
      * 9. `queueAll`: Boolean indicating if all users will be queued in the waiting room and no one will be let into the origin website.
      * 10. `lastUpdated`: String displaying the timestamp as an ISO 8601 string of the user's last attempt to leave the waiting room and be let into the origin website. The user is able to make another attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and `lastUpdated` will not change.
-     * 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**.
+     * 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**.
      * 12. `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**, **passthrough**, or **reject**.
      * 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO (First-In-First-Out) queue.
      * 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users gain access randomly.
@@ -14756,6 +14774,8 @@ export interface GetWaitingRoomsResult {
      * 21. `timeUntilEventEnd`: Valid only when `isEventActive` is **true**. Integer indicating the number of minutes until the event ends.
      * 22. `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**.
      * 23. `shuffleAtEventStart`: Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when the event starts.
+     * 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the Turnstile widget. Please add the `{{{turnstile}}}` tag to the `customHtml` template to ensure the Turnstile widget appears.
+     * 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue.
      *
      * An example cURL to a waiting room could be:
      *
@@ -14820,7 +14840,7 @@ export interface GetWaitingRoomsResult {
      * 			"timeUntilEventEndFormatted": "15 minutes",
      * 			"shuffleAtEventStart": true
      * 		}
-     * 	}.
+     * 	}
      */
     jsonResponseEnabled: boolean;
     modifiedOn: string;
@@ -15171,7 +15191,7 @@ export interface GetWorkersForPlatformsDispatchNamespacesResult {
      */
     namespaceName: string;
     /**
-     * The current number of scripts in this Dispatch Namespace
+     * The current number of scripts in this Dispatch Namespace.
      */
     scriptCount: number;
 }
@@ -15367,7 +15387,7 @@ export interface GetZeroTrustAccessApplicationDestination {
      */
     portRange: string;
     /**
-     * Available values: "public".
+     * Available values: "public", "private".
      */
     type: string;
     /**
@@ -16389,7 +16409,7 @@ export interface GetZeroTrustAccessApplicationScimConfigAuthentication {
     password: string;
     /**
      * The authentication scheme to use when making SCIM requests to this application.
-     * Available values: "httpbasic".
+     * Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
      */
     scheme: string;
     /**
@@ -16599,7 +16619,7 @@ export interface GetZeroTrustAccessApplicationsResult {
      */
     serviceAuth401Redirect: boolean;
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      */
     sessionDuration: string;
     /**
@@ -16676,7 +16696,7 @@ export interface GetZeroTrustAccessApplicationsResultDestination {
      */
     portRange: string;
     /**
-     * Available values: "public".
+     * Available values: "public", "private".
      */
     type: string;
     /**
@@ -17679,7 +17699,7 @@ export interface GetZeroTrustAccessApplicationsResultScimConfigAuthentication {
     password: string;
     /**
      * The authentication scheme to use when making SCIM requests to this application.
-     * Available values: "httpbasic".
+     * Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
      */
     scheme: string;
     /**
@@ -21542,11 +21562,11 @@ export interface GetZeroTrustDeviceCustomProfileServiceModeV2 {
 
 export interface GetZeroTrustDeviceCustomProfileTargetTest {
     /**
-     * The id of the DEX test targeting this policy
+     * The id of the DEX test targeting this policy.
      */
     id: string;
     /**
-     * The name of the DEX test targeting this policy
+     * The name of the DEX test targeting this policy.
      */
     name: string;
 }
@@ -21611,7 +21631,7 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      */
     lanAllowSubnetSize: number;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
      */
     match: string;
     /**
@@ -21627,6 +21647,10 @@ export interface GetZeroTrustDeviceCustomProfilesResult {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     registerInterfaceIpWithDns: boolean;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    sccmVpnBoundarySupport: boolean;
     serviceModeV2: outputs.GetZeroTrustDeviceCustomProfilesResultServiceModeV2;
     /**
      * The URL to launch when the Send Feedback button is clicked.
@@ -21701,11 +21725,11 @@ export interface GetZeroTrustDeviceCustomProfilesResultServiceModeV2 {
 
 export interface GetZeroTrustDeviceCustomProfilesResultTargetTest {
     /**
-     * The id of the DEX test targeting this policy
+     * The id of the DEX test targeting this policy.
      */
     id: string;
     /**
-     * The name of the DEX test targeting this policy
+     * The name of the DEX test targeting this policy.
      */
     name: string;
 }
@@ -21842,7 +21866,7 @@ export interface GetZeroTrustDevicePostureIntegrationsResult {
     name: string;
     /**
      * The type of device posture integration.
-     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+     * Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
      */
     type: string;
 }
@@ -21880,12 +21904,12 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     checkPrivateKey: boolean;
     /**
-     * Common Name that is protected by the certificate
+     * Common Name that is protected by the certificate.
      */
     cn: string;
     /**
-     * Compliance Status
-     * Available values: "compliant", "noncompliant", "unknown".
+     * Compliance Status.
+     * Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
      */
     complianceStatus: string;
     /**
@@ -21893,12 +21917,12 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     connectionId: string;
     /**
-     * Count Operator
+     * Count Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     countOperator: string;
     /**
-     * Domain
+     * Domain.
      */
     domain: string;
     /**
@@ -21906,15 +21930,15 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     eidLastSeen: string;
     /**
-     * Enabled
+     * Enabled.
      */
     enabled: boolean;
     /**
-     * Whether or not file exists
+     * Whether or not file exists.
      */
     exists: boolean;
     /**
-     * List of values indicating purposes for which the certificate public key can be used
+     * List of values indicating purposes for which the certificate public key can be used.
      */
     extendedKeyUsages: string[];
     /**
@@ -21944,8 +21968,8 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     networkStatus: string;
     /**
-     * Operating system
-     * Available values: "windows", "linux", "mac".
+     * Operating system.
+     * Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
      */
     operatingSystem: string;
     /**
@@ -21954,28 +21978,28 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     operationalState: string;
     /**
-     * operator
+     * Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     operator: string;
     /**
-     * Os Version
+     * Os Version.
      */
     os: string;
     /**
-     * Operating System Distribution Name (linux only)
+     * Operating System Distribution Name (linux only).
      */
     osDistroName: string;
     /**
-     * Version of OS Distribution (linux only)
+     * Version of OS Distribution (linux only).
      */
     osDistroRevision: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      */
     osVersionExtra: string;
     /**
-     * overall
+     * Overall.
      */
     overall: string;
     /**
@@ -21996,12 +22020,12 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     score: number;
     /**
-     * Score Operator
+     * Score Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     scoreOperator: string;
     /**
-     * SensorConfig
+     * SensorConfig.
      */
     sensorConfig: string;
     /**
@@ -22022,11 +22046,11 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     totalScore: number;
     /**
-     * Version of OS
+     * Version of OS.
      */
     version: string;
     /**
-     * Version Operator
+     * Version Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     versionOperator: string;
@@ -22081,7 +22105,7 @@ export interface GetZeroTrustDevicePostureRulesResult {
     schedule: string;
     /**
      * The type of device posture rule.
-     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "customS2s".
+     * Available values: "file", "application", "tanium", "gateway", "warp", "disk*encryption", "serial*number", "sentinelone", "carbonblack", "firewall", "os*version", "domain*joined", "client*certificate", "client*certificate*v2", "unique*client*id", "kolide", "tanium*s2s", "crowdstrike*s2s", "intune", "workspace*one", "sentinelone*s2s", "custom*s2s".
      */
     type: string;
 }
@@ -22104,12 +22128,12 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     checkPrivateKey: boolean;
     /**
-     * Common Name that is protected by the certificate
+     * Common Name that is protected by the certificate.
      */
     cn: string;
     /**
-     * Compliance Status
-     * Available values: "compliant", "noncompliant", "unknown".
+     * Compliance Status.
+     * Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
      */
     complianceStatus: string;
     /**
@@ -22117,12 +22141,12 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     connectionId: string;
     /**
-     * Count Operator
+     * Count Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     countOperator: string;
     /**
-     * Domain
+     * Domain.
      */
     domain: string;
     /**
@@ -22130,15 +22154,15 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     eidLastSeen: string;
     /**
-     * Enabled
+     * Enabled.
      */
     enabled: boolean;
     /**
-     * Whether or not file exists
+     * Whether or not file exists.
      */
     exists: boolean;
     /**
-     * List of values indicating purposes for which the certificate public key can be used
+     * List of values indicating purposes for which the certificate public key can be used.
      */
     extendedKeyUsages: string[];
     /**
@@ -22168,8 +22192,8 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     networkStatus: string;
     /**
-     * Operating system
-     * Available values: "windows", "linux", "mac".
+     * Operating system.
+     * Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
      */
     operatingSystem: string;
     /**
@@ -22178,28 +22202,28 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     operationalState: string;
     /**
-     * operator
+     * Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     operator: string;
     /**
-     * Os Version
+     * Os Version.
      */
     os: string;
     /**
-     * Operating System Distribution Name (linux only)
+     * Operating System Distribution Name (linux only).
      */
     osDistroName: string;
     /**
-     * Version of OS Distribution (linux only)
+     * Version of OS Distribution (linux only).
      */
     osDistroRevision: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      */
     osVersionExtra: string;
     /**
-     * overall
+     * Overall.
      */
     overall: string;
     /**
@@ -22220,12 +22244,12 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     score: number;
     /**
-     * Score Operator
+     * Score Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     scoreOperator: string;
     /**
-     * SensorConfig
+     * SensorConfig.
      */
     sensorConfig: string;
     /**
@@ -22246,11 +22270,11 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     totalScore: number;
     /**
-     * Version of OS
+     * Version of OS.
      */
     version: string;
     /**
-     * Version Operator
+     * Version Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     versionOperator: string;
@@ -22272,6 +22296,98 @@ export interface GetZeroTrustDevicePostureRulesResultMatch {
      * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform: string;
+}
+
+export interface GetZeroTrustDexTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host: string;
+    /**
+     * The type of test.
+     */
+    kind: string;
+    /**
+     * The HTTP request method type.
+     */
+    method: string;
+}
+
+export interface GetZeroTrustDexTestTargetPolicy {
+    /**
+     * Whether the DEX rule is the account default
+     */
+    default: boolean;
+    /**
+     * The id of the DEX rule
+     */
+    id: string;
+    /**
+     * The name of the DEX rule
+     */
+    name: string;
+}
+
+export interface GetZeroTrustDexTestsResult {
+    /**
+     * The configuration object which contains the details for the WARP client to conduct the test.
+     */
+    data: outputs.GetZeroTrustDexTestsResultData;
+    /**
+     * Additional details about the test.
+     */
+    description: string;
+    /**
+     * Determines whether or not the test is active.
+     */
+    enabled: boolean;
+    /**
+     * How often the test will run.
+     */
+    interval: string;
+    /**
+     * The name of the DEX test. Must be unique.
+     */
+    name: string;
+    /**
+     * DEX rules targeted by this test
+     */
+    targetPolicies: outputs.GetZeroTrustDexTestsResultTargetPolicy[];
+    targeted: boolean;
+    /**
+     * The unique identifier for the test.
+     */
+    testId: string;
+}
+
+export interface GetZeroTrustDexTestsResultData {
+    /**
+     * The desired endpoint to test.
+     */
+    host: string;
+    /**
+     * The type of test.
+     */
+    kind: string;
+    /**
+     * The HTTP request method type.
+     */
+    method: string;
+}
+
+export interface GetZeroTrustDexTestsResultTargetPolicy {
+    /**
+     * Whether the DEX rule is the account default
+     */
+    default: boolean;
+    /**
+     * The id of the DEX rule
+     */
+    id: string;
+    /**
+     * The name of the DEX rule
+     */
+    name: string;
 }
 
 export interface GetZeroTrustDlpCustomProfileContextAwareness {
@@ -22308,7 +22424,7 @@ export interface GetZeroTrustDlpCustomProfileEntry {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration", "exact*data", "word*list".
      */
     type: string;
     updatedAt: string;
@@ -22414,7 +22530,7 @@ export interface GetZeroTrustDlpEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration", "exact*data", "word*list".
      */
     type: string;
     updatedAt: string;
@@ -22497,7 +22613,7 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration", "exact*data", "word*list".
      */
     type: string;
     updatedAt: string;
@@ -22929,9 +23045,6 @@ export interface GetZeroTrustGatewayPoliciesResult {
      * The name of the rule.
      */
     name: string;
-    /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.
-     */
     precedence: number;
     /**
      * Additional settings that modify the rule's action.
@@ -24672,7 +24785,7 @@ export interface GetZoneFilterAccount {
 export interface GetZoneLockdownConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: "ip".
+     * Available values: "ip", "ipRange".
      */
     target: string;
     /**
@@ -24754,7 +24867,7 @@ export interface GetZoneLockdownsResult {
 export interface GetZoneLockdownsResultConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: "ip".
+     * Available values: "ip", "ipRange".
      */
     target: string;
     /**
@@ -24806,6 +24919,67 @@ export interface GetZoneOwner {
     type: string;
 }
 
+export interface GetZonePlan {
+    /**
+     * States if the subscription can be activated.
+     */
+    canSubscribe: boolean;
+    /**
+     * The denomination of the customer.
+     */
+    currency: string;
+    /**
+     * If this Zone is managed by another company.
+     */
+    externallyManaged: boolean;
+    /**
+     * How often the customer is billed.
+     */
+    frequency: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * States if the subscription active.
+     */
+    isSubscribed: boolean;
+    /**
+     * If the legacy discount applies to this Zone.
+     */
+    legacyDiscount: boolean;
+    /**
+     * The legacy name of the plan.
+     */
+    legacyId: string;
+    /**
+     * Name of the owner
+     */
+    name: string;
+    /**
+     * How much the customer is paying.
+     */
+    price: number;
+}
+
+export interface GetZoneTenant {
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * The name of the Tenant account.
+     */
+    name: string;
+}
+
+export interface GetZoneTenantUnit {
+    /**
+     * Identifier
+     */
+    id: string;
+}
+
 export interface GetZonesAccount {
     /**
      * An account ID
@@ -24835,6 +25009,11 @@ export interface GetZonesResult {
      * active
      */
     activatedOn: string;
+    /**
+     * Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     */
+    cnameSuffix: string;
     /**
      * When the zone was created
      */
@@ -24888,10 +25067,30 @@ export interface GetZonesResult {
      */
     paused: boolean;
     /**
+     * Legacy permissions based on legacy user membership information.
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    permissions: string[];
+    /**
+     * A Zones subscription information.
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    plan: outputs.GetZonesResultPlan;
+    /**
      * The zone status on Cloudflare.
      * Available values: "initializing", "pending", "active", "moved".
      */
     status: string;
+    /**
+     * The root organizational unit that this zone belongs to (such as a tenant or organization).
+     */
+    tenant: outputs.GetZonesResultTenant;
+    /**
+     * The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     */
+    tenantUnit: outputs.GetZonesResultTenantUnit;
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
@@ -24962,6 +25161,67 @@ export interface GetZonesResultOwner {
     type: string;
 }
 
+export interface GetZonesResultPlan {
+    /**
+     * States if the subscription can be activated.
+     */
+    canSubscribe: boolean;
+    /**
+     * The denomination of the customer.
+     */
+    currency: string;
+    /**
+     * If this Zone is managed by another company.
+     */
+    externallyManaged: boolean;
+    /**
+     * How often the customer is billed.
+     */
+    frequency: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * States if the subscription active.
+     */
+    isSubscribed: boolean;
+    /**
+     * If the legacy discount applies to this Zone.
+     */
+    legacyDiscount: boolean;
+    /**
+     * The legacy name of the plan.
+     */
+    legacyId: string;
+    /**
+     * Name of the owner
+     */
+    name: string;
+    /**
+     * How much the customer is paying.
+     */
+    price: number;
+}
+
+export interface GetZonesResultTenant {
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * The name of the Tenant account.
+     */
+    name: string;
+}
+
+export interface GetZonesResultTenantUnit {
+    /**
+     * Identifier
+     */
+    id: string;
+}
+
 export interface HealthcheckHttpConfig {
     /**
      * Do not validate the certificate when the health check uses HTTPS.
@@ -25012,57 +25272,57 @@ export interface HealthcheckTcpConfig {
 
 export interface HyperdriveConfigCaching {
     /**
-     * When set to true, disables the caching of SQL responses. (Default: false)
+     * Set to true to disable caching of SQL responses. Default is false.
      */
     disabled: boolean;
     /**
-     * When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+     * Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
      */
     maxAge?: number;
     /**
-     * When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+     * Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
      */
     staleWhileRevalidate?: number;
 }
 
 export interface HyperdriveConfigMtls {
     /**
-     * CA certificate ID
+     * Define CA certificate ID obtained after uploading CA cert.
      */
     caCertificateId?: string;
     /**
-     * mTLS certificate ID
+     * Define mTLS certificate ID obtained after uploading client cert.
      */
     mtlsCertificateId?: string;
     /**
-     * SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+     * Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
      */
     sslmode?: string;
 }
 
 export interface HyperdriveConfigOrigin {
     /**
-     * The Client ID of the Access token to use when connecting to the origin database.
+     * Defines the Client ID of the Access token to use when connecting to the origin database.
      */
     accessClientId?: string;
     /**
-     * The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+     * Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
      */
     accessClientSecret?: string;
     /**
-     * The name of your origin database.
+     * Set the name of your origin database.
      */
     database: string;
     /**
-     * The host (hostname or IP) of your origin database.
+     * Defines the host (hostname or IP) of your origin database.
      */
     host: string;
     /**
-     * The password required to access your origin database. This value is write-only and never returned by the API.
+     * Set the password needed to access your origin database. The API never returns this write-only value.
      */
     password: string;
     /**
-     * The port (default: 5432 for Postgres) of your origin database.
+     * Defines the port (default: 5432 for Postgres) of your origin database.
      */
     port?: number;
     /**
@@ -25071,7 +25331,7 @@ export interface HyperdriveConfigOrigin {
      */
     scheme: string;
     /**
-     * The user of your origin database.
+     * Set the user of your origin database.
      */
     user: string;
 }
@@ -26736,9 +26996,9 @@ export interface PageRuleActions {
 export interface PageRuleActionsCacheKeyFields {
     cookie?: outputs.PageRuleActionsCacheKeyFieldsCookie;
     header?: outputs.PageRuleActionsCacheKeyFieldsHeader;
-    host?: outputs.PageRuleActionsCacheKeyFieldsHost;
+    host: outputs.PageRuleActionsCacheKeyFieldsHost;
     queryString?: outputs.PageRuleActionsCacheKeyFieldsQueryString;
-    user?: outputs.PageRuleActionsCacheKeyFieldsUser;
+    user: outputs.PageRuleActionsCacheKeyFieldsUser;
 }
 
 export interface PageRuleActionsCacheKeyFieldsCookie {
@@ -26753,7 +27013,7 @@ export interface PageRuleActionsCacheKeyFieldsHeader {
 }
 
 export interface PageRuleActionsCacheKeyFieldsHost {
-    resolved?: boolean;
+    resolved: boolean;
 }
 
 export interface PageRuleActionsCacheKeyFieldsQueryString {
@@ -26762,9 +27022,9 @@ export interface PageRuleActionsCacheKeyFieldsQueryString {
 }
 
 export interface PageRuleActionsCacheKeyFieldsUser {
-    deviceType?: boolean;
-    geo?: boolean;
-    lang?: boolean;
+    deviceType: boolean;
+    geo: boolean;
+    lang: boolean;
 }
 
 export interface PageRuleActionsForwardingUrl {
@@ -26942,7 +27202,7 @@ export interface PagesProjectCanonicalDeploymentDeploymentTriggerMetadata {
 
 export interface PagesProjectCanonicalDeploymentEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -27123,7 +27383,7 @@ export interface PagesProjectDeploymentConfigsPreviewDurableObjectNamespaces {
 
 export interface PagesProjectDeploymentConfigsPreviewEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -27288,7 +27548,7 @@ export interface PagesProjectDeploymentConfigsProductionDurableObjectNamespaces 
 
 export interface PagesProjectDeploymentConfigsProductionEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -27477,7 +27737,7 @@ export interface PagesProjectLatestDeploymentDeploymentTriggerMetadata {
 
 export interface PagesProjectLatestDeploymentEnvVars {
     /**
-     * Available values: "plainText".
+     * Available values: "plain*text", "secret*text".
      */
     type: string;
     /**
@@ -27592,7 +27852,7 @@ export interface QueueConsumer {
     scriptName: string;
     settings: outputs.QueueConsumerSettings;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "httpPull".
      */
     type: string;
 }
@@ -27628,7 +27888,7 @@ export interface QueueProducer {
     bucketName: string;
     script: string;
     /**
-     * Available values: "worker".
+     * Available values: "worker", "r2Bucket".
      */
     type: string;
 }
@@ -27800,7 +28060,7 @@ export interface R2BucketLifecycleRuleDeleteObjectsTransitionCondition {
     date?: string;
     maxAge?: number;
     /**
-     * Available values: "Age".
+     * Available values: "Age", "Date".
      */
     type: string;
 }
@@ -27820,7 +28080,7 @@ export interface R2BucketLifecycleRuleStorageClassTransitionCondition {
     date?: string;
     maxAge?: number;
     /**
-     * Available values: "Age".
+     * Available values: "Age", "Date".
      */
     type: string;
 }
@@ -27848,7 +28108,7 @@ export interface R2BucketLockRuleCondition {
     date?: string;
     maxAgeSeconds?: number;
     /**
-     * Available values: "Age".
+     * Available values: "Age", "Date", "Indefinite".
      */
     type: string;
 }
@@ -27889,7 +28149,7 @@ export interface R2BucketSippySource {
      */
     clientEmail?: string;
     /**
-     * Available values: "aws".
+     * Available values: "aws", "gcs".
      */
     cloudProvider?: string;
     /**
@@ -28179,7 +28439,7 @@ export interface RiskBehaviorBehaviors {
 export interface RulesetRule {
     /**
      * The action to perform when the rule matches.
-     * Available values: "block".
+     * Available values: "block", "challenge", "compress*response", "execute", "js*challenge", "log", "managed*challenge", "redirect", "rewrite", "route", "score", "serve*error", "set*config", "skip", "set*cache*settings", "log*custom*field", "ddos*dynamic", "force*connection*close".
      */
     action?: string;
     /**
@@ -28355,7 +28615,7 @@ export interface RulesetRuleActionParameters {
      */
     overrides?: outputs.RulesetRuleActionParametersOverrides;
     /**
-     * A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+     * A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      */
     phases?: string[];
     /**
@@ -28400,7 +28660,7 @@ export interface RulesetRuleActionParameters {
      */
     rules?: {[key: string]: string[]};
     /**
-     * A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+     * A ruleset to skip the execution of. This option is incompatible with the rulesets option.
      * Available values: "current".
      */
     ruleset?: string;
@@ -28708,7 +28968,7 @@ export interface RulesetRuleActionParametersHeaders {
      */
     expression?: string;
     /**
-     * Available values: "remove".
+     * Available values: "remove", "add", "set".
      */
     operation: string;
     /**
@@ -28934,7 +29194,6 @@ export interface RulesetRuleRatelimit {
     mitigationTimeout?: number;
     /**
      * Period in seconds over which the counter is being incremented.
-     * Available values: 10, 60, 600, 3600.
      */
     period: number;
     /**
@@ -28996,7 +29255,7 @@ export interface SpectrumApplicationEdgeIps {
     ips?: string[];
     /**
      * The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
-     * Available values: "dynamic".
+     * Available values: "dynamic", "static".
      */
     type?: string;
 }
@@ -29311,11 +29570,11 @@ export interface TeamsAccountSettings {
     /**
      * Activity log settings.
      */
-    activityLog: outputs.TeamsAccountSettingsActivityLog;
+    activityLog?: outputs.TeamsAccountSettingsActivityLog;
     /**
      * Anti-virus settings.
      */
-    antivirus: outputs.TeamsAccountSettingsAntivirus;
+    antivirus?: outputs.TeamsAccountSettingsAntivirus;
     /**
      * Block page layout settings.
      */
@@ -29327,7 +29586,7 @@ export interface TeamsAccountSettings {
     /**
      * Browser isolation settings.
      */
-    browserIsolation: outputs.TeamsAccountSettingsBrowserIsolation;
+    browserIsolation?: outputs.TeamsAccountSettingsBrowserIsolation;
     /**
      * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
      */
@@ -29341,11 +29600,11 @@ export interface TeamsAccountSettings {
     /**
      * Extended e-mail matching settings.
      */
-    extendedEmailMatching: outputs.TeamsAccountSettingsExtendedEmailMatching;
+    extendedEmailMatching?: outputs.TeamsAccountSettingsExtendedEmailMatching;
     /**
      * FIPS settings.
      */
-    fips: outputs.TeamsAccountSettingsFips;
+    fips?: outputs.TeamsAccountSettingsFips;
     /**
      * Setting to enable host selector in egress policies.
      */
@@ -29353,52 +29612,52 @@ export interface TeamsAccountSettings {
     /**
      * Protocol Detection settings.
      */
-    protocolDetection: outputs.TeamsAccountSettingsProtocolDetection;
+    protocolDetection?: outputs.TeamsAccountSettingsProtocolDetection;
     /**
      * Sandbox settings.
      */
-    sandbox: outputs.TeamsAccountSettingsSandbox;
+    sandbox?: outputs.TeamsAccountSettingsSandbox;
     /**
      * TLS interception settings.
      */
-    tlsDecrypt: outputs.TeamsAccountSettingsTlsDecrypt;
+    tlsDecrypt?: outputs.TeamsAccountSettingsTlsDecrypt;
 }
 
 export interface TeamsAccountSettingsActivityLog {
     /**
      * Enable activity logging.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface TeamsAccountSettingsAntivirus {
     /**
      * Enable anti-virus scanning on downloads.
      */
-    enabledDownloadPhase: boolean;
+    enabledDownloadPhase?: boolean;
     /**
      * Enable anti-virus scanning on uploads.
      */
-    enabledUploadPhase: boolean;
+    enabledUploadPhase?: boolean;
     /**
      * Block requests for files that cannot be scanned.
      */
-    failClosed: boolean;
+    failClosed?: boolean;
     /**
      * Configure a message to display on the user's device when an antivirus search is performed.
      */
-    notificationSettings: outputs.TeamsAccountSettingsAntivirusNotificationSettings;
+    notificationSettings?: outputs.TeamsAccountSettingsAntivirusNotificationSettings;
 }
 
 export interface TeamsAccountSettingsAntivirusNotificationSettings {
     /**
      * Set notification on
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * If true, context information will be passed as query parameters
      */
-    includeContext: boolean;
+    includeContext?: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -29413,35 +29672,35 @@ export interface TeamsAccountSettingsBlockPage {
     /**
      * If mode is customized*block*page: block page background color in #rrggbb format.
      */
-    backgroundColor: string;
+    backgroundColor?: string;
     /**
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * If mode is customized*block*page: block page footer text.
      */
-    footerText: string;
+    footerText?: string;
     /**
      * If mode is customized*block*page: block page header text.
      */
-    headerText: string;
+    headerText?: string;
     /**
      * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
      */
-    includeContext: boolean;
+    includeContext?: boolean;
     /**
      * If mode is customized*block*page: full URL to the logo file.
      */
-    logoPath: string;
+    logoPath?: string;
     /**
      * If mode is customized*block*page: admin email for users to contact.
      */
-    mailtoAddress: string;
+    mailtoAddress?: string;
     /**
      * If mode is customized*block*page: subject line for emails created from block page.
      */
-    mailtoSubject: string;
+    mailtoSubject?: string;
     /**
      * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
      * Available values: "customized*block*page", "redirectUri".
@@ -29472,11 +29731,11 @@ export interface TeamsAccountSettingsBrowserIsolation {
     /**
      * Enable non-identity onramp support for Browser Isolation.
      */
-    nonIdentityEnabled: boolean;
+    nonIdentityEnabled?: boolean;
     /**
      * Enable Clientless Browser Isolation.
      */
-    urlBrowserIsolationEnabled: boolean;
+    urlBrowserIsolationEnabled?: boolean;
 }
 
 export interface TeamsAccountSettingsCertificate {
@@ -29506,14 +29765,14 @@ export interface TeamsAccountSettingsExtendedEmailMatching {
     /**
      * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface TeamsAccountSettingsFips {
     /**
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
-    tls: boolean;
+    tls?: boolean;
 }
 
 export interface TeamsAccountSettingsHostSelector {
@@ -29527,14 +29786,14 @@ export interface TeamsAccountSettingsProtocolDetection {
     /**
      * Enable detecting protocol on initial bytes of client traffic.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface TeamsAccountSettingsSandbox {
     /**
      * Enable sandbox.
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * Action to take when the file cannot be scanned.
      * Available values: "allow", "block".
@@ -29546,7 +29805,7 @@ export interface TeamsAccountSettingsTlsDecrypt {
     /**
      * Enable inspecting encrypted HTTP traffic.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface TeamsListItem {
@@ -29668,7 +29927,7 @@ export interface TeamsRuleRuleSettings {
     /**
      * Settings for the Audit SSH action.
      */
-    auditSsh: outputs.TeamsRuleRuleSettingsAuditSsh;
+    auditSsh?: outputs.TeamsRuleRuleSettingsAuditSsh;
     /**
      * Configure how browser isolation behaves.
      */
@@ -29676,15 +29935,15 @@ export interface TeamsRuleRuleSettings {
     /**
      * Custom block page settings. If missing/null, blocking will use the the account settings.
      */
-    blockPage: outputs.TeamsRuleRuleSettingsBlockPage;
+    blockPage?: outputs.TeamsRuleRuleSettingsBlockPage;
     /**
      * Enable the custom block page.
      */
-    blockPageEnabled: boolean;
+    blockPageEnabled?: boolean;
     /**
      * The text describing why this block occurred, displayed on the custom block page (if enabled).
      */
-    blockReason: string;
+    blockReason?: string;
     /**
      * Set by children MSP accounts to bypass their parent's rules.
      */
@@ -29692,7 +29951,7 @@ export interface TeamsRuleRuleSettings {
     /**
      * Configure how session check behaves.
      */
-    checkSession: outputs.TeamsRuleRuleSettingsCheckSession;
+    checkSession?: outputs.TeamsRuleRuleSettingsCheckSession;
     /**
      * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
      */
@@ -29704,19 +29963,19 @@ export interface TeamsRuleRuleSettings {
     /**
      * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
      */
-    ignoreCnameCategoryMatches: boolean;
+    ignoreCnameCategoryMatches?: boolean;
     /**
      * INSECURE - disable DNSSEC validation (for Allow actions).
      */
-    insecureDisableDnssecValidation: boolean;
+    insecureDisableDnssecValidation?: boolean;
     /**
      * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
      */
-    ipCategories: boolean;
+    ipCategories?: boolean;
     /**
      * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
      */
-    ipIndicatorFeeds: boolean;
+    ipIndicatorFeeds?: boolean;
     /**
      * Send matching traffic to the supplied destination IP address and port.
      */
@@ -29724,11 +29983,11 @@ export interface TeamsRuleRuleSettings {
     /**
      * Configure a notification to display on the user's device when this rule is matched.
      */
-    notificationSettings: outputs.TeamsRuleRuleSettingsNotificationSettings;
+    notificationSettings?: outputs.TeamsRuleRuleSettingsNotificationSettings;
     /**
      * Override matching DNS queries with a hostname.
      */
-    overrideHost: string;
+    overrideHost?: string;
     /**
      * Override matching DNS queries with an IP or set of IPs.
      */
@@ -29736,7 +29995,7 @@ export interface TeamsRuleRuleSettings {
     /**
      * Configure DLP payload logging.
      */
-    payloadLog: outputs.TeamsRuleRuleSettingsPayloadLog;
+    payloadLog?: outputs.TeamsRuleRuleSettingsPayloadLog;
     /**
      * Settings that apply to quarantine rules
      */
@@ -29744,15 +30003,15 @@ export interface TeamsRuleRuleSettings {
     /**
      * Settings that apply to redirect rules
      */
-    redirect: outputs.TeamsRuleRuleSettingsRedirect;
+    redirect?: outputs.TeamsRuleRuleSettingsRedirect;
     /**
      * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
      */
-    resolveDnsInternally: outputs.TeamsRuleRuleSettingsResolveDnsInternally;
+    resolveDnsInternally?: outputs.TeamsRuleRuleSettingsResolveDnsInternally;
     /**
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
      */
-    resolveDnsThroughCloudflare: boolean;
+    resolveDnsThroughCloudflare?: boolean;
     /**
      * Configure behavior when an upstream cert is invalid or an SSL error occurs.
      */
@@ -29763,7 +30022,7 @@ export interface TeamsRuleRuleSettingsAuditSsh {
     /**
      * Enable to turn on SSH command logging.
      */
-    commandLogging: boolean;
+    commandLogging?: boolean;
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
@@ -29828,7 +30087,7 @@ export interface TeamsRuleRuleSettingsBlockPage {
     /**
      * If true, context information will be passed as query parameters
      */
-    includeContext: boolean;
+    includeContext?: boolean;
     /**
      * URI to which the user will be redirected
      */
@@ -29843,7 +30102,7 @@ export interface TeamsRuleRuleSettingsCheckSession {
     /**
      * Set to true to enable session enforcement.
      */
-    enforce: boolean;
+    enforce?: boolean;
 }
 
 export interface TeamsRuleRuleSettingsDnsResolvers {
@@ -29919,7 +30178,7 @@ export interface TeamsRuleRuleSettingsNotificationSettings {
     /**
      * Set notification on
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * If true, context information will be passed as query parameters
      */
@@ -29938,7 +30197,7 @@ export interface TeamsRuleRuleSettingsPayloadLog {
     /**
      * Set to true to enable DLP payload logging for this rule.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface TeamsRuleRuleSettingsQuarantine {
@@ -29952,11 +30211,11 @@ export interface TeamsRuleRuleSettingsRedirect {
     /**
      * If true, context information will be passed as query parameters
      */
-    includeContext: boolean;
+    includeContext?: boolean;
     /**
      * If true, the path and query parameters from the original request will be appended to target_uri
      */
-    preservePathAndQuery: boolean;
+    preservePathAndQuery?: boolean;
     /**
      * URI to which the user will be redirected
      */
@@ -29968,7 +30227,7 @@ export interface TeamsRuleRuleSettingsResolveDnsInternally {
      * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
      * Available values: "none", "publicDns".
      */
-    fallback: string;
+    fallback?: string;
     /**
      * The internal DNS view identifier that's passed to the internal DNS service.
      */
@@ -30195,7 +30454,7 @@ export interface TunnelConfigConfigOriginRequestAccess {
 }
 
 export interface TunnelConfigConfigWarpRouting {
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface TunnelConnection {
@@ -30236,7 +30495,7 @@ export interface TunnelConnection {
 export interface UserAgentBlockingRuleConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip".
+     * Available values: "ip", "ip6", "ipRange", "asn", "country".
      */
     target?: string;
     /**
@@ -30331,7 +30590,9 @@ export interface WebAnalyticsSiteRuleset {
 }
 
 export interface WorkerCronTriggerSchedule {
+    createdOn: string;
     cron: string;
+    modifiedOn: string;
 }
 
 export interface WorkerScriptAssets {
@@ -30437,7 +30698,7 @@ export interface WorkerScriptBinding {
     /**
      * Namespace identifier tag.
      */
-    namespaceId?: string;
+    namespaceId: string;
     /**
      * Outbound worker.
      */
@@ -30472,7 +30733,7 @@ export interface WorkerScriptBinding {
     text?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
      */
     type: string;
     /**
@@ -30592,6 +30853,25 @@ export interface WorkerScriptObservability {
      * The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
      */
     headSamplingRate?: number;
+    /**
+     * Log settings for the Worker.
+     */
+    logs?: outputs.WorkerScriptObservabilityLogs;
+}
+
+export interface WorkerScriptObservabilityLogs {
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+     */
+    headSamplingRate?: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
 }
 
 export interface WorkerScriptPlacement {
@@ -30627,7 +30907,9 @@ export interface WorkerScriptTailConsumer {
 }
 
 export interface WorkersCronTriggerSchedule {
+    createdOn: string;
     cron: string;
+    modifiedOn: string;
 }
 
 export interface WorkersDeploymentAnnotations {
@@ -30770,7 +31052,7 @@ export interface WorkersScriptBinding {
     /**
      * Namespace identifier tag.
      */
-    namespaceId?: string;
+    namespaceId: string;
     /**
      * Outbound worker.
      */
@@ -30805,7 +31087,7 @@ export interface WorkersScriptBinding {
     text?: string;
     /**
      * The kind of resource that the binding provides.
-     * Available values: "ai".
+     * Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
      */
     type: string;
     /**
@@ -30925,6 +31207,25 @@ export interface WorkersScriptObservability {
      * The sampling rate for incoming requests. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
      */
     headSamplingRate?: number;
+    /**
+     * Log settings for the Worker.
+     */
+    logs?: outputs.WorkersScriptObservabilityLogs;
+}
+
+export interface WorkersScriptObservabilityLogs {
+    /**
+     * Whether logs are enabled for the Worker.
+     */
+    enabled: boolean;
+    /**
+     * The sampling rate for logs. From 0 to 1 (1 = 100%, 0.1 = 10%). Default is 1.
+     */
+    headSamplingRate?: number;
+    /**
+     * Whether [invocation logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs) are enabled for the Worker.
+     */
+    invocationLogs: boolean;
 }
 
 export interface WorkersScriptPlacement {
@@ -31013,7 +31314,7 @@ export interface ZeroTrustAccessApplicationDestination {
      */
     portRange?: string;
     /**
-     * Available values: "public".
+     * Available values: "public", "private".
      */
     type?: string;
     /**
@@ -31073,7 +31374,7 @@ export interface ZeroTrustAccessApplicationPolicy {
     /**
      * Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      */
-    excludes?: outputs.ZeroTrustAccessApplicationPolicyExclude[];
+    excludes: outputs.ZeroTrustAccessApplicationPolicyExclude[];
     /**
      * The UUID of the policy
      */
@@ -31081,7 +31382,7 @@ export interface ZeroTrustAccessApplicationPolicy {
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
      */
-    includes?: outputs.ZeroTrustAccessApplicationPolicyInclude[];
+    includes: outputs.ZeroTrustAccessApplicationPolicyInclude[];
     /**
      * The name of the Access policy.
      */
@@ -31093,7 +31394,7 @@ export interface ZeroTrustAccessApplicationPolicy {
     /**
      * Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      */
-    requires?: outputs.ZeroTrustAccessApplicationPolicyRequire[];
+    requires: outputs.ZeroTrustAccessApplicationPolicyRequire[];
 }
 
 export interface ZeroTrustAccessApplicationPolicyConnectionRules {
@@ -31975,7 +32276,7 @@ export interface ZeroTrustAccessApplicationScimConfigAuthentication {
     password?: string;
     /**
      * The authentication scheme to use when making SCIM requests to this application.
-     * Available values: "httpbasic".
+     * Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
      */
     scheme: string;
     /**
@@ -32792,7 +33093,7 @@ export interface ZeroTrustAccessIdentityProviderConfig {
     /**
      * Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
      */
-    signRequest?: boolean;
+    signRequest: boolean;
     /**
      * URL to send the SAML authentication requests to
      */
@@ -33621,11 +33922,11 @@ export interface ZeroTrustDeviceCustomProfileServiceModeV2 {
 
 export interface ZeroTrustDeviceCustomProfileTargetTest {
     /**
-     * The id of the DEX test targeting this policy
+     * The id of the DEX test targeting this policy.
      */
     id: string;
     /**
-     * The name of the DEX test targeting this policy
+     * The name of the DEX test targeting this policy.
      */
     name: string;
 }
@@ -33714,11 +34015,11 @@ export interface ZeroTrustDeviceManagedNetworksConfig {
 
 export interface ZeroTrustDevicePostureIntegrationConfig {
     /**
-     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+     * If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
      */
     accessClientId?: string;
     /**
-     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+     * If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
      */
     accessClientSecret?: string;
     /**
@@ -33765,12 +34066,12 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     checkPrivateKey?: boolean;
     /**
-     * Common Name that is protected by the certificate
+     * Common Name that is protected by the certificate.
      */
     cn?: string;
     /**
-     * Compliance Status
-     * Available values: "compliant", "noncompliant", "unknown".
+     * Compliance Status.
+     * Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
      */
     complianceStatus?: string;
     /**
@@ -33778,12 +34079,12 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     connectionId?: string;
     /**
-     * Count Operator
+     * Count Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     countOperator?: string;
     /**
-     * Domain
+     * Domain.
      */
     domain?: string;
     /**
@@ -33791,15 +34092,15 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     eidLastSeen?: string;
     /**
-     * Enabled
+     * Enabled.
      */
     enabled?: boolean;
     /**
-     * Whether or not file exists
+     * Whether or not file exists.
      */
     exists?: boolean;
     /**
-     * List of values indicating purposes for which the certificate public key can be used
+     * List of values indicating purposes for which the certificate public key can be used.
      */
     extendedKeyUsages?: string[];
     /**
@@ -33829,8 +34130,8 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     networkStatus?: string;
     /**
-     * Operating system
-     * Available values: "windows", "linux", "mac".
+     * Operating system.
+     * Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
      */
     operatingSystem?: string;
     /**
@@ -33839,28 +34140,28 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     operationalState?: string;
     /**
-     * operator
+     * Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     operator?: string;
     /**
-     * Os Version
+     * Os Version.
      */
     os?: string;
     /**
-     * Operating System Distribution Name (linux only)
+     * Operating System Distribution Name (linux only).
      */
     osDistroName?: string;
     /**
-     * Version of OS Distribution (linux only)
+     * Version of OS Distribution (linux only).
      */
     osDistroRevision?: string;
     /**
-     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      */
     osVersionExtra?: string;
     /**
-     * overall
+     * Overall.
      */
     overall?: string;
     /**
@@ -33881,12 +34182,12 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     score?: number;
     /**
-     * Score Operator
+     * Score Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     scoreOperator?: string;
     /**
-     * SensorConfig
+     * SensorConfig.
      */
     sensorConfig?: string;
     /**
@@ -33907,11 +34208,11 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     totalScore?: number;
     /**
-     * Version of OS
+     * Version of OS.
      */
     version?: string;
     /**
-     * Version Operator
+     * Version Operator.
      * Available values: "<", "<=", ">", ">=", "==".
      */
     versionOperator?: string;
@@ -33933,6 +34234,36 @@ export interface ZeroTrustDevicePostureRuleMatch {
      * Available values: "windows", "mac", "linux", "android", "ios", "chromeos".
      */
     platform?: string;
+}
+
+export interface ZeroTrustDexTestData {
+    /**
+     * The desired endpoint to test.
+     */
+    host?: string;
+    /**
+     * The type of test.
+     */
+    kind?: string;
+    /**
+     * The HTTP request method type.
+     */
+    method?: string;
+}
+
+export interface ZeroTrustDexTestTargetPolicy {
+    /**
+     * Whether the DEX rule is the account default
+     */
+    default?: boolean;
+    /**
+     * The id of the DEX rule
+     */
+    id?: string;
+    /**
+     * The name of the DEX rule
+     */
+    name?: string;
 }
 
 export interface ZeroTrustDlpCustomProfileContextAwareness {
@@ -34033,7 +34364,7 @@ export interface ZeroTrustDlpCustomProfileProfileSharedEntry {
     enabled: boolean;
     entryId: string;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration", "exactData".
      */
     entryType: string;
 }
@@ -34042,7 +34373,7 @@ export interface ZeroTrustDlpCustomProfileSharedEntry {
     enabled: boolean;
     entryId: string;
     /**
-     * Available values: "custom".
+     * Available values: "custom", "predefined", "integration", "exactData".
      */
     entryType: string;
 }
@@ -34299,7 +34630,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Settings for the Audit SSH action.
      */
-    auditSsh: outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh;
+    auditSsh?: outputs.ZeroTrustGatewayPolicyRuleSettingsAuditSsh;
     /**
      * Configure how browser isolation behaves.
      */
@@ -34307,15 +34638,15 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Custom block page settings. If missing/null, blocking will use the the account settings.
      */
-    blockPage: outputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage;
+    blockPage?: outputs.ZeroTrustGatewayPolicyRuleSettingsBlockPage;
     /**
      * Enable the custom block page.
      */
-    blockPageEnabled: boolean;
+    blockPageEnabled?: boolean;
     /**
      * The text describing why this block occurred, displayed on the custom block page (if enabled).
      */
-    blockReason: string;
+    blockReason?: string;
     /**
      * Set by children MSP accounts to bypass their parent's rules.
      */
@@ -34323,7 +34654,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Configure how session check behaves.
      */
-    checkSession: outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession;
+    checkSession?: outputs.ZeroTrustGatewayPolicyRuleSettingsCheckSession;
     /**
      * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when 'resolve*dns*through*cloudflare' or 'resolve*dns*internally' are set. DNS queries will route to the address closest to their origin. Only valid when a rule's action is set to 'resolve'.
      */
@@ -34335,19 +34666,19 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Set to true, to ignore the category matches at CNAME domains in a response. If unchecked, the categories in this rule will be checked against all the CNAME domain categories in a response.
      */
-    ignoreCnameCategoryMatches: boolean;
+    ignoreCnameCategoryMatches?: boolean;
     /**
      * INSECURE - disable DNSSEC validation (for Allow actions).
      */
-    insecureDisableDnssecValidation: boolean;
+    insecureDisableDnssecValidation?: boolean;
     /**
      * Set to true to enable IPs in DNS resolver category blocks. By default categories only block based on domain names.
      */
-    ipCategories: boolean;
+    ipCategories?: boolean;
     /**
      * Set to true to include IPs in DNS resolver indicator feed blocks. By default indicator feeds only block based on domain names.
      */
-    ipIndicatorFeeds: boolean;
+    ipIndicatorFeeds?: boolean;
     /**
      * Send matching traffic to the supplied destination IP address and port.
      */
@@ -34355,11 +34686,11 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Configure a notification to display on the user's device when this rule is matched.
      */
-    notificationSettings: outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
+    notificationSettings?: outputs.ZeroTrustGatewayPolicyRuleSettingsNotificationSettings;
     /**
      * Override matching DNS queries with a hostname.
      */
-    overrideHost: string;
+    overrideHost?: string;
     /**
      * Override matching DNS queries with an IP or set of IPs.
      */
@@ -34367,7 +34698,7 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Configure DLP payload logging.
      */
-    payloadLog: outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
+    payloadLog?: outputs.ZeroTrustGatewayPolicyRuleSettingsPayloadLog;
     /**
      * Settings that apply to quarantine rules
      */
@@ -34375,15 +34706,15 @@ export interface ZeroTrustGatewayPolicyRuleSettings {
     /**
      * Settings that apply to redirect rules
      */
-    redirect: outputs.ZeroTrustGatewayPolicyRuleSettingsRedirect;
+    redirect?: outputs.ZeroTrustGatewayPolicyRuleSettingsRedirect;
     /**
      * Configure to forward the query to the internal DNS service, passing the specified 'view*id' as input. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns*through*cloudflare' is set. Only valid when a rule's action is set to 'resolve'.
      */
-    resolveDnsInternally: outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally;
+    resolveDnsInternally?: outputs.ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally;
     /**
      * Enable to send queries that match the policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when 'dns*resolvers' are specified or 'resolve*dns_internally' is set. Only valid when a rule's action is set to 'resolve'.
      */
-    resolveDnsThroughCloudflare: boolean;
+    resolveDnsThroughCloudflare?: boolean;
     /**
      * Configure behavior when an upstream cert is invalid or an SSL error occurs.
      */
@@ -34394,7 +34725,7 @@ export interface ZeroTrustGatewayPolicyRuleSettingsAuditSsh {
     /**
      * Enable to turn on SSH command logging.
      */
-    commandLogging: boolean;
+    commandLogging?: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
@@ -34459,7 +34790,7 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBlockPage {
     /**
      * If true, context information will be passed as query parameters
      */
-    includeContext: boolean;
+    includeContext?: boolean;
     /**
      * URI to which the user will be redirected
      */
@@ -34474,7 +34805,7 @@ export interface ZeroTrustGatewayPolicyRuleSettingsCheckSession {
     /**
      * Set to true to enable session enforcement.
      */
-    enforce: boolean;
+    enforce?: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsDnsResolvers {
@@ -34550,7 +34881,7 @@ export interface ZeroTrustGatewayPolicyRuleSettingsNotificationSettings {
     /**
      * Set notification on
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * If true, context information will be passed as query parameters
      */
@@ -34569,7 +34900,7 @@ export interface ZeroTrustGatewayPolicyRuleSettingsPayloadLog {
     /**
      * Set to true to enable DLP payload logging for this rule.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface ZeroTrustGatewayPolicyRuleSettingsQuarantine {
@@ -34583,11 +34914,11 @@ export interface ZeroTrustGatewayPolicyRuleSettingsRedirect {
     /**
      * If true, context information will be passed as query parameters
      */
-    includeContext: boolean;
+    includeContext?: boolean;
     /**
      * If true, the path and query parameters from the original request will be appended to target_uri
      */
-    preservePathAndQuery: boolean;
+    preservePathAndQuery?: boolean;
     /**
      * URI to which the user will be redirected
      */
@@ -34599,7 +34930,7 @@ export interface ZeroTrustGatewayPolicyRuleSettingsResolveDnsInternally {
      * The fallback behavior to apply when the internal DNS response code is different from 'NOERROR' or when the response data only contains CNAME records for 'A' or 'AAAA' queries.
      * Available values: "none", "publicDns".
      */
-    fallback: string;
+    fallback?: string;
     /**
      * The internal DNS view identifier that's passed to the internal DNS service.
      */
@@ -34653,11 +34984,11 @@ export interface ZeroTrustGatewaySettingsSettings {
     /**
      * Activity log settings.
      */
-    activityLog: outputs.ZeroTrustGatewaySettingsSettingsActivityLog;
+    activityLog?: outputs.ZeroTrustGatewaySettingsSettingsActivityLog;
     /**
      * Anti-virus settings.
      */
-    antivirus: outputs.ZeroTrustGatewaySettingsSettingsAntivirus;
+    antivirus?: outputs.ZeroTrustGatewaySettingsSettingsAntivirus;
     /**
      * Block page layout settings.
      */
@@ -34669,7 +35000,7 @@ export interface ZeroTrustGatewaySettingsSettings {
     /**
      * Browser isolation settings.
      */
-    browserIsolation: outputs.ZeroTrustGatewaySettingsSettingsBrowserIsolation;
+    browserIsolation?: outputs.ZeroTrustGatewaySettingsSettingsBrowserIsolation;
     /**
      * Certificate settings for Gateway TLS interception. If not specified, the Cloudflare Root CA will be used.
      */
@@ -34683,11 +35014,11 @@ export interface ZeroTrustGatewaySettingsSettings {
     /**
      * Extended e-mail matching settings.
      */
-    extendedEmailMatching: outputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatching;
+    extendedEmailMatching?: outputs.ZeroTrustGatewaySettingsSettingsExtendedEmailMatching;
     /**
      * FIPS settings.
      */
-    fips: outputs.ZeroTrustGatewaySettingsSettingsFips;
+    fips?: outputs.ZeroTrustGatewaySettingsSettingsFips;
     /**
      * Setting to enable host selector in egress policies.
      */
@@ -34695,52 +35026,52 @@ export interface ZeroTrustGatewaySettingsSettings {
     /**
      * Protocol Detection settings.
      */
-    protocolDetection: outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection;
+    protocolDetection?: outputs.ZeroTrustGatewaySettingsSettingsProtocolDetection;
     /**
      * Sandbox settings.
      */
-    sandbox: outputs.ZeroTrustGatewaySettingsSettingsSandbox;
+    sandbox?: outputs.ZeroTrustGatewaySettingsSettingsSandbox;
     /**
      * TLS interception settings.
      */
-    tlsDecrypt: outputs.ZeroTrustGatewaySettingsSettingsTlsDecrypt;
+    tlsDecrypt?: outputs.ZeroTrustGatewaySettingsSettingsTlsDecrypt;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsActivityLog {
     /**
      * Enable activity logging.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsAntivirus {
     /**
      * Enable anti-virus scanning on downloads.
      */
-    enabledDownloadPhase: boolean;
+    enabledDownloadPhase?: boolean;
     /**
      * Enable anti-virus scanning on uploads.
      */
-    enabledUploadPhase: boolean;
+    enabledUploadPhase?: boolean;
     /**
      * Block requests for files that cannot be scanned.
      */
-    failClosed: boolean;
+    failClosed?: boolean;
     /**
      * Configure a message to display on the user's device when an antivirus search is performed.
      */
-    notificationSettings: outputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings;
+    notificationSettings?: outputs.ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
     /**
      * Set notification on
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * If true, context information will be passed as query parameters
      */
-    includeContext: boolean;
+    includeContext?: boolean;
     /**
      * Customize the message shown in the notification.
      */
@@ -34755,35 +35086,35 @@ export interface ZeroTrustGatewaySettingsSettingsBlockPage {
     /**
      * If mode is customized*block*page: block page background color in #rrggbb format.
      */
-    backgroundColor: string;
+    backgroundColor?: string;
     /**
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * If mode is customized*block*page: block page footer text.
      */
-    footerText: string;
+    footerText?: string;
     /**
      * If mode is customized*block*page: block page header text.
      */
-    headerText: string;
+    headerText?: string;
     /**
      * If mode is redirect*uri: when enabled, context will be appended to target*uri as query parameters.
      */
-    includeContext: boolean;
+    includeContext?: boolean;
     /**
      * If mode is customized*block*page: full URL to the logo file.
      */
-    logoPath: string;
+    logoPath?: string;
     /**
      * If mode is customized*block*page: admin email for users to contact.
      */
-    mailtoAddress: string;
+    mailtoAddress?: string;
     /**
      * If mode is customized*block*page: subject line for emails created from block page.
      */
-    mailtoSubject: string;
+    mailtoSubject?: string;
     /**
      * Controls whether the user is redirected to a Cloudflare-hosted block page or to a customer-provided URI.
      * Available values: "customized*block*page", "redirectUri".
@@ -34814,11 +35145,11 @@ export interface ZeroTrustGatewaySettingsSettingsBrowserIsolation {
     /**
      * Enable non-identity onramp support for Browser Isolation.
      */
-    nonIdentityEnabled: boolean;
+    nonIdentityEnabled?: boolean;
     /**
      * Enable Clientless Browser Isolation.
      */
-    urlBrowserIsolationEnabled: boolean;
+    urlBrowserIsolationEnabled?: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsCertificate {
@@ -34848,14 +35179,14 @@ export interface ZeroTrustGatewaySettingsSettingsExtendedEmailMatching {
     /**
      * Enable matching all variants of user emails (with + or . modifiers) used as criteria in Firewall policies.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsFips {
     /**
      * Enable only cipher suites and TLS versions compliant with FIPS 140-2.
      */
-    tls: boolean;
+    tls?: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsHostSelector {
@@ -34869,14 +35200,14 @@ export interface ZeroTrustGatewaySettingsSettingsProtocolDetection {
     /**
      * Enable detecting protocol on initial bytes of client traffic.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsSandbox {
     /**
      * Enable sandbox.
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * Action to take when the file cannot be scanned.
      * Available values: "allow", "block".
@@ -34888,7 +35219,7 @@ export interface ZeroTrustGatewaySettingsSettingsTlsDecrypt {
     /**
      * Enable inspecting encrypted HTTP traffic.
      */
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface ZeroTrustListItem {
@@ -35137,7 +35468,7 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
 }
 
 export interface ZeroTrustTunnelCloudflaredConfigConfigWarpRouting {
-    enabled: boolean;
+    enabled?: boolean;
 }
 
 export interface ZeroTrustTunnelCloudflaredConnection {
@@ -35282,7 +35613,7 @@ export interface ZoneDnsSettingsSoa {
 export interface ZoneLockdownConfiguration {
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the Zone Lockdown rule.
-     * Available values: "ip".
+     * Available values: "ip", "ipRange".
      */
     target?: string;
     /**
@@ -35334,6 +35665,49 @@ export interface ZoneOwner {
     type: string;
 }
 
+export interface ZonePlan {
+    /**
+     * States if the subscription can be activated.
+     */
+    canSubscribe: boolean;
+    /**
+     * The denomination of the customer.
+     */
+    currency: string;
+    /**
+     * If this Zone is managed by another company.
+     */
+    externallyManaged: boolean;
+    /**
+     * How often the customer is billed.
+     */
+    frequency: string;
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * States if the subscription active.
+     */
+    isSubscribed: boolean;
+    /**
+     * If the legacy discount applies to this Zone.
+     */
+    legacyDiscount: boolean;
+    /**
+     * The legacy name of the plan.
+     */
+    legacyId: string;
+    /**
+     * Name of the owner
+     */
+    name: string;
+    /**
+     * How much the customer is paying.
+     */
+    price: number;
+}
+
 export interface ZoneSubscriptionRatePlan {
     /**
      * The currency applied to the rate plan subscription.
@@ -35364,5 +35738,23 @@ export interface ZoneSubscriptionRatePlan {
      * The list of sets this rate plan applies to.
      */
     sets?: string[];
+}
+
+export interface ZoneTenant {
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * The name of the Tenant account.
+     */
+    name: string;
+}
+
+export interface ZoneTenantUnit {
+    /**
+     * Identifier
+     */
+    id: string;
 }
 

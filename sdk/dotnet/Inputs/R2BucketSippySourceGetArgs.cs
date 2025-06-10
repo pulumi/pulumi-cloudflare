@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ClientEmail { get; set; }
 
         /// <summary>
-        /// Available values: "aws".
+        /// Available values: "aws", "gcs".
         /// </summary>
         [Input("cloudProvider")]
         public Input<string>? CloudProvider { get; set; }

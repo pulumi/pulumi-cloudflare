@@ -65,6 +65,11 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly activatedOn!: pulumi.Output<string>;
     /**
+     * Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     */
+    public /*out*/ readonly cnameSuffix!: pulumi.Output<string>;
+    /**
      * When the zone was created
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
@@ -113,10 +118,30 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly paused!: pulumi.Output<boolean>;
     /**
+     * Legacy permissions based on legacy user membership information.
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    public /*out*/ readonly permissions!: pulumi.Output<string[]>;
+    /**
+     * A Zones subscription information.
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    public /*out*/ readonly plan!: pulumi.Output<outputs.ZonePlan>;
+    /**
      * The zone status on Cloudflare.
      * Available values: "initializing", "pending", "active", "moved".
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The root organizational unit that this zone belongs to (such as a tenant or organization).
+     */
+    public /*out*/ readonly tenant!: pulumi.Output<outputs.ZoneTenant>;
+    /**
+     * The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     */
+    public /*out*/ readonly tenantUnit!: pulumi.Output<outputs.ZoneTenantUnit>;
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.
@@ -148,6 +173,7 @@ export class Zone extends pulumi.CustomResource {
             const state = argsOrState as ZoneState | undefined;
             resourceInputs["account"] = state ? state.account : undefined;
             resourceInputs["activatedOn"] = state ? state.activatedOn : undefined;
+            resourceInputs["cnameSuffix"] = state ? state.cnameSuffix : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["developmentMode"] = state ? state.developmentMode : undefined;
             resourceInputs["meta"] = state ? state.meta : undefined;
@@ -159,7 +185,11 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["originalRegistrar"] = state ? state.originalRegistrar : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
             resourceInputs["paused"] = state ? state.paused : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
+            resourceInputs["plan"] = state ? state.plan : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tenant"] = state ? state.tenant : undefined;
+            resourceInputs["tenantUnit"] = state ? state.tenantUnit : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vanityNameServers"] = state ? state.vanityNameServers : undefined;
             resourceInputs["verificationKey"] = state ? state.verificationKey : undefined;
@@ -176,6 +206,7 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vanityNameServers"] = args ? args.vanityNameServers : undefined;
             resourceInputs["activatedOn"] = undefined /*out*/;
+            resourceInputs["cnameSuffix"] = undefined /*out*/;
             resourceInputs["createdOn"] = undefined /*out*/;
             resourceInputs["developmentMode"] = undefined /*out*/;
             resourceInputs["meta"] = undefined /*out*/;
@@ -186,7 +217,11 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["originalRegistrar"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["paused"] = undefined /*out*/;
+            resourceInputs["permissions"] = undefined /*out*/;
+            resourceInputs["plan"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["tenant"] = undefined /*out*/;
+            resourceInputs["tenantUnit"] = undefined /*out*/;
             resourceInputs["verificationKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -204,6 +239,11 @@ export interface ZoneState {
      * active
      */
     activatedOn?: pulumi.Input<string>;
+    /**
+     * Allows the customer to use a custom apex.
+     * *Tenants Only Configuration*.
+     */
+    cnameSuffix?: pulumi.Input<string>;
     /**
      * When the zone was created
      */
@@ -253,10 +293,30 @@ export interface ZoneState {
      */
     paused?: pulumi.Input<boolean>;
     /**
+     * Legacy permissions based on legacy user membership information.
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A Zones subscription information.
+     *
+     * @deprecated This attribute is deprecated.
+     */
+    plan?: pulumi.Input<inputs.ZonePlan>;
+    /**
      * The zone status on Cloudflare.
      * Available values: "initializing", "pending", "active", "moved".
      */
     status?: pulumi.Input<string>;
+    /**
+     * The root organizational unit that this zone belongs to (such as a tenant or organization).
+     */
+    tenant?: pulumi.Input<inputs.ZoneTenant>;
+    /**
+     * The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+     */
+    tenantUnit?: pulumi.Input<inputs.ZoneTenantUnit>;
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.

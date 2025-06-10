@@ -27,7 +27,7 @@ class GetZoneDnssecResult:
     """
     A collection of values returned by getZoneDnssec.
     """
-    def __init__(__self__, algorithm=None, digest=None, digest_algorithm=None, digest_type=None, dnssec_multi_signer=None, dnssec_presigned=None, ds=None, flags=None, id=None, key_tag=None, key_type=None, modified_on=None, public_key=None, status=None, zone_id=None):
+    def __init__(__self__, algorithm=None, digest=None, digest_algorithm=None, digest_type=None, dnssec_multi_signer=None, dnssec_presigned=None, dnssec_use_nsec3=None, ds=None, flags=None, id=None, key_tag=None, key_type=None, modified_on=None, public_key=None, status=None, zone_id=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -46,6 +46,9 @@ class GetZoneDnssecResult:
         if dnssec_presigned and not isinstance(dnssec_presigned, bool):
             raise TypeError("Expected argument 'dnssec_presigned' to be a bool")
         pulumi.set(__self__, "dnssec_presigned", dnssec_presigned)
+        if dnssec_use_nsec3 and not isinstance(dnssec_use_nsec3, bool):
+            raise TypeError("Expected argument 'dnssec_use_nsec3' to be a bool")
+        pulumi.set(__self__, "dnssec_use_nsec3", dnssec_use_nsec3)
         if ds and not isinstance(ds, str):
             raise TypeError("Expected argument 'ds' to be a str")
         pulumi.set(__self__, "ds", ds)
@@ -123,6 +126,11 @@ class GetZoneDnssecResult:
         return pulumi.get(self, "dnssec_presigned")
 
     @property
+    @pulumi.getter(name="dnssecUseNsec3")
+    def dnssec_use_nsec3(self) -> builtins.bool:
+        return pulumi.get(self, "dnssec_use_nsec3")
+
+    @property
     @pulumi.getter
     def ds(self) -> builtins.str:
         return pulumi.get(self, "ds")
@@ -186,6 +194,7 @@ class AwaitableGetZoneDnssecResult(GetZoneDnssecResult):
             digest_type=self.digest_type,
             dnssec_multi_signer=self.dnssec_multi_signer,
             dnssec_presigned=self.dnssec_presigned,
+            dnssec_use_nsec3=self.dnssec_use_nsec3,
             ds=self.ds,
             flags=self.flags,
             id=self.id,
@@ -224,6 +233,7 @@ def get_zone_dnssec(zone_id: Optional[builtins.str] = None,
         digest_type=pulumi.get(__ret__, 'digest_type'),
         dnssec_multi_signer=pulumi.get(__ret__, 'dnssec_multi_signer'),
         dnssec_presigned=pulumi.get(__ret__, 'dnssec_presigned'),
+        dnssec_use_nsec3=pulumi.get(__ret__, 'dnssec_use_nsec3'),
         ds=pulumi.get(__ret__, 'ds'),
         flags=pulumi.get(__ret__, 'flags'),
         id=pulumi.get(__ret__, 'id'),
@@ -259,6 +269,7 @@ def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[builtins.str]] = None,
         digest_type=pulumi.get(__response__, 'digest_type'),
         dnssec_multi_signer=pulumi.get(__response__, 'dnssec_multi_signer'),
         dnssec_presigned=pulumi.get(__response__, 'dnssec_presigned'),
+        dnssec_use_nsec3=pulumi.get(__response__, 'dnssec_use_nsec3'),
         ds=pulumi.get(__response__, 'ds'),
         flags=pulumi.get(__response__, 'flags'),
         id=pulumi.get(__response__, 'id'),

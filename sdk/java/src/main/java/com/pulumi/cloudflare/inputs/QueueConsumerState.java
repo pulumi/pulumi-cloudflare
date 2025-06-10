@@ -113,14 +113,14 @@ public final class QueueConsumerState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Available values: &#34;worker&#34;.
+     * Available values: &#34;worker&#34;, &#34;http_pull&#34;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Available values: &#34;worker&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;http_pull&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -292,7 +292,7 @@ public final class QueueConsumerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Available values: &#34;worker&#34;.
+         * @param type Available values: &#34;worker&#34;, &#34;http_pull&#34;.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class QueueConsumerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Available values: &#34;worker&#34;.
+         * @param type Available values: &#34;worker&#34;, &#34;http_pull&#34;.
          * 
          * @return builder
          * 

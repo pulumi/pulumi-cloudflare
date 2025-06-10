@@ -49,24 +49,24 @@ func LookupHyperdriveConfig(ctx *pulumi.Context, args *LookupHyperdriveConfigArg
 
 // A collection of arguments for invoking getHyperdriveConfig.
 type LookupHyperdriveConfigArgs struct {
-	// Identifier
+	// Define configurations using a unique string identifier.
 	AccountId string `pulumi:"accountId"`
-	// Identifier
+	// Define configurations using a unique string identifier.
 	HyperdriveId *string `pulumi:"hyperdriveId"`
 }
 
 // A collection of values returned by getHyperdriveConfig.
 type LookupHyperdriveConfigResult struct {
-	// Identifier
+	// Define configurations using a unique string identifier.
 	AccountId string                     `pulumi:"accountId"`
 	Caching   GetHyperdriveConfigCaching `pulumi:"caching"`
-	// When the Hyperdrive configuration was created.
+	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn string `pulumi:"createdOn"`
-	// Identifier
+	// Define configurations using a unique string identifier.
 	HyperdriveId *string `pulumi:"hyperdriveId"`
-	// Identifier
+	// Define configurations using a unique string identifier.
 	Id string `pulumi:"id"`
-	// When the Hyperdrive configuration was last modified.
+	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn string                    `pulumi:"modifiedOn"`
 	Mtls       GetHyperdriveConfigMtls   `pulumi:"mtls"`
 	Name       string                    `pulumi:"name"`
@@ -84,9 +84,9 @@ func LookupHyperdriveConfigOutput(ctx *pulumi.Context, args LookupHyperdriveConf
 
 // A collection of arguments for invoking getHyperdriveConfig.
 type LookupHyperdriveConfigOutputArgs struct {
-	// Identifier
+	// Define configurations using a unique string identifier.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
-	// Identifier
+	// Define configurations using a unique string identifier.
 	HyperdriveId pulumi.StringPtrInput `pulumi:"hyperdriveId"`
 }
 
@@ -109,7 +109,7 @@ func (o LookupHyperdriveConfigResultOutput) ToLookupHyperdriveConfigResultOutput
 	return o
 }
 
-// Identifier
+// Define configurations using a unique string identifier.
 func (o LookupHyperdriveConfigResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -118,22 +118,22 @@ func (o LookupHyperdriveConfigResultOutput) Caching() GetHyperdriveConfigCaching
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) GetHyperdriveConfigCaching { return v.Caching }).(GetHyperdriveConfigCachingOutput)
 }
 
-// When the Hyperdrive configuration was created.
+// Defines the creation time of the Hyperdrive configuration.
 func (o LookupHyperdriveConfigResultOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Define configurations using a unique string identifier.
 func (o LookupHyperdriveConfigResultOutput) HyperdriveId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) *string { return v.HyperdriveId }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Define configurations using a unique string identifier.
 func (o LookupHyperdriveConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// When the Hyperdrive configuration was last modified.
+// Defines the last modified time of the Hyperdrive configuration.
 func (o LookupHyperdriveConfigResultOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHyperdriveConfigResult) string { return v.ModifiedOn }).(pulumi.StringOutput)
 }

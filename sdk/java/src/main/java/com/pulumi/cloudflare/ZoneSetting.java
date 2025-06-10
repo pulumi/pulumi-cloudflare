@@ -20,6 +20,38 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ZoneSetting;
+ * import com.pulumi.cloudflare.ZoneSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleZoneSetting = new ZoneSetting("exampleZoneSetting", ZoneSettingArgs.builder()
+ *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .settingId("always_online")
+ *             .enabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -44,6 +76,20 @@ public class ZoneSetting extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> editable() {
         return this.editable;
+    }
+    /**
+     * ssl-recommender enrollment setting.
+     * 
+     */
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enabled;
+
+    /**
+     * @return ssl-recommender enrollment setting.
+     * 
+     */
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
     /**
      * last time this setting was modified.

@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const exampleR2BucketEventNotification = cloudflare.getR2BucketEventNotification({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
+ *     queueId: "queue_id",
  * });
  * ```
  */
@@ -24,6 +25,7 @@ export function getR2BucketEventNotification(args: GetR2BucketEventNotificationA
     return pulumi.runtime.invoke("cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification", {
         "accountId": args.accountId,
         "bucketName": args.bucketName,
+        "queueId": args.queueId,
     }, opts);
 }
 
@@ -39,12 +41,20 @@ export interface GetR2BucketEventNotificationArgs {
      * Name of the bucket.
      */
     bucketName: string;
+    /**
+     * Queue ID.
+     */
+    queueId: string;
 }
 
 /**
  * A collection of values returned by getR2BucketEventNotification.
  */
 export interface GetR2BucketEventNotificationResult {
+    /**
+     * Transition to abort ongoing multipart uploads.
+     */
+    readonly abortMultipartUploadsTransition: outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransition;
     /**
      * Account ID.
      */
@@ -54,13 +64,29 @@ export interface GetR2BucketEventNotificationResult {
      */
     readonly bucketName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Conditions that apply to all transitions of this rule.
+     */
+    readonly conditions: outputs.GetR2BucketEventNotificationConditions;
+    /**
+     * Transition to delete objects.
+     */
+    readonly deleteObjectsTransition: outputs.GetR2BucketEventNotificationDeleteObjectsTransition;
+    /**
+     * Whether or not this rule is in effect.
+     */
+    readonly enabled: boolean;
+    /**
+     * Unique identifier for this rule.
      */
     readonly id: string;
     /**
-     * List of queues associated with the bucket.
+     * Queue ID.
      */
-    readonly queues: outputs.GetR2BucketEventNotificationQueue[];
+    readonly queueId: string;
+    /**
+     * Transitions to change the storage class of objects.
+     */
+    readonly storageClassTransitions: outputs.GetR2BucketEventNotificationStorageClassTransition[];
 }
 /**
  * ## Example Usage
@@ -72,6 +98,7 @@ export interface GetR2BucketEventNotificationResult {
  * const exampleR2BucketEventNotification = cloudflare.getR2BucketEventNotification({
  *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     bucketName: "example-bucket",
+ *     queueId: "queue_id",
  * });
  * ```
  */
@@ -80,6 +107,7 @@ export function getR2BucketEventNotificationOutput(args: GetR2BucketEventNotific
     return pulumi.runtime.invokeOutput("cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification", {
         "accountId": args.accountId,
         "bucketName": args.bucketName,
+        "queueId": args.queueId,
     }, opts);
 }
 
@@ -95,4 +123,8 @@ export interface GetR2BucketEventNotificationOutputArgs {
      * Name of the bucket.
      */
     bucketName: pulumi.Input<string>;
+    /**
+     * Queue ID.
+     */
+    queueId: pulumi.Input<string>;
 }

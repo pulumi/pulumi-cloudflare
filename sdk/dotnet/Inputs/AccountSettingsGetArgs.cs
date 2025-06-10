@@ -19,26 +19,11 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? AbuseContactEmail { get; set; }
 
         /// <summary>
-        /// Specifies the default nameservers to be used for new zones added to this account.
-        /// </summary>
-        [Input("defaultNameservers")]
-        public Input<string>? DefaultNameservers { get; set; }
-
-        /// <summary>
         /// Indicates whether membership in this account requires that
         /// Two-Factor Authentication is enabled
         /// </summary>
         [Input("enforceTwofactor")]
         public Input<bool>? EnforceTwofactor { get; set; }
-
-        /// <summary>
-        /// Indicates whether new zones should use the account-level custom
-        /// nameservers by default.
-        /// 
-        /// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-        /// </summary>
-        [Input("useAccountCustomNsByDefault")]
-        public Input<bool>? UseAccountCustomNsByDefault { get; set; }
 
         public AccountSettingsGetArgs()
         {

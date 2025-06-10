@@ -30,7 +30,7 @@ type ZeroTrustDevicePostureIntegration struct {
 	// The name of the device posture integration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of device posture integration.
-	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -93,7 +93,7 @@ type zeroTrustDevicePostureIntegrationState struct {
 	// The name of the device posture integration.
 	Name *string `pulumi:"name"`
 	// The type of device posture integration.
-	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
 	Type *string `pulumi:"type"`
 }
 
@@ -106,7 +106,7 @@ type ZeroTrustDevicePostureIntegrationState struct {
 	// The name of the device posture integration.
 	Name pulumi.StringPtrInput
 	// The type of device posture integration.
-	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
 	Type pulumi.StringPtrInput
 }
 
@@ -123,7 +123,7 @@ type zeroTrustDevicePostureIntegrationArgs struct {
 	// The name of the device posture integration.
 	Name string `pulumi:"name"`
 	// The type of device posture integration.
-	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
 	Type string `pulumi:"type"`
 }
 
@@ -137,7 +137,7 @@ type ZeroTrustDevicePostureIntegrationArgs struct {
 	// The name of the device posture integration.
 	Name pulumi.StringInput
 	// The type of device posture integration.
-	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+	// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
 	Type pulumi.StringInput
 }
 
@@ -250,7 +250,7 @@ func (o ZeroTrustDevicePostureIntegrationOutput) Name() pulumi.StringOutput {
 }
 
 // The type of device posture integration.
-// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "customS2s".
 func (o ZeroTrustDevicePostureIntegrationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustDevicePostureIntegration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

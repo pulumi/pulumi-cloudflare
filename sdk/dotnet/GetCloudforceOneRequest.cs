@@ -24,8 +24,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequest = Cloudflare.GetCloudforceOneRequest.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -47,8 +47,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequest = Cloudflare.GetCloudforceOneRequest.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -70,8 +70,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequest = Cloudflare.GetCloudforceOneRequest.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -85,16 +85,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public string AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
+
+        [Input("filter")]
+        public Inputs.GetCloudforceOneRequestFilterArgs? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("requestIdentifier")]
-        public string? RequestIdentifier { get; set; }
+        [Input("requestId")]
+        public string? RequestId { get; set; }
 
         public GetCloudforceOneRequestArgs()
         {
@@ -105,16 +108,19 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public Input<string> AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
+        [Input("filter")]
+        public Input<Inputs.GetCloudforceOneRequestFilterInputArgs>? Filter { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("requestIdentifier")]
-        public Input<string>? RequestIdentifier { get; set; }
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         public GetCloudforceOneRequestInvokeArgs()
         {
@@ -127,65 +133,68 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        public readonly string AccountIdentifier;
+        public readonly string AccountId;
         public readonly string Completed;
         /// <summary>
-        /// Request content
+        /// Request content.
         /// </summary>
         public readonly string Content;
         public readonly string Created;
+        public readonly Outputs.GetCloudforceOneRequestFilterResult? Filter;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Tokens for the request messages
+        /// Tokens for the request messages.
         /// </summary>
         public readonly int MessageTokens;
         public readonly string Priority;
         /// <summary>
-        /// Readable Request ID
+        /// Readable Request ID.
         /// </summary>
         public readonly string ReadableId;
         /// <summary>
-        /// Requested information from request
+        /// Requested information from request.
         /// </summary>
         public readonly string Request;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        public readonly string? RequestIdentifier;
+        public readonly string? RequestId;
         /// <summary>
-        /// Request Status
+        /// Request Status.
         /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Brief description of the request
+        /// Brief description of the request.
         /// </summary>
         public readonly string Summary;
         /// <summary>
-        /// The CISA defined Traffic Light Protocol (TLP)
+        /// The CISA defined Traffic Light Protocol (TLP).
         /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         public readonly string Tlp;
         /// <summary>
-        /// Tokens for the request
+        /// Tokens for the request.
         /// </summary>
         public readonly int Tokens;
         public readonly string Updated;
 
         [OutputConstructor]
         private GetCloudforceOneRequestResult(
-            string accountIdentifier,
+            string accountId,
 
             string completed,
 
             string content,
 
             string created,
+
+            Outputs.GetCloudforceOneRequestFilterResult? filter,
 
             string id,
 
@@ -197,7 +206,7 @@ namespace Pulumi.Cloudflare
 
             string request,
 
-            string? requestIdentifier,
+            string? requestId,
 
             string status,
 
@@ -209,16 +218,17 @@ namespace Pulumi.Cloudflare
 
             string updated)
         {
-            AccountIdentifier = accountIdentifier;
+            AccountId = accountId;
             Completed = completed;
             Content = content;
             Created = created;
+            Filter = filter;
             Id = id;
             MessageTokens = messageTokens;
             Priority = priority;
             ReadableId = readableId;
             Request = request;
-            RequestIdentifier = requestIdentifier;
+            RequestId = requestId;
             Status = status;
             Summary = summary;
             Tlp = tlp;

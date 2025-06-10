@@ -33,7 +33,7 @@ public final class AccessApplicationDestination {
      */
     private @Nullable String portRange;
     /**
-     * @return Available values: &#34;public&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;.
      * 
      */
     private @Nullable String type;
@@ -79,7 +79,7 @@ public final class AccessApplicationDestination {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return Available values: &#34;public&#34;.
+     * @return Available values: &#34;public&#34;, &#34;private&#34;.
      * 
      */
     public Optional<String> type() {

@@ -14,19 +14,19 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetCloudforceOneRequestsResultResult
     {
         /// <summary>
-        /// Request completion time
+        /// Request completion time.
         /// </summary>
         public readonly string Completed;
         /// <summary>
-        /// Request creation time
+        /// Request creation time.
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Tokens for the request messages
+        /// Tokens for the request messages.
         /// </summary>
         public readonly int MessageTokens;
         /// <summary>
@@ -34,33 +34,33 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Priority;
         /// <summary>
-        /// Readable Request ID
+        /// Readable Request ID.
         /// </summary>
         public readonly string ReadableId;
         /// <summary>
-        /// Requested information from request
+        /// Requested information from request.
         /// </summary>
         public readonly string Request;
         /// <summary>
-        /// Request Status
+        /// Request Status.
         /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Brief description of the request
+        /// Brief description of the request.
         /// </summary>
         public readonly string Summary;
         /// <summary>
-        /// The CISA defined Traffic Light Protocol (TLP)
+        /// The CISA defined Traffic Light Protocol (TLP).
         /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         public readonly string Tlp;
         /// <summary>
-        /// Tokens for the request
+        /// Tokens for the request.
         /// </summary>
         public readonly int Tokens;
         /// <summary>
-        /// Request last updated time
+        /// Request last updated time.
         /// </summary>
         public readonly string Updated;
 

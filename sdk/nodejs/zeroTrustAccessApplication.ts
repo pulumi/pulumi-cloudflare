@@ -100,7 +100,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
      * List of destinations secured by Access. This supersedes `selfHostedDomains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `selfHostedDomains` will be ignored.
      */
-    public readonly destinations!: pulumi.Output<outputs.ZeroTrustAccessApplicationDestination[] | undefined>;
+    public readonly destinations!: pulumi.Output<outputs.ZeroTrustAccessApplicationDestination[]>;
     /**
      * The primary hostname and path secured by Access. This domain will be displayed if the app is visible in the App Launcher.
      */
@@ -144,7 +144,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
      * The policies that Access applies to the application, in ascending order of precedence. Items can reference existing policies or create new policies exclusive to the application.
      */
-    public readonly policies!: pulumi.Output<outputs.ZeroTrustAccessApplicationPolicy[] | undefined>;
+    public readonly policies!: pulumi.Output<outputs.ZeroTrustAccessApplicationPolicy[]>;
     /**
      * Allows matching Access Service Tokens passed HTTP in a single header with this name.
      * This works as an alternative to the (CF-Access-Client-Id, CF-Access-Client-Secret) pair of headers.
@@ -169,13 +169,13 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
      *
      * @deprecated This attribute is deprecated.
      */
-    public readonly selfHostedDomains!: pulumi.Output<string[] | undefined>;
+    public readonly selfHostedDomains!: pulumi.Output<string[]>;
     /**
      * Returns a 401 status code when the request is blocked by a Service Auth policy.
      */
     public readonly serviceAuth401Redirect!: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      */
     public readonly sessionDuration!: pulumi.Output<string>;
     /**
@@ -189,7 +189,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     /**
      * The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
     public readonly targetCriterias!: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
@@ -442,7 +442,7 @@ export interface ZeroTrustAccessApplicationState {
      */
     serviceAuth401Redirect?: pulumi.Input<boolean>;
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      */
     sessionDuration?: pulumi.Input<string>;
     /**
@@ -600,7 +600,7 @@ export interface ZeroTrustAccessApplicationArgs {
      */
     serviceAuth401Redirect?: pulumi.Input<boolean>;
     /**
-     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+     * The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
      */
     sessionDuration?: pulumi.Input<string>;
     /**

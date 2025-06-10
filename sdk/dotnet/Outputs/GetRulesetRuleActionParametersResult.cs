@@ -143,7 +143,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetRulesetRuleActionParametersOverridesResult Overrides;
         /// <summary>
-        /// A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+        /// A list of phases to skip the execution of. This option is incompatible with the rulesets option.
         /// </summary>
         public readonly ImmutableArray<string> Phases;
         /// <summary>
@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, ImmutableArray<string>> Rules;
         /// <summary>
-        /// A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+        /// A ruleset to skip the execution of. This option is incompatible with the rulesets option.
         /// Available values: "current".
         /// </summary>
         public readonly string Ruleset;

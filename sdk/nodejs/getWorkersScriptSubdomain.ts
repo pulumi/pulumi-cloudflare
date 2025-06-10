@@ -56,7 +56,7 @@ export interface GetWorkersScriptSubdomainResult {
      */
     readonly id: string;
     /**
-     * Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
+     * Whether the Worker's Preview URLs are available on the workers.dev subdomain.
      */
     readonly previewsEnabled: boolean;
     /**

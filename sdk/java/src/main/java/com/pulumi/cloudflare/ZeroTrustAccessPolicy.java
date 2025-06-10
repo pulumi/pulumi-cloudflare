@@ -125,14 +125,14 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="excludes", refs={List.class,ZeroTrustAccessPolicyExclude.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessPolicyExclude>> excludes;
+    private Output<List<ZeroTrustAccessPolicyExclude>> excludes;
 
     /**
      * @return Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessPolicyExclude>>> excludes() {
-        return Codegen.optional(this.excludes);
+    public Output<List<ZeroTrustAccessPolicyExclude>> excludes() {
+        return this.excludes;
     }
     /**
      * Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
@@ -209,14 +209,14 @@ public class ZeroTrustAccessPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="requires", refs={List.class,ZeroTrustAccessPolicyRequire.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustAccessPolicyRequire>> requires;
+    private Output<List<ZeroTrustAccessPolicyRequire>> requires;
 
     /**
      * @return Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
      * 
      */
-    public Output<Optional<List<ZeroTrustAccessPolicyRequire>>> requires() {
-        return Codegen.optional(this.requires);
+    public Output<List<ZeroTrustAccessPolicyRequire>> requires() {
+        return this.requires;
     }
     @Export(name="reusable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reusable;

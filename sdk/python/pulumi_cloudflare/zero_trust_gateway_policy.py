@@ -47,8 +47,6 @@ class ZeroTrustGatewayPolicyArgs:
                precedence over the policy's `schedule` configuration, if any.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         :param pulumi.Input[builtins.str] identity: The wirefilter expression used for identity matching.
-        :param pulumi.Input[builtins.int] precedence: Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-               rules are evaluated in ascending order of this value.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsArgs'] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs'] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         :param pulumi.Input[builtins.str] traffic: The wirefilter expression used for traffic matching.
@@ -187,10 +185,6 @@ class ZeroTrustGatewayPolicyArgs:
     @property
     @pulumi.getter
     def precedence(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        rules are evaluated in ascending order of this value.
-        """
         return pulumi.get(self, "precedence")
 
     @precedence.setter
@@ -267,8 +261,6 @@ class _ZeroTrustGatewayPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         :param pulumi.Input[builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input[builtins.str] name: The name of the rule.
-        :param pulumi.Input[builtins.int] precedence: Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-               rules are evaluated in ascending order of this value.
         :param pulumi.Input['ZeroTrustGatewayPolicyRuleSettingsArgs'] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs'] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         :param pulumi.Input[builtins.str] traffic: The wirefilter expression used for traffic matching.
@@ -440,10 +432,6 @@ class _ZeroTrustGatewayPolicyState:
     @property
     @pulumi.getter
     def precedence(self) -> Optional[pulumi.Input[builtins.int]]:
-        """
-        Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        rules are evaluated in ascending order of this value.
-        """
         return pulumi.get(self, "precedence")
 
     @precedence.setter
@@ -549,8 +537,6 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         :param pulumi.Input[builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input[builtins.str] name: The name of the rule.
-        :param pulumi.Input[builtins.int] precedence: Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-               rules are evaluated in ascending order of this value.
         :param pulumi.Input[Union['ZeroTrustGatewayPolicyRuleSettingsArgs', 'ZeroTrustGatewayPolicyRuleSettingsArgsDict']] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         :param pulumi.Input[builtins.str] traffic: The wirefilter expression used for traffic matching.
@@ -677,8 +663,6 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] filters: The protocol or layer to evaluate the traffic, identity, and device posture expressions.
         :param pulumi.Input[builtins.str] identity: The wirefilter expression used for identity matching.
         :param pulumi.Input[builtins.str] name: The name of the rule.
-        :param pulumi.Input[builtins.int] precedence: Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-               rules are evaluated in ascending order of this value.
         :param pulumi.Input[Union['ZeroTrustGatewayPolicyRuleSettingsArgs', 'ZeroTrustGatewayPolicyRuleSettingsArgsDict']] rule_settings: Additional settings that modify the rule's action.
         :param pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         :param pulumi.Input[builtins.str] traffic: The wirefilter expression used for traffic matching.
@@ -736,7 +720,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[builtins.str]:
+    def description(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The description of the rule.
         """
@@ -794,10 +778,6 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def precedence(self) -> pulumi.Output[Optional[builtins.int]]:
-        """
-        Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        rules are evaluated in ascending order of this value.
-        """
         return pulumi.get(self, "precedence")
 
     @property

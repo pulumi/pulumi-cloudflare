@@ -13,7 +13,7 @@ public final class GetQueuesResultProducer {
     private String bucketName;
     private String script;
     /**
-     * @return Available values: &#34;worker&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;r2_bucket&#34;.
      * 
      */
     private String type;
@@ -26,7 +26,7 @@ public final class GetQueuesResultProducer {
         return this.script;
     }
     /**
-     * @return Available values: &#34;worker&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;r2_bucket&#34;.
      * 
      */
     public String type() {

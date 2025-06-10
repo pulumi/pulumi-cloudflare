@@ -11,6 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
+    /**
+     * @return The current status of the device policy certificate provisioning feature for WARP clients.
+     * 
+     */
     private Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -20,6 +24,10 @@ public final class GetZeroTrustDeviceDefaultProfileCertificatesResult {
     private String zoneId;
 
     private GetZeroTrustDeviceDefaultProfileCertificatesResult() {}
+    /**
+     * @return The current status of the device policy certificate provisioning feature for WARP clients.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

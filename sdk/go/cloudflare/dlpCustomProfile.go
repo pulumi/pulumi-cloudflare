@@ -43,7 +43,7 @@ type DlpCustomProfile struct {
 	Profiles   DlpCustomProfileProfileArrayOutput `pulumi:"profiles"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries DlpCustomProfileSharedEntryArrayOutput `pulumi:"sharedEntries"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -107,7 +107,7 @@ type dlpCustomProfileState struct {
 	Profiles   []DlpCustomProfileProfile `pulumi:"profiles"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []DlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type *string `pulumi:"type"`
 	// When the profile was lasted updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -133,7 +133,7 @@ type DlpCustomProfileState struct {
 	Profiles   DlpCustomProfileProfileArrayInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries DlpCustomProfileSharedEntryArrayInput
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringPtrInput
 	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringPtrInput
@@ -325,7 +325,7 @@ func (o DlpCustomProfileOutput) SharedEntries() DlpCustomProfileSharedEntryArray
 	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileSharedEntryArrayOutput { return v.SharedEntries }).(DlpCustomProfileSharedEntryArrayOutput)
 }
 
-// Available values: "custom".
+// Available values: "custom", "predefined", "integration".
 func (o DlpCustomProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

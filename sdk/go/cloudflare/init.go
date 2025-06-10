@@ -403,6 +403,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDevicePostureIntegration{}
 	case "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule":
 		r = &ZeroTrustDevicePostureRule{}
+	case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
+		r = &ZeroTrustDexTest{}
 	case "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile":
 		r = &ZeroTrustDlpCustomProfile{}
 	case "cloudflare:index/zeroTrustDlpDataset:ZeroTrustDlpDataset":
@@ -1443,6 +1445,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustDevicePostureRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDexTest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

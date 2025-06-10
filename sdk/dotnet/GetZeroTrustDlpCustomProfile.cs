@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
         public readonly bool OpenAccess;
         public readonly string ProfileId;
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         public readonly string Type;
         /// <summary>

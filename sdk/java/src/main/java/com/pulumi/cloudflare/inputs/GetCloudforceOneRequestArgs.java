@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.GetCloudforceOneRequestFilterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -17,40 +18,48 @@ public final class GetCloudforceOneRequestArgs extends com.pulumi.resources.Invo
     public static final GetCloudforceOneRequestArgs Empty = new GetCloudforceOneRequestArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
+    }
+
+    @Import(name="filter")
+    private @Nullable Output<GetCloudforceOneRequestFilterArgs> filter;
+
+    public Optional<Output<GetCloudforceOneRequestFilterArgs>> filter() {
+        return Optional.ofNullable(this.filter);
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="requestIdentifier")
-    private @Nullable Output<String> requestIdentifier;
+    @Import(name="requestId")
+    private @Nullable Output<String> requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Optional<Output<String>> requestIdentifier() {
-        return Optional.ofNullable(this.requestIdentifier);
+    public Optional<Output<String>> requestId() {
+        return Optional.ofNullable(this.requestId);
     }
 
     private GetCloudforceOneRequestArgs() {}
 
     private GetCloudforceOneRequestArgs(GetCloudforceOneRequestArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
-        this.requestIdentifier = $.requestIdentifier;
+        this.accountId = $.accountId;
+        this.filter = $.filter;
+        this.requestId = $.requestId;
     }
 
     public static Builder builder() {
@@ -72,50 +81,59 @@ public final class GetCloudforceOneRequestArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
+        }
+
+        public Builder filter(@Nullable Output<GetCloudforceOneRequestFilterArgs> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        public Builder filter(GetCloudforceOneRequestFilterArgs filter) {
+            return filter(Output.of(filter));
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(@Nullable Output<String> requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder requestId(@Nullable Output<String> requestId) {
+            $.requestId = requestId;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            return requestIdentifier(Output.of(requestIdentifier));
+        public Builder requestId(String requestId) {
+            return requestId(Output.of(requestId));
         }
 
         public GetCloudforceOneRequestArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestArgs", "accountId");
             }
             return $;
         }

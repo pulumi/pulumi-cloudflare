@@ -65,7 +65,7 @@ type TunnelRoute struct {
 	// UUID of the tunnel.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
 	// UUID of the virtual network.
-	VirtualNetworkId pulumi.StringPtrOutput `pulumi:"virtualNetworkId"`
+	VirtualNetworkId pulumi.StringOutput `pulumi:"virtualNetworkId"`
 }
 
 // NewTunnelRoute registers a new resource with the given unique name, arguments, and options.
@@ -295,8 +295,8 @@ func (o TunnelRouteOutput) TunnelId() pulumi.StringOutput {
 }
 
 // UUID of the virtual network.
-func (o TunnelRouteOutput) VirtualNetworkId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TunnelRoute) pulumi.StringPtrOutput { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
+func (o TunnelRouteOutput) VirtualNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.VirtualNetworkId }).(pulumi.StringOutput)
 }
 
 type TunnelRouteArrayOutput struct{ *pulumi.OutputState }

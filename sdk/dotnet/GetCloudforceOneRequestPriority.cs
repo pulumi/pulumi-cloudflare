@@ -24,8 +24,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestPriority = Cloudflare.GetCloudforceOneRequestPriority.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         PriorityIdentifer = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         PriorityId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -47,8 +47,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestPriority = Cloudflare.GetCloudforceOneRequestPriority.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         PriorityIdentifer = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         PriorityId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -70,8 +70,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleCloudforceOneRequestPriority = Cloudflare.GetCloudforceOneRequestPriority.Invoke(new()
         ///     {
-        ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-        ///         PriorityIdentifer = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         PriorityId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
         ///     });
         /// 
         /// });
@@ -85,16 +85,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestPriorityArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public string AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public string AccountId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("priorityIdentifer", required: true)]
-        public string PriorityIdentifer { get; set; } = null!;
+        [Input("priorityId", required: true)]
+        public string PriorityId { get; set; } = null!;
 
         public GetCloudforceOneRequestPriorityArgs()
         {
@@ -105,16 +105,16 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestPriorityInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public Input<string> AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("priorityIdentifer", required: true)]
-        public Input<string> PriorityIdentifer { get; set; } = null!;
+        [Input("priorityId", required: true)]
+        public Input<string> PriorityId { get; set; } = null!;
 
         public GetCloudforceOneRequestPriorityInvokeArgs()
         {
@@ -127,59 +127,59 @@ namespace Pulumi.Cloudflare
     public sealed class GetCloudforceOneRequestPriorityResult
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        public readonly string AccountIdentifier;
+        public readonly string AccountId;
         public readonly string Completed;
         /// <summary>
-        /// Request content
+        /// Request content.
         /// </summary>
         public readonly string Content;
         public readonly string Created;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Tokens for the request messages
+        /// Tokens for the request messages.
         /// </summary>
         public readonly int MessageTokens;
         public readonly string Priority;
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        public readonly string PriorityIdentifer;
+        public readonly string PriorityId;
         /// <summary>
-        /// Readable Request ID
+        /// Readable Request ID.
         /// </summary>
         public readonly string ReadableId;
         /// <summary>
-        /// Requested information from request
+        /// Requested information from request.
         /// </summary>
         public readonly string Request;
         /// <summary>
-        /// Request Status
+        /// Request Status.
         /// Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Brief description of the request
+        /// Brief description of the request.
         /// </summary>
         public readonly string Summary;
         /// <summary>
-        /// The CISA defined Traffic Light Protocol (TLP)
+        /// The CISA defined Traffic Light Protocol (TLP).
         /// Available values: "clear", "amber", "amber-strict", "green", "red".
         /// </summary>
         public readonly string Tlp;
         /// <summary>
-        /// Tokens for the request
+        /// Tokens for the request.
         /// </summary>
         public readonly int Tokens;
         public readonly string Updated;
 
         [OutputConstructor]
         private GetCloudforceOneRequestPriorityResult(
-            string accountIdentifier,
+            string accountId,
 
             string completed,
 
@@ -193,7 +193,7 @@ namespace Pulumi.Cloudflare
 
             string priority,
 
-            string priorityIdentifer,
+            string priorityId,
 
             string readableId,
 
@@ -209,14 +209,14 @@ namespace Pulumi.Cloudflare
 
             string updated)
         {
-            AccountIdentifier = accountIdentifier;
+            AccountId = accountId;
             Completed = completed;
             Content = content;
             Created = created;
             Id = id;
             MessageTokens = messageTokens;
             Priority = priority;
-            PriorityIdentifer = priorityIdentifer;
+            PriorityId = priorityId;
             ReadableId = readableId;
             Request = request;
             Status = status;

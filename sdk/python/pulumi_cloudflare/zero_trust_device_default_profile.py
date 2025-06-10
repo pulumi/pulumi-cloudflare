@@ -35,6 +35,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
                  lan_allow_minutes: Optional[pulumi.Input[builtins.float]] = None,
                  lan_allow_subnet_size: Optional[pulumi.Input[builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+                 sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None,
                  switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -53,6 +54,7 @@ class ZeroTrustDeviceDefaultProfileArgs:
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        :param pulumi.Input[builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -82,6 +84,8 @@ class ZeroTrustDeviceDefaultProfileArgs:
             pulumi.set(__self__, "lan_allow_subnet_size", lan_allow_subnet_size)
         if register_interface_ip_with_dns is not None:
             pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
+        if sccm_vpn_boundary_support is not None:
+            pulumi.set(__self__, "sccm_vpn_boundary_support", sccm_vpn_boundary_support)
         if service_mode_v2 is not None:
             pulumi.set(__self__, "service_mode_v2", service_mode_v2)
         if support_url is not None:
@@ -245,6 +249,18 @@ class ZeroTrustDeviceDefaultProfileArgs:
         pulumi.set(self, "register_interface_ip_with_dns", value)
 
     @property
+    @pulumi.getter(name="sccmVpnBoundarySupport")
+    def sccm_vpn_boundary_support(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        """
+        return pulumi.get(self, "sccm_vpn_boundary_support")
+
+    @sccm_vpn_boundary_support.setter
+    def sccm_vpn_boundary_support(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "sccm_vpn_boundary_support", value)
+
+    @property
     @pulumi.getter(name="serviceModeV2")
     def service_mode_v2(self) -> Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]:
         return pulumi.get(self, "service_mode_v2")
@@ -310,6 +326,7 @@ class _ZeroTrustDeviceDefaultProfileState:
                  lan_allow_minutes: Optional[pulumi.Input[builtins.float]] = None,
                  lan_allow_subnet_size: Optional[pulumi.Input[builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+                 sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None,
                  switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -330,6 +347,7 @@ class _ZeroTrustDeviceDefaultProfileState:
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        :param pulumi.Input[builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -368,6 +386,8 @@ class _ZeroTrustDeviceDefaultProfileState:
             pulumi.set(__self__, "lan_allow_subnet_size", lan_allow_subnet_size)
         if register_interface_ip_with_dns is not None:
             pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
+        if sccm_vpn_boundary_support is not None:
+            pulumi.set(__self__, "sccm_vpn_boundary_support", sccm_vpn_boundary_support)
         if service_mode_v2 is not None:
             pulumi.set(__self__, "service_mode_v2", service_mode_v2)
         if support_url is not None:
@@ -573,6 +593,18 @@ class _ZeroTrustDeviceDefaultProfileState:
         pulumi.set(self, "register_interface_ip_with_dns", value)
 
     @property
+    @pulumi.getter(name="sccmVpnBoundarySupport")
+    def sccm_vpn_boundary_support(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        """
+        return pulumi.get(self, "sccm_vpn_boundary_support")
+
+    @sccm_vpn_boundary_support.setter
+    def sccm_vpn_boundary_support(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "sccm_vpn_boundary_support", value)
+
+    @property
     @pulumi.getter(name="serviceModeV2")
     def service_mode_v2(self) -> Optional[pulumi.Input['ZeroTrustDeviceDefaultProfileServiceModeV2Args']]:
         return pulumi.get(self, "service_mode_v2")
@@ -637,6 +669,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  lan_allow_minutes: Optional[pulumi.Input[builtins.float]] = None,
                  lan_allow_subnet_size: Optional[pulumi.Input[builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+                 sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None,
                  switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -669,6 +702,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             lan_allow_minutes=30,
             lan_allow_subnet_size=24,
             register_interface_ip_with_dns=True,
+            sccm_vpn_boundary_support=False,
             service_mode_v2={
                 "mode": "proxy",
                 "port": 3000,
@@ -698,6 +732,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        :param pulumi.Input[builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -735,6 +770,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             lan_allow_minutes=30,
             lan_allow_subnet_size=24,
             register_interface_ip_with_dns=True,
+            sccm_vpn_boundary_support=False,
             service_mode_v2={
                 "mode": "proxy",
                 "port": 3000,
@@ -778,6 +814,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
                  lan_allow_minutes: Optional[pulumi.Input[builtins.float]] = None,
                  lan_allow_subnet_size: Optional[pulumi.Input[builtins.float]] = None,
                  register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+                 sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
                  service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
                  support_url: Optional[pulumi.Input[builtins.str]] = None,
                  switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -806,6 +843,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             __props__.__dict__["lan_allow_minutes"] = lan_allow_minutes
             __props__.__dict__["lan_allow_subnet_size"] = lan_allow_subnet_size
             __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
+            __props__.__dict__["sccm_vpn_boundary_support"] = sccm_vpn_boundary_support
             __props__.__dict__["service_mode_v2"] = service_mode_v2
             __props__.__dict__["support_url"] = support_url
             __props__.__dict__["switch_locked"] = switch_locked
@@ -843,6 +881,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
             lan_allow_minutes: Optional[pulumi.Input[builtins.float]] = None,
             lan_allow_subnet_size: Optional[pulumi.Input[builtins.float]] = None,
             register_interface_ip_with_dns: Optional[pulumi.Input[builtins.bool]] = None,
+            sccm_vpn_boundary_support: Optional[pulumi.Input[builtins.bool]] = None,
             service_mode_v2: Optional[pulumi.Input[Union['ZeroTrustDeviceDefaultProfileServiceModeV2Args', 'ZeroTrustDeviceDefaultProfileServiceModeV2ArgsDict']]] = None,
             support_url: Optional[pulumi.Input[builtins.str]] = None,
             switch_locked: Optional[pulumi.Input[builtins.bool]] = None,
@@ -868,6 +907,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         :param pulumi.Input[builtins.float] lan_allow_minutes: The amount of time in minutes a user is allowed access to their LAN. A value of 0 will allow LAN access until the next WARP reconnection, such as a reboot or a laptop waking from sleep. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.float] lan_allow_subnet_size: The size of the subnet for the local access network. Note that this field is omitted from the response if null or unset.
         :param pulumi.Input[builtins.bool] register_interface_ip_with_dns: Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
+        :param pulumi.Input[builtins.bool] sccm_vpn_boundary_support: Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         :param pulumi.Input[builtins.str] support_url: The URL to launch when the Send Feedback button is clicked.
         :param pulumi.Input[builtins.bool] switch_locked: Whether to allow the user to turn off the WARP switch and disconnect the client.
         :param pulumi.Input[builtins.str] tunnel_protocol: Determines which tunnel protocol to use.
@@ -893,6 +933,7 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         __props__.__dict__["lan_allow_minutes"] = lan_allow_minutes
         __props__.__dict__["lan_allow_subnet_size"] = lan_allow_subnet_size
         __props__.__dict__["register_interface_ip_with_dns"] = register_interface_ip_with_dns
+        __props__.__dict__["sccm_vpn_boundary_support"] = sccm_vpn_boundary_support
         __props__.__dict__["service_mode_v2"] = service_mode_v2
         __props__.__dict__["support_url"] = support_url
         __props__.__dict__["switch_locked"] = switch_locked
@@ -1025,6 +1066,14 @@ class ZeroTrustDeviceDefaultProfile(pulumi.CustomResource):
         Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         """
         return pulumi.get(self, "register_interface_ip_with_dns")
+
+    @property
+    @pulumi.getter(name="sccmVpnBoundarySupport")
+    def sccm_vpn_boundary_support(self) -> pulumi.Output[Optional[builtins.bool]]:
+        """
+        Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        """
+        return pulumi.get(self, "sccm_vpn_boundary_support")
 
     @property
     @pulumi.getter(name="serviceModeV2")

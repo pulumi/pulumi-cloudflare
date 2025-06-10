@@ -65,6 +65,9 @@ type LookupR2BucketResult struct {
 	CreationDate string `pulumi:"creationDate"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Jurisdiction where objects in this bucket are guaranteed to be stored.
+	// Available values: "default", "eu", "fedramp".
+	Jurisdiction string `pulumi:"jurisdiction"`
 	// Location of the bucket.
 	// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
 	Location string `pulumi:"location"`
@@ -129,6 +132,12 @@ func (o LookupR2BucketResultOutput) CreationDate() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupR2BucketResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupR2BucketResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Jurisdiction where objects in this bucket are guaranteed to be stored.
+// Available values: "default", "eu", "fedramp".
+func (o LookupR2BucketResultOutput) Jurisdiction() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupR2BucketResult) string { return v.Jurisdiction }).(pulumi.StringOutput)
 }
 
 // Location of the bucket.

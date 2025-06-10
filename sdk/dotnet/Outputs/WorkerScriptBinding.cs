@@ -108,7 +108,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Text;
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai".
+        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
         /// </summary>
         public readonly string Type;
         /// <summary>

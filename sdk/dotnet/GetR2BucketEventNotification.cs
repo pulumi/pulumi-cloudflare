@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
+        ///         QueueId = "queue_id",
         ///     });
         /// 
         /// });
@@ -49,6 +50,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
+        ///         QueueId = "queue_id",
         ///     });
         /// 
         /// });
@@ -72,6 +74,7 @@ namespace Pulumi.Cloudflare
         ///     {
         ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///         BucketName = "example-bucket",
+        ///         QueueId = "queue_id",
         ///     });
         /// 
         /// });
@@ -96,6 +99,12 @@ namespace Pulumi.Cloudflare
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
 
+        /// <summary>
+        /// Queue ID.
+        /// </summary>
+        [Input("queueId", required: true)]
+        public string QueueId { get; set; } = null!;
+
         public GetR2BucketEventNotificationArgs()
         {
         }
@@ -116,6 +125,12 @@ namespace Pulumi.Cloudflare
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
+        /// <summary>
+        /// Queue ID.
+        /// </summary>
+        [Input("queueId", required: true)]
+        public Input<string> QueueId { get; set; } = null!;
+
         public GetR2BucketEventNotificationInvokeArgs()
         {
         }
@@ -127,6 +142,10 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketEventNotificationResult
     {
         /// <summary>
+        /// Transition to abort ongoing multipart uploads.
+        /// </summary>
+        public readonly Outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransitionResult AbortMultipartUploadsTransition;
+        /// <summary>
         /// Account ID.
         /// </summary>
         public readonly string AccountId;
@@ -135,28 +154,59 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Conditions that apply to all transitions of this rule.
+        /// </summary>
+        public readonly Outputs.GetR2BucketEventNotificationConditionsResult Conditions;
+        /// <summary>
+        /// Transition to delete objects.
+        /// </summary>
+        public readonly Outputs.GetR2BucketEventNotificationDeleteObjectsTransitionResult DeleteObjectsTransition;
+        /// <summary>
+        /// Whether or not this rule is in effect.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
+        /// Unique identifier for this rule.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of queues associated with the bucket.
+        /// Queue ID.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetR2BucketEventNotificationQueueResult> Queues;
+        public readonly string QueueId;
+        /// <summary>
+        /// Transitions to change the storage class of objects.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetR2BucketEventNotificationStorageClassTransitionResult> StorageClassTransitions;
 
         [OutputConstructor]
         private GetR2BucketEventNotificationResult(
+            Outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransitionResult abortMultipartUploadsTransition,
+
             string accountId,
 
             string bucketName,
 
+            Outputs.GetR2BucketEventNotificationConditionsResult conditions,
+
+            Outputs.GetR2BucketEventNotificationDeleteObjectsTransitionResult deleteObjectsTransition,
+
+            bool enabled,
+
             string id,
 
-            ImmutableArray<Outputs.GetR2BucketEventNotificationQueueResult> queues)
+            string queueId,
+
+            ImmutableArray<Outputs.GetR2BucketEventNotificationStorageClassTransitionResult> storageClassTransitions)
         {
+            AbortMultipartUploadsTransition = abortMultipartUploadsTransition;
             AccountId = accountId;
             BucketName = bucketName;
+            Conditions = conditions;
+            DeleteObjectsTransition = deleteObjectsTransition;
+            Enabled = enabled;
             Id = id;
-            Queues = queues;
+            QueueId = queueId;
+            StorageClassTransitions = storageClassTransitions;
         }
     }
 }

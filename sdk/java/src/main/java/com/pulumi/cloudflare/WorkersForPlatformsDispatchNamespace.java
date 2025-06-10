@@ -134,14 +134,14 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
         return this.modifiedOn;
     }
     /**
-     * The name of the dispatch namespace
+     * The name of the dispatch namespace.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> name;
 
     /**
-     * @return The name of the dispatch namespace
+     * @return The name of the dispatch namespace.
      * 
      */
     public Output<Optional<String>> name() {
@@ -176,14 +176,14 @@ public class WorkersForPlatformsDispatchNamespace extends com.pulumi.resources.C
         return this.namespaceName;
     }
     /**
-     * The current number of scripts in this Dispatch Namespace
+     * The current number of scripts in this Dispatch Namespace.
      * 
      */
     @Export(name="scriptCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> scriptCount;
 
     /**
-     * @return The current number of scripts in this Dispatch Namespace
+     * @return The current number of scripts in this Dispatch Namespace.
      * 
      */
     public Output<Integer> scriptCount() {

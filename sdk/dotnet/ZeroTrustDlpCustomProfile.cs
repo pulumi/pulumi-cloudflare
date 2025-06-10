@@ -79,7 +79,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ZeroTrustDlpCustomProfileSharedEntry>> SharedEntries { get; private set; } = null!;
 
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Available values: "custom".
+        /// Available values: "custom", "predefined", "integration".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

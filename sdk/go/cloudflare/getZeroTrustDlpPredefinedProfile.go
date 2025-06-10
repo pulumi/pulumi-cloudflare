@@ -76,7 +76,7 @@ type LookupZeroTrustDlpPredefinedProfileResult struct {
 	// Whether this profile can be accessed by anyone.
 	OpenAccess bool   `pulumi:"openAccess"`
 	ProfileId  string `pulumi:"profileId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type string `pulumi:"type"`
 	// When the profile was lasted updated.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -180,7 +180,7 @@ func (o LookupZeroTrustDlpPredefinedProfileResultOutput) ProfileId() pulumi.Stri
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.ProfileId }).(pulumi.StringOutput)
 }
 
-// Available values: "custom".
+// Available values: "custom", "predefined", "integration".
 func (o LookupZeroTrustDlpPredefinedProfileResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZeroTrustDlpPredefinedProfileResult) string { return v.Type }).(pulumi.StringOutput)
 }

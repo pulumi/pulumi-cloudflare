@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .dnssecMultiSigner(false)
  *             .dnssecPresigned(true)
+ *             .dnssecUseNsec3(false)
  *             .status("active")
  *             .build());
  * 
@@ -159,6 +160,26 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> dnssecPresigned() {
         return Codegen.optional(this.dnssecPresigned);
+    }
+    /**
+     * If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+     * enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     * 
+     */
+    @Export(name="dnssecUseNsec3", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> dnssecUseNsec3;
+
+    /**
+     * @return If true, enables the use of NSEC3 together with DNSSEC on the zone. Combined with setting dnssec_presigned to true, this
+     * enables the use of NSEC3 records when transferring in from an external provider. If dnssec_presigned is instead set to
+     * false (default), NSEC3 records will be generated and signed at request time. See [DNSSEC with
+     * NSEC3](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/) for details.
+     * 
+     */
+    public Output<Optional<Boolean>> dnssecUseNsec3() {
+        return Codegen.optional(this.dnssecUseNsec3);
     }
     /**
      * Full DS record.

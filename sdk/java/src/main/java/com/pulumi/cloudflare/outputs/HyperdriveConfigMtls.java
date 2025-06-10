@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HyperdriveConfigMtls {
     /**
-     * @return CA certificate ID
+     * @return Define CA certificate ID obtained after uploading CA cert.
      * 
      */
     private @Nullable String caCertificateId;
     /**
-     * @return mTLS certificate ID
+     * @return Define mTLS certificate ID obtained after uploading client cert.
      * 
      */
     private @Nullable String mtlsCertificateId;
     /**
-     * @return SSL mode used for CA verification. Must be &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39;
+     * @return Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
      * 
      */
     private @Nullable String sslmode;
 
     private HyperdriveConfigMtls() {}
     /**
-     * @return CA certificate ID
+     * @return Define CA certificate ID obtained after uploading CA cert.
      * 
      */
     public Optional<String> caCertificateId() {
         return Optional.ofNullable(this.caCertificateId);
     }
     /**
-     * @return mTLS certificate ID
+     * @return Define mTLS certificate ID obtained after uploading client cert.
      * 
      */
     public Optional<String> mtlsCertificateId() {
         return Optional.ofNullable(this.mtlsCertificateId);
     }
     /**
-     * @return SSL mode used for CA verification. Must be &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39;
+     * @return Set SSL mode to &#39;require&#39;, &#39;verify-ca&#39;, or &#39;verify-full&#39; to verify the CA.
      * 
      */
     public Optional<String> sslmode() {

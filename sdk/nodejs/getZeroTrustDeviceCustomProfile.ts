@@ -103,7 +103,7 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      */
     readonly lanAllowSubnetSize: number;
     /**
-     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+     * The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
      */
     readonly match: string;
     /**
@@ -119,6 +119,10 @@ export interface GetZeroTrustDeviceCustomProfileResult {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     readonly registerInterfaceIpWithDns: boolean;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    readonly sccmVpnBoundarySupport: boolean;
     readonly serviceModeV2: outputs.GetZeroTrustDeviceCustomProfileServiceModeV2;
     /**
      * The URL to launch when the Send Feedback button is clicked.

@@ -31,7 +31,7 @@ class MtlsCertificateArgs:
         :param pulumi.Input[builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
         :param pulumi.Input[builtins.str] certificates: The uploaded root CA certificate.
         :param pulumi.Input[builtins.str] name: Optional unique name for the certificate. Only used for human readability.
-        :param pulumi.Input[builtins.str] private_key: The private key for the certificate
+        :param pulumi.Input[builtins.str] private_key: The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "ca", ca)
@@ -93,7 +93,7 @@ class MtlsCertificateArgs:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The private key for the certificate
+        The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         """
         return pulumi.get(self, "private_key")
 
@@ -124,7 +124,7 @@ class _MtlsCertificateState:
         :param pulumi.Input[builtins.str] expires_on: When the certificate expires.
         :param pulumi.Input[builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[builtins.str] name: Optional unique name for the certificate. Only used for human readability.
-        :param pulumi.Input[builtins.str] private_key: The private key for the certificate
+        :param pulumi.Input[builtins.str] private_key: The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         :param pulumi.Input[builtins.str] serial_number: The certificate serial number.
         :param pulumi.Input[builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[builtins.str] updated_at: This is the time the certificate was updated.
@@ -229,7 +229,7 @@ class _MtlsCertificateState:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The private key for the certificate
+        The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         """
         return pulumi.get(self, "private_key")
 
@@ -331,7 +331,7 @@ class MtlsCertificate(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] ca: Indicates whether the certificate is a CA or leaf certificate.
         :param pulumi.Input[builtins.str] certificates: The uploaded root CA certificate.
         :param pulumi.Input[builtins.str] name: Optional unique name for the certificate. Only used for human readability.
-        :param pulumi.Input[builtins.str] private_key: The private key for the certificate
+        :param pulumi.Input[builtins.str] private_key: The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         """
         ...
     @overload
@@ -448,7 +448,7 @@ class MtlsCertificate(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] expires_on: When the certificate expires.
         :param pulumi.Input[builtins.str] issuer: The certificate authority that issued the certificate.
         :param pulumi.Input[builtins.str] name: Optional unique name for the certificate. Only used for human readability.
-        :param pulumi.Input[builtins.str] private_key: The private key for the certificate
+        :param pulumi.Input[builtins.str] private_key: The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         :param pulumi.Input[builtins.str] serial_number: The certificate serial number.
         :param pulumi.Input[builtins.str] signature: The type of hash used for the certificate.
         :param pulumi.Input[builtins.str] updated_at: This is the time the certificate was updated.
@@ -523,7 +523,7 @@ class MtlsCertificate(pulumi.CustomResource):
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The private key for the certificate
+        The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
         """
         return pulumi.get(self, "private_key")
 

@@ -44,16 +44,16 @@ export class HyperdriveConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     public readonly accountId!: pulumi.Output<string>;
     public readonly caching!: pulumi.Output<outputs.HyperdriveConfigCaching | undefined>;
     /**
-     * When the Hyperdrive configuration was created.
+     * Defines the creation time of the Hyperdrive configuration.
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * When the Hyperdrive configuration was last modified.
+     * Defines the last modified time of the Hyperdrive configuration.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     public readonly mtls!: pulumi.Output<outputs.HyperdriveConfigMtls | undefined>;
@@ -109,16 +109,16 @@ export class HyperdriveConfig extends pulumi.CustomResource {
  */
 export interface HyperdriveConfigState {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     accountId?: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;
     /**
-     * When the Hyperdrive configuration was created.
+     * Defines the creation time of the Hyperdrive configuration.
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * When the Hyperdrive configuration was last modified.
+     * Defines the last modified time of the Hyperdrive configuration.
      */
     modifiedOn?: pulumi.Input<string>;
     mtls?: pulumi.Input<inputs.HyperdriveConfigMtls>;
@@ -131,7 +131,7 @@ export interface HyperdriveConfigState {
  */
 export interface HyperdriveConfigArgs {
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      */
     accountId: pulumi.Input<string>;
     caching?: pulumi.Input<inputs.HyperdriveConfigCaching>;

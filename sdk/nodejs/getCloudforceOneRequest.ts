@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -12,16 +14,17 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequest = cloudflare.getCloudforceOneRequest({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     requestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
 export function getCloudforceOneRequest(args: GetCloudforceOneRequestArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest", {
-        "accountIdentifier": args.accountIdentifier,
-        "requestIdentifier": args.requestIdentifier,
+        "accountId": args.accountId,
+        "filter": args.filter,
+        "requestId": args.requestId,
     }, opts);
 }
 
@@ -30,13 +33,14 @@ export function getCloudforceOneRequest(args: GetCloudforceOneRequestArgs, opts?
  */
 export interface GetCloudforceOneRequestArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: string;
+    accountId: string;
+    filter?: inputs.GetCloudforceOneRequestFilter;
     /**
-     * UUID
+     * UUID.
      */
-    requestIdentifier?: string;
+    requestId?: string;
 }
 
 /**
@@ -44,52 +48,53 @@ export interface GetCloudforceOneRequestArgs {
  */
 export interface GetCloudforceOneRequestResult {
     /**
-     * Identifier
+     * Identifier.
      */
-    readonly accountIdentifier: string;
+    readonly accountId: string;
     readonly completed: string;
     /**
-     * Request content
+     * Request content.
      */
     readonly content: string;
     readonly created: string;
+    readonly filter?: outputs.GetCloudforceOneRequestFilter;
     /**
-     * UUID
+     * UUID.
      */
     readonly id: string;
     /**
-     * Tokens for the request messages
+     * Tokens for the request messages.
      */
     readonly messageTokens: number;
     readonly priority: string;
     /**
-     * Readable Request ID
+     * Readable Request ID.
      */
     readonly readableId: string;
     /**
-     * Requested information from request
+     * Requested information from request.
      */
     readonly request: string;
     /**
-     * UUID
+     * UUID.
      */
-    readonly requestIdentifier?: string;
+    readonly requestId?: string;
     /**
-     * Request Status
+     * Request Status.
      * Available values: "open", "accepted", "reported", "approved", "completed", "declined".
      */
     readonly status: string;
     /**
-     * Brief description of the request
+     * Brief description of the request.
      */
     readonly summary: string;
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: "clear", "amber", "amber-strict", "green", "red".
      */
     readonly tlp: string;
     /**
-     * Tokens for the request
+     * Tokens for the request.
      */
     readonly tokens: number;
     readonly updated: string;
@@ -102,16 +107,17 @@ export interface GetCloudforceOneRequestResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequest = cloudflare.getCloudforceOneRequest({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     requestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
  * });
  * ```
  */
 export function getCloudforceOneRequestOutput(args: GetCloudforceOneRequestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest", {
-        "accountIdentifier": args.accountIdentifier,
-        "requestIdentifier": args.requestIdentifier,
+        "accountId": args.accountId,
+        "filter": args.filter,
+        "requestId": args.requestId,
     }, opts);
 }
 
@@ -120,11 +126,12 @@ export function getCloudforceOneRequestOutput(args: GetCloudforceOneRequestOutpu
  */
 export interface GetCloudforceOneRequestOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
+    filter?: pulumi.Input<inputs.GetCloudforceOneRequestFilterArgs>;
     /**
-     * UUID
+     * UUID.
      */
-    requestIdentifier?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
 }

@@ -14,56 +14,56 @@ public final class GetCloudforceOneRequestAssetPlainArgs extends com.pulumi.reso
     public static final GetCloudforceOneRequestAssetPlainArgs Empty = new GetCloudforceOneRequestAssetPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private String accountIdentifier;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="assetIdentifer", required=true)
-    private String assetIdentifer;
+    @Import(name="assetId", required=true)
+    private String assetId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public String assetIdentifer() {
-        return this.assetIdentifer;
+    public String assetId() {
+        return this.assetId;
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="requestIdentifier", required=true)
-    private String requestIdentifier;
+    @Import(name="requestId", required=true)
+    private String requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public String requestIdentifier() {
-        return this.requestIdentifier;
+    public String requestId() {
+        return this.requestId;
     }
 
     private GetCloudforceOneRequestAssetPlainArgs() {}
 
     private GetCloudforceOneRequestAssetPlainArgs(GetCloudforceOneRequestAssetPlainArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
-        this.assetIdentifer = $.assetIdentifer;
-        this.requestIdentifier = $.requestIdentifier;
+        this.accountId = $.accountId;
+        this.assetId = $.assetId;
+        this.requestId = $.requestId;
     }
 
     public static Builder builder() {
@@ -85,47 +85,47 @@ public final class GetCloudforceOneRequestAssetPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(String accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param assetIdentifer UUID
+         * @param assetId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder assetIdentifer(String assetIdentifer) {
-            $.assetIdentifer = assetIdentifer;
+        public Builder assetId(String assetId) {
+            $.assetId = assetId;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder requestId(String requestId) {
+            $.requestId = requestId;
             return this;
         }
 
         public GetCloudforceOneRequestAssetPlainArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetPlainArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetPlainArgs", "accountId");
             }
-            if ($.assetIdentifer == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetPlainArgs", "assetIdentifer");
+            if ($.assetId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetPlainArgs", "assetId");
             }
-            if ($.requestIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetPlainArgs", "requestIdentifier");
+            if ($.requestId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestAssetPlainArgs", "requestId");
             }
             return $;
         }

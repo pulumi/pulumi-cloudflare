@@ -293,7 +293,7 @@ type AccessApplicationDestination struct {
 	L4Protocol *string `pulumi:"l4Protocol"`
 	// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
 	PortRange *string `pulumi:"portRange"`
-	// Available values: "public".
+	// Available values: "public", "private".
 	Type *string `pulumi:"type"`
 	// The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
 	Uri *string `pulumi:"uri"`
@@ -322,7 +322,7 @@ type AccessApplicationDestinationArgs struct {
 	L4Protocol pulumi.StringPtrInput `pulumi:"l4Protocol"`
 	// The port range of the destination. Can be a single port or a range of ports. When omitted, all ports will match.
 	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
-	// Available values: "public".
+	// Available values: "public", "private".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The URI of the destination. Public destinations' URIs can include a domain and path with [wildcards](https://developers.cloudflare.com/cloudflare-one/policies/access/app-paths/).
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -402,7 +402,7 @@ func (o AccessApplicationDestinationOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.PortRange }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "public".
+// Available values: "public", "private".
 func (o AccessApplicationDestinationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationDestination) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -13190,7 +13190,7 @@ type AccessApplicationScimConfigAuthentication struct {
 	// Password used to authenticate with the remote SCIM service.
 	Password *string `pulumi:"password"`
 	// The authentication scheme to use when making SCIM requests to this application.
-	// Available values: "httpbasic".
+	// Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
 	Scheme string `pulumi:"scheme"`
 	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 	Scopes []string `pulumi:"scopes"`
@@ -13223,7 +13223,7 @@ type AccessApplicationScimConfigAuthenticationArgs struct {
 	// Password used to authenticate with the remote SCIM service.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The authentication scheme to use when making SCIM requests to this application.
-	// Available values: "httpbasic".
+	// Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
 	Scheme pulumi.StringInput `pulumi:"scheme"`
 	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
@@ -13333,7 +13333,7 @@ func (o AccessApplicationScimConfigAuthenticationOutput) Password() pulumi.Strin
 }
 
 // The authentication scheme to use when making SCIM requests to this application.
-// Available values: "httpbasic".
+// Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
 func (o AccessApplicationScimConfigAuthenticationOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) string { return v.Scheme }).(pulumi.StringOutput)
 }
@@ -13423,7 +13423,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Password() pulumi.St
 }
 
 // The authentication scheme to use when making SCIM requests to this application.
-// Available values: "httpbasic".
+// Available values: "httpbasic", "oauthbearertoken", "oauth2", "access*service*token".
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -35746,7 +35746,7 @@ func (o AccessPolicyRequireServiceTokenPtrOutput) TokenId() pulumi.StringPtrOutp
 
 type AccessRuleConfiguration struct {
 	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-	// Available values: "ip".
+	// Available values: "ip", "ip6", "ipRange", "asn", "country".
 	Target *string `pulumi:"target"`
 	// The IP address to match. This address will be compared to the IP address of incoming requests.
 	Value *string `pulumi:"value"`
@@ -35765,7 +35765,7 @@ type AccessRuleConfigurationInput interface {
 
 type AccessRuleConfigurationArgs struct {
 	// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-	// Available values: "ip".
+	// Available values: "ip", "ip6", "ipRange", "asn", "country".
 	Target pulumi.StringPtrInput `pulumi:"target"`
 	// The IP address to match. This address will be compared to the IP address of incoming requests.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -35849,7 +35849,7 @@ func (o AccessRuleConfigurationOutput) ToAccessRuleConfigurationPtrOutputWithCon
 }
 
 // The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-// Available values: "ip".
+// Available values: "ip", "ip6", "ipRange", "asn", "country".
 func (o AccessRuleConfigurationOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessRuleConfiguration) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -35884,7 +35884,7 @@ func (o AccessRuleConfigurationPtrOutput) Elem() AccessRuleConfigurationOutput {
 }
 
 // The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-// Available values: "ip".
+// Available values: "ip", "ip6", "ipRange", "asn", "country".
 func (o AccessRuleConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRuleConfiguration) *string {
 		if v == nil {
@@ -37446,20 +37446,9 @@ func (o AccountMemberUserPtrOutput) TwoFactorAuthenticationEnabled() pulumi.Bool
 type AccountSettings struct {
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail *string `pulumi:"abuseContactEmail"`
-	// Specifies the default nameservers to be used for new zones added to this account.
-	//
-	// Deprecated: This attribute is deprecated.
-	DefaultNameservers *string `pulumi:"defaultNameservers"`
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
 	EnforceTwofactor *bool `pulumi:"enforceTwofactor"`
-	// Indicates whether new zones should use the account-level custom
-	// nameservers by default.
-	//
-	// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-	//
-	// Deprecated: This attribute is deprecated.
-	UseAccountCustomNsByDefault *bool `pulumi:"useAccountCustomNsByDefault"`
 }
 
 // AccountSettingsInput is an input type that accepts AccountSettingsArgs and AccountSettingsOutput values.
@@ -37476,20 +37465,9 @@ type AccountSettingsInput interface {
 type AccountSettingsArgs struct {
 	// Sets an abuse contact email to notify for abuse reports.
 	AbuseContactEmail pulumi.StringPtrInput `pulumi:"abuseContactEmail"`
-	// Specifies the default nameservers to be used for new zones added to this account.
-	//
-	// Deprecated: This attribute is deprecated.
-	DefaultNameservers pulumi.StringPtrInput `pulumi:"defaultNameservers"`
 	// Indicates whether membership in this account requires that
 	// Two-Factor Authentication is enabled
 	EnforceTwofactor pulumi.BoolPtrInput `pulumi:"enforceTwofactor"`
-	// Indicates whether new zones should use the account-level custom
-	// nameservers by default.
-	//
-	// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-	//
-	// Deprecated: This attribute is deprecated.
-	UseAccountCustomNsByDefault pulumi.BoolPtrInput `pulumi:"useAccountCustomNsByDefault"`
 }
 
 func (AccountSettingsArgs) ElementType() reflect.Type {
@@ -37574,27 +37552,10 @@ func (o AccountSettingsOutput) AbuseContactEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountSettings) *string { return v.AbuseContactEmail }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the default nameservers to be used for new zones added to this account.
-//
-// Deprecated: This attribute is deprecated.
-func (o AccountSettingsOutput) DefaultNameservers() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccountSettings) *string { return v.DefaultNameservers }).(pulumi.StringPtrOutput)
-}
-
 // Indicates whether membership in this account requires that
 // Two-Factor Authentication is enabled
 func (o AccountSettingsOutput) EnforceTwofactor() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccountSettings) *bool { return v.EnforceTwofactor }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether new zones should use the account-level custom
-// nameservers by default.
-//
-// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-//
-// Deprecated: This attribute is deprecated.
-func (o AccountSettingsOutput) UseAccountCustomNsByDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v AccountSettings) *bool { return v.UseAccountCustomNsByDefault }).(pulumi.BoolPtrOutput)
 }
 
 type AccountSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -37631,18 +37592,6 @@ func (o AccountSettingsPtrOutput) AbuseContactEmail() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the default nameservers to be used for new zones added to this account.
-//
-// Deprecated: This attribute is deprecated.
-func (o AccountSettingsPtrOutput) DefaultNameservers() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DefaultNameservers
-	}).(pulumi.StringPtrOutput)
-}
-
 // Indicates whether membership in this account requires that
 // Two-Factor Authentication is enabled
 func (o AccountSettingsPtrOutput) EnforceTwofactor() pulumi.BoolPtrOutput {
@@ -37651,21 +37600,6 @@ func (o AccountSettingsPtrOutput) EnforceTwofactor() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.EnforceTwofactor
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates whether new zones should use the account-level custom
-// nameservers by default.
-//
-// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-//
-// Deprecated: This attribute is deprecated.
-func (o AccountSettingsPtrOutput) UseAccountCustomNsByDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *AccountSettings) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UseAccountCustomNsByDefault
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -38872,7 +38806,7 @@ type ApiShieldAuthIdCharacteristic struct {
 	// The name of the characteristic field, i.e., the header or cookie name.
 	Name string `pulumi:"name"`
 	// The type of characteristic.
-	// Available values: "header", "cookie".
+	// Available values: "header", "cookie", "jwt".
 	Type string `pulumi:"type"`
 }
 
@@ -38891,7 +38825,7 @@ type ApiShieldAuthIdCharacteristicArgs struct {
 	// The name of the characteristic field, i.e., the header or cookie name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of characteristic.
-	// Available values: "header", "cookie".
+	// Available values: "header", "cookie", "jwt".
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -38952,7 +38886,7 @@ func (o ApiShieldAuthIdCharacteristicOutput) Name() pulumi.StringOutput {
 }
 
 // The type of characteristic.
-// Available values: "header", "cookie".
+// Available values: "header", "cookie", "jwt".
 func (o ApiShieldAuthIdCharacteristicOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiShieldAuthIdCharacteristic) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -45548,9 +45482,9 @@ func (o DeviceManagedNetworksConfigPtrOutput) TlsSockaddr() pulumi.StringPtrOutp
 }
 
 type DevicePostureIntegrationConfig struct {
-	// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+	// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
 	AccessClientId *string `pulumi:"accessClientId"`
-	// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+	// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
 	AccessClientSecret *string `pulumi:"accessClientSecret"`
 	// The Workspace One API URL provided in the Workspace One Admin Dashboard.
 	ApiUrl *string `pulumi:"apiUrl"`
@@ -45578,9 +45512,9 @@ type DevicePostureIntegrationConfigInput interface {
 }
 
 type DevicePostureIntegrationConfigArgs struct {
-	// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+	// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
 	AccessClientId pulumi.StringPtrInput `pulumi:"accessClientId"`
-	// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+	// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
 	AccessClientSecret pulumi.StringPtrInput `pulumi:"accessClientSecret"`
 	// The Workspace One API URL provided in the Workspace One Admin Dashboard.
 	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
@@ -45673,12 +45607,12 @@ func (o DevicePostureIntegrationConfigOutput) ToDevicePostureIntegrationConfigPt
 	}).(DevicePostureIntegrationConfigPtrOutput)
 }
 
-// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
 func (o DevicePostureIntegrationConfigOutput) AccessClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureIntegrationConfig) *string { return v.AccessClientId }).(pulumi.StringPtrOutput)
 }
 
-// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
 func (o DevicePostureIntegrationConfigOutput) AccessClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureIntegrationConfig) *string { return v.AccessClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -45737,7 +45671,7 @@ func (o DevicePostureIntegrationConfigPtrOutput) Elem() DevicePostureIntegration
 	}).(DevicePostureIntegrationConfigOutput)
 }
 
-// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`
+// If present, this id will be passed in the `CF-Access-Client-ID` header when hitting the `apiUrl`.
 func (o DevicePostureIntegrationConfigPtrOutput) AccessClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureIntegrationConfig) *string {
 		if v == nil {
@@ -45747,7 +45681,7 @@ func (o DevicePostureIntegrationConfigPtrOutput) AccessClientId() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`
+// If present, this secret will be passed in the `CF-Access-Client-Secret` header when hitting the `apiUrl`.
 func (o DevicePostureIntegrationConfigPtrOutput) AccessClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureIntegrationConfig) *string {
 		if v == nil {
@@ -45826,25 +45760,25 @@ type DevicePostureRuleInputType struct {
 	CheckDisks []string `pulumi:"checkDisks"`
 	// Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
 	CheckPrivateKey *bool `pulumi:"checkPrivateKey"`
-	// Common Name that is protected by the certificate
+	// Common Name that is protected by the certificate.
 	Cn *string `pulumi:"cn"`
-	// Compliance Status
-	// Available values: "compliant", "noncompliant", "unknown".
+	// Compliance Status.
+	// Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
 	ComplianceStatus *string `pulumi:"complianceStatus"`
 	// Posture Integration ID.
 	ConnectionId *string `pulumi:"connectionId"`
-	// Count Operator
+	// Count Operator.
 	// Available values: "<", "<=", ">", ">=", "==".
 	CountOperator *string `pulumi:"countOperator"`
-	// Domain
+	// Domain.
 	Domain *string `pulumi:"domain"`
 	// For more details on eid last seen, refer to the Tanium documentation.
 	EidLastSeen *string `pulumi:"eidLastSeen"`
-	// Enabled
+	// Enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Whether or not file exists
+	// Whether or not file exists.
 	Exists *bool `pulumi:"exists"`
-	// List of values indicating purposes for which the certificate public key can be used
+	// List of values indicating purposes for which the certificate public key can be used.
 	ExtendedKeyUsages []string `pulumi:"extendedKeyUsages"`
 	// List ID.
 	Id *string `pulumi:"id"`
@@ -45860,24 +45794,24 @@ type DevicePostureRuleInputType struct {
 	// Network status of device.
 	// Available values: "connected", "disconnected", "disconnecting", "connecting".
 	NetworkStatus *string `pulumi:"networkStatus"`
-	// Operating system
-	// Available values: "windows", "linux", "mac".
+	// Operating system.
+	// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
 	OperatingSystem *string `pulumi:"operatingSystem"`
 	// Agent operational state.
 	// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
 	OperationalState *string `pulumi:"operationalState"`
-	// operator
+	// Operator.
 	// Available values: "<", "<=", ">", ">=", "==".
 	Operator *string `pulumi:"operator"`
-	// Os Version
+	// Os Version.
 	Os *string `pulumi:"os"`
-	// Operating System Distribution Name (linux only)
+	// Operating System Distribution Name (linux only).
 	OsDistroName *string `pulumi:"osDistroName"`
-	// Version of OS Distribution (linux only)
+	// Version of OS Distribution (linux only).
 	OsDistroRevision *string `pulumi:"osDistroRevision"`
-	// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+	// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
 	OsVersionExtra *string `pulumi:"osVersionExtra"`
-	// overall
+	// Overall.
 	Overall *string `pulumi:"overall"`
 	// File path.
 	Path *string `pulumi:"path"`
@@ -45888,10 +45822,10 @@ type DevicePostureRuleInputType struct {
 	RiskLevel *string `pulumi:"riskLevel"`
 	// A value between 0-100 assigned to devices set by the 3rd party posture provider.
 	Score *float64 `pulumi:"score"`
-	// Score Operator
+	// Score Operator.
 	// Available values: "<", "<=", ">", ">=", "==".
 	ScoreOperator *string `pulumi:"scoreOperator"`
-	// SensorConfig
+	// SensorConfig.
 	SensorConfig *string `pulumi:"sensorConfig"`
 	// SHA-256.
 	Sha256 *string `pulumi:"sha256"`
@@ -45902,9 +45836,9 @@ type DevicePostureRuleInputType struct {
 	Thumbprint *string `pulumi:"thumbprint"`
 	// For more details on total score, refer to the Tanium documentation.
 	TotalScore *float64 `pulumi:"totalScore"`
-	// Version of OS
+	// Version of OS.
 	Version *string `pulumi:"version"`
-	// Version Operator
+	// Version Operator.
 	// Available values: "<", "<=", ">", ">=", "==".
 	VersionOperator *string `pulumi:"versionOperator"`
 }
@@ -45929,25 +45863,25 @@ type DevicePostureRuleInputTypeArgs struct {
 	CheckDisks pulumi.StringArrayInput `pulumi:"checkDisks"`
 	// Confirm the certificate was not imported from another device. We recommend keeping this enabled unless the certificate was deployed without a private key.
 	CheckPrivateKey pulumi.BoolPtrInput `pulumi:"checkPrivateKey"`
-	// Common Name that is protected by the certificate
+	// Common Name that is protected by the certificate.
 	Cn pulumi.StringPtrInput `pulumi:"cn"`
-	// Compliance Status
-	// Available values: "compliant", "noncompliant", "unknown".
+	// Compliance Status.
+	// Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
 	ComplianceStatus pulumi.StringPtrInput `pulumi:"complianceStatus"`
 	// Posture Integration ID.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
-	// Count Operator
+	// Count Operator.
 	// Available values: "<", "<=", ">", ">=", "==".
 	CountOperator pulumi.StringPtrInput `pulumi:"countOperator"`
-	// Domain
+	// Domain.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// For more details on eid last seen, refer to the Tanium documentation.
 	EidLastSeen pulumi.StringPtrInput `pulumi:"eidLastSeen"`
-	// Enabled
+	// Enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Whether or not file exists
+	// Whether or not file exists.
 	Exists pulumi.BoolPtrInput `pulumi:"exists"`
-	// List of values indicating purposes for which the certificate public key can be used
+	// List of values indicating purposes for which the certificate public key can be used.
 	ExtendedKeyUsages pulumi.StringArrayInput `pulumi:"extendedKeyUsages"`
 	// List ID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -45963,24 +45897,24 @@ type DevicePostureRuleInputTypeArgs struct {
 	// Network status of device.
 	// Available values: "connected", "disconnected", "disconnecting", "connecting".
 	NetworkStatus pulumi.StringPtrInput `pulumi:"networkStatus"`
-	// Operating system
-	// Available values: "windows", "linux", "mac".
+	// Operating system.
+	// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
 	OperatingSystem pulumi.StringPtrInput `pulumi:"operatingSystem"`
 	// Agent operational state.
 	// Available values: "na", "partially*disabled", "auto*fully*disabled", "fully*disabled", "auto*partially*disabled", "disabled*error", "db*corruption".
 	OperationalState pulumi.StringPtrInput `pulumi:"operationalState"`
-	// operator
+	// Operator.
 	// Available values: "<", "<=", ">", ">=", "==".
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// Os Version
+	// Os Version.
 	Os pulumi.StringPtrInput `pulumi:"os"`
-	// Operating System Distribution Name (linux only)
+	// Operating System Distribution Name (linux only).
 	OsDistroName pulumi.StringPtrInput `pulumi:"osDistroName"`
-	// Version of OS Distribution (linux only)
+	// Version of OS Distribution (linux only).
 	OsDistroRevision pulumi.StringPtrInput `pulumi:"osDistroRevision"`
-	// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+	// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
 	OsVersionExtra pulumi.StringPtrInput `pulumi:"osVersionExtra"`
-	// overall
+	// Overall.
 	Overall pulumi.StringPtrInput `pulumi:"overall"`
 	// File path.
 	Path pulumi.StringPtrInput `pulumi:"path"`
@@ -45991,10 +45925,10 @@ type DevicePostureRuleInputTypeArgs struct {
 	RiskLevel pulumi.StringPtrInput `pulumi:"riskLevel"`
 	// A value between 0-100 assigned to devices set by the 3rd party posture provider.
 	Score pulumi.Float64PtrInput `pulumi:"score"`
-	// Score Operator
+	// Score Operator.
 	// Available values: "<", "<=", ">", ">=", "==".
 	ScoreOperator pulumi.StringPtrInput `pulumi:"scoreOperator"`
-	// SensorConfig
+	// SensorConfig.
 	SensorConfig pulumi.StringPtrInput `pulumi:"sensorConfig"`
 	// SHA-256.
 	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
@@ -46005,9 +45939,9 @@ type DevicePostureRuleInputTypeArgs struct {
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
 	// For more details on total score, refer to the Tanium documentation.
 	TotalScore pulumi.Float64PtrInput `pulumi:"totalScore"`
-	// Version of OS
+	// Version of OS.
 	Version pulumi.StringPtrInput `pulumi:"version"`
-	// Version Operator
+	// Version Operator.
 	// Available values: "<", "<=", ">", ">=", "==".
 	VersionOperator pulumi.StringPtrInput `pulumi:"versionOperator"`
 }
@@ -46109,13 +46043,13 @@ func (o DevicePostureRuleInputTypeOutput) CheckPrivateKey() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.CheckPrivateKey }).(pulumi.BoolPtrOutput)
 }
 
-// Common Name that is protected by the certificate
+// Common Name that is protected by the certificate.
 func (o DevicePostureRuleInputTypeOutput) Cn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Cn }).(pulumi.StringPtrOutput)
 }
 
-// Compliance Status
-// Available values: "compliant", "noncompliant", "unknown".
+// Compliance Status.
+// Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
 func (o DevicePostureRuleInputTypeOutput) ComplianceStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.ComplianceStatus }).(pulumi.StringPtrOutput)
 }
@@ -46125,13 +46059,13 @@ func (o DevicePostureRuleInputTypeOutput) ConnectionId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
-// Count Operator
+// Count Operator.
 // Available values: "<", "<=", ">", ">=", "==".
 func (o DevicePostureRuleInputTypeOutput) CountOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.CountOperator }).(pulumi.StringPtrOutput)
 }
 
-// Domain
+// Domain.
 func (o DevicePostureRuleInputTypeOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -46141,17 +46075,17 @@ func (o DevicePostureRuleInputTypeOutput) EidLastSeen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.EidLastSeen }).(pulumi.StringPtrOutput)
 }
 
-// Enabled
+// Enabled.
 func (o DevicePostureRuleInputTypeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether or not file exists
+// Whether or not file exists.
 func (o DevicePostureRuleInputTypeOutput) Exists() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Exists }).(pulumi.BoolPtrOutput)
 }
 
-// List of values indicating purposes for which the certificate public key can be used
+// List of values indicating purposes for which the certificate public key can be used.
 func (o DevicePostureRuleInputTypeOutput) ExtendedKeyUsages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) []string { return v.ExtendedKeyUsages }).(pulumi.StringArrayOutput)
 }
@@ -46191,8 +46125,8 @@ func (o DevicePostureRuleInputTypeOutput) NetworkStatus() pulumi.StringPtrOutput
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.NetworkStatus }).(pulumi.StringPtrOutput)
 }
 
-// Operating system
-// Available values: "windows", "linux", "mac".
+// Operating system.
+// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
 func (o DevicePostureRuleInputTypeOutput) OperatingSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OperatingSystem }).(pulumi.StringPtrOutput)
 }
@@ -46203,33 +46137,33 @@ func (o DevicePostureRuleInputTypeOutput) OperationalState() pulumi.StringPtrOut
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OperationalState }).(pulumi.StringPtrOutput)
 }
 
-// operator
+// Operator.
 // Available values: "<", "<=", ">", ">=", "==".
 func (o DevicePostureRuleInputTypeOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// Os Version
+// Os Version.
 func (o DevicePostureRuleInputTypeOutput) Os() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Os }).(pulumi.StringPtrOutput)
 }
 
-// Operating System Distribution Name (linux only)
+// Operating System Distribution Name (linux only).
 func (o DevicePostureRuleInputTypeOutput) OsDistroName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OsDistroName }).(pulumi.StringPtrOutput)
 }
 
-// Version of OS Distribution (linux only)
+// Version of OS Distribution (linux only).
 func (o DevicePostureRuleInputTypeOutput) OsDistroRevision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OsDistroRevision }).(pulumi.StringPtrOutput)
 }
 
-// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
 func (o DevicePostureRuleInputTypeOutput) OsVersionExtra() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OsVersionExtra }).(pulumi.StringPtrOutput)
 }
 
-// overall
+// Overall.
 func (o DevicePostureRuleInputTypeOutput) Overall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Overall }).(pulumi.StringPtrOutput)
 }
@@ -46255,13 +46189,13 @@ func (o DevicePostureRuleInputTypeOutput) Score() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *float64 { return v.Score }).(pulumi.Float64PtrOutput)
 }
 
-// Score Operator
+// Score Operator.
 // Available values: "<", "<=", ">", ">=", "==".
 func (o DevicePostureRuleInputTypeOutput) ScoreOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.ScoreOperator }).(pulumi.StringPtrOutput)
 }
 
-// SensorConfig
+// SensorConfig.
 func (o DevicePostureRuleInputTypeOutput) SensorConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.SensorConfig }).(pulumi.StringPtrOutput)
 }
@@ -46287,12 +46221,12 @@ func (o DevicePostureRuleInputTypeOutput) TotalScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *float64 { return v.TotalScore }).(pulumi.Float64PtrOutput)
 }
 
-// Version of OS
+// Version of OS.
 func (o DevicePostureRuleInputTypeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// Version Operator
+// Version Operator.
 // Available values: "<", "<=", ">", ">=", "==".
 func (o DevicePostureRuleInputTypeOutput) VersionOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.VersionOperator }).(pulumi.StringPtrOutput)
@@ -46362,7 +46296,7 @@ func (o DevicePostureRuleInputTypePtrOutput) CheckPrivateKey() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Common Name that is protected by the certificate
+// Common Name that is protected by the certificate.
 func (o DevicePostureRuleInputTypePtrOutput) Cn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46372,8 +46306,8 @@ func (o DevicePostureRuleInputTypePtrOutput) Cn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Compliance Status
-// Available values: "compliant", "noncompliant", "unknown".
+// Compliance Status.
+// Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
 func (o DevicePostureRuleInputTypePtrOutput) ComplianceStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46393,7 +46327,7 @@ func (o DevicePostureRuleInputTypePtrOutput) ConnectionId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Count Operator
+// Count Operator.
 // Available values: "<", "<=", ">", ">=", "==".
 func (o DevicePostureRuleInputTypePtrOutput) CountOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
@@ -46404,7 +46338,7 @@ func (o DevicePostureRuleInputTypePtrOutput) CountOperator() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Domain
+// Domain.
 func (o DevicePostureRuleInputTypePtrOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46424,7 +46358,7 @@ func (o DevicePostureRuleInputTypePtrOutput) EidLastSeen() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enabled
+// Enabled.
 func (o DevicePostureRuleInputTypePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *bool {
 		if v == nil {
@@ -46434,7 +46368,7 @@ func (o DevicePostureRuleInputTypePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether or not file exists
+// Whether or not file exists.
 func (o DevicePostureRuleInputTypePtrOutput) Exists() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *bool {
 		if v == nil {
@@ -46444,7 +46378,7 @@ func (o DevicePostureRuleInputTypePtrOutput) Exists() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// List of values indicating purposes for which the certificate public key can be used
+// List of values indicating purposes for which the certificate public key can be used.
 func (o DevicePostureRuleInputTypePtrOutput) ExtendedKeyUsages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) []string {
 		if v == nil {
@@ -46524,8 +46458,8 @@ func (o DevicePostureRuleInputTypePtrOutput) NetworkStatus() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Operating system
-// Available values: "windows", "linux", "mac".
+// Operating system.
+// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
 func (o DevicePostureRuleInputTypePtrOutput) OperatingSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46546,7 +46480,7 @@ func (o DevicePostureRuleInputTypePtrOutput) OperationalState() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// operator
+// Operator.
 // Available values: "<", "<=", ">", ">=", "==".
 func (o DevicePostureRuleInputTypePtrOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
@@ -46557,7 +46491,7 @@ func (o DevicePostureRuleInputTypePtrOutput) Operator() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Os Version
+// Os Version.
 func (o DevicePostureRuleInputTypePtrOutput) Os() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46567,7 +46501,7 @@ func (o DevicePostureRuleInputTypePtrOutput) Os() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Operating System Distribution Name (linux only)
+// Operating System Distribution Name (linux only).
 func (o DevicePostureRuleInputTypePtrOutput) OsDistroName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46577,7 +46511,7 @@ func (o DevicePostureRuleInputTypePtrOutput) OsDistroName() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Version of OS Distribution (linux only)
+// Version of OS Distribution (linux only).
 func (o DevicePostureRuleInputTypePtrOutput) OsDistroRevision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46587,7 +46521,7 @@ func (o DevicePostureRuleInputTypePtrOutput) OsDistroRevision() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
 func (o DevicePostureRuleInputTypePtrOutput) OsVersionExtra() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46597,7 +46531,7 @@ func (o DevicePostureRuleInputTypePtrOutput) OsVersionExtra() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// overall
+// Overall.
 func (o DevicePostureRuleInputTypePtrOutput) Overall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46648,7 +46582,7 @@ func (o DevicePostureRuleInputTypePtrOutput) Score() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Score Operator
+// Score Operator.
 // Available values: "<", "<=", ">", ">=", "==".
 func (o DevicePostureRuleInputTypePtrOutput) ScoreOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
@@ -46659,7 +46593,7 @@ func (o DevicePostureRuleInputTypePtrOutput) ScoreOperator() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// SensorConfig
+// SensorConfig.
 func (o DevicePostureRuleInputTypePtrOutput) SensorConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46710,7 +46644,7 @@ func (o DevicePostureRuleInputTypePtrOutput) TotalScore() pulumi.Float64PtrOutpu
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Version of OS
+// Version of OS.
 func (o DevicePostureRuleInputTypePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
 		if v == nil {
@@ -46720,7 +46654,7 @@ func (o DevicePostureRuleInputTypePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Version Operator
+// Version Operator.
 // Available values: "<", "<=", ">", ">=", "==".
 func (o DevicePostureRuleInputTypePtrOutput) VersionOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRuleInputType) *string {
@@ -48273,7 +48207,7 @@ func (o DlpCustomProfileProfileEntryPatternPtrOutput) Validation() pulumi.String
 type DlpCustomProfileProfileSharedEntry struct {
 	Enabled bool   `pulumi:"enabled"`
 	EntryId string `pulumi:"entryId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration", "exactData".
 	EntryType string `pulumi:"entryType"`
 }
 
@@ -48291,7 +48225,7 @@ type DlpCustomProfileProfileSharedEntryInput interface {
 type DlpCustomProfileProfileSharedEntryArgs struct {
 	Enabled pulumi.BoolInput   `pulumi:"enabled"`
 	EntryId pulumi.StringInput `pulumi:"entryId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration", "exactData".
 	EntryType pulumi.StringInput `pulumi:"entryType"`
 }
 
@@ -48354,7 +48288,7 @@ func (o DlpCustomProfileProfileSharedEntryOutput) EntryId() pulumi.StringOutput 
 	return o.ApplyT(func(v DlpCustomProfileProfileSharedEntry) string { return v.EntryId }).(pulumi.StringOutput)
 }
 
-// Available values: "custom".
+// Available values: "custom", "predefined", "integration", "exactData".
 func (o DlpCustomProfileProfileSharedEntryOutput) EntryType() pulumi.StringOutput {
 	return o.ApplyT(func(v DlpCustomProfileProfileSharedEntry) string { return v.EntryType }).(pulumi.StringOutput)
 }
@@ -48382,7 +48316,7 @@ func (o DlpCustomProfileProfileSharedEntryArrayOutput) Index(i pulumi.IntInput) 
 type DlpCustomProfileSharedEntry struct {
 	Enabled bool   `pulumi:"enabled"`
 	EntryId string `pulumi:"entryId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration", "exactData".
 	EntryType string `pulumi:"entryType"`
 }
 
@@ -48400,7 +48334,7 @@ type DlpCustomProfileSharedEntryInput interface {
 type DlpCustomProfileSharedEntryArgs struct {
 	Enabled pulumi.BoolInput   `pulumi:"enabled"`
 	EntryId pulumi.StringInput `pulumi:"entryId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration", "exactData".
 	EntryType pulumi.StringInput `pulumi:"entryType"`
 }
 
@@ -48463,7 +48397,7 @@ func (o DlpCustomProfileSharedEntryOutput) EntryId() pulumi.StringOutput {
 	return o.ApplyT(func(v DlpCustomProfileSharedEntry) string { return v.EntryId }).(pulumi.StringOutput)
 }
 
-// Available values: "custom".
+// Available values: "custom", "predefined", "integration", "exactData".
 func (o DlpCustomProfileSharedEntryOutput) EntryType() pulumi.StringOutput {
 	return o.ApplyT(func(v DlpCustomProfileSharedEntry) string { return v.EntryType }).(pulumi.StringOutput)
 }
@@ -51726,7 +51660,7 @@ type EmailRoutingRuleMatcher struct {
 	// Available values: "to".
 	Field *string `pulumi:"field"`
 	// Type of matcher.
-	// Available values: "literal".
+	// Available values: "all", "literal".
 	Type string `pulumi:"type"`
 	// Value for matcher.
 	Value *string `pulumi:"value"`
@@ -51748,7 +51682,7 @@ type EmailRoutingRuleMatcherArgs struct {
 	// Available values: "to".
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// Type of matcher.
-	// Available values: "literal".
+	// Available values: "all", "literal".
 	Type pulumi.StringInput `pulumi:"type"`
 	// Value for matcher.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -51812,7 +51746,7 @@ func (o EmailRoutingRuleMatcherOutput) Field() pulumi.StringPtrOutput {
 }
 
 // Type of matcher.
-// Available values: "literal".
+// Available values: "all", "literal".
 func (o EmailRoutingRuleMatcherOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailRoutingRuleMatcher) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -52966,11 +52900,11 @@ func (o HealthcheckTcpConfigPtrOutput) Port() pulumi.IntPtrOutput {
 }
 
 type HyperdriveConfigCaching struct {
-	// When set to true, disables the caching of SQL responses. (Default: false)
+	// Set to true to disable caching of SQL responses. Default is false.
 	Disabled *bool `pulumi:"disabled"`
-	// When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+	// Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
 	MaxAge *int `pulumi:"maxAge"`
-	// When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+	// Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
 	StaleWhileRevalidate *int `pulumi:"staleWhileRevalidate"`
 }
 
@@ -52986,11 +52920,11 @@ type HyperdriveConfigCachingInput interface {
 }
 
 type HyperdriveConfigCachingArgs struct {
-	// When set to true, disables the caching of SQL responses. (Default: false)
+	// Set to true to disable caching of SQL responses. Default is false.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+	// Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
 	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
-	// When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+	// Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
 	StaleWhileRevalidate pulumi.IntPtrInput `pulumi:"staleWhileRevalidate"`
 }
 
@@ -53071,17 +53005,17 @@ func (o HyperdriveConfigCachingOutput) ToHyperdriveConfigCachingPtrOutputWithCon
 	}).(HyperdriveConfigCachingPtrOutput)
 }
 
-// When set to true, disables the caching of SQL responses. (Default: false)
+// Set to true to disable caching of SQL responses. Default is false.
 func (o HyperdriveConfigCachingOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+// Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
 func (o HyperdriveConfigCachingOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
 
-// When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+// Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
 func (o HyperdriveConfigCachingOutput) StaleWhileRevalidate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigCaching) *int { return v.StaleWhileRevalidate }).(pulumi.IntPtrOutput)
 }
@@ -53110,7 +53044,7 @@ func (o HyperdriveConfigCachingPtrOutput) Elem() HyperdriveConfigCachingOutput {
 	}).(HyperdriveConfigCachingOutput)
 }
 
-// When set to true, disables the caching of SQL responses. (Default: false)
+// Set to true to disable caching of SQL responses. Default is false.
 func (o HyperdriveConfigCachingPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigCaching) *bool {
 		if v == nil {
@@ -53120,7 +53054,7 @@ func (o HyperdriveConfigCachingPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+// Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
 func (o HyperdriveConfigCachingPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigCaching) *int {
 		if v == nil {
@@ -53130,7 +53064,7 @@ func (o HyperdriveConfigCachingPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+// Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
 func (o HyperdriveConfigCachingPtrOutput) StaleWhileRevalidate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigCaching) *int {
 		if v == nil {
@@ -53141,11 +53075,11 @@ func (o HyperdriveConfigCachingPtrOutput) StaleWhileRevalidate() pulumi.IntPtrOu
 }
 
 type HyperdriveConfigMtls struct {
-	// CA certificate ID
+	// Define CA certificate ID obtained after uploading CA cert.
 	CaCertificateId *string `pulumi:"caCertificateId"`
-	// mTLS certificate ID
+	// Define mTLS certificate ID obtained after uploading client cert.
 	MtlsCertificateId *string `pulumi:"mtlsCertificateId"`
-	// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+	// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
 	Sslmode *string `pulumi:"sslmode"`
 }
 
@@ -53161,11 +53095,11 @@ type HyperdriveConfigMtlsInput interface {
 }
 
 type HyperdriveConfigMtlsArgs struct {
-	// CA certificate ID
+	// Define CA certificate ID obtained after uploading CA cert.
 	CaCertificateId pulumi.StringPtrInput `pulumi:"caCertificateId"`
-	// mTLS certificate ID
+	// Define mTLS certificate ID obtained after uploading client cert.
 	MtlsCertificateId pulumi.StringPtrInput `pulumi:"mtlsCertificateId"`
-	// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+	// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
 	Sslmode pulumi.StringPtrInput `pulumi:"sslmode"`
 }
 
@@ -53246,17 +53180,17 @@ func (o HyperdriveConfigMtlsOutput) ToHyperdriveConfigMtlsPtrOutputWithContext(c
 	}).(HyperdriveConfigMtlsPtrOutput)
 }
 
-// CA certificate ID
+// Define CA certificate ID obtained after uploading CA cert.
 func (o HyperdriveConfigMtlsOutput) CaCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigMtls) *string { return v.CaCertificateId }).(pulumi.StringPtrOutput)
 }
 
-// mTLS certificate ID
+// Define mTLS certificate ID obtained after uploading client cert.
 func (o HyperdriveConfigMtlsOutput) MtlsCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigMtls) *string { return v.MtlsCertificateId }).(pulumi.StringPtrOutput)
 }
 
-// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
 func (o HyperdriveConfigMtlsOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigMtls) *string { return v.Sslmode }).(pulumi.StringPtrOutput)
 }
@@ -53285,7 +53219,7 @@ func (o HyperdriveConfigMtlsPtrOutput) Elem() HyperdriveConfigMtlsOutput {
 	}).(HyperdriveConfigMtlsOutput)
 }
 
-// CA certificate ID
+// Define CA certificate ID obtained after uploading CA cert.
 func (o HyperdriveConfigMtlsPtrOutput) CaCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigMtls) *string {
 		if v == nil {
@@ -53295,7 +53229,7 @@ func (o HyperdriveConfigMtlsPtrOutput) CaCertificateId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// mTLS certificate ID
+// Define mTLS certificate ID obtained after uploading client cert.
 func (o HyperdriveConfigMtlsPtrOutput) MtlsCertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigMtls) *string {
 		if v == nil {
@@ -53305,7 +53239,7 @@ func (o HyperdriveConfigMtlsPtrOutput) MtlsCertificateId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SSL mode used for CA verification. Must be 'require', 'verify-ca', or 'verify-full'
+// Set SSL mode to 'require', 'verify-ca', or 'verify-full' to verify the CA.
 func (o HyperdriveConfigMtlsPtrOutput) Sslmode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigMtls) *string {
 		if v == nil {
@@ -53316,22 +53250,22 @@ func (o HyperdriveConfigMtlsPtrOutput) Sslmode() pulumi.StringPtrOutput {
 }
 
 type HyperdriveConfigOrigin struct {
-	// The Client ID of the Access token to use when connecting to the origin database.
+	// Defines the Client ID of the Access token to use when connecting to the origin database.
 	AccessClientId *string `pulumi:"accessClientId"`
-	// The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+	// Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
 	AccessClientSecret *string `pulumi:"accessClientSecret"`
-	// The name of your origin database.
+	// Set the name of your origin database.
 	Database string `pulumi:"database"`
-	// The host (hostname or IP) of your origin database.
+	// Defines the host (hostname or IP) of your origin database.
 	Host string `pulumi:"host"`
-	// The password required to access your origin database. This value is write-only and never returned by the API.
+	// Set the password needed to access your origin database. The API never returns this write-only value.
 	Password string `pulumi:"password"`
-	// The port (default: 5432 for Postgres) of your origin database.
+	// Defines the port (default: 5432 for Postgres) of your origin database.
 	Port *int `pulumi:"port"`
 	// Specifies the URL scheme used to connect to your origin database.
 	// Available values: "postgres", "postgresql", "mysql".
 	Scheme string `pulumi:"scheme"`
-	// The user of your origin database.
+	// Set the user of your origin database.
 	User string `pulumi:"user"`
 }
 
@@ -53347,22 +53281,22 @@ type HyperdriveConfigOriginInput interface {
 }
 
 type HyperdriveConfigOriginArgs struct {
-	// The Client ID of the Access token to use when connecting to the origin database.
+	// Defines the Client ID of the Access token to use when connecting to the origin database.
 	AccessClientId pulumi.StringPtrInput `pulumi:"accessClientId"`
-	// The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+	// Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
 	AccessClientSecret pulumi.StringPtrInput `pulumi:"accessClientSecret"`
-	// The name of your origin database.
+	// Set the name of your origin database.
 	Database pulumi.StringInput `pulumi:"database"`
-	// The host (hostname or IP) of your origin database.
+	// Defines the host (hostname or IP) of your origin database.
 	Host pulumi.StringInput `pulumi:"host"`
-	// The password required to access your origin database. This value is write-only and never returned by the API.
+	// Set the password needed to access your origin database. The API never returns this write-only value.
 	Password pulumi.StringInput `pulumi:"password"`
-	// The port (default: 5432 for Postgres) of your origin database.
+	// Defines the port (default: 5432 for Postgres) of your origin database.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Specifies the URL scheme used to connect to your origin database.
 	// Available values: "postgres", "postgresql", "mysql".
 	Scheme pulumi.StringInput `pulumi:"scheme"`
-	// The user of your origin database.
+	// Set the user of your origin database.
 	User pulumi.StringInput `pulumi:"user"`
 }
 
@@ -53443,32 +53377,32 @@ func (o HyperdriveConfigOriginOutput) ToHyperdriveConfigOriginPtrOutputWithConte
 	}).(HyperdriveConfigOriginPtrOutput)
 }
 
-// The Client ID of the Access token to use when connecting to the origin database.
+// Defines the Client ID of the Access token to use when connecting to the origin database.
 func (o HyperdriveConfigOriginOutput) AccessClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) *string { return v.AccessClientId }).(pulumi.StringPtrOutput)
 }
 
-// The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+// Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
 func (o HyperdriveConfigOriginOutput) AccessClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) *string { return v.AccessClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// The name of your origin database.
+// Set the name of your origin database.
 func (o HyperdriveConfigOriginOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Database }).(pulumi.StringOutput)
 }
 
-// The host (hostname or IP) of your origin database.
+// Defines the host (hostname or IP) of your origin database.
 func (o HyperdriveConfigOriginOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// The password required to access your origin database. This value is write-only and never returned by the API.
+// Set the password needed to access your origin database. The API never returns this write-only value.
 func (o HyperdriveConfigOriginOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The port (default: 5432 for Postgres) of your origin database.
+// Defines the port (default: 5432 for Postgres) of your origin database.
 func (o HyperdriveConfigOriginOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -53479,7 +53413,7 @@ func (o HyperdriveConfigOriginOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
-// The user of your origin database.
+// Set the user of your origin database.
 func (o HyperdriveConfigOriginOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.User }).(pulumi.StringOutput)
 }
@@ -53508,7 +53442,7 @@ func (o HyperdriveConfigOriginPtrOutput) Elem() HyperdriveConfigOriginOutput {
 	}).(HyperdriveConfigOriginOutput)
 }
 
-// The Client ID of the Access token to use when connecting to the origin database.
+// Defines the Client ID of the Access token to use when connecting to the origin database.
 func (o HyperdriveConfigOriginPtrOutput) AccessClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
 		if v == nil {
@@ -53518,7 +53452,7 @@ func (o HyperdriveConfigOriginPtrOutput) AccessClientId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+// Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
 func (o HyperdriveConfigOriginPtrOutput) AccessClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
 		if v == nil {
@@ -53528,7 +53462,7 @@ func (o HyperdriveConfigOriginPtrOutput) AccessClientSecret() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The name of your origin database.
+// Set the name of your origin database.
 func (o HyperdriveConfigOriginPtrOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
 		if v == nil {
@@ -53538,7 +53472,7 @@ func (o HyperdriveConfigOriginPtrOutput) Database() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The host (hostname or IP) of your origin database.
+// Defines the host (hostname or IP) of your origin database.
 func (o HyperdriveConfigOriginPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
 		if v == nil {
@@ -53548,7 +53482,7 @@ func (o HyperdriveConfigOriginPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The password required to access your origin database. This value is write-only and never returned by the API.
+// Set the password needed to access your origin database. The API never returns this write-only value.
 func (o HyperdriveConfigOriginPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
 		if v == nil {
@@ -53558,7 +53492,7 @@ func (o HyperdriveConfigOriginPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port (default: 5432 for Postgres) of your origin database.
+// Defines the port (default: 5432 for Postgres) of your origin database.
 func (o HyperdriveConfigOriginPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *int {
 		if v == nil {
@@ -53579,7 +53513,7 @@ func (o HyperdriveConfigOriginPtrOutput) Scheme() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The user of your origin database.
+// Set the user of your origin database.
 func (o HyperdriveConfigOriginPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
 		if v == nil {
@@ -72111,7 +72045,7 @@ func (o PagesProjectCanonicalDeploymentDeploymentTriggerMetadataPtrOutput) Commi
 }
 
 type PagesProjectCanonicalDeploymentEnvVars struct {
-	// Available values: "plainText".
+	// Available values: "plain*text", "secret*text".
 	Type *string `pulumi:"type"`
 	// Environment variable value.
 	Value *string `pulumi:"value"`
@@ -72129,7 +72063,7 @@ type PagesProjectCanonicalDeploymentEnvVarsInput interface {
 }
 
 type PagesProjectCanonicalDeploymentEnvVarsArgs struct {
-	// Available values: "plainText".
+	// Available values: "plain*text", "secret*text".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Environment variable value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -72186,7 +72120,7 @@ func (o PagesProjectCanonicalDeploymentEnvVarsOutput) ToPagesProjectCanonicalDep
 	return o
 }
 
-// Available values: "plainText".
+// Available values: "plain*text", "secret*text".
 func (o PagesProjectCanonicalDeploymentEnvVarsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PagesProjectCanonicalDeploymentEnvVars) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -74065,7 +73999,7 @@ func (o PagesProjectDeploymentConfigsPreviewDurableObjectNamespacesMapOutput) Ma
 }
 
 type PagesProjectDeploymentConfigsPreviewEnvVars struct {
-	// Available values: "plainText".
+	// Available values: "plain*text", "secret*text".
 	Type string `pulumi:"type"`
 	// Environment variable value.
 	Value string `pulumi:"value"`
@@ -74083,7 +74017,7 @@ type PagesProjectDeploymentConfigsPreviewEnvVarsInput interface {
 }
 
 type PagesProjectDeploymentConfigsPreviewEnvVarsArgs struct {
-	// Available values: "plainText".
+	// Available values: "plain*text", "secret*text".
 	Type pulumi.StringInput `pulumi:"type"`
 	// Environment variable value.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -74140,7 +74074,7 @@ func (o PagesProjectDeploymentConfigsPreviewEnvVarsOutput) ToPagesProjectDeploym
 	return o
 }
 
-// Available values: "plainText".
+// Available values: "plain*text", "secret*text".
 func (o PagesProjectDeploymentConfigsPreviewEnvVarsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreviewEnvVars) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -75928,7 +75862,7 @@ func (o PagesProjectDeploymentConfigsProductionDurableObjectNamespacesMapOutput)
 }
 
 type PagesProjectDeploymentConfigsProductionEnvVars struct {
-	// Available values: "plainText".
+	// Available values: "plain*text", "secret*text".
 	Type string `pulumi:"type"`
 	// Environment variable value.
 	Value string `pulumi:"value"`
@@ -75946,7 +75880,7 @@ type PagesProjectDeploymentConfigsProductionEnvVarsInput interface {
 }
 
 type PagesProjectDeploymentConfigsProductionEnvVarsArgs struct {
-	// Available values: "plainText".
+	// Available values: "plain*text", "secret*text".
 	Type pulumi.StringInput `pulumi:"type"`
 	// Environment variable value.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -76003,7 +75937,7 @@ func (o PagesProjectDeploymentConfigsProductionEnvVarsOutput) ToPagesProjectDepl
 	return o
 }
 
-// Available values: "plainText".
+// Available values: "plain*text", "secret*text".
 func (o PagesProjectDeploymentConfigsProductionEnvVarsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsProductionEnvVars) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -77861,7 +77795,7 @@ func (o PagesProjectLatestDeploymentDeploymentTriggerMetadataPtrOutput) CommitMe
 }
 
 type PagesProjectLatestDeploymentEnvVars struct {
-	// Available values: "plainText".
+	// Available values: "plain*text", "secret*text".
 	Type *string `pulumi:"type"`
 	// Environment variable value.
 	Value *string `pulumi:"value"`
@@ -77879,7 +77813,7 @@ type PagesProjectLatestDeploymentEnvVarsInput interface {
 }
 
 type PagesProjectLatestDeploymentEnvVarsArgs struct {
-	// Available values: "plainText".
+	// Available values: "plain*text", "secret*text".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Environment variable value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -77936,7 +77870,7 @@ func (o PagesProjectLatestDeploymentEnvVarsOutput) ToPagesProjectLatestDeploymen
 	return o
 }
 
-// Available values: "plainText".
+// Available values: "plain*text", "secret*text".
 func (o PagesProjectLatestDeploymentEnvVarsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PagesProjectLatestDeploymentEnvVars) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -79179,7 +79113,7 @@ type QueueConsumerType struct {
 	// Name of a Worker
 	ScriptName *string                `pulumi:"scriptName"`
 	Settings   *QueueConsumerSettings `pulumi:"settings"`
-	// Available values: "worker".
+	// Available values: "worker", "httpPull".
 	Type *string `pulumi:"type"`
 }
 
@@ -79205,7 +79139,7 @@ type QueueConsumerTypeArgs struct {
 	// Name of a Worker
 	ScriptName pulumi.StringPtrInput         `pulumi:"scriptName"`
 	Settings   QueueConsumerSettingsPtrInput `pulumi:"settings"`
-	// Available values: "worker".
+	// Available values: "worker", "httpPull".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -79288,7 +79222,7 @@ func (o QueueConsumerTypeOutput) Settings() QueueConsumerSettingsPtrOutput {
 	return o.ApplyT(func(v QueueConsumerType) *QueueConsumerSettings { return v.Settings }).(QueueConsumerSettingsPtrOutput)
 }
 
-// Available values: "worker".
+// Available values: "worker", "httpPull".
 func (o QueueConsumerTypeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueConsumerType) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -79548,7 +79482,7 @@ func (o QueueConsumerSettingsPtrOutput) VisibilityTimeoutMs() pulumi.Float64PtrO
 type QueueProducer struct {
 	BucketName *string `pulumi:"bucketName"`
 	Script     *string `pulumi:"script"`
-	// Available values: "worker".
+	// Available values: "worker", "r2Bucket".
 	Type *string `pulumi:"type"`
 }
 
@@ -79566,7 +79500,7 @@ type QueueProducerInput interface {
 type QueueProducerArgs struct {
 	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
 	Script     pulumi.StringPtrInput `pulumi:"script"`
-	// Available values: "worker".
+	// Available values: "worker", "r2Bucket".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -79629,7 +79563,7 @@ func (o QueueProducerOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueProducer) *string { return v.Script }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "worker".
+// Available values: "worker", "r2Bucket".
 func (o QueueProducerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QueueProducer) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -81034,7 +80968,7 @@ func (o R2BucketLifecycleRuleDeleteObjectsTransitionPtrOutput) Condition() R2Buc
 type R2BucketLifecycleRuleDeleteObjectsTransitionCondition struct {
 	Date   *string `pulumi:"date"`
 	MaxAge *int    `pulumi:"maxAge"`
-	// Available values: "Age".
+	// Available values: "Age", "Date".
 	Type string `pulumi:"type"`
 }
 
@@ -81052,7 +80986,7 @@ type R2BucketLifecycleRuleDeleteObjectsTransitionConditionInput interface {
 type R2BucketLifecycleRuleDeleteObjectsTransitionConditionArgs struct {
 	Date   pulumi.StringPtrInput `pulumi:"date"`
 	MaxAge pulumi.IntPtrInput    `pulumi:"maxAge"`
-	// Available values: "Age".
+	// Available values: "Age", "Date".
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -81141,7 +81075,7 @@ func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) MaxAge() pu
 	return o.ApplyT(func(v R2BucketLifecycleRuleDeleteObjectsTransitionCondition) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
 
-// Available values: "Age".
+// Available values: "Age", "Date".
 func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRuleDeleteObjectsTransitionCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -81188,7 +81122,7 @@ func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) MaxAge()
 	}).(pulumi.IntPtrOutput)
 }
 
-// Available values: "Age".
+// Available values: "Age", "Date".
 func (o R2BucketLifecycleRuleDeleteObjectsTransitionConditionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketLifecycleRuleDeleteObjectsTransitionCondition) *string {
 		if v == nil {
@@ -81309,7 +81243,7 @@ func (o R2BucketLifecycleRuleStorageClassTransitionArrayOutput) Index(i pulumi.I
 type R2BucketLifecycleRuleStorageClassTransitionCondition struct {
 	Date   *string `pulumi:"date"`
 	MaxAge *int    `pulumi:"maxAge"`
-	// Available values: "Age".
+	// Available values: "Age", "Date".
 	Type string `pulumi:"type"`
 }
 
@@ -81327,7 +81261,7 @@ type R2BucketLifecycleRuleStorageClassTransitionConditionInput interface {
 type R2BucketLifecycleRuleStorageClassTransitionConditionArgs struct {
 	Date   pulumi.StringPtrInput `pulumi:"date"`
 	MaxAge pulumi.IntPtrInput    `pulumi:"maxAge"`
-	// Available values: "Age".
+	// Available values: "Age", "Date".
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -81365,7 +81299,7 @@ func (o R2BucketLifecycleRuleStorageClassTransitionConditionOutput) MaxAge() pul
 	return o.ApplyT(func(v R2BucketLifecycleRuleStorageClassTransitionCondition) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
 
-// Available values: "Age".
+// Available values: "Age", "Date".
 func (o R2BucketLifecycleRuleStorageClassTransitionConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v R2BucketLifecycleRuleStorageClassTransitionCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -81497,7 +81431,7 @@ func (o R2BucketLockRuleArrayOutput) Index(i pulumi.IntInput) R2BucketLockRuleOu
 type R2BucketLockRuleCondition struct {
 	Date          *string `pulumi:"date"`
 	MaxAgeSeconds *int    `pulumi:"maxAgeSeconds"`
-	// Available values: "Age".
+	// Available values: "Age", "Date", "Indefinite".
 	Type string `pulumi:"type"`
 }
 
@@ -81515,7 +81449,7 @@ type R2BucketLockRuleConditionInput interface {
 type R2BucketLockRuleConditionArgs struct {
 	Date          pulumi.StringPtrInput `pulumi:"date"`
 	MaxAgeSeconds pulumi.IntPtrInput    `pulumi:"maxAgeSeconds"`
-	// Available values: "Age".
+	// Available values: "Age", "Date", "Indefinite".
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -81553,7 +81487,7 @@ func (o R2BucketLockRuleConditionOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v R2BucketLockRuleCondition) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Available values: "Age".
+// Available values: "Age", "Date", "Indefinite".
 func (o R2BucketLockRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v R2BucketLockRuleCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -81768,7 +81702,7 @@ type R2BucketSippySource struct {
 	Bucket *string `pulumi:"bucket"`
 	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	ClientEmail *string `pulumi:"clientEmail"`
-	// Available values: "aws".
+	// Available values: "aws", "gcs".
 	CloudProvider *string `pulumi:"cloudProvider"`
 	// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 	PrivateKey *string `pulumi:"privateKey"`
@@ -81796,7 +81730,7 @@ type R2BucketSippySourceArgs struct {
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// Client email of an IAM credential (ideally scoped to a single GCS bucket).
 	ClientEmail pulumi.StringPtrInput `pulumi:"clientEmail"`
-	// Available values: "aws".
+	// Available values: "aws", "gcs".
 	CloudProvider pulumi.StringPtrInput `pulumi:"cloudProvider"`
 	// Private Key of an IAM credential (ideally scoped to a single GCS bucket).
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
@@ -81898,7 +81832,7 @@ func (o R2BucketSippySourceOutput) ClientEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippySource) *string { return v.ClientEmail }).(pulumi.StringPtrOutput)
 }
 
-// Available values: "aws".
+// Available values: "aws", "gcs".
 func (o R2BucketSippySourceOutput) CloudProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v R2BucketSippySource) *string { return v.CloudProvider }).(pulumi.StringPtrOutput)
 }
@@ -81972,7 +81906,7 @@ func (o R2BucketSippySourcePtrOutput) ClientEmail() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Available values: "aws".
+// Available values: "aws", "gcs".
 func (o R2BucketSippySourcePtrOutput) CloudProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *R2BucketSippySource) *string {
 		if v == nil {

@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the dispatch namespace
+        /// The name of the dispatch namespace.
         /// </summary>
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         public Output<string> NamespaceName { get; private set; } = null!;
 
         /// <summary>
-        /// The current number of scripts in this Dispatch Namespace
+        /// The current number of scripts in this Dispatch Namespace.
         /// </summary>
         [Output("scriptCount")]
         public Output<int> ScriptCount { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the dispatch namespace
+        /// The name of the dispatch namespace.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -194,7 +194,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The name of the dispatch namespace
+        /// The name of the dispatch namespace.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? NamespaceName { get; set; }
 
         /// <summary>
-        /// The current number of scripts in this Dispatch Namespace
+        /// The current number of scripts in this Dispatch Namespace.
         /// </summary>
         [Input("scriptCount")]
         public Input<int>? ScriptCount { get; set; }

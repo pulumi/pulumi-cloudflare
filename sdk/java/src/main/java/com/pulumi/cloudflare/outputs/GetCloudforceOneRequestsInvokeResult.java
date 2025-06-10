@@ -16,10 +16,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCloudforceOneRequestsInvokeResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    private String accountIdentifier;
+    private String accountId;
+    /**
+     * @return Retrieve requests completed after this time.
+     * 
+     */
+    private @Nullable String completedAfter;
+    /**
+     * @return Retrieve requests completed before this time.
+     * 
+     */
+    private @Nullable String completedBefore;
+    /**
+     * @return Retrieve requests created after this time.
+     * 
+     */
+    private @Nullable String createdAfter;
+    /**
+     * @return Retrieve requests created before this time.
+     * 
+     */
+    private @Nullable String createdBefore;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -31,18 +51,78 @@ public final class GetCloudforceOneRequestsInvokeResult {
      */
     private @Nullable Integer maxItems;
     /**
+     * @return Page number of results.
+     * 
+     */
+    private Integer page;
+    /**
+     * @return Number of results per page.
+     * 
+     */
+    private Integer perPage;
+    /**
+     * @return Requested information from request.
+     * 
+     */
+    private @Nullable String requestType;
+    /**
      * @return The items returned by the data source
      * 
      */
     private List<GetCloudforceOneRequestsResult> results;
+    /**
+     * @return Field to sort results by.
+     * 
+     */
+    private @Nullable String sortBy;
+    /**
+     * @return Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    private @Nullable String sortOrder;
+    /**
+     * @return Request Status.
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
+     * 
+     */
+    private @Nullable String status;
 
     private GetCloudforceOneRequestsInvokeResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
+    }
+    /**
+     * @return Retrieve requests completed after this time.
+     * 
+     */
+    public Optional<String> completedAfter() {
+        return Optional.ofNullable(this.completedAfter);
+    }
+    /**
+     * @return Retrieve requests completed before this time.
+     * 
+     */
+    public Optional<String> completedBefore() {
+        return Optional.ofNullable(this.completedBefore);
+    }
+    /**
+     * @return Retrieve requests created after this time.
+     * 
+     */
+    public Optional<String> createdAfter() {
+        return Optional.ofNullable(this.createdAfter);
+    }
+    /**
+     * @return Retrieve requests created before this time.
+     * 
+     */
+    public Optional<String> createdBefore() {
+        return Optional.ofNullable(this.createdBefore);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -59,11 +139,55 @@ public final class GetCloudforceOneRequestsInvokeResult {
         return Optional.ofNullable(this.maxItems);
     }
     /**
+     * @return Page number of results.
+     * 
+     */
+    public Integer page() {
+        return this.page;
+    }
+    /**
+     * @return Number of results per page.
+     * 
+     */
+    public Integer perPage() {
+        return this.perPage;
+    }
+    /**
+     * @return Requested information from request.
+     * 
+     */
+    public Optional<String> requestType() {
+        return Optional.ofNullable(this.requestType);
+    }
+    /**
      * @return The items returned by the data source
      * 
      */
     public List<GetCloudforceOneRequestsResult> results() {
         return this.results;
+    }
+    /**
+     * @return Field to sort results by.
+     * 
+     */
+    public Optional<String> sortBy() {
+        return Optional.ofNullable(this.sortBy);
+    }
+    /**
+     * @return Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> sortOrder() {
+        return Optional.ofNullable(this.sortOrder);
+    }
+    /**
+     * @return Request Status.
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
     }
 
     public static Builder builder() {
@@ -75,25 +199,69 @@ public final class GetCloudforceOneRequestsInvokeResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountIdentifier;
+        private String accountId;
+        private @Nullable String completedAfter;
+        private @Nullable String completedBefore;
+        private @Nullable String createdAfter;
+        private @Nullable String createdBefore;
         private String id;
         private @Nullable Integer maxItems;
+        private Integer page;
+        private Integer perPage;
+        private @Nullable String requestType;
         private List<GetCloudforceOneRequestsResult> results;
+        private @Nullable String sortBy;
+        private @Nullable String sortOrder;
+        private @Nullable String status;
         public Builder() {}
         public Builder(GetCloudforceOneRequestsInvokeResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accountIdentifier = defaults.accountIdentifier;
+    	      this.accountId = defaults.accountId;
+    	      this.completedAfter = defaults.completedAfter;
+    	      this.completedBefore = defaults.completedBefore;
+    	      this.createdAfter = defaults.createdAfter;
+    	      this.createdBefore = defaults.createdBefore;
     	      this.id = defaults.id;
     	      this.maxItems = defaults.maxItems;
+    	      this.page = defaults.page;
+    	      this.perPage = defaults.perPage;
+    	      this.requestType = defaults.requestType;
     	      this.results = defaults.results;
+    	      this.sortBy = defaults.sortBy;
+    	      this.sortOrder = defaults.sortOrder;
+    	      this.status = defaults.status;
         }
 
         @CustomType.Setter
-        public Builder accountIdentifier(String accountIdentifier) {
-            if (accountIdentifier == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestsInvokeResult", "accountIdentifier");
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestsInvokeResult", "accountId");
             }
-            this.accountIdentifier = accountIdentifier;
+            this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder completedAfter(@Nullable String completedAfter) {
+
+            this.completedAfter = completedAfter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder completedBefore(@Nullable String completedBefore) {
+
+            this.completedBefore = completedBefore;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdAfter(@Nullable String createdAfter) {
+
+            this.createdAfter = createdAfter;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdBefore(@Nullable String createdBefore) {
+
+            this.createdBefore = createdBefore;
             return this;
         }
         @CustomType.Setter
@@ -111,6 +279,28 @@ public final class GetCloudforceOneRequestsInvokeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder page(Integer page) {
+            if (page == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestsInvokeResult", "page");
+            }
+            this.page = page;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder perPage(Integer perPage) {
+            if (perPage == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestsInvokeResult", "perPage");
+            }
+            this.perPage = perPage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder requestType(@Nullable String requestType) {
+
+            this.requestType = requestType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder results(List<GetCloudforceOneRequestsResult> results) {
             if (results == null) {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestsInvokeResult", "results");
@@ -121,12 +311,40 @@ public final class GetCloudforceOneRequestsInvokeResult {
         public Builder results(GetCloudforceOneRequestsResult... results) {
             return results(List.of(results));
         }
+        @CustomType.Setter
+        public Builder sortBy(@Nullable String sortBy) {
+
+            this.sortBy = sortBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sortOrder(@Nullable String sortOrder) {
+
+            this.sortOrder = sortOrder;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder status(@Nullable String status) {
+
+            this.status = status;
+            return this;
+        }
         public GetCloudforceOneRequestsInvokeResult build() {
             final var _resultValue = new GetCloudforceOneRequestsInvokeResult();
-            _resultValue.accountIdentifier = accountIdentifier;
+            _resultValue.accountId = accountId;
+            _resultValue.completedAfter = completedAfter;
+            _resultValue.completedBefore = completedBefore;
+            _resultValue.createdAfter = createdAfter;
+            _resultValue.createdBefore = createdBefore;
             _resultValue.id = id;
             _resultValue.maxItems = maxItems;
+            _resultValue.page = page;
+            _resultValue.perPage = perPage;
+            _resultValue.requestType = requestType;
             _resultValue.results = results;
+            _resultValue.sortBy = sortBy;
+            _resultValue.sortOrder = sortOrder;
+            _resultValue.status = status;
             return _resultValue;
         }
     }

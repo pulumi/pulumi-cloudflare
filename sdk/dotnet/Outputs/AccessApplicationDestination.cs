@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
-        /// Available values: "public".
+        /// Available values: "public", "private".
         /// </summary>
         public readonly string? Type;
         /// <summary>

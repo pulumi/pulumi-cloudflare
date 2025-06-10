@@ -37,14 +37,14 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {
@@ -102,7 +102,7 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zoneId Identifier
+         * @param zoneId Identifier.
          * 
          * @return builder
          * 

@@ -25,7 +25,7 @@ class WorkersForPlatformsNamespaceArgs:
         """
         The set of arguments for constructing a WorkersForPlatformsNamespace resource.
         :param pulumi.Input[builtins.str] account_id: Identifier.
-        :param pulumi.Input[builtins.str] name: The name of the dispatch namespace
+        :param pulumi.Input[builtins.str] name: The name of the dispatch namespace.
         """
         pulumi.set(__self__, "account_id", account_id)
         if name is not None:
@@ -47,7 +47,7 @@ class WorkersForPlatformsNamespaceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the dispatch namespace
+        The name of the dispatch namespace.
         """
         return pulumi.get(self, "name")
 
@@ -75,10 +75,10 @@ class _WorkersForPlatformsNamespaceState:
         :param pulumi.Input[builtins.str] created_on: When the script was created.
         :param pulumi.Input[builtins.str] modified_by: Identifier.
         :param pulumi.Input[builtins.str] modified_on: When the script was last modified.
-        :param pulumi.Input[builtins.str] name: The name of the dispatch namespace
+        :param pulumi.Input[builtins.str] name: The name of the dispatch namespace.
         :param pulumi.Input[builtins.str] namespace_id: API Resource UUID tag.
         :param pulumi.Input[builtins.str] namespace_name: Name of the Workers for Platforms dispatch namespace.
-        :param pulumi.Input[builtins.int] script_count: The current number of scripts in this Dispatch Namespace
+        :param pulumi.Input[builtins.int] script_count: The current number of scripts in this Dispatch Namespace.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -163,7 +163,7 @@ class _WorkersForPlatformsNamespaceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The name of the dispatch namespace
+        The name of the dispatch namespace.
         """
         return pulumi.get(self, "name")
 
@@ -199,7 +199,7 @@ class _WorkersForPlatformsNamespaceState:
     @pulumi.getter(name="scriptCount")
     def script_count(self) -> Optional[pulumi.Input[builtins.int]]:
         """
-        The current number of scripts in this Dispatch Namespace
+        The current number of scripts in this Dispatch Namespace.
         """
         return pulumi.get(self, "script_count")
 
@@ -243,7 +243,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] account_id: Identifier.
-        :param pulumi.Input[builtins.str] name: The name of the dispatch namespace
+        :param pulumi.Input[builtins.str] name: The name of the dispatch namespace.
         """
         ...
     @overload
@@ -340,10 +340,10 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] created_on: When the script was created.
         :param pulumi.Input[builtins.str] modified_by: Identifier.
         :param pulumi.Input[builtins.str] modified_on: When the script was last modified.
-        :param pulumi.Input[builtins.str] name: The name of the dispatch namespace
+        :param pulumi.Input[builtins.str] name: The name of the dispatch namespace.
         :param pulumi.Input[builtins.str] namespace_id: API Resource UUID tag.
         :param pulumi.Input[builtins.str] namespace_name: Name of the Workers for Platforms dispatch namespace.
-        :param pulumi.Input[builtins.int] script_count: The current number of scripts in this Dispatch Namespace
+        :param pulumi.Input[builtins.int] script_count: The current number of scripts in this Dispatch Namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -404,7 +404,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        The name of the dispatch namespace
+        The name of the dispatch namespace.
         """
         return pulumi.get(self, "name")
 
@@ -428,7 +428,7 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
     @pulumi.getter(name="scriptCount")
     def script_count(self) -> pulumi.Output[builtins.int]:
         """
-        The current number of scripts in this Dispatch Namespace
+        The current number of scripts in this Dispatch Namespace.
         """
         return pulumi.get(self, "script_count")
 

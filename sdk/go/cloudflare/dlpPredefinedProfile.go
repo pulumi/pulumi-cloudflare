@@ -82,7 +82,7 @@ type DlpPredefinedProfile struct {
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolOutput   `pulumi:"openAccess"`
 	ProfileId  pulumi.StringOutput `pulumi:"profileId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -150,7 +150,7 @@ type dlpPredefinedProfileState struct {
 	// Whether this profile can be accessed by anyone.
 	OpenAccess *bool   `pulumi:"openAccess"`
 	ProfileId  *string `pulumi:"profileId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type *string `pulumi:"type"`
 	// When the profile was lasted updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -174,7 +174,7 @@ type DlpPredefinedProfileState struct {
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
 	ProfileId  pulumi.StringPtrInput
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringPtrInput
 	// When the profile was lasted updated.
 	UpdatedAt pulumi.StringPtrInput
@@ -349,7 +349,7 @@ func (o DlpPredefinedProfileOutput) ProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.ProfileId }).(pulumi.StringOutput)
 }
 
-// Available values: "custom".
+// Available values: "custom", "predefined", "integration".
 func (o DlpPredefinedProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

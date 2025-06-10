@@ -18,36 +18,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string AbuseContactEmail;
         /// <summary>
-        /// Specifies the default nameservers to be used for new zones added to this account.
-        /// </summary>
-        public readonly string DefaultNameservers;
-        /// <summary>
         /// Indicates whether membership in this account requires that
         /// Two-Factor Authentication is enabled
         /// </summary>
         public readonly bool EnforceTwofactor;
-        /// <summary>
-        /// Indicates whether new zones should use the account-level custom
-        /// nameservers by default.
-        /// 
-        /// Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-        /// </summary>
-        public readonly bool UseAccountCustomNsByDefault;
 
         [OutputConstructor]
         private GetAccountsResultSettingsResult(
             string abuseContactEmail,
 
-            string defaultNameservers,
-
-            bool enforceTwofactor,
-
-            bool useAccountCustomNsByDefault)
+            bool enforceTwofactor)
         {
             AbuseContactEmail = abuseContactEmail;
-            DefaultNameservers = defaultNameservers;
             EnforceTwofactor = enforceTwofactor;
-            UseAccountCustomNsByDefault = useAccountCustomNsByDefault;
         }
     }
 }

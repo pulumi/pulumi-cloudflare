@@ -28,7 +28,7 @@ class GetZeroTrustDeviceDefaultProfileResult:
     """
     A collection of values returned by getZeroTrustDeviceDefaultProfile.
     """
-    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, disable_auto_fallback=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, register_interface_ip_with_dns=None, service_mode_v2=None, support_url=None, switch_locked=None, tunnel_protocol=None):
+    def __init__(__self__, account_id=None, allow_mode_switch=None, allow_updates=None, allowed_to_leave=None, auto_connect=None, captive_portal=None, default=None, disable_auto_fallback=None, enabled=None, exclude_office_ips=None, excludes=None, fallback_domains=None, gateway_unique_id=None, id=None, includes=None, register_interface_ip_with_dns=None, sccm_vpn_boundary_support=None, service_mode_v2=None, support_url=None, switch_locked=None, tunnel_protocol=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -77,6 +77,9 @@ class GetZeroTrustDeviceDefaultProfileResult:
         if register_interface_ip_with_dns and not isinstance(register_interface_ip_with_dns, bool):
             raise TypeError("Expected argument 'register_interface_ip_with_dns' to be a bool")
         pulumi.set(__self__, "register_interface_ip_with_dns", register_interface_ip_with_dns)
+        if sccm_vpn_boundary_support and not isinstance(sccm_vpn_boundary_support, bool):
+            raise TypeError("Expected argument 'sccm_vpn_boundary_support' to be a bool")
+        pulumi.set(__self__, "sccm_vpn_boundary_support", sccm_vpn_boundary_support)
         if service_mode_v2 and not isinstance(service_mode_v2, dict):
             raise TypeError("Expected argument 'service_mode_v2' to be a dict")
         pulumi.set(__self__, "service_mode_v2", service_mode_v2)
@@ -210,6 +213,14 @@ class GetZeroTrustDeviceDefaultProfileResult:
         return pulumi.get(self, "register_interface_ip_with_dns")
 
     @property
+    @pulumi.getter(name="sccmVpnBoundarySupport")
+    def sccm_vpn_boundary_support(self) -> builtins.bool:
+        """
+        Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        """
+        return pulumi.get(self, "sccm_vpn_boundary_support")
+
+    @property
     @pulumi.getter(name="serviceModeV2")
     def service_mode_v2(self) -> 'outputs.GetZeroTrustDeviceDefaultProfileServiceModeV2Result':
         return pulumi.get(self, "service_mode_v2")
@@ -261,6 +272,7 @@ class AwaitableGetZeroTrustDeviceDefaultProfileResult(GetZeroTrustDeviceDefaultP
             id=self.id,
             includes=self.includes,
             register_interface_ip_with_dns=self.register_interface_ip_with_dns,
+            sccm_vpn_boundary_support=self.sccm_vpn_boundary_support,
             service_mode_v2=self.service_mode_v2,
             support_url=self.support_url,
             switch_locked=self.switch_locked,
@@ -301,6 +313,7 @@ def get_zero_trust_device_default_profile(account_id: Optional[builtins.str] = N
         id=pulumi.get(__ret__, 'id'),
         includes=pulumi.get(__ret__, 'includes'),
         register_interface_ip_with_dns=pulumi.get(__ret__, 'register_interface_ip_with_dns'),
+        sccm_vpn_boundary_support=pulumi.get(__ret__, 'sccm_vpn_boundary_support'),
         service_mode_v2=pulumi.get(__ret__, 'service_mode_v2'),
         support_url=pulumi.get(__ret__, 'support_url'),
         switch_locked=pulumi.get(__ret__, 'switch_locked'),
@@ -338,6 +351,7 @@ def get_zero_trust_device_default_profile_output(account_id: Optional[pulumi.Inp
         id=pulumi.get(__response__, 'id'),
         includes=pulumi.get(__response__, 'includes'),
         register_interface_ip_with_dns=pulumi.get(__response__, 'register_interface_ip_with_dns'),
+        sccm_vpn_boundary_support=pulumi.get(__response__, 'sccm_vpn_boundary_support'),
         service_mode_v2=pulumi.get(__response__, 'service_mode_v2'),
         support_url=pulumi.get(__response__, 'support_url'),
         switch_locked=pulumi.get(__response__, 'switch_locked'),

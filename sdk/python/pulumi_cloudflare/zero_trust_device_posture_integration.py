@@ -33,7 +33,7 @@ class ZeroTrustDevicePostureIntegrationArgs:
         :param pulumi.Input[builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param pulumi.Input[builtins.str] name: The name of the device posture integration.
         :param pulumi.Input[builtins.str] type: The type of device posture integration.
-               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "config", config)
@@ -91,7 +91,7 @@ class ZeroTrustDevicePostureIntegrationArgs:
     def type(self) -> pulumi.Input[builtins.str]:
         """
         The type of device posture integration.
-        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         """
         return pulumi.get(self, "type")
 
@@ -114,7 +114,7 @@ class _ZeroTrustDevicePostureIntegrationState:
         :param pulumi.Input[builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param pulumi.Input[builtins.str] name: The name of the device posture integration.
         :param pulumi.Input[builtins.str] type: The type of device posture integration.
-               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -177,7 +177,7 @@ class _ZeroTrustDevicePostureIntegrationState:
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The type of device posture integration.
-        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         """
         return pulumi.get(self, "type")
 
@@ -213,7 +213,7 @@ class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param pulumi.Input[builtins.str] name: The name of the device posture integration.
         :param pulumi.Input[builtins.str] type: The type of device posture integration.
-               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         """
         ...
     @overload
@@ -302,7 +302,7 @@ class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] interval: The interval between each posture check with the third-party API. Use `m` for minutes (e.g. `5m`) and `h` for hours (e.g. `12h`).
         :param pulumi.Input[builtins.str] name: The name of the device posture integration.
         :param pulumi.Input[builtins.str] type: The type of device posture integration.
-               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+               Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -349,7 +349,7 @@ class ZeroTrustDevicePostureIntegration(pulumi.CustomResource):
     def type(self) -> pulumi.Output[builtins.str]:
         """
         The type of device posture integration.
-        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+        Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         """
         return pulumi.get(self, "type")
 

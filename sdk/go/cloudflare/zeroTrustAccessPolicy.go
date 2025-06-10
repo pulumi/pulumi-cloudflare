@@ -71,9 +71,6 @@ func NewZeroTrustAccessPolicy(ctx *pulumi.Context,
 	if args.Decision == nil {
 		return nil, errors.New("invalid value for required argument 'Decision'")
 	}
-	if args.Includes == nil {
-		return nil, errors.New("invalid value for required argument 'Includes'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}

@@ -18,7 +18,7 @@ public final class GetEmailRoutingRulesResultMatcher {
     private String field;
     /**
      * @return Type of matcher.
-     * Available values: &#34;literal&#34;.
+     * Available values: &#34;all&#34;, &#34;literal&#34;.
      * 
      */
     private String type;
@@ -39,7 +39,7 @@ public final class GetEmailRoutingRulesResultMatcher {
     }
     /**
      * @return Type of matcher.
-     * Available values: &#34;literal&#34;.
+     * Available values: &#34;all&#34;, &#34;literal&#34;.
      * 
      */
     public String type() {

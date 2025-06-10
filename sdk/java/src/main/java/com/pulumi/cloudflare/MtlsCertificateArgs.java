@@ -78,14 +78,14 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The private key for the certificate
+     * The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust&#39;s block page.
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return The private key for the certificate
+     * @return The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust&#39;s block page.
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -205,7 +205,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privateKey The private key for the certificate
+         * @param privateKey The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust&#39;s block page.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privateKey The private key for the certificate
+         * @param privateKey The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust&#39;s block page.
          * 
          * @return builder
          * 

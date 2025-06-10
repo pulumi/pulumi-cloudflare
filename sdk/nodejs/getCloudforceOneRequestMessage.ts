@@ -12,16 +12,28 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequestMessage = cloudflare.getCloudforceOneRequestMessage({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     requestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     page: 0,
+ *     perPage: 10,
+ *     after: "2022-04-01T05:20:00Z",
+ *     before: "2024-01-01T00:00:00Z",
+ *     sortBy: "created",
+ *     sortOrder: "asc",
  * });
  * ```
  */
 export function getCloudforceOneRequestMessage(args: GetCloudforceOneRequestMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudforceOneRequestMessageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage", {
-        "accountIdentifier": args.accountIdentifier,
-        "requestIdentifier": args.requestIdentifier,
+        "accountId": args.accountId,
+        "after": args.after,
+        "before": args.before,
+        "page": args.page,
+        "perPage": args.perPage,
+        "requestId": args.requestId,
+        "sortBy": args.sortBy,
+        "sortOrder": args.sortOrder,
     }, opts);
 }
 
@@ -30,13 +42,38 @@ export function getCloudforceOneRequestMessage(args: GetCloudforceOneRequestMess
  */
 export interface GetCloudforceOneRequestMessageArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: string;
+    accountId: string;
     /**
-     * UUID
+     * Retrieve mes  ges created after this time.
      */
-    requestIdentifier: string;
+    after?: string;
+    /**
+     * Retrieve messages created before this time.
+     */
+    before?: string;
+    /**
+     * Page number of results.
+     */
+    page: number;
+    /**
+     * Number of results per page.
+     */
+    perPage: number;
+    /**
+     * UUID.
+     */
+    requestId: string;
+    /**
+     * Field to sort results by.
+     */
+    sortBy?: string;
+    /**
+     * Sort order (asc or desc).
+     * Available values: "asc", "desc".
+     */
+    sortOrder?: string;
 }
 
 /**
@@ -44,35 +81,60 @@ export interface GetCloudforceOneRequestMessageArgs {
  */
 export interface GetCloudforceOneRequestMessageResult {
     /**
-     * Identifier
+     * Identifier.
      */
-    readonly accountIdentifier: string;
+    readonly accountId: string;
     /**
-     * Author of message
+     * Retrieve mes  ges created after this time.
+     */
+    readonly after?: string;
+    /**
+     * Author of message.
      */
     readonly author: string;
     /**
-     * Content of message
+     * Retrieve messages created before this time.
+     */
+    readonly before?: string;
+    /**
+     * Content of message.
      */
     readonly content: string;
     /**
-     * Message creation time
+     * Defines the message creation time.
      */
     readonly created: string;
     /**
-     * Message ID
+     * Message ID.
      */
     readonly id: number;
     /**
-     * Whether the message is a follow-on request
+     * Whether the message is a follow-on request.
      */
     readonly isFollowOnRequest: boolean;
     /**
-     * UUID
+     * Page number of results.
      */
-    readonly requestIdentifier: string;
+    readonly page: number;
     /**
-     * Message last updated time
+     * Number of results per page.
+     */
+    readonly perPage: number;
+    /**
+     * UUID.
+     */
+    readonly requestId: string;
+    /**
+     * Field to sort results by.
+     */
+    readonly sortBy?: string;
+    /**
+     * Sort order (asc or desc).
+     * Available values: "asc", "desc".
+     */
+    readonly sortOrder?: string;
+    /**
+     * Defines the message last updated time.
      */
     readonly updated: string;
 }
@@ -84,16 +146,28 @@ export interface GetCloudforceOneRequestMessageResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleCloudforceOneRequestMessage = cloudflare.getCloudforceOneRequestMessage({
- *     accountIdentifier: "023e105f4ecef8ad9ca31a8372d0c353",
- *     requestIdentifier: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     requestId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+ *     page: 0,
+ *     perPage: 10,
+ *     after: "2022-04-01T05:20:00Z",
+ *     before: "2024-01-01T00:00:00Z",
+ *     sortBy: "created",
+ *     sortOrder: "asc",
  * });
  * ```
  */
 export function getCloudforceOneRequestMessageOutput(args: GetCloudforceOneRequestMessageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudforceOneRequestMessageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getCloudforceOneRequestMessage:getCloudforceOneRequestMessage", {
-        "accountIdentifier": args.accountIdentifier,
-        "requestIdentifier": args.requestIdentifier,
+        "accountId": args.accountId,
+        "after": args.after,
+        "before": args.before,
+        "page": args.page,
+        "perPage": args.perPage,
+        "requestId": args.requestId,
+        "sortBy": args.sortBy,
+        "sortOrder": args.sortOrder,
     }, opts);
 }
 
@@ -102,11 +176,36 @@ export function getCloudforceOneRequestMessageOutput(args: GetCloudforceOneReque
  */
 export interface GetCloudforceOneRequestMessageOutputArgs {
     /**
-     * Identifier
+     * Identifier.
      */
-    accountIdentifier: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
-     * UUID
+     * Retrieve mes  ges created after this time.
      */
-    requestIdentifier: pulumi.Input<string>;
+    after?: pulumi.Input<string>;
+    /**
+     * Retrieve messages created before this time.
+     */
+    before?: pulumi.Input<string>;
+    /**
+     * Page number of results.
+     */
+    page: pulumi.Input<number>;
+    /**
+     * Number of results per page.
+     */
+    perPage: pulumi.Input<number>;
+    /**
+     * UUID.
+     */
+    requestId: pulumi.Input<string>;
+    /**
+     * Field to sort results by.
+     */
+    sortBy?: pulumi.Input<string>;
+    /**
+     * Sort order (asc or desc).
+     * Available values: "asc", "desc".
+     */
+    sortOrder?: pulumi.Input<string>;
 }

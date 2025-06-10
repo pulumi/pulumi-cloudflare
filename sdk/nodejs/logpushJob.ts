@@ -65,6 +65,10 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly errorMessage!: pulumi.Output<string>;
     /**
+     * The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+     */
+    public readonly filter!: pulumi.Output<string | undefined>;
+    /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
      *
@@ -75,7 +79,7 @@ export class LogpushJob extends pulumi.CustomResource {
      * The kind parameter (optional) is used to differentiate between Logpush and Edge Log Delivery jobs. Currently, Edge Log Delivery is only supported for the `httpRequests` dataset.
      * Available values: "edge".
      */
-    public readonly kind!: pulumi.Output<string | undefined>;
+    public readonly kind!: pulumi.Output<string>;
     /**
      * Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
      */
@@ -137,6 +141,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["destinationConf"] = state ? state.destinationConf : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["errorMessage"] = state ? state.errorMessage : undefined;
+            resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["frequency"] = state ? state.frequency : undefined;
             resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["lastComplete"] = state ? state.lastComplete : undefined;
@@ -158,6 +163,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["dataset"] = args ? args.dataset : undefined;
             resourceInputs["destinationConf"] = args ? args.destinationConf : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["frequency"] = args ? args.frequency : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["logpullOptions"] = args ? args.logpullOptions : undefined;
@@ -204,6 +210,10 @@ export interface LogpushJobState {
      * If not null, the job is currently failing. Failures are usually repetitive (example: no permissions to write to destination bucket). Only the last failure is recorded. On successful execution of a job the error*message and last*error are set to null.
      */
     errorMessage?: pulumi.Input<string>;
+    /**
+     * The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+     */
+    filter?: pulumi.Input<string>;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".
@@ -281,6 +291,10 @@ export interface LogpushJobArgs {
      * Flag that indicates if the job is enabled.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+     */
+    filter?: pulumi.Input<string>;
     /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: "high", "low".

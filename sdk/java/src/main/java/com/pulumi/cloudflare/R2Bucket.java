@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -91,14 +90,16 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
         return this.creationDate;
     }
     /**
-     * Jurisdiction of the bucket
+     * Jurisdiction where objects in this bucket are guaranteed to be stored.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
      * 
      */
     @Export(name="jurisdiction", refs={String.class}, tree="[0]")
     private Output<String> jurisdiction;
 
     /**
-     * @return Jurisdiction of the bucket
+     * @return Jurisdiction where objects in this bucket are guaranteed to be stored.
+     * Available values: &#34;default&#34;, &#34;eu&#34;, &#34;fedramp&#34;.
      * 
      */
     public Output<String> jurisdiction() {
@@ -110,15 +111,15 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> location;
+    private Output<String> location;
 
     /**
      * @return Location of the bucket.
      * Available values: &#34;apac&#34;, &#34;eeur&#34;, &#34;enam&#34;, &#34;weur&#34;, &#34;wnam&#34;, &#34;oc&#34;.
      * 
      */
-    public Output<Optional<String>> location() {
-        return Codegen.optional(this.location);
+    public Output<String> location() {
+        return this.location;
     }
     /**
      * Name of the bucket.

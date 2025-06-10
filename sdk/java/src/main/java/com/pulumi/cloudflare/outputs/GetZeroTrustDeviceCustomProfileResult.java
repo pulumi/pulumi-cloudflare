@@ -97,7 +97,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      */
     private Double lanAllowSubnetSize;
     /**
-     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
     private String match;
@@ -117,6 +117,11 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      * 
      */
     private Boolean registerInterfaceIpWithDns;
+    /**
+     * @return Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    private Boolean sccmVpnBoundarySupport;
     private GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2;
     /**
      * @return The URL to launch when the Send Feedback button is clicked.
@@ -251,7 +256,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         return this.lanAllowSubnetSize;
     }
     /**
-     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
     public String match() {
@@ -280,6 +285,13 @@ public final class GetZeroTrustDeviceCustomProfileResult {
      */
     public Boolean registerInterfaceIpWithDns() {
         return this.registerInterfaceIpWithDns;
+    }
+    /**
+     * @return Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    public Boolean sccmVpnBoundarySupport() {
+        return this.sccmVpnBoundarySupport;
     }
     public GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2() {
         return this.serviceModeV2;
@@ -341,6 +353,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
         private String policyId;
         private Double precedence;
         private Boolean registerInterfaceIpWithDns;
+        private Boolean sccmVpnBoundarySupport;
         private GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2;
         private String supportUrl;
         private Boolean switchLocked;
@@ -372,6 +385,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
     	      this.policyId = defaults.policyId;
     	      this.precedence = defaults.precedence;
     	      this.registerInterfaceIpWithDns = defaults.registerInterfaceIpWithDns;
+    	      this.sccmVpnBoundarySupport = defaults.sccmVpnBoundarySupport;
     	      this.serviceModeV2 = defaults.serviceModeV2;
     	      this.supportUrl = defaults.supportUrl;
     	      this.switchLocked = defaults.switchLocked;
@@ -573,6 +587,14 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sccmVpnBoundarySupport(Boolean sccmVpnBoundarySupport) {
+            if (sccmVpnBoundarySupport == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "sccmVpnBoundarySupport");
+            }
+            this.sccmVpnBoundarySupport = sccmVpnBoundarySupport;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceModeV2(GetZeroTrustDeviceCustomProfileServiceModeV2 serviceModeV2) {
             if (serviceModeV2 == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDeviceCustomProfileResult", "serviceModeV2");
@@ -640,6 +662,7 @@ public final class GetZeroTrustDeviceCustomProfileResult {
             _resultValue.policyId = policyId;
             _resultValue.precedence = precedence;
             _resultValue.registerInterfaceIpWithDns = registerInterfaceIpWithDns;
+            _resultValue.sccmVpnBoundarySupport = sccmVpnBoundarySupport;
             _resultValue.serviceModeV2 = serviceModeV2;
             _resultValue.supportUrl = supportUrl;
             _resultValue.switchLocked = switchLocked;

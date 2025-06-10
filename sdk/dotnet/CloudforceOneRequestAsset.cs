@@ -22,8 +22,8 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var exampleCloudforceOneRequestAsset = new Cloudflare.CloudforceOneRequestAsset("example_cloudforce_one_request_asset", new()
     ///     {
-    ///         AccountIdentifier = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///         RequestIdentifier = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+    ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+    ///         RequestId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
     ///         Page = 0,
     ///         PerPage = 10,
     ///     });
@@ -34,62 +34,62 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '&lt;account_identifier&gt;/&lt;request_identifier&gt;/&lt;asset_identifer&gt;'
+    /// $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '&lt;account_id&gt;/&lt;request_id&gt;/&lt;asset_id&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset")]
     public partial class CloudforceOneRequestAsset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Output("accountIdentifier")]
-        public Output<string> AccountIdentifier { get; private set; } = null!;
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Asset creation time
+        /// Defines the asset creation time.
         /// </summary>
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// Asset description
+        /// Asset description.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Asset file type
+        /// Asset file type.
         /// </summary>
         [Output("fileType")]
         public Output<string> FileType { get; private set; } = null!;
 
         /// <summary>
-        /// Asset name
+        /// Asset name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Page number of results
+        /// Page number of results.
         /// </summary>
         [Output("page")]
         public Output<int> Page { get; private set; } = null!;
 
         /// <summary>
-        /// Number of results per page
+        /// Number of results per page.
         /// </summary>
         [Output("perPage")]
         public Output<int> PerPage { get; private set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Output("requestIdentifier")]
-        public Output<string> RequestIdentifier { get; private set; } = null!;
+        [Output("requestId")]
+        public Output<string> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// Asset file to upload
+        /// Asset file to upload.
         /// </summary>
         [Output("source")]
         public Output<string?> Source { get; private set; } = null!;
@@ -141,31 +141,31 @@ namespace Pulumi.Cloudflare
     public sealed class CloudforceOneRequestAssetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier", required: true)]
-        public Input<string> AccountIdentifier { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Page number of results
+        /// Page number of results.
         /// </summary>
         [Input("page", required: true)]
         public Input<int> Page { get; set; } = null!;
 
         /// <summary>
-        /// Number of results per page
+        /// Number of results per page.
         /// </summary>
         [Input("perPage", required: true)]
         public Input<int> PerPage { get; set; } = null!;
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("requestIdentifier", required: true)]
-        public Input<string> RequestIdentifier { get; set; } = null!;
+        [Input("requestId", required: true)]
+        public Input<string> RequestId { get; set; } = null!;
 
         /// <summary>
-        /// Asset file to upload
+        /// Asset file to upload.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -179,55 +179,55 @@ namespace Pulumi.Cloudflare
     public sealed class CloudforceOneRequestAssetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
-        [Input("accountIdentifier")]
-        public Input<string>? AccountIdentifier { get; set; }
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Asset creation time
+        /// Defines the asset creation time.
         /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// Asset description
+        /// Asset description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Asset file type
+        /// Asset file type.
         /// </summary>
         [Input("fileType")]
         public Input<string>? FileType { get; set; }
 
         /// <summary>
-        /// Asset name
+        /// Asset name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Page number of results
+        /// Page number of results.
         /// </summary>
         [Input("page")]
         public Input<int>? Page { get; set; }
 
         /// <summary>
-        /// Number of results per page
+        /// Number of results per page.
         /// </summary>
         [Input("perPage")]
         public Input<int>? PerPage { get; set; }
 
         /// <summary>
-        /// UUID
+        /// UUID.
         /// </summary>
-        [Input("requestIdentifier")]
-        public Input<string>? RequestIdentifier { get; set; }
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// Asset file to upload
+        /// Asset file to upload.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

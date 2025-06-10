@@ -12,8 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class WorkersCronTriggerScheduleArgs : global::Pulumi.ResourceArgs
     {
+        [Input("createdOn")]
+        public Input<string>? CreatedOn { get; set; }
+
         [Input("cron", required: true)]
         public Input<string> Cron { get; set; } = null!;
+
+        [Input("modifiedOn")]
+        public Input<string>? ModifiedOn { get; set; }
 
         public WorkersCronTriggerScheduleArgs()
         {

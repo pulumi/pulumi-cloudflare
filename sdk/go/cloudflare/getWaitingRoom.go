@@ -50,7 +50,7 @@ func LookupWaitingRoom(ctx *pulumi.Context, args *LookupWaitingRoomArgs, opts ..
 // A collection of arguments for invoking getWaitingRoom.
 type LookupWaitingRoomArgs struct {
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -87,7 +87,7 @@ type LookupWaitingRoomResult struct {
 	TurnstileAction            string   `pulumi:"turnstileAction"`
 	TurnstileMode              string   `pulumi:"turnstileMode"`
 	WaitingRoomId              *string  `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -103,7 +103,7 @@ func LookupWaitingRoomOutput(ctx *pulumi.Context, args LookupWaitingRoomOutputAr
 // A collection of arguments for invoking getWaitingRoom.
 type LookupWaitingRoomOutputArgs struct {
 	WaitingRoomId pulumi.StringPtrInput `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -238,7 +238,7 @@ func (o LookupWaitingRoomResultOutput) WaitingRoomId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWaitingRoomResult) *string { return v.WaitingRoomId }).(pulumi.StringPtrOutput)
 }
 
-// Identifier
+// Identifier.
 func (o LookupWaitingRoomResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWaitingRoomResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

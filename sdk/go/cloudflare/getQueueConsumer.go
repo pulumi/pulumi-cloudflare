@@ -71,7 +71,7 @@ type LookupQueueConsumerResult struct {
 	// Name of a Worker
 	ScriptName string                   `pulumi:"scriptName"`
 	Settings   GetQueueConsumerSettings `pulumi:"settings"`
-	// Available values: "worker".
+	// Available values: "worker", "httpPull".
 	Type string `pulumi:"type"`
 }
 
@@ -149,7 +149,7 @@ func (o LookupQueueConsumerResultOutput) Settings() GetQueueConsumerSettingsOutp
 	return o.ApplyT(func(v LookupQueueConsumerResult) GetQueueConsumerSettings { return v.Settings }).(GetQueueConsumerSettingsOutput)
 }
 
-// Available values: "worker".
+// Available values: "worker", "httpPull".
 func (o LookupQueueConsumerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupQueueConsumerResult) string { return v.Type }).(pulumi.StringOutput)
 }

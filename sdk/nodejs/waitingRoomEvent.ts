@@ -132,7 +132,7 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
     public readonly turnstileMode!: pulumi.Output<string | undefined>;
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -280,7 +280,7 @@ export interface WaitingRoomEventState {
     turnstileMode?: pulumi.Input<string>;
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -353,7 +353,7 @@ export interface WaitingRoomEventArgs {
     turnstileMode?: pulumi.Input<string>;
     waitingRoomId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

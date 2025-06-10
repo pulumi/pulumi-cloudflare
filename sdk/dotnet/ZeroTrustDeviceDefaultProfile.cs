@@ -49,6 +49,7 @@ namespace Pulumi.Cloudflare
     ///         LanAllowMinutes = 30,
     ///         LanAllowSubnetSize = 24,
     ///         RegisterInterfaceIpWithDns = true,
+    ///         SccmVpnBoundarySupport = false,
     ///         ServiceModeV2 = new Cloudflare.Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args
     ///         {
     ///             Mode = "proxy",
@@ -163,6 +164,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("registerInterfaceIpWithDns")]
         public Output<bool?> RegisterInterfaceIpWithDns { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        /// </summary>
+        [Output("sccmVpnBoundarySupport")]
+        public Output<bool?> SccmVpnBoundarySupport { get; private set; } = null!;
 
         [Output("serviceModeV2")]
         public Output<Outputs.ZeroTrustDeviceDefaultProfileServiceModeV2?> ServiceModeV2 { get; private set; } = null!;
@@ -323,6 +330,12 @@ namespace Pulumi.Cloudflare
         [Input("registerInterfaceIpWithDns")]
         public Input<bool>? RegisterInterfaceIpWithDns { get; set; }
 
+        /// <summary>
+        /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        /// </summary>
+        [Input("sccmVpnBoundarySupport")]
+        public Input<bool>? SccmVpnBoundarySupport { get; set; }
+
         [Input("serviceModeV2")]
         public Input<Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2Args>? ServiceModeV2 { get; set; }
 
@@ -461,6 +474,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("registerInterfaceIpWithDns")]
         public Input<bool>? RegisterInterfaceIpWithDns { get; set; }
+
+        /// <summary>
+        /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        /// </summary>
+        [Input("sccmVpnBoundarySupport")]
+        public Input<bool>? SccmVpnBoundarySupport { get; set; }
 
         [Input("serviceModeV2")]
         public Input<Inputs.ZeroTrustDeviceDefaultProfileServiceModeV2GetArgs>? ServiceModeV2 { get; set; }

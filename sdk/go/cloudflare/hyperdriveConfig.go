@@ -22,12 +22,12 @@ import (
 type HyperdriveConfig struct {
 	pulumi.CustomResourceState
 
-	// Identifier
+	// Define configurations using a unique string identifier.
 	AccountId pulumi.StringOutput              `pulumi:"accountId"`
 	Caching   HyperdriveConfigCachingPtrOutput `pulumi:"caching"`
-	// When the Hyperdrive configuration was created.
+	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// When the Hyperdrive configuration was last modified.
+	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringOutput           `pulumi:"modifiedOn"`
 	Mtls       HyperdriveConfigMtlsPtrOutput `pulumi:"mtls"`
 	Name       pulumi.StringOutput           `pulumi:"name"`
@@ -73,12 +73,12 @@ func GetHyperdriveConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HyperdriveConfig resources.
 type hyperdriveConfigState struct {
-	// Identifier
+	// Define configurations using a unique string identifier.
 	AccountId *string                  `pulumi:"accountId"`
 	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
-	// When the Hyperdrive configuration was created.
+	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn *string `pulumi:"createdOn"`
-	// When the Hyperdrive configuration was last modified.
+	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn *string                 `pulumi:"modifiedOn"`
 	Mtls       *HyperdriveConfigMtls   `pulumi:"mtls"`
 	Name       *string                 `pulumi:"name"`
@@ -86,12 +86,12 @@ type hyperdriveConfigState struct {
 }
 
 type HyperdriveConfigState struct {
-	// Identifier
+	// Define configurations using a unique string identifier.
 	AccountId pulumi.StringPtrInput
 	Caching   HyperdriveConfigCachingPtrInput
-	// When the Hyperdrive configuration was created.
+	// Defines the creation time of the Hyperdrive configuration.
 	CreatedOn pulumi.StringPtrInput
-	// When the Hyperdrive configuration was last modified.
+	// Defines the last modified time of the Hyperdrive configuration.
 	ModifiedOn pulumi.StringPtrInput
 	Mtls       HyperdriveConfigMtlsPtrInput
 	Name       pulumi.StringPtrInput
@@ -103,7 +103,7 @@ func (HyperdriveConfigState) ElementType() reflect.Type {
 }
 
 type hyperdriveConfigArgs struct {
-	// Identifier
+	// Define configurations using a unique string identifier.
 	AccountId string                   `pulumi:"accountId"`
 	Caching   *HyperdriveConfigCaching `pulumi:"caching"`
 	Mtls      *HyperdriveConfigMtls    `pulumi:"mtls"`
@@ -113,7 +113,7 @@ type hyperdriveConfigArgs struct {
 
 // The set of arguments for constructing a HyperdriveConfig resource.
 type HyperdriveConfigArgs struct {
-	// Identifier
+	// Define configurations using a unique string identifier.
 	AccountId pulumi.StringInput
 	Caching   HyperdriveConfigCachingPtrInput
 	Mtls      HyperdriveConfigMtlsPtrInput
@@ -208,7 +208,7 @@ func (o HyperdriveConfigOutput) ToHyperdriveConfigOutputWithContext(ctx context.
 	return o
 }
 
-// Identifier
+// Define configurations using a unique string identifier.
 func (o HyperdriveConfigOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -217,12 +217,12 @@ func (o HyperdriveConfigOutput) Caching() HyperdriveConfigCachingPtrOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) HyperdriveConfigCachingPtrOutput { return v.Caching }).(HyperdriveConfigCachingPtrOutput)
 }
 
-// When the Hyperdrive configuration was created.
+// Defines the creation time of the Hyperdrive configuration.
 func (o HyperdriveConfigOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// When the Hyperdrive configuration was last modified.
+// Defines the last modified time of the Hyperdrive configuration.
 func (o HyperdriveConfigOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *HyperdriveConfig) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }

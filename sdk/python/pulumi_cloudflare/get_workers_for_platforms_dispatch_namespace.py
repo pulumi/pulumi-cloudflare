@@ -135,7 +135,7 @@ class GetWorkersForPlatformsDispatchNamespaceResult:
     @pulumi.getter(name="scriptCount")
     def script_count(self) -> builtins.int:
         """
-        The current number of scripts in this Dispatch Namespace
+        The current number of scripts in this Dispatch Namespace.
         """
         return pulumi.get(self, "script_count")
 

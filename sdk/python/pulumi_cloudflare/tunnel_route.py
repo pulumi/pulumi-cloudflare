@@ -435,7 +435,7 @@ class TunnelRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="virtualNetworkId")
-    def virtual_network_id(self) -> pulumi.Output[Optional[builtins.str]]:
+    def virtual_network_id(self) -> pulumi.Output[builtins.str]:
         """
         UUID of the virtual network.
         """

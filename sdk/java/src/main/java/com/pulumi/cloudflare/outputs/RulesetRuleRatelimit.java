@@ -32,7 +32,6 @@ public final class RulesetRuleRatelimit {
     private @Nullable Integer mitigationTimeout;
     /**
      * @return Period in seconds over which the counter is being incremented.
-     * Available values: 10, 60, 600, 3600.
      * 
      */
     private Integer period;
@@ -81,7 +80,6 @@ public final class RulesetRuleRatelimit {
     }
     /**
      * @return Period in seconds over which the counter is being incremented.
-     * Available values: 10, 60, 600, 3600.
      * 
      */
     public Integer period() {

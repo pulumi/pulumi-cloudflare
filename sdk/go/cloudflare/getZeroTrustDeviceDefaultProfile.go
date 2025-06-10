@@ -81,8 +81,10 @@ type LookupZeroTrustDeviceDefaultProfileResult struct {
 	// List of routes included in the WARP client's tunnel.
 	Includes []GetZeroTrustDeviceDefaultProfileInclude `pulumi:"includes"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
-	RegisterInterfaceIpWithDns bool                                          `pulumi:"registerInterfaceIpWithDns"`
-	ServiceModeV2              GetZeroTrustDeviceDefaultProfileServiceModeV2 `pulumi:"serviceModeV2"`
+	RegisterInterfaceIpWithDns bool `pulumi:"registerInterfaceIpWithDns"`
+	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+	SccmVpnBoundarySupport bool                                          `pulumi:"sccmVpnBoundarySupport"`
+	ServiceModeV2          GetZeroTrustDeviceDefaultProfileServiceModeV2 `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
 	SupportUrl string `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
@@ -205,6 +207,11 @@ func (o LookupZeroTrustDeviceDefaultProfileResultOutput) Includes() GetZeroTrust
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
 func (o LookupZeroTrustDeviceDefaultProfileResultOutput) RegisterInterfaceIpWithDns() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) bool { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolOutput)
+}
+
+// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+func (o LookupZeroTrustDeviceDefaultProfileResultOutput) SccmVpnBoundarySupport() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupZeroTrustDeviceDefaultProfileResult) bool { return v.SccmVpnBoundarySupport }).(pulumi.BoolOutput)
 }
 
 func (o LookupZeroTrustDeviceDefaultProfileResultOutput) ServiceModeV2() GetZeroTrustDeviceDefaultProfileServiceModeV2Output {

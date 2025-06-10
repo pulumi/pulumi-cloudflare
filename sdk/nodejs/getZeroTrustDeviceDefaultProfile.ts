@@ -91,6 +91,10 @@ export interface GetZeroTrustDeviceDefaultProfileResult {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     readonly registerInterfaceIpWithDns: boolean;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    readonly sccmVpnBoundarySupport: boolean;
     readonly serviceModeV2: outputs.GetZeroTrustDeviceDefaultProfileServiceModeV2;
     /**
      * The URL to launch when the Send Feedback button is clicked.
