@@ -33,7 +33,7 @@ public final class GetZeroTrustAccessApplicationsResultScimConfigAuthentication 
     private String password;
     /**
      * @return The authentication scheme to use when making SCIM requests to this application.
-     * Available values: &#34;httpbasic&#34;.
+     * Available values: &#34;httpbasic&#34;, &#34;oauthbearertoken&#34;, &#34;oauth2&#34;, &#34;access*service*token&#34;.
      * 
      */
     private String scheme;
@@ -89,7 +89,7 @@ public final class GetZeroTrustAccessApplicationsResultScimConfigAuthentication 
     }
     /**
      * @return The authentication scheme to use when making SCIM requests to this application.
-     * Available values: &#34;httpbasic&#34;.
+     * Available values: &#34;httpbasic&#34;, &#34;oauthbearertoken&#34;, &#34;oauth2&#34;, &#34;access*service*token&#34;.
      * 
      */
     public String scheme() {

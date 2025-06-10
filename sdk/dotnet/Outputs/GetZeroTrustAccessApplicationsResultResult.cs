@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool ServiceAuth401Redirect;
         /// <summary>
-        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h.
+        /// The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications.
         /// </summary>
         public readonly string SessionDuration;
         /// <summary>

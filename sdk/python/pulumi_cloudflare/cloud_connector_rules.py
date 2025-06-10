@@ -120,6 +120,12 @@ class CloudConnectorRules(pulumi.CustomResource):
             }])
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/cloudConnectorRules:CloudConnectorRules example '<zone_id>'
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] zone_id: Identifier.
@@ -149,6 +155,12 @@ class CloudConnectorRules(pulumi.CustomResource):
                 },
                 "provider": "aws_s3",
             }])
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/cloudConnectorRules:CloudConnectorRules example '<zone_id>'
         ```
 
         :param str resource_name: The name of the resource.

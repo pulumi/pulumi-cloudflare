@@ -74,8 +74,8 @@ public final class GetTurnstileWidgetResult {
      */
     private Boolean offlabel;
     /**
-     * @return Region where this widget can be used.
-     * Available values: &#34;world&#34;.
+     * @return Region where this widget can be used. This cannot be changed after creation.
+     * Available values: &#34;world&#34;, &#34;china&#34;.
      * 
      */
     private String region;
@@ -174,8 +174,8 @@ public final class GetTurnstileWidgetResult {
         return this.offlabel;
     }
     /**
-     * @return Region where this widget can be used.
-     * Available values: &#34;world&#34;.
+     * @return Region where this widget can be used. This cannot be changed after creation.
+     * Available values: &#34;world&#34;, &#34;china&#34;.
      * 
      */
     public String region() {

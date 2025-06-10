@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Ips;
         /// <summary>
         /// The type of edge IP configuration specified. Dynamically allocated edge IPs use Spectrum anycast IPs in accordance with the connectivity you specify. Only valid with CNAME DNS names.
-        /// Available values: "dynamic".
+        /// Available values: "dynamic", "static".
         /// </summary>
         public readonly string Type;
 

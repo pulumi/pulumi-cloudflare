@@ -88,7 +88,7 @@ namespace Pulumi.Cloudflare
         public string WaitingRoomId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
         public Input<string> WaitingRoomId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         public readonly string Version;
         public readonly string WaitingRoomId;
         /// <summary>
-        /// Identifier
+        /// Identifier.
         /// </summary>
         public readonly string ZoneId;
 

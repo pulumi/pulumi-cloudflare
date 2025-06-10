@@ -75,7 +75,7 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The name of the dispatch namespace
+     * The name of the dispatch namespace.
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
@@ -87,7 +87,7 @@ export class WorkersForPlatformsNamespace extends pulumi.CustomResource {
      */
     public /*out*/ readonly namespaceName!: pulumi.Output<string>;
     /**
-     * The current number of scripts in this Dispatch Namespace
+     * The current number of scripts in this Dispatch Namespace.
      */
     public /*out*/ readonly scriptCount!: pulumi.Output<number>;
 
@@ -163,7 +163,7 @@ export interface WorkersForPlatformsNamespaceState {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The name of the dispatch namespace
+     * The name of the dispatch namespace.
      */
     name?: pulumi.Input<string>;
     /**
@@ -175,7 +175,7 @@ export interface WorkersForPlatformsNamespaceState {
      */
     namespaceName?: pulumi.Input<string>;
     /**
-     * The current number of scripts in this Dispatch Namespace
+     * The current number of scripts in this Dispatch Namespace.
      */
     scriptCount?: pulumi.Input<number>;
 }
@@ -189,7 +189,7 @@ export interface WorkersForPlatformsNamespaceArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * The name of the dispatch namespace
+     * The name of the dispatch namespace.
      */
     name?: pulumi.Input<string>;
 }

@@ -33,6 +33,7 @@ import * as utilities from "./utilities";
  *     lanAllowMinutes: 30,
  *     lanAllowSubnetSize: 24,
  *     registerInterfaceIpWithDns: true,
+ *     sccmVpnBoundarySupport: false,
  *     serviceModeV2: {
  *         mode: "proxy",
  *         port: 3000,
@@ -136,6 +137,10 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     public readonly registerInterfaceIpWithDns!: pulumi.Output<boolean | undefined>;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    public readonly sccmVpnBoundarySupport!: pulumi.Output<boolean | undefined>;
     public readonly serviceModeV2!: pulumi.Output<outputs.ZeroTrustDeviceDefaultProfileServiceModeV2 | undefined>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
@@ -180,6 +185,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["lanAllowMinutes"] = state ? state.lanAllowMinutes : undefined;
             resourceInputs["lanAllowSubnetSize"] = state ? state.lanAllowSubnetSize : undefined;
             resourceInputs["registerInterfaceIpWithDns"] = state ? state.registerInterfaceIpWithDns : undefined;
+            resourceInputs["sccmVpnBoundarySupport"] = state ? state.sccmVpnBoundarySupport : undefined;
             resourceInputs["serviceModeV2"] = state ? state.serviceModeV2 : undefined;
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
             resourceInputs["switchLocked"] = state ? state.switchLocked : undefined;
@@ -202,6 +208,7 @@ export class ZeroTrustDeviceDefaultProfile extends pulumi.CustomResource {
             resourceInputs["lanAllowMinutes"] = args ? args.lanAllowMinutes : undefined;
             resourceInputs["lanAllowSubnetSize"] = args ? args.lanAllowSubnetSize : undefined;
             resourceInputs["registerInterfaceIpWithDns"] = args ? args.registerInterfaceIpWithDns : undefined;
+            resourceInputs["sccmVpnBoundarySupport"] = args ? args.sccmVpnBoundarySupport : undefined;
             resourceInputs["serviceModeV2"] = args ? args.serviceModeV2 : undefined;
             resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
             resourceInputs["switchLocked"] = args ? args.switchLocked : undefined;
@@ -281,6 +288,10 @@ export interface ZeroTrustDeviceDefaultProfileState {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     registerInterfaceIpWithDns?: pulumi.Input<boolean>;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    sccmVpnBoundarySupport?: pulumi.Input<boolean>;
     serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.
@@ -349,6 +360,10 @@ export interface ZeroTrustDeviceDefaultProfileArgs {
      * Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
      */
     registerInterfaceIpWithDns?: pulumi.Input<boolean>;
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     */
+    sccmVpnBoundarySupport?: pulumi.Input<boolean>;
     serviceModeV2?: pulumi.Input<inputs.ZeroTrustDeviceDefaultProfileServiceModeV2>;
     /**
      * The URL to launch when the Send Feedback button is clicked.

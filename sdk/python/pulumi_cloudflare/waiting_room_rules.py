@@ -27,7 +27,7 @@ class WaitingRoomRulesArgs:
                  zone_id: pulumi.Input[builtins.str]):
         """
         The set of arguments for constructing a WaitingRoomRules resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "waiting_room_id", waiting_room_id)
@@ -55,7 +55,7 @@ class WaitingRoomRulesArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -84,7 +84,7 @@ class _WaitingRoomRulesState:
         :param pulumi.Input[builtins.bool] enabled: When set to true, the rule is enabled.
         :param pulumi.Input[builtins.str] expression: Criteria defining when there is a match for the current rule.
         :param pulumi.Input[builtins.str] version: The version of the rule.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -197,7 +197,7 @@ class _WaitingRoomRulesState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -242,7 +242,7 @@ class WaitingRoomRules(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -348,7 +348,7 @@ class WaitingRoomRules(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] enabled: When set to true, the rule is enabled.
         :param pulumi.Input[builtins.str] expression: Criteria defining when there is a match for the current rule.
         :param pulumi.Input[builtins.str] version: The version of the rule.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -425,7 +425,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

@@ -83,14 +83,14 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
      * @return The description of the rule.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * The wirefilter expression used for device posture check matching.
@@ -178,19 +178,9 @@ public class ZeroTrustGatewayPolicy extends com.pulumi.resources.CustomResource 
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     * 
-     */
     @Export(name="precedence", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> precedence;
 
-    /**
-     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     * 
-     */
     public Output<Optional<Integer>> precedence() {
         return Codegen.optional(this.precedence);
     }

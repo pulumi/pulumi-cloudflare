@@ -160,14 +160,14 @@ public class WaitingRoomRules extends com.pulumi.resources.CustomResource {
         return this.waitingRoomId;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

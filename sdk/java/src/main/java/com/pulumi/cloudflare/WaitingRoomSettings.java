@@ -79,14 +79,14 @@ public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
         return this.searchEngineCrawlerBypass;
     }
     /**
-     * Identifier
+     * Identifier.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public Output<String> zoneId() {

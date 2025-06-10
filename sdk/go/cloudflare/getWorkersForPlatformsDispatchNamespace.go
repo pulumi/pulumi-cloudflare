@@ -75,7 +75,7 @@ type LookupWorkersForPlatformsDispatchNamespaceResult struct {
 	NamespaceId string `pulumi:"namespaceId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	NamespaceName string `pulumi:"namespaceName"`
-	// The current number of scripts in this Dispatch Namespace
+	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount int `pulumi:"scriptCount"`
 }
 
@@ -160,7 +160,7 @@ func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) NamespaceName() 
 	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) string { return v.NamespaceName }).(pulumi.StringOutput)
 }
 
-// The current number of scripts in this Dispatch Namespace
+// The current number of scripts in this Dispatch Namespace.
 func (o LookupWorkersForPlatformsDispatchNamespaceResultOutput) ScriptCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWorkersForPlatformsDispatchNamespaceResult) int { return v.ScriptCount }).(pulumi.IntOutput)
 }

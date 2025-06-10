@@ -56,6 +56,7 @@ type LookupZoneArgs struct {
 type LookupZoneResult struct {
 	Account             GetZoneAccount `pulumi:"account"`
 	ActivatedOn         string         `pulumi:"activatedOn"`
+	CnameSuffix         string         `pulumi:"cnameSuffix"`
 	CreatedOn           string         `pulumi:"createdOn"`
 	DevelopmentMode     float64        `pulumi:"developmentMode"`
 	Filter              *GetZoneFilter `pulumi:"filter"`
@@ -69,11 +70,17 @@ type LookupZoneResult struct {
 	OriginalRegistrar   string         `pulumi:"originalRegistrar"`
 	Owner               GetZoneOwner   `pulumi:"owner"`
 	Paused              bool           `pulumi:"paused"`
-	Status              string         `pulumi:"status"`
-	Type                string         `pulumi:"type"`
-	VanityNameServers   []string       `pulumi:"vanityNameServers"`
-	VerificationKey     string         `pulumi:"verificationKey"`
-	ZoneId              *string        `pulumi:"zoneId"`
+	// Deprecated: This attribute is deprecated.
+	Permissions []string `pulumi:"permissions"`
+	// Deprecated: This attribute is deprecated.
+	Plan              GetZonePlan       `pulumi:"plan"`
+	Status            string            `pulumi:"status"`
+	Tenant            GetZoneTenant     `pulumi:"tenant"`
+	TenantUnit        GetZoneTenantUnit `pulumi:"tenantUnit"`
+	Type              string            `pulumi:"type"`
+	VanityNameServers []string          `pulumi:"vanityNameServers"`
+	VerificationKey   string            `pulumi:"verificationKey"`
+	ZoneId            *string           `pulumi:"zoneId"`
 }
 
 func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pulumi.InvokeOption) LookupZoneResultOutput {
@@ -116,6 +123,10 @@ func (o LookupZoneResultOutput) Account() GetZoneAccountOutput {
 
 func (o LookupZoneResultOutput) ActivatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.ActivatedOn }).(pulumi.StringOutput)
+}
+
+func (o LookupZoneResultOutput) CnameSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZoneResult) string { return v.CnameSuffix }).(pulumi.StringOutput)
 }
 
 func (o LookupZoneResultOutput) CreatedOn() pulumi.StringOutput {
@@ -170,8 +181,26 @@ func (o LookupZoneResultOutput) Paused() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneResult) bool { return v.Paused }).(pulumi.BoolOutput)
 }
 
+// Deprecated: This attribute is deprecated.
+func (o LookupZoneResultOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupZoneResult) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+// Deprecated: This attribute is deprecated.
+func (o LookupZoneResultOutput) Plan() GetZonePlanOutput {
+	return o.ApplyT(func(v LookupZoneResult) GetZonePlan { return v.Plan }).(GetZonePlanOutput)
+}
+
 func (o LookupZoneResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupZoneResultOutput) Tenant() GetZoneTenantOutput {
+	return o.ApplyT(func(v LookupZoneResult) GetZoneTenant { return v.Tenant }).(GetZoneTenantOutput)
+}
+
+func (o LookupZoneResultOutput) TenantUnit() GetZoneTenantUnitOutput {
+	return o.ApplyT(func(v LookupZoneResult) GetZoneTenantUnit { return v.TenantUnit }).(GetZoneTenantUnitOutput)
 }
 
 func (o LookupZoneResultOutput) Type() pulumi.StringOutput {

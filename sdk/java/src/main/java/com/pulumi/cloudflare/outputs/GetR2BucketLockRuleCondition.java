@@ -14,7 +14,7 @@ public final class GetR2BucketLockRuleCondition {
     private String date;
     private Integer maxAgeSeconds;
     /**
-     * @return Available values: &#34;Age&#34;.
+     * @return Available values: &#34;Age&#34;, &#34;Date&#34;, &#34;Indefinite&#34;.
      * 
      */
     private String type;
@@ -27,7 +27,7 @@ public final class GetR2BucketLockRuleCondition {
         return this.maxAgeSeconds;
     }
     /**
-     * @return Available values: &#34;Age&#34;.
+     * @return Available values: &#34;Age&#34;, &#34;Date&#34;, &#34;Indefinite&#34;.
      * 
      */
     public String type() {

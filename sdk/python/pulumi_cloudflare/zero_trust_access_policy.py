@@ -24,11 +24,11 @@ class ZeroTrustAccessPolicyArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
                  decision: pulumi.Input[builtins.str],
-                 includes: pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]],
                  name: pulumi.Input[builtins.str],
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[builtins.bool]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]]] = None,
                  isolation_required: Optional[pulumi.Input[builtins.bool]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[builtins.str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[builtins.bool]] = None,
@@ -39,11 +39,11 @@ class ZeroTrustAccessPolicyArgs:
         :param pulumi.Input[builtins.str] account_id: Identifier.
         :param pulumi.Input[builtins.str] decision: The action Access will take if a user matches this policy. Infrastructure application policies can only use the Allow action.
                Available values: "allow", "deny", "non_identity", "bypass".
-        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[builtins.str] name: The name of the Access policy.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyApprovalGroupArgs']]] approval_groups: Administrators who can approve a temporary authentication request.
         :param pulumi.Input[builtins.bool] approval_required: Requires the user to request access from an administrator at the start of each session.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]] excludes: Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
+        :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]] includes: Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
         :param pulumi.Input[builtins.bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy. 'Client Web Isolation' must be on for the account in order to use this feature.
         :param pulumi.Input[builtins.str] purpose_justification_prompt: A custom message that will appear on the purpose justification screen.
         :param pulumi.Input[builtins.bool] purpose_justification_required: Require users to enter a justification when they log in to the application.
@@ -52,7 +52,6 @@ class ZeroTrustAccessPolicyArgs:
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "decision", decision)
-        pulumi.set(__self__, "includes", includes)
         pulumi.set(__self__, "name", name)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
@@ -60,6 +59,8 @@ class ZeroTrustAccessPolicyArgs:
             pulumi.set(__self__, "approval_required", approval_required)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
+        if includes is not None:
+            pulumi.set(__self__, "includes", includes)
         if isolation_required is not None:
             pulumi.set(__self__, "isolation_required", isolation_required)
         if purpose_justification_prompt is not None:
@@ -95,18 +96,6 @@ class ZeroTrustAccessPolicyArgs:
     @decision.setter
     def decision(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "decision", value)
-
-    @property
-    @pulumi.getter
-    def includes(self) -> pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]]:
-        """
-        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
-        """
-        return pulumi.get(self, "includes")
-
-    @includes.setter
-    def includes(self, value: pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]]):
-        pulumi.set(self, "includes", value)
 
     @property
     @pulumi.getter
@@ -155,6 +144,18 @@ class ZeroTrustAccessPolicyArgs:
     @excludes.setter
     def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyExcludeArgs']]]]):
         pulumi.set(self, "excludes", value)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]]]:
+        """
+        Rules evaluated with an OR logical operator. A user needs to meet only one of the Include rules.
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZeroTrustAccessPolicyIncludeArgs']]]]):
+        pulumi.set(self, "includes", value)
 
     @property
     @pulumi.getter(name="isolationRequired")
@@ -581,8 +582,6 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'decision'")
             __props__.__dict__["decision"] = decision
             __props__.__dict__["excludes"] = excludes
-            if includes is None and not opts.urn:
-                raise TypeError("Missing required property 'includes'")
             __props__.__dict__["includes"] = includes
             __props__.__dict__["isolation_required"] = isolation_required
             if name is None and not opts.urn:
@@ -716,7 +715,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessPolicyExclude']]]:
+    def excludes(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessPolicyExclude']]:
         """
         Rules evaluated with a NOT logical operator. To match the policy, a user cannot meet any of the Exclude rules.
         """
@@ -764,7 +763,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def requires(self) -> pulumi.Output[Optional[Sequence['outputs.ZeroTrustAccessPolicyRequire']]]:
+    def requires(self) -> pulumi.Output[Sequence['outputs.ZeroTrustAccessPolicyRequire']]:
         """
         Rules evaluated with an AND logical operator. To match the policy, a user must meet all of the Require rules.
         """

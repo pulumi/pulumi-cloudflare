@@ -12,38 +12,38 @@ import java.util.Objects;
 @CustomType
 public final class GetHyperdriveConfigsResultCaching {
     /**
-     * @return When set to true, disables the caching of SQL responses. (Default: false)
+     * @return Set to true to disable caching of SQL responses. Default is false.
      * 
      */
     private Boolean disabled;
     /**
-     * @return When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+     * @return Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
      * 
      */
     private Integer maxAge;
     /**
-     * @return When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+     * @return Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
      * 
      */
     private Integer staleWhileRevalidate;
 
     private GetHyperdriveConfigsResultCaching() {}
     /**
-     * @return When set to true, disables the caching of SQL responses. (Default: false)
+     * @return Set to true to disable caching of SQL responses. Default is false.
      * 
      */
     public Boolean disabled() {
         return this.disabled;
     }
     /**
-     * @return When present, specifies max duration for which items should persist in the cache. Not returned if set to default. (Default: 60)
+     * @return Specify the maximum duration items should persist in the cache. Not returned if set to the default (60).
      * 
      */
     public Integer maxAge() {
         return this.maxAge;
     }
     /**
-     * @return When present, indicates the number of seconds cache may serve the response after it becomes stale. Not returned if set to default. (Default: 15)
+     * @return Specify the number of seconds the cache may serve a stale response. Omitted if set to the default (15).
      * 
      */
     public Integer staleWhileRevalidate() {

@@ -61,6 +61,7 @@ export interface GetZoneDnssecResult {
      */
     readonly dnssecMultiSigner: boolean;
     readonly dnssecPresigned: boolean;
+    readonly dnssecUseNsec3: boolean;
     readonly ds: string;
     readonly flags: number;
     /**

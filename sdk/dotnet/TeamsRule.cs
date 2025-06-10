@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         /// The description of the rule.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// The wirefilter expression used for device posture check matching.
@@ -84,10 +84,6 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        /// rules are evaluated in ascending order of this value.
-        /// </summary>
         [Output("precedence")]
         public Output<int?> Precedence { get; private set; } = null!;
 
@@ -227,10 +223,6 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        /// rules are evaluated in ascending order of this value.
-        /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 
@@ -328,10 +320,6 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-        /// rules are evaluated in ascending order of this value.
-        /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 

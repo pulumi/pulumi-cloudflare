@@ -72,7 +72,7 @@ class GetWorkersScriptSubdomainResult:
     @pulumi.getter(name="previewsEnabled")
     def previews_enabled(self) -> builtins.bool:
         """
-        Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
+        Whether the Worker's Preview URLs are available on the workers.dev subdomain.
         """
         return pulumi.get(self, "previews_enabled")
 

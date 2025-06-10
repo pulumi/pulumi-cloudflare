@@ -7,14 +7,24 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkersCronTriggerSchedule {
+    private @Nullable String createdOn;
     private String cron;
+    private @Nullable String modifiedOn;
 
     private WorkersCronTriggerSchedule() {}
+    public Optional<String> createdOn() {
+        return Optional.ofNullable(this.createdOn);
+    }
     public String cron() {
         return this.cron;
+    }
+    public Optional<String> modifiedOn() {
+        return Optional.ofNullable(this.modifiedOn);
     }
 
     public static Builder builder() {
@@ -26,13 +36,23 @@ public final class WorkersCronTriggerSchedule {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String createdOn;
         private String cron;
+        private @Nullable String modifiedOn;
         public Builder() {}
         public Builder(WorkersCronTriggerSchedule defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.createdOn = defaults.createdOn;
     	      this.cron = defaults.cron;
+    	      this.modifiedOn = defaults.modifiedOn;
         }
 
+        @CustomType.Setter
+        public Builder createdOn(@Nullable String createdOn) {
+
+            this.createdOn = createdOn;
+            return this;
+        }
         @CustomType.Setter
         public Builder cron(String cron) {
             if (cron == null) {
@@ -41,9 +61,17 @@ public final class WorkersCronTriggerSchedule {
             this.cron = cron;
             return this;
         }
+        @CustomType.Setter
+        public Builder modifiedOn(@Nullable String modifiedOn) {
+
+            this.modifiedOn = modifiedOn;
+            return this;
+        }
         public WorkersCronTriggerSchedule build() {
             final var _resultValue = new WorkersCronTriggerSchedule();
+            _resultValue.createdOn = createdOn;
             _resultValue.cron = cron;
+            _resultValue.modifiedOn = modifiedOn;
             return _resultValue;
         }
     }

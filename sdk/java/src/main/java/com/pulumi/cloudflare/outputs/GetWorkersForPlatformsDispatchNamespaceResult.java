@@ -59,7 +59,7 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
      */
     private String namespaceName;
     /**
-     * @return The current number of scripts in this Dispatch Namespace
+     * @return The current number of scripts in this Dispatch Namespace.
      * 
      */
     private Integer scriptCount;
@@ -129,7 +129,7 @@ public final class GetWorkersForPlatformsDispatchNamespaceResult {
         return this.namespaceName;
     }
     /**
-     * @return The current number of scripts in this Dispatch Namespace
+     * @return The current number of scripts in this Dispatch Namespace.
      * 
      */
     public Integer scriptCount() {

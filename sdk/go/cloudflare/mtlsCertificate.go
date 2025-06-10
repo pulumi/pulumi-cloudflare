@@ -62,7 +62,7 @@ type MtlsCertificate struct {
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
 	// Optional unique name for the certificate. Only used for human readability.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// The private key for the certificate
+	// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
 	// The certificate serial number.
 	SerialNumber pulumi.StringOutput `pulumi:"serialNumber"`
@@ -132,7 +132,7 @@ type mtlsCertificateState struct {
 	Issuer *string `pulumi:"issuer"`
 	// Optional unique name for the certificate. Only used for human readability.
 	Name *string `pulumi:"name"`
-	// The private key for the certificate
+	// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	PrivateKey *string `pulumi:"privateKey"`
 	// The certificate serial number.
 	SerialNumber *string `pulumi:"serialNumber"`
@@ -157,7 +157,7 @@ type MtlsCertificateState struct {
 	Issuer pulumi.StringPtrInput
 	// Optional unique name for the certificate. Only used for human readability.
 	Name pulumi.StringPtrInput
-	// The private key for the certificate
+	// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	PrivateKey pulumi.StringPtrInput
 	// The certificate serial number.
 	SerialNumber pulumi.StringPtrInput
@@ -182,7 +182,7 @@ type mtlsCertificateArgs struct {
 	Certificates string `pulumi:"certificates"`
 	// Optional unique name for the certificate. Only used for human readability.
 	Name *string `pulumi:"name"`
-	// The private key for the certificate
+	// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	PrivateKey *string `pulumi:"privateKey"`
 }
 
@@ -196,7 +196,7 @@ type MtlsCertificateArgs struct {
 	Certificates pulumi.StringInput
 	// Optional unique name for the certificate. Only used for human readability.
 	Name pulumi.StringPtrInput
-	// The private key for the certificate
+	// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 	PrivateKey pulumi.StringPtrInput
 }
 
@@ -317,7 +317,7 @@ func (o MtlsCertificateOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The private key for the certificate
+// The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
 func (o MtlsCertificateOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MtlsCertificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }

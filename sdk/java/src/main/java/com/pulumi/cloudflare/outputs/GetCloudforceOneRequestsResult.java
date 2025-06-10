@@ -12,22 +12,22 @@ import java.util.Objects;
 @CustomType
 public final class GetCloudforceOneRequestsResult {
     /**
-     * @return Request completion time
+     * @return Request completion time.
      * 
      */
     private String completed;
     /**
-     * @return Request creation time
+     * @return Request creation time.
      * 
      */
     private String created;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
     /**
-     * @return Tokens for the request messages
+     * @return Tokens for the request messages.
      * 
      */
     private Integer messageTokens;
@@ -37,67 +37,67 @@ public final class GetCloudforceOneRequestsResult {
      */
     private String priority;
     /**
-     * @return Readable Request ID
+     * @return Readable Request ID.
      * 
      */
     private String readableId;
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     private String request;
     /**
-     * @return Request Status
+     * @return Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     private String status;
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     private String summary;
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     private String tlp;
     /**
-     * @return Tokens for the request
+     * @return Tokens for the request.
      * 
      */
     private Integer tokens;
     /**
-     * @return Request last updated time
+     * @return Request last updated time.
      * 
      */
     private String updated;
 
     private GetCloudforceOneRequestsResult() {}
     /**
-     * @return Request completion time
+     * @return Request completion time.
      * 
      */
     public String completed() {
         return this.completed;
     }
     /**
-     * @return Request creation time
+     * @return Request creation time.
      * 
      */
     public String created() {
         return this.created;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Tokens for the request messages
+     * @return Tokens for the request messages.
      * 
      */
     public Integer messageTokens() {
@@ -111,21 +111,21 @@ public final class GetCloudforceOneRequestsResult {
         return this.priority;
     }
     /**
-     * @return Readable Request ID
+     * @return Readable Request ID.
      * 
      */
     public String readableId() {
         return this.readableId;
     }
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     public String request() {
         return this.request;
     }
     /**
-     * @return Request Status
+     * @return Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
@@ -133,14 +133,14 @@ public final class GetCloudforceOneRequestsResult {
         return this.status;
     }
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     public String summary() {
         return this.summary;
     }
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -148,14 +148,14 @@ public final class GetCloudforceOneRequestsResult {
         return this.tlp;
     }
     /**
-     * @return Tokens for the request
+     * @return Tokens for the request.
      * 
      */
     public Integer tokens() {
         return this.tokens;
     }
     /**
-     * @return Request last updated time
+     * @return Request last updated time.
      * 
      */
     public String updated() {

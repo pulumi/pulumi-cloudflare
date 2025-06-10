@@ -27,10 +27,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewCloudforceOneRequestAsset(ctx, "example_cloudforce_one_request_asset", &cloudflare.CloudforceOneRequestAssetArgs{
-//				AccountIdentifier: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
-//				RequestIdentifier: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
-//				Page:              pulumi.Int(0),
-//				PerPage:           pulumi.Int(10),
+//				AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//				RequestId: pulumi.String("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+//				Page:      pulumi.Int(0),
+//				PerPage:   pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err
@@ -44,28 +44,28 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_identifier>/<request_identifier>/<asset_identifer>'
+// $ pulumi import cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset example '<account_id>/<request_id>/<asset_id>'
 // ```
 type CloudforceOneRequestAsset struct {
 	pulumi.CustomResourceState
 
-	// Identifier
-	AccountIdentifier pulumi.StringOutput `pulumi:"accountIdentifier"`
-	// Asset creation time
+	// Identifier.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Defines the asset creation time.
 	Created pulumi.StringOutput `pulumi:"created"`
-	// Asset description
+	// Asset description.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Asset file type
+	// Asset file type.
 	FileType pulumi.StringOutput `pulumi:"fileType"`
-	// Asset name
+	// Asset name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Page number of results
+	// Page number of results.
 	Page pulumi.IntOutput `pulumi:"page"`
-	// Number of results per page
+	// Number of results per page.
 	PerPage pulumi.IntOutput `pulumi:"perPage"`
-	// UUID
-	RequestIdentifier pulumi.StringOutput `pulumi:"requestIdentifier"`
-	// Asset file to upload
+	// UUID.
+	RequestId pulumi.StringOutput `pulumi:"requestId"`
+	// Asset file to upload.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 }
 
@@ -76,8 +76,8 @@ func NewCloudforceOneRequestAsset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountIdentifier == nil {
-		return nil, errors.New("invalid value for required argument 'AccountIdentifier'")
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
 	if args.Page == nil {
 		return nil, errors.New("invalid value for required argument 'Page'")
@@ -85,8 +85,8 @@ func NewCloudforceOneRequestAsset(ctx *pulumi.Context,
 	if args.PerPage == nil {
 		return nil, errors.New("invalid value for required argument 'PerPage'")
 	}
-	if args.RequestIdentifier == nil {
-		return nil, errors.New("invalid value for required argument 'RequestIdentifier'")
+	if args.RequestId == nil {
+		return nil, errors.New("invalid value for required argument 'RequestId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudforceOneRequestAsset
@@ -111,44 +111,44 @@ func GetCloudforceOneRequestAsset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudforceOneRequestAsset resources.
 type cloudforceOneRequestAssetState struct {
-	// Identifier
-	AccountIdentifier *string `pulumi:"accountIdentifier"`
-	// Asset creation time
+	// Identifier.
+	AccountId *string `pulumi:"accountId"`
+	// Defines the asset creation time.
 	Created *string `pulumi:"created"`
-	// Asset description
+	// Asset description.
 	Description *string `pulumi:"description"`
-	// Asset file type
+	// Asset file type.
 	FileType *string `pulumi:"fileType"`
-	// Asset name
+	// Asset name.
 	Name *string `pulumi:"name"`
-	// Page number of results
+	// Page number of results.
 	Page *int `pulumi:"page"`
-	// Number of results per page
+	// Number of results per page.
 	PerPage *int `pulumi:"perPage"`
-	// UUID
-	RequestIdentifier *string `pulumi:"requestIdentifier"`
-	// Asset file to upload
+	// UUID.
+	RequestId *string `pulumi:"requestId"`
+	// Asset file to upload.
 	Source *string `pulumi:"source"`
 }
 
 type CloudforceOneRequestAssetState struct {
-	// Identifier
-	AccountIdentifier pulumi.StringPtrInput
-	// Asset creation time
+	// Identifier.
+	AccountId pulumi.StringPtrInput
+	// Defines the asset creation time.
 	Created pulumi.StringPtrInput
-	// Asset description
+	// Asset description.
 	Description pulumi.StringPtrInput
-	// Asset file type
+	// Asset file type.
 	FileType pulumi.StringPtrInput
-	// Asset name
+	// Asset name.
 	Name pulumi.StringPtrInput
-	// Page number of results
+	// Page number of results.
 	Page pulumi.IntPtrInput
-	// Number of results per page
+	// Number of results per page.
 	PerPage pulumi.IntPtrInput
-	// UUID
-	RequestIdentifier pulumi.StringPtrInput
-	// Asset file to upload
+	// UUID.
+	RequestId pulumi.StringPtrInput
+	// Asset file to upload.
 	Source pulumi.StringPtrInput
 }
 
@@ -157,29 +157,29 @@ func (CloudforceOneRequestAssetState) ElementType() reflect.Type {
 }
 
 type cloudforceOneRequestAssetArgs struct {
-	// Identifier
-	AccountIdentifier string `pulumi:"accountIdentifier"`
-	// Page number of results
+	// Identifier.
+	AccountId string `pulumi:"accountId"`
+	// Page number of results.
 	Page int `pulumi:"page"`
-	// Number of results per page
+	// Number of results per page.
 	PerPage int `pulumi:"perPage"`
-	// UUID
-	RequestIdentifier string `pulumi:"requestIdentifier"`
-	// Asset file to upload
+	// UUID.
+	RequestId string `pulumi:"requestId"`
+	// Asset file to upload.
 	Source *string `pulumi:"source"`
 }
 
 // The set of arguments for constructing a CloudforceOneRequestAsset resource.
 type CloudforceOneRequestAssetArgs struct {
-	// Identifier
-	AccountIdentifier pulumi.StringInput
-	// Page number of results
+	// Identifier.
+	AccountId pulumi.StringInput
+	// Page number of results.
 	Page pulumi.IntInput
-	// Number of results per page
+	// Number of results per page.
 	PerPage pulumi.IntInput
-	// UUID
-	RequestIdentifier pulumi.StringInput
-	// Asset file to upload
+	// UUID.
+	RequestId pulumi.StringInput
+	// Asset file to upload.
 	Source pulumi.StringPtrInput
 }
 
@@ -270,47 +270,47 @@ func (o CloudforceOneRequestAssetOutput) ToCloudforceOneRequestAssetOutputWithCo
 	return o
 }
 
-// Identifier
-func (o CloudforceOneRequestAssetOutput) AccountIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.AccountIdentifier }).(pulumi.StringOutput)
+// Identifier.
+func (o CloudforceOneRequestAssetOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Asset creation time
+// Defines the asset creation time.
 func (o CloudforceOneRequestAssetOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// Asset description
+// Asset description.
 func (o CloudforceOneRequestAssetOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Asset file type
+// Asset file type.
 func (o CloudforceOneRequestAssetOutput) FileType() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.FileType }).(pulumi.StringOutput)
 }
 
-// Asset name
+// Asset name.
 func (o CloudforceOneRequestAssetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Page number of results
+// Page number of results.
 func (o CloudforceOneRequestAssetOutput) Page() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.IntOutput { return v.Page }).(pulumi.IntOutput)
 }
 
-// Number of results per page
+// Number of results per page.
 func (o CloudforceOneRequestAssetOutput) PerPage() pulumi.IntOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.IntOutput { return v.PerPage }).(pulumi.IntOutput)
 }
 
-// UUID
-func (o CloudforceOneRequestAssetOutput) RequestIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.RequestIdentifier }).(pulumi.StringOutput)
+// UUID.
+func (o CloudforceOneRequestAssetOutput) RequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringOutput { return v.RequestId }).(pulumi.StringOutput)
 }
 
-// Asset file to upload
+// Asset file to upload.
 func (o CloudforceOneRequestAssetOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudforceOneRequestAsset) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }

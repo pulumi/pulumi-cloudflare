@@ -17,18 +17,78 @@ public final class GetCloudforceOneRequestsPlainArgs extends com.pulumi.resource
     public static final GetCloudforceOneRequestsPlainArgs Empty = new GetCloudforceOneRequestsPlainArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private String accountIdentifier;
+    @Import(name="accountId", required=true)
+    private String accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
+    }
+
+    /**
+     * Retrieve requests completed after this time.
+     * 
+     */
+    @Import(name="completedAfter")
+    private @Nullable String completedAfter;
+
+    /**
+     * @return Retrieve requests completed after this time.
+     * 
+     */
+    public Optional<String> completedAfter() {
+        return Optional.ofNullable(this.completedAfter);
+    }
+
+    /**
+     * Retrieve requests completed before this time.
+     * 
+     */
+    @Import(name="completedBefore")
+    private @Nullable String completedBefore;
+
+    /**
+     * @return Retrieve requests completed before this time.
+     * 
+     */
+    public Optional<String> completedBefore() {
+        return Optional.ofNullable(this.completedBefore);
+    }
+
+    /**
+     * Retrieve requests created after this time.
+     * 
+     */
+    @Import(name="createdAfter")
+    private @Nullable String createdAfter;
+
+    /**
+     * @return Retrieve requests created after this time.
+     * 
+     */
+    public Optional<String> createdAfter() {
+        return Optional.ofNullable(this.createdAfter);
+    }
+
+    /**
+     * Retrieve requests created before this time.
+     * 
+     */
+    @Import(name="createdBefore")
+    private @Nullable String createdBefore;
+
+    /**
+     * @return Retrieve requests created before this time.
+     * 
+     */
+    public Optional<String> createdBefore() {
+        return Optional.ofNullable(this.createdBefore);
     }
 
     /**
@@ -46,11 +106,115 @@ public final class GetCloudforceOneRequestsPlainArgs extends com.pulumi.resource
         return Optional.ofNullable(this.maxItems);
     }
 
+    /**
+     * Page number of results.
+     * 
+     */
+    @Import(name="page", required=true)
+    private Integer page;
+
+    /**
+     * @return Page number of results.
+     * 
+     */
+    public Integer page() {
+        return this.page;
+    }
+
+    /**
+     * Number of results per page.
+     * 
+     */
+    @Import(name="perPage", required=true)
+    private Integer perPage;
+
+    /**
+     * @return Number of results per page.
+     * 
+     */
+    public Integer perPage() {
+        return this.perPage;
+    }
+
+    /**
+     * Requested information from request.
+     * 
+     */
+    @Import(name="requestType")
+    private @Nullable String requestType;
+
+    /**
+     * @return Requested information from request.
+     * 
+     */
+    public Optional<String> requestType() {
+        return Optional.ofNullable(this.requestType);
+    }
+
+    /**
+     * Field to sort results by.
+     * 
+     */
+    @Import(name="sortBy")
+    private @Nullable String sortBy;
+
+    /**
+     * @return Field to sort results by.
+     * 
+     */
+    public Optional<String> sortBy() {
+        return Optional.ofNullable(this.sortBy);
+    }
+
+    /**
+     * Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="sortOrder")
+    private @Nullable String sortOrder;
+
+    /**
+     * @return Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<String> sortOrder() {
+        return Optional.ofNullable(this.sortOrder);
+    }
+
+    /**
+     * Request Status.
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable String status;
+
+    /**
+     * @return Request Status.
+     * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
+     * 
+     */
+    public Optional<String> status() {
+        return Optional.ofNullable(this.status);
+    }
+
     private GetCloudforceOneRequestsPlainArgs() {}
 
     private GetCloudforceOneRequestsPlainArgs(GetCloudforceOneRequestsPlainArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
+        this.completedAfter = $.completedAfter;
+        this.completedBefore = $.completedBefore;
+        this.createdAfter = $.createdAfter;
+        this.createdBefore = $.createdBefore;
         this.maxItems = $.maxItems;
+        this.page = $.page;
+        this.perPage = $.perPage;
+        this.requestType = $.requestType;
+        this.sortBy = $.sortBy;
+        this.sortOrder = $.sortOrder;
+        this.status = $.status;
     }
 
     public static Builder builder() {
@@ -72,13 +236,57 @@ public final class GetCloudforceOneRequestsPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(String accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param completedAfter Retrieve requests completed after this time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder completedAfter(@Nullable String completedAfter) {
+            $.completedAfter = completedAfter;
+            return this;
+        }
+
+        /**
+         * @param completedBefore Retrieve requests completed before this time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder completedBefore(@Nullable String completedBefore) {
+            $.completedBefore = completedBefore;
+            return this;
+        }
+
+        /**
+         * @param createdAfter Retrieve requests created after this time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAfter(@Nullable String createdAfter) {
+            $.createdAfter = createdAfter;
+            return this;
+        }
+
+        /**
+         * @param createdBefore Retrieve requests created before this time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBefore(@Nullable String createdBefore) {
+            $.createdBefore = createdBefore;
             return this;
         }
 
@@ -93,9 +301,83 @@ public final class GetCloudforceOneRequestsPlainArgs extends com.pulumi.resource
             return this;
         }
 
+        /**
+         * @param page Page number of results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder page(Integer page) {
+            $.page = page;
+            return this;
+        }
+
+        /**
+         * @param perPage Number of results per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(Integer perPage) {
+            $.perPage = perPage;
+            return this;
+        }
+
+        /**
+         * @param requestType Requested information from request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestType(@Nullable String requestType) {
+            $.requestType = requestType;
+            return this;
+        }
+
+        /**
+         * @param sortBy Field to sort results by.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortBy(@Nullable String sortBy) {
+            $.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * @param sortOrder Sort order (asc or desc).
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortOrder(@Nullable String sortOrder) {
+            $.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * @param status Request Status.
+         * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable String status) {
+            $.status = status;
+            return this;
+        }
+
         public GetCloudforceOneRequestsPlainArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestsPlainArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestsPlainArgs", "accountId");
+            }
+            if ($.page == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestsPlainArgs", "page");
+            }
+            if ($.perPage == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestsPlainArgs", "perPage");
             }
             return $;
         }

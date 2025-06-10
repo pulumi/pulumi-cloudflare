@@ -200,7 +200,7 @@ class _ZeroTrustDlpCustomProfileState:
         :param pulumi.Input[builtins.str] description: The description of the profile.
         :param pulumi.Input[builtins.bool] open_access: Whether this profile can be accessed by anyone.
         :param pulumi.Input[Sequence[pulumi.Input['ZeroTrustDlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-        :param pulumi.Input[builtins.str] type: Available values: "custom".
+        :param pulumi.Input[builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[builtins.str] updated_at: When the profile was lasted updated.
         """
         if account_id is not None:
@@ -373,7 +373,7 @@ class _ZeroTrustDlpCustomProfileState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Available values: "custom".
+        Available values: "custom", "predefined", "integration".
         """
         return pulumi.get(self, "type")
 
@@ -535,7 +535,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] description: The description of the profile.
         :param pulumi.Input[builtins.bool] open_access: Whether this profile can be accessed by anyone.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZeroTrustDlpCustomProfileSharedEntryArgs', 'ZeroTrustDlpCustomProfileSharedEntryArgsDict']]]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-        :param pulumi.Input[builtins.str] type: Available values: "custom".
+        :param pulumi.Input[builtins.str] type: Available values: "custom", "predefined", "integration".
         :param pulumi.Input[builtins.str] updated_at: When the profile was lasted updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -646,7 +646,7 @@ class ZeroTrustDlpCustomProfile(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[builtins.str]:
         """
-        Available values: "custom".
+        Available values: "custom", "predefined", "integration".
         """
         return pulumi.get(self, "type")
 

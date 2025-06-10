@@ -57,7 +57,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings.
      */
-    public readonly bindings!: pulumi.Output<outputs.WorkerScriptBinding[] | undefined>;
+    public readonly bindings!: pulumi.Output<outputs.WorkerScriptBinding[]>;
     /**
      * Name of the part in the multipart request that contains the script (e.g. the file adding a listener to the `fetch` event). Indicates a `service worker syntax` Worker.
      */
@@ -65,11 +65,11 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
      */
-    public readonly compatibilityDate!: pulumi.Output<string | undefined>;
+    public readonly compatibilityDate!: pulumi.Output<string>;
     /**
      * Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibilityDate`.
      */
-    public readonly compatibilityFlags!: pulumi.Output<string[] | undefined>;
+    public readonly compatibilityFlags!: pulumi.Output<string[]>;
     /**
      * Module or Service Worker contents of the Worker.
      */
@@ -109,7 +109,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * Migrations to apply for Durable Objects associated with this Worker.
      */
-    public readonly migrations!: pulumi.Output<outputs.WorkerScriptMigrations | undefined>;
+    public readonly migrations!: pulumi.Output<outputs.WorkerScriptMigrations>;
     /**
      * When the script was last modified.
      */
@@ -121,7 +121,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
      */
-    public readonly placement!: pulumi.Output<outputs.WorkerScriptPlacement | undefined>;
+    public readonly placement!: pulumi.Output<outputs.WorkerScriptPlacement>;
     /**
      * Name of the script, used in URLs and route configuration.
      */
@@ -130,7 +130,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * List of Workers that will consume logs from the attached Worker.
      */
-    public readonly tailConsumers!: pulumi.Output<outputs.WorkerScriptTailConsumer[] | undefined>;
+    public readonly tailConsumers!: pulumi.Output<outputs.WorkerScriptTailConsumer[]>;
     /**
      * Usage model for the Worker invocations.
      * Available values: "standard".

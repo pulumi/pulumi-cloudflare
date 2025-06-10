@@ -181,8 +181,8 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool Offlabel;
         /// <summary>
-        /// Region where this widget can be used.
-        /// Available values: "world".
+        /// Region where this widget can be used. This cannot be changed after creation.
+        /// Available values: "world", "china".
         /// </summary>
         public readonly string Region;
         /// <summary>

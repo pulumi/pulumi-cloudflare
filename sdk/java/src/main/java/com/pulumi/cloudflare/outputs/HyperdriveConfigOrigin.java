@@ -14,32 +14,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HyperdriveConfigOrigin {
     /**
-     * @return The Client ID of the Access token to use when connecting to the origin database.
+     * @return Defines the Client ID of the Access token to use when connecting to the origin database.
      * 
      */
     private @Nullable String accessClientId;
     /**
-     * @return The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+     * @return Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
      * 
      */
     private @Nullable String accessClientSecret;
     /**
-     * @return The name of your origin database.
+     * @return Set the name of your origin database.
      * 
      */
     private String database;
     /**
-     * @return The host (hostname or IP) of your origin database.
+     * @return Defines the host (hostname or IP) of your origin database.
      * 
      */
     private String host;
     /**
-     * @return The password required to access your origin database. This value is write-only and never returned by the API.
+     * @return Set the password needed to access your origin database. The API never returns this write-only value.
      * 
      */
     private String password;
     /**
-     * @return The port (default: 5432 for Postgres) of your origin database.
+     * @return Defines the port (default: 5432 for Postgres) of your origin database.
      * 
      */
     private @Nullable Integer port;
@@ -50,49 +50,49 @@ public final class HyperdriveConfigOrigin {
      */
     private String scheme;
     /**
-     * @return The user of your origin database.
+     * @return Set the user of your origin database.
      * 
      */
     private String user;
 
     private HyperdriveConfigOrigin() {}
     /**
-     * @return The Client ID of the Access token to use when connecting to the origin database.
+     * @return Defines the Client ID of the Access token to use when connecting to the origin database.
      * 
      */
     public Optional<String> accessClientId() {
         return Optional.ofNullable(this.accessClientId);
     }
     /**
-     * @return The Client Secret of the Access token to use when connecting to the origin database. This value is write-only and never returned by the API.
+     * @return Defines the Client Secret of the Access Token to use when connecting to the origin database. The API never returns this write-only value.
      * 
      */
     public Optional<String> accessClientSecret() {
         return Optional.ofNullable(this.accessClientSecret);
     }
     /**
-     * @return The name of your origin database.
+     * @return Set the name of your origin database.
      * 
      */
     public String database() {
         return this.database;
     }
     /**
-     * @return The host (hostname or IP) of your origin database.
+     * @return Defines the host (hostname or IP) of your origin database.
      * 
      */
     public String host() {
         return this.host;
     }
     /**
-     * @return The password required to access your origin database. This value is write-only and never returned by the API.
+     * @return Set the password needed to access your origin database. The API never returns this write-only value.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return The port (default: 5432 for Postgres) of your origin database.
+     * @return Defines the port (default: 5432 for Postgres) of your origin database.
      * 
      */
     public Optional<Integer> port() {
@@ -107,7 +107,7 @@ public final class HyperdriveConfigOrigin {
         return this.scheme;
     }
     /**
-     * @return The user of your origin database.
+     * @return Set the user of your origin database.
      * 
      */
     public String user() {

@@ -96,6 +96,21 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+     * 
+     */
+    @Import(name="filter")
+    private @Nullable Output<String> filter;
+
+    /**
+     * @return The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+     * 
+     */
+    public Optional<Output<String>> filter() {
+        return Optional.ofNullable(this.filter);
+    }
+
+    /**
      * This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
      * Available values: &#34;high&#34;, &#34;low&#34;.
      * 
@@ -303,6 +318,7 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
         this.destinationConf = $.destinationConf;
         this.enabled = $.enabled;
         this.errorMessage = $.errorMessage;
+        this.filter = $.filter;
         this.frequency = $.frequency;
         this.kind = $.kind;
         this.lastComplete = $.lastComplete;
@@ -440,6 +456,27 @@ public final class LogpushJobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder errorMessage(String errorMessage) {
             return errorMessage(Output.of(errorMessage));
+        }
+
+        /**
+         * @param filter The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(@Nullable Output<String> filter) {
+            $.filter = filter;
+            return this;
+        }
+
+        /**
+         * @param filter The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filter(String filter) {
+            return filter(Output.of(filter));
         }
 
         /**

@@ -34,6 +34,21 @@ public final class ZoneSettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * ssl-recommender enrollment setting.
+     * 
+     */
+    @Import(name="enabled")
+    private @Nullable Output<Boolean> enabled;
+
+    /**
+     * @return ssl-recommender enrollment setting.
+     * 
+     */
+    public Optional<Output<Boolean>> enabled() {
+        return Optional.ofNullable(this.enabled);
+    }
+
+    /**
      * last time this setting was modified.
      * 
      */
@@ -114,6 +129,7 @@ public final class ZoneSettingState extends com.pulumi.resources.ResourceArgs {
 
     private ZoneSettingState(ZoneSettingState $) {
         this.editable = $.editable;
+        this.enabled = $.enabled;
         this.modifiedOn = $.modifiedOn;
         this.settingId = $.settingId;
         this.timeRemaining = $.timeRemaining;
@@ -158,6 +174,27 @@ public final class ZoneSettingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder editable(Boolean editable) {
             return editable(Output.of(editable));
+        }
+
+        /**
+         * @param enabled ssl-recommender enrollment setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(@Nullable Output<Boolean> enabled) {
+            $.enabled = enabled;
+            return this;
+        }
+
+        /**
+         * @param enabled ssl-recommender enrollment setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enabled(Boolean enabled) {
+            return enabled(Output.of(enabled));
         }
 
         /**

@@ -27,7 +27,7 @@ class GetR2BucketResult:
     """
     A collection of values returned by getR2Bucket.
     """
-    def __init__(__self__, account_id=None, bucket_name=None, creation_date=None, id=None, location=None, name=None, storage_class=None):
+    def __init__(__self__, account_id=None, bucket_name=None, creation_date=None, id=None, jurisdiction=None, location=None, name=None, storage_class=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -40,6 +40,9 @@ class GetR2BucketResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if jurisdiction and not isinstance(jurisdiction, str):
+            raise TypeError("Expected argument 'jurisdiction' to be a str")
+        pulumi.set(__self__, "jurisdiction", jurisdiction)
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
@@ -84,6 +87,15 @@ class GetR2BucketResult:
 
     @property
     @pulumi.getter
+    def jurisdiction(self) -> builtins.str:
+        """
+        Jurisdiction where objects in this bucket are guaranteed to be stored.
+        Available values: "default", "eu", "fedramp".
+        """
+        return pulumi.get(self, "jurisdiction")
+
+    @property
+    @pulumi.getter
     def location(self) -> builtins.str:
         """
         Location of the bucket.
@@ -119,6 +131,7 @@ class AwaitableGetR2BucketResult(GetR2BucketResult):
             bucket_name=self.bucket_name,
             creation_date=self.creation_date,
             id=self.id,
+            jurisdiction=self.jurisdiction,
             location=self.location,
             name=self.name,
             storage_class=self.storage_class)
@@ -153,6 +166,7 @@ def get_r2_bucket(account_id: Optional[builtins.str] = None,
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
         creation_date=pulumi.get(__ret__, 'creation_date'),
         id=pulumi.get(__ret__, 'id'),
+        jurisdiction=pulumi.get(__ret__, 'jurisdiction'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         storage_class=pulumi.get(__ret__, 'storage_class'))
@@ -184,6 +198,7 @@ def get_r2_bucket_output(account_id: Optional[pulumi.Input[builtins.str]] = None
         bucket_name=pulumi.get(__response__, 'bucket_name'),
         creation_date=pulumi.get(__response__, 'creation_date'),
         id=pulumi.get(__response__, 'id'),
+        jurisdiction=pulumi.get(__response__, 'jurisdiction'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         storage_class=pulumi.get(__response__, 'storage_class')))

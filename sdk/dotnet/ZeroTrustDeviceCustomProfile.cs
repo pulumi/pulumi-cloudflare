@@ -54,6 +54,7 @@ namespace Pulumi.Cloudflare
     ///         LanAllowMinutes = 30,
     ///         LanAllowSubnetSize = 24,
     ///         RegisterInterfaceIpWithDns = true,
+    ///         SccmVpnBoundarySupport = false,
     ///         ServiceModeV2 = new Cloudflare.Inputs.ZeroTrustDeviceCustomProfileServiceModeV2Args
     ///         {
     ///             Mode = "proxy",
@@ -170,7 +171,7 @@ namespace Pulumi.Cloudflare
         public Output<double?> LanAllowSubnetSize { get; private set; } = null!;
 
         /// <summary>
-        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         /// </summary>
         [Output("match")]
         public Output<string> Match { get; private set; } = null!;
@@ -195,6 +196,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("registerInterfaceIpWithDns")]
         public Output<bool?> RegisterInterfaceIpWithDns { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        /// </summary>
+        [Output("sccmVpnBoundarySupport")]
+        public Output<bool?> SccmVpnBoundarySupport { get; private set; } = null!;
 
         [Output("serviceModeV2")]
         public Output<Outputs.ZeroTrustDeviceCustomProfileServiceModeV2?> ServiceModeV2 { get; private set; } = null!;
@@ -365,7 +372,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? LanAllowSubnetSize { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         /// </summary>
         [Input("match", required: true)]
         public Input<string> Match { get; set; } = null!;
@@ -387,6 +394,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("registerInterfaceIpWithDns")]
         public Input<bool>? RegisterInterfaceIpWithDns { get; set; }
+
+        /// <summary>
+        /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        /// </summary>
+        [Input("sccmVpnBoundarySupport")]
+        public Input<bool>? SccmVpnBoundarySupport { get; set; }
 
         [Input("serviceModeV2")]
         public Input<Inputs.ZeroTrustDeviceCustomProfileServiceModeV2Args>? ServiceModeV2 { get; set; }
@@ -528,7 +541,7 @@ namespace Pulumi.Cloudflare
         public Input<double>? LanAllowSubnetSize { get; set; }
 
         /// <summary>
-        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version"
+        /// The wirefilter expression to match devices. Available values: "identity.email", "identity.groups.id", "identity.groups.name", "identity.groups.email", "identity.service*token*uuid", "identity.saml_attributes", "network", "os.name", "os.version".
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
@@ -553,6 +566,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("registerInterfaceIpWithDns")]
         public Input<bool>? RegisterInterfaceIpWithDns { get; set; }
+
+        /// <summary>
+        /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+        /// </summary>
+        [Input("sccmVpnBoundarySupport")]
+        public Input<bool>? SccmVpnBoundarySupport { get; set; }
 
         [Input("serviceModeV2")]
         public Input<Inputs.ZeroTrustDeviceCustomProfileServiceModeV2GetArgs>? ServiceModeV2 { get; set; }

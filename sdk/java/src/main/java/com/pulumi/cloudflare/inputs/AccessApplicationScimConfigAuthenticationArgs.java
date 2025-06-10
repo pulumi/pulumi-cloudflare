@@ -79,7 +79,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
 
     /**
      * The authentication scheme to use when making SCIM requests to this application.
-     * Available values: &#34;httpbasic&#34;.
+     * Available values: &#34;httpbasic&#34;, &#34;oauthbearertoken&#34;, &#34;oauth2&#34;, &#34;access*service*token&#34;.
      * 
      */
     @Import(name="scheme", required=true)
@@ -87,7 +87,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
 
     /**
      * @return The authentication scheme to use when making SCIM requests to this application.
-     * Available values: &#34;httpbasic&#34;.
+     * Available values: &#34;httpbasic&#34;, &#34;oauthbearertoken&#34;, &#34;oauth2&#34;, &#34;access*service*token&#34;.
      * 
      */
     public Output<String> scheme() {
@@ -272,7 +272,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
 
         /**
          * @param scheme The authentication scheme to use when making SCIM requests to this application.
-         * Available values: &#34;httpbasic&#34;.
+         * Available values: &#34;httpbasic&#34;, &#34;oauthbearertoken&#34;, &#34;oauth2&#34;, &#34;access*service*token&#34;.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
 
         /**
          * @param scheme The authentication scheme to use when making SCIM requests to this application.
-         * Available values: &#34;httpbasic&#34;.
+         * Available values: &#34;httpbasic&#34;, &#34;oauthbearertoken&#34;, &#34;oauth2&#34;, &#34;access*service*token&#34;.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
     public static final GetHyperdriveConfigArgs Empty = new GetHyperdriveConfigArgs();
 
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public Output<String> accountId() {
@@ -32,14 +32,14 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Identifier
+     * Define configurations using a unique string identifier.
      * 
      */
     @Import(name="hyperdriveId")
     private @Nullable Output<String> hyperdriveId;
 
     /**
-     * @return Identifier
+     * @return Define configurations using a unique string identifier.
      * 
      */
     public Optional<Output<String>> hyperdriveId() {
@@ -72,7 +72,7 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param accountId Identifier
+         * @param accountId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param hyperdriveId Identifier
+         * @param hyperdriveId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetHyperdriveConfigArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param hyperdriveId Identifier
+         * @param hyperdriveId Define configurations using a unique string identifier.
          * 
          * @return builder
          * 

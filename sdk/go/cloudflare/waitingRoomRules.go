@@ -69,7 +69,7 @@ type WaitingRoomRules struct {
 	// The version of the rule.
 	Version       pulumi.StringOutput `pulumi:"version"`
 	WaitingRoomId pulumi.StringOutput `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -126,7 +126,7 @@ type waitingRoomRulesState struct {
 	// The version of the rule.
 	Version       *string `pulumi:"version"`
 	WaitingRoomId *string `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -145,7 +145,7 @@ type WaitingRoomRulesState struct {
 	// The version of the rule.
 	Version       pulumi.StringPtrInput
 	WaitingRoomId pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -156,7 +156,7 @@ func (WaitingRoomRulesState) ElementType() reflect.Type {
 type waitingRoomRulesArgs struct {
 	Rules         []WaitingRoomRulesRule `pulumi:"rules"`
 	WaitingRoomId string                 `pulumi:"waitingRoomId"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -164,7 +164,7 @@ type waitingRoomRulesArgs struct {
 type WaitingRoomRulesArgs struct {
 	Rules         WaitingRoomRulesRuleArrayInput
 	WaitingRoomId pulumi.StringInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -293,7 +293,7 @@ func (o WaitingRoomRulesOutput) WaitingRoomId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WaitingRoomRulesOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoomRules) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

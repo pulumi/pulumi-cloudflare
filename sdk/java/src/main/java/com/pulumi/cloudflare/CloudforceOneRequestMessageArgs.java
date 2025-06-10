@@ -17,29 +17,29 @@ public final class CloudforceOneRequestMessageArgs extends com.pulumi.resources.
     public static final CloudforceOneRequestMessageArgs Empty = new CloudforceOneRequestMessageArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * Content of message
+     * Content of message.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return Content of message
+     * @return Content of message.
      * 
      */
     public Optional<Output<String>> content() {
@@ -47,26 +47,26 @@ public final class CloudforceOneRequestMessageArgs extends com.pulumi.resources.
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="requestIdentifier", required=true)
-    private Output<String> requestIdentifier;
+    @Import(name="requestId", required=true)
+    private Output<String> requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Output<String> requestIdentifier() {
-        return this.requestIdentifier;
+    public Output<String> requestId() {
+        return this.requestId;
     }
 
     private CloudforceOneRequestMessageArgs() {}
 
     private CloudforceOneRequestMessageArgs(CloudforceOneRequestMessageArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.content = $.content;
-        this.requestIdentifier = $.requestIdentifier;
+        this.requestId = $.requestId;
     }
 
     public static Builder builder() {
@@ -88,28 +88,28 @@ public final class CloudforceOneRequestMessageArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param content Content of message
+         * @param content Content of message.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class CloudforceOneRequestMessageArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param content Content of message
+         * @param content Content of message.
          * 
          * @return builder
          * 
@@ -130,32 +130,32 @@ public final class CloudforceOneRequestMessageArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(Output<String> requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder requestId(Output<String> requestId) {
+            $.requestId = requestId;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            return requestIdentifier(Output.of(requestIdentifier));
+        public Builder requestId(String requestId) {
+            return requestId(Output.of(requestId));
         }
 
         public CloudforceOneRequestMessageArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("CloudforceOneRequestMessageArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("CloudforceOneRequestMessageArgs", "accountId");
             }
-            if ($.requestIdentifier == null) {
-                throw new MissingRequiredPropertyException("CloudforceOneRequestMessageArgs", "requestIdentifier");
+            if ($.requestId == null) {
+                throw new MissingRequiredPropertyException("CloudforceOneRequestMessageArgs", "requestId");
             }
             return $;
         }

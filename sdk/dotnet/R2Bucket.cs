@@ -53,7 +53,8 @@ namespace Pulumi.Cloudflare
         public Output<string> CreationDate { get; private set; } = null!;
 
         /// <summary>
-        /// Jurisdiction of the bucket
+        /// Jurisdiction where objects in this bucket are guaranteed to be stored.
+        /// Available values: "default", "eu", "fedramp".
         /// </summary>
         [Output("jurisdiction")]
         public Output<string> Jurisdiction { get; private set; } = null!;
@@ -63,7 +64,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "apac", "eeur", "enam", "weur", "wnam", "oc".
         /// </summary>
         [Output("location")]
-        public Output<string?> Location { get; private set; } = null!;
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Name of the bucket.
@@ -131,7 +132,8 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Jurisdiction of the bucket
+        /// Jurisdiction where objects in this bucket are guaranteed to be stored.
+        /// Available values: "default", "eu", "fedramp".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }
@@ -177,7 +179,8 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreationDate { get; set; }
 
         /// <summary>
-        /// Jurisdiction of the bucket
+        /// Jurisdiction where objects in this bucket are guaranteed to be stored.
+        /// Available values: "default", "eu", "fedramp".
         /// </summary>
         [Input("jurisdiction")]
         public Input<string>? Jurisdiction { get; set; }

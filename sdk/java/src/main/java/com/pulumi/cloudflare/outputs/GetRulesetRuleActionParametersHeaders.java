@@ -16,7 +16,7 @@ public final class GetRulesetRuleActionParametersHeaders {
      */
     private String expression;
     /**
-     * @return Available values: &#34;remove&#34;.
+     * @return Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
      * 
      */
     private String operation;
@@ -35,7 +35,7 @@ public final class GetRulesetRuleActionParametersHeaders {
         return this.expression;
     }
     /**
-     * @return Available values: &#34;remove&#34;.
+     * @return Available values: &#34;remove&#34;, &#34;add&#34;, &#34;set&#34;.
      * 
      */
     public String operation() {

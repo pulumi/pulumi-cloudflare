@@ -183,7 +183,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// The kind of resource that the binding provides.
-        /// Available values: "ai".
+        /// Available values: "ai", "analytics*engine", "assets", "browser", "d1", "dispatch*namespace", "durable*object*namespace", "hyperdrive", "json", "kv*namespace", "mtls*certificate", "plain*text", "pipelines", "queue", "r2*bucket", "secret*text", "service", "tail*consumer", "vectorize", "version*metadata", "secrets*store*secret", "secret*key".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

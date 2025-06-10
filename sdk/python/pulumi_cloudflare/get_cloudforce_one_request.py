@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetCloudforceOneRequestResult',
@@ -27,10 +29,10 @@ class GetCloudforceOneRequestResult:
     """
     A collection of values returned by getCloudforceOneRequest.
     """
-    def __init__(__self__, account_identifier=None, completed=None, content=None, created=None, id=None, message_tokens=None, priority=None, readable_id=None, request=None, request_identifier=None, status=None, summary=None, tlp=None, tokens=None, updated=None):
-        if account_identifier and not isinstance(account_identifier, str):
-            raise TypeError("Expected argument 'account_identifier' to be a str")
-        pulumi.set(__self__, "account_identifier", account_identifier)
+    def __init__(__self__, account_id=None, completed=None, content=None, created=None, filter=None, id=None, message_tokens=None, priority=None, readable_id=None, request=None, request_id=None, status=None, summary=None, tlp=None, tokens=None, updated=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
         if completed and not isinstance(completed, str):
             raise TypeError("Expected argument 'completed' to be a str")
         pulumi.set(__self__, "completed", completed)
@@ -40,6 +42,9 @@ class GetCloudforceOneRequestResult:
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -55,9 +60,9 @@ class GetCloudforceOneRequestResult:
         if request and not isinstance(request, str):
             raise TypeError("Expected argument 'request' to be a str")
         pulumi.set(__self__, "request", request)
-        if request_identifier and not isinstance(request_identifier, str):
-            raise TypeError("Expected argument 'request_identifier' to be a str")
-        pulumi.set(__self__, "request_identifier", request_identifier)
+        if request_id and not isinstance(request_id, str):
+            raise TypeError("Expected argument 'request_id' to be a str")
+        pulumi.set(__self__, "request_id", request_id)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -75,12 +80,12 @@ class GetCloudforceOneRequestResult:
         pulumi.set(__self__, "updated", updated)
 
     @property
-    @pulumi.getter(name="accountIdentifier")
-    def account_identifier(self) -> builtins.str:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> builtins.str:
         """
-        Identifier
+        Identifier.
         """
-        return pulumi.get(self, "account_identifier")
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
@@ -91,7 +96,7 @@ class GetCloudforceOneRequestResult:
     @pulumi.getter
     def content(self) -> builtins.str:
         """
-        Request content
+        Request content.
         """
         return pulumi.get(self, "content")
 
@@ -102,9 +107,14 @@ class GetCloudforceOneRequestResult:
 
     @property
     @pulumi.getter
+    def filter(self) -> Optional['outputs.GetCloudforceOneRequestFilterResult']:
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
     def id(self) -> builtins.str:
         """
-        UUID
+        UUID.
         """
         return pulumi.get(self, "id")
 
@@ -112,7 +122,7 @@ class GetCloudforceOneRequestResult:
     @pulumi.getter(name="messageTokens")
     def message_tokens(self) -> builtins.int:
         """
-        Tokens for the request messages
+        Tokens for the request messages.
         """
         return pulumi.get(self, "message_tokens")
 
@@ -125,7 +135,7 @@ class GetCloudforceOneRequestResult:
     @pulumi.getter(name="readableId")
     def readable_id(self) -> builtins.str:
         """
-        Readable Request ID
+        Readable Request ID.
         """
         return pulumi.get(self, "readable_id")
 
@@ -133,23 +143,23 @@ class GetCloudforceOneRequestResult:
     @pulumi.getter
     def request(self) -> builtins.str:
         """
-        Requested information from request
+        Requested information from request.
         """
         return pulumi.get(self, "request")
 
     @property
-    @pulumi.getter(name="requestIdentifier")
-    def request_identifier(self) -> Optional[builtins.str]:
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[builtins.str]:
         """
-        UUID
+        UUID.
         """
-        return pulumi.get(self, "request_identifier")
+        return pulumi.get(self, "request_id")
 
     @property
     @pulumi.getter
     def status(self) -> builtins.str:
         """
-        Request Status
+        Request Status.
         Available values: "open", "accepted", "reported", "approved", "completed", "declined".
         """
         return pulumi.get(self, "status")
@@ -158,7 +168,7 @@ class GetCloudforceOneRequestResult:
     @pulumi.getter
     def summary(self) -> builtins.str:
         """
-        Brief description of the request
+        Brief description of the request.
         """
         return pulumi.get(self, "summary")
 
@@ -166,7 +176,7 @@ class GetCloudforceOneRequestResult:
     @pulumi.getter
     def tlp(self) -> builtins.str:
         """
-        The CISA defined Traffic Light Protocol (TLP)
+        The CISA defined Traffic Light Protocol (TLP).
         Available values: "clear", "amber", "amber-strict", "green", "red".
         """
         return pulumi.get(self, "tlp")
@@ -175,7 +185,7 @@ class GetCloudforceOneRequestResult:
     @pulumi.getter
     def tokens(self) -> builtins.int:
         """
-        Tokens for the request
+        Tokens for the request.
         """
         return pulumi.get(self, "tokens")
 
@@ -191,16 +201,17 @@ class AwaitableGetCloudforceOneRequestResult(GetCloudforceOneRequestResult):
         if False:
             yield self
         return GetCloudforceOneRequestResult(
-            account_identifier=self.account_identifier,
+            account_id=self.account_id,
             completed=self.completed,
             content=self.content,
             created=self.created,
+            filter=self.filter,
             id=self.id,
             message_tokens=self.message_tokens,
             priority=self.priority,
             readable_id=self.readable_id,
             request=self.request,
-            request_identifier=self.request_identifier,
+            request_id=self.request_id,
             status=self.status,
             summary=self.summary,
             tlp=self.tlp,
@@ -208,8 +219,9 @@ class AwaitableGetCloudforceOneRequestResult(GetCloudforceOneRequestResult):
             updated=self.updated)
 
 
-def get_cloudforce_one_request(account_identifier: Optional[builtins.str] = None,
-                               request_identifier: Optional[builtins.str] = None,
+def get_cloudforce_one_request(account_id: Optional[builtins.str] = None,
+                               filter: Optional[Union['GetCloudforceOneRequestFilterArgs', 'GetCloudforceOneRequestFilterArgsDict']] = None,
+                               request_id: Optional[builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudforceOneRequestResult:
     """
     ## Example Usage
@@ -218,38 +230,41 @@ def get_cloudforce_one_request(account_identifier: Optional[builtins.str] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request = cloudflare.get_cloudforce_one_request(account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
-        request_identifier="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+    example_cloudforce_one_request = cloudflare.get_cloudforce_one_request(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
-    :param builtins.str account_identifier: Identifier
-    :param builtins.str request_identifier: UUID
+    :param builtins.str account_id: Identifier.
+    :param builtins.str request_id: UUID.
     """
     __args__ = dict()
-    __args__['accountIdentifier'] = account_identifier
-    __args__['requestIdentifier'] = request_identifier
+    __args__['accountId'] = account_id
+    __args__['filter'] = filter
+    __args__['requestId'] = request_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest', __args__, opts=opts, typ=GetCloudforceOneRequestResult).value
 
     return AwaitableGetCloudforceOneRequestResult(
-        account_identifier=pulumi.get(__ret__, 'account_identifier'),
+        account_id=pulumi.get(__ret__, 'account_id'),
         completed=pulumi.get(__ret__, 'completed'),
         content=pulumi.get(__ret__, 'content'),
         created=pulumi.get(__ret__, 'created'),
+        filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         message_tokens=pulumi.get(__ret__, 'message_tokens'),
         priority=pulumi.get(__ret__, 'priority'),
         readable_id=pulumi.get(__ret__, 'readable_id'),
         request=pulumi.get(__ret__, 'request'),
-        request_identifier=pulumi.get(__ret__, 'request_identifier'),
+        request_id=pulumi.get(__ret__, 'request_id'),
         status=pulumi.get(__ret__, 'status'),
         summary=pulumi.get(__ret__, 'summary'),
         tlp=pulumi.get(__ret__, 'tlp'),
         tokens=pulumi.get(__ret__, 'tokens'),
         updated=pulumi.get(__ret__, 'updated'))
-def get_cloudforce_one_request_output(account_identifier: Optional[pulumi.Input[builtins.str]] = None,
-                                      request_identifier: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+def get_cloudforce_one_request_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
+                                      filter: Optional[pulumi.Input[Optional[Union['GetCloudforceOneRequestFilterArgs', 'GetCloudforceOneRequestFilterArgsDict']]]] = None,
+                                      request_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudforceOneRequestResult]:
     """
     ## Example Usage
@@ -258,30 +273,32 @@ def get_cloudforce_one_request_output(account_identifier: Optional[pulumi.Input[
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_cloudforce_one_request = cloudflare.get_cloudforce_one_request(account_identifier="023e105f4ecef8ad9ca31a8372d0c353",
-        request_identifier="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+    example_cloudforce_one_request = cloudflare.get_cloudforce_one_request(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        request_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
     ```
 
 
-    :param builtins.str account_identifier: Identifier
-    :param builtins.str request_identifier: UUID
+    :param builtins.str account_id: Identifier.
+    :param builtins.str request_id: UUID.
     """
     __args__ = dict()
-    __args__['accountIdentifier'] = account_identifier
-    __args__['requestIdentifier'] = request_identifier
+    __args__['accountId'] = account_id
+    __args__['filter'] = filter
+    __args__['requestId'] = request_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getCloudforceOneRequest:getCloudforceOneRequest', __args__, opts=opts, typ=GetCloudforceOneRequestResult)
     return __ret__.apply(lambda __response__: GetCloudforceOneRequestResult(
-        account_identifier=pulumi.get(__response__, 'account_identifier'),
+        account_id=pulumi.get(__response__, 'account_id'),
         completed=pulumi.get(__response__, 'completed'),
         content=pulumi.get(__response__, 'content'),
         created=pulumi.get(__response__, 'created'),
+        filter=pulumi.get(__response__, 'filter'),
         id=pulumi.get(__response__, 'id'),
         message_tokens=pulumi.get(__response__, 'message_tokens'),
         priority=pulumi.get(__response__, 'priority'),
         readable_id=pulumi.get(__response__, 'readable_id'),
         request=pulumi.get(__response__, 'request'),
-        request_identifier=pulumi.get(__response__, 'request_identifier'),
+        request_id=pulumi.get(__response__, 'request_id'),
         status=pulumi.get(__response__, 'status'),
         summary=pulumi.get(__response__, 'summary'),
         tlp=pulumi.get(__response__, 'tlp'),

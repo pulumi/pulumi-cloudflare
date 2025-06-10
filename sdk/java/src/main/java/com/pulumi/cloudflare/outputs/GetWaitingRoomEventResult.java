@@ -101,7 +101,7 @@ public final class GetWaitingRoomEventResult {
     private String turnstileMode;
     private String waitingRoomId;
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     private String zoneId;
@@ -234,7 +234,7 @@ public final class GetWaitingRoomEventResult {
         return this.waitingRoomId;
     }
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
     public String zoneId() {

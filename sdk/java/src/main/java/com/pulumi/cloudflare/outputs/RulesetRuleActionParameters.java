@@ -199,7 +199,7 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable RulesetRuleActionParametersOverrides overrides;
     /**
-     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
     private @Nullable List<String> phases;
@@ -255,7 +255,7 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable Map<String,List<String>> rules;
     /**
-     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets option.
      * Available values: &#34;current&#34;.
      * 
      */
@@ -540,7 +540,7 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.overrides);
     }
     /**
-     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets options.
+     * @return A list of phases to skip the execution of. This option is incompatible with the rulesets option.
      * 
      */
     public List<String> phases() {
@@ -618,7 +618,7 @@ public final class RulesetRuleActionParameters {
         return this.rules == null ? Map.of() : this.rules;
     }
     /**
-     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets, rules. It can be incompatible with phases options base on the phase of the ruleset.
+     * @return A ruleset to skip the execution of. This option is incompatible with the rulesets option.
      * Available values: &#34;current&#34;.
      * 
      */

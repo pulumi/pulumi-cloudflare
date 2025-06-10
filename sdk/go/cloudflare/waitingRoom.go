@@ -125,7 +125,7 @@ type WaitingRoom struct {
 	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
 	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
 	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**. 12.
 	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
 	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
 	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -145,11 +145,14 @@ type WaitingRoom struct {
 	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
 	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
 	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
-	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
-	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
-	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
-	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+	// Turnstile widget. Please add the `{{{turnstile}}}` tag to the `customHtml` template to ensure the Turnstile widget
+	// appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+	// cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H "Accept: application/json" If
+	// `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod`
+	// is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true,
+	// "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0, "waitTimeFormatted":
+	// "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
 	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
 	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
 	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
@@ -160,7 +163,7 @@ type WaitingRoom struct {
 	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
 	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
 	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
 	JsonResponseEnabled pulumi.BoolOutput   `pulumi:"jsonResponseEnabled"`
 	ModifiedOn          pulumi.StringOutput `pulumi:"modifiedOn"`
 	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
@@ -216,7 +219,7 @@ type WaitingRoom struct {
 	// `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visibleNonInteractive",
 	// "visibleManaged".
 	TurnstileMode pulumi.StringOutput `pulumi:"turnstileMode"`
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -313,7 +316,7 @@ type waitingRoomState struct {
 	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
 	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
 	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**. 12.
 	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
 	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
 	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -333,11 +336,14 @@ type waitingRoomState struct {
 	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
 	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
 	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
-	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
-	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
-	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
-	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+	// Turnstile widget. Please add the `{{{turnstile}}}` tag to the `customHtml` template to ensure the Turnstile widget
+	// appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+	// cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H "Accept: application/json" If
+	// `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod`
+	// is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true,
+	// "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0, "waitTimeFormatted":
+	// "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
 	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
 	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
 	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
@@ -348,7 +354,7 @@ type waitingRoomState struct {
 	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
 	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
 	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
 	JsonResponseEnabled *bool   `pulumi:"jsonResponseEnabled"`
 	ModifiedOn          *string `pulumi:"modifiedOn"`
 	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
@@ -404,7 +410,7 @@ type waitingRoomState struct {
 	// `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visibleNonInteractive",
 	// "visibleManaged".
 	TurnstileMode *string `pulumi:"turnstileMode"`
-	// Identifier
+	// Identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -457,7 +463,7 @@ type WaitingRoomState struct {
 	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
 	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
 	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**. 12.
 	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
 	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
 	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -477,11 +483,14 @@ type WaitingRoomState struct {
 	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
 	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
 	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
-	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
-	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
-	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
-	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+	// Turnstile widget. Please add the `{{{turnstile}}}` tag to the `customHtml` template to ensure the Turnstile widget
+	// appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+	// cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H "Accept: application/json" If
+	// `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod`
+	// is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true,
+	// "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0, "waitTimeFormatted":
+	// "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
 	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
 	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
 	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
@@ -492,7 +501,7 @@ type WaitingRoomState struct {
 	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
 	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
 	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
 	JsonResponseEnabled pulumi.BoolPtrInput
 	ModifiedOn          pulumi.StringPtrInput
 	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
@@ -548,7 +557,7 @@ type WaitingRoomState struct {
 	// `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visibleNonInteractive",
 	// "visibleManaged".
 	TurnstileMode pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -604,7 +613,7 @@ type waitingRoomArgs struct {
 	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
 	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
 	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**. 12.
 	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
 	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
 	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -624,11 +633,14 @@ type waitingRoomArgs struct {
 	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
 	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
 	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
-	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
-	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
-	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
-	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+	// Turnstile widget. Please add the `{{{turnstile}}}` tag to the `customHtml` template to ensure the Turnstile widget
+	// appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+	// cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H "Accept: application/json" If
+	// `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod`
+	// is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true,
+	// "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0, "waitTimeFormatted":
+	// "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
 	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
 	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
 	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
@@ -639,7 +651,7 @@ type waitingRoomArgs struct {
 	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
 	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
 	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
 	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
 	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name string `pulumi:"name"`
@@ -690,7 +702,7 @@ type waitingRoomArgs struct {
 	// `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visibleNonInteractive",
 	// "visibleManaged".
 	TurnstileMode *string `pulumi:"turnstileMode"`
-	// Identifier
+	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -743,7 +755,7 @@ type WaitingRoomArgs struct {
 	// attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
 	// `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
 	// `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-	// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+	// website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**. 12.
 	// `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
 	// **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
 	// (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -763,11 +775,14 @@ type WaitingRoomArgs struct {
 	// `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
 	// `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
 	// Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-	// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
-	// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
-	// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
-	// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
-	// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+	// the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+	// Turnstile widget. Please add the `{{{turnstile}}}` tag to the `customHtml` template to ensure the Turnstile widget
+	// appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+	// cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H "Accept: application/json" If
+	// `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod`
+	// is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true,
+	// "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0, "waitTimeFormatted":
+	// "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
 	// "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
 	// "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
 	// "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
@@ -778,7 +793,7 @@ type WaitingRoomArgs struct {
 	// false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
 	// "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
 	// "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+	// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
 	JsonResponseEnabled pulumi.BoolPtrInput
 	// A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringInput
@@ -829,7 +844,7 @@ type WaitingRoomArgs struct {
 	// `invisible` requires Advanced Waiting Room. Available values: "off", "invisible", "visibleNonInteractive",
 	// "visibleManaged".
 	TurnstileMode pulumi.StringPtrInput
-	// Identifier
+	// Identifier.
 	ZoneId pulumi.StringInput
 }
 
@@ -998,7 +1013,7 @@ func (o WaitingRoomOutput) Host() pulumi.StringOutput {
 // attempt after `refreshIntervalSeconds` past this time. If the user makes a request too soon, it will be ignored and
 // `lastUpdated` will not change. 11. `refreshIntervalSeconds`: Integer indicating the number of seconds after
 // `lastUpdated` until the user is able to make another attempt to leave the waiting room and be let into the origin
-// website. When the `queueingMethod` is `reject`, there is no specified refresh time — it will always be **zero**. 12.
+// website. When the `queueingMethod` is `reject`, there is no specified refresh time —\_it will always be **zero**. 12.
 // `queueingMethod`: The queueing method currently used by the waiting room. It is either **fifo**, **random**,
 // **passthrough**, or **reject**. 13. `isFIFOQueue`: Boolean indicating if the waiting room uses a FIFO
 // (First-In-First-Out) queue. 14. `isRandomQueue`: Boolean indicating if the waiting room uses a Random queue where users
@@ -1018,11 +1033,14 @@ func (o WaitingRoomOutput) Host() pulumi.StringOutput {
 // `timeUntilEventEndFormatted`: String displaying the `timeUntilEventEnd` formatted in English for users. If
 // `isEventActive` is **false**, `timeUntilEventEndFormatted` will display **unavailable**. 23. `shuffleAtEventStart`:
 // Valid only when `isEventActive` is **true**. Boolean indicating if the users in the prequeue are shuffled randomly when
-// the event starts. An example cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H
-// "Accept: application/json" If `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON
-// response when `queueingMethod` is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true,
-// "waitTimeKnown": true, "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0,
-// "waitTimeFormatted": "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
+// the event starts. 24. `turnstile`: Empty when turnstile isn't enabled. String displaying an html tag to display the
+// Turnstile widget. Please add the `{{{turnstile}}}` tag to the `customHtml` template to ensure the Turnstile widget
+// appears. 25. `infiniteQueue`: Boolean indicating whether the response is for a user in the infinite queue. An example
+// cURL to a waiting room could be: curl -X GET "https://example.com/waitingroom" \ -H "Accept: application/json" If
+// `jsonResponseEnabled` is **true** and the request hits the waiting room, an example JSON response when `queueingMethod`
+// is **fifo** and no event is active could be: { "cfWaitingRoom": { "inWaitingRoom": true, "waitTimeKnown": true,
+// "waitTime": 10, "waitTime25Percentile": 0, "waitTime50Percentile": 0, "waitTime75Percentile": 0, "waitTimeFormatted":
+// "10 minutes", "queueIsFull": false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z",
 // "refreshIntervalSeconds": 20, "queueingMethod": "fifo", "isFIFOQueue": true, "isRandomQueue": false,
 // "isPassthroughQueue": false, "isRejectQueue": false, "isEventActive": false, "isEventPrequeueing": false,
 // "timeUntilEventStart": 0, "timeUntilEventStartFormatted": "unavailable", "timeUntilEventEnd": 0,
@@ -1033,7 +1051,7 @@ func (o WaitingRoomOutput) Host() pulumi.StringOutput {
 // false, "queueAll": false, "lastUpdated": "2020-08-03T23:46:00.000Z", "refreshIntervalSeconds": 20, "queueingMethod":
 // "random", "isFIFOQueue": false, "isRandomQueue": true, "isPassthroughQueue": false, "isRejectQueue": false,
 // "isEventActive": true, "isEventPrequeueing": false, "timeUntilEventStart": 0, "timeUntilEventStartFormatted":
-// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }.
+// "unavailable", "timeUntilEventEnd": 15, "timeUntilEventEndFormatted": "15 minutes", "shuffleAtEventStart": true } }
 func (o WaitingRoomOutput) JsonResponseEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolOutput { return v.JsonResponseEnabled }).(pulumi.BoolOutput)
 }
@@ -1134,7 +1152,7 @@ func (o WaitingRoomOutput) TurnstileMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.TurnstileMode }).(pulumi.StringOutput)
 }
 
-// Identifier
+// Identifier.
 func (o WaitingRoomOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

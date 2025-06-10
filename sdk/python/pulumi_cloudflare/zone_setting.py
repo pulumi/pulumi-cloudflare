@@ -22,16 +22,20 @@ class ZoneSettingArgs:
     def __init__(__self__, *,
                  setting_id: pulumi.Input[builtins.str],
                  value: Any,
-                 zone_id: pulumi.Input[builtins.str]):
+                 zone_id: pulumi.Input[builtins.str],
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None):
         """
         The set of arguments for constructing a ZoneSetting resource.
         :param pulumi.Input[builtins.str] setting_id: Setting name
         :param Any value: Current value of the zone setting.
         :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.bool] enabled: ssl-recommender enrollment setting.
         """
         pulumi.set(__self__, "setting_id", setting_id)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "zone_id", zone_id)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter(name="settingId")
@@ -69,11 +73,24 @@ class ZoneSettingArgs:
     def zone_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "zone_id", value)
 
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        ssl-recommender enrollment setting.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
 
 @pulumi.input_type
 class _ZoneSettingState:
     def __init__(__self__, *,
                  editable: Optional[pulumi.Input[builtins.bool]] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  modified_on: Optional[pulumi.Input[builtins.str]] = None,
                  setting_id: Optional[pulumi.Input[builtins.str]] = None,
                  time_remaining: Optional[pulumi.Input[builtins.float]] = None,
@@ -82,6 +99,7 @@ class _ZoneSettingState:
         """
         Input properties used for looking up and filtering ZoneSetting resources.
         :param pulumi.Input[builtins.bool] editable: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+        :param pulumi.Input[builtins.bool] enabled: ssl-recommender enrollment setting.
         :param pulumi.Input[builtins.str] modified_on: last time this setting was modified.
         :param pulumi.Input[builtins.str] setting_id: Setting name
         :param pulumi.Input[builtins.float] time_remaining: Value of the zone setting.
@@ -91,6 +109,8 @@ class _ZoneSettingState:
         """
         if editable is not None:
             pulumi.set(__self__, "editable", editable)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if modified_on is not None:
             pulumi.set(__self__, "modified_on", modified_on)
         if setting_id is not None:
@@ -113,6 +133,18 @@ class _ZoneSettingState:
     @editable.setter
     def editable(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "editable", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        ssl-recommender enrollment setting.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="modifiedOn")
@@ -182,12 +214,23 @@ class ZoneSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  setting_id: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[Any] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone_setting = cloudflare.ZoneSetting("example_zone_setting",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="always_online",
+            enabled=True)
+        ```
 
         ## Import
 
@@ -197,6 +240,7 @@ class ZoneSetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[builtins.bool] enabled: ssl-recommender enrollment setting.
         :param pulumi.Input[builtins.str] setting_id: Setting name
         :param Any value: Current value of the zone setting.
         :param pulumi.Input[builtins.str] zone_id: Identifier
@@ -209,6 +253,16 @@ class ZoneSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone_setting = cloudflare.ZoneSetting("example_zone_setting",
+            zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+            setting_id="always_online",
+            enabled=True)
+        ```
 
         ## Import
 
@@ -231,6 +285,7 @@ class ZoneSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  setting_id: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[Any] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
@@ -243,6 +298,7 @@ class ZoneSetting(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneSettingArgs.__new__(ZoneSettingArgs)
 
+            __props__.__dict__["enabled"] = enabled
             if setting_id is None and not opts.urn:
                 raise TypeError("Missing required property 'setting_id'")
             __props__.__dict__["setting_id"] = setting_id
@@ -266,6 +322,7 @@ class ZoneSetting(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             editable: Optional[pulumi.Input[builtins.bool]] = None,
+            enabled: Optional[pulumi.Input[builtins.bool]] = None,
             modified_on: Optional[pulumi.Input[builtins.str]] = None,
             setting_id: Optional[pulumi.Input[builtins.str]] = None,
             time_remaining: Optional[pulumi.Input[builtins.float]] = None,
@@ -279,6 +336,7 @@ class ZoneSetting(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] editable: Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
+        :param pulumi.Input[builtins.bool] enabled: ssl-recommender enrollment setting.
         :param pulumi.Input[builtins.str] modified_on: last time this setting was modified.
         :param pulumi.Input[builtins.str] setting_id: Setting name
         :param pulumi.Input[builtins.float] time_remaining: Value of the zone setting.
@@ -291,6 +349,7 @@ class ZoneSetting(pulumi.CustomResource):
         __props__ = _ZoneSettingState.__new__(_ZoneSettingState)
 
         __props__.__dict__["editable"] = editable
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["setting_id"] = setting_id
         __props__.__dict__["time_remaining"] = time_remaining
@@ -305,6 +364,14 @@ class ZoneSetting(pulumi.CustomResource):
         Whether or not this setting can be modified for this zone (based on your Cloudflare plan level).
         """
         return pulumi.get(self, "editable")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[builtins.bool]:
+        """
+        ssl-recommender enrollment setting.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="modifiedOn")

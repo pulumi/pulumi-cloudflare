@@ -29,13 +29,16 @@ class GetZoneResult:
     """
     A collection of values returned by getZone.
     """
-    def __init__(__self__, account=None, activated_on=None, created_on=None, development_mode=None, filter=None, id=None, meta=None, modified_on=None, name=None, name_servers=None, original_dnshost=None, original_name_servers=None, original_registrar=None, owner=None, paused=None, status=None, type=None, vanity_name_servers=None, verification_key=None, zone_id=None):
+    def __init__(__self__, account=None, activated_on=None, cname_suffix=None, created_on=None, development_mode=None, filter=None, id=None, meta=None, modified_on=None, name=None, name_servers=None, original_dnshost=None, original_name_servers=None, original_registrar=None, owner=None, paused=None, permissions=None, plan=None, status=None, tenant=None, tenant_unit=None, type=None, vanity_name_servers=None, verification_key=None, zone_id=None):
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)
         if activated_on and not isinstance(activated_on, str):
             raise TypeError("Expected argument 'activated_on' to be a str")
         pulumi.set(__self__, "activated_on", activated_on)
+        if cname_suffix and not isinstance(cname_suffix, str):
+            raise TypeError("Expected argument 'cname_suffix' to be a str")
+        pulumi.set(__self__, "cname_suffix", cname_suffix)
         if created_on and not isinstance(created_on, str):
             raise TypeError("Expected argument 'created_on' to be a str")
         pulumi.set(__self__, "created_on", created_on)
@@ -75,9 +78,21 @@ class GetZoneResult:
         if paused and not isinstance(paused, bool):
             raise TypeError("Expected argument 'paused' to be a bool")
         pulumi.set(__self__, "paused", paused)
+        if permissions and not isinstance(permissions, list):
+            raise TypeError("Expected argument 'permissions' to be a list")
+        pulumi.set(__self__, "permissions", permissions)
+        if plan and not isinstance(plan, dict):
+            raise TypeError("Expected argument 'plan' to be a dict")
+        pulumi.set(__self__, "plan", plan)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if tenant and not isinstance(tenant, dict):
+            raise TypeError("Expected argument 'tenant' to be a dict")
+        pulumi.set(__self__, "tenant", tenant)
+        if tenant_unit and not isinstance(tenant_unit, dict):
+            raise TypeError("Expected argument 'tenant_unit' to be a dict")
+        pulumi.set(__self__, "tenant_unit", tenant_unit)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -100,6 +115,11 @@ class GetZoneResult:
     @pulumi.getter(name="activatedOn")
     def activated_on(self) -> builtins.str:
         return pulumi.get(self, "activated_on")
+
+    @property
+    @pulumi.getter(name="cnameSuffix")
+    def cname_suffix(self) -> builtins.str:
+        return pulumi.get(self, "cname_suffix")
 
     @property
     @pulumi.getter(name="createdOn")
@@ -168,8 +188,30 @@ class GetZoneResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def permissions(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""This attribute is deprecated.""")
+    def plan(self) -> 'outputs.GetZonePlanResult':
+        return pulumi.get(self, "plan")
+
+    @property
+    @pulumi.getter
     def status(self) -> builtins.str:
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tenant(self) -> 'outputs.GetZoneTenantResult':
+        return pulumi.get(self, "tenant")
+
+    @property
+    @pulumi.getter(name="tenantUnit")
+    def tenant_unit(self) -> 'outputs.GetZoneTenantUnitResult':
+        return pulumi.get(self, "tenant_unit")
 
     @property
     @pulumi.getter
@@ -200,6 +242,7 @@ class AwaitableGetZoneResult(GetZoneResult):
         return GetZoneResult(
             account=self.account,
             activated_on=self.activated_on,
+            cname_suffix=self.cname_suffix,
             created_on=self.created_on,
             development_mode=self.development_mode,
             filter=self.filter,
@@ -213,7 +256,11 @@ class AwaitableGetZoneResult(GetZoneResult):
             original_registrar=self.original_registrar,
             owner=self.owner,
             paused=self.paused,
+            permissions=self.permissions,
+            plan=self.plan,
             status=self.status,
+            tenant=self.tenant,
+            tenant_unit=self.tenant_unit,
             type=self.type,
             vanity_name_servers=self.vanity_name_servers,
             verification_key=self.verification_key,
@@ -242,6 +289,7 @@ def get_zone(filter: Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict'
     return AwaitableGetZoneResult(
         account=pulumi.get(__ret__, 'account'),
         activated_on=pulumi.get(__ret__, 'activated_on'),
+        cname_suffix=pulumi.get(__ret__, 'cname_suffix'),
         created_on=pulumi.get(__ret__, 'created_on'),
         development_mode=pulumi.get(__ret__, 'development_mode'),
         filter=pulumi.get(__ret__, 'filter'),
@@ -255,7 +303,11 @@ def get_zone(filter: Optional[Union['GetZoneFilterArgs', 'GetZoneFilterArgsDict'
         original_registrar=pulumi.get(__ret__, 'original_registrar'),
         owner=pulumi.get(__ret__, 'owner'),
         paused=pulumi.get(__ret__, 'paused'),
+        permissions=pulumi.get(__ret__, 'permissions'),
+        plan=pulumi.get(__ret__, 'plan'),
         status=pulumi.get(__ret__, 'status'),
+        tenant=pulumi.get(__ret__, 'tenant'),
+        tenant_unit=pulumi.get(__ret__, 'tenant_unit'),
         type=pulumi.get(__ret__, 'type'),
         vanity_name_servers=pulumi.get(__ret__, 'vanity_name_servers'),
         verification_key=pulumi.get(__ret__, 'verification_key'),
@@ -281,6 +333,7 @@ def get_zone_output(filter: Optional[pulumi.Input[Optional[Union['GetZoneFilterA
     return __ret__.apply(lambda __response__: GetZoneResult(
         account=pulumi.get(__response__, 'account'),
         activated_on=pulumi.get(__response__, 'activated_on'),
+        cname_suffix=pulumi.get(__response__, 'cname_suffix'),
         created_on=pulumi.get(__response__, 'created_on'),
         development_mode=pulumi.get(__response__, 'development_mode'),
         filter=pulumi.get(__response__, 'filter'),
@@ -294,7 +347,11 @@ def get_zone_output(filter: Optional[pulumi.Input[Optional[Union['GetZoneFilterA
         original_registrar=pulumi.get(__response__, 'original_registrar'),
         owner=pulumi.get(__response__, 'owner'),
         paused=pulumi.get(__response__, 'paused'),
+        permissions=pulumi.get(__response__, 'permissions'),
+        plan=pulumi.get(__response__, 'plan'),
         status=pulumi.get(__response__, 'status'),
+        tenant=pulumi.get(__response__, 'tenant'),
+        tenant_unit=pulumi.get(__response__, 'tenant_unit'),
         type=pulumi.get(__response__, 'type'),
         vanity_name_servers=pulumi.get(__response__, 'vanity_name_servers'),
         verification_key=pulumi.get(__response__, 'verification_key'),

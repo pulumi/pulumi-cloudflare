@@ -70,7 +70,7 @@ public final class ZeroTrustDevicePostureIntegrationState extends com.pulumi.res
 
     /**
      * The type of device posture integration.
-     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
      * 
      */
     @Import(name="type")
@@ -78,7 +78,7 @@ public final class ZeroTrustDevicePostureIntegrationState extends com.pulumi.res
 
     /**
      * @return The type of device posture integration.
-     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
+     * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -187,7 +187,7 @@ public final class ZeroTrustDevicePostureIntegrationState extends com.pulumi.res
 
         /**
          * @param type The type of device posture integration.
-         * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
+         * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ZeroTrustDevicePostureIntegrationState extends com.pulumi.res
 
         /**
          * @param type The type of device posture integration.
-         * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium&#34;, &#34;sentinelone*s2s&#34;, &#34;custom*s2s&#34;.
+         * Available values: &#34;workspace*one&#34;, &#34;crowdstrike*s2s&#34;, &#34;uptycs&#34;, &#34;intune&#34;, &#34;kolide&#34;, &#34;tanium*s2s&#34;, &#34;sentinelone*s2s&#34;, &#34;custom_s2s&#34;.
          * 
          * @return builder
          * 

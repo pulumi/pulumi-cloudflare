@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.GetCloudforceOneRequestFilter;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -14,62 +15,63 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCloudforceOneRequestResult {
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    private String accountIdentifier;
+    private String accountId;
     private String completed;
     /**
-     * @return Request content
+     * @return Request content.
      * 
      */
     private String content;
     private String created;
+    private @Nullable GetCloudforceOneRequestFilter filter;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     private String id;
     /**
-     * @return Tokens for the request messages
+     * @return Tokens for the request messages.
      * 
      */
     private Integer messageTokens;
     private String priority;
     /**
-     * @return Readable Request ID
+     * @return Readable Request ID.
      * 
      */
     private String readableId;
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     private String request;
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    private @Nullable String requestIdentifier;
+    private @Nullable String requestId;
     /**
-     * @return Request Status
+     * @return Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
     private String status;
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     private String summary;
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
     private String tlp;
     /**
-     * @return Tokens for the request
+     * @return Tokens for the request.
      * 
      */
     private Integer tokens;
@@ -77,17 +79,17 @@ public final class GetCloudforceOneRequestResult {
 
     private GetCloudforceOneRequestResult() {}
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public String accountIdentifier() {
-        return this.accountIdentifier;
+    public String accountId() {
+        return this.accountId;
     }
     public String completed() {
         return this.completed;
     }
     /**
-     * @return Request content
+     * @return Request content.
      * 
      */
     public String content() {
@@ -96,15 +98,18 @@ public final class GetCloudforceOneRequestResult {
     public String created() {
         return this.created;
     }
+    public Optional<GetCloudforceOneRequestFilter> filter() {
+        return Optional.ofNullable(this.filter);
+    }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Tokens for the request messages
+     * @return Tokens for the request messages.
      * 
      */
     public Integer messageTokens() {
@@ -114,28 +119,28 @@ public final class GetCloudforceOneRequestResult {
         return this.priority;
     }
     /**
-     * @return Readable Request ID
+     * @return Readable Request ID.
      * 
      */
     public String readableId() {
         return this.readableId;
     }
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     public String request() {
         return this.request;
     }
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Optional<String> requestIdentifier() {
-        return Optional.ofNullable(this.requestIdentifier);
+    public Optional<String> requestId() {
+        return Optional.ofNullable(this.requestId);
     }
     /**
-     * @return Request Status
+     * @return Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
@@ -143,14 +148,14 @@ public final class GetCloudforceOneRequestResult {
         return this.status;
     }
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     public String summary() {
         return this.summary;
     }
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -158,7 +163,7 @@ public final class GetCloudforceOneRequestResult {
         return this.tlp;
     }
     /**
-     * @return Tokens for the request
+     * @return Tokens for the request.
      * 
      */
     public Integer tokens() {
@@ -177,16 +182,17 @@ public final class GetCloudforceOneRequestResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String accountIdentifier;
+        private String accountId;
         private String completed;
         private String content;
         private String created;
+        private @Nullable GetCloudforceOneRequestFilter filter;
         private String id;
         private Integer messageTokens;
         private String priority;
         private String readableId;
         private String request;
-        private @Nullable String requestIdentifier;
+        private @Nullable String requestId;
         private String status;
         private String summary;
         private String tlp;
@@ -195,16 +201,17 @@ public final class GetCloudforceOneRequestResult {
         public Builder() {}
         public Builder(GetCloudforceOneRequestResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accountIdentifier = defaults.accountIdentifier;
+    	      this.accountId = defaults.accountId;
     	      this.completed = defaults.completed;
     	      this.content = defaults.content;
     	      this.created = defaults.created;
+    	      this.filter = defaults.filter;
     	      this.id = defaults.id;
     	      this.messageTokens = defaults.messageTokens;
     	      this.priority = defaults.priority;
     	      this.readableId = defaults.readableId;
     	      this.request = defaults.request;
-    	      this.requestIdentifier = defaults.requestIdentifier;
+    	      this.requestId = defaults.requestId;
     	      this.status = defaults.status;
     	      this.summary = defaults.summary;
     	      this.tlp = defaults.tlp;
@@ -213,11 +220,11 @@ public final class GetCloudforceOneRequestResult {
         }
 
         @CustomType.Setter
-        public Builder accountIdentifier(String accountIdentifier) {
-            if (accountIdentifier == null) {
-              throw new MissingRequiredPropertyException("GetCloudforceOneRequestResult", "accountIdentifier");
+        public Builder accountId(String accountId) {
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetCloudforceOneRequestResult", "accountId");
             }
-            this.accountIdentifier = accountIdentifier;
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
@@ -242,6 +249,12 @@ public final class GetCloudforceOneRequestResult {
               throw new MissingRequiredPropertyException("GetCloudforceOneRequestResult", "created");
             }
             this.created = created;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder filter(@Nullable GetCloudforceOneRequestFilter filter) {
+
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
@@ -285,9 +298,9 @@ public final class GetCloudforceOneRequestResult {
             return this;
         }
         @CustomType.Setter
-        public Builder requestIdentifier(@Nullable String requestIdentifier) {
+        public Builder requestId(@Nullable String requestId) {
 
-            this.requestIdentifier = requestIdentifier;
+            this.requestId = requestId;
             return this;
         }
         @CustomType.Setter
@@ -332,16 +345,17 @@ public final class GetCloudforceOneRequestResult {
         }
         public GetCloudforceOneRequestResult build() {
             final var _resultValue = new GetCloudforceOneRequestResult();
-            _resultValue.accountIdentifier = accountIdentifier;
+            _resultValue.accountId = accountId;
             _resultValue.completed = completed;
             _resultValue.content = content;
             _resultValue.created = created;
+            _resultValue.filter = filter;
             _resultValue.id = id;
             _resultValue.messageTokens = messageTokens;
             _resultValue.priority = priority;
             _resultValue.readableId = readableId;
             _resultValue.request = request;
-            _resultValue.requestIdentifier = requestIdentifier;
+            _resultValue.requestId = requestId;
             _resultValue.status = status;
             _resultValue.summary = summary;
             _resultValue.tlp = tlp;

@@ -60,7 +60,7 @@ export class TeamsRule extends pulumi.CustomResource {
     /**
      * The description of the rule.
      */
-    public readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The wirefilter expression used for device posture check matching.
      */
@@ -86,10 +86,6 @@ export class TeamsRule extends pulumi.CustomResource {
      * The name of the rule.
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     */
     public readonly precedence!: pulumi.Output<number | undefined>;
     /**
      * Additional settings that modify the rule's action.
@@ -222,10 +218,6 @@ export interface TeamsRuleState {
      * The name of the rule.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     */
     precedence?: pulumi.Input<number>;
     /**
      * Additional settings that modify the rule's action.
@@ -285,10 +277,6 @@ export interface TeamsRuleArgs {
      * The name of the rule.
      */
     name: pulumi.Input<string>;
-    /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     */
     precedence?: pulumi.Input<number>;
     /**
      * Additional settings that modify the rule's action.

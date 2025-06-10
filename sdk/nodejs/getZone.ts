@@ -41,6 +41,7 @@ export interface GetZoneArgs {
 export interface GetZoneResult {
     readonly account: outputs.GetZoneAccount;
     readonly activatedOn: string;
+    readonly cnameSuffix: string;
     readonly createdOn: string;
     readonly developmentMode: number;
     readonly filter?: outputs.GetZoneFilter;
@@ -54,7 +55,17 @@ export interface GetZoneResult {
     readonly originalRegistrar: string;
     readonly owner: outputs.GetZoneOwner;
     readonly paused: boolean;
+    /**
+     * @deprecated This attribute is deprecated.
+     */
+    readonly permissions: string[];
+    /**
+     * @deprecated This attribute is deprecated.
+     */
+    readonly plan: outputs.GetZonePlan;
     readonly status: string;
+    readonly tenant: outputs.GetZoneTenant;
+    readonly tenantUnit: outputs.GetZoneTenantUnit;
     readonly type: string;
     readonly vanityNameServers: string[];
     readonly verificationKey: string;

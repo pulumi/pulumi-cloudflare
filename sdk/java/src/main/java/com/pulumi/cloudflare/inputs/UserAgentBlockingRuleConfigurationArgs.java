@@ -17,7 +17,7 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
 
     /**
      * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;.
+     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
      * 
      */
     @Import(name="target")
@@ -25,7 +25,7 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
 
     /**
      * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;.
+     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
      * 
      */
     public Optional<Output<String>> target() {
@@ -74,7 +74,7 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
 
         /**
          * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-         * Available values: &#34;ip&#34;.
+         * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
 
         /**
          * @param target The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-         * Available values: &#34;ip&#34;.
+         * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
          * 
          * @return builder
          * 

@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Name;
         /// <summary>
         /// The type of characteristic.
-        /// Available values: "header", "cookie".
+        /// Available values: "header", "cookie", "jwt".
         /// </summary>
         public readonly string Type;
 

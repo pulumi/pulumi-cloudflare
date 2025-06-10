@@ -18,29 +18,29 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
     public static final CloudforceOneRequestAssetArgs Empty = new CloudforceOneRequestAssetArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * Page number of results
+     * Page number of results.
      * 
      */
     @Import(name="page", required=true)
     private Output<Integer> page;
 
     /**
-     * @return Page number of results
+     * @return Page number of results.
      * 
      */
     public Output<Integer> page() {
@@ -48,14 +48,14 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Number of results per page
+     * Number of results per page.
      * 
      */
     @Import(name="perPage", required=true)
     private Output<Integer> perPage;
 
     /**
-     * @return Number of results per page
+     * @return Number of results per page.
      * 
      */
     public Output<Integer> perPage() {
@@ -63,29 +63,29 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * UUID
+     * UUID.
      * 
      */
-    @Import(name="requestIdentifier", required=true)
-    private Output<String> requestIdentifier;
+    @Import(name="requestId", required=true)
+    private Output<String> requestId;
 
     /**
-     * @return UUID
+     * @return UUID.
      * 
      */
-    public Output<String> requestIdentifier() {
-        return this.requestIdentifier;
+    public Output<String> requestId() {
+        return this.requestId;
     }
 
     /**
-     * Asset file to upload
+     * Asset file to upload.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return Asset file to upload
+     * @return Asset file to upload.
      * 
      */
     public Optional<Output<String>> source() {
@@ -95,10 +95,10 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
     private CloudforceOneRequestAssetArgs() {}
 
     private CloudforceOneRequestAssetArgs(CloudforceOneRequestAssetArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
+        this.accountId = $.accountId;
         this.page = $.page;
         this.perPage = $.perPage;
-        this.requestIdentifier = $.requestIdentifier;
+        this.requestId = $.requestId;
         this.source = $.source;
     }
 
@@ -121,28 +121,28 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param page Page number of results
+         * @param page Page number of results.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param page Page number of results
+         * @param page Page number of results.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param perPage Number of results per page
+         * @param perPage Number of results per page.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param perPage Number of results per page
+         * @param perPage Number of results per page.
          * 
          * @return builder
          * 
@@ -184,28 +184,28 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(Output<String> requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder requestId(Output<String> requestId) {
+            $.requestId = requestId;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param requestId UUID.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            return requestIdentifier(Output.of(requestIdentifier));
+        public Builder requestId(String requestId) {
+            return requestId(Output.of(requestId));
         }
 
         /**
-         * @param source Asset file to upload
+         * @param source Asset file to upload.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param source Asset file to upload
+         * @param source Asset file to upload.
          * 
          * @return builder
          * 
@@ -226,8 +226,8 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
         }
 
         public CloudforceOneRequestAssetArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("CloudforceOneRequestAssetArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("CloudforceOneRequestAssetArgs", "accountId");
             }
             if ($.page == null) {
                 throw new MissingRequiredPropertyException("CloudforceOneRequestAssetArgs", "page");
@@ -235,8 +235,8 @@ public final class CloudforceOneRequestAssetArgs extends com.pulumi.resources.Re
             if ($.perPage == null) {
                 throw new MissingRequiredPropertyException("CloudforceOneRequestAssetArgs", "perPage");
             }
-            if ($.requestIdentifier == null) {
-                throw new MissingRequiredPropertyException("CloudforceOneRequestAssetArgs", "requestIdentifier");
+            if ($.requestId == null) {
+                throw new MissingRequiredPropertyException("CloudforceOneRequestAssetArgs", "requestId");
             }
             return $;
         }

@@ -24,6 +24,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("headSamplingRate")]
         public Input<double>? HeadSamplingRate { get; set; }
 
+        /// <summary>
+        /// Log settings for the Worker.
+        /// </summary>
+        [Input("logs")]
+        public Input<Inputs.WorkerScriptObservabilityLogsArgs>? Logs { get; set; }
+
         public WorkerScriptObservabilityArgs()
         {
         }

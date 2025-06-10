@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleCloudforceOneRequestPriority = new CloudforceOneRequestPriority("exampleCloudforceOneRequestPriority", CloudforceOneRequestPriorityArgs.builder()
- *             .accountIdentifier("023e105f4ecef8ad9ca31a8372d0c353")
+ *             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .labels(            
  *                 "DoS",
  *                 "CVE")
@@ -60,25 +60,25 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example &#39;&lt;account_identifier&gt;/&lt;priority_identifer&gt;&#39;
+ * $ pulumi import cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority example &#39;&lt;account_id&gt;/&lt;priority_id&gt;&#39;
  * ```
  * 
  */
 @ResourceType(type="cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority")
 public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Export(name="accountIdentifier", refs={String.class}, tree="[0]")
-    private Output<String> accountIdentifier;
+    @Export(name="accountId", refs={String.class}, tree="[0]")
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
     @Export(name="completed", refs={String.class}, tree="[0]")
     private Output<String> completed;
@@ -87,14 +87,14 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
         return this.completed;
     }
     /**
-     * Request content
+     * Request content.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
-     * @return Request content
+     * @return Request content.
      * 
      */
     public Output<String> content() {
@@ -107,91 +107,91 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
         return this.created;
     }
     /**
-     * List of labels
+     * List of labels.
      * 
      */
     @Export(name="labels", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> labels;
 
     /**
-     * @return List of labels
+     * @return List of labels.
      * 
      */
     public Output<List<String>> labels() {
         return this.labels;
     }
     /**
-     * Tokens for the request messages
+     * Tokens for the request messages.
      * 
      */
     @Export(name="messageTokens", refs={Integer.class}, tree="[0]")
     private Output<Integer> messageTokens;
 
     /**
-     * @return Tokens for the request messages
+     * @return Tokens for the request messages.
      * 
      */
     public Output<Integer> messageTokens() {
         return this.messageTokens;
     }
     /**
-     * Priority
+     * Priority.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return Priority
+     * @return Priority.
      * 
      */
     public Output<Integer> priority() {
         return this.priority;
     }
     /**
-     * Readable Request ID
+     * Readable Request ID.
      * 
      */
     @Export(name="readableId", refs={String.class}, tree="[0]")
     private Output<String> readableId;
 
     /**
-     * @return Readable Request ID
+     * @return Readable Request ID.
      * 
      */
     public Output<String> readableId() {
         return this.readableId;
     }
     /**
-     * Requested information from request
+     * Requested information from request.
      * 
      */
     @Export(name="request", refs={String.class}, tree="[0]")
     private Output<String> request;
 
     /**
-     * @return Requested information from request
+     * @return Requested information from request.
      * 
      */
     public Output<String> request() {
         return this.request;
     }
     /**
-     * Requirement
+     * Requirement.
      * 
      */
     @Export(name="requirement", refs={String.class}, tree="[0]")
     private Output<String> requirement;
 
     /**
-     * @return Requirement
+     * @return Requirement.
      * 
      */
     public Output<String> requirement() {
         return this.requirement;
     }
     /**
-     * Request Status
+     * Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
@@ -199,7 +199,7 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
     private Output<String> status;
 
     /**
-     * @return Request Status
+     * @return Request Status.
      * Available values: &#34;open&#34;, &#34;accepted&#34;, &#34;reported&#34;, &#34;approved&#34;, &#34;completed&#34;, &#34;declined&#34;.
      * 
      */
@@ -207,21 +207,21 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
         return this.status;
     }
     /**
-     * Brief description of the request
+     * Brief description of the request.
      * 
      */
     @Export(name="summary", refs={String.class}, tree="[0]")
     private Output<String> summary;
 
     /**
-     * @return Brief description of the request
+     * @return Brief description of the request.
      * 
      */
     public Output<String> summary() {
         return this.summary;
     }
     /**
-     * The CISA defined Traffic Light Protocol (TLP)
+     * The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -229,7 +229,7 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
     private Output<String> tlp;
 
     /**
-     * @return The CISA defined Traffic Light Protocol (TLP)
+     * @return The CISA defined Traffic Light Protocol (TLP).
      * Available values: &#34;clear&#34;, &#34;amber&#34;, &#34;amber-strict&#34;, &#34;green&#34;, &#34;red&#34;.
      * 
      */
@@ -237,14 +237,14 @@ public class CloudforceOneRequestPriority extends com.pulumi.resources.CustomRes
         return this.tlp;
     }
     /**
-     * Tokens for the request
+     * Tokens for the request.
      * 
      */
     @Export(name="tokens", refs={Integer.class}, tree="[0]")
     private Output<Integer> tokens;
 
     /**
-     * @return Tokens for the request
+     * @return Tokens for the request.
      * 
      */
     public Output<Integer> tokens() {

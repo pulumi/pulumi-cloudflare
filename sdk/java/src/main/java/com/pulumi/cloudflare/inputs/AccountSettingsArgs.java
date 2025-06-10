@@ -32,29 +32,6 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Specifies the default nameservers to be used for new zones added to this account.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    @Import(name="defaultNameservers")
-    private @Nullable Output<String> defaultNameservers;
-
-    /**
-     * @return Specifies the default nameservers to be used for new zones added to this account.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    public Optional<Output<String>> defaultNameservers() {
-        return Optional.ofNullable(this.defaultNameservers);
-    }
-
-    /**
      * Indicates whether membership in this account requires that
      * Two-Factor Authentication is enabled
      * 
@@ -71,42 +48,11 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.enforceTwofactor);
     }
 
-    /**
-     * Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     * 
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    @Import(name="useAccountCustomNsByDefault")
-    private @Nullable Output<Boolean> useAccountCustomNsByDefault;
-
-    /**
-     * @return Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     * 
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    public Optional<Output<Boolean>> useAccountCustomNsByDefault() {
-        return Optional.ofNullable(this.useAccountCustomNsByDefault);
-    }
-
     private AccountSettingsArgs() {}
 
     private AccountSettingsArgs(AccountSettingsArgs $) {
         this.abuseContactEmail = $.abuseContactEmail;
-        this.defaultNameservers = $.defaultNameservers;
         this.enforceTwofactor = $.enforceTwofactor;
-        this.useAccountCustomNsByDefault = $.useAccountCustomNsByDefault;
     }
 
     public static Builder builder() {
@@ -149,35 +95,6 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defaultNameservers Specifies the default nameservers to be used for new zones added to this account.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. */
-        public Builder defaultNameservers(@Nullable Output<String> defaultNameservers) {
-            $.defaultNameservers = defaultNameservers;
-            return this;
-        }
-
-        /**
-         * @param defaultNameservers Specifies the default nameservers to be used for new zones added to this account.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. */
-        public Builder defaultNameservers(String defaultNameservers) {
-            return defaultNameservers(Output.of(defaultNameservers));
-        }
-
-        /**
          * @param enforceTwofactor Indicates whether membership in this account requires that
          * Two-Factor Authentication is enabled
          * 
@@ -198,41 +115,6 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder enforceTwofactor(Boolean enforceTwofactor) {
             return enforceTwofactor(Output.of(enforceTwofactor));
-        }
-
-        /**
-         * @param useAccountCustomNsByDefault Indicates whether new zones should use the account-level custom
-         * nameservers by default.
-         * 
-         * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. */
-        public Builder useAccountCustomNsByDefault(@Nullable Output<Boolean> useAccountCustomNsByDefault) {
-            $.useAccountCustomNsByDefault = useAccountCustomNsByDefault;
-            return this;
-        }
-
-        /**
-         * @param useAccountCustomNsByDefault Indicates whether new zones should use the account-level custom
-         * nameservers by default.
-         * 
-         * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * This attribute is deprecated.
-         * 
-         */
-        @Deprecated /* This attribute is deprecated. */
-        public Builder useAccountCustomNsByDefault(Boolean useAccountCustomNsByDefault) {
-            return useAccountCustomNsByDefault(Output.of(useAccountCustomNsByDefault));
         }
 
         public AccountSettingsArgs build() {

@@ -23,6 +23,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ActivatedOn;
         /// <summary>
+        /// Allows the customer to use a custom apex.
+        /// *Tenants Only Configuration*.
+        /// </summary>
+        public readonly string CnameSuffix;
+        /// <summary>
         /// When the zone was created
         /// </summary>
         public readonly string CreatedOn;
@@ -75,10 +80,26 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool Paused;
         /// <summary>
+        /// Legacy permissions based on legacy user membership information.
+        /// </summary>
+        public readonly ImmutableArray<string> Permissions;
+        /// <summary>
+        /// A Zones subscription information.
+        /// </summary>
+        public readonly Outputs.GetZonesResultPlanResult Plan;
+        /// <summary>
         /// The zone status on Cloudflare.
         /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The root organizational unit that this zone belongs to (such as a tenant or organization).
+        /// </summary>
+        public readonly Outputs.GetZonesResultTenantResult Tenant;
+        /// <summary>
+        /// The immediate parent organizational unit that this zone belongs to (such as under a tenant or sub-organization).
+        /// </summary>
+        public readonly Outputs.GetZonesResultTenantUnitResult TenantUnit;
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
         /// typically a partner-hosted zone or a CNAME setup.
@@ -99,6 +120,8 @@ namespace Pulumi.Cloudflare.Outputs
             Outputs.GetZonesResultAccountResult account,
 
             string activatedOn,
+
+            string cnameSuffix,
 
             string createdOn,
 
@@ -124,7 +147,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool paused,
 
+            ImmutableArray<string> permissions,
+
+            Outputs.GetZonesResultPlanResult plan,
+
             string status,
+
+            Outputs.GetZonesResultTenantResult tenant,
+
+            Outputs.GetZonesResultTenantUnitResult tenantUnit,
 
             string type,
 
@@ -134,6 +165,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Account = account;
             ActivatedOn = activatedOn;
+            CnameSuffix = cnameSuffix;
             CreatedOn = createdOn;
             DevelopmentMode = developmentMode;
             Id = id;
@@ -146,7 +178,11 @@ namespace Pulumi.Cloudflare.Outputs
             OriginalRegistrar = originalRegistrar;
             Owner = owner;
             Paused = paused;
+            Permissions = permissions;
+            Plan = plan;
             Status = status;
+            Tenant = tenant;
+            TenantUnit = tenantUnit;
             Type = type;
             VanityNameServers = vanityNameServers;
             VerificationKey = verificationKey;

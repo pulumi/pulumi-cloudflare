@@ -44,7 +44,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
-        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
-        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The type of device posture integration.
-        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium", "sentinelone*s2s", "custom*s2s".
+        /// Available values: "workspace*one", "crowdstrike*s2s", "uptycs", "intune", "kolide", "tanium*s2s", "sentinelone*s2s", "custom_s2s".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

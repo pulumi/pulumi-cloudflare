@@ -69,10 +69,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
      * 
      */
     private String name;
-    /**
-     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.
-     * 
-     */
     private Integer precedence;
     /**
      * @return Additional settings that modify the rule&#39;s action.
@@ -172,10 +168,6 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public String name() {
         return this.name;
     }
-    /**
-     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable rules are evaluated in ascending order of this value.
-     * 
-     */
     public Integer precedence() {
         return this.precedence;
     }

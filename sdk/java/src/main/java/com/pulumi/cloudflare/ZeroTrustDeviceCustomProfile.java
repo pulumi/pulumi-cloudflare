@@ -77,6 +77,7 @@ import javax.annotation.Nullable;
  *             .lanAllowMinutes(30.0)
  *             .lanAllowSubnetSize(24.0)
  *             .registerInterfaceIpWithDns(true)
+ *             .sccmVpnBoundarySupport(false)
  *             .serviceModeV2(ZeroTrustDeviceCustomProfileServiceModeV2Args.builder()
  *                 .mode("proxy")
  *                 .port(3000.0)
@@ -316,14 +317,14 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.lanAllowSubnetSize);
     }
     /**
-     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
+     * The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
     @Export(name="match", refs={String.class}, tree="[0]")
     private Output<String> match;
 
     /**
-     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;
+     * @return The wirefilter expression to match devices. Available values: &#34;identity.email&#34;, &#34;identity.groups.id&#34;, &#34;identity.groups.name&#34;, &#34;identity.groups.email&#34;, &#34;identity.service*token*uuid&#34;, &#34;identity.saml_attributes&#34;, &#34;network&#34;, &#34;os.name&#34;, &#34;os.version&#34;.
      * 
      */
     public Output<String> match() {
@@ -376,6 +377,20 @@ public class ZeroTrustDeviceCustomProfile extends com.pulumi.resources.CustomRes
      */
     public Output<Optional<Boolean>> registerInterfaceIpWithDns() {
         return Codegen.optional(this.registerInterfaceIpWithDns);
+    }
+    /**
+     * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    @Export(name="sccmVpnBoundarySupport", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> sccmVpnBoundarySupport;
+
+    /**
+     * @return Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
+     * 
+     */
+    public Output<Optional<Boolean>> sccmVpnBoundarySupport() {
+        return Codegen.optional(this.sccmVpnBoundarySupport);
     }
     @Export(name="serviceModeV2", refs={ZeroTrustDeviceCustomProfileServiceModeV2.class}, tree="[0]")
     private Output</* @Nullable */ ZeroTrustDeviceCustomProfileServiceModeV2> serviceModeV2;

@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZeroTrustDeviceCustomProfilesResultTargetTestResult
     {
         /// <summary>
-        /// The id of the DEX test targeting this policy
+        /// The id of the DEX test targeting this policy.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the DEX test targeting this policy
+        /// The name of the DEX test targeting this policy.
         /// </summary>
         public readonly string Name;
 

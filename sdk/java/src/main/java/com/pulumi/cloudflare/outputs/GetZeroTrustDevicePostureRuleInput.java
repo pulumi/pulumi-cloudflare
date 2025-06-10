@@ -35,13 +35,13 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private Boolean checkPrivateKey;
     /**
-     * @return Common Name that is protected by the certificate
+     * @return Common Name that is protected by the certificate.
      * 
      */
     private String cn;
     /**
-     * @return Compliance Status
-     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
+     * @return Compliance Status.
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;, &#34;notapplicable&#34;, &#34;ingraceperiod&#34;, &#34;error&#34;.
      * 
      */
     private String complianceStatus;
@@ -51,13 +51,13 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private String connectionId;
     /**
-     * @return Count Operator
+     * @return Count Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private String countOperator;
     /**
-     * @return Domain
+     * @return Domain.
      * 
      */
     private String domain;
@@ -67,17 +67,17 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private String eidLastSeen;
     /**
-     * @return Enabled
+     * @return Enabled.
      * 
      */
     private Boolean enabled;
     /**
-     * @return Whether or not file exists
+     * @return Whether or not file exists.
      * 
      */
     private Boolean exists;
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used
+     * @return List of values indicating purposes for which the certificate public key can be used.
      * 
      */
     private List<String> extendedKeyUsages;
@@ -114,8 +114,8 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private String networkStatus;
     /**
-     * @return Operating system
-     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * @return Operating system.
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     private String operatingSystem;
@@ -126,33 +126,33 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private String operationalState;
     /**
-     * @return operator
+     * @return Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private String operator;
     /**
-     * @return Os Version
+     * @return Os Version.
      * 
      */
     private String os;
     /**
-     * @return Operating System Distribution Name (linux only)
+     * @return Operating System Distribution Name (linux only).
      * 
      */
     private String osDistroName;
     /**
-     * @return Version of OS Distribution (linux only)
+     * @return Version of OS Distribution (linux only).
      * 
      */
     private String osDistroRevision;
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      * 
      */
     private String osVersionExtra;
     /**
-     * @return overall
+     * @return Overall.
      * 
      */
     private String overall;
@@ -178,13 +178,13 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private Double score;
     /**
-     * @return Score Operator
+     * @return Score Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private String scoreOperator;
     /**
-     * @return SensorConfig
+     * @return SensorConfig.
      * 
      */
     private String sensorConfig;
@@ -210,12 +210,12 @@ public final class GetZeroTrustDevicePostureRuleInput {
      */
     private Double totalScore;
     /**
-     * @return Version of OS
+     * @return Version of OS.
      * 
      */
     private String version;
     /**
-     * @return Version Operator
+     * @return Version Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -251,15 +251,15 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.checkPrivateKey;
     }
     /**
-     * @return Common Name that is protected by the certificate
+     * @return Common Name that is protected by the certificate.
      * 
      */
     public String cn() {
         return this.cn;
     }
     /**
-     * @return Compliance Status
-     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
+     * @return Compliance Status.
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;, &#34;notapplicable&#34;, &#34;ingraceperiod&#34;, &#34;error&#34;.
      * 
      */
     public String complianceStatus() {
@@ -273,7 +273,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.connectionId;
     }
     /**
-     * @return Count Operator
+     * @return Count Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -281,7 +281,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.countOperator;
     }
     /**
-     * @return Domain
+     * @return Domain.
      * 
      */
     public String domain() {
@@ -295,21 +295,21 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.eidLastSeen;
     }
     /**
-     * @return Enabled
+     * @return Enabled.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return Whether or not file exists
+     * @return Whether or not file exists.
      * 
      */
     public Boolean exists() {
         return this.exists;
     }
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used
+     * @return List of values indicating purposes for which the certificate public key can be used.
      * 
      */
     public List<String> extendedKeyUsages() {
@@ -362,8 +362,8 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.networkStatus;
     }
     /**
-     * @return Operating system
-     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * @return Operating system.
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     public String operatingSystem() {
@@ -378,7 +378,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.operationalState;
     }
     /**
-     * @return operator
+     * @return Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -386,35 +386,35 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.operator;
     }
     /**
-     * @return Os Version
+     * @return Os Version.
      * 
      */
     public String os() {
         return this.os;
     }
     /**
-     * @return Operating System Distribution Name (linux only)
+     * @return Operating System Distribution Name (linux only).
      * 
      */
     public String osDistroName() {
         return this.osDistroName;
     }
     /**
-     * @return Version of OS Distribution (linux only)
+     * @return Version of OS Distribution (linux only).
      * 
      */
     public String osDistroRevision() {
         return this.osDistroRevision;
     }
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      * 
      */
     public String osVersionExtra() {
         return this.osVersionExtra;
     }
     /**
-     * @return overall
+     * @return Overall.
      * 
      */
     public String overall() {
@@ -450,7 +450,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.score;
     }
     /**
-     * @return Score Operator
+     * @return Score Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -458,7 +458,7 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.scoreOperator;
     }
     /**
-     * @return SensorConfig
+     * @return SensorConfig.
      * 
      */
     public String sensorConfig() {
@@ -494,14 +494,14 @@ public final class GetZeroTrustDevicePostureRuleInput {
         return this.totalScore;
     }
     /**
-     * @return Version of OS
+     * @return Version of OS.
      * 
      */
     public String version() {
         return this.version;
     }
     /**
-     * @return Version Operator
+     * @return Version Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */

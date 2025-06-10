@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
         /// Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
         /// </summary>
         [Output("compatibilityDate")]
-        public Output<string?> CompatibilityDate { get; private set; } = null!;
+        public Output<string> CompatibilityDate { get; private set; } = null!;
 
         /// <summary>
         /// Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         /// Migrations to apply for Durable Objects associated with this Worker.
         /// </summary>
         [Output("migrations")]
-        public Output<Outputs.WorkersScriptMigrations?> Migrations { get; private set; } = null!;
+        public Output<Outputs.WorkersScriptMigrations> Migrations { get; private set; } = null!;
 
         /// <summary>
         /// When the script was last modified.
@@ -133,7 +133,7 @@ namespace Pulumi.Cloudflare
         /// Configuration for [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement).
         /// </summary>
         [Output("placement")]
-        public Output<Outputs.WorkersScriptPlacement?> Placement { get; private set; } = null!;
+        public Output<Outputs.WorkersScriptPlacement> Placement { get; private set; } = null!;
 
         /// <summary>
         /// Name of the script, used in URLs and route configuration.

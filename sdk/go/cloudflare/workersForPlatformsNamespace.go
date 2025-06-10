@@ -59,13 +59,13 @@ type WorkersForPlatformsNamespace struct {
 	ModifiedBy pulumi.StringOutput `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// The name of the dispatch namespace
+	// The name of the dispatch namespace.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// API Resource UUID tag.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	NamespaceName pulumi.StringOutput `pulumi:"namespaceName"`
-	// The current number of scripts in this Dispatch Namespace
+	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount pulumi.IntOutput `pulumi:"scriptCount"`
 }
 
@@ -118,13 +118,13 @@ type workersForPlatformsNamespaceState struct {
 	ModifiedBy *string `pulumi:"modifiedBy"`
 	// When the script was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The name of the dispatch namespace
+	// The name of the dispatch namespace.
 	Name *string `pulumi:"name"`
 	// API Resource UUID tag.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// Name of the Workers for Platforms dispatch namespace.
 	NamespaceName *string `pulumi:"namespaceName"`
-	// The current number of scripts in this Dispatch Namespace
+	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount *int `pulumi:"scriptCount"`
 }
 
@@ -139,13 +139,13 @@ type WorkersForPlatformsNamespaceState struct {
 	ModifiedBy pulumi.StringPtrInput
 	// When the script was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// The name of the dispatch namespace
+	// The name of the dispatch namespace.
 	Name pulumi.StringPtrInput
 	// API Resource UUID tag.
 	NamespaceId pulumi.StringPtrInput
 	// Name of the Workers for Platforms dispatch namespace.
 	NamespaceName pulumi.StringPtrInput
-	// The current number of scripts in this Dispatch Namespace
+	// The current number of scripts in this Dispatch Namespace.
 	ScriptCount pulumi.IntPtrInput
 }
 
@@ -156,7 +156,7 @@ func (WorkersForPlatformsNamespaceState) ElementType() reflect.Type {
 type workersForPlatformsNamespaceArgs struct {
 	// Identifier.
 	AccountId string `pulumi:"accountId"`
-	// The name of the dispatch namespace
+	// The name of the dispatch namespace.
 	Name *string `pulumi:"name"`
 }
 
@@ -164,7 +164,7 @@ type workersForPlatformsNamespaceArgs struct {
 type WorkersForPlatformsNamespaceArgs struct {
 	// Identifier.
 	AccountId pulumi.StringInput
-	// The name of the dispatch namespace
+	// The name of the dispatch namespace.
 	Name pulumi.StringPtrInput
 }
 
@@ -280,7 +280,7 @@ func (o WorkersForPlatformsNamespaceOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The name of the dispatch namespace
+// The name of the dispatch namespace.
 func (o WorkersForPlatformsNamespaceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -295,7 +295,7 @@ func (o WorkersForPlatformsNamespaceOutput) NamespaceName() pulumi.StringOutput 
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.StringOutput { return v.NamespaceName }).(pulumi.StringOutput)
 }
 
-// The current number of scripts in this Dispatch Namespace
+// The current number of scripts in this Dispatch Namespace.
 func (o WorkersForPlatformsNamespaceOutput) ScriptCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *WorkersForPlatformsNamespace) pulumi.IntOutput { return v.ScriptCount }).(pulumi.IntOutput)
 }

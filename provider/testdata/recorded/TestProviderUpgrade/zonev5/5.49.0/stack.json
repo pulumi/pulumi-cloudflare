@@ -115,7 +115,6 @@
             "ruth.ns.cloudflare.com"
           ],
           "paused": false,
-          "plan": "free",
           "status": "pending",
           "type": "full",
           "vanityNameServers": [],

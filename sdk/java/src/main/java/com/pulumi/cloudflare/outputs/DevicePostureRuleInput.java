@@ -36,13 +36,13 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable Boolean checkPrivateKey;
     /**
-     * @return Common Name that is protected by the certificate
+     * @return Common Name that is protected by the certificate.
      * 
      */
     private @Nullable String cn;
     /**
-     * @return Compliance Status
-     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
+     * @return Compliance Status.
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;, &#34;notapplicable&#34;, &#34;ingraceperiod&#34;, &#34;error&#34;.
      * 
      */
     private @Nullable String complianceStatus;
@@ -52,13 +52,13 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String connectionId;
     /**
-     * @return Count Operator
+     * @return Count Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String countOperator;
     /**
-     * @return Domain
+     * @return Domain.
      * 
      */
     private @Nullable String domain;
@@ -68,17 +68,17 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String eidLastSeen;
     /**
-     * @return Enabled
+     * @return Enabled.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Whether or not file exists
+     * @return Whether or not file exists.
      * 
      */
     private @Nullable Boolean exists;
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used
+     * @return List of values indicating purposes for which the certificate public key can be used.
      * 
      */
     private @Nullable List<String> extendedKeyUsages;
@@ -115,8 +115,8 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String networkStatus;
     /**
-     * @return Operating system
-     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * @return Operating system.
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     private @Nullable String operatingSystem;
@@ -127,33 +127,33 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String operationalState;
     /**
-     * @return operator
+     * @return Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String operator;
     /**
-     * @return Os Version
+     * @return Os Version.
      * 
      */
     private @Nullable String os;
     /**
-     * @return Operating System Distribution Name (linux only)
+     * @return Operating System Distribution Name (linux only).
      * 
      */
     private @Nullable String osDistroName;
     /**
-     * @return Version of OS Distribution (linux only)
+     * @return Version of OS Distribution (linux only).
      * 
      */
     private @Nullable String osDistroRevision;
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      * 
      */
     private @Nullable String osVersionExtra;
     /**
-     * @return overall
+     * @return Overall.
      * 
      */
     private @Nullable String overall;
@@ -179,13 +179,13 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable Double score;
     /**
-     * @return Score Operator
+     * @return Score Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
     private @Nullable String scoreOperator;
     /**
-     * @return SensorConfig
+     * @return SensorConfig.
      * 
      */
     private @Nullable String sensorConfig;
@@ -211,12 +211,12 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable Double totalScore;
     /**
-     * @return Version of OS
+     * @return Version of OS.
      * 
      */
     private @Nullable String version;
     /**
-     * @return Version Operator
+     * @return Version Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -252,15 +252,15 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.checkPrivateKey);
     }
     /**
-     * @return Common Name that is protected by the certificate
+     * @return Common Name that is protected by the certificate.
      * 
      */
     public Optional<String> cn() {
         return Optional.ofNullable(this.cn);
     }
     /**
-     * @return Compliance Status
-     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;.
+     * @return Compliance Status.
+     * Available values: &#34;compliant&#34;, &#34;noncompliant&#34;, &#34;unknown&#34;, &#34;notapplicable&#34;, &#34;ingraceperiod&#34;, &#34;error&#34;.
      * 
      */
     public Optional<String> complianceStatus() {
@@ -274,7 +274,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.connectionId);
     }
     /**
-     * @return Count Operator
+     * @return Count Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -282,7 +282,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.countOperator);
     }
     /**
-     * @return Domain
+     * @return Domain.
      * 
      */
     public Optional<String> domain() {
@@ -296,21 +296,21 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.eidLastSeen);
     }
     /**
-     * @return Enabled
+     * @return Enabled.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Whether or not file exists
+     * @return Whether or not file exists.
      * 
      */
     public Optional<Boolean> exists() {
         return Optional.ofNullable(this.exists);
     }
     /**
-     * @return List of values indicating purposes for which the certificate public key can be used
+     * @return List of values indicating purposes for which the certificate public key can be used.
      * 
      */
     public List<String> extendedKeyUsages() {
@@ -363,8 +363,8 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.networkStatus);
     }
     /**
-     * @return Operating system
-     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;.
+     * @return Operating system.
+     * Available values: &#34;windows&#34;, &#34;linux&#34;, &#34;mac&#34;, &#34;android&#34;, &#34;ios&#34;, &#34;chromeos&#34;.
      * 
      */
     public Optional<String> operatingSystem() {
@@ -379,7 +379,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.operationalState);
     }
     /**
-     * @return operator
+     * @return Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -387,35 +387,35 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return Os Version
+     * @return Os Version.
      * 
      */
     public Optional<String> os() {
         return Optional.ofNullable(this.os);
     }
     /**
-     * @return Operating System Distribution Name (linux only)
+     * @return Operating System Distribution Name (linux only).
      * 
      */
     public Optional<String> osDistroName() {
         return Optional.ofNullable(this.osDistroName);
     }
     /**
-     * @return Version of OS Distribution (linux only)
+     * @return Version of OS Distribution (linux only).
      * 
      */
     public Optional<String> osDistroRevision() {
         return Optional.ofNullable(this.osDistroRevision);
     }
     /**
-     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+     * @return Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
      * 
      */
     public Optional<String> osVersionExtra() {
         return Optional.ofNullable(this.osVersionExtra);
     }
     /**
-     * @return overall
+     * @return Overall.
      * 
      */
     public Optional<String> overall() {
@@ -451,7 +451,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.score);
     }
     /**
-     * @return Score Operator
+     * @return Score Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */
@@ -459,7 +459,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.scoreOperator);
     }
     /**
-     * @return SensorConfig
+     * @return SensorConfig.
      * 
      */
     public Optional<String> sensorConfig() {
@@ -495,14 +495,14 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.totalScore);
     }
     /**
-     * @return Version of OS
+     * @return Version of OS.
      * 
      */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }
     /**
-     * @return Version Operator
+     * @return Version Operator.
      * Available values: &#34;&lt;&#34;, &#34;&lt;=&#34;, &#34;&gt;&#34;, &#34;&gt;=&#34;, &#34;==&#34;.
      * 
      */

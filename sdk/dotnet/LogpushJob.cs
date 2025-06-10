@@ -53,6 +53,12 @@ namespace Pulumi.Cloudflare
         public Output<string> ErrorMessage { get; private set; } = null!;
 
         /// <summary>
+        /// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        /// </summary>
+        [Output("filter")]
+        public Output<string?> Filter { get; private set; } = null!;
+
+        /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
         /// Available values: "high", "low".
         /// </summary>
@@ -64,7 +70,7 @@ namespace Pulumi.Cloudflare
         /// Available values: "edge".
         /// </summary>
         [Output("kind")]
-        public Output<string?> Kind { get; private set; } = null!;
+        public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
         /// Records the last time for which logs have been successfully pushed. If the last successful push was for logs range 2018-07-23T10:00:00Z to 2018-07-23T10:01:00Z then the value of this field will be 2018-07-23T10:01:00Z. If the job has never run or has just been enabled and hasn't run yet then the field will be empty.
@@ -202,6 +208,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.
         /// Available values: "high", "low".
         /// </summary>
@@ -311,6 +323,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("errorMessage")]
         public Input<string>? ErrorMessage { get; set; }
+
+        /// <summary>
+        /// The filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/reference/filters/).
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
 
         /// <summary>
         /// This field is deprecated. Please use `max_upload_*` parameters instead. The frequency at which Cloudflare sends batches of logs to your destination. Setting frequency to high sends your logs in larger quantities of smaller files. Setting frequency to low sends logs in smaller quantities of larger files.

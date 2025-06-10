@@ -153,7 +153,7 @@ namespace Pulumi.Cloudflare
         public readonly string ScriptName;
         public readonly Outputs.GetQueueConsumerSettingsResult Settings;
         /// <summary>
-        /// Available values: "worker".
+        /// Available values: "worker", "http_pull".
         /// </summary>
         public readonly string Type;
 

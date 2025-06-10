@@ -44,7 +44,7 @@ public final class GetQueueConsumerResult {
     private String scriptName;
     private GetQueueConsumerSettings settings;
     /**
-     * @return Available values: &#34;worker&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;http_pull&#34;.
      * 
      */
     private String type;
@@ -99,7 +99,7 @@ public final class GetQueueConsumerResult {
         return this.settings;
     }
     /**
-     * @return Available values: &#34;worker&#34;.
+     * @return Available values: &#34;worker&#34;, &#34;http_pull&#34;.
      * 
      */
     public String type() {

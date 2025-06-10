@@ -153,19 +153,9 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
         return this.name;
     }
 
-    /**
-     * Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     * 
-     */
     @Import(name="precedence")
     private @Nullable Output<Integer> precedence;
 
-    /**
-     * @return Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-     * rules are evaluated in ascending order of this value.
-     * 
-     */
     public Optional<Output<Integer>> precedence() {
         return Optional.ofNullable(this.precedence);
     }
@@ -442,25 +432,11 @@ public final class ZeroTrustGatewayPolicyArgs extends com.pulumi.resources.Resou
             return name(Output.of(name));
         }
 
-        /**
-         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-         * rules are evaluated in ascending order of this value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder precedence(@Nullable Output<Integer> precedence) {
             $.precedence = precedence;
             return this;
         }
 
-        /**
-         * @param precedence Precedence sets the order of your rules. Lower values indicate higher precedence. At each processing phase, applicable
-         * rules are evaluated in ascending order of this value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder precedence(Integer precedence) {
             return precedence(Output.of(precedence));
         }

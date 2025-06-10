@@ -113,6 +113,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly Outputs.GetZoneAccountResult Account;
         public readonly string ActivatedOn;
+        public readonly string CnameSuffix;
         public readonly string CreatedOn;
         public readonly double DevelopmentMode;
         public readonly Outputs.GetZoneFilterResult? Filter;
@@ -126,7 +127,11 @@ namespace Pulumi.Cloudflare
         public readonly string OriginalRegistrar;
         public readonly Outputs.GetZoneOwnerResult Owner;
         public readonly bool Paused;
+        public readonly ImmutableArray<string> Permissions;
+        public readonly Outputs.GetZonePlanResult Plan;
         public readonly string Status;
+        public readonly Outputs.GetZoneTenantResult Tenant;
+        public readonly Outputs.GetZoneTenantUnitResult TenantUnit;
         public readonly string Type;
         public readonly ImmutableArray<string> VanityNameServers;
         public readonly string VerificationKey;
@@ -137,6 +142,8 @@ namespace Pulumi.Cloudflare
             Outputs.GetZoneAccountResult account,
 
             string activatedOn,
+
+            string cnameSuffix,
 
             string createdOn,
 
@@ -164,7 +171,15 @@ namespace Pulumi.Cloudflare
 
             bool paused,
 
+            ImmutableArray<string> permissions,
+
+            Outputs.GetZonePlanResult plan,
+
             string status,
+
+            Outputs.GetZoneTenantResult tenant,
+
+            Outputs.GetZoneTenantUnitResult tenantUnit,
 
             string type,
 
@@ -176,6 +191,7 @@ namespace Pulumi.Cloudflare
         {
             Account = account;
             ActivatedOn = activatedOn;
+            CnameSuffix = cnameSuffix;
             CreatedOn = createdOn;
             DevelopmentMode = developmentMode;
             Filter = filter;
@@ -189,7 +205,11 @@ namespace Pulumi.Cloudflare
             OriginalRegistrar = originalRegistrar;
             Owner = owner;
             Paused = paused;
+            Permissions = permissions;
+            Plan = plan;
             Status = status;
+            Tenant = tenant;
+            TenantUnit = tenantUnit;
             Type = type;
             VanityNameServers = vanityNameServers;
             VerificationKey = verificationKey;

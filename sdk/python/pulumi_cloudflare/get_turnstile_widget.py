@@ -176,8 +176,8 @@ class GetTurnstileWidgetResult:
     @pulumi.getter
     def region(self) -> builtins.str:
         """
-        Region where this widget can be used.
-        Available values: "world".
+        Region where this widget can be used. This cannot be changed after creation.
+        Available values: "world", "china".
         """
         return pulumi.get(self, "region")
 

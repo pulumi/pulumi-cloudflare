@@ -28,19 +28,42 @@ class GetR2BucketEventNotificationResult:
     """
     A collection of values returned by getR2BucketEventNotification.
     """
-    def __init__(__self__, account_id=None, bucket_name=None, id=None, queues=None):
+    def __init__(__self__, abort_multipart_uploads_transition=None, account_id=None, bucket_name=None, conditions=None, delete_objects_transition=None, enabled=None, id=None, queue_id=None, storage_class_transitions=None):
+        if abort_multipart_uploads_transition and not isinstance(abort_multipart_uploads_transition, dict):
+            raise TypeError("Expected argument 'abort_multipart_uploads_transition' to be a dict")
+        pulumi.set(__self__, "abort_multipart_uploads_transition", abort_multipart_uploads_transition)
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
+        if conditions and not isinstance(conditions, dict):
+            raise TypeError("Expected argument 'conditions' to be a dict")
+        pulumi.set(__self__, "conditions", conditions)
+        if delete_objects_transition and not isinstance(delete_objects_transition, dict):
+            raise TypeError("Expected argument 'delete_objects_transition' to be a dict")
+        pulumi.set(__self__, "delete_objects_transition", delete_objects_transition)
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if queues and not isinstance(queues, list):
-            raise TypeError("Expected argument 'queues' to be a list")
-        pulumi.set(__self__, "queues", queues)
+        if queue_id and not isinstance(queue_id, str):
+            raise TypeError("Expected argument 'queue_id' to be a str")
+        pulumi.set(__self__, "queue_id", queue_id)
+        if storage_class_transitions and not isinstance(storage_class_transitions, list):
+            raise TypeError("Expected argument 'storage_class_transitions' to be a list")
+        pulumi.set(__self__, "storage_class_transitions", storage_class_transitions)
+
+    @property
+    @pulumi.getter(name="abortMultipartUploadsTransition")
+    def abort_multipart_uploads_transition(self) -> 'outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransitionResult':
+        """
+        Transition to abort ongoing multipart uploads.
+        """
+        return pulumi.get(self, "abort_multipart_uploads_transition")
 
     @property
     @pulumi.getter(name="accountId")
@@ -60,19 +83,51 @@ class GetR2BucketEventNotificationResult:
 
     @property
     @pulumi.getter
+    def conditions(self) -> 'outputs.GetR2BucketEventNotificationConditionsResult':
+        """
+        Conditions that apply to all transitions of this rule.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="deleteObjectsTransition")
+    def delete_objects_transition(self) -> 'outputs.GetR2BucketEventNotificationDeleteObjectsTransitionResult':
+        """
+        Transition to delete objects.
+        """
+        return pulumi.get(self, "delete_objects_transition")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> builtins.bool:
+        """
+        Whether or not this rule is in effect.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
     def id(self) -> builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Unique identifier for this rule.
         """
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter
-    def queues(self) -> Sequence['outputs.GetR2BucketEventNotificationQueueResult']:
+    @pulumi.getter(name="queueId")
+    def queue_id(self) -> builtins.str:
         """
-        List of queues associated with the bucket.
+        Queue ID.
         """
-        return pulumi.get(self, "queues")
+        return pulumi.get(self, "queue_id")
+
+    @property
+    @pulumi.getter(name="storageClassTransitions")
+    def storage_class_transitions(self) -> Sequence['outputs.GetR2BucketEventNotificationStorageClassTransitionResult']:
+        """
+        Transitions to change the storage class of objects.
+        """
+        return pulumi.get(self, "storage_class_transitions")
 
 
 class AwaitableGetR2BucketEventNotificationResult(GetR2BucketEventNotificationResult):
@@ -81,14 +136,20 @@ class AwaitableGetR2BucketEventNotificationResult(GetR2BucketEventNotificationRe
         if False:
             yield self
         return GetR2BucketEventNotificationResult(
+            abort_multipart_uploads_transition=self.abort_multipart_uploads_transition,
             account_id=self.account_id,
             bucket_name=self.bucket_name,
+            conditions=self.conditions,
+            delete_objects_transition=self.delete_objects_transition,
+            enabled=self.enabled,
             id=self.id,
-            queues=self.queues)
+            queue_id=self.queue_id,
+            storage_class_transitions=self.storage_class_transitions)
 
 
 def get_r2_bucket_event_notification(account_id: Optional[builtins.str] = None,
                                      bucket_name: Optional[builtins.str] = None,
+                                     queue_id: Optional[builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetR2BucketEventNotificationResult:
     """
     ## Example Usage
@@ -98,26 +159,35 @@ def get_r2_bucket_event_notification(account_id: Optional[builtins.str] = None,
     import pulumi_cloudflare as cloudflare
 
     example_r2_bucket_event_notification = cloudflare.get_r2_bucket_event_notification(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        bucket_name="example-bucket")
+        bucket_name="example-bucket",
+        queue_id="queue_id")
     ```
 
 
     :param builtins.str account_id: Account ID.
     :param builtins.str bucket_name: Name of the bucket.
+    :param builtins.str queue_id: Queue ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
+    __args__['queueId'] = queue_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification', __args__, opts=opts, typ=GetR2BucketEventNotificationResult).value
 
     return AwaitableGetR2BucketEventNotificationResult(
+        abort_multipart_uploads_transition=pulumi.get(__ret__, 'abort_multipart_uploads_transition'),
         account_id=pulumi.get(__ret__, 'account_id'),
         bucket_name=pulumi.get(__ret__, 'bucket_name'),
+        conditions=pulumi.get(__ret__, 'conditions'),
+        delete_objects_transition=pulumi.get(__ret__, 'delete_objects_transition'),
+        enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
-        queues=pulumi.get(__ret__, 'queues'))
+        queue_id=pulumi.get(__ret__, 'queue_id'),
+        storage_class_transitions=pulumi.get(__ret__, 'storage_class_transitions'))
 def get_r2_bucket_event_notification_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
                                             bucket_name: Optional[pulumi.Input[builtins.str]] = None,
+                                            queue_id: Optional[pulumi.Input[builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetR2BucketEventNotificationResult]:
     """
     ## Example Usage
@@ -127,20 +197,28 @@ def get_r2_bucket_event_notification_output(account_id: Optional[pulumi.Input[bu
     import pulumi_cloudflare as cloudflare
 
     example_r2_bucket_event_notification = cloudflare.get_r2_bucket_event_notification(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-        bucket_name="example-bucket")
+        bucket_name="example-bucket",
+        queue_id="queue_id")
     ```
 
 
     :param builtins.str account_id: Account ID.
     :param builtins.str bucket_name: Name of the bucket.
+    :param builtins.str queue_id: Queue ID.
     """
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['bucketName'] = bucket_name
+    __args__['queueId'] = queue_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification', __args__, opts=opts, typ=GetR2BucketEventNotificationResult)
     return __ret__.apply(lambda __response__: GetR2BucketEventNotificationResult(
+        abort_multipart_uploads_transition=pulumi.get(__response__, 'abort_multipart_uploads_transition'),
         account_id=pulumi.get(__response__, 'account_id'),
         bucket_name=pulumi.get(__response__, 'bucket_name'),
+        conditions=pulumi.get(__response__, 'conditions'),
+        delete_objects_transition=pulumi.get(__response__, 'delete_objects_transition'),
+        enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),
-        queues=pulumi.get(__response__, 'queues')))
+        queue_id=pulumi.get(__response__, 'queue_id'),
+        storage_class_transitions=pulumi.get(__response__, 'storage_class_transitions')))

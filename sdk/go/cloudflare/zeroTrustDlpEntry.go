@@ -65,7 +65,7 @@ type ZeroTrustDlpEntry struct {
 	Pattern       ZeroTrustDlpEntryPatternOutput    `pulumi:"pattern"`
 	ProfileId     pulumi.StringOutput               `pulumi:"profileId"`
 	Secret        pulumi.BoolOutput                 `pulumi:"secret"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type      pulumi.StringPtrOutput `pulumi:"type"`
 	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
 	WordList  pulumi.StringOutput    `pulumi:"wordList"`
@@ -128,7 +128,7 @@ type zeroTrustDlpEntryState struct {
 	Pattern       *ZeroTrustDlpEntryPattern    `pulumi:"pattern"`
 	ProfileId     *string                      `pulumi:"profileId"`
 	Secret        *bool                        `pulumi:"secret"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type      *string `pulumi:"type"`
 	UpdatedAt *string `pulumi:"updatedAt"`
 	WordList  *string `pulumi:"wordList"`
@@ -147,7 +147,7 @@ type ZeroTrustDlpEntryState struct {
 	Pattern       ZeroTrustDlpEntryPatternPtrInput
 	ProfileId     pulumi.StringPtrInput
 	Secret        pulumi.BoolPtrInput
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type      pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
 	WordList  pulumi.StringPtrInput
@@ -163,7 +163,7 @@ type zeroTrustDlpEntryArgs struct {
 	Name      string                   `pulumi:"name"`
 	Pattern   ZeroTrustDlpEntryPattern `pulumi:"pattern"`
 	ProfileId string                   `pulumi:"profileId"`
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type *string `pulumi:"type"`
 }
 
@@ -174,7 +174,7 @@ type ZeroTrustDlpEntryArgs struct {
 	Name      pulumi.StringInput
 	Pattern   ZeroTrustDlpEntryPatternInput
 	ProfileId pulumi.StringInput
-	// Available values: "custom".
+	// Available values: "custom", "predefined", "integration".
 	Type pulumi.StringPtrInput
 }
 
@@ -304,7 +304,7 @@ func (o ZeroTrustDlpEntryOutput) Secret() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.BoolOutput { return v.Secret }).(pulumi.BoolOutput)
 }
 
-// Available values: "custom".
+// Available values: "custom", "predefined", "integration".
 func (o ZeroTrustDlpEntryOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZeroTrustDlpEntry) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

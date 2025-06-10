@@ -6,8 +6,11 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetCloudforceOneRequestMessageArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,40 +18,138 @@ public final class GetCloudforceOneRequestMessageArgs extends com.pulumi.resourc
     public static final GetCloudforceOneRequestMessageArgs Empty = new GetCloudforceOneRequestMessageArgs();
 
     /**
-     * Identifier
+     * Identifier.
      * 
      */
-    @Import(name="accountIdentifier", required=true)
-    private Output<String> accountIdentifier;
+    @Import(name="accountId", required=true)
+    private Output<String> accountId;
 
     /**
-     * @return Identifier
+     * @return Identifier.
      * 
      */
-    public Output<String> accountIdentifier() {
-        return this.accountIdentifier;
+    public Output<String> accountId() {
+        return this.accountId;
     }
 
     /**
-     * UUID
+     * Retrieve mes  ges created after this time.
      * 
      */
-    @Import(name="requestIdentifier", required=true)
-    private Output<String> requestIdentifier;
+    @Import(name="after")
+    private @Nullable Output<String> after;
 
     /**
-     * @return UUID
+     * @return Retrieve mes  ges created after this time.
      * 
      */
-    public Output<String> requestIdentifier() {
-        return this.requestIdentifier;
+    public Optional<Output<String>> after() {
+        return Optional.ofNullable(this.after);
+    }
+
+    /**
+     * Retrieve messages created before this time.
+     * 
+     */
+    @Import(name="before")
+    private @Nullable Output<String> before;
+
+    /**
+     * @return Retrieve messages created before this time.
+     * 
+     */
+    public Optional<Output<String>> before() {
+        return Optional.ofNullable(this.before);
+    }
+
+    /**
+     * Page number of results.
+     * 
+     */
+    @Import(name="page", required=true)
+    private Output<Integer> page;
+
+    /**
+     * @return Page number of results.
+     * 
+     */
+    public Output<Integer> page() {
+        return this.page;
+    }
+
+    /**
+     * Number of results per page.
+     * 
+     */
+    @Import(name="perPage", required=true)
+    private Output<Integer> perPage;
+
+    /**
+     * @return Number of results per page.
+     * 
+     */
+    public Output<Integer> perPage() {
+        return this.perPage;
+    }
+
+    /**
+     * UUID.
+     * 
+     */
+    @Import(name="requestId", required=true)
+    private Output<String> requestId;
+
+    /**
+     * @return UUID.
+     * 
+     */
+    public Output<String> requestId() {
+        return this.requestId;
+    }
+
+    /**
+     * Field to sort results by.
+     * 
+     */
+    @Import(name="sortBy")
+    private @Nullable Output<String> sortBy;
+
+    /**
+     * @return Field to sort results by.
+     * 
+     */
+    public Optional<Output<String>> sortBy() {
+        return Optional.ofNullable(this.sortBy);
+    }
+
+    /**
+     * Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    @Import(name="sortOrder")
+    private @Nullable Output<String> sortOrder;
+
+    /**
+     * @return Sort order (asc or desc).
+     * Available values: &#34;asc&#34;, &#34;desc&#34;.
+     * 
+     */
+    public Optional<Output<String>> sortOrder() {
+        return Optional.ofNullable(this.sortOrder);
     }
 
     private GetCloudforceOneRequestMessageArgs() {}
 
     private GetCloudforceOneRequestMessageArgs(GetCloudforceOneRequestMessageArgs $) {
-        this.accountIdentifier = $.accountIdentifier;
-        this.requestIdentifier = $.requestIdentifier;
+        this.accountId = $.accountId;
+        this.after = $.after;
+        this.before = $.before;
+        this.page = $.page;
+        this.perPage = $.perPage;
+        this.requestId = $.requestId;
+        this.sortBy = $.sortBy;
+        this.sortOrder = $.sortOrder;
     }
 
     public static Builder builder() {
@@ -70,53 +171,187 @@ public final class GetCloudforceOneRequestMessageArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(Output<String> accountIdentifier) {
-            $.accountIdentifier = accountIdentifier;
+        public Builder accountId(Output<String> accountId) {
+            $.accountId = accountId;
             return this;
         }
 
         /**
-         * @param accountIdentifier Identifier
+         * @param accountId Identifier.
          * 
          * @return builder
          * 
          */
-        public Builder accountIdentifier(String accountIdentifier) {
-            return accountIdentifier(Output.of(accountIdentifier));
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param after Retrieve mes  ges created after this time.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(Output<String> requestIdentifier) {
-            $.requestIdentifier = requestIdentifier;
+        public Builder after(@Nullable Output<String> after) {
+            $.after = after;
             return this;
         }
 
         /**
-         * @param requestIdentifier UUID
+         * @param after Retrieve mes  ges created after this time.
          * 
          * @return builder
          * 
          */
-        public Builder requestIdentifier(String requestIdentifier) {
-            return requestIdentifier(Output.of(requestIdentifier));
+        public Builder after(String after) {
+            return after(Output.of(after));
+        }
+
+        /**
+         * @param before Retrieve messages created before this time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder before(@Nullable Output<String> before) {
+            $.before = before;
+            return this;
+        }
+
+        /**
+         * @param before Retrieve messages created before this time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder before(String before) {
+            return before(Output.of(before));
+        }
+
+        /**
+         * @param page Page number of results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder page(Output<Integer> page) {
+            $.page = page;
+            return this;
+        }
+
+        /**
+         * @param page Page number of results.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder page(Integer page) {
+            return page(Output.of(page));
+        }
+
+        /**
+         * @param perPage Number of results per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(Output<Integer> perPage) {
+            $.perPage = perPage;
+            return this;
+        }
+
+        /**
+         * @param perPage Number of results per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perPage(Integer perPage) {
+            return perPage(Output.of(perPage));
+        }
+
+        /**
+         * @param requestId UUID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestId(Output<String> requestId) {
+            $.requestId = requestId;
+            return this;
+        }
+
+        /**
+         * @param requestId UUID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestId(String requestId) {
+            return requestId(Output.of(requestId));
+        }
+
+        /**
+         * @param sortBy Field to sort results by.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortBy(@Nullable Output<String> sortBy) {
+            $.sortBy = sortBy;
+            return this;
+        }
+
+        /**
+         * @param sortBy Field to sort results by.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortBy(String sortBy) {
+            return sortBy(Output.of(sortBy));
+        }
+
+        /**
+         * @param sortOrder Sort order (asc or desc).
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortOrder(@Nullable Output<String> sortOrder) {
+            $.sortOrder = sortOrder;
+            return this;
+        }
+
+        /**
+         * @param sortOrder Sort order (asc or desc).
+         * Available values: &#34;asc&#34;, &#34;desc&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sortOrder(String sortOrder) {
+            return sortOrder(Output.of(sortOrder));
         }
 
         public GetCloudforceOneRequestMessageArgs build() {
-            if ($.accountIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageArgs", "accountIdentifier");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageArgs", "accountId");
             }
-            if ($.requestIdentifier == null) {
-                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageArgs", "requestIdentifier");
+            if ($.page == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageArgs", "page");
+            }
+            if ($.perPage == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageArgs", "perPage");
+            }
+            if ($.requestId == null) {
+                throw new MissingRequiredPropertyException("GetCloudforceOneRequestMessageArgs", "requestId");
             }
             return $;
         }

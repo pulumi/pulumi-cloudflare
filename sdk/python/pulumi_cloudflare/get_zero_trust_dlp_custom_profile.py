@@ -168,7 +168,7 @@ class GetZeroTrustDlpCustomProfileResult:
     @pulumi.getter
     def type(self) -> builtins.str:
         """
-        Available values: "custom".
+        Available values: "custom", "predefined", "integration".
         """
         return pulumi.get(self, "type")
 

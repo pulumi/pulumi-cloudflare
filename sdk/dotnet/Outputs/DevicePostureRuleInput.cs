@@ -30,12 +30,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? CheckPrivateKey;
         /// <summary>
-        /// Common Name that is protected by the certificate
+        /// Common Name that is protected by the certificate.
         /// </summary>
         public readonly string? Cn;
         /// <summary>
-        /// Compliance Status
-        /// Available values: "compliant", "noncompliant", "unknown".
+        /// Compliance Status.
+        /// Available values: "compliant", "noncompliant", "unknown", "notapplicable", "ingraceperiod", "error".
         /// </summary>
         public readonly string? ComplianceStatus;
         /// <summary>
@@ -43,12 +43,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ConnectionId;
         /// <summary>
-        /// Count Operator
+        /// Count Operator.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? CountOperator;
         /// <summary>
-        /// Domain
+        /// Domain.
         /// </summary>
         public readonly string? Domain;
         /// <summary>
@@ -56,15 +56,15 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? EidLastSeen;
         /// <summary>
-        /// Enabled
+        /// Enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Whether or not file exists
+        /// Whether or not file exists.
         /// </summary>
         public readonly bool? Exists;
         /// <summary>
-        /// List of values indicating purposes for which the certificate public key can be used
+        /// List of values indicating purposes for which the certificate public key can be used.
         /// </summary>
         public readonly ImmutableArray<string> ExtendedKeyUsages;
         /// <summary>
@@ -94,8 +94,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NetworkStatus;
         /// <summary>
-        /// Operating system
-        /// Available values: "windows", "linux", "mac".
+        /// Operating system.
+        /// Available values: "windows", "linux", "mac", "android", "ios", "chromeos".
         /// </summary>
         public readonly string? OperatingSystem;
         /// <summary>
@@ -104,28 +104,28 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? OperationalState;
         /// <summary>
-        /// operator
+        /// Operator.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? Operator;
         /// <summary>
-        /// Os Version
+        /// Os Version.
         /// </summary>
         public readonly string? Os;
         /// <summary>
-        /// Operating System Distribution Name (linux only)
+        /// Operating System Distribution Name (linux only).
         /// </summary>
         public readonly string? OsDistroName;
         /// <summary>
-        /// Version of OS Distribution (linux only)
+        /// Version of OS Distribution (linux only).
         /// </summary>
         public readonly string? OsDistroRevision;
         /// <summary>
-        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only)
+        /// Additional version data. For Mac or iOS, the Product Version Extra. For Linux, the kernel release version. (Mac, iOS, and Linux only).
         /// </summary>
         public readonly string? OsVersionExtra;
         /// <summary>
-        /// overall
+        /// Overall.
         /// </summary>
         public readonly string? Overall;
         /// <summary>
@@ -146,12 +146,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? Score;
         /// <summary>
-        /// Score Operator
+        /// Score Operator.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? ScoreOperator;
         /// <summary>
-        /// SensorConfig
+        /// SensorConfig.
         /// </summary>
         public readonly string? SensorConfig;
         /// <summary>
@@ -172,11 +172,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly double? TotalScore;
         /// <summary>
-        /// Version of OS
+        /// Version of OS.
         /// </summary>
         public readonly string? Version;
         /// <summary>
-        /// Version Operator
+        /// Version Operator.
         /// Available values: "&lt;", "&lt;=", "&gt;", "&gt;=", "==".
         /// </summary>
         public readonly string? VersionOperator;

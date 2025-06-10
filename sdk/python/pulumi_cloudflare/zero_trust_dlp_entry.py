@@ -30,7 +30,7 @@ class ZeroTrustDlpEntryArgs:
                  type: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a ZeroTrustDlpEntry resource.
-        :param pulumi.Input[builtins.str] type: Available values: "custom".
+        :param pulumi.Input[builtins.str] type: Available values: "custom", "predefined", "integration".
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "enabled", enabled)
@@ -89,7 +89,7 @@ class ZeroTrustDlpEntryArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Available values: "custom".
+        Available values: "custom", "predefined", "integration".
         """
         return pulumi.get(self, "type")
 
@@ -118,7 +118,7 @@ class _ZeroTrustDlpEntryState:
         :param pulumi.Input[builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
-        :param pulumi.Input[builtins.str] type: Available values: "custom".
+        :param pulumi.Input[builtins.str] type: Available values: "custom", "predefined", "integration".
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -235,7 +235,7 @@ class _ZeroTrustDlpEntryState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Available values: "custom".
+        Available values: "custom", "predefined", "integration".
         """
         return pulumi.get(self, "type")
 
@@ -301,7 +301,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] type: Available values: "custom".
+        :param pulumi.Input[builtins.str] type: Available values: "custom", "predefined", "integration".
         """
         ...
     @overload
@@ -417,7 +417,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] case_sensitive: Only applies to custom word lists.
                Determines if the words should be matched in a case-sensitive manner
                Cannot be set to false if secret is true
-        :param pulumi.Input[builtins.str] type: Available values: "custom".
+        :param pulumi.Input[builtins.str] type: Available values: "custom", "predefined", "integration".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -491,7 +491,7 @@ class ZeroTrustDlpEntry(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        Available values: "custom".
+        Available values: "custom", "predefined", "integration".
         """
         return pulumi.get(self, "type")
 

@@ -17,32 +17,11 @@ public final class GetAccountSettings {
      */
     private String abuseContactEmail;
     /**
-     * @return Specifies the default nameservers to be used for new zones added to this account.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    private String defaultNameservers;
-    /**
      * @return Indicates whether membership in this account requires that
      * Two-Factor Authentication is enabled
      * 
      */
     private Boolean enforceTwofactor;
-    /**
-     * @return Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     * 
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    private Boolean useAccountCustomNsByDefault;
 
     private GetAccountSettings() {}
     /**
@@ -53,37 +32,12 @@ public final class GetAccountSettings {
         return this.abuseContactEmail;
     }
     /**
-     * @return Specifies the default nameservers to be used for new zones added to this account.
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    public String defaultNameservers() {
-        return this.defaultNameservers;
-    }
-    /**
      * @return Indicates whether membership in this account requires that
      * Two-Factor Authentication is enabled
      * 
      */
     public Boolean enforceTwofactor() {
         return this.enforceTwofactor;
-    }
-    /**
-     * @return Indicates whether new zones should use the account-level custom
-     * nameservers by default.
-     * 
-     * Deprecated in favor of [DNS Settings](https://developers.cloudflare.com/api/operations/dns-settings-for-an-account-update-dns-settings).
-     * 
-     * @deprecated
-     * This attribute is deprecated.
-     * 
-     */
-    @Deprecated /* This attribute is deprecated. */
-    public Boolean useAccountCustomNsByDefault() {
-        return this.useAccountCustomNsByDefault;
     }
 
     public static Builder builder() {
@@ -96,16 +50,12 @@ public final class GetAccountSettings {
     @CustomType.Builder
     public static final class Builder {
         private String abuseContactEmail;
-        private String defaultNameservers;
         private Boolean enforceTwofactor;
-        private Boolean useAccountCustomNsByDefault;
         public Builder() {}
         public Builder(GetAccountSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.abuseContactEmail = defaults.abuseContactEmail;
-    	      this.defaultNameservers = defaults.defaultNameservers;
     	      this.enforceTwofactor = defaults.enforceTwofactor;
-    	      this.useAccountCustomNsByDefault = defaults.useAccountCustomNsByDefault;
         }
 
         @CustomType.Setter
@@ -117,14 +67,6 @@ public final class GetAccountSettings {
             return this;
         }
         @CustomType.Setter
-        public Builder defaultNameservers(String defaultNameservers) {
-            if (defaultNameservers == null) {
-              throw new MissingRequiredPropertyException("GetAccountSettings", "defaultNameservers");
-            }
-            this.defaultNameservers = defaultNameservers;
-            return this;
-        }
-        @CustomType.Setter
         public Builder enforceTwofactor(Boolean enforceTwofactor) {
             if (enforceTwofactor == null) {
               throw new MissingRequiredPropertyException("GetAccountSettings", "enforceTwofactor");
@@ -132,20 +74,10 @@ public final class GetAccountSettings {
             this.enforceTwofactor = enforceTwofactor;
             return this;
         }
-        @CustomType.Setter
-        public Builder useAccountCustomNsByDefault(Boolean useAccountCustomNsByDefault) {
-            if (useAccountCustomNsByDefault == null) {
-              throw new MissingRequiredPropertyException("GetAccountSettings", "useAccountCustomNsByDefault");
-            }
-            this.useAccountCustomNsByDefault = useAccountCustomNsByDefault;
-            return this;
-        }
         public GetAccountSettings build() {
             final var _resultValue = new GetAccountSettings();
             _resultValue.abuseContactEmail = abuseContactEmail;
-            _resultValue.defaultNameservers = defaultNameservers;
             _resultValue.enforceTwofactor = enforceTwofactor;
-            _resultValue.useAccountCustomNsByDefault = useAccountCustomNsByDefault;
             return _resultValue;
         }
     }

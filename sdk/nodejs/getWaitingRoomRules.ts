@@ -31,7 +31,7 @@ export function getWaitingRoomRules(args: GetWaitingRoomRulesArgs, opts?: pulumi
 export interface GetWaitingRoomRulesArgs {
     waitingRoomId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: string;
 }
@@ -68,7 +68,7 @@ export interface GetWaitingRoomRulesResult {
     readonly version: string;
     readonly waitingRoomId: string;
     /**
-     * Identifier
+     * Identifier.
      */
     readonly zoneId: string;
 }
@@ -99,7 +99,7 @@ export function getWaitingRoomRulesOutput(args: GetWaitingRoomRulesOutputArgs, o
 export interface GetWaitingRoomRulesOutputArgs {
     waitingRoomId: pulumi.Input<string>;
     /**
-     * Identifier
+     * Identifier.
      */
     zoneId: pulumi.Input<string>;
 }

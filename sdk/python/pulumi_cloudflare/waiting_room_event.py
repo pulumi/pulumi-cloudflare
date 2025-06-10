@@ -42,7 +42,7 @@ class WaitingRoomEventArgs:
         :param pulumi.Input[builtins.str] event_end_time: An ISO 8601 timestamp that marks the end of the event.
         :param pulumi.Input[builtins.str] event_start_time: An ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. The start time must be at least one minute before `event_end_time`.
         :param pulumi.Input[builtins.str] name: A unique name to identify the event. Only alphanumeric characters, hyphens and underscores are allowed.
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] custom_page_html: If set, the event will override the waiting room's `custom_page_html` property while it is active. If null, the event will inherit it.
         :param pulumi.Input[builtins.str] description: A note that you can use to add more details about the event.
         :param pulumi.Input[builtins.bool] disable_session_renewal: If set, the event will override the waiting room's `disable_session_renewal` property while it is active. If null, the event will inherit it.
@@ -137,7 +137,7 @@ class WaitingRoomEventArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -333,7 +333,7 @@ class _WaitingRoomEventState:
                Available values: "log", "infinite_queue".
         :param pulumi.Input[builtins.str] turnstile_mode: If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
                Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
@@ -587,7 +587,7 @@ class _WaitingRoomEventState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 
@@ -672,7 +672,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
                Available values: "log", "infinite_queue".
         :param pulumi.Input[builtins.str] turnstile_mode: If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
                Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
     @overload
@@ -836,7 +836,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
                Available values: "log", "infinite_queue".
         :param pulumi.Input[builtins.str] turnstile_mode: If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it.
                Available values: "off", "invisible", "visible*non*interactive", "visible_managed".
-        :param pulumi.Input[builtins.str] zone_id: Identifier
+        :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1004,7 +1004,7 @@ class WaitingRoomEvent(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[builtins.str]:
         """
-        Identifier
+        Identifier.
         """
         return pulumi.get(self, "zone_id")
 

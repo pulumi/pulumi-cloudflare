@@ -123,7 +123,7 @@ from .get_calls_turn_app import *
 from .get_calls_turn_apps import *
 from .get_certificate_pack import *
 from .get_certificate_packs import *
-from .get_cloud_connector_rules_list import *
+from .get_cloud_connector_rules import *
 from .get_cloudforce_one_request import *
 from .get_cloudforce_one_request_asset import *
 from .get_cloudforce_one_request_message import *
@@ -336,6 +336,8 @@ from .get_zero_trust_device_posture_integration import *
 from .get_zero_trust_device_posture_integrations import *
 from .get_zero_trust_device_posture_rule import *
 from .get_zero_trust_device_posture_rules import *
+from .get_zero_trust_dex_test import *
+from .get_zero_trust_dex_tests import *
 from .get_zero_trust_dlp_custom_profile import *
 from .get_zero_trust_dlp_dataset import *
 from .get_zero_trust_dlp_datasets import *
@@ -367,6 +369,7 @@ from .get_zero_trust_tunnel_cloudflared_token import *
 from .get_zero_trust_tunnel_cloudflared_virtual_network import *
 from .get_zero_trust_tunnel_cloudflared_virtual_networks import *
 from .get_zero_trust_tunnel_cloudflareds import *
+from .get_zero_trust_tunnel_warp_connector_token import *
 from .get_zone import *
 from .get_zone_cache_reserve import *
 from .get_zone_cache_variants import *
@@ -500,6 +503,7 @@ from .zero_trust_device_default_profile_local_domain_fallback import *
 from .zero_trust_device_managed_networks import *
 from .zero_trust_device_posture_integration import *
 from .zero_trust_device_posture_rule import *
+from .zero_trust_dex_test import *
 from .zero_trust_dlp_custom_profile import *
 from .zero_trust_dlp_dataset import *
 from .zero_trust_dlp_entry import *
@@ -2067,6 +2071,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule": "ZeroTrustDevicePostureRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDexTest",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest": "ZeroTrustDexTest"
   }
  },
  {

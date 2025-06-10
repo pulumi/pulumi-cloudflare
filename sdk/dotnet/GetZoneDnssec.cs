@@ -135,6 +135,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly bool DnssecMultiSigner;
         public readonly bool DnssecPresigned;
+        public readonly bool DnssecUseNsec3;
         public readonly string Ds;
         public readonly double Flags;
         /// <summary>
@@ -165,6 +166,8 @@ namespace Pulumi.Cloudflare
 
             bool dnssecPresigned,
 
+            bool dnssecUseNsec3,
+
             string ds,
 
             double flags,
@@ -189,6 +192,7 @@ namespace Pulumi.Cloudflare
             DigestType = digestType;
             DnssecMultiSigner = dnssecMultiSigner;
             DnssecPresigned = dnssecPresigned;
+            DnssecUseNsec3 = dnssecUseNsec3;
             Ds = ds;
             Flags = flags;
             Id = id;

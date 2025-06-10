@@ -85,7 +85,7 @@ export class MtlsCertificate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * The private key for the certificate
+     * The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
      */
     public readonly privateKey!: pulumi.Output<string | undefined>;
     /**
@@ -188,7 +188,7 @@ export interface MtlsCertificateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The private key for the certificate
+     * The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
      */
     privateKey?: pulumi.Input<string>;
     /**
@@ -230,7 +230,7 @@ export interface MtlsCertificateArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The private key for the certificate
+     * The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page.
      */
     privateKey?: pulumi.Input<string>;
 }
