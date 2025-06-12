@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	// embed allows embedding files
 	_ "embed"
@@ -112,7 +113,7 @@ func Provider() info.Provider {
 					args info.PreStateUpgradeHookArgs,
 				) (int64, resource.PropertyMap, error) {
 					if args.PriorStateSchemaVersion == 1 {
-						updateRule := func(r resource.PropertyValue) resource.PropertyValue {
+						updateRuleHeaders := func(r resource.PropertyValue) resource.PropertyValue {
 							if !r.IsObject() {
 								return r
 							}
@@ -133,12 +134,55 @@ func Provider() info.Provider {
 							}
 							return r
 						}
+
+						// This migrates the rules field from a map[string]string to a map[string][]string
+						updateRuleRules := func(r resource.PropertyValue) resource.PropertyValue {
+							if !r.IsObject() {
+								return r
+							}
+							ruleCopy := r.ObjectValue().Copy()
+							ap, ok := ruleCopy["actionParameters"]
+							if !ok || !ap.IsObject() {
+								return r
+							}
+							apCopy := ap.ObjectValue().Copy()
+							apRules, ok := apCopy["rules"]
+							if !ok || !apRules.IsObject() {
+								return r
+							}
+
+							apRulesMap := apRules.ObjectValue()
+
+							if len(apRulesMap) == 0 {
+								return r
+							}
+
+							updatedApRules := resource.PropertyMap{}
+							for k, v := range apRulesMap {
+								if !v.IsString() {
+									updatedApRules[k] = v
+									continue
+								}
+								ruleIds := strings.Split(v.StringValue(), ",")
+								ruleIdsArray := []resource.PropertyValue{}
+								for _, ruleId := range ruleIds {
+									ruleIdsArray = append(ruleIdsArray, resource.NewStringProperty(ruleId))
+								}
+								updatedApRules[k] = resource.NewArrayProperty(ruleIdsArray)
+							}
+							apCopy["rules"] = resource.NewObjectProperty(updatedApRules)
+							ruleCopy["actionParameters"] = resource.NewObjectProperty(apCopy)
+							return resource.NewObjectProperty(ruleCopy)
+						}
+
 						s := args.PriorState
 						sCopy := s.Copy()
 						if rules, ok := s["rules"]; ok && rules.IsArray() {
 							updatedRules := []resource.PropertyValue{}
 							for _, rule := range rules.ArrayValue() {
-								updatedRules = append(updatedRules, updateRule(rule))
+								newRule := updateRuleHeaders(rule)
+								newRule = updateRuleRules(newRule)
+								updatedRules = append(updatedRules, newRule)
 							}
 							sCopy["rules"] = resource.NewArrayProperty(updatedRules)
 						}

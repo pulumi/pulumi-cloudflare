@@ -5,6 +5,7 @@ package cloudflare
 
 import (
 	"context"
+	"encoding/json"
 	"os"
 	"testing"
 
@@ -15,14 +16,17 @@ import (
 	"github.com/pulumi/providertest/providers"
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/assertpreview"
+	"github.com/pulumi/providertest/pulumitest/optnewstack"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optrefresh"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optup"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
+	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
@@ -138,4 +142,17 @@ func TestWorkersRoute(t *testing.T) {
 func TestZoneSettings(t *testing.T) {
 	pt := testProgram(t, "test-programs/zonesettings")
 	pt.Up(t)
+}
+
+// Regression test for [pulumi/pulumi-cloudflare#1213]
+func TestRuleSetNonEmptyRulesUpgrade(t *testing.T) {
+	state, err := os.ReadFile("testdata/ruleset_state.json")
+	require.NoError(t, err)
+	depl := apitype.UntypedDeployment{}
+	err = json.Unmarshal(state, &depl)
+	require.NoError(t, err)
+	pt := testProgram(t, "test-programs/ruleset_non_empty_rules",
+		opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
+	pt.ImportStack(t, depl)
+	pt.Preview(t)
 }
