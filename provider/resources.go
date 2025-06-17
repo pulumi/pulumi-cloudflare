@@ -159,9 +159,12 @@ func Provider() info.Provider {
 
 							updatedApRules := resource.PropertyMap{}
 							for k, v := range apRulesMap {
-								if !v.IsString() {
+								if v.IsArray() {
 									updatedApRules[k] = v
 									continue
+								}
+								if !v.IsString() {
+									return r
 								}
 								ruleIds := strings.Split(v.StringValue(), ",")
 								ruleIdsArray := []resource.PropertyValue{}
