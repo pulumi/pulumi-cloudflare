@@ -123,6 +123,18 @@ type PreStateUpgradeHook = func(
 	args info.PreStateUpgradeHookArgs,
 ) (int64, resource.PropertyMap, error)
 
+func needsMigration(st R1State) bool {
+	if len(st.Policies) == 0 {
+		return false
+	}
+	for _, p := range st.Policies {
+		if len(p.PermissionGroups) > 0 {
+			return true
+		}
+	}
+	return false
+}
+
 func NewPreStateUpgradeHook() PreStateUpgradeHook {
 	return func(args info.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
 		if args.PriorStateSchemaVersion != 0 || args.ResourceSchemaVersion != 0 {
@@ -132,25 +144,24 @@ func NewPreStateUpgradeHook() PreStateUpgradeHook {
 		old := resource.NewObjectProperty(args.PriorState)
 		s, err := pvbind.Unmarshal[R1State](old, pvbind.UnmarshalOpts{})
 		if err != nil {
-			panic(fmt.Sprintf("Unmarshal FAILED: %w", err))
+			return args.ResourceSchemaVersion, args.PriorState, nil
+		}
+
+		if !needsMigration(s) {
 			return args.ResourceSchemaVersion, args.PriorState, nil
 		}
 
 		new, err := Migrate(s)
 		if err != nil {
-			panic("Migrate FAILED")
-
 			return args.ResourceSchemaVersion, args.PriorState, nil
 		}
 
 		newPV, err := pvbind.Marshal(new, pvbind.MarshalOpts{})
 		if err != nil {
-			panic("Marshal failed FAILED")
 			return args.ResourceSchemaVersion, args.PriorState, nil
 		}
 
 		if !newPV.IsObject() {
-			panic("Not is Objecct")
 			return args.ResourceSchemaVersion, nil, fmt.Errorf("Expected an Object PropertyValue here")
 		}
 
