@@ -1,0 +1,1 @@
+eval $(esc env open pulumi/providers/cloudflare --format shell)
