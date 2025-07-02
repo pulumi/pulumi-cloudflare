@@ -1,10 +1,6 @@
 package migratetoken
 
 import (
-	"fmt"
-
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
-	"github.com/pulumi/pulumi-tool-generate-migration/pkg/pvbind"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
@@ -117,54 +113,4 @@ func Migrate(r1 R1State) (R2State, error) {
 		ModifiedOn: r1.ModifiedOn,
 		NotBefore:  r1.NotBefore,
 	}, nil
-}
-
-type PreStateUpgradeHook = func(
-	args info.PreStateUpgradeHookArgs,
-) (int64, resource.PropertyMap, error)
-
-func needsMigration(st R1State) bool {
-	if len(st.Policies) == 0 {
-		return false
-	}
-	for _, p := range st.Policies {
-		if len(p.PermissionGroups) > 0 {
-			return true
-		}
-	}
-	return false
-}
-
-func NewPreStateUpgradeHook() PreStateUpgradeHook {
-	return func(args info.PreStateUpgradeHookArgs) (int64, resource.PropertyMap, error) {
-		if args.PriorStateSchemaVersion != 0 || args.ResourceSchemaVersion != 0 {
-			return args.ResourceSchemaVersion, args.PriorState, nil
-		}
-
-		old := resource.NewObjectProperty(args.PriorState)
-		s, err := pvbind.Unmarshal[R1State](old, pvbind.UnmarshalOpts{})
-		if err != nil {
-			return args.ResourceSchemaVersion, args.PriorState, nil
-		}
-
-		if !needsMigration(s) {
-			return args.ResourceSchemaVersion, args.PriorState, nil
-		}
-
-		new, err := Migrate(s)
-		if err != nil {
-			return args.ResourceSchemaVersion, args.PriorState, nil
-		}
-
-		newPV, err := pvbind.Marshal(new, pvbind.MarshalOpts{})
-		if err != nil {
-			return args.ResourceSchemaVersion, args.PriorState, nil
-		}
-
-		if !newPV.IsObject() {
-			return args.ResourceSchemaVersion, nil, fmt.Errorf("Expected an Object PropertyValue here")
-		}
-
-		return 0, newPV.ObjectValue(), nil
-	}
 }
