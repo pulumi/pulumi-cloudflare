@@ -34,8 +34,6 @@ import (
 
 	migratetoken "github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/migrations/token"
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
-	"github.com/pulumi/pulumi-tool-generate-migration/pkg/bridge"
-	"github.com/pulumi/pulumi-tool-generate-migration/pkg/pvbind"
 )
 
 // all of the token components used below.
@@ -98,15 +96,8 @@ func Provider() info.Provider {
 
 		Resources: map[string]*info.Resource{
 			"cloudflare_api_token": {
-				Tok: "cloudflare:index/apiToken:ApiToken",
-				PreStateUpgradeHook: bridge.NewPreStateUpgradeHook(
-					migratetoken.Migrate,
-					pvbind.UnmarshalOpts{
-						StrictModeIgnoreField: func(pk resource.PropertyKey) bool {
-							return pk == "id"
-						},
-					},
-				),
+				Tok:                 "cloudflare:index/apiToken:ApiToken",
+				PreStateUpgradeHook: migratetoken.PreStateUpgradeHook,
 			},
 
 			// We cannot use TF's ID field as Pulumi's ID field automatically,
