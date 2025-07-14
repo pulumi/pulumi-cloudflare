@@ -423,6 +423,15 @@ func Provider() info.Provider {
 			"cloudflare_zone_setting": {
 				ComputeID: delegateID("settingId"),
 			},
+			"cloudflare_schema_validation_settings": {
+				ComputeID: delegateID("zoneId"),
+			},
+			"cloudflare_schema_validation_operation_settings": {
+				ComputeID: delegateID("zoneId"),
+			},
+			"cloudflare_zero_trust_device_settings": {
+				ComputeID: delegateID("accountId"),
+			},
 		},
 		DataSources: map[string]*info.DataSource{},
 		JavaScript: &tfbridge.JavaScriptInfo{
