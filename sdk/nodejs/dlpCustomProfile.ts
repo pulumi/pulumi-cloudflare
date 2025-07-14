@@ -65,14 +65,13 @@ export class DlpCustomProfile extends pulumi.CustomResource {
      * The description of the profile.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public readonly entries!: pulumi.Output<outputs.DlpCustomProfileEntry[] | undefined>;
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly entries!: pulumi.Output<outputs.DlpCustomProfileEntry[]>;
+    public readonly name!: pulumi.Output<string>;
     public readonly ocrEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Whether this profile can be accessed by anyone.
      */
     public /*out*/ readonly openAccess!: pulumi.Output<boolean>;
-    public readonly profiles!: pulumi.Output<outputs.DlpCustomProfileProfile[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
@@ -113,7 +112,6 @@ export class DlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ocrEnabled"] = state ? state.ocrEnabled : undefined;
             resourceInputs["openAccess"] = state ? state.openAccess : undefined;
-            resourceInputs["profiles"] = state ? state.profiles : undefined;
             resourceInputs["sharedEntries"] = state ? state.sharedEntries : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -121,6 +119,12 @@ export class DlpCustomProfile extends pulumi.CustomResource {
             const args = argsOrState as DlpCustomProfileArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
+            }
+            if ((!args || args.entries === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entries'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["aiContextEnabled"] = args ? args.aiContextEnabled : undefined;
@@ -131,7 +135,6 @@ export class DlpCustomProfile extends pulumi.CustomResource {
             resourceInputs["entries"] = args ? args.entries : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ocrEnabled"] = args ? args.ocrEnabled : undefined;
-            resourceInputs["profiles"] = args ? args.profiles : undefined;
             resourceInputs["sharedEntries"] = args ? args.sharedEntries : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["openAccess"] = undefined /*out*/;
@@ -175,7 +178,6 @@ export interface DlpCustomProfileState {
      * Whether this profile can be accessed by anyone.
      */
     openAccess?: pulumi.Input<boolean>;
-    profiles?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileProfile>[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */
@@ -209,10 +211,9 @@ export interface DlpCustomProfileArgs {
      * The description of the profile.
      */
     description?: pulumi.Input<string>;
-    entries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
-    name?: pulumi.Input<string>;
+    entries: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileEntry>[]>;
+    name: pulumi.Input<string>;
     ocrEnabled?: pulumi.Input<boolean>;
-    profiles?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileProfile>[]>;
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      */

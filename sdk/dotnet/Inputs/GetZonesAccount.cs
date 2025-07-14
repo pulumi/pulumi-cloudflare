@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetZonesAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// An account ID
+        /// Filter by an account ID.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }

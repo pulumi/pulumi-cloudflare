@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > If using the `sslRecommender` zone setting, use the `enabled` attribute instead of `value`.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -14,7 +16,7 @@ import * as utilities from "./utilities";
  * const exampleZoneSetting = new cloudflare.ZoneSetting("example_zone_setting", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     settingId: "always_online",
- *     enabled: true,
+ *     value: "on",
  * });
  * ```
  *

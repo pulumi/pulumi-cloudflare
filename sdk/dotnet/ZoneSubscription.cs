@@ -11,10 +11,34 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/zoneSubscription:ZoneSubscription example '&lt;zone_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneSubscription:ZoneSubscription")]
     public partial class ZoneSubscription : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The monetary unit in which pricing information is displayed.
+        /// </summary>
+        [Output("currency")]
+        public Output<string> Currency { get; private set; } = null!;
+
+        /// <summary>
+        /// The end of the current period and also when the next billing is due.
+        /// </summary>
+        [Output("currentPeriodEnd")]
+        public Output<string> CurrentPeriodEnd { get; private set; } = null!;
+
+        /// <summary>
+        /// When the current billing period started. May match initial*period*start if this is the first period.
+        /// </summary>
+        [Output("currentPeriodStart")]
+        public Output<string> CurrentPeriodStart { get; private set; } = null!;
+
         /// <summary>
         /// How often the subscription is renewed automatically.
         /// Available values: "weekly", "monthly", "quarterly", "yearly".
@@ -23,16 +47,29 @@ namespace Pulumi.Cloudflare
         public Output<string?> Frequency { get; private set; } = null!;
 
         /// <summary>
-        /// Subscription identifier tag.
+        /// The price of the subscription that will be billed, in US dollars.
         /// </summary>
-        [Output("identifier")]
-        public Output<string> Identifier { get; private set; } = null!;
+        [Output("price")]
+        public Output<double> Price { get; private set; } = null!;
 
         /// <summary>
         /// The rate plan applied to the subscription.
         /// </summary>
         [Output("ratePlan")]
         public Output<Outputs.ZoneSubscriptionRatePlan?> RatePlan { get; private set; } = null!;
+
+        /// <summary>
+        /// The state that the subscription is in.
+        /// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Subscription identifier tag.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -88,16 +125,16 @@ namespace Pulumi.Cloudflare
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
-        /// Subscription identifier tag.
-        /// </summary>
-        [Input("identifier", required: true)]
-        public Input<string> Identifier { get; set; } = null!;
-
-        /// <summary>
         /// The rate plan applied to the subscription.
         /// </summary>
         [Input("ratePlan")]
         public Input<Inputs.ZoneSubscriptionRatePlanArgs>? RatePlan { get; set; }
+
+        /// <summary>
+        /// Subscription identifier tag.
+        /// </summary>
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public ZoneSubscriptionArgs()
         {
@@ -108,6 +145,24 @@ namespace Pulumi.Cloudflare
     public sealed class ZoneSubscriptionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The monetary unit in which pricing information is displayed.
+        /// </summary>
+        [Input("currency")]
+        public Input<string>? Currency { get; set; }
+
+        /// <summary>
+        /// The end of the current period and also when the next billing is due.
+        /// </summary>
+        [Input("currentPeriodEnd")]
+        public Input<string>? CurrentPeriodEnd { get; set; }
+
+        /// <summary>
+        /// When the current billing period started. May match initial*period*start if this is the first period.
+        /// </summary>
+        [Input("currentPeriodStart")]
+        public Input<string>? CurrentPeriodStart { get; set; }
+
+        /// <summary>
         /// How often the subscription is renewed automatically.
         /// Available values: "weekly", "monthly", "quarterly", "yearly".
         /// </summary>
@@ -115,16 +170,29 @@ namespace Pulumi.Cloudflare
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
-        /// Subscription identifier tag.
+        /// The price of the subscription that will be billed, in US dollars.
         /// </summary>
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("price")]
+        public Input<double>? Price { get; set; }
 
         /// <summary>
         /// The rate plan applied to the subscription.
         /// </summary>
         [Input("ratePlan")]
         public Input<Inputs.ZoneSubscriptionRatePlanGetArgs>? RatePlan { get; set; }
+
+        /// <summary>
+        /// The state that the subscription is in.
+        /// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Subscription identifier tag.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public ZoneSubscriptionState()
         {

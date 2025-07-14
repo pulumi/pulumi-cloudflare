@@ -93,9 +93,21 @@ public final class DlpPredefinedProfileState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Import(name="entries")
     private @Nullable Output<List<DlpPredefinedProfileEntryArgs>> entries;
 
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     public Optional<Output<List<DlpPredefinedProfileEntryArgs>>> entries() {
         return Optional.ofNullable(this.entries);
     }
@@ -310,15 +322,39 @@ public final class DlpPredefinedProfileState extends com.pulumi.resources.Resour
             return description(Output.of(description));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(@Nullable Output<List<DlpPredefinedProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(List<DlpPredefinedProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(DlpPredefinedProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }

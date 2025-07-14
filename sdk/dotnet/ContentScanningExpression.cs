@@ -42,12 +42,6 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ContentScanningExpressionBody>> Bodies { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the ruleset expression to use in matching content objects.
-        /// </summary>
-        [Output("payload")]
-        public Output<string> Payload { get; private set; } = null!;
-
-        /// <summary>
         /// Defines an identifier.
         /// </summary>
         [Output("zoneId")]
@@ -128,12 +122,6 @@ namespace Pulumi.Cloudflare
             get => _bodies ?? (_bodies = new InputList<Inputs.ContentScanningExpressionBodyGetArgs>());
             set => _bodies = value;
         }
-
-        /// <summary>
-        /// Defines the ruleset expression to use in matching content objects.
-        /// </summary>
-        [Input("payload")]
-        public Input<string>? Payload { get; set; }
 
         /// <summary>
         /// Defines an identifier.

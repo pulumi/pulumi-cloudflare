@@ -20,6 +20,9 @@ import * as utilities from "./utilities";
  *         value: "198.51.100.4",
  *     }],
  *     urls: ["shop.example.com/*"],
+ *     description: "Prevent multiple login failures to mitigate brute force attacks",
+ *     paused: false,
+ *     priority: 5,
  * });
  * ```
  *
@@ -66,9 +69,9 @@ export class ZoneLockdown extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * An informative summary of the rule.
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The timestamp of when the rule was last modified.
      */
@@ -76,7 +79,11 @@ export class ZoneLockdown extends pulumi.CustomResource {
     /**
      * When true, indicates that the rule is currently paused.
      */
-    public /*out*/ readonly paused!: pulumi.Output<boolean>;
+    public readonly paused!: pulumi.Output<boolean | undefined>;
+    /**
+     * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     */
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      */
@@ -104,6 +111,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             resourceInputs["paused"] = state ? state.paused : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["urls"] = state ? state.urls : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -118,12 +126,13 @@ export class ZoneLockdown extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["configurations"] = args ? args.configurations : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["urls"] = args ? args.urls : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["createdOn"] = undefined /*out*/;
-            resourceInputs["description"] = undefined /*out*/;
             resourceInputs["modifiedOn"] = undefined /*out*/;
-            resourceInputs["paused"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneLockdown.__pulumiType, name, resourceInputs, opts);
@@ -143,7 +152,7 @@ export interface ZoneLockdownState {
      */
     createdOn?: pulumi.Input<string>;
     /**
-     * An informative summary of the rule.
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      */
     description?: pulumi.Input<string>;
     /**
@@ -154,6 +163,10 @@ export interface ZoneLockdownState {
      * When true, indicates that the rule is currently paused.
      */
     paused?: pulumi.Input<boolean>;
+    /**
+     * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     */
+    priority?: pulumi.Input<number>;
     /**
      * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      */
@@ -172,6 +185,18 @@ export interface ZoneLockdownArgs {
      * A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
      */
     configurations: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
+    /**
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * When true, indicates that the rule is currently paused.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
+     * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     */
+    priority?: pulumi.Input<number>;
     /**
      * The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
      */

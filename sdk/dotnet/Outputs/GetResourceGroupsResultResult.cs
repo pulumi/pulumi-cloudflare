@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetResourceGroupsResultResult
     {
         /// <summary>
-        /// Identifier of the group.
+        /// Identifier of the resource group.
         /// </summary>
         public readonly string Id;
         /// <summary>

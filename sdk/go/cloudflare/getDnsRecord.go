@@ -94,7 +94,7 @@ type LookupDnsRecordResult struct {
 	// Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
 	Ttl float64 `pulumi:"ttl"`
 	// Record type.
-	// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+	// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 	Type string `pulumi:"type"`
 	// Identifier.
 	ZoneId string `pulumi:"zoneId"`
@@ -227,7 +227,7 @@ func (o LookupDnsRecordResultOutput) Ttl() pulumi.Float64Output {
 }
 
 // Record type.
-// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
 func (o LookupDnsRecordResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordResult) string { return v.Type }).(pulumi.StringOutput)
 }

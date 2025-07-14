@@ -84,6 +84,7 @@ export interface GetZeroTrustGatewayPolicyResult {
     readonly traffic: string;
     readonly updatedAt: string;
     readonly version: number;
+    readonly warningStatus: string;
 }
 /**
  * ## Example Usage

@@ -8,8 +8,8 @@ import com.pulumi.cloudflare.outputs.PageRuleActionsForwardingUrl;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -26,7 +26,7 @@ public final class PageRuleActions {
     private @Nullable PageRuleActionsCacheKeyFields cacheKeyFields;
     private @Nullable String cacheLevel;
     private @Nullable String cacheOnCookie;
-    private @Nullable Object cacheTtlByStatus;
+    private @Nullable Map<String,String> cacheTtlByStatus;
     private @Nullable Boolean disableApps;
     private @Nullable Boolean disablePerformance;
     private @Nullable Boolean disableSecurity;
@@ -82,8 +82,8 @@ public final class PageRuleActions {
     public Optional<String> cacheOnCookie() {
         return Optional.ofNullable(this.cacheOnCookie);
     }
-    public Optional<Object> cacheTtlByStatus() {
-        return Optional.ofNullable(this.cacheTtlByStatus);
+    public Map<String,String> cacheTtlByStatus() {
+        return this.cacheTtlByStatus == null ? Map.of() : this.cacheTtlByStatus;
     }
     public Optional<Boolean> disableApps() {
         return Optional.ofNullable(this.disableApps);
@@ -174,7 +174,7 @@ public final class PageRuleActions {
         private @Nullable PageRuleActionsCacheKeyFields cacheKeyFields;
         private @Nullable String cacheLevel;
         private @Nullable String cacheOnCookie;
-        private @Nullable Object cacheTtlByStatus;
+        private @Nullable Map<String,String> cacheTtlByStatus;
         private @Nullable Boolean disableApps;
         private @Nullable Boolean disablePerformance;
         private @Nullable Boolean disableSecurity;
@@ -298,7 +298,7 @@ public final class PageRuleActions {
             return this;
         }
         @CustomType.Setter
-        public Builder cacheTtlByStatus(@Nullable Object cacheTtlByStatus) {
+        public Builder cacheTtlByStatus(@Nullable Map<String,String> cacheTtlByStatus) {
 
             this.cacheTtlByStatus = cacheTtlByStatus;
             return this;

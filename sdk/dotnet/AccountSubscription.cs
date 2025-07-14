@@ -11,6 +11,12 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '&lt;account_id&gt;'
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accountSubscription:AccountSubscription")]
     public partial class AccountSubscription : global::Pulumi.CustomResource
@@ -64,12 +70,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
-        /// Subscription identifier tag.
-        /// </summary>
-        [Output("subscriptionIdentifier")]
-        public Output<string?> SubscriptionIdentifier { get; private set; } = null!;
 
 
         /// <summary>
@@ -136,12 +136,6 @@ namespace Pulumi.Cloudflare
         [Input("ratePlan")]
         public Input<Inputs.AccountSubscriptionRatePlanArgs>? RatePlan { get; set; }
 
-        /// <summary>
-        /// Subscription identifier tag.
-        /// </summary>
-        [Input("subscriptionIdentifier")]
-        public Input<string>? SubscriptionIdentifier { get; set; }
-
         public AccountSubscriptionArgs()
         {
         }
@@ -199,12 +193,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
-
-        /// <summary>
-        /// Subscription identifier tag.
-        /// </summary>
-        [Input("subscriptionIdentifier")]
-        public Input<string>? SubscriptionIdentifier { get; set; }
 
         public AccountSubscriptionState()
         {

@@ -218,7 +218,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? OriginCacheControl { get; set; }
 
         /// <summary>
-        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
         /// </summary>
         [Input("originErrorPagePassthru")]
         public Input<bool>? OriginErrorPagePassthru { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Configure the Polish level.
-        /// Available values: "off", "lossless", "lossy".
+        /// Available values: "off", "lossless", "lossy", "webp".
         /// </summary>
         [Input("polish")]
         public Input<string>? Polish { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Turn on or off Rocket Loader
+        /// Turn on or off Rocket Loader.
         /// </summary>
         [Input("rocketLoader")]
         public Input<bool>? RocketLoader { get; set; }

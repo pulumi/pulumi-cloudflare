@@ -54,7 +54,7 @@ public final class ZonePlan {
      */
     private @Nullable String legacyId;
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     private @Nullable String name;
@@ -122,7 +122,7 @@ public final class ZonePlan {
         return Optional.ofNullable(this.legacyId);
     }
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     public Optional<String> name() {

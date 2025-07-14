@@ -17,17 +17,9 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
 
     public static final UserAgentBlockingRuleArgs Empty = new UserAgentBlockingRuleArgs();
 
-    /**
-     * The rule configuration.
-     * 
-     */
     @Import(name="configuration", required=true)
     private Output<UserAgentBlockingRuleConfigurationArgs> configuration;
 
-    /**
-     * @return The rule configuration.
-     * 
-     */
     public Output<UserAgentBlockingRuleConfigurationArgs> configuration() {
         return this.configuration;
     }
@@ -106,23 +98,11 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
             $ = new UserAgentBlockingRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param configuration The rule configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder configuration(Output<UserAgentBlockingRuleConfigurationArgs> configuration) {
             $.configuration = configuration;
             return this;
         }
 
-        /**
-         * @param configuration The rule configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder configuration(UserAgentBlockingRuleConfigurationArgs configuration) {
             return configuration(Output.of(configuration));
         }

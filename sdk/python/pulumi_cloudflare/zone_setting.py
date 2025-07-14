@@ -220,6 +220,8 @@ class ZoneSetting(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
+        > If using the `ssl_recommender` zone setting, use the `enabled` attribute instead of `value`.
+
         ## Example Usage
 
         ```python
@@ -229,7 +231,7 @@ class ZoneSetting(pulumi.CustomResource):
         example_zone_setting = cloudflare.ZoneSetting("example_zone_setting",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="always_online",
-            enabled=True)
+            value="on")
         ```
 
         ## Import
@@ -252,6 +254,8 @@ class ZoneSetting(pulumi.CustomResource):
                  args: ZoneSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > If using the `ssl_recommender` zone setting, use the `enabled` attribute instead of `value`.
+
         ## Example Usage
 
         ```python
@@ -261,7 +265,7 @@ class ZoneSetting(pulumi.CustomResource):
         example_zone_setting = cloudflare.ZoneSetting("example_zone_setting",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             setting_id="always_online",
-            enabled=True)
+            value="on")
         ```
 
         ## Import

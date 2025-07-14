@@ -23,7 +23,7 @@ public final class GetCloudConnectorRulesRule {
     private GetCloudConnectorRulesRuleParameters parameters;
     /**
      * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;.
      * 
      */
     private String provider;
@@ -50,7 +50,7 @@ public final class GetCloudConnectorRulesRule {
     }
     /**
      * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;.
      * 
      */
     public String provider() {

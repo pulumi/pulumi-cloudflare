@@ -23,11 +23,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; If &#39;application_id&#39; is omitted, the policy created can be reused by multiple access applications.
- *    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
- *    To destroy a reusable policy and remove it from all applications&#39; policies lists on the same apply, preemptively set the
- *    lifecycle option `create_before_destroy` to true on the &#39;cloudflare_zero_trust_access_policy&#39; resource.
- * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

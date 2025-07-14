@@ -17,21 +17,21 @@ public final class GetZoneSubscriptionPlainArgs extends com.pulumi.resources.Inv
      * Subscription identifier tag.
      * 
      */
-    @Import(name="identifier", required=true)
-    private String identifier;
+    @Import(name="zoneId", required=true)
+    private String zoneId;
 
     /**
      * @return Subscription identifier tag.
      * 
      */
-    public String identifier() {
-        return this.identifier;
+    public String zoneId() {
+        return this.zoneId;
     }
 
     private GetZoneSubscriptionPlainArgs() {}
 
     private GetZoneSubscriptionPlainArgs(GetZoneSubscriptionPlainArgs $) {
-        this.identifier = $.identifier;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -53,19 +53,19 @@ public final class GetZoneSubscriptionPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param identifier Subscription identifier tag.
+         * @param zoneId Subscription identifier tag.
          * 
          * @return builder
          * 
          */
-        public Builder identifier(String identifier) {
-            $.identifier = identifier;
+        public Builder zoneId(String zoneId) {
+            $.zoneId = zoneId;
             return this;
         }
 
         public GetZoneSubscriptionPlainArgs build() {
-            if ($.identifier == null) {
-                throw new MissingRequiredPropertyException("GetZoneSubscriptionPlainArgs", "identifier");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetZoneSubscriptionPlainArgs", "zoneId");
             }
             return $;
         }

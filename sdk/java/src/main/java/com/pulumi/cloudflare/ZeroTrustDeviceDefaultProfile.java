@@ -107,70 +107,70 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="allowModeSwitch", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowModeSwitch;
+    private Output<Boolean> allowModeSwitch;
 
     /**
      * @return Whether to allow the user to switch WARP between modes.
      * 
      */
-    public Output<Optional<Boolean>> allowModeSwitch() {
-        return Codegen.optional(this.allowModeSwitch);
+    public Output<Boolean> allowModeSwitch() {
+        return this.allowModeSwitch;
     }
     /**
      * Whether to receive update notifications when a new version of the client is available.
      * 
      */
     @Export(name="allowUpdates", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowUpdates;
+    private Output<Boolean> allowUpdates;
 
     /**
      * @return Whether to receive update notifications when a new version of the client is available.
      * 
      */
-    public Output<Optional<Boolean>> allowUpdates() {
-        return Codegen.optional(this.allowUpdates);
+    public Output<Boolean> allowUpdates() {
+        return this.allowUpdates;
     }
     /**
      * Whether to allow devices to leave the organization.
      * 
      */
     @Export(name="allowedToLeave", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> allowedToLeave;
+    private Output<Boolean> allowedToLeave;
 
     /**
      * @return Whether to allow devices to leave the organization.
      * 
      */
-    public Output<Optional<Boolean>> allowedToLeave() {
-        return Codegen.optional(this.allowedToLeave);
+    public Output<Boolean> allowedToLeave() {
+        return this.allowedToLeave;
     }
     /**
      * The amount of time in seconds to reconnect after having been disabled.
      * 
      */
     @Export(name="autoConnect", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> autoConnect;
+    private Output<Double> autoConnect;
 
     /**
      * @return The amount of time in seconds to reconnect after having been disabled.
      * 
      */
-    public Output<Optional<Double>> autoConnect() {
-        return Codegen.optional(this.autoConnect);
+    public Output<Double> autoConnect() {
+        return this.autoConnect;
     }
     /**
      * Turn on the captive portal after the specified amount of time.
      * 
      */
     @Export(name="captivePortal", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> captivePortal;
+    private Output<Double> captivePortal;
 
     /**
      * @return Turn on the captive portal after the specified amount of time.
      * 
      */
-    public Output<Optional<Double>> captivePortal() {
-        return Codegen.optional(this.captivePortal);
+    public Output<Double> captivePortal() {
+        return this.captivePortal;
     }
     /**
      * Whether the policy will be applied to matching devices.
@@ -191,14 +191,14 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="disableAutoFallback", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> disableAutoFallback;
+    private Output<Boolean> disableAutoFallback;
 
     /**
      * @return If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
      * 
      */
-    public Output<Optional<Boolean>> disableAutoFallback() {
-        return Codegen.optional(this.disableAutoFallback);
+    public Output<Boolean> disableAutoFallback() {
+        return this.disableAutoFallback;
     }
     /**
      * Whether the policy will be applied to matching devices.
@@ -219,14 +219,14 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="excludeOfficeIps", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> excludeOfficeIps;
+    private Output<Boolean> excludeOfficeIps;
 
     /**
      * @return Whether to add Microsoft IPs to Split Tunnel exclusions.
      * 
      */
-    public Output<Optional<Boolean>> excludeOfficeIps() {
-        return Codegen.optional(this.excludeOfficeIps);
+    public Output<Boolean> excludeOfficeIps() {
+        return this.excludeOfficeIps;
     }
     /**
      * List of routes excluded in the WARP client&#39;s tunnel. Both &#39;exclude&#39; and &#39;include&#39; cannot be set in the same request.
@@ -301,28 +301,28 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="registerInterfaceIpWithDns", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> registerInterfaceIpWithDns;
+    private Output<Boolean> registerInterfaceIpWithDns;
 
     /**
      * @return Determines if the operating system will register WARP&#39;s local interface IP with your on-premises DNS server.
      * 
      */
-    public Output<Optional<Boolean>> registerInterfaceIpWithDns() {
-        return Codegen.optional(this.registerInterfaceIpWithDns);
+    public Output<Boolean> registerInterfaceIpWithDns() {
+        return this.registerInterfaceIpWithDns;
     }
     /**
      * Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
      * 
      */
     @Export(name="sccmVpnBoundarySupport", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> sccmVpnBoundarySupport;
+    private Output<Boolean> sccmVpnBoundarySupport;
 
     /**
      * @return Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
      * 
      */
-    public Output<Optional<Boolean>> sccmVpnBoundarySupport() {
-        return Codegen.optional(this.sccmVpnBoundarySupport);
+    public Output<Boolean> sccmVpnBoundarySupport() {
+        return this.sccmVpnBoundarySupport;
     }
     @Export(name="serviceModeV2", refs={ZeroTrustDeviceDefaultProfileServiceModeV2.class}, tree="[0]")
     private Output</* @Nullable */ ZeroTrustDeviceDefaultProfileServiceModeV2> serviceModeV2;
@@ -335,42 +335,42 @@ public class ZeroTrustDeviceDefaultProfile extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="supportUrl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> supportUrl;
+    private Output<String> supportUrl;
 
     /**
      * @return The URL to launch when the Send Feedback button is clicked.
      * 
      */
-    public Output<Optional<String>> supportUrl() {
-        return Codegen.optional(this.supportUrl);
+    public Output<String> supportUrl() {
+        return this.supportUrl;
     }
     /**
      * Whether to allow the user to turn off the WARP switch and disconnect the client.
      * 
      */
     @Export(name="switchLocked", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> switchLocked;
+    private Output<Boolean> switchLocked;
 
     /**
      * @return Whether to allow the user to turn off the WARP switch and disconnect the client.
      * 
      */
-    public Output<Optional<Boolean>> switchLocked() {
-        return Codegen.optional(this.switchLocked);
+    public Output<Boolean> switchLocked() {
+        return this.switchLocked;
     }
     /**
      * Determines which tunnel protocol to use.
      * 
      */
     @Export(name="tunnelProtocol", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tunnelProtocol;
+    private Output<String> tunnelProtocol;
 
     /**
      * @return Determines which tunnel protocol to use.
      * 
      */
-    public Output<Optional<String>> tunnelProtocol() {
-        return Codegen.optional(this.tunnelProtocol);
+    public Output<String> tunnelProtocol() {
+        return this.tunnelProtocol;
     }
 
     /**

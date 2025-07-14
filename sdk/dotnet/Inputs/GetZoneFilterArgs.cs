@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Order { get; set; }
 
         /// <summary>
-        /// A zone status
+        /// Specify a zone status to filter by.
         /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         [Input("status")]

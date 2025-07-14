@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountRole = cloudflare.getAccountRole({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     roleId: "3536bcfad5faccb999b47003c79917fb",
  * });
  * ```
@@ -75,7 +75,7 @@ export interface GetAccountRoleResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountRole = cloudflare.getAccountRole({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     roleId: "3536bcfad5faccb999b47003c79917fb",
  * });
  * ```

@@ -21,7 +21,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// Deny traffic that has not fulfilled Access authorization.
         /// </summary>
         public readonly bool? Required;
-        public readonly string? TeamName;
+        public readonly string TeamName;
 
         [OutputConstructor]
         private TunnelConfigConfigIngressOriginRequestAccess(
@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? required,
 
-            string? teamName)
+            string teamName)
         {
             AudTags = audTags;
             Required = required;

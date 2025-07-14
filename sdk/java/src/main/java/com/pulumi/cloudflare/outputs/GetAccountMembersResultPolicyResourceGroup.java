@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountMembersResultPolicyResourceGroup {
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the resource group.
      * 
      */
     private String id;
@@ -36,7 +36,7 @@ public final class GetAccountMembersResultPolicyResourceGroup {
 
     private GetAccountMembersResultPolicyResourceGroup() {}
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the resource group.
      * 
      */
     public String id() {

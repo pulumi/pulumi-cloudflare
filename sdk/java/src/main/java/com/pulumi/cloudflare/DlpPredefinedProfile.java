@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfile;
  * import com.pulumi.cloudflare.ZeroTrustDlpPredefinedProfileArgs;
- * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileEntryArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs;
  * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs;
+ * import com.pulumi.cloudflare.inputs.ZeroTrustDlpPredefinedProfileEntryArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,10 +52,6 @@ import javax.annotation.Nullable;
  *         var exampleZeroTrustDlpPredefinedProfile = new ZeroTrustDlpPredefinedProfile("exampleZeroTrustDlpPredefinedProfile", ZeroTrustDlpPredefinedProfileArgs.builder()
  *             .accountId("account_id")
  *             .profileId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
- *             .entries(ZeroTrustDlpPredefinedProfileEntryArgs.builder()
- *                 .id("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
- *                 .enabled(true)
- *                 .build())
  *             .aiContextEnabled(true)
  *             .allowedMatchCount(0)
  *             .confidenceThreshold("confidence_threshold")
@@ -64,6 +60,10 @@ import javax.annotation.Nullable;
  *                 .skip(ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs.builder()
  *                     .files(true)
  *                     .build())
+ *                 .build())
+ *             .entries(ZeroTrustDlpPredefinedProfileEntryArgs.builder()
+ *                 .id("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+ *                 .enabled(true)
  *                 .build())
  *             .ocrEnabled(true)
  *             .build());
@@ -153,11 +153,17 @@ public class DlpPredefinedProfile extends com.pulumi.resources.CustomResource {
     public Output<String> description() {
         return this.description;
     }
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
     @Export(name="entries", refs={List.class,DlpPredefinedProfileEntry.class}, tree="[0,1]")
-    private Output<List<DlpPredefinedProfileEntry>> entries;
+    private Output</* @Nullable */ List<DlpPredefinedProfileEntry>> entries;
 
-    public Output<List<DlpPredefinedProfileEntry>> entries() {
-        return this.entries;
+    public Output<Optional<List<DlpPredefinedProfileEntry>>> entries() {
+        return Codegen.optional(this.entries);
     }
     /**
      * The name of the profile.

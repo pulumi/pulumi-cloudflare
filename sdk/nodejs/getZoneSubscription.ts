@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -12,14 +14,14 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleZoneSubscription = cloudflare.getZoneSubscription({
- *     identifier: "506e3185e9c882d175a2d0cb0093d9f2",
+ *     zoneId: "506e3185e9c882d175a2d0cb0093d9f2",
  * });
  * ```
  */
 export function getZoneSubscription(args: GetZoneSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getZoneSubscription:getZoneSubscription", {
-        "identifier": args.identifier,
+        "zoneId": args.zoneId,
     }, opts);
 }
 
@@ -30,7 +32,7 @@ export interface GetZoneSubscriptionArgs {
     /**
      * Subscription identifier tag.
      */
-    identifier: string;
+    zoneId: string;
 }
 
 /**
@@ -38,13 +40,43 @@ export interface GetZoneSubscriptionArgs {
  */
 export interface GetZoneSubscriptionResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The monetary unit in which pricing information is displayed.
      */
-    readonly id: string;
+    readonly currency: string;
+    /**
+     * The end of the current period and also when the next billing is due.
+     */
+    readonly currentPeriodEnd: string;
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     */
+    readonly currentPeriodStart: string;
+    /**
+     * How often the subscription is renewed automatically.
+     * Available values: "weekly", "monthly", "quarterly", "yearly".
+     */
+    readonly frequency: string;
     /**
      * Subscription identifier tag.
      */
-    readonly identifier: string;
+    readonly id: string;
+    /**
+     * The price of the subscription that will be billed, in US dollars.
+     */
+    readonly price: number;
+    /**
+     * The rate plan applied to the subscription.
+     */
+    readonly ratePlan: outputs.GetZoneSubscriptionRatePlan;
+    /**
+     * The state that the subscription is in.
+     * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+     */
+    readonly state: string;
+    /**
+     * Subscription identifier tag.
+     */
+    readonly zoneId: string;
 }
 /**
  * ## Example Usage
@@ -54,14 +86,14 @@ export interface GetZoneSubscriptionResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleZoneSubscription = cloudflare.getZoneSubscription({
- *     identifier: "506e3185e9c882d175a2d0cb0093d9f2",
+ *     zoneId: "506e3185e9c882d175a2d0cb0093d9f2",
  * });
  * ```
  */
 export function getZoneSubscriptionOutput(args: GetZoneSubscriptionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneSubscriptionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("cloudflare:index/getZoneSubscription:getZoneSubscription", {
-        "identifier": args.identifier,
+        "zoneId": args.zoneId,
     }, opts);
 }
 
@@ -72,5 +104,5 @@ export interface GetZoneSubscriptionOutputArgs {
     /**
      * Subscription identifier tag.
      */
-    identifier: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

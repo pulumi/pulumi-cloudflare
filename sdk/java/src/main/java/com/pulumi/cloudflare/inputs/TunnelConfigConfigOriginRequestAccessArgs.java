@@ -48,11 +48,11 @@ public final class TunnelConfigConfigOriginRequestAccessArgs extends com.pulumi.
         return Optional.ofNullable(this.required);
     }
 
-    @Import(name="teamName")
-    private @Nullable Output<String> teamName;
+    @Import(name="teamName", required=true)
+    private Output<String> teamName;
 
-    public Optional<Output<String>> teamName() {
-        return Optional.ofNullable(this.teamName);
+    public Output<String> teamName() {
+        return this.teamName;
     }
 
     private TunnelConfigConfigOriginRequestAccessArgs() {}
@@ -133,7 +133,7 @@ public final class TunnelConfigConfigOriginRequestAccessArgs extends com.pulumi.
             return required(Output.of(required));
         }
 
-        public Builder teamName(@Nullable Output<String> teamName) {
+        public Builder teamName(Output<String> teamName) {
             $.teamName = teamName;
             return this;
         }
@@ -145,6 +145,9 @@ public final class TunnelConfigConfigOriginRequestAccessArgs extends com.pulumi.
         public TunnelConfigConfigOriginRequestAccessArgs build() {
             if ($.audTags == null) {
                 throw new MissingRequiredPropertyException("TunnelConfigConfigOriginRequestAccessArgs", "audTags");
+            }
+            if ($.teamName == null) {
+                throw new MissingRequiredPropertyException("TunnelConfigConfigOriginRequestAccessArgs", "teamName");
             }
             return $;
         }

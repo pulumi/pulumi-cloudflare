@@ -35,6 +35,9 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             "shop.example.com/*",
     ///         },
+    ///         Description = "Prevent multiple login failures to mitigate brute force attacks",
+    ///         Paused = false,
+    ///         Priority = 5,
     ///     });
     /// 
     /// });
@@ -62,10 +65,10 @@ namespace Pulumi.Cloudflare
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// An informative summary of the rule.
+        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of when the rule was last modified.
@@ -77,7 +80,13 @@ namespace Pulumi.Cloudflare
         /// When true, indicates that the rule is currently paused.
         /// </summary>
         [Output("paused")]
-        public Output<bool> Paused { get; private set; } = null!;
+        public Output<bool?> Paused { get; private set; } = null!;
+
+        /// <summary>
+        /// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+        /// </summary>
+        [Output("priority")]
+        public Output<double?> Priority { get; private set; } = null!;
 
         /// <summary>
         /// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
@@ -149,6 +158,24 @@ namespace Pulumi.Cloudflare
             set => _configurations = value;
         }
 
+        /// <summary>
+        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// When true, indicates that the rule is currently paused.
+        /// </summary>
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
+
+        /// <summary>
+        /// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+        /// </summary>
+        [Input("priority")]
+        public Input<double>? Priority { get; set; }
+
         [Input("urls", required: true)]
         private InputList<string>? _urls;
 
@@ -194,7 +221,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// An informative summary of the rule.
+        /// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -210,6 +237,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
+
+        /// <summary>
+        /// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+        /// </summary>
+        [Input("priority")]
+        public Input<double>? Priority { get; set; }
 
         [Input("urls")]
         private InputList<string>? _urls;

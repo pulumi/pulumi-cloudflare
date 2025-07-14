@@ -17,7 +17,7 @@ public final class GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
      */
     private GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange statusCodeRange;
     /**
-     * @return Set the ttl for responses with this specific status code
+     * @return Set the TTL for responses with this specific status code.
      * 
      */
     private Integer statusCodeValue;
@@ -36,7 +36,7 @@ public final class GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
         return this.statusCodeRange;
     }
     /**
-     * @return Set the ttl for responses with this specific status code
+     * @return Set the TTL for responses with this specific status code.
      * 
      */
     public Integer statusCodeValue() {

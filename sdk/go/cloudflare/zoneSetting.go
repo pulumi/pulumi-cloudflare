@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > If using the `sslRecommender` zone setting, use the `enabled` attribute instead of `value`.
+//
 // ## Example Usage
 //
 // ```go
@@ -29,7 +31,7 @@ import (
 //			_, err := cloudflare.NewZoneSetting(ctx, "example_zone_setting", &cloudflare.ZoneSettingArgs{
 //				ZoneId:    pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				SettingId: pulumi.String("always_online"),
-//				Enabled:   pulumi.Bool(true),
+//				Value:     pulumi.Any("on"),
 //			})
 //			if err != nil {
 //				return err

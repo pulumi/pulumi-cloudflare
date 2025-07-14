@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.ZeroTrustDlpCustomProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileState;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpCustomProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpCustomProfileEntry;
-import com.pulumi.cloudflare.outputs.ZeroTrustDlpCustomProfileProfile;
 import com.pulumi.cloudflare.outputs.ZeroTrustDlpCustomProfileSharedEntry;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -112,16 +111,16 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.description);
     }
     @Export(name="entries", refs={List.class,ZeroTrustDlpCustomProfileEntry.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ZeroTrustDlpCustomProfileEntry>> entries;
+    private Output<List<ZeroTrustDlpCustomProfileEntry>> entries;
 
-    public Output<Optional<List<ZeroTrustDlpCustomProfileEntry>>> entries() {
-        return Codegen.optional(this.entries);
+    public Output<List<ZeroTrustDlpCustomProfileEntry>> entries() {
+        return this.entries;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     @Export(name="ocrEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ocrEnabled;
@@ -142,12 +141,6 @@ public class ZeroTrustDlpCustomProfile extends com.pulumi.resources.CustomResour
      */
     public Output<Boolean> openAccess() {
         return this.openAccess;
-    }
-    @Export(name="profiles", refs={List.class,ZeroTrustDlpCustomProfileProfile.class}, tree="[0,1]")
-    private Output<List<ZeroTrustDlpCustomProfileProfile>> profiles;
-
-    public Output<List<ZeroTrustDlpCustomProfileProfile>> profiles() {
-        return this.profiles;
     }
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).

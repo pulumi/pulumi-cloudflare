@@ -189,7 +189,7 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable Boolean originCacheControl;
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     private @Nullable Boolean originErrorPagePassthru;
@@ -205,7 +205,7 @@ public final class RulesetRuleActionParameters {
     private @Nullable List<String> phases;
     /**
      * @return Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     private @Nullable String polish;
@@ -245,7 +245,7 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable List<RulesetRuleActionParametersResponseField> responseFields;
     /**
-     * @return Turn on or off Rocket Loader
+     * @return Turn on or off Rocket Loader.
      * 
      */
     private @Nullable Boolean rocketLoader;
@@ -526,7 +526,7 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.originCacheControl);
     }
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     public Optional<Boolean> originErrorPagePassthru() {
@@ -548,7 +548,7 @@ public final class RulesetRuleActionParameters {
     }
     /**
      * @return Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     public Optional<String> polish() {
@@ -604,7 +604,7 @@ public final class RulesetRuleActionParameters {
         return this.responseFields == null ? List.of() : this.responseFields;
     }
     /**
-     * @return Turn on or off Rocket Loader
+     * @return Turn on or off Rocket Loader.
      * 
      */
     public Optional<Boolean> rocketLoader() {

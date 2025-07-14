@@ -201,6 +201,11 @@ public final class ZeroTrustDevicePostureRuleInput {
      */
     private @Nullable String state;
     /**
+     * @return List of certificate Subject Alternative Names.
+     * 
+     */
+    private @Nullable List<String> subjectAlternativeNames;
+    /**
      * @return Signing certificate thumbprint.
      * 
      */
@@ -481,6 +486,13 @@ public final class ZeroTrustDevicePostureRuleInput {
         return Optional.ofNullable(this.state);
     }
     /**
+     * @return List of certificate Subject Alternative Names.
+     * 
+     */
+    public List<String> subjectAlternativeNames() {
+        return this.subjectAlternativeNames == null ? List.of() : this.subjectAlternativeNames;
+    }
+    /**
      * @return Signing certificate thumbprint.
      * 
      */
@@ -555,6 +567,7 @@ public final class ZeroTrustDevicePostureRuleInput {
         private @Nullable String sensorConfig;
         private @Nullable String sha256;
         private @Nullable String state;
+        private @Nullable List<String> subjectAlternativeNames;
         private @Nullable String thumbprint;
         private @Nullable Double totalScore;
         private @Nullable String version;
@@ -598,6 +611,7 @@ public final class ZeroTrustDevicePostureRuleInput {
     	      this.sensorConfig = defaults.sensorConfig;
     	      this.sha256 = defaults.sha256;
     	      this.state = defaults.state;
+    	      this.subjectAlternativeNames = defaults.subjectAlternativeNames;
     	      this.thumbprint = defaults.thumbprint;
     	      this.totalScore = defaults.totalScore;
     	      this.version = defaults.version;
@@ -827,6 +841,15 @@ public final class ZeroTrustDevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder subjectAlternativeNames(@Nullable List<String> subjectAlternativeNames) {
+
+            this.subjectAlternativeNames = subjectAlternativeNames;
+            return this;
+        }
+        public Builder subjectAlternativeNames(String... subjectAlternativeNames) {
+            return subjectAlternativeNames(List.of(subjectAlternativeNames));
+        }
+        @CustomType.Setter
         public Builder thumbprint(@Nullable String thumbprint) {
 
             this.thumbprint = thumbprint;
@@ -888,6 +911,7 @@ public final class ZeroTrustDevicePostureRuleInput {
             _resultValue.sensorConfig = sensorConfig;
             _resultValue.sha256 = sha256;
             _resultValue.state = state;
+            _resultValue.subjectAlternativeNames = subjectAlternativeNames;
             _resultValue.thumbprint = thumbprint;
             _resultValue.totalScore = totalScore;
             _resultValue.version = version;

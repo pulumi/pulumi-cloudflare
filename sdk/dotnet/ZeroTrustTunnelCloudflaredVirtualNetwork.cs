@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "us-east-1-vpc",
     ///         Comment = "Staging VPC for data science",
     ///         IsDefault = true,
+    ///         IsDefaultNetwork = false,
     ///     });
     /// 
     /// });
@@ -74,7 +75,7 @@ namespace Pulumi.Cloudflare
         /// If `true`, this virtual network is the default for the account.
         /// </summary>
         [Output("isDefaultNetwork")]
-        public Output<bool?> IsDefaultNetwork { get; private set; } = null!;
+        public Output<bool> IsDefaultNetwork { get; private set; } = null!;
 
         /// <summary>
         /// A user-friendly name for the virtual network.

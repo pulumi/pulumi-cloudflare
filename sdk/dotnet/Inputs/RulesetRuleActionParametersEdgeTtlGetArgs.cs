@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<int>? Default { get; set; }
 
         /// <summary>
-        /// edge ttl options
+        /// Edge TTL options.
         /// Available values: "respect*origin", "bypass*by*default", "override*origin".
         /// </summary>
         [Input("mode", required: true)]
@@ -29,7 +29,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs>? _statusCodeTtls;
 
         /// <summary>
-        /// List of single status codes, or status code ranges to apply the selected mode
+        /// List of single status codes, or status code ranges to apply the selected mode.
         /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs> StatusCodeTtls
         {

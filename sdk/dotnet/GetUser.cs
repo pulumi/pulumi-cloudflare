@@ -74,14 +74,103 @@ namespace Pulumi.Cloudflare
     public sealed class GetUserResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Lists the betas that the user is participating in.
+        /// </summary>
+        public readonly ImmutableArray<string> Betas;
+        /// <summary>
+        /// The country in which the user lives.
+        /// </summary>
+        public readonly string Country;
+        /// <summary>
+        /// User's first name
+        /// </summary>
+        public readonly string FirstName;
+        /// <summary>
+        /// Indicates whether user has any business zones
+        /// </summary>
+        public readonly bool HasBusinessZones;
+        /// <summary>
+        /// Indicates whether user has any enterprise zones
+        /// </summary>
+        public readonly bool HasEnterpriseZones;
+        /// <summary>
+        /// Indicates whether user has any pro zones
+        /// </summary>
+        public readonly bool HasProZones;
+        /// <summary>
+        /// Identifier of the user.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// User's last name
+        /// </summary>
+        public readonly string LastName;
+        public readonly ImmutableArray<Outputs.GetUserOrganizationResult> Organizations;
+        /// <summary>
+        /// Indicates whether user has been suspended
+        /// </summary>
+        public readonly bool Suspended;
+        /// <summary>
+        /// User's telephone number
+        /// </summary>
+        public readonly string Telephone;
+        /// <summary>
+        /// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+        /// </summary>
+        public readonly bool TwoFactorAuthenticationEnabled;
+        /// <summary>
+        /// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+        /// </summary>
+        public readonly bool TwoFactorAuthenticationLocked;
+        /// <summary>
+        /// The zipcode or postal code where the user lives.
+        /// </summary>
+        public readonly string Zipcode;
 
         [OutputConstructor]
-        private GetUserResult(string id)
+        private GetUserResult(
+            ImmutableArray<string> betas,
+
+            string country,
+
+            string firstName,
+
+            bool hasBusinessZones,
+
+            bool hasEnterpriseZones,
+
+            bool hasProZones,
+
+            string id,
+
+            string lastName,
+
+            ImmutableArray<Outputs.GetUserOrganizationResult> organizations,
+
+            bool suspended,
+
+            string telephone,
+
+            bool twoFactorAuthenticationEnabled,
+
+            bool twoFactorAuthenticationLocked,
+
+            string zipcode)
         {
+            Betas = betas;
+            Country = country;
+            FirstName = firstName;
+            HasBusinessZones = hasBusinessZones;
+            HasEnterpriseZones = hasEnterpriseZones;
+            HasProZones = hasProZones;
             Id = id;
+            LastName = lastName;
+            Organizations = organizations;
+            Suspended = suspended;
+            Telephone = telephone;
+            TwoFactorAuthenticationEnabled = twoFactorAuthenticationEnabled;
+            TwoFactorAuthenticationLocked = twoFactorAuthenticationLocked;
+            Zipcode = zipcode;
         }
     }
 }

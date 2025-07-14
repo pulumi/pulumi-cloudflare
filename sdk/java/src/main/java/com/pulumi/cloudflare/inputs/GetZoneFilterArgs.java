@@ -107,7 +107,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A zone status
+     * Specify a zone status to filter by.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
@@ -115,7 +115,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> status;
 
     /**
-     * @return A zone status
+     * @return Specify a zone status to filter by.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
@@ -268,7 +268,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status A zone status
+         * @param status Specify a zone status to filter by.
          * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
          * @return builder
@@ -280,7 +280,7 @@ public final class GetZoneFilterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status A zone status
+         * @param status Specify a zone status to filter by.
          * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
          * @return builder

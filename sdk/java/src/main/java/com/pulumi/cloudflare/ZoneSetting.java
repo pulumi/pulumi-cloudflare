@@ -17,6 +17,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; If using the `ssl_recommender` zone setting, use the `enabled` attribute instead of `value`.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -45,7 +47,7 @@ import javax.annotation.Nullable;
  *         var exampleZoneSetting = new ZoneSetting("exampleZoneSetting", ZoneSettingArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .settingId("always_online")
- *             .enabled(true)
+ *             .value("on")
  *             .build());
  * 
  *     }

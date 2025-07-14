@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsAntivirus? Antivirus;
         /// <summary>
+        /// Setting to enable App Control
+        /// </summary>
+        public readonly Outputs.ZeroTrustGatewaySettingsSettingsAppControlSettings? AppControlSettings;
+        /// <summary>
         /// Block page layout settings.
         /// </summary>
         public readonly Outputs.ZeroTrustGatewaySettingsSettingsBlockPage? BlockPage;
@@ -72,6 +76,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZeroTrustGatewaySettingsSettingsAntivirus? antivirus,
 
+            Outputs.ZeroTrustGatewaySettingsSettingsAppControlSettings? appControlSettings,
+
             Outputs.ZeroTrustGatewaySettingsSettingsBlockPage? blockPage,
 
             Outputs.ZeroTrustGatewaySettingsSettingsBodyScanning? bodyScanning,
@@ -96,6 +102,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             ActivityLog = activityLog;
             Antivirus = antivirus;
+            AppControlSettings = appControlSettings;
             BlockPage = blockPage;
             BodyScanning = bodyScanning;
             BrowserIsolation = browserIsolation;

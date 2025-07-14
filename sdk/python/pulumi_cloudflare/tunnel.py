@@ -135,6 +135,9 @@ class _TunnelState:
         if config_src is not None:
             pulumi.set(__self__, "config_src", config_src)
         if connections is not None:
+            warnings.warn("""This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`""", DeprecationWarning)
+            pulumi.log.warn("""connections is deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`""")
+        if connections is not None:
             pulumi.set(__self__, "connections", connections)
         if conns_active_at is not None:
             pulumi.set(__self__, "conns_active_at", conns_active_at)
@@ -196,6 +199,7 @@ class _TunnelState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`""")
     def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConnectionArgs']]]]:
         """
         The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
@@ -546,6 +550,7 @@ class Tunnel(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`""")
     def connections(self) -> pulumi.Output[Sequence['outputs.TunnelConnection']]:
         """
         The Cloudflare Tunnel connections between your origin and Cloudflare's edge.

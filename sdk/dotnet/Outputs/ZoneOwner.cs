@@ -18,11 +18,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Name of the owner
+        /// Name of the owner.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The type of owner
+        /// The type of owner.
         /// </summary>
         public readonly string? Type;
 

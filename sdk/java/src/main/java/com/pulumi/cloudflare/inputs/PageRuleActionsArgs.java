@@ -9,8 +9,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -91,9 +91,9 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     @Import(name="cacheTtlByStatus")
-    private @Nullable Output<Object> cacheTtlByStatus;
+    private @Nullable Output<Map<String,String>> cacheTtlByStatus;
 
-    public Optional<Output<Object>> cacheTtlByStatus() {
+    public Optional<Output<Map<String,String>>> cacheTtlByStatus() {
         return Optional.ofNullable(this.cacheTtlByStatus);
     }
 
@@ -405,12 +405,12 @@ public final class PageRuleActionsArgs extends com.pulumi.resources.ResourceArgs
             return cacheOnCookie(Output.of(cacheOnCookie));
         }
 
-        public Builder cacheTtlByStatus(@Nullable Output<Object> cacheTtlByStatus) {
+        public Builder cacheTtlByStatus(@Nullable Output<Map<String,String>> cacheTtlByStatus) {
             $.cacheTtlByStatus = cacheTtlByStatus;
             return this;
         }
 
-        public Builder cacheTtlByStatus(Object cacheTtlByStatus) {
+        public Builder cacheTtlByStatus(Map<String,String> cacheTtlByStatus) {
             return cacheTtlByStatus(Output.of(cacheTtlByStatus));
         }
 

@@ -24,15 +24,9 @@ import (
 type ZeroTrustLocalFallbackDomain struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// A description of the fallback domain, displayed in the client UI.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// A list of IP addresses to handle domain resolution.
-	DnsServers pulumi.StringArrayOutput                      `pulumi:"dnsServers"`
-	Domains    ZeroTrustLocalFallbackDomainDomainArrayOutput `pulumi:"domains"`
-	PolicyId   pulumi.StringOutput                           `pulumi:"policyId"`
-	// The domain suffix to match when resolving locally.
-	Suffix pulumi.StringOutput `pulumi:"suffix"`
+	AccountId pulumi.StringOutput                           `pulumi:"accountId"`
+	Domains   ZeroTrustLocalFallbackDomainDomainArrayOutput `pulumi:"domains"`
+	PolicyId  pulumi.StringOutput                           `pulumi:"policyId"`
 }
 
 // NewZeroTrustLocalFallbackDomain registers a new resource with the given unique name, arguments, and options.
@@ -83,27 +77,15 @@ func GetZeroTrustLocalFallbackDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZeroTrustLocalFallbackDomain resources.
 type zeroTrustLocalFallbackDomainState struct {
-	AccountId *string `pulumi:"accountId"`
-	// A description of the fallback domain, displayed in the client UI.
-	Description *string `pulumi:"description"`
-	// A list of IP addresses to handle domain resolution.
-	DnsServers []string                             `pulumi:"dnsServers"`
-	Domains    []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`
-	PolicyId   *string                              `pulumi:"policyId"`
-	// The domain suffix to match when resolving locally.
-	Suffix *string `pulumi:"suffix"`
+	AccountId *string                              `pulumi:"accountId"`
+	Domains   []ZeroTrustLocalFallbackDomainDomain `pulumi:"domains"`
+	PolicyId  *string                              `pulumi:"policyId"`
 }
 
 type ZeroTrustLocalFallbackDomainState struct {
 	AccountId pulumi.StringPtrInput
-	// A description of the fallback domain, displayed in the client UI.
-	Description pulumi.StringPtrInput
-	// A list of IP addresses to handle domain resolution.
-	DnsServers pulumi.StringArrayInput
-	Domains    ZeroTrustLocalFallbackDomainDomainArrayInput
-	PolicyId   pulumi.StringPtrInput
-	// The domain suffix to match when resolving locally.
-	Suffix pulumi.StringPtrInput
+	Domains   ZeroTrustLocalFallbackDomainDomainArrayInput
+	PolicyId  pulumi.StringPtrInput
 }
 
 func (ZeroTrustLocalFallbackDomainState) ElementType() reflect.Type {
@@ -214,27 +196,12 @@ func (o ZeroTrustLocalFallbackDomainOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// A description of the fallback domain, displayed in the client UI.
-func (o ZeroTrustLocalFallbackDomainOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
-}
-
-// A list of IP addresses to handle domain resolution.
-func (o ZeroTrustLocalFallbackDomainOutput) DnsServers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringArrayOutput { return v.DnsServers }).(pulumi.StringArrayOutput)
-}
-
 func (o ZeroTrustLocalFallbackDomainOutput) Domains() ZeroTrustLocalFallbackDomainDomainArrayOutput {
 	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) ZeroTrustLocalFallbackDomainDomainArrayOutput { return v.Domains }).(ZeroTrustLocalFallbackDomainDomainArrayOutput)
 }
 
 func (o ZeroTrustLocalFallbackDomainOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
-}
-
-// The domain suffix to match when resolving locally.
-func (o ZeroTrustLocalFallbackDomainOutput) Suffix() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZeroTrustLocalFallbackDomain) pulumi.StringOutput { return v.Suffix }).(pulumi.StringOutput)
 }
 
 type ZeroTrustLocalFallbackDomainArrayOutput struct{ *pulumi.OutputState }

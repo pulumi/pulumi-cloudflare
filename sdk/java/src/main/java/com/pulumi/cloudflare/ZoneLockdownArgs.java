@@ -7,9 +7,13 @@ import com.pulumi.cloudflare.inputs.ZoneLockdownConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,6 +33,51 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<List<ZoneLockdownConfigurationArgs>> configurations() {
         return this.configurations;
+    }
+
+    /**
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * When true, indicates that the rule is currently paused.
+     * 
+     */
+    @Import(name="paused")
+    private @Nullable Output<Boolean> paused;
+
+    /**
+     * @return When true, indicates that the rule is currently paused.
+     * 
+     */
+    public Optional<Output<Boolean>> paused() {
+        return Optional.ofNullable(this.paused);
+    }
+
+    /**
+     * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     * 
+     */
+    @Import(name="priority")
+    private @Nullable Output<Double> priority;
+
+    /**
+     * @return The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     * 
+     */
+    public Optional<Output<Double>> priority() {
+        return Optional.ofNullable(this.priority);
     }
 
     /**
@@ -65,6 +114,9 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
 
     private ZoneLockdownArgs(ZoneLockdownArgs $) {
         this.configurations = $.configurations;
+        this.description = $.description;
+        this.paused = $.paused;
+        this.priority = $.priority;
         this.urls = $.urls;
         this.zoneId = $.zoneId;
     }
@@ -116,6 +168,69 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder configurations(ZoneLockdownConfigurationArgs... configurations) {
             return configurations(List.of(configurations));
+        }
+
+        /**
+         * @param description An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param paused When true, indicates that the rule is currently paused.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(@Nullable Output<Boolean> paused) {
+            $.paused = paused;
+            return this;
+        }
+
+        /**
+         * @param paused When true, indicates that the rule is currently paused.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paused(Boolean paused) {
+            return paused(Output.of(paused));
+        }
+
+        /**
+         * @param priority The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Double> priority) {
+            $.priority = priority;
+            return this;
+        }
+
+        /**
+         * @param priority The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Double priority) {
+            return priority(Output.of(priority));
         }
 
         /**

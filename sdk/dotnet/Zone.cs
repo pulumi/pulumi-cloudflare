@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The last time proof of ownership was detected and the zone was made
-        /// active
+        /// active.
         /// </summary>
         [Output("activatedOn")]
         public Output<string> ActivatedOn { get; private set; } = null!;
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
         public Output<string> CnameSuffix { get; private set; } = null!;
 
         /// <summary>
-        /// When the zone was created
+        /// When the zone was created.
         /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
@@ -76,49 +76,49 @@ namespace Pulumi.Cloudflare
         public Output<double> DevelopmentMode { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata about the zone
+        /// Metadata about the zone.
         /// </summary>
         [Output("meta")]
         public Output<Outputs.ZoneMeta> Meta { get; private set; } = null!;
 
         /// <summary>
-        /// When the zone was last modified
+        /// When the zone was last modified.
         /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name
+        /// The domain name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name servers Cloudflare assigns to a zone
+        /// The name servers Cloudflare assigns to a zone.
         /// </summary>
         [Output("nameServers")]
         public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
 
         /// <summary>
-        /// DNS host at the time of switching to Cloudflare
+        /// DNS host at the time of switching to Cloudflare.
         /// </summary>
         [Output("originalDnshost")]
         public Output<string> OriginalDnshost { get; private set; } = null!;
 
         /// <summary>
-        /// Original name servers before moving to Cloudflare
+        /// Original name servers before moving to Cloudflare.
         /// </summary>
         [Output("originalNameServers")]
         public Output<ImmutableArray<string>> OriginalNameServers { get; private set; } = null!;
 
         /// <summary>
-        /// Registrar for the domain at the time of switching to Cloudflare
+        /// Registrar for the domain at the time of switching to Cloudflare.
         /// </summary>
         [Output("originalRegistrar")]
         public Output<string> OriginalRegistrar { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the zone
+        /// The owner of the zone.
         /// </summary>
         [Output("owner")]
         public Output<Outputs.ZoneOwner> Owner { get; private set; } = null!;
@@ -233,10 +233,18 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.ZoneAccountArgs> Account { get; set; } = null!;
 
         /// <summary>
-        /// The domain name
+        /// The domain name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the zone is only using Cloudflare DNS services. A
+        /// true value means the zone will not receive security or performance
+        /// benefits.
+        /// </summary>
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
 
         /// <summary>
         /// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
@@ -272,7 +280,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The last time proof of ownership was detected and the zone was made
-        /// active
+        /// active.
         /// </summary>
         [Input("activatedOn")]
         public Input<string>? ActivatedOn { get; set; }
@@ -285,7 +293,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? CnameSuffix { get; set; }
 
         /// <summary>
-        /// When the zone was created
+        /// When the zone was created.
         /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
@@ -299,19 +307,19 @@ namespace Pulumi.Cloudflare
         public Input<double>? DevelopmentMode { get; set; }
 
         /// <summary>
-        /// Metadata about the zone
+        /// Metadata about the zone.
         /// </summary>
         [Input("meta")]
         public Input<Inputs.ZoneMetaGetArgs>? Meta { get; set; }
 
         /// <summary>
-        /// When the zone was last modified
+        /// When the zone was last modified.
         /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The domain name
+        /// The domain name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,7 +328,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _nameServers;
 
         /// <summary>
-        /// The name servers Cloudflare assigns to a zone
+        /// The name servers Cloudflare assigns to a zone.
         /// </summary>
         public InputList<string> NameServers
         {
@@ -329,7 +337,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// DNS host at the time of switching to Cloudflare
+        /// DNS host at the time of switching to Cloudflare.
         /// </summary>
         [Input("originalDnshost")]
         public Input<string>? OriginalDnshost { get; set; }
@@ -338,7 +346,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _originalNameServers;
 
         /// <summary>
-        /// Original name servers before moving to Cloudflare
+        /// Original name servers before moving to Cloudflare.
         /// </summary>
         public InputList<string> OriginalNameServers
         {
@@ -347,13 +355,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Registrar for the domain at the time of switching to Cloudflare
+        /// Registrar for the domain at the time of switching to Cloudflare.
         /// </summary>
         [Input("originalRegistrar")]
         public Input<string>? OriginalRegistrar { get; set; }
 
         /// <summary>
-        /// The owner of the zone
+        /// The owner of the zone.
         /// </summary>
         [Input("owner")]
         public Input<Inputs.ZoneOwnerGetArgs>? Owner { get; set; }

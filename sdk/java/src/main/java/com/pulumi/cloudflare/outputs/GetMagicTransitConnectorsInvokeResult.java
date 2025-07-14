@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitConnectorsInvokeResult {
+    /**
+     * @return Account identifier
+     * 
+     */
     private String accountId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -33,6 +37,10 @@ public final class GetMagicTransitConnectorsInvokeResult {
     private List<GetMagicTransitConnectorsResult> results;
 
     private GetMagicTransitConnectorsInvokeResult() {}
+    /**
+     * @return Account identifier
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }

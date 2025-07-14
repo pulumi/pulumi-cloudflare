@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example &#39;&lt;account_id&gt;/&lt;request_id&gt;&#39;
+ * $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example &#39;&lt;account_id&gt;/&lt;request_id&gt;/&lt;page&gt;/&lt;per_page&gt;&#39;
  * ```
  * 
  */

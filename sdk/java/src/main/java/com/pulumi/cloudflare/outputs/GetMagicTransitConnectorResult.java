@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMagicTransitConnectorResult {
+    /**
+     * @return Account identifier
+     * 
+     */
     private String accountId;
     private Boolean activated;
     private @Nullable String connectorId;
@@ -33,6 +37,10 @@ public final class GetMagicTransitConnectorResult {
     private String timezone;
 
     private GetMagicTransitConnectorResult() {}
+    /**
+     * @return Account identifier
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }

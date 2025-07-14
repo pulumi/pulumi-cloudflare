@@ -45,6 +45,9 @@ class GetMagicTransitConnectorsResult:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> builtins.str:
+        """
+        Account identifier
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -98,6 +101,7 @@ def get_magic_transit_connectors(account_id: Optional[builtins.str] = None,
     ```
 
 
+    :param builtins.str account_id: Account identifier
     :param builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()
@@ -125,6 +129,7 @@ def get_magic_transit_connectors_output(account_id: Optional[pulumi.Input[builti
     ```
 
 
+    :param builtins.str account_id: Account identifier
     :param builtins.int max_items: Max items to fetch, default: 1000
     """
     __args__ = dict()

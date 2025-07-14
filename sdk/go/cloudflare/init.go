@@ -269,6 +269,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RiskBehavior{}
 	case "cloudflare:index/ruleset:Ruleset":
 		r = &Ruleset{}
+	case "cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings":
+		r = &SchemaValidationOperationSettings{}
+	case "cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas":
+		r = &SchemaValidationSchemas{}
+	case "cloudflare:index/schemaValidationSettings:SchemaValidationSettings":
+		r = &SchemaValidationSettings{}
 	case "cloudflare:index/snippetRules:SnippetRules":
 		r = &SnippetRules{}
 	case "cloudflare:index/snippets:Snippets":
@@ -403,6 +409,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZeroTrustDevicePostureIntegration{}
 	case "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule":
 		r = &ZeroTrustDevicePostureRule{}
+	case "cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings":
+		r = &ZeroTrustDeviceSettings{}
 	case "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest":
 		r = &ZeroTrustDexTest{}
 	case "cloudflare:index/zeroTrustDlpCustomProfile:ZeroTrustDlpCustomProfile":
@@ -1114,6 +1122,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/schemaValidationOperationSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/schemaValidationSchemas",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/schemaValidationSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/snippetRules",
 		&module{version},
 	)
@@ -1445,6 +1468,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zeroTrustDevicePostureRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zeroTrustDeviceSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

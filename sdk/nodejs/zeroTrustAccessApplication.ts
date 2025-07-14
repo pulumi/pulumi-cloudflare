@@ -193,6 +193,7 @@ export class ZeroTrustAccessApplication extends pulumi.CustomResource {
     public readonly targetCriterias!: pulumi.Output<outputs.ZeroTrustAccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     public readonly type!: pulumi.Output<string | undefined>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
@@ -460,6 +461,7 @@ export interface ZeroTrustAccessApplicationState {
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[]>;
     /**
      * The application type.
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -618,6 +620,7 @@ export interface ZeroTrustAccessApplicationArgs {
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.ZeroTrustAccessApplicationTargetCriteria>[]>;
     /**
      * The application type.
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     type?: pulumi.Input<string>;
     /**

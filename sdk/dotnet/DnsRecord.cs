@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
         /// Comments or notes about the DNS record. This field has no effect on DNS responses.
         /// </summary>
         [Output("comment")]
-        public Output<string> Comment { get; private set; } = null!;
+        public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
         /// When the record comment was last modified. Omitted if there is no comment.
@@ -113,7 +113,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Record type.
-        /// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+        /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -236,7 +236,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Record type.
-        /// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+        /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -353,7 +353,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Record type.
-        /// Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+        /// Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

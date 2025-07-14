@@ -494,14 +494,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     @Import(name="originErrorPagePassthru")
     private @Nullable Output<Boolean> originErrorPagePassthru;
 
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     public Optional<Output<Boolean>> originErrorPagePassthru() {
@@ -540,7 +540,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     @Import(name="polish")
@@ -548,7 +548,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     /**
      * @return Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     public Optional<Output<String>> polish() {
@@ -661,14 +661,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Turn on or off Rocket Loader
+     * Turn on or off Rocket Loader.
      * 
      */
     @Import(name="rocketLoader")
     private @Nullable Output<Boolean> rocketLoader;
 
     /**
-     * @return Turn on or off Rocket Loader
+     * @return Turn on or off Rocket Loader.
      * 
      */
     public Optional<Output<Boolean>> rocketLoader() {
@@ -1601,7 +1601,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
          * 
          * @return builder
          * 
@@ -1612,7 +1612,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+         * @param originErrorPagePassthru Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
          * 
          * @return builder
          * 
@@ -1675,7 +1675,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param polish Configure the Polish level.
-         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
          * 
          * @return builder
          * 
@@ -1687,7 +1687,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         /**
          * @param polish Configure the Polish level.
-         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+         * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
          * 
          * @return builder
          * 
@@ -1884,7 +1884,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rocketLoader Turn on or off Rocket Loader
+         * @param rocketLoader Turn on or off Rocket Loader.
          * 
          * @return builder
          * 
@@ -1895,7 +1895,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rocketLoader Turn on or off Rocket Loader
+         * @param rocketLoader Turn on or off Rocket Loader.
          * 
          * @return builder
          * 

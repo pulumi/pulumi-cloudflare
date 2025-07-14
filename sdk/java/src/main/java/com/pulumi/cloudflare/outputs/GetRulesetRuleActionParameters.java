@@ -188,7 +188,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private Boolean originCacheControl;
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     private Boolean originErrorPagePassthru;
@@ -204,7 +204,7 @@ public final class GetRulesetRuleActionParameters {
     private List<String> phases;
     /**
      * @return Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     private String polish;
@@ -244,7 +244,7 @@ public final class GetRulesetRuleActionParameters {
      */
     private List<GetRulesetRuleActionParametersResponseField> responseFields;
     /**
-     * @return Turn on or off Rocket Loader
+     * @return Turn on or off Rocket Loader.
      * 
      */
     private Boolean rocketLoader;
@@ -525,7 +525,7 @@ public final class GetRulesetRuleActionParameters {
         return this.originCacheControl;
     }
     /**
-     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * @return Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      * 
      */
     public Boolean originErrorPagePassthru() {
@@ -547,7 +547,7 @@ public final class GetRulesetRuleActionParameters {
     }
     /**
      * @return Configure the Polish level.
-     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;.
+     * Available values: &#34;off&#34;, &#34;lossless&#34;, &#34;lossy&#34;, &#34;webp&#34;.
      * 
      */
     public String polish() {
@@ -603,7 +603,7 @@ public final class GetRulesetRuleActionParameters {
         return this.responseFields;
     }
     /**
-     * @return Turn on or off Rocket Loader
+     * @return Turn on or off Rocket Loader.
      * 
      */
     public Boolean rocketLoader() {

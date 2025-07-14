@@ -17,7 +17,7 @@ public final class GetAccountPermissionGroupResult {
      */
     private String accountId;
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the permission group.
      * 
      */
     private String id;
@@ -27,7 +27,7 @@ public final class GetAccountPermissionGroupResult {
      */
     private GetAccountPermissionGroupMeta meta;
     /**
-     * @return Name of the group.
+     * @return Name of the permission group.
      * 
      */
     private String name;
@@ -46,7 +46,7 @@ public final class GetAccountPermissionGroupResult {
         return this.accountId;
     }
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the permission group.
      * 
      */
     public String id() {
@@ -60,7 +60,7 @@ public final class GetAccountPermissionGroupResult {
         return this.meta;
     }
     /**
-     * @return Name of the group.
+     * @return Name of the permission group.
      * 
      */
     public String name() {

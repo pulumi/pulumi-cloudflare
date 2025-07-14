@@ -145,7 +145,7 @@ def get_account_member(account_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_member = cloudflare.get_account_member(account_id="eb78d65290b24279ba6f44721b3ea3c4",
+    example_account_member = cloudflare.get_account_member(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         member_id="4536bcfad5faccb111b47003c79917fa")
     ```
 
@@ -180,7 +180,7 @@ def get_account_member_output(account_id: Optional[pulumi.Input[builtins.str]] =
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_member = cloudflare.get_account_member(account_id="eb78d65290b24279ba6f44721b3ea3c4",
+    example_account_member = cloudflare.get_account_member(account_id="023e105f4ecef8ad9ca31a8372d0c353",
         member_id="4536bcfad5faccb111b47003c79917fa")
     ```
 

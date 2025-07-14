@@ -46,7 +46,7 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      */
-    public readonly comment!: pulumi.Output<string>;
+    public readonly comment!: pulumi.Output<string | undefined>;
     /**
      * When the record comment was last modified. Omitted if there is no comment.
      */
@@ -105,7 +105,7 @@ export class DnsRecord extends pulumi.CustomResource {
     public readonly ttl!: pulumi.Output<number>;
     /**
      * Record type.
-     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+     * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -248,7 +248,7 @@ export interface DnsRecordState {
     ttl?: pulumi.Input<number>;
     /**
      * Record type.
-     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+     * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
     type?: pulumi.Input<string>;
     /**
@@ -299,7 +299,7 @@ export interface DnsRecordArgs {
     ttl: pulumi.Input<number>;
     /**
      * Record type.
-     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+     * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
     type: pulumi.Input<string>;
     /**

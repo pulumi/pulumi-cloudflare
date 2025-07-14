@@ -61,7 +61,7 @@ export class Zone extends pulumi.CustomResource {
     public readonly account!: pulumi.Output<outputs.ZoneAccount>;
     /**
      * The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      */
     public /*out*/ readonly activatedOn!: pulumi.Output<string>;
     /**
@@ -70,7 +70,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly cnameSuffix!: pulumi.Output<string>;
     /**
-     * When the zone was created
+     * When the zone was created.
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
@@ -80,35 +80,35 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly developmentMode!: pulumi.Output<number>;
     /**
-     * Metadata about the zone
+     * Metadata about the zone.
      */
     public /*out*/ readonly meta!: pulumi.Output<outputs.ZoneMeta>;
     /**
-     * When the zone was last modified
+     * When the zone was last modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The domain name
+     * The domain name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name servers Cloudflare assigns to a zone
+     * The name servers Cloudflare assigns to a zone.
      */
     public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
     /**
-     * DNS host at the time of switching to Cloudflare
+     * DNS host at the time of switching to Cloudflare.
      */
     public /*out*/ readonly originalDnshost!: pulumi.Output<string>;
     /**
-     * Original name servers before moving to Cloudflare
+     * Original name servers before moving to Cloudflare.
      */
     public /*out*/ readonly originalNameServers!: pulumi.Output<string[]>;
     /**
-     * Registrar for the domain at the time of switching to Cloudflare
+     * Registrar for the domain at the time of switching to Cloudflare.
      */
     public /*out*/ readonly originalRegistrar!: pulumi.Output<string>;
     /**
-     * The owner of the zone
+     * The owner of the zone.
      */
     public /*out*/ readonly owner!: pulumi.Output<outputs.ZoneOwner>;
     /**
@@ -116,7 +116,7 @@ export class Zone extends pulumi.CustomResource {
      * true value means the zone will not receive security or performance
      * benefits.
      */
-    public /*out*/ readonly paused!: pulumi.Output<boolean>;
+    public readonly paused!: pulumi.Output<boolean>;
     /**
      * Legacy permissions based on legacy user membership information.
      *
@@ -152,7 +152,7 @@ export class Zone extends pulumi.CustomResource {
      * An array of domains used for custom name servers. This is only
      * available for Business and Enterprise plans.
      */
-    public readonly vanityNameServers!: pulumi.Output<string[] | undefined>;
+    public readonly vanityNameServers!: pulumi.Output<string[]>;
     /**
      * Verification key for partial zone setup.
      */
@@ -203,6 +203,7 @@ export class Zone extends pulumi.CustomResource {
             }
             resourceInputs["account"] = args ? args.account : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vanityNameServers"] = args ? args.vanityNameServers : undefined;
             resourceInputs["activatedOn"] = undefined /*out*/;
@@ -216,7 +217,6 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["originalNameServers"] = undefined /*out*/;
             resourceInputs["originalRegistrar"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
-            resourceInputs["paused"] = undefined /*out*/;
             resourceInputs["permissions"] = undefined /*out*/;
             resourceInputs["plan"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -236,7 +236,7 @@ export interface ZoneState {
     account?: pulumi.Input<inputs.ZoneAccount>;
     /**
      * The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      */
     activatedOn?: pulumi.Input<string>;
     /**
@@ -245,7 +245,7 @@ export interface ZoneState {
      */
     cnameSuffix?: pulumi.Input<string>;
     /**
-     * When the zone was created
+     * When the zone was created.
      */
     createdOn?: pulumi.Input<string>;
     /**
@@ -255,35 +255,35 @@ export interface ZoneState {
      */
     developmentMode?: pulumi.Input<number>;
     /**
-     * Metadata about the zone
+     * Metadata about the zone.
      */
     meta?: pulumi.Input<inputs.ZoneMeta>;
     /**
-     * When the zone was last modified
+     * When the zone was last modified.
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The domain name
+     * The domain name.
      */
     name?: pulumi.Input<string>;
     /**
-     * The name servers Cloudflare assigns to a zone
+     * The name servers Cloudflare assigns to a zone.
      */
     nameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * DNS host at the time of switching to Cloudflare
+     * DNS host at the time of switching to Cloudflare.
      */
     originalDnshost?: pulumi.Input<string>;
     /**
-     * Original name servers before moving to Cloudflare
+     * Original name servers before moving to Cloudflare.
      */
     originalNameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Registrar for the domain at the time of switching to Cloudflare
+     * Registrar for the domain at the time of switching to Cloudflare.
      */
     originalRegistrar?: pulumi.Input<string>;
     /**
-     * The owner of the zone
+     * The owner of the zone.
      */
     owner?: pulumi.Input<inputs.ZoneOwner>;
     /**
@@ -340,9 +340,15 @@ export interface ZoneState {
 export interface ZoneArgs {
     account: pulumi.Input<inputs.ZoneAccount>;
     /**
-     * The domain name
+     * The domain name.
      */
     name: pulumi.Input<string>;
+    /**
+     * Indicates whether the zone is only using Cloudflare DNS services. A
+     * true value means the zone will not receive security or performance
+     * benefits.
+     */
+    paused?: pulumi.Input<boolean>;
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is
      * typically a partner-hosted zone or a CNAME setup.

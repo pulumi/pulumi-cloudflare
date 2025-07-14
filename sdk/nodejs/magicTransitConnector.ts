@@ -58,6 +58,9 @@ export class MagicTransitConnector extends pulumi.CustomResource {
         return obj['__pulumiType'] === MagicTransitConnector.__pulumiType;
     }
 
+    /**
+     * Account identifier
+     */
     public readonly accountId!: pulumi.Output<string>;
     public readonly activated!: pulumi.Output<boolean | undefined>;
     public readonly connectorId!: pulumi.Output<string>;
@@ -123,6 +126,9 @@ export class MagicTransitConnector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MagicTransitConnector resources.
  */
 export interface MagicTransitConnectorState {
+    /**
+     * Account identifier
+     */
     accountId?: pulumi.Input<string>;
     activated?: pulumi.Input<boolean>;
     connectorId?: pulumi.Input<string>;
@@ -140,6 +146,9 @@ export interface MagicTransitConnectorState {
  * The set of arguments for constructing a MagicTransitConnector resource.
  */
 export interface MagicTransitConnectorArgs {
+    /**
+     * Account identifier
+     */
     accountId: pulumi.Input<string>;
     activated?: pulumi.Input<boolean>;
     connectorId: pulumi.Input<string>;

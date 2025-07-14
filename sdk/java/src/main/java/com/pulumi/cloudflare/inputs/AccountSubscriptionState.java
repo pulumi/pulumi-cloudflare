@@ -141,21 +141,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.state);
     }
 
-    /**
-     * Subscription identifier tag.
-     * 
-     */
-    @Import(name="subscriptionIdentifier")
-    private @Nullable Output<String> subscriptionIdentifier;
-
-    /**
-     * @return Subscription identifier tag.
-     * 
-     */
-    public Optional<Output<String>> subscriptionIdentifier() {
-        return Optional.ofNullable(this.subscriptionIdentifier);
-    }
-
     private AccountSubscriptionState() {}
 
     private AccountSubscriptionState(AccountSubscriptionState $) {
@@ -167,7 +152,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
         this.price = $.price;
         this.ratePlan = $.ratePlan;
         this.state = $.state;
-        this.subscriptionIdentifier = $.subscriptionIdentifier;
     }
 
     public static Builder builder() {
@@ -358,27 +342,6 @@ public final class AccountSubscriptionState extends com.pulumi.resources.Resourc
          */
         public Builder state(String state) {
             return state(Output.of(state));
-        }
-
-        /**
-         * @param subscriptionIdentifier Subscription identifier tag.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder subscriptionIdentifier(@Nullable Output<String> subscriptionIdentifier) {
-            $.subscriptionIdentifier = subscriptionIdentifier;
-            return this;
-        }
-
-        /**
-         * @param subscriptionIdentifier Subscription identifier tag.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder subscriptionIdentifier(String subscriptionIdentifier) {
-            return subscriptionIdentifier(Output.of(subscriptionIdentifier));
         }
 
         public AccountSubscriptionState build() {

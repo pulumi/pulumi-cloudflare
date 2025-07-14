@@ -97,7 +97,7 @@ def get_account_api_token_permission_groups_list(account_id: Optional[builtins.s
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_api_token_permission_groups_list = cloudflare.get_account_api_token_permission_groups_list(account_id="eb78d65290b24279ba6f44721b3ea3c4")
+    example_account_api_token_permission_groups_list = cloudflare.get_account_api_token_permission_groups_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -125,7 +125,7 @@ def get_account_api_token_permission_groups_list_output(account_id: Optional[pul
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_api_token_permission_groups_list = cloudflare.get_account_api_token_permission_groups_list(account_id="eb78d65290b24279ba6f44721b3ea3c4")
+    example_account_api_token_permission_groups_list = cloudflare.get_account_api_token_permission_groups_list(account_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 

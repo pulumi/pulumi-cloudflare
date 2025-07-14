@@ -60,11 +60,6 @@ public final class AccessIdentityProviderConfig {
      */
     private @Nullable String clientId;
     /**
-     * @return Your OAuth Client Secret
-     * 
-     */
-    private @Nullable String clientSecret;
-    /**
      * @return Should Cloudflare try to load authentication contexts from your account
      * 
      */
@@ -217,13 +212,6 @@ public final class AccessIdentityProviderConfig {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return Your OAuth Client Secret
-     * 
-     */
-    public Optional<String> clientSecret() {
-        return Optional.ofNullable(this.clientSecret);
-    }
-    /**
      * @return Should Cloudflare try to load authentication contexts from your account
      * 
      */
@@ -365,7 +353,6 @@ public final class AccessIdentityProviderConfig {
         private @Nullable String certsUrl;
         private @Nullable List<String> claims;
         private @Nullable String clientId;
-        private @Nullable String clientSecret;
         private @Nullable Boolean conditionalAccessEnabled;
         private @Nullable String directoryId;
         private @Nullable String emailAttributeName;
@@ -396,7 +383,6 @@ public final class AccessIdentityProviderConfig {
     	      this.certsUrl = defaults.certsUrl;
     	      this.claims = defaults.claims;
     	      this.clientId = defaults.clientId;
-    	      this.clientSecret = defaults.clientSecret;
     	      this.conditionalAccessEnabled = defaults.conditionalAccessEnabled;
     	      this.directoryId = defaults.directoryId;
     	      this.emailAttributeName = defaults.emailAttributeName;
@@ -475,12 +461,6 @@ public final class AccessIdentityProviderConfig {
         public Builder clientId(@Nullable String clientId) {
 
             this.clientId = clientId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder clientSecret(@Nullable String clientSecret) {
-
-            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
@@ -611,7 +591,6 @@ public final class AccessIdentityProviderConfig {
             _resultValue.certsUrl = certsUrl;
             _resultValue.claims = claims;
             _resultValue.clientId = clientId;
-            _resultValue.clientSecret = clientSecret;
             _resultValue.conditionalAccessEnabled = conditionalAccessEnabled;
             _resultValue.directoryId = directoryId;
             _resultValue.emailAttributeName = emailAttributeName;

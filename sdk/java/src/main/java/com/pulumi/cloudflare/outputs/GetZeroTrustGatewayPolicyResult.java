@@ -67,6 +67,7 @@ public final class GetZeroTrustGatewayPolicyResult {
     private String traffic;
     private String updatedAt;
     private Integer version;
+    private String warningStatus;
 
     private GetZeroTrustGatewayPolicyResult() {}
     public String accountId() {
@@ -156,6 +157,9 @@ public final class GetZeroTrustGatewayPolicyResult {
     public Integer version() {
         return this.version;
     }
+    public String warningStatus() {
+        return this.warningStatus;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -185,6 +189,7 @@ public final class GetZeroTrustGatewayPolicyResult {
         private String traffic;
         private String updatedAt;
         private Integer version;
+        private String warningStatus;
         public Builder() {}
         public Builder(GetZeroTrustGatewayPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -207,6 +212,7 @@ public final class GetZeroTrustGatewayPolicyResult {
     	      this.traffic = defaults.traffic;
     	      this.updatedAt = defaults.updatedAt;
     	      this.version = defaults.version;
+    	      this.warningStatus = defaults.warningStatus;
         }
 
         @CustomType.Setter
@@ -362,6 +368,14 @@ public final class GetZeroTrustGatewayPolicyResult {
             this.version = version;
             return this;
         }
+        @CustomType.Setter
+        public Builder warningStatus(String warningStatus) {
+            if (warningStatus == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPolicyResult", "warningStatus");
+            }
+            this.warningStatus = warningStatus;
+            return this;
+        }
         public GetZeroTrustGatewayPolicyResult build() {
             final var _resultValue = new GetZeroTrustGatewayPolicyResult();
             _resultValue.accountId = accountId;
@@ -383,6 +397,7 @@ public final class GetZeroTrustGatewayPolicyResult {
             _resultValue.traffic = traffic;
             _resultValue.updatedAt = updatedAt;
             _resultValue.version = version;
+            _resultValue.warningStatus = warningStatus;
             return _resultValue;
         }
     }

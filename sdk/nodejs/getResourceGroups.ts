@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleResourceGroups = cloudflare.getResourceGroups({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
- *     id: "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     id: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "NameOfTheResourceGroup",
  * });
  * ```
@@ -85,8 +85,8 @@ export interface GetResourceGroupsResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleResourceGroups = cloudflare.getResourceGroups({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
- *     id: "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+ *     id: "023e105f4ecef8ad9ca31a8372d0c353",
  *     name: "NameOfTheResourceGroup",
  * });
  * ```

@@ -1092,7 +1092,7 @@ export interface AccessApplicationTargetCriteria {
     port: pulumi.Input<number>;
     /**
      * The communication protocol your application secures.
-     * Available values: "ssh".
+     * Available values: "SSH".
      */
     protocol: pulumi.Input<string>;
     /**
@@ -1777,10 +1777,6 @@ export interface AccessIdentityProviderConfig {
      * Your OAuth Client ID
      */
     clientId?: pulumi.Input<string>;
-    /**
-     * Your OAuth Client Secret
-     */
-    clientSecret?: pulumi.Input<string>;
     /**
      * Should Cloudflare try to load authentication contexts from your account
      */
@@ -2850,7 +2846,7 @@ export interface AccountTokenPolicy {
 
 export interface AccountTokenPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: pulumi.Input<string>;
     /**
@@ -2858,7 +2854,7 @@ export interface AccountTokenPolicyPermissionGroup {
      */
     meta?: pulumi.Input<inputs.AccountTokenPolicyPermissionGroupMeta>;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name?: pulumi.Input<string>;
 }
@@ -3180,7 +3176,7 @@ export interface ApiTokenPolicy {
 
 export interface ApiTokenPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: pulumi.Input<string>;
     /**
@@ -3188,7 +3184,7 @@ export interface ApiTokenPolicyPermissionGroup {
      */
     meta?: pulumi.Input<inputs.ApiTokenPolicyPermissionGroupMeta>;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name?: pulumi.Input<string>;
 }
@@ -3255,7 +3251,7 @@ export interface CloudConnectorRulesRule {
     parameters?: pulumi.Input<inputs.CloudConnectorRulesRuleParameters>;
     /**
      * Cloud Provider type
-     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
      */
     provider?: pulumi.Input<string>;
 }
@@ -3654,6 +3650,10 @@ export interface DevicePostureRuleInput {
      */
     state?: pulumi.Input<string>;
     /**
+     * List of certificate Subject Alternative Names.
+     */
+    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Signing certificate thumbprint.
      */
     thumbprint?: pulumi.Input<string>;
@@ -3723,74 +3723,6 @@ export interface DlpCustomProfileEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
-}
-
-export interface DlpCustomProfileProfile {
-    aiContextEnabled?: pulumi.Input<boolean>;
-    /**
-     * Related DLP policies will trigger when the match count exceeds the number set.
-     */
-    allowedMatchCount?: pulumi.Input<number>;
-    confidenceThreshold?: pulumi.Input<string>;
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    contextAwareness?: pulumi.Input<inputs.DlpCustomProfileProfileContextAwareness>;
-    /**
-     * The description of the profile.
-     */
-    description?: pulumi.Input<string>;
-    entries: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileProfileEntry>[]>;
-    name: pulumi.Input<string>;
-    ocrEnabled?: pulumi.Input<boolean>;
-    /**
-     * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-     */
-    sharedEntries?: pulumi.Input<pulumi.Input<inputs.DlpCustomProfileProfileSharedEntry>[]>;
-}
-
-export interface DlpCustomProfileProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: pulumi.Input<boolean>;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: pulumi.Input<inputs.DlpCustomProfileProfileContextAwarenessSkip>;
-}
-
-export interface DlpCustomProfileProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: pulumi.Input<boolean>;
-}
-
-export interface DlpCustomProfileProfileEntry {
-    enabled: pulumi.Input<boolean>;
-    name: pulumi.Input<string>;
-    pattern?: pulumi.Input<inputs.DlpCustomProfileProfileEntryPattern>;
-    words?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface DlpCustomProfileProfileEntryPattern {
-    regex: pulumi.Input<string>;
-    /**
-     * Available values: "luhn".
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    validation?: pulumi.Input<string>;
-}
-
-export interface DlpCustomProfileProfileSharedEntry {
-    enabled: pulumi.Input<boolean>;
-    entryId: pulumi.Input<string>;
-    /**
-     * Available values: "custom", "predefined", "integration", "exactData".
-     */
-    entryType: pulumi.Input<string>;
 }
 
 export interface DlpCustomProfileSharedEntry {
@@ -5537,6 +5469,28 @@ export interface GetOriginCaCertificateFilterArgs {
     zoneId: pulumi.Input<string>;
 }
 
+export interface GetSchemaValidationSchemasFilter {
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    omitSource?: boolean;
+    /**
+     * Filter for enabled schemas
+     */
+    validationEnabled?: boolean;
+}
+
+export interface GetSchemaValidationSchemasFilterArgs {
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    omitSource?: pulumi.Input<boolean>;
+    /**
+     * Filter for enabled schemas
+     */
+    validationEnabled?: pulumi.Input<boolean>;
+}
+
 export interface GetTurnstileWidgetFilter {
     /**
      * Direction to order widgets.
@@ -6135,7 +6089,7 @@ export interface GetZoneFilter {
      */
     order?: string;
     /**
-     * A zone status
+     * Specify a zone status to filter by.
      * Available values: "initializing", "pending", "active", "moved".
      */
     status?: string;
@@ -6171,7 +6125,7 @@ export interface GetZoneFilterArgs {
      */
     order?: pulumi.Input<string>;
     /**
-     * A zone status
+     * Specify a zone status to filter by.
      * Available values: "initializing", "pending", "active", "moved".
      */
     status?: pulumi.Input<string>;
@@ -6179,7 +6133,7 @@ export interface GetZoneFilterArgs {
 
 export interface GetZoneFilterAccount {
     /**
-     * An account ID
+     * Filter by an account ID.
      */
     id?: string;
     /**
@@ -6198,7 +6152,7 @@ export interface GetZoneFilterAccount {
 
 export interface GetZoneFilterAccountArgs {
     /**
-     * An account ID
+     * Filter by an account ID.
      */
     id?: pulumi.Input<string>;
     /**
@@ -6295,7 +6249,7 @@ export interface GetZoneLockdownFilterArgs {
 
 export interface GetZonesAccount {
     /**
-     * An account ID
+     * Filter by an account ID.
      */
     id?: string;
     /**
@@ -6314,7 +6268,7 @@ export interface GetZonesAccount {
 
 export interface GetZonesAccountArgs {
     /**
-     * An account ID
+     * Filter by an account ID.
      */
     id?: pulumi.Input<string>;
     /**
@@ -8076,7 +8030,7 @@ export interface PageRuleActions {
     cacheKeyFields?: pulumi.Input<inputs.PageRuleActionsCacheKeyFields>;
     cacheLevel?: pulumi.Input<string>;
     cacheOnCookie?: pulumi.Input<string>;
-    cacheTtlByStatus?: any;
+    cacheTtlByStatus?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     disableApps?: pulumi.Input<boolean>;
     disablePerformance?: pulumi.Input<boolean>;
     disableSecurity?: pulumi.Input<boolean>;
@@ -9051,45 +9005,6 @@ export interface R2BucketCorsRuleAllowed {
     origins: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface R2BucketEventNotificationQueue {
-    /**
-     * Queue ID.
-     */
-    queueId?: pulumi.Input<string>;
-    /**
-     * Name of the queue.
-     */
-    queueName?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationQueueRule>[]>;
-}
-
-export interface R2BucketEventNotificationQueueRule {
-    /**
-     * Array of R2 object actions that will trigger notifications.
-     */
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Timestamp when the rule was created.
-     */
-    createdAt?: pulumi.Input<string>;
-    /**
-     * A description that can be used to identify the event notification rule after creation.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Notifications will be sent only for objects with this prefix.
-     */
-    prefix?: pulumi.Input<string>;
-    /**
-     * Rule ID.
-     */
-    ruleId?: pulumi.Input<string>;
-    /**
-     * Notifications will be sent only for objects with this suffix.
-     */
-    suffix?: pulumi.Input<string>;
-}
-
 export interface R2BucketEventNotificationRule {
     /**
      * Array of R2 object actions that will trigger notifications.
@@ -9716,7 +9631,7 @@ export interface RulesetRuleActionParameters {
      */
     originCacheControl?: pulumi.Input<boolean>;
     /**
-     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      */
     originErrorPagePassthru?: pulumi.Input<boolean>;
     /**
@@ -9729,7 +9644,7 @@ export interface RulesetRuleActionParameters {
     phases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configure the Polish level.
-     * Available values: "off", "lossless", "lossy".
+     * Available values: "off", "lossless", "lossy", "webp".
      */
     polish?: pulumi.Input<string>;
     /**
@@ -9761,7 +9676,7 @@ export interface RulesetRuleActionParameters {
      */
     responseFields?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersResponseField>[]>;
     /**
-     * Turn on or off Rocket Loader
+     * Turn on or off Rocket Loader.
      */
     rocketLoader?: pulumi.Input<boolean>;
     /**
@@ -9854,11 +9769,11 @@ export interface RulesetRuleActionParametersBrowserTtl {
 
 export interface RulesetRuleActionParametersCacheKey {
     /**
-     * Separate cached content based on the visitor’s device type
+     * Separate cached content based on the visitor’s device type.
      */
     cacheByDeviceType?: pulumi.Input<boolean>;
     /**
-     * Protect from web cache deception attacks while allowing static assets to be cached
+     * Protect from web cache deception attacks while allowing static assets to be cached.
      */
     cacheDeceptionArmor?: pulumi.Input<boolean>;
     /**
@@ -9997,19 +9912,19 @@ export interface RulesetRuleActionParametersEdgeTtl {
      */
     default?: pulumi.Input<number>;
     /**
-     * edge ttl options
+     * Edge TTL options.
      * Available values: "respect*origin", "bypass*by*default", "override*origin".
      */
     mode: pulumi.Input<string>;
     /**
-     * List of single status codes, or status code ranges to apply the selected mode
+     * List of single status codes, or status code ranges to apply the selected mode.
      */
     statusCodeTtls?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl>[]>;
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     /**
-     * Set the ttl for responses with this specific status code
+     * Set the TTL for responses with this specific status code.
      */
     statusCode?: pulumi.Input<number>;
     /**
@@ -10024,11 +9939,11 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     /**
-     * response status code lower bound
+     * Response status code lower bound.
      */
     from?: pulumi.Input<number>;
     /**
-     * response status code upper bound
+     * Response status code upper bound.
      */
     to?: pulumi.Input<number>;
 }
@@ -10685,6 +10600,10 @@ export interface TeamsAccountSettings {
      */
     antivirus?: pulumi.Input<inputs.TeamsAccountSettingsAntivirus>;
     /**
+     * Setting to enable App Control
+     */
+    appControlSettings?: pulumi.Input<inputs.TeamsAccountSettingsAppControlSettings>;
+    /**
      * Block page layout settings.
      */
     blockPage?: pulumi.Input<inputs.TeamsAccountSettingsBlockPage>;
@@ -10775,6 +10694,13 @@ export interface TeamsAccountSettingsAntivirusNotificationSettings {
      * Optional URL to direct users to additional information. If not set, the notification will open a block page.
      */
     supportUrl?: pulumi.Input<string>;
+}
+
+export interface TeamsAccountSettingsAppControlSettings {
+    /**
+     * Enable App Control
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface TeamsAccountSettingsBlockPage {
@@ -11153,8 +11079,8 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
      */
     dk?: pulumi.Input<boolean>;
     /**
-     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
-     * Available values: "enabled", "disabled".
+     * Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
      */
     download?: pulumi.Input<string>;
     /**
@@ -11488,7 +11414,7 @@ export interface TunnelConfigConfigIngressOriginRequestAccess {
      * Deny traffic that has not fulfilled Access authorization.
      */
     required?: pulumi.Input<boolean>;
-    teamName?: pulumi.Input<string>;
+    teamName: pulumi.Input<string>;
 }
 
 export interface TunnelConfigConfigOriginRequest {
@@ -11559,7 +11485,7 @@ export interface TunnelConfigConfigOriginRequestAccess {
      * Deny traffic that has not fulfilled Access authorization.
      */
     required?: pulumi.Input<boolean>;
-    teamName?: pulumi.Input<string>;
+    teamName: pulumi.Input<string>;
 }
 
 export interface TunnelConfigConfigWarpRouting {
@@ -11603,14 +11529,38 @@ export interface TunnelConnection {
 
 export interface UserAgentBlockingRuleConfiguration {
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip", "ip6", "ipRange", "asn", "country".
+     * The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+     * Available values: "ua".
      */
     target?: pulumi.Input<string>;
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * the user agent to exactly match
      */
     value?: pulumi.Input<string>;
+}
+
+export interface UserOrganization {
+    /**
+     * Identifier
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Organization name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Access permissions for this User.
+     */
+    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of roles that a user has within an organization.
+     */
+    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the user is a member of the organization or has an invitation pending.
+     * Available values: "member", "invited".
+     */
+    status?: pulumi.Input<string>;
 }
 
 export interface WaitingRoomAdditionalRoute {
@@ -11849,6 +11799,10 @@ export interface WorkerScriptBinding {
      * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      */
     usages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the Workflow to bind to.
+     */
+    workflowName?: pulumi.Input<string>;
 }
 
 export interface WorkerScriptBindingOutbound {
@@ -12203,6 +12157,10 @@ export interface WorkersScriptBinding {
      * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      */
     usages?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the Workflow to bind to.
+     */
+    workflowName?: pulumi.Input<string>;
 }
 
 export interface WorkersScriptBindingOutbound {
@@ -13456,7 +13414,7 @@ export interface ZeroTrustAccessApplicationTargetCriteria {
     port: pulumi.Input<number>;
     /**
      * The communication protocol your application secures.
-     * Available values: "ssh".
+     * Available values: "SSH".
      */
     protocol: pulumi.Input<string>;
     /**
@@ -14141,10 +14099,6 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      * Your OAuth Client ID
      */
     clientId?: pulumi.Input<string>;
-    /**
-     * Your OAuth Client Secret
-     */
-    clientSecret?: pulumi.Input<string>;
     /**
      * Should Cloudflare try to load authentication contexts from your account
      */
@@ -15309,6 +15263,10 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     state?: pulumi.Input<string>;
     /**
+     * List of certificate Subject Alternative Names.
+     */
+    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Signing certificate thumbprint.
      */
     thumbprint?: pulumi.Input<string>;
@@ -15408,74 +15366,6 @@ export interface ZeroTrustDlpCustomProfileEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation?: pulumi.Input<string>;
-}
-
-export interface ZeroTrustDlpCustomProfileProfile {
-    aiContextEnabled?: pulumi.Input<boolean>;
-    /**
-     * Related DLP policies will trigger when the match count exceeds the number set.
-     */
-    allowedMatchCount?: pulumi.Input<number>;
-    confidenceThreshold?: pulumi.Input<string>;
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    contextAwareness?: pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfileContextAwareness>;
-    /**
-     * The description of the profile.
-     */
-    description?: pulumi.Input<string>;
-    entries: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfileEntry>[]>;
-    name: pulumi.Input<string>;
-    ocrEnabled?: pulumi.Input<boolean>;
-    /**
-     * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-     */
-    sharedEntries?: pulumi.Input<pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfileSharedEntry>[]>;
-}
-
-export interface ZeroTrustDlpCustomProfileProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: pulumi.Input<boolean>;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfileContextAwarenessSkip>;
-}
-
-export interface ZeroTrustDlpCustomProfileProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: pulumi.Input<boolean>;
-}
-
-export interface ZeroTrustDlpCustomProfileProfileEntry {
-    enabled: pulumi.Input<boolean>;
-    name: pulumi.Input<string>;
-    pattern?: pulumi.Input<inputs.ZeroTrustDlpCustomProfileProfileEntryPattern>;
-    words?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface ZeroTrustDlpCustomProfileProfileEntryPattern {
-    regex: pulumi.Input<string>;
-    /**
-     * Available values: "luhn".
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    validation?: pulumi.Input<string>;
-}
-
-export interface ZeroTrustDlpCustomProfileProfileSharedEntry {
-    enabled: pulumi.Input<boolean>;
-    entryId: pulumi.Input<string>;
-    /**
-     * Available values: "custom", "predefined", "integration", "exactData".
-     */
-    entryType: pulumi.Input<string>;
 }
 
 export interface ZeroTrustDlpCustomProfileSharedEntry {
@@ -15856,8 +15746,8 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     dk?: pulumi.Input<boolean>;
     /**
-     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
-     * Available values: "enabled", "disabled".
+     * Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
      */
     download?: pulumi.Input<string>;
     /**
@@ -16099,6 +15989,10 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     antivirus?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsAntivirus>;
     /**
+     * Setting to enable App Control
+     */
+    appControlSettings?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsAppControlSettings>;
+    /**
      * Block page layout settings.
      */
     blockPage?: pulumi.Input<inputs.ZeroTrustGatewaySettingsSettingsBlockPage>;
@@ -16189,6 +16083,13 @@ export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
      * Optional URL to direct users to additional information. If not set, the notification will open a block page.
      */
     supportUrl?: pulumi.Input<string>;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsAppControlSettings {
+    /**
+     * Enable App Control
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsBlockPage {
@@ -16502,7 +16403,7 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAcces
      * Deny traffic that has not fulfilled Access authorization.
      */
     required?: pulumi.Input<boolean>;
-    teamName?: pulumi.Input<string>;
+    teamName: pulumi.Input<string>;
 }
 
 export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
@@ -16573,7 +16474,7 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
      * Deny traffic that has not fulfilled Access authorization.
      */
     required?: pulumi.Input<boolean>;
-    teamName?: pulumi.Input<string>;
+    teamName: pulumi.Input<string>;
 }
 
 export interface ZeroTrustTunnelCloudflaredConfigConfigWarpRouting {
@@ -16733,27 +16634,27 @@ export interface ZoneLockdownConfiguration {
 
 export interface ZoneMeta {
     /**
-     * The zone is only configured for CDN
+     * The zone is only configured for CDN.
      */
     cdnOnly?: pulumi.Input<boolean>;
     /**
-     * Number of Custom Certificates the zone can have
+     * Number of Custom Certificates the zone can have.
      */
     customCertificateQuota?: pulumi.Input<number>;
     /**
-     * The zone is only configured for DNS
+     * The zone is only configured for DNS.
      */
     dnsOnly?: pulumi.Input<boolean>;
     /**
-     * The zone is setup with Foundation DNS
+     * The zone is setup with Foundation DNS.
      */
     foundationDns?: pulumi.Input<boolean>;
     /**
-     * Number of Page Rules a zone can have
+     * Number of Page Rules a zone can have.
      */
     pageRuleQuota?: pulumi.Input<number>;
     /**
-     * The zone has been flagged for phishing
+     * The zone has been flagged for phishing.
      */
     phishingDetected?: pulumi.Input<boolean>;
     step?: pulumi.Input<number>;
@@ -16765,11 +16666,11 @@ export interface ZoneOwner {
      */
     id?: pulumi.Input<string>;
     /**
-     * Name of the owner
+     * Name of the owner.
      */
     name?: pulumi.Input<string>;
     /**
-     * The type of owner
+     * The type of owner.
      */
     type?: pulumi.Input<string>;
 }
@@ -16808,7 +16709,7 @@ export interface ZonePlan {
      */
     legacyId?: pulumi.Input<string>;
     /**
-     * Name of the owner
+     * Name of the owner.
      */
     name?: pulumi.Input<string>;
     /**

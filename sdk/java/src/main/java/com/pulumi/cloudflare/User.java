@@ -6,11 +6,14 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.UserArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.UserState;
+import com.pulumi.cloudflare.outputs.UserOrganization;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -58,6 +61,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
+     * Lists the betas that the user is participating in.
+     * 
+     */
+    @Export(name="betas", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> betas;
+
+    /**
+     * @return Lists the betas that the user is participating in.
+     * 
+     */
+    public Output<List<String>> betas() {
+        return this.betas;
+    }
+    /**
      * The country in which the user lives.
      * 
      */
@@ -86,6 +103,48 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.firstName);
     }
     /**
+     * Indicates whether user has any business zones
+     * 
+     */
+    @Export(name="hasBusinessZones", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hasBusinessZones;
+
+    /**
+     * @return Indicates whether user has any business zones
+     * 
+     */
+    public Output<Boolean> hasBusinessZones() {
+        return this.hasBusinessZones;
+    }
+    /**
+     * Indicates whether user has any enterprise zones
+     * 
+     */
+    @Export(name="hasEnterpriseZones", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hasEnterpriseZones;
+
+    /**
+     * @return Indicates whether user has any enterprise zones
+     * 
+     */
+    public Output<Boolean> hasEnterpriseZones() {
+        return this.hasEnterpriseZones;
+    }
+    /**
+     * Indicates whether user has any pro zones
+     * 
+     */
+    @Export(name="hasProZones", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> hasProZones;
+
+    /**
+     * @return Indicates whether user has any pro zones
+     * 
+     */
+    public Output<Boolean> hasProZones() {
+        return this.hasProZones;
+    }
+    /**
      * User&#39;s last name
      * 
      */
@@ -98,6 +157,26 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> lastName() {
         return Codegen.optional(this.lastName);
+    }
+    @Export(name="organizations", refs={List.class,UserOrganization.class}, tree="[0,1]")
+    private Output<List<UserOrganization>> organizations;
+
+    public Output<List<UserOrganization>> organizations() {
+        return this.organizations;
+    }
+    /**
+     * Indicates whether user has been suspended
+     * 
+     */
+    @Export(name="suspended", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> suspended;
+
+    /**
+     * @return Indicates whether user has been suspended
+     * 
+     */
+    public Output<Boolean> suspended() {
+        return this.suspended;
     }
     /**
      * User&#39;s telephone number
@@ -112,6 +191,34 @@ public class User extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> telephone() {
         return Codegen.optional(this.telephone);
+    }
+    /**
+     * Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+     * 
+     */
+    @Export(name="twoFactorAuthenticationEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> twoFactorAuthenticationEnabled;
+
+    /**
+     * @return Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+     * 
+     */
+    public Output<Boolean> twoFactorAuthenticationEnabled() {
+        return this.twoFactorAuthenticationEnabled;
+    }
+    /**
+     * Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+     * 
+     */
+    @Export(name="twoFactorAuthenticationLocked", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> twoFactorAuthenticationLocked;
+
+    /**
+     * @return Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+     * 
+     */
+    public Output<Boolean> twoFactorAuthenticationLocked() {
+        return this.twoFactorAuthenticationLocked;
     }
     /**
      * The zipcode or postal code where the user lives.

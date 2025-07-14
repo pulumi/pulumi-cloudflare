@@ -24,7 +24,7 @@ type ZeroTrustDevicePostureRule struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The description of the device posture rule.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// The value to be checked against.
@@ -257,8 +257,8 @@ func (o ZeroTrustDevicePostureRuleOutput) AccountId() pulumi.StringOutput {
 }
 
 // The description of the device posture rule.
-func (o ZeroTrustDevicePostureRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDevicePostureRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDevicePostureRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.

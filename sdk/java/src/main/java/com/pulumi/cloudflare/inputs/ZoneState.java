@@ -33,7 +33,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     @Import(name="activatedOn")
@@ -41,7 +41,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     public Optional<Output<String>> activatedOn() {
@@ -66,14 +66,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the zone was created
+     * When the zone was created.
      * 
      */
     @Import(name="createdOn")
     private @Nullable Output<String> createdOn;
 
     /**
-     * @return When the zone was created
+     * @return When the zone was created.
      * 
      */
     public Optional<Output<String>> createdOn() {
@@ -100,14 +100,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata about the zone
+     * Metadata about the zone.
      * 
      */
     @Import(name="meta")
     private @Nullable Output<ZoneMetaArgs> meta;
 
     /**
-     * @return Metadata about the zone
+     * @return Metadata about the zone.
      * 
      */
     public Optional<Output<ZoneMetaArgs>> meta() {
@@ -115,14 +115,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When the zone was last modified
+     * When the zone was last modified.
      * 
      */
     @Import(name="modifiedOn")
     private @Nullable Output<String> modifiedOn;
 
     /**
-     * @return When the zone was last modified
+     * @return When the zone was last modified.
      * 
      */
     public Optional<Output<String>> modifiedOn() {
@@ -130,14 +130,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain name
+     * The domain name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -145,14 +145,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name servers Cloudflare assigns to a zone
+     * The name servers Cloudflare assigns to a zone.
      * 
      */
     @Import(name="nameServers")
     private @Nullable Output<List<String>> nameServers;
 
     /**
-     * @return The name servers Cloudflare assigns to a zone
+     * @return The name servers Cloudflare assigns to a zone.
      * 
      */
     public Optional<Output<List<String>>> nameServers() {
@@ -160,14 +160,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * DNS host at the time of switching to Cloudflare
+     * DNS host at the time of switching to Cloudflare.
      * 
      */
     @Import(name="originalDnshost")
     private @Nullable Output<String> originalDnshost;
 
     /**
-     * @return DNS host at the time of switching to Cloudflare
+     * @return DNS host at the time of switching to Cloudflare.
      * 
      */
     public Optional<Output<String>> originalDnshost() {
@@ -175,14 +175,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Original name servers before moving to Cloudflare
+     * Original name servers before moving to Cloudflare.
      * 
      */
     @Import(name="originalNameServers")
     private @Nullable Output<List<String>> originalNameServers;
 
     /**
-     * @return Original name servers before moving to Cloudflare
+     * @return Original name servers before moving to Cloudflare.
      * 
      */
     public Optional<Output<List<String>>> originalNameServers() {
@@ -190,14 +190,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Registrar for the domain at the time of switching to Cloudflare
+     * Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     @Import(name="originalRegistrar")
     private @Nullable Output<String> originalRegistrar;
 
     /**
-     * @return Registrar for the domain at the time of switching to Cloudflare
+     * @return Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     public Optional<Output<String>> originalRegistrar() {
@@ -205,14 +205,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The owner of the zone
+     * The owner of the zone.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<ZoneOwnerArgs> owner;
 
     /**
-     * @return The owner of the zone
+     * @return The owner of the zone.
      * 
      */
     public Optional<Output<ZoneOwnerArgs>> owner() {
@@ -438,7 +438,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param activatedOn The last time proof of ownership was detected and the zone was made
-         * active
+         * active.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param activatedOn The last time proof of ownership was detected and the zone was made
-         * active
+         * active.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn When the zone was created
+         * @param createdOn When the zone was created.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdOn When the zone was created
+         * @param createdOn When the zone was created.
          * 
          * @return builder
          * 
@@ -529,7 +529,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meta Metadata about the zone
+         * @param meta Metadata about the zone.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meta Metadata about the zone
+         * @param meta Metadata about the zone.
          * 
          * @return builder
          * 
@@ -550,7 +550,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn When the zone was last modified
+         * @param modifiedOn When the zone was last modified.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifiedOn When the zone was last modified
+         * @param modifiedOn When the zone was last modified.
          * 
          * @return builder
          * 
@@ -571,7 +571,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name
+         * @param name The domain name.
          * 
          * @return builder
          * 
@@ -582,7 +582,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name
+         * @param name The domain name.
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers The name servers Cloudflare assigns to a zone
+         * @param nameServers The name servers Cloudflare assigns to a zone.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers The name servers Cloudflare assigns to a zone
+         * @param nameServers The name servers Cloudflare assigns to a zone.
          * 
          * @return builder
          * 
@@ -613,7 +613,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nameServers The name servers Cloudflare assigns to a zone
+         * @param nameServers The name servers Cloudflare assigns to a zone.
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalDnshost DNS host at the time of switching to Cloudflare
+         * @param originalDnshost DNS host at the time of switching to Cloudflare.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalDnshost DNS host at the time of switching to Cloudflare
+         * @param originalDnshost DNS host at the time of switching to Cloudflare.
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalNameServers Original name servers before moving to Cloudflare
+         * @param originalNameServers Original name servers before moving to Cloudflare.
          * 
          * @return builder
          * 
@@ -655,7 +655,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalNameServers Original name servers before moving to Cloudflare
+         * @param originalNameServers Original name servers before moving to Cloudflare.
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalNameServers Original name servers before moving to Cloudflare
+         * @param originalNameServers Original name servers before moving to Cloudflare.
          * 
          * @return builder
          * 
@@ -675,7 +675,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalRegistrar Registrar for the domain at the time of switching to Cloudflare
+         * @param originalRegistrar Registrar for the domain at the time of switching to Cloudflare.
          * 
          * @return builder
          * 
@@ -686,7 +686,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param originalRegistrar Registrar for the domain at the time of switching to Cloudflare
+         * @param originalRegistrar Registrar for the domain at the time of switching to Cloudflare.
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner The owner of the zone
+         * @param owner The owner of the zone.
          * 
          * @return builder
          * 
@@ -707,7 +707,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner The owner of the zone
+         * @param owner The owner of the zone.
          * 
          * @return builder
          * 

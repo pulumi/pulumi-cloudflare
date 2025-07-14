@@ -18,12 +18,12 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int Default;
         /// <summary>
-        /// edge ttl options
+        /// Edge TTL options.
         /// Available values: "respect*origin", "bypass*by*default", "override*origin".
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// List of single status codes, or status code ranges to apply the selected mode
+        /// List of single status codes, or status code ranges to apply the selected mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlResult> StatusCodeTtls;
 

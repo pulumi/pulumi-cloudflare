@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *             .name("us-east-1-vpc")
  *             .comment("Staging VPC for data science")
  *             .isDefault(true)
+ *             .isDefaultNetwork(false)
  *             .build());
  * 
  *     }
@@ -124,7 +125,11 @@ public class ZeroTrustTunnelCloudflaredVirtualNetwork extends com.pulumi.resourc
     /**
      * If `true`, this virtual network is the default for the account.
      * 
+     * @deprecated
+     * Use the is_default_network property instead.
+     * 
      */
+    @Deprecated /* Use the is_default_network property instead. */
     @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 
@@ -140,14 +145,14 @@ public class ZeroTrustTunnelCloudflaredVirtualNetwork extends com.pulumi.resourc
      * 
      */
     @Export(name="isDefaultNetwork", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> isDefaultNetwork;
+    private Output<Boolean> isDefaultNetwork;
 
     /**
      * @return If `true`, this virtual network is the default for the account.
      * 
      */
-    public Output<Optional<Boolean>> isDefaultNetwork() {
-        return Codegen.optional(this.isDefaultNetwork);
+    public Output<Boolean> isDefaultNetwork() {
+        return this.isDefaultNetwork;
     }
     /**
      * A user-friendly name for the virtual network.

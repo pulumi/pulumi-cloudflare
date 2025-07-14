@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class UserAgentBlockingRuleConfiguration
     {
         /// <summary>
-        /// The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-        /// Available values: "ip", "ip6", "ip_range", "asn", "country".
+        /// The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+        /// Available values: "ua".
         /// </summary>
         public readonly string? Target;
         /// <summary>
-        /// The IP address to match. This address will be compared to the IP address of incoming requests.
+        /// the user agent to exactly match
         /// </summary>
         public readonly string? Value;
 

@@ -196,6 +196,7 @@ export class AccessApplication extends pulumi.CustomResource {
     public readonly targetCriterias!: pulumi.Output<outputs.AccessApplicationTargetCriteria[] | undefined>;
     /**
      * The application type.
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     public readonly type!: pulumi.Output<string | undefined>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
@@ -466,6 +467,7 @@ export interface AccessApplicationState {
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.AccessApplicationTargetCriteria>[]>;
     /**
      * The application type.
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     type?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
@@ -624,6 +626,7 @@ export interface AccessApplicationArgs {
     targetCriterias?: pulumi.Input<pulumi.Input<inputs.AccessApplicationTargetCriteria>[]>;
     /**
      * The application type.
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     type?: pulumi.Input<string>;
     /**

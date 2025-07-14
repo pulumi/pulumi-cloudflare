@@ -91,6 +91,11 @@ public final class GetZeroTrustGatewayPoliciesResult {
      * 
      */
     private Integer version;
+    /**
+     * @return Warning for a misconfigured rule, if any.
+     * 
+     */
+    private String warningStatus;
 
     private GetZeroTrustGatewayPoliciesResult() {}
     /**
@@ -202,6 +207,13 @@ public final class GetZeroTrustGatewayPoliciesResult {
     public Integer version() {
         return this.version;
     }
+    /**
+     * @return Warning for a misconfigured rule, if any.
+     * 
+     */
+    public String warningStatus() {
+        return this.warningStatus;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -229,6 +241,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
         private String traffic;
         private String updatedAt;
         private Integer version;
+        private String warningStatus;
         public Builder() {}
         public Builder(GetZeroTrustGatewayPoliciesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -249,6 +262,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
     	      this.traffic = defaults.traffic;
     	      this.updatedAt = defaults.updatedAt;
     	      this.version = defaults.version;
+    	      this.warningStatus = defaults.warningStatus;
         }
 
         @CustomType.Setter
@@ -390,6 +404,14 @@ public final class GetZeroTrustGatewayPoliciesResult {
             this.version = version;
             return this;
         }
+        @CustomType.Setter
+        public Builder warningStatus(String warningStatus) {
+            if (warningStatus == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewayPoliciesResult", "warningStatus");
+            }
+            this.warningStatus = warningStatus;
+            return this;
+        }
         public GetZeroTrustGatewayPoliciesResult build() {
             final var _resultValue = new GetZeroTrustGatewayPoliciesResult();
             _resultValue.action = action;
@@ -409,6 +431,7 @@ public final class GetZeroTrustGatewayPoliciesResult {
             _resultValue.traffic = traffic;
             _resultValue.updatedAt = updatedAt;
             _resultValue.version = version;
+            _resultValue.warningStatus = warningStatus;
             return _resultValue;
         }
     }

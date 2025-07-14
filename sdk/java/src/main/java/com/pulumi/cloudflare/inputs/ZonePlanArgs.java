@@ -138,14 +138,14 @@ public final class ZonePlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the owner
+     * Name of the owner.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     public Optional<Output<String>> name() {
@@ -369,7 +369,7 @@ public final class ZonePlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the owner
+         * @param name Name of the owner.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class ZonePlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the owner
+         * @param name Name of the owner.
          * 
          * @return builder
          * 

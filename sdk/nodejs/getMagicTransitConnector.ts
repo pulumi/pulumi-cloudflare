@@ -31,6 +31,9 @@ export function getMagicTransitConnector(args: GetMagicTransitConnectorArgs, opt
  * A collection of arguments for invoking getMagicTransitConnector.
  */
 export interface GetMagicTransitConnectorArgs {
+    /**
+     * Account identifier
+     */
     accountId: string;
     connectorId?: string;
 }
@@ -39,6 +42,9 @@ export interface GetMagicTransitConnectorArgs {
  * A collection of values returned by getMagicTransitConnector.
  */
 export interface GetMagicTransitConnectorResult {
+    /**
+     * Account identifier
+     */
     readonly accountId: string;
     readonly activated: boolean;
     readonly connectorId?: string;
@@ -80,6 +86,9 @@ export function getMagicTransitConnectorOutput(args: GetMagicTransitConnectorOut
  * A collection of arguments for invoking getMagicTransitConnector.
  */
 export interface GetMagicTransitConnectorOutputArgs {
+    /**
+     * Account identifier
+     */
     accountId: pulumi.Input<string>;
     connectorId?: pulumi.Input<string>;
 }

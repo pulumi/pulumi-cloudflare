@@ -16,9 +16,17 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
 
     public static final GetMagicTransitConnectorArgs Empty = new GetMagicTransitConnectorArgs();
 
+    /**
+     * Account identifier
+     * 
+     */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
+    /**
+     * @return Account identifier
+     * 
+     */
     public Output<String> accountId() {
         return this.accountId;
     }
@@ -55,11 +63,23 @@ public final class GetMagicTransitConnectorArgs extends com.pulumi.resources.Inv
             $ = new GetMagicTransitConnectorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Account identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

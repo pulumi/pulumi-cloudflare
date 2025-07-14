@@ -20,7 +20,6 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -83,7 +82,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
     }
     /**
      * The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     @Export(name="activatedOn", refs={String.class}, tree="[0]")
@@ -91,7 +90,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     public Output<String> activatedOn() {
@@ -114,14 +113,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.cnameSuffix;
     }
     /**
-     * When the zone was created
+     * When the zone was created.
      * 
      */
     @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
-     * @return When the zone was created
+     * @return When the zone was created.
      * 
      */
     public Output<String> createdOn() {
@@ -146,112 +145,112 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.developmentMode;
     }
     /**
-     * Metadata about the zone
+     * Metadata about the zone.
      * 
      */
     @Export(name="meta", refs={ZoneMeta.class}, tree="[0]")
     private Output<ZoneMeta> meta;
 
     /**
-     * @return Metadata about the zone
+     * @return Metadata about the zone.
      * 
      */
     public Output<ZoneMeta> meta() {
         return this.meta;
     }
     /**
-     * When the zone was last modified
+     * When the zone was last modified.
      * 
      */
     @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
-     * @return When the zone was last modified
+     * @return When the zone was last modified.
      * 
      */
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * The domain name
+     * The domain name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name servers Cloudflare assigns to a zone
+     * The name servers Cloudflare assigns to a zone.
      * 
      */
     @Export(name="nameServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nameServers;
 
     /**
-     * @return The name servers Cloudflare assigns to a zone
+     * @return The name servers Cloudflare assigns to a zone.
      * 
      */
     public Output<List<String>> nameServers() {
         return this.nameServers;
     }
     /**
-     * DNS host at the time of switching to Cloudflare
+     * DNS host at the time of switching to Cloudflare.
      * 
      */
     @Export(name="originalDnshost", refs={String.class}, tree="[0]")
     private Output<String> originalDnshost;
 
     /**
-     * @return DNS host at the time of switching to Cloudflare
+     * @return DNS host at the time of switching to Cloudflare.
      * 
      */
     public Output<String> originalDnshost() {
         return this.originalDnshost;
     }
     /**
-     * Original name servers before moving to Cloudflare
+     * Original name servers before moving to Cloudflare.
      * 
      */
     @Export(name="originalNameServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> originalNameServers;
 
     /**
-     * @return Original name servers before moving to Cloudflare
+     * @return Original name servers before moving to Cloudflare.
      * 
      */
     public Output<List<String>> originalNameServers() {
         return this.originalNameServers;
     }
     /**
-     * Registrar for the domain at the time of switching to Cloudflare
+     * Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     @Export(name="originalRegistrar", refs={String.class}, tree="[0]")
     private Output<String> originalRegistrar;
 
     /**
-     * @return Registrar for the domain at the time of switching to Cloudflare
+     * @return Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     public Output<String> originalRegistrar() {
         return this.originalRegistrar;
     }
     /**
-     * The owner of the zone
+     * The owner of the zone.
      * 
      */
     @Export(name="owner", refs={ZoneOwner.class}, tree="[0]")
     private Output<ZoneOwner> owner;
 
     /**
-     * @return The owner of the zone
+     * @return The owner of the zone.
      * 
      */
     public Output<ZoneOwner> owner() {
@@ -379,15 +378,15 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vanityNameServers", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> vanityNameServers;
+    private Output<List<String>> vanityNameServers;
 
     /**
      * @return An array of domains used for custom name servers. This is only
      * available for Business and Enterprise plans.
      * 
      */
-    public Output<Optional<List<String>>> vanityNameServers() {
-        return Codegen.optional(this.vanityNameServers);
+    public Output<List<String>> vanityNameServers() {
+        return this.vanityNameServers;
     }
     /**
      * Verification key for partial zone setup.

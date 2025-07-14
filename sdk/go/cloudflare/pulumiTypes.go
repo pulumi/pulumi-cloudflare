@@ -13799,7 +13799,7 @@ type AccessApplicationTargetCriteria struct {
 	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
 	Port int `pulumi:"port"`
 	// The communication protocol your application secures.
-	// Available values: "ssh".
+	// Available values: "SSH".
 	Protocol string `pulumi:"protocol"`
 	// Contains a map of target attribute keys to target attribute values.
 	TargetAttributes map[string][]string `pulumi:"targetAttributes"`
@@ -13820,7 +13820,7 @@ type AccessApplicationTargetCriteriaArgs struct {
 	// The port that the targets use for the chosen communication protocol. A port cannot be assigned to multiple protocols.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The communication protocol your application secures.
-	// Available values: "ssh".
+	// Available values: "SSH".
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// Contains a map of target attribute keys to target attribute values.
 	TargetAttributes pulumi.StringArrayMapInput `pulumi:"targetAttributes"`
@@ -13883,7 +13883,7 @@ func (o AccessApplicationTargetCriteriaOutput) Port() pulumi.IntOutput {
 }
 
 // The communication protocol your application secures.
-// Available values: "ssh".
+// Available values: "SSH".
 func (o AccessApplicationTargetCriteriaOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationTargetCriteria) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -24051,8 +24051,6 @@ type AccessIdentityProviderConfig struct {
 	Claims []string `pulumi:"claims"`
 	// Your OAuth Client ID
 	ClientId *string `pulumi:"clientId"`
-	// Your OAuth Client Secret
-	ClientSecret *string `pulumi:"clientSecret"`
 	// Should Cloudflare try to load authentication contexts from your account
 	ConditionalAccessEnabled *bool `pulumi:"conditionalAccessEnabled"`
 	// Your Azure directory uuid
@@ -24121,8 +24119,6 @@ type AccessIdentityProviderConfigArgs struct {
 	Claims pulumi.StringArrayInput `pulumi:"claims"`
 	// Your OAuth Client ID
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Your OAuth Client Secret
-	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// Should Cloudflare try to load authentication contexts from your account
 	ConditionalAccessEnabled pulumi.BoolPtrInput `pulumi:"conditionalAccessEnabled"`
 	// Your Azure directory uuid
@@ -24281,11 +24277,6 @@ func (o AccessIdentityProviderConfigOutput) Claims() pulumi.StringArrayOutput {
 // Your OAuth Client ID
 func (o AccessIdentityProviderConfigOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-// Your OAuth Client Secret
-func (o AccessIdentityProviderConfigOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
 // Should Cloudflare try to load authentication contexts from your account
@@ -24491,16 +24482,6 @@ func (o AccessIdentityProviderConfigPtrOutput) ClientId() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.ClientId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Your OAuth Client Secret
-func (o AccessIdentityProviderConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessIdentityProviderConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientSecret
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -38279,11 +38260,11 @@ func (o AccountTokenPolicyArrayOutput) Index(i pulumi.IntInput) AccountTokenPoli
 }
 
 type AccountTokenPolicyPermissionGroup struct {
-	// Identifier of the group.
+	// Identifier of the permission group.
 	Id string `pulumi:"id"`
 	// Attributes associated to the permission group.
 	Meta *AccountTokenPolicyPermissionGroupMeta `pulumi:"meta"`
-	// Name of the group.
+	// Name of the permission group.
 	Name *string `pulumi:"name"`
 }
 
@@ -38299,11 +38280,11 @@ type AccountTokenPolicyPermissionGroupInput interface {
 }
 
 type AccountTokenPolicyPermissionGroupArgs struct {
-	// Identifier of the group.
+	// Identifier of the permission group.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Attributes associated to the permission group.
 	Meta AccountTokenPolicyPermissionGroupMetaPtrInput `pulumi:"meta"`
-	// Name of the group.
+	// Name of the permission group.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -38358,7 +38339,7 @@ func (o AccountTokenPolicyPermissionGroupOutput) ToAccountTokenPolicyPermissionG
 	return o
 }
 
-// Identifier of the group.
+// Identifier of the permission group.
 func (o AccountTokenPolicyPermissionGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountTokenPolicyPermissionGroup) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -38368,7 +38349,7 @@ func (o AccountTokenPolicyPermissionGroupOutput) Meta() AccountTokenPolicyPermis
 	return o.ApplyT(func(v AccountTokenPolicyPermissionGroup) *AccountTokenPolicyPermissionGroupMeta { return v.Meta }).(AccountTokenPolicyPermissionGroupMetaPtrOutput)
 }
 
-// Name of the group.
+// Name of the permission group.
 func (o AccountTokenPolicyPermissionGroupOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountTokenPolicyPermissionGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -42590,11 +42571,11 @@ func (o ApiTokenPolicyArrayOutput) Index(i pulumi.IntInput) ApiTokenPolicyOutput
 }
 
 type ApiTokenPolicyPermissionGroup struct {
-	// Identifier of the group.
+	// Identifier of the permission group.
 	Id string `pulumi:"id"`
 	// Attributes associated to the permission group.
 	Meta *ApiTokenPolicyPermissionGroupMeta `pulumi:"meta"`
-	// Name of the group.
+	// Name of the permission group.
 	Name *string `pulumi:"name"`
 }
 
@@ -42610,11 +42591,11 @@ type ApiTokenPolicyPermissionGroupInput interface {
 }
 
 type ApiTokenPolicyPermissionGroupArgs struct {
-	// Identifier of the group.
+	// Identifier of the permission group.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Attributes associated to the permission group.
 	Meta ApiTokenPolicyPermissionGroupMetaPtrInput `pulumi:"meta"`
-	// Name of the group.
+	// Name of the permission group.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -42669,7 +42650,7 @@ func (o ApiTokenPolicyPermissionGroupOutput) ToApiTokenPolicyPermissionGroupOutp
 	return o
 }
 
-// Identifier of the group.
+// Identifier of the permission group.
 func (o ApiTokenPolicyPermissionGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiTokenPolicyPermissionGroup) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -42679,7 +42660,7 @@ func (o ApiTokenPolicyPermissionGroupOutput) Meta() ApiTokenPolicyPermissionGrou
 	return o.ApplyT(func(v ApiTokenPolicyPermissionGroup) *ApiTokenPolicyPermissionGroupMeta { return v.Meta }).(ApiTokenPolicyPermissionGroupMetaPtrOutput)
 }
 
-// Name of the group.
+// Name of the permission group.
 func (o ApiTokenPolicyPermissionGroupOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiTokenPolicyPermissionGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -43226,7 +43207,7 @@ type CloudConnectorRulesRule struct {
 	// Parameters of Cloud Connector Rule
 	Parameters *CloudConnectorRulesRuleParameters `pulumi:"parameters"`
 	// Cloud Provider type
-	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
 	Provider *string `pulumi:"provider"`
 }
 
@@ -43249,7 +43230,7 @@ type CloudConnectorRulesRuleArgs struct {
 	// Parameters of Cloud Connector Rule
 	Parameters CloudConnectorRulesRuleParametersPtrInput `pulumi:"parameters"`
 	// Cloud Provider type
-	// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+	// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
 }
 
@@ -43326,7 +43307,7 @@ func (o CloudConnectorRulesRuleOutput) Parameters() CloudConnectorRulesRuleParam
 }
 
 // Cloud Provider type
-// Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+// Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
 func (o CloudConnectorRulesRuleOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudConnectorRulesRule) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
@@ -45832,6 +45813,8 @@ type DevicePostureRuleInputType struct {
 	// For more details on state, please refer to the Crowdstrike documentation.
 	// Available values: "online", "offline", "unknown".
 	State *string `pulumi:"state"`
+	// List of certificate Subject Alternative Names.
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
 	// Signing certificate thumbprint.
 	Thumbprint *string `pulumi:"thumbprint"`
 	// For more details on total score, refer to the Tanium documentation.
@@ -45935,6 +45918,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	// For more details on state, please refer to the Crowdstrike documentation.
 	// Available values: "online", "offline", "unknown".
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// List of certificate Subject Alternative Names.
+	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
 	// Signing certificate thumbprint.
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
 	// For more details on total score, refer to the Tanium documentation.
@@ -46209,6 +46194,11 @@ func (o DevicePostureRuleInputTypeOutput) Sha256() pulumi.StringPtrOutput {
 // Available values: "online", "offline", "unknown".
 func (o DevicePostureRuleInputTypeOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// List of certificate Subject Alternative Names.
+func (o DevicePostureRuleInputTypeOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
 }
 
 // Signing certificate thumbprint.
@@ -46622,6 +46612,16 @@ func (o DevicePostureRuleInputTypePtrOutput) State() pulumi.StringPtrOutput {
 		}
 		return v.State
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of certificate Subject Alternative Names.
+func (o DevicePostureRuleInputTypePtrOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DevicePostureRuleInputType) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAlternativeNames
+	}).(pulumi.StringArrayOutput)
 }
 
 // Signing certificate thumbprint.
@@ -47481,836 +47481,6 @@ func (o DlpCustomProfileEntryPatternPtrOutput) Validation() pulumi.StringPtrOutp
 		}
 		return v.Validation
 	}).(pulumi.StringPtrOutput)
-}
-
-type DlpCustomProfileProfile struct {
-	AiContextEnabled *bool `pulumi:"aiContextEnabled"`
-	// Related DLP policies will trigger when the match count exceeds the number set.
-	AllowedMatchCount   *int    `pulumi:"allowedMatchCount"`
-	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
-	// Scan the context of predefined entries to only return matches surrounded by keywords.
-	ContextAwareness *DlpCustomProfileProfileContextAwareness `pulumi:"contextAwareness"`
-	// The description of the profile.
-	Description *string                        `pulumi:"description"`
-	Entries     []DlpCustomProfileProfileEntry `pulumi:"entries"`
-	Name        string                         `pulumi:"name"`
-	OcrEnabled  *bool                          `pulumi:"ocrEnabled"`
-	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-	SharedEntries []DlpCustomProfileProfileSharedEntry `pulumi:"sharedEntries"`
-}
-
-// DlpCustomProfileProfileInput is an input type that accepts DlpCustomProfileProfileArgs and DlpCustomProfileProfileOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileInput` via:
-//
-//	DlpCustomProfileProfileArgs{...}
-type DlpCustomProfileProfileInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileOutput() DlpCustomProfileProfileOutput
-	ToDlpCustomProfileProfileOutputWithContext(context.Context) DlpCustomProfileProfileOutput
-}
-
-type DlpCustomProfileProfileArgs struct {
-	AiContextEnabled pulumi.BoolPtrInput `pulumi:"aiContextEnabled"`
-	// Related DLP policies will trigger when the match count exceeds the number set.
-	AllowedMatchCount   pulumi.IntPtrInput    `pulumi:"allowedMatchCount"`
-	ConfidenceThreshold pulumi.StringPtrInput `pulumi:"confidenceThreshold"`
-	// Scan the context of predefined entries to only return matches surrounded by keywords.
-	ContextAwareness DlpCustomProfileProfileContextAwarenessPtrInput `pulumi:"contextAwareness"`
-	// The description of the profile.
-	Description pulumi.StringPtrInput                  `pulumi:"description"`
-	Entries     DlpCustomProfileProfileEntryArrayInput `pulumi:"entries"`
-	Name        pulumi.StringInput                     `pulumi:"name"`
-	OcrEnabled  pulumi.BoolPtrInput                    `pulumi:"ocrEnabled"`
-	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-	SharedEntries DlpCustomProfileProfileSharedEntryArrayInput `pulumi:"sharedEntries"`
-}
-
-func (DlpCustomProfileProfileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfile)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileArgs) ToDlpCustomProfileProfileOutput() DlpCustomProfileProfileOutput {
-	return i.ToDlpCustomProfileProfileOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileArgs) ToDlpCustomProfileProfileOutputWithContext(ctx context.Context) DlpCustomProfileProfileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileOutput)
-}
-
-// DlpCustomProfileProfileArrayInput is an input type that accepts DlpCustomProfileProfileArray and DlpCustomProfileProfileArrayOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileArrayInput` via:
-//
-//	DlpCustomProfileProfileArray{ DlpCustomProfileProfileArgs{...} }
-type DlpCustomProfileProfileArrayInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileArrayOutput() DlpCustomProfileProfileArrayOutput
-	ToDlpCustomProfileProfileArrayOutputWithContext(context.Context) DlpCustomProfileProfileArrayOutput
-}
-
-type DlpCustomProfileProfileArray []DlpCustomProfileProfileInput
-
-func (DlpCustomProfileProfileArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DlpCustomProfileProfile)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileArray) ToDlpCustomProfileProfileArrayOutput() DlpCustomProfileProfileArrayOutput {
-	return i.ToDlpCustomProfileProfileArrayOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileArray) ToDlpCustomProfileProfileArrayOutputWithContext(ctx context.Context) DlpCustomProfileProfileArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileArrayOutput)
-}
-
-type DlpCustomProfileProfileOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfile)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileOutput) ToDlpCustomProfileProfileOutput() DlpCustomProfileProfileOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileOutput) ToDlpCustomProfileProfileOutputWithContext(ctx context.Context) DlpCustomProfileProfileOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileOutput) AiContextEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) *bool { return v.AiContextEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Related DLP policies will trigger when the match count exceeds the number set.
-func (o DlpCustomProfileProfileOutput) AllowedMatchCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) *int { return v.AllowedMatchCount }).(pulumi.IntPtrOutput)
-}
-
-func (o DlpCustomProfileProfileOutput) ConfidenceThreshold() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) *string { return v.ConfidenceThreshold }).(pulumi.StringPtrOutput)
-}
-
-// Scan the context of predefined entries to only return matches surrounded by keywords.
-func (o DlpCustomProfileProfileOutput) ContextAwareness() DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) *DlpCustomProfileProfileContextAwareness { return v.ContextAwareness }).(DlpCustomProfileProfileContextAwarenessPtrOutput)
-}
-
-// The description of the profile.
-func (o DlpCustomProfileProfileOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o DlpCustomProfileProfileOutput) Entries() DlpCustomProfileProfileEntryArrayOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) []DlpCustomProfileProfileEntry { return v.Entries }).(DlpCustomProfileProfileEntryArrayOutput)
-}
-
-func (o DlpCustomProfileProfileOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o DlpCustomProfileProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) *bool { return v.OcrEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-func (o DlpCustomProfileProfileOutput) SharedEntries() DlpCustomProfileProfileSharedEntryArrayOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfile) []DlpCustomProfileProfileSharedEntry { return v.SharedEntries }).(DlpCustomProfileProfileSharedEntryArrayOutput)
-}
-
-type DlpCustomProfileProfileArrayOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DlpCustomProfileProfile)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileArrayOutput) ToDlpCustomProfileProfileArrayOutput() DlpCustomProfileProfileArrayOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileArrayOutput) ToDlpCustomProfileProfileArrayOutputWithContext(ctx context.Context) DlpCustomProfileProfileArrayOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileArrayOutput) Index(i pulumi.IntInput) DlpCustomProfileProfileOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DlpCustomProfileProfile {
-		return vs[0].([]DlpCustomProfileProfile)[vs[1].(int)]
-	}).(DlpCustomProfileProfileOutput)
-}
-
-type DlpCustomProfileProfileContextAwareness struct {
-	// If true, scan the context of predefined entries to only return matches surrounded by keywords.
-	Enabled bool `pulumi:"enabled"`
-	// Content types to exclude from context analysis and return all matches.
-	Skip DlpCustomProfileProfileContextAwarenessSkip `pulumi:"skip"`
-}
-
-// DlpCustomProfileProfileContextAwarenessInput is an input type that accepts DlpCustomProfileProfileContextAwarenessArgs and DlpCustomProfileProfileContextAwarenessOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileContextAwarenessInput` via:
-//
-//	DlpCustomProfileProfileContextAwarenessArgs{...}
-type DlpCustomProfileProfileContextAwarenessInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileContextAwarenessOutput() DlpCustomProfileProfileContextAwarenessOutput
-	ToDlpCustomProfileProfileContextAwarenessOutputWithContext(context.Context) DlpCustomProfileProfileContextAwarenessOutput
-}
-
-type DlpCustomProfileProfileContextAwarenessArgs struct {
-	// If true, scan the context of predefined entries to only return matches surrounded by keywords.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Content types to exclude from context analysis and return all matches.
-	Skip DlpCustomProfileProfileContextAwarenessSkipInput `pulumi:"skip"`
-}
-
-func (DlpCustomProfileProfileContextAwarenessArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileContextAwareness)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileContextAwarenessArgs) ToDlpCustomProfileProfileContextAwarenessOutput() DlpCustomProfileProfileContextAwarenessOutput {
-	return i.ToDlpCustomProfileProfileContextAwarenessOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileContextAwarenessArgs) ToDlpCustomProfileProfileContextAwarenessOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileContextAwarenessOutput)
-}
-
-func (i DlpCustomProfileProfileContextAwarenessArgs) ToDlpCustomProfileProfileContextAwarenessPtrOutput() DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return i.ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileContextAwarenessArgs) ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileContextAwarenessOutput).ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(ctx)
-}
-
-// DlpCustomProfileProfileContextAwarenessPtrInput is an input type that accepts DlpCustomProfileProfileContextAwarenessArgs, DlpCustomProfileProfileContextAwarenessPtr and DlpCustomProfileProfileContextAwarenessPtrOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileContextAwarenessPtrInput` via:
-//
-//	        DlpCustomProfileProfileContextAwarenessArgs{...}
-//
-//	or:
-//
-//	        nil
-type DlpCustomProfileProfileContextAwarenessPtrInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileContextAwarenessPtrOutput() DlpCustomProfileProfileContextAwarenessPtrOutput
-	ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(context.Context) DlpCustomProfileProfileContextAwarenessPtrOutput
-}
-
-type dlpCustomProfileProfileContextAwarenessPtrType DlpCustomProfileProfileContextAwarenessArgs
-
-func DlpCustomProfileProfileContextAwarenessPtr(v *DlpCustomProfileProfileContextAwarenessArgs) DlpCustomProfileProfileContextAwarenessPtrInput {
-	return (*dlpCustomProfileProfileContextAwarenessPtrType)(v)
-}
-
-func (*dlpCustomProfileProfileContextAwarenessPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DlpCustomProfileProfileContextAwareness)(nil)).Elem()
-}
-
-func (i *dlpCustomProfileProfileContextAwarenessPtrType) ToDlpCustomProfileProfileContextAwarenessPtrOutput() DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return i.ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(context.Background())
-}
-
-func (i *dlpCustomProfileProfileContextAwarenessPtrType) ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileContextAwarenessPtrOutput)
-}
-
-type DlpCustomProfileProfileContextAwarenessOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileContextAwarenessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileContextAwareness)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileContextAwarenessOutput) ToDlpCustomProfileProfileContextAwarenessOutput() DlpCustomProfileProfileContextAwarenessOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileContextAwarenessOutput) ToDlpCustomProfileProfileContextAwarenessOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileContextAwarenessOutput) ToDlpCustomProfileProfileContextAwarenessPtrOutput() DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return o.ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(context.Background())
-}
-
-func (o DlpCustomProfileProfileContextAwarenessOutput) ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DlpCustomProfileProfileContextAwareness) *DlpCustomProfileProfileContextAwareness {
-		return &v
-	}).(DlpCustomProfileProfileContextAwarenessPtrOutput)
-}
-
-// If true, scan the context of predefined entries to only return matches surrounded by keywords.
-func (o DlpCustomProfileProfileContextAwarenessOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileContextAwareness) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// Content types to exclude from context analysis and return all matches.
-func (o DlpCustomProfileProfileContextAwarenessOutput) Skip() DlpCustomProfileProfileContextAwarenessSkipOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileContextAwareness) DlpCustomProfileProfileContextAwarenessSkip {
-		return v.Skip
-	}).(DlpCustomProfileProfileContextAwarenessSkipOutput)
-}
-
-type DlpCustomProfileProfileContextAwarenessPtrOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileContextAwarenessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DlpCustomProfileProfileContextAwareness)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileContextAwarenessPtrOutput) ToDlpCustomProfileProfileContextAwarenessPtrOutput() DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileContextAwarenessPtrOutput) ToDlpCustomProfileProfileContextAwarenessPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessPtrOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileContextAwarenessPtrOutput) Elem() DlpCustomProfileProfileContextAwarenessOutput {
-	return o.ApplyT(func(v *DlpCustomProfileProfileContextAwareness) DlpCustomProfileProfileContextAwareness {
-		if v != nil {
-			return *v
-		}
-		var ret DlpCustomProfileProfileContextAwareness
-		return ret
-	}).(DlpCustomProfileProfileContextAwarenessOutput)
-}
-
-// If true, scan the context of predefined entries to only return matches surrounded by keywords.
-func (o DlpCustomProfileProfileContextAwarenessPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfileProfileContextAwareness) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Content types to exclude from context analysis and return all matches.
-func (o DlpCustomProfileProfileContextAwarenessPtrOutput) Skip() DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfileProfileContextAwareness) *DlpCustomProfileProfileContextAwarenessSkip {
-		if v == nil {
-			return nil
-		}
-		return &v.Skip
-	}).(DlpCustomProfileProfileContextAwarenessSkipPtrOutput)
-}
-
-type DlpCustomProfileProfileContextAwarenessSkip struct {
-	// If the content type is a file, skip context analysis and return all matches.
-	Files bool `pulumi:"files"`
-}
-
-// DlpCustomProfileProfileContextAwarenessSkipInput is an input type that accepts DlpCustomProfileProfileContextAwarenessSkipArgs and DlpCustomProfileProfileContextAwarenessSkipOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileContextAwarenessSkipInput` via:
-//
-//	DlpCustomProfileProfileContextAwarenessSkipArgs{...}
-type DlpCustomProfileProfileContextAwarenessSkipInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileContextAwarenessSkipOutput() DlpCustomProfileProfileContextAwarenessSkipOutput
-	ToDlpCustomProfileProfileContextAwarenessSkipOutputWithContext(context.Context) DlpCustomProfileProfileContextAwarenessSkipOutput
-}
-
-type DlpCustomProfileProfileContextAwarenessSkipArgs struct {
-	// If the content type is a file, skip context analysis and return all matches.
-	Files pulumi.BoolInput `pulumi:"files"`
-}
-
-func (DlpCustomProfileProfileContextAwarenessSkipArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileContextAwarenessSkip)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileContextAwarenessSkipArgs) ToDlpCustomProfileProfileContextAwarenessSkipOutput() DlpCustomProfileProfileContextAwarenessSkipOutput {
-	return i.ToDlpCustomProfileProfileContextAwarenessSkipOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileContextAwarenessSkipArgs) ToDlpCustomProfileProfileContextAwarenessSkipOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessSkipOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileContextAwarenessSkipOutput)
-}
-
-func (i DlpCustomProfileProfileContextAwarenessSkipArgs) ToDlpCustomProfileProfileContextAwarenessSkipPtrOutput() DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return i.ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileContextAwarenessSkipArgs) ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileContextAwarenessSkipOutput).ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(ctx)
-}
-
-// DlpCustomProfileProfileContextAwarenessSkipPtrInput is an input type that accepts DlpCustomProfileProfileContextAwarenessSkipArgs, DlpCustomProfileProfileContextAwarenessSkipPtr and DlpCustomProfileProfileContextAwarenessSkipPtrOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileContextAwarenessSkipPtrInput` via:
-//
-//	        DlpCustomProfileProfileContextAwarenessSkipArgs{...}
-//
-//	or:
-//
-//	        nil
-type DlpCustomProfileProfileContextAwarenessSkipPtrInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileContextAwarenessSkipPtrOutput() DlpCustomProfileProfileContextAwarenessSkipPtrOutput
-	ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(context.Context) DlpCustomProfileProfileContextAwarenessSkipPtrOutput
-}
-
-type dlpCustomProfileProfileContextAwarenessSkipPtrType DlpCustomProfileProfileContextAwarenessSkipArgs
-
-func DlpCustomProfileProfileContextAwarenessSkipPtr(v *DlpCustomProfileProfileContextAwarenessSkipArgs) DlpCustomProfileProfileContextAwarenessSkipPtrInput {
-	return (*dlpCustomProfileProfileContextAwarenessSkipPtrType)(v)
-}
-
-func (*dlpCustomProfileProfileContextAwarenessSkipPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DlpCustomProfileProfileContextAwarenessSkip)(nil)).Elem()
-}
-
-func (i *dlpCustomProfileProfileContextAwarenessSkipPtrType) ToDlpCustomProfileProfileContextAwarenessSkipPtrOutput() DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return i.ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(context.Background())
-}
-
-func (i *dlpCustomProfileProfileContextAwarenessSkipPtrType) ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileContextAwarenessSkipPtrOutput)
-}
-
-type DlpCustomProfileProfileContextAwarenessSkipOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileContextAwarenessSkipOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileContextAwarenessSkip)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileContextAwarenessSkipOutput) ToDlpCustomProfileProfileContextAwarenessSkipOutput() DlpCustomProfileProfileContextAwarenessSkipOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileContextAwarenessSkipOutput) ToDlpCustomProfileProfileContextAwarenessSkipOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessSkipOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileContextAwarenessSkipOutput) ToDlpCustomProfileProfileContextAwarenessSkipPtrOutput() DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return o.ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(context.Background())
-}
-
-func (o DlpCustomProfileProfileContextAwarenessSkipOutput) ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DlpCustomProfileProfileContextAwarenessSkip) *DlpCustomProfileProfileContextAwarenessSkip {
-		return &v
-	}).(DlpCustomProfileProfileContextAwarenessSkipPtrOutput)
-}
-
-// If the content type is a file, skip context analysis and return all matches.
-func (o DlpCustomProfileProfileContextAwarenessSkipOutput) Files() pulumi.BoolOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileContextAwarenessSkip) bool { return v.Files }).(pulumi.BoolOutput)
-}
-
-type DlpCustomProfileProfileContextAwarenessSkipPtrOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileContextAwarenessSkipPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DlpCustomProfileProfileContextAwarenessSkip)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileContextAwarenessSkipPtrOutput) ToDlpCustomProfileProfileContextAwarenessSkipPtrOutput() DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileContextAwarenessSkipPtrOutput) ToDlpCustomProfileProfileContextAwarenessSkipPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileContextAwarenessSkipPtrOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileContextAwarenessSkipPtrOutput) Elem() DlpCustomProfileProfileContextAwarenessSkipOutput {
-	return o.ApplyT(func(v *DlpCustomProfileProfileContextAwarenessSkip) DlpCustomProfileProfileContextAwarenessSkip {
-		if v != nil {
-			return *v
-		}
-		var ret DlpCustomProfileProfileContextAwarenessSkip
-		return ret
-	}).(DlpCustomProfileProfileContextAwarenessSkipOutput)
-}
-
-// If the content type is a file, skip context analysis and return all matches.
-func (o DlpCustomProfileProfileContextAwarenessSkipPtrOutput) Files() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfileProfileContextAwarenessSkip) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Files
-	}).(pulumi.BoolPtrOutput)
-}
-
-type DlpCustomProfileProfileEntry struct {
-	Enabled bool                                 `pulumi:"enabled"`
-	Name    string                               `pulumi:"name"`
-	Pattern *DlpCustomProfileProfileEntryPattern `pulumi:"pattern"`
-	Words   []string                             `pulumi:"words"`
-}
-
-// DlpCustomProfileProfileEntryInput is an input type that accepts DlpCustomProfileProfileEntryArgs and DlpCustomProfileProfileEntryOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileEntryInput` via:
-//
-//	DlpCustomProfileProfileEntryArgs{...}
-type DlpCustomProfileProfileEntryInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileEntryOutput() DlpCustomProfileProfileEntryOutput
-	ToDlpCustomProfileProfileEntryOutputWithContext(context.Context) DlpCustomProfileProfileEntryOutput
-}
-
-type DlpCustomProfileProfileEntryArgs struct {
-	Enabled pulumi.BoolInput                            `pulumi:"enabled"`
-	Name    pulumi.StringInput                          `pulumi:"name"`
-	Pattern DlpCustomProfileProfileEntryPatternPtrInput `pulumi:"pattern"`
-	Words   pulumi.StringArrayInput                     `pulumi:"words"`
-}
-
-func (DlpCustomProfileProfileEntryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileEntry)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileEntryArgs) ToDlpCustomProfileProfileEntryOutput() DlpCustomProfileProfileEntryOutput {
-	return i.ToDlpCustomProfileProfileEntryOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileEntryArgs) ToDlpCustomProfileProfileEntryOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileEntryOutput)
-}
-
-// DlpCustomProfileProfileEntryArrayInput is an input type that accepts DlpCustomProfileProfileEntryArray and DlpCustomProfileProfileEntryArrayOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileEntryArrayInput` via:
-//
-//	DlpCustomProfileProfileEntryArray{ DlpCustomProfileProfileEntryArgs{...} }
-type DlpCustomProfileProfileEntryArrayInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileEntryArrayOutput() DlpCustomProfileProfileEntryArrayOutput
-	ToDlpCustomProfileProfileEntryArrayOutputWithContext(context.Context) DlpCustomProfileProfileEntryArrayOutput
-}
-
-type DlpCustomProfileProfileEntryArray []DlpCustomProfileProfileEntryInput
-
-func (DlpCustomProfileProfileEntryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DlpCustomProfileProfileEntry)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileEntryArray) ToDlpCustomProfileProfileEntryArrayOutput() DlpCustomProfileProfileEntryArrayOutput {
-	return i.ToDlpCustomProfileProfileEntryArrayOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileEntryArray) ToDlpCustomProfileProfileEntryArrayOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileEntryArrayOutput)
-}
-
-type DlpCustomProfileProfileEntryOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileEntry)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileEntryOutput) ToDlpCustomProfileProfileEntryOutput() DlpCustomProfileProfileEntryOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileEntryOutput) ToDlpCustomProfileProfileEntryOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileEntryOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileEntry) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-func (o DlpCustomProfileProfileEntryOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileEntry) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o DlpCustomProfileProfileEntryOutput) Pattern() DlpCustomProfileProfileEntryPatternPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileEntry) *DlpCustomProfileProfileEntryPattern { return v.Pattern }).(DlpCustomProfileProfileEntryPatternPtrOutput)
-}
-
-func (o DlpCustomProfileProfileEntryOutput) Words() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileEntry) []string { return v.Words }).(pulumi.StringArrayOutput)
-}
-
-type DlpCustomProfileProfileEntryArrayOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DlpCustomProfileProfileEntry)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileEntryArrayOutput) ToDlpCustomProfileProfileEntryArrayOutput() DlpCustomProfileProfileEntryArrayOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileEntryArrayOutput) ToDlpCustomProfileProfileEntryArrayOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryArrayOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileEntryArrayOutput) Index(i pulumi.IntInput) DlpCustomProfileProfileEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DlpCustomProfileProfileEntry {
-		return vs[0].([]DlpCustomProfileProfileEntry)[vs[1].(int)]
-	}).(DlpCustomProfileProfileEntryOutput)
-}
-
-type DlpCustomProfileProfileEntryPattern struct {
-	Regex string `pulumi:"regex"`
-	// Available values: "luhn".
-	//
-	// Deprecated: This attribute is deprecated.
-	Validation *string `pulumi:"validation"`
-}
-
-// DlpCustomProfileProfileEntryPatternInput is an input type that accepts DlpCustomProfileProfileEntryPatternArgs and DlpCustomProfileProfileEntryPatternOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileEntryPatternInput` via:
-//
-//	DlpCustomProfileProfileEntryPatternArgs{...}
-type DlpCustomProfileProfileEntryPatternInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileEntryPatternOutput() DlpCustomProfileProfileEntryPatternOutput
-	ToDlpCustomProfileProfileEntryPatternOutputWithContext(context.Context) DlpCustomProfileProfileEntryPatternOutput
-}
-
-type DlpCustomProfileProfileEntryPatternArgs struct {
-	Regex pulumi.StringInput `pulumi:"regex"`
-	// Available values: "luhn".
-	//
-	// Deprecated: This attribute is deprecated.
-	Validation pulumi.StringPtrInput `pulumi:"validation"`
-}
-
-func (DlpCustomProfileProfileEntryPatternArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileEntryPattern)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileEntryPatternArgs) ToDlpCustomProfileProfileEntryPatternOutput() DlpCustomProfileProfileEntryPatternOutput {
-	return i.ToDlpCustomProfileProfileEntryPatternOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileEntryPatternArgs) ToDlpCustomProfileProfileEntryPatternOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryPatternOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileEntryPatternOutput)
-}
-
-func (i DlpCustomProfileProfileEntryPatternArgs) ToDlpCustomProfileProfileEntryPatternPtrOutput() DlpCustomProfileProfileEntryPatternPtrOutput {
-	return i.ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileEntryPatternArgs) ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryPatternPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileEntryPatternOutput).ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(ctx)
-}
-
-// DlpCustomProfileProfileEntryPatternPtrInput is an input type that accepts DlpCustomProfileProfileEntryPatternArgs, DlpCustomProfileProfileEntryPatternPtr and DlpCustomProfileProfileEntryPatternPtrOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileEntryPatternPtrInput` via:
-//
-//	        DlpCustomProfileProfileEntryPatternArgs{...}
-//
-//	or:
-//
-//	        nil
-type DlpCustomProfileProfileEntryPatternPtrInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileEntryPatternPtrOutput() DlpCustomProfileProfileEntryPatternPtrOutput
-	ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(context.Context) DlpCustomProfileProfileEntryPatternPtrOutput
-}
-
-type dlpCustomProfileProfileEntryPatternPtrType DlpCustomProfileProfileEntryPatternArgs
-
-func DlpCustomProfileProfileEntryPatternPtr(v *DlpCustomProfileProfileEntryPatternArgs) DlpCustomProfileProfileEntryPatternPtrInput {
-	return (*dlpCustomProfileProfileEntryPatternPtrType)(v)
-}
-
-func (*dlpCustomProfileProfileEntryPatternPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DlpCustomProfileProfileEntryPattern)(nil)).Elem()
-}
-
-func (i *dlpCustomProfileProfileEntryPatternPtrType) ToDlpCustomProfileProfileEntryPatternPtrOutput() DlpCustomProfileProfileEntryPatternPtrOutput {
-	return i.ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(context.Background())
-}
-
-func (i *dlpCustomProfileProfileEntryPatternPtrType) ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryPatternPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileEntryPatternPtrOutput)
-}
-
-type DlpCustomProfileProfileEntryPatternOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileEntryPatternOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileEntryPattern)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileEntryPatternOutput) ToDlpCustomProfileProfileEntryPatternOutput() DlpCustomProfileProfileEntryPatternOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileEntryPatternOutput) ToDlpCustomProfileProfileEntryPatternOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryPatternOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileEntryPatternOutput) ToDlpCustomProfileProfileEntryPatternPtrOutput() DlpCustomProfileProfileEntryPatternPtrOutput {
-	return o.ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(context.Background())
-}
-
-func (o DlpCustomProfileProfileEntryPatternOutput) ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryPatternPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DlpCustomProfileProfileEntryPattern) *DlpCustomProfileProfileEntryPattern {
-		return &v
-	}).(DlpCustomProfileProfileEntryPatternPtrOutput)
-}
-
-func (o DlpCustomProfileProfileEntryPatternOutput) Regex() pulumi.StringOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileEntryPattern) string { return v.Regex }).(pulumi.StringOutput)
-}
-
-// Available values: "luhn".
-//
-// Deprecated: This attribute is deprecated.
-func (o DlpCustomProfileProfileEntryPatternOutput) Validation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileEntryPattern) *string { return v.Validation }).(pulumi.StringPtrOutput)
-}
-
-type DlpCustomProfileProfileEntryPatternPtrOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileEntryPatternPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DlpCustomProfileProfileEntryPattern)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileEntryPatternPtrOutput) ToDlpCustomProfileProfileEntryPatternPtrOutput() DlpCustomProfileProfileEntryPatternPtrOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileEntryPatternPtrOutput) ToDlpCustomProfileProfileEntryPatternPtrOutputWithContext(ctx context.Context) DlpCustomProfileProfileEntryPatternPtrOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileEntryPatternPtrOutput) Elem() DlpCustomProfileProfileEntryPatternOutput {
-	return o.ApplyT(func(v *DlpCustomProfileProfileEntryPattern) DlpCustomProfileProfileEntryPattern {
-		if v != nil {
-			return *v
-		}
-		var ret DlpCustomProfileProfileEntryPattern
-		return ret
-	}).(DlpCustomProfileProfileEntryPatternOutput)
-}
-
-func (o DlpCustomProfileProfileEntryPatternPtrOutput) Regex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfileProfileEntryPattern) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Regex
-	}).(pulumi.StringPtrOutput)
-}
-
-// Available values: "luhn".
-//
-// Deprecated: This attribute is deprecated.
-func (o DlpCustomProfileProfileEntryPatternPtrOutput) Validation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfileProfileEntryPattern) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Validation
-	}).(pulumi.StringPtrOutput)
-}
-
-type DlpCustomProfileProfileSharedEntry struct {
-	Enabled bool   `pulumi:"enabled"`
-	EntryId string `pulumi:"entryId"`
-	// Available values: "custom", "predefined", "integration", "exactData".
-	EntryType string `pulumi:"entryType"`
-}
-
-// DlpCustomProfileProfileSharedEntryInput is an input type that accepts DlpCustomProfileProfileSharedEntryArgs and DlpCustomProfileProfileSharedEntryOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileSharedEntryInput` via:
-//
-//	DlpCustomProfileProfileSharedEntryArgs{...}
-type DlpCustomProfileProfileSharedEntryInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileSharedEntryOutput() DlpCustomProfileProfileSharedEntryOutput
-	ToDlpCustomProfileProfileSharedEntryOutputWithContext(context.Context) DlpCustomProfileProfileSharedEntryOutput
-}
-
-type DlpCustomProfileProfileSharedEntryArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	EntryId pulumi.StringInput `pulumi:"entryId"`
-	// Available values: "custom", "predefined", "integration", "exactData".
-	EntryType pulumi.StringInput `pulumi:"entryType"`
-}
-
-func (DlpCustomProfileProfileSharedEntryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileSharedEntry)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileSharedEntryArgs) ToDlpCustomProfileProfileSharedEntryOutput() DlpCustomProfileProfileSharedEntryOutput {
-	return i.ToDlpCustomProfileProfileSharedEntryOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileSharedEntryArgs) ToDlpCustomProfileProfileSharedEntryOutputWithContext(ctx context.Context) DlpCustomProfileProfileSharedEntryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileSharedEntryOutput)
-}
-
-// DlpCustomProfileProfileSharedEntryArrayInput is an input type that accepts DlpCustomProfileProfileSharedEntryArray and DlpCustomProfileProfileSharedEntryArrayOutput values.
-// You can construct a concrete instance of `DlpCustomProfileProfileSharedEntryArrayInput` via:
-//
-//	DlpCustomProfileProfileSharedEntryArray{ DlpCustomProfileProfileSharedEntryArgs{...} }
-type DlpCustomProfileProfileSharedEntryArrayInput interface {
-	pulumi.Input
-
-	ToDlpCustomProfileProfileSharedEntryArrayOutput() DlpCustomProfileProfileSharedEntryArrayOutput
-	ToDlpCustomProfileProfileSharedEntryArrayOutputWithContext(context.Context) DlpCustomProfileProfileSharedEntryArrayOutput
-}
-
-type DlpCustomProfileProfileSharedEntryArray []DlpCustomProfileProfileSharedEntryInput
-
-func (DlpCustomProfileProfileSharedEntryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DlpCustomProfileProfileSharedEntry)(nil)).Elem()
-}
-
-func (i DlpCustomProfileProfileSharedEntryArray) ToDlpCustomProfileProfileSharedEntryArrayOutput() DlpCustomProfileProfileSharedEntryArrayOutput {
-	return i.ToDlpCustomProfileProfileSharedEntryArrayOutputWithContext(context.Background())
-}
-
-func (i DlpCustomProfileProfileSharedEntryArray) ToDlpCustomProfileProfileSharedEntryArrayOutputWithContext(ctx context.Context) DlpCustomProfileProfileSharedEntryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DlpCustomProfileProfileSharedEntryArrayOutput)
-}
-
-type DlpCustomProfileProfileSharedEntryOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileSharedEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DlpCustomProfileProfileSharedEntry)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileSharedEntryOutput) ToDlpCustomProfileProfileSharedEntryOutput() DlpCustomProfileProfileSharedEntryOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileSharedEntryOutput) ToDlpCustomProfileProfileSharedEntryOutputWithContext(ctx context.Context) DlpCustomProfileProfileSharedEntryOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileSharedEntryOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileSharedEntry) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-func (o DlpCustomProfileProfileSharedEntryOutput) EntryId() pulumi.StringOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileSharedEntry) string { return v.EntryId }).(pulumi.StringOutput)
-}
-
-// Available values: "custom", "predefined", "integration", "exactData".
-func (o DlpCustomProfileProfileSharedEntryOutput) EntryType() pulumi.StringOutput {
-	return o.ApplyT(func(v DlpCustomProfileProfileSharedEntry) string { return v.EntryType }).(pulumi.StringOutput)
-}
-
-type DlpCustomProfileProfileSharedEntryArrayOutput struct{ *pulumi.OutputState }
-
-func (DlpCustomProfileProfileSharedEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DlpCustomProfileProfileSharedEntry)(nil)).Elem()
-}
-
-func (o DlpCustomProfileProfileSharedEntryArrayOutput) ToDlpCustomProfileProfileSharedEntryArrayOutput() DlpCustomProfileProfileSharedEntryArrayOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileSharedEntryArrayOutput) ToDlpCustomProfileProfileSharedEntryArrayOutputWithContext(ctx context.Context) DlpCustomProfileProfileSharedEntryArrayOutput {
-	return o
-}
-
-func (o DlpCustomProfileProfileSharedEntryArrayOutput) Index(i pulumi.IntInput) DlpCustomProfileProfileSharedEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DlpCustomProfileProfileSharedEntry {
-		return vs[0].([]DlpCustomProfileProfileSharedEntry)[vs[1].(int)]
-	}).(DlpCustomProfileProfileSharedEntryOutput)
 }
 
 type DlpCustomProfileSharedEntry struct {
@@ -68747,7 +67917,7 @@ type PageRuleActions struct {
 	CacheKeyFields          *PageRuleActionsCacheKeyFields `pulumi:"cacheKeyFields"`
 	CacheLevel              *string                        `pulumi:"cacheLevel"`
 	CacheOnCookie           *string                        `pulumi:"cacheOnCookie"`
-	CacheTtlByStatus        interface{}                    `pulumi:"cacheTtlByStatus"`
+	CacheTtlByStatus        map[string]string              `pulumi:"cacheTtlByStatus"`
 	DisableApps             *bool                          `pulumi:"disableApps"`
 	DisablePerformance      *bool                          `pulumi:"disablePerformance"`
 	DisableSecurity         *bool                          `pulumi:"disableSecurity"`
@@ -68795,7 +67965,7 @@ type PageRuleActionsArgs struct {
 	CacheKeyFields          PageRuleActionsCacheKeyFieldsPtrInput `pulumi:"cacheKeyFields"`
 	CacheLevel              pulumi.StringPtrInput                 `pulumi:"cacheLevel"`
 	CacheOnCookie           pulumi.StringPtrInput                 `pulumi:"cacheOnCookie"`
-	CacheTtlByStatus        pulumi.Input                          `pulumi:"cacheTtlByStatus"`
+	CacheTtlByStatus        pulumi.StringMapInput                 `pulumi:"cacheTtlByStatus"`
 	DisableApps             pulumi.BoolPtrInput                   `pulumi:"disableApps"`
 	DisablePerformance      pulumi.BoolPtrInput                   `pulumi:"disablePerformance"`
 	DisableSecurity         pulumi.BoolPtrInput                   `pulumi:"disableSecurity"`
@@ -68938,8 +68108,8 @@ func (o PageRuleActionsOutput) CacheOnCookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PageRuleActions) *string { return v.CacheOnCookie }).(pulumi.StringPtrOutput)
 }
 
-func (o PageRuleActionsOutput) CacheTtlByStatus() pulumi.AnyOutput {
-	return o.ApplyT(func(v PageRuleActions) interface{} { return v.CacheTtlByStatus }).(pulumi.AnyOutput)
+func (o PageRuleActionsOutput) CacheTtlByStatus() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PageRuleActions) map[string]string { return v.CacheTtlByStatus }).(pulumi.StringMapOutput)
 }
 
 func (o PageRuleActionsOutput) DisableApps() pulumi.BoolPtrOutput {
@@ -69148,13 +68318,13 @@ func (o PageRuleActionsPtrOutput) CacheOnCookie() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o PageRuleActionsPtrOutput) CacheTtlByStatus() pulumi.AnyOutput {
-	return o.ApplyT(func(v *PageRuleActions) interface{} {
+func (o PageRuleActionsPtrOutput) CacheTtlByStatus() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PageRuleActions) map[string]string {
 		if v == nil {
 			return nil
 		}
 		return v.CacheTtlByStatus
-	}).(pulumi.AnyOutput)
+	}).(pulumi.StringMapOutput)
 }
 
 func (o PageRuleActionsPtrOutput) DisableApps() pulumi.BoolPtrOutput {
@@ -79957,260 +79127,6 @@ func (o R2BucketCorsRuleAllowedOutput) Origins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v R2BucketCorsRuleAllowed) []string { return v.Origins }).(pulumi.StringArrayOutput)
 }
 
-type R2BucketEventNotificationQueue struct {
-	// Queue ID.
-	QueueId *string `pulumi:"queueId"`
-	// Name of the queue.
-	QueueName *string                              `pulumi:"queueName"`
-	Rules     []R2BucketEventNotificationQueueRule `pulumi:"rules"`
-}
-
-// R2BucketEventNotificationQueueInput is an input type that accepts R2BucketEventNotificationQueueArgs and R2BucketEventNotificationQueueOutput values.
-// You can construct a concrete instance of `R2BucketEventNotificationQueueInput` via:
-//
-//	R2BucketEventNotificationQueueArgs{...}
-type R2BucketEventNotificationQueueInput interface {
-	pulumi.Input
-
-	ToR2BucketEventNotificationQueueOutput() R2BucketEventNotificationQueueOutput
-	ToR2BucketEventNotificationQueueOutputWithContext(context.Context) R2BucketEventNotificationQueueOutput
-}
-
-type R2BucketEventNotificationQueueArgs struct {
-	// Queue ID.
-	QueueId pulumi.StringPtrInput `pulumi:"queueId"`
-	// Name of the queue.
-	QueueName pulumi.StringPtrInput                        `pulumi:"queueName"`
-	Rules     R2BucketEventNotificationQueueRuleArrayInput `pulumi:"rules"`
-}
-
-func (R2BucketEventNotificationQueueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketEventNotificationQueue)(nil)).Elem()
-}
-
-func (i R2BucketEventNotificationQueueArgs) ToR2BucketEventNotificationQueueOutput() R2BucketEventNotificationQueueOutput {
-	return i.ToR2BucketEventNotificationQueueOutputWithContext(context.Background())
-}
-
-func (i R2BucketEventNotificationQueueArgs) ToR2BucketEventNotificationQueueOutputWithContext(ctx context.Context) R2BucketEventNotificationQueueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketEventNotificationQueueOutput)
-}
-
-// R2BucketEventNotificationQueueArrayInput is an input type that accepts R2BucketEventNotificationQueueArray and R2BucketEventNotificationQueueArrayOutput values.
-// You can construct a concrete instance of `R2BucketEventNotificationQueueArrayInput` via:
-//
-//	R2BucketEventNotificationQueueArray{ R2BucketEventNotificationQueueArgs{...} }
-type R2BucketEventNotificationQueueArrayInput interface {
-	pulumi.Input
-
-	ToR2BucketEventNotificationQueueArrayOutput() R2BucketEventNotificationQueueArrayOutput
-	ToR2BucketEventNotificationQueueArrayOutputWithContext(context.Context) R2BucketEventNotificationQueueArrayOutput
-}
-
-type R2BucketEventNotificationQueueArray []R2BucketEventNotificationQueueInput
-
-func (R2BucketEventNotificationQueueArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketEventNotificationQueue)(nil)).Elem()
-}
-
-func (i R2BucketEventNotificationQueueArray) ToR2BucketEventNotificationQueueArrayOutput() R2BucketEventNotificationQueueArrayOutput {
-	return i.ToR2BucketEventNotificationQueueArrayOutputWithContext(context.Background())
-}
-
-func (i R2BucketEventNotificationQueueArray) ToR2BucketEventNotificationQueueArrayOutputWithContext(ctx context.Context) R2BucketEventNotificationQueueArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketEventNotificationQueueArrayOutput)
-}
-
-type R2BucketEventNotificationQueueOutput struct{ *pulumi.OutputState }
-
-func (R2BucketEventNotificationQueueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketEventNotificationQueue)(nil)).Elem()
-}
-
-func (o R2BucketEventNotificationQueueOutput) ToR2BucketEventNotificationQueueOutput() R2BucketEventNotificationQueueOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationQueueOutput) ToR2BucketEventNotificationQueueOutputWithContext(ctx context.Context) R2BucketEventNotificationQueueOutput {
-	return o
-}
-
-// Queue ID.
-func (o R2BucketEventNotificationQueueOutput) QueueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueue) *string { return v.QueueId }).(pulumi.StringPtrOutput)
-}
-
-// Name of the queue.
-func (o R2BucketEventNotificationQueueOutput) QueueName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueue) *string { return v.QueueName }).(pulumi.StringPtrOutput)
-}
-
-func (o R2BucketEventNotificationQueueOutput) Rules() R2BucketEventNotificationQueueRuleArrayOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueue) []R2BucketEventNotificationQueueRule { return v.Rules }).(R2BucketEventNotificationQueueRuleArrayOutput)
-}
-
-type R2BucketEventNotificationQueueArrayOutput struct{ *pulumi.OutputState }
-
-func (R2BucketEventNotificationQueueArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketEventNotificationQueue)(nil)).Elem()
-}
-
-func (o R2BucketEventNotificationQueueArrayOutput) ToR2BucketEventNotificationQueueArrayOutput() R2BucketEventNotificationQueueArrayOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationQueueArrayOutput) ToR2BucketEventNotificationQueueArrayOutputWithContext(ctx context.Context) R2BucketEventNotificationQueueArrayOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationQueueArrayOutput) Index(i pulumi.IntInput) R2BucketEventNotificationQueueOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) R2BucketEventNotificationQueue {
-		return vs[0].([]R2BucketEventNotificationQueue)[vs[1].(int)]
-	}).(R2BucketEventNotificationQueueOutput)
-}
-
-type R2BucketEventNotificationQueueRule struct {
-	// Array of R2 object actions that will trigger notifications.
-	Actions []string `pulumi:"actions"`
-	// Timestamp when the rule was created.
-	CreatedAt *string `pulumi:"createdAt"`
-	// A description that can be used to identify the event notification rule after creation.
-	Description *string `pulumi:"description"`
-	// Notifications will be sent only for objects with this prefix.
-	Prefix *string `pulumi:"prefix"`
-	// Rule ID.
-	RuleId *string `pulumi:"ruleId"`
-	// Notifications will be sent only for objects with this suffix.
-	Suffix *string `pulumi:"suffix"`
-}
-
-// R2BucketEventNotificationQueueRuleInput is an input type that accepts R2BucketEventNotificationQueueRuleArgs and R2BucketEventNotificationQueueRuleOutput values.
-// You can construct a concrete instance of `R2BucketEventNotificationQueueRuleInput` via:
-//
-//	R2BucketEventNotificationQueueRuleArgs{...}
-type R2BucketEventNotificationQueueRuleInput interface {
-	pulumi.Input
-
-	ToR2BucketEventNotificationQueueRuleOutput() R2BucketEventNotificationQueueRuleOutput
-	ToR2BucketEventNotificationQueueRuleOutputWithContext(context.Context) R2BucketEventNotificationQueueRuleOutput
-}
-
-type R2BucketEventNotificationQueueRuleArgs struct {
-	// Array of R2 object actions that will trigger notifications.
-	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// Timestamp when the rule was created.
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// A description that can be used to identify the event notification rule after creation.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Notifications will be sent only for objects with this prefix.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// Rule ID.
-	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
-	// Notifications will be sent only for objects with this suffix.
-	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
-}
-
-func (R2BucketEventNotificationQueueRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketEventNotificationQueueRule)(nil)).Elem()
-}
-
-func (i R2BucketEventNotificationQueueRuleArgs) ToR2BucketEventNotificationQueueRuleOutput() R2BucketEventNotificationQueueRuleOutput {
-	return i.ToR2BucketEventNotificationQueueRuleOutputWithContext(context.Background())
-}
-
-func (i R2BucketEventNotificationQueueRuleArgs) ToR2BucketEventNotificationQueueRuleOutputWithContext(ctx context.Context) R2BucketEventNotificationQueueRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketEventNotificationQueueRuleOutput)
-}
-
-// R2BucketEventNotificationQueueRuleArrayInput is an input type that accepts R2BucketEventNotificationQueueRuleArray and R2BucketEventNotificationQueueRuleArrayOutput values.
-// You can construct a concrete instance of `R2BucketEventNotificationQueueRuleArrayInput` via:
-//
-//	R2BucketEventNotificationQueueRuleArray{ R2BucketEventNotificationQueueRuleArgs{...} }
-type R2BucketEventNotificationQueueRuleArrayInput interface {
-	pulumi.Input
-
-	ToR2BucketEventNotificationQueueRuleArrayOutput() R2BucketEventNotificationQueueRuleArrayOutput
-	ToR2BucketEventNotificationQueueRuleArrayOutputWithContext(context.Context) R2BucketEventNotificationQueueRuleArrayOutput
-}
-
-type R2BucketEventNotificationQueueRuleArray []R2BucketEventNotificationQueueRuleInput
-
-func (R2BucketEventNotificationQueueRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketEventNotificationQueueRule)(nil)).Elem()
-}
-
-func (i R2BucketEventNotificationQueueRuleArray) ToR2BucketEventNotificationQueueRuleArrayOutput() R2BucketEventNotificationQueueRuleArrayOutput {
-	return i.ToR2BucketEventNotificationQueueRuleArrayOutputWithContext(context.Background())
-}
-
-func (i R2BucketEventNotificationQueueRuleArray) ToR2BucketEventNotificationQueueRuleArrayOutputWithContext(ctx context.Context) R2BucketEventNotificationQueueRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(R2BucketEventNotificationQueueRuleArrayOutput)
-}
-
-type R2BucketEventNotificationQueueRuleOutput struct{ *pulumi.OutputState }
-
-func (R2BucketEventNotificationQueueRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*R2BucketEventNotificationQueueRule)(nil)).Elem()
-}
-
-func (o R2BucketEventNotificationQueueRuleOutput) ToR2BucketEventNotificationQueueRuleOutput() R2BucketEventNotificationQueueRuleOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationQueueRuleOutput) ToR2BucketEventNotificationQueueRuleOutputWithContext(ctx context.Context) R2BucketEventNotificationQueueRuleOutput {
-	return o
-}
-
-// Array of R2 object actions that will trigger notifications.
-func (o R2BucketEventNotificationQueueRuleOutput) Actions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) []string { return v.Actions }).(pulumi.StringArrayOutput)
-}
-
-// Timestamp when the rule was created.
-func (o R2BucketEventNotificationQueueRuleOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// A description that can be used to identify the event notification rule after creation.
-func (o R2BucketEventNotificationQueueRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Notifications will be sent only for objects with this prefix.
-func (o R2BucketEventNotificationQueueRuleOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-// Rule ID.
-func (o R2BucketEventNotificationQueueRuleOutput) RuleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.RuleId }).(pulumi.StringPtrOutput)
-}
-
-// Notifications will be sent only for objects with this suffix.
-func (o R2BucketEventNotificationQueueRuleOutput) Suffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v R2BucketEventNotificationQueueRule) *string { return v.Suffix }).(pulumi.StringPtrOutput)
-}
-
-type R2BucketEventNotificationQueueRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (R2BucketEventNotificationQueueRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]R2BucketEventNotificationQueueRule)(nil)).Elem()
-}
-
-func (o R2BucketEventNotificationQueueRuleArrayOutput) ToR2BucketEventNotificationQueueRuleArrayOutput() R2BucketEventNotificationQueueRuleArrayOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationQueueRuleArrayOutput) ToR2BucketEventNotificationQueueRuleArrayOutputWithContext(ctx context.Context) R2BucketEventNotificationQueueRuleArrayOutput {
-	return o
-}
-
-func (o R2BucketEventNotificationQueueRuleArrayOutput) Index(i pulumi.IntInput) R2BucketEventNotificationQueueRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) R2BucketEventNotificationQueueRule {
-		return vs[0].([]R2BucketEventNotificationQueueRule)[vs[1].(int)]
-	}).(R2BucketEventNotificationQueueRuleOutput)
-}
-
 type R2BucketEventNotificationRule struct {
 	// Array of R2 object actions that will trigger notifications.
 	Actions []string `pulumi:"actions"`
@@ -82453,6 +81369,1797 @@ func (o RateLimitActionResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RateLimitBypass struct {
+	// Available values: "url".
+	Name *string `pulumi:"name"`
+	// The URL to bypass.
+	Value *string `pulumi:"value"`
+}
+
+// RateLimitBypassInput is an input type that accepts RateLimitBypassArgs and RateLimitBypassOutput values.
+// You can construct a concrete instance of `RateLimitBypassInput` via:
+//
+//	RateLimitBypassArgs{...}
+type RateLimitBypassInput interface {
+	pulumi.Input
+
+	ToRateLimitBypassOutput() RateLimitBypassOutput
+	ToRateLimitBypassOutputWithContext(context.Context) RateLimitBypassOutput
+}
+
+type RateLimitBypassArgs struct {
+	// Available values: "url".
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The URL to bypass.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RateLimitBypassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitBypass)(nil)).Elem()
+}
+
+func (i RateLimitBypassArgs) ToRateLimitBypassOutput() RateLimitBypassOutput {
+	return i.ToRateLimitBypassOutputWithContext(context.Background())
+}
+
+func (i RateLimitBypassArgs) ToRateLimitBypassOutputWithContext(ctx context.Context) RateLimitBypassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitBypassOutput)
+}
+
+// RateLimitBypassArrayInput is an input type that accepts RateLimitBypassArray and RateLimitBypassArrayOutput values.
+// You can construct a concrete instance of `RateLimitBypassArrayInput` via:
+//
+//	RateLimitBypassArray{ RateLimitBypassArgs{...} }
+type RateLimitBypassArrayInput interface {
+	pulumi.Input
+
+	ToRateLimitBypassArrayOutput() RateLimitBypassArrayOutput
+	ToRateLimitBypassArrayOutputWithContext(context.Context) RateLimitBypassArrayOutput
+}
+
+type RateLimitBypassArray []RateLimitBypassInput
+
+func (RateLimitBypassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RateLimitBypass)(nil)).Elem()
+}
+
+func (i RateLimitBypassArray) ToRateLimitBypassArrayOutput() RateLimitBypassArrayOutput {
+	return i.ToRateLimitBypassArrayOutputWithContext(context.Background())
+}
+
+func (i RateLimitBypassArray) ToRateLimitBypassArrayOutputWithContext(ctx context.Context) RateLimitBypassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitBypassArrayOutput)
+}
+
+type RateLimitBypassOutput struct{ *pulumi.OutputState }
+
+func (RateLimitBypassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitBypass)(nil)).Elem()
+}
+
+func (o RateLimitBypassOutput) ToRateLimitBypassOutput() RateLimitBypassOutput {
+	return o
+}
+
+func (o RateLimitBypassOutput) ToRateLimitBypassOutputWithContext(ctx context.Context) RateLimitBypassOutput {
+	return o
+}
+
+// Available values: "url".
+func (o RateLimitBypassOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RateLimitBypass) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL to bypass.
+func (o RateLimitBypassOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RateLimitBypass) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RateLimitBypassArrayOutput struct{ *pulumi.OutputState }
+
+func (RateLimitBypassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RateLimitBypass)(nil)).Elem()
+}
+
+func (o RateLimitBypassArrayOutput) ToRateLimitBypassArrayOutput() RateLimitBypassArrayOutput {
+	return o
+}
+
+func (o RateLimitBypassArrayOutput) ToRateLimitBypassArrayOutputWithContext(ctx context.Context) RateLimitBypassArrayOutput {
+	return o
+}
+
+func (o RateLimitBypassArrayOutput) Index(i pulumi.IntInput) RateLimitBypassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RateLimitBypass {
+		return vs[0].([]RateLimitBypass)[vs[1].(int)]
+	}).(RateLimitBypassOutput)
+}
+
+type RateLimitMatch struct {
+	Headers  []RateLimitMatchHeader  `pulumi:"headers"`
+	Request  *RateLimitMatchRequest  `pulumi:"request"`
+	Response *RateLimitMatchResponse `pulumi:"response"`
+}
+
+// RateLimitMatchInput is an input type that accepts RateLimitMatchArgs and RateLimitMatchOutput values.
+// You can construct a concrete instance of `RateLimitMatchInput` via:
+//
+//	RateLimitMatchArgs{...}
+type RateLimitMatchInput interface {
+	pulumi.Input
+
+	ToRateLimitMatchOutput() RateLimitMatchOutput
+	ToRateLimitMatchOutputWithContext(context.Context) RateLimitMatchOutput
+}
+
+type RateLimitMatchArgs struct {
+	Headers  RateLimitMatchHeaderArrayInput `pulumi:"headers"`
+	Request  RateLimitMatchRequestPtrInput  `pulumi:"request"`
+	Response RateLimitMatchResponsePtrInput `pulumi:"response"`
+}
+
+func (RateLimitMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitMatch)(nil)).Elem()
+}
+
+func (i RateLimitMatchArgs) ToRateLimitMatchOutput() RateLimitMatchOutput {
+	return i.ToRateLimitMatchOutputWithContext(context.Background())
+}
+
+func (i RateLimitMatchArgs) ToRateLimitMatchOutputWithContext(ctx context.Context) RateLimitMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchOutput)
+}
+
+func (i RateLimitMatchArgs) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput {
+	return i.ToRateLimitMatchPtrOutputWithContext(context.Background())
+}
+
+func (i RateLimitMatchArgs) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchOutput).ToRateLimitMatchPtrOutputWithContext(ctx)
+}
+
+// RateLimitMatchPtrInput is an input type that accepts RateLimitMatchArgs, RateLimitMatchPtr and RateLimitMatchPtrOutput values.
+// You can construct a concrete instance of `RateLimitMatchPtrInput` via:
+//
+//	        RateLimitMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type RateLimitMatchPtrInput interface {
+	pulumi.Input
+
+	ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput
+	ToRateLimitMatchPtrOutputWithContext(context.Context) RateLimitMatchPtrOutput
+}
+
+type rateLimitMatchPtrType RateLimitMatchArgs
+
+func RateLimitMatchPtr(v *RateLimitMatchArgs) RateLimitMatchPtrInput {
+	return (*rateLimitMatchPtrType)(v)
+}
+
+func (*rateLimitMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateLimitMatch)(nil)).Elem()
+}
+
+func (i *rateLimitMatchPtrType) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput {
+	return i.ToRateLimitMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *rateLimitMatchPtrType) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchPtrOutput)
+}
+
+type RateLimitMatchOutput struct{ *pulumi.OutputState }
+
+func (RateLimitMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitMatch)(nil)).Elem()
+}
+
+func (o RateLimitMatchOutput) ToRateLimitMatchOutput() RateLimitMatchOutput {
+	return o
+}
+
+func (o RateLimitMatchOutput) ToRateLimitMatchOutputWithContext(ctx context.Context) RateLimitMatchOutput {
+	return o
+}
+
+func (o RateLimitMatchOutput) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput {
+	return o.ToRateLimitMatchPtrOutputWithContext(context.Background())
+}
+
+func (o RateLimitMatchOutput) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatch) *RateLimitMatch {
+		return &v
+	}).(RateLimitMatchPtrOutput)
+}
+
+func (o RateLimitMatchOutput) Headers() RateLimitMatchHeaderArrayOutput {
+	return o.ApplyT(func(v RateLimitMatch) []RateLimitMatchHeader { return v.Headers }).(RateLimitMatchHeaderArrayOutput)
+}
+
+func (o RateLimitMatchOutput) Request() RateLimitMatchRequestPtrOutput {
+	return o.ApplyT(func(v RateLimitMatch) *RateLimitMatchRequest { return v.Request }).(RateLimitMatchRequestPtrOutput)
+}
+
+func (o RateLimitMatchOutput) Response() RateLimitMatchResponsePtrOutput {
+	return o.ApplyT(func(v RateLimitMatch) *RateLimitMatchResponse { return v.Response }).(RateLimitMatchResponsePtrOutput)
+}
+
+type RateLimitMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (RateLimitMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateLimitMatch)(nil)).Elem()
+}
+
+func (o RateLimitMatchPtrOutput) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutput {
+	return o
+}
+
+func (o RateLimitMatchPtrOutput) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
+	return o
+}
+
+func (o RateLimitMatchPtrOutput) Elem() RateLimitMatchOutput {
+	return o.ApplyT(func(v *RateLimitMatch) RateLimitMatch {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitMatch
+		return ret
+	}).(RateLimitMatchOutput)
+}
+
+func (o RateLimitMatchPtrOutput) Headers() RateLimitMatchHeaderArrayOutput {
+	return o.ApplyT(func(v *RateLimitMatch) []RateLimitMatchHeader {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(RateLimitMatchHeaderArrayOutput)
+}
+
+func (o RateLimitMatchPtrOutput) Request() RateLimitMatchRequestPtrOutput {
+	return o.ApplyT(func(v *RateLimitMatch) *RateLimitMatchRequest {
+		if v == nil {
+			return nil
+		}
+		return v.Request
+	}).(RateLimitMatchRequestPtrOutput)
+}
+
+func (o RateLimitMatchPtrOutput) Response() RateLimitMatchResponsePtrOutput {
+	return o.ApplyT(func(v *RateLimitMatch) *RateLimitMatchResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(RateLimitMatchResponsePtrOutput)
+}
+
+type RateLimitMatchHeader struct {
+	// The name of the response header to match.
+	Name *string `pulumi:"name"`
+	// The operator used when matching: `eq` means "equal" and `ne` means "not equal".
+	// Available values: "eq", "ne".
+	Op *string `pulumi:"op"`
+	// The value of the response header, which must match exactly.
+	Value *string `pulumi:"value"`
+}
+
+// RateLimitMatchHeaderInput is an input type that accepts RateLimitMatchHeaderArgs and RateLimitMatchHeaderOutput values.
+// You can construct a concrete instance of `RateLimitMatchHeaderInput` via:
+//
+//	RateLimitMatchHeaderArgs{...}
+type RateLimitMatchHeaderInput interface {
+	pulumi.Input
+
+	ToRateLimitMatchHeaderOutput() RateLimitMatchHeaderOutput
+	ToRateLimitMatchHeaderOutputWithContext(context.Context) RateLimitMatchHeaderOutput
+}
+
+type RateLimitMatchHeaderArgs struct {
+	// The name of the response header to match.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The operator used when matching: `eq` means "equal" and `ne` means "not equal".
+	// Available values: "eq", "ne".
+	Op pulumi.StringPtrInput `pulumi:"op"`
+	// The value of the response header, which must match exactly.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RateLimitMatchHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitMatchHeader)(nil)).Elem()
+}
+
+func (i RateLimitMatchHeaderArgs) ToRateLimitMatchHeaderOutput() RateLimitMatchHeaderOutput {
+	return i.ToRateLimitMatchHeaderOutputWithContext(context.Background())
+}
+
+func (i RateLimitMatchHeaderArgs) ToRateLimitMatchHeaderOutputWithContext(ctx context.Context) RateLimitMatchHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchHeaderOutput)
+}
+
+// RateLimitMatchHeaderArrayInput is an input type that accepts RateLimitMatchHeaderArray and RateLimitMatchHeaderArrayOutput values.
+// You can construct a concrete instance of `RateLimitMatchHeaderArrayInput` via:
+//
+//	RateLimitMatchHeaderArray{ RateLimitMatchHeaderArgs{...} }
+type RateLimitMatchHeaderArrayInput interface {
+	pulumi.Input
+
+	ToRateLimitMatchHeaderArrayOutput() RateLimitMatchHeaderArrayOutput
+	ToRateLimitMatchHeaderArrayOutputWithContext(context.Context) RateLimitMatchHeaderArrayOutput
+}
+
+type RateLimitMatchHeaderArray []RateLimitMatchHeaderInput
+
+func (RateLimitMatchHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RateLimitMatchHeader)(nil)).Elem()
+}
+
+func (i RateLimitMatchHeaderArray) ToRateLimitMatchHeaderArrayOutput() RateLimitMatchHeaderArrayOutput {
+	return i.ToRateLimitMatchHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i RateLimitMatchHeaderArray) ToRateLimitMatchHeaderArrayOutputWithContext(ctx context.Context) RateLimitMatchHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchHeaderArrayOutput)
+}
+
+type RateLimitMatchHeaderOutput struct{ *pulumi.OutputState }
+
+func (RateLimitMatchHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitMatchHeader)(nil)).Elem()
+}
+
+func (o RateLimitMatchHeaderOutput) ToRateLimitMatchHeaderOutput() RateLimitMatchHeaderOutput {
+	return o
+}
+
+func (o RateLimitMatchHeaderOutput) ToRateLimitMatchHeaderOutputWithContext(ctx context.Context) RateLimitMatchHeaderOutput {
+	return o
+}
+
+// The name of the response header to match.
+func (o RateLimitMatchHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RateLimitMatchHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The operator used when matching: `eq` means "equal" and `ne` means "not equal".
+// Available values: "eq", "ne".
+func (o RateLimitMatchHeaderOutput) Op() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RateLimitMatchHeader) *string { return v.Op }).(pulumi.StringPtrOutput)
+}
+
+// The value of the response header, which must match exactly.
+func (o RateLimitMatchHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RateLimitMatchHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RateLimitMatchHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (RateLimitMatchHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RateLimitMatchHeader)(nil)).Elem()
+}
+
+func (o RateLimitMatchHeaderArrayOutput) ToRateLimitMatchHeaderArrayOutput() RateLimitMatchHeaderArrayOutput {
+	return o
+}
+
+func (o RateLimitMatchHeaderArrayOutput) ToRateLimitMatchHeaderArrayOutputWithContext(ctx context.Context) RateLimitMatchHeaderArrayOutput {
+	return o
+}
+
+func (o RateLimitMatchHeaderArrayOutput) Index(i pulumi.IntInput) RateLimitMatchHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RateLimitMatchHeader {
+		return vs[0].([]RateLimitMatchHeader)[vs[1].(int)]
+	}).(RateLimitMatchHeaderOutput)
+}
+
+type RateLimitMatchRequest struct {
+	// The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
+	Methods []string `pulumi:"methods"`
+	// The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
+	Schemes []string `pulumi:"schemes"`
+	// The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
+	Url *string `pulumi:"url"`
+}
+
+// RateLimitMatchRequestInput is an input type that accepts RateLimitMatchRequestArgs and RateLimitMatchRequestOutput values.
+// You can construct a concrete instance of `RateLimitMatchRequestInput` via:
+//
+//	RateLimitMatchRequestArgs{...}
+type RateLimitMatchRequestInput interface {
+	pulumi.Input
+
+	ToRateLimitMatchRequestOutput() RateLimitMatchRequestOutput
+	ToRateLimitMatchRequestOutputWithContext(context.Context) RateLimitMatchRequestOutput
+}
+
+type RateLimitMatchRequestArgs struct {
+	// The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
+	Schemes pulumi.StringArrayInput `pulumi:"schemes"`
+	// The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (RateLimitMatchRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitMatchRequest)(nil)).Elem()
+}
+
+func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestOutput() RateLimitMatchRequestOutput {
+	return i.ToRateLimitMatchRequestOutputWithContext(context.Background())
+}
+
+func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestOutputWithContext(ctx context.Context) RateLimitMatchRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchRequestOutput)
+}
+
+func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput {
+	return i.ToRateLimitMatchRequestPtrOutputWithContext(context.Background())
+}
+
+func (i RateLimitMatchRequestArgs) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchRequestOutput).ToRateLimitMatchRequestPtrOutputWithContext(ctx)
+}
+
+// RateLimitMatchRequestPtrInput is an input type that accepts RateLimitMatchRequestArgs, RateLimitMatchRequestPtr and RateLimitMatchRequestPtrOutput values.
+// You can construct a concrete instance of `RateLimitMatchRequestPtrInput` via:
+//
+//	        RateLimitMatchRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type RateLimitMatchRequestPtrInput interface {
+	pulumi.Input
+
+	ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput
+	ToRateLimitMatchRequestPtrOutputWithContext(context.Context) RateLimitMatchRequestPtrOutput
+}
+
+type rateLimitMatchRequestPtrType RateLimitMatchRequestArgs
+
+func RateLimitMatchRequestPtr(v *RateLimitMatchRequestArgs) RateLimitMatchRequestPtrInput {
+	return (*rateLimitMatchRequestPtrType)(v)
+}
+
+func (*rateLimitMatchRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateLimitMatchRequest)(nil)).Elem()
+}
+
+func (i *rateLimitMatchRequestPtrType) ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput {
+	return i.ToRateLimitMatchRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *rateLimitMatchRequestPtrType) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchRequestPtrOutput)
+}
+
+type RateLimitMatchRequestOutput struct{ *pulumi.OutputState }
+
+func (RateLimitMatchRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitMatchRequest)(nil)).Elem()
+}
+
+func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestOutput() RateLimitMatchRequestOutput {
+	return o
+}
+
+func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestOutputWithContext(ctx context.Context) RateLimitMatchRequestOutput {
+	return o
+}
+
+func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput {
+	return o.ToRateLimitMatchRequestPtrOutputWithContext(context.Background())
+}
+
+func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatchRequest) *RateLimitMatchRequest {
+		return &v
+	}).(RateLimitMatchRequestPtrOutput)
+}
+
+// The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
+func (o RateLimitMatchRequestOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RateLimitMatchRequest) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
+func (o RateLimitMatchRequestOutput) Schemes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RateLimitMatchRequest) []string { return v.Schemes }).(pulumi.StringArrayOutput)
+}
+
+// The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
+func (o RateLimitMatchRequestOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RateLimitMatchRequest) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type RateLimitMatchRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (RateLimitMatchRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateLimitMatchRequest)(nil)).Elem()
+}
+
+func (o RateLimitMatchRequestPtrOutput) ToRateLimitMatchRequestPtrOutput() RateLimitMatchRequestPtrOutput {
+	return o
+}
+
+func (o RateLimitMatchRequestPtrOutput) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
+	return o
+}
+
+func (o RateLimitMatchRequestPtrOutput) Elem() RateLimitMatchRequestOutput {
+	return o.ApplyT(func(v *RateLimitMatchRequest) RateLimitMatchRequest {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitMatchRequest
+		return ret
+	}).(RateLimitMatchRequestOutput)
+}
+
+// The HTTP methods to match. You can specify a subset (for example, `['POST','PUT']`) or all methods (`['_ALL_']`). This field is optional when creating a rate limit.
+func (o RateLimitMatchRequestPtrOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RateLimitMatchRequest) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Methods
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HTTP schemes to match. You can specify one scheme (`['HTTPS']`), both schemes (`['HTTP','HTTPS']`), or all schemes (`['_ALL_']`). This field is optional.
+func (o RateLimitMatchRequestPtrOutput) Schemes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RateLimitMatchRequest) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Schemes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The URL pattern to match, composed of a host and a path such as `example.org/path*`. Normalization is applied before the pattern is matched. `*` wildcards are expanded to match applicable traffic. Query strings are not matched. Set the value to `*` to match all traffic to your zone.
+func (o RateLimitMatchRequestPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimitMatchRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+type RateLimitMatchResponse struct {
+	// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+	// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
+	OriginTraffic *bool `pulumi:"originTraffic"`
+}
+
+// RateLimitMatchResponseInput is an input type that accepts RateLimitMatchResponseArgs and RateLimitMatchResponseOutput values.
+// You can construct a concrete instance of `RateLimitMatchResponseInput` via:
+//
+//	RateLimitMatchResponseArgs{...}
+type RateLimitMatchResponseInput interface {
+	pulumi.Input
+
+	ToRateLimitMatchResponseOutput() RateLimitMatchResponseOutput
+	ToRateLimitMatchResponseOutputWithContext(context.Context) RateLimitMatchResponseOutput
+}
+
+type RateLimitMatchResponseArgs struct {
+	// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+	// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
+	OriginTraffic pulumi.BoolPtrInput `pulumi:"originTraffic"`
+}
+
+func (RateLimitMatchResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitMatchResponse)(nil)).Elem()
+}
+
+func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponseOutput() RateLimitMatchResponseOutput {
+	return i.ToRateLimitMatchResponseOutputWithContext(context.Background())
+}
+
+func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponseOutputWithContext(ctx context.Context) RateLimitMatchResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchResponseOutput)
+}
+
+func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput {
+	return i.ToRateLimitMatchResponsePtrOutputWithContext(context.Background())
+}
+
+func (i RateLimitMatchResponseArgs) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchResponseOutput).ToRateLimitMatchResponsePtrOutputWithContext(ctx)
+}
+
+// RateLimitMatchResponsePtrInput is an input type that accepts RateLimitMatchResponseArgs, RateLimitMatchResponsePtr and RateLimitMatchResponsePtrOutput values.
+// You can construct a concrete instance of `RateLimitMatchResponsePtrInput` via:
+//
+//	        RateLimitMatchResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type RateLimitMatchResponsePtrInput interface {
+	pulumi.Input
+
+	ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput
+	ToRateLimitMatchResponsePtrOutputWithContext(context.Context) RateLimitMatchResponsePtrOutput
+}
+
+type rateLimitMatchResponsePtrType RateLimitMatchResponseArgs
+
+func RateLimitMatchResponsePtr(v *RateLimitMatchResponseArgs) RateLimitMatchResponsePtrInput {
+	return (*rateLimitMatchResponsePtrType)(v)
+}
+
+func (*rateLimitMatchResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateLimitMatchResponse)(nil)).Elem()
+}
+
+func (i *rateLimitMatchResponsePtrType) ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput {
+	return i.ToRateLimitMatchResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *rateLimitMatchResponsePtrType) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMatchResponsePtrOutput)
+}
+
+type RateLimitMatchResponseOutput struct{ *pulumi.OutputState }
+
+func (RateLimitMatchResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitMatchResponse)(nil)).Elem()
+}
+
+func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponseOutput() RateLimitMatchResponseOutput {
+	return o
+}
+
+func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponseOutputWithContext(ctx context.Context) RateLimitMatchResponseOutput {
+	return o
+}
+
+func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput {
+	return o.ToRateLimitMatchResponsePtrOutputWithContext(context.Background())
+}
+
+func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatchResponse) *RateLimitMatchResponse {
+		return &v
+	}).(RateLimitMatchResponsePtrOutput)
+}
+
+// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
+func (o RateLimitMatchResponseOutput) OriginTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RateLimitMatchResponse) *bool { return v.OriginTraffic }).(pulumi.BoolPtrOutput)
+}
+
+type RateLimitMatchResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RateLimitMatchResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateLimitMatchResponse)(nil)).Elem()
+}
+
+func (o RateLimitMatchResponsePtrOutput) ToRateLimitMatchResponsePtrOutput() RateLimitMatchResponsePtrOutput {
+	return o
+}
+
+func (o RateLimitMatchResponsePtrOutput) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
+	return o
+}
+
+func (o RateLimitMatchResponsePtrOutput) Elem() RateLimitMatchResponseOutput {
+	return o.ApplyT(func(v *RateLimitMatchResponse) RateLimitMatchResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitMatchResponse
+		return ret
+	}).(RateLimitMatchResponseOutput)
+}
+
+// When true, only the uncached traffic served from your origin servers will count towards rate limiting. In this case, any cached traffic served by Cloudflare will not count towards rate limiting. This field is optional.
+// Notes: This field is deprecated. Instead, use response headers and set "origin*traffic" to "false" to avoid legacy behaviour interacting with the "response*headers" property.
+func (o RateLimitMatchResponsePtrOutput) OriginTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RateLimitMatchResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OriginTraffic
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RecordData struct {
+	// Algorithm.
+	Algorithm *float64 `pulumi:"algorithm"`
+	// Altitude of location in meters.
+	Altitude *float64 `pulumi:"altitude"`
+	// Certificate.
+	Certificate *string `pulumi:"certificate"`
+	// Digest.
+	Digest *string `pulumi:"digest"`
+	// Digest Type.
+	DigestType *float64 `pulumi:"digestType"`
+	// fingerprint.
+	Fingerprint *string `pulumi:"fingerprint"`
+	// Flags for the CAA record.
+	Flags *float64 `pulumi:"flags"`
+	// Key Tag.
+	KeyTag *float64 `pulumi:"keyTag"`
+	// Degrees of latitude.
+	LatDegrees *float64 `pulumi:"latDegrees"`
+	// Latitude direction.
+	// Available values: "N", "S".
+	LatDirection *string `pulumi:"latDirection"`
+	// Minutes of latitude.
+	LatMinutes *float64 `pulumi:"latMinutes"`
+	// Seconds of latitude.
+	LatSeconds *float64 `pulumi:"latSeconds"`
+	// Degrees of longitude.
+	LongDegrees *float64 `pulumi:"longDegrees"`
+	// Longitude direction.
+	// Available values: "E", "W".
+	LongDirection *string `pulumi:"longDirection"`
+	// Minutes of longitude.
+	LongMinutes *float64 `pulumi:"longMinutes"`
+	// Seconds of longitude.
+	LongSeconds *float64 `pulumi:"longSeconds"`
+	// Matching Type.
+	MatchingType *float64 `pulumi:"matchingType"`
+	// Order.
+	Order *float64 `pulumi:"order"`
+	// The port of the service.
+	Port *float64 `pulumi:"port"`
+	// Horizontal precision of location.
+	PrecisionHorz *float64 `pulumi:"precisionHorz"`
+	// Vertical precision of location.
+	PrecisionVert *float64 `pulumi:"precisionVert"`
+	// Preference.
+	Preference *float64 `pulumi:"preference"`
+	// priority.
+	Priority *float64 `pulumi:"priority"`
+	// Protocol.
+	Protocol *float64 `pulumi:"protocol"`
+	// Public Key.
+	PublicKey *string `pulumi:"publicKey"`
+	// Regex.
+	Regex *string `pulumi:"regex"`
+	// Replacement.
+	Replacement *string `pulumi:"replacement"`
+	// Selector.
+	Selector *float64 `pulumi:"selector"`
+	// Service.
+	Service *string `pulumi:"service"`
+	// Size of location in meters.
+	Size *float64 `pulumi:"size"`
+	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+	Tag *string `pulumi:"tag"`
+	// target.
+	Target *string `pulumi:"target"`
+	// Type.
+	Type *float64 `pulumi:"type"`
+	// Usage.
+	Usage *float64 `pulumi:"usage"`
+	// Value of the record. This field's semantics depend on the chosen tag.
+	Value *string `pulumi:"value"`
+	// The record weight.
+	Weight *float64 `pulumi:"weight"`
+}
+
+// RecordDataInput is an input type that accepts RecordDataArgs and RecordDataOutput values.
+// You can construct a concrete instance of `RecordDataInput` via:
+//
+//	RecordDataArgs{...}
+type RecordDataInput interface {
+	pulumi.Input
+
+	ToRecordDataOutput() RecordDataOutput
+	ToRecordDataOutputWithContext(context.Context) RecordDataOutput
+}
+
+type RecordDataArgs struct {
+	// Algorithm.
+	Algorithm pulumi.Float64PtrInput `pulumi:"algorithm"`
+	// Altitude of location in meters.
+	Altitude pulumi.Float64PtrInput `pulumi:"altitude"`
+	// Certificate.
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// Digest.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	// Digest Type.
+	DigestType pulumi.Float64PtrInput `pulumi:"digestType"`
+	// fingerprint.
+	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
+	// Flags for the CAA record.
+	Flags pulumi.Float64PtrInput `pulumi:"flags"`
+	// Key Tag.
+	KeyTag pulumi.Float64PtrInput `pulumi:"keyTag"`
+	// Degrees of latitude.
+	LatDegrees pulumi.Float64PtrInput `pulumi:"latDegrees"`
+	// Latitude direction.
+	// Available values: "N", "S".
+	LatDirection pulumi.StringPtrInput `pulumi:"latDirection"`
+	// Minutes of latitude.
+	LatMinutes pulumi.Float64PtrInput `pulumi:"latMinutes"`
+	// Seconds of latitude.
+	LatSeconds pulumi.Float64PtrInput `pulumi:"latSeconds"`
+	// Degrees of longitude.
+	LongDegrees pulumi.Float64PtrInput `pulumi:"longDegrees"`
+	// Longitude direction.
+	// Available values: "E", "W".
+	LongDirection pulumi.StringPtrInput `pulumi:"longDirection"`
+	// Minutes of longitude.
+	LongMinutes pulumi.Float64PtrInput `pulumi:"longMinutes"`
+	// Seconds of longitude.
+	LongSeconds pulumi.Float64PtrInput `pulumi:"longSeconds"`
+	// Matching Type.
+	MatchingType pulumi.Float64PtrInput `pulumi:"matchingType"`
+	// Order.
+	Order pulumi.Float64PtrInput `pulumi:"order"`
+	// The port of the service.
+	Port pulumi.Float64PtrInput `pulumi:"port"`
+	// Horizontal precision of location.
+	PrecisionHorz pulumi.Float64PtrInput `pulumi:"precisionHorz"`
+	// Vertical precision of location.
+	PrecisionVert pulumi.Float64PtrInput `pulumi:"precisionVert"`
+	// Preference.
+	Preference pulumi.Float64PtrInput `pulumi:"preference"`
+	// priority.
+	Priority pulumi.Float64PtrInput `pulumi:"priority"`
+	// Protocol.
+	Protocol pulumi.Float64PtrInput `pulumi:"protocol"`
+	// Public Key.
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// Regex.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+	// Replacement.
+	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
+	// Selector.
+	Selector pulumi.Float64PtrInput `pulumi:"selector"`
+	// Service.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// Size of location in meters.
+	Size pulumi.Float64PtrInput `pulumi:"size"`
+	// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// target.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// Type.
+	Type pulumi.Float64PtrInput `pulumi:"type"`
+	// Usage.
+	Usage pulumi.Float64PtrInput `pulumi:"usage"`
+	// Value of the record. This field's semantics depend on the chosen tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The record weight.
+	Weight pulumi.Float64PtrInput `pulumi:"weight"`
+}
+
+func (RecordDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordData)(nil)).Elem()
+}
+
+func (i RecordDataArgs) ToRecordDataOutput() RecordDataOutput {
+	return i.ToRecordDataOutputWithContext(context.Background())
+}
+
+func (i RecordDataArgs) ToRecordDataOutputWithContext(ctx context.Context) RecordDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordDataOutput)
+}
+
+func (i RecordDataArgs) ToRecordDataPtrOutput() RecordDataPtrOutput {
+	return i.ToRecordDataPtrOutputWithContext(context.Background())
+}
+
+func (i RecordDataArgs) ToRecordDataPtrOutputWithContext(ctx context.Context) RecordDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordDataOutput).ToRecordDataPtrOutputWithContext(ctx)
+}
+
+// RecordDataPtrInput is an input type that accepts RecordDataArgs, RecordDataPtr and RecordDataPtrOutput values.
+// You can construct a concrete instance of `RecordDataPtrInput` via:
+//
+//	        RecordDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecordDataPtrInput interface {
+	pulumi.Input
+
+	ToRecordDataPtrOutput() RecordDataPtrOutput
+	ToRecordDataPtrOutputWithContext(context.Context) RecordDataPtrOutput
+}
+
+type recordDataPtrType RecordDataArgs
+
+func RecordDataPtr(v *RecordDataArgs) RecordDataPtrInput {
+	return (*recordDataPtrType)(v)
+}
+
+func (*recordDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordData)(nil)).Elem()
+}
+
+func (i *recordDataPtrType) ToRecordDataPtrOutput() RecordDataPtrOutput {
+	return i.ToRecordDataPtrOutputWithContext(context.Background())
+}
+
+func (i *recordDataPtrType) ToRecordDataPtrOutputWithContext(ctx context.Context) RecordDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordDataPtrOutput)
+}
+
+type RecordDataOutput struct{ *pulumi.OutputState }
+
+func (RecordDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordData)(nil)).Elem()
+}
+
+func (o RecordDataOutput) ToRecordDataOutput() RecordDataOutput {
+	return o
+}
+
+func (o RecordDataOutput) ToRecordDataOutputWithContext(ctx context.Context) RecordDataOutput {
+	return o
+}
+
+func (o RecordDataOutput) ToRecordDataPtrOutput() RecordDataPtrOutput {
+	return o.ToRecordDataPtrOutputWithContext(context.Background())
+}
+
+func (o RecordDataOutput) ToRecordDataPtrOutputWithContext(ctx context.Context) RecordDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordData) *RecordData {
+		return &v
+	}).(RecordDataPtrOutput)
+}
+
+// Algorithm.
+func (o RecordDataOutput) Algorithm() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Algorithm }).(pulumi.Float64PtrOutput)
+}
+
+// Altitude of location in meters.
+func (o RecordDataOutput) Altitude() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Altitude }).(pulumi.Float64PtrOutput)
+}
+
+// Certificate.
+func (o RecordDataOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// Digest.
+func (o RecordDataOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// Digest Type.
+func (o RecordDataOutput) DigestType() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.DigestType }).(pulumi.Float64PtrOutput)
+}
+
+// fingerprint.
+func (o RecordDataOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
+}
+
+// Flags for the CAA record.
+func (o RecordDataOutput) Flags() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Flags }).(pulumi.Float64PtrOutput)
+}
+
+// Key Tag.
+func (o RecordDataOutput) KeyTag() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.KeyTag }).(pulumi.Float64PtrOutput)
+}
+
+// Degrees of latitude.
+func (o RecordDataOutput) LatDegrees() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.LatDegrees }).(pulumi.Float64PtrOutput)
+}
+
+// Latitude direction.
+// Available values: "N", "S".
+func (o RecordDataOutput) LatDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.LatDirection }).(pulumi.StringPtrOutput)
+}
+
+// Minutes of latitude.
+func (o RecordDataOutput) LatMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.LatMinutes }).(pulumi.Float64PtrOutput)
+}
+
+// Seconds of latitude.
+func (o RecordDataOutput) LatSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.LatSeconds }).(pulumi.Float64PtrOutput)
+}
+
+// Degrees of longitude.
+func (o RecordDataOutput) LongDegrees() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.LongDegrees }).(pulumi.Float64PtrOutput)
+}
+
+// Longitude direction.
+// Available values: "E", "W".
+func (o RecordDataOutput) LongDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.LongDirection }).(pulumi.StringPtrOutput)
+}
+
+// Minutes of longitude.
+func (o RecordDataOutput) LongMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.LongMinutes }).(pulumi.Float64PtrOutput)
+}
+
+// Seconds of longitude.
+func (o RecordDataOutput) LongSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.LongSeconds }).(pulumi.Float64PtrOutput)
+}
+
+// Matching Type.
+func (o RecordDataOutput) MatchingType() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.MatchingType }).(pulumi.Float64PtrOutput)
+}
+
+// Order.
+func (o RecordDataOutput) Order() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Order }).(pulumi.Float64PtrOutput)
+}
+
+// The port of the service.
+func (o RecordDataOutput) Port() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Port }).(pulumi.Float64PtrOutput)
+}
+
+// Horizontal precision of location.
+func (o RecordDataOutput) PrecisionHorz() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.PrecisionHorz }).(pulumi.Float64PtrOutput)
+}
+
+// Vertical precision of location.
+func (o RecordDataOutput) PrecisionVert() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.PrecisionVert }).(pulumi.Float64PtrOutput)
+}
+
+// Preference.
+func (o RecordDataOutput) Preference() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Preference }).(pulumi.Float64PtrOutput)
+}
+
+// priority.
+func (o RecordDataOutput) Priority() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Priority }).(pulumi.Float64PtrOutput)
+}
+
+// Protocol.
+func (o RecordDataOutput) Protocol() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Protocol }).(pulumi.Float64PtrOutput)
+}
+
+// Public Key.
+func (o RecordDataOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+// Regex.
+func (o RecordDataOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+// Replacement.
+func (o RecordDataOutput) Replacement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Replacement }).(pulumi.StringPtrOutput)
+}
+
+// Selector.
+func (o RecordDataOutput) Selector() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Selector }).(pulumi.Float64PtrOutput)
+}
+
+// Service.
+func (o RecordDataOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// Size of location in meters.
+func (o RecordDataOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
+}
+
+// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+func (o RecordDataOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// target.
+func (o RecordDataOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// Type.
+func (o RecordDataOutput) Type() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Type }).(pulumi.Float64PtrOutput)
+}
+
+// Usage.
+func (o RecordDataOutput) Usage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Usage }).(pulumi.Float64PtrOutput)
+}
+
+// Value of the record. This field's semantics depend on the chosen tag.
+func (o RecordDataOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+// The record weight.
+func (o RecordDataOutput) Weight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RecordData) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
+}
+
+type RecordDataPtrOutput struct{ *pulumi.OutputState }
+
+func (RecordDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordData)(nil)).Elem()
+}
+
+func (o RecordDataPtrOutput) ToRecordDataPtrOutput() RecordDataPtrOutput {
+	return o
+}
+
+func (o RecordDataPtrOutput) ToRecordDataPtrOutputWithContext(ctx context.Context) RecordDataPtrOutput {
+	return o
+}
+
+func (o RecordDataPtrOutput) Elem() RecordDataOutput {
+	return o.ApplyT(func(v *RecordData) RecordData {
+		if v != nil {
+			return *v
+		}
+		var ret RecordData
+		return ret
+	}).(RecordDataOutput)
+}
+
+// Algorithm.
+func (o RecordDataPtrOutput) Algorithm() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Altitude of location in meters.
+func (o RecordDataPtrOutput) Altitude() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Altitude
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Certificate.
+func (o RecordDataPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Digest.
+func (o RecordDataPtrOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
+}
+
+// Digest Type.
+func (o RecordDataPtrOutput) DigestType() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DigestType
+	}).(pulumi.Float64PtrOutput)
+}
+
+// fingerprint.
+func (o RecordDataPtrOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flags for the CAA record.
+func (o RecordDataPtrOutput) Flags() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Key Tag.
+func (o RecordDataPtrOutput) KeyTag() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.KeyTag
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Degrees of latitude.
+func (o RecordDataPtrOutput) LatDegrees() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LatDegrees
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Latitude direction.
+// Available values: "N", "S".
+func (o RecordDataPtrOutput) LatDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatDirection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minutes of latitude.
+func (o RecordDataPtrOutput) LatMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LatMinutes
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Seconds of latitude.
+func (o RecordDataPtrOutput) LatSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LatSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Degrees of longitude.
+func (o RecordDataPtrOutput) LongDegrees() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LongDegrees
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Longitude direction.
+// Available values: "E", "W".
+func (o RecordDataPtrOutput) LongDirection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LongDirection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Minutes of longitude.
+func (o RecordDataPtrOutput) LongMinutes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LongMinutes
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Seconds of longitude.
+func (o RecordDataPtrOutput) LongSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LongSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Matching Type.
+func (o RecordDataPtrOutput) MatchingType() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MatchingType
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Order.
+func (o RecordDataPtrOutput) Order() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The port of the service.
+func (o RecordDataPtrOutput) Port() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Horizontal precision of location.
+func (o RecordDataPtrOutput) PrecisionHorz() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PrecisionHorz
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Vertical precision of location.
+func (o RecordDataPtrOutput) PrecisionVert() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PrecisionVert
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Preference.
+func (o RecordDataPtrOutput) Preference() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Preference
+	}).(pulumi.Float64PtrOutput)
+}
+
+// priority.
+func (o RecordDataPtrOutput) Priority() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Protocol.
+func (o RecordDataPtrOutput) Protocol() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Public Key.
+func (o RecordDataPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Regex.
+func (o RecordDataPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Replacement.
+func (o RecordDataPtrOutput) Replacement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Replacement
+	}).(pulumi.StringPtrOutput)
+}
+
+// Selector.
+func (o RecordDataPtrOutput) Selector() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Selector
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Service.
+func (o RecordDataPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of location in meters.
+func (o RecordDataPtrOutput) Size() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Name of the property controlled by this record (e.g.: issue, issuewild, iodef).
+func (o RecordDataPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// target.
+func (o RecordDataPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type.
+func (o RecordDataPtrOutput) Type() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Usage.
+func (o RecordDataPtrOutput) Usage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Usage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Value of the record. This field's semantics depend on the chosen tag.
+func (o RecordDataPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// The record weight.
+func (o RecordDataPtrOutput) Weight() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Weight
+	}).(pulumi.Float64PtrOutput)
+}
+
+type RecordSettings struct {
+	// If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+	FlattenCname *bool `pulumi:"flattenCname"`
+	// When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+	Ipv4Only *bool `pulumi:"ipv4Only"`
+	// When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+	Ipv6Only *bool `pulumi:"ipv6Only"`
+}
+
+// RecordSettingsInput is an input type that accepts RecordSettingsArgs and RecordSettingsOutput values.
+// You can construct a concrete instance of `RecordSettingsInput` via:
+//
+//	RecordSettingsArgs{...}
+type RecordSettingsInput interface {
+	pulumi.Input
+
+	ToRecordSettingsOutput() RecordSettingsOutput
+	ToRecordSettingsOutputWithContext(context.Context) RecordSettingsOutput
+}
+
+type RecordSettingsArgs struct {
+	// If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+	FlattenCname pulumi.BoolPtrInput `pulumi:"flattenCname"`
+	// When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+	Ipv4Only pulumi.BoolPtrInput `pulumi:"ipv4Only"`
+	// When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+	Ipv6Only pulumi.BoolPtrInput `pulumi:"ipv6Only"`
+}
+
+func (RecordSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSettings)(nil)).Elem()
+}
+
+func (i RecordSettingsArgs) ToRecordSettingsOutput() RecordSettingsOutput {
+	return i.ToRecordSettingsOutputWithContext(context.Background())
+}
+
+func (i RecordSettingsArgs) ToRecordSettingsOutputWithContext(ctx context.Context) RecordSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSettingsOutput)
+}
+
+func (i RecordSettingsArgs) ToRecordSettingsPtrOutput() RecordSettingsPtrOutput {
+	return i.ToRecordSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i RecordSettingsArgs) ToRecordSettingsPtrOutputWithContext(ctx context.Context) RecordSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSettingsOutput).ToRecordSettingsPtrOutputWithContext(ctx)
+}
+
+// RecordSettingsPtrInput is an input type that accepts RecordSettingsArgs, RecordSettingsPtr and RecordSettingsPtrOutput values.
+// You can construct a concrete instance of `RecordSettingsPtrInput` via:
+//
+//	        RecordSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecordSettingsPtrInput interface {
+	pulumi.Input
+
+	ToRecordSettingsPtrOutput() RecordSettingsPtrOutput
+	ToRecordSettingsPtrOutputWithContext(context.Context) RecordSettingsPtrOutput
+}
+
+type recordSettingsPtrType RecordSettingsArgs
+
+func RecordSettingsPtr(v *RecordSettingsArgs) RecordSettingsPtrInput {
+	return (*recordSettingsPtrType)(v)
+}
+
+func (*recordSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSettings)(nil)).Elem()
+}
+
+func (i *recordSettingsPtrType) ToRecordSettingsPtrOutput() RecordSettingsPtrOutput {
+	return i.ToRecordSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *recordSettingsPtrType) ToRecordSettingsPtrOutputWithContext(ctx context.Context) RecordSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSettingsPtrOutput)
+}
+
+type RecordSettingsOutput struct{ *pulumi.OutputState }
+
+func (RecordSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecordSettings)(nil)).Elem()
+}
+
+func (o RecordSettingsOutput) ToRecordSettingsOutput() RecordSettingsOutput {
+	return o
+}
+
+func (o RecordSettingsOutput) ToRecordSettingsOutputWithContext(ctx context.Context) RecordSettingsOutput {
+	return o
+}
+
+func (o RecordSettingsOutput) ToRecordSettingsPtrOutput() RecordSettingsPtrOutput {
+	return o.ToRecordSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o RecordSettingsOutput) ToRecordSettingsPtrOutputWithContext(ctx context.Context) RecordSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordSettings) *RecordSettings {
+		return &v
+	}).(RecordSettingsPtrOutput)
+}
+
+// If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+func (o RecordSettingsOutput) FlattenCname() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RecordSettings) *bool { return v.FlattenCname }).(pulumi.BoolPtrOutput)
+}
+
+// When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+func (o RecordSettingsOutput) Ipv4Only() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RecordSettings) *bool { return v.Ipv4Only }).(pulumi.BoolPtrOutput)
+}
+
+// When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+func (o RecordSettingsOutput) Ipv6Only() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RecordSettings) *bool { return v.Ipv6Only }).(pulumi.BoolPtrOutput)
+}
+
+type RecordSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (RecordSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSettings)(nil)).Elem()
+}
+
+func (o RecordSettingsPtrOutput) ToRecordSettingsPtrOutput() RecordSettingsPtrOutput {
+	return o
+}
+
+func (o RecordSettingsPtrOutput) ToRecordSettingsPtrOutputWithContext(ctx context.Context) RecordSettingsPtrOutput {
+	return o
+}
+
+func (o RecordSettingsPtrOutput) Elem() RecordSettingsOutput {
+	return o.ApplyT(func(v *RecordSettings) RecordSettings {
+		if v != nil {
+			return *v
+		}
+		var ret RecordSettings
+		return ret
+	}).(RecordSettingsOutput)
+}
+
+// If enabled, causes the CNAME record to be resolved externally and the resulting address records (e.g., A and AAAA) to be returned instead of the CNAME record itself. This setting is unavailable for proxied records, since they are always flattened.
+func (o RecordSettingsPtrOutput) FlattenCname() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RecordSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FlattenCname
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When enabled, only A records will be generated, and AAAA records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+func (o RecordSettingsPtrOutput) Ipv4Only() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RecordSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4Only
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When enabled, only AAAA records will be generated, and A records will not be created. This setting is intended for exceptional cases. Note that this option only applies to proxied records and it has no effect on whether Cloudflare communicates with the origin using IPv4 or IPv6.
+func (o RecordSettingsPtrOutput) Ipv6Only() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RecordSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6Only
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RiskBehaviorBehaviors struct {
+	Enabled bool `pulumi:"enabled"`
+	// Available values: "low", "medium", "high".
+	RiskLevel string `pulumi:"riskLevel"`
+}
+
+// RiskBehaviorBehaviorsInput is an input type that accepts RiskBehaviorBehaviorsArgs and RiskBehaviorBehaviorsOutput values.
+// You can construct a concrete instance of `RiskBehaviorBehaviorsInput` via:
+//
+//	RiskBehaviorBehaviorsArgs{...}
+type RiskBehaviorBehaviorsInput interface {
+	pulumi.Input
+
+	ToRiskBehaviorBehaviorsOutput() RiskBehaviorBehaviorsOutput
+	ToRiskBehaviorBehaviorsOutputWithContext(context.Context) RiskBehaviorBehaviorsOutput
+}
+
+type RiskBehaviorBehaviorsArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Available values: "low", "medium", "high".
+	RiskLevel pulumi.StringInput `pulumi:"riskLevel"`
+}
+
+func (RiskBehaviorBehaviorsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RiskBehaviorBehaviors)(nil)).Elem()
+}
+
+func (i RiskBehaviorBehaviorsArgs) ToRiskBehaviorBehaviorsOutput() RiskBehaviorBehaviorsOutput {
+	return i.ToRiskBehaviorBehaviorsOutputWithContext(context.Background())
+}
+
+func (i RiskBehaviorBehaviorsArgs) ToRiskBehaviorBehaviorsOutputWithContext(ctx context.Context) RiskBehaviorBehaviorsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RiskBehaviorBehaviorsOutput)
+}
+
+// RiskBehaviorBehaviorsMapInput is an input type that accepts RiskBehaviorBehaviorsMap and RiskBehaviorBehaviorsMapOutput values.
+// You can construct a concrete instance of `RiskBehaviorBehaviorsMapInput` via:
+//
+//	RiskBehaviorBehaviorsMap{ "key": RiskBehaviorBehaviorsArgs{...} }
+type RiskBehaviorBehaviorsMapInput interface {
+	pulumi.Input
+
+	ToRiskBehaviorBehaviorsMapOutput() RiskBehaviorBehaviorsMapOutput
+	ToRiskBehaviorBehaviorsMapOutputWithContext(context.Context) RiskBehaviorBehaviorsMapOutput
+}
+
+type RiskBehaviorBehaviorsMap map[string]RiskBehaviorBehaviorsInput
+
+func (RiskBehaviorBehaviorsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RiskBehaviorBehaviors)(nil)).Elem()
+}
+
+func (i RiskBehaviorBehaviorsMap) ToRiskBehaviorBehaviorsMapOutput() RiskBehaviorBehaviorsMapOutput {
+	return i.ToRiskBehaviorBehaviorsMapOutputWithContext(context.Background())
+}
+
+func (i RiskBehaviorBehaviorsMap) ToRiskBehaviorBehaviorsMapOutputWithContext(ctx context.Context) RiskBehaviorBehaviorsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RiskBehaviorBehaviorsMapOutput)
+}
+
+type RiskBehaviorBehaviorsOutput struct{ *pulumi.OutputState }
+
+func (RiskBehaviorBehaviorsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RiskBehaviorBehaviors)(nil)).Elem()
+}
+
+func (o RiskBehaviorBehaviorsOutput) ToRiskBehaviorBehaviorsOutput() RiskBehaviorBehaviorsOutput {
+	return o
+}
+
+func (o RiskBehaviorBehaviorsOutput) ToRiskBehaviorBehaviorsOutputWithContext(ctx context.Context) RiskBehaviorBehaviorsOutput {
+	return o
+}
+
+func (o RiskBehaviorBehaviorsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RiskBehaviorBehaviors) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Available values: "low", "medium", "high".
+func (o RiskBehaviorBehaviorsOutput) RiskLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v RiskBehaviorBehaviors) string { return v.RiskLevel }).(pulumi.StringOutput)
+}
+
+type RiskBehaviorBehaviorsMapOutput struct{ *pulumi.OutputState }
+
+func (RiskBehaviorBehaviorsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RiskBehaviorBehaviors)(nil)).Elem()
+}
+
+func (o RiskBehaviorBehaviorsMapOutput) ToRiskBehaviorBehaviorsMapOutput() RiskBehaviorBehaviorsMapOutput {
+	return o
+}
+
+func (o RiskBehaviorBehaviorsMapOutput) ToRiskBehaviorBehaviorsMapOutputWithContext(ctx context.Context) RiskBehaviorBehaviorsMapOutput {
+	return o
+}
+
+func (o RiskBehaviorBehaviorsMapOutput) MapIndex(k pulumi.StringInput) RiskBehaviorBehaviorsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RiskBehaviorBehaviors {
+		return vs[0].(map[string]RiskBehaviorBehaviors)[vs[1].(string)]
+	}).(RiskBehaviorBehaviorsOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeadersPtrInput)(nil)).Elem(), AccessApplicationCorsHeadersArgs{})
@@ -83058,18 +83765,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileEntryArrayInput)(nil)).Elem(), DlpCustomProfileEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileEntryPatternInput)(nil)).Elem(), DlpCustomProfileEntryPatternArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileEntryPatternPtrInput)(nil)).Elem(), DlpCustomProfileEntryPatternArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileInput)(nil)).Elem(), DlpCustomProfileProfileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileArrayInput)(nil)).Elem(), DlpCustomProfileProfileArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileContextAwarenessInput)(nil)).Elem(), DlpCustomProfileProfileContextAwarenessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileContextAwarenessPtrInput)(nil)).Elem(), DlpCustomProfileProfileContextAwarenessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileContextAwarenessSkipInput)(nil)).Elem(), DlpCustomProfileProfileContextAwarenessSkipArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileContextAwarenessSkipPtrInput)(nil)).Elem(), DlpCustomProfileProfileContextAwarenessSkipArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileEntryInput)(nil)).Elem(), DlpCustomProfileProfileEntryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileEntryArrayInput)(nil)).Elem(), DlpCustomProfileProfileEntryArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileEntryPatternInput)(nil)).Elem(), DlpCustomProfileProfileEntryPatternArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileEntryPatternPtrInput)(nil)).Elem(), DlpCustomProfileProfileEntryPatternArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileSharedEntryInput)(nil)).Elem(), DlpCustomProfileProfileSharedEntryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileProfileSharedEntryArrayInput)(nil)).Elem(), DlpCustomProfileProfileSharedEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileSharedEntryInput)(nil)).Elem(), DlpCustomProfileSharedEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpCustomProfileSharedEntryArrayInput)(nil)).Elem(), DlpCustomProfileSharedEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpPredefinedProfileContextAwarenessInput)(nil)).Elem(), DlpPredefinedProfileContextAwarenessArgs{})
@@ -83417,10 +84112,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketCorsRuleInput)(nil)).Elem(), R2BucketCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketCorsRuleArrayInput)(nil)).Elem(), R2BucketCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketCorsRuleAllowedInput)(nil)).Elem(), R2BucketCorsRuleAllowedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketEventNotificationQueueInput)(nil)).Elem(), R2BucketEventNotificationQueueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketEventNotificationQueueArrayInput)(nil)).Elem(), R2BucketEventNotificationQueueArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketEventNotificationQueueRuleInput)(nil)).Elem(), R2BucketEventNotificationQueueRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketEventNotificationQueueRuleArrayInput)(nil)).Elem(), R2BucketEventNotificationQueueRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketEventNotificationRuleInput)(nil)).Elem(), R2BucketEventNotificationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketEventNotificationRuleArrayInput)(nil)).Elem(), R2BucketEventNotificationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*R2BucketLifecycleRuleInput)(nil)).Elem(), R2BucketLifecycleRuleArgs{})
@@ -83450,6 +84141,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionPtrInput)(nil)).Elem(), RateLimitActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponseInput)(nil)).Elem(), RateLimitActionResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponsePtrInput)(nil)).Elem(), RateLimitActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitBypassInput)(nil)).Elem(), RateLimitBypassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitBypassArrayInput)(nil)).Elem(), RateLimitBypassArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchInput)(nil)).Elem(), RateLimitMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchPtrInput)(nil)).Elem(), RateLimitMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchHeaderInput)(nil)).Elem(), RateLimitMatchHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchHeaderArrayInput)(nil)).Elem(), RateLimitMatchHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchRequestInput)(nil)).Elem(), RateLimitMatchRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchRequestPtrInput)(nil)).Elem(), RateLimitMatchRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchResponseInput)(nil)).Elem(), RateLimitMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchResponsePtrInput)(nil)).Elem(), RateLimitMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataPtrInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSettingsInput)(nil)).Elem(), RecordSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordSettingsPtrInput)(nil)).Elem(), RecordSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RiskBehaviorBehaviorsInput)(nil)).Elem(), RiskBehaviorBehaviorsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RiskBehaviorBehaviorsMapInput)(nil)).Elem(), RiskBehaviorBehaviorsMap{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeadersPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationDestinationOutput{})
@@ -84054,18 +84761,6 @@ func init() {
 	pulumi.RegisterOutputType(DlpCustomProfileEntryArrayOutput{})
 	pulumi.RegisterOutputType(DlpCustomProfileEntryPatternOutput{})
 	pulumi.RegisterOutputType(DlpCustomProfileEntryPatternPtrOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileArrayOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileContextAwarenessOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileContextAwarenessPtrOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileContextAwarenessSkipOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileContextAwarenessSkipPtrOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileEntryOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileEntryArrayOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileEntryPatternOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileEntryPatternPtrOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileSharedEntryOutput{})
-	pulumi.RegisterOutputType(DlpCustomProfileProfileSharedEntryArrayOutput{})
 	pulumi.RegisterOutputType(DlpCustomProfileSharedEntryOutput{})
 	pulumi.RegisterOutputType(DlpCustomProfileSharedEntryArrayOutput{})
 	pulumi.RegisterOutputType(DlpPredefinedProfileContextAwarenessOutput{})
@@ -84413,10 +85108,6 @@ func init() {
 	pulumi.RegisterOutputType(R2BucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(R2BucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(R2BucketCorsRuleAllowedOutput{})
-	pulumi.RegisterOutputType(R2BucketEventNotificationQueueOutput{})
-	pulumi.RegisterOutputType(R2BucketEventNotificationQueueArrayOutput{})
-	pulumi.RegisterOutputType(R2BucketEventNotificationQueueRuleOutput{})
-	pulumi.RegisterOutputType(R2BucketEventNotificationQueueRuleArrayOutput{})
 	pulumi.RegisterOutputType(R2BucketEventNotificationRuleOutput{})
 	pulumi.RegisterOutputType(R2BucketEventNotificationRuleArrayOutput{})
 	pulumi.RegisterOutputType(R2BucketLifecycleRuleOutput{})
@@ -84446,4 +85137,20 @@ func init() {
 	pulumi.RegisterOutputType(RateLimitActionPtrOutput{})
 	pulumi.RegisterOutputType(RateLimitActionResponseOutput{})
 	pulumi.RegisterOutputType(RateLimitActionResponsePtrOutput{})
+	pulumi.RegisterOutputType(RateLimitBypassOutput{})
+	pulumi.RegisterOutputType(RateLimitBypassArrayOutput{})
+	pulumi.RegisterOutputType(RateLimitMatchOutput{})
+	pulumi.RegisterOutputType(RateLimitMatchPtrOutput{})
+	pulumi.RegisterOutputType(RateLimitMatchHeaderOutput{})
+	pulumi.RegisterOutputType(RateLimitMatchHeaderArrayOutput{})
+	pulumi.RegisterOutputType(RateLimitMatchRequestOutput{})
+	pulumi.RegisterOutputType(RateLimitMatchRequestPtrOutput{})
+	pulumi.RegisterOutputType(RateLimitMatchResponseOutput{})
+	pulumi.RegisterOutputType(RateLimitMatchResponsePtrOutput{})
+	pulumi.RegisterOutputType(RecordDataOutput{})
+	pulumi.RegisterOutputType(RecordDataPtrOutput{})
+	pulumi.RegisterOutputType(RecordSettingsOutput{})
+	pulumi.RegisterOutputType(RecordSettingsPtrOutput{})
+	pulumi.RegisterOutputType(RiskBehaviorBehaviorsOutput{})
+	pulumi.RegisterOutputType(RiskBehaviorBehaviorsMapOutput{})
 }

@@ -64,11 +64,23 @@ public final class ZeroTrustDlpPredefinedProfileArgs extends com.pulumi.resource
         return Optional.ofNullable(this.contextAwareness);
     }
 
-    @Import(name="entries", required=true)
-    private Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>> entries;
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    @Import(name="entries")
+    private @Nullable Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>> entries;
 
-    public Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>> entries() {
-        return this.entries;
+    /**
+     * @deprecated
+     * This attribute is deprecated.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated. */
+    public Optional<Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>>> entries() {
+        return Optional.ofNullable(this.entries);
     }
 
     @Import(name="ocrEnabled")
@@ -173,15 +185,39 @@ public final class ZeroTrustDlpPredefinedProfileArgs extends com.pulumi.resource
             return contextAwareness(Output.of(contextAwareness));
         }
 
-        public Builder entries(Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>> entries) {
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
+        public Builder entries(@Nullable Output<List<ZeroTrustDlpPredefinedProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(List<ZeroTrustDlpPredefinedProfileEntryArgs> entries) {
             return entries(Output.of(entries));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated. */
         public Builder entries(ZeroTrustDlpPredefinedProfileEntryArgs... entries) {
             return entries(List.of(entries));
         }
@@ -207,9 +243,6 @@ public final class ZeroTrustDlpPredefinedProfileArgs extends com.pulumi.resource
         public ZeroTrustDlpPredefinedProfileArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDlpPredefinedProfileArgs", "accountId");
-            }
-            if ($.entries == null) {
-                throw new MissingRequiredPropertyException("ZeroTrustDlpPredefinedProfileArgs", "entries");
             }
             if ($.profileId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDlpPredefinedProfileArgs", "profileId");

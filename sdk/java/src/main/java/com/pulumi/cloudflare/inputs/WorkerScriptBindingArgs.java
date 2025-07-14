@@ -397,6 +397,21 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.usages);
     }
 
+    /**
+     * Name of the Workflow to bind to.
+     * 
+     */
+    @Import(name="workflowName")
+    private @Nullable Output<String> workflowName;
+
+    /**
+     * @return Name of the Workflow to bind to.
+     * 
+     */
+    public Optional<Output<String>> workflowName() {
+        return Optional.ofNullable(this.workflowName);
+    }
+
     private WorkerScriptBindingArgs() {}
 
     private WorkerScriptBindingArgs(WorkerScriptBindingArgs $) {
@@ -425,6 +440,7 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
         this.text = $.text;
         this.type = $.type;
         this.usages = $.usages;
+        this.workflowName = $.workflowName;
     }
 
     public static Builder builder() {
@@ -982,6 +998,27 @@ public final class WorkerScriptBindingArgs extends com.pulumi.resources.Resource
          */
         public Builder usages(String... usages) {
             return usages(List.of(usages));
+        }
+
+        /**
+         * @param workflowName Name of the Workflow to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workflowName(@Nullable Output<String> workflowName) {
+            $.workflowName = workflowName;
+            return this;
+        }
+
+        /**
+         * @param workflowName Name of the Workflow to bind to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workflowName(String workflowName) {
+            return workflowName(Output.of(workflowName));
         }
 
         public WorkerScriptBindingArgs build() {

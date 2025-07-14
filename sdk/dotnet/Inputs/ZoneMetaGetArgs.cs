@@ -13,37 +13,37 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ZoneMetaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The zone is only configured for CDN
+        /// The zone is only configured for CDN.
         /// </summary>
         [Input("cdnOnly")]
         public Input<bool>? CdnOnly { get; set; }
 
         /// <summary>
-        /// Number of Custom Certificates the zone can have
+        /// Number of Custom Certificates the zone can have.
         /// </summary>
         [Input("customCertificateQuota")]
         public Input<int>? CustomCertificateQuota { get; set; }
 
         /// <summary>
-        /// The zone is only configured for DNS
+        /// The zone is only configured for DNS.
         /// </summary>
         [Input("dnsOnly")]
         public Input<bool>? DnsOnly { get; set; }
 
         /// <summary>
-        /// The zone is setup with Foundation DNS
+        /// The zone is setup with Foundation DNS.
         /// </summary>
         [Input("foundationDns")]
         public Input<bool>? FoundationDns { get; set; }
 
         /// <summary>
-        /// Number of Page Rules a zone can have
+        /// Number of Page Rules a zone can have.
         /// </summary>
         [Input("pageRuleQuota")]
         public Input<int>? PageRuleQuota { get; set; }
 
         /// <summary>
-        /// The zone has been flagged for phishing
+        /// The zone has been flagged for phishing.
         /// </summary>
         [Input("phishingDetected")]
         public Input<bool>? PhishingDetected { get; set; }

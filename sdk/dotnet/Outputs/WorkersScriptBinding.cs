@@ -115,6 +115,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
         /// </summary>
         public readonly ImmutableArray<string> Usages;
+        /// <summary>
+        /// Name of the Workflow to bind to.
+        /// </summary>
+        public readonly string? WorkflowName;
 
         [OutputConstructor]
         private WorkersScriptBinding(
@@ -166,7 +170,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string type,
 
-            ImmutableArray<string> usages)
+            ImmutableArray<string> usages,
+
+            string? workflowName)
         {
             Algorithm = algorithm;
             BucketName = bucketName;
@@ -193,6 +199,7 @@ namespace Pulumi.Cloudflare.Outputs
             Text = text;
             Type = type;
             Usages = usages;
+            WorkflowName = workflowName;
         }
     }
 }

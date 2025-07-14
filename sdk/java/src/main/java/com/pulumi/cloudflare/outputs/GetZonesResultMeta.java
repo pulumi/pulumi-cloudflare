@@ -12,32 +12,32 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesResultMeta {
     /**
-     * @return The zone is only configured for CDN
+     * @return The zone is only configured for CDN.
      * 
      */
     private Boolean cdnOnly;
     /**
-     * @return Number of Custom Certificates the zone can have
+     * @return Number of Custom Certificates the zone can have.
      * 
      */
     private Integer customCertificateQuota;
     /**
-     * @return The zone is only configured for DNS
+     * @return The zone is only configured for DNS.
      * 
      */
     private Boolean dnsOnly;
     /**
-     * @return The zone is setup with Foundation DNS
+     * @return The zone is setup with Foundation DNS.
      * 
      */
     private Boolean foundationDns;
     /**
-     * @return Number of Page Rules a zone can have
+     * @return Number of Page Rules a zone can have.
      * 
      */
     private Integer pageRuleQuota;
     /**
-     * @return The zone has been flagged for phishing
+     * @return The zone has been flagged for phishing.
      * 
      */
     private Boolean phishingDetected;
@@ -45,42 +45,42 @@ public final class GetZonesResultMeta {
 
     private GetZonesResultMeta() {}
     /**
-     * @return The zone is only configured for CDN
+     * @return The zone is only configured for CDN.
      * 
      */
     public Boolean cdnOnly() {
         return this.cdnOnly;
     }
     /**
-     * @return Number of Custom Certificates the zone can have
+     * @return Number of Custom Certificates the zone can have.
      * 
      */
     public Integer customCertificateQuota() {
         return this.customCertificateQuota;
     }
     /**
-     * @return The zone is only configured for DNS
+     * @return The zone is only configured for DNS.
      * 
      */
     public Boolean dnsOnly() {
         return this.dnsOnly;
     }
     /**
-     * @return The zone is setup with Foundation DNS
+     * @return The zone is setup with Foundation DNS.
      * 
      */
     public Boolean foundationDns() {
         return this.foundationDns;
     }
     /**
-     * @return Number of Page Rules a zone can have
+     * @return Number of Page Rules a zone can have.
      * 
      */
     public Integer pageRuleQuota() {
         return this.pageRuleQuota;
     }
     /**
-     * @return The zone has been flagged for phishing
+     * @return The zone has been flagged for phishing.
      * 
      */
     public Boolean phishingDetected() {

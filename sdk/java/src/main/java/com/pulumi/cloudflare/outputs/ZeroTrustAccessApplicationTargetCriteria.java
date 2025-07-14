@@ -20,7 +20,7 @@ public final class ZeroTrustAccessApplicationTargetCriteria {
     private Integer port;
     /**
      * @return The communication protocol your application secures.
-     * Available values: &#34;ssh&#34;.
+     * Available values: &#34;SSH&#34;.
      * 
      */
     private String protocol;
@@ -40,7 +40,7 @@ public final class ZeroTrustAccessApplicationTargetCriteria {
     }
     /**
      * @return The communication protocol your application secures.
-     * Available values: &#34;ssh&#34;.
+     * Available values: &#34;SSH&#34;.
      * 
      */
     public String protocol() {

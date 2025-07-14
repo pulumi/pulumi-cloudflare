@@ -49,12 +49,14 @@ func LookupMagicTransitConnector(ctx *pulumi.Context, args *LookupMagicTransitCo
 
 // A collection of arguments for invoking getMagicTransitConnector.
 type LookupMagicTransitConnectorArgs struct {
+	// Account identifier
 	AccountId   string  `pulumi:"accountId"`
 	ConnectorId *string `pulumi:"connectorId"`
 }
 
 // A collection of values returned by getMagicTransitConnector.
 type LookupMagicTransitConnectorResult struct {
+	// Account identifier
 	AccountId   string                         `pulumi:"accountId"`
 	Activated   bool                           `pulumi:"activated"`
 	ConnectorId *string                        `pulumi:"connectorId"`
@@ -81,6 +83,7 @@ func LookupMagicTransitConnectorOutput(ctx *pulumi.Context, args LookupMagicTran
 
 // A collection of arguments for invoking getMagicTransitConnector.
 type LookupMagicTransitConnectorOutputArgs struct {
+	// Account identifier
 	AccountId   pulumi.StringInput    `pulumi:"accountId"`
 	ConnectorId pulumi.StringPtrInput `pulumi:"connectorId"`
 }
@@ -104,6 +107,7 @@ func (o LookupMagicTransitConnectorResultOutput) ToLookupMagicTransitConnectorRe
 	return o
 }
 
+// Account identifier
 func (o LookupMagicTransitConnectorResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMagicTransitConnectorResult) string { return v.AccountId }).(pulumi.StringOutput)
 }

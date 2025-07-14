@@ -570,6 +570,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * List of certificate Subject Alternative Names.
+     * 
+     */
+    @Import(name="subjectAlternativeNames")
+    private @Nullable Output<List<String>> subjectAlternativeNames;
+
+    /**
+     * @return List of certificate Subject Alternative Names.
+     * 
+     */
+    public Optional<Output<List<String>>> subjectAlternativeNames() {
+        return Optional.ofNullable(this.subjectAlternativeNames);
+    }
+
+    /**
      * Signing certificate thumbprint.
      * 
      */
@@ -670,6 +685,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.sensorConfig = $.sensorConfig;
         this.sha256 = $.sha256;
         this.state = $.state;
+        this.subjectAlternativeNames = $.subjectAlternativeNames;
         this.thumbprint = $.thumbprint;
         this.totalScore = $.totalScore;
         this.version = $.version;
@@ -1474,6 +1490,37 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param subjectAlternativeNames List of certificate Subject Alternative Names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectAlternativeNames(@Nullable Output<List<String>> subjectAlternativeNames) {
+            $.subjectAlternativeNames = subjectAlternativeNames;
+            return this;
+        }
+
+        /**
+         * @param subjectAlternativeNames List of certificate Subject Alternative Names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectAlternativeNames(List<String> subjectAlternativeNames) {
+            return subjectAlternativeNames(Output.of(subjectAlternativeNames));
+        }
+
+        /**
+         * @param subjectAlternativeNames List of certificate Subject Alternative Names.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subjectAlternativeNames(String... subjectAlternativeNames) {
+            return subjectAlternativeNames(List.of(subjectAlternativeNames));
         }
 
         /**

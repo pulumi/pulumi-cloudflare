@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  *         var exampleUserAgentBlockingRule = new UserAgentBlockingRule("exampleUserAgentBlockingRule", UserAgentBlockingRuleArgs.builder()
  *             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
  *             .configuration(UserAgentBlockingRuleConfigurationArgs.builder()
- *                 .target("ip")
- *                 .value("198.51.100.4")
+ *                 .target("ua")
+ *                 .value("Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)")
  *                 .build())
  *             .mode("challenge")
  *             .build());
@@ -60,17 +60,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")
 public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
-    /**
-     * The rule configuration.
-     * 
-     */
     @Export(name="configuration", refs={UserAgentBlockingRuleConfiguration.class}, tree="[0]")
     private Output<UserAgentBlockingRuleConfiguration> configuration;
 
-    /**
-     * @return The rule configuration.
-     * 
-     */
     public Output<UserAgentBlockingRuleConfiguration> configuration() {
         return this.configuration;
     }

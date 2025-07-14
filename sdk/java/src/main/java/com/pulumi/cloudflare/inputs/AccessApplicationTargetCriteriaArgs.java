@@ -34,7 +34,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
 
     /**
      * The communication protocol your application secures.
-     * Available values: &#34;ssh&#34;.
+     * Available values: &#34;SSH&#34;.
      * 
      */
     @Import(name="protocol", required=true)
@@ -42,7 +42,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
 
     /**
      * @return The communication protocol your application secures.
-     * Available values: &#34;ssh&#34;.
+     * Available values: &#34;SSH&#34;.
      * 
      */
     public Output<String> protocol() {
@@ -113,7 +113,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
 
         /**
          * @param protocol The communication protocol your application secures.
-         * Available values: &#34;ssh&#34;.
+         * Available values: &#34;SSH&#34;.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class AccessApplicationTargetCriteriaArgs extends com.pulumi.resour
 
         /**
          * @param protocol The communication protocol your application secures.
-         * Available values: &#34;ssh&#34;.
+         * Available values: &#34;SSH&#34;.
          * 
          * @return builder
          * 

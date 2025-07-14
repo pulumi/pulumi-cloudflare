@@ -28,7 +28,7 @@ class GetZeroTrustGatewayPolicyResult:
     """
     A collection of values returned by getZeroTrustGatewayPolicy.
     """
-    def __init__(__self__, account_id=None, action=None, created_at=None, deleted_at=None, description=None, device_posture=None, enabled=None, expiration=None, filters=None, id=None, identity=None, name=None, precedence=None, rule_id=None, rule_settings=None, schedule=None, traffic=None, updated_at=None, version=None):
+    def __init__(__self__, account_id=None, action=None, created_at=None, deleted_at=None, description=None, device_posture=None, enabled=None, expiration=None, filters=None, id=None, identity=None, name=None, precedence=None, rule_id=None, rule_settings=None, schedule=None, traffic=None, updated_at=None, version=None, warning_status=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -86,6 +86,9 @@ class GetZeroTrustGatewayPolicyResult:
         if version and not isinstance(version, int):
             raise TypeError("Expected argument 'version' to be a int")
         pulumi.set(__self__, "version", version)
+        if warning_status and not isinstance(warning_status, str):
+            raise TypeError("Expected argument 'warning_status' to be a str")
+        pulumi.set(__self__, "warning_status", warning_status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -205,6 +208,11 @@ class GetZeroTrustGatewayPolicyResult:
     def version(self) -> builtins.int:
         return pulumi.get(self, "version")
 
+    @property
+    @pulumi.getter(name="warningStatus")
+    def warning_status(self) -> builtins.str:
+        return pulumi.get(self, "warning_status")
+
 
 class AwaitableGetZeroTrustGatewayPolicyResult(GetZeroTrustGatewayPolicyResult):
     # pylint: disable=using-constant-test
@@ -230,7 +238,8 @@ class AwaitableGetZeroTrustGatewayPolicyResult(GetZeroTrustGatewayPolicyResult):
             schedule=self.schedule,
             traffic=self.traffic,
             updated_at=self.updated_at,
-            version=self.version)
+            version=self.version,
+            warning_status=self.warning_status)
 
 
 def get_zero_trust_gateway_policy(account_id: Optional[builtins.str] = None,
@@ -275,7 +284,8 @@ def get_zero_trust_gateway_policy(account_id: Optional[builtins.str] = None,
         schedule=pulumi.get(__ret__, 'schedule'),
         traffic=pulumi.get(__ret__, 'traffic'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
-        version=pulumi.get(__ret__, 'version'))
+        version=pulumi.get(__ret__, 'version'),
+        warning_status=pulumi.get(__ret__, 'warning_status'))
 def get_zero_trust_gateway_policy_output(account_id: Optional[pulumi.Input[builtins.str]] = None,
                                          rule_id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZeroTrustGatewayPolicyResult]:
@@ -317,4 +327,5 @@ def get_zero_trust_gateway_policy_output(account_id: Optional[pulumi.Input[built
         schedule=pulumi.get(__response__, 'schedule'),
         traffic=pulumi.get(__response__, 'traffic'),
         updated_at=pulumi.get(__response__, 'updated_at'),
-        version=pulumi.get(__response__, 'version')))
+        version=pulumi.get(__response__, 'version'),
+        warning_status=pulumi.get(__response__, 'warning_status')))

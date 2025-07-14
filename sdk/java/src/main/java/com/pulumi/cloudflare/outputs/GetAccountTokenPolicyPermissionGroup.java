@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountTokenPolicyPermissionGroup {
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the permission group.
      * 
      */
     private String id;
@@ -22,14 +22,14 @@ public final class GetAccountTokenPolicyPermissionGroup {
      */
     private GetAccountTokenPolicyPermissionGroupMeta meta;
     /**
-     * @return Name of the group.
+     * @return Name of the permission group.
      * 
      */
     private String name;
 
     private GetAccountTokenPolicyPermissionGroup() {}
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the permission group.
      * 
      */
     public String id() {
@@ -43,7 +43,7 @@ public final class GetAccountTokenPolicyPermissionGroup {
         return this.meta;
     }
     /**
-     * @return Name of the group.
+     * @return Name of the permission group.
      * 
      */
     public String name() {

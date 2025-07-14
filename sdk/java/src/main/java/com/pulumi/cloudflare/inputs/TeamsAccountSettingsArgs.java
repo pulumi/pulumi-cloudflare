@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsActivityLogArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsAntivirusArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountSettingsAppControlSettingsArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsBodyScanningArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountSettingsBrowserIsolationArgs;
@@ -55,6 +56,21 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<TeamsAccountSettingsAntivirusArgs>> antivirus() {
         return Optional.ofNullable(this.antivirus);
+    }
+
+    /**
+     * Setting to enable App Control
+     * 
+     */
+    @Import(name="appControlSettings")
+    private @Nullable Output<TeamsAccountSettingsAppControlSettingsArgs> appControlSettings;
+
+    /**
+     * @return Setting to enable App Control
+     * 
+     */
+    public Optional<Output<TeamsAccountSettingsAppControlSettingsArgs>> appControlSettings() {
+        return Optional.ofNullable(this.appControlSettings);
     }
 
     /**
@@ -235,6 +251,7 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
     private TeamsAccountSettingsArgs(TeamsAccountSettingsArgs $) {
         this.activityLog = $.activityLog;
         this.antivirus = $.antivirus;
+        this.appControlSettings = $.appControlSettings;
         this.blockPage = $.blockPage;
         this.bodyScanning = $.bodyScanning;
         this.browserIsolation = $.browserIsolation;
@@ -306,6 +323,27 @@ public final class TeamsAccountSettingsArgs extends com.pulumi.resources.Resourc
          */
         public Builder antivirus(TeamsAccountSettingsAntivirusArgs antivirus) {
             return antivirus(Output.of(antivirus));
+        }
+
+        /**
+         * @param appControlSettings Setting to enable App Control
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appControlSettings(@Nullable Output<TeamsAccountSettingsAppControlSettingsArgs> appControlSettings) {
+            $.appControlSettings = appControlSettings;
+            return this;
+        }
+
+        /**
+         * @param appControlSettings Setting to enable App Control
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appControlSettings(TeamsAccountSettingsAppControlSettingsArgs appControlSettings) {
+            return appControlSettings(Output.of(appControlSettings));
         }
 
         /**

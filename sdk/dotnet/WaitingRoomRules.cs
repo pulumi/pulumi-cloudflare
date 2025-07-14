@@ -48,42 +48,8 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/waitingRoomRules:WaitingRoomRules")]
     public partial class WaitingRoomRules : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The action to take when the expression matches.
-        /// Available values: "bypass*waiting*room".
-        /// </summary>
-        [Output("action")]
-        public Output<string> Action { get; private set; } = null!;
-
-        /// <summary>
-        /// The description of the rule.
-        /// </summary>
-        [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
-
-        /// <summary>
-        /// When set to true, the rule is enabled.
-        /// </summary>
-        [Output("enabled")]
-        public Output<bool> Enabled { get; private set; } = null!;
-
-        /// <summary>
-        /// Criteria defining when there is a match for the current rule.
-        /// </summary>
-        [Output("expression")]
-        public Output<string> Expression { get; private set; } = null!;
-
-        [Output("lastUpdated")]
-        public Output<string> LastUpdated { get; private set; } = null!;
-
         [Output("rules")]
         public Output<ImmutableArray<Outputs.WaitingRoomRulesRule>> Rules { get; private set; } = null!;
-
-        /// <summary>
-        /// The version of the rule.
-        /// </summary>
-        [Output("version")]
-        public Output<string> Version { get; private set; } = null!;
 
         [Output("waitingRoomId")]
         public Output<string> WaitingRoomId { get; private set; } = null!;
@@ -165,34 +131,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class WaitingRoomRulesState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The action to take when the expression matches.
-        /// Available values: "bypass*waiting*room".
-        /// </summary>
-        [Input("action")]
-        public Input<string>? Action { get; set; }
-
-        /// <summary>
-        /// The description of the rule.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// When set to true, the rule is enabled.
-        /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        /// <summary>
-        /// Criteria defining when there is a match for the current rule.
-        /// </summary>
-        [Input("expression")]
-        public Input<string>? Expression { get; set; }
-
-        [Input("lastUpdated")]
-        public Input<string>? LastUpdated { get; set; }
-
         [Input("rules")]
         private InputList<Inputs.WaitingRoomRulesRuleGetArgs>? _rules;
         public InputList<Inputs.WaitingRoomRulesRuleGetArgs> Rules
@@ -200,12 +138,6 @@ namespace Pulumi.Cloudflare
             get => _rules ?? (_rules = new InputList<Inputs.WaitingRoomRulesRuleGetArgs>());
             set => _rules = value;
         }
-
-        /// <summary>
-        /// The version of the rule.
-        /// </summary>
-        [Input("version")]
-        public Input<string>? Version { get; set; }
 
         [Input("waitingRoomId")]
         public Input<string>? WaitingRoomId { get; set; }

@@ -13,6 +13,12 @@ import (
 )
 
 // ## Example Usage
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+// ```
 type AccountSubscription struct {
 	pulumi.CustomResourceState
 
@@ -34,8 +40,6 @@ type AccountSubscription struct {
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State pulumi.StringOutput `pulumi:"state"`
-	// Subscription identifier tag.
-	SubscriptionIdentifier pulumi.StringPtrOutput `pulumi:"subscriptionIdentifier"`
 }
 
 // NewAccountSubscription registers a new resource with the given unique name, arguments, and options.
@@ -89,8 +93,6 @@ type accountSubscriptionState struct {
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State *string `pulumi:"state"`
-	// Subscription identifier tag.
-	SubscriptionIdentifier *string `pulumi:"subscriptionIdentifier"`
 }
 
 type AccountSubscriptionState struct {
@@ -112,8 +114,6 @@ type AccountSubscriptionState struct {
 	// The state that the subscription is in.
 	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 	State pulumi.StringPtrInput
-	// Subscription identifier tag.
-	SubscriptionIdentifier pulumi.StringPtrInput
 }
 
 func (AccountSubscriptionState) ElementType() reflect.Type {
@@ -128,8 +128,6 @@ type accountSubscriptionArgs struct {
 	Frequency *string `pulumi:"frequency"`
 	// The rate plan applied to the subscription.
 	RatePlan *AccountSubscriptionRatePlan `pulumi:"ratePlan"`
-	// Subscription identifier tag.
-	SubscriptionIdentifier *string `pulumi:"subscriptionIdentifier"`
 }
 
 // The set of arguments for constructing a AccountSubscription resource.
@@ -141,8 +139,6 @@ type AccountSubscriptionArgs struct {
 	Frequency pulumi.StringPtrInput
 	// The rate plan applied to the subscription.
 	RatePlan AccountSubscriptionRatePlanPtrInput
-	// Subscription identifier tag.
-	SubscriptionIdentifier pulumi.StringPtrInput
 }
 
 func (AccountSubscriptionArgs) ElementType() reflect.Type {
@@ -272,11 +268,6 @@ func (o AccountSubscriptionOutput) RatePlan() AccountSubscriptionRatePlanPtrOutp
 // Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
 func (o AccountSubscriptionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountSubscription) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
-// Subscription identifier tag.
-func (o AccountSubscriptionOutput) SubscriptionIdentifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccountSubscription) pulumi.StringPtrOutput { return v.SubscriptionIdentifier }).(pulumi.StringPtrOutput)
 }
 
 type AccountSubscriptionArrayOutput struct{ *pulumi.OutputState }

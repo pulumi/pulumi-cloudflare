@@ -24,7 +24,7 @@ public final class CloudConnectorRulesRule {
     private @Nullable CloudConnectorRulesRuleParameters parameters;
     /**
      * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;.
      * 
      */
     private @Nullable String provider;
@@ -51,7 +51,7 @@ public final class CloudConnectorRulesRule {
     }
     /**
      * @return Cloud Provider type
-     * Available values: &#34;aws*s3&#34;, &#34;r2&#34;, &#34;gcp*storage&#34;, &#34;azure_storage&#34;.
+     * Available values: &#34;aws*s3&#34;, &#34;cloudflare*r2&#34;, &#34;gcp*storage&#34;, &#34;azure*storage&#34;.
      * 
      */
     public Optional<String> provider() {

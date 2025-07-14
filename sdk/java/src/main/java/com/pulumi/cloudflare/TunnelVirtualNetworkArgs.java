@@ -50,14 +50,22 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
     /**
      * If `true`, this virtual network is the default for the account.
      * 
+     * @deprecated
+     * Use the is_default_network property instead.
+     * 
      */
+    @Deprecated /* Use the is_default_network property instead. */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
     /**
      * @return If `true`, this virtual network is the default for the account.
      * 
+     * @deprecated
+     * Use the is_default_network property instead.
+     * 
      */
+    @Deprecated /* Use the is_default_network property instead. */
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
@@ -167,7 +175,11 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use the is_default_network property instead.
+         * 
          */
+        @Deprecated /* Use the is_default_network property instead. */
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
@@ -178,7 +190,11 @@ public final class TunnelVirtualNetworkArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use the is_default_network property instead.
+         * 
          */
+        @Deprecated /* Use the is_default_network property instead. */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }

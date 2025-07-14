@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ApiTokenPolicyPermissionGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifier of the group.
+        /// Identifier of the permission group.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.ApiTokenPolicyPermissionGroupMetaArgs>? Meta { get; set; }
 
         /// <summary>
-        /// Name of the group.
+        /// Name of the permission group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

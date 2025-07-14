@@ -63,6 +63,8 @@ type LookupZeroTrustTunnelCloudflaredResult struct {
 	// Cloudflare account ID
 	AccountTag string `pulumi:"accountTag"`
 	// The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+	//
+	// Deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
 	Connections []GetZeroTrustTunnelCloudflaredConnection `pulumi:"connections"`
 	// Timestamp of when the tunnel established at least one connection to Cloudflare's edge. If `null`, the tunnel is inactive.
 	ConnsActiveAt string `pulumi:"connsActiveAt"`
@@ -139,6 +141,8 @@ func (o LookupZeroTrustTunnelCloudflaredResultOutput) AccountTag() pulumi.String
 }
 
 // The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+//
+// Deprecated: This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
 func (o LookupZeroTrustTunnelCloudflaredResultOutput) Connections() GetZeroTrustTunnelCloudflaredConnectionArrayOutput {
 	return o.ApplyT(func(v LookupZeroTrustTunnelCloudflaredResult) []GetZeroTrustTunnelCloudflaredConnection {
 		return v.Connections

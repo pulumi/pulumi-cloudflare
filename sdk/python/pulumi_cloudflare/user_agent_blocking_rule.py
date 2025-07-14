@@ -28,7 +28,6 @@ class UserAgentBlockingRuleArgs:
                  ua_rule_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a UserAgentBlockingRule resource.
-        :param pulumi.Input['UserAgentBlockingRuleConfigurationArgs'] configuration: The rule configuration.
         :param pulumi.Input[builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
@@ -43,9 +42,6 @@ class UserAgentBlockingRuleArgs:
     @property
     @pulumi.getter
     def configuration(self) -> pulumi.Input['UserAgentBlockingRuleConfigurationArgs']:
-        """
-        The rule configuration.
-        """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
@@ -99,7 +95,6 @@ class _UserAgentBlockingRuleState:
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserAgentBlockingRule resources.
-        :param pulumi.Input['UserAgentBlockingRuleConfigurationArgs'] configuration: The rule configuration.
         :param pulumi.Input[builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[builtins.str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
@@ -117,9 +112,6 @@ class _UserAgentBlockingRuleState:
     @property
     @pulumi.getter
     def configuration(self) -> Optional[pulumi.Input['UserAgentBlockingRuleConfigurationArgs']]:
-        """
-        The rule configuration.
-        """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
@@ -185,15 +177,14 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         example_user_agent_blocking_rule = cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             configuration={
-                "target": "ip",
-                "value": "198.51.100.4",
+                "target": "ua",
+                "value": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
             },
             mode="challenge")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']] configuration: The rule configuration.
         :param pulumi.Input[builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[builtins.str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
@@ -215,8 +206,8 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         example_user_agent_blocking_rule = cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule",
             zone_id="023e105f4ecef8ad9ca31a8372d0c353",
             configuration={
-                "target": "ip",
-                "value": "198.51.100.4",
+                "target": "ua",
+                "value": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
             },
             mode="challenge")
         ```
@@ -280,7 +271,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['UserAgentBlockingRuleConfigurationArgs', 'UserAgentBlockingRuleConfigurationArgsDict']] configuration: The rule configuration.
         :param pulumi.Input[builtins.str] mode: The action to apply to a matched request.
                Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
         :param pulumi.Input[builtins.str] ua_rule_id: The unique identifier of the User Agent Blocking rule.
@@ -299,9 +289,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.UserAgentBlockingRuleConfiguration']:
-        """
-        The rule configuration.
-        """
         return pulumi.get(self, "configuration")
 
     @property

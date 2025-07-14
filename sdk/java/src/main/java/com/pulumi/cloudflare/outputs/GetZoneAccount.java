@@ -16,7 +16,7 @@ public final class GetZoneAccount {
      */
     private String id;
     /**
-     * @return The name of the account
+     * @return The name of the account.
      * 
      */
     private String name;
@@ -30,7 +30,7 @@ public final class GetZoneAccount {
         return this.id;
     }
     /**
-     * @return The name of the account
+     * @return The name of the account.
      * 
      */
     public String name() {

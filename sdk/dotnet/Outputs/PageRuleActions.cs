@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.PageRuleActionsCacheKeyFields? CacheKeyFields;
         public readonly string? CacheLevel;
         public readonly string? CacheOnCookie;
-        public readonly object? CacheTtlByStatus;
+        public readonly ImmutableDictionary<string, string>? CacheTtlByStatus;
         public readonly bool? DisableApps;
         public readonly bool? DisablePerformance;
         public readonly bool? DisableSecurity;
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? cacheOnCookie,
 
-            object? cacheTtlByStatus,
+            ImmutableDictionary<string, string>? cacheTtlByStatus,
 
             bool? disableApps,
 

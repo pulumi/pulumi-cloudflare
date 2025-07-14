@@ -142,10 +142,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetR2BucketEventNotificationResult
     {
         /// <summary>
-        /// Transition to abort ongoing multipart uploads.
-        /// </summary>
-        public readonly Outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransitionResult AbortMultipartUploadsTransition;
-        /// <summary>
         /// Account ID.
         /// </summary>
         public readonly string AccountId;
@@ -154,19 +150,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string BucketName;
         /// <summary>
-        /// Conditions that apply to all transitions of this rule.
-        /// </summary>
-        public readonly Outputs.GetR2BucketEventNotificationConditionsResult Conditions;
-        /// <summary>
-        /// Transition to delete objects.
-        /// </summary>
-        public readonly Outputs.GetR2BucketEventNotificationDeleteObjectsTransitionResult DeleteObjectsTransition;
-        /// <summary>
-        /// Whether or not this rule is in effect.
-        /// </summary>
-        public readonly bool Enabled;
-        /// <summary>
-        /// Unique identifier for this rule.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -174,39 +158,31 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string QueueId;
         /// <summary>
-        /// Transitions to change the storage class of objects.
+        /// Name of the queue.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetR2BucketEventNotificationStorageClassTransitionResult> StorageClassTransitions;
+        public readonly string QueueName;
+        public readonly ImmutableArray<Outputs.GetR2BucketEventNotificationRuleResult> Rules;
 
         [OutputConstructor]
         private GetR2BucketEventNotificationResult(
-            Outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransitionResult abortMultipartUploadsTransition,
-
             string accountId,
 
             string bucketName,
-
-            Outputs.GetR2BucketEventNotificationConditionsResult conditions,
-
-            Outputs.GetR2BucketEventNotificationDeleteObjectsTransitionResult deleteObjectsTransition,
-
-            bool enabled,
 
             string id,
 
             string queueId,
 
-            ImmutableArray<Outputs.GetR2BucketEventNotificationStorageClassTransitionResult> storageClassTransitions)
+            string queueName,
+
+            ImmutableArray<Outputs.GetR2BucketEventNotificationRuleResult> rules)
         {
-            AbortMultipartUploadsTransition = abortMultipartUploadsTransition;
             AccountId = accountId;
             BucketName = bucketName;
-            Conditions = conditions;
-            DeleteObjectsTransition = deleteObjectsTransition;
-            Enabled = enabled;
             Id = id;
             QueueId = queueId;
-            StorageClassTransitions = storageClassTransitions;
+            QueueName = queueName;
+            Rules = rules;
         }
     }
 }

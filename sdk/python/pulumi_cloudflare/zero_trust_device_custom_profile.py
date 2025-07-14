@@ -1165,7 +1165,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowModeSwitch")
-    def allow_mode_switch(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def allow_mode_switch(self) -> pulumi.Output[builtins.bool]:
         """
         Whether to allow the user to switch WARP between modes.
         """
@@ -1173,7 +1173,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowUpdates")
-    def allow_updates(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def allow_updates(self) -> pulumi.Output[builtins.bool]:
         """
         Whether to receive update notifications when a new version of the client is available.
         """
@@ -1181,7 +1181,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedToLeave")
-    def allowed_to_leave(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def allowed_to_leave(self) -> pulumi.Output[builtins.bool]:
         """
         Whether to allow devices to leave the organization.
         """
@@ -1189,7 +1189,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoConnect")
-    def auto_connect(self) -> pulumi.Output[Optional[builtins.float]]:
+    def auto_connect(self) -> pulumi.Output[builtins.float]:
         """
         The amount of time in seconds to reconnect after having been disabled.
         """
@@ -1197,7 +1197,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="captivePortal")
-    def captive_portal(self) -> pulumi.Output[Optional[builtins.float]]:
+    def captive_portal(self) -> pulumi.Output[builtins.float]:
         """
         Turn on the captive portal after the specified amount of time.
         """
@@ -1221,7 +1221,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableAutoFallback")
-    def disable_auto_fallback(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def disable_auto_fallback(self) -> pulumi.Output[builtins.bool]:
         """
         If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         """
@@ -1237,7 +1237,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="excludeOfficeIps")
-    def exclude_office_ips(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def exclude_office_ips(self) -> pulumi.Output[builtins.bool]:
         """
         Whether to add Microsoft IPs to Split Tunnel exclusions.
         """
@@ -1316,7 +1316,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="registerInterfaceIpWithDns")
-    def register_interface_ip_with_dns(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def register_interface_ip_with_dns(self) -> pulumi.Output[builtins.bool]:
         """
         Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         """
@@ -1324,7 +1324,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sccmVpnBoundarySupport")
-    def sccm_vpn_boundary_support(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def sccm_vpn_boundary_support(self) -> pulumi.Output[builtins.bool]:
         """
         Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         """
@@ -1337,7 +1337,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="supportUrl")
-    def support_url(self) -> pulumi.Output[Optional[builtins.str]]:
+    def support_url(self) -> pulumi.Output[builtins.str]:
         """
         The URL to launch when the Send Feedback button is clicked.
         """
@@ -1345,7 +1345,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="switchLocked")
-    def switch_locked(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def switch_locked(self) -> pulumi.Output[builtins.bool]:
         """
         Whether to allow the user to turn off the WARP switch and disconnect the client.
         """
@@ -1358,7 +1358,7 @@ class ZeroTrustDeviceCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tunnelProtocol")
-    def tunnel_protocol(self) -> pulumi.Output[Optional[builtins.str]]:
+    def tunnel_protocol(self) -> pulumi.Output[builtins.str]:
         """
         Determines which tunnel protocol to use.
         """

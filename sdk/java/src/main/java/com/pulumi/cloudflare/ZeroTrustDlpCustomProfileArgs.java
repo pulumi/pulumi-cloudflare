@@ -5,7 +5,6 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileEntryArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileSharedEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -89,18 +88,18 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.description);
     }
 
-    @Import(name="entries")
-    private @Nullable Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries;
+    @Import(name="entries", required=true)
+    private Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries;
 
-    public Optional<Output<List<ZeroTrustDlpCustomProfileEntryArgs>>> entries() {
-        return Optional.ofNullable(this.entries);
+    public Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries() {
+        return this.entries;
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     @Import(name="ocrEnabled")
@@ -108,13 +107,6 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
 
     public Optional<Output<Boolean>> ocrEnabled() {
         return Optional.ofNullable(this.ocrEnabled);
-    }
-
-    @Import(name="profiles")
-    private @Nullable Output<List<ZeroTrustDlpCustomProfileProfileArgs>> profiles;
-
-    public Optional<Output<List<ZeroTrustDlpCustomProfileProfileArgs>>> profiles() {
-        return Optional.ofNullable(this.profiles);
     }
 
     /**
@@ -144,7 +136,6 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
         this.entries = $.entries;
         this.name = $.name;
         this.ocrEnabled = $.ocrEnabled;
-        this.profiles = $.profiles;
         this.sharedEntries = $.sharedEntries;
     }
 
@@ -256,7 +247,7 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
             return description(Output.of(description));
         }
 
-        public Builder entries(@Nullable Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries) {
+        public Builder entries(Output<List<ZeroTrustDlpCustomProfileEntryArgs>> entries) {
             $.entries = entries;
             return this;
         }
@@ -269,7 +260,7 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
             return entries(List.of(entries));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -285,19 +276,6 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
 
         public Builder ocrEnabled(Boolean ocrEnabled) {
             return ocrEnabled(Output.of(ocrEnabled));
-        }
-
-        public Builder profiles(@Nullable Output<List<ZeroTrustDlpCustomProfileProfileArgs>> profiles) {
-            $.profiles = profiles;
-            return this;
-        }
-
-        public Builder profiles(List<ZeroTrustDlpCustomProfileProfileArgs> profiles) {
-            return profiles(Output.of(profiles));
-        }
-
-        public Builder profiles(ZeroTrustDlpCustomProfileProfileArgs... profiles) {
-            return profiles(List.of(profiles));
         }
 
         /**
@@ -334,6 +312,12 @@ public final class ZeroTrustDlpCustomProfileArgs extends com.pulumi.resources.Re
         public ZeroTrustDlpCustomProfileArgs build() {
             if ($.accountId == null) {
                 throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileArgs", "accountId");
+            }
+            if ($.entries == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileArgs", "entries");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ZeroTrustDlpCustomProfileArgs", "name");
             }
             return $;
         }

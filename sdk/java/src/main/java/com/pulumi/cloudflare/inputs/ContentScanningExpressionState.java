@@ -25,21 +25,6 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
     }
 
     /**
-     * Defines the ruleset expression to use in matching content objects.
-     * 
-     */
-    @Import(name="payload")
-    private @Nullable Output<String> payload;
-
-    /**
-     * @return Defines the ruleset expression to use in matching content objects.
-     * 
-     */
-    public Optional<Output<String>> payload() {
-        return Optional.ofNullable(this.payload);
-    }
-
-    /**
      * Defines an identifier.
      * 
      */
@@ -58,7 +43,6 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
     private ContentScanningExpressionState(ContentScanningExpressionState $) {
         this.bodies = $.bodies;
-        this.payload = $.payload;
         this.zoneId = $.zoneId;
     }
 
@@ -91,27 +75,6 @@ public final class ContentScanningExpressionState extends com.pulumi.resources.R
 
         public Builder bodies(ContentScanningExpressionBodyArgs... bodies) {
             return bodies(List.of(bodies));
-        }
-
-        /**
-         * @param payload Defines the ruleset expression to use in matching content objects.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder payload(@Nullable Output<String> payload) {
-            $.payload = payload;
-            return this;
-        }
-
-        /**
-         * @param payload Defines the ruleset expression to use in matching content objects.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder payload(String payload) {
-            return payload(Output.of(payload));
         }
 
         /**

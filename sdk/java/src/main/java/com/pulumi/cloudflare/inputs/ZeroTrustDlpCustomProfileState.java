@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileEntryArgs;
-import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileProfileArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustDlpCustomProfileSharedEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -139,13 +138,6 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         return Optional.ofNullable(this.openAccess);
     }
 
-    @Import(name="profiles")
-    private @Nullable Output<List<ZeroTrustDlpCustomProfileProfileArgs>> profiles;
-
-    public Optional<Output<List<ZeroTrustDlpCustomProfileProfileArgs>>> profiles() {
-        return Optional.ofNullable(this.profiles);
-    }
-
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      * 
@@ -205,7 +197,6 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
         this.name = $.name;
         this.ocrEnabled = $.ocrEnabled;
         this.openAccess = $.openAccess;
-        this.profiles = $.profiles;
         this.sharedEntries = $.sharedEntries;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
@@ -390,19 +381,6 @@ public final class ZeroTrustDlpCustomProfileState extends com.pulumi.resources.R
          */
         public Builder openAccess(Boolean openAccess) {
             return openAccess(Output.of(openAccess));
-        }
-
-        public Builder profiles(@Nullable Output<List<ZeroTrustDlpCustomProfileProfileArgs>> profiles) {
-            $.profiles = profiles;
-            return this;
-        }
-
-        public Builder profiles(List<ZeroTrustDlpCustomProfileProfileArgs> profiles) {
-            return profiles(Output.of(profiles));
-        }
-
-        public Builder profiles(ZeroTrustDlpCustomProfileProfileArgs... profiles) {
-            return profiles(List.of(profiles));
         }
 
         /**

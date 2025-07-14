@@ -24,14 +24,6 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "account_id",
     ///         ProfileId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-    ///         Entries = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileEntryArgs
-    ///             {
-    ///                 Id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-    ///                 Enabled = true,
-    ///             },
-    ///         },
     ///         AiContextEnabled = true,
     ///         AllowedMatchCount = 0,
     ///         ConfidenceThreshold = "confidence_threshold",
@@ -41,6 +33,14 @@ namespace Pulumi.Cloudflare
     ///             Skip = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs
     ///             {
     ///                 Files = true,
+    ///             },
+    ///         },
+    ///         Entries = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileEntryArgs
+    ///             {
+    ///                 Id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///                 Enabled = true,
     ///             },
     ///         },
     ///         OcrEnabled = true,
@@ -190,8 +190,9 @@ namespace Pulumi.Cloudflare
         [Input("contextAwareness")]
         public Input<Inputs.DlpPredefinedProfileContextAwarenessArgs>? ContextAwareness { get; set; }
 
-        [Input("entries", required: true)]
+        [Input("entries")]
         private InputList<Inputs.DlpPredefinedProfileEntryArgs>? _entries;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.DlpPredefinedProfileEntryArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.DlpPredefinedProfileEntryArgs>());
@@ -244,6 +245,7 @@ namespace Pulumi.Cloudflare
 
         [Input("entries")]
         private InputList<Inputs.DlpPredefinedProfileEntryGetArgs>? _entries;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.DlpPredefinedProfileEntryGetArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.DlpPredefinedProfileEntryGetArgs>());

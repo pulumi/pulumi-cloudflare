@@ -8,7 +8,6 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileState;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileEntry;
-import com.pulumi.cloudflare.outputs.DlpCustomProfileProfile;
 import com.pulumi.cloudflare.outputs.DlpCustomProfileSharedEntry;
 import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
@@ -116,16 +115,16 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     @Export(name="entries", refs={List.class,DlpCustomProfileEntry.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<DlpCustomProfileEntry>> entries;
+    private Output<List<DlpCustomProfileEntry>> entries;
 
-    public Output<Optional<List<DlpCustomProfileEntry>>> entries() {
-        return Codegen.optional(this.entries);
+    public Output<List<DlpCustomProfileEntry>> entries() {
+        return this.entries;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     @Export(name="ocrEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ocrEnabled;
@@ -146,12 +145,6 @@ public class DlpCustomProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> openAccess() {
         return this.openAccess;
-    }
-    @Export(name="profiles", refs={List.class,DlpCustomProfileProfile.class}, tree="[0,1]")
-    private Output<List<DlpCustomProfileProfile>> profiles;
-
-    public Output<List<DlpCustomProfileProfile>> profiles() {
-        return this.profiles;
     }
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
