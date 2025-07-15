@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * const exampleUserAgentBlockingRule = new cloudflare.UserAgentBlockingRule("example_user_agent_blocking_rule", {
  *     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     configuration: {
- *         target: "ip",
- *         value: "198.51.100.4",
+ *         target: "ua",
+ *         value: "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
  *     },
  *     mode: "challenge",
  * });
@@ -51,9 +51,6 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === UserAgentBlockingRule.__pulumiType;
     }
 
-    /**
-     * The rule configuration.
-     */
     public readonly configuration!: pulumi.Output<outputs.UserAgentBlockingRuleConfiguration>;
     /**
      * The action to apply to a matched request.
@@ -111,9 +108,6 @@ export class UserAgentBlockingRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering UserAgentBlockingRule resources.
  */
 export interface UserAgentBlockingRuleState {
-    /**
-     * The rule configuration.
-     */
     configuration?: pulumi.Input<inputs.UserAgentBlockingRuleConfiguration>;
     /**
      * The action to apply to a matched request.
@@ -134,9 +128,6 @@ export interface UserAgentBlockingRuleState {
  * The set of arguments for constructing a UserAgentBlockingRule resource.
  */
 export interface UserAgentBlockingRuleArgs {
-    /**
-     * The rule configuration.
-     */
     configuration: pulumi.Input<inputs.UserAgentBlockingRuleConfiguration>;
     /**
      * The action to apply to a matched request.

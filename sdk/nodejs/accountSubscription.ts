@@ -8,6 +8,12 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+ * ```
  */
 export class AccountSubscription extends pulumi.CustomResource {
     /**
@@ -71,10 +77,6 @@ export class AccountSubscription extends pulumi.CustomResource {
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
-    /**
-     * Subscription identifier tag.
-     */
-    public readonly subscriptionIdentifier!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccountSubscription resource with the given unique name, arguments, and options.
@@ -97,7 +99,6 @@ export class AccountSubscription extends pulumi.CustomResource {
             resourceInputs["price"] = state ? state.price : undefined;
             resourceInputs["ratePlan"] = state ? state.ratePlan : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["subscriptionIdentifier"] = state ? state.subscriptionIdentifier : undefined;
         } else {
             const args = argsOrState as AccountSubscriptionArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -106,7 +107,6 @@ export class AccountSubscription extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["frequency"] = args ? args.frequency : undefined;
             resourceInputs["ratePlan"] = args ? args.ratePlan : undefined;
-            resourceInputs["subscriptionIdentifier"] = args ? args.subscriptionIdentifier : undefined;
             resourceInputs["currency"] = undefined /*out*/;
             resourceInputs["currentPeriodEnd"] = undefined /*out*/;
             resourceInputs["currentPeriodStart"] = undefined /*out*/;
@@ -156,10 +156,6 @@ export interface AccountSubscriptionState {
      * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
      */
     state?: pulumi.Input<string>;
-    /**
-     * Subscription identifier tag.
-     */
-    subscriptionIdentifier?: pulumi.Input<string>;
 }
 
 /**
@@ -179,8 +175,4 @@ export interface AccountSubscriptionArgs {
      * The rate plan applied to the subscription.
      */
     ratePlan?: pulumi.Input<inputs.AccountSubscriptionRatePlan>;
-    /**
-     * Subscription identifier tag.
-     */
-    subscriptionIdentifier?: pulumi.Input<string>;
 }

@@ -19,13 +19,13 @@ public final class GetRulesetRuleActionParametersEdgeTtl {
      */
     private Integer default_;
     /**
-     * @return edge ttl options
+     * @return Edge TTL options.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
     private String mode;
     /**
-     * @return List of single status codes, or status code ranges to apply the selected mode
+     * @return List of single status codes, or status code ranges to apply the selected mode.
      * 
      */
     private List<GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls;
@@ -39,7 +39,7 @@ public final class GetRulesetRuleActionParametersEdgeTtl {
         return this.default_;
     }
     /**
-     * @return edge ttl options
+     * @return Edge TTL options.
      * Available values: &#34;respect*origin&#34;, &#34;bypass*by*default&#34;, &#34;override*origin&#34;.
      * 
      */
@@ -47,7 +47,7 @@ public final class GetRulesetRuleActionParametersEdgeTtl {
         return this.mode;
     }
     /**
-     * @return List of single status codes, or status code ranges to apply the selected mode
+     * @return List of single status codes, or status code ranges to apply the selected mode.
      * 
      */
     public List<GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls() {

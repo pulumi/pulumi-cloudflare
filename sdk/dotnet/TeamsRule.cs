@@ -114,6 +114,12 @@ namespace Pulumi.Cloudflare
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
 
+        /// <summary>
+        /// Warning for a misconfigured rule, if any.
+        /// </summary>
+        [Output("warningStatus")]
+        public Output<string> WarningStatus { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TeamsRule resource with the given unique name, arguments, and options.
@@ -349,6 +355,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
+
+        /// <summary>
+        /// Warning for a misconfigured rule, if any.
+        /// </summary>
+        [Input("warningStatus")]
+        public Input<string>? WarningStatus { get; set; }
 
         public TeamsRuleState()
         {

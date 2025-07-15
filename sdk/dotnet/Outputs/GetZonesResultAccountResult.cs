@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the account
+        /// The name of the account.
         /// </summary>
         public readonly string Name;
 

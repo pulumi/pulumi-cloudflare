@@ -26,8 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetResourceGroup(ctx, &cloudflare.GetResourceGroupArgs{
-//				AccountId:       "eb78d65290b24279ba6f44721b3ea3c4",
-//				ResourceGroupId: "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+//				AccountId:       "023e105f4ecef8ad9ca31a8372d0c353",
+//				ResourceGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ type GetResourceGroupArgs struct {
 type GetResourceGroupResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
-	// Identifier of the group.
+	// Identifier of the resource group.
 	Id string `pulumi:"id"`
 	// Attributes associated to the resource group.
 	Meta GetResourceGroupMeta `pulumi:"meta"`
@@ -112,7 +112,7 @@ func (o GetResourceGroupResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Identifier of the group.
+// Identifier of the resource group.
 func (o GetResourceGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

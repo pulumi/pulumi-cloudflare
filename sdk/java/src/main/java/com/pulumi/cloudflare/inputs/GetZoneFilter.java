@@ -106,7 +106,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A zone status
+     * Specify a zone status to filter by.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
@@ -114,7 +114,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
     private @Nullable String status;
 
     /**
-     * @return A zone status
+     * @return Specify a zone status to filter by.
      * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
      * 
      */
@@ -212,7 +212,7 @@ public final class GetZoneFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status A zone status
+         * @param status Specify a zone status to filter by.
          * Available values: &#34;initializing&#34;, &#34;pending&#34;, &#34;active&#34;, &#34;moved&#34;.
          * 
          * @return builder

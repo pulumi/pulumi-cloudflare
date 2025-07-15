@@ -44,14 +44,14 @@ public class ZeroTrustDevicePostureRule extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
      * @return The description of the device posture rule.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.

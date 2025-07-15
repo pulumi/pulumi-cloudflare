@@ -101,6 +101,10 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
      * version number of the rule
      */
     public /*out*/ readonly version!: pulumi.Output<number>;
+    /**
+     * Warning for a misconfigured rule, if any.
+     */
+    public /*out*/ readonly warningStatus!: pulumi.Output<string>;
 
     /**
      * Create a ZeroTrustGatewayPolicy resource with the given unique name, arguments, and options.
@@ -132,6 +136,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["traffic"] = state ? state.traffic : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["warningStatus"] = state ? state.warningStatus : undefined;
         } else {
             const args = argsOrState as ZeroTrustGatewayPolicyArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -160,6 +165,7 @@ export class ZeroTrustGatewayPolicy extends pulumi.CustomResource {
             resourceInputs["deletedAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
+            resourceInputs["warningStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "cloudflare:index/teamsRule:TeamsRule" }] };
@@ -230,6 +236,10 @@ export interface ZeroTrustGatewayPolicyState {
      * version number of the rule
      */
     version?: pulumi.Input<number>;
+    /**
+     * Warning for a misconfigured rule, if any.
+     */
+    warningStatus?: pulumi.Input<string>;
 }
 
 /**

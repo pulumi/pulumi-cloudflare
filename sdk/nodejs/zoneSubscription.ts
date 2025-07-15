@@ -8,6 +8,12 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import cloudflare:index/zoneSubscription:ZoneSubscription example '<zone_id>'
+ * ```
  */
 export class ZoneSubscription extends pulumi.CustomResource {
     /**
@@ -38,18 +44,39 @@ export class ZoneSubscription extends pulumi.CustomResource {
     }
 
     /**
+     * The monetary unit in which pricing information is displayed.
+     */
+    public /*out*/ readonly currency!: pulumi.Output<string>;
+    /**
+     * The end of the current period and also when the next billing is due.
+     */
+    public /*out*/ readonly currentPeriodEnd!: pulumi.Output<string>;
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     */
+    public /*out*/ readonly currentPeriodStart!: pulumi.Output<string>;
+    /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
      */
     public readonly frequency!: pulumi.Output<string | undefined>;
     /**
-     * Subscription identifier tag.
+     * The price of the subscription that will be billed, in US dollars.
      */
-    public readonly identifier!: pulumi.Output<string>;
+    public /*out*/ readonly price!: pulumi.Output<number>;
     /**
      * The rate plan applied to the subscription.
      */
     public readonly ratePlan!: pulumi.Output<outputs.ZoneSubscriptionRatePlan | undefined>;
+    /**
+     * The state that the subscription is in.
+     * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Subscription identifier tag.
+     */
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a ZoneSubscription resource with the given unique name, arguments, and options.
@@ -64,17 +91,27 @@ export class ZoneSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneSubscriptionState | undefined;
+            resourceInputs["currency"] = state ? state.currency : undefined;
+            resourceInputs["currentPeriodEnd"] = state ? state.currentPeriodEnd : undefined;
+            resourceInputs["currentPeriodStart"] = state ? state.currentPeriodStart : undefined;
             resourceInputs["frequency"] = state ? state.frequency : undefined;
-            resourceInputs["identifier"] = state ? state.identifier : undefined;
+            resourceInputs["price"] = state ? state.price : undefined;
             resourceInputs["ratePlan"] = state ? state.ratePlan : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneSubscriptionArgs | undefined;
-            if ((!args || args.identifier === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'identifier'");
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["frequency"] = args ? args.frequency : undefined;
-            resourceInputs["identifier"] = args ? args.identifier : undefined;
             resourceInputs["ratePlan"] = args ? args.ratePlan : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["currency"] = undefined /*out*/;
+            resourceInputs["currentPeriodEnd"] = undefined /*out*/;
+            resourceInputs["currentPeriodStart"] = undefined /*out*/;
+            resourceInputs["price"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ZoneSubscription.__pulumiType, name, resourceInputs, opts);
@@ -86,18 +123,39 @@ export class ZoneSubscription extends pulumi.CustomResource {
  */
 export interface ZoneSubscriptionState {
     /**
+     * The monetary unit in which pricing information is displayed.
+     */
+    currency?: pulumi.Input<string>;
+    /**
+     * The end of the current period and also when the next billing is due.
+     */
+    currentPeriodEnd?: pulumi.Input<string>;
+    /**
+     * When the current billing period started. May match initial*period*start if this is the first period.
+     */
+    currentPeriodStart?: pulumi.Input<string>;
+    /**
      * How often the subscription is renewed automatically.
      * Available values: "weekly", "monthly", "quarterly", "yearly".
      */
     frequency?: pulumi.Input<string>;
     /**
-     * Subscription identifier tag.
+     * The price of the subscription that will be billed, in US dollars.
      */
-    identifier?: pulumi.Input<string>;
+    price?: pulumi.Input<number>;
     /**
      * The rate plan applied to the subscription.
      */
     ratePlan?: pulumi.Input<inputs.ZoneSubscriptionRatePlan>;
+    /**
+     * The state that the subscription is in.
+     * Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * Subscription identifier tag.
+     */
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -110,11 +168,11 @@ export interface ZoneSubscriptionArgs {
      */
     frequency?: pulumi.Input<string>;
     /**
-     * Subscription identifier tag.
-     */
-    identifier: pulumi.Input<string>;
-    /**
      * The rate plan applied to the subscription.
      */
     ratePlan?: pulumi.Input<inputs.ZoneSubscriptionRatePlan>;
+    /**
+     * Subscription identifier tag.
+     */
+    zoneId: pulumi.Input<string>;
 }

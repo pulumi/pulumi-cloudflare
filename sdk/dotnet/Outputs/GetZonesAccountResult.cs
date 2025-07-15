@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZonesAccountResult
     {
         /// <summary>
-        /// An account ID
+        /// Filter by an account ID.
         /// </summary>
         public readonly string? Id;
         /// <summary>

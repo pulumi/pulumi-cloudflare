@@ -24,7 +24,7 @@ public final class TunnelConfigConfigIngressOriginRequestAccess {
      * 
      */
     private @Nullable Boolean required;
-    private @Nullable String teamName;
+    private String teamName;
 
     private TunnelConfigConfigIngressOriginRequestAccess() {}
     /**
@@ -41,8 +41,8 @@ public final class TunnelConfigConfigIngressOriginRequestAccess {
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }
-    public Optional<String> teamName() {
-        return Optional.ofNullable(this.teamName);
+    public String teamName() {
+        return this.teamName;
     }
 
     public static Builder builder() {
@@ -56,7 +56,7 @@ public final class TunnelConfigConfigIngressOriginRequestAccess {
     public static final class Builder {
         private List<String> audTags;
         private @Nullable Boolean required;
-        private @Nullable String teamName;
+        private String teamName;
         public Builder() {}
         public Builder(TunnelConfigConfigIngressOriginRequestAccess defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,8 +83,10 @@ public final class TunnelConfigConfigIngressOriginRequestAccess {
             return this;
         }
         @CustomType.Setter
-        public Builder teamName(@Nullable String teamName) {
-
+        public Builder teamName(String teamName) {
+            if (teamName == null) {
+              throw new MissingRequiredPropertyException("TunnelConfigConfigIngressOriginRequestAccess", "teamName");
+            }
             this.teamName = teamName;
             return this;
         }

@@ -53,7 +53,7 @@ public final class GetZonePlan {
      */
     private String legacyId;
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     private String name;
@@ -121,7 +121,7 @@ public final class GetZonePlan {
         return this.legacyId;
     }
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     public String name() {

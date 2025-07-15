@@ -158,6 +158,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.GetZeroTrustAccessApplicationsResultTargetCriteriaResult> TargetCriterias;
         /// <summary>
         /// The application type.
+        /// Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         /// </summary>
         public readonly string Type;
         public readonly string UpdatedAt;

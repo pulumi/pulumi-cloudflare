@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsActivityLog;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsAntivirus;
+import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsAppControlSettings;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsBodyScanning;
 import com.pulumi.cloudflare.outputs.GetZeroTrustGatewaySettingsSettingsBrowserIsolation;
@@ -32,6 +33,11 @@ public final class GetZeroTrustGatewaySettingsSettings {
      * 
      */
     private GetZeroTrustGatewaySettingsSettingsAntivirus antivirus;
+    /**
+     * @return Setting to enable App Control
+     * 
+     */
+    private GetZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings;
     /**
      * @return Block page layout settings.
      * 
@@ -106,6 +112,13 @@ public final class GetZeroTrustGatewaySettingsSettings {
      */
     public GetZeroTrustGatewaySettingsSettingsAntivirus antivirus() {
         return this.antivirus;
+    }
+    /**
+     * @return Setting to enable App Control
+     * 
+     */
+    public GetZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings() {
+        return this.appControlSettings;
     }
     /**
      * @return Block page layout settings.
@@ -200,6 +213,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
     public static final class Builder {
         private GetZeroTrustGatewaySettingsSettingsActivityLog activityLog;
         private GetZeroTrustGatewaySettingsSettingsAntivirus antivirus;
+        private GetZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings;
         private GetZeroTrustGatewaySettingsSettingsBlockPage blockPage;
         private GetZeroTrustGatewaySettingsSettingsBodyScanning bodyScanning;
         private GetZeroTrustGatewaySettingsSettingsBrowserIsolation browserIsolation;
@@ -216,6 +230,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
     	      Objects.requireNonNull(defaults);
     	      this.activityLog = defaults.activityLog;
     	      this.antivirus = defaults.antivirus;
+    	      this.appControlSettings = defaults.appControlSettings;
     	      this.blockPage = defaults.blockPage;
     	      this.bodyScanning = defaults.bodyScanning;
     	      this.browserIsolation = defaults.browserIsolation;
@@ -243,6 +258,14 @@ public final class GetZeroTrustGatewaySettingsSettings {
               throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "antivirus");
             }
             this.antivirus = antivirus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder appControlSettings(GetZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings) {
+            if (appControlSettings == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustGatewaySettingsSettings", "appControlSettings");
+            }
+            this.appControlSettings = appControlSettings;
             return this;
         }
         @CustomType.Setter
@@ -337,6 +360,7 @@ public final class GetZeroTrustGatewaySettingsSettings {
             final var _resultValue = new GetZeroTrustGatewaySettingsSettings();
             _resultValue.activityLog = activityLog;
             _resultValue.antivirus = antivirus;
+            _resultValue.appControlSettings = appControlSettings;
             _resultValue.blockPage = blockPage;
             _resultValue.bodyScanning = bodyScanning;
             _resultValue.browserIsolation = browserIsolation;

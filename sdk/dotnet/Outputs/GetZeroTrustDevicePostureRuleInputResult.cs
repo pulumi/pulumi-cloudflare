@@ -164,6 +164,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// List of certificate Subject Alternative Names.
+        /// </summary>
+        public readonly ImmutableArray<string> SubjectAlternativeNames;
+        /// <summary>
         /// Signing certificate thumbprint.
         /// </summary>
         public readonly string Thumbprint;
@@ -255,6 +259,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string state,
 
+            ImmutableArray<string> subjectAlternativeNames,
+
             string thumbprint,
 
             double totalScore,
@@ -299,6 +305,7 @@ namespace Pulumi.Cloudflare.Outputs
             SensorConfig = sensorConfig;
             Sha256 = sha256;
             State = state;
+            SubjectAlternativeNames = subjectAlternativeNames;
             Thumbprint = thumbprint;
             TotalScore = totalScore;
             Version = version;

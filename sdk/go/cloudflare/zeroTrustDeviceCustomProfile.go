@@ -83,25 +83,25 @@ type ZeroTrustDeviceCustomProfile struct {
 
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Whether to allow the user to switch WARP between modes.
-	AllowModeSwitch pulumi.BoolPtrOutput `pulumi:"allowModeSwitch"`
+	AllowModeSwitch pulumi.BoolOutput `pulumi:"allowModeSwitch"`
 	// Whether to receive update notifications when a new version of the client is available.
-	AllowUpdates pulumi.BoolPtrOutput `pulumi:"allowUpdates"`
+	AllowUpdates pulumi.BoolOutput `pulumi:"allowUpdates"`
 	// Whether to allow devices to leave the organization.
-	AllowedToLeave pulumi.BoolPtrOutput `pulumi:"allowedToLeave"`
+	AllowedToLeave pulumi.BoolOutput `pulumi:"allowedToLeave"`
 	// The amount of time in seconds to reconnect after having been disabled.
-	AutoConnect pulumi.Float64PtrOutput `pulumi:"autoConnect"`
+	AutoConnect pulumi.Float64Output `pulumi:"autoConnect"`
 	// Turn on the captive portal after the specified amount of time.
-	CaptivePortal pulumi.Float64PtrOutput `pulumi:"captivePortal"`
+	CaptivePortal pulumi.Float64Output `pulumi:"captivePortal"`
 	// Whether the policy is the default policy for an account.
 	Default pulumi.BoolOutput `pulumi:"default"`
 	// A description of the policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
-	DisableAutoFallback pulumi.BoolPtrOutput `pulumi:"disableAutoFallback"`
+	DisableAutoFallback pulumi.BoolOutput `pulumi:"disableAutoFallback"`
 	// Whether the policy will be applied to matching devices.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Whether to add Microsoft IPs to Split Tunnel exclusions.
-	ExcludeOfficeIps pulumi.BoolPtrOutput `pulumi:"excludeOfficeIps"`
+	ExcludeOfficeIps pulumi.BoolOutput `pulumi:"excludeOfficeIps"`
 	// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
 	Excludes        ZeroTrustDeviceCustomProfileExcludeArrayOutput        `pulumi:"excludes"`
 	FallbackDomains ZeroTrustDeviceCustomProfileFallbackDomainArrayOutput `pulumi:"fallbackDomains"`
@@ -120,17 +120,17 @@ type ZeroTrustDeviceCustomProfile struct {
 	// The precedence of the policy. Lower values indicate higher precedence. Policies will be evaluated in ascending order of this field.
 	Precedence pulumi.Float64Output `pulumi:"precedence"`
 	// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
-	RegisterInterfaceIpWithDns pulumi.BoolPtrOutput `pulumi:"registerInterfaceIpWithDns"`
+	RegisterInterfaceIpWithDns pulumi.BoolOutput `pulumi:"registerInterfaceIpWithDns"`
 	// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
-	SccmVpnBoundarySupport pulumi.BoolPtrOutput                               `pulumi:"sccmVpnBoundarySupport"`
+	SccmVpnBoundarySupport pulumi.BoolOutput                                  `pulumi:"sccmVpnBoundarySupport"`
 	ServiceModeV2          ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput `pulumi:"serviceModeV2"`
 	// The URL to launch when the Send Feedback button is clicked.
-	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
+	SupportUrl pulumi.StringOutput `pulumi:"supportUrl"`
 	// Whether to allow the user to turn off the WARP switch and disconnect the client.
-	SwitchLocked pulumi.BoolPtrOutput                              `pulumi:"switchLocked"`
+	SwitchLocked pulumi.BoolOutput                                 `pulumi:"switchLocked"`
 	TargetTests  ZeroTrustDeviceCustomProfileTargetTestArrayOutput `pulumi:"targetTests"`
 	// Determines which tunnel protocol to use.
-	TunnelProtocol pulumi.StringPtrOutput `pulumi:"tunnelProtocol"`
+	TunnelProtocol pulumi.StringOutput `pulumi:"tunnelProtocol"`
 }
 
 // NewZeroTrustDeviceCustomProfile registers a new resource with the given unique name, arguments, and options.
@@ -480,28 +480,28 @@ func (o ZeroTrustDeviceCustomProfileOutput) AccountId() pulumi.StringOutput {
 }
 
 // Whether to allow the user to switch WARP between modes.
-func (o ZeroTrustDeviceCustomProfileOutput) AllowModeSwitch() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.AllowModeSwitch }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) AllowModeSwitch() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.AllowModeSwitch }).(pulumi.BoolOutput)
 }
 
 // Whether to receive update notifications when a new version of the client is available.
-func (o ZeroTrustDeviceCustomProfileOutput) AllowUpdates() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.AllowUpdates }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) AllowUpdates() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.AllowUpdates }).(pulumi.BoolOutput)
 }
 
 // Whether to allow devices to leave the organization.
-func (o ZeroTrustDeviceCustomProfileOutput) AllowedToLeave() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.AllowedToLeave }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) AllowedToLeave() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.AllowedToLeave }).(pulumi.BoolOutput)
 }
 
 // The amount of time in seconds to reconnect after having been disabled.
-func (o ZeroTrustDeviceCustomProfileOutput) AutoConnect() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64PtrOutput { return v.AutoConnect }).(pulumi.Float64PtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) AutoConnect() pulumi.Float64Output {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64Output { return v.AutoConnect }).(pulumi.Float64Output)
 }
 
 // Turn on the captive portal after the specified amount of time.
-func (o ZeroTrustDeviceCustomProfileOutput) CaptivePortal() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64PtrOutput { return v.CaptivePortal }).(pulumi.Float64PtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) CaptivePortal() pulumi.Float64Output {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.Float64Output { return v.CaptivePortal }).(pulumi.Float64Output)
 }
 
 // Whether the policy is the default policy for an account.
@@ -515,8 +515,8 @@ func (o ZeroTrustDeviceCustomProfileOutput) Description() pulumi.StringPtrOutput
 }
 
 // If the `dnsServer` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
-func (o ZeroTrustDeviceCustomProfileOutput) DisableAutoFallback() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.DisableAutoFallback }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) DisableAutoFallback() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.DisableAutoFallback }).(pulumi.BoolOutput)
 }
 
 // Whether the policy will be applied to matching devices.
@@ -525,8 +525,8 @@ func (o ZeroTrustDeviceCustomProfileOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // Whether to add Microsoft IPs to Split Tunnel exclusions.
-func (o ZeroTrustDeviceCustomProfileOutput) ExcludeOfficeIps() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.ExcludeOfficeIps }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) ExcludeOfficeIps() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.ExcludeOfficeIps }).(pulumi.BoolOutput)
 }
 
 // List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -583,13 +583,13 @@ func (o ZeroTrustDeviceCustomProfileOutput) Precedence() pulumi.Float64Output {
 }
 
 // Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
-func (o ZeroTrustDeviceCustomProfileOutput) RegisterInterfaceIpWithDns() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) RegisterInterfaceIpWithDns() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.RegisterInterfaceIpWithDns }).(pulumi.BoolOutput)
 }
 
 // Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
-func (o ZeroTrustDeviceCustomProfileOutput) SccmVpnBoundarySupport() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.SccmVpnBoundarySupport }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) SccmVpnBoundarySupport() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.SccmVpnBoundarySupport }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustDeviceCustomProfileOutput) ServiceModeV2() ZeroTrustDeviceCustomProfileServiceModeV2PtrOutput {
@@ -599,13 +599,13 @@ func (o ZeroTrustDeviceCustomProfileOutput) ServiceModeV2() ZeroTrustDeviceCusto
 }
 
 // The URL to launch when the Send Feedback button is clicked.
-func (o ZeroTrustDeviceCustomProfileOutput) SupportUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringPtrOutput { return v.SupportUrl }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) SupportUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.SupportUrl }).(pulumi.StringOutput)
 }
 
 // Whether to allow the user to turn off the WARP switch and disconnect the client.
-func (o ZeroTrustDeviceCustomProfileOutput) SwitchLocked() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolPtrOutput { return v.SwitchLocked }).(pulumi.BoolPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) SwitchLocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.BoolOutput { return v.SwitchLocked }).(pulumi.BoolOutput)
 }
 
 func (o ZeroTrustDeviceCustomProfileOutput) TargetTests() ZeroTrustDeviceCustomProfileTargetTestArrayOutput {
@@ -615,8 +615,8 @@ func (o ZeroTrustDeviceCustomProfileOutput) TargetTests() ZeroTrustDeviceCustomP
 }
 
 // Determines which tunnel protocol to use.
-func (o ZeroTrustDeviceCustomProfileOutput) TunnelProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringPtrOutput { return v.TunnelProtocol }).(pulumi.StringPtrOutput)
+func (o ZeroTrustDeviceCustomProfileOutput) TunnelProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustDeviceCustomProfile) pulumi.StringOutput { return v.TunnelProtocol }).(pulumi.StringOutput)
 }
 
 type ZeroTrustDeviceCustomProfileArrayOutput struct{ *pulumi.OutputState }

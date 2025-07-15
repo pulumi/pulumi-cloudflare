@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *     name: "us-east-1-vpc",
  *     comment: "Staging VPC for data science",
  *     isDefault: true,
+ *     isDefaultNetwork: false,
  * });
  * ```
  *
@@ -74,12 +75,14 @@ export class TunnelVirtualNetwork extends pulumi.CustomResource {
     public /*out*/ readonly deletedAt!: pulumi.Output<string>;
     /**
      * If `true`, this virtual network is the default for the account.
+     *
+     * @deprecated Use the isDefaultNetwork property instead.
      */
     public readonly isDefault!: pulumi.Output<boolean | undefined>;
     /**
      * If `true`, this virtual network is the default for the account.
      */
-    public readonly isDefaultNetwork!: pulumi.Output<boolean | undefined>;
+    public readonly isDefaultNetwork!: pulumi.Output<boolean>;
     /**
      * A user-friendly name for the virtual network.
      */
@@ -153,6 +156,8 @@ export interface TunnelVirtualNetworkState {
     deletedAt?: pulumi.Input<string>;
     /**
      * If `true`, this virtual network is the default for the account.
+     *
+     * @deprecated Use the isDefaultNetwork property instead.
      */
     isDefault?: pulumi.Input<boolean>;
     /**
@@ -179,6 +184,8 @@ export interface TunnelVirtualNetworkArgs {
     comment?: pulumi.Input<string>;
     /**
      * If `true`, this virtual network is the default for the account.
+     *
+     * @deprecated Use the isDefaultNetwork property instead.
      */
     isDefault?: pulumi.Input<boolean>;
     /**

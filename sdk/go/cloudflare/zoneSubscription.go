@@ -13,16 +13,33 @@ import (
 )
 
 // ## Example Usage
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import cloudflare:index/zoneSubscription:ZoneSubscription example '<zone_id>'
+// ```
 type ZoneSubscription struct {
 	pulumi.CustomResourceState
 
+	// The monetary unit in which pricing information is displayed.
+	Currency pulumi.StringOutput `pulumi:"currency"`
+	// The end of the current period and also when the next billing is due.
+	CurrentPeriodEnd pulumi.StringOutput `pulumi:"currentPeriodEnd"`
+	// When the current billing period started. May match initial*period*start if this is the first period.
+	CurrentPeriodStart pulumi.StringOutput `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
-	// Subscription identifier tag.
-	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// The price of the subscription that will be billed, in US dollars.
+	Price pulumi.Float64Output `pulumi:"price"`
 	// The rate plan applied to the subscription.
 	RatePlan ZoneSubscriptionRatePlanPtrOutput `pulumi:"ratePlan"`
+	// The state that the subscription is in.
+	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+	State pulumi.StringOutput `pulumi:"state"`
+	// Subscription identifier tag.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewZoneSubscription registers a new resource with the given unique name, arguments, and options.
@@ -32,8 +49,8 @@ func NewZoneSubscription(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Identifier == nil {
-		return nil, errors.New("invalid value for required argument 'Identifier'")
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ZoneSubscription
@@ -58,23 +75,45 @@ func GetZoneSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneSubscription resources.
 type zoneSubscriptionState struct {
+	// The monetary unit in which pricing information is displayed.
+	Currency *string `pulumi:"currency"`
+	// The end of the current period and also when the next billing is due.
+	CurrentPeriodEnd *string `pulumi:"currentPeriodEnd"`
+	// When the current billing period started. May match initial*period*start if this is the first period.
+	CurrentPeriodStart *string `pulumi:"currentPeriodStart"`
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency *string `pulumi:"frequency"`
-	// Subscription identifier tag.
-	Identifier *string `pulumi:"identifier"`
+	// The price of the subscription that will be billed, in US dollars.
+	Price *float64 `pulumi:"price"`
 	// The rate plan applied to the subscription.
 	RatePlan *ZoneSubscriptionRatePlan `pulumi:"ratePlan"`
+	// The state that the subscription is in.
+	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+	State *string `pulumi:"state"`
+	// Subscription identifier tag.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ZoneSubscriptionState struct {
+	// The monetary unit in which pricing information is displayed.
+	Currency pulumi.StringPtrInput
+	// The end of the current period and also when the next billing is due.
+	CurrentPeriodEnd pulumi.StringPtrInput
+	// When the current billing period started. May match initial*period*start if this is the first period.
+	CurrentPeriodStart pulumi.StringPtrInput
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency pulumi.StringPtrInput
-	// Subscription identifier tag.
-	Identifier pulumi.StringPtrInput
+	// The price of the subscription that will be billed, in US dollars.
+	Price pulumi.Float64PtrInput
 	// The rate plan applied to the subscription.
 	RatePlan ZoneSubscriptionRatePlanPtrInput
+	// The state that the subscription is in.
+	// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+	State pulumi.StringPtrInput
+	// Subscription identifier tag.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (ZoneSubscriptionState) ElementType() reflect.Type {
@@ -85,10 +124,10 @@ type zoneSubscriptionArgs struct {
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency *string `pulumi:"frequency"`
-	// Subscription identifier tag.
-	Identifier string `pulumi:"identifier"`
 	// The rate plan applied to the subscription.
 	RatePlan *ZoneSubscriptionRatePlan `pulumi:"ratePlan"`
+	// Subscription identifier tag.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a ZoneSubscription resource.
@@ -96,10 +135,10 @@ type ZoneSubscriptionArgs struct {
 	// How often the subscription is renewed automatically.
 	// Available values: "weekly", "monthly", "quarterly", "yearly".
 	Frequency pulumi.StringPtrInput
-	// Subscription identifier tag.
-	Identifier pulumi.StringInput
 	// The rate plan applied to the subscription.
 	RatePlan ZoneSubscriptionRatePlanPtrInput
+	// Subscription identifier tag.
+	ZoneId pulumi.StringInput
 }
 
 func (ZoneSubscriptionArgs) ElementType() reflect.Type {
@@ -189,20 +228,46 @@ func (o ZoneSubscriptionOutput) ToZoneSubscriptionOutputWithContext(ctx context.
 	return o
 }
 
+// The monetary unit in which pricing information is displayed.
+func (o ZoneSubscriptionOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.Currency }).(pulumi.StringOutput)
+}
+
+// The end of the current period and also when the next billing is due.
+func (o ZoneSubscriptionOutput) CurrentPeriodEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.CurrentPeriodEnd }).(pulumi.StringOutput)
+}
+
+// When the current billing period started. May match initial*period*start if this is the first period.
+func (o ZoneSubscriptionOutput) CurrentPeriodStart() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.CurrentPeriodStart }).(pulumi.StringOutput)
+}
+
 // How often the subscription is renewed automatically.
 // Available values: "weekly", "monthly", "quarterly", "yearly".
 func (o ZoneSubscriptionOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
-// Subscription identifier tag.
-func (o ZoneSubscriptionOutput) Identifier() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+// The price of the subscription that will be billed, in US dollars.
+func (o ZoneSubscriptionOutput) Price() pulumi.Float64Output {
+	return o.ApplyT(func(v *ZoneSubscription) pulumi.Float64Output { return v.Price }).(pulumi.Float64Output)
 }
 
 // The rate plan applied to the subscription.
 func (o ZoneSubscriptionOutput) RatePlan() ZoneSubscriptionRatePlanPtrOutput {
 	return o.ApplyT(func(v *ZoneSubscription) ZoneSubscriptionRatePlanPtrOutput { return v.RatePlan }).(ZoneSubscriptionRatePlanPtrOutput)
+}
+
+// The state that the subscription is in.
+// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+func (o ZoneSubscriptionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Subscription identifier tag.
+func (o ZoneSubscriptionOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSubscription) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type ZoneSubscriptionArrayOutput struct{ *pulumi.OutputState }

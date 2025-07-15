@@ -31,14 +31,14 @@ public final class ZoneOwnerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the owner
+     * Name of the owner.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the owner
+     * @return Name of the owner.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +46,14 @@ public final class ZoneOwnerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of owner
+     * The type of owner.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of owner
+     * @return The type of owner.
      * 
      */
     public Optional<Output<String>> type() {
@@ -108,7 +108,7 @@ public final class ZoneOwnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the owner
+         * @param name Name of the owner.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ZoneOwnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the owner
+         * @param name Name of the owner.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ZoneOwnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of owner
+         * @param type The type of owner.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ZoneOwnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of owner
+         * @param type The type of owner.
          * 
          * @return builder
          * 

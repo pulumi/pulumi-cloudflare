@@ -23,15 +23,14 @@ __all__ = ['DlpCustomProfileArgs', 'DlpCustomProfile']
 class DlpCustomProfileArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
+                 entries: pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]],
+                 name: pulumi.Input[builtins.str],
                  ai_context_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  allowed_match_count: Optional[pulumi.Input[builtins.int]] = None,
                  confidence_threshold: Optional[pulumi.Input[builtins.str]] = None,
                  context_awareness: Optional[pulumi.Input['DlpCustomProfileContextAwarenessArgs']] = None,
                  description: Optional[pulumi.Input[builtins.str]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None,
                  ocr_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 profiles: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileArgs']]]] = None,
                  shared_entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileSharedEntryArgs']]]] = None):
         """
         The set of arguments for constructing a DlpCustomProfile resource.
@@ -41,6 +40,8 @@ class DlpCustomProfileArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileSharedEntryArgs']]] shared_entries: Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
         """
         pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "entries", entries)
+        pulumi.set(__self__, "name", name)
         if ai_context_enabled is not None:
             pulumi.set(__self__, "ai_context_enabled", ai_context_enabled)
         if allowed_match_count is not None:
@@ -51,14 +52,8 @@ class DlpCustomProfileArgs:
             pulumi.set(__self__, "context_awareness", context_awareness)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if entries is not None:
-            pulumi.set(__self__, "entries", entries)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if ocr_enabled is not None:
             pulumi.set(__self__, "ocr_enabled", ocr_enabled)
-        if profiles is not None:
-            pulumi.set(__self__, "profiles", profiles)
         if shared_entries is not None:
             pulumi.set(__self__, "shared_entries", shared_entries)
 
@@ -70,6 +65,24 @@ class DlpCustomProfileArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def entries(self) -> pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]:
+        return pulumi.get(self, "entries")
+
+    @entries.setter
+    def entries(self, value: pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]):
+        pulumi.set(self, "entries", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="aiContextEnabled")
@@ -126,24 +139,6 @@ class DlpCustomProfileArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter
-    def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]]:
-        return pulumi.get(self, "entries")
-
-    @entries.setter
-    def entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileEntryArgs']]]]):
-        pulumi.set(self, "entries", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="ocrEnabled")
     def ocr_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
         return pulumi.get(self, "ocr_enabled")
@@ -151,15 +146,6 @@ class DlpCustomProfileArgs:
     @ocr_enabled.setter
     def ocr_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
         pulumi.set(self, "ocr_enabled", value)
-
-    @property
-    @pulumi.getter
-    def profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileArgs']]]]:
-        return pulumi.get(self, "profiles")
-
-    @profiles.setter
-    def profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileArgs']]]]):
-        pulumi.set(self, "profiles", value)
 
     @property
     @pulumi.getter(name="sharedEntries")
@@ -188,7 +174,6 @@ class _DlpCustomProfileState:
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  ocr_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  open_access: Optional[pulumi.Input[builtins.bool]] = None,
-                 profiles: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileArgs']]]] = None,
                  shared_entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileSharedEntryArgs']]]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[builtins.str]] = None):
@@ -225,8 +210,6 @@ class _DlpCustomProfileState:
             pulumi.set(__self__, "ocr_enabled", ocr_enabled)
         if open_access is not None:
             pulumi.set(__self__, "open_access", open_access)
-        if profiles is not None:
-            pulumi.set(__self__, "profiles", profiles)
         if shared_entries is not None:
             pulumi.set(__self__, "shared_entries", shared_entries)
         if type is not None:
@@ -349,15 +332,6 @@ class _DlpCustomProfileState:
         pulumi.set(self, "open_access", value)
 
     @property
-    @pulumi.getter
-    def profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileArgs']]]]:
-        return pulumi.get(self, "profiles")
-
-    @profiles.setter
-    def profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileProfileArgs']]]]):
-        pulumi.set(self, "profiles", value)
-
-    @property
     @pulumi.getter(name="sharedEntries")
     def shared_entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DlpCustomProfileSharedEntryArgs']]]]:
         """
@@ -414,7 +388,6 @@ class DlpCustomProfile(pulumi.CustomResource):
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileEntryArgs', 'DlpCustomProfileEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  ocr_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 profiles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileProfileArgs', 'DlpCustomProfileProfileArgsDict']]]]] = None,
                  shared_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileSharedEntryArgs', 'DlpCustomProfileSharedEntryArgsDict']]]]] = None,
                  __props__=None):
         """
@@ -472,7 +445,6 @@ class DlpCustomProfile(pulumi.CustomResource):
                  entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileEntryArgs', 'DlpCustomProfileEntryArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
                  ocr_enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 profiles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileProfileArgs', 'DlpCustomProfileProfileArgsDict']]]]] = None,
                  shared_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileSharedEntryArgs', 'DlpCustomProfileSharedEntryArgsDict']]]]] = None,
                  __props__=None):
         pulumi.log.warn("""DlpCustomProfile is deprecated: cloudflare.index/dlpcustomprofile.DlpCustomProfile has been deprecated in favor of cloudflare.index/zerotrustdlpcustomprofile.ZeroTrustDlpCustomProfile""")
@@ -492,10 +464,13 @@ class DlpCustomProfile(pulumi.CustomResource):
             __props__.__dict__["confidence_threshold"] = confidence_threshold
             __props__.__dict__["context_awareness"] = context_awareness
             __props__.__dict__["description"] = description
+            if entries is None and not opts.urn:
+                raise TypeError("Missing required property 'entries'")
             __props__.__dict__["entries"] = entries
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["ocr_enabled"] = ocr_enabled
-            __props__.__dict__["profiles"] = profiles
             __props__.__dict__["shared_entries"] = shared_entries
             __props__.__dict__["created_at"] = None
             __props__.__dict__["open_access"] = None
@@ -524,7 +499,6 @@ class DlpCustomProfile(pulumi.CustomResource):
             name: Optional[pulumi.Input[builtins.str]] = None,
             ocr_enabled: Optional[pulumi.Input[builtins.bool]] = None,
             open_access: Optional[pulumi.Input[builtins.bool]] = None,
-            profiles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileProfileArgs', 'DlpCustomProfileProfileArgsDict']]]]] = None,
             shared_entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DlpCustomProfileSharedEntryArgs', 'DlpCustomProfileSharedEntryArgsDict']]]]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None,
             updated_at: Optional[pulumi.Input[builtins.str]] = None) -> 'DlpCustomProfile':
@@ -559,7 +533,6 @@ class DlpCustomProfile(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["ocr_enabled"] = ocr_enabled
         __props__.__dict__["open_access"] = open_access
-        __props__.__dict__["profiles"] = profiles
         __props__.__dict__["shared_entries"] = shared_entries
         __props__.__dict__["type"] = type
         __props__.__dict__["updated_at"] = updated_at
@@ -614,12 +587,12 @@ class DlpCustomProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def entries(self) -> pulumi.Output[Optional[Sequence['outputs.DlpCustomProfileEntry']]]:
+    def entries(self) -> pulumi.Output[Sequence['outputs.DlpCustomProfileEntry']]:
         return pulumi.get(self, "entries")
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[Optional[builtins.str]]:
+    def name(self) -> pulumi.Output[builtins.str]:
         return pulumi.get(self, "name")
 
     @property
@@ -634,11 +607,6 @@ class DlpCustomProfile(pulumi.CustomResource):
         Whether this profile can be accessed by anyone.
         """
         return pulumi.get(self, "open_access")
-
-    @property
-    @pulumi.getter
-    def profiles(self) -> pulumi.Output[Sequence['outputs.DlpCustomProfileProfile']]:
-        return pulumi.get(self, "profiles")
 
     @property
     @pulumi.getter(name="sharedEntries")

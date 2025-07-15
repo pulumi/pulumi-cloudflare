@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -49,6 +51,10 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
+     * Lists the betas that the user is participating in.
+     */
+    public /*out*/ readonly betas!: pulumi.Output<string[]>;
+    /**
      * The country in which the user lives.
      */
     public readonly country!: pulumi.Output<string | undefined>;
@@ -57,13 +63,38 @@ export class User extends pulumi.CustomResource {
      */
     public readonly firstName!: pulumi.Output<string | undefined>;
     /**
+     * Indicates whether user has any business zones
+     */
+    public /*out*/ readonly hasBusinessZones!: pulumi.Output<boolean>;
+    /**
+     * Indicates whether user has any enterprise zones
+     */
+    public /*out*/ readonly hasEnterpriseZones!: pulumi.Output<boolean>;
+    /**
+     * Indicates whether user has any pro zones
+     */
+    public /*out*/ readonly hasProZones!: pulumi.Output<boolean>;
+    /**
      * User's last name
      */
     public readonly lastName!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly organizations!: pulumi.Output<outputs.UserOrganization[]>;
+    /**
+     * Indicates whether user has been suspended
+     */
+    public /*out*/ readonly suspended!: pulumi.Output<boolean>;
     /**
      * User's telephone number
      */
     public readonly telephone!: pulumi.Output<string | undefined>;
+    /**
+     * Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+     */
+    public /*out*/ readonly twoFactorAuthenticationEnabled!: pulumi.Output<boolean>;
+    /**
+     * Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+     */
+    public /*out*/ readonly twoFactorAuthenticationLocked!: pulumi.Output<boolean>;
     /**
      * The zipcode or postal code where the user lives.
      */
@@ -82,10 +113,18 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
+            resourceInputs["betas"] = state ? state.betas : undefined;
             resourceInputs["country"] = state ? state.country : undefined;
             resourceInputs["firstName"] = state ? state.firstName : undefined;
+            resourceInputs["hasBusinessZones"] = state ? state.hasBusinessZones : undefined;
+            resourceInputs["hasEnterpriseZones"] = state ? state.hasEnterpriseZones : undefined;
+            resourceInputs["hasProZones"] = state ? state.hasProZones : undefined;
             resourceInputs["lastName"] = state ? state.lastName : undefined;
+            resourceInputs["organizations"] = state ? state.organizations : undefined;
+            resourceInputs["suspended"] = state ? state.suspended : undefined;
             resourceInputs["telephone"] = state ? state.telephone : undefined;
+            resourceInputs["twoFactorAuthenticationEnabled"] = state ? state.twoFactorAuthenticationEnabled : undefined;
+            resourceInputs["twoFactorAuthenticationLocked"] = state ? state.twoFactorAuthenticationLocked : undefined;
             resourceInputs["zipcode"] = state ? state.zipcode : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
@@ -94,6 +133,14 @@ export class User extends pulumi.CustomResource {
             resourceInputs["lastName"] = args ? args.lastName : undefined;
             resourceInputs["telephone"] = args ? args.telephone : undefined;
             resourceInputs["zipcode"] = args ? args.zipcode : undefined;
+            resourceInputs["betas"] = undefined /*out*/;
+            resourceInputs["hasBusinessZones"] = undefined /*out*/;
+            resourceInputs["hasEnterpriseZones"] = undefined /*out*/;
+            resourceInputs["hasProZones"] = undefined /*out*/;
+            resourceInputs["organizations"] = undefined /*out*/;
+            resourceInputs["suspended"] = undefined /*out*/;
+            resourceInputs["twoFactorAuthenticationEnabled"] = undefined /*out*/;
+            resourceInputs["twoFactorAuthenticationLocked"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(User.__pulumiType, name, resourceInputs, opts);
@@ -105,6 +152,10 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
+     * Lists the betas that the user is participating in.
+     */
+    betas?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The country in which the user lives.
      */
     country?: pulumi.Input<string>;
@@ -113,13 +164,38 @@ export interface UserState {
      */
     firstName?: pulumi.Input<string>;
     /**
+     * Indicates whether user has any business zones
+     */
+    hasBusinessZones?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether user has any enterprise zones
+     */
+    hasEnterpriseZones?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether user has any pro zones
+     */
+    hasProZones?: pulumi.Input<boolean>;
+    /**
      * User's last name
      */
     lastName?: pulumi.Input<string>;
+    organizations?: pulumi.Input<pulumi.Input<inputs.UserOrganization>[]>;
+    /**
+     * Indicates whether user has been suspended
+     */
+    suspended?: pulumi.Input<boolean>;
     /**
      * User's telephone number
      */
     telephone?: pulumi.Input<string>;
+    /**
+     * Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+     */
+    twoFactorAuthenticationEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+     */
+    twoFactorAuthenticationLocked?: pulumi.Input<boolean>;
     /**
      * The zipcode or postal code where the user lives.
      */

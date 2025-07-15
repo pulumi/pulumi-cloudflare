@@ -27,10 +27,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustTunnelCloudflaredVirtualNetwork(ctx, "example_zero_trust_tunnel_cloudflared_virtual_network", &cloudflare.ZeroTrustTunnelCloudflaredVirtualNetworkArgs{
-//				AccountId: pulumi.String("699d98642c564d2e855e9661899b7252"),
-//				Name:      pulumi.String("us-east-1-vpc"),
-//				Comment:   pulumi.String("Staging VPC for data science"),
-//				IsDefault: pulumi.Bool(true),
+//				AccountId:        pulumi.String("699d98642c564d2e855e9661899b7252"),
+//				Name:             pulumi.String("us-east-1-vpc"),
+//				Comment:          pulumi.String("Staging VPC for data science"),
+//				IsDefault:        pulumi.Bool(true),
+//				IsDefaultNetwork: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -60,9 +61,11 @@ type TunnelVirtualNetwork struct {
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt pulumi.StringOutput `pulumi:"deletedAt"`
 	// If `true`, this virtual network is the default for the account.
+	//
+	// Deprecated: Use the isDefaultNetwork property instead.
 	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
 	// If `true`, this virtual network is the default for the account.
-	IsDefaultNetwork pulumi.BoolPtrOutput `pulumi:"isDefaultNetwork"`
+	IsDefaultNetwork pulumi.BoolOutput `pulumi:"isDefaultNetwork"`
 	// A user-friendly name for the virtual network.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
@@ -118,6 +121,8 @@ type tunnelVirtualNetworkState struct {
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt *string `pulumi:"deletedAt"`
 	// If `true`, this virtual network is the default for the account.
+	//
+	// Deprecated: Use the isDefaultNetwork property instead.
 	IsDefault *bool `pulumi:"isDefault"`
 	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork *bool `pulumi:"isDefaultNetwork"`
@@ -135,6 +140,8 @@ type TunnelVirtualNetworkState struct {
 	// Timestamp of when the resource was deleted. If `null`, the resource has not been deleted.
 	DeletedAt pulumi.StringPtrInput
 	// If `true`, this virtual network is the default for the account.
+	//
+	// Deprecated: Use the isDefaultNetwork property instead.
 	IsDefault pulumi.BoolPtrInput
 	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork pulumi.BoolPtrInput
@@ -152,6 +159,8 @@ type tunnelVirtualNetworkArgs struct {
 	// Optional remark describing the virtual network.
 	Comment *string `pulumi:"comment"`
 	// If `true`, this virtual network is the default for the account.
+	//
+	// Deprecated: Use the isDefaultNetwork property instead.
 	IsDefault *bool `pulumi:"isDefault"`
 	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork *bool `pulumi:"isDefaultNetwork"`
@@ -166,6 +175,8 @@ type TunnelVirtualNetworkArgs struct {
 	// Optional remark describing the virtual network.
 	Comment pulumi.StringPtrInput
 	// If `true`, this virtual network is the default for the account.
+	//
+	// Deprecated: Use the isDefaultNetwork property instead.
 	IsDefault pulumi.BoolPtrInput
 	// If `true`, this virtual network is the default for the account.
 	IsDefaultNetwork pulumi.BoolPtrInput
@@ -281,13 +292,15 @@ func (o TunnelVirtualNetworkOutput) DeletedAt() pulumi.StringOutput {
 }
 
 // If `true`, this virtual network is the default for the account.
+//
+// Deprecated: Use the isDefaultNetwork property instead.
 func (o TunnelVirtualNetworkOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 // If `true`, this virtual network is the default for the account.
-func (o TunnelVirtualNetworkOutput) IsDefaultNetwork() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.BoolPtrOutput { return v.IsDefaultNetwork }).(pulumi.BoolPtrOutput)
+func (o TunnelVirtualNetworkOutput) IsDefaultNetwork() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TunnelVirtualNetwork) pulumi.BoolOutput { return v.IsDefaultNetwork }).(pulumi.BoolOutput)
 }
 
 // A user-friendly name for the virtual network.

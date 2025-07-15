@@ -247,7 +247,8 @@ class _ZeroTrustGatewayPolicyState:
                  schedule: Optional[pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs']] = None,
                  traffic: Optional[pulumi.Input[builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[builtins.str]] = None,
-                 version: Optional[pulumi.Input[builtins.int]] = None):
+                 version: Optional[pulumi.Input[builtins.int]] = None,
+                 warning_status: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZeroTrustGatewayPolicy resources.
         :param pulumi.Input[builtins.str] action: The action to preform when the associated traffic, identity, and device posture expressions are either absent or evaluate to `true`.
@@ -265,6 +266,7 @@ class _ZeroTrustGatewayPolicyState:
         :param pulumi.Input['ZeroTrustGatewayPolicyScheduleArgs'] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         :param pulumi.Input[builtins.str] traffic: The wirefilter expression used for traffic matching.
         :param pulumi.Input[builtins.int] version: version number of the rule
+        :param pulumi.Input[builtins.str] warning_status: Warning for a misconfigured rule, if any.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -300,6 +302,8 @@ class _ZeroTrustGatewayPolicyState:
             pulumi.set(__self__, "updated_at", updated_at)
         if version is not None:
             pulumi.set(__self__, "version", version)
+        if warning_status is not None:
+            pulumi.set(__self__, "warning_status", warning_status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -495,6 +499,18 @@ class _ZeroTrustGatewayPolicyState:
     def version(self, value: Optional[pulumi.Input[builtins.int]]):
         pulumi.set(self, "version", value)
 
+    @property
+    @pulumi.getter(name="warningStatus")
+    def warning_status(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        Warning for a misconfigured rule, if any.
+        """
+        return pulumi.get(self, "warning_status")
+
+    @warning_status.setter
+    def warning_status(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "warning_status", value)
+
 
 @pulumi.type_token("cloudflare:index/zeroTrustGatewayPolicy:ZeroTrustGatewayPolicy")
 class ZeroTrustGatewayPolicy(pulumi.CustomResource):
@@ -616,6 +632,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
             __props__.__dict__["deleted_at"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["version"] = None
+            __props__.__dict__["warning_status"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="cloudflare:index/teamsRule:TeamsRule")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(ZeroTrustGatewayPolicy, __self__).__init__(
@@ -644,7 +661,8 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
             schedule: Optional[pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']]] = None,
             traffic: Optional[pulumi.Input[builtins.str]] = None,
             updated_at: Optional[pulumi.Input[builtins.str]] = None,
-            version: Optional[pulumi.Input[builtins.int]] = None) -> 'ZeroTrustGatewayPolicy':
+            version: Optional[pulumi.Input[builtins.int]] = None,
+            warning_status: Optional[pulumi.Input[builtins.str]] = None) -> 'ZeroTrustGatewayPolicy':
         """
         Get an existing ZeroTrustGatewayPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -667,6 +685,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         :param pulumi.Input[Union['ZeroTrustGatewayPolicyScheduleArgs', 'ZeroTrustGatewayPolicyScheduleArgsDict']] schedule: The schedule for activating DNS policies. This does not apply to HTTP or network policies.
         :param pulumi.Input[builtins.str] traffic: The wirefilter expression used for traffic matching.
         :param pulumi.Input[builtins.int] version: version number of the rule
+        :param pulumi.Input[builtins.str] warning_status: Warning for a misconfigured rule, if any.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -689,6 +708,7 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         __props__.__dict__["traffic"] = traffic
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["version"] = version
+        __props__.__dict__["warning_status"] = warning_status
         return ZeroTrustGatewayPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -816,4 +836,12 @@ class ZeroTrustGatewayPolicy(pulumi.CustomResource):
         version number of the rule
         """
         return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="warningStatus")
+    def warning_status(self) -> pulumi.Output[builtins.str]:
+        """
+        Warning for a misconfigured rule, if any.
+        """
+        return pulumi.get(self, "warning_status")
 

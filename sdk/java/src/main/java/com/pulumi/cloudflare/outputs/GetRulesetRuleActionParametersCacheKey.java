@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetRuleActionParametersCacheKey {
     /**
-     * @return Separate cached content based on the visitor’s device type
+     * @return Separate cached content based on the visitor’s device type.
      * 
      */
     private Boolean cacheByDeviceType;
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached
+     * @return Protect from web cache deception attacks while allowing static assets to be cached.
      * 
      */
     private Boolean cacheDeceptionArmor;
@@ -34,14 +34,14 @@ public final class GetRulesetRuleActionParametersCacheKey {
 
     private GetRulesetRuleActionParametersCacheKey() {}
     /**
-     * @return Separate cached content based on the visitor’s device type
+     * @return Separate cached content based on the visitor’s device type.
      * 
      */
     public Boolean cacheByDeviceType() {
         return this.cacheByDeviceType;
     }
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached
+     * @return Protect from web cache deception attacks while allowing static assets to be cached.
      * 
      */
     public Boolean cacheDeceptionArmor() {

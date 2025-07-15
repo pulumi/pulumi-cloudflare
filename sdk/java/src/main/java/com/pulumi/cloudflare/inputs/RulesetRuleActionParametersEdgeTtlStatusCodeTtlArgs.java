@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs();
 
     /**
-     * Set the ttl for responses with this specific status code
+     * Set the TTL for responses with this specific status code.
      * 
      */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return Set the ttl for responses with this specific status code
+     * @return Set the TTL for responses with this specific status code.
      * 
      */
     public Optional<Output<Integer>> statusCode() {
@@ -89,7 +89,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCode Set the ttl for responses with this specific status code
+         * @param statusCode Set the TTL for responses with this specific status code.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
         }
 
         /**
-         * @param statusCode Set the ttl for responses with this specific status code
+         * @param statusCode Set the TTL for responses with this specific status code.
          * 
          * @return builder
          * 

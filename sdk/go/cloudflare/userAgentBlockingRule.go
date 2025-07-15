@@ -29,8 +29,8 @@ import (
 //			_, err := cloudflare.NewUserAgentBlockingRule(ctx, "example_user_agent_blocking_rule", &cloudflare.UserAgentBlockingRuleArgs{
 //				ZoneId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 //				Configuration: &cloudflare.UserAgentBlockingRuleConfigurationArgs{
-//					Target: pulumi.String("ip"),
-//					Value:  pulumi.String("198.51.100.4"),
+//					Target: pulumi.String("ua"),
+//					Value:  pulumi.String("Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)"),
 //				},
 //				Mode: pulumi.String("challenge"),
 //			})
@@ -45,7 +45,6 @@ import (
 type UserAgentBlockingRule struct {
 	pulumi.CustomResourceState
 
-	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationOutput `pulumi:"configuration"`
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -95,7 +94,6 @@ func GetUserAgentBlockingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserAgentBlockingRule resources.
 type userAgentBlockingRuleState struct {
-	// The rule configuration.
 	Configuration *UserAgentBlockingRuleConfiguration `pulumi:"configuration"`
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -107,7 +105,6 @@ type userAgentBlockingRuleState struct {
 }
 
 type UserAgentBlockingRuleState struct {
-	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationPtrInput
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -123,7 +120,6 @@ func (UserAgentBlockingRuleState) ElementType() reflect.Type {
 }
 
 type userAgentBlockingRuleArgs struct {
-	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfiguration `pulumi:"configuration"`
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -136,7 +132,6 @@ type userAgentBlockingRuleArgs struct {
 
 // The set of arguments for constructing a UserAgentBlockingRule resource.
 type UserAgentBlockingRuleArgs struct {
-	// The rule configuration.
 	Configuration UserAgentBlockingRuleConfigurationInput
 	// The action to apply to a matched request.
 	// Available values: "block", "challenge", "whitelist", "js*challenge", "managed*challenge".
@@ -234,7 +229,6 @@ func (o UserAgentBlockingRuleOutput) ToUserAgentBlockingRuleOutputWithContext(ct
 	return o
 }
 
-// The rule configuration.
 func (o UserAgentBlockingRuleOutput) Configuration() UserAgentBlockingRuleConfigurationOutput {
 	return o.ApplyT(func(v *UserAgentBlockingRule) UserAgentBlockingRuleConfigurationOutput { return v.Configuration }).(UserAgentBlockingRuleConfigurationOutput)
 }

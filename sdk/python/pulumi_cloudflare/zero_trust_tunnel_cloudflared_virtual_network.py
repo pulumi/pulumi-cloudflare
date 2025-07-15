@@ -38,6 +38,9 @@ class ZeroTrustTunnelCloudflaredVirtualNetworkArgs:
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if is_default is not None:
+            warnings.warn("""Use the is_default_network property instead.""", DeprecationWarning)
+            pulumi.log.warn("""is_default is deprecated: Use the is_default_network property instead.""")
+        if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if is_default_network is not None:
             pulumi.set(__self__, "is_default_network", is_default_network)
@@ -80,6 +83,7 @@ class ZeroTrustTunnelCloudflaredVirtualNetworkArgs:
 
     @property
     @pulumi.getter(name="isDefault")
+    @_utilities.deprecated("""Use the is_default_network property instead.""")
     def is_default(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         If `true`, this virtual network is the default for the account.
@@ -131,6 +135,9 @@ class _ZeroTrustTunnelCloudflaredVirtualNetworkState:
             pulumi.set(__self__, "created_at", created_at)
         if deleted_at is not None:
             pulumi.set(__self__, "deleted_at", deleted_at)
+        if is_default is not None:
+            warnings.warn("""Use the is_default_network property instead.""", DeprecationWarning)
+            pulumi.log.warn("""is_default is deprecated: Use the is_default_network property instead.""")
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
         if is_default_network is not None:
@@ -188,6 +195,7 @@ class _ZeroTrustTunnelCloudflaredVirtualNetworkState:
 
     @property
     @pulumi.getter(name="isDefault")
+    @_utilities.deprecated("""Use the is_default_network property instead.""")
     def is_default(self) -> Optional[pulumi.Input[builtins.bool]]:
         """
         If `true`, this virtual network is the default for the account.
@@ -246,7 +254,8 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
             account_id="699d98642c564d2e855e9661899b7252",
             name="us-east-1-vpc",
             comment="Staging VPC for data science",
-            is_default=True)
+            is_default=True,
+            is_default_network=False)
         ```
 
         ## Import
@@ -280,7 +289,8 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
             account_id="699d98642c564d2e855e9661899b7252",
             name="us-east-1-vpc",
             comment="Staging VPC for data science",
-            is_default=True)
+            is_default=True,
+            is_default_network=False)
         ```
 
         ## Import
@@ -410,6 +420,7 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDefault")
+    @_utilities.deprecated("""Use the is_default_network property instead.""")
     def is_default(self) -> pulumi.Output[Optional[builtins.bool]]:
         """
         If `true`, this virtual network is the default for the account.
@@ -418,7 +429,7 @@ class ZeroTrustTunnelCloudflaredVirtualNetwork(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isDefaultNetwork")
-    def is_default_network(self) -> pulumi.Output[Optional[builtins.bool]]:
+    def is_default_network(self) -> pulumi.Output[builtins.bool]:
         """
         If `true`, this virtual network is the default for the account.
         """

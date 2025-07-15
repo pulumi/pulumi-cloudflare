@@ -52,10 +52,6 @@ export interface GetR2BucketEventNotificationArgs {
  */
 export interface GetR2BucketEventNotificationResult {
     /**
-     * Transition to abort ongoing multipart uploads.
-     */
-    readonly abortMultipartUploadsTransition: outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransition;
-    /**
      * Account ID.
      */
     readonly accountId: string;
@@ -64,19 +60,7 @@ export interface GetR2BucketEventNotificationResult {
      */
     readonly bucketName: string;
     /**
-     * Conditions that apply to all transitions of this rule.
-     */
-    readonly conditions: outputs.GetR2BucketEventNotificationConditions;
-    /**
-     * Transition to delete objects.
-     */
-    readonly deleteObjectsTransition: outputs.GetR2BucketEventNotificationDeleteObjectsTransition;
-    /**
-     * Whether or not this rule is in effect.
-     */
-    readonly enabled: boolean;
-    /**
-     * Unique identifier for this rule.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
@@ -84,9 +68,10 @@ export interface GetR2BucketEventNotificationResult {
      */
     readonly queueId: string;
     /**
-     * Transitions to change the storage class of objects.
+     * Name of the queue.
      */
-    readonly storageClassTransitions: outputs.GetR2BucketEventNotificationStorageClassTransition[];
+    readonly queueName: string;
+    readonly rules: outputs.GetR2BucketEventNotificationRule[];
 }
 /**
  * ## Example Usage

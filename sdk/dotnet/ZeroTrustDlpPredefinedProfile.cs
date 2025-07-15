@@ -24,14 +24,6 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "account_id",
     ///         ProfileId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-    ///         Entries = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileEntryArgs
-    ///             {
-    ///                 Id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-    ///                 Enabled = true,
-    ///             },
-    ///         },
     ///         AiContextEnabled = true,
     ///         AllowedMatchCount = 0,
     ///         ConfidenceThreshold = "confidence_threshold",
@@ -41,6 +33,14 @@ namespace Pulumi.Cloudflare
     ///             Skip = new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs
     ///             {
     ///                 Files = true,
+    ///             },
+    ///         },
+    ///         Entries = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZeroTrustDlpPredefinedProfileEntryArgs
+    ///             {
+    ///                 Id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+    ///                 Enabled = true,
     ///             },
     ///         },
     ///         OcrEnabled = true,
@@ -189,8 +189,9 @@ namespace Pulumi.Cloudflare
         [Input("contextAwareness")]
         public Input<Inputs.ZeroTrustDlpPredefinedProfileContextAwarenessArgs>? ContextAwareness { get; set; }
 
-        [Input("entries", required: true)]
+        [Input("entries")]
         private InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs>? _entries;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryArgs>());
@@ -243,6 +244,7 @@ namespace Pulumi.Cloudflare
 
         [Input("entries")]
         private InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs>? _entries;
+        [Obsolete(@"This attribute is deprecated.")]
         public InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs> Entries
         {
             get => _entries ?? (_entries = new InputList<Inputs.ZeroTrustDlpPredefinedProfileEntryGetArgs>());

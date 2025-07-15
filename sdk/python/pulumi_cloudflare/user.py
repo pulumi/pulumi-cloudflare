@@ -14,6 +14,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['UserArgs', 'User']
 
@@ -108,29 +110,72 @@ class UserArgs:
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
+                 betas: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  country: Optional[pulumi.Input[builtins.str]] = None,
                  first_name: Optional[pulumi.Input[builtins.str]] = None,
+                 has_business_zones: Optional[pulumi.Input[builtins.bool]] = None,
+                 has_enterprise_zones: Optional[pulumi.Input[builtins.bool]] = None,
+                 has_pro_zones: Optional[pulumi.Input[builtins.bool]] = None,
                  last_name: Optional[pulumi.Input[builtins.str]] = None,
+                 organizations: Optional[pulumi.Input[Sequence[pulumi.Input['UserOrganizationArgs']]]] = None,
+                 suspended: Optional[pulumi.Input[builtins.bool]] = None,
                  telephone: Optional[pulumi.Input[builtins.str]] = None,
+                 two_factor_authentication_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+                 two_factor_authentication_locked: Optional[pulumi.Input[builtins.bool]] = None,
                  zipcode: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] betas: Lists the betas that the user is participating in.
         :param pulumi.Input[builtins.str] country: The country in which the user lives.
         :param pulumi.Input[builtins.str] first_name: User's first name
+        :param pulumi.Input[builtins.bool] has_business_zones: Indicates whether user has any business zones
+        :param pulumi.Input[builtins.bool] has_enterprise_zones: Indicates whether user has any enterprise zones
+        :param pulumi.Input[builtins.bool] has_pro_zones: Indicates whether user has any pro zones
         :param pulumi.Input[builtins.str] last_name: User's last name
+        :param pulumi.Input[builtins.bool] suspended: Indicates whether user has been suspended
         :param pulumi.Input[builtins.str] telephone: User's telephone number
+        :param pulumi.Input[builtins.bool] two_factor_authentication_enabled: Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+        :param pulumi.Input[builtins.bool] two_factor_authentication_locked: Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
         :param pulumi.Input[builtins.str] zipcode: The zipcode or postal code where the user lives.
         """
+        if betas is not None:
+            pulumi.set(__self__, "betas", betas)
         if country is not None:
             pulumi.set(__self__, "country", country)
         if first_name is not None:
             pulumi.set(__self__, "first_name", first_name)
+        if has_business_zones is not None:
+            pulumi.set(__self__, "has_business_zones", has_business_zones)
+        if has_enterprise_zones is not None:
+            pulumi.set(__self__, "has_enterprise_zones", has_enterprise_zones)
+        if has_pro_zones is not None:
+            pulumi.set(__self__, "has_pro_zones", has_pro_zones)
         if last_name is not None:
             pulumi.set(__self__, "last_name", last_name)
+        if organizations is not None:
+            pulumi.set(__self__, "organizations", organizations)
+        if suspended is not None:
+            pulumi.set(__self__, "suspended", suspended)
         if telephone is not None:
             pulumi.set(__self__, "telephone", telephone)
+        if two_factor_authentication_enabled is not None:
+            pulumi.set(__self__, "two_factor_authentication_enabled", two_factor_authentication_enabled)
+        if two_factor_authentication_locked is not None:
+            pulumi.set(__self__, "two_factor_authentication_locked", two_factor_authentication_locked)
         if zipcode is not None:
             pulumi.set(__self__, "zipcode", zipcode)
+
+    @property
+    @pulumi.getter
+    def betas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        Lists the betas that the user is participating in.
+        """
+        return pulumi.get(self, "betas")
+
+    @betas.setter
+    def betas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "betas", value)
 
     @property
     @pulumi.getter
@@ -157,6 +202,42 @@ class _UserState:
         pulumi.set(self, "first_name", value)
 
     @property
+    @pulumi.getter(name="hasBusinessZones")
+    def has_business_zones(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether user has any business zones
+        """
+        return pulumi.get(self, "has_business_zones")
+
+    @has_business_zones.setter
+    def has_business_zones(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "has_business_zones", value)
+
+    @property
+    @pulumi.getter(name="hasEnterpriseZones")
+    def has_enterprise_zones(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether user has any enterprise zones
+        """
+        return pulumi.get(self, "has_enterprise_zones")
+
+    @has_enterprise_zones.setter
+    def has_enterprise_zones(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "has_enterprise_zones", value)
+
+    @property
+    @pulumi.getter(name="hasProZones")
+    def has_pro_zones(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether user has any pro zones
+        """
+        return pulumi.get(self, "has_pro_zones")
+
+    @has_pro_zones.setter
+    def has_pro_zones(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "has_pro_zones", value)
+
+    @property
     @pulumi.getter(name="lastName")
     def last_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -170,6 +251,27 @@ class _UserState:
 
     @property
     @pulumi.getter
+    def organizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserOrganizationArgs']]]]:
+        return pulumi.get(self, "organizations")
+
+    @organizations.setter
+    def organizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserOrganizationArgs']]]]):
+        pulumi.set(self, "organizations", value)
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether user has been suspended
+        """
+        return pulumi.get(self, "suspended")
+
+    @suspended.setter
+    def suspended(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "suspended", value)
+
+    @property
+    @pulumi.getter
     def telephone(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         User's telephone number
@@ -179,6 +281,30 @@ class _UserState:
     @telephone.setter
     def telephone(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "telephone", value)
+
+    @property
+    @pulumi.getter(name="twoFactorAuthenticationEnabled")
+    def two_factor_authentication_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+        """
+        return pulumi.get(self, "two_factor_authentication_enabled")
+
+    @two_factor_authentication_enabled.setter
+    def two_factor_authentication_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "two_factor_authentication_enabled", value)
+
+    @property
+    @pulumi.getter(name="twoFactorAuthenticationLocked")
+    def two_factor_authentication_locked(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+        """
+        return pulumi.get(self, "two_factor_authentication_locked")
+
+    @two_factor_authentication_locked.setter
+    def two_factor_authentication_locked(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "two_factor_authentication_locked", value)
 
     @property
     @pulumi.getter
@@ -283,6 +409,14 @@ class User(pulumi.CustomResource):
             __props__.__dict__["last_name"] = last_name
             __props__.__dict__["telephone"] = telephone
             __props__.__dict__["zipcode"] = zipcode
+            __props__.__dict__["betas"] = None
+            __props__.__dict__["has_business_zones"] = None
+            __props__.__dict__["has_enterprise_zones"] = None
+            __props__.__dict__["has_pro_zones"] = None
+            __props__.__dict__["organizations"] = None
+            __props__.__dict__["suspended"] = None
+            __props__.__dict__["two_factor_authentication_enabled"] = None
+            __props__.__dict__["two_factor_authentication_locked"] = None
         super(User, __self__).__init__(
             'cloudflare:index/user:User',
             resource_name,
@@ -293,10 +427,18 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            betas: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
             country: Optional[pulumi.Input[builtins.str]] = None,
             first_name: Optional[pulumi.Input[builtins.str]] = None,
+            has_business_zones: Optional[pulumi.Input[builtins.bool]] = None,
+            has_enterprise_zones: Optional[pulumi.Input[builtins.bool]] = None,
+            has_pro_zones: Optional[pulumi.Input[builtins.bool]] = None,
             last_name: Optional[pulumi.Input[builtins.str]] = None,
+            organizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserOrganizationArgs', 'UserOrganizationArgsDict']]]]] = None,
+            suspended: Optional[pulumi.Input[builtins.bool]] = None,
             telephone: Optional[pulumi.Input[builtins.str]] = None,
+            two_factor_authentication_enabled: Optional[pulumi.Input[builtins.bool]] = None,
+            two_factor_authentication_locked: Optional[pulumi.Input[builtins.bool]] = None,
             zipcode: Optional[pulumi.Input[builtins.str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
@@ -305,22 +447,45 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] betas: Lists the betas that the user is participating in.
         :param pulumi.Input[builtins.str] country: The country in which the user lives.
         :param pulumi.Input[builtins.str] first_name: User's first name
+        :param pulumi.Input[builtins.bool] has_business_zones: Indicates whether user has any business zones
+        :param pulumi.Input[builtins.bool] has_enterprise_zones: Indicates whether user has any enterprise zones
+        :param pulumi.Input[builtins.bool] has_pro_zones: Indicates whether user has any pro zones
         :param pulumi.Input[builtins.str] last_name: User's last name
+        :param pulumi.Input[builtins.bool] suspended: Indicates whether user has been suspended
         :param pulumi.Input[builtins.str] telephone: User's telephone number
+        :param pulumi.Input[builtins.bool] two_factor_authentication_enabled: Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+        :param pulumi.Input[builtins.bool] two_factor_authentication_locked: Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
         :param pulumi.Input[builtins.str] zipcode: The zipcode or postal code where the user lives.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _UserState.__new__(_UserState)
 
+        __props__.__dict__["betas"] = betas
         __props__.__dict__["country"] = country
         __props__.__dict__["first_name"] = first_name
+        __props__.__dict__["has_business_zones"] = has_business_zones
+        __props__.__dict__["has_enterprise_zones"] = has_enterprise_zones
+        __props__.__dict__["has_pro_zones"] = has_pro_zones
         __props__.__dict__["last_name"] = last_name
+        __props__.__dict__["organizations"] = organizations
+        __props__.__dict__["suspended"] = suspended
         __props__.__dict__["telephone"] = telephone
+        __props__.__dict__["two_factor_authentication_enabled"] = two_factor_authentication_enabled
+        __props__.__dict__["two_factor_authentication_locked"] = two_factor_authentication_locked
         __props__.__dict__["zipcode"] = zipcode
         return User(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def betas(self) -> pulumi.Output[Sequence[builtins.str]]:
+        """
+        Lists the betas that the user is participating in.
+        """
+        return pulumi.get(self, "betas")
 
     @property
     @pulumi.getter
@@ -339,6 +504,30 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "first_name")
 
     @property
+    @pulumi.getter(name="hasBusinessZones")
+    def has_business_zones(self) -> pulumi.Output[builtins.bool]:
+        """
+        Indicates whether user has any business zones
+        """
+        return pulumi.get(self, "has_business_zones")
+
+    @property
+    @pulumi.getter(name="hasEnterpriseZones")
+    def has_enterprise_zones(self) -> pulumi.Output[builtins.bool]:
+        """
+        Indicates whether user has any enterprise zones
+        """
+        return pulumi.get(self, "has_enterprise_zones")
+
+    @property
+    @pulumi.getter(name="hasProZones")
+    def has_pro_zones(self) -> pulumi.Output[builtins.bool]:
+        """
+        Indicates whether user has any pro zones
+        """
+        return pulumi.get(self, "has_pro_zones")
+
+    @property
     @pulumi.getter(name="lastName")
     def last_name(self) -> pulumi.Output[Optional[builtins.str]]:
         """
@@ -348,11 +537,40 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def organizations(self) -> pulumi.Output[Sequence['outputs.UserOrganization']]:
+        return pulumi.get(self, "organizations")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> pulumi.Output[builtins.bool]:
+        """
+        Indicates whether user has been suspended
+        """
+        return pulumi.get(self, "suspended")
+
+    @property
+    @pulumi.getter
     def telephone(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         User's telephone number
         """
         return pulumi.get(self, "telephone")
+
+    @property
+    @pulumi.getter(name="twoFactorAuthenticationEnabled")
+    def two_factor_authentication_enabled(self) -> pulumi.Output[builtins.bool]:
+        """
+        Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+        """
+        return pulumi.get(self, "two_factor_authentication_enabled")
+
+    @property
+    @pulumi.getter(name="twoFactorAuthenticationLocked")
+    def two_factor_authentication_locked(self) -> pulumi.Output[builtins.bool]:
+        """
+        Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+        """
+        return pulumi.get(self, "two_factor_authentication_locked")
 
     @property
     @pulumi.getter

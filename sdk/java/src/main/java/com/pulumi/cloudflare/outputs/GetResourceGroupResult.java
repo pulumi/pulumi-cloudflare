@@ -19,7 +19,7 @@ public final class GetResourceGroupResult {
      */
     private String accountId;
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the resource group.
      * 
      */
     private String id;
@@ -53,7 +53,7 @@ public final class GetResourceGroupResult {
         return this.accountId;
     }
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the resource group.
      * 
      */
     public String id() {

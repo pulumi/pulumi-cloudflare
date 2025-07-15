@@ -162,6 +162,7 @@ namespace Pulumi.Cloudflare
         public readonly string Traffic;
         public readonly string UpdatedAt;
         public readonly int Version;
+        public readonly string WarningStatus;
 
         [OutputConstructor]
         private GetZeroTrustGatewayPolicyResult(
@@ -201,7 +202,9 @@ namespace Pulumi.Cloudflare
 
             string updatedAt,
 
-            int version)
+            int version,
+
+            string warningStatus)
         {
             AccountId = accountId;
             Action = action;
@@ -222,6 +225,7 @@ namespace Pulumi.Cloudflare
             Traffic = traffic;
             UpdatedAt = updatedAt;
             Version = version;
+            WarningStatus = warningStatus;
         }
     }
 }

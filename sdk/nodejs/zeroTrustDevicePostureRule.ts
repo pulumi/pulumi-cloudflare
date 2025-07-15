@@ -47,7 +47,7 @@ export class ZeroTrustDevicePostureRule extends pulumi.CustomResource {
     /**
      * The description of the device posture rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Sets the expiration time for a posture check result. If empty, the result remains valid until it is overwritten by new data from the WARP client.
      */

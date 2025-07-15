@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsActivityLogArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAntivirusArgs;
+import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBlockPageArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBodyScanningArgs;
 import com.pulumi.cloudflare.inputs.ZeroTrustGatewaySettingsSettingsBrowserIsolationArgs;
@@ -55,6 +56,21 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
      */
     public Optional<Output<ZeroTrustGatewaySettingsSettingsAntivirusArgs>> antivirus() {
         return Optional.ofNullable(this.antivirus);
+    }
+
+    /**
+     * Setting to enable App Control
+     * 
+     */
+    @Import(name="appControlSettings")
+    private @Nullable Output<ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs> appControlSettings;
+
+    /**
+     * @return Setting to enable App Control
+     * 
+     */
+    public Optional<Output<ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs>> appControlSettings() {
+        return Optional.ofNullable(this.appControlSettings);
     }
 
     /**
@@ -235,6 +251,7 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
     private ZeroTrustGatewaySettingsSettingsArgs(ZeroTrustGatewaySettingsSettingsArgs $) {
         this.activityLog = $.activityLog;
         this.antivirus = $.antivirus;
+        this.appControlSettings = $.appControlSettings;
         this.blockPage = $.blockPage;
         this.bodyScanning = $.bodyScanning;
         this.browserIsolation = $.browserIsolation;
@@ -306,6 +323,27 @@ public final class ZeroTrustGatewaySettingsSettingsArgs extends com.pulumi.resou
          */
         public Builder antivirus(ZeroTrustGatewaySettingsSettingsAntivirusArgs antivirus) {
             return antivirus(Output.of(antivirus));
+        }
+
+        /**
+         * @param appControlSettings Setting to enable App Control
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appControlSettings(@Nullable Output<ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs> appControlSettings) {
+            $.appControlSettings = appControlSettings;
+            return this;
+        }
+
+        /**
+         * @param appControlSettings Setting to enable App Control
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appControlSettings(ZeroTrustGatewaySettingsSettingsAppControlSettingsArgs appControlSettings) {
+            return appControlSettings(Output.of(appControlSettings));
         }
 
         /**

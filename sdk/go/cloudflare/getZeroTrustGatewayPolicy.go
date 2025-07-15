@@ -78,12 +78,13 @@ type LookupZeroTrustGatewayPolicyResult struct {
 	Name       string                              `pulumi:"name"`
 	Precedence int                                 `pulumi:"precedence"`
 	// The API resource UUID.
-	RuleId       *string                               `pulumi:"ruleId"`
-	RuleSettings GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
-	Schedule     GetZeroTrustGatewayPolicySchedule     `pulumi:"schedule"`
-	Traffic      string                                `pulumi:"traffic"`
-	UpdatedAt    string                                `pulumi:"updatedAt"`
-	Version      int                                   `pulumi:"version"`
+	RuleId        *string                               `pulumi:"ruleId"`
+	RuleSettings  GetZeroTrustGatewayPolicyRuleSettings `pulumi:"ruleSettings"`
+	Schedule      GetZeroTrustGatewayPolicySchedule     `pulumi:"schedule"`
+	Traffic       string                                `pulumi:"traffic"`
+	UpdatedAt     string                                `pulumi:"updatedAt"`
+	Version       int                                   `pulumi:"version"`
+	WarningStatus string                                `pulumi:"warningStatus"`
 }
 
 func LookupZeroTrustGatewayPolicyOutput(ctx *pulumi.Context, args LookupZeroTrustGatewayPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupZeroTrustGatewayPolicyResultOutput {
@@ -206,6 +207,10 @@ func (o LookupZeroTrustGatewayPolicyResultOutput) UpdatedAt() pulumi.StringOutpu
 
 func (o LookupZeroTrustGatewayPolicyResultOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) int { return v.Version }).(pulumi.IntOutput)
+}
+
+func (o LookupZeroTrustGatewayPolicyResultOutput) WarningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupZeroTrustGatewayPolicyResult) string { return v.WarningStatus }).(pulumi.StringOutput)
 }
 
 func init() {

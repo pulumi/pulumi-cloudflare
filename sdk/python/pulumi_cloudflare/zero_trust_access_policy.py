@@ -492,10 +492,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                  session_duration: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        > If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-           Any `ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
-           To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-           lifecycle option `create_before_destroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
+        ## Example Usage
 
         ## Import
 
@@ -526,10 +523,7 @@ class ZeroTrustAccessPolicy(pulumi.CustomResource):
                  args: ZeroTrustAccessPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-           Any `ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
-           To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-           lifecycle option `create_before_destroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
+        ## Example Usage
 
         ## Import
 

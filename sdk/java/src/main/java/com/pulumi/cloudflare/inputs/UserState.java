@@ -3,9 +3,12 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.UserOrganizationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +17,21 @@ import javax.annotation.Nullable;
 public final class UserState extends com.pulumi.resources.ResourceArgs {
 
     public static final UserState Empty = new UserState();
+
+    /**
+     * Lists the betas that the user is participating in.
+     * 
+     */
+    @Import(name="betas")
+    private @Nullable Output<List<String>> betas;
+
+    /**
+     * @return Lists the betas that the user is participating in.
+     * 
+     */
+    public Optional<Output<List<String>>> betas() {
+        return Optional.ofNullable(this.betas);
+    }
 
     /**
      * The country in which the user lives.
@@ -46,6 +64,51 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether user has any business zones
+     * 
+     */
+    @Import(name="hasBusinessZones")
+    private @Nullable Output<Boolean> hasBusinessZones;
+
+    /**
+     * @return Indicates whether user has any business zones
+     * 
+     */
+    public Optional<Output<Boolean>> hasBusinessZones() {
+        return Optional.ofNullable(this.hasBusinessZones);
+    }
+
+    /**
+     * Indicates whether user has any enterprise zones
+     * 
+     */
+    @Import(name="hasEnterpriseZones")
+    private @Nullable Output<Boolean> hasEnterpriseZones;
+
+    /**
+     * @return Indicates whether user has any enterprise zones
+     * 
+     */
+    public Optional<Output<Boolean>> hasEnterpriseZones() {
+        return Optional.ofNullable(this.hasEnterpriseZones);
+    }
+
+    /**
+     * Indicates whether user has any pro zones
+     * 
+     */
+    @Import(name="hasProZones")
+    private @Nullable Output<Boolean> hasProZones;
+
+    /**
+     * @return Indicates whether user has any pro zones
+     * 
+     */
+    public Optional<Output<Boolean>> hasProZones() {
+        return Optional.ofNullable(this.hasProZones);
+    }
+
+    /**
      * User&#39;s last name
      * 
      */
@@ -58,6 +121,28 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> lastName() {
         return Optional.ofNullable(this.lastName);
+    }
+
+    @Import(name="organizations")
+    private @Nullable Output<List<UserOrganizationArgs>> organizations;
+
+    public Optional<Output<List<UserOrganizationArgs>>> organizations() {
+        return Optional.ofNullable(this.organizations);
+    }
+
+    /**
+     * Indicates whether user has been suspended
+     * 
+     */
+    @Import(name="suspended")
+    private @Nullable Output<Boolean> suspended;
+
+    /**
+     * @return Indicates whether user has been suspended
+     * 
+     */
+    public Optional<Output<Boolean>> suspended() {
+        return Optional.ofNullable(this.suspended);
     }
 
     /**
@@ -73,6 +158,36 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> telephone() {
         return Optional.ofNullable(this.telephone);
+    }
+
+    /**
+     * Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+     * 
+     */
+    @Import(name="twoFactorAuthenticationEnabled")
+    private @Nullable Output<Boolean> twoFactorAuthenticationEnabled;
+
+    /**
+     * @return Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+     * 
+     */
+    public Optional<Output<Boolean>> twoFactorAuthenticationEnabled() {
+        return Optional.ofNullable(this.twoFactorAuthenticationEnabled);
+    }
+
+    /**
+     * Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+     * 
+     */
+    @Import(name="twoFactorAuthenticationLocked")
+    private @Nullable Output<Boolean> twoFactorAuthenticationLocked;
+
+    /**
+     * @return Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+     * 
+     */
+    public Optional<Output<Boolean>> twoFactorAuthenticationLocked() {
+        return Optional.ofNullable(this.twoFactorAuthenticationLocked);
     }
 
     /**
@@ -93,10 +208,18 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     private UserState() {}
 
     private UserState(UserState $) {
+        this.betas = $.betas;
         this.country = $.country;
         this.firstName = $.firstName;
+        this.hasBusinessZones = $.hasBusinessZones;
+        this.hasEnterpriseZones = $.hasEnterpriseZones;
+        this.hasProZones = $.hasProZones;
         this.lastName = $.lastName;
+        this.organizations = $.organizations;
+        this.suspended = $.suspended;
         this.telephone = $.telephone;
+        this.twoFactorAuthenticationEnabled = $.twoFactorAuthenticationEnabled;
+        this.twoFactorAuthenticationLocked = $.twoFactorAuthenticationLocked;
         this.zipcode = $.zipcode;
     }
 
@@ -116,6 +239,37 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(UserState defaults) {
             $ = new UserState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param betas Lists the betas that the user is participating in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder betas(@Nullable Output<List<String>> betas) {
+            $.betas = betas;
+            return this;
+        }
+
+        /**
+         * @param betas Lists the betas that the user is participating in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder betas(List<String> betas) {
+            return betas(Output.of(betas));
+        }
+
+        /**
+         * @param betas Lists the betas that the user is participating in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder betas(String... betas) {
+            return betas(List.of(betas));
         }
 
         /**
@@ -161,6 +315,69 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param hasBusinessZones Indicates whether user has any business zones
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasBusinessZones(@Nullable Output<Boolean> hasBusinessZones) {
+            $.hasBusinessZones = hasBusinessZones;
+            return this;
+        }
+
+        /**
+         * @param hasBusinessZones Indicates whether user has any business zones
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasBusinessZones(Boolean hasBusinessZones) {
+            return hasBusinessZones(Output.of(hasBusinessZones));
+        }
+
+        /**
+         * @param hasEnterpriseZones Indicates whether user has any enterprise zones
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasEnterpriseZones(@Nullable Output<Boolean> hasEnterpriseZones) {
+            $.hasEnterpriseZones = hasEnterpriseZones;
+            return this;
+        }
+
+        /**
+         * @param hasEnterpriseZones Indicates whether user has any enterprise zones
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasEnterpriseZones(Boolean hasEnterpriseZones) {
+            return hasEnterpriseZones(Output.of(hasEnterpriseZones));
+        }
+
+        /**
+         * @param hasProZones Indicates whether user has any pro zones
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasProZones(@Nullable Output<Boolean> hasProZones) {
+            $.hasProZones = hasProZones;
+            return this;
+        }
+
+        /**
+         * @param hasProZones Indicates whether user has any pro zones
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hasProZones(Boolean hasProZones) {
+            return hasProZones(Output.of(hasProZones));
+        }
+
+        /**
          * @param lastName User&#39;s last name
          * 
          * @return builder
@@ -179,6 +396,40 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lastName(String lastName) {
             return lastName(Output.of(lastName));
+        }
+
+        public Builder organizations(@Nullable Output<List<UserOrganizationArgs>> organizations) {
+            $.organizations = organizations;
+            return this;
+        }
+
+        public Builder organizations(List<UserOrganizationArgs> organizations) {
+            return organizations(Output.of(organizations));
+        }
+
+        public Builder organizations(UserOrganizationArgs... organizations) {
+            return organizations(List.of(organizations));
+        }
+
+        /**
+         * @param suspended Indicates whether user has been suspended
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suspended(@Nullable Output<Boolean> suspended) {
+            $.suspended = suspended;
+            return this;
+        }
+
+        /**
+         * @param suspended Indicates whether user has been suspended
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suspended(Boolean suspended) {
+            return suspended(Output.of(suspended));
         }
 
         /**
@@ -200,6 +451,48 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder telephone(String telephone) {
             return telephone(Output.of(telephone));
+        }
+
+        /**
+         * @param twoFactorAuthenticationEnabled Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder twoFactorAuthenticationEnabled(@Nullable Output<Boolean> twoFactorAuthenticationEnabled) {
+            $.twoFactorAuthenticationEnabled = twoFactorAuthenticationEnabled;
+            return this;
+        }
+
+        /**
+         * @param twoFactorAuthenticationEnabled Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder twoFactorAuthenticationEnabled(Boolean twoFactorAuthenticationEnabled) {
+            return twoFactorAuthenticationEnabled(Output.of(twoFactorAuthenticationEnabled));
+        }
+
+        /**
+         * @param twoFactorAuthenticationLocked Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder twoFactorAuthenticationLocked(@Nullable Output<Boolean> twoFactorAuthenticationLocked) {
+            $.twoFactorAuthenticationLocked = twoFactorAuthenticationLocked;
+            return this;
+        }
+
+        /**
+         * @param twoFactorAuthenticationLocked Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder twoFactorAuthenticationLocked(Boolean twoFactorAuthenticationLocked) {
+            return twoFactorAuthenticationLocked(Output.of(twoFactorAuthenticationLocked));
         }
 
         /**

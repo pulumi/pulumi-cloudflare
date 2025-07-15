@@ -3,7 +3,6 @@
 
 package com.pulumi.cloudflare.inputs;
 
-import com.pulumi.cloudflare.inputs.R2BucketEventNotificationQueueArgs;
 import com.pulumi.cloudflare.inputs.R2BucketEventNotificationRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -79,18 +78,18 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
     }
 
     /**
-     * List of queues associated with the bucket.
+     * Name of the queue.
      * 
      */
-    @Import(name="queues")
-    private @Nullable Output<List<R2BucketEventNotificationQueueArgs>> queues;
+    @Import(name="queueName")
+    private @Nullable Output<String> queueName;
 
     /**
-     * @return List of queues associated with the bucket.
+     * @return Name of the queue.
      * 
      */
-    public Optional<Output<List<R2BucketEventNotificationQueueArgs>>> queues() {
-        return Optional.ofNullable(this.queues);
+    public Optional<Output<String>> queueName() {
+        return Optional.ofNullable(this.queueName);
     }
 
     /**
@@ -115,7 +114,7 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
         this.bucketName = $.bucketName;
         this.jurisdiction = $.jurisdiction;
         this.queueId = $.queueId;
-        this.queues = $.queues;
+        this.queueName = $.queueName;
         this.rules = $.rules;
     }
 
@@ -222,34 +221,24 @@ public final class R2BucketEventNotificationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param queues List of queues associated with the bucket.
+         * @param queueName Name of the queue.
          * 
          * @return builder
          * 
          */
-        public Builder queues(@Nullable Output<List<R2BucketEventNotificationQueueArgs>> queues) {
-            $.queues = queues;
+        public Builder queueName(@Nullable Output<String> queueName) {
+            $.queueName = queueName;
             return this;
         }
 
         /**
-         * @param queues List of queues associated with the bucket.
+         * @param queueName Name of the queue.
          * 
          * @return builder
          * 
          */
-        public Builder queues(List<R2BucketEventNotificationQueueArgs> queues) {
-            return queues(Output.of(queues));
-        }
-
-        /**
-         * @param queues List of queues associated with the bucket.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder queues(R2BucketEventNotificationQueueArgs... queues) {
-            return queues(List.of(queues));
+        public Builder queueName(String queueName) {
+            return queueName(Output.of(queueName));
         }
 
         /**

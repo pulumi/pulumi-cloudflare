@@ -18,21 +18,21 @@ public final class GetZoneSubscriptionArgs extends com.pulumi.resources.InvokeAr
      * Subscription identifier tag.
      * 
      */
-    @Import(name="identifier", required=true)
-    private Output<String> identifier;
+    @Import(name="zoneId", required=true)
+    private Output<String> zoneId;
 
     /**
      * @return Subscription identifier tag.
      * 
      */
-    public Output<String> identifier() {
-        return this.identifier;
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     private GetZoneSubscriptionArgs() {}
 
     private GetZoneSubscriptionArgs(GetZoneSubscriptionArgs $) {
-        this.identifier = $.identifier;
+        this.zoneId = $.zoneId;
     }
 
     public static Builder builder() {
@@ -54,29 +54,29 @@ public final class GetZoneSubscriptionArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param identifier Subscription identifier tag.
+         * @param zoneId Subscription identifier tag.
          * 
          * @return builder
          * 
          */
-        public Builder identifier(Output<String> identifier) {
-            $.identifier = identifier;
+        public Builder zoneId(Output<String> zoneId) {
+            $.zoneId = zoneId;
             return this;
         }
 
         /**
-         * @param identifier Subscription identifier tag.
+         * @param zoneId Subscription identifier tag.
          * 
          * @return builder
          * 
          */
-        public Builder identifier(String identifier) {
-            return identifier(Output.of(identifier));
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
         }
 
         public GetZoneSubscriptionArgs build() {
-            if ($.identifier == null) {
-                throw new MissingRequiredPropertyException("GetZoneSubscriptionArgs", "identifier");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetZoneSubscriptionArgs", "zoneId");
             }
             return $;
         }

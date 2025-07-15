@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? LegacyId { get; set; }
 
         /// <summary>
-        /// Name of the owner
+        /// Name of the owner.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -14,27 +14,27 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZoneMetaResult
     {
         /// <summary>
-        /// The zone is only configured for CDN
+        /// The zone is only configured for CDN.
         /// </summary>
         public readonly bool CdnOnly;
         /// <summary>
-        /// Number of Custom Certificates the zone can have
+        /// Number of Custom Certificates the zone can have.
         /// </summary>
         public readonly int CustomCertificateQuota;
         /// <summary>
-        /// The zone is only configured for DNS
+        /// The zone is only configured for DNS.
         /// </summary>
         public readonly bool DnsOnly;
         /// <summary>
-        /// The zone is setup with Foundation DNS
+        /// The zone is setup with Foundation DNS.
         /// </summary>
         public readonly bool FoundationDns;
         /// <summary>
-        /// Number of Page Rules a zone can have
+        /// Number of Page Rules a zone can have.
         /// </summary>
         public readonly int PageRuleQuota;
         /// <summary>
-        /// The zone has been flagged for phishing
+        /// The zone has been flagged for phishing.
         /// </summary>
         public readonly bool PhishingDetected;
         public readonly int Step;

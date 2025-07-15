@@ -43,7 +43,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>'
+// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
 // ```
 type CloudforceOneRequestMessage struct {
 	pulumi.CustomResourceState

@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountApiTokenPermissionGroups = cloudflare.getAccountApiTokenPermissionGroups({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */
@@ -62,7 +62,7 @@ export interface GetAccountApiTokenPermissionGroupsResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountApiTokenPermissionGroups = cloudflare.getAccountApiTokenPermissionGroups({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  * });
  * ```
  */

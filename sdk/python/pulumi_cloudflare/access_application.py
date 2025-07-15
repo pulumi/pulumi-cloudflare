@@ -102,6 +102,7 @@ class AccessApplicationArgs:
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         :param pulumi.Input[builtins.str] type: The application type.
+               Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -619,6 +620,7 @@ class AccessApplicationArgs:
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The application type.
+        Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         """
         return pulumi.get(self, "type")
 
@@ -726,6 +728,7 @@ class _AccessApplicationState:
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         :param pulumi.Input[builtins.str] type: The application type.
+               Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -1270,6 +1273,7 @@ class _AccessApplicationState:
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The application type.
+        Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         """
         return pulumi.get(self, "type")
 
@@ -1400,6 +1404,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         :param pulumi.Input[builtins.str] type: The application type.
+               Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
@@ -1622,6 +1627,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         :param pulumi.Input[builtins.str] type: The application type.
+               Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1975,6 +1981,7 @@ class AccessApplication(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The application type.
+        Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         """
         return pulumi.get(self, "type")
 

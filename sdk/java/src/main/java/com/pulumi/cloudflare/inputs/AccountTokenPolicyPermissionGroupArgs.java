@@ -18,14 +18,14 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
     public static final AccountTokenPolicyPermissionGroupArgs Empty = new AccountTokenPolicyPermissionGroupArgs();
 
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Identifier of the group.
+     * @return Identifier of the permission group.
      * 
      */
     public Output<String> id() {
@@ -48,14 +48,14 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
     }
 
     /**
-     * Name of the group.
+     * Name of the permission group.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the group.
+     * @return Name of the permission group.
      * 
      */
     public Optional<Output<String>> name() {
@@ -89,7 +89,7 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
         }
 
         /**
-         * @param id Identifier of the group.
+         * @param id Identifier of the permission group.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
         }
 
         /**
-         * @param id Identifier of the group.
+         * @param id Identifier of the permission group.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the group.
+         * @param name Name of the permission group.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class AccountTokenPolicyPermissionGroupArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the group.
+         * @param name Name of the permission group.
          * 
          * @return builder
          * 

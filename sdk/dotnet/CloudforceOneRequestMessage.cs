@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '&lt;account_id&gt;/&lt;request_id&gt;'
+    /// $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '&lt;account_id&gt;/&lt;request_id&gt;/&lt;page&gt;/&lt;per_page&gt;'
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage")]

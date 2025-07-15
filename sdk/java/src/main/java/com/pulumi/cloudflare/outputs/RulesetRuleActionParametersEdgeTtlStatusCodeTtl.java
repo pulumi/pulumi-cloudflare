@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     /**
-     * @return Set the ttl for responses with this specific status code
+     * @return Set the TTL for responses with this specific status code.
      * 
      */
     private @Nullable Integer statusCode;
@@ -31,7 +31,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtl() {}
     /**
-     * @return Set the ttl for responses with this specific status code
+     * @return Set the TTL for responses with this specific status code.
      * 
      */
     public Optional<Integer> statusCode() {

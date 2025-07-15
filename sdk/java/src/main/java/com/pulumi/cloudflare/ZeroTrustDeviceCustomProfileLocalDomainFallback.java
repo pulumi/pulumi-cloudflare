@@ -37,34 +37,6 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
     public Output<String> accountId() {
         return this.accountId;
     }
-    /**
-     * A description of the fallback domain, displayed in the client UI.
-     * 
-     */
-    @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
-
-    /**
-     * @return A description of the fallback domain, displayed in the client UI.
-     * 
-     */
-    public Output<String> description() {
-        return this.description;
-    }
-    /**
-     * A list of IP addresses to handle domain resolution.
-     * 
-     */
-    @Export(name="dnsServers", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> dnsServers;
-
-    /**
-     * @return A list of IP addresses to handle domain resolution.
-     * 
-     */
-    public Output<List<String>> dnsServers() {
-        return this.dnsServers;
-    }
     @Export(name="domains", refs={List.class,ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain.class}, tree="[0,1]")
     private Output<List<ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>> domains;
 
@@ -76,20 +48,6 @@ public class ZeroTrustDeviceCustomProfileLocalDomainFallback extends com.pulumi.
 
     public Output<String> policyId() {
         return this.policyId;
-    }
-    /**
-     * The domain suffix to match when resolving locally.
-     * 
-     */
-    @Export(name="suffix", refs={String.class}, tree="[0]")
-    private Output<String> suffix;
-
-    /**
-     * @return The domain suffix to match when resolving locally.
-     * 
-     */
-    public Output<String> suffix() {
-        return this.suffix;
     }
 
     /**

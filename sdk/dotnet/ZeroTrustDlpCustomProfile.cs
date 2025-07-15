@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.ZeroTrustDlpCustomProfileEntry>> Entries { get; private set; } = null!;
 
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         [Output("ocrEnabled")]
         public Output<bool?> OcrEnabled { get; private set; } = null!;
@@ -68,9 +68,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("openAccess")]
         public Output<bool> OpenAccess { get; private set; } = null!;
-
-        [Output("profiles")]
-        public Output<ImmutableArray<Outputs.ZeroTrustDlpCustomProfileProfile>> Profiles { get; private set; } = null!;
 
         /// <summary>
         /// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
@@ -167,7 +164,7 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("entries")]
+        [Input("entries", required: true)]
         private InputList<Inputs.ZeroTrustDlpCustomProfileEntryArgs>? _entries;
         public InputList<Inputs.ZeroTrustDlpCustomProfileEntryArgs> Entries
         {
@@ -175,19 +172,11 @@ namespace Pulumi.Cloudflare
             set => _entries = value;
         }
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("ocrEnabled")]
         public Input<bool>? OcrEnabled { get; set; }
-
-        [Input("profiles")]
-        private InputList<Inputs.ZeroTrustDlpCustomProfileProfileArgs>? _profiles;
-        public InputList<Inputs.ZeroTrustDlpCustomProfileProfileArgs> Profiles
-        {
-            get => _profiles ?? (_profiles = new InputList<Inputs.ZeroTrustDlpCustomProfileProfileArgs>());
-            set => _profiles = value;
-        }
 
         [Input("sharedEntries")]
         private InputList<Inputs.ZeroTrustDlpCustomProfileSharedEntryArgs>? _sharedEntries;
@@ -261,14 +250,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("openAccess")]
         public Input<bool>? OpenAccess { get; set; }
-
-        [Input("profiles")]
-        private InputList<Inputs.ZeroTrustDlpCustomProfileProfileGetArgs>? _profiles;
-        public InputList<Inputs.ZeroTrustDlpCustomProfileProfileGetArgs> Profiles
-        {
-            get => _profiles ?? (_profiles = new InputList<Inputs.ZeroTrustDlpCustomProfileProfileGetArgs>());
-            set => _profiles = value;
-        }
 
         [Input("sharedEntries")]
         private InputList<Inputs.ZeroTrustDlpCustomProfileSharedEntryGetArgs>? _sharedEntries;

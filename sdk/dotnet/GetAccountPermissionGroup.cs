@@ -24,8 +24,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountPermissionGroup = Cloudflare.GetAccountPermissionGroup.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
-        ///         PermissionGroupId = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         PermissionGroupId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -47,8 +47,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountPermissionGroup = Cloudflare.GetAccountPermissionGroup.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
-        ///         PermissionGroupId = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         PermissionGroupId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -70,8 +70,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleAccountPermissionGroup = Cloudflare.GetAccountPermissionGroup.Invoke(new()
         ///     {
-        ///         AccountId = "eb78d65290b24279ba6f44721b3ea3c4",
-        ///         PermissionGroupId = "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+        ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+        ///         PermissionGroupId = "023e105f4ecef8ad9ca31a8372d0c353",
         ///     });
         /// 
         /// });
@@ -131,7 +131,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Identifier of the group.
+        /// Identifier of the permission group.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -139,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly Outputs.GetAccountPermissionGroupMetaResult Meta;
         /// <summary>
-        /// Name of the group.
+        /// Name of the permission group.
         /// </summary>
         public readonly string Name;
         /// <summary>

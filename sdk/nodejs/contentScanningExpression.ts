@@ -51,10 +51,6 @@ export class ContentScanningExpression extends pulumi.CustomResource {
 
     public readonly bodies!: pulumi.Output<outputs.ContentScanningExpressionBody[]>;
     /**
-     * Defines the ruleset expression to use in matching content objects.
-     */
-    public /*out*/ readonly payload!: pulumi.Output<string>;
-    /**
      * Defines an identifier.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -73,7 +69,6 @@ export class ContentScanningExpression extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ContentScanningExpressionState | undefined;
             resourceInputs["bodies"] = state ? state.bodies : undefined;
-            resourceInputs["payload"] = state ? state.payload : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ContentScanningExpressionArgs | undefined;
@@ -85,7 +80,6 @@ export class ContentScanningExpression extends pulumi.CustomResource {
             }
             resourceInputs["bodies"] = args ? args.bodies : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["payload"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContentScanningExpression.__pulumiType, name, resourceInputs, opts);
@@ -97,10 +91,6 @@ export class ContentScanningExpression extends pulumi.CustomResource {
  */
 export interface ContentScanningExpressionState {
     bodies?: pulumi.Input<pulumi.Input<inputs.ContentScanningExpressionBody>[]>;
-    /**
-     * Defines the ruleset expression to use in matching content objects.
-     */
-    payload?: pulumi.Input<string>;
     /**
      * Defines an identifier.
      */

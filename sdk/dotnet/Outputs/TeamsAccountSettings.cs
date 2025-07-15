@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsAccountSettingsAntivirus? Antivirus;
         /// <summary>
+        /// Setting to enable App Control
+        /// </summary>
+        public readonly Outputs.TeamsAccountSettingsAppControlSettings? AppControlSettings;
+        /// <summary>
         /// Block page layout settings.
         /// </summary>
         public readonly Outputs.TeamsAccountSettingsBlockPage? BlockPage;
@@ -72,6 +76,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsAccountSettingsAntivirus? antivirus,
 
+            Outputs.TeamsAccountSettingsAppControlSettings? appControlSettings,
+
             Outputs.TeamsAccountSettingsBlockPage? blockPage,
 
             Outputs.TeamsAccountSettingsBodyScanning? bodyScanning,
@@ -96,6 +102,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             ActivityLog = activityLog;
             Antivirus = antivirus;
+            AppControlSettings = appControlSettings;
             BlockPage = blockPage;
             BodyScanning = bodyScanning;
             BrowserIsolation = browserIsolation;

@@ -38,7 +38,7 @@ class DnsRecordArgs:
         :param pulumi.Input[builtins.str] name: DNS record name (or @ for the zone apex) in Punycode.
         :param pulumi.Input[builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[builtins.str] type: Record type.
-               Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+               Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         :param pulumi.Input[builtins.str] zone_id: Identifier.
         :param pulumi.Input[builtins.str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[builtins.str] content: A valid IPv4 address.
@@ -96,7 +96,7 @@ class DnsRecordArgs:
     def type(self) -> pulumi.Input[builtins.str]:
         """
         Record type.
-        Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+        Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         """
         return pulumi.get(self, "type")
 
@@ -239,7 +239,7 @@ class _DnsRecordState:
         :param pulumi.Input[builtins.str] tags_modified_on: When the record tags were last modified. Omitted if there are no tags.
         :param pulumi.Input[builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[builtins.str] type: Record type.
-               Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+               Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         if comment is not None:
@@ -462,7 +462,7 @@ class _DnsRecordState:
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         Record type.
-        Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+        Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         """
         return pulumi.get(self, "type")
 
@@ -522,7 +522,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: Custom tags for the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[builtins.str] type: Record type.
-               Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+               Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         ...
@@ -652,7 +652,7 @@ class DnsRecord(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] tags_modified_on: When the record tags were last modified. Omitted if there are no tags.
         :param pulumi.Input[builtins.float] ttl: Time To Live (TTL) of the DNS record in seconds. Setting to 1 means 'automatic'. Value must be between 60 and 86400, with the minimum reduced to 30 for Enterprise zones.
         :param pulumi.Input[builtins.str] type: Record type.
-               Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+               Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -680,7 +680,7 @@ class DnsRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def comment(self) -> pulumi.Output[builtins.str]:
+    def comment(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         Comments or notes about the DNS record. This field has no effect on DNS responses.
         """
@@ -803,7 +803,7 @@ class DnsRecord(pulumi.CustomResource):
     def type(self) -> pulumi.Output[builtins.str]:
         """
         Record type.
-        Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+        Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
         """
         return pulumi.get(self, "type")
 

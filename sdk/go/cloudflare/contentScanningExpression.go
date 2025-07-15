@@ -46,8 +46,6 @@ type ContentScanningExpression struct {
 	pulumi.CustomResourceState
 
 	Bodies ContentScanningExpressionBodyArrayOutput `pulumi:"bodies"`
-	// Defines the ruleset expression to use in matching content objects.
-	Payload pulumi.StringOutput `pulumi:"payload"`
 	// Defines an identifier.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -89,16 +87,12 @@ func GetContentScanningExpression(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ContentScanningExpression resources.
 type contentScanningExpressionState struct {
 	Bodies []ContentScanningExpressionBody `pulumi:"bodies"`
-	// Defines the ruleset expression to use in matching content objects.
-	Payload *string `pulumi:"payload"`
 	// Defines an identifier.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ContentScanningExpressionState struct {
 	Bodies ContentScanningExpressionBodyArrayInput
-	// Defines the ruleset expression to use in matching content objects.
-	Payload pulumi.StringPtrInput
 	// Defines an identifier.
 	ZoneId pulumi.StringPtrInput
 }
@@ -209,11 +203,6 @@ func (o ContentScanningExpressionOutput) ToContentScanningExpressionOutputWithCo
 
 func (o ContentScanningExpressionOutput) Bodies() ContentScanningExpressionBodyArrayOutput {
 	return o.ApplyT(func(v *ContentScanningExpression) ContentScanningExpressionBodyArrayOutput { return v.Bodies }).(ContentScanningExpressionBodyArrayOutput)
-}
-
-// Defines the ruleset expression to use in matching content objects.
-func (o ContentScanningExpressionOutput) Payload() pulumi.StringOutput {
-	return o.ApplyT(func(v *ContentScanningExpression) pulumi.StringOutput { return v.Payload }).(pulumi.StringOutput)
 }
 
 // Defines an identifier.

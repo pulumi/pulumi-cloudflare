@@ -200,6 +200,11 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
      */
     private String state;
     /**
+     * @return List of certificate Subject Alternative Names.
+     * 
+     */
+    private List<String> subjectAlternativeNames;
+    /**
      * @return Signing certificate thumbprint.
      * 
      */
@@ -480,6 +485,13 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
         return this.state;
     }
     /**
+     * @return List of certificate Subject Alternative Names.
+     * 
+     */
+    public List<String> subjectAlternativeNames() {
+        return this.subjectAlternativeNames;
+    }
+    /**
      * @return Signing certificate thumbprint.
      * 
      */
@@ -554,6 +566,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
         private String sensorConfig;
         private String sha256;
         private String state;
+        private List<String> subjectAlternativeNames;
         private String thumbprint;
         private Double totalScore;
         private String version;
@@ -597,6 +610,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
     	      this.sensorConfig = defaults.sensorConfig;
     	      this.sha256 = defaults.sha256;
     	      this.state = defaults.state;
+    	      this.subjectAlternativeNames = defaults.subjectAlternativeNames;
     	      this.thumbprint = defaults.thumbprint;
     	      this.totalScore = defaults.totalScore;
     	      this.version = defaults.version;
@@ -898,6 +912,17 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
             return this;
         }
         @CustomType.Setter
+        public Builder subjectAlternativeNames(List<String> subjectAlternativeNames) {
+            if (subjectAlternativeNames == null) {
+              throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRulesResultInput", "subjectAlternativeNames");
+            }
+            this.subjectAlternativeNames = subjectAlternativeNames;
+            return this;
+        }
+        public Builder subjectAlternativeNames(String... subjectAlternativeNames) {
+            return subjectAlternativeNames(List.of(subjectAlternativeNames));
+        }
+        @CustomType.Setter
         public Builder thumbprint(String thumbprint) {
             if (thumbprint == null) {
               throw new MissingRequiredPropertyException("GetZeroTrustDevicePostureRulesResultInput", "thumbprint");
@@ -967,6 +992,7 @@ public final class GetZeroTrustDevicePostureRulesResultInput {
             _resultValue.sensorConfig = sensorConfig;
             _resultValue.sha256 = sha256;
             _resultValue.state = state;
+            _resultValue.subjectAlternativeNames = subjectAlternativeNames;
             _resultValue.thumbprint = thumbprint;
             _resultValue.totalScore = totalScore;
             _resultValue.version = version;

@@ -43,7 +43,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CacheOnCookie { get; set; }
 
         [Input("cacheTtlByStatus")]
-        public Input<object>? CacheTtlByStatus { get; set; }
+        private InputMap<string>? _cacheTtlByStatus;
+        public InputMap<string> CacheTtlByStatus
+        {
+            get => _cacheTtlByStatus ?? (_cacheTtlByStatus = new InputMap<string>());
+            set => _cacheTtlByStatus = value;
+        }
 
         [Input("disableApps")]
         public Input<bool>? DisableApps { get; set; }

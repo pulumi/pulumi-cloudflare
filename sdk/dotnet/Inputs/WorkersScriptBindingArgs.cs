@@ -200,6 +200,12 @@ namespace Pulumi.Cloudflare.Inputs
             set => _usages = value;
         }
 
+        /// <summary>
+        /// Name of the Workflow to bind to.
+        /// </summary>
+        [Input("workflowName")]
+        public Input<string>? WorkflowName { get; set; }
+
         public WorkersScriptBindingArgs()
         {
         }

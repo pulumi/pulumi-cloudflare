@@ -56,6 +56,8 @@ type TeamsRule struct {
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// version number of the rule
 	Version pulumi.IntOutput `pulumi:"version"`
+	// Warning for a misconfigured rule, if any.
+	WarningStatus pulumi.StringOutput `pulumi:"warningStatus"`
 }
 
 // NewTeamsRule registers a new resource with the given unique name, arguments, and options.
@@ -135,6 +137,8 @@ type teamsRuleState struct {
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// version number of the rule
 	Version *int `pulumi:"version"`
+	// Warning for a misconfigured rule, if any.
+	WarningStatus *string `pulumi:"warningStatus"`
 }
 
 type TeamsRuleState struct {
@@ -170,6 +174,8 @@ type TeamsRuleState struct {
 	UpdatedAt pulumi.StringPtrInput
 	// version number of the rule
 	Version pulumi.IntPtrInput
+	// Warning for a misconfigured rule, if any.
+	WarningStatus pulumi.StringPtrInput
 }
 
 func (TeamsRuleState) ElementType() reflect.Type {
@@ -403,6 +409,11 @@ func (o TeamsRuleOutput) UpdatedAt() pulumi.StringOutput {
 // version number of the rule
 func (o TeamsRuleOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
+// Warning for a misconfigured rule, if any.
+func (o TeamsRuleOutput) WarningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.WarningStatus }).(pulumi.StringOutput)
 }
 
 type TeamsRuleArrayOutput struct{ *pulumi.OutputState }

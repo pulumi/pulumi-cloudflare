@@ -102,6 +102,7 @@ class ZeroTrustAccessApplicationArgs:
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         :param pulumi.Input[builtins.str] type: The application type.
+               Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -619,6 +620,7 @@ class ZeroTrustAccessApplicationArgs:
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The application type.
+        Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         """
         return pulumi.get(self, "type")
 
@@ -726,6 +728,7 @@ class _ZeroTrustAccessApplicationState:
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         :param pulumi.Input[builtins.str] type: The application type.
+               Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         if account_id is not None:
@@ -1270,6 +1273,7 @@ class _ZeroTrustAccessApplicationState:
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The application type.
+        Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         """
         return pulumi.get(self, "type")
 
@@ -1395,6 +1399,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         :param pulumi.Input[builtins.str] type: The application type.
+               Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         ...
@@ -1616,6 +1621,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] skip_interstitial: Enables automatic authentication through cloudflared.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] tags: The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard.
         :param pulumi.Input[builtins.str] type: The application type.
+               Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         :param pulumi.Input[builtins.str] zone_id: The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1969,6 +1975,7 @@ class ZeroTrustAccessApplication(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The application type.
+        Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dash_sso", "infrastructure", "rdp".
         """
         return pulumi.get(self, "type")
 

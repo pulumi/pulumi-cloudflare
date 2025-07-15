@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAccountMembersResultPolicyPermissionGroupResult
     {
         /// <summary>
-        /// Identifier of the group.
+        /// Identifier of the permission group.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetAccountMembersResultPolicyPermissionGroupMetaResult Meta;
         /// <summary>
-        /// Name of the group.
+        /// Name of the permission group.
         /// </summary>
         public readonly string Name;
 

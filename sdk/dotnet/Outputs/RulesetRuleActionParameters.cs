@@ -135,7 +135,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? OriginCacheControl;
         /// <summary>
-        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+        /// Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
         /// </summary>
         public readonly bool? OriginErrorPagePassthru;
         /// <summary>
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Phases;
         /// <summary>
         /// Configure the Polish level.
-        /// Available values: "off", "lossless", "lossy".
+        /// Available values: "off", "lossless", "lossy", "webp".
         /// </summary>
         public readonly string? Polish;
         /// <summary>
@@ -180,7 +180,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponseField> ResponseFields;
         /// <summary>
-        /// Turn on or off Rocket Loader
+        /// Turn on or off Rocket Loader.
         /// </summary>
         public readonly bool? RocketLoader;
         /// <summary>

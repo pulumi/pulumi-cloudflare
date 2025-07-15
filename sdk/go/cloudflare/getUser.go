@@ -46,8 +46,33 @@ func LookupUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupUserRe
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// Lists the betas that the user is participating in.
+	Betas []string `pulumi:"betas"`
+	// The country in which the user lives.
+	Country string `pulumi:"country"`
+	// User's first name
+	FirstName string `pulumi:"firstName"`
+	// Indicates whether user has any business zones
+	HasBusinessZones bool `pulumi:"hasBusinessZones"`
+	// Indicates whether user has any enterprise zones
+	HasEnterpriseZones bool `pulumi:"hasEnterpriseZones"`
+	// Indicates whether user has any pro zones
+	HasProZones bool `pulumi:"hasProZones"`
+	// Identifier of the user.
 	Id string `pulumi:"id"`
+	// User's last name
+	LastName      string                `pulumi:"lastName"`
+	Organizations []GetUserOrganization `pulumi:"organizations"`
+	// Indicates whether user has been suspended
+	Suspended bool `pulumi:"suspended"`
+	// User's telephone number
+	Telephone string `pulumi:"telephone"`
+	// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+	TwoFactorAuthenticationEnabled bool `pulumi:"twoFactorAuthenticationEnabled"`
+	// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+	TwoFactorAuthenticationLocked bool `pulumi:"twoFactorAuthenticationLocked"`
+	// The zipcode or postal code where the user lives.
+	Zipcode string `pulumi:"zipcode"`
 }
 
 func LookupUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupUserResultOutput {
@@ -72,9 +97,73 @@ func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Lists the betas that the user is participating in.
+func (o LookupUserResultOutput) Betas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []string { return v.Betas }).(pulumi.StringArrayOutput)
+}
+
+// The country in which the user lives.
+func (o LookupUserResultOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// User's first name
+func (o LookupUserResultOutput) FirstName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.FirstName }).(pulumi.StringOutput)
+}
+
+// Indicates whether user has any business zones
+func (o LookupUserResultOutput) HasBusinessZones() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.HasBusinessZones }).(pulumi.BoolOutput)
+}
+
+// Indicates whether user has any enterprise zones
+func (o LookupUserResultOutput) HasEnterpriseZones() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.HasEnterpriseZones }).(pulumi.BoolOutput)
+}
+
+// Indicates whether user has any pro zones
+func (o LookupUserResultOutput) HasProZones() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.HasProZones }).(pulumi.BoolOutput)
+}
+
+// Identifier of the user.
 func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// User's last name
+func (o LookupUserResultOutput) LastName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.LastName }).(pulumi.StringOutput)
+}
+
+func (o LookupUserResultOutput) Organizations() GetUserOrganizationArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []GetUserOrganization { return v.Organizations }).(GetUserOrganizationArrayOutput)
+}
+
+// Indicates whether user has been suspended
+func (o LookupUserResultOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.Suspended }).(pulumi.BoolOutput)
+}
+
+// User's telephone number
+func (o LookupUserResultOutput) Telephone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Telephone }).(pulumi.StringOutput)
+}
+
+// Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication.
+func (o LookupUserResultOutput) TwoFactorAuthenticationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.TwoFactorAuthenticationEnabled }).(pulumi.BoolOutput)
+}
+
+// Indicates whether two-factor authentication is required by one of the accounts that the user is a member of.
+func (o LookupUserResultOutput) TwoFactorAuthenticationLocked() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.TwoFactorAuthenticationLocked }).(pulumi.BoolOutput)
+}
+
+// The zipcode or postal code where the user lives.
+func (o LookupUserResultOutput) Zipcode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Zipcode }).(pulumi.StringOutput)
 }
 
 func init() {

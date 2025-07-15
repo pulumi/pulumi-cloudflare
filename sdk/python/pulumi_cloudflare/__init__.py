@@ -255,6 +255,11 @@ from .get_resource_group import *
 from .get_resource_groups import *
 from .get_ruleset import *
 from .get_rulesets import *
+from .get_schema_validation_operation_settings import *
+from .get_schema_validation_operation_settings_list import *
+from .get_schema_validation_schemas import *
+from .get_schema_validation_schemas_list import *
+from .get_schema_validation_settings import *
 from .get_snippet_rules_list import *
 from .get_snippets import *
 from .get_snippets_list import *
@@ -336,6 +341,7 @@ from .get_zero_trust_device_posture_integration import *
 from .get_zero_trust_device_posture_integrations import *
 from .get_zero_trust_device_posture_rule import *
 from .get_zero_trust_device_posture_rules import *
+from .get_zero_trust_device_settings import *
 from .get_zero_trust_dex_test import *
 from .get_zero_trust_dex_tests import *
 from .get_zero_trust_dlp_custom_profile import *
@@ -436,6 +442,9 @@ from .regional_tiered_cache import *
 from .registrar_domain import *
 from .risk_behavior import *
 from .ruleset import *
+from .schema_validation_operation_settings import *
+from .schema_validation_schemas import *
+from .schema_validation_settings import *
 from .snippet_rules import *
 from .snippets import *
 from .spectrum_application import *
@@ -503,6 +512,7 @@ from .zero_trust_device_default_profile_local_domain_fallback import *
 from .zero_trust_device_managed_networks import *
 from .zero_trust_device_posture_integration import *
 from .zero_trust_device_posture_rule import *
+from .zero_trust_device_settings import *
 from .zero_trust_dex_test import *
 from .zero_trust_dlp_custom_profile import *
 from .zero_trust_dlp_dataset import *
@@ -1539,6 +1549,30 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/schemaValidationOperationSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings": "SchemaValidationOperationSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/schemaValidationSchemas",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas": "SchemaValidationSchemas"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/schemaValidationSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/schemaValidationSettings:SchemaValidationSettings": "SchemaValidationSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/snippetRules",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -2071,6 +2105,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zeroTrustDevicePostureRule:ZeroTrustDevicePostureRule": "ZeroTrustDevicePostureRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zeroTrustDeviceSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings": "ZeroTrustDeviceSettings"
   }
  },
  {

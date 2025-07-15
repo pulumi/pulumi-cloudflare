@@ -141,6 +141,11 @@ public final class WorkersScriptBinding {
      * 
      */
     private @Nullable List<String> usages;
+    /**
+     * @return Name of the Workflow to bind to.
+     * 
+     */
+    private @Nullable String workflowName;
 
     private WorkersScriptBinding() {}
     /**
@@ -320,6 +325,13 @@ public final class WorkersScriptBinding {
     public List<String> usages() {
         return this.usages == null ? List.of() : this.usages;
     }
+    /**
+     * @return Name of the Workflow to bind to.
+     * 
+     */
+    public Optional<String> workflowName() {
+        return Optional.ofNullable(this.workflowName);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -355,6 +367,7 @@ public final class WorkersScriptBinding {
         private @Nullable String text;
         private String type;
         private @Nullable List<String> usages;
+        private @Nullable String workflowName;
         public Builder() {}
         public Builder(WorkersScriptBinding defaults) {
     	      Objects.requireNonNull(defaults);
@@ -383,6 +396,7 @@ public final class WorkersScriptBinding {
     	      this.text = defaults.text;
     	      this.type = defaults.type;
     	      this.usages = defaults.usages;
+    	      this.workflowName = defaults.workflowName;
         }
 
         @CustomType.Setter
@@ -542,6 +556,12 @@ public final class WorkersScriptBinding {
         public Builder usages(String... usages) {
             return usages(List.of(usages));
         }
+        @CustomType.Setter
+        public Builder workflowName(@Nullable String workflowName) {
+
+            this.workflowName = workflowName;
+            return this;
+        }
         public WorkersScriptBinding build() {
             final var _resultValue = new WorkersScriptBinding();
             _resultValue.algorithm = algorithm;
@@ -569,6 +589,7 @@ public final class WorkersScriptBinding {
             _resultValue.text = text;
             _resultValue.type = type;
             _resultValue.usages = usages;
+            _resultValue.workflowName = workflowName;
             return _resultValue;
         }
     }

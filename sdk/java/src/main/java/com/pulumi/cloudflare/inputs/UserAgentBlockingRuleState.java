@@ -16,17 +16,9 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
 
     public static final UserAgentBlockingRuleState Empty = new UserAgentBlockingRuleState();
 
-    /**
-     * The rule configuration.
-     * 
-     */
     @Import(name="configuration")
     private @Nullable Output<UserAgentBlockingRuleConfigurationArgs> configuration;
 
-    /**
-     * @return The rule configuration.
-     * 
-     */
     public Optional<Output<UserAgentBlockingRuleConfigurationArgs>> configuration() {
         return Optional.ofNullable(this.configuration);
     }
@@ -105,23 +97,11 @@ public final class UserAgentBlockingRuleState extends com.pulumi.resources.Resou
             $ = new UserAgentBlockingRuleState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param configuration The rule configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder configuration(@Nullable Output<UserAgentBlockingRuleConfigurationArgs> configuration) {
             $.configuration = configuration;
             return this;
         }
 
-        /**
-         * @param configuration The rule configuration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder configuration(UserAgentBlockingRuleConfigurationArgs configuration) {
             return configuration(Output.of(configuration));
         }

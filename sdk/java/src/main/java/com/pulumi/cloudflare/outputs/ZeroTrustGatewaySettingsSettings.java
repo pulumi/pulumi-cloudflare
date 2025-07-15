@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsActivityLog;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsAntivirus;
+import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsAppControlSettings;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsBodyScanning;
 import com.pulumi.cloudflare.outputs.ZeroTrustGatewaySettingsSettingsBrowserIsolation;
@@ -33,6 +34,11 @@ public final class ZeroTrustGatewaySettingsSettings {
      * 
      */
     private @Nullable ZeroTrustGatewaySettingsSettingsAntivirus antivirus;
+    /**
+     * @return Setting to enable App Control
+     * 
+     */
+    private @Nullable ZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings;
     /**
      * @return Block page layout settings.
      * 
@@ -107,6 +113,13 @@ public final class ZeroTrustGatewaySettingsSettings {
      */
     public Optional<ZeroTrustGatewaySettingsSettingsAntivirus> antivirus() {
         return Optional.ofNullable(this.antivirus);
+    }
+    /**
+     * @return Setting to enable App Control
+     * 
+     */
+    public Optional<ZeroTrustGatewaySettingsSettingsAppControlSettings> appControlSettings() {
+        return Optional.ofNullable(this.appControlSettings);
     }
     /**
      * @return Block page layout settings.
@@ -201,6 +214,7 @@ public final class ZeroTrustGatewaySettingsSettings {
     public static final class Builder {
         private @Nullable ZeroTrustGatewaySettingsSettingsActivityLog activityLog;
         private @Nullable ZeroTrustGatewaySettingsSettingsAntivirus antivirus;
+        private @Nullable ZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings;
         private @Nullable ZeroTrustGatewaySettingsSettingsBlockPage blockPage;
         private @Nullable ZeroTrustGatewaySettingsSettingsBodyScanning bodyScanning;
         private @Nullable ZeroTrustGatewaySettingsSettingsBrowserIsolation browserIsolation;
@@ -217,6 +231,7 @@ public final class ZeroTrustGatewaySettingsSettings {
     	      Objects.requireNonNull(defaults);
     	      this.activityLog = defaults.activityLog;
     	      this.antivirus = defaults.antivirus;
+    	      this.appControlSettings = defaults.appControlSettings;
     	      this.blockPage = defaults.blockPage;
     	      this.bodyScanning = defaults.bodyScanning;
     	      this.browserIsolation = defaults.browserIsolation;
@@ -240,6 +255,12 @@ public final class ZeroTrustGatewaySettingsSettings {
         public Builder antivirus(@Nullable ZeroTrustGatewaySettingsSettingsAntivirus antivirus) {
 
             this.antivirus = antivirus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder appControlSettings(@Nullable ZeroTrustGatewaySettingsSettingsAppControlSettings appControlSettings) {
+
+            this.appControlSettings = appControlSettings;
             return this;
         }
         @CustomType.Setter
@@ -312,6 +333,7 @@ public final class ZeroTrustGatewaySettingsSettings {
             final var _resultValue = new ZeroTrustGatewaySettingsSettings();
             _resultValue.activityLog = activityLog;
             _resultValue.antivirus = antivirus;
+            _resultValue.appControlSettings = appControlSettings;
             _resultValue.blockPage = blockPage;
             _resultValue.bodyScanning = bodyScanning;
             _resultValue.browserIsolation = browserIsolation;

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsActivityLog;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsAntivirus;
+import com.pulumi.cloudflare.outputs.TeamsAccountSettingsAppControlSettings;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsBlockPage;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsBodyScanning;
 import com.pulumi.cloudflare.outputs.TeamsAccountSettingsBrowserIsolation;
@@ -33,6 +34,11 @@ public final class TeamsAccountSettings {
      * 
      */
     private @Nullable TeamsAccountSettingsAntivirus antivirus;
+    /**
+     * @return Setting to enable App Control
+     * 
+     */
+    private @Nullable TeamsAccountSettingsAppControlSettings appControlSettings;
     /**
      * @return Block page layout settings.
      * 
@@ -107,6 +113,13 @@ public final class TeamsAccountSettings {
      */
     public Optional<TeamsAccountSettingsAntivirus> antivirus() {
         return Optional.ofNullable(this.antivirus);
+    }
+    /**
+     * @return Setting to enable App Control
+     * 
+     */
+    public Optional<TeamsAccountSettingsAppControlSettings> appControlSettings() {
+        return Optional.ofNullable(this.appControlSettings);
     }
     /**
      * @return Block page layout settings.
@@ -201,6 +214,7 @@ public final class TeamsAccountSettings {
     public static final class Builder {
         private @Nullable TeamsAccountSettingsActivityLog activityLog;
         private @Nullable TeamsAccountSettingsAntivirus antivirus;
+        private @Nullable TeamsAccountSettingsAppControlSettings appControlSettings;
         private @Nullable TeamsAccountSettingsBlockPage blockPage;
         private @Nullable TeamsAccountSettingsBodyScanning bodyScanning;
         private @Nullable TeamsAccountSettingsBrowserIsolation browserIsolation;
@@ -217,6 +231,7 @@ public final class TeamsAccountSettings {
     	      Objects.requireNonNull(defaults);
     	      this.activityLog = defaults.activityLog;
     	      this.antivirus = defaults.antivirus;
+    	      this.appControlSettings = defaults.appControlSettings;
     	      this.blockPage = defaults.blockPage;
     	      this.bodyScanning = defaults.bodyScanning;
     	      this.browserIsolation = defaults.browserIsolation;
@@ -240,6 +255,12 @@ public final class TeamsAccountSettings {
         public Builder antivirus(@Nullable TeamsAccountSettingsAntivirus antivirus) {
 
             this.antivirus = antivirus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder appControlSettings(@Nullable TeamsAccountSettingsAppControlSettings appControlSettings) {
+
+            this.appControlSettings = appControlSettings;
             return this;
         }
         @CustomType.Setter
@@ -312,6 +333,7 @@ public final class TeamsAccountSettings {
             final var _resultValue = new TeamsAccountSettings();
             _resultValue.activityLog = activityLog;
             _resultValue.antivirus = antivirus;
+            _resultValue.appControlSettings = appControlSettings;
             _resultValue.blockPage = blockPage;
             _resultValue.bodyScanning = bodyScanning;
             _resultValue.browserIsolation = browserIsolation;

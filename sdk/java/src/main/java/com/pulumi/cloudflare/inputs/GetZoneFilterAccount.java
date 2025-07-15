@@ -15,14 +15,14 @@ public final class GetZoneFilterAccount extends com.pulumi.resources.InvokeArgs 
     public static final GetZoneFilterAccount Empty = new GetZoneFilterAccount();
 
     /**
-     * An account ID
+     * Filter by an account ID.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return An account ID
+     * @return Filter by an account ID.
      * 
      */
     public Optional<String> id() {
@@ -86,7 +86,7 @@ public final class GetZoneFilterAccount extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param id An account ID
+         * @param id Filter by an account ID.
          * 
          * @return builder
          * 

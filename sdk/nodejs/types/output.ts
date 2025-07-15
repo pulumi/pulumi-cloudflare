@@ -1092,7 +1092,7 @@ export interface AccessApplicationTargetCriteria {
     port: number;
     /**
      * The communication protocol your application secures.
-     * Available values: "ssh".
+     * Available values: "SSH".
      */
     protocol: string;
     /**
@@ -1778,10 +1778,6 @@ export interface AccessIdentityProviderConfig {
      */
     clientId?: string;
     /**
-     * Your OAuth Client Secret
-     */
-    clientSecret?: string;
-    /**
      * Should Cloudflare try to load authentication contexts from your account
      */
     conditionalAccessEnabled?: boolean;
@@ -1838,7 +1834,7 @@ export interface AccessIdentityProviderConfig {
     /**
      * Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
      */
-    signRequest: boolean;
+    signRequest?: boolean;
     /**
      * URL to send the SAML authentication requests to
      */
@@ -1868,12 +1864,12 @@ export interface AccessIdentityProviderScimConfig {
     /**
      * A flag to enable or disable SCIM for the identity provider.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
      * Available values: "automatic", "reauth", "no*action".
      */
-    identityUpdateBehavior?: string;
+    identityUpdateBehavior: string;
     /**
      * The base URL of Cloudflare's SCIM V2.0 API endpoint.
      */
@@ -1881,7 +1877,7 @@ export interface AccessIdentityProviderScimConfig {
     /**
      * A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
      */
-    seatDeprovision?: boolean;
+    seatDeprovision: boolean;
     /**
      * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
      */
@@ -1889,7 +1885,7 @@ export interface AccessIdentityProviderScimConfig {
     /**
      * A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
      */
-    userDeprovision?: boolean;
+    userDeprovision: boolean;
 }
 
 export interface AccessMutualTlsHostnameSettingsSetting {
@@ -2850,7 +2846,7 @@ export interface AccountTokenPolicy {
 
 export interface AccountTokenPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -2858,7 +2854,7 @@ export interface AccountTokenPolicyPermissionGroup {
      */
     meta: outputs.AccountTokenPolicyPermissionGroupMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -3180,7 +3176,7 @@ export interface ApiTokenPolicy {
 
 export interface ApiTokenPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -3188,7 +3184,7 @@ export interface ApiTokenPolicyPermissionGroup {
      */
     meta?: outputs.ApiTokenPolicyPermissionGroupMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -3255,7 +3251,7 @@ export interface CloudConnectorRulesRule {
     parameters?: outputs.CloudConnectorRulesRuleParameters;
     /**
      * Cloud Provider type
-     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
      */
     provider?: string;
 }
@@ -3654,6 +3650,10 @@ export interface DevicePostureRuleInput {
      */
     state?: string;
     /**
+     * List of certificate Subject Alternative Names.
+     */
+    subjectAlternativeNames?: string[];
+    /**
      * Signing certificate thumbprint.
      */
     thumbprint?: string;
@@ -3723,74 +3723,6 @@ export interface DlpCustomProfileEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation?: string;
-}
-
-export interface DlpCustomProfileProfile {
-    aiContextEnabled?: boolean;
-    /**
-     * Related DLP policies will trigger when the match count exceeds the number set.
-     */
-    allowedMatchCount: number;
-    confidenceThreshold?: string;
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    contextAwareness?: outputs.DlpCustomProfileProfileContextAwareness;
-    /**
-     * The description of the profile.
-     */
-    description?: string;
-    entries: outputs.DlpCustomProfileProfileEntry[];
-    name: string;
-    ocrEnabled?: boolean;
-    /**
-     * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-     */
-    sharedEntries?: outputs.DlpCustomProfileProfileSharedEntry[];
-}
-
-export interface DlpCustomProfileProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: boolean;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: outputs.DlpCustomProfileProfileContextAwarenessSkip;
-}
-
-export interface DlpCustomProfileProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: boolean;
-}
-
-export interface DlpCustomProfileProfileEntry {
-    enabled: boolean;
-    name: string;
-    pattern?: outputs.DlpCustomProfileProfileEntryPattern;
-    words?: string[];
-}
-
-export interface DlpCustomProfileProfileEntryPattern {
-    regex: string;
-    /**
-     * Available values: "luhn".
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    validation?: string;
-}
-
-export interface DlpCustomProfileProfileSharedEntry {
-    enabled: boolean;
-    entryId: string;
-    /**
-     * Available values: "custom", "predefined", "integration", "exactData".
-     */
-    entryType: string;
 }
 
 export interface DlpCustomProfileSharedEntry {
@@ -4623,7 +4555,7 @@ export interface GetAccountMemberPolicy {
 
 export interface GetAccountMemberPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -4631,7 +4563,7 @@ export interface GetAccountMemberPolicyPermissionGroup {
      */
     meta: outputs.GetAccountMemberPolicyPermissionGroupMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -4643,7 +4575,7 @@ export interface GetAccountMemberPolicyPermissionGroupMeta {
 
 export interface GetAccountMemberPolicyResourceGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the resource group.
      */
     id: string;
     /**
@@ -4843,7 +4775,7 @@ export interface GetAccountMembersResultPolicy {
 
 export interface GetAccountMembersResultPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -4851,7 +4783,7 @@ export interface GetAccountMembersResultPolicyPermissionGroup {
      */
     meta: outputs.GetAccountMembersResultPolicyPermissionGroupMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -4863,7 +4795,7 @@ export interface GetAccountMembersResultPolicyPermissionGroupMeta {
 
 export interface GetAccountMembersResultPolicyResourceGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the resource group.
      */
     id: string;
     /**
@@ -5024,7 +4956,7 @@ export interface GetAccountPermissionGroupMeta {
 
 export interface GetAccountPermissionGroupsResult {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -5032,7 +4964,7 @@ export interface GetAccountPermissionGroupsResult {
      */
     meta: outputs.GetAccountPermissionGroupsResultMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -5300,7 +5232,7 @@ export interface GetAccountTokenPolicy {
 
 export interface GetAccountTokenPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -5308,7 +5240,7 @@ export interface GetAccountTokenPolicyPermissionGroup {
      */
     meta: outputs.GetAccountTokenPolicyPermissionGroupMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -5399,7 +5331,7 @@ export interface GetAccountTokensResultPolicy {
 
 export interface GetAccountTokensResultPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -5407,7 +5339,7 @@ export interface GetAccountTokensResultPolicyPermissionGroup {
      */
     meta: outputs.GetAccountTokensResultPolicyPermissionGroupMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -6037,7 +5969,7 @@ export interface GetApiTokenPolicy {
 
 export interface GetApiTokenPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -6045,7 +5977,7 @@ export interface GetApiTokenPolicyPermissionGroup {
      */
     meta: outputs.GetApiTokenPolicyPermissionGroupMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -6136,7 +6068,7 @@ export interface GetApiTokensResultPolicy {
 
 export interface GetApiTokensResultPolicyPermissionGroup {
     /**
-     * Identifier of the group.
+     * Identifier of the permission group.
      */
     id: string;
     /**
@@ -6144,7 +6076,7 @@ export interface GetApiTokensResultPolicyPermissionGroup {
      */
     meta: outputs.GetApiTokensResultPolicyPermissionGroupMeta;
     /**
-     * Name of the group.
+     * Name of the permission group.
      */
     name: string;
 }
@@ -6326,7 +6258,7 @@ export interface GetCloudConnectorRulesRule {
     parameters: outputs.GetCloudConnectorRulesRuleParameters;
     /**
      * Cloud Provider type
-     * Available values: "aws*s3", "r2", "gcp*storage", "azureStorage".
+     * Available values: "aws*s3", "cloudflare*r2", "gcp*storage", "azure*storage".
      */
     provider: string;
 }
@@ -7567,7 +7499,7 @@ export interface GetDnsRecordsResult {
     ttl: number;
     /**
      * Record type.
-     * Available values: "A", "AAAA", "CAA", "CERT", "CNAME", "DNSKEY", "DS", "HTTPS", "LOC", "MX", "NAPTR", "NS", "OPENPGPKEY", "PTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "TXT", "URI".
+     * Available values: "A", "AAAA", "CNAME", "MX", "NS", "OPENPGPKEY", "PTR", "TXT", "CAA", "CERT", "DNSKEY", "DS", "HTTPS", "LOC", "NAPTR", "SMIMEA", "SRV", "SSHFP", "SVCB", "TLSA", "URI".
      */
     type: string;
 }
@@ -12598,62 +12530,31 @@ export interface GetR2BucketCorsRuleAllowed {
     origins: string[];
 }
 
-export interface GetR2BucketEventNotificationAbortMultipartUploadsTransition {
+export interface GetR2BucketEventNotificationRule {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+     * Array of R2 object actions that will trigger notifications.
      */
-    condition: outputs.GetR2BucketEventNotificationAbortMultipartUploadsTransitionCondition;
-}
-
-export interface GetR2BucketEventNotificationAbortMultipartUploadsTransitionCondition {
-    maxAge: number;
+    actions: string[];
     /**
-     * Available values: "Age".
+     * Timestamp when the rule was created.
      */
-    type: string;
-}
-
-export interface GetR2BucketEventNotificationConditions {
+    createdAt: string;
     /**
-     * Transitions will only apply to objects/uploads in the bucket that start with the given prefix, an empty prefix can be provided to scope rule to all objects/uploads.
+     * A description that can be used to identify the event notification rule after creation.
+     */
+    description: string;
+    /**
+     * Notifications will be sent only for objects with this prefix.
      */
     prefix: string;
-}
-
-export interface GetR2BucketEventNotificationDeleteObjectsTransition {
     /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
+     * Rule ID.
      */
-    condition: outputs.GetR2BucketEventNotificationDeleteObjectsTransitionCondition;
-}
-
-export interface GetR2BucketEventNotificationDeleteObjectsTransitionCondition {
-    date: string;
-    maxAge: number;
+    ruleId: string;
     /**
-     * Available values: "Age", "Date".
+     * Notifications will be sent only for objects with this suffix.
      */
-    type: string;
-}
-
-export interface GetR2BucketEventNotificationStorageClassTransition {
-    /**
-     * Condition for lifecycle transitions to apply after an object reaches an age in seconds.
-     */
-    condition: outputs.GetR2BucketEventNotificationStorageClassTransitionCondition;
-    /**
-     * Available values: "InfrequentAccess".
-     */
-    storageClass: string;
-}
-
-export interface GetR2BucketEventNotificationStorageClassTransitionCondition {
-    date: string;
-    maxAge: number;
-    /**
-     * Available values: "Age", "Date".
-     */
-    type: string;
+    suffix: string;
 }
 
 export interface GetR2BucketLifecycleRule {
@@ -13201,7 +13102,7 @@ export interface GetResourceGroupScopeObject {
 
 export interface GetResourceGroupsResult {
     /**
-     * Identifier of the group.
+     * Identifier of the resource group.
      */
     id: string;
     /**
@@ -13412,7 +13313,7 @@ export interface GetRulesetRuleActionParameters {
      */
     originCacheControl: boolean;
     /**
-     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      */
     originErrorPagePassthru: boolean;
     /**
@@ -13425,7 +13326,7 @@ export interface GetRulesetRuleActionParameters {
     phases: string[];
     /**
      * Configure the Polish level.
-     * Available values: "off", "lossless", "lossy".
+     * Available values: "off", "lossless", "lossy", "webp".
      */
     polish: string;
     /**
@@ -13457,7 +13358,7 @@ export interface GetRulesetRuleActionParameters {
      */
     responseFields: outputs.GetRulesetRuleActionParametersResponseField[];
     /**
-     * Turn on or off Rocket Loader
+     * Turn on or off Rocket Loader.
      */
     rocketLoader: boolean;
     /**
@@ -13550,11 +13451,11 @@ export interface GetRulesetRuleActionParametersBrowserTtl {
 
 export interface GetRulesetRuleActionParametersCacheKey {
     /**
-     * Separate cached content based on the visitor’s device type
+     * Separate cached content based on the visitor’s device type.
      */
     cacheByDeviceType: boolean;
     /**
-     * Protect from web cache deception attacks while allowing static assets to be cached
+     * Protect from web cache deception attacks while allowing static assets to be cached.
      */
     cacheDeceptionArmor: boolean;
     /**
@@ -13693,12 +13594,12 @@ export interface GetRulesetRuleActionParametersEdgeTtl {
      */
     default: number;
     /**
-     * edge ttl options
+     * Edge TTL options.
      * Available values: "respect*origin", "bypass*by*default", "override*origin".
      */
     mode: string;
     /**
-     * List of single status codes, or status code ranges to apply the selected mode
+     * List of single status codes, or status code ranges to apply the selected mode.
      */
     statusCodeTtls: outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
 }
@@ -13709,7 +13610,7 @@ export interface GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
      */
     statusCodeRange: outputs.GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange;
     /**
-     * Set the ttl for responses with this specific status code
+     * Set the TTL for responses with this specific status code.
      */
     statusCodeValue: number;
     /**
@@ -13720,11 +13621,11 @@ export interface GetRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 
 export interface GetRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     /**
-     * response status code lower bound
+     * Response status code lower bound.
      */
     from: number;
     /**
-     * response status code upper bound
+     * Response status code upper bound.
      */
     to: number;
 }
@@ -14042,6 +13943,58 @@ export interface GetRulesetsResult {
      * Available values: "ddos*l4", "ddos*l7", "http*config*settings", "http*custom*errors", "http*log*custom*fields", "http*ratelimit", "http*request*cache*settings", "http*request*dynamic*redirect", "http*request*firewall*custom", "http*request*firewall*managed", "http*request*late*transform", "http*request*origin", "http*request*redirect", "http*request*sanitize", "http*request*sbfm", "http*request*transform", "http*response*compression", "http*response*firewall*managed", "http*response*headers*transform", "magic*transit", "magic*transit*ids*managed", "magic*transit*managed", "magic*transit_ratelimit".
      */
     phase: string;
+}
+
+export interface GetSchemaValidationOperationSettingsListResult {
+    /**
+     * When set, this applies a mitigation action to this operation which supersedes a global schema validation setting just for this operation
+     *
+     *   - `"log"` - log request when request does not conform to schema for this operation
+     *   - `"block"` - deny access to the site when request does not conform to schema for this operation
+     *   - `"none"` - will skip mitigation for this operation
+     * Available values: "log", "block", "none".
+     */
+    mitigationAction: string;
+    /**
+     * UUID.
+     */
+    operationId: string;
+}
+
+export interface GetSchemaValidationSchemasFilter {
+    /**
+     * Omit the source-files of schemas and only retrieve their meta-data.
+     */
+    omitSource: boolean;
+    /**
+     * Filter for enabled schemas
+     */
+    validationEnabled?: boolean;
+}
+
+export interface GetSchemaValidationSchemasListResult {
+    createdAt: string;
+    /**
+     * The kind of the schema
+     * Available values: "openapiV3".
+     */
+    kind: string;
+    /**
+     * A human-readable name for the schema
+     */
+    name: string;
+    /**
+     * A unique identifier of this schema
+     */
+    schemaId: string;
+    /**
+     * The raw schema, e.g., the OpenAPI schema, either as JSON or YAML
+     */
+    source: string;
+    /**
+     * An indicator if this schema is enabled
+     */
+    validationEnabled: boolean;
 }
 
 export interface GetSnippetRulesListResult {
@@ -14615,6 +14568,30 @@ export interface GetUserAgentBlockingRulesResultConfiguration {
      * The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value.
      */
     value: string;
+}
+
+export interface GetUserOrganization {
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * Organization name.
+     */
+    name: string;
+    /**
+     * Access permissions for this User.
+     */
+    permissions: string[];
+    /**
+     * List of roles that a user has within an organization.
+     */
+    roles: string[];
+    /**
+     * Whether the user is a member of the organization or has an invitation pending.
+     * Available values: "member", "invited".
+     */
+    status: string;
 }
 
 export interface GetWaitingRoomAdditionalRoute {
@@ -16480,7 +16457,7 @@ export interface GetZeroTrustAccessApplicationTargetCriteria {
     port: number;
     /**
      * The communication protocol your application secures.
-     * Available values: "ssh".
+     * Available values: "SSH".
      */
     protocol: string;
     /**
@@ -16637,6 +16614,7 @@ export interface GetZeroTrustAccessApplicationsResult {
     targetCriterias: outputs.GetZeroTrustAccessApplicationsResultTargetCriteria[];
     /**
      * The application type.
+     * Available values: "self*hosted", "saas", "ssh", "vnc", "app*launcher", "warp", "biso", "bookmark", "dashSso", "infrastructure", "rdp".
      */
     type: string;
     updatedAt: string;
@@ -17770,7 +17748,7 @@ export interface GetZeroTrustAccessApplicationsResultTargetCriteria {
     port: number;
     /**
      * The communication protocol your application secures.
-     * Available values: "ssh".
+     * Available values: "SSH".
      */
     protocol: string;
     /**
@@ -22038,6 +22016,10 @@ export interface GetZeroTrustDevicePostureRuleInput {
      */
     state: string;
     /**
+     * List of certificate Subject Alternative Names.
+     */
+    subjectAlternativeNames: string[];
+    /**
      * Signing certificate thumbprint.
      */
     thumbprint: string;
@@ -22262,6 +22244,10 @@ export interface GetZeroTrustDevicePostureRulesResultInput {
      */
     state: string;
     /**
+     * List of certificate Subject Alternative Names.
+     */
+    subjectAlternativeNames: string[];
+    /**
      * Signing certificate thumbprint.
      */
     thumbprint: string;
@@ -22424,7 +22410,7 @@ export interface GetZeroTrustDlpCustomProfileEntry {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "word*list".
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*template", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -22530,7 +22516,7 @@ export interface GetZeroTrustDlpEntriesResult {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "word*list".
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*template", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -22613,7 +22599,7 @@ export interface GetZeroTrustDlpPredefinedProfileEntry {
     profileId: string;
     secret: boolean;
     /**
-     * Available values: "custom", "predefined", "integration", "exact*data", "word*list".
+     * Available values: "custom", "predefined", "integration", "exact*data", "document*template", "wordList".
      */
     type: string;
     updatedAt: string;
@@ -23063,6 +23049,10 @@ export interface GetZeroTrustGatewayPoliciesResult {
      * version number of the rule
      */
     version: number;
+    /**
+     * Warning for a misconfigured rule, if any.
+     */
+    warningStatus: string;
 }
 
 export interface GetZeroTrustGatewayPoliciesResultExpiration {
@@ -23210,8 +23200,8 @@ export interface GetZeroTrustGatewayPoliciesResultRuleSettingsBisoAdminControls 
      */
     dk: boolean;
     /**
-     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
-     * Available values: "enabled", "disabled".
+     * Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
      */
     download: string;
     /**
@@ -23588,8 +23578,8 @@ export interface GetZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     dk: boolean;
     /**
-     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
-     * Available values: "enabled", "disabled".
+     * Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
      */
     download: string;
     /**
@@ -23831,6 +23821,10 @@ export interface GetZeroTrustGatewaySettingsSettings {
      */
     antivirus: outputs.GetZeroTrustGatewaySettingsSettingsAntivirus;
     /**
+     * Setting to enable App Control
+     */
+    appControlSettings: outputs.GetZeroTrustGatewaySettingsSettingsAppControlSettings;
+    /**
      * Block page layout settings.
      */
     blockPage: outputs.GetZeroTrustGatewaySettingsSettingsBlockPage;
@@ -23921,6 +23915,13 @@ export interface GetZeroTrustGatewaySettingsSettingsAntivirusNotificationSetting
      * Optional URL to direct users to additional information. If not set, the notification will open a block page.
      */
     supportUrl: string;
+}
+
+export interface GetZeroTrustGatewaySettingsSettingsAppControlSettings {
+    /**
+     * Enable App Control
+     */
+    enabled: boolean;
 }
 
 export interface GetZeroTrustGatewaySettingsSettingsBlockPage {
@@ -24585,6 +24586,8 @@ export interface GetZeroTrustTunnelCloudflaredsResult {
     accountTag: string;
     /**
      * The Cloudflare Tunnel connections between your origin and Cloudflare's edge.
+     *
+     * @deprecated This field will start returning an empty array. To fetch the connections of a given tunnel, please use the dedicated endpoint `/accounts/{account_id}/{tunnel_type}/{tunnel_id}/connections`
      */
     connections: outputs.GetZeroTrustTunnelCloudflaredsResultConnection[];
     /**
@@ -24672,7 +24675,7 @@ export interface GetZoneAccount {
      */
     id: string;
     /**
-     * The name of the account
+     * The name of the account.
      */
     name: string;
 }
@@ -24757,7 +24760,7 @@ export interface GetZoneFilter {
      */
     order?: string;
     /**
-     * A zone status
+     * Specify a zone status to filter by.
      * Available values: "initializing", "pending", "active", "moved".
      */
     status?: string;
@@ -24765,7 +24768,7 @@ export interface GetZoneFilter {
 
 export interface GetZoneFilterAccount {
     /**
-     * An account ID
+     * Filter by an account ID.
      */
     id?: string;
     /**
@@ -24878,27 +24881,27 @@ export interface GetZoneLockdownsResultConfiguration {
 
 export interface GetZoneMeta {
     /**
-     * The zone is only configured for CDN
+     * The zone is only configured for CDN.
      */
     cdnOnly: boolean;
     /**
-     * Number of Custom Certificates the zone can have
+     * Number of Custom Certificates the zone can have.
      */
     customCertificateQuota: number;
     /**
-     * The zone is only configured for DNS
+     * The zone is only configured for DNS.
      */
     dnsOnly: boolean;
     /**
-     * The zone is setup with Foundation DNS
+     * The zone is setup with Foundation DNS.
      */
     foundationDns: boolean;
     /**
-     * Number of Page Rules a zone can have
+     * Number of Page Rules a zone can have.
      */
     pageRuleQuota: number;
     /**
-     * The zone has been flagged for phishing
+     * The zone has been flagged for phishing.
      */
     phishingDetected: boolean;
     step: number;
@@ -24910,11 +24913,11 @@ export interface GetZoneOwner {
      */
     id: string;
     /**
-     * Name of the owner
+     * Name of the owner.
      */
     name: string;
     /**
-     * The type of owner
+     * The type of owner.
      */
     type: string;
 }
@@ -24953,13 +24956,45 @@ export interface GetZonePlan {
      */
     legacyId: string;
     /**
-     * Name of the owner
+     * Name of the owner.
      */
     name: string;
     /**
      * How much the customer is paying.
      */
     price: number;
+}
+
+export interface GetZoneSubscriptionRatePlan {
+    /**
+     * The currency applied to the rate plan subscription.
+     */
+    currency: string;
+    /**
+     * Whether this rate plan is managed externally from Cloudflare.
+     */
+    externallyManaged: boolean;
+    /**
+     * The ID of the rate plan.
+     * Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+     */
+    id: string;
+    /**
+     * Whether a rate plan is enterprise-based (or newly adopted term contract).
+     */
+    isContract: boolean;
+    /**
+     * The full name of the rate plan.
+     */
+    publicName: string;
+    /**
+     * The scope that this rate plan applies to.
+     */
+    scope: string;
+    /**
+     * The list of sets this rate plan applies to.
+     */
+    sets: string[];
 }
 
 export interface GetZoneTenant {
@@ -24982,7 +25017,7 @@ export interface GetZoneTenantUnit {
 
 export interface GetZonesAccount {
     /**
-     * An account ID
+     * Filter by an account ID.
      */
     id?: string;
     /**
@@ -25001,12 +25036,12 @@ export interface GetZonesAccount {
 
 export interface GetZonesResult {
     /**
-     * The account the zone belongs to
+     * The account the zone belongs to.
      */
     account: outputs.GetZonesResultAccount;
     /**
      * The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      */
     activatedOn: string;
     /**
@@ -25015,7 +25050,7 @@ export interface GetZonesResult {
      */
     cnameSuffix: string;
     /**
-     * When the zone was created
+     * When the zone was created.
      */
     createdOn: string;
     /**
@@ -25029,35 +25064,35 @@ export interface GetZonesResult {
      */
     id: string;
     /**
-     * Metadata about the zone
+     * Metadata about the zone.
      */
     meta: outputs.GetZonesResultMeta;
     /**
-     * When the zone was last modified
+     * When the zone was last modified.
      */
     modifiedOn: string;
     /**
-     * The domain name
+     * The domain name.
      */
     name: string;
     /**
-     * The name servers Cloudflare assigns to a zone
+     * The name servers Cloudflare assigns to a zone.
      */
     nameServers: string[];
     /**
-     * DNS host at the time of switching to Cloudflare
+     * DNS host at the time of switching to Cloudflare.
      */
     originalDnshost: string;
     /**
-     * Original name servers before moving to Cloudflare
+     * Original name servers before moving to Cloudflare.
      */
     originalNameServers: string[];
     /**
-     * Registrar for the domain at the time of switching to Cloudflare
+     * Registrar for the domain at the time of switching to Cloudflare.
      */
     originalRegistrar: string;
     /**
-     * The owner of the zone
+     * The owner of the zone.
      */
     owner: outputs.GetZonesResultOwner;
     /**
@@ -25113,34 +25148,34 @@ export interface GetZonesResultAccount {
      */
     id: string;
     /**
-     * The name of the account
+     * The name of the account.
      */
     name: string;
 }
 
 export interface GetZonesResultMeta {
     /**
-     * The zone is only configured for CDN
+     * The zone is only configured for CDN.
      */
     cdnOnly: boolean;
     /**
-     * Number of Custom Certificates the zone can have
+     * Number of Custom Certificates the zone can have.
      */
     customCertificateQuota: number;
     /**
-     * The zone is only configured for DNS
+     * The zone is only configured for DNS.
      */
     dnsOnly: boolean;
     /**
-     * The zone is setup with Foundation DNS
+     * The zone is setup with Foundation DNS.
      */
     foundationDns: boolean;
     /**
-     * Number of Page Rules a zone can have
+     * Number of Page Rules a zone can have.
      */
     pageRuleQuota: number;
     /**
-     * The zone has been flagged for phishing
+     * The zone has been flagged for phishing.
      */
     phishingDetected: boolean;
     step: number;
@@ -25152,11 +25187,11 @@ export interface GetZonesResultOwner {
      */
     id: string;
     /**
-     * Name of the owner
+     * Name of the owner.
      */
     name: string;
     /**
-     * The type of owner
+     * The type of owner.
      */
     type: string;
 }
@@ -25195,7 +25230,7 @@ export interface GetZonesResultPlan {
      */
     legacyId: string;
     /**
-     * Name of the owner
+     * Name of the owner.
      */
     name: string;
     /**
@@ -26967,7 +27002,7 @@ export interface PageRuleActions {
     cacheKeyFields?: outputs.PageRuleActionsCacheKeyFields;
     cacheLevel?: string;
     cacheOnCookie?: string;
-    cacheTtlByStatus?: any;
+    cacheTtlByStatus?: {[key: string]: string};
     disableApps?: boolean;
     disablePerformance?: boolean;
     disableSecurity?: boolean;
@@ -27942,45 +27977,6 @@ export interface R2BucketCorsRuleAllowed {
     origins: string[];
 }
 
-export interface R2BucketEventNotificationQueue {
-    /**
-     * Queue ID.
-     */
-    queueId: string;
-    /**
-     * Name of the queue.
-     */
-    queueName: string;
-    rules: outputs.R2BucketEventNotificationQueueRule[];
-}
-
-export interface R2BucketEventNotificationQueueRule {
-    /**
-     * Array of R2 object actions that will trigger notifications.
-     */
-    actions: string[];
-    /**
-     * Timestamp when the rule was created.
-     */
-    createdAt: string;
-    /**
-     * A description that can be used to identify the event notification rule after creation.
-     */
-    description: string;
-    /**
-     * Notifications will be sent only for objects with this prefix.
-     */
-    prefix: string;
-    /**
-     * Rule ID.
-     */
-    ruleId: string;
-    /**
-     * Notifications will be sent only for objects with this suffix.
-     */
-    suffix: string;
-}
-
 export interface R2BucketEventNotificationRule {
     /**
      * Array of R2 object actions that will trigger notifications.
@@ -28607,7 +28603,7 @@ export interface RulesetRuleActionParameters {
      */
     originCacheControl?: boolean;
     /**
-     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin
+     * Generate Cloudflare error pages from issues sent from the origin server. When on, error pages will trigger for issues from the origin.
      */
     originErrorPagePassthru?: boolean;
     /**
@@ -28620,7 +28616,7 @@ export interface RulesetRuleActionParameters {
     phases?: string[];
     /**
      * Configure the Polish level.
-     * Available values: "off", "lossless", "lossy".
+     * Available values: "off", "lossless", "lossy", "webp".
      */
     polish?: string;
     /**
@@ -28652,7 +28648,7 @@ export interface RulesetRuleActionParameters {
      */
     responseFields?: outputs.RulesetRuleActionParametersResponseField[];
     /**
-     * Turn on or off Rocket Loader
+     * Turn on or off Rocket Loader.
      */
     rocketLoader?: boolean;
     /**
@@ -28745,11 +28741,11 @@ export interface RulesetRuleActionParametersBrowserTtl {
 
 export interface RulesetRuleActionParametersCacheKey {
     /**
-     * Separate cached content based on the visitor’s device type
+     * Separate cached content based on the visitor’s device type.
      */
     cacheByDeviceType?: boolean;
     /**
-     * Protect from web cache deception attacks while allowing static assets to be cached
+     * Protect from web cache deception attacks while allowing static assets to be cached.
      */
     cacheDeceptionArmor?: boolean;
     /**
@@ -28888,19 +28884,19 @@ export interface RulesetRuleActionParametersEdgeTtl {
      */
     default?: number;
     /**
-     * edge ttl options
+     * Edge TTL options.
      * Available values: "respect*origin", "bypass*by*default", "override*origin".
      */
     mode: string;
     /**
-     * List of single status codes, or status code ranges to apply the selected mode
+     * List of single status codes, or status code ranges to apply the selected mode.
      */
     statusCodeTtls?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
 }
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
     /**
-     * Set the ttl for responses with this specific status code
+     * Set the TTL for responses with this specific status code.
      */
     statusCode?: number;
     /**
@@ -28915,11 +28911,11 @@ export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 
 export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     /**
-     * response status code lower bound
+     * Response status code lower bound.
      */
     from?: number;
     /**
-     * response status code upper bound
+     * Response status code upper bound.
      */
     to?: number;
 }
@@ -29576,6 +29572,10 @@ export interface TeamsAccountSettings {
      */
     antivirus?: outputs.TeamsAccountSettingsAntivirus;
     /**
+     * Setting to enable App Control
+     */
+    appControlSettings?: outputs.TeamsAccountSettingsAppControlSettings;
+    /**
      * Block page layout settings.
      */
     blockPage: outputs.TeamsAccountSettingsBlockPage;
@@ -29666,6 +29666,13 @@ export interface TeamsAccountSettingsAntivirusNotificationSettings {
      * Optional URL to direct users to additional information. If not set, the notification will open a block page.
      */
     supportUrl?: string;
+}
+
+export interface TeamsAccountSettingsAppControlSettings {
+    /**
+     * Enable App Control
+     */
+    enabled?: boolean;
 }
 
 export interface TeamsAccountSettingsBlockPage {
@@ -30044,8 +30051,8 @@ export interface TeamsRuleRuleSettingsBisoAdminControls {
      */
     dk: boolean;
     /**
-     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
-     * Available values: "enabled", "disabled".
+     * Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
      */
     download?: string;
     /**
@@ -30281,11 +30288,11 @@ export interface TunnelConfigConfig {
     /**
      * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      */
-    ingresses: outputs.TunnelConfigConfigIngress[];
+    ingresses?: outputs.TunnelConfigConfigIngress[];
     /**
      * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
      */
-    originRequest: outputs.TunnelConfigConfigOriginRequest;
+    originRequest?: outputs.TunnelConfigConfigOriginRequest;
     /**
      * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      */
@@ -30300,11 +30307,11 @@ export interface TunnelConfigConfigIngress {
     /**
      * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
      */
-    originRequest: outputs.TunnelConfigConfigIngressOriginRequest;
+    originRequest?: outputs.TunnelConfigConfigIngressOriginRequest;
     /**
      * Requests with this path route to this public hostname.
      */
-    path: string;
+    path?: string;
     /**
      * Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http*status:[code] e.g. 'http*status:404'.
      */
@@ -30315,15 +30322,15 @@ export interface TunnelConfigConfigIngressOriginRequest {
     /**
      * For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
      */
-    access: outputs.TunnelConfigConfigIngressOriginRequestAccess;
+    access?: outputs.TunnelConfigConfigIngressOriginRequestAccess;
     /**
      * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
      */
-    caPool: string;
+    caPool?: string;
     /**
      * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
      */
-    connectTimeout: number;
+    connectTimeout?: number;
     /**
      * Disables chunked transfer encoding. Useful if you are running a WSGI server.
      */
@@ -30339,35 +30346,35 @@ export interface TunnelConfigConfigIngressOriginRequest {
     /**
      * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
      */
-    keepAliveConnections: number;
+    keepAliveConnections?: number;
     /**
      * Timeout after which an idle keepalive connection can be discarded.
      */
-    keepAliveTimeout: number;
+    keepAliveTimeout?: number;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
-    noHappyEyeballs: boolean;
+    noHappyEyeballs?: boolean;
     /**
      * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
      */
-    noTlsVerify: boolean;
+    noTlsVerify?: boolean;
     /**
      * Hostname that cloudflared should expect from your origin server certificate.
      */
-    originServerName: string;
+    originServerName?: string;
     /**
      * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
      */
-    proxyType: string;
+    proxyType?: string;
     /**
      * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
      */
-    tcpKeepAlive: number;
+    tcpKeepAlive?: number;
     /**
      * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
      */
-    tlsTimeout: number;
+    tlsTimeout?: number;
 }
 
 export interface TunnelConfigConfigIngressOriginRequestAccess {
@@ -30378,7 +30385,7 @@ export interface TunnelConfigConfigIngressOriginRequestAccess {
     /**
      * Deny traffic that has not fulfilled Access authorization.
      */
-    required: boolean;
+    required?: boolean;
     teamName: string;
 }
 
@@ -30386,15 +30393,15 @@ export interface TunnelConfigConfigOriginRequest {
     /**
      * For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
      */
-    access: outputs.TunnelConfigConfigOriginRequestAccess;
+    access?: outputs.TunnelConfigConfigOriginRequestAccess;
     /**
      * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
      */
-    caPool: string;
+    caPool?: string;
     /**
      * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
      */
-    connectTimeout: number;
+    connectTimeout?: number;
     /**
      * Disables chunked transfer encoding. Useful if you are running a WSGI server.
      */
@@ -30410,35 +30417,35 @@ export interface TunnelConfigConfigOriginRequest {
     /**
      * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
      */
-    keepAliveConnections: number;
+    keepAliveConnections?: number;
     /**
      * Timeout after which an idle keepalive connection can be discarded.
      */
-    keepAliveTimeout: number;
+    keepAliveTimeout?: number;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
-    noHappyEyeballs: boolean;
+    noHappyEyeballs?: boolean;
     /**
      * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
      */
-    noTlsVerify: boolean;
+    noTlsVerify?: boolean;
     /**
      * Hostname that cloudflared should expect from your origin server certificate.
      */
-    originServerName: string;
+    originServerName?: string;
     /**
      * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
      */
-    proxyType: string;
+    proxyType?: string;
     /**
      * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
      */
-    tcpKeepAlive: number;
+    tcpKeepAlive?: number;
     /**
      * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
      */
-    tlsTimeout: number;
+    tlsTimeout?: number;
 }
 
 export interface TunnelConfigConfigOriginRequestAccess {
@@ -30449,7 +30456,7 @@ export interface TunnelConfigConfigOriginRequestAccess {
     /**
      * Deny traffic that has not fulfilled Access authorization.
      */
-    required: boolean;
+    required?: boolean;
     teamName: string;
 }
 
@@ -30494,14 +30501,38 @@ export interface TunnelConnection {
 
 export interface UserAgentBlockingRuleConfiguration {
     /**
-     * The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: "ip", "ip6", "ipRange", "asn", "country".
+     * The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+     * Available values: "ua".
      */
     target?: string;
     /**
-     * The IP address to match. This address will be compared to the IP address of incoming requests.
+     * the user agent to exactly match
      */
     value?: string;
+}
+
+export interface UserOrganization {
+    /**
+     * Identifier
+     */
+    id: string;
+    /**
+     * Organization name.
+     */
+    name: string;
+    /**
+     * Access permissions for this User.
+     */
+    permissions: string[];
+    /**
+     * List of roles that a user has within an organization.
+     */
+    roles: string[];
+    /**
+     * Whether the user is a member of the organization or has an invitation pending.
+     * Available values: "member", "invited".
+     */
+    status: string;
 }
 
 export interface WaitingRoomAdditionalRoute {
@@ -30740,6 +30771,10 @@ export interface WorkerScriptBinding {
      * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      */
     usages?: string[];
+    /**
+     * Name of the Workflow to bind to.
+     */
+    workflowName?: string;
 }
 
 export interface WorkerScriptBindingOutbound {
@@ -31094,6 +31129,10 @@ export interface WorkersScriptBinding {
      * Allowed operations with the key. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#keyUsages).
      */
     usages?: string[];
+    /**
+     * Name of the Workflow to bind to.
+     */
+    workflowName?: string;
 }
 
 export interface WorkersScriptBindingOutbound {
@@ -32347,7 +32386,7 @@ export interface ZeroTrustAccessApplicationTargetCriteria {
     port: number;
     /**
      * The communication protocol your application secures.
-     * Available values: "ssh".
+     * Available values: "SSH".
      */
     protocol: string;
     /**
@@ -33033,10 +33072,6 @@ export interface ZeroTrustAccessIdentityProviderConfig {
      */
     clientId?: string;
     /**
-     * Your OAuth Client Secret
-     */
-    clientSecret?: string;
-    /**
      * Should Cloudflare try to load authentication contexts from your account
      */
     conditionalAccessEnabled?: boolean;
@@ -33093,7 +33128,7 @@ export interface ZeroTrustAccessIdentityProviderConfig {
     /**
      * Sign the SAML authentication request with Access credentials. To verify the signature, use the public key from the Access certs endpoints.
      */
-    signRequest: boolean;
+    signRequest?: boolean;
     /**
      * URL to send the SAML authentication requests to
      */
@@ -33123,12 +33158,12 @@ export interface ZeroTrustAccessIdentityProviderScimConfig {
     /**
      * A flag to enable or disable SCIM for the identity provider.
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * Indicates how a SCIM event updates a user identity used for policy evaluation. Use "automatic" to automatically update a user's identity and augment it with fields from the SCIM user resource. Use "reauth" to force re-authentication on group membership updates, user identity update will only occur after successful re-authentication. With "reauth" identities will not contain fields from the SCIM user resource. With "no*action" identities will not be changed by SCIM updates in any way and users will not be prompted to reauthenticate.
      * Available values: "automatic", "reauth", "no*action".
      */
-    identityUpdateBehavior?: string;
+    identityUpdateBehavior: string;
     /**
      * The base URL of Cloudflare's SCIM V2.0 API endpoint.
      */
@@ -33136,7 +33171,7 @@ export interface ZeroTrustAccessIdentityProviderScimConfig {
     /**
      * A flag to remove a user's seat in Zero Trust when they have been deprovisioned in the Identity Provider.  This cannot be enabled unless userDeprovision is also enabled.
      */
-    seatDeprovision?: boolean;
+    seatDeprovision: boolean;
     /**
      * A read-only token generated when the SCIM integration is enabled for the first time.  It is redacted on subsequent requests.  If you lose this you will need to refresh it at /access/identity*providers/:idpID/refresh*scim_secret.
      */
@@ -33144,7 +33179,7 @@ export interface ZeroTrustAccessIdentityProviderScimConfig {
     /**
      * A flag to enable revoking a user's session in Access and Gateway when they have been deprovisioned in the Identity Provider.
      */
-    userDeprovision?: boolean;
+    userDeprovision: boolean;
 }
 
 export interface ZeroTrustAccessInfrastructureTargetIp {
@@ -34200,6 +34235,10 @@ export interface ZeroTrustDevicePostureRuleInput {
      */
     state?: string;
     /**
+     * List of certificate Subject Alternative Names.
+     */
+    subjectAlternativeNames?: string[];
+    /**
      * Signing certificate thumbprint.
      */
     thumbprint?: string;
@@ -34299,74 +34338,6 @@ export interface ZeroTrustDlpCustomProfileEntryPattern {
      * @deprecated This attribute is deprecated.
      */
     validation?: string;
-}
-
-export interface ZeroTrustDlpCustomProfileProfile {
-    aiContextEnabled?: boolean;
-    /**
-     * Related DLP policies will trigger when the match count exceeds the number set.
-     */
-    allowedMatchCount: number;
-    confidenceThreshold?: string;
-    /**
-     * Scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    contextAwareness?: outputs.ZeroTrustDlpCustomProfileProfileContextAwareness;
-    /**
-     * The description of the profile.
-     */
-    description?: string;
-    entries: outputs.ZeroTrustDlpCustomProfileProfileEntry[];
-    name: string;
-    ocrEnabled?: boolean;
-    /**
-     * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
-     */
-    sharedEntries?: outputs.ZeroTrustDlpCustomProfileProfileSharedEntry[];
-}
-
-export interface ZeroTrustDlpCustomProfileProfileContextAwareness {
-    /**
-     * If true, scan the context of predefined entries to only return matches surrounded by keywords.
-     */
-    enabled: boolean;
-    /**
-     * Content types to exclude from context analysis and return all matches.
-     */
-    skip: outputs.ZeroTrustDlpCustomProfileProfileContextAwarenessSkip;
-}
-
-export interface ZeroTrustDlpCustomProfileProfileContextAwarenessSkip {
-    /**
-     * If the content type is a file, skip context analysis and return all matches.
-     */
-    files: boolean;
-}
-
-export interface ZeroTrustDlpCustomProfileProfileEntry {
-    enabled: boolean;
-    name: string;
-    pattern?: outputs.ZeroTrustDlpCustomProfileProfileEntryPattern;
-    words?: string[];
-}
-
-export interface ZeroTrustDlpCustomProfileProfileEntryPattern {
-    regex: string;
-    /**
-     * Available values: "luhn".
-     *
-     * @deprecated This attribute is deprecated.
-     */
-    validation?: string;
-}
-
-export interface ZeroTrustDlpCustomProfileProfileSharedEntry {
-    enabled: boolean;
-    entryId: string;
-    /**
-     * Available values: "custom", "predefined", "integration", "exactData".
-     */
-    entryType: string;
 }
 
 export interface ZeroTrustDlpCustomProfileSharedEntry {
@@ -34747,8 +34718,8 @@ export interface ZeroTrustGatewayPolicyRuleSettingsBisoAdminControls {
      */
     dk: boolean;
     /**
-     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
-     * Available values: "enabled", "disabled".
+     * Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+     * Available values: "enabled", "disabled", "remote*only".
      */
     download?: string;
     /**
@@ -34990,6 +34961,10 @@ export interface ZeroTrustGatewaySettingsSettings {
      */
     antivirus?: outputs.ZeroTrustGatewaySettingsSettingsAntivirus;
     /**
+     * Setting to enable App Control
+     */
+    appControlSettings?: outputs.ZeroTrustGatewaySettingsSettingsAppControlSettings;
+    /**
      * Block page layout settings.
      */
     blockPage: outputs.ZeroTrustGatewaySettingsSettingsBlockPage;
@@ -35080,6 +35055,13 @@ export interface ZeroTrustGatewaySettingsSettingsAntivirusNotificationSettings {
      * Optional URL to direct users to additional information. If not set, the notification will open a block page.
      */
     supportUrl?: string;
+}
+
+export interface ZeroTrustGatewaySettingsSettingsAppControlSettings {
+    /**
+     * Enable App Control
+     */
+    enabled?: boolean;
 }
 
 export interface ZeroTrustGatewaySettingsSettingsBlockPage {
@@ -35295,11 +35277,11 @@ export interface ZeroTrustTunnelCloudflaredConfigConfig {
     /**
      * List of public hostname definitions. At least one ingress rule needs to be defined for the tunnel.
      */
-    ingresses: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngress[];
+    ingresses?: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngress[];
     /**
      * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
      */
-    originRequest: outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest;
+    originRequest?: outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequest;
     /**
      * Enable private network access from WARP users to private network routes. This is enabled if the tunnel has an assigned route.
      */
@@ -35314,11 +35296,11 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigIngress {
     /**
      * Configuration parameters for the public hostname specific connection settings between cloudflared and origin server.
      */
-    originRequest: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest;
+    originRequest?: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest;
     /**
      * Requests with this path route to this public hostname.
      */
-    path: string;
+    path?: string;
     /**
      * Protocol and address of destination server. Supported protocols: http://, https://, unix://, tcp://, ssh://, rdp://, unix+tls://, smb://. Alternatively can return a HTTP status code http*status:[code] e.g. 'http*status:404'.
      */
@@ -35329,15 +35311,15 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest {
     /**
      * For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
      */
-    access: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccess;
+    access?: outputs.ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccess;
     /**
      * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
      */
-    caPool: string;
+    caPool?: string;
     /**
      * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
      */
-    connectTimeout: number;
+    connectTimeout?: number;
     /**
      * Disables chunked transfer encoding. Useful if you are running a WSGI server.
      */
@@ -35353,35 +35335,35 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequest {
     /**
      * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
      */
-    keepAliveConnections: number;
+    keepAliveConnections?: number;
     /**
      * Timeout after which an idle keepalive connection can be discarded.
      */
-    keepAliveTimeout: number;
+    keepAliveTimeout?: number;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
-    noHappyEyeballs: boolean;
+    noHappyEyeballs?: boolean;
     /**
      * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
      */
-    noTlsVerify: boolean;
+    noTlsVerify?: boolean;
     /**
      * Hostname that cloudflared should expect from your origin server certificate.
      */
-    originServerName: string;
+    originServerName?: string;
     /**
      * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
      */
-    proxyType: string;
+    proxyType?: string;
     /**
      * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
      */
-    tcpKeepAlive: number;
+    tcpKeepAlive?: number;
     /**
      * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
      */
-    tlsTimeout: number;
+    tlsTimeout?: number;
 }
 
 export interface ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAccess {
@@ -35392,7 +35374,7 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigIngressOriginRequestAcces
     /**
      * Deny traffic that has not fulfilled Access authorization.
      */
-    required: boolean;
+    required?: boolean;
     teamName: string;
 }
 
@@ -35400,15 +35382,15 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
     /**
      * For all L7 requests to this hostname, cloudflared will validate each request's Cf-Access-Jwt-Assertion request header.
      */
-    access: outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess;
+    access?: outputs.ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess;
     /**
      * Path to the certificate authority (CA) for the certificate of your origin. This option should be used only if your certificate is not signed by Cloudflare.
      */
-    caPool: string;
+    caPool?: string;
     /**
      * Timeout for establishing a new TCP connection to your origin server. This excludes the time taken to establish TLS, which is controlled by tlsTimeout.
      */
-    connectTimeout: number;
+    connectTimeout?: number;
     /**
      * Disables chunked transfer encoding. Useful if you are running a WSGI server.
      */
@@ -35424,35 +35406,35 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequest {
     /**
      * Maximum number of idle keepalive connections between Tunnel and your origin. This does not restrict the total number of concurrent connections.
      */
-    keepAliveConnections: number;
+    keepAliveConnections?: number;
     /**
      * Timeout after which an idle keepalive connection can be discarded.
      */
-    keepAliveTimeout: number;
+    keepAliveTimeout?: number;
     /**
      * Disable the “happy eyeballs” algorithm for IPv4/IPv6 fallback if your local network has misconfigured one of the protocols.
      */
-    noHappyEyeballs: boolean;
+    noHappyEyeballs?: boolean;
     /**
      * Disables TLS verification of the certificate presented by your origin. Will allow any certificate from the origin to be accepted.
      */
-    noTlsVerify: boolean;
+    noTlsVerify?: boolean;
     /**
      * Hostname that cloudflared should expect from your origin server certificate.
      */
-    originServerName: string;
+    originServerName?: string;
     /**
      * cloudflared starts a proxy server to translate HTTP traffic into TCP when proxying, for example, SSH or RDP. This configures what type of proxy will be started. Valid options are: "" for the regular proxy and "socks" for a SOCKS5 proxy.
      */
-    proxyType: string;
+    proxyType?: string;
     /**
      * The timeout after which a TCP keepalive packet is sent on a connection between Tunnel and the origin server.
      */
-    tcpKeepAlive: number;
+    tcpKeepAlive?: number;
     /**
      * Timeout for completing a TLS handshake to your origin server, if you have chosen to connect Tunnel to an HTTPS server.
      */
-    tlsTimeout: number;
+    tlsTimeout?: number;
 }
 
 export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
@@ -35463,7 +35445,7 @@ export interface ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccess {
     /**
      * Deny traffic that has not fulfilled Access authorization.
      */
-    required: boolean;
+    required?: boolean;
     teamName: string;
 }
 
@@ -35624,27 +35606,27 @@ export interface ZoneLockdownConfiguration {
 
 export interface ZoneMeta {
     /**
-     * The zone is only configured for CDN
+     * The zone is only configured for CDN.
      */
     cdnOnly: boolean;
     /**
-     * Number of Custom Certificates the zone can have
+     * Number of Custom Certificates the zone can have.
      */
     customCertificateQuota: number;
     /**
-     * The zone is only configured for DNS
+     * The zone is only configured for DNS.
      */
     dnsOnly: boolean;
     /**
-     * The zone is setup with Foundation DNS
+     * The zone is setup with Foundation DNS.
      */
     foundationDns: boolean;
     /**
-     * Number of Page Rules a zone can have
+     * Number of Page Rules a zone can have.
      */
     pageRuleQuota: number;
     /**
-     * The zone has been flagged for phishing
+     * The zone has been flagged for phishing.
      */
     phishingDetected: boolean;
     step: number;
@@ -35656,11 +35638,11 @@ export interface ZoneOwner {
      */
     id: string;
     /**
-     * Name of the owner
+     * Name of the owner.
      */
     name: string;
     /**
-     * The type of owner
+     * The type of owner.
      */
     type: string;
 }
@@ -35699,7 +35681,7 @@ export interface ZonePlan {
      */
     legacyId: string;
     /**
-     * Name of the owner
+     * Name of the owner.
      */
     name: string;
     /**

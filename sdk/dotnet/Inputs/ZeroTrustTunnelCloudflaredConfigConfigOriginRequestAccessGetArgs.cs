@@ -30,8 +30,8 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
-        [Input("teamName")]
-        public Input<string>? TeamName { get; set; }
+        [Input("teamName", required: true)]
+        public Input<string> TeamName { get; set; } = null!;
 
         public ZeroTrustTunnelCloudflaredConfigConfigOriginRequestAccessGetArgs()
         {

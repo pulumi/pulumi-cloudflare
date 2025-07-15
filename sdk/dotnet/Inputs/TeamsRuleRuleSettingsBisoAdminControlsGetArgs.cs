@@ -38,8 +38,8 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Dk { get; set; }
 
         /// <summary>
-        /// Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == "v2"`.
-        /// Available values: "enabled", "disabled".
+        /// Configure whether downloading enabled or not. When set with "remote*only", downloads are only available for viewing. Only applies when `version == "v2"`.
+        /// Available values: "enabled", "disabled", "remote*only".
         /// </summary>
         [Input("download")]
         public Input<string>? Download { get; set; }

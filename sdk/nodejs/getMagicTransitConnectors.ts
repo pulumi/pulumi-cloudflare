@@ -30,6 +30,9 @@ export function getMagicTransitConnectors(args: GetMagicTransitConnectorsArgs, o
  * A collection of arguments for invoking getMagicTransitConnectors.
  */
 export interface GetMagicTransitConnectorsArgs {
+    /**
+     * Account identifier
+     */
     accountId: string;
     /**
      * Max items to fetch, default: 1000
@@ -41,6 +44,9 @@ export interface GetMagicTransitConnectorsArgs {
  * A collection of values returned by getMagicTransitConnectors.
  */
 export interface GetMagicTransitConnectorsResult {
+    /**
+     * Account identifier
+     */
     readonly accountId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -79,6 +85,9 @@ export function getMagicTransitConnectorsOutput(args: GetMagicTransitConnectorsO
  * A collection of arguments for invoking getMagicTransitConnectors.
  */
 export interface GetMagicTransitConnectorsOutputArgs {
+    /**
+     * Account identifier
+     */
     accountId: pulumi.Input<string>;
     /**
      * Max items to fetch, default: 1000

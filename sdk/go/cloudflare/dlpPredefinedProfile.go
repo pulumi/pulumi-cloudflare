@@ -27,14 +27,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZeroTrustDlpPredefinedProfile(ctx, "example_zero_trust_dlp_predefined_profile", &cloudflare.ZeroTrustDlpPredefinedProfileArgs{
-//				AccountId: pulumi.String("account_id"),
-//				ProfileId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-//				Entries: cloudflare.ZeroTrustDlpPredefinedProfileEntryArray{
-//					&cloudflare.ZeroTrustDlpPredefinedProfileEntryArgs{
-//						Id:      pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
-//						Enabled: pulumi.Bool(true),
-//					},
-//				},
+//				AccountId:           pulumi.String("account_id"),
+//				ProfileId:           pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 //				AiContextEnabled:    pulumi.Bool(true),
 //				AllowedMatchCount:   pulumi.Int(0),
 //				ConfidenceThreshold: pulumi.String("confidence_threshold"),
@@ -42,6 +36,12 @@ import (
 //					Enabled: pulumi.Bool(true),
 //					Skip: &cloudflare.ZeroTrustDlpPredefinedProfileContextAwarenessSkipArgs{
 //						Files: pulumi.Bool(true),
+//					},
+//				},
+//				Entries: cloudflare.ZeroTrustDlpPredefinedProfileEntryArray{
+//					&cloudflare.ZeroTrustDlpPredefinedProfileEntryArgs{
+//						Id:      pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+//						Enabled: pulumi.Bool(true),
 //					},
 //				},
 //				OcrEnabled: pulumi.Bool(true),
@@ -74,8 +74,9 @@ type DlpPredefinedProfile struct {
 	// When the profile was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The description of the profile.
-	Description pulumi.StringOutput                  `pulumi:"description"`
-	Entries     DlpPredefinedProfileEntryArrayOutput `pulumi:"entries"`
+	Description pulumi.StringOutput `pulumi:"description"`
+	// Deprecated: This attribute is deprecated.
+	Entries DlpPredefinedProfileEntryArrayOutput `pulumi:"entries"`
 	// The name of the profile.
 	Name       pulumi.StringOutput  `pulumi:"name"`
 	OcrEnabled pulumi.BoolPtrOutput `pulumi:"ocrEnabled"`
@@ -97,9 +98,6 @@ func NewDlpPredefinedProfile(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
-	if args.Entries == nil {
-		return nil, errors.New("invalid value for required argument 'Entries'")
 	}
 	if args.ProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'ProfileId'")
@@ -142,8 +140,9 @@ type dlpPredefinedProfileState struct {
 	// When the profile was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The description of the profile.
-	Description *string                     `pulumi:"description"`
-	Entries     []DlpPredefinedProfileEntry `pulumi:"entries"`
+	Description *string `pulumi:"description"`
+	// Deprecated: This attribute is deprecated.
+	Entries []DlpPredefinedProfileEntry `pulumi:"entries"`
 	// The name of the profile.
 	Name       *string `pulumi:"name"`
 	OcrEnabled *bool   `pulumi:"ocrEnabled"`
@@ -167,7 +166,8 @@ type DlpPredefinedProfileState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The description of the profile.
 	Description pulumi.StringPtrInput
-	Entries     DlpPredefinedProfileEntryArrayInput
+	// Deprecated: This attribute is deprecated.
+	Entries DlpPredefinedProfileEntryArrayInput
 	// The name of the profile.
 	Name       pulumi.StringPtrInput
 	OcrEnabled pulumi.BoolPtrInput
@@ -191,9 +191,10 @@ type dlpPredefinedProfileArgs struct {
 	ConfidenceThreshold *string `pulumi:"confidenceThreshold"`
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness *DlpPredefinedProfileContextAwareness `pulumi:"contextAwareness"`
-	Entries          []DlpPredefinedProfileEntry           `pulumi:"entries"`
-	OcrEnabled       *bool                                 `pulumi:"ocrEnabled"`
-	ProfileId        string                                `pulumi:"profileId"`
+	// Deprecated: This attribute is deprecated.
+	Entries    []DlpPredefinedProfileEntry `pulumi:"entries"`
+	OcrEnabled *bool                       `pulumi:"ocrEnabled"`
+	ProfileId  string                      `pulumi:"profileId"`
 }
 
 // The set of arguments for constructing a DlpPredefinedProfile resource.
@@ -204,9 +205,10 @@ type DlpPredefinedProfileArgs struct {
 	ConfidenceThreshold pulumi.StringPtrInput
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness DlpPredefinedProfileContextAwarenessPtrInput
-	Entries          DlpPredefinedProfileEntryArrayInput
-	OcrEnabled       pulumi.BoolPtrInput
-	ProfileId        pulumi.StringInput
+	// Deprecated: This attribute is deprecated.
+	Entries    DlpPredefinedProfileEntryArrayInput
+	OcrEnabled pulumi.BoolPtrInput
+	ProfileId  pulumi.StringInput
 }
 
 func (DlpPredefinedProfileArgs) ElementType() reflect.Type {
@@ -327,6 +329,7 @@ func (o DlpPredefinedProfileOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Deprecated: This attribute is deprecated.
 func (o DlpPredefinedProfileOutput) Entries() DlpPredefinedProfileEntryArrayOutput {
 	return o.ApplyT(func(v *DlpPredefinedProfile) DlpPredefinedProfileEntryArrayOutput { return v.Entries }).(DlpPredefinedProfileEntryArrayOutput)
 }

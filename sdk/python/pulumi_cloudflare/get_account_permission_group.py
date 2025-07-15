@@ -57,7 +57,7 @@ class GetAccountPermissionGroupResult:
     @pulumi.getter
     def id(self) -> builtins.str:
         """
-        Identifier of the group.
+        Identifier of the permission group.
         """
         return pulumi.get(self, "id")
 
@@ -73,7 +73,7 @@ class GetAccountPermissionGroupResult:
     @pulumi.getter
     def name(self) -> builtins.str:
         """
-        Name of the group.
+        Name of the permission group.
         """
         return pulumi.get(self, "name")
 
@@ -109,8 +109,8 @@ def get_account_permission_group(account_id: Optional[builtins.str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_permission_group = cloudflare.get_account_permission_group(account_id="eb78d65290b24279ba6f44721b3ea3c4",
-        permission_group_id="6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+    example_account_permission_group = cloudflare.get_account_permission_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        permission_group_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 
@@ -139,8 +139,8 @@ def get_account_permission_group_output(account_id: Optional[pulumi.Input[builti
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_account_permission_group = cloudflare.get_account_permission_group(account_id="eb78d65290b24279ba6f44721b3ea3c4",
-        permission_group_id="6d7f2f5f5b1d4a0e9081fdc98d432fd1")
+    example_account_permission_group = cloudflare.get_account_permission_group(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+        permission_group_id="023e105f4ecef8ad9ca31a8372d0c353")
     ```
 
 

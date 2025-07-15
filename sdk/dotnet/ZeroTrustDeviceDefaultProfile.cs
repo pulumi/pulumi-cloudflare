@@ -79,31 +79,31 @@ namespace Pulumi.Cloudflare
         /// Whether to allow the user to switch WARP between modes.
         /// </summary>
         [Output("allowModeSwitch")]
-        public Output<bool?> AllowModeSwitch { get; private set; } = null!;
+        public Output<bool> AllowModeSwitch { get; private set; } = null!;
 
         /// <summary>
         /// Whether to receive update notifications when a new version of the client is available.
         /// </summary>
         [Output("allowUpdates")]
-        public Output<bool?> AllowUpdates { get; private set; } = null!;
+        public Output<bool> AllowUpdates { get; private set; } = null!;
 
         /// <summary>
         /// Whether to allow devices to leave the organization.
         /// </summary>
         [Output("allowedToLeave")]
-        public Output<bool?> AllowedToLeave { get; private set; } = null!;
+        public Output<bool> AllowedToLeave { get; private set; } = null!;
 
         /// <summary>
         /// The amount of time in seconds to reconnect after having been disabled.
         /// </summary>
         [Output("autoConnect")]
-        public Output<double?> AutoConnect { get; private set; } = null!;
+        public Output<double> AutoConnect { get; private set; } = null!;
 
         /// <summary>
         /// Turn on the captive portal after the specified amount of time.
         /// </summary>
         [Output("captivePortal")]
-        public Output<double?> CaptivePortal { get; private set; } = null!;
+        public Output<double> CaptivePortal { get; private set; } = null!;
 
         /// <summary>
         /// Whether the policy will be applied to matching devices.
@@ -115,7 +115,7 @@ namespace Pulumi.Cloudflare
         /// If the `dns_server` field of a fallback domain is not present, the client will fall back to a best guess of the default/system DNS resolvers unless this policy option is set to `true`.
         /// </summary>
         [Output("disableAutoFallback")]
-        public Output<bool?> DisableAutoFallback { get; private set; } = null!;
+        public Output<bool> DisableAutoFallback { get; private set; } = null!;
 
         /// <summary>
         /// Whether the policy will be applied to matching devices.
@@ -127,7 +127,7 @@ namespace Pulumi.Cloudflare
         /// Whether to add Microsoft IPs to Split Tunnel exclusions.
         /// </summary>
         [Output("excludeOfficeIps")]
-        public Output<bool?> ExcludeOfficeIps { get; private set; } = null!;
+        public Output<bool> ExcludeOfficeIps { get; private set; } = null!;
 
         /// <summary>
         /// List of routes excluded in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -163,13 +163,13 @@ namespace Pulumi.Cloudflare
         /// Determines if the operating system will register WARP's local interface IP with your on-premises DNS server.
         /// </summary>
         [Output("registerInterfaceIpWithDns")]
-        public Output<bool?> RegisterInterfaceIpWithDns { get; private set; } = null!;
+        public Output<bool> RegisterInterfaceIpWithDns { get; private set; } = null!;
 
         /// <summary>
         /// Determines whether the WARP client indicates to SCCM that it is inside a VPN boundary. (Windows only).
         /// </summary>
         [Output("sccmVpnBoundarySupport")]
-        public Output<bool?> SccmVpnBoundarySupport { get; private set; } = null!;
+        public Output<bool> SccmVpnBoundarySupport { get; private set; } = null!;
 
         [Output("serviceModeV2")]
         public Output<Outputs.ZeroTrustDeviceDefaultProfileServiceModeV2?> ServiceModeV2 { get; private set; } = null!;
@@ -178,19 +178,19 @@ namespace Pulumi.Cloudflare
         /// The URL to launch when the Send Feedback button is clicked.
         /// </summary>
         [Output("supportUrl")]
-        public Output<string?> SupportUrl { get; private set; } = null!;
+        public Output<string> SupportUrl { get; private set; } = null!;
 
         /// <summary>
         /// Whether to allow the user to turn off the WARP switch and disconnect the client.
         /// </summary>
         [Output("switchLocked")]
-        public Output<bool?> SwitchLocked { get; private set; } = null!;
+        public Output<bool> SwitchLocked { get; private set; } = null!;
 
         /// <summary>
         /// Determines which tunnel protocol to use.
         /// </summary>
         [Output("tunnelProtocol")]
-        public Output<string?> TunnelProtocol { get; private set; } = null!;
+        public Output<string> TunnelProtocol { get; private set; } = null!;
 
 
         /// <summary>

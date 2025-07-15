@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountRole(ctx, &cloudflare.GetAccountRoleArgs{
-//				AccountId: "eb78d65290b24279ba6f44721b3ea3c4",
+//				AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 //				RoleId:    "3536bcfad5faccb999b47003c79917fb",
 //			}, nil)
 //			if err != nil {

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// &gt; If using the `ssl_recommender` zone setting, use the `enabled` attribute instead of `value`.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -24,7 +26,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         SettingId = "always_online",
-    ///         Enabled = true,
+    ///         Value = "on",
     ///     });
     /// 
     /// });

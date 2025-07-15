@@ -60,9 +60,9 @@ type R2BucketEventNotification struct {
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringOutput `pulumi:"jurisdiction"`
 	// Queue ID.
-	QueueId pulumi.StringPtrOutput `pulumi:"queueId"`
-	// List of queues associated with the bucket.
-	Queues R2BucketEventNotificationQueueArrayOutput `pulumi:"queues"`
+	QueueId pulumi.StringOutput `pulumi:"queueId"`
+	// Name of the queue.
+	QueueName pulumi.StringOutput `pulumi:"queueName"`
 	// Array of rules to drive notifications.
 	Rules R2BucketEventNotificationRuleArrayOutput `pulumi:"rules"`
 }
@@ -79,6 +79,9 @@ func NewR2BucketEventNotification(ctx *pulumi.Context,
 	}
 	if args.BucketName == nil {
 		return nil, errors.New("invalid value for required argument 'BucketName'")
+	}
+	if args.QueueId == nil {
+		return nil, errors.New("invalid value for required argument 'QueueId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource R2BucketEventNotification
@@ -111,8 +114,8 @@ type r2bucketEventNotificationState struct {
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Queue ID.
 	QueueId *string `pulumi:"queueId"`
-	// List of queues associated with the bucket.
-	Queues []R2BucketEventNotificationQueue `pulumi:"queues"`
+	// Name of the queue.
+	QueueName *string `pulumi:"queueName"`
 	// Array of rules to drive notifications.
 	Rules []R2BucketEventNotificationRule `pulumi:"rules"`
 }
@@ -126,8 +129,8 @@ type R2BucketEventNotificationState struct {
 	Jurisdiction pulumi.StringPtrInput
 	// Queue ID.
 	QueueId pulumi.StringPtrInput
-	// List of queues associated with the bucket.
-	Queues R2BucketEventNotificationQueueArrayInput
+	// Name of the queue.
+	QueueName pulumi.StringPtrInput
 	// Array of rules to drive notifications.
 	Rules R2BucketEventNotificationRuleArrayInput
 }
@@ -144,7 +147,7 @@ type r2bucketEventNotificationArgs struct {
 	// Jurisdiction of the bucket
 	Jurisdiction *string `pulumi:"jurisdiction"`
 	// Queue ID.
-	QueueId *string `pulumi:"queueId"`
+	QueueId string `pulumi:"queueId"`
 	// Array of rules to drive notifications.
 	Rules []R2BucketEventNotificationRule `pulumi:"rules"`
 }
@@ -158,7 +161,7 @@ type R2BucketEventNotificationArgs struct {
 	// Jurisdiction of the bucket
 	Jurisdiction pulumi.StringPtrInput
 	// Queue ID.
-	QueueId pulumi.StringPtrInput
+	QueueId pulumi.StringInput
 	// Array of rules to drive notifications.
 	Rules R2BucketEventNotificationRuleArrayInput
 }
@@ -266,13 +269,13 @@ func (o R2BucketEventNotificationOutput) Jurisdiction() pulumi.StringOutput {
 }
 
 // Queue ID.
-func (o R2BucketEventNotificationOutput) QueueId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *R2BucketEventNotification) pulumi.StringPtrOutput { return v.QueueId }).(pulumi.StringPtrOutput)
+func (o R2BucketEventNotificationOutput) QueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketEventNotification) pulumi.StringOutput { return v.QueueId }).(pulumi.StringOutput)
 }
 
-// List of queues associated with the bucket.
-func (o R2BucketEventNotificationOutput) Queues() R2BucketEventNotificationQueueArrayOutput {
-	return o.ApplyT(func(v *R2BucketEventNotification) R2BucketEventNotificationQueueArrayOutput { return v.Queues }).(R2BucketEventNotificationQueueArrayOutput)
+// Name of the queue.
+func (o R2BucketEventNotificationOutput) QueueName() pulumi.StringOutput {
+	return o.ApplyT(func(v *R2BucketEventNotification) pulumi.StringOutput { return v.QueueName }).(pulumi.StringOutput)
 }
 
 // Array of rules to drive notifications.

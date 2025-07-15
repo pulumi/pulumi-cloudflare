@@ -248,6 +248,21 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.version);
     }
 
+    /**
+     * Warning for a misconfigured rule, if any.
+     * 
+     */
+    @Import(name="warningStatus")
+    private @Nullable Output<String> warningStatus;
+
+    /**
+     * @return Warning for a misconfigured rule, if any.
+     * 
+     */
+    public Optional<Output<String>> warningStatus() {
+        return Optional.ofNullable(this.warningStatus);
+    }
+
     private TeamsRuleState() {}
 
     private TeamsRuleState(TeamsRuleState $) {
@@ -268,6 +283,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         this.traffic = $.traffic;
         this.updatedAt = $.updatedAt;
         this.version = $.version;
+        this.warningStatus = $.warningStatus;
     }
 
     public static Builder builder() {
@@ -609,6 +625,27 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder version(Integer version) {
             return version(Output.of(version));
+        }
+
+        /**
+         * @param warningStatus Warning for a misconfigured rule, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warningStatus(@Nullable Output<String> warningStatus) {
+            $.warningStatus = warningStatus;
+            return this;
+        }
+
+        /**
+         * @param warningStatus Warning for a misconfigured rule, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warningStatus(String warningStatus) {
+            return warningStatus(Output.of(warningStatus));
         }
 
         public TeamsRuleState build() {

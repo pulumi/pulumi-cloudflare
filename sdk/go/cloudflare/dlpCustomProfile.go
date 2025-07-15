@@ -36,11 +36,10 @@ type DlpCustomProfile struct {
 	// The description of the profile.
 	Description pulumi.StringPtrOutput           `pulumi:"description"`
 	Entries     DlpCustomProfileEntryArrayOutput `pulumi:"entries"`
-	Name        pulumi.StringPtrOutput           `pulumi:"name"`
+	Name        pulumi.StringOutput              `pulumi:"name"`
 	OcrEnabled  pulumi.BoolPtrOutput             `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
-	OpenAccess pulumi.BoolOutput                  `pulumi:"openAccess"`
-	Profiles   DlpCustomProfileProfileArrayOutput `pulumi:"profiles"`
+	OpenAccess pulumi.BoolOutput `pulumi:"openAccess"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries DlpCustomProfileSharedEntryArrayOutput `pulumi:"sharedEntries"`
 	// Available values: "custom", "predefined", "integration".
@@ -58,6 +57,12 @@ func NewDlpCustomProfile(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Entries == nil {
+		return nil, errors.New("invalid value for required argument 'Entries'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -103,8 +108,7 @@ type dlpCustomProfileState struct {
 	Name        *string                 `pulumi:"name"`
 	OcrEnabled  *bool                   `pulumi:"ocrEnabled"`
 	// Whether this profile can be accessed by anyone.
-	OpenAccess *bool                     `pulumi:"openAccess"`
-	Profiles   []DlpCustomProfileProfile `pulumi:"profiles"`
+	OpenAccess *bool `pulumi:"openAccess"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []DlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 	// Available values: "custom", "predefined", "integration".
@@ -130,7 +134,6 @@ type DlpCustomProfileState struct {
 	OcrEnabled  pulumi.BoolPtrInput
 	// Whether this profile can be accessed by anyone.
 	OpenAccess pulumi.BoolPtrInput
-	Profiles   DlpCustomProfileProfileArrayInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries DlpCustomProfileSharedEntryArrayInput
 	// Available values: "custom", "predefined", "integration".
@@ -152,11 +155,10 @@ type dlpCustomProfileArgs struct {
 	// Scan the context of predefined entries to only return matches surrounded by keywords.
 	ContextAwareness *DlpCustomProfileContextAwareness `pulumi:"contextAwareness"`
 	// The description of the profile.
-	Description *string                   `pulumi:"description"`
-	Entries     []DlpCustomProfileEntry   `pulumi:"entries"`
-	Name        *string                   `pulumi:"name"`
-	OcrEnabled  *bool                     `pulumi:"ocrEnabled"`
-	Profiles    []DlpCustomProfileProfile `pulumi:"profiles"`
+	Description *string                 `pulumi:"description"`
+	Entries     []DlpCustomProfileEntry `pulumi:"entries"`
+	Name        string                  `pulumi:"name"`
+	OcrEnabled  *bool                   `pulumi:"ocrEnabled"`
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries []DlpCustomProfileSharedEntry `pulumi:"sharedEntries"`
 }
@@ -173,9 +175,8 @@ type DlpCustomProfileArgs struct {
 	// The description of the profile.
 	Description pulumi.StringPtrInput
 	Entries     DlpCustomProfileEntryArrayInput
-	Name        pulumi.StringPtrInput
+	Name        pulumi.StringInput
 	OcrEnabled  pulumi.BoolPtrInput
-	Profiles    DlpCustomProfileProfileArrayInput
 	// Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
 	SharedEntries DlpCustomProfileSharedEntryArrayInput
 }
@@ -303,8 +304,8 @@ func (o DlpCustomProfileOutput) Entries() DlpCustomProfileEntryArrayOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileEntryArrayOutput { return v.Entries }).(DlpCustomProfileEntryArrayOutput)
 }
 
-func (o DlpCustomProfileOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o DlpCustomProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpCustomProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o DlpCustomProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
@@ -314,10 +315,6 @@ func (o DlpCustomProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
 // Whether this profile can be accessed by anyone.
 func (o DlpCustomProfileOutput) OpenAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DlpCustomProfile) pulumi.BoolOutput { return v.OpenAccess }).(pulumi.BoolOutput)
-}
-
-func (o DlpCustomProfileOutput) Profiles() DlpCustomProfileProfileArrayOutput {
-	return o.ApplyT(func(v *DlpCustomProfile) DlpCustomProfileProfileArrayOutput { return v.Profiles }).(DlpCustomProfileProfileArrayOutput)
 }
 
 // Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).

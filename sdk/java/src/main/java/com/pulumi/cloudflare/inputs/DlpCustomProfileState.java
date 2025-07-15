@@ -5,7 +5,6 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.DlpCustomProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileEntryArgs;
-import com.pulumi.cloudflare.inputs.DlpCustomProfileProfileArgs;
 import com.pulumi.cloudflare.inputs.DlpCustomProfileSharedEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -139,13 +138,6 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.openAccess);
     }
 
-    @Import(name="profiles")
-    private @Nullable Output<List<DlpCustomProfileProfileArgs>> profiles;
-
-    public Optional<Output<List<DlpCustomProfileProfileArgs>>> profiles() {
-        return Optional.ofNullable(this.profiles);
-    }
-
     /**
      * Entries from other profiles (e.g. pre-defined Cloudflare profiles, or your Microsoft Information Protection profiles).
      * 
@@ -205,7 +197,6 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.ocrEnabled = $.ocrEnabled;
         this.openAccess = $.openAccess;
-        this.profiles = $.profiles;
         this.sharedEntries = $.sharedEntries;
         this.type = $.type;
         this.updatedAt = $.updatedAt;
@@ -390,19 +381,6 @@ public final class DlpCustomProfileState extends com.pulumi.resources.ResourceAr
          */
         public Builder openAccess(Boolean openAccess) {
             return openAccess(Output.of(openAccess));
-        }
-
-        public Builder profiles(@Nullable Output<List<DlpCustomProfileProfileArgs>> profiles) {
-            $.profiles = profiles;
-            return this;
-        }
-
-        public Builder profiles(List<DlpCustomProfileProfileArgs> profiles) {
-            return profiles(Output.of(profiles));
-        }
-
-        public Builder profiles(DlpCustomProfileProfileArgs... profiles) {
-            return profiles(List.of(profiles));
         }
 
         /**

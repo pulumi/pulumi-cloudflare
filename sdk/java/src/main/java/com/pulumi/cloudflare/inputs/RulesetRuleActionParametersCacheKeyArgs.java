@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
     public static final RulesetRuleActionParametersCacheKeyArgs Empty = new RulesetRuleActionParametersCacheKeyArgs();
 
     /**
-     * Separate cached content based on the visitor’s device type
+     * Separate cached content based on the visitor’s device type.
      * 
      */
     @Import(name="cacheByDeviceType")
     private @Nullable Output<Boolean> cacheByDeviceType;
 
     /**
-     * @return Separate cached content based on the visitor’s device type
+     * @return Separate cached content based on the visitor’s device type.
      * 
      */
     public Optional<Output<Boolean>> cacheByDeviceType() {
@@ -32,14 +32,14 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
     }
 
     /**
-     * Protect from web cache deception attacks while allowing static assets to be cached
+     * Protect from web cache deception attacks while allowing static assets to be cached.
      * 
      */
     @Import(name="cacheDeceptionArmor")
     private @Nullable Output<Boolean> cacheDeceptionArmor;
 
     /**
-     * @return Protect from web cache deception attacks while allowing static assets to be cached
+     * @return Protect from web cache deception attacks while allowing static assets to be cached.
      * 
      */
     public Optional<Output<Boolean>> cacheDeceptionArmor() {
@@ -104,7 +104,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param cacheByDeviceType Separate cached content based on the visitor’s device type
+         * @param cacheByDeviceType Separate cached content based on the visitor’s device type.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param cacheByDeviceType Separate cached content based on the visitor’s device type
+         * @param cacheByDeviceType Separate cached content based on the visitor’s device type.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param cacheDeceptionArmor Protect from web cache deception attacks while allowing static assets to be cached
+         * @param cacheDeceptionArmor Protect from web cache deception attacks while allowing static assets to be cached.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
         }
 
         /**
-         * @param cacheDeceptionArmor Protect from web cache deception attacks while allowing static assets to be cached
+         * @param cacheDeceptionArmor Protect from web cache deception attacks while allowing static assets to be cached.
          * 
          * @return builder
          * 

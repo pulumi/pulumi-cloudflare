@@ -74,6 +74,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// version number of the rule
         /// </summary>
         public readonly int Version;
+        /// <summary>
+        /// Warning for a misconfigured rule, if any.
+        /// </summary>
+        public readonly string WarningStatus;
 
         [OutputConstructor]
         private GetZeroTrustGatewayPoliciesResultResult(
@@ -109,7 +113,9 @@ namespace Pulumi.Cloudflare.Outputs
 
             string updatedAt,
 
-            int version)
+            int version,
+
+            string warningStatus)
         {
             Action = action;
             CreatedAt = createdAt;
@@ -128,6 +134,7 @@ namespace Pulumi.Cloudflare.Outputs
             Traffic = traffic;
             UpdatedAt = updatedAt;
             Version = version;
+            WarningStatus = warningStatus;
         }
     }
 }

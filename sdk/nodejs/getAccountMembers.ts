@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountMembers = cloudflare.getAccountMembers({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "desc",
  *     order: "status",
  *     status: "accepted",
@@ -105,7 +105,7 @@ export interface GetAccountMembersResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountMembers = cloudflare.getAccountMembers({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     direction: "desc",
  *     order: "status",
  *     status: "accepted",

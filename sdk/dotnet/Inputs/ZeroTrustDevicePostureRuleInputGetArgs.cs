@@ -246,6 +246,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("subjectAlternativeNames")]
+        private InputList<string>? _subjectAlternativeNames;
+
+        /// <summary>
+        /// List of certificate Subject Alternative Names.
+        /// </summary>
+        public InputList<string> SubjectAlternativeNames
+        {
+            get => _subjectAlternativeNames ?? (_subjectAlternativeNames = new InputList<string>());
+            set => _subjectAlternativeNames = value;
+        }
+
         /// <summary>
         /// Signing certificate thumbprint.
         /// </summary>

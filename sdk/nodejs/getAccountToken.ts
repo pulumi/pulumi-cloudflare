@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountToken = cloudflare.getAccountToken({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tokenId: "ed17574386854bf78a67040be0a770b0",
  * });
  * ```
@@ -103,7 +103,7 @@ export interface GetAccountTokenResult {
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const exampleAccountToken = cloudflare.getAccountToken({
- *     accountId: "eb78d65290b24279ba6f44721b3ea3c4",
+ *     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
  *     tokenId: "ed17574386854bf78a67040be0a770b0",
  * });
  * ```

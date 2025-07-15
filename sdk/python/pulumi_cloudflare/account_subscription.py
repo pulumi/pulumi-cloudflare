@@ -24,23 +24,19 @@ class AccountSubscriptionArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[builtins.str],
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
-                 rate_plan: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']] = None,
-                 subscription_identifier: Optional[pulumi.Input[builtins.str]] = None):
+                 rate_plan: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']] = None):
         """
         The set of arguments for constructing a AccountSubscription resource.
         :param pulumi.Input[builtins.str] account_id: Identifier
         :param pulumi.Input[builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input['AccountSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
-        :param pulumi.Input[builtins.str] subscription_identifier: Subscription identifier tag.
         """
         pulumi.set(__self__, "account_id", account_id)
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
         if rate_plan is not None:
             pulumi.set(__self__, "rate_plan", rate_plan)
-        if subscription_identifier is not None:
-            pulumi.set(__self__, "subscription_identifier", subscription_identifier)
 
     @property
     @pulumi.getter(name="accountId")
@@ -79,18 +75,6 @@ class AccountSubscriptionArgs:
     def rate_plan(self, value: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']]):
         pulumi.set(self, "rate_plan", value)
 
-    @property
-    @pulumi.getter(name="subscriptionIdentifier")
-    def subscription_identifier(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Subscription identifier tag.
-        """
-        return pulumi.get(self, "subscription_identifier")
-
-    @subscription_identifier.setter
-    def subscription_identifier(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "subscription_identifier", value)
-
 
 @pulumi.input_type
 class _AccountSubscriptionState:
@@ -102,8 +86,7 @@ class _AccountSubscriptionState:
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  price: Optional[pulumi.Input[builtins.float]] = None,
                  rate_plan: Optional[pulumi.Input['AccountSubscriptionRatePlanArgs']] = None,
-                 state: Optional[pulumi.Input[builtins.str]] = None,
-                 subscription_identifier: Optional[pulumi.Input[builtins.str]] = None):
+                 state: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountSubscription resources.
         :param pulumi.Input[builtins.str] account_id: Identifier
@@ -116,7 +99,6 @@ class _AccountSubscriptionState:
         :param pulumi.Input['AccountSubscriptionRatePlanArgs'] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[builtins.str] state: The state that the subscription is in.
                Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
-        :param pulumi.Input[builtins.str] subscription_identifier: Subscription identifier tag.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -134,8 +116,6 @@ class _AccountSubscriptionState:
             pulumi.set(__self__, "rate_plan", rate_plan)
         if state is not None:
             pulumi.set(__self__, "state", state)
-        if subscription_identifier is not None:
-            pulumi.set(__self__, "subscription_identifier", subscription_identifier)
 
     @property
     @pulumi.getter(name="accountId")
@@ -235,18 +215,6 @@ class _AccountSubscriptionState:
     def state(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "state", value)
 
-    @property
-    @pulumi.getter(name="subscriptionIdentifier")
-    def subscription_identifier(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Subscription identifier tag.
-        """
-        return pulumi.get(self, "subscription_identifier")
-
-    @subscription_identifier.setter
-    def subscription_identifier(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "subscription_identifier", value)
-
 
 @pulumi.type_token("cloudflare:index/accountSubscription:AccountSubscription")
 class AccountSubscription(pulumi.CustomResource):
@@ -257,10 +225,15 @@ class AccountSubscription(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  rate_plan: Optional[pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
-                 subscription_identifier: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
         ## Example Usage
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -268,7 +241,6 @@ class AccountSubscription(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] frequency: How often the subscription is renewed automatically.
                Available values: "weekly", "monthly", "quarterly", "yearly".
         :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
-        :param pulumi.Input[builtins.str] subscription_identifier: Subscription identifier tag.
         """
         ...
     @overload
@@ -278,6 +250,12 @@ class AccountSubscription(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
+        ## Import
+
+        ```sh
+        $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccountSubscriptionArgs args: The arguments to use to populate this resource's properties.
@@ -297,7 +275,6 @@ class AccountSubscription(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[builtins.str]] = None,
                  frequency: Optional[pulumi.Input[builtins.str]] = None,
                  rate_plan: Optional[pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
-                 subscription_identifier: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,7 +289,6 @@ class AccountSubscription(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["frequency"] = frequency
             __props__.__dict__["rate_plan"] = rate_plan
-            __props__.__dict__["subscription_identifier"] = subscription_identifier
             __props__.__dict__["currency"] = None
             __props__.__dict__["current_period_end"] = None
             __props__.__dict__["current_period_start"] = None
@@ -335,8 +311,7 @@ class AccountSubscription(pulumi.CustomResource):
             frequency: Optional[pulumi.Input[builtins.str]] = None,
             price: Optional[pulumi.Input[builtins.float]] = None,
             rate_plan: Optional[pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']]] = None,
-            state: Optional[pulumi.Input[builtins.str]] = None,
-            subscription_identifier: Optional[pulumi.Input[builtins.str]] = None) -> 'AccountSubscription':
+            state: Optional[pulumi.Input[builtins.str]] = None) -> 'AccountSubscription':
         """
         Get an existing AccountSubscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -354,7 +329,6 @@ class AccountSubscription(pulumi.CustomResource):
         :param pulumi.Input[Union['AccountSubscriptionRatePlanArgs', 'AccountSubscriptionRatePlanArgsDict']] rate_plan: The rate plan applied to the subscription.
         :param pulumi.Input[builtins.str] state: The state that the subscription is in.
                Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
-        :param pulumi.Input[builtins.str] subscription_identifier: Subscription identifier tag.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -368,7 +342,6 @@ class AccountSubscription(pulumi.CustomResource):
         __props__.__dict__["price"] = price
         __props__.__dict__["rate_plan"] = rate_plan
         __props__.__dict__["state"] = state
-        __props__.__dict__["subscription_identifier"] = subscription_identifier
         return AccountSubscription(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -436,12 +409,4 @@ class AccountSubscription(pulumi.CustomResource):
         Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
         """
         return pulumi.get(self, "state")
-
-    @property
-    @pulumi.getter(name="subscriptionIdentifier")
-    def subscription_identifier(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        Subscription identifier tag.
-        """
-        return pulumi.get(self, "subscription_identifier")
 

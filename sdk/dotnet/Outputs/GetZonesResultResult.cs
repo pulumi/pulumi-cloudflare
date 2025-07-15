@@ -14,12 +14,12 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZonesResultResult
     {
         /// <summary>
-        /// The account the zone belongs to
+        /// The account the zone belongs to.
         /// </summary>
         public readonly Outputs.GetZonesResultAccountResult Account;
         /// <summary>
         /// The last time proof of ownership was detected and the zone was made
-        /// active
+        /// active.
         /// </summary>
         public readonly string ActivatedOn;
         /// <summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string CnameSuffix;
         /// <summary>
-        /// When the zone was created
+        /// When the zone was created.
         /// </summary>
         public readonly string CreatedOn;
         /// <summary>
@@ -42,35 +42,35 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Metadata about the zone
+        /// Metadata about the zone.
         /// </summary>
         public readonly Outputs.GetZonesResultMetaResult Meta;
         /// <summary>
-        /// When the zone was last modified
+        /// When the zone was last modified.
         /// </summary>
         public readonly string ModifiedOn;
         /// <summary>
-        /// The domain name
+        /// The domain name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The name servers Cloudflare assigns to a zone
+        /// The name servers Cloudflare assigns to a zone.
         /// </summary>
         public readonly ImmutableArray<string> NameServers;
         /// <summary>
-        /// DNS host at the time of switching to Cloudflare
+        /// DNS host at the time of switching to Cloudflare.
         /// </summary>
         public readonly string OriginalDnshost;
         /// <summary>
-        /// Original name servers before moving to Cloudflare
+        /// Original name servers before moving to Cloudflare.
         /// </summary>
         public readonly ImmutableArray<string> OriginalNameServers;
         /// <summary>
-        /// Registrar for the domain at the time of switching to Cloudflare
+        /// Registrar for the domain at the time of switching to Cloudflare.
         /// </summary>
         public readonly string OriginalRegistrar;
         /// <summary>
-        /// The owner of the zone
+        /// The owner of the zone.
         /// </summary>
         public readonly Outputs.GetZonesResultOwnerResult Owner;
         /// <summary>

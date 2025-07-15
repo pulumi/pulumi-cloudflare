@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleZoneSubscription = Cloudflare.GetZoneSubscription.Invoke(new()
         ///     {
-        ///         Identifier = "506e3185e9c882d175a2d0cb0093d9f2",
+        ///         ZoneId = "506e3185e9c882d175a2d0cb0093d9f2",
         ///     });
         /// 
         /// });
@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleZoneSubscription = Cloudflare.GetZoneSubscription.Invoke(new()
         ///     {
-        ///         Identifier = "506e3185e9c882d175a2d0cb0093d9f2",
+        ///         ZoneId = "506e3185e9c882d175a2d0cb0093d9f2",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var exampleZoneSubscription = Cloudflare.GetZoneSubscription.Invoke(new()
         ///     {
-        ///         Identifier = "506e3185e9c882d175a2d0cb0093d9f2",
+        ///         ZoneId = "506e3185e9c882d175a2d0cb0093d9f2",
         ///     });
         /// 
         /// });
@@ -84,8 +84,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Subscription identifier tag.
         /// </summary>
-        [Input("identifier", required: true)]
-        public string Identifier { get; set; } = null!;
+        [Input("zoneId", required: true)]
+        public string ZoneId { get; set; } = null!;
 
         public GetZoneSubscriptionArgs()
         {
@@ -98,8 +98,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Subscription identifier tag.
         /// </summary>
-        [Input("identifier", required: true)]
-        public Input<string> Identifier { get; set; } = null!;
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
 
         public GetZoneSubscriptionInvokeArgs()
         {
@@ -112,22 +112,73 @@ namespace Pulumi.Cloudflare
     public sealed class GetZoneSubscriptionResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The monetary unit in which pricing information is displayed.
         /// </summary>
-        public readonly string Id;
+        public readonly string Currency;
+        /// <summary>
+        /// The end of the current period and also when the next billing is due.
+        /// </summary>
+        public readonly string CurrentPeriodEnd;
+        /// <summary>
+        /// When the current billing period started. May match initial*period*start if this is the first period.
+        /// </summary>
+        public readonly string CurrentPeriodStart;
+        /// <summary>
+        /// How often the subscription is renewed automatically.
+        /// Available values: "weekly", "monthly", "quarterly", "yearly".
+        /// </summary>
+        public readonly string Frequency;
         /// <summary>
         /// Subscription identifier tag.
         /// </summary>
-        public readonly string Identifier;
+        public readonly string Id;
+        /// <summary>
+        /// The price of the subscription that will be billed, in US dollars.
+        /// </summary>
+        public readonly double Price;
+        /// <summary>
+        /// The rate plan applied to the subscription.
+        /// </summary>
+        public readonly Outputs.GetZoneSubscriptionRatePlanResult RatePlan;
+        /// <summary>
+        /// The state that the subscription is in.
+        /// Available values: "Trial", "Provisioned", "Paid", "AwaitingPayment", "Cancelled", "Failed", "Expired".
+        /// </summary>
+        public readonly string State;
+        /// <summary>
+        /// Subscription identifier tag.
+        /// </summary>
+        public readonly string ZoneId;
 
         [OutputConstructor]
         private GetZoneSubscriptionResult(
+            string currency,
+
+            string currentPeriodEnd,
+
+            string currentPeriodStart,
+
+            string frequency,
+
             string id,
 
-            string identifier)
+            double price,
+
+            Outputs.GetZoneSubscriptionRatePlanResult ratePlan,
+
+            string state,
+
+            string zoneId)
         {
+            Currency = currency;
+            CurrentPeriodEnd = currentPeriodEnd;
+            CurrentPeriodStart = currentPeriodStart;
+            Frequency = frequency;
             Id = id;
-            Identifier = identifier;
+            Price = price;
+            RatePlan = ratePlan;
+            State = state;
+            ZoneId = zoneId;
         }
     }
 }

@@ -67,101 +67,19 @@ class WaitingRoomRulesArgs:
 @pulumi.input_type
 class _WaitingRoomRulesState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[builtins.str]] = None,
-                 description: Optional[pulumi.Input[builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[builtins.bool]] = None,
-                 expression: Optional[pulumi.Input[builtins.str]] = None,
-                 last_updated: Optional[pulumi.Input[builtins.str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None,
-                 version: Optional[pulumi.Input[builtins.str]] = None,
                  waiting_room_id: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomRules resources.
-        :param pulumi.Input[builtins.str] action: The action to take when the expression matches.
-               Available values: "bypass*waiting*room".
-        :param pulumi.Input[builtins.str] description: The description of the rule.
-        :param pulumi.Input[builtins.bool] enabled: When set to true, the rule is enabled.
-        :param pulumi.Input[builtins.str] expression: Criteria defining when there is a match for the current rule.
-        :param pulumi.Input[builtins.str] version: The version of the rule.
         :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
-        if action is not None:
-            pulumi.set(__self__, "action", action)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if expression is not None:
-            pulumi.set(__self__, "expression", expression)
-        if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
         if waiting_room_id is not None:
             pulumi.set(__self__, "waiting_room_id", waiting_room_id)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The action to take when the expression matches.
-        Available values: "bypass*waiting*room".
-        """
-        return pulumi.get(self, "action")
-
-    @action.setter
-    def action(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "action", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The description of the rule.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
-        """
-        When set to true, the rule is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Criteria defining when there is a match for the current rule.
-        """
-        return pulumi.get(self, "expression")
-
-    @expression.setter
-    def expression(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "expression", value)
-
-    @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> Optional[pulumi.Input[builtins.str]]:
-        return pulumi.get(self, "last_updated")
-
-    @last_updated.setter
-    def last_updated(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "last_updated", value)
 
     @property
     @pulumi.getter
@@ -171,18 +89,6 @@ class _WaitingRoomRulesState:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The version of the rule.
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "version", value)
 
     @property
     @pulumi.getter(name="waitingRoomId")
@@ -310,12 +216,6 @@ class WaitingRoomRules(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["action"] = None
-            __props__.__dict__["description"] = None
-            __props__.__dict__["enabled"] = None
-            __props__.__dict__["expression"] = None
-            __props__.__dict__["last_updated"] = None
-            __props__.__dict__["version"] = None
         super(WaitingRoomRules, __self__).__init__(
             'cloudflare:index/waitingRoomRules:WaitingRoomRules',
             resource_name,
@@ -326,13 +226,7 @@ class WaitingRoomRules(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[builtins.str]] = None,
-            description: Optional[pulumi.Input[builtins.str]] = None,
-            enabled: Optional[pulumi.Input[builtins.bool]] = None,
-            expression: Optional[pulumi.Input[builtins.str]] = None,
-            last_updated: Optional[pulumi.Input[builtins.str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WaitingRoomRulesRuleArgs', 'WaitingRoomRulesRuleArgsDict']]]]] = None,
-            version: Optional[pulumi.Input[builtins.str]] = None,
             waiting_room_id: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'WaitingRoomRules':
         """
@@ -342,79 +236,21 @@ class WaitingRoomRules(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] action: The action to take when the expression matches.
-               Available values: "bypass*waiting*room".
-        :param pulumi.Input[builtins.str] description: The description of the rule.
-        :param pulumi.Input[builtins.bool] enabled: When set to true, the rule is enabled.
-        :param pulumi.Input[builtins.str] expression: Criteria defining when there is a match for the current rule.
-        :param pulumi.Input[builtins.str] version: The version of the rule.
         :param pulumi.Input[builtins.str] zone_id: Identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WaitingRoomRulesState.__new__(_WaitingRoomRulesState)
 
-        __props__.__dict__["action"] = action
-        __props__.__dict__["description"] = description
-        __props__.__dict__["enabled"] = enabled
-        __props__.__dict__["expression"] = expression
-        __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["rules"] = rules
-        __props__.__dict__["version"] = version
         __props__.__dict__["waiting_room_id"] = waiting_room_id
         __props__.__dict__["zone_id"] = zone_id
         return WaitingRoomRules(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def action(self) -> pulumi.Output[builtins.str]:
-        """
-        The action to take when the expression matches.
-        Available values: "bypass*waiting*room".
-        """
-        return pulumi.get(self, "action")
-
-    @property
-    @pulumi.getter
-    def description(self) -> pulumi.Output[builtins.str]:
-        """
-        The description of the rule.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> pulumi.Output[builtins.bool]:
-        """
-        When set to true, the rule is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @property
-    @pulumi.getter
-    def expression(self) -> pulumi.Output[builtins.str]:
-        """
-        Criteria defining when there is a match for the current rule.
-        """
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter(name="lastUpdated")
-    def last_updated(self) -> pulumi.Output[builtins.str]:
-        return pulumi.get(self, "last_updated")
-
-    @property
-    @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.WaitingRoomRulesRule']]:
         return pulumi.get(self, "rules")
-
-    @property
-    @pulumi.getter
-    def version(self) -> pulumi.Output[builtins.str]:
-        """
-        The version of the rule.
-        """
-        return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="waitingRoomId")

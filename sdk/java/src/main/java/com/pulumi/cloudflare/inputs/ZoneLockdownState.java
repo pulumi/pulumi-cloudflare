@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.ZoneLockdownConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,14 +50,14 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An informative summary of the rule.
+     * An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An informative summary of the rule.
+     * @return An informative summary of the rate limit. This value is sanitized and any tags will be removed.
      * 
      */
     public Optional<Output<String>> description() {
@@ -91,6 +92,21 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> paused() {
         return Optional.ofNullable(this.paused);
+    }
+
+    /**
+     * The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     * 
+     */
+    @Import(name="priority")
+    private @Nullable Output<Double> priority;
+
+    /**
+     * @return The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+     * 
+     */
+    public Optional<Output<Double>> priority() {
+        return Optional.ofNullable(this.priority);
     }
 
     /**
@@ -131,6 +147,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.modifiedOn = $.modifiedOn;
         this.paused = $.paused;
+        this.priority = $.priority;
         this.urls = $.urls;
         this.zoneId = $.zoneId;
     }
@@ -206,7 +223,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An informative summary of the rule.
+         * @param description An informative summary of the rate limit. This value is sanitized and any tags will be removed.
          * 
          * @return builder
          * 
@@ -217,7 +234,7 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An informative summary of the rule.
+         * @param description An informative summary of the rate limit. This value is sanitized and any tags will be removed.
          * 
          * @return builder
          * 
@@ -266,6 +283,27 @@ public final class ZoneLockdownState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder paused(Boolean paused) {
             return paused(Output.of(paused));
+        }
+
+        /**
+         * @param priority The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Double> priority) {
+            $.priority = priority;
+            return this;
+        }
+
+        /**
+         * @param priority The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Double priority) {
+            return priority(Output.of(priority));
         }
 
         /**

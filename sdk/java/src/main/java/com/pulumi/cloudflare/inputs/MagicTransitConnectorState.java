@@ -18,9 +18,17 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
 
     public static final MagicTransitConnectorState Empty = new MagicTransitConnectorState();
 
+    /**
+     * Account identifier
+     * 
+     */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
+    /**
+     * @return Account identifier
+     * 
+     */
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -129,11 +137,23 @@ public final class MagicTransitConnectorState extends com.pulumi.resources.Resou
             $ = new MagicTransitConnectorState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accountId Account identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
 
+        /**
+         * @param accountId Account identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

@@ -17,14 +17,14 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
     public static final ZoneMetaArgs Empty = new ZoneMetaArgs();
 
     /**
-     * The zone is only configured for CDN
+     * The zone is only configured for CDN.
      * 
      */
     @Import(name="cdnOnly")
     private @Nullable Output<Boolean> cdnOnly;
 
     /**
-     * @return The zone is only configured for CDN
+     * @return The zone is only configured for CDN.
      * 
      */
     public Optional<Output<Boolean>> cdnOnly() {
@@ -32,14 +32,14 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of Custom Certificates the zone can have
+     * Number of Custom Certificates the zone can have.
      * 
      */
     @Import(name="customCertificateQuota")
     private @Nullable Output<Integer> customCertificateQuota;
 
     /**
-     * @return Number of Custom Certificates the zone can have
+     * @return Number of Custom Certificates the zone can have.
      * 
      */
     public Optional<Output<Integer>> customCertificateQuota() {
@@ -47,14 +47,14 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone is only configured for DNS
+     * The zone is only configured for DNS.
      * 
      */
     @Import(name="dnsOnly")
     private @Nullable Output<Boolean> dnsOnly;
 
     /**
-     * @return The zone is only configured for DNS
+     * @return The zone is only configured for DNS.
      * 
      */
     public Optional<Output<Boolean>> dnsOnly() {
@@ -62,14 +62,14 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone is setup with Foundation DNS
+     * The zone is setup with Foundation DNS.
      * 
      */
     @Import(name="foundationDns")
     private @Nullable Output<Boolean> foundationDns;
 
     /**
-     * @return The zone is setup with Foundation DNS
+     * @return The zone is setup with Foundation DNS.
      * 
      */
     public Optional<Output<Boolean>> foundationDns() {
@@ -77,14 +77,14 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of Page Rules a zone can have
+     * Number of Page Rules a zone can have.
      * 
      */
     @Import(name="pageRuleQuota")
     private @Nullable Output<Integer> pageRuleQuota;
 
     /**
-     * @return Number of Page Rules a zone can have
+     * @return Number of Page Rules a zone can have.
      * 
      */
     public Optional<Output<Integer>> pageRuleQuota() {
@@ -92,14 +92,14 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone has been flagged for phishing
+     * The zone has been flagged for phishing.
      * 
      */
     @Import(name="phishingDetected")
     private @Nullable Output<Boolean> phishingDetected;
 
     /**
-     * @return The zone has been flagged for phishing
+     * @return The zone has been flagged for phishing.
      * 
      */
     public Optional<Output<Boolean>> phishingDetected() {
@@ -144,7 +144,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cdnOnly The zone is only configured for CDN
+         * @param cdnOnly The zone is only configured for CDN.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cdnOnly The zone is only configured for CDN
+         * @param cdnOnly The zone is only configured for CDN.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customCertificateQuota Number of Custom Certificates the zone can have
+         * @param customCertificateQuota Number of Custom Certificates the zone can have.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customCertificateQuota Number of Custom Certificates the zone can have
+         * @param customCertificateQuota Number of Custom Certificates the zone can have.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsOnly The zone is only configured for DNS
+         * @param dnsOnly The zone is only configured for DNS.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dnsOnly The zone is only configured for DNS
+         * @param dnsOnly The zone is only configured for DNS.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param foundationDns The zone is setup with Foundation DNS
+         * @param foundationDns The zone is setup with Foundation DNS.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param foundationDns The zone is setup with Foundation DNS
+         * @param foundationDns The zone is setup with Foundation DNS.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pageRuleQuota Number of Page Rules a zone can have
+         * @param pageRuleQuota Number of Page Rules a zone can have.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pageRuleQuota Number of Page Rules a zone can have
+         * @param pageRuleQuota Number of Page Rules a zone can have.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phishingDetected The zone has been flagged for phishing
+         * @param phishingDetected The zone has been flagged for phishing.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ZoneMetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phishingDetected The zone has been flagged for phishing
+         * @param phishingDetected The zone has been flagged for phishing.
          * 
          * @return builder
          * 

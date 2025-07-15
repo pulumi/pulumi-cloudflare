@@ -54,32 +54,32 @@ type Zone struct {
 
 	Account ZoneAccountOutput `pulumi:"account"`
 	// The last time proof of ownership was detected and the zone was made
-	// active
+	// active.
 	ActivatedOn pulumi.StringOutput `pulumi:"activatedOn"`
 	// Allows the customer to use a custom apex.
 	// *Tenants Only Configuration*.
 	CnameSuffix pulumi.StringOutput `pulumi:"cnameSuffix"`
-	// When the zone was created
+	// When the zone was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// The interval (in seconds) from when development mode expires
 	// (positive integer) or last expired (negative integer) for the
 	// domain. If development mode has never been enabled, this value is 0.
 	DevelopmentMode pulumi.Float64Output `pulumi:"developmentMode"`
-	// Metadata about the zone
+	// Metadata about the zone.
 	Meta ZoneMetaOutput `pulumi:"meta"`
-	// When the zone was last modified
+	// When the zone was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// The domain name
+	// The domain name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The name servers Cloudflare assigns to a zone
+	// The name servers Cloudflare assigns to a zone.
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
-	// DNS host at the time of switching to Cloudflare
+	// DNS host at the time of switching to Cloudflare.
 	OriginalDnshost pulumi.StringOutput `pulumi:"originalDnshost"`
-	// Original name servers before moving to Cloudflare
+	// Original name servers before moving to Cloudflare.
 	OriginalNameServers pulumi.StringArrayOutput `pulumi:"originalNameServers"`
-	// Registrar for the domain at the time of switching to Cloudflare
+	// Registrar for the domain at the time of switching to Cloudflare.
 	OriginalRegistrar pulumi.StringOutput `pulumi:"originalRegistrar"`
-	// The owner of the zone
+	// The owner of the zone.
 	Owner ZoneOwnerOutput `pulumi:"owner"`
 	// Indicates whether the zone is only using Cloudflare DNS services. A
 	// true value means the zone will not receive security or performance
@@ -149,32 +149,32 @@ func GetZone(ctx *pulumi.Context,
 type zoneState struct {
 	Account *ZoneAccount `pulumi:"account"`
 	// The last time proof of ownership was detected and the zone was made
-	// active
+	// active.
 	ActivatedOn *string `pulumi:"activatedOn"`
 	// Allows the customer to use a custom apex.
 	// *Tenants Only Configuration*.
 	CnameSuffix *string `pulumi:"cnameSuffix"`
-	// When the zone was created
+	// When the zone was created.
 	CreatedOn *string `pulumi:"createdOn"`
 	// The interval (in seconds) from when development mode expires
 	// (positive integer) or last expired (negative integer) for the
 	// domain. If development mode has never been enabled, this value is 0.
 	DevelopmentMode *float64 `pulumi:"developmentMode"`
-	// Metadata about the zone
+	// Metadata about the zone.
 	Meta *ZoneMeta `pulumi:"meta"`
-	// When the zone was last modified
+	// When the zone was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The domain name
+	// The domain name.
 	Name *string `pulumi:"name"`
-	// The name servers Cloudflare assigns to a zone
+	// The name servers Cloudflare assigns to a zone.
 	NameServers []string `pulumi:"nameServers"`
-	// DNS host at the time of switching to Cloudflare
+	// DNS host at the time of switching to Cloudflare.
 	OriginalDnshost *string `pulumi:"originalDnshost"`
-	// Original name servers before moving to Cloudflare
+	// Original name servers before moving to Cloudflare.
 	OriginalNameServers []string `pulumi:"originalNameServers"`
-	// Registrar for the domain at the time of switching to Cloudflare
+	// Registrar for the domain at the time of switching to Cloudflare.
 	OriginalRegistrar *string `pulumi:"originalRegistrar"`
-	// The owner of the zone
+	// The owner of the zone.
 	Owner *ZoneOwner `pulumi:"owner"`
 	// Indicates whether the zone is only using Cloudflare DNS services. A
 	// true value means the zone will not receive security or performance
@@ -209,32 +209,32 @@ type zoneState struct {
 type ZoneState struct {
 	Account ZoneAccountPtrInput
 	// The last time proof of ownership was detected and the zone was made
-	// active
+	// active.
 	ActivatedOn pulumi.StringPtrInput
 	// Allows the customer to use a custom apex.
 	// *Tenants Only Configuration*.
 	CnameSuffix pulumi.StringPtrInput
-	// When the zone was created
+	// When the zone was created.
 	CreatedOn pulumi.StringPtrInput
 	// The interval (in seconds) from when development mode expires
 	// (positive integer) or last expired (negative integer) for the
 	// domain. If development mode has never been enabled, this value is 0.
 	DevelopmentMode pulumi.Float64PtrInput
-	// Metadata about the zone
+	// Metadata about the zone.
 	Meta ZoneMetaPtrInput
-	// When the zone was last modified
+	// When the zone was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// The domain name
+	// The domain name.
 	Name pulumi.StringPtrInput
-	// The name servers Cloudflare assigns to a zone
+	// The name servers Cloudflare assigns to a zone.
 	NameServers pulumi.StringArrayInput
-	// DNS host at the time of switching to Cloudflare
+	// DNS host at the time of switching to Cloudflare.
 	OriginalDnshost pulumi.StringPtrInput
-	// Original name servers before moving to Cloudflare
+	// Original name servers before moving to Cloudflare.
 	OriginalNameServers pulumi.StringArrayInput
-	// Registrar for the domain at the time of switching to Cloudflare
+	// Registrar for the domain at the time of switching to Cloudflare.
 	OriginalRegistrar pulumi.StringPtrInput
-	// The owner of the zone
+	// The owner of the zone.
 	Owner ZoneOwnerPtrInput
 	// Indicates whether the zone is only using Cloudflare DNS services. A
 	// true value means the zone will not receive security or performance
@@ -272,8 +272,12 @@ func (ZoneState) ElementType() reflect.Type {
 
 type zoneArgs struct {
 	Account ZoneAccount `pulumi:"account"`
-	// The domain name
+	// The domain name.
 	Name string `pulumi:"name"`
+	// Indicates whether the zone is only using Cloudflare DNS services. A
+	// true value means the zone will not receive security or performance
+	// benefits.
+	Paused *bool `pulumi:"paused"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
 	// Available values: "full", "partial", "secondary", "internal".
@@ -286,8 +290,12 @@ type zoneArgs struct {
 // The set of arguments for constructing a Zone resource.
 type ZoneArgs struct {
 	Account ZoneAccountInput
-	// The domain name
+	// The domain name.
 	Name pulumi.StringInput
+	// Indicates whether the zone is only using Cloudflare DNS services. A
+	// true value means the zone will not receive security or performance
+	// benefits.
+	Paused pulumi.BoolPtrInput
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is
 	// typically a partner-hosted zone or a CNAME setup.
 	// Available values: "full", "partial", "secondary", "internal".
@@ -389,7 +397,7 @@ func (o ZoneOutput) Account() ZoneAccountOutput {
 }
 
 // The last time proof of ownership was detected and the zone was made
-// active
+// active.
 func (o ZoneOutput) ActivatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ActivatedOn }).(pulumi.StringOutput)
 }
@@ -400,7 +408,7 @@ func (o ZoneOutput) CnameSuffix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.CnameSuffix }).(pulumi.StringOutput)
 }
 
-// When the zone was created
+// When the zone was created.
 func (o ZoneOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
@@ -412,42 +420,42 @@ func (o ZoneOutput) DevelopmentMode() pulumi.Float64Output {
 	return o.ApplyT(func(v *Zone) pulumi.Float64Output { return v.DevelopmentMode }).(pulumi.Float64Output)
 }
 
-// Metadata about the zone
+// Metadata about the zone.
 func (o ZoneOutput) Meta() ZoneMetaOutput {
 	return o.ApplyT(func(v *Zone) ZoneMetaOutput { return v.Meta }).(ZoneMetaOutput)
 }
 
-// When the zone was last modified
+// When the zone was last modified.
 func (o ZoneOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The domain name
+// The domain name.
 func (o ZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The name servers Cloudflare assigns to a zone
+// The name servers Cloudflare assigns to a zone.
 func (o ZoneOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.NameServers }).(pulumi.StringArrayOutput)
 }
 
-// DNS host at the time of switching to Cloudflare
+// DNS host at the time of switching to Cloudflare.
 func (o ZoneOutput) OriginalDnshost() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.OriginalDnshost }).(pulumi.StringOutput)
 }
 
-// Original name servers before moving to Cloudflare
+// Original name servers before moving to Cloudflare.
 func (o ZoneOutput) OriginalNameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.OriginalNameServers }).(pulumi.StringArrayOutput)
 }
 
-// Registrar for the domain at the time of switching to Cloudflare
+// Registrar for the domain at the time of switching to Cloudflare.
 func (o ZoneOutput) OriginalRegistrar() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.OriginalRegistrar }).(pulumi.StringOutput)
 }
 
-// The owner of the zone
+// The owner of the zone.
 func (o ZoneOutput) Owner() ZoneOwnerOutput {
 	return o.ApplyT(func(v *Zone) ZoneOwnerOutput { return v.Owner }).(ZoneOwnerOutput)
 }

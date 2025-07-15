@@ -57,17 +57,13 @@ class ContentScanningExpressionArgs:
 class _ContentScanningExpressionState:
     def __init__(__self__, *,
                  bodies: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]] = None,
-                 payload: Optional[pulumi.Input[builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContentScanningExpression resources.
-        :param pulumi.Input[builtins.str] payload: Defines the ruleset expression to use in matching content objects.
         :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         if bodies is not None:
             pulumi.set(__self__, "bodies", bodies)
-        if payload is not None:
-            pulumi.set(__self__, "payload", payload)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -79,18 +75,6 @@ class _ContentScanningExpressionState:
     @bodies.setter
     def bodies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContentScanningExpressionBodyArgs']]]]):
         pulumi.set(self, "bodies", value)
-
-    @property
-    @pulumi.getter
-    def payload(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Defines the ruleset expression to use in matching content objects.
-        """
-        return pulumi.get(self, "payload")
-
-    @payload.setter
-    def payload(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "payload", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -184,7 +168,6 @@ class ContentScanningExpression(pulumi.CustomResource):
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["payload"] = None
         super(ContentScanningExpression, __self__).__init__(
             'cloudflare:index/contentScanningExpression:ContentScanningExpression',
             resource_name,
@@ -196,7 +179,6 @@ class ContentScanningExpression(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bodies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentScanningExpressionBodyArgs', 'ContentScanningExpressionBodyArgsDict']]]]] = None,
-            payload: Optional[pulumi.Input[builtins.str]] = None,
             zone_id: Optional[pulumi.Input[builtins.str]] = None) -> 'ContentScanningExpression':
         """
         Get an existing ContentScanningExpression resource's state with the given name, id, and optional extra
@@ -205,7 +187,6 @@ class ContentScanningExpression(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] payload: Defines the ruleset expression to use in matching content objects.
         :param pulumi.Input[builtins.str] zone_id: Defines an identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -213,7 +194,6 @@ class ContentScanningExpression(pulumi.CustomResource):
         __props__ = _ContentScanningExpressionState.__new__(_ContentScanningExpressionState)
 
         __props__.__dict__["bodies"] = bodies
-        __props__.__dict__["payload"] = payload
         __props__.__dict__["zone_id"] = zone_id
         return ContentScanningExpression(resource_name, opts=opts, __props__=__props__)
 
@@ -221,14 +201,6 @@ class ContentScanningExpression(pulumi.CustomResource):
     @pulumi.getter
     def bodies(self) -> pulumi.Output[Sequence['outputs.ContentScanningExpressionBody']]:
         return pulumi.get(self, "bodies")
-
-    @property
-    @pulumi.getter
-    def payload(self) -> pulumi.Output[builtins.str]:
-        """
-        Defines the ruleset expression to use in matching content objects.
-        """
-        return pulumi.get(self, "payload")
 
     @property
     @pulumi.getter(name="zoneId")

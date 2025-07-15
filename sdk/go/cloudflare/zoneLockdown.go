@@ -37,6 +37,9 @@ import (
 //				Urls: pulumi.StringArray{
 //					pulumi.String("shop.example.com/*"),
 //				},
+//				Description: pulumi.String("Prevent multiple login failures to mitigate brute force attacks"),
+//				Paused:      pulumi.Bool(false),
+//				Priority:    pulumi.Float64(5),
 //			})
 //			if err != nil {
 //				return err
@@ -59,12 +62,14 @@ type ZoneLockdown struct {
 	Configurations ZoneLockdownConfigurationArrayOutput `pulumi:"configurations"`
 	// The timestamp of when the rule was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
-	// An informative summary of the rule.
-	Description pulumi.StringOutput `pulumi:"description"`
+	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The timestamp of when the rule was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// When true, indicates that the rule is currently paused.
-	Paused pulumi.BoolOutput `pulumi:"paused"`
+	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
+	// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+	Priority pulumi.Float64PtrOutput `pulumi:"priority"`
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
 	// Defines an identifier.
@@ -114,12 +119,14 @@ type zoneLockdownState struct {
 	Configurations []ZoneLockdownConfiguration `pulumi:"configurations"`
 	// The timestamp of when the rule was created.
 	CreatedOn *string `pulumi:"createdOn"`
-	// An informative summary of the rule.
+	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
 	Description *string `pulumi:"description"`
 	// The timestamp of when the rule was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// When true, indicates that the rule is currently paused.
 	Paused *bool `pulumi:"paused"`
+	// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+	Priority *float64 `pulumi:"priority"`
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
 	// Defines an identifier.
@@ -131,12 +138,14 @@ type ZoneLockdownState struct {
 	Configurations ZoneLockdownConfigurationArrayInput
 	// The timestamp of when the rule was created.
 	CreatedOn pulumi.StringPtrInput
-	// An informative summary of the rule.
+	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
 	Description pulumi.StringPtrInput
 	// The timestamp of when the rule was last modified.
 	ModifiedOn pulumi.StringPtrInput
 	// When true, indicates that the rule is currently paused.
 	Paused pulumi.BoolPtrInput
+	// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+	Priority pulumi.Float64PtrInput
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayInput
 	// Defines an identifier.
@@ -150,6 +159,12 @@ func (ZoneLockdownState) ElementType() reflect.Type {
 type zoneLockdownArgs struct {
 	// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 	Configurations []ZoneLockdownConfiguration `pulumi:"configurations"`
+	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	Description *string `pulumi:"description"`
+	// When true, indicates that the rule is currently paused.
+	Paused *bool `pulumi:"paused"`
+	// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+	Priority *float64 `pulumi:"priority"`
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls []string `pulumi:"urls"`
 	// Defines an identifier.
@@ -160,6 +175,12 @@ type zoneLockdownArgs struct {
 type ZoneLockdownArgs struct {
 	// A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ipRange` configurations.
 	Configurations ZoneLockdownConfigurationArrayInput
+	// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+	Description pulumi.StringPtrInput
+	// When true, indicates that the rule is currently paused.
+	Paused pulumi.BoolPtrInput
+	// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+	Priority pulumi.Float64PtrInput
 	// The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.
 	Urls pulumi.StringArrayInput
 	// Defines an identifier.
@@ -263,9 +284,9 @@ func (o ZoneLockdownOutput) CreatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// An informative summary of the rule.
-func (o ZoneLockdownOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+// An informative summary of the rate limit. This value is sanitized and any tags will be removed.
+func (o ZoneLockdownOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The timestamp of when the rule was last modified.
@@ -274,8 +295,13 @@ func (o ZoneLockdownOutput) ModifiedOn() pulumi.StringOutput {
 }
 
 // When true, indicates that the rule is currently paused.
-func (o ZoneLockdownOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZoneLockdown) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+func (o ZoneLockdownOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+// The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.
+func (o ZoneLockdownOutput) Priority() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.Float64PtrOutput { return v.Priority }).(pulumi.Float64PtrOutput)
 }
 
 // The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.

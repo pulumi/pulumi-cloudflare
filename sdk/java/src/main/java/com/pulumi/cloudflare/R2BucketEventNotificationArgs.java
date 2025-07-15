@@ -67,15 +67,15 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
      * Queue ID.
      * 
      */
-    @Import(name="queueId")
-    private @Nullable Output<String> queueId;
+    @Import(name="queueId", required=true)
+    private Output<String> queueId;
 
     /**
      * @return Queue ID.
      * 
      */
-    public Optional<Output<String>> queueId() {
-        return Optional.ofNullable(this.queueId);
+    public Output<String> queueId() {
+        return this.queueId;
     }
 
     /**
@@ -190,7 +190,7 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder queueId(@Nullable Output<String> queueId) {
+        public Builder queueId(Output<String> queueId) {
             $.queueId = queueId;
             return this;
         }
@@ -242,6 +242,9 @@ public final class R2BucketEventNotificationArgs extends com.pulumi.resources.Re
             }
             if ($.bucketName == null) {
                 throw new MissingRequiredPropertyException("R2BucketEventNotificationArgs", "bucketName");
+            }
+            if ($.queueId == null) {
+                throw new MissingRequiredPropertyException("R2BucketEventNotificationArgs", "queueId");
             }
             return $;
         }

@@ -217,7 +217,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>'
+        $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
         ```
 
         :param str resource_name: The name of the resource.
@@ -248,7 +248,7 @@ class CloudforceOneRequestMessage(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>'
+        $ pulumi import cloudflare:index/cloudforceOneRequestMessage:CloudforceOneRequestMessage example '<account_id>/<request_id>/<page>/<per_page>'
         ```
 
         :param str resource_name: The name of the resource.

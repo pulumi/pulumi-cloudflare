@@ -25,8 +25,8 @@ namespace Pulumi.Cloudflare
     ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
     ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs
     ///         {
-    ///             Target = "ip",
-    ///             Value = "198.51.100.4",
+    ///             Target = "ua",
+    ///             Value = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)",
     ///         },
     ///         Mode = "challenge",
     ///     });
@@ -37,9 +37,6 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule")]
     public partial class UserAgentBlockingRule : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The rule configuration.
-        /// </summary>
         [Output("configuration")]
         public Output<Outputs.UserAgentBlockingRuleConfiguration> Configuration { get; private set; } = null!;
 
@@ -108,9 +105,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class UserAgentBlockingRuleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The rule configuration.
-        /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.UserAgentBlockingRuleConfigurationArgs> Configuration { get; set; } = null!;
 
@@ -141,9 +135,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class UserAgentBlockingRuleState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The rule configuration.
-        /// </summary>
         [Input("configuration")]
         public Input<Inputs.UserAgentBlockingRuleConfigurationGetArgs>? Configuration { get; set; }
 

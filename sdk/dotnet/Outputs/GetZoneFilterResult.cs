@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Order;
         /// <summary>
-        /// A zone status
+        /// Specify a zone status to filter by.
         /// Available values: "initializing", "pending", "active", "moved".
         /// </summary>
         public readonly string? Status;

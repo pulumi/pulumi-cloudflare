@@ -72,11 +72,11 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
     /**
      * Queue ID.
      */
-    public readonly queueId!: pulumi.Output<string | undefined>;
+    public readonly queueId!: pulumi.Output<string>;
     /**
-     * List of queues associated with the bucket.
+     * Name of the queue.
      */
-    public /*out*/ readonly queues!: pulumi.Output<outputs.R2BucketEventNotificationQueue[]>;
+    public /*out*/ readonly queueName!: pulumi.Output<string>;
     /**
      * Array of rules to drive notifications.
      */
@@ -99,7 +99,7 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
             resourceInputs["jurisdiction"] = state ? state.jurisdiction : undefined;
             resourceInputs["queueId"] = state ? state.queueId : undefined;
-            resourceInputs["queues"] = state ? state.queues : undefined;
+            resourceInputs["queueName"] = state ? state.queueName : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as R2BucketEventNotificationArgs | undefined;
@@ -109,12 +109,15 @@ export class R2BucketEventNotification extends pulumi.CustomResource {
             if ((!args || args.bucketName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
+            if ((!args || args.queueId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'queueId'");
+            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
             resourceInputs["jurisdiction"] = args ? args.jurisdiction : undefined;
             resourceInputs["queueId"] = args ? args.queueId : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
-            resourceInputs["queues"] = undefined /*out*/;
+            resourceInputs["queueName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(R2BucketEventNotification.__pulumiType, name, resourceInputs, opts);
@@ -142,9 +145,9 @@ export interface R2BucketEventNotificationState {
      */
     queueId?: pulumi.Input<string>;
     /**
-     * List of queues associated with the bucket.
+     * Name of the queue.
      */
-    queues?: pulumi.Input<pulumi.Input<inputs.R2BucketEventNotificationQueue>[]>;
+    queueName?: pulumi.Input<string>;
     /**
      * Array of rules to drive notifications.
      */
@@ -170,7 +173,7 @@ export interface R2BucketEventNotificationArgs {
     /**
      * Queue ID.
      */
-    queueId?: pulumi.Input<string>;
+    queueId: pulumi.Input<string>;
     /**
      * Array of rules to drive notifications.
      */

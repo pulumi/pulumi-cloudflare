@@ -555,6 +555,7 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
     }
     /**
      * The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -562,6 +563,7 @@ public class ZeroTrustAccessApplication extends com.pulumi.resources.CustomResou
 
     /**
      * @return The application type.
+     * Available values: &#34;self*hosted&#34;, &#34;saas&#34;, &#34;ssh&#34;, &#34;vnc&#34;, &#34;app*launcher&#34;, &#34;warp&#34;, &#34;biso&#34;, &#34;bookmark&#34;, &#34;dash_sso&#34;, &#34;infrastructure&#34;, &#34;rdp&#34;.
      * 
      */
     public Output<Optional<String>> type() {

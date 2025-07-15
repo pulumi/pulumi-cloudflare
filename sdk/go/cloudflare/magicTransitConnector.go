@@ -52,6 +52,7 @@ import (
 type MagicTransitConnector struct {
 	pulumi.CustomResourceState
 
+	// Account identifier
 	AccountId                    pulumi.StringOutput               `pulumi:"accountId"`
 	Activated                    pulumi.BoolPtrOutput              `pulumi:"activated"`
 	ConnectorId                  pulumi.StringOutput               `pulumi:"connectorId"`
@@ -101,6 +102,7 @@ func GetMagicTransitConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MagicTransitConnector resources.
 type magicTransitConnectorState struct {
+	// Account identifier
 	AccountId                    *string                      `pulumi:"accountId"`
 	Activated                    *bool                        `pulumi:"activated"`
 	ConnectorId                  *string                      `pulumi:"connectorId"`
@@ -115,6 +117,7 @@ type magicTransitConnectorState struct {
 }
 
 type MagicTransitConnectorState struct {
+	// Account identifier
 	AccountId                    pulumi.StringPtrInput
 	Activated                    pulumi.BoolPtrInput
 	ConnectorId                  pulumi.StringPtrInput
@@ -133,6 +136,7 @@ func (MagicTransitConnectorState) ElementType() reflect.Type {
 }
 
 type magicTransitConnectorArgs struct {
+	// Account identifier
 	AccountId                    string   `pulumi:"accountId"`
 	Activated                    *bool    `pulumi:"activated"`
 	ConnectorId                  string   `pulumi:"connectorId"`
@@ -144,6 +148,7 @@ type magicTransitConnectorArgs struct {
 
 // The set of arguments for constructing a MagicTransitConnector resource.
 type MagicTransitConnectorArgs struct {
+	// Account identifier
 	AccountId                    pulumi.StringInput
 	Activated                    pulumi.BoolPtrInput
 	ConnectorId                  pulumi.StringInput
@@ -240,6 +245,7 @@ func (o MagicTransitConnectorOutput) ToMagicTransitConnectorOutputWithContext(ct
 	return o
 }
 
+// Account identifier
 func (o MagicTransitConnectorOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MagicTransitConnector) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

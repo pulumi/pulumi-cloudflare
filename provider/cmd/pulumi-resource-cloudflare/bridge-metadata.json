@@ -1270,23 +1270,6 @@
                 "current": "cloudflare:index/r2BucketEventNotification:R2BucketEventNotification",
                 "majorVersion": 6,
                 "fields": {
-                    "queues": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "rules": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "actions": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
                     "rules": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1504,6 +1487,18 @@
                     }
                 }
             },
+            "cloudflare_schema_validation_operation_settings": {
+                "current": "cloudflare:index/schemaValidationOperationSettings:SchemaValidationOperationSettings",
+                "majorVersion": 6
+            },
+            "cloudflare_schema_validation_schemas": {
+                "current": "cloudflare:index/schemaValidationSchemas:SchemaValidationSchemas",
+                "majorVersion": 6
+            },
+            "cloudflare_schema_validation_settings": {
+                "current": "cloudflare:index/schemaValidationSettings:SchemaValidationSettings",
+                "majorVersion": 6
+            },
             "cloudflare_snippet_rules": {
                 "current": "cloudflare:index/snippetRules:SnippetRules",
                 "majorVersion": 6,
@@ -1602,7 +1597,25 @@
             },
             "cloudflare_user": {
                 "current": "cloudflare:index/user:User",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "betas": {
+                        "maxItemsOne": false
+                    },
+                    "organizations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "permissions": {
+                                    "maxItemsOne": false
+                                },
+                                "roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_user_agent_blocking_rule": {
                 "current": "cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule",
@@ -2164,9 +2177,6 @@
                 ],
                 "majorVersion": 6,
                 "fields": {
-                    "dns_server": {
-                        "maxItemsOne": false
-                    },
                     "domains": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2209,9 +2219,6 @@
                 "current": "cloudflare:index/zeroTrustDeviceDefaultProfileLocalDomainFallback:ZeroTrustDeviceDefaultProfileLocalDomainFallback",
                 "majorVersion": 6,
                 "fields": {
-                    "dns_server": {
-                        "maxItemsOne": false
-                    },
                     "domains": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2274,6 +2281,9 @@
                                         "maxItemsOne": false
                                     }
                                 }
+                            },
+                            "subject_alternative_names": {
+                                "maxItemsOne": false
                             }
                         }
                     },
@@ -2281,6 +2291,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "cloudflare_zero_trust_device_settings": {
+                "current": "cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings",
+                "majorVersion": 6
             },
             "cloudflare_zero_trust_dex_test": {
                 "current": "cloudflare:index/zeroTrustDexTest:ZeroTrustDexTest",
@@ -2307,26 +2321,6 @@
                         "elem": {
                             "fields": {
                                 "words": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "profiles": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "entries": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "words": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "shared_entries": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -5251,8 +5245,15 @@
                 "current": "cloudflare:index/getR2BucketEventNotification:getR2BucketEventNotification",
                 "majorVersion": 6,
                 "fields": {
-                    "storage_class_transitions": {
-                        "maxItemsOne": false
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -5556,6 +5557,36 @@
                     }
                 }
             },
+            "cloudflare_schema_validation_operation_settings": {
+                "current": "cloudflare:index/getSchemaValidationOperationSettings:getSchemaValidationOperationSettings",
+                "majorVersion": 6
+            },
+            "cloudflare_schema_validation_operation_settings_list": {
+                "current": "cloudflare:index/getSchemaValidationOperationSettingsList:getSchemaValidationOperationSettingsList",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_schema_validation_schemas": {
+                "current": "cloudflare:index/getSchemaValidationSchemas:getSchemaValidationSchemas",
+                "majorVersion": 6
+            },
+            "cloudflare_schema_validation_schemas_list": {
+                "current": "cloudflare:index/getSchemaValidationSchemasList:getSchemaValidationSchemasList",
+                "majorVersion": 6,
+                "fields": {
+                    "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "cloudflare_schema_validation_settings": {
+                "current": "cloudflare:index/getSchemaValidationSettings:getSchemaValidationSettings",
+                "majorVersion": 6
+            },
             "cloudflare_snippet_rules_list": {
                 "current": "cloudflare:index/getSnippetRulesList:getSnippetRulesList",
                 "majorVersion": 6,
@@ -5713,7 +5744,25 @@
             },
             "cloudflare_user": {
                 "current": "cloudflare:index/getUser:getUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "betas": {
+                        "maxItemsOne": false
+                    },
+                    "organizations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "permissions": {
+                                    "maxItemsOne": false
+                                },
+                                "roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_user_agent_blocking_rule": {
                 "current": "cloudflare:index/getUserAgentBlockingRule:getUserAgentBlockingRule",
@@ -6625,6 +6674,9 @@
                                         "maxItemsOne": false
                                     }
                                 }
+                            },
+                            "subject_alternative_names": {
+                                "maxItemsOne": false
                             }
                         }
                     },
@@ -6658,6 +6710,9 @@
                                                     "maxItemsOne": false
                                                 }
                                             }
+                                        },
+                                        "subject_alternative_names": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 },
@@ -6668,6 +6723,10 @@
                         }
                     }
                 }
+            },
+            "cloudflare_zero_trust_device_settings": {
+                "current": "cloudflare:index/getZeroTrustDeviceSettings:getZeroTrustDeviceSettings",
+                "majorVersion": 6
             },
             "cloudflare_zero_trust_dex_test": {
                 "current": "cloudflare:index/getZeroTrustDexTest:getZeroTrustDexTest",
@@ -7190,7 +7249,16 @@
             },
             "cloudflare_zone_subscription": {
                 "current": "cloudflare:index/getZoneSubscription:getZoneSubscription",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "rate_plan": {
+                        "fields": {
+                            "sets": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "cloudflare_zones": {
                 "current": "cloudflare:index/getZones:getZones",

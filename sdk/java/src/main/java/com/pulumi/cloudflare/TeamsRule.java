@@ -250,6 +250,20 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
     public Output<Integer> version() {
         return this.version;
     }
+    /**
+     * Warning for a misconfigured rule, if any.
+     * 
+     */
+    @Export(name="warningStatus", refs={String.class}, tree="[0]")
+    private Output<String> warningStatus;
+
+    /**
+     * @return Warning for a misconfigured rule, if any.
+     * 
+     */
+    public Output<String> warningStatus() {
+        return this.warningStatus;
+    }
 
     /**
      *

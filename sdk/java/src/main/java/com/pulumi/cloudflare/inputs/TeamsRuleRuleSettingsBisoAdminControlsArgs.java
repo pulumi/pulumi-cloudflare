@@ -79,16 +79,16 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
     }
 
     /**
-     * Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
-     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * Configure whether downloading enabled or not. When set with &#34;remote*only&#34;, downloads are only available for viewing. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     @Import(name="download")
     private @Nullable Output<String> download;
 
     /**
-     * @return Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
-     * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+     * @return Configure whether downloading enabled or not. When set with &#34;remote*only&#34;, downloads are only available for viewing. Only applies when `version == &#34;v2&#34;`.
+     * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
      * 
      */
     public Optional<Output<String>> download() {
@@ -332,8 +332,8 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
         }
 
         /**
-         * @param download Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
-         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * @param download Configure whether downloading enabled or not. When set with &#34;remote*only&#34;, downloads are only available for viewing. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
          * 
@@ -344,8 +344,8 @@ public final class TeamsRuleRuleSettingsBisoAdminControlsArgs extends com.pulumi
         }
 
         /**
-         * @param download Configure whether downloading enabled or not. When absent, downloading is enabled. Only applies when `version == &#34;v2&#34;`.
-         * Available values: &#34;enabled&#34;, &#34;disabled&#34;.
+         * @param download Configure whether downloading enabled or not. When set with &#34;remote*only&#34;, downloads are only available for viewing. Only applies when `version == &#34;v2&#34;`.
+         * Available values: &#34;enabled&#34;, &#34;disabled&#34;, &#34;remote*only&#34;.
          * 
          * @return builder
          * 

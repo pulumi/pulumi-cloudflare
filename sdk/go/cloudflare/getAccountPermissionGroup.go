@@ -26,8 +26,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetAccountPermissionGroup(ctx, &cloudflare.GetAccountPermissionGroupArgs{
-//				AccountId:         "eb78d65290b24279ba6f44721b3ea3c4",
-//				PermissionGroupId: "6d7f2f5f5b1d4a0e9081fdc98d432fd1",
+//				AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
+//				PermissionGroupId: "023e105f4ecef8ad9ca31a8372d0c353",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,11 +59,11 @@ type GetAccountPermissionGroupArgs struct {
 type GetAccountPermissionGroupResult struct {
 	// Account identifier tag.
 	AccountId string `pulumi:"accountId"`
-	// Identifier of the group.
+	// Identifier of the permission group.
 	Id string `pulumi:"id"`
 	// Attributes associated to the permission group.
 	Meta GetAccountPermissionGroupMeta `pulumi:"meta"`
-	// Name of the group.
+	// Name of the permission group.
 	Name string `pulumi:"name"`
 	// Permission Group identifier tag.
 	PermissionGroupId string `pulumi:"permissionGroupId"`
@@ -110,7 +110,7 @@ func (o GetAccountPermissionGroupResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountPermissionGroupResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Identifier of the group.
+// Identifier of the permission group.
 func (o GetAccountPermissionGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountPermissionGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -120,7 +120,7 @@ func (o GetAccountPermissionGroupResultOutput) Meta() GetAccountPermissionGroupM
 	return o.ApplyT(func(v GetAccountPermissionGroupResult) GetAccountPermissionGroupMeta { return v.Meta }).(GetAccountPermissionGroupMetaOutput)
 }
 
-// Name of the group.
+// Name of the permission group.
 func (o GetAccountPermissionGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountPermissionGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }

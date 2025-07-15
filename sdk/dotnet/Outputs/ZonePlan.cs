@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? LegacyId;
         /// <summary>
-        /// Name of the owner
+        /// Name of the owner.
         /// </summary>
         public readonly string? Name;
         /// <summary>

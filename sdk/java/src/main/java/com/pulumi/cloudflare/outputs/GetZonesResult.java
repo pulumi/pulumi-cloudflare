@@ -20,13 +20,13 @@ import java.util.Objects;
 @CustomType
 public final class GetZonesResult {
     /**
-     * @return The account the zone belongs to
+     * @return The account the zone belongs to.
      * 
      */
     private GetZonesResultAccount account;
     /**
      * @return The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     private String activatedOn;
@@ -37,7 +37,7 @@ public final class GetZonesResult {
      */
     private String cnameSuffix;
     /**
-     * @return When the zone was created
+     * @return When the zone was created.
      * 
      */
     private String createdOn;
@@ -54,42 +54,42 @@ public final class GetZonesResult {
      */
     private String id;
     /**
-     * @return Metadata about the zone
+     * @return Metadata about the zone.
      * 
      */
     private GetZonesResultMeta meta;
     /**
-     * @return When the zone was last modified
+     * @return When the zone was last modified.
      * 
      */
     private String modifiedOn;
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     private String name;
     /**
-     * @return The name servers Cloudflare assigns to a zone
+     * @return The name servers Cloudflare assigns to a zone.
      * 
      */
     private List<String> nameServers;
     /**
-     * @return DNS host at the time of switching to Cloudflare
+     * @return DNS host at the time of switching to Cloudflare.
      * 
      */
     private String originalDnshost;
     /**
-     * @return Original name servers before moving to Cloudflare
+     * @return Original name servers before moving to Cloudflare.
      * 
      */
     private List<String> originalNameServers;
     /**
-     * @return Registrar for the domain at the time of switching to Cloudflare
+     * @return Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     private String originalRegistrar;
     /**
-     * @return The owner of the zone
+     * @return The owner of the zone.
      * 
      */
     private GetZonesResultOwner owner;
@@ -154,7 +154,7 @@ public final class GetZonesResult {
 
     private GetZonesResult() {}
     /**
-     * @return The account the zone belongs to
+     * @return The account the zone belongs to.
      * 
      */
     public GetZonesResultAccount account() {
@@ -162,7 +162,7 @@ public final class GetZonesResult {
     }
     /**
      * @return The last time proof of ownership was detected and the zone was made
-     * active
+     * active.
      * 
      */
     public String activatedOn() {
@@ -177,7 +177,7 @@ public final class GetZonesResult {
         return this.cnameSuffix;
     }
     /**
-     * @return When the zone was created
+     * @return When the zone was created.
      * 
      */
     public String createdOn() {
@@ -200,56 +200,56 @@ public final class GetZonesResult {
         return this.id;
     }
     /**
-     * @return Metadata about the zone
+     * @return Metadata about the zone.
      * 
      */
     public GetZonesResultMeta meta() {
         return this.meta;
     }
     /**
-     * @return When the zone was last modified
+     * @return When the zone was last modified.
      * 
      */
     public String modifiedOn() {
         return this.modifiedOn;
     }
     /**
-     * @return The domain name
+     * @return The domain name.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The name servers Cloudflare assigns to a zone
+     * @return The name servers Cloudflare assigns to a zone.
      * 
      */
     public List<String> nameServers() {
         return this.nameServers;
     }
     /**
-     * @return DNS host at the time of switching to Cloudflare
+     * @return DNS host at the time of switching to Cloudflare.
      * 
      */
     public String originalDnshost() {
         return this.originalDnshost;
     }
     /**
-     * @return Original name servers before moving to Cloudflare
+     * @return Original name servers before moving to Cloudflare.
      * 
      */
     public List<String> originalNameServers() {
         return this.originalNameServers;
     }
     /**
-     * @return Registrar for the domain at the time of switching to Cloudflare
+     * @return Registrar for the domain at the time of switching to Cloudflare.
      * 
      */
     public String originalRegistrar() {
         return this.originalRegistrar;
     }
     /**
-     * @return The owner of the zone
+     * @return The owner of the zone.
      * 
      */
     public GetZonesResultOwner owner() {

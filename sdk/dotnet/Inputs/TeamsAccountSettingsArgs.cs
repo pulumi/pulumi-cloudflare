@@ -25,6 +25,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsAccountSettingsAntivirusArgs>? Antivirus { get; set; }
 
         /// <summary>
+        /// Setting to enable App Control
+        /// </summary>
+        [Input("appControlSettings")]
+        public Input<Inputs.TeamsAccountSettingsAppControlSettingsArgs>? AppControlSettings { get; set; }
+
+        /// <summary>
         /// Block page layout settings.
         /// </summary>
         [Input("blockPage")]

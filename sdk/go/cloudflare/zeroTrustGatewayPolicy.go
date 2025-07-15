@@ -54,6 +54,8 @@ type ZeroTrustGatewayPolicy struct {
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// version number of the rule
 	Version pulumi.IntOutput `pulumi:"version"`
+	// Warning for a misconfigured rule, if any.
+	WarningStatus pulumi.StringOutput `pulumi:"warningStatus"`
 }
 
 // NewZeroTrustGatewayPolicy registers a new resource with the given unique name, arguments, and options.
@@ -133,6 +135,8 @@ type zeroTrustGatewayPolicyState struct {
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// version number of the rule
 	Version *int `pulumi:"version"`
+	// Warning for a misconfigured rule, if any.
+	WarningStatus *string `pulumi:"warningStatus"`
 }
 
 type ZeroTrustGatewayPolicyState struct {
@@ -168,6 +172,8 @@ type ZeroTrustGatewayPolicyState struct {
 	UpdatedAt pulumi.StringPtrInput
 	// version number of the rule
 	Version pulumi.IntPtrInput
+	// Warning for a misconfigured rule, if any.
+	WarningStatus pulumi.StringPtrInput
 }
 
 func (ZeroTrustGatewayPolicyState) ElementType() reflect.Type {
@@ -401,6 +407,11 @@ func (o ZeroTrustGatewayPolicyOutput) UpdatedAt() pulumi.StringOutput {
 // version number of the rule
 func (o ZeroTrustGatewayPolicyOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
+// Warning for a misconfigured rule, if any.
+func (o ZeroTrustGatewayPolicyOutput) WarningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZeroTrustGatewayPolicy) pulumi.StringOutput { return v.WarningStatus }).(pulumi.StringOutput)
 }
 
 type ZeroTrustGatewayPolicyArrayOutput struct{ *pulumi.OutputState }

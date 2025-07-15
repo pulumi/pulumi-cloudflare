@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// &gt; If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-    ///    Any `cloudflare.ZeroTrustAccessApplication` resource can reference reusable policies through its `policies` argument.
-    ///    To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-    ///    lifecycle option `create_before_destroy` to true on the 'cloudflare_zero_trust_access_policy' resource.
+    /// ## Example Usage
     /// 
     /// ## Import
     /// 

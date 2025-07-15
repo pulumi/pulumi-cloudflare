@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
     /**
-     * @return response status code lower bound
+     * @return Response status code lower bound.
      * 
      */
     private @Nullable Integer from;
     /**
-     * @return response status code upper bound
+     * @return Response status code upper bound.
      * 
      */
     private @Nullable Integer to;
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange() {}
     /**
-     * @return response status code lower bound
+     * @return Response status code lower bound.
      * 
      */
     public Optional<Integer> from() {
         return Optional.ofNullable(this.from);
     }
     /**
-     * @return response status code upper bound
+     * @return Response status code upper bound.
      * 
      */
     public Optional<Integer> to() {

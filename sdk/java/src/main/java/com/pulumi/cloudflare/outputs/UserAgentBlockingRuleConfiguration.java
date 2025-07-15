@@ -12,28 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class UserAgentBlockingRuleConfiguration {
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
+     * @return The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+     * Available values: &#34;ua&#34;.
      * 
      */
     private @Nullable String target;
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return the user agent to exactly match
      * 
      */
     private @Nullable String value;
 
     private UserAgentBlockingRuleConfiguration() {}
     /**
-     * @return The configuration target. You must set the target to `ip` when specifying an IP address in the rule.
-     * Available values: &#34;ip&#34;, &#34;ip6&#34;, &#34;ip_range&#34;, &#34;asn&#34;, &#34;country&#34;.
+     * @return The configuration target. You must set the target to `ua` when specifying a user agent in the rule.
+     * Available values: &#34;ua&#34;.
      * 
      */
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }
     /**
-     * @return The IP address to match. This address will be compared to the IP address of incoming requests.
+     * @return the user agent to exactly match
      * 
      */
     public Optional<String> value() {
