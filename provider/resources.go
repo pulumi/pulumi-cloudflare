@@ -112,86 +112,83 @@ func Provider() info.Provider {
 				PreStateUpgradeHook: func(
 					args info.PreStateUpgradeHookArgs,
 				) (int64, resource.PropertyMap, error) {
-					if args.PriorStateSchemaVersion == 1 {
-						updateRuleHeaders := func(r resource.PropertyValue) resource.PropertyValue {
-							if !r.IsObject() {
-								return r
-							}
-							ruleCopy := r.ObjectValue().Copy()
-							ap, ok := ruleCopy["actionParameters"]
-							if !ok || !ap.IsObject() {
-								return r
-							}
-							apCopy := ap.ObjectValue().Copy()
-							headers, ok := apCopy["headers"]
-							if !ok || !headers.IsArray() {
-								return r
-							}
-							if len(headers.ArrayValue()) == 0 {
-								delete(apCopy, "headers")
-								ruleCopy["actionParameters"] = resource.NewObjectProperty(apCopy)
-								return resource.NewObjectProperty(ruleCopy)
-							}
+					updateRuleHeaders := func(r resource.PropertyValue) resource.PropertyValue {
+						if !r.IsObject() {
 							return r
 						}
-
-						// This migrates the rules field from a map[string]string to a map[string][]string
-						updateRuleRules := func(r resource.PropertyValue) resource.PropertyValue {
-							if !r.IsObject() {
-								return r
-							}
-							ruleCopy := r.ObjectValue().Copy()
-							ap, ok := ruleCopy["actionParameters"]
-							if !ok || !ap.IsObject() {
-								return r
-							}
-							apCopy := ap.ObjectValue().Copy()
-							apRules, ok := apCopy["rules"]
-							if !ok || !apRules.IsObject() {
-								return r
-							}
-
-							apRulesMap := apRules.ObjectValue()
-
-							if len(apRulesMap) == 0 {
-								return r
-							}
-
-							updatedApRules := resource.PropertyMap{}
-							for k, v := range apRulesMap {
-								if v.IsArray() {
-									updatedApRules[k] = v
-									continue
-								}
-								if !v.IsString() {
-									return r
-								}
-								ruleIds := strings.Split(v.StringValue(), ",")
-								ruleIdsArray := []resource.PropertyValue{}
-								for _, ruleId := range ruleIds {
-									ruleIdsArray = append(ruleIdsArray, resource.NewStringProperty(ruleId))
-								}
-								updatedApRules[k] = resource.NewArrayProperty(ruleIdsArray)
-							}
-							apCopy["rules"] = resource.NewObjectProperty(updatedApRules)
+						ruleCopy := r.ObjectValue().Copy()
+						ap, ok := ruleCopy["actionParameters"]
+						if !ok || !ap.IsObject() {
+							return r
+						}
+						apCopy := ap.ObjectValue().Copy()
+						headers, ok := apCopy["headers"]
+						if !ok || !headers.IsArray() {
+							return r
+						}
+						if len(headers.ArrayValue()) == 0 {
+							delete(apCopy, "headers")
 							ruleCopy["actionParameters"] = resource.NewObjectProperty(apCopy)
 							return resource.NewObjectProperty(ruleCopy)
 						}
-
-						s := args.PriorState
-						sCopy := s.Copy()
-						if rules, ok := s["rules"]; ok && rules.IsArray() {
-							updatedRules := []resource.PropertyValue{}
-							for _, rule := range rules.ArrayValue() {
-								newRule := updateRuleHeaders(rule)
-								newRule = updateRuleRules(newRule)
-								updatedRules = append(updatedRules, newRule)
-							}
-							sCopy["rules"] = resource.NewArrayProperty(updatedRules)
-						}
-						return 0, sCopy, nil
+						return r
 					}
-					return 0, args.PriorState, nil
+
+					// This migrates the rules field from a map[string]string to a map[string][]string
+					updateRuleRules := func(r resource.PropertyValue) resource.PropertyValue {
+						if !r.IsObject() {
+							return r
+						}
+						ruleCopy := r.ObjectValue().Copy()
+						ap, ok := ruleCopy["actionParameters"]
+						if !ok || !ap.IsObject() {
+							return r
+						}
+						apCopy := ap.ObjectValue().Copy()
+						apRules, ok := apCopy["rules"]
+						if !ok || !apRules.IsObject() {
+							return r
+						}
+
+						apRulesMap := apRules.ObjectValue()
+
+						if len(apRulesMap) == 0 {
+							return r
+						}
+
+						updatedApRules := resource.PropertyMap{}
+						for k, v := range apRulesMap {
+							if v.IsArray() {
+								updatedApRules[k] = v
+								continue
+							}
+							if !v.IsString() {
+								return r
+							}
+							ruleIds := strings.Split(v.StringValue(), ",")
+							ruleIdsArray := []resource.PropertyValue{}
+							for _, ruleId := range ruleIds {
+								ruleIdsArray = append(ruleIdsArray, resource.NewStringProperty(ruleId))
+							}
+							updatedApRules[k] = resource.NewArrayProperty(ruleIdsArray)
+						}
+						apCopy["rules"] = resource.NewObjectProperty(updatedApRules)
+						ruleCopy["actionParameters"] = resource.NewObjectProperty(apCopy)
+						return resource.NewObjectProperty(ruleCopy)
+					}
+
+					s := args.PriorState
+					sCopy := s.Copy()
+					if rules, ok := s["rules"]; ok && rules.IsArray() {
+						updatedRules := []resource.PropertyValue{}
+						for _, rule := range rules.ArrayValue() {
+							newRule := updateRuleHeaders(rule)
+							newRule = updateRuleRules(newRule)
+							updatedRules = append(updatedRules, newRule)
+						}
+						sCopy["rules"] = resource.NewArrayProperty(updatedRules)
+					}
+					return 0, sCopy, nil
 				},
 			},
 

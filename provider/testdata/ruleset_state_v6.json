@@ -1,0 +1,113 @@
+{
+    "version": 3,
+    "deployment": {
+      "manifest": {
+        "time": "2025-05-05T17:10:59.375919-04:00",
+        "magic": "e6c0aa7069a791ee1f5f0134b2e4d3fd2a33895ac173f4930f09ed56065602cb",
+        "version": "v3.167.0"
+      },
+      "secrets_providers": {
+        "type": "passphrase",
+        "state": {
+          "salt": "v1:O1t5suqMRIo=:v1:7DqVMCoY+uij+EZC:Bc3SzKdajmbRZU5OXZWfP0oEcpUIJw=="
+        }
+      },
+      "resources": [
+        {
+          "urn": "urn:pulumi:test::example-ruleset::pulumi:pulumi:Stack::example-ruleset-test",
+          "custom": false,
+          "type": "pulumi:pulumi:Stack",
+          "created": "2025-05-05T21:10:57.857411Z",
+          "modified": "2025-05-05T21:10:57.857411Z"
+        },
+        {
+          "urn": "urn:pulumi:test::example-ruleset::pulumi:providers:cloudflare::default",
+          "custom": true,
+          "id": "cb0e5542-6869-4d60-9efa-6b3f0b60fa3f",
+          "type": "pulumi:providers:cloudflare",
+          "inputs": {
+            "apiClientLogging": "false",
+            "maxBackoff": "30",
+            "minBackoff": "1",
+            "retries": "3",
+            "rps": "4"
+          },
+          "outputs": {
+            "apiClientLogging": "false",
+            "maxBackoff": "30",
+            "minBackoff": "1",
+            "retries": "3",
+            "rps": "4"
+          },
+          "created": "2025-05-05T21:10:57.873539Z",
+          "modified": "2025-05-05T21:10:57.873539Z"
+        },
+        {
+          "urn": "urn:pulumi:test::example-ruleset::cloudflare:index/ruleset:Ruleset::ManagedRulesets",
+          "custom": true,
+          "id": "bc1de1301d044b5db8f77c4f6056d697",
+          "type": "cloudflare:index/ruleset:Ruleset",
+          "inputs": {
+            "kind": "zone",
+            "name": "Managed WAF Rulesets",
+            "phase": "http_request_firewall_managed",
+            "rules": [
+                {
+                    "action": "skip",
+                    "actionParameters": {
+                        "rules": {
+                            "efb7b8c949ac4650a09736fc376e9aee": [
+                                "ae20608d93b94e97988db1bbc12cf9c8",
+                                "ce11be543594412bb4bb92516aa0bef8"
+                            ]
+                        }
+                    },
+                    "description": "Bypass partners on Google/Bing bot rule",
+                    "enabled": true,
+                    "expression": "(ip.src in {10.1.1.1})"
+                }
+            ],
+            "zoneId": "cabcdb3c8548af2e275acc42ed1fea45"
+        },
+        "outputs": {
+            "description": "",
+            "id": "f41c5bb8e4894009aa64a0614f4dba38",
+            "kind": "zone",
+            "name": "Managed WAF Rulesets",
+            "phase": "http_request_firewall_managed",
+            "rules": [
+                {
+                    "action": "skip",
+                    "actionParameters": {
+                        "rules": {
+                            "efb7b8c949ac4650a09736fc376e9aee": [
+                                "ae20608d93b94e97988db1bbc12cf9c8",
+                                "ce11be543594412bb4bb92516aa0bef8"
+                            ]
+                        }
+                    },
+                    "description": "Bypass partners on Google/Bing bot rule",
+                    "enabled": true,
+                    "expression": "(ip.src in {10.1.1.1})",
+                    "id": "bd59873a41e94602b8ec039a9d062e4f",
+                    "ref": "bd59873a41e94602b8ec039a9d062e4f"
+                }
+            ],
+            "zoneId": "cabcdb3c8548af2e275acc42ed1fea45"
+        },
+          "parent": "urn:pulumi:test::example-ruleset::pulumi:pulumi:Stack::example-ruleset-test",
+          "provider": "urn:pulumi:test::example-ruleset::pulumi:providers:cloudflare::default::cb0e5542-6869-4d60-9efa-6b3f0b60fa3f",
+          "propertyDependencies": {
+            "kind": [],
+            "name": [],
+            "phase": [],
+            "rules": [],
+            "zoneId": []
+          },
+          "created": "2025-05-05T21:10:59.372981Z",
+          "modified": "2025-05-05T21:10:59.372981Z"
+        }
+      ],
+      "metadata": {}
+    }
+  }
