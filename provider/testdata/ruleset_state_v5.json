@@ -43,14 +43,15 @@
           "modified": "2025-05-05T21:10:57.873539Z"
         },
         {
-          "urn": "urn:pulumi:test::example-ruleset::cloudflare:index/ruleset:Ruleset::domain-rate-limit",
+          "urn": "urn:pulumi:test::example-ruleset::cloudflare:index/ruleset:Ruleset::ManagedRulesets",
           "custom": true,
           "id": "bc1de1301d044b5db8f77c4f6056d697",
           "type": "cloudflare:index/ruleset:Ruleset",
           "inputs": {
             "kind": "zone",
-            "name": "domain-rate-lmit",
-            "phase": "http_request_transform",
+            "name": "Managed WAF Rulesets",
+            "phase": "http_request_firewall_managed",
+            "description": "description",
             "rules": [
               {
                 "action": "rewrite",
@@ -80,11 +81,11 @@
           },
           "outputs": {
             "__meta": "{\"schema_version\":\"1\"}",
-            "description": "",
             "id": "bc1de1301d044b5db8f77c4f6056d697",
             "kind": "zone",
-            "name": "domain-rate-lmit",
-            "phase": "http_request_transform",
+            "name": "Managed WAF Rulesets",
+            "phase": "http_request_firewall_managed",
+            "description": "description",
             "rules": [
               {
                 "action": "rewrite",

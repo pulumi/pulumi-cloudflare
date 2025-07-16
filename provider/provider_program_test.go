@@ -146,13 +146,21 @@ func TestZoneSettings(t *testing.T) {
 
 // Regression test for [pulumi/pulumi-cloudflare#1213]
 func TestRuleSetNonEmptyRulesUpgrade(t *testing.T) {
-	state, err := os.ReadFile("testdata/ruleset_state.json")
-	require.NoError(t, err)
-	depl := apitype.UntypedDeployment{}
-	err = json.Unmarshal(state, &depl)
-	require.NoError(t, err)
-	pt := testProgram(t, "test-programs/ruleset_non_empty_rules",
-		opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
-	pt.ImportStack(t, depl)
-	pt.Preview(t)
+	for _, stateFile := range []string{
+		"testdata/ruleset_state_v6.json",
+		"testdata/ruleset_state_v5.json",
+		"testdata/ruleset_state_v4.json",
+	} {
+		t.Run(stateFile, func(t *testing.T) {
+			state, err := os.ReadFile(stateFile)
+			require.NoError(t, err)
+			depl := apitype.UntypedDeployment{}
+			err = json.Unmarshal(state, &depl)
+			require.NoError(t, err)
+			pt := testProgram(t, "test-programs/ruleset_non_empty_rules",
+				opttest.NewStackOptions(optnewstack.DisableAutoDestroy()))
+			pt.ImportStack(t, depl)
+			pt.Preview(t)
+		})
+	}
 }

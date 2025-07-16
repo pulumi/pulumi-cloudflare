@@ -6,13 +6,14 @@ config:
     type: string
 
 resources:
-  domain-rate-limit:
+  ManagedRulesets:
     type: cloudflare:Ruleset
     properties:
-      name: domain-rate-lmit
+      name: Managed WAF Rulesets
       kind: zone
       zoneId: ${cloudflare-zone-id}
       phase: http_request_firewall_managed
+      description: description
       rules:
         - action: skip
           actionParameters:
@@ -21,5 +22,5 @@ resources:
                 - "ae20608d93b94e97988db1bbc12cf9c8"
                 - "ce11be543594412bb4bb92516aa0bef8"
           enabled: true
-          expression: '(http.request.uri.path contains "/api/auth/callback")'
-
+          expression: '(ip.src in {10.1.1.1})'
+          description: Bypass partners on Google/Bing bot rule
