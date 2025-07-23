@@ -54,3 +54,5 @@ jobs:
       with:
         version: v1.64.8
         working-directory: provider
+      env:
+        CGO_ENABLED: "0"
