@@ -11,6 +11,8 @@ import (
 
 	_ "embed"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/pulumi/providertest"
 	"github.com/pulumi/providertest/optproviderupgrade"
 	"github.com/pulumi/providertest/providers"
@@ -26,7 +28,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
-	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v6/pkg/version"
 )
