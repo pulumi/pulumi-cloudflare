@@ -50,11 +50,8 @@ jobs:
     - name: prepare workspace
       continue-on-error: true
       run: make prepare_local_workspace
-
-    # TODO[pulumi/ci-mgmt#1622] unfortunate workaround for mysterious lint failure
-    #
-    # - name: golangci-lint
-    #   uses: golangci/golangci-lint-action@55c2c1448f86e01eaae002a5a3a9624417608d84 # v6
-    #   with:
-    #     version: v1.64.6
-    #     working-directory: provider
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@55c2c1448f86e01eaae002a5a3a9624417608d84 # v6
+      with:
+        version: v1.64.6
+        working-directory: provider
