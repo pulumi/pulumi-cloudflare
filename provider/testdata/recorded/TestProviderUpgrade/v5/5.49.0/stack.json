@@ -1,0 +1,115 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2025-07-01T16:01:24.261247-04:00",
+      "magic": "6a5f1cff8ef65523800fc5c9de7d17699a6e5b813cf7d2dab78054c0abf00cfc",
+      "version": "v3.178.0"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:9EFQYES7DEM=:v1:/yV4XJT+VnJdTPrr:YmC0elvpt+d94OiOUmUjZVa/2uig1Q=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::example-ruleset::pulumi:pulumi:Stack::example-ruleset-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2025-07-01T20:01:23.607367Z",
+        "modified": "2025-07-01T20:01:23.607367Z"
+      },
+      {
+        "urn": "urn:pulumi:test::example-ruleset::pulumi:providers:cloudflare::default_5_49_1",
+        "custom": true,
+        "id": "e8048b51-bf6d-4fd8-bd29-bd4049eb5aea",
+        "type": "pulumi:providers:cloudflare",
+        "inputs": {
+          "__internal": {},
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4",
+          "version": "5.49.1"
+        },
+        "outputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4",
+          "version": "5.49.1"
+        },
+        "created": "2025-07-01T20:01:23.621232Z",
+        "modified": "2025-07-01T20:01:23.621232Z"
+      },
+      {
+        "urn": "urn:pulumi:test::example-ruleset::cloudflare:index/apiToken:ApiToken::exampleApiToken",
+        "custom": true,
+        "id": "a87de25e1833e5e0b52e69547673b478",
+        "type": "cloudflare:index/apiToken:ApiToken",
+        "inputs": {
+          "__defaults": [],
+          "expiresOn": "2030-01-01T00:00:00Z",
+          "name": "readonly token",
+          "notBefore": "2018-07-01T05:20:00Z",
+          "policies": [
+            {
+              "__defaults": [],
+              "effect": "allow",
+              "permissionGroups": [
+                "c8fed203ed3043cba015a93ad1616f1f",
+                "82e64a83756745bbbb1c9c2701bf816b"
+              ],
+              "resources": {
+                "com.cloudflare.api.account.zone.cabcdb3c8548af2e275acc42ed1fea45": "*"
+              }
+            }
+          ]
+        },
+        "outputs": {
+          "condition": null,
+          "expiresOn": "2030-01-01T00:00:00Z",
+          "id": "a87de25e1833e5e0b52e69547673b478",
+          "issuedOn": "2025-07-01T20:01:23Z",
+          "modifiedOn": "2025-07-01T20:01:24Z",
+          "name": "readonly token",
+          "notBefore": "2018-07-01T05:20:00Z",
+          "policies": [
+            {
+              "effect": "allow",
+              "permissionGroups": [
+                "82e64a83756745bbbb1c9c2701bf816b",
+                "c8fed203ed3043cba015a93ad1616f1f"
+              ],
+              "resources": {
+                "com.cloudflare.api.account.zone.cabcdb3c8548af2e275acc42ed1fea45": "*"
+              }
+            }
+          ],
+          "status": "active",
+          "value": {
+            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+            "plaintext": "\"REDACTED BY PROVIDERTEST\""
+          }
+        },
+        "parent": "urn:pulumi:test::example-ruleset::pulumi:pulumi:Stack::example-ruleset-test",
+        "provider": "urn:pulumi:test::example-ruleset::pulumi:providers:cloudflare::default_5_49_1::e8048b51-bf6d-4fd8-bd29-bd4049eb5aea",
+        "propertyDependencies": {
+          "expiresOn": [],
+          "name": [],
+          "notBefore": [],
+          "policies": []
+        },
+        "additionalSecretOutputs": [
+          "value"
+        ],
+        "created": "2025-07-01T20:01:24.255885Z",
+        "modified": "2025-07-01T20:01:24.255885Z"
+      }
+    ],
+    "metadata": {}
+  }
+}
