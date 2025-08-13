@@ -106,6 +106,24 @@ func Provider() info.Provider {
 				},
 			},
 
+			"cloudflare_schema_validation_operation_settings": {
+				ComputeID: delegateID("zoneId"),
+			},
+			"cloudflare_zero_trust_device_settings": {
+				ComputeID: delegateID("accountId"),
+			},
+			"cloudflare_image": {
+				Fields: map[string]*info.Schema{
+					"id": {
+						Name: "imageId",
+					},
+				},
+				ComputeID: delegateID("imageId"),
+			},
+			"cloudflare_schema_validation_settings": {
+				ComputeID: delegateID("zoneId"),
+			},
+
 			"cloudflare_ruleset": {
 				Tok: "cloudflare:index/ruleset:Ruleset",
 				PreStateUpgradeHook: func(
